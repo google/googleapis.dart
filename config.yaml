@@ -1,137 +1,114 @@
 packages:
 - googleapis:
-  -  analytics:v3
-  -  bigquery:v2
-  -  blogger:v3
-  -  books:v1
-  -  calendar:v3
-  -  compute:v1
-  -  drive:v2
-  -  gmail:v1
-  -  plus:v1
-  -  storage:v1
-  -  urlshortener:v1
-  -  youtube:v3
+    version: 0.1.0
+    author: Dart Team <misc@dartlang.org>
+    homepage: http://www.dartlang.org
+    readme: resources/README.md
+    license: resources/LICENSE
+    apis:
+    -  analytics:v3
+    -  bigquery:v2
+    -  blogger:v3
+    -  books:v1
+    -  calendar:v3
+    -  compute:v1
+    -  drive:v2
+    -  gmail:v1
+    -  plus:v1
+    -  storage:v1
+    -  urlshortener:v1
+    -  youtube:v3
 
 - googleapis_beta:
-  -  datastore:v1beta2
-  -  dns:v1beta1
-  -  pubsub:v1beta1
+    version: 0.1.0
+    author: Dart Team <misc@dartlang.org>
+    homepage: http://www.dartlang.org
+    readme: resources/README.md
+    license: resources/LICENSE
+    apis:
+    -  datastore:v1beta2
+    -  dns:v1beta1
+    -  pubsub:v1beta1
 
 skipped_apis:
--  adexchangebuyer:v1
--  adexchangebuyer:v1.1
--  adexchangebuyer:v1.2
--  adexchangebuyer:v1.3
--  adexchangebuyer:v1.4
--  adexchangeseller:v1
--  adexchangeseller:v1.1
--  admin:directory_v1
--  admin:email_migration_v2
--  admin:reports_v1
--  adsense:v1.2
--  adsense:v1.3
--  adsense:v1.4
--  adsensehost:v4.1
--  analytics:v2.4preprod
--  analytics:v3alphapreprod
--  analytics:v3internalpreprod
--  analytics:v3preprod
--  analytics:v2.4
--  androidpublisher:v1
--  androidpublisher:v1.1
--  androidpublisher:v2
--  appsactivity:v1
--  appstate:v1
--  audit:v1
--  autoscaler:v1beta2
--  blogger:v2
--  chromewebstore:v1.1
--  cih:v1
--  cih:v2
--  cih:v3
--  civicinfo:us_v1
--  civicinfo:v1
--  cloudmonitoring:v2beta1
--  content:v2
--  contentmanager:v1
--  coordinate:v1
--  customsearch:v1
--  datastore:v1beta1
--  devprojects:v1
--  dfareporting:v1
--  dfareporting:v1.1
--  dfareporting:v1.2
--  dfareporting:v1.3
--  discovery:v1
--  doubleclickbidmanager:v1
--  doubleclicksearch:v2
--  drive:v2.1beta
--  drive:v1
--  freebase:v1-sandbox
--  freebase:v1sandbox
--  freebase:v1
--  fusiontables:v1
--  games:v1
--  gamesManagement:v1management
--  gan:v1beta1
--  genomics:v1beta
--  ghire:v1
--  groupsmigration:v1
--  groupssettings:v1
--  identitytoolkit:v3
--  licensing:v1
--  manager:v1beta2_load
--  manager:v1beta2_qos_in
--  manager:v1beta2_qos_qd
--  manager:v1beta2_qos_vc
--  manager:v1beta2_quota
--  manager:v1beta2
--  mapsengine:exp2
--  mapsengine:v1
--  mirror:v1
--  oauth2:v1
--  oauth2:v2
--  orkut:v2
--  pagespeedonline:v1
--  plusDomains:v1
--  prediction:v1.2
--  prediction:v1.3
--  prediction:v1.4
--  prediction:v1.5
--  prediction:v1.6
--  qpxExpress:v1
--  replicapool:v1beta1_integration
--  replicapool:v1beta1_nightly
--  replicapool:v1beta1_preprod
--  replicapool:v1beta1_preprod_qos_vc
--  replicapool:v1beta1_qos_vc
--  replicapool:v1beta1_staging
--  replicapool:v1beta1_staging_qos_vc
--  replicapool:v1beta2_staging
--  replicapool:v1beta2_testing
--  replicapool:v1beta1
--  replicapool:v1beta2
--  reportcard:v1
--  reseller:v1sandbox
--  reseller:v1
--  resourceviews:v1beta1_canary
--  resourceviews:v1beta1_load
--  resourceviews:v1beta1_quota
--  resourceviews:v1beta1_staging
--  resourceviews:v1beta2_testing
--  resourceviews:v1beta1
--  resourceviews:v1beta2
--  siteVerification:v1
--  spectrum:v1explorer
--  sqladmin:v1beta1
--  sqladmin:v1beta3
--  storage:v1beta1
--  storage:v1beta2
--  taskqueue:v1beta1
--  taskqueue:v1beta2
--  tasks:v1
--  translate:v2
--  webfonts:v1
--  youtubeAnalytics:v1
--  youtubeAnalytics:v1beta1
+- adexchangebuyer:v1
+- adexchangebuyer:v1.1
+- adexchangebuyer:v1.2
+- adexchangebuyer:v1.3
+- adexchangeseller:v1
+- adexchangeseller:v1.1
+- admin:directory_v1
+- admin:email_migration_v2
+- admin:reports_v1
+- adsense:v1.2
+- adsense:v1.3
+- adsense:v1.4
+- adsensehost:v4.1
+- analytics:v2.4
+- androidpublisher:v1
+- androidpublisher:v1.1
+- androidpublisher:v2
+- appsactivity:v1
+- appstate:v1
+- audit:v1
+- autoscaler:v1beta2
+- blogger:v2
+- civicinfo:us_v1
+- civicinfo:v1
+- cloudmonitoring:v2beta1
+- content:v2
+- coordinate:v1
+- customsearch:v1
+- datastore:v1beta1
+- dfareporting:v1
+- dfareporting:v1.1
+- dfareporting:v1.2
+- dfareporting:v1.3
+- discovery:v1
+- doubleclickbidmanager:v1
+- doubleclicksearch:v2
+- drive:v1
+- freebase:v1-sandbox
+- freebase:v1sandbox
+- freebase:v1
+- fusiontables:v1
+- games:v1
+- gamesManagement:v1management
+- gan:v1beta1
+- genomics:v1beta
+- groupsmigration:v1
+- groupssettings:v1
+- identitytoolkit:v3
+- licensing:v1
+- manager:v1beta2
+- mapsengine:exp2
+- mapsengine:v1
+- mirror:v1
+- oauth2:v1
+- oauth2:v2
+- orkut:v2
+- pagespeedonline:v1
+- plusDomains:v1
+- prediction:v1.2
+- prediction:v1.3
+- prediction:v1.4
+- prediction:v1.5
+- prediction:v1.6
+- qpxExpress:v1
+- replicapool:v1beta1
+- reseller:v1sandbox
+- reseller:v1
+- resourceviews:v1beta1
+- siteVerification:v1
+- spectrum:v1explorer
+- sqladmin:v1beta1
+- sqladmin:v1beta3
+- storage:v1beta1
+- storage:v1beta2
+- taskqueue:v1beta1
+- taskqueue:v1beta2
+- tasks:v1
+- translate:v2
+- webfonts:v1
+- youtubeAnalytics:v1
+- youtubeAnalytics:v1beta1
