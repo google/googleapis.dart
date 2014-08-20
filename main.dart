@@ -80,17 +80,20 @@ main() {
         // Generate package description.
         var apiDescriptions = [];
         var sb = new StringBuffer()
-            ..write('Auto-generated client libraries for accessing '
-                    'the following APIs:');
+            ..write('"Auto-generated client libraries for accessing '
+                    'the following APIs:\\n');
         items.forEach((DirectoryListItems apiDescription) {
           if (apis.contains(apiDescription.id)) {
-            sb..writeln('  ')
+            sb..writeln('')
+                ..write('  ')
                 ..write(apiDescription.id)
                 ..write(' - ')
-                ..write(apiDescription.description);
+                ..write(apiDescription.description)
+                ..write('\\n');
             apiDescriptions.add(apiDescription);
           }
         });
+        sb.write('"');
 
         // Generate the README.md file content.
         var readme = generateReadme(readmeFile, apiDescriptions);
