@@ -6,18 +6,58 @@ packages:
     readme: resources/README.md
     license: resources/LICENSE
     apis:
-    -  analytics:v3
-    -  bigquery:v2
-    -  blogger:v3
-    -  books:v1
-    -  calendar:v3
-    -  compute:v1
-    -  drive:v2
-    -  gmail:v1
-    -  plus:v1
-    -  storage:v1
-    -  urlshortener:v1
-    -  youtube:v3
+    - adexchangebuyer:v1.3  # https://developers.google.com/ad-exchange/buyer-rest/
+    - adexchangeseller:v1.1  # https://developers.google.com/ad-exchange/seller-rest/
+    - admin:directory_v1  # https://developers.google.com/admin-sdk/directory/
+    - admin:email_migration_v2  #https://developers.google.com/admin-sdk/email-migration/
+    - admin:reports_v1  # https://developers.google.com/admin-sdk/reports/
+    - adsense:v1.4  # https://developers.google.com/adsense/management/
+    - adsensehost:v4.1  # https://developers.google.com/adsense/host/
+    - analytics:v3  # https://developers.google.com/analytics/
+    - androidpublisher:v2  # https://developers.google.com/android-publisher/
+    - appsactivity:v1  # https://developers.google.com/google-apps/activity/
+    - appstate:v1  # https://developers.google.com/games/services/web/api/states
+    - bigquery:v2  # https://developers.google.com/bigquery/
+    - blogger:v3  # https://developers.google.com/blogger/
+    - books:v1  # https://developers.google.com/books/
+    - civicinfo:us_v1  # https://developers.google.com/civic-information/
+    - civicinfo:v1  # https://developers.google.com/civic-information/
+    - calendar:v3  # https://developers.google.com/google-apps/calendar/
+    - compute:v1  # https://developers.google.com/compute/
+    - content:v2  # https://developers.google.com/shopping-content/
+    - coordinate:v1  # https://google-developers.appspot.com/coordinate/
+    - customsearch:v1  # https://developers.google.com/custom-search/
+    - drive:v2  # https://developers.google.com/drive/v2/reference/
+    - dfareporting:v1.3  # https://developers.google.com/doubleclick-advertisers/reporting/
+    - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
+    - doubleclicksearch:v2  # https://developers.google.com/doubleclick-search/
+    - freebase:v1  # https://developers.google.com/freebase/
+    - fusiontables:v1  # https://developers.google.com/fusiontables/
+    - games:v1  # https://developers.google.com/games/services/
+    - gamesManagement:v1management  # https://developers.google.com/games/services/management/api/
+    - gmail:v1  # https://developers.google.com/gmail/
+    - groupsmigration:v1  # https://developers.google.com/admin-sdk/groups-migration/
+    - groupssettings:v1  # https://developers.google.com/admin-sdk/groups-settings/
+    - identitytoolkit:v3  # https://developers.google.com/identity-toolkit/
+    - licensing:v1  # https://developers.google.com/admin-sdk/licensing/v1/how-tos/using
+    - mapsengine:v1  # https://developers.google.com/maps-engine/
+    - mirror:v1  # https://developers.google.com/glass/develop/mirror/
+    - oauth2:v2  # https://developers.google.com/accounts/docs/OAuth2UserAgent
+    - orkut:v2  # https://developers.google.com/orkut/docs/off-site-apps/v2restapi
+    - pagespeedonline:v1  # https://developers.google.com/speed/docs/insights/about
+    - plus:v1  # https://developers.google.com/+/api/
+    - plusDomains:v1  # https://developers.google.com/+/domains/
+    - prediction:v1.6  # https://developers.google.com/prediction/
+    - qpxExpress:v1  # https://developers.google.com/qpx-express/
+    - reseller:v1  # https://developers.google.com/admin-sdk/reseller/
+    - siteVerification:v1  # https://developers.google.com/site-verification/
+    - storage:v1  # https://developers.google.com/storage/
+    - tasks:v1  # https://developers.google.com/google-apps/tasks/
+    - translate:v2  # https://developers.google.com/translate/
+    - urlshortener:v1  # https://developers.google.com/url-shortener/
+    - webfonts:v1  # https://developers.google.com/fonts/docs/developer_api
+    - youtube:v3  # https://developers.google.com/youtube/
+    - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
     version: 0.1.0
@@ -26,89 +66,49 @@ packages:
     readme: resources/README.md
     license: resources/LICENSE
     apis:
-    -  datastore:v1beta2
-    -  dns:v1beta1
-    -  pubsub:v1beta1
+    - autoscaler:v1beta2  # https://developers.google.com/compute/docs/autoscaler/ (Limited Preview)
+    - cloudmonitoring:v2beta1  # https://developers.google.com/cloud-monitoring/
+    - datastore:v1beta2  # https://developers.google.com/datastore/
+    - dns:v1beta1  # https://developers.google.com/cloud-dns/
+    - genomics:v1beta  # https://developers.google.com/genomics/
+    - manager:v1beta2  # https://developers.google.com/deployment-manager/
+    - pubsub:v1beta1  # https://developers.google.com/pubsub/ (Limited Preview)
+    - replicapool:v1beta1  # https://developers.google.com/compute/docs/replica-pool/ (Limited Preview)
+    - resourceviews:v1beta1  # https://developers.google.com/compute/docs/resource-views/ (Limited Preview)
+    - sqladmin:v1beta3  # https://developers.google.com/cloud-sql/docs/admin-api/
+    - taskqueue:v1beta2  # https://developers.google.com/appengine/docs/python/taskqueue/rest/libraries
 
 skipped_apis:
-- adexchangebuyer:v1
-- adexchangebuyer:v1.1
-- adexchangebuyer:v1.2
-- adexchangebuyer:v1.3
-- adexchangeseller:v1
-- adexchangeseller:v1.1
-- admin:directory_v1
-- admin:email_migration_v2
-- admin:reports_v1
-- adsense:v1.2
-- adsense:v1.3
-- adsense:v1.4
-- adsensehost:v4.1
-- analytics:v2.4
-- androidpublisher:v1
-- androidpublisher:v1.1
-- androidpublisher:v2
-- appsactivity:v1
-- appstate:v1
-- audit:v1
-- autoscaler:v1beta2
-- blogger:v2
-- civicinfo:us_v1
-- civicinfo:v1
-- cloudmonitoring:v2beta1
-- content:v2
-- coordinate:v1
-- customsearch:v1
-- datastore:v1beta1
-- dfareporting:v1
-- dfareporting:v1.1
-- dfareporting:v1.2
-- dfareporting:v1.3
-- discovery:v1
-- doubleclickbidmanager:v1
-- doubleclicksearch:v2
-- drive:v1
-- freebase:v1-sandbox
-- freebase:v1sandbox
-- freebase:v1
-- fusiontables:v1
-- games:v1
-- gamesManagement:v1management
-- gan:v1beta1
-- genomics:v1beta
-- groupsmigration:v1
-- groupssettings:v1
-- identitytoolkit:v3
-- licensing:v1
-- manager:v1beta2
-- mapsengine:exp2
-- mapsengine:v1
-- mirror:v1
-- oauth2:v1
-- oauth2:v2
-- orkut:v2
-- pagespeedonline:v1
-- plusDomains:v1
-- prediction:v1.2
-- prediction:v1.3
-- prediction:v1.4
-- prediction:v1.5
-- prediction:v1.6
-- qpxExpress:v1
-- replicapool:v1beta1
-- reseller:v1sandbox
-- reseller:v1
-- resourceviews:v1beta1
-- siteVerification:v1
-- spectrum:v1explorer
-- sqladmin:v1beta1
-- sqladmin:v1beta3
-- storage:v1beta1
-- storage:v1beta2
-- taskqueue:v1beta1
-- taskqueue:v1beta2
-- tasks:v1
-- translate:v2
-- webfonts:v1
-- youtubeAnalytics:v1
-- youtubeAnalytics:v1beta1
+- adexchangebuyer:v1  # v1.3 included
+- adexchangebuyer:v1.1  # v1.3 included
+- adexchangebuyer:v1.2  # v1.3 included
+- adexchangeseller:v1  # v1.1 included
+- adsense:v1.2  # v1.4 included
+- adsense:v1.3  # v1.4 included
+- analytics:v2.4  # v3 included
+- androidpublisher:v1  # v2 included
+- androidpublisher:v1.1  # v2 included
+- audit:v1  # Deprecated as of May 15, 2013, https://developers.google.com/google-apps/admin-audit/
+- blogger:v2  # v3 included
+- datastore:v1beta1  # v1beta2 included
+- dfareporting:v1  # v1.3 included
+- dfareporting:v1.1  # v1.3 included
+- dfareporting:v1.2  # v1.3 included
+- discovery:v1  # Not included
+- drive:v1  # v2 included
+- freebase:v1-sandbox  # v1 included
+- freebase:v1sandbox  # v1 included
+- gan:v1beta1  # Deprecated as of April 16, 2013, https://developers.google.com/affiliate-network/
+- mapsengine:exp2  # v1 included
+- oauth2:v1  # v2 included
+- prediction:v1.2  # v1.6 included
+- prediction:v1.3  # v1.6 included
+- prediction:v1.4  # v1.6 included
+- prediction:v1.5  # v1.6 included
+- reseller:v1sandbox  # v1 included
+- spectrum:v1explorer  # Not included, https://developers.google.com/spectrum/
+- sqladmin:v1beta1  # v1beta3 included
+- storage:v1beta1  # v1 included
+- storage:v1beta2  # v1 included
+- taskqueue:v1beta1  # v1beta2 included
+- youtubeAnalytics:v1beta1  # v1 included

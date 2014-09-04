@@ -1,9 +1,0 @@
-name: googleapis_generator
-version: 0.0.1
-author: Dart Team <misc@dartlang.org>
-description: Create API Client libraries based on the APIs Discovery documentation
-environment:
-  sdk: '>=1.0.0 <2.0.0'
-dependencies:
-  google_discovery_v1_api: '>=0.4.12'
-  yaml: any
