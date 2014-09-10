@@ -1,0 +1,10 @@
+name: googleapis_generator_dependency
+version: 0.1.0
+author: Dart Team
+description: A dart package for pin-pointing the version of the generator used to generate APIs.
+dependencies:
+  discovery_api_client_generator:
+    git:
+      url: https://github.com/dart-lang/discovery_api_dart_client_generator
+      ref: fcffd942e26db7da37c40add5f21ab284ff5ce95
+    version: ">=0.5.0 <0.6.0"

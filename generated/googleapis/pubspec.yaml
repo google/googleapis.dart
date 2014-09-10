@@ -1,0 +1,64 @@
+name: googleapis
+version: 0.1.0
+author: Dart Team <misc@dartlang.org>
+description: "Auto-generated client libraries for accessing the following APIs:\n
+  adexchangebuyer:v1.3 - Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.\n
+  adexchangeseller:v1.1 - Gives Ad Exchange seller users access to their inventory and the ability to generate reports\n
+  admin:directory_v1 - The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.\n
+  admin:email_migration_v2 - Email Migration API lets you migrate emails of users to Google backends.\n
+  admin:reports_v1 - Allows the administrators of Google Apps customers to fetch reports about the usage, collaboration, security and risk for their users.\n
+  adsense:v1.4 - Gives AdSense publishers access to their inventory and the ability to generate reports\n
+  adsensehost:v4.1 - Gives AdSense Hosts access to report generation, ad code generation, and publisher management capabilities.\n
+  analytics:v3 - View and manage your Google Analytics data\n
+  androidpublisher:v2 - Lets Android application developers access their Google Play accounts.\n
+  appsactivity:v1 - Provides a historical view of activity.\n
+  appstate:v1 - The Google App State API.\n
+  bigquery:v2 - A data platform for customers to create, manage, share and query data.\n
+  blogger:v3 - API for access to the data within Blogger.\n
+  books:v1 - Lets you search for books and manage your Google Books library.\n
+  calendar:v3 - Lets you manipulate events and other calendar data.\n
+  civicinfo:us_v1 - An API for accessing civic information.\n
+  civicinfo:v1 - An API for accessing civic information.\n
+  compute:v1 - API for the Google Compute Engine service.\n
+  content:v2 - Manage product items, inventory, and Merchant Center accounts for Google Shopping.\n
+  coordinate:v1 - Lets you view and manage jobs in a Coordinate team.\n
+  customsearch:v1 - Lets you search over a website or collection of websites\n
+  dfareporting:v1.3 - Lets you create, run and download reports.\n
+  doubleclickbidmanager:v1 - API for viewing and managing your reports in DoubleClick Bid Manager.\n
+  doubleclicksearch:v2 - Report and modify your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).\n
+  drive:v2 - The API to interact with Drive.\n
+  freebase:v1 - Find Freebase entities using textual queries and other constraints.\n
+  fusiontables:v1 - API for working with Fusion Tables data.\n
+  games:v1 - The API for Google Play Game Services.\n
+  gamesManagement:v1management - The Management API for Google Play Game Services.\n
+  gmail:v1 - The Gmail REST API.\n
+  groupsmigration:v1 - Groups Migration Api.\n
+  groupssettings:v1 - Lets you manage permission levels and related settings of a group.\n
+  identitytoolkit:v3 - Help the third party sites to implement federated login.\n
+  licensing:v1 - Licensing API to view and manage license for your domain.\n
+  mapsengine:v1 - The Google Maps Engine API allows developers to store and query geospatial vector and raster data.\n
+  mirror:v1 - API for interacting with Glass users via the timeline.\n
+  oauth2:v2 - Lets you access OAuth2 protocol related APIs.\n
+  orkut:v2 - Lets you manage activities, comments and badges in Orkut. More stuff coming in time.\n
+  pagespeedonline:v1 - Lets you analyze the performance of a web page and get tailored suggestions to make that page faster.\n
+  plus:v1 - The Google+ API enables developers to build on top of the Google+ platform.\n
+  plusDomains:v1 - The Google+ API enables developers to build on top of the Google+ platform.\n
+  prediction:v1.6 - Lets you access a cloud hosted machine learning service that makes it easy to build smart apps\n
+  qpxExpress:v1 - Lets you find the least expensive flights between an origin and a destination.\n
+  reseller:v1 - Lets you create and manage your customers and their subscriptions.\n
+  siteVerification:v1 - Lets you programatically verify ownership of websites or domains with Google.\n
+  storage:v1 - Lets you store and retrieve potentially-large, immutable data objects.\n
+  tasks:v1 - Lets you manage your tasks and task lists.\n
+  translate:v2 - Lets you translate text from one language to another\n
+  urlshortener:v1 - Lets you create, inspect, and manage goo.gl short URLs\n
+  webfonts:v1 - The Google Fonts Developer API.\n
+  youtube:v3 - Programmatic access to YouTube features.\n
+  youtubeAnalytics:v1 - Retrieve your YouTube Analytics reports.\n"
+homepage: http://www.dartlang.org
+environment:
+  sdk: '>=1.0.0 <2.0.0'
+dependencies:
+  crypto: '>=0.9.0 <0.10.0'
+  http: '>=0.11.1 <0.12.0'
+dev_dependencies:
+  unittest: '>=0.10.0 <0.12.0'

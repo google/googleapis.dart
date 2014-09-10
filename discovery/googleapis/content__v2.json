@@ -1,0 +1,2747 @@
+{
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/content": {
+                    "description": "Manage your product listings and accounts for Google Shopping"
+                }
+            }
+        }
+    },
+    "basePath": "/content/v2/",
+    "baseUrl": "https://www.googleapis.com/content/v2/",
+    "batchPath": "batch",
+    "canonicalName": "Shopping Content",
+    "description": "Manage product items, inventory, and Merchant Center accounts for Google Shopping.",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://developers.google.com/shopping-content/v2/",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/mXxQR2aSdOdWdq_00grXYfGGqMU\"",
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "content:v2",
+    "kind": "discovery#restDescription",
+    "name": "content",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "alt": {
+            "default": "json",
+            "description": "Data format for the response.",
+            "enum": [
+                "json"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+            "location": "query",
+            "type": "string"
+        },
+        "userIp": {
+            "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "accounts": {
+            "methods": {
+                "custombatch": {
+                    "description": "Retrieves, inserts, updates, and deletes multiple Merchant Center (sub-)accounts in a single request.",
+                    "httpMethod": "POST",
+                    "id": "content.accounts.custombatch",
+                    "path": "accounts/batch",
+                    "request": {
+                        "$ref": "AccountsCustomBatchRequest"
+                    },
+                    "response": {
+                        "$ref": "AccountsCustomBatchResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "delete": {
+                    "description": "Deletes a Merchant Center sub-account.",
+                    "httpMethod": "DELETE",
+                    "id": "content.accounts.delete",
+                    "parameterOrder": [
+                        "merchantId",
+                        "accountId"
+                    ],
+                    "parameters": {
+                        "accountId": {
+                            "description": "The ID of the account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/accounts/{accountId}",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "get": {
+                    "description": "Retrieves a Merchant Center account.",
+                    "httpMethod": "GET",
+                    "id": "content.accounts.get",
+                    "parameterOrder": [
+                        "merchantId",
+                        "accountId"
+                    ],
+                    "parameters": {
+                        "accountId": {
+                            "description": "The ID of the account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/accounts/{accountId}",
+                    "response": {
+                        "$ref": "Account"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "insert": {
+                    "description": "Creates a Merchant Center sub-account.",
+                    "httpMethod": "POST",
+                    "id": "content.accounts.insert",
+                    "parameterOrder": [
+                        "merchantId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/accounts",
+                    "request": {
+                        "$ref": "Account"
+                    },
+                    "response": {
+                        "$ref": "Account"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "list": {
+                    "description": "Lists the sub-accounts in your Merchant Center account.",
+                    "httpMethod": "GET",
+                    "id": "content.accounts.list",
+                    "parameterOrder": [
+                        "merchantId"
+                    ],
+                    "parameters": {
+                        "maxResults": {
+                            "description": "The maximum number of accounts to return in the response, used for paging.",
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "description": "The token returned by the previous request.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/accounts",
+                    "response": {
+                        "$ref": "AccountsListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "patch": {
+                    "description": "Updates a Merchant Center account. This method supports patch semantics.",
+                    "httpMethod": "PATCH",
+                    "id": "content.accounts.patch",
+                    "parameterOrder": [
+                        "merchantId",
+                        "accountId"
+                    ],
+                    "parameters": {
+                        "accountId": {
+                            "description": "The ID of the account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/accounts/{accountId}",
+                    "request": {
+                        "$ref": "Account"
+                    },
+                    "response": {
+                        "$ref": "Account"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "update": {
+                    "description": "Updates a Merchant Center account.",
+                    "httpMethod": "PUT",
+                    "id": "content.accounts.update",
+                    "parameterOrder": [
+                        "merchantId",
+                        "accountId"
+                    ],
+                    "parameters": {
+                        "accountId": {
+                            "description": "The ID of the account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/accounts/{accountId}",
+                    "request": {
+                        "$ref": "Account"
+                    },
+                    "response": {
+                        "$ref": "Account"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                }
+            }
+        },
+        "accountstatuses": {
+            "methods": {
+                "custombatch": {
+                    "httpMethod": "POST",
+                    "id": "content.accountstatuses.custombatch",
+                    "path": "accountstatuses/batch",
+                    "request": {
+                        "$ref": "AccountstatusesCustomBatchRequest"
+                    },
+                    "response": {
+                        "$ref": "AccountstatusesCustomBatchResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "get": {
+                    "description": "Retrieves the status of a Merchant Center account.",
+                    "httpMethod": "GET",
+                    "id": "content.accountstatuses.get",
+                    "parameterOrder": [
+                        "merchantId",
+                        "accountId"
+                    ],
+                    "parameters": {
+                        "accountId": {
+                            "description": "The ID of the account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/accountstatuses/{accountId}",
+                    "response": {
+                        "$ref": "AccountStatus"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "list": {
+                    "description": "Lists the statuses of the sub-accounts in your Merchant Center account.",
+                    "httpMethod": "GET",
+                    "id": "content.accountstatuses.list",
+                    "parameterOrder": [
+                        "merchantId"
+                    ],
+                    "parameters": {
+                        "maxResults": {
+                            "description": "The maximum number of account statuses to return in the response, used for paging.",
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "description": "The token returned by the previous request.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/accountstatuses",
+                    "response": {
+                        "$ref": "AccountstatusesListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                }
+            }
+        },
+        "datafeeds": {
+            "methods": {
+                "custombatch": {
+                    "httpMethod": "POST",
+                    "id": "content.datafeeds.custombatch",
+                    "path": "datafeeds/batch",
+                    "request": {
+                        "$ref": "DatafeedsCustomBatchRequest"
+                    },
+                    "response": {
+                        "$ref": "DatafeedsCustomBatchResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "delete": {
+                    "description": "Deletes a datafeed from your Merchant Center account.",
+                    "httpMethod": "DELETE",
+                    "id": "content.datafeeds.delete",
+                    "parameterOrder": [
+                        "merchantId",
+                        "datafeedId"
+                    ],
+                    "parameters": {
+                        "datafeedId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/datafeeds/{datafeedId}",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "get": {
+                    "description": "Retrieves a datafeed from your Merchant Center account.",
+                    "httpMethod": "GET",
+                    "id": "content.datafeeds.get",
+                    "parameterOrder": [
+                        "merchantId",
+                        "datafeedId"
+                    ],
+                    "parameters": {
+                        "datafeedId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/datafeeds/{datafeedId}",
+                    "response": {
+                        "$ref": "Datafeed"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "insert": {
+                    "description": "Registers a datafeed with your Merchant Center account.",
+                    "httpMethod": "POST",
+                    "id": "content.datafeeds.insert",
+                    "parameterOrder": [
+                        "merchantId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/datafeeds",
+                    "request": {
+                        "$ref": "Datafeed"
+                    },
+                    "response": {
+                        "$ref": "Datafeed"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "list": {
+                    "description": "Lists the datafeeds in your Merchant Center account.",
+                    "httpMethod": "GET",
+                    "id": "content.datafeeds.list",
+                    "parameterOrder": [
+                        "merchantId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/datafeeds",
+                    "response": {
+                        "$ref": "DatafeedsListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "patch": {
+                    "description": "Updates a datafeed of your Merchant Center account. This method supports patch semantics.",
+                    "httpMethod": "PATCH",
+                    "id": "content.datafeeds.patch",
+                    "parameterOrder": [
+                        "merchantId",
+                        "datafeedId"
+                    ],
+                    "parameters": {
+                        "datafeedId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/datafeeds/{datafeedId}",
+                    "request": {
+                        "$ref": "Datafeed"
+                    },
+                    "response": {
+                        "$ref": "Datafeed"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "update": {
+                    "description": "Updates a datafeed of your Merchant Center account.",
+                    "httpMethod": "PUT",
+                    "id": "content.datafeeds.update",
+                    "parameterOrder": [
+                        "merchantId",
+                        "datafeedId"
+                    ],
+                    "parameters": {
+                        "datafeedId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/datafeeds/{datafeedId}",
+                    "request": {
+                        "$ref": "Datafeed"
+                    },
+                    "response": {
+                        "$ref": "Datafeed"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                }
+            }
+        },
+        "datafeedstatuses": {
+            "methods": {
+                "custombatch": {
+                    "httpMethod": "POST",
+                    "id": "content.datafeedstatuses.custombatch",
+                    "path": "datafeedstatuses/batch",
+                    "request": {
+                        "$ref": "DatafeedstatusesCustomBatchRequest"
+                    },
+                    "response": {
+                        "$ref": "DatafeedstatusesCustomBatchResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "get": {
+                    "description": "Retrieves the status of a datafeed from your Merchant Center account.",
+                    "httpMethod": "GET",
+                    "id": "content.datafeedstatuses.get",
+                    "parameterOrder": [
+                        "merchantId",
+                        "datafeedId"
+                    ],
+                    "parameters": {
+                        "datafeedId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/datafeedstatuses/{datafeedId}",
+                    "response": {
+                        "$ref": "DatafeedStatus"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "list": {
+                    "description": "Lists the statuses of the datafeeds in your Merchant Center account.",
+                    "httpMethod": "GET",
+                    "id": "content.datafeedstatuses.list",
+                    "parameterOrder": [
+                        "merchantId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/datafeedstatuses",
+                    "response": {
+                        "$ref": "DatafeedstatusesListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                }
+            }
+        },
+        "inventory": {
+            "methods": {
+                "custombatch": {
+                    "description": "Updates price and availability for multiple products or stores in a single request.",
+                    "httpMethod": "POST",
+                    "id": "content.inventory.custombatch",
+                    "path": "inventory/batch",
+                    "request": {
+                        "$ref": "InventoryCustomBatchRequest"
+                    },
+                    "response": {
+                        "$ref": "InventoryCustomBatchResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "set": {
+                    "description": "Updates price and availability of a product in your Merchant Center account.",
+                    "httpMethod": "POST",
+                    "id": "content.inventory.set",
+                    "parameterOrder": [
+                        "merchantId",
+                        "storeCode",
+                        "productId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "productId": {
+                            "description": "The ID of the product for which to update price and availability.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "storeCode": {
+                            "description": "The code of the store for which to update price and availability. Use online to update price and availability of an online product.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/inventory/{storeCode}/products/{productId}",
+                    "request": {
+                        "$ref": "InventorySetRequest"
+                    },
+                    "response": {
+                        "$ref": "InventorySetResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                }
+            }
+        },
+        "products": {
+            "methods": {
+                "custombatch": {
+                    "description": "Retrieves, inserts, and deletes multiple products in a single request.",
+                    "httpMethod": "POST",
+                    "id": "content.products.custombatch",
+                    "parameters": {
+                        "dryRun": {
+                            "description": "Flag to run the request in dry-run mode.",
+                            "location": "query",
+                            "type": "boolean"
+                        }
+                    },
+                    "path": "products/batch",
+                    "request": {
+                        "$ref": "ProductsCustomBatchRequest"
+                    },
+                    "response": {
+                        "$ref": "ProductsCustomBatchResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "delete": {
+                    "description": "Deletes a product from your Merchant Center account.",
+                    "httpMethod": "DELETE",
+                    "id": "content.products.delete",
+                    "parameterOrder": [
+                        "merchantId",
+                        "productId"
+                    ],
+                    "parameters": {
+                        "dryRun": {
+                            "description": "Flag to run the request in dry-run mode.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "productId": {
+                            "description": "The ID of the product.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/products/{productId}",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "get": {
+                    "description": "Retrieves a product from your Merchant Center account.",
+                    "httpMethod": "GET",
+                    "id": "content.products.get",
+                    "parameterOrder": [
+                        "merchantId",
+                        "productId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "productId": {
+                            "description": "The ID of the product.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/products/{productId}",
+                    "response": {
+                        "$ref": "Product"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "insert": {
+                    "description": "Uploads a product to your Merchant Center account.",
+                    "httpMethod": "POST",
+                    "id": "content.products.insert",
+                    "parameterOrder": [
+                        "merchantId"
+                    ],
+                    "parameters": {
+                        "dryRun": {
+                            "description": "Flag to run the request in dry-run mode.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/products",
+                    "request": {
+                        "$ref": "Product"
+                    },
+                    "response": {
+                        "$ref": "Product"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "list": {
+                    "description": "Lists the products in your Merchant Center account.",
+                    "httpMethod": "GET",
+                    "id": "content.products.list",
+                    "parameterOrder": [
+                        "merchantId"
+                    ],
+                    "parameters": {
+                        "maxResults": {
+                            "description": "The maximum number of products to return in the response, used for paging.",
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "description": "The token returned by the previous request.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/products",
+                    "response": {
+                        "$ref": "ProductsListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                }
+            }
+        },
+        "productstatuses": {
+            "methods": {
+                "custombatch": {
+                    "description": "Gets the statuses of multiple products in a single request.",
+                    "httpMethod": "POST",
+                    "id": "content.productstatuses.custombatch",
+                    "path": "productstatuses/batch",
+                    "request": {
+                        "$ref": "ProductstatusesCustomBatchRequest"
+                    },
+                    "response": {
+                        "$ref": "ProductstatusesCustomBatchResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "get": {
+                    "description": "Gets the status of a product from your Merchant Center account.",
+                    "httpMethod": "GET",
+                    "id": "content.productstatuses.get",
+                    "parameterOrder": [
+                        "merchantId",
+                        "productId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "productId": {
+                            "description": "The ID of the product.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/productstatuses/{productId}",
+                    "response": {
+                        "$ref": "ProductStatus"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "list": {
+                    "description": "Lists the statuses of the products in your Merchant Center account.",
+                    "httpMethod": "GET",
+                    "id": "content.productstatuses.list",
+                    "parameterOrder": [
+                        "merchantId"
+                    ],
+                    "parameters": {
+                        "maxResults": {
+                            "description": "The maximum number of product statuses to return in the response, used for paging.",
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "merchantId": {
+                            "description": "The ID of the managing account.",
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "description": "The token returned by the previous request.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/productstatuses",
+                    "response": {
+                        "$ref": "ProductstatusesListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                }
+            }
+        }
+    },
+    "revision": "20140831",
+    "rootUrl": "https://www.googleapis.com/",
+    "schemas": {
+        "Account": {
+            "id": "Account",
+            "properties": {
+                "adultContent": {
+                    "description": "Indicates whether the merchant sells adult content.",
+                    "type": "boolean"
+                },
+                "adwordsLinks": {
+                    "description": "List of linked AdWords accounts.",
+                    "items": {
+                        "$ref": "AccountAdwordsLink"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "annotations": {
+                        "required": [
+                            "content.accounts.update"
+                        ]
+                    },
+                    "description": "Merchant Center account ID.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "content#account",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#account\".",
+                    "type": "string"
+                },
+                "name": {
+                    "annotations": {
+                        "required": [
+                            "content.accounts.insert",
+                            "content.accounts.update"
+                        ]
+                    },
+                    "description": "Display name for the account.",
+                    "type": "string"
+                },
+                "reviewsUrl": {
+                    "description": "URL for individual seller reviews, i.e., reviews for each child account.",
+                    "type": "string"
+                },
+                "sellerId": {
+                    "description": "Client-specific, locally-unique, internal ID for the child account.",
+                    "type": "string"
+                },
+                "users": {
+                    "description": "Users with access to the account. Every account (except for subaccounts) must have at least one admin user.",
+                    "items": {
+                        "$ref": "AccountUser"
+                    },
+                    "type": "array"
+                },
+                "websiteUrl": {
+                    "description": "The merchant's website.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountAdwordsLink": {
+            "id": "AccountAdwordsLink",
+            "properties": {
+                "adwordsId": {
+                    "description": "Customer ID of the AdWords account.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Status of the link between this Merchant Center account and the AdWords account.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountStatus": {
+            "description": "The status of an account, i.e., information about its products, which is computed offline and not returned immediately at insertion time.",
+            "id": "AccountStatus",
+            "properties": {
+                "accountId": {
+                    "description": "The ID of the account for which the status is reported.",
+                    "type": "string"
+                },
+                "dataQualityIssues": {
+                    "description": "A list of data quality issues.",
+                    "items": {
+                        "$ref": "AccountStatusDataQualityIssue"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "content#accountStatus",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#accountStatus\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountStatusDataQualityIssue": {
+            "id": "AccountStatusDataQualityIssue",
+            "properties": {
+                "country": {
+                    "description": "Country for which this issue is reported.",
+                    "type": "string"
+                },
+                "displayedValue": {
+                    "description": "Actual value displayed on the landing page.",
+                    "type": "string"
+                },
+                "exampleItems": {
+                    "description": "Example items featuring the issue.",
+                    "items": {
+                        "$ref": "AccountStatusExampleItem"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "Issue identifier.",
+                    "type": "string"
+                },
+                "lastChecked": {
+                    "description": "Last time the account was checked for this issue.",
+                    "type": "string"
+                },
+                "numItems": {
+                    "description": "Number of items in the account found to have the said issue.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "severity": {
+                    "description": "Severity of the problem.",
+                    "type": "string"
+                },
+                "submittedValue": {
+                    "description": "Submitted value that causes the issue.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountStatusExampleItem": {
+            "description": "An example of an item that has poor data quality. An item value on the landing page differs from what is submitted, or conflicts with a policy.",
+            "id": "AccountStatusExampleItem",
+            "properties": {
+                "itemId": {
+                    "description": "Unique item ID as specified in the uploaded product data.",
+                    "type": "string"
+                },
+                "link": {
+                    "description": "Landing page of the item.",
+                    "type": "string"
+                },
+                "submittedValue": {
+                    "description": "The item value that was submitted.",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Title of the item.",
+                    "type": "string"
+                },
+                "valueOnLandingPage": {
+                    "description": "The actual value on the landing page.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountUser": {
+            "id": "AccountUser",
+            "properties": {
+                "admin": {
+                    "description": "Whether user is an admin.",
+                    "type": "boolean"
+                },
+                "emailAddress": {
+                    "description": "User's email address.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountsCustomBatchRequest": {
+            "id": "AccountsCustomBatchRequest",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "AccountsCustomBatchRequestEntry"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AccountsCustomBatchRequestEntry": {
+            "description": "A batch entry encoding a single non-batch request to the accounts service of the Content API for Shopping.",
+            "id": "AccountsCustomBatchRequestEntry",
+            "properties": {
+                "account": {
+                    "$ref": "Account",
+                    "description": "The account to create or update. Only defined if the method is insert or update."
+                },
+                "accountId": {
+                    "description": "The ID of the account to get or delete. Only defined if the method is get or delete.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "batchId": {
+                    "description": "An entry ID, unique within the batch request.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "merchantId": {
+                    "description": "The ID of the managing account.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "method": {
+                    "description": "The method (get, insert, update, or delete).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountsCustomBatchResponse": {
+            "id": "AccountsCustomBatchResponse",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "AccountsCustomBatchResponseEntry"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "content#accountsCustomBatchResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#accountsCustomBatchResponse\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountsCustomBatchResponseEntry": {
+            "description": "A batch entry encoding a single non-batch response from the accounts service of the Content API for Shopping.",
+            "id": "AccountsCustomBatchResponseEntry",
+            "properties": {
+                "account": {
+                    "$ref": "Account",
+                    "description": "The retrieved, created, or updated account. Not defined if the method was delete."
+                },
+                "batchId": {
+                    "description": "The ID of the request entry this entry responds to.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "errors": {
+                    "$ref": "Errors",
+                    "description": "A list of errors defined if and only if the request failed."
+                },
+                "kind": {
+                    "default": "content#accountsCustomBatchResponseEntry",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#accountsCustomBatchResponseEntry\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountsListResponse": {
+            "id": "AccountsListResponse",
+            "properties": {
+                "kind": {
+                    "default": "content#accountsListResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#accountsListResponse\".",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "resources": {
+                    "items": {
+                        "$ref": "Account"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AccountstatusesCustomBatchRequest": {
+            "id": "AccountstatusesCustomBatchRequest",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "AccountstatusesCustomBatchRequestEntry"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AccountstatusesCustomBatchRequestEntry": {
+            "description": "A batch entry encoding a single non-batch request to the accountstatuses service of the Content API for Shopping.",
+            "id": "AccountstatusesCustomBatchRequestEntry",
+            "properties": {
+                "accountId": {
+                    "description": "The ID of the (sub-)account whose status to get.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "batchId": {
+                    "description": "An entry ID, unique within the batch request.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "merchantId": {
+                    "description": "The ID of the managing account.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "method": {
+                    "description": "The method (get).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountstatusesCustomBatchResponse": {
+            "id": "AccountstatusesCustomBatchResponse",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "AccountstatusesCustomBatchResponseEntry"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "content#accountstatusesCustomBatchResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#accountstatusesCustomBatchResponse\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountstatusesCustomBatchResponseEntry": {
+            "description": "A batch entry encoding a single non-batch response from the accountstatuses service of the Content API for Shopping.",
+            "id": "AccountstatusesCustomBatchResponseEntry",
+            "properties": {
+                "accountStatus": {
+                    "$ref": "AccountStatus",
+                    "description": "The requested account status. Defined if and only if the request was successful."
+                },
+                "batchId": {
+                    "description": "The ID of the request entry this entry responds to.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "errors": {
+                    "$ref": "Errors",
+                    "description": "A list of errors defined if and only if the request failed."
+                }
+            },
+            "type": "object"
+        },
+        "AccountstatusesListResponse": {
+            "id": "AccountstatusesListResponse",
+            "properties": {
+                "kind": {
+                    "default": "content#accountstatusesListResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#accountstatusesListResponse\".",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "resources": {
+                    "items": {
+                        "$ref": "AccountStatus"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Datafeed": {
+            "id": "Datafeed",
+            "properties": {
+                "attributeLanguage": {
+                    "description": "The two-letter ISO 639-1 language in which the attributes are defined in the data feed.",
+                    "type": "string"
+                },
+                "contentLanguage": {
+                    "annotations": {
+                        "required": [
+                            "content.datafeeds.insert"
+                        ]
+                    },
+                    "description": "The two-letter ISO 639-1 language of the items in the feed.",
+                    "type": "string"
+                },
+                "contentType": {
+                    "annotations": {
+                        "required": [
+                            "content.datafeeds.insert",
+                            "content.datafeeds.update"
+                        ]
+                    },
+                    "description": "The type of data feed.",
+                    "type": "string"
+                },
+                "fetchSchedule": {
+                    "$ref": "DatafeedFetchSchedule",
+                    "description": "Fetch schedule for the feed file."
+                },
+                "fileName": {
+                    "annotations": {
+                        "required": [
+                            "content.datafeeds.insert",
+                            "content.datafeeds.update"
+                        ]
+                    },
+                    "description": "The filename of the feed. All feeds must have a unique file name.",
+                    "type": "string"
+                },
+                "format": {
+                    "$ref": "DatafeedFormat",
+                    "description": "Format of the feed file."
+                },
+                "id": {
+                    "annotations": {
+                        "required": [
+                            "content.datafeeds.update"
+                        ]
+                    },
+                    "description": "The ID of the data feed.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "intendedDestinations": {
+                    "description": "The list of intended destinations (corresponds to checked check boxes in Merchant Center).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "content#datafeed",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#datafeed\".",
+                    "type": "string"
+                },
+                "name": {
+                    "annotations": {
+                        "required": [
+                            "content.datafeeds.insert"
+                        ]
+                    },
+                    "description": "A descriptive name of the data feed.",
+                    "type": "string"
+                },
+                "targetCountry": {
+                    "annotations": {
+                        "required": [
+                            "content.datafeeds.insert",
+                            "content.datafeeds.update"
+                        ]
+                    },
+                    "description": "The two-letter ISO 3166 country where the items in the feed will be included in the search index.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedFetchSchedule": {
+            "description": "The required fields vary based on the frequency of fetching. For a monthly fetch schedule, day_of_month and hour are required. For a weekly fetch schedule, weekday and hour are required. For a daily fetch schedule, only hour is required.",
+            "id": "DatafeedFetchSchedule",
+            "properties": {
+                "dayOfMonth": {
+                    "description": "The day of the month the feed file should be fetched (1-31).",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "fetchUrl": {
+                    "description": "The URL where the feed file can be fetched. Google Merchant Center will support automatic scheduled uploads using the HTTP, HTTPS, FTP, or SFTP protocols, so the value will need to be a valid link using one of those four protocols.",
+                    "type": "string"
+                },
+                "hour": {
+                    "description": "The hour of the day the feed file should be fetched (0-24).",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "password": {
+                    "description": "An optional password for fetch_url.",
+                    "type": "string"
+                },
+                "timeZone": {
+                    "description": "Time zone used for schedule. UTC by default. E.g., \"America/Los_Angeles\".",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "An optional user name for fetch_url.",
+                    "type": "string"
+                },
+                "weekday": {
+                    "description": "The day of the week the feed file should be fetched.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedFormat": {
+            "id": "DatafeedFormat",
+            "properties": {
+                "columnDelimiter": {
+                    "description": "Delimiter for the separation of values in a delimiter-separated values feed. If not specified, the delimiter will be auto-detected. Ignored for non-DSV data feeds.",
+                    "type": "string"
+                },
+                "fileEncoding": {
+                    "description": "Character encoding scheme of the data feed. If not specified, the encoding will be auto-detected.",
+                    "type": "string"
+                },
+                "quotingMode": {
+                    "description": "Specifies how double quotes are interpreted. If not specified, the mode will be auto-detected. Ignored for non-DSV data feeds.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedStatus": {
+            "id": "DatafeedStatus",
+            "properties": {
+                "datafeedId": {
+                    "description": "The ID of the feed for which the status is reported.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "errors": {
+                    "description": "The list of errors occurring in the feed.",
+                    "items": {
+                        "$ref": "DatafeedStatusError"
+                    },
+                    "type": "array"
+                },
+                "itemsTotal": {
+                    "description": "The number of items in the feed that were processed.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "itemsValid": {
+                    "description": "The number of items in the feed that were valid.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "content#datafeedStatus",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#datafeedStatus\".",
+                    "type": "string"
+                },
+                "processingStatus": {
+                    "description": "The processing status of the feed.",
+                    "type": "string"
+                },
+                "warnings": {
+                    "description": "The list of errors occurring in the feed.",
+                    "items": {
+                        "$ref": "DatafeedStatusError"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedStatusError": {
+            "description": "An error occurring in the feed, like \"invalid price\".",
+            "id": "DatafeedStatusError",
+            "properties": {
+                "code": {
+                    "description": "The code of the error, e.g., \"validation/invalid_value\".",
+                    "type": "string"
+                },
+                "count": {
+                    "description": "The number of occurrences of the error in the feed.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "examples": {
+                    "description": "A list of example occurrences of the error, grouped by product.",
+                    "items": {
+                        "$ref": "DatafeedStatusExample"
+                    },
+                    "type": "array"
+                },
+                "message": {
+                    "description": "The error message, e.g., \"Invalid price\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedStatusExample": {
+            "description": "An example occurrence for a particular error.",
+            "id": "DatafeedStatusExample",
+            "properties": {
+                "itemId": {
+                    "description": "The ID of the example item.",
+                    "type": "string"
+                },
+                "lineNumber": {
+                    "description": "Line number in the data feed where the example is found.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The problematic value.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedsCustomBatchRequest": {
+            "id": "DatafeedsCustomBatchRequest",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "DatafeedsCustomBatchRequestEntry"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedsCustomBatchRequestEntry": {
+            "description": "A batch entry encoding a single non-batch request to the datafeeds service of the Content API for Shopping.",
+            "id": "DatafeedsCustomBatchRequestEntry",
+            "properties": {
+                "batchId": {
+                    "description": "An entry ID, unique within the batch request.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "datafeed": {
+                    "$ref": "Datafeed",
+                    "description": "The data feed to insert."
+                },
+                "datafeedId": {
+                    "description": "The ID of the data feed to get or delete.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "merchantId": {
+                    "description": "The ID of the managing account.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "method": {
+                    "description": "The method (get, insert, update, or delete).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedsCustomBatchResponse": {
+            "id": "DatafeedsCustomBatchResponse",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "DatafeedsCustomBatchResponseEntry"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "content#datafeedsCustomBatchResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#datafeedsCustomBatchResponse\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedsCustomBatchResponseEntry": {
+            "description": "A batch entry encoding a single non-batch response from the datafeeds service of the Content API for Shopping.",
+            "id": "DatafeedsCustomBatchResponseEntry",
+            "properties": {
+                "batchId": {
+                    "description": "The ID of the request entry this entry responds to.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "datafeed": {
+                    "$ref": "Datafeed",
+                    "description": "The requested data feed. Defined if and only if the request was successful."
+                },
+                "errors": {
+                    "$ref": "Errors",
+                    "description": "A list of errors defined if and only if the request failed."
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedsListResponse": {
+            "id": "DatafeedsListResponse",
+            "properties": {
+                "kind": {
+                    "default": "content#datafeedsListResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#datafeedsListResponse\".",
+                    "type": "string"
+                },
+                "resources": {
+                    "items": {
+                        "$ref": "Datafeed"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedstatusesCustomBatchRequest": {
+            "id": "DatafeedstatusesCustomBatchRequest",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "DatafeedstatusesCustomBatchRequestEntry"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedstatusesCustomBatchRequestEntry": {
+            "description": "A batch entry encoding a single non-batch request to the datafeedstatuses service of the Content API for Shopping.",
+            "id": "DatafeedstatusesCustomBatchRequestEntry",
+            "properties": {
+                "batchId": {
+                    "description": "An entry ID, unique within the batch request.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "datafeedId": {
+                    "description": "The ID of the data feed to get or delete.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "merchantId": {
+                    "description": "The ID of the managing account.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "method": {
+                    "description": "The method (get).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedstatusesCustomBatchResponse": {
+            "id": "DatafeedstatusesCustomBatchResponse",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "DatafeedstatusesCustomBatchResponseEntry"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "content#datafeedstatusesCustomBatchResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#datafeedstatusesCustomBatchResponse\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedstatusesCustomBatchResponseEntry": {
+            "description": "A batch entry encoding a single non-batch response from the datafeedstatuses service of the Content API for Shopping.",
+            "id": "DatafeedstatusesCustomBatchResponseEntry",
+            "properties": {
+                "batchId": {
+                    "description": "The ID of the request entry this entry responds to.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "datafeedStatus": {
+                    "$ref": "DatafeedStatus",
+                    "description": "The requested data feed status. Defined if and only if the request was successful."
+                },
+                "errors": {
+                    "$ref": "Errors",
+                    "description": "A list of errors defined if and only if the request failed."
+                }
+            },
+            "type": "object"
+        },
+        "DatafeedstatusesListResponse": {
+            "id": "DatafeedstatusesListResponse",
+            "properties": {
+                "kind": {
+                    "default": "content#datafeedstatusesListResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#datafeedstatusesListResponse\".",
+                    "type": "string"
+                },
+                "resources": {
+                    "items": {
+                        "$ref": "DatafeedStatus"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Error": {
+            "description": "An error returned by the API.",
+            "id": "Error",
+            "properties": {
+                "domain": {
+                    "description": "The domain of the error.",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "A description of the error.",
+                    "type": "string"
+                },
+                "reason": {
+                    "description": "The error code.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Errors": {
+            "description": "A list of errors returned by a failed batch entry.",
+            "id": "Errors",
+            "properties": {
+                "code": {
+                    "description": "The HTTP status of the first error in errors.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "errors": {
+                    "description": "A list of errors.",
+                    "items": {
+                        "$ref": "Error"
+                    },
+                    "type": "array"
+                },
+                "message": {
+                    "description": "The message of the first error in errors.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Inventory": {
+            "id": "Inventory",
+            "properties": {
+                "availability": {
+                    "description": "The availability of the product.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "content#inventory",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#inventory\".",
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "Price",
+                    "description": "The price of the product."
+                },
+                "quantity": {
+                    "description": "The quantity of the product. Must be equal to or greater than zero. Supported only for local products.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "salePrice": {
+                    "$ref": "Price",
+                    "description": "The sale price of the product. Mandatory if sale_price_effective_date is defined."
+                },
+                "salePriceEffectiveDate": {
+                    "description": "A date range represented by a pair of ISO 8601 dates separated by a space, comma, or slash. Both dates might be specified as 'null' if undecided.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InventoryCustomBatchRequest": {
+            "id": "InventoryCustomBatchRequest",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "InventoryCustomBatchRequestEntry"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "InventoryCustomBatchRequestEntry": {
+            "description": "A batch entry encoding a single non-batch request to the inventory service of the Content API for Shopping.",
+            "id": "InventoryCustomBatchRequestEntry",
+            "properties": {
+                "batchId": {
+                    "description": "An entry ID, unique within the batch request.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "inventory": {
+                    "$ref": "Inventory",
+                    "description": "Price and availability of the product."
+                },
+                "merchantId": {
+                    "description": "The ID of the managing account.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The ID of the product for which to update price and availability.",
+                    "type": "string"
+                },
+                "storeCode": {
+                    "description": "The code of the store for which to update price and availability. Use online to update price and availability of an online product.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InventoryCustomBatchResponse": {
+            "id": "InventoryCustomBatchResponse",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "InventoryCustomBatchResponseEntry"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "content#inventoryCustomBatchResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#inventoryCustomBatchResponse\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InventoryCustomBatchResponseEntry": {
+            "description": "A batch entry encoding a single non-batch response from the inventory service of the Content API for Shopping.",
+            "id": "InventoryCustomBatchResponseEntry",
+            "properties": {
+                "batchId": {
+                    "description": "The ID of the request entry this entry responds to.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "errors": {
+                    "$ref": "Errors",
+                    "description": "A list of errors defined if and only if the request failed."
+                },
+                "kind": {
+                    "default": "content#inventoryCustomBatchResponseEntry",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#inventoryCustomBatchResponseEntry\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InventorySetRequest": {
+            "id": "InventorySetRequest",
+            "properties": {
+                "availability": {
+                    "description": "The availability of the product.",
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "Price",
+                    "description": "The price of the product."
+                },
+                "quantity": {
+                    "description": "The quantity of the product. Must be equal to or greater than zero. Supported only for local products.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "salePrice": {
+                    "$ref": "Price",
+                    "description": "The sale price of the product. Mandatory if sale_price_effective_date is defined."
+                },
+                "salePriceEffectiveDate": {
+                    "description": "A date range represented by a pair of ISO 8601 dates separated by a space, comma, or slash. Both dates might be specified as 'null' if undecided.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InventorySetResponse": {
+            "id": "InventorySetResponse",
+            "properties": {
+                "kind": {
+                    "default": "content#inventorySetResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#inventorySetResponse\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LoyaltyPoints": {
+            "id": "LoyaltyPoints",
+            "properties": {
+                "name": {
+                    "description": "Name of loyalty points program. It is recommended to limit the name to 12 full-width characters or 24 Roman characters.",
+                    "type": "string"
+                },
+                "pointsValue": {
+                    "description": "The retailer's loyalty points in absolute value.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "ratio": {
+                    "description": "The ratio of a point when converted to currency. Google assumes currency based on Merchant Center settings. If ratio is left out, it defaults to 1.0.",
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "Price": {
+            "id": "Price",
+            "properties": {
+                "currency": {
+                    "description": "The currency of the price.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The price represented as a number.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Product": {
+            "description": "Product data.",
+            "id": "Product",
+            "properties": {
+                "additionalImageLinks": {
+                    "description": "Additional URLs of images of the item.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "adult": {
+                    "description": "Set to true if the item is targeted towards adults.",
+                    "type": "boolean"
+                },
+                "adwordsGrouping": {
+                    "description": "Used to group items in an arbitrary way. Only for CPA%, discouraged otherwise.",
+                    "type": "string"
+                },
+                "adwordsLabels": {
+                    "description": "Similar to adwords_grouping, but only works on CPC.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "adwordsRedirect": {
+                    "description": "Allows advertisers to override the item URL when the product is shown within the context of Product Ads.",
+                    "type": "string"
+                },
+                "ageGroup": {
+                    "description": "Target age group of the item.",
+                    "type": "string"
+                },
+                "availability": {
+                    "description": "Availability status of the item.",
+                    "type": "string"
+                },
+                "availabilityDate": {
+                    "description": "The day a pre-ordered product becomes available for delivery.",
+                    "type": "string"
+                },
+                "brand": {
+                    "description": "Brand of the item.",
+                    "type": "string"
+                },
+                "channel": {
+                    "annotations": {
+                        "required": [
+                            "content.products.insert"
+                        ]
+                    },
+                    "description": "The item's channel (online or local).",
+                    "type": "string"
+                },
+                "color": {
+                    "description": "Color of the item.",
+                    "type": "string"
+                },
+                "condition": {
+                    "description": "Condition or state of the item.",
+                    "type": "string"
+                },
+                "contentLanguage": {
+                    "annotations": {
+                        "required": [
+                            "content.products.insert"
+                        ]
+                    },
+                    "description": "The two-letter ISO 639-1 language code for the item.",
+                    "type": "string"
+                },
+                "customAttributes": {
+                    "description": "A list of custom (merchant-provided) attributes.",
+                    "items": {
+                        "$ref": "ProductCustomAttribute"
+                    },
+                    "type": "array"
+                },
+                "customGroups": {
+                    "description": "A list of custom (merchant-provided) custom attribute groups.",
+                    "items": {
+                        "$ref": "ProductCustomGroup"
+                    },
+                    "type": "array"
+                },
+                "customLabel0": {
+                    "description": "Custom label 0 for custom grouping of items in a Shopping campaign.",
+                    "type": "string"
+                },
+                "customLabel1": {
+                    "description": "Custom label 1 for custom grouping of items in a Shopping campaign.",
+                    "type": "string"
+                },
+                "customLabel2": {
+                    "description": "Custom label 2 for custom grouping of items in a Shopping campaign.",
+                    "type": "string"
+                },
+                "customLabel3": {
+                    "description": "Custom label 3 for custom grouping of items in a Shopping campaign.",
+                    "type": "string"
+                },
+                "customLabel4": {
+                    "description": "Custom label 4 for custom grouping of items in a Shopping campaign.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Description of the item.",
+                    "type": "string"
+                },
+                "destinations": {
+                    "description": "Specifies the intended destinations for the product.",
+                    "items": {
+                        "$ref": "ProductDestination"
+                    },
+                    "type": "array"
+                },
+                "energyEfficiencyClass": {
+                    "description": "The energy efficiency class as defined in EU directive 2010/30/EU.",
+                    "type": "string"
+                },
+                "expirationDate": {
+                    "description": "Date that an item will expire.",
+                    "type": "string"
+                },
+                "gender": {
+                    "description": "Target gender of the item.",
+                    "type": "string"
+                },
+                "googleProductCategory": {
+                    "description": "Google's category of the item.",
+                    "type": "string"
+                },
+                "gtin": {
+                    "description": "Global Trade Item Number (GTIN) of the item.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The REST id of the product.",
+                    "type": "string"
+                },
+                "identifierExists": {
+                    "description": "False when the item does not have unique product identifiers appropriate to its category, such as GTIN, MPN, and brand. Required according to the Unique Product Identifier Rules for all target countries except for Canada.",
+                    "type": "boolean"
+                },
+                "imageLink": {
+                    "description": "URL of an image of the item.",
+                    "type": "string"
+                },
+                "installment": {
+                    "$ref": "ProductInstallment",
+                    "description": "Number and amount of installments to pay for an item. Brazil only."
+                },
+                "isBundle": {
+                    "description": "Whether the item is a merchant-defined bundle. A bundle is a custom grouping of different products sold by a merchant for a single price.",
+                    "type": "boolean"
+                },
+                "itemGroupId": {
+                    "description": "Shared identifier for all variants of the same product.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "content#product",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#product\".",
+                    "type": "string"
+                },
+                "link": {
+                    "description": "URL directly linking to your item's page on your website.",
+                    "type": "string"
+                },
+                "loyaltyPoints": {
+                    "$ref": "LoyaltyPoints",
+                    "description": "Loyalty points that users receive after purchasing the item. Japan only."
+                },
+                "material": {
+                    "description": "The material of which the item is made.",
+                    "type": "string"
+                },
+                "mobileLink": {
+                    "description": "Link to a mobile-optimized version of the landing page.",
+                    "type": "string"
+                },
+                "mpn": {
+                    "description": "Manufacturer Part Number (MPN) of the item.",
+                    "type": "string"
+                },
+                "multipack": {
+                    "description": "The number of identical products in a merchant-defined multipack.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "offerId": {
+                    "annotations": {
+                        "required": [
+                            "content.products.insert"
+                        ]
+                    },
+                    "description": "An identifier of the item.",
+                    "type": "string"
+                },
+                "onlineOnly": {
+                    "description": "Whether an item is available for purchase only online.",
+                    "type": "boolean"
+                },
+                "pattern": {
+                    "description": "The item's pattern (e.g. polka dots).",
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "Price",
+                    "description": "Price of the item."
+                },
+                "productType": {
+                    "description": "Your category of the item.",
+                    "type": "string"
+                },
+                "salePrice": {
+                    "$ref": "Price",
+                    "description": "Advertised sale price of the item."
+                },
+                "salePriceEffectiveDate": {
+                    "description": "Date range during which the item is on sale.",
+                    "type": "string"
+                },
+                "shipping": {
+                    "description": "Shipping rules.",
+                    "items": {
+                        "$ref": "ProductShipping"
+                    },
+                    "type": "array"
+                },
+                "shippingLabel": {
+                    "description": "The shipping label of the product, used to group product in account-level shipping rules.",
+                    "type": "string"
+                },
+                "shippingWeight": {
+                    "$ref": "ProductShippingWeight",
+                    "description": "Weight of the item for shipping."
+                },
+                "sizeSystem": {
+                    "description": "System in which the size is specified. Recommended for apparel items.",
+                    "type": "string"
+                },
+                "sizeType": {
+                    "description": "The cut of the item. Recommended for apparel items.",
+                    "type": "string"
+                },
+                "sizes": {
+                    "description": "Size of the item.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "targetCountry": {
+                    "annotations": {
+                        "required": [
+                            "content.products.insert"
+                        ]
+                    },
+                    "description": "The two-letter ISO 3166 country code for the item.",
+                    "type": "string"
+                },
+                "taxes": {
+                    "description": "Tax information.",
+                    "items": {
+                        "$ref": "ProductTax"
+                    },
+                    "type": "array"
+                },
+                "title": {
+                    "annotations": {
+                        "required": [
+                            "content.products.insert"
+                        ]
+                    },
+                    "description": "Title of the item.",
+                    "type": "string"
+                },
+                "unitPricingBaseMeasure": {
+                    "$ref": "ProductUnitPricingBaseMeasure",
+                    "description": "The preference of the denominator of the unit price."
+                },
+                "unitPricingMeasure": {
+                    "$ref": "ProductUnitPricingMeasure",
+                    "description": "The measure and dimension of an item."
+                },
+                "validatedDestinations": {
+                    "description": "The read-only list of intended destinations which passed validation.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "warnings": {
+                    "description": "Read-only warnings.",
+                    "items": {
+                        "$ref": "Error"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ProductCustomAttribute": {
+            "id": "ProductCustomAttribute",
+            "properties": {
+                "name": {
+                    "description": "The name of the attribute.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of the attribute.",
+                    "type": "string"
+                },
+                "unit": {
+                    "description": "Free-form unit of the attribute. Unit can only be used for values of type INT or FLOAT.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value of the attribute.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductCustomGroup": {
+            "id": "ProductCustomGroup",
+            "properties": {
+                "attributes": {
+                    "description": "The sub-attributes.",
+                    "items": {
+                        "$ref": "ProductCustomAttribute"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "The name of the group.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductDestination": {
+            "id": "ProductDestination",
+            "properties": {
+                "destinationName": {
+                    "description": "The name of the destination.",
+                    "type": "string"
+                },
+                "intention": {
+                    "description": "Whether the destination is required, excluded or should be validated.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductInstallment": {
+            "id": "ProductInstallment",
+            "properties": {
+                "amount": {
+                    "$ref": "Price",
+                    "description": "The amount the buyer has to pay per month."
+                },
+                "months": {
+                    "description": "The number of installments the buyer has to pay.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductShipping": {
+            "id": "ProductShipping",
+            "properties": {
+                "country": {
+                    "description": "The two-letter ISO 3166 country code for the country to which an item will ship.",
+                    "type": "string"
+                },
+                "locationGroupName": {
+                    "description": "The location where the shipping is applicable, represented by a location group name.",
+                    "type": "string"
+                },
+                "locationId": {
+                    "description": "The numeric id of a location that the shipping rate applies to as defined in the AdWords API.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "postalCode": {
+                    "description": "The postal code range that the shipping rate applies to, represented by a postal code, a postal code prefix using * wildcard, a range between two postal codes or two postal code prefixes of equal length.",
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "Price",
+                    "description": "Fixed shipping price, represented as a number."
+                },
+                "region": {
+                    "description": "The geographic region to which a shipping rate applies (e.g. zip code).",
+                    "type": "string"
+                },
+                "service": {
+                    "description": "A free-form description of the service class or delivery speed.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductShippingWeight": {
+            "id": "ProductShippingWeight",
+            "properties": {
+                "unit": {
+                    "description": "The unit of value.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The weight of the product used to calculate the shipping cost of the item.",
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "ProductStatus": {
+            "description": "The status of a product, i.e., information about a product computed asynchronously by the data quality analysis.",
+            "id": "ProductStatus",
+            "properties": {
+                "dataQualityIssues": {
+                    "description": "A list of data quality issues associated with the product.",
+                    "items": {
+                        "$ref": "ProductStatusDataQualityIssue"
+                    },
+                    "type": "array"
+                },
+                "destinationStatuses": {
+                    "description": "The intended destinations for the product.",
+                    "items": {
+                        "$ref": "ProductStatusDestinationStatus"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "content#productStatus",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#productStatus\".",
+                    "type": "string"
+                },
+                "link": {
+                    "description": "The link to the product.",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The id of the product for which status is reported.",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "The title of the product.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductStatusDataQualityIssue": {
+            "id": "ProductStatusDataQualityIssue",
+            "properties": {
+                "detail": {
+                    "description": "A more detailed error string.",
+                    "type": "string"
+                },
+                "fetchStatus": {
+                    "description": "The fetch status for landing_page_errors.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The id of the data quality issue.",
+                    "type": "string"
+                },
+                "location": {
+                    "description": "The attribute name that is relevant for the issue.",
+                    "type": "string"
+                },
+                "timestamp": {
+                    "description": "The time stamp of the data quality issue.",
+                    "type": "string"
+                },
+                "valueOnLandingPage": {
+                    "description": "The value of that attribute that was found on the landing page",
+                    "type": "string"
+                },
+                "valueProvided": {
+                    "description": "The value the attribute had at time of evaluation.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductStatusDestinationStatus": {
+            "id": "ProductStatusDestinationStatus",
+            "properties": {
+                "approvalStatus": {
+                    "description": "The destination's approval status.",
+                    "type": "string"
+                },
+                "destination": {
+                    "description": "The name of the destination",
+                    "type": "string"
+                },
+                "intention": {
+                    "description": "Whether the destination is required, excluded, selected by default or should be validated.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductTax": {
+            "id": "ProductTax",
+            "properties": {
+                "country": {
+                    "description": "The country within which the item is taxed, specified with a two-letter ISO 3166 country code.",
+                    "type": "string"
+                },
+                "locationId": {
+                    "description": "The numeric id of a location that the tax rate applies to as defined in the Adwords API (https://developers.google.com/adwords/api/docs/appendix/geotargeting).",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "postalCode": {
+                    "description": "The postal code range that the tax rate applies to, represented by a ZIP code, a ZIP code prefix using * wildcard, a range between two ZIP codes or two ZIP code prefixes of equal length. Examples: 94114, 94*, 94002-95460, 94*-95*.",
+                    "type": "string"
+                },
+                "rate": {
+                    "description": "The percentage of tax rate that applies to the item price.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "region": {
+                    "description": "The geographic region to which the tax rate applies.",
+                    "type": "string"
+                },
+                "taxShip": {
+                    "description": "Set to true if tax is charged on shipping.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "ProductUnitPricingBaseMeasure": {
+            "id": "ProductUnitPricingBaseMeasure",
+            "properties": {
+                "unit": {
+                    "description": "The unit of the denominator.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The denominator of the unit price.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductUnitPricingMeasure": {
+            "id": "ProductUnitPricingMeasure",
+            "properties": {
+                "unit": {
+                    "description": "The unit of the measure.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The measure of an item.",
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "ProductsCustomBatchRequest": {
+            "id": "ProductsCustomBatchRequest",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "ProductsCustomBatchRequestEntry"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ProductsCustomBatchRequestEntry": {
+            "description": "A batch entry encoding a single non-batch request to the products service of the Content API for Shopping.",
+            "id": "ProductsCustomBatchRequestEntry",
+            "properties": {
+                "batchId": {
+                    "description": "An entry ID, unique within the batch request.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "merchantId": {
+                    "description": "The ID of the managing account.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "method": {
+                    "description": "The method (get, insert or delete).",
+                    "type": "string"
+                },
+                "product": {
+                    "$ref": "Product",
+                    "description": "The product to insert. Only required if the method is insert."
+                },
+                "productId": {
+                    "description": "The ID of the product to get or delete. Only defined if the method is get or delete.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductsCustomBatchResponse": {
+            "id": "ProductsCustomBatchResponse",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "ProductsCustomBatchResponseEntry"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "content#productsCustomBatchResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#productsCustomBatchResponse\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductsCustomBatchResponseEntry": {
+            "description": "A batch entry encoding a single non-batch response from the products service of the Content API for Shopping.",
+            "id": "ProductsCustomBatchResponseEntry",
+            "properties": {
+                "batchId": {
+                    "description": "The ID of the request entry this entry responds to.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "errors": {
+                    "$ref": "Errors",
+                    "description": "A list of errors defined if and only if the request failed."
+                },
+                "kind": {
+                    "default": "content#productsCustomBatchResponseEntry",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#productsCustomBatchResponseEntry\".",
+                    "type": "string"
+                },
+                "product": {
+                    "$ref": "Product",
+                    "description": "The inserted product. Only defined if the method is insert and if the request was successful."
+                }
+            },
+            "type": "object"
+        },
+        "ProductsListResponse": {
+            "id": "ProductsListResponse",
+            "properties": {
+                "kind": {
+                    "default": "content#productsListResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#productsListResponse\".",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "resources": {
+                    "items": {
+                        "$ref": "Product"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ProductstatusesCustomBatchRequest": {
+            "id": "ProductstatusesCustomBatchRequest",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "ProductstatusesCustomBatchRequestEntry"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ProductstatusesCustomBatchRequestEntry": {
+            "description": "A batch entry encoding a single non-batch request to the productstatuses service of the Content API for Shopping.",
+            "id": "ProductstatusesCustomBatchRequestEntry",
+            "properties": {
+                "batchId": {
+                    "description": "An entry ID, unique within the batch request.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "merchantId": {
+                    "description": "The ID of the managing account.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "method": {
+                    "description": "The method (get).",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The ID of the product whose status to get.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductstatusesCustomBatchResponse": {
+            "id": "ProductstatusesCustomBatchResponse",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "ProductstatusesCustomBatchResponseEntry"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "content#productstatusesCustomBatchResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#productstatusesCustomBatchResponse\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductstatusesCustomBatchResponseEntry": {
+            "description": "A batch entry encoding a single non-batch response from the productstatuses service of the Content API for Shopping.",
+            "id": "ProductstatusesCustomBatchResponseEntry",
+            "properties": {
+                "batchId": {
+                    "description": "The ID of the request entry this entry responds to.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "errors": {
+                    "$ref": "Errors",
+                    "description": "A list of errors, if the request failed."
+                },
+                "kind": {
+                    "default": "content#productstatusesCustomBatchResponseEntry",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#productstatusesCustomBatchResponseEntry\".",
+                    "type": "string"
+                },
+                "productStatus": {
+                    "$ref": "ProductStatus",
+                    "description": "The requested product status. Only defined if the request was successful."
+                }
+            },
+            "type": "object"
+        },
+        "ProductstatusesListResponse": {
+            "id": "ProductstatusesListResponse",
+            "properties": {
+                "kind": {
+                    "default": "content#productstatusesListResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#productstatusesListResponse\".",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "resources": {
+                    "items": {
+                        "$ref": "ProductStatus"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "content/v2/",
+    "title": "Content API for Shopping",
+    "version": "v2"
+}
