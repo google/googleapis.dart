@@ -6,5 +6,5 @@ dependencies:
   discovery_api_client_generator:
     git:
       url: https://github.com/dart-lang/discovery_api_dart_client_generator
-      ref: fcffd942e26db7da37c40add5f21ab284ff5ce95
+      ref: 161e09c032d8fd3d42474120921f6ac9add66370
     version: ">=0.5.0 <0.6.0"

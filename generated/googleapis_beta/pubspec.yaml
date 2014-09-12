@@ -1,18 +1,7 @@
 name: googleapis_beta
-version: 0.1.0
+version: 0.1.1
 author: Dart Team <misc@dartlang.org>
-description: "Auto-generated client libraries for accessing the following APIs:\n
-  autoscaler:v1beta2 - The Google Compute Engine Autoscaler API provides autoscaling for groups of Cloud VMs.\n
-  cloudmonitoring:v2beta1 - API for accessing Google Cloud and API monitoring data.\n
-  datastore:v1beta2 - API for accessing Google Cloud Datastore.\n
-  dns:v1beta1 - The Google Cloud DNS API provides services for configuring and serving authoritative DNS records.\n
-  genomics:v1beta - Provides access to Genomics data.\n
-  manager:v1beta2 - The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.\n
-  pubsub:v1beta1 - Provides reliable, many-to-many, asynchronous messaging between applications.\n
-  replicapool:v1beta1 - The Replica Pool API allows users to declaratively provision and manage groups of Google Compute Engine instances based on a common template.\n
-  resourceviews:v1beta1 - The Resource View API allows users to create and manage logical sets of Google Compute Engine instances.\n
-  sqladmin:v1beta3 - API for Cloud SQL database instance management.\n
-  taskqueue:v1beta2 - Lets you access a Google App Engine Pull Task Queue over REST.\n"
+description: "Auto-generated client libraries for accessing the following APIs:autoscaler:v1beta2, cloudmonitoring:v2beta1, datastore:v1beta2, dns:v1beta1, genomics:v1beta, manager:v1beta2, pubsub:v1beta1, replicapool:v1beta1, resourceviews:v1beta1, sqladmin:v1beta3, taskqueue:v1beta2"
 homepage: http://www.dartlang.org
 environment:
   sdk: '>=1.0.0 <2.0.0'

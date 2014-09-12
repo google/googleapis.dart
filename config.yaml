@@ -1,10 +1,11 @@
 packages:
 - googleapis:
-    version: 0.1.0
+    version: 0.1.1
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org
     readme: resources/README.md
     license: resources/LICENSE
+    changelog: resources/googleapis/CHANGELOG.md
     apis:
     - adexchangebuyer:v1.3  # https://developers.google.com/ad-exchange/buyer-rest/
     - adexchangeseller:v1.1  # https://developers.google.com/ad-exchange/seller-rest/
@@ -27,6 +28,7 @@ packages:
     - content:v2  # https://developers.google.com/shopping-content/
     - coordinate:v1  # https://google-developers.appspot.com/coordinate/
     - customsearch:v1  # https://developers.google.com/custom-search/
+    - discovery:v1  # https://developers.google.com/discovery/
     - drive:v2  # https://developers.google.com/drive/v2/reference/
     - dfareporting:v1.3  # https://developers.google.com/doubleclick-advertisers/reporting/
     - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
@@ -60,11 +62,12 @@ packages:
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
-    version: 0.1.0
+    version: 0.1.1
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org
     readme: resources/README.md
     license: resources/LICENSE
+    changelog: resources/googleapis_beta/CHANGELOG.md
     apis:
     - autoscaler:v1beta2  # https://developers.google.com/compute/docs/autoscaler/ (Limited Preview)
     - cloudmonitoring:v2beta1  # https://developers.google.com/cloud-monitoring/
@@ -94,7 +97,6 @@ skipped_apis:
 - dfareporting:v1  # v1.3 included
 - dfareporting:v1.1  # v1.3 included
 - dfareporting:v1.2  # v1.3 included
-- discovery:v1  # Not included
 - drive:v1  # v2 included
 - freebase:v1-sandbox  # v1 included
 - freebase:v1sandbox  # v1 included
