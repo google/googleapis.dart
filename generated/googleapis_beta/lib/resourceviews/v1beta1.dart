@@ -46,7 +46,7 @@ class ResourceviewsApi {
   ZoneViewsResourceApi get zoneViews => new ZoneViewsResourceApi(_requester);
 
   ResourceviewsApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/resourceviews/v1beta1/projects/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "resourceviews/v1beta1/projects/");
 }
 
 

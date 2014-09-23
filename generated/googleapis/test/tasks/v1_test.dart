@@ -39,14 +39,14 @@ checkTaskLinks(api.TaskLinks o) {
   buildCounterTaskLinks--;
 }
 
-buildUnnamed1010() {
+buildUnnamed1038() {
   var o = new core.List<api.TaskLinks>();
   o.add(buildTaskLinks());
   o.add(buildTaskLinks());
   return o;
 }
 
-checkUnnamed1010(core.List<api.TaskLinks> o) {
+checkUnnamed1038(core.List<api.TaskLinks> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskLinks(o[0]);
   checkTaskLinks(o[1]);
@@ -64,7 +64,7 @@ buildTask() {
     o.hidden = true;
     o.id = "foo";
     o.kind = "foo";
-    o.links = buildUnnamed1010();
+    o.links = buildUnnamed1038();
     o.notes = "foo";
     o.parent = "foo";
     o.position = "foo";
@@ -87,7 +87,7 @@ checkTask(api.Task o) {
     unittest.expect(o.hidden, unittest.isTrue);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1010(o.links);
+    checkUnnamed1038(o.links);
     unittest.expect(o.notes, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
     unittest.expect(o.position, unittest.equals('foo'));
@@ -128,14 +128,14 @@ checkTaskList(api.TaskList o) {
   buildCounterTaskList--;
 }
 
-buildUnnamed1011() {
+buildUnnamed1039() {
   var o = new core.List<api.TaskList>();
   o.add(buildTaskList());
   o.add(buildTaskList());
   return o;
 }
 
-checkUnnamed1011(core.List<api.TaskList> o) {
+checkUnnamed1039(core.List<api.TaskList> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskList(o[0]);
   checkTaskList(o[1]);
@@ -147,7 +147,7 @@ buildTaskLists() {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed1011();
+    o.items = buildUnnamed1039();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -159,21 +159,21 @@ checkTaskLists(api.TaskLists o) {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1011(o.items);
+    checkUnnamed1039(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterTaskLists--;
 }
 
-buildUnnamed1012() {
+buildUnnamed1040() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed1012(core.List<api.Task> o) {
+checkUnnamed1040(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -185,7 +185,7 @@ buildTasks() {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed1012();
+    o.items = buildUnnamed1040();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -197,7 +197,7 @@ checkTasks(api.Tasks o) {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1012(o.items);
+    checkUnnamed1040(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -262,8 +262,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/tasks/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("tasks/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("users/@me/lists/"));
         pathOffset += 16;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -307,8 +309,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/tasks/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("tasks/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("users/@me/lists/"));
         pathOffset += 16;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -357,8 +361,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/tasks/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("tasks/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("users/@me/lists"));
         pathOffset += 15;
 
@@ -402,8 +408,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/tasks/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("tasks/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("users/@me/lists"));
         pathOffset += 15;
 
@@ -452,8 +460,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/tasks/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("tasks/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("users/@me/lists/"));
         pathOffset += 16;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -503,8 +513,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/tasks/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("tasks/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("users/@me/lists/"));
         pathOffset += 16;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -554,8 +566,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/tasks/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("tasks/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("lists/"));
         pathOffset += 6;
         index = path.indexOf("/clear", pathOffset);
@@ -604,8 +618,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/tasks/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("tasks/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("lists/"));
         pathOffset += 6;
         index = path.indexOf("/tasks/", pathOffset);
@@ -657,8 +673,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/tasks/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("tasks/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("lists/"));
         pathOffset += 6;
         index = path.indexOf("/tasks/", pathOffset);
@@ -717,8 +735,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/tasks/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("tasks/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("lists/"));
         pathOffset += 6;
         index = path.indexOf("/tasks", pathOffset);
@@ -780,8 +800,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/tasks/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("tasks/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("lists/"));
         pathOffset += 6;
         index = path.indexOf("/tasks", pathOffset);
@@ -844,8 +866,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/tasks/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("tasks/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("lists/"));
         pathOffset += 6;
         index = path.indexOf("/tasks/", pathOffset);
@@ -909,8 +933,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/tasks/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("tasks/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("lists/"));
         pathOffset += 6;
         index = path.indexOf("/tasks/", pathOffset);
@@ -968,8 +994,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/tasks/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("tasks/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("lists/"));
         pathOffset += 6;
         index = path.indexOf("/tasks/", pathOffset);

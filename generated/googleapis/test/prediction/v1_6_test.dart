@@ -37,14 +37,14 @@ checkAnalyzeDataDescriptionFeaturesCategoricalValues(api.AnalyzeDataDescriptionF
   buildCounterAnalyzeDataDescriptionFeaturesCategoricalValues--;
 }
 
-buildUnnamed765() {
+buildUnnamed793() {
   var o = new core.List<api.AnalyzeDataDescriptionFeaturesCategoricalValues>();
   o.add(buildAnalyzeDataDescriptionFeaturesCategoricalValues());
   o.add(buildAnalyzeDataDescriptionFeaturesCategoricalValues());
   return o;
 }
 
-checkUnnamed765(core.List<api.AnalyzeDataDescriptionFeaturesCategoricalValues> o) {
+checkUnnamed793(core.List<api.AnalyzeDataDescriptionFeaturesCategoricalValues> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnalyzeDataDescriptionFeaturesCategoricalValues(o[0]);
   checkAnalyzeDataDescriptionFeaturesCategoricalValues(o[1]);
@@ -56,7 +56,7 @@ buildAnalyzeDataDescriptionFeaturesCategorical() {
   buildCounterAnalyzeDataDescriptionFeaturesCategorical++;
   if (buildCounterAnalyzeDataDescriptionFeaturesCategorical < 3) {
     o.count = "foo";
-    o.values = buildUnnamed765();
+    o.values = buildUnnamed793();
   }
   buildCounterAnalyzeDataDescriptionFeaturesCategorical--;
   return o;
@@ -66,7 +66,7 @@ checkAnalyzeDataDescriptionFeaturesCategorical(api.AnalyzeDataDescriptionFeature
   buildCounterAnalyzeDataDescriptionFeaturesCategorical++;
   if (buildCounterAnalyzeDataDescriptionFeaturesCategorical < 3) {
     unittest.expect(o.count, unittest.equals('foo'));
-    checkUnnamed765(o.values);
+    checkUnnamed793(o.values);
   }
   buildCounterAnalyzeDataDescriptionFeaturesCategorical--;
 }
@@ -138,14 +138,14 @@ checkAnalyzeDataDescriptionFeatures(api.AnalyzeDataDescriptionFeatures o) {
   buildCounterAnalyzeDataDescriptionFeatures--;
 }
 
-buildUnnamed766() {
+buildUnnamed794() {
   var o = new core.List<api.AnalyzeDataDescriptionFeatures>();
   o.add(buildAnalyzeDataDescriptionFeatures());
   o.add(buildAnalyzeDataDescriptionFeatures());
   return o;
 }
 
-checkUnnamed766(core.List<api.AnalyzeDataDescriptionFeatures> o) {
+checkUnnamed794(core.List<api.AnalyzeDataDescriptionFeatures> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnalyzeDataDescriptionFeatures(o[0]);
   checkAnalyzeDataDescriptionFeatures(o[1]);
@@ -195,14 +195,14 @@ checkAnalyzeDataDescriptionOutputFeatureText(api.AnalyzeDataDescriptionOutputFea
   buildCounterAnalyzeDataDescriptionOutputFeatureText--;
 }
 
-buildUnnamed767() {
+buildUnnamed795() {
   var o = new core.List<api.AnalyzeDataDescriptionOutputFeatureText>();
   o.add(buildAnalyzeDataDescriptionOutputFeatureText());
   o.add(buildAnalyzeDataDescriptionOutputFeatureText());
   return o;
 }
 
-checkUnnamed767(core.List<api.AnalyzeDataDescriptionOutputFeatureText> o) {
+checkUnnamed795(core.List<api.AnalyzeDataDescriptionOutputFeatureText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnalyzeDataDescriptionOutputFeatureText(o[0]);
   checkAnalyzeDataDescriptionOutputFeatureText(o[1]);
@@ -214,7 +214,7 @@ buildAnalyzeDataDescriptionOutputFeature() {
   buildCounterAnalyzeDataDescriptionOutputFeature++;
   if (buildCounterAnalyzeDataDescriptionOutputFeature < 3) {
     o.numeric = buildAnalyzeDataDescriptionOutputFeatureNumeric();
-    o.text = buildUnnamed767();
+    o.text = buildUnnamed795();
   }
   buildCounterAnalyzeDataDescriptionOutputFeature--;
   return o;
@@ -224,7 +224,7 @@ checkAnalyzeDataDescriptionOutputFeature(api.AnalyzeDataDescriptionOutputFeature
   buildCounterAnalyzeDataDescriptionOutputFeature++;
   if (buildCounterAnalyzeDataDescriptionOutputFeature < 3) {
     checkAnalyzeDataDescriptionOutputFeatureNumeric(o.numeric);
-    checkUnnamed767(o.text);
+    checkUnnamed795(o.text);
   }
   buildCounterAnalyzeDataDescriptionOutputFeature--;
 }
@@ -234,7 +234,7 @@ buildAnalyzeDataDescription() {
   var o = new api.AnalyzeDataDescription();
   buildCounterAnalyzeDataDescription++;
   if (buildCounterAnalyzeDataDescription < 3) {
-    o.features = buildUnnamed766();
+    o.features = buildUnnamed794();
     o.outputFeature = buildAnalyzeDataDescriptionOutputFeature();
   }
   buildCounterAnalyzeDataDescription--;
@@ -244,72 +244,72 @@ buildAnalyzeDataDescription() {
 checkAnalyzeDataDescription(api.AnalyzeDataDescription o) {
   buildCounterAnalyzeDataDescription++;
   if (buildCounterAnalyzeDataDescription < 3) {
-    checkUnnamed766(o.features);
+    checkUnnamed794(o.features);
     checkAnalyzeDataDescriptionOutputFeature(o.outputFeature);
   }
   buildCounterAnalyzeDataDescription--;
 }
 
-buildUnnamed768() {
+buildUnnamed796() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed768(core.Map<core.String, core.String> o) {
+checkUnnamed796(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed769() {
+buildUnnamed797() {
   var o = new core.List<core.Map<core.String, core.String>>();
-  o.add(buildUnnamed768());
-  o.add(buildUnnamed768());
+  o.add(buildUnnamed796());
+  o.add(buildUnnamed796());
   return o;
 }
 
-checkUnnamed769(core.List<core.Map<core.String, core.String>> o) {
+checkUnnamed797(core.List<core.Map<core.String, core.String>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed768(o[0]);
-  checkUnnamed768(o[1]);
+  checkUnnamed796(o[0]);
+  checkUnnamed796(o[1]);
 }
 
-buildUnnamed770() {
+buildUnnamed798() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed770(core.Map<core.String, core.String> o) {
+checkUnnamed798(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed771() {
+buildUnnamed799() {
   var o = new core.Map<core.String, core.Map<core.String, core.String>>();
-  o["x"] = buildUnnamed770();
-  o["y"] = buildUnnamed770();
+  o["x"] = buildUnnamed798();
+  o["y"] = buildUnnamed798();
   return o;
 }
 
-checkUnnamed771(core.Map<core.String, core.Map<core.String, core.String>> o) {
+checkUnnamed799(core.Map<core.String, core.Map<core.String, core.String>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed770(o["x"]);
-  checkUnnamed770(o["y"]);
+  checkUnnamed798(o["x"]);
+  checkUnnamed798(o["y"]);
 }
 
-buildUnnamed772() {
+buildUnnamed800() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed772(core.Map<core.String, core.String> o) {
+checkUnnamed800(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -320,8 +320,8 @@ buildAnalyzeModelDescription() {
   var o = new api.AnalyzeModelDescription();
   buildCounterAnalyzeModelDescription++;
   if (buildCounterAnalyzeModelDescription < 3) {
-    o.confusionMatrix = buildUnnamed771();
-    o.confusionMatrixRowTotals = buildUnnamed772();
+    o.confusionMatrix = buildUnnamed799();
+    o.confusionMatrixRowTotals = buildUnnamed800();
     o.modelinfo = buildInsert2();
   }
   buildCounterAnalyzeModelDescription--;
@@ -331,8 +331,8 @@ buildAnalyzeModelDescription() {
 checkAnalyzeModelDescription(api.AnalyzeModelDescription o) {
   buildCounterAnalyzeModelDescription++;
   if (buildCounterAnalyzeModelDescription < 3) {
-    checkUnnamed771(o.confusionMatrix);
-    checkUnnamed772(o.confusionMatrixRowTotals);
+    checkUnnamed799(o.confusionMatrix);
+    checkUnnamed800(o.confusionMatrixRowTotals);
     checkInsert2(o.modelinfo);
   }
   buildCounterAnalyzeModelDescription--;
@@ -344,7 +344,7 @@ buildAnalyze() {
   buildCounterAnalyze++;
   if (buildCounterAnalyze < 3) {
     o.dataDescription = buildAnalyzeDataDescription();
-    o.errors = buildUnnamed769();
+    o.errors = buildUnnamed797();
     o.id = "foo";
     o.kind = "foo";
     o.modelDescription = buildAnalyzeModelDescription();
@@ -358,7 +358,7 @@ checkAnalyze(api.Analyze o) {
   buildCounterAnalyze++;
   if (buildCounterAnalyze < 3) {
     checkAnalyzeDataDescription(o.dataDescription);
-    checkUnnamed769(o.errors);
+    checkUnnamed797(o.errors);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     checkAnalyzeModelDescription(o.modelDescription);
@@ -367,14 +367,14 @@ checkAnalyze(api.Analyze o) {
   buildCounterAnalyze--;
 }
 
-buildUnnamed773() {
+buildUnnamed801() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed773(core.List<core.Object> o) {
+checkUnnamed801(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o[1]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
@@ -385,7 +385,7 @@ buildInputInput() {
   var o = new api.InputInput();
   buildCounterInputInput++;
   if (buildCounterInputInput < 3) {
-    o.csvInstance = buildUnnamed773();
+    o.csvInstance = buildUnnamed801();
   }
   buildCounterInputInput--;
   return o;
@@ -394,7 +394,7 @@ buildInputInput() {
 checkInputInput(api.InputInput o) {
   buildCounterInputInput++;
   if (buildCounterInputInput < 3) {
-    checkUnnamed773(o.csvInstance);
+    checkUnnamed801(o.csvInstance);
   }
   buildCounterInputInput--;
 }
@@ -418,14 +418,14 @@ checkInput(api.Input o) {
   buildCounterInput--;
 }
 
-buildUnnamed774() {
+buildUnnamed802() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed774(core.List<core.Object> o) {
+checkUnnamed802(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o[0]) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
   var casted4 = (o[1]) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
@@ -436,7 +436,7 @@ buildInsertTrainingInstances() {
   var o = new api.InsertTrainingInstances();
   buildCounterInsertTrainingInstances++;
   if (buildCounterInsertTrainingInstances < 3) {
-    o.csvInstance = buildUnnamed774();
+    o.csvInstance = buildUnnamed802();
     o.output = "foo";
   }
   buildCounterInsertTrainingInstances--;
@@ -446,49 +446,49 @@ buildInsertTrainingInstances() {
 checkInsertTrainingInstances(api.InsertTrainingInstances o) {
   buildCounterInsertTrainingInstances++;
   if (buildCounterInsertTrainingInstances < 3) {
-    checkUnnamed774(o.csvInstance);
+    checkUnnamed802(o.csvInstance);
     unittest.expect(o.output, unittest.equals('foo'));
   }
   buildCounterInsertTrainingInstances--;
 }
 
-buildUnnamed775() {
+buildUnnamed803() {
   var o = new core.List<api.InsertTrainingInstances>();
   o.add(buildInsertTrainingInstances());
   o.add(buildInsertTrainingInstances());
   return o;
 }
 
-checkUnnamed775(core.List<api.InsertTrainingInstances> o) {
+checkUnnamed803(core.List<api.InsertTrainingInstances> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInsertTrainingInstances(o[0]);
   checkInsertTrainingInstances(o[1]);
 }
 
-buildUnnamed776() {
+buildUnnamed804() {
   var o = new core.Map<core.String, core.double>();
   o["x"] = 42.0;
   o["y"] = 42.0;
   return o;
 }
 
-checkUnnamed776(core.Map<core.String, core.double> o) {
+checkUnnamed804(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals(42.0));
   unittest.expect(o["y"], unittest.equals(42.0));
 }
 
-buildUnnamed777() {
+buildUnnamed805() {
   var o = new core.List<core.Map<core.String, core.double>>();
-  o.add(buildUnnamed776());
-  o.add(buildUnnamed776());
+  o.add(buildUnnamed804());
+  o.add(buildUnnamed804());
   return o;
 }
 
-checkUnnamed777(core.List<core.Map<core.String, core.double>> o) {
+checkUnnamed805(core.List<core.Map<core.String, core.double>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed776(o[0]);
-  checkUnnamed776(o[1]);
+  checkUnnamed804(o[0]);
+  checkUnnamed804(o[1]);
 }
 
 core.int buildCounterInsert = 0;
@@ -502,8 +502,8 @@ buildInsert() {
     o.storageDataLocation = "foo";
     o.storagePMMLLocation = "foo";
     o.storagePMMLModelLocation = "foo";
-    o.trainingInstances = buildUnnamed775();
-    o.utility = buildUnnamed777();
+    o.trainingInstances = buildUnnamed803();
+    o.utility = buildUnnamed805();
   }
   buildCounterInsert--;
   return o;
@@ -518,8 +518,8 @@ checkInsert(api.Insert o) {
     unittest.expect(o.storageDataLocation, unittest.equals('foo'));
     unittest.expect(o.storagePMMLLocation, unittest.equals('foo'));
     unittest.expect(o.storagePMMLModelLocation, unittest.equals('foo'));
-    checkUnnamed775(o.trainingInstances);
-    checkUnnamed777(o.utility);
+    checkUnnamed803(o.trainingInstances);
+    checkUnnamed805(o.utility);
   }
   buildCounterInsert--;
 }
@@ -592,14 +592,14 @@ checkInsert2(api.Insert2 o) {
   buildCounterInsert2--;
 }
 
-buildUnnamed778() {
+buildUnnamed806() {
   var o = new core.List<api.Insert2>();
   o.add(buildInsert2());
   o.add(buildInsert2());
   return o;
 }
 
-checkUnnamed778(core.List<api.Insert2> o) {
+checkUnnamed806(core.List<api.Insert2> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInsert2(o[0]);
   checkInsert2(o[1]);
@@ -610,7 +610,7 @@ buildList() {
   var o = new api.List();
   buildCounterList++;
   if (buildCounterList < 3) {
-    o.items = buildUnnamed778();
+    o.items = buildUnnamed806();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -622,7 +622,7 @@ buildList() {
 checkList(api.List o) {
   buildCounterList++;
   if (buildCounterList < 3) {
-    checkUnnamed778(o.items);
+    checkUnnamed806(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -651,14 +651,14 @@ checkOutputOutputMulti(api.OutputOutputMulti o) {
   buildCounterOutputOutputMulti--;
 }
 
-buildUnnamed779() {
+buildUnnamed807() {
   var o = new core.List<api.OutputOutputMulti>();
   o.add(buildOutputOutputMulti());
   o.add(buildOutputOutputMulti());
   return o;
 }
 
-checkUnnamed779(core.List<api.OutputOutputMulti> o) {
+checkUnnamed807(core.List<api.OutputOutputMulti> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOutputOutputMulti(o[0]);
   checkOutputOutputMulti(o[1]);
@@ -672,8 +672,8 @@ buildOutput() {
     o.id = "foo";
     o.kind = "foo";
     o.outputLabel = "foo";
-    o.outputMulti = buildUnnamed779();
-    o.outputValue = 42.0;
+    o.outputMulti = buildUnnamed807();
+    o.outputValue = "foo";
     o.selfLink = "foo";
   }
   buildCounterOutput--;
@@ -686,21 +686,21 @@ checkOutput(api.Output o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.outputLabel, unittest.equals('foo'));
-    checkUnnamed779(o.outputMulti);
-    unittest.expect(o.outputValue, unittest.equals(42.0));
+    checkUnnamed807(o.outputMulti);
+    unittest.expect(o.outputValue, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
   buildCounterOutput--;
 }
 
-buildUnnamed780() {
+buildUnnamed808() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed780(core.List<core.Object> o) {
+checkUnnamed808(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o[0]) as core.Map; unittest.expect(casted5, unittest.hasLength(3)); unittest.expect(casted5["list"], unittest.equals([1, 2, 3])); unittest.expect(casted5["bool"], unittest.equals(true)); unittest.expect(casted5["string"], unittest.equals('foo')); 
   var casted6 = (o[1]) as core.Map; unittest.expect(casted6, unittest.hasLength(3)); unittest.expect(casted6["list"], unittest.equals([1, 2, 3])); unittest.expect(casted6["bool"], unittest.equals(true)); unittest.expect(casted6["string"], unittest.equals('foo')); 
@@ -711,7 +711,7 @@ buildUpdate() {
   var o = new api.Update();
   buildCounterUpdate++;
   if (buildCounterUpdate < 3) {
-    o.csvInstance = buildUnnamed780();
+    o.csvInstance = buildUnnamed808();
     o.output = "foo";
   }
   buildCounterUpdate--;
@@ -721,7 +721,7 @@ buildUpdate() {
 checkUpdate(api.Update o) {
   buildCounterUpdate++;
   if (buildCounterUpdate < 3) {
-    checkUnnamed780(o.csvInstance);
+    checkUnnamed808(o.csvInstance);
     unittest.expect(o.output, unittest.equals('foo'));
   }
   buildCounterUpdate--;
@@ -934,22 +934,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/prediction/v1.6/projects/"));
-        pathOffset += 26;
-        index = path.indexOf("/hostedmodels/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/hostedmodels/"));
-        pathOffset += 14;
-        index = path.indexOf("/predict", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_hostedModelName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/predict"));
-        pathOffset += 8;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -995,22 +981,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/prediction/v1.6/projects/"));
-        pathOffset += 26;
-        index = path.indexOf("/trainedmodels/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/trainedmodels/"));
-        pathOffset += 15;
-        index = path.indexOf("/analyze", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_id"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/analyze"));
-        pathOffset += 8;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1052,18 +1024,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/prediction/v1.6/projects/"));
-        pathOffset += 26;
-        index = path.indexOf("/trainedmodels/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/trainedmodels/"));
-        pathOffset += 15;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1103,18 +1065,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/prediction/v1.6/projects/"));
-        pathOffset += 26;
-        index = path.indexOf("/trainedmodels/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/trainedmodels/"));
-        pathOffset += 15;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1159,15 +1111,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/prediction/v1.6/projects/"));
-        pathOffset += 26;
-        index = path.indexOf("/trainedmodels", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/trainedmodels"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1210,15 +1155,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/prediction/v1.6/projects/"));
-        pathOffset += 26;
-        index = path.indexOf("/trainedmodels/list", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/trainedmodels/list"));
-        pathOffset += 19;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1266,22 +1204,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/prediction/v1.6/projects/"));
-        pathOffset += 26;
-        index = path.indexOf("/trainedmodels/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/trainedmodels/"));
-        pathOffset += 15;
-        index = path.indexOf("/predict", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_id"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/predict"));
-        pathOffset += 8;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1327,18 +1251,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/prediction/v1.6/projects/"));
-        pathOffset += 26;
-        index = path.indexOf("/trainedmodels/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/trainedmodels/"));
-        pathOffset += 15;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;

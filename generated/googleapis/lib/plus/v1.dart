@@ -38,7 +38,7 @@ class PlusApi {
   PeopleResourceApi get people => new PeopleResourceApi(_requester);
 
   PlusApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/plus/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "plus/v1/");
 }
 
 

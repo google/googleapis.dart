@@ -30,7 +30,7 @@ class PubsubApi {
   TopicsResourceApi get topics => new TopicsResourceApi(_requester);
 
   PubsubApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/pubsub/v1beta1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "pubsub/v1beta1/");
 }
 
 
@@ -781,7 +781,7 @@ class ListTopicsResponse {
 
 /** Not documented yet. */
 class ModifyAckDeadlineRequest {
-  /** The new Ack deadline. Must be >= 1. */
+  /** The new Ack deadline. Must be >= 0. */
   core.int ackDeadlineSeconds;
 
   /** The Ack ID. */

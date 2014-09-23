@@ -4102,8 +4102,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("achievements"));
         pathOffset += 12;
 
@@ -4155,8 +4157,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("achievements/"));
         pathOffset += 13;
         index = path.indexOf("/increment", pathOffset);
@@ -4212,8 +4216,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("players/"));
         pathOffset += 8;
         index = path.indexOf("/achievements", pathOffset);
@@ -4267,8 +4273,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("achievements/"));
         pathOffset += 13;
         index = path.indexOf("/reveal", pathOffset);
@@ -4319,8 +4327,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("achievements/"));
         pathOffset += 13;
         index = path.indexOf("/setStepsAtLeast", pathOffset);
@@ -4371,8 +4381,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("achievements/"));
         pathOffset += 13;
         index = path.indexOf("/unlock", pathOffset);
@@ -4425,8 +4437,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 27), unittest.equals("achievements/updateMultiple"));
         pathOffset += 27;
 
@@ -4475,8 +4489,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("applications/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -4523,8 +4539,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("applications/played"));
         pathOffset += 19;
 
@@ -4571,8 +4589,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("events"));
         pathOffset += 6;
 
@@ -4620,8 +4640,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("eventDefinitions"));
         pathOffset += 16;
 
@@ -4671,8 +4693,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("events"));
         pathOffset += 6;
 
@@ -4721,8 +4745,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("leaderboards/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -4771,8 +4797,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("leaderboards"));
         pathOffset += 12;
 
@@ -4821,8 +4849,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("metagameConfig"));
         pathOffset += 14;
 
@@ -4869,8 +4899,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("players/"));
         pathOffset += 8;
         index = path.indexOf("/categories/", pathOffset);
@@ -4931,8 +4963,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("players/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -4982,8 +5016,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("players/me/players/"));
         pathOffset += 19;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -5039,8 +5075,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("pushtokens/remove"));
         pathOffset += 17;
 
@@ -5084,8 +5122,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("pushtokens"));
         pathOffset += 10;
 
@@ -5132,8 +5172,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("quests/"));
         pathOffset += 7;
         index = path.indexOf("/milestones/", pathOffset);
@@ -5194,8 +5236,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("quests/"));
         pathOffset += 7;
         index = path.indexOf("/accept", pathOffset);
@@ -5249,8 +5293,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("players/"));
         pathOffset += 8;
         index = path.indexOf("/quests", pathOffset);
@@ -5307,8 +5353,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("revisions/check"));
         pathOffset += 15;
 
@@ -5360,8 +5408,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("rooms/create"));
         pathOffset += 12;
 
@@ -5406,8 +5456,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("rooms/"));
         pathOffset += 6;
         index = path.indexOf("/decline", pathOffset);
@@ -5458,8 +5510,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("rooms/"));
         pathOffset += 6;
         index = path.indexOf("/dismiss", pathOffset);
@@ -5508,8 +5562,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("rooms/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -5561,8 +5617,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("rooms/"));
         pathOffset += 6;
         index = path.indexOf("/join", pathOffset);
@@ -5618,8 +5676,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("rooms/"));
         pathOffset += 6;
         index = path.indexOf("/leave", pathOffset);
@@ -5672,8 +5732,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("rooms"));
         pathOffset += 5;
 
@@ -5724,8 +5786,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("rooms/"));
         pathOffset += 6;
         index = path.indexOf("/reportstatus", pathOffset);
@@ -5786,8 +5850,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("players/"));
         pathOffset += 8;
         index = path.indexOf("/leaderboards/", pathOffset);
@@ -5856,8 +5922,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("leaderboards/"));
         pathOffset += 13;
         index = path.indexOf("/scores/", pathOffset);
@@ -5921,8 +5989,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("leaderboards/"));
         pathOffset += 13;
         index = path.indexOf("/window/", pathOffset);
@@ -5984,8 +6054,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("leaderboards/"));
         pathOffset += 13;
         index = path.indexOf("/scores", pathOffset);
@@ -6042,8 +6114,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("leaderboards/scores"));
         pathOffset += 19;
 
@@ -6092,8 +6166,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("snapshots/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -6143,8 +6219,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("players/"));
         pathOffset += 8;
         index = path.indexOf("/snapshots", pathOffset);
@@ -6201,8 +6279,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("turnbasedmatches/"));
         pathOffset += 17;
         index = path.indexOf("/cancel", pathOffset);
@@ -6254,8 +6334,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 23), unittest.equals("turnbasedmatches/create"));
         pathOffset += 23;
 
@@ -6300,8 +6382,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("turnbasedmatches/"));
         pathOffset += 17;
         index = path.indexOf("/decline", pathOffset);
@@ -6352,8 +6436,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("turnbasedmatches/"));
         pathOffset += 17;
         index = path.indexOf("/dismiss", pathOffset);
@@ -6406,8 +6492,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("turnbasedmatches/"));
         pathOffset += 17;
         index = path.indexOf("/finish", pathOffset);
@@ -6460,8 +6548,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("turnbasedmatches/"));
         pathOffset += 17;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -6510,8 +6600,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("turnbasedmatches/"));
         pathOffset += 17;
         index = path.indexOf("/join", pathOffset);
@@ -6563,8 +6655,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("turnbasedmatches/"));
         pathOffset += 17;
         index = path.indexOf("/leave", pathOffset);
@@ -6618,8 +6712,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("turnbasedmatches/"));
         pathOffset += 17;
         index = path.indexOf("/leaveTurn", pathOffset);
@@ -6676,8 +6772,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("turnbasedmatches"));
         pathOffset += 16;
 
@@ -6727,8 +6825,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("turnbasedmatches/"));
         pathOffset += 17;
         index = path.indexOf("/rematch", pathOffset);
@@ -6784,8 +6884,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("turnbasedmatches/sync"));
         pathOffset += 21;
 
@@ -6838,8 +6940,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/games/v1/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("games/v1/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("turnbasedmatches/"));
         pathOffset += 17;
         index = path.indexOf("/turn", pathOffset);

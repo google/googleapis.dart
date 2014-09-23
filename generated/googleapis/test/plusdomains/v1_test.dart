@@ -16,14 +16,14 @@ import 'package:googleapis/plusdomains/v1.dart' as api;
 
 
 
-buildUnnamed637() {
+buildUnnamed665() {
   var o = new core.List<api.PlusDomainsAclentryResource>();
   o.add(buildPlusDomainsAclentryResource());
   o.add(buildPlusDomainsAclentryResource());
   return o;
 }
 
-checkUnnamed637(core.List<api.PlusDomainsAclentryResource> o) {
+checkUnnamed665(core.List<api.PlusDomainsAclentryResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlusDomainsAclentryResource(o[0]);
   checkPlusDomainsAclentryResource(o[1]);
@@ -36,7 +36,7 @@ buildAcl() {
   if (buildCounterAcl < 3) {
     o.description = "foo";
     o.domainRestricted = true;
-    o.items = buildUnnamed637();
+    o.items = buildUnnamed665();
     o.kind = "foo";
   }
   buildCounterAcl--;
@@ -48,7 +48,7 @@ checkAcl(api.Acl o) {
   if (buildCounterAcl < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.domainRestricted, unittest.isTrue);
-    checkUnnamed637(o.items);
+    checkUnnamed665(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAcl--;
@@ -255,14 +255,14 @@ checkActivityObjectAttachmentsPreviewThumbnails(api.ActivityObjectAttachmentsPre
   buildCounterActivityObjectAttachmentsPreviewThumbnails--;
 }
 
-buildUnnamed638() {
+buildUnnamed666() {
   var o = new core.List<api.ActivityObjectAttachmentsPreviewThumbnails>();
   o.add(buildActivityObjectAttachmentsPreviewThumbnails());
   o.add(buildActivityObjectAttachmentsPreviewThumbnails());
   return o;
 }
 
-checkUnnamed638(core.List<api.ActivityObjectAttachmentsPreviewThumbnails> o) {
+checkUnnamed666(core.List<api.ActivityObjectAttachmentsPreviewThumbnails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityObjectAttachmentsPreviewThumbnails(o[0]);
   checkActivityObjectAttachmentsPreviewThumbnails(o[1]);
@@ -316,14 +316,14 @@ checkActivityObjectAttachmentsThumbnails(api.ActivityObjectAttachmentsThumbnails
   buildCounterActivityObjectAttachmentsThumbnails--;
 }
 
-buildUnnamed639() {
+buildUnnamed667() {
   var o = new core.List<api.ActivityObjectAttachmentsThumbnails>();
   o.add(buildActivityObjectAttachmentsThumbnails());
   o.add(buildActivityObjectAttachmentsThumbnails());
   return o;
 }
 
-checkUnnamed639(core.List<api.ActivityObjectAttachmentsThumbnails> o) {
+checkUnnamed667(core.List<api.ActivityObjectAttachmentsThumbnails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityObjectAttachmentsThumbnails(o[0]);
   checkActivityObjectAttachmentsThumbnails(o[1]);
@@ -341,8 +341,8 @@ buildActivityObjectAttachments() {
     o.id = "foo";
     o.image = buildActivityObjectAttachmentsImage();
     o.objectType = "foo";
-    o.previewThumbnails = buildUnnamed638();
-    o.thumbnails = buildUnnamed639();
+    o.previewThumbnails = buildUnnamed666();
+    o.thumbnails = buildUnnamed667();
     o.url = "foo";
   }
   buildCounterActivityObjectAttachments--;
@@ -359,21 +359,21 @@ checkActivityObjectAttachments(api.ActivityObjectAttachments o) {
     unittest.expect(o.id, unittest.equals('foo'));
     checkActivityObjectAttachmentsImage(o.image);
     unittest.expect(o.objectType, unittest.equals('foo'));
-    checkUnnamed638(o.previewThumbnails);
-    checkUnnamed639(o.thumbnails);
+    checkUnnamed666(o.previewThumbnails);
+    checkUnnamed667(o.thumbnails);
     unittest.expect(o.url, unittest.equals('foo'));
   }
   buildCounterActivityObjectAttachments--;
 }
 
-buildUnnamed640() {
+buildUnnamed668() {
   var o = new core.List<api.ActivityObjectAttachments>();
   o.add(buildActivityObjectAttachments());
   o.add(buildActivityObjectAttachments());
   return o;
 }
 
-checkUnnamed640(core.List<api.ActivityObjectAttachments> o) {
+checkUnnamed668(core.List<api.ActivityObjectAttachments> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityObjectAttachments(o[0]);
   checkActivityObjectAttachments(o[1]);
@@ -475,7 +475,7 @@ buildActivityObject() {
   buildCounterActivityObject++;
   if (buildCounterActivityObject < 3) {
     o.actor = buildActivityObjectActor();
-    o.attachments = buildUnnamed640();
+    o.attachments = buildUnnamed668();
     o.content = "foo";
     o.id = "foo";
     o.objectType = "foo";
@@ -494,7 +494,7 @@ checkActivityObject(api.ActivityObject o) {
   buildCounterActivityObject++;
   if (buildCounterActivityObject < 3) {
     checkActivityObjectActor(o.actor);
-    checkUnnamed640(o.attachments);
+    checkUnnamed668(o.attachments);
     unittest.expect(o.content, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.objectType, unittest.equals('foo'));
@@ -584,14 +584,14 @@ checkActivity(api.Activity o) {
   buildCounterActivity--;
 }
 
-buildUnnamed641() {
+buildUnnamed669() {
   var o = new core.List<api.Activity>();
   o.add(buildActivity());
   o.add(buildActivity());
   return o;
 }
 
-checkUnnamed641(core.List<api.Activity> o) {
+checkUnnamed669(core.List<api.Activity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivity(o[0]);
   checkActivity(o[1]);
@@ -604,7 +604,7 @@ buildActivityFeed() {
   if (buildCounterActivityFeed < 3) {
     o.etag = "foo";
     o.id = "foo";
-    o.items = buildUnnamed641();
+    o.items = buildUnnamed669();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -621,7 +621,7 @@ checkActivityFeed(api.ActivityFeed o) {
   if (buildCounterActivityFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed641(o.items);
+    checkUnnamed669(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -659,14 +659,14 @@ checkAudience(api.Audience o) {
   buildCounterAudience--;
 }
 
-buildUnnamed642() {
+buildUnnamed670() {
   var o = new core.List<api.Audience>();
   o.add(buildAudience());
   o.add(buildAudience());
   return o;
 }
 
-checkUnnamed642(core.List<api.Audience> o) {
+checkUnnamed670(core.List<api.Audience> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAudience(o[0]);
   checkAudience(o[1]);
@@ -678,7 +678,7 @@ buildAudiencesFeed() {
   buildCounterAudiencesFeed++;
   if (buildCounterAudiencesFeed < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed642();
+    o.items = buildUnnamed670();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -691,7 +691,7 @@ checkAudiencesFeed(api.AudiencesFeed o) {
   buildCounterAudiencesFeed++;
   if (buildCounterAudiencesFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed642(o.items);
+    checkUnnamed670(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -749,14 +749,14 @@ checkCircle(api.Circle o) {
   buildCounterCircle--;
 }
 
-buildUnnamed643() {
+buildUnnamed671() {
   var o = new core.List<api.Circle>();
   o.add(buildCircle());
   o.add(buildCircle());
   return o;
 }
 
-checkUnnamed643(core.List<api.Circle> o) {
+checkUnnamed671(core.List<api.Circle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCircle(o[0]);
   checkCircle(o[1]);
@@ -768,7 +768,7 @@ buildCircleFeed() {
   buildCounterCircleFeed++;
   if (buildCounterCircleFeed < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed643();
+    o.items = buildUnnamed671();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -784,7 +784,7 @@ checkCircleFeed(api.CircleFeed o) {
   buildCounterCircleFeed++;
   if (buildCounterCircleFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed643(o.items);
+    checkUnnamed671(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -860,14 +860,14 @@ checkCommentInReplyTo(api.CommentInReplyTo o) {
   buildCounterCommentInReplyTo--;
 }
 
-buildUnnamed644() {
+buildUnnamed672() {
   var o = new core.List<api.CommentInReplyTo>();
   o.add(buildCommentInReplyTo());
   o.add(buildCommentInReplyTo());
   return o;
 }
 
-checkUnnamed644(core.List<api.CommentInReplyTo> o) {
+checkUnnamed672(core.List<api.CommentInReplyTo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCommentInReplyTo(o[0]);
   checkCommentInReplyTo(o[1]);
@@ -923,7 +923,7 @@ buildComment() {
     o.actor = buildCommentActor();
     o.etag = "foo";
     o.id = "foo";
-    o.inReplyTo = buildUnnamed644();
+    o.inReplyTo = buildUnnamed672();
     o.kind = "foo";
     o.object = buildCommentObject();
     o.plusoners = buildCommentPlusoners();
@@ -942,7 +942,7 @@ checkComment(api.Comment o) {
     checkCommentActor(o.actor);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed644(o.inReplyTo);
+    checkUnnamed672(o.inReplyTo);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkCommentObject(o.object);
     checkCommentPlusoners(o.plusoners);
@@ -954,14 +954,14 @@ checkComment(api.Comment o) {
   buildCounterComment--;
 }
 
-buildUnnamed645() {
+buildUnnamed673() {
   var o = new core.List<api.Comment>();
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-checkUnnamed645(core.List<api.Comment> o) {
+checkUnnamed673(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -974,7 +974,7 @@ buildCommentFeed() {
   if (buildCounterCommentFeed < 3) {
     o.etag = "foo";
     o.id = "foo";
-    o.items = buildUnnamed645();
+    o.items = buildUnnamed673();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -990,7 +990,7 @@ checkCommentFeed(api.CommentFeed o) {
   if (buildCounterCommentFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed645(o.items);
+    checkUnnamed673(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -1063,14 +1063,14 @@ checkMediaExif(api.MediaExif o) {
   buildCounterMediaExif--;
 }
 
-buildUnnamed646() {
+buildUnnamed674() {
   var o = new core.List<api.Videostream>();
   o.add(buildVideostream());
   o.add(buildVideostream());
   return o;
 }
 
-checkUnnamed646(core.List<api.Videostream> o) {
+checkUnnamed674(core.List<api.Videostream> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVideostream(o[0]);
   checkVideostream(o[1]);
@@ -1092,7 +1092,7 @@ buildMedia() {
     o.mediaUrl = "foo";
     o.published = core.DateTime.parse("2002-02-27T14:01:02");
     o.sizeBytes = "foo";
-    o.streams = buildUnnamed646();
+    o.streams = buildUnnamed674();
     o.summary = "foo";
     o.updated = core.DateTime.parse("2002-02-27T14:01:02");
     o.url = "foo";
@@ -1118,7 +1118,7 @@ checkMedia(api.Media o) {
     unittest.expect(o.mediaUrl, unittest.equals('foo'));
     unittest.expect(o.published, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.sizeBytes, unittest.equals('foo'));
-    checkUnnamed646(o.streams);
+    checkUnnamed674(o.streams);
     unittest.expect(o.summary, unittest.equals('foo'));
     unittest.expect(o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.url, unittest.equals('foo'));
@@ -1129,14 +1129,14 @@ checkMedia(api.Media o) {
   buildCounterMedia--;
 }
 
-buildUnnamed647() {
+buildUnnamed675() {
   var o = new core.List<api.Person>();
   o.add(buildPerson());
   o.add(buildPerson());
   return o;
 }
 
-checkUnnamed647(core.List<api.Person> o) {
+checkUnnamed675(core.List<api.Person> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPerson(o[0]);
   checkPerson(o[1]);
@@ -1148,7 +1148,7 @@ buildPeopleFeed() {
   buildCounterPeopleFeed++;
   if (buildCounterPeopleFeed < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed647();
+    o.items = buildUnnamed675();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -1163,7 +1163,7 @@ checkPeopleFeed(api.PeopleFeed o) {
   buildCounterPeopleFeed++;
   if (buildCounterPeopleFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed647(o.items);
+    checkUnnamed675(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -1261,14 +1261,14 @@ checkPersonEmails(api.PersonEmails o) {
   buildCounterPersonEmails--;
 }
 
-buildUnnamed648() {
+buildUnnamed676() {
   var o = new core.List<api.PersonEmails>();
   o.add(buildPersonEmails());
   o.add(buildPersonEmails());
   return o;
 }
 
-checkUnnamed648(core.List<api.PersonEmails> o) {
+checkUnnamed676(core.List<api.PersonEmails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonEmails(o[0]);
   checkPersonEmails(o[1]);
@@ -1359,14 +1359,14 @@ checkPersonOrganizations(api.PersonOrganizations o) {
   buildCounterPersonOrganizations--;
 }
 
-buildUnnamed649() {
+buildUnnamed677() {
   var o = new core.List<api.PersonOrganizations>();
   o.add(buildPersonOrganizations());
   o.add(buildPersonOrganizations());
   return o;
 }
 
-checkUnnamed649(core.List<api.PersonOrganizations> o) {
+checkUnnamed677(core.List<api.PersonOrganizations> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonOrganizations(o[0]);
   checkPersonOrganizations(o[1]);
@@ -1393,14 +1393,14 @@ checkPersonPlacesLived(api.PersonPlacesLived o) {
   buildCounterPersonPlacesLived--;
 }
 
-buildUnnamed650() {
+buildUnnamed678() {
   var o = new core.List<api.PersonPlacesLived>();
   o.add(buildPersonPlacesLived());
   o.add(buildPersonPlacesLived());
   return o;
 }
 
-checkUnnamed650(core.List<api.PersonPlacesLived> o) {
+checkUnnamed678(core.List<api.PersonPlacesLived> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonPlacesLived(o[0]);
   checkPersonPlacesLived(o[1]);
@@ -1429,14 +1429,14 @@ checkPersonUrls(api.PersonUrls o) {
   buildCounterPersonUrls--;
 }
 
-buildUnnamed651() {
+buildUnnamed679() {
   var o = new core.List<api.PersonUrls>();
   o.add(buildPersonUrls());
   o.add(buildPersonUrls());
   return o;
 }
 
-checkUnnamed651(core.List<api.PersonUrls> o) {
+checkUnnamed679(core.List<api.PersonUrls> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonUrls(o[0]);
   checkPersonUrls(o[1]);
@@ -1455,7 +1455,7 @@ buildPerson() {
     o.currentLocation = "foo";
     o.displayName = "foo";
     o.domain = "foo";
-    o.emails = buildUnnamed648();
+    o.emails = buildUnnamed676();
     o.etag = "foo";
     o.gender = "foo";
     o.id = "foo";
@@ -1466,14 +1466,14 @@ buildPerson() {
     o.nickname = "foo";
     o.objectType = "foo";
     o.occupation = "foo";
-    o.organizations = buildUnnamed649();
-    o.placesLived = buildUnnamed650();
+    o.organizations = buildUnnamed677();
+    o.placesLived = buildUnnamed678();
     o.plusOneCount = 42;
     o.relationshipStatus = "foo";
     o.skills = "foo";
     o.tagline = "foo";
     o.url = "foo";
-    o.urls = buildUnnamed651();
+    o.urls = buildUnnamed679();
     o.verified = true;
   }
   buildCounterPerson--;
@@ -1491,7 +1491,7 @@ checkPerson(api.Person o) {
     unittest.expect(o.currentLocation, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.domain, unittest.equals('foo'));
-    checkUnnamed648(o.emails);
+    checkUnnamed676(o.emails);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.gender, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
@@ -1502,14 +1502,14 @@ checkPerson(api.Person o) {
     unittest.expect(o.nickname, unittest.equals('foo'));
     unittest.expect(o.objectType, unittest.equals('foo'));
     unittest.expect(o.occupation, unittest.equals('foo'));
-    checkUnnamed649(o.organizations);
-    checkUnnamed650(o.placesLived);
+    checkUnnamed677(o.organizations);
+    checkUnnamed678(o.placesLived);
     unittest.expect(o.plusOneCount, unittest.equals(42));
     unittest.expect(o.relationshipStatus, unittest.equals('foo'));
     unittest.expect(o.skills, unittest.equals('foo'));
     unittest.expect(o.tagline, unittest.equals('foo'));
     unittest.expect(o.url, unittest.equals('foo'));
-    checkUnnamed651(o.urls);
+    checkUnnamed679(o.urls);
     unittest.expect(o.verified, unittest.isTrue);
   }
   buildCounterPerson--;
@@ -1630,53 +1630,53 @@ checkVideostream(api.Videostream o) {
   buildCounterVideostream--;
 }
 
-buildUnnamed652() {
+buildUnnamed680() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed652(core.List<core.String> o) {
+checkUnnamed680(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed653() {
+buildUnnamed681() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed653(core.List<core.String> o) {
+checkUnnamed681(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed654() {
+buildUnnamed682() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed654(core.List<core.String> o) {
+checkUnnamed682(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed655() {
+buildUnnamed683() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed655(core.List<core.String> o) {
+checkUnnamed683(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2172,8 +2172,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("activities/"));
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2224,8 +2226,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("people/"));
         pathOffset += 7;
         index = path.indexOf("/activities", pathOffset);
@@ -2279,8 +2283,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("people/"));
         pathOffset += 7;
         index = path.indexOf("/activities/", pathOffset);
@@ -2341,8 +2347,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("people/"));
         pathOffset += 7;
         index = path.indexOf("/audiences", pathOffset);
@@ -2393,15 +2401,17 @@ main() {
       var mock = new common_test.HttpServerMock();
       api.CirclesResourceApi res = new api.PlusDomainsApi(mock).circles;
       var arg_circleId = "foo";
-      var arg_email = buildUnnamed652();
-      var arg_userId = buildUnnamed653();
+      var arg_email = buildUnnamed680();
+      var arg_userId = buildUnnamed681();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("circles/"));
         pathOffset += 8;
         index = path.indexOf("/people", pathOffset);
@@ -2453,8 +2463,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("circles/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2504,8 +2516,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("people/"));
         pathOffset += 7;
         index = path.indexOf("/circles", pathOffset);
@@ -2557,8 +2571,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("people/"));
         pathOffset += 7;
         index = path.indexOf("/circles", pathOffset);
@@ -2614,8 +2630,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("circles/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2661,8 +2679,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("circles/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2701,15 +2721,17 @@ main() {
       var mock = new common_test.HttpServerMock();
       api.CirclesResourceApi res = new api.PlusDomainsApi(mock).circles;
       var arg_circleId = "foo";
-      var arg_email = buildUnnamed654();
-      var arg_userId = buildUnnamed655();
+      var arg_email = buildUnnamed682();
+      var arg_userId = buildUnnamed683();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("circles/"));
         pathOffset += 8;
         index = path.indexOf("/people", pathOffset);
@@ -2763,8 +2785,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("circles/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2814,8 +2838,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("comments/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2865,8 +2891,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("activities/"));
         pathOffset += 11;
         index = path.indexOf("/comments", pathOffset);
@@ -2919,8 +2947,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("activities/"));
         pathOffset += 11;
         index = path.indexOf("/comments", pathOffset);
@@ -2984,8 +3014,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("people/"));
         pathOffset += 7;
         index = path.indexOf("/media/", pathOffset);
@@ -3042,8 +3074,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("people/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3093,8 +3127,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("people/"));
         pathOffset += 7;
         index = path.indexOf("/people/", pathOffset);
@@ -3153,8 +3189,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("activities/"));
         pathOffset += 11;
         index = path.indexOf("/people/", pathOffset);
@@ -3211,8 +3249,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/plusDomains/v1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("plusDomains/v1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("circles/"));
         pathOffset += 8;
         index = path.indexOf("/people", pathOffset);

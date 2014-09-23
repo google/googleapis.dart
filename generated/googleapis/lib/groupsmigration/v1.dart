@@ -21,7 +21,7 @@ class GroupsmigrationApi {
   ArchiveResourceApi get archive => new ArchiveResourceApi(_requester);
 
   GroupsmigrationApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/groups/v1/groups/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "groups/v1/groups/");
 }
 
 

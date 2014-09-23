@@ -16,27 +16,27 @@ import 'package:googleapis_beta/dns/v1beta1.dart' as api;
 
 
 
-buildUnnamed1052() {
+buildUnnamed1080() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed1052(core.List<api.ResourceRecordSet> o) {
+checkUnnamed1080(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
 }
 
-buildUnnamed1053() {
+buildUnnamed1081() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed1053(core.List<api.ResourceRecordSet> o) {
+checkUnnamed1081(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
@@ -47,8 +47,8 @@ buildChange() {
   var o = new api.Change();
   buildCounterChange++;
   if (buildCounterChange < 3) {
-    o.additions = buildUnnamed1052();
-    o.deletions = buildUnnamed1053();
+    o.additions = buildUnnamed1080();
+    o.deletions = buildUnnamed1081();
     o.id = "foo";
     o.kind = "foo";
     o.startTime = "foo";
@@ -61,8 +61,8 @@ buildChange() {
 checkChange(api.Change o) {
   buildCounterChange++;
   if (buildCounterChange < 3) {
-    checkUnnamed1052(o.additions);
-    checkUnnamed1053(o.deletions);
+    checkUnnamed1080(o.additions);
+    checkUnnamed1081(o.deletions);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.startTime, unittest.equals('foo'));
@@ -71,14 +71,14 @@ checkChange(api.Change o) {
   buildCounterChange--;
 }
 
-buildUnnamed1054() {
+buildUnnamed1082() {
   var o = new core.List<api.Change>();
   o.add(buildChange());
   o.add(buildChange());
   return o;
 }
 
-checkUnnamed1054(core.List<api.Change> o) {
+checkUnnamed1082(core.List<api.Change> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChange(o[0]);
   checkChange(o[1]);
@@ -89,7 +89,7 @@ buildChangesListResponse() {
   var o = new api.ChangesListResponse();
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
-    o.changes = buildUnnamed1054();
+    o.changes = buildUnnamed1082();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -100,21 +100,21 @@ buildChangesListResponse() {
 checkChangesListResponse(api.ChangesListResponse o) {
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
-    checkUnnamed1054(o.changes);
+    checkUnnamed1082(o.changes);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterChangesListResponse--;
 }
 
-buildUnnamed1055() {
+buildUnnamed1083() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1055(core.List<core.String> o) {
+checkUnnamed1083(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -131,7 +131,7 @@ buildManagedZone() {
     o.id = "foo";
     o.kind = "foo";
     o.name = "foo";
-    o.nameServers = buildUnnamed1055();
+    o.nameServers = buildUnnamed1083();
   }
   buildCounterManagedZone--;
   return o;
@@ -146,19 +146,19 @@ checkManagedZone(api.ManagedZone o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1055(o.nameServers);
+    checkUnnamed1083(o.nameServers);
   }
   buildCounterManagedZone--;
 }
 
-buildUnnamed1056() {
+buildUnnamed1084() {
   var o = new core.List<api.ManagedZone>();
   o.add(buildManagedZone());
   o.add(buildManagedZone());
   return o;
 }
 
-checkUnnamed1056(core.List<api.ManagedZone> o) {
+checkUnnamed1084(core.List<api.ManagedZone> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedZone(o[0]);
   checkManagedZone(o[1]);
@@ -170,7 +170,7 @@ buildManagedZonesListResponse() {
   buildCounterManagedZonesListResponse++;
   if (buildCounterManagedZonesListResponse < 3) {
     o.kind = "foo";
-    o.managedZones = buildUnnamed1056();
+    o.managedZones = buildUnnamed1084();
     o.nextPageToken = "foo";
   }
   buildCounterManagedZonesListResponse--;
@@ -181,7 +181,7 @@ checkManagedZonesListResponse(api.ManagedZonesListResponse o) {
   buildCounterManagedZonesListResponse++;
   if (buildCounterManagedZonesListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1056(o.managedZones);
+    checkUnnamed1084(o.managedZones);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterManagedZonesListResponse--;
@@ -243,14 +243,14 @@ checkQuota(api.Quota o) {
   buildCounterQuota--;
 }
 
-buildUnnamed1057() {
+buildUnnamed1085() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1057(core.List<core.String> o) {
+checkUnnamed1085(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -263,7 +263,7 @@ buildResourceRecordSet() {
   if (buildCounterResourceRecordSet < 3) {
     o.kind = "foo";
     o.name = "foo";
-    o.rrdatas = buildUnnamed1057();
+    o.rrdatas = buildUnnamed1085();
     o.ttl = 42;
     o.type = "foo";
   }
@@ -276,21 +276,21 @@ checkResourceRecordSet(api.ResourceRecordSet o) {
   if (buildCounterResourceRecordSet < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1057(o.rrdatas);
+    checkUnnamed1085(o.rrdatas);
     unittest.expect(o.ttl, unittest.equals(42));
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterResourceRecordSet--;
 }
 
-buildUnnamed1058() {
+buildUnnamed1086() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed1058(core.List<api.ResourceRecordSet> o) {
+checkUnnamed1086(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
@@ -303,7 +303,7 @@ buildResourceRecordSetsListResponse() {
   if (buildCounterResourceRecordSetsListResponse < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.rrsets = buildUnnamed1058();
+    o.rrsets = buildUnnamed1086();
   }
   buildCounterResourceRecordSetsListResponse--;
   return o;
@@ -314,7 +314,7 @@ checkResourceRecordSetsListResponse(api.ResourceRecordSetsListResponse o) {
   if (buildCounterResourceRecordSetsListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1058(o.rrsets);
+    checkUnnamed1086(o.rrsets);
   }
   buildCounterResourceRecordSetsListResponse--;
 }
@@ -409,22 +409,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("/dns/v1beta1/projects/"));
-        pathOffset += 22;
-        index = path.indexOf("/managedZones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/managedZones/"));
-        pathOffset += 14;
-        index = path.indexOf("/changes", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/changes"));
-        pathOffset += 8;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -467,25 +453,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("/dns/v1beta1/projects/"));
-        pathOffset += 22;
-        index = path.indexOf("/managedZones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/managedZones/"));
-        pathOffset += 14;
-        index = path.indexOf("/changes/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/changes/"));
-        pathOffset += 9;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_changeId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -531,22 +500,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("/dns/v1beta1/projects/"));
-        pathOffset += 22;
-        index = path.indexOf("/managedZones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/managedZones/"));
-        pathOffset += 14;
-        index = path.indexOf("/changes", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/changes"));
-        pathOffset += 8;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -599,15 +554,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("/dns/v1beta1/projects/"));
-        pathOffset += 22;
-        index = path.indexOf("/managedZones", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/managedZones"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -649,18 +597,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("/dns/v1beta1/projects/"));
-        pathOffset += 22;
-        index = path.indexOf("/managedZones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/managedZones/"));
-        pathOffset += 14;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -700,18 +638,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("/dns/v1beta1/projects/"));
-        pathOffset += 22;
-        index = path.indexOf("/managedZones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/managedZones/"));
-        pathOffset += 14;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -754,15 +682,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("/dns/v1beta1/projects/"));
-        pathOffset += 22;
-        index = path.indexOf("/managedZones", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/managedZones"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -809,11 +730,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("/dns/v1beta1/projects/"));
-        pathOffset += 22;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -863,22 +781,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("/dns/v1beta1/projects/"));
-        pathOffset += 22;
-        index = path.indexOf("/managedZones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/managedZones/"));
-        pathOffset += 14;
-        index = path.indexOf("/rrsets", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_managedZone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/rrsets"));
-        pathOffset += 7;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;

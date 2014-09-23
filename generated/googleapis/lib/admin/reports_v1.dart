@@ -33,7 +33,7 @@ class AdminApi {
   UserUsageReportResourceApi get userUsageReport => new UserUsageReportResourceApi(_requester);
 
   AdminApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/admin/reports/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "admin/reports/v1/");
 }
 
 
@@ -573,6 +573,12 @@ class ActivityEventsParameters {
   /** Integral value of the parameter. */
   core.String intValue;
 
+  /** Multi-int value of the parameter. */
+  core.List<core.String> multiIntValue;
+
+  /** Multi-string value of the parameter. */
+  core.List<core.String> multiValue;
+
   /** The name of the parameter. */
   core.String name;
 
@@ -589,6 +595,12 @@ class ActivityEventsParameters {
     if (_json.containsKey("intValue")) {
       intValue = _json["intValue"];
     }
+    if (_json.containsKey("multiIntValue")) {
+      multiIntValue = _json["multiIntValue"];
+    }
+    if (_json.containsKey("multiValue")) {
+      multiValue = _json["multiValue"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -604,6 +616,12 @@ class ActivityEventsParameters {
     }
     if (intValue != null) {
       _json["intValue"] = intValue;
+    }
+    if (multiIntValue != null) {
+      _json["multiIntValue"] = multiIntValue;
+    }
+    if (multiValue != null) {
+      _json["multiValue"] = multiValue;
     }
     if (name != null) {
       _json["name"] = name;

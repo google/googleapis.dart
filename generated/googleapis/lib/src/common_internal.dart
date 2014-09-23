@@ -9,7 +9,7 @@ import "../common/common.dart" as common_external;
 import "package:http/http.dart" as http;
 
 const String USER_AGENT_STRING =
-    'google-api-dart-client googleapis/0.1.1';
+    'google-api-dart-client googleapis/0.2.0';
 
 const CONTENT_TYPE_JSON_UTF8 = 'application/json; charset=utf-8';
 
@@ -152,7 +152,7 @@ class ApiRequester {
     if (requestUrl.startsWith('/')) {
       path ="$_rootUrl${requestUrl.substring(1)}";
     } else {
-      path ="$_rootUrl${_basePath.substring(1)}$requestUrl";
+      path ="$_rootUrl${_basePath}$requestUrl";
     }
 
     bool containsQueryParameter = path.contains('?');
@@ -430,12 +430,19 @@ class ResumableMediaUploader {
 
         // Upload all but the last chunk.
         // The final send will be done in the [onDone] handler.
-        if (chunkStack.length > 1) {
+        bool hasPartialChunk = chunkStack.hasPartialChunk;
+        if (chunkStack.length > 1 ||
+            (chunkStack.length == 1 && hasPartialChunk)) {
           // Pause the input stream.
           subscription.pause();
 
           // Upload all chunks except the last one.
-          var fullChunks = chunkStack.removeSublist(0, chunkStack.length - 1);
+          var fullChunks;
+          if (hasPartialChunk) {
+            fullChunks = chunkStack.removeSublist(0, chunkStack.length);
+          } else {
+            fullChunks = chunkStack.removeSublist(0, chunkStack.length - 1);
+          }
           Future.forEach(fullChunks,
                          (c) => _uploadChunkDrained(uploadUri, c)).then((_) {
             // All chunks uploaded, we can continue consuming data.
@@ -457,11 +464,13 @@ class ResumableMediaUploader {
           chunkStack.finalize();
 
           var lastChunk;
-          if (chunkStack.totalByteLength > 0) {
-            assert(chunkStack.length == 1);
+          if (chunkStack.length == 1) {
             lastChunk = chunkStack.removeSublist(0, chunkStack.length).first;
           } else {
-            lastChunk = new ResumableChunk([], 0, 0);
+            completer.completeError(new StateError(
+                'Resumable uploads need to result in at least one non-empty '
+                'chunk at the end.'));
+            return;
           }
           var end = lastChunk.endOfChunk;
 
@@ -654,16 +663,34 @@ class ChunkStack {
   // Currently accumulated data.
   List<List<int>> _byteArrays = [];
   int _length = 0;
-  int _totalLength = 0;
   int _offset = 0;
 
   bool _finalized = false;
 
   ChunkStack(this._chunkSize);
 
+  /**
+   * Whether data for a not-yet-finished [ResumableChunk] is present. A call to
+   * `finalize` will create a [ResumableChunk] of this data.
+   */
+  bool get hasPartialChunk => _length > 0;
+
+  /**
+   * The number of chunks in this [ChunkStack].
+   */
   int get length => _chunkStack.length;
 
-  int get totalByteLength => _offset;
+  /**
+   * The total number of bytes which have been converted to [ResumableChunk]s.
+   * Can only be called once this [ChunkStack] has been finalized.
+   */
+  int get totalByteLength {
+    if (!_finalized) {
+      throw new StateError('ChunkStack has not been finalized yet.');
+    }
+
+    return _offset;
+  }
 
   /**
    * Returns the chunks [from] ... [to] and deletes it from the stack.

@@ -43,7 +43,7 @@ class BigqueryApi {
   TablesResourceApi get tables => new TablesResourceApi(_requester);
 
   BigqueryApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/bigquery/v2/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "bigquery/v2/");
 }
 
 

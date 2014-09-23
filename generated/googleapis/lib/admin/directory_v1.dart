@@ -70,6 +70,12 @@ class AdminApi {
   /** Manage data access permissions for users on your domain */
   static const AdminDirectoryUserSecurityScope = "https://www.googleapis.com/auth/admin.directory.user.security";
 
+  /** View and manage the provisioning of user schemas on your domain */
+  static const AdminDirectoryUserschemaScope = "https://www.googleapis.com/auth/admin.directory.userschema";
+
+  /** View user schemas on your domain */
+  static const AdminDirectoryUserschemaReadonlyScope = "https://www.googleapis.com/auth/admin.directory.userschema.readonly";
+
 
   final common_internal.ApiRequester _requester;
 
@@ -81,12 +87,13 @@ class AdminApi {
   MobiledevicesResourceApi get mobiledevices => new MobiledevicesResourceApi(_requester);
   NotificationsResourceApi get notifications => new NotificationsResourceApi(_requester);
   OrgunitsResourceApi get orgunits => new OrgunitsResourceApi(_requester);
+  SchemasResourceApi get schemas => new SchemasResourceApi(_requester);
   TokensResourceApi get tokens => new TokensResourceApi(_requester);
   UsersResourceApi get users => new UsersResourceApi(_requester);
   VerificationCodesResourceApi get verificationCodes => new VerificationCodesResourceApi(_requester);
 
   AdminApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/admin/directory/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "admin/directory/v1/");
 }
 
 
@@ -2083,6 +2090,290 @@ class OrgunitsResourceApi {
 
 
 /** Not documented yet. */
+class SchemasResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  SchemasResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Delete schema
+   *
+   * Request parameters:
+   *
+   * [customerId] - Immutable id of the Google Apps account
+   *
+   * [schemaKey] - Name or immutable Id of the schema
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String customerId, core.String schemaKey) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customerId == null) {
+      throw new core.ArgumentError("Parameter customerId is required.");
+    }
+    if (schemaKey == null) {
+      throw new core.ArgumentError("Parameter schemaKey is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'customer/' + common_internal.Escaper.ecapeVariable('$customerId') + '/schemas/' + common_internal.Escaper.ecapeVariable('$schemaKey');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Retrieve schema
+   *
+   * Request parameters:
+   *
+   * [customerId] - Immutable id of the Google Apps account
+   *
+   * [schemaKey] - Name or immutable Id of the schema
+   *
+   * Completes with a [Schema].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Schema> get(core.String customerId, core.String schemaKey) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customerId == null) {
+      throw new core.ArgumentError("Parameter customerId is required.");
+    }
+    if (schemaKey == null) {
+      throw new core.ArgumentError("Parameter schemaKey is required.");
+    }
+
+
+    _url = 'customer/' + common_internal.Escaper.ecapeVariable('$customerId') + '/schemas/' + common_internal.Escaper.ecapeVariable('$schemaKey');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Schema.fromJson(data));
+  }
+
+  /**
+   * Create schema.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customerId] - Immutable id of the Google Apps account
+   *
+   * Completes with a [Schema].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Schema> insert(Schema request, core.String customerId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customerId == null) {
+      throw new core.ArgumentError("Parameter customerId is required.");
+    }
+
+
+    _url = 'customer/' + common_internal.Escaper.ecapeVariable('$customerId') + '/schemas';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Schema.fromJson(data));
+  }
+
+  /**
+   * Retrieve all schemas for a customer
+   *
+   * Request parameters:
+   *
+   * [customerId] - Immutable id of the Google Apps account
+   *
+   * Completes with a [Schemas].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Schemas> list(core.String customerId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customerId == null) {
+      throw new core.ArgumentError("Parameter customerId is required.");
+    }
+
+
+    _url = 'customer/' + common_internal.Escaper.ecapeVariable('$customerId') + '/schemas';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Schemas.fromJson(data));
+  }
+
+  /**
+   * Update schema. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customerId] - Immutable id of the Google Apps account
+   *
+   * [schemaKey] - Name or immutable Id of the schema.
+   *
+   * Completes with a [Schema].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Schema> patch(Schema request, core.String customerId, core.String schemaKey) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customerId == null) {
+      throw new core.ArgumentError("Parameter customerId is required.");
+    }
+    if (schemaKey == null) {
+      throw new core.ArgumentError("Parameter schemaKey is required.");
+    }
+
+
+    _url = 'customer/' + common_internal.Escaper.ecapeVariable('$customerId') + '/schemas/' + common_internal.Escaper.ecapeVariable('$schemaKey');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Schema.fromJson(data));
+  }
+
+  /**
+   * Update schema
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customerId] - Immutable id of the Google Apps account
+   *
+   * [schemaKey] - Name or immutable Id of the schema.
+   *
+   * Completes with a [Schema].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Schema> update(Schema request, core.String customerId, core.String schemaKey) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customerId == null) {
+      throw new core.ArgumentError("Parameter customerId is required.");
+    }
+    if (schemaKey == null) {
+      throw new core.ArgumentError("Parameter schemaKey is required.");
+    }
+
+
+    _url = 'customer/' + common_internal.Escaper.ecapeVariable('$customerId') + '/schemas/' + common_internal.Escaper.ecapeVariable('$schemaKey');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Schema.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
 class TokensResourceApi {
   final common_internal.ApiRequester _requester;
 
@@ -2281,6 +2572,22 @@ class UsersResourceApi {
    *
    * [userKey] - Email or immutable Id of the user
    *
+   * [customFieldMask] - Comma-separated list of schema names. All fields from
+   * these schemas are fetched. This should only be set when projection=custom.
+   *
+   * [projection] - What subset of fields to fetch for this user.
+   * Possible string values are:
+   * - "basic" : Do not include any custom fields for the user.
+   * - "custom" : Include custom fields from schemas mentioned in
+   * customFieldMask.
+   * - "full" : Include all fields associated with this user.
+   *
+   * [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
+   * user.
+   * Possible string values are:
+   * - "admin_view" : Fetches the ADMIN_VIEW of the user.
+   * - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
+   *
    * Completes with a [User].
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
@@ -2289,7 +2596,7 @@ class UsersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<User> get(core.String userKey) {
+  async.Future<User> get(core.String userKey, {core.String customFieldMask, core.String projection, core.String viewType}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2299,6 +2606,15 @@ class UsersResourceApi {
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if (customFieldMask != null) {
+      _queryParams["customFieldMask"] = [customFieldMask];
+    }
+    if (projection != null) {
+      _queryParams["projection"] = [projection];
+    }
+    if (viewType != null) {
+      _queryParams["viewType"] = [viewType];
     }
 
 
@@ -2359,6 +2675,9 @@ class UsersResourceApi {
    *
    * Request parameters:
    *
+   * [customFieldMask] - Comma-separated list of schema names. All fields from
+   * these schemas are fetched. This should only be set when projection=custom.
+   *
    * [customer] - Immutable id of the Google Apps account. In case of
    * multi-domain, to fetch all users for a customer, fill this field instead of
    * domain.
@@ -2386,10 +2705,16 @@ class UsersResourceApi {
    *
    * [pageToken] - Token to specify next page in the list
    *
-   * [query] - Query string search. Should be of the form "" where field can be
-   * any of supported fields, operators can be one of '=' for exact match or ':'
-   * for prefix match. For prefix match, the value should always be followed by
-   * a *.
+   * [projection] - What subset of fields to fetch for this user.
+   * Possible string values are:
+   * - "basic" : Do not include any custom fields for the user.
+   * - "custom" : Include custom fields from schemas mentioned in
+   * customFieldMask.
+   * - "full" : Include all fields associated with this user.
+   *
+   * [query] - Query string search. Should be of the form "". Complete
+   * documentation is at
+   * https://developers.google.com/admin-sdk/directory/v1/guides/search-users
    *
    * [showDeleted] - If set to true retrieves the list of deleted users. Default
    * is false
@@ -2399,6 +2724,12 @@ class UsersResourceApi {
    * - "ASCENDING" : Ascending order.
    * - "DESCENDING" : Descending order.
    *
+   * [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
+   * user.
+   * Possible string values are:
+   * - "admin_view" : Fetches the ADMIN_VIEW of the user.
+   * - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
+   *
    * Completes with a [Users].
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
@@ -2407,7 +2738,7 @@ class UsersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Users> list({core.String customer, core.String domain, core.String event, core.int maxResults, core.String orderBy, core.String pageToken, core.String query, core.String showDeleted, core.String sortOrder}) {
+  async.Future<Users> list({core.String customFieldMask, core.String customer, core.String domain, core.String event, core.int maxResults, core.String orderBy, core.String pageToken, core.String projection, core.String query, core.String showDeleted, core.String sortOrder, core.String viewType}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2415,6 +2746,9 @@ class UsersResourceApi {
     var _downloadOptions = common.DownloadOptions.Metadata;
     var _body = null;
 
+    if (customFieldMask != null) {
+      _queryParams["customFieldMask"] = [customFieldMask];
+    }
     if (customer != null) {
       _queryParams["customer"] = [customer];
     }
@@ -2433,6 +2767,9 @@ class UsersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (projection != null) {
+      _queryParams["projection"] = [projection];
+    }
     if (query != null) {
       _queryParams["query"] = [query];
     }
@@ -2441,6 +2778,9 @@ class UsersResourceApi {
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (viewType != null) {
+      _queryParams["viewType"] = [viewType];
     }
 
 
@@ -2643,6 +2983,9 @@ class UsersResourceApi {
    *
    * Request parameters:
    *
+   * [customFieldMask] - Comma-separated list of schema names. All fields from
+   * these schemas are fetched. This should only be set when projection=custom.
+   *
    * [customer] - Immutable id of the Google Apps account. In case of
    * multi-domain, to fetch all users for a customer, fill this field instead of
    * domain.
@@ -2670,10 +3013,16 @@ class UsersResourceApi {
    *
    * [pageToken] - Token to specify next page in the list
    *
-   * [query] - Query string search. Should be of the form "" where field can be
-   * any of supported fields, operators can be one of '=' for exact match or ':'
-   * for prefix match. For prefix match, the value should always be followed by
-   * a *.
+   * [projection] - What subset of fields to fetch for this user.
+   * Possible string values are:
+   * - "basic" : Do not include any custom fields for the user.
+   * - "custom" : Include custom fields from schemas mentioned in
+   * customFieldMask.
+   * - "full" : Include all fields associated with this user.
+   *
+   * [query] - Query string search. Should be of the form "". Complete
+   * documentation is at
+   * https://developers.google.com/admin-sdk/directory/v1/guides/search-users
    *
    * [showDeleted] - If set to true retrieves the list of deleted users. Default
    * is false
@@ -2683,6 +3032,12 @@ class UsersResourceApi {
    * - "ASCENDING" : Ascending order.
    * - "DESCENDING" : Descending order.
    *
+   * [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
+   * user.
+   * Possible string values are:
+   * - "admin_view" : Fetches the ADMIN_VIEW of the user.
+   * - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
+   *
    * Completes with a [Channel].
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
@@ -2691,7 +3046,7 @@ class UsersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Channel> watch(Channel request, {core.String customer, core.String domain, core.String event, core.int maxResults, core.String orderBy, core.String pageToken, core.String query, core.String showDeleted, core.String sortOrder}) {
+  async.Future<Channel> watch(Channel request, {core.String customFieldMask, core.String customer, core.String domain, core.String event, core.int maxResults, core.String orderBy, core.String pageToken, core.String projection, core.String query, core.String showDeleted, core.String sortOrder, core.String viewType}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2701,6 +3056,9 @@ class UsersResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (customFieldMask != null) {
+      _queryParams["customFieldMask"] = [customFieldMask];
     }
     if (customer != null) {
       _queryParams["customer"] = [customer];
@@ -2720,6 +3078,9 @@ class UsersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (projection != null) {
+      _queryParams["projection"] = [projection];
+    }
     if (query != null) {
       _queryParams["query"] = [query];
     }
@@ -2728,6 +3089,9 @@ class UsersResourceApi {
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (viewType != null) {
+      _queryParams["viewType"] = [viewType];
     }
 
 
@@ -4862,6 +5226,256 @@ class OrgUnits {
 }
 
 
+/** JSON template for Schema resource in Directory API. */
+class Schema {
+  /** ETag of the resource. */
+  core.String etag;
+
+  /** Fields of Schema */
+  core.List<SchemaFieldSpec> fields;
+
+  /** Kind of resource this is. */
+  core.String kind;
+
+  /** Unique identifier of Schema (Read-only) */
+  core.String schemaId;
+
+  /** Schema name */
+  core.String schemaName;
+
+
+  Schema();
+
+  Schema.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("fields")) {
+      fields = _json["fields"].map((value) => new SchemaFieldSpec.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("schemaId")) {
+      schemaId = _json["schemaId"];
+    }
+    if (_json.containsKey("schemaName")) {
+      schemaName = _json["schemaName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (fields != null) {
+      _json["fields"] = fields.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (schemaId != null) {
+      _json["schemaId"] = schemaId;
+    }
+    if (schemaName != null) {
+      _json["schemaName"] = schemaName;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * Indexing spec for a numeric field. By default, only exact match queries will
+ * be supported for numeric fields. Setting the numericIndexingSpec allows range
+ * queries to be supported.
+ */
+class SchemaFieldSpecNumericIndexingSpec {
+  /**
+   * Maximum value of this field. This is meant to be indicative rather than
+   * enforced. Values outside this range will still be indexed, but search may
+   * not be as performant.
+   */
+  core.double maxValue;
+
+  /**
+   * Minimum value of this field. This is meant to be indicative rather than
+   * enforced. Values outside this range will still be indexed, but search may
+   * not be as performant.
+   */
+  core.double minValue;
+
+
+  SchemaFieldSpecNumericIndexingSpec();
+
+  SchemaFieldSpecNumericIndexingSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("maxValue")) {
+      maxValue = _json["maxValue"];
+    }
+    if (_json.containsKey("minValue")) {
+      minValue = _json["minValue"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (maxValue != null) {
+      _json["maxValue"] = maxValue;
+    }
+    if (minValue != null) {
+      _json["minValue"] = minValue;
+    }
+    return _json;
+  }
+}
+
+
+/** JSON template for FieldSpec resource for Schemas in Directory API. */
+class SchemaFieldSpec {
+  /** ETag of the resource. */
+  core.String etag;
+
+  /** Unique identifier of Field (Read-only) */
+  core.String fieldId;
+
+  /** Name of the field. */
+  core.String fieldName;
+
+  /** Type of the field. */
+  core.String fieldType;
+
+  /** Boolean specifying whether the field is indexed or not. */
+  core.bool indexed;
+
+  /** Kind of resource this is. */
+  core.String kind;
+
+  /** Boolean specifying whether this is a multi-valued field or not. */
+  core.bool multiValued;
+
+  /**
+   * Indexing spec for a numeric field. By default, only exact match queries
+   * will be supported for numeric fields. Setting the numericIndexingSpec
+   * allows range queries to be supported.
+   */
+  SchemaFieldSpecNumericIndexingSpec numericIndexingSpec;
+
+  /**
+   * Read ACLs on the field specifying who can view values of this field. Valid
+   * values are "ALL_DOMAIN_USERS" and "ADMINS_AND_SELF".
+   */
+  core.String readAccessType;
+
+
+  SchemaFieldSpec();
+
+  SchemaFieldSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("fieldId")) {
+      fieldId = _json["fieldId"];
+    }
+    if (_json.containsKey("fieldName")) {
+      fieldName = _json["fieldName"];
+    }
+    if (_json.containsKey("fieldType")) {
+      fieldType = _json["fieldType"];
+    }
+    if (_json.containsKey("indexed")) {
+      indexed = _json["indexed"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("multiValued")) {
+      multiValued = _json["multiValued"];
+    }
+    if (_json.containsKey("numericIndexingSpec")) {
+      numericIndexingSpec = new SchemaFieldSpecNumericIndexingSpec.fromJson(_json["numericIndexingSpec"]);
+    }
+    if (_json.containsKey("readAccessType")) {
+      readAccessType = _json["readAccessType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (fieldId != null) {
+      _json["fieldId"] = fieldId;
+    }
+    if (fieldName != null) {
+      _json["fieldName"] = fieldName;
+    }
+    if (fieldType != null) {
+      _json["fieldType"] = fieldType;
+    }
+    if (indexed != null) {
+      _json["indexed"] = indexed;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (multiValued != null) {
+      _json["multiValued"] = multiValued;
+    }
+    if (numericIndexingSpec != null) {
+      _json["numericIndexingSpec"] = (numericIndexingSpec).toJson();
+    }
+    if (readAccessType != null) {
+      _json["readAccessType"] = readAccessType;
+    }
+    return _json;
+  }
+}
+
+
+/** JSON response template for List Schema operation in Directory API. */
+class Schemas {
+  /** ETag of the resource. */
+  core.String etag;
+
+  /** Kind of resource this is. */
+  core.String kind;
+
+  /** List of UserSchema objects. */
+  core.List<Schema> schemas;
+
+
+  Schemas();
+
+  Schemas.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("schemas")) {
+      schemas = _json["schemas"].map((value) => new Schema.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (schemas != null) {
+      _json["schemas"] = schemas.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
 /** JSON template for token resource in Directory API. */
 class Token {
   /**
@@ -4999,7 +5613,7 @@ class Tokens {
 }
 
 
-/** JSON template for User object in Apps Directory API. */
+/** JSON template for User object in Directory API. */
 class User {
   /**
    * Not documented yet.
@@ -5020,6 +5634,9 @@ class User {
 
   /** User's Google account creation time. (Read-only) */
   core.DateTime creationTime;
+
+  /** Custom fields of the user. */
+  core.Map<core.String, UserCustomProperties> customSchemas;
 
   /** CustomerId of User (Read-only) */
   core.String customerId;
@@ -5148,6 +5765,9 @@ class User {
     if (_json.containsKey("creationTime")) {
       creationTime = core.DateTime.parse(_json["creationTime"]);
     }
+    if (_json.containsKey("customSchemas")) {
+      customSchemas = common_internal.mapMap(_json["customSchemas"], (item) => new UserCustomProperties.fromJson(item));
+    }
     if (_json.containsKey("customerId")) {
       customerId = _json["customerId"];
     }
@@ -5244,6 +5864,9 @@ class User {
     }
     if (creationTime != null) {
       _json["creationTime"] = (creationTime).toIso8601String();
+    }
+    if (customSchemas != null) {
+      _json["customSchemas"] = customSchemas;
     }
     if (customerId != null) {
       _json["customerId"] = customerId;
@@ -5469,6 +6092,47 @@ class UserAddress {
     }
     return _json;
   }
+}
+
+
+/**
+ * JSON template for a set of custom properties (i.e. all fields in a particular
+ * schema)
+ */
+class UserCustomProperties
+    extends collection.MapBase<core.String, core.Object> {
+  final core.Map _innerMap = {};
+
+  UserCustomProperties();
+
+  UserCustomProperties.fromJson(core.Map _json) {
+    _json.forEach((core.String key, value) {
+      this[key] = value;
+    });
+  }
+
+  core.Map toJson() {
+    var _json = {};
+    this.forEach((core.String key, value) {
+      _json[key] = value;
+    });
+    return _json;
+  }
+
+  core.Object operator [](core.Object key)
+      => _innerMap[key];
+
+  operator []=(core.String key, core.Object value) {
+    _innerMap[key] = value;
+  }
+
+  void clear() {
+    _innerMap.clear();
+  }
+
+  core.Iterable<core.String> get keys => _innerMap.keys;
+
+  core.Object remove(core.Object key) => _innerMap.remove(key);
 }
 
 

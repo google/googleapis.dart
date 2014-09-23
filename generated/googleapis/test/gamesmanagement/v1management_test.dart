@@ -16,14 +16,14 @@ import 'package:googleapis/gamesmanagement/v1management.dart' as api;
 
 
 
-buildUnnamed431() {
+buildUnnamed456() {
   var o = new core.List<api.AchievementResetResponse>();
   o.add(buildAchievementResetResponse());
   o.add(buildAchievementResetResponse());
   return o;
 }
 
-checkUnnamed431(core.List<api.AchievementResetResponse> o) {
+checkUnnamed456(core.List<api.AchievementResetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementResetResponse(o[0]);
   checkAchievementResetResponse(o[1]);
@@ -35,7 +35,7 @@ buildAchievementResetAllResponse() {
   buildCounterAchievementResetAllResponse++;
   if (buildCounterAchievementResetAllResponse < 3) {
     o.kind = "foo";
-    o.results = buildUnnamed431();
+    o.results = buildUnnamed456();
   }
   buildCounterAchievementResetAllResponse--;
   return o;
@@ -45,7 +45,7 @@ checkAchievementResetAllResponse(api.AchievementResetAllResponse o) {
   buildCounterAchievementResetAllResponse++;
   if (buildCounterAchievementResetAllResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed431(o.results);
+    checkUnnamed456(o.results);
   }
   buildCounterAchievementResetAllResponse--;
 }
@@ -167,14 +167,14 @@ checkHiddenPlayer(api.HiddenPlayer o) {
   buildCounterHiddenPlayer--;
 }
 
-buildUnnamed432() {
+buildUnnamed457() {
   var o = new core.List<api.HiddenPlayer>();
   o.add(buildHiddenPlayer());
   o.add(buildHiddenPlayer());
   return o;
 }
 
-checkUnnamed432(core.List<api.HiddenPlayer> o) {
+checkUnnamed457(core.List<api.HiddenPlayer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHiddenPlayer(o[0]);
   checkHiddenPlayer(o[1]);
@@ -185,7 +185,7 @@ buildHiddenPlayerList() {
   var o = new api.HiddenPlayerList();
   buildCounterHiddenPlayerList++;
   if (buildCounterHiddenPlayerList < 3) {
-    o.items = buildUnnamed432();
+    o.items = buildUnnamed457();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -196,7 +196,7 @@ buildHiddenPlayerList() {
 checkHiddenPlayerList(api.HiddenPlayerList o) {
   buildCounterHiddenPlayerList++;
   if (buildCounterHiddenPlayerList < 3) {
-    checkUnnamed432(o.items);
+    checkUnnamed457(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -257,14 +257,14 @@ checkPlayer(api.Player o) {
   buildCounterPlayer--;
 }
 
-buildUnnamed433() {
+buildUnnamed458() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed433(core.List<core.String> o) {
+checkUnnamed458(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -276,7 +276,7 @@ buildPlayerScoreResetResponse() {
   buildCounterPlayerScoreResetResponse++;
   if (buildCounterPlayerScoreResetResponse < 3) {
     o.kind = "foo";
-    o.resetScoreTimeSpans = buildUnnamed433();
+    o.resetScoreTimeSpans = buildUnnamed458();
   }
   buildCounterPlayerScoreResetResponse--;
   return o;
@@ -286,7 +286,7 @@ checkPlayerScoreResetResponse(api.PlayerScoreResetResponse o) {
   buildCounterPlayerScoreResetResponse++;
   if (buildCounterPlayerScoreResetResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed433(o.resetScoreTimeSpans);
+    checkUnnamed458(o.resetScoreTimeSpans);
   }
   buildCounterPlayerScoreResetResponse--;
 }
@@ -394,8 +394,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/games/v1management/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("achievements/"));
         pathOffset += 13;
         index = path.indexOf("/reset", pathOffset);
@@ -444,8 +446,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/games/v1management/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("achievements/reset"));
         pathOffset += 18;
 
@@ -488,8 +492,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/games/v1management/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("achievements/"));
         pathOffset += 13;
         index = path.indexOf("/resetForAllPlayers", pathOffset);
@@ -543,8 +549,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/games/v1management/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("applications/"));
         pathOffset += 13;
         index = path.indexOf("/players/hidden", pathOffset);
@@ -600,8 +608,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/games/v1management/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("events/"));
         pathOffset += 7;
         index = path.indexOf("/reset", pathOffset);
@@ -648,8 +658,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/games/v1management/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("events/reset"));
         pathOffset += 12;
 
@@ -690,8 +702,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/games/v1management/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("events/"));
         pathOffset += 7;
         index = path.indexOf("/resetForAllPlayers", pathOffset);
@@ -744,8 +758,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/games/v1management/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("applications/"));
         pathOffset += 13;
         index = path.indexOf("/players/hidden/", pathOffset);
@@ -797,8 +813,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/games/v1management/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("applications/"));
         pathOffset += 13;
         index = path.indexOf("/players/hidden/", pathOffset);
@@ -853,8 +871,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/games/v1management/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("quests/"));
         pathOffset += 7;
         index = path.indexOf("/reset", pathOffset);
@@ -905,8 +925,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/games/v1management/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("rooms/reset"));
         pathOffset += 11;
 
@@ -951,8 +973,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/games/v1management/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("leaderboards/"));
         pathOffset += 13;
         index = path.indexOf("/scores/reset", pathOffset);
@@ -1002,8 +1026,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/games/v1management/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("leaderboards/"));
         pathOffset += 13;
         index = path.indexOf("/scores/resetForAllPlayers", pathOffset);
@@ -1054,8 +1080,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/games/v1management/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("turnbasedmatches/reset"));
         pathOffset += 22;
 

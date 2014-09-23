@@ -38,7 +38,7 @@ class AdexchangesellerApi {
   UrlchannelsResourceApi get urlchannels => new UrlchannelsResourceApi(_requester);
 
   AdexchangesellerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/adexchangeseller/v1.1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "adexchangeseller/v1.1/");
 }
 
 

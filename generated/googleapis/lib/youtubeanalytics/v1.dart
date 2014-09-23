@@ -29,7 +29,7 @@ class YoutubeAnalyticsApi {
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
 
   YoutubeAnalyticsApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/youtube/analytics/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "youtube/analytics/v1/");
 }
 
 

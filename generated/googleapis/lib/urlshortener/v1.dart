@@ -24,7 +24,7 @@ class UrlshortenerApi {
   UrlResourceApi get url => new UrlResourceApi(_requester);
 
   UrlshortenerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/urlshortener/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "urlshortener/v1/");
 }
 
 

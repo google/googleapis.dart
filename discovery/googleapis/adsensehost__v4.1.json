@@ -15,7 +15,7 @@
     "description": "Gives AdSense Hosts access to report generation, ad code generation, and publisher management capabilities.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/adsense/host/",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/9aNn1Kv5HngMiv4DqtLxcaAgF8g\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/w_BZT9vnsySgZ6dEU-tvcfoerto\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/adsense-16.png",
         "x32": "https://www.google.com/images/icons/product/adsense-32.png"
@@ -1072,7 +1072,7 @@
             }
         }
     },
-    "revision": "20140908",
+    "revision": "20140921",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

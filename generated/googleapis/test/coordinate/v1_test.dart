@@ -68,14 +68,14 @@ checkCustomFieldDef(api.CustomFieldDef o) {
   buildCounterCustomFieldDef--;
 }
 
-buildUnnamed445() {
+buildUnnamed470() {
   var o = new core.List<api.CustomFieldDef>();
   o.add(buildCustomFieldDef());
   o.add(buildCustomFieldDef());
   return o;
 }
 
-checkUnnamed445(core.List<api.CustomFieldDef> o) {
+checkUnnamed470(core.List<api.CustomFieldDef> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomFieldDef(o[0]);
   checkCustomFieldDef(o[1]);
@@ -86,7 +86,7 @@ buildCustomFieldDefListResponse() {
   var o = new api.CustomFieldDefListResponse();
   buildCounterCustomFieldDefListResponse++;
   if (buildCounterCustomFieldDefListResponse < 3) {
-    o.items = buildUnnamed445();
+    o.items = buildUnnamed470();
     o.kind = "foo";
   }
   buildCounterCustomFieldDefListResponse--;
@@ -96,20 +96,20 @@ buildCustomFieldDefListResponse() {
 checkCustomFieldDefListResponse(api.CustomFieldDefListResponse o) {
   buildCounterCustomFieldDefListResponse++;
   if (buildCounterCustomFieldDefListResponse < 3) {
-    checkUnnamed445(o.items);
+    checkUnnamed470(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterCustomFieldDefListResponse--;
 }
 
-buildUnnamed446() {
+buildUnnamed471() {
   var o = new core.List<api.CustomField>();
   o.add(buildCustomField());
   o.add(buildCustomField());
   return o;
 }
 
-checkUnnamed446(core.List<api.CustomField> o) {
+checkUnnamed471(core.List<api.CustomField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomField(o[0]);
   checkCustomField(o[1]);
@@ -120,7 +120,7 @@ buildCustomFields() {
   var o = new api.CustomFields();
   buildCounterCustomFields++;
   if (buildCounterCustomFields < 3) {
-    o.customField = buildUnnamed446();
+    o.customField = buildUnnamed471();
     o.kind = "foo";
   }
   buildCounterCustomFields--;
@@ -130,20 +130,20 @@ buildCustomFields() {
 checkCustomFields(api.CustomFields o) {
   buildCounterCustomFields++;
   if (buildCounterCustomFields < 3) {
-    checkUnnamed446(o.customField);
+    checkUnnamed471(o.customField);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterCustomFields--;
 }
 
-buildUnnamed447() {
+buildUnnamed472() {
   var o = new core.List<api.JobChange>();
   o.add(buildJobChange());
   o.add(buildJobChange());
   return o;
 }
 
-checkUnnamed447(core.List<api.JobChange> o) {
+checkUnnamed472(core.List<api.JobChange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJobChange(o[0]);
   checkJobChange(o[1]);
@@ -155,7 +155,7 @@ buildJob() {
   buildCounterJob++;
   if (buildCounterJob < 3) {
     o.id = "foo";
-    o.jobChange = buildUnnamed447();
+    o.jobChange = buildUnnamed472();
     o.kind = "foo";
     o.state = buildJobState();
   }
@@ -167,7 +167,7 @@ checkJob(api.Job o) {
   buildCounterJob++;
   if (buildCounterJob < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed447(o.jobChange);
+    checkUnnamed472(o.jobChange);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkJobState(o.state);
   }
@@ -197,14 +197,14 @@ checkJobChange(api.JobChange o) {
   buildCounterJobChange--;
 }
 
-buildUnnamed448() {
+buildUnnamed473() {
   var o = new core.List<api.Job>();
   o.add(buildJob());
   o.add(buildJob());
   return o;
 }
 
-checkUnnamed448(core.List<api.Job> o) {
+checkUnnamed473(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0]);
   checkJob(o[1]);
@@ -215,7 +215,7 @@ buildJobListResponse() {
   var o = new api.JobListResponse();
   buildCounterJobListResponse++;
   if (buildCounterJobListResponse < 3) {
-    o.items = buildUnnamed448();
+    o.items = buildUnnamed473();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -226,21 +226,21 @@ buildJobListResponse() {
 checkJobListResponse(api.JobListResponse o) {
   buildCounterJobListResponse++;
   if (buildCounterJobListResponse < 3) {
-    checkUnnamed448(o.items);
+    checkUnnamed473(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterJobListResponse--;
 }
 
-buildUnnamed449() {
+buildUnnamed474() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed449(core.List<core.String> o) {
+checkUnnamed474(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -257,7 +257,7 @@ buildJobState() {
     o.customerPhoneNumber = "foo";
     o.kind = "foo";
     o.location = buildLocation();
-    o.note = buildUnnamed449();
+    o.note = buildUnnamed474();
     o.progress = "foo";
     o.title = "foo";
   }
@@ -274,21 +274,21 @@ checkJobState(api.JobState o) {
     unittest.expect(o.customerPhoneNumber, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     checkLocation(o.location);
-    checkUnnamed449(o.note);
+    checkUnnamed474(o.note);
     unittest.expect(o.progress, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterJobState--;
 }
 
-buildUnnamed450() {
+buildUnnamed475() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed450(core.List<core.String> o) {
+checkUnnamed475(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -299,7 +299,7 @@ buildLocation() {
   var o = new api.Location();
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    o.addressLine = buildUnnamed450();
+    o.addressLine = buildUnnamed475();
     o.kind = "foo";
     o.lat = 42.0;
     o.lng = 42.0;
@@ -311,7 +311,7 @@ buildLocation() {
 checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    checkUnnamed450(o.addressLine);
+    checkUnnamed475(o.addressLine);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.lat, unittest.equals(42.0));
     unittest.expect(o.lng, unittest.equals(42.0));
@@ -319,14 +319,14 @@ checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
-buildUnnamed451() {
+buildUnnamed476() {
   var o = new core.List<api.LocationRecord>();
   o.add(buildLocationRecord());
   o.add(buildLocationRecord());
   return o;
 }
 
-checkUnnamed451(core.List<api.LocationRecord> o) {
+checkUnnamed476(core.List<api.LocationRecord> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocationRecord(o[0]);
   checkLocationRecord(o[1]);
@@ -337,7 +337,7 @@ buildLocationListResponse() {
   var o = new api.LocationListResponse();
   buildCounterLocationListResponse++;
   if (buildCounterLocationListResponse < 3) {
-    o.items = buildUnnamed451();
+    o.items = buildUnnamed476();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.tokenPagination = buildTokenPagination();
@@ -349,7 +349,7 @@ buildLocationListResponse() {
 checkLocationListResponse(api.LocationListResponse o) {
   buildCounterLocationListResponse++;
   if (buildCounterLocationListResponse < 3) {
-    checkUnnamed451(o.items);
+    checkUnnamed476(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     checkTokenPagination(o.tokenPagination);
@@ -455,14 +455,14 @@ checkWorker(api.Worker o) {
   buildCounterWorker--;
 }
 
-buildUnnamed452() {
+buildUnnamed477() {
   var o = new core.List<api.Worker>();
   o.add(buildWorker());
   o.add(buildWorker());
   return o;
 }
 
-checkUnnamed452(core.List<api.Worker> o) {
+checkUnnamed477(core.List<api.Worker> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWorker(o[0]);
   checkWorker(o[1]);
@@ -473,7 +473,7 @@ buildWorkerListResponse() {
   var o = new api.WorkerListResponse();
   buildCounterWorkerListResponse++;
   if (buildCounterWorkerListResponse < 3) {
-    o.items = buildUnnamed452();
+    o.items = buildUnnamed477();
     o.kind = "foo";
   }
   buildCounterWorkerListResponse--;
@@ -483,46 +483,46 @@ buildWorkerListResponse() {
 checkWorkerListResponse(api.WorkerListResponse o) {
   buildCounterWorkerListResponse++;
   if (buildCounterWorkerListResponse < 3) {
-    checkUnnamed452(o.items);
+    checkUnnamed477(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterWorkerListResponse--;
 }
 
-buildUnnamed453() {
+buildUnnamed478() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed453(core.List<core.String> o) {
+checkUnnamed478(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed454() {
+buildUnnamed479() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed454(core.List<core.String> o) {
+checkUnnamed479(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed455() {
+buildUnnamed480() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed455(core.List<core.String> o) {
+checkUnnamed480(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -676,15 +676,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/coordinate/v1/teams/"));
-        pathOffset += 21;
-        index = path.indexOf("/custom_fields", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_teamId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/custom_fields"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -730,18 +723,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/coordinate/v1/teams/"));
-        pathOffset += 21;
-        index = path.indexOf("/jobs/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_teamId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/jobs/"));
-        pathOffset += 6;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_jobId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -783,7 +766,7 @@ main() {
       var arg_lng = 42.0;
       var arg_title = "foo";
       var arg_assignee = "foo";
-      var arg_customField = buildUnnamed453();
+      var arg_customField = buildUnnamed478();
       var arg_customerName = "foo";
       var arg_customerPhoneNumber = "foo";
       var arg_note = "foo";
@@ -795,15 +778,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/coordinate/v1/teams/"));
-        pathOffset += 21;
-        index = path.indexOf("/jobs", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_teamId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("/jobs"));
-        pathOffset += 5;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -856,15 +832,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/coordinate/v1/teams/"));
-        pathOffset += 21;
-        index = path.indexOf("/jobs", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_teamId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("/jobs"));
-        pathOffset += 5;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -907,7 +876,7 @@ main() {
       var arg_jobId = "foo";
       var arg_address = "foo";
       var arg_assignee = "foo";
-      var arg_customField = buildUnnamed454();
+      var arg_customField = buildUnnamed479();
       var arg_customerName = "foo";
       var arg_customerPhoneNumber = "foo";
       var arg_lat = 42.0;
@@ -923,18 +892,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/coordinate/v1/teams/"));
-        pathOffset += 21;
-        index = path.indexOf("/jobs/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_teamId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/jobs/"));
-        pathOffset += 6;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_jobId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -984,7 +943,7 @@ main() {
       var arg_jobId = "foo";
       var arg_address = "foo";
       var arg_assignee = "foo";
-      var arg_customField = buildUnnamed455();
+      var arg_customField = buildUnnamed480();
       var arg_customerName = "foo";
       var arg_customerPhoneNumber = "foo";
       var arg_lat = 42.0;
@@ -1000,18 +959,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/coordinate/v1/teams/"));
-        pathOffset += 21;
-        index = path.indexOf("/jobs/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_teamId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/jobs/"));
-        pathOffset += 6;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_jobId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1070,22 +1019,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/coordinate/v1/teams/"));
-        pathOffset += 21;
-        index = path.indexOf("/workers/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_teamId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/workers/"));
-        pathOffset += 9;
-        index = path.indexOf("/locations", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_workerEmail"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/locations"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1134,22 +1069,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/coordinate/v1/teams/"));
-        pathOffset += 21;
-        index = path.indexOf("/jobs/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_teamId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/jobs/"));
-        pathOffset += 6;
-        index = path.indexOf("/schedule", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_jobId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/schedule"));
-        pathOffset += 9;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1199,22 +1120,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/coordinate/v1/teams/"));
-        pathOffset += 21;
-        index = path.indexOf("/jobs/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_teamId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/jobs/"));
-        pathOffset += 6;
-        index = path.indexOf("/schedule", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_jobId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/schedule"));
-        pathOffset += 9;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1268,22 +1175,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/coordinate/v1/teams/"));
-        pathOffset += 21;
-        index = path.indexOf("/jobs/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_teamId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/jobs/"));
-        pathOffset += 6;
-        index = path.indexOf("/schedule", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_jobId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/schedule"));
-        pathOffset += 9;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1332,15 +1225,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/coordinate/v1/teams/"));
-        pathOffset += 21;
-        index = path.indexOf("/workers", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_teamId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/workers"));
-        pathOffset += 8;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;

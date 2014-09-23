@@ -24,7 +24,7 @@ class QpxExpressApi {
   TripsResourceApi get trips => new TripsResourceApi(_requester);
 
   QpxExpressApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/qpxExpress/v1/trips/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "qpxExpress/v1/trips/");
 }
 
 

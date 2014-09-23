@@ -57,7 +57,7 @@ class DriveApi {
   RevisionsResourceApi get revisions => new RevisionsResourceApi(_requester);
 
   DriveApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/drive/v2/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "drive/v2/");
 }
 
 
@@ -5389,6 +5389,48 @@ class FileThumbnail {
 }
 
 
+/** Metadata about video media. This will only be present for video types. */
+class FileVideoMediaMetadata {
+  /** The duration of the video in milliseconds. */
+  core.String durationMillis;
+
+  /** The height of the video in pixels. */
+  core.int height;
+
+  /** The width of the video in pixels. */
+  core.int width;
+
+
+  FileVideoMediaMetadata();
+
+  FileVideoMediaMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("durationMillis")) {
+      durationMillis = _json["durationMillis"];
+    }
+    if (_json.containsKey("height")) {
+      height = _json["height"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (durationMillis != null) {
+      _json["durationMillis"] = durationMillis;
+    }
+    if (height != null) {
+      _json["height"] = height;
+    }
+    if (width != null) {
+      _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
+
 /** The metadata for a file. */
 class File {
   /** A link for opening the file in a relevant Google editor or viewer. */
@@ -5593,6 +5635,9 @@ class File {
    */
   core.String version;
 
+  /** Metadata about video media. This will only be present for video types. */
+  FileVideoMediaMetadata videoMediaMetadata;
+
   /**
    * A link for downloading the content of the file in a browser using cookie
    * based authentication. In cases where the content is shared publicly, the
@@ -5751,6 +5796,9 @@ class File {
     if (_json.containsKey("version")) {
       version = _json["version"];
     }
+    if (_json.containsKey("videoMediaMetadata")) {
+      videoMediaMetadata = new FileVideoMediaMetadata.fromJson(_json["videoMediaMetadata"]);
+    }
     if (_json.containsKey("webContentLink")) {
       webContentLink = _json["webContentLink"];
     }
@@ -5901,6 +5949,9 @@ class File {
     }
     if (version != null) {
       _json["version"] = version;
+    }
+    if (videoMediaMetadata != null) {
+      _json["videoMediaMetadata"] = (videoMediaMetadata).toJson();
     }
     if (webContentLink != null) {
       _json["webContentLink"] = webContentLink;
@@ -6113,9 +6164,7 @@ class Permission {
 
   /**
    * The email address of the user this permission refers to. This is an
-   * output-only field which is present when the permission type is user and the
-   * given user's Google+ profile privacy settings allow exposing their email
-   * address.
+   * output-only field which is present when the permission type is user.
    */
   core.String emailAddress;
 

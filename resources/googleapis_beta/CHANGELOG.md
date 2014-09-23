@@ -1,3 +1,11 @@
+## 0.2.0
+
+* [apis] autoscaler:v1beta2: schema changes
+* [apis] datastore:v1beta2: new API scopes, more descriptions
+* [apis] manager:v1beta2: schema changes
+* [apis-breaking] genomics:v1beta: major changes (method argument changes, schema renames, method removals/additions)
+* [generator] Bugfix in resumable media uploader.
+
 ## 0.1.1
 
 * [generator] Make shorter descriptions in pubspec.yaml: Only list api:version tuples.

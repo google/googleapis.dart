@@ -30,7 +30,7 @@ class BooksApi {
   VolumesResourceApi get volumes => new VolumesResourceApi(_requester);
 
   BooksApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/books/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "books/v1/");
 }
 
 

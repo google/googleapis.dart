@@ -41,14 +41,14 @@ checkGetResponse(api.GetResponse o) {
   buildCounterGetResponse--;
 }
 
-buildUnnamed943() {
+buildUnnamed971() {
   var o = new core.List<api.GetResponse>();
   o.add(buildGetResponse());
   o.add(buildGetResponse());
   return o;
 }
 
-checkUnnamed943(core.List<api.GetResponse> o) {
+checkUnnamed971(core.List<api.GetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGetResponse(o[0]);
   checkGetResponse(o[1]);
@@ -59,7 +59,7 @@ buildListResponse() {
   var o = new api.ListResponse();
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    o.items = buildUnnamed943();
+    o.items = buildUnnamed971();
     o.kind = "foo";
     o.maximumKeyCount = 42;
   }
@@ -70,7 +70,7 @@ buildListResponse() {
 checkListResponse(api.ListResponse o) {
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    checkUnnamed943(o.items);
+    checkUnnamed971(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.maximumKeyCount, unittest.equals(42));
   }
@@ -171,8 +171,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/appstate/v1/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("appstate/v1/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("states/"));
         pathOffset += 7;
         index = path.indexOf("/clear", pathOffset);
@@ -223,8 +225,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/appstate/v1/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("appstate/v1/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("states/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -268,8 +272,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/appstate/v1/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("appstate/v1/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("states/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -315,8 +321,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/appstate/v1/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("appstate/v1/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("states"));
         pathOffset += 6;
 
@@ -365,8 +373,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/appstate/v1/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("appstate/v1/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("states/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));

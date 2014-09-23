@@ -17,7 +17,7 @@
     "description": "Provides reliable, many-to-many, asynchronous messaging between applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/pubsub/v1beta1",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/0Fp5e_WTNFkUTCc0NWbk-5s1uKQ\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/ywePitQXGabB9vHcCh_sNtCXjDU\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -338,7 +338,7 @@
             }
         }
     },
-    "revision": "20140814",
+    "revision": "20140919",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AcknowledgeRequest": {
@@ -416,7 +416,7 @@
             "id": "ModifyAckDeadlineRequest",
             "properties": {
                 "ackDeadlineSeconds": {
-                    "description": "The new Ack deadline. Must be >= 1.",
+                    "description": "The new Ack deadline. Must be >= 0.",
                     "format": "int32",
                     "type": "integer"
                 },

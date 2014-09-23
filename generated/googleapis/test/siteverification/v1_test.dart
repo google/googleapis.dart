@@ -79,14 +79,14 @@ checkSiteVerificationWebResourceGettokenResponse(api.SiteVerificationWebResource
   buildCounterSiteVerificationWebResourceGettokenResponse--;
 }
 
-buildUnnamed185() {
+buildUnnamed188() {
   var o = new core.List<api.SiteVerificationWebResourceResource>();
   o.add(buildSiteVerificationWebResourceResource());
   o.add(buildSiteVerificationWebResourceResource());
   return o;
 }
 
-checkUnnamed185(core.List<api.SiteVerificationWebResourceResource> o) {
+checkUnnamed188(core.List<api.SiteVerificationWebResourceResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteVerificationWebResourceResource(o[0]);
   checkSiteVerificationWebResourceResource(o[1]);
@@ -97,7 +97,7 @@ buildSiteVerificationWebResourceListResponse() {
   var o = new api.SiteVerificationWebResourceListResponse();
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    o.items = buildUnnamed185();
+    o.items = buildUnnamed188();
   }
   buildCounterSiteVerificationWebResourceListResponse--;
   return o;
@@ -106,19 +106,19 @@ buildSiteVerificationWebResourceListResponse() {
 checkSiteVerificationWebResourceListResponse(api.SiteVerificationWebResourceListResponse o) {
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    checkUnnamed185(o.items);
+    checkUnnamed188(o.items);
   }
   buildCounterSiteVerificationWebResourceListResponse--;
 }
 
-buildUnnamed186() {
+buildUnnamed189() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed186(core.List<core.String> o) {
+checkUnnamed189(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -151,7 +151,7 @@ buildSiteVerificationWebResourceResource() {
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     o.id = "foo";
-    o.owners = buildUnnamed186();
+    o.owners = buildUnnamed189();
     o.site = buildSiteVerificationWebResourceResourceSite();
   }
   buildCounterSiteVerificationWebResourceResource--;
@@ -162,7 +162,7 @@ checkSiteVerificationWebResourceResource(api.SiteVerificationWebResourceResource
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed186(o.owners);
+    checkUnnamed189(o.owners);
     checkSiteVerificationWebResourceResourceSite(o.site);
   }
   buildCounterSiteVerificationWebResourceResource--;
@@ -235,8 +235,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/siteVerification/v1/"));
-        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("siteVerification/v1/"));
+        pathOffset += 20;
         unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("webResource/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -280,8 +282,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/siteVerification/v1/"));
-        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("siteVerification/v1/"));
+        pathOffset += 20;
         unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("webResource/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -330,8 +334,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/siteVerification/v1/"));
-        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("siteVerification/v1/"));
+        pathOffset += 20;
         unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("token"));
         pathOffset += 5;
 
@@ -378,8 +384,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/siteVerification/v1/"));
-        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("siteVerification/v1/"));
+        pathOffset += 20;
         unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("webResource"));
         pathOffset += 11;
 
@@ -422,8 +430,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/siteVerification/v1/"));
-        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("siteVerification/v1/"));
+        pathOffset += 20;
         unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("webResource"));
         pathOffset += 11;
 
@@ -470,8 +480,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/siteVerification/v1/"));
-        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("siteVerification/v1/"));
+        pathOffset += 20;
         unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("webResource/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -521,8 +533,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/siteVerification/v1/"));
-        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("siteVerification/v1/"));
+        pathOffset += 20;
         unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("webResource/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));

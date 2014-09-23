@@ -1141,8 +1141,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/civicinfo/v1/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("civicinfo/v1/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 31), unittest.equals("representatives/division_search"));
         pathOffset += 31;
 
@@ -1189,8 +1191,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/civicinfo/v1/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("civicinfo/v1/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("elections"));
         pathOffset += 9;
 
@@ -1238,8 +1242,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/civicinfo/v1/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("civicinfo/v1/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("voterinfo/"));
         pathOffset += 10;
         index = path.indexOf("/lookup", pathOffset);
@@ -1300,8 +1306,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/civicinfo/v1/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("civicinfo/v1/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("representatives/lookup"));
         pathOffset += 22;
 

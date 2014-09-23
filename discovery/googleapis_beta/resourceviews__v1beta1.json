@@ -26,7 +26,7 @@
     "description": "The Resource View API allows users to create and manage logical sets of Google Compute Engine instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/AoeAr1zgY1CKn9zcrNzEbavwbEo\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/2oa8SMSfpFS6UKNS3wRm4F3v1wQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -681,7 +681,7 @@
             }
         }
     },
-    "revision": "20140827",
+    "revision": "20140904",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Label": {

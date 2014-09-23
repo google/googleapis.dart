@@ -1,5 +1,5 @@
 name: googleapis_beta
-version: 0.1.1
+version: 0.2.0
 author: Dart Team <misc@dartlang.org>
 description: "Auto-generated client libraries for accessing the following APIs:autoscaler:v1beta2, cloudmonitoring:v2beta1, datastore:v1beta2, dns:v1beta1, genomics:v1beta, manager:v1beta2, pubsub:v1beta1, replicapool:v1beta1, resourceviews:v1beta1, sqladmin:v1beta3, taskqueue:v1beta2"
 homepage: http://www.dartlang.org

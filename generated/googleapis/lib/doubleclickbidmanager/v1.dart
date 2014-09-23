@@ -23,7 +23,7 @@ class DoubleclickbidmanagerApi {
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
 
   DoubleclickbidmanagerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/doubleclickbidmanager/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "doubleclickbidmanager/v1/");
 }
 
 

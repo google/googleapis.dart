@@ -33,7 +33,7 @@ class AppsactivityApi {
   ActivitiesResourceApi get activities => new ActivitiesResourceApi(_requester);
 
   AppsactivityApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/appsactivity/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "appsactivity/v1/");
 }
 
 

@@ -29,7 +29,7 @@ class SiteVerificationApi {
   WebResourceResourceApi get webResource => new WebResourceResourceApi(_requester);
 
   SiteVerificationApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/siteVerification/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "siteVerification/v1/");
 }
 
 

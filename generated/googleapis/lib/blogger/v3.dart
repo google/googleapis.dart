@@ -34,7 +34,7 @@ class BloggerApi {
   UsersResourceApi get users => new UsersResourceApi(_requester);
 
   BloggerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/blogger/v3/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "blogger/v3/");
 }
 
 

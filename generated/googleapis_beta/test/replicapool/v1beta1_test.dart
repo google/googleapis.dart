@@ -39,27 +39,27 @@ checkAccessConfig(api.AccessConfig o) {
   buildCounterAccessConfig--;
 }
 
-buildUnnamed1059() {
+buildUnnamed1087() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1059(core.List<core.String> o) {
+checkUnnamed1087(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1060() {
+buildUnnamed1088() {
   var o = new core.List<api.EnvVariable>();
   o.add(buildEnvVariable());
   o.add(buildEnvVariable());
   return o;
 }
 
-checkUnnamed1060(core.List<api.EnvVariable> o) {
+checkUnnamed1088(core.List<api.EnvVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnvVariable(o[0]);
   checkEnvVariable(o[1]);
@@ -70,8 +70,8 @@ buildAction() {
   var o = new api.Action();
   buildCounterAction++;
   if (buildCounterAction < 3) {
-    o.commands = buildUnnamed1059();
-    o.envVariables = buildUnnamed1060();
+    o.commands = buildUnnamed1087();
+    o.envVariables = buildUnnamed1088();
     o.timeoutMilliSeconds = 42;
   }
   buildCounterAction--;
@@ -81,8 +81,8 @@ buildAction() {
 checkAction(api.Action o) {
   buildCounterAction++;
   if (buildCounterAction < 3) {
-    checkUnnamed1059(o.commands);
-    checkUnnamed1060(o.envVariables);
+    checkUnnamed1087(o.commands);
+    checkUnnamed1088(o.envVariables);
     unittest.expect(o.timeoutMilliSeconds, unittest.equals(42));
   }
   buildCounterAction--;
@@ -209,14 +209,14 @@ checkLabel(api.Label o) {
   buildCounterLabel--;
 }
 
-buildUnnamed1061() {
+buildUnnamed1089() {
   var o = new core.List<api.MetadataItem>();
   o.add(buildMetadataItem());
   o.add(buildMetadataItem());
   return o;
 }
 
-checkUnnamed1061(core.List<api.MetadataItem> o) {
+checkUnnamed1089(core.List<api.MetadataItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetadataItem(o[0]);
   checkMetadataItem(o[1]);
@@ -228,7 +228,7 @@ buildMetadata() {
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
     o.fingerPrint = "foo";
-    o.items = buildUnnamed1061();
+    o.items = buildUnnamed1089();
   }
   buildCounterMetadata--;
   return o;
@@ -238,7 +238,7 @@ checkMetadata(api.Metadata o) {
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
     unittest.expect(o.fingerPrint, unittest.equals('foo'));
-    checkUnnamed1061(o.items);
+    checkUnnamed1089(o.items);
   }
   buildCounterMetadata--;
 }
@@ -264,14 +264,14 @@ checkMetadataItem(api.MetadataItem o) {
   buildCounterMetadataItem--;
 }
 
-buildUnnamed1062() {
+buildUnnamed1090() {
   var o = new core.List<api.AccessConfig>();
   o.add(buildAccessConfig());
   o.add(buildAccessConfig());
   return o;
 }
 
-checkUnnamed1062(core.List<api.AccessConfig> o) {
+checkUnnamed1090(core.List<api.AccessConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccessConfig(o[0]);
   checkAccessConfig(o[1]);
@@ -282,7 +282,7 @@ buildNetworkInterface() {
   var o = new api.NetworkInterface();
   buildCounterNetworkInterface++;
   if (buildCounterNetworkInterface < 3) {
-    o.accessConfigs = buildUnnamed1062();
+    o.accessConfigs = buildUnnamed1090();
     o.network = "foo";
     o.networkIp = "foo";
   }
@@ -293,7 +293,7 @@ buildNetworkInterface() {
 checkNetworkInterface(api.NetworkInterface o) {
   buildCounterNetworkInterface++;
   if (buildCounterNetworkInterface < 3) {
-    checkUnnamed1062(o.accessConfigs);
+    checkUnnamed1090(o.accessConfigs);
     unittest.expect(o.network, unittest.equals('foo'));
     unittest.expect(o.networkIp, unittest.equals('foo'));
   }
@@ -348,53 +348,53 @@ checkNewDiskInitializeParams(api.NewDiskInitializeParams o) {
   buildCounterNewDiskInitializeParams--;
 }
 
-buildUnnamed1063() {
+buildUnnamed1091() {
   var o = new core.List<api.HealthCheck>();
   o.add(buildHealthCheck());
   o.add(buildHealthCheck());
   return o;
 }
 
-checkUnnamed1063(core.List<api.HealthCheck> o) {
+checkUnnamed1091(core.List<api.HealthCheck> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHealthCheck(o[0]);
   checkHealthCheck(o[1]);
 }
 
-buildUnnamed1064() {
+buildUnnamed1092() {
   var o = new core.List<api.Label>();
   o.add(buildLabel());
   o.add(buildLabel());
   return o;
 }
 
-checkUnnamed1064(core.List<api.Label> o) {
+checkUnnamed1092(core.List<api.Label> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabel(o[0]);
   checkLabel(o[1]);
 }
 
-buildUnnamed1065() {
+buildUnnamed1093() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1065(core.List<core.String> o) {
+checkUnnamed1093(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1066() {
+buildUnnamed1094() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1066(core.List<core.String> o) {
+checkUnnamed1094(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -409,15 +409,15 @@ buildPool() {
     o.baseInstanceName = "foo";
     o.currentNumReplicas = 42;
     o.description = "foo";
-    o.healthChecks = buildUnnamed1063();
+    o.healthChecks = buildUnnamed1091();
     o.initialNumReplicas = 42;
-    o.labels = buildUnnamed1064();
+    o.labels = buildUnnamed1092();
     o.name = "foo";
     o.numReplicas = 42;
-    o.resourceViews = buildUnnamed1065();
+    o.resourceViews = buildUnnamed1093();
     o.selfLink = "foo";
     o.targetPool = "foo";
-    o.targetPools = buildUnnamed1066();
+    o.targetPools = buildUnnamed1094();
     o.template = buildTemplate();
     o.type = "foo";
   }
@@ -432,29 +432,29 @@ checkPool(api.Pool o) {
     unittest.expect(o.baseInstanceName, unittest.equals('foo'));
     unittest.expect(o.currentNumReplicas, unittest.equals(42));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed1063(o.healthChecks);
+    checkUnnamed1091(o.healthChecks);
     unittest.expect(o.initialNumReplicas, unittest.equals(42));
-    checkUnnamed1064(o.labels);
+    checkUnnamed1092(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.numReplicas, unittest.equals(42));
-    checkUnnamed1065(o.resourceViews);
+    checkUnnamed1093(o.resourceViews);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.targetPool, unittest.equals('foo'));
-    checkUnnamed1066(o.targetPools);
+    checkUnnamed1094(o.targetPools);
     checkTemplate(o.template);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterPool--;
 }
 
-buildUnnamed1067() {
+buildUnnamed1095() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1067(core.List<core.String> o) {
+checkUnnamed1095(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -465,7 +465,7 @@ buildPoolsDeleteRequest() {
   var o = new api.PoolsDeleteRequest();
   buildCounterPoolsDeleteRequest++;
   if (buildCounterPoolsDeleteRequest < 3) {
-    o.abandonInstances = buildUnnamed1067();
+    o.abandonInstances = buildUnnamed1095();
   }
   buildCounterPoolsDeleteRequest--;
   return o;
@@ -474,19 +474,19 @@ buildPoolsDeleteRequest() {
 checkPoolsDeleteRequest(api.PoolsDeleteRequest o) {
   buildCounterPoolsDeleteRequest++;
   if (buildCounterPoolsDeleteRequest < 3) {
-    checkUnnamed1067(o.abandonInstances);
+    checkUnnamed1095(o.abandonInstances);
   }
   buildCounterPoolsDeleteRequest--;
 }
 
-buildUnnamed1068() {
+buildUnnamed1096() {
   var o = new core.List<api.Pool>();
   o.add(buildPool());
   o.add(buildPool());
   return o;
 }
 
-checkUnnamed1068(core.List<api.Pool> o) {
+checkUnnamed1096(core.List<api.Pool> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPool(o[0]);
   checkPool(o[1]);
@@ -498,7 +498,7 @@ buildPoolsListResponse() {
   buildCounterPoolsListResponse++;
   if (buildCounterPoolsListResponse < 3) {
     o.nextPageToken = "foo";
-    o.resources = buildUnnamed1068();
+    o.resources = buildUnnamed1096();
   }
   buildCounterPoolsListResponse--;
   return o;
@@ -508,7 +508,7 @@ checkPoolsListResponse(api.PoolsListResponse o) {
   buildCounterPoolsListResponse++;
   if (buildCounterPoolsListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1068(o.resources);
+    checkUnnamed1096(o.resources);
   }
   buildCounterPoolsListResponse--;
 }
@@ -582,14 +582,14 @@ checkReplicasDeleteRequest(api.ReplicasDeleteRequest o) {
   buildCounterReplicasDeleteRequest--;
 }
 
-buildUnnamed1069() {
+buildUnnamed1097() {
   var o = new core.List<api.Replica>();
   o.add(buildReplica());
   o.add(buildReplica());
   return o;
 }
 
-checkUnnamed1069(core.List<api.Replica> o) {
+checkUnnamed1097(core.List<api.Replica> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReplica(o[0]);
   checkReplica(o[1]);
@@ -601,7 +601,7 @@ buildReplicasListResponse() {
   buildCounterReplicasListResponse++;
   if (buildCounterReplicasListResponse < 3) {
     o.nextPageToken = "foo";
-    o.resources = buildUnnamed1069();
+    o.resources = buildUnnamed1097();
   }
   buildCounterReplicasListResponse--;
   return o;
@@ -611,19 +611,19 @@ checkReplicasListResponse(api.ReplicasListResponse o) {
   buildCounterReplicasListResponse++;
   if (buildCounterReplicasListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1069(o.resources);
+    checkUnnamed1097(o.resources);
   }
   buildCounterReplicasListResponse--;
 }
 
-buildUnnamed1070() {
+buildUnnamed1098() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1070(core.List<core.String> o) {
+checkUnnamed1098(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -635,7 +635,7 @@ buildServiceAccount() {
   buildCounterServiceAccount++;
   if (buildCounterServiceAccount < 3) {
     o.email = "foo";
-    o.scopes = buildUnnamed1070();
+    o.scopes = buildUnnamed1098();
   }
   buildCounterServiceAccount--;
   return o;
@@ -645,19 +645,19 @@ checkServiceAccount(api.ServiceAccount o) {
   buildCounterServiceAccount++;
   if (buildCounterServiceAccount < 3) {
     unittest.expect(o.email, unittest.equals('foo'));
-    checkUnnamed1070(o.scopes);
+    checkUnnamed1098(o.scopes);
   }
   buildCounterServiceAccount--;
 }
 
-buildUnnamed1071() {
+buildUnnamed1099() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1071(core.List<core.String> o) {
+checkUnnamed1099(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -669,7 +669,7 @@ buildTag() {
   buildCounterTag++;
   if (buildCounterTag < 3) {
     o.fingerPrint = "foo";
-    o.items = buildUnnamed1071();
+    o.items = buildUnnamed1099();
   }
   buildCounterTag--;
   return o;
@@ -679,19 +679,19 @@ checkTag(api.Tag o) {
   buildCounterTag++;
   if (buildCounterTag < 3) {
     unittest.expect(o.fingerPrint, unittest.equals('foo'));
-    checkUnnamed1071(o.items);
+    checkUnnamed1099(o.items);
   }
   buildCounterTag--;
 }
 
-buildUnnamed1072() {
+buildUnnamed1100() {
   var o = new core.List<api.HealthCheck>();
   o.add(buildHealthCheck());
   o.add(buildHealthCheck());
   return o;
 }
 
-checkUnnamed1072(core.List<api.HealthCheck> o) {
+checkUnnamed1100(core.List<api.HealthCheck> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHealthCheck(o[0]);
   checkHealthCheck(o[1]);
@@ -703,7 +703,7 @@ buildTemplate() {
   buildCounterTemplate++;
   if (buildCounterTemplate < 3) {
     o.action = buildAction();
-    o.healthChecks = buildUnnamed1072();
+    o.healthChecks = buildUnnamed1100();
     o.version = "foo";
     o.vmParams = buildVmParams();
   }
@@ -715,60 +715,60 @@ checkTemplate(api.Template o) {
   buildCounterTemplate++;
   if (buildCounterTemplate < 3) {
     checkAction(o.action);
-    checkUnnamed1072(o.healthChecks);
+    checkUnnamed1100(o.healthChecks);
     unittest.expect(o.version, unittest.equals('foo'));
     checkVmParams(o.vmParams);
   }
   buildCounterTemplate--;
 }
 
-buildUnnamed1073() {
+buildUnnamed1101() {
   var o = new core.List<api.ExistingDisk>();
   o.add(buildExistingDisk());
   o.add(buildExistingDisk());
   return o;
 }
 
-checkUnnamed1073(core.List<api.ExistingDisk> o) {
+checkUnnamed1101(core.List<api.ExistingDisk> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExistingDisk(o[0]);
   checkExistingDisk(o[1]);
 }
 
-buildUnnamed1074() {
+buildUnnamed1102() {
   var o = new core.List<api.NewDisk>();
   o.add(buildNewDisk());
   o.add(buildNewDisk());
   return o;
 }
 
-checkUnnamed1074(core.List<api.NewDisk> o) {
+checkUnnamed1102(core.List<api.NewDisk> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNewDisk(o[0]);
   checkNewDisk(o[1]);
 }
 
-buildUnnamed1075() {
+buildUnnamed1103() {
   var o = new core.List<api.NetworkInterface>();
   o.add(buildNetworkInterface());
   o.add(buildNetworkInterface());
   return o;
 }
 
-checkUnnamed1075(core.List<api.NetworkInterface> o) {
+checkUnnamed1103(core.List<api.NetworkInterface> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNetworkInterface(o[0]);
   checkNetworkInterface(o[1]);
 }
 
-buildUnnamed1076() {
+buildUnnamed1104() {
   var o = new core.List<api.ServiceAccount>();
   o.add(buildServiceAccount());
   o.add(buildServiceAccount());
   return o;
 }
 
-checkUnnamed1076(core.List<api.ServiceAccount> o) {
+checkUnnamed1104(core.List<api.ServiceAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceAccount(o[0]);
   checkServiceAccount(o[1]);
@@ -782,13 +782,13 @@ buildVmParams() {
     o.baseInstanceName = "foo";
     o.canIpForward = true;
     o.description = "foo";
-    o.disksToAttach = buildUnnamed1073();
-    o.disksToCreate = buildUnnamed1074();
+    o.disksToAttach = buildUnnamed1101();
+    o.disksToCreate = buildUnnamed1102();
     o.machineType = "foo";
     o.metadata = buildMetadata();
-    o.networkInterfaces = buildUnnamed1075();
+    o.networkInterfaces = buildUnnamed1103();
     o.onHostMaintenance = "foo";
-    o.serviceAccounts = buildUnnamed1076();
+    o.serviceAccounts = buildUnnamed1104();
     o.tags = buildTag();
   }
   buildCounterVmParams--;
@@ -801,13 +801,13 @@ checkVmParams(api.VmParams o) {
     unittest.expect(o.baseInstanceName, unittest.equals('foo'));
     unittest.expect(o.canIpForward, unittest.isTrue);
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed1073(o.disksToAttach);
-    checkUnnamed1074(o.disksToCreate);
+    checkUnnamed1101(o.disksToAttach);
+    checkUnnamed1102(o.disksToCreate);
     unittest.expect(o.machineType, unittest.equals('foo'));
     checkMetadata(o.metadata);
-    checkUnnamed1075(o.networkInterfaces);
+    checkUnnamed1103(o.networkInterfaces);
     unittest.expect(o.onHostMaintenance, unittest.equals('foo'));
-    checkUnnamed1076(o.serviceAccounts);
+    checkUnnamed1104(o.serviceAccounts);
     checkTag(o.tags);
   }
   buildCounterVmParams--;
@@ -1039,25 +1039,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("/replicapool/v1beta1/projects/"));
-        pathOffset += 30;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/pools/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/pools/"));
-        pathOffset += 7;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_poolName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1098,25 +1081,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("/replicapool/v1beta1/projects/"));
-        pathOffset += 30;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/pools/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/pools/"));
-        pathOffset += 7;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_poolName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1162,22 +1128,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("/replicapool/v1beta1/projects/"));
-        pathOffset += 30;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/pools", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/pools"));
-        pathOffset += 6;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1221,22 +1173,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("/replicapool/v1beta1/projects/"));
-        pathOffset += 30;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/pools", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/pools"));
-        pathOffset += 6;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1282,29 +1220,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("/replicapool/v1beta1/projects/"));
-        pathOffset += 30;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/pools/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/pools/"));
-        pathOffset += 7;
-        index = path.indexOf("/resize", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_poolName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/resize"));
-        pathOffset += 7;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1352,29 +1269,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("/replicapool/v1beta1/projects/"));
-        pathOffset += 30;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/pools/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/pools/"));
-        pathOffset += 7;
-        index = path.indexOf("/updateTemplate", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_poolName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/updateTemplate"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1424,32 +1320,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("/replicapool/v1beta1/projects/"));
-        pathOffset += 30;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/pools/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/pools/"));
-        pathOffset += 7;
-        index = path.indexOf("/replicas/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_poolName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/replicas/"));
-        pathOffset += 10;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_replicaName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1493,32 +1365,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("/replicapool/v1beta1/projects/"));
-        pathOffset += 30;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/pools/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/pools/"));
-        pathOffset += 7;
-        index = path.indexOf("/replicas/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_poolName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/replicas/"));
-        pathOffset += 10;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_replicaName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1563,29 +1411,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("/replicapool/v1beta1/projects/"));
-        pathOffset += 30;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/pools/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/pools/"));
-        pathOffset += 7;
-        index = path.indexOf("/replicas", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_poolName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/replicas"));
-        pathOffset += 9;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1631,36 +1458,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("/replicapool/v1beta1/projects/"));
-        pathOffset += 30;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/pools/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/pools/"));
-        pathOffset += 7;
-        index = path.indexOf("/replicas/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_poolName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/replicas/"));
-        pathOffset += 10;
-        index = path.indexOf("/restart", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_replicaName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/restart"));
-        pathOffset += 8;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;

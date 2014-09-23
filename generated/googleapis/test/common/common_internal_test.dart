@@ -7,6 +7,7 @@ import 'package:googleapis/common/common.dart';
 import 'package:googleapis/src/common_internal.dart';
 import 'package:http/http.dart' as http;
 import 'package:unittest/unittest.dart';
+
 class HttpServerMock extends http.BaseClient {
   Function _callback;
   bool _expectJson;
@@ -307,7 +308,7 @@ main() {
       setUp(() {
         httpMock = new HttpServerMock();
         rootUrl = 'http://example.com/';
-        basePath = '/base/';
+        basePath = 'base/';
         requester = new ApiRequester(httpMock, rootUrl, basePath);
       });
 
@@ -729,6 +730,17 @@ main() {
                      256*1024+1,
                      1024*1024-1,
                      1024*1024], false);
+          });
+
+          test('length-big-block-parts-non-divisible', () {
+            runTest(1, 1024 * 1024 + 1,
+                    [1,
+                     256*1024-1,
+                     256*1024,
+                     256*1024+1,
+                     1024*1024-1,
+                     1024*1024,
+                     1024*1024+1], false);
           });
 
           test('stream-small-block', () {

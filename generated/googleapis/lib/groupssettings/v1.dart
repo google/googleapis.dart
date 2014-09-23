@@ -24,7 +24,7 @@ class GroupssettingsApi {
   GroupsResourceApi get groups => new GroupsResourceApi(_requester);
 
   GroupssettingsApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/groups/v1/groups/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "groups/v1/groups/");
 }
 
 

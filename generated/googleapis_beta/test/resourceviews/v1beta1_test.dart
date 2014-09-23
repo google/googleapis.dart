@@ -37,14 +37,14 @@ checkLabel(api.Label o) {
   buildCounterLabel--;
 }
 
-buildUnnamed1082() {
+buildUnnamed1110() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1082(core.List<core.String> o) {
+checkUnnamed1110(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -55,7 +55,7 @@ buildRegionViewsAddResourcesRequest() {
   var o = new api.RegionViewsAddResourcesRequest();
   buildCounterRegionViewsAddResourcesRequest++;
   if (buildCounterRegionViewsAddResourcesRequest < 3) {
-    o.resources = buildUnnamed1082();
+    o.resources = buildUnnamed1110();
   }
   buildCounterRegionViewsAddResourcesRequest--;
   return o;
@@ -64,7 +64,7 @@ buildRegionViewsAddResourcesRequest() {
 checkRegionViewsAddResourcesRequest(api.RegionViewsAddResourcesRequest o) {
   buildCounterRegionViewsAddResourcesRequest++;
   if (buildCounterRegionViewsAddResourcesRequest < 3) {
-    checkUnnamed1082(o.resources);
+    checkUnnamed1110(o.resources);
   }
   buildCounterRegionViewsAddResourcesRequest--;
 }
@@ -88,14 +88,14 @@ checkRegionViewsInsertResponse(api.RegionViewsInsertResponse o) {
   buildCounterRegionViewsInsertResponse--;
 }
 
-buildUnnamed1083() {
+buildUnnamed1111() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1083(core.List<core.String> o) {
+checkUnnamed1111(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -106,7 +106,7 @@ buildRegionViewsListResourcesResponse() {
   var o = new api.RegionViewsListResourcesResponse();
   buildCounterRegionViewsListResourcesResponse++;
   if (buildCounterRegionViewsListResourcesResponse < 3) {
-    o.members = buildUnnamed1083();
+    o.members = buildUnnamed1111();
     o.nextPageToken = "foo";
   }
   buildCounterRegionViewsListResourcesResponse--;
@@ -116,20 +116,20 @@ buildRegionViewsListResourcesResponse() {
 checkRegionViewsListResourcesResponse(api.RegionViewsListResourcesResponse o) {
   buildCounterRegionViewsListResourcesResponse++;
   if (buildCounterRegionViewsListResourcesResponse < 3) {
-    checkUnnamed1083(o.members);
+    checkUnnamed1111(o.members);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterRegionViewsListResourcesResponse--;
 }
 
-buildUnnamed1084() {
+buildUnnamed1112() {
   var o = new core.List<api.ResourceView>();
   o.add(buildResourceView());
   o.add(buildResourceView());
   return o;
 }
 
-checkUnnamed1084(core.List<api.ResourceView> o) {
+checkUnnamed1112(core.List<api.ResourceView> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceView(o[0]);
   checkResourceView(o[1]);
@@ -141,7 +141,7 @@ buildRegionViewsListResponse() {
   buildCounterRegionViewsListResponse++;
   if (buildCounterRegionViewsListResponse < 3) {
     o.nextPageToken = "foo";
-    o.resourceViews = buildUnnamed1084();
+    o.resourceViews = buildUnnamed1112();
   }
   buildCounterRegionViewsListResponse--;
   return o;
@@ -151,19 +151,19 @@ checkRegionViewsListResponse(api.RegionViewsListResponse o) {
   buildCounterRegionViewsListResponse++;
   if (buildCounterRegionViewsListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1084(o.resourceViews);
+    checkUnnamed1112(o.resourceViews);
   }
   buildCounterRegionViewsListResponse--;
 }
 
-buildUnnamed1085() {
+buildUnnamed1113() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1085(core.List<core.String> o) {
+checkUnnamed1113(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -174,7 +174,7 @@ buildRegionViewsRemoveResourcesRequest() {
   var o = new api.RegionViewsRemoveResourcesRequest();
   buildCounterRegionViewsRemoveResourcesRequest++;
   if (buildCounterRegionViewsRemoveResourcesRequest < 3) {
-    o.resources = buildUnnamed1085();
+    o.resources = buildUnnamed1113();
   }
   buildCounterRegionViewsRemoveResourcesRequest--;
   return o;
@@ -183,32 +183,32 @@ buildRegionViewsRemoveResourcesRequest() {
 checkRegionViewsRemoveResourcesRequest(api.RegionViewsRemoveResourcesRequest o) {
   buildCounterRegionViewsRemoveResourcesRequest++;
   if (buildCounterRegionViewsRemoveResourcesRequest < 3) {
-    checkUnnamed1085(o.resources);
+    checkUnnamed1113(o.resources);
   }
   buildCounterRegionViewsRemoveResourcesRequest--;
 }
 
-buildUnnamed1086() {
+buildUnnamed1114() {
   var o = new core.List<api.Label>();
   o.add(buildLabel());
   o.add(buildLabel());
   return o;
 }
 
-checkUnnamed1086(core.List<api.Label> o) {
+checkUnnamed1114(core.List<api.Label> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabel(o[0]);
   checkLabel(o[1]);
 }
 
-buildUnnamed1087() {
+buildUnnamed1115() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1087(core.List<core.String> o) {
+checkUnnamed1115(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -223,9 +223,9 @@ buildResourceView() {
     o.description = "foo";
     o.id = "foo";
     o.kind = "foo";
-    o.labels = buildUnnamed1086();
+    o.labels = buildUnnamed1114();
     o.lastModified = "foo";
-    o.members = buildUnnamed1087();
+    o.members = buildUnnamed1115();
     o.name = "foo";
     o.numMembers = 42;
     o.selfLink = "foo";
@@ -241,9 +241,9 @@ checkResourceView(api.ResourceView o) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1086(o.labels);
+    checkUnnamed1114(o.labels);
     unittest.expect(o.lastModified, unittest.equals('foo'));
-    checkUnnamed1087(o.members);
+    checkUnnamed1115(o.members);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.numMembers, unittest.equals(42));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -251,14 +251,14 @@ checkResourceView(api.ResourceView o) {
   buildCounterResourceView--;
 }
 
-buildUnnamed1088() {
+buildUnnamed1116() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1088(core.List<core.String> o) {
+checkUnnamed1116(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -269,7 +269,7 @@ buildZoneViewsAddResourcesRequest() {
   var o = new api.ZoneViewsAddResourcesRequest();
   buildCounterZoneViewsAddResourcesRequest++;
   if (buildCounterZoneViewsAddResourcesRequest < 3) {
-    o.resources = buildUnnamed1088();
+    o.resources = buildUnnamed1116();
   }
   buildCounterZoneViewsAddResourcesRequest--;
   return o;
@@ -278,7 +278,7 @@ buildZoneViewsAddResourcesRequest() {
 checkZoneViewsAddResourcesRequest(api.ZoneViewsAddResourcesRequest o) {
   buildCounterZoneViewsAddResourcesRequest++;
   if (buildCounterZoneViewsAddResourcesRequest < 3) {
-    checkUnnamed1088(o.resources);
+    checkUnnamed1116(o.resources);
   }
   buildCounterZoneViewsAddResourcesRequest--;
 }
@@ -302,14 +302,14 @@ checkZoneViewsInsertResponse(api.ZoneViewsInsertResponse o) {
   buildCounterZoneViewsInsertResponse--;
 }
 
-buildUnnamed1089() {
+buildUnnamed1117() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1089(core.List<core.String> o) {
+checkUnnamed1117(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -320,7 +320,7 @@ buildZoneViewsListResourcesResponse() {
   var o = new api.ZoneViewsListResourcesResponse();
   buildCounterZoneViewsListResourcesResponse++;
   if (buildCounterZoneViewsListResourcesResponse < 3) {
-    o.members = buildUnnamed1089();
+    o.members = buildUnnamed1117();
     o.nextPageToken = "foo";
   }
   buildCounterZoneViewsListResourcesResponse--;
@@ -330,20 +330,20 @@ buildZoneViewsListResourcesResponse() {
 checkZoneViewsListResourcesResponse(api.ZoneViewsListResourcesResponse o) {
   buildCounterZoneViewsListResourcesResponse++;
   if (buildCounterZoneViewsListResourcesResponse < 3) {
-    checkUnnamed1089(o.members);
+    checkUnnamed1117(o.members);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterZoneViewsListResourcesResponse--;
 }
 
-buildUnnamed1090() {
+buildUnnamed1118() {
   var o = new core.List<api.ResourceView>();
   o.add(buildResourceView());
   o.add(buildResourceView());
   return o;
 }
 
-checkUnnamed1090(core.List<api.ResourceView> o) {
+checkUnnamed1118(core.List<api.ResourceView> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceView(o[0]);
   checkResourceView(o[1]);
@@ -355,7 +355,7 @@ buildZoneViewsListResponse() {
   buildCounterZoneViewsListResponse++;
   if (buildCounterZoneViewsListResponse < 3) {
     o.nextPageToken = "foo";
-    o.resourceViews = buildUnnamed1090();
+    o.resourceViews = buildUnnamed1118();
   }
   buildCounterZoneViewsListResponse--;
   return o;
@@ -365,19 +365,19 @@ checkZoneViewsListResponse(api.ZoneViewsListResponse o) {
   buildCounterZoneViewsListResponse++;
   if (buildCounterZoneViewsListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1090(o.resourceViews);
+    checkUnnamed1118(o.resourceViews);
   }
   buildCounterZoneViewsListResponse--;
 }
 
-buildUnnamed1091() {
+buildUnnamed1119() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1091(core.List<core.String> o) {
+checkUnnamed1119(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -388,7 +388,7 @@ buildZoneViewsRemoveResourcesRequest() {
   var o = new api.ZoneViewsRemoveResourcesRequest();
   buildCounterZoneViewsRemoveResourcesRequest++;
   if (buildCounterZoneViewsRemoveResourcesRequest < 3) {
-    o.resources = buildUnnamed1091();
+    o.resources = buildUnnamed1119();
   }
   buildCounterZoneViewsRemoveResourcesRequest--;
   return o;
@@ -397,7 +397,7 @@ buildZoneViewsRemoveResourcesRequest() {
 checkZoneViewsRemoveResourcesRequest(api.ZoneViewsRemoveResourcesRequest o) {
   buildCounterZoneViewsRemoveResourcesRequest++;
   if (buildCounterZoneViewsRemoveResourcesRequest < 3) {
-    checkUnnamed1091(o.resources);
+    checkUnnamed1119(o.resources);
   }
   buildCounterZoneViewsRemoveResourcesRequest--;
 }
@@ -529,29 +529,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/resourceviews/v1beta1/projects/"));
-        pathOffset += 32;
-        index = path.indexOf("/regions/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/regions/"));
-        pathOffset += 9;
-        index = path.indexOf("/resourceViews/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_region"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/resourceViews/"));
-        pathOffset += 15;
-        index = path.indexOf("/addResources", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_resourceViewName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/addResources"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -592,25 +571,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/resourceviews/v1beta1/projects/"));
-        pathOffset += 32;
-        index = path.indexOf("/regions/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/regions/"));
-        pathOffset += 9;
-        index = path.indexOf("/resourceViews/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_region"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/resourceViews/"));
-        pathOffset += 15;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_resourceViewName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -651,25 +613,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/resourceviews/v1beta1/projects/"));
-        pathOffset += 32;
-        index = path.indexOf("/regions/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/regions/"));
-        pathOffset += 9;
-        index = path.indexOf("/resourceViews/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_region"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/resourceViews/"));
-        pathOffset += 15;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_resourceViewName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -715,22 +660,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/resourceviews/v1beta1/projects/"));
-        pathOffset += 32;
-        index = path.indexOf("/regions/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/regions/"));
-        pathOffset += 9;
-        index = path.indexOf("/resourceViews", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_region"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/resourceViews"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -774,22 +705,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/resourceviews/v1beta1/projects/"));
-        pathOffset += 32;
-        index = path.indexOf("/regions/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/regions/"));
-        pathOffset += 9;
-        index = path.indexOf("/resourceViews", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_region"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/resourceViews"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -836,29 +753,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/resourceviews/v1beta1/projects/"));
-        pathOffset += 32;
-        index = path.indexOf("/regions/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/regions/"));
-        pathOffset += 9;
-        index = path.indexOf("/resourceViews/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_region"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/resourceViews/"));
-        pathOffset += 15;
-        index = path.indexOf("/resources", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_resourceViewName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/resources"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -907,29 +803,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/resourceviews/v1beta1/projects/"));
-        pathOffset += 32;
-        index = path.indexOf("/regions/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/regions/"));
-        pathOffset += 9;
-        index = path.indexOf("/resourceViews/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_region"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/resourceViews/"));
-        pathOffset += 15;
-        index = path.indexOf("/removeResources", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_resourceViewName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/removeResources"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -978,29 +853,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/resourceviews/v1beta1/projects/"));
-        pathOffset += 32;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/resourceViews/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/resourceViews/"));
-        pathOffset += 15;
-        index = path.indexOf("/addResources", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_resourceViewName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/addResources"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1041,25 +895,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/resourceviews/v1beta1/projects/"));
-        pathOffset += 32;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/resourceViews/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/resourceViews/"));
-        pathOffset += 15;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_resourceViewName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1100,25 +937,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/resourceviews/v1beta1/projects/"));
-        pathOffset += 32;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/resourceViews/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/resourceViews/"));
-        pathOffset += 15;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_resourceViewName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1164,22 +984,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/resourceviews/v1beta1/projects/"));
-        pathOffset += 32;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/resourceViews", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/resourceViews"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1223,22 +1029,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/resourceviews/v1beta1/projects/"));
-        pathOffset += 32;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/resourceViews", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/resourceViews"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1285,29 +1077,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/resourceviews/v1beta1/projects/"));
-        pathOffset += 32;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/resourceViews/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/resourceViews/"));
-        pathOffset += 15;
-        index = path.indexOf("/resources", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_resourceViewName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/resources"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1356,29 +1127,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/resourceviews/v1beta1/projects/"));
-        pathOffset += 32;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_projectName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/resourceViews/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/resourceViews/"));
-        pathOffset += 15;
-        index = path.indexOf("/removeResources", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_resourceViewName"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/removeResources"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;

@@ -62,7 +62,7 @@ class PlusDomainsApi {
   PeopleResourceApi get people => new PeopleResourceApi(_requester);
 
   PlusDomainsApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/plusDomains/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "plusDomains/v1/");
 }
 
 

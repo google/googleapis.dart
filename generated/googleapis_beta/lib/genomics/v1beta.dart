@@ -38,9 +38,10 @@ class GenomicsApi {
   ReadsResourceApi get reads => new ReadsResourceApi(_requester);
   ReadsetsResourceApi get readsets => new ReadsetsResourceApi(_requester);
   VariantsResourceApi get variants => new VariantsResourceApi(_requester);
+  VariantsetsResourceApi get variantsets => new VariantsetsResourceApi(_requester);
 
   GenomicsApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/genomics/v1beta/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "genomics/v1beta/");
 }
 
 
@@ -57,14 +58,14 @@ class BeaconsResourceApi {
    *
    * Request parameters:
    *
-   * [variantsetId] - The ID of the variantset to query over. It must be public.
-   * Private variantsets will return an unauthorized exception.
+   * [variantSetId] - The ID of the variant set to query over. It must be
+   * public. Private variant sets will return an unauthorized exception.
    *
    * [allele] - Required. The allele to look for ('A', 'C', 'G' or 'T').
    *
-   * [contig] - Required. The contig to query over.
-   *
    * [position] - Required. The 0-based position to query.
+   *
+   * [referenceName] - Required. The reference to query over.
    *
    * Completes with a [Beacon].
    *
@@ -74,7 +75,7 @@ class BeaconsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Beacon> get(core.String variantsetId, {core.String allele, core.String contig, core.String position}) {
+  async.Future<Beacon> get(core.String variantSetId, {core.String allele, core.String position, core.String referenceName}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -82,21 +83,21 @@ class BeaconsResourceApi {
     var _downloadOptions = common.DownloadOptions.Metadata;
     var _body = null;
 
-    if (variantsetId == null) {
-      throw new core.ArgumentError("Parameter variantsetId is required.");
+    if (variantSetId == null) {
+      throw new core.ArgumentError("Parameter variantSetId is required.");
     }
     if (allele != null) {
       _queryParams["allele"] = [allele];
     }
-    if (contig != null) {
-      _queryParams["contig"] = [contig];
-    }
     if (position != null) {
       _queryParams["position"] = [position];
     }
+    if (referenceName != null) {
+      _queryParams["referenceName"] = [referenceName];
+    }
 
 
-    _url = 'beacons/' + common_internal.Escaper.ecapeVariable('$variantsetId');
+    _url = 'beacons/' + common_internal.Escaper.ecapeVariable('$variantSetId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -119,13 +120,13 @@ class CallsetsResourceApi {
       _requester = client;
 
   /**
-   * Creates a new callset.
+   * Creates a new call set.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * Completes with a [Callset].
+   * Completes with a [CallSet].
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
    * error.
@@ -133,7 +134,7 @@ class CallsetsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Callset> create(Callset request) {
+  async.Future<CallSet> create(CallSet request) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -155,15 +156,15 @@ class CallsetsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Callset.fromJson(data));
+    return _response.then((data) => new CallSet.fromJson(data));
   }
 
   /**
-   * Deletes a callset.
+   * Deletes a call set.
    *
    * Request parameters:
    *
-   * [callsetId] - The ID of the callset to be deleted.
+   * [callSetId] - The ID of the callset to be deleted.
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
    * error.
@@ -171,7 +172,7 @@ class CallsetsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future delete(core.String callsetId) {
+  async.Future delete(core.String callSetId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -179,13 +180,13 @@ class CallsetsResourceApi {
     var _downloadOptions = common.DownloadOptions.Metadata;
     var _body = null;
 
-    if (callsetId == null) {
-      throw new core.ArgumentError("Parameter callsetId is required.");
+    if (callSetId == null) {
+      throw new core.ArgumentError("Parameter callSetId is required.");
     }
 
     _downloadOptions = null;
 
-    _url = 'callsets/' + common_internal.Escaper.ecapeVariable('$callsetId');
+    _url = 'callsets/' + common_internal.Escaper.ecapeVariable('$callSetId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -198,13 +199,13 @@ class CallsetsResourceApi {
   }
 
   /**
-   * Gets a callset by ID.
+   * Gets a call set by ID.
    *
    * Request parameters:
    *
-   * [callsetId] - The ID of the callset.
+   * [callSetId] - The ID of the callset.
    *
-   * Completes with a [Callset].
+   * Completes with a [CallSet].
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
    * error.
@@ -212,7 +213,7 @@ class CallsetsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Callset> get(core.String callsetId) {
+  async.Future<CallSet> get(core.String callSetId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -220,12 +221,12 @@ class CallsetsResourceApi {
     var _downloadOptions = common.DownloadOptions.Metadata;
     var _body = null;
 
-    if (callsetId == null) {
-      throw new core.ArgumentError("Parameter callsetId is required.");
+    if (callSetId == null) {
+      throw new core.ArgumentError("Parameter callSetId is required.");
     }
 
 
-    _url = 'callsets/' + common_internal.Escaper.ecapeVariable('$callsetId');
+    _url = 'callsets/' + common_internal.Escaper.ecapeVariable('$callSetId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -234,19 +235,19 @@ class CallsetsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Callset.fromJson(data));
+    return _response.then((data) => new CallSet.fromJson(data));
   }
 
   /**
-   * Updates a callset. This method supports patch semantics.
+   * Updates a call set. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [callsetId] - The ID of the callset to be updated.
+   * [callSetId] - The ID of the callset to be updated.
    *
-   * Completes with a [Callset].
+   * Completes with a [CallSet].
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
    * error.
@@ -254,7 +255,7 @@ class CallsetsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Callset> patch(Callset request, core.String callsetId) {
+  async.Future<CallSet> patch(CallSet request, core.String callSetId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -265,12 +266,12 @@ class CallsetsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-    if (callsetId == null) {
-      throw new core.ArgumentError("Parameter callsetId is required.");
+    if (callSetId == null) {
+      throw new core.ArgumentError("Parameter callSetId is required.");
     }
 
 
-    _url = 'callsets/' + common_internal.Escaper.ecapeVariable('$callsetId');
+    _url = 'callsets/' + common_internal.Escaper.ecapeVariable('$callSetId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -279,17 +280,17 @@ class CallsetsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Callset.fromJson(data));
+    return _response.then((data) => new CallSet.fromJson(data));
   }
 
   /**
-   * Gets a list of callsets matching the criteria.
+   * Gets a list of call sets matching the criteria.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * Completes with a [SearchCallsetsResponse].
+   * Completes with a [SearchCallSetsResponse].
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
    * error.
@@ -297,7 +298,7 @@ class CallsetsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<SearchCallsetsResponse> search(SearchCallsetsRequest request) {
+  async.Future<SearchCallSetsResponse> search(SearchCallSetsRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -319,19 +320,19 @@ class CallsetsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SearchCallsetsResponse.fromJson(data));
+    return _response.then((data) => new SearchCallSetsResponse.fromJson(data));
   }
 
   /**
-   * Updates a callset.
+   * Updates a call set.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [callsetId] - The ID of the callset to be updated.
+   * [callSetId] - The ID of the callset to be updated.
    *
-   * Completes with a [Callset].
+   * Completes with a [CallSet].
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
    * error.
@@ -339,7 +340,7 @@ class CallsetsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Callset> update(Callset request, core.String callsetId) {
+  async.Future<CallSet> update(CallSet request, core.String callSetId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -350,12 +351,12 @@ class CallsetsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-    if (callsetId == null) {
-      throw new core.ArgumentError("Parameter callsetId is required.");
+    if (callSetId == null) {
+      throw new core.ArgumentError("Parameter callSetId is required.");
     }
 
 
-    _url = 'callsets/' + common_internal.Escaper.ecapeVariable('$callsetId');
+    _url = 'callsets/' + common_internal.Escaper.ecapeVariable('$callSetId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -364,7 +365,7 @@ class CallsetsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Callset.fromJson(data));
+    return _response.then((data) => new CallSet.fromJson(data));
   }
 
 }
@@ -505,7 +506,7 @@ class DatasetsResourceApi {
    *
    * [pageToken] - The continuation token, which is used to page through large
    * result sets. To get the next page of results, set this parameter to the
-   * value of "nextPageToken" from the previous response.
+   * value of nextPageToken from the previous response.
    *
    * [projectId] - Only return datasets which belong to this Google Developers
    * Console project. Only accepts project numbers.
@@ -1270,23 +1271,23 @@ class ReadsetsCoveragebucketsResourceApi {
    *
    * [pageToken] - The continuation token, which is used to page through large
    * result sets. To get the next page of results, set this parameter to the
-   * value of "nextPageToken" from the previous response.
+   * value of nextPageToken from the previous response.
    *
    * [range_sequenceEnd] - The end position of the range on the reference,
    * 1-based exclusive. If specified, sequenceName must also be specified.
    *
-   * [range_sequenceName] - The reference sequence name, for example "chr1",
-   * "1", or "chrX".
+   * [range_sequenceName] - The reference sequence name, for example chr1, 1, or
+   * chrX.
    *
    * [range_sequenceStart] - The start position of the range on the reference,
    * 1-based inclusive. If specified, sequenceName must also be specified.
    *
    * [targetBucketWidth] - The desired width of each reported coverage bucket in
    * base pairs. This will be rounded down to the nearest precomputed bucket
-   * width; the value of which is returned as bucket_width in the response.
+   * width; the value of which is returned as bucketWidth in the response.
    * Defaults to infinity (each bucket spans an entire reference sequence) or
    * the length of the target range, if specified. The smallest precomputed
-   * bucket_width is currently 2048 base pairs; this is subject to change.
+   * bucketWidth is currently 2048 base pairs; this is subject to change.
    *
    * Completes with a [ListCoverageBucketsResponse].
    *
@@ -1509,47 +1510,6 @@ class VariantsResourceApi {
   }
 
   /**
-   * Gets a summary of all the variant data in a variantset.
-   *
-   * Request parameters:
-   *
-   * [variantsetId] - Required. The ID of the variant set to get variant summary
-   * information for.
-   *
-   * Completes with a [GetVariantsSummaryResponse].
-   *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
-   */
-  async.Future<GetVariantsSummaryResponse> getSummary({core.String variantsetId}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (variantsetId != null) {
-      _queryParams["variantsetId"] = [variantsetId];
-    }
-
-
-    _url = 'variants/summary';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new GetVariantsSummaryResponse.fromJson(data));
-  }
-
-  /**
    * Creates variant data by asynchronously importing the provided information.
    *
    * [request] - The metadata request object.
@@ -1587,51 +1547,6 @@ class VariantsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ImportVariantsResponse.fromJson(data));
-  }
-
-  /**
-   * Updates a variant. This method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [variantId] - The ID of the variant to be updated..
-   *
-   * Completes with a [Variant].
-   *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
-   */
-  async.Future<Variant> patch(Variant request, core.String variantId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (variantId == null) {
-      throw new core.ArgumentError("Parameter variantId is required.");
-    }
-
-
-    _url = 'variants/' + common_internal.Escaper.ecapeVariable('$variantId');
-
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Variant.fromJson(data));
   }
 
   /**
@@ -1675,13 +1590,14 @@ class VariantsResourceApi {
   }
 
   /**
-   * Updates a variant.
+   * Updates a variant's names and info fields. All other modifications are
+   * silently ignored. Returns the modified variant without its calls.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [variantId] - The ID of the variant to be updated..
+   * [variantId] - The ID of the variant to be updated.
    *
    * Completes with a [Variant].
    *
@@ -1722,9 +1638,139 @@ class VariantsResourceApi {
 }
 
 
+/** Not documented yet. */
+class VariantsetsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  VariantsetsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes the contents of a variant set. The variant set object is not
+   * deleted.
+   *
+   * Request parameters:
+   *
+   * [variantSetId] - The ID of the variant set to be deleted.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String variantSetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (variantSetId == null) {
+      throw new core.ArgumentError("Parameter variantSetId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'variantsets/' + common_internal.Escaper.ecapeVariable('$variantSetId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Gets a variant set by ID.
+   *
+   * Request parameters:
+   *
+   * [variantSetId] - Required. The ID of the variant set.
+   *
+   * Completes with a [VariantSet].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<VariantSet> get(core.String variantSetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (variantSetId == null) {
+      throw new core.ArgumentError("Parameter variantSetId is required.");
+    }
+
+
+    _url = 'variantsets/' + common_internal.Escaper.ecapeVariable('$variantSetId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new VariantSet.fromJson(data));
+  }
+
+  /**
+   * Returns a list of all variant sets matching search criteria.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [SearchVariantSetsResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<SearchVariantSetsResponse> search(SearchVariantSetsRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+
+    _url = 'variantsets/search';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SearchVariantSetsResponse.fromJson(data));
+  }
+
+}
+
+
 
 /**
- * A beacon represents whether any variant call in a variantset has a specific
+ * A beacon represents whether any variant call in a variant set has a specific
  * allele at a particular position.
  */
 class Beacon {
@@ -1754,25 +1800,24 @@ class Beacon {
  * A Call represents the determination of genotype with respect to a particular
  * variant. It may include associated information such as quality and phasing.
  * For example, a Call might assign a probability of 0.32 to the occurrence of a
- * SNP named rs1234 in a callset with the name NA12345.
+ * SNP named rs1234 in a call set with the name NA12345.
  */
 class Call {
-  /** The ID of the callset this variant call belongs to. */
-  core.String callsetId;
+  /** The ID of the call set this variant call belongs to. */
+  core.String callSetId;
 
-  /** The name of the callset this variant call belongs to. */
-  core.String callsetName;
+  /** The name of the call set this variant call belongs to. */
+  core.String callSetName;
 
   /**
    * The genotype of this variant call. Each value represents either the value
    * of the referenceBases field or a 1-based index into alternateBases. If a
-   * variant had a referenceBases field of "T" and an alternateBases value of
+   * variant had a referenceBases value of T and an alternateBases value of
    * ["A", "C"], and the genotype was [2, 1], that would mean the call
-   * represented the heterozygous value "CA" for this variant. If the genotype
-   * was instead [0, 1], the represented value would be "TA". Ordering of the
-   * genotype values is important if the phaseset field is present. If a
-   * genotype is not called (that is, a "." is present in the GT string) -1 is
-   * returned.
+   * represented the heterozygous value CA for this variant. If the genotype was
+   * instead [0, 1], the represented value would be TA. Ordering of the genotype
+   * values is important if the phaseset is present. If a genotype is not called
+   * (that is, a . is present in the GT string) -1 is returned.
    */
   core.List<core.int> genotype;
 
@@ -1788,10 +1833,10 @@ class Call {
 
   /**
    * If this field is present, this variant call's genotype ordering implies the
-   * phase of the bases and is consistent with any other variant calls on the
-   * same contig which have the same phaseset value. When importing data from
-   * VCF, if the genotype data was phased but no phase set was specified this
-   * field will be set to "*".
+   * phase of the bases and is consistent with any other variant calls in the
+   * same reference sequence which have the same phaseset value. When importing
+   * data from VCF, if the genotype data was phased but no phase set was
+   * specified this field will be set to *.
    */
   core.String phaseset;
 
@@ -1799,11 +1844,11 @@ class Call {
   Call();
 
   Call.fromJson(core.Map _json) {
-    if (_json.containsKey("callsetId")) {
-      callsetId = _json["callsetId"];
+    if (_json.containsKey("callSetId")) {
+      callSetId = _json["callSetId"];
     }
-    if (_json.containsKey("callsetName")) {
-      callsetName = _json["callsetName"];
+    if (_json.containsKey("callSetName")) {
+      callSetName = _json["callSetName"];
     }
     if (_json.containsKey("genotype")) {
       genotype = _json["genotype"];
@@ -1821,11 +1866,11 @@ class Call {
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (callsetId != null) {
-      _json["callsetId"] = callsetId;
+    if (callSetId != null) {
+      _json["callSetId"] = callSetId;
     }
-    if (callsetName != null) {
-      _json["callsetName"] = callsetName;
+    if (callSetName != null) {
+      _json["callSetName"] = callSetName;
     }
     if (genotype != null) {
       _json["genotype"] = genotype;
@@ -1844,12 +1889,12 @@ class Call {
 }
 
 
-/** A Callset is a collection of Variant Calls. It belongs to a Variantset. */
-class Callset {
-  /** The date this callset was created in milliseconds from the epoch. */
+/** A CallSet is a collection of variant calls. It belongs to a variant set. */
+class CallSet {
+  /** The date this call set was created in milliseconds from the epoch. */
   core.String created;
 
-  /** The Google generated ID of the callset, immutable. */
+  /** The Google generated ID of the call set, immutable. */
   core.String id;
 
   /** A map of additional callset information. */
@@ -1858,13 +1903,16 @@ class Callset {
   /** The callset name. */
   core.String name;
 
-  /** The ID of the variantset this callset belongs to. */
-  core.String variantsetId;
+  /** The sample ID this call set corresponds to. */
+  core.String sampleId;
+
+  /** The IDs of the variant sets this call set belongs to. */
+  core.List<core.String> variantSetIds;
 
 
-  Callset();
+  CallSet();
 
-  Callset.fromJson(core.Map _json) {
+  CallSet.fromJson(core.Map _json) {
     if (_json.containsKey("created")) {
       created = _json["created"];
     }
@@ -1877,8 +1925,11 @@ class Callset {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
-    if (_json.containsKey("variantsetId")) {
-      variantsetId = _json["variantsetId"];
+    if (_json.containsKey("sampleId")) {
+      sampleId = _json["sampleId"];
+    }
+    if (_json.containsKey("variantSetIds")) {
+      variantSetIds = _json["variantSetIds"];
     }
   }
 
@@ -1896,47 +1947,11 @@ class Callset {
     if (name != null) {
       _json["name"] = name;
     }
-    if (variantsetId != null) {
-      _json["variantsetId"] = variantsetId;
+    if (sampleId != null) {
+      _json["sampleId"] = sampleId;
     }
-    return _json;
-  }
-}
-
-
-/**
- * ContigBound records an upper bound for the starting coordinate of variants in
- * a particular contig.
- */
-class ContigBound {
-  /** The contig the bound is associate with. */
-  core.String contig;
-
-  /**
-   * An upper bound (inclusive) on the starting coordinate of any variant in the
-   * contig.
-   */
-  core.String upperBound;
-
-
-  ContigBound();
-
-  ContigBound.fromJson(core.Map _json) {
-    if (_json.containsKey("contig")) {
-      contig = _json["contig"];
-    }
-    if (_json.containsKey("upperBound")) {
-      upperBound = _json["upperBound"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (contig != null) {
-      _json["contig"] = contig;
-    }
-    if (upperBound != null) {
-      _json["upperBound"] = upperBound;
+    if (variantSetIds != null) {
+      _json["variantSetIds"] = variantSetIds;
     }
     return _json;
   }
@@ -2042,28 +2057,28 @@ class Dataset {
 class ExperimentalCreateJobRequest {
   /**
    * Specifies whether or not to run the alignment pipeline. At least one of
-   * align or call_variants must be provided.
+   * align or callVariants must be provided.
    */
   core.bool align;
 
   /**
    * Specifies whether or not to run the variant calling pipeline. If specified,
    * alignment will be performed first and the aligned BAMs will passed as input
-   * to the variant caller. At least one of align or call_variants must be
+   * to the variant caller. At least one of align or callVariants must be
    * provided.
    */
   core.bool callVariants;
 
   /**
-   * Specifies where to copy the results of certain pipelines. This shoud be in
-   * the form of "gs://bucket/path".
+   * Specifies where to copy the results of certain pipelines. This should be in
+   * the form of gs://bucket/path.
    */
   core.String gcsOutputPath;
 
   /**
    * A list of Google Cloud Storage URIs of paired end .fastq files to operate
    * upon. If specified, this represents the second file of each paired .fastq
-   * file. The first file of each pair should be specified in "sourceUris".
+   * file. The first file of each pair should be specified in sourceUris.
    */
   core.List<core.String> pairedSourceUris;
 
@@ -2076,7 +2091,7 @@ class ExperimentalCreateJobRequest {
    * A list of Google Cloud Storage URIs of data files to operate upon. These
    * can be .bam, interleaved .fastq, or paired .fastq. If specifying paired
    * .fastq files, the first of each pair of files should be listed here, and
-   * the second of each pair should be listed in "pairedSourceUris".
+   * the second of each pair should be listed in pairedSourceUris.
    */
   core.List<core.String> sourceUris;
 
@@ -2173,7 +2188,8 @@ class ExportReadsetsRequest {
 
   /**
    * The reference names to export. If this is not specified, all reference
-   * sequences are exported. Use '*' to export unmapped reads.
+   * sequences, including unmapped reads, are exported. Use * to export only
+   * unmapped reads.
    */
   core.List<core.String> referenceNames;
 
@@ -2254,10 +2270,10 @@ class ExportVariantsRequest {
   core.String bigqueryTable;
 
   /**
-   * If provided, only variant call information from the specified callsets will
-   * be exported. By default all variant calls are exported.
+   * If provided, only variant call information from the specified call sets
+   * will be exported. By default all variant calls are exported.
    */
-  core.List<core.String> callsetIds;
+  core.List<core.String> callSetIds;
 
   /**
    * The format for the exported data.
@@ -2273,10 +2289,10 @@ class ExportVariantsRequest {
   core.String projectId;
 
   /**
-   * Required. The ID of the variantset that contains variant data which should
-   * be exported. The caller must have READ access to this variantset.
+   * Required. The ID of the variant set that contains variant data which should
+   * be exported. The caller must have READ access to this variant set.
    */
-  core.String variantsetId;
+  core.String variantSetId;
 
 
   ExportVariantsRequest();
@@ -2288,8 +2304,8 @@ class ExportVariantsRequest {
     if (_json.containsKey("bigqueryTable")) {
       bigqueryTable = _json["bigqueryTable"];
     }
-    if (_json.containsKey("callsetIds")) {
-      callsetIds = _json["callsetIds"];
+    if (_json.containsKey("callSetIds")) {
+      callSetIds = _json["callSetIds"];
     }
     if (_json.containsKey("format")) {
       format = _json["format"];
@@ -2297,8 +2313,8 @@ class ExportVariantsRequest {
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
     }
-    if (_json.containsKey("variantsetId")) {
-      variantsetId = _json["variantsetId"];
+    if (_json.containsKey("variantSetId")) {
+      variantSetId = _json["variantSetId"];
     }
   }
 
@@ -2310,8 +2326,8 @@ class ExportVariantsRequest {
     if (bigqueryTable != null) {
       _json["bigqueryTable"] = bigqueryTable;
     }
-    if (callsetIds != null) {
-      _json["callsetIds"] = callsetIds;
+    if (callSetIds != null) {
+      _json["callSetIds"] = callSetIds;
     }
     if (format != null) {
       _json["format"] = format;
@@ -2319,8 +2335,8 @@ class ExportVariantsRequest {
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
-    if (variantsetId != null) {
-      _json["variantsetId"] = variantsetId;
+    if (variantSetId != null) {
+      _json["variantSetId"] = variantSetId;
     }
     return _json;
   }
@@ -2361,7 +2377,7 @@ class GenomicRange {
    */
   core.String sequenceEnd;
 
-  /** The reference sequence name, for example "chr1", "1", or "chrX". */
+  /** The reference sequence name, for example chr1, 1, or chrX. */
   core.String sequenceName;
 
   /**
@@ -2395,42 +2411,6 @@ class GenomicRange {
     }
     if (sequenceStart != null) {
       _json["sequenceStart"] = sequenceStart;
-    }
-    return _json;
-  }
-}
-
-
-/** The variants summary response. */
-class GetVariantsSummaryResponse {
-  /**
-   * A list of all contigs used by the variants in a dataset with associated
-   * coordinate upper bounds for each one.
-   */
-  core.List<ContigBound> contigBounds;
-
-  /** The metadata associated with this dataset. */
-  core.List<Metadata> metadata;
-
-
-  GetVariantsSummaryResponse();
-
-  GetVariantsSummaryResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("contigBounds")) {
-      contigBounds = _json["contigBounds"].map((value) => new ContigBound.fromJson(value)).toList();
-    }
-    if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"].map((value) => new Metadata.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (contigBounds != null) {
-      _json["contigBounds"] = contigBounds.map((value) => (value).toJson()).toList();
-    }
-    if (metadata != null) {
-      _json["metadata"] = metadata.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -2627,8 +2607,8 @@ class ImportVariantsRequest {
    */
   core.List<core.String> sourceUris;
 
-  /** Required. The variantset to which variant data should be imported. */
-  core.String variantsetId;
+  /** Required. The variant set to which variant data should be imported. */
+  core.String variantSetId;
 
 
   ImportVariantsRequest();
@@ -2640,8 +2620,8 @@ class ImportVariantsRequest {
     if (_json.containsKey("sourceUris")) {
       sourceUris = _json["sourceUris"];
     }
-    if (_json.containsKey("variantsetId")) {
-      variantsetId = _json["variantsetId"];
+    if (_json.containsKey("variantSetId")) {
+      variantSetId = _json["variantSetId"];
     }
   }
 
@@ -2653,8 +2633,8 @@ class ImportVariantsRequest {
     if (sourceUris != null) {
       _json["sourceUris"] = sourceUris;
     }
-    if (variantsetId != null) {
-      _json["variantsetId"] = variantsetId;
+    if (variantSetId != null) {
+      _json["variantSetId"] = variantSetId;
     }
     return _json;
   }
@@ -2862,15 +2842,15 @@ class ListCoverageBucketsResponse {
    * The length of each coverage bucket in base pairs. Note that buckets at the
    * end of a reference sequence may be shorter. This value is omitted if the
    * bucket width is infinity (the default behaviour, with no range or
-   * target_bucket_width).
+   * targetBucketWidth).
    */
   core.String bucketWidth;
 
   /**
    * The coverage buckets. The list of buckets is sparse; a bucket with 0
    * overlapping reads is not returned. A bucket never crosses more than one
-   * reference sequence. Each bucket has width bucket_width, unless its end is
-   * is the end of the reference sequence.
+   * reference sequence. Each bucket has width bucketWidth, unless its end is
+   * the end of the reference sequence.
    */
   core.List<CoverageBucket> coverageBuckets;
 
@@ -3476,6 +3456,45 @@ class Readset {
 }
 
 
+/**
+ * ReferenceBound records an upper bound for the starting coordinate of variants
+ * in a particular reference.
+ */
+class ReferenceBound {
+  /** The reference the bound is associate with. */
+  core.String referenceName;
+
+  /**
+   * An upper bound (inclusive) on the starting coordinate of any variant in the
+   * reference sequence.
+   */
+  core.String upperBound;
+
+
+  ReferenceBound();
+
+  ReferenceBound.fromJson(core.Map _json) {
+    if (_json.containsKey("referenceName")) {
+      referenceName = _json["referenceName"];
+    }
+    if (_json.containsKey("upperBound")) {
+      upperBound = _json["upperBound"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (referenceName != null) {
+      _json["referenceName"] = referenceName;
+    }
+    if (upperBound != null) {
+      _json["upperBound"] = upperBound;
+    }
+    return _json;
+  }
+}
+
+
 /** Not documented yet. */
 class ReferenceSequence {
   /** (AS) Genome assembly identifier. */
@@ -3548,70 +3567,71 @@ class ReferenceSequence {
 }
 
 
-/** The callset search request. */
-class SearchCallsetsRequest {
-  /** The maximum number of callsets to return. */
-  core.String maxResults;
-
+/** The call set search request. */
+class SearchCallSetsRequest {
   /**
-   * Only return callsets for which a substring of the name matches this string.
+   * Only return call sets for which a substring of the name matches this
+   * string.
    */
   core.String name;
+
+  /** The maximum number of call sets to return. */
+  core.int pageSize;
 
   /**
    * The continuation token, which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of
-   * "nextPageToken" from the previous response.
+   * nextPageToken from the previous response.
    */
   core.String pageToken;
 
   /**
-   * Restrict the query to callsets within the given variantsets. At least one
+   * Restrict the query to call sets within the given variant sets. At least one
    * ID must be provided.
    */
-  core.List<core.String> variantsetIds;
+  core.List<core.String> variantSetIds;
 
 
-  SearchCallsetsRequest();
+  SearchCallSetsRequest();
 
-  SearchCallsetsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("maxResults")) {
-      maxResults = _json["maxResults"];
-    }
+  SearchCallSetsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("pageSize")) {
+      pageSize = _json["pageSize"];
     }
     if (_json.containsKey("pageToken")) {
       pageToken = _json["pageToken"];
     }
-    if (_json.containsKey("variantsetIds")) {
-      variantsetIds = _json["variantsetIds"];
+    if (_json.containsKey("variantSetIds")) {
+      variantSetIds = _json["variantSetIds"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (maxResults != null) {
-      _json["maxResults"] = maxResults;
-    }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (pageSize != null) {
+      _json["pageSize"] = pageSize;
     }
     if (pageToken != null) {
       _json["pageToken"] = pageToken;
     }
-    if (variantsetIds != null) {
-      _json["variantsetIds"] = variantsetIds;
+    if (variantSetIds != null) {
+      _json["variantSetIds"] = variantSetIds;
     }
     return _json;
   }
 }
 
 
-/** The callset search response. */
-class SearchCallsetsResponse {
-  /** The list of matching callsets. */
-  core.List<Callset> callsets;
+/** The call set search response. */
+class SearchCallSetsResponse {
+  /** The list of matching call sets. */
+  core.List<CallSet> callSets;
 
   /**
    * The continuation token, which is used to page through large result sets.
@@ -3621,11 +3641,11 @@ class SearchCallsetsResponse {
   core.String nextPageToken;
 
 
-  SearchCallsetsResponse();
+  SearchCallSetsResponse();
 
-  SearchCallsetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("callsets")) {
-      callsets = _json["callsets"].map((value) => new Callset.fromJson(value)).toList();
+  SearchCallSetsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("callSets")) {
+      callSets = _json["callSets"].map((value) => new CallSet.fromJson(value)).toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -3634,8 +3654,8 @@ class SearchCallsetsResponse {
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (callsets != null) {
-      _json["callsets"] = callsets.map((value) => (value).toJson()).toList();
+    if (callSets != null) {
+      _json["callSets"] = callSets.map((value) => (value).toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3668,14 +3688,11 @@ class SearchJobsRequest {
   /**
    * The continuation token which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of the
-   * "nextPageToken" from the previous response.
+   * nextPageToken from the previous response.
    */
   core.String pageToken;
 
-  /**
-   * Required. Only return jobs which belong to this Google Developers Console
-   * project. Only accepts project numbers.
-   */
+  /** Required. Only return jobs which belong to this Google Developers */
   core.String projectId;
 
   /** Only return jobs which have a matching status. */
@@ -3778,7 +3795,7 @@ class SearchReadsRequest {
   /**
    * The continuation token, which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of
-   * "nextPageToken" from the previous response.
+   * nextPageToken from the previous response.
    */
   core.String pageToken;
 
@@ -3791,21 +3808,21 @@ class SearchReadsRequest {
 
   /**
    * The end position (1-based, inclusive) of the target range. If specified,
-   * "sequenceName" must also be specified. Defaults to the end of the target
+   * sequenceName must also be specified. Defaults to the end of the target
    * reference sequence, if any.
    */
   core.String sequenceEnd;
 
   /**
-   * Restricts the results to a particular reference sequence such as '1',
-   * 'chr1', or 'X'. The set of valid references sequences depends on the
-   * readsets specified. If set to "*", only unmapped Reads are returned.
+   * Restricts the results to a particular reference sequence such as 1, chr1,
+   * or X. The set of valid references sequences depends on the readsets
+   * specified. If set to *, only unmapped Reads are returned.
    */
   core.String sequenceName;
 
   /**
    * The start position (1-based, inclusive) of the target range. If specified,
-   * "sequenceName" must also be specified. Defaults to the start of the target
+   * sequenceName must also be specified. Defaults to the start of the target
    * reference sequence, if any.
    */
   core.String sequenceStart;
@@ -3922,7 +3939,7 @@ class SearchReadsetsRequest {
   /**
    * The continuation token, which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of
-   * "nextPageToken" from the previous response.
+   * nextPageToken from the previous response.
    */
   core.String pageToken;
 
@@ -4000,114 +4017,201 @@ class SearchReadsetsResponse {
 }
 
 
-/** The variant search request. */
-class SearchVariantsRequest {
+/** The search variant sets request. */
+class SearchVariantSetsRequest {
   /**
-   * Only return variant calls which belong to callsets with these ids. Leaving
-   * this blank returns all variant calls. At most one of callsetNames or
-   * callsetIds should be provided.
+   * Exactly one dataset ID must be provided here. Only variant sets which
+   * belong to this dataset will be returned.
    */
-  core.List<core.String> callsetIds;
+  core.List<core.String> datasetIds;
 
-  /**
-   * Only return variant calls which belong to callsets which have exactly these
-   * names. Leaving this blank returns all variant calls. At most one of
-   * callsetNames or callsetIds should be provided.
-   */
-  core.List<core.String> callsetNames;
-
-  /** Required. Only return variants on this contig. */
-  core.String contig;
-
-  /**
-   * Required. The end of the window (0-based, exclusive) for which overlapping
-   * variants should be returned.
-   */
-  core.String endPosition;
-
-  /** The maximum number of variants to return. */
-  core.String maxResults;
+  /** The maximum number of variant sets to return in a request. */
+  core.int pageSize;
 
   /**
    * The continuation token, which is used to page through large result sets. To
    * get the next page of results, set this parameter to the value of
-   * "nextPageToken" from the previous response.
+   * nextPageToken from the previous response.
    */
   core.String pageToken;
 
-  /**
-   * Required. The beginning of the window (0-based, inclusive) for which
-   * overlapping variants should be returned.
-   */
-  core.String startPosition;
 
-  /** Only return variants which have exactly this name. */
-  core.String variantName;
+  SearchVariantSetsRequest();
 
-  /** Required. The ID of the variantset to search. */
-  core.String variantsetId;
-
-
-  SearchVariantsRequest();
-
-  SearchVariantsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("callsetIds")) {
-      callsetIds = _json["callsetIds"];
+  SearchVariantSetsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("datasetIds")) {
+      datasetIds = _json["datasetIds"];
     }
-    if (_json.containsKey("callsetNames")) {
-      callsetNames = _json["callsetNames"];
-    }
-    if (_json.containsKey("contig")) {
-      contig = _json["contig"];
-    }
-    if (_json.containsKey("endPosition")) {
-      endPosition = _json["endPosition"];
-    }
-    if (_json.containsKey("maxResults")) {
-      maxResults = _json["maxResults"];
+    if (_json.containsKey("pageSize")) {
+      pageSize = _json["pageSize"];
     }
     if (_json.containsKey("pageToken")) {
       pageToken = _json["pageToken"];
-    }
-    if (_json.containsKey("startPosition")) {
-      startPosition = _json["startPosition"];
-    }
-    if (_json.containsKey("variantName")) {
-      variantName = _json["variantName"];
-    }
-    if (_json.containsKey("variantsetId")) {
-      variantsetId = _json["variantsetId"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (callsetIds != null) {
-      _json["callsetIds"] = callsetIds;
+    if (datasetIds != null) {
+      _json["datasetIds"] = datasetIds;
     }
-    if (callsetNames != null) {
-      _json["callsetNames"] = callsetNames;
-    }
-    if (contig != null) {
-      _json["contig"] = contig;
-    }
-    if (endPosition != null) {
-      _json["endPosition"] = endPosition;
-    }
-    if (maxResults != null) {
-      _json["maxResults"] = maxResults;
+    if (pageSize != null) {
+      _json["pageSize"] = pageSize;
     }
     if (pageToken != null) {
       _json["pageToken"] = pageToken;
     }
-    if (startPosition != null) {
-      _json["startPosition"] = startPosition;
+    return _json;
+  }
+}
+
+
+/** The search variant sets response. */
+class SearchVariantSetsResponse {
+  /**
+   * The continuation token, which is used to page through large result sets.
+   * Provide this value in a subsequent request to return the next page of
+   * results. This field will be empty if there aren't any additional results.
+   */
+  core.String nextPageToken;
+
+  /** The variant sets belonging to the requested dataset. */
+  core.List<VariantSet> variantSets;
+
+
+  SearchVariantSetsResponse();
+
+  SearchVariantSetsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("variantSets")) {
+      variantSets = _json["variantSets"].map((value) => new VariantSet.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (variantSets != null) {
+      _json["variantSets"] = variantSets.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** The variant search request. */
+class SearchVariantsRequest {
+  /**
+   * Only return variant calls which belong to call sets with these ids. Leaving
+   * this blank returns all variant calls.
+   */
+  core.List<core.String> callSetIds;
+
+  /**
+   * Required. The end of the window (0-based, exclusive) for which overlapping
+   * variants should be returned.
+   */
+  core.String end;
+
+  /**
+   * The maximum number of calls to return. However, at least one variant will
+   * always be returned, even if it has more calls than this limit.
+   */
+  core.int maxCalls;
+
+  /** The maximum number of variants to return. */
+  core.int pageSize;
+
+  /**
+   * The continuation token, which is used to page through large result sets. To
+   * get the next page of results, set this parameter to the value of
+   * nextPageToken from the previous response.
+   */
+  core.String pageToken;
+
+  /** Required. Only return variants in this reference sequence. */
+  core.String referenceName;
+
+  /**
+   * Required. The beginning of the window (0-based, inclusive) for which
+   * overlapping variants should be returned.
+   */
+  core.String start;
+
+  /** Only return variants which have exactly this name. */
+  core.String variantName;
+
+  /**
+   * Exactly one variant set ID must be provided. Only variants from this
+   * variant set will be returned.
+   */
+  core.List<core.String> variantSetIds;
+
+
+  SearchVariantsRequest();
+
+  SearchVariantsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("callSetIds")) {
+      callSetIds = _json["callSetIds"];
+    }
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+    if (_json.containsKey("maxCalls")) {
+      maxCalls = _json["maxCalls"];
+    }
+    if (_json.containsKey("pageSize")) {
+      pageSize = _json["pageSize"];
+    }
+    if (_json.containsKey("pageToken")) {
+      pageToken = _json["pageToken"];
+    }
+    if (_json.containsKey("referenceName")) {
+      referenceName = _json["referenceName"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
+    }
+    if (_json.containsKey("variantName")) {
+      variantName = _json["variantName"];
+    }
+    if (_json.containsKey("variantSetIds")) {
+      variantSetIds = _json["variantSetIds"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (callSetIds != null) {
+      _json["callSetIds"] = callSetIds;
+    }
+    if (end != null) {
+      _json["end"] = end;
+    }
+    if (maxCalls != null) {
+      _json["maxCalls"] = maxCalls;
+    }
+    if (pageSize != null) {
+      _json["pageSize"] = pageSize;
+    }
+    if (pageToken != null) {
+      _json["pageToken"] = pageToken;
+    }
+    if (referenceName != null) {
+      _json["referenceName"] = referenceName;
+    }
+    if (start != null) {
+      _json["start"] = start;
     }
     if (variantName != null) {
       _json["variantName"] = variantName;
     }
-    if (variantsetId != null) {
-      _json["variantsetId"] = variantsetId;
+    if (variantSetIds != null) {
+      _json["variantSetIds"] = variantSetIds;
     }
     return _json;
   }
@@ -4154,7 +4258,7 @@ class SearchVariantsResponse {
 /**
  * A Variant represents a change in DNA sequence relative to some reference. For
  * example, a Variant could represent a SNP or an insertion. Variants belong to
- * a Variantset.
+ * a variant set.
  */
 class Variant {
   /** The bases that appear instead of the reference bases. */
@@ -4166,17 +4270,14 @@ class Variant {
    */
   core.List<Call> calls;
 
-  /** The contig on which this variant occurs. (such as 'chr20' or 'X') */
-  core.String contig;
-
   /** The date this variant was created, in milliseconds from the epoch. */
   core.String created;
 
   /**
    * The end position (0-based) of this variant. This corresponds to the first
    * base after the last base in the reference allele. So, the length of the
-   * reference allele is (end - position). This is useful for variants that
-   * don't explicitly give alternate bases, for example large deletions.
+   * reference allele is (end - start). This is useful for variants that don't
+   * explicitly give alternate bases, for example large deletions.
    */
   core.String end;
 
@@ -4190,18 +4291,21 @@ class Variant {
   core.List<core.String> names;
 
   /**
-   * The position at which this variant occurs (0-based). This corresponds to
-   * the first base of the string of reference bases.
-   */
-  core.String position;
-
-  /**
    * The reference bases for this variant. They start at the given position.
    */
   core.String referenceBases;
 
-  /** The ID of the variantset this variant belongs to. */
-  core.String variantsetId;
+  /** The reference on which this variant occurs. (such as chr20 or X) */
+  core.String referenceName;
+
+  /**
+   * The position at which this variant occurs (0-based). This corresponds to
+   * the first base of the string of reference bases.
+   */
+  core.String start;
+
+  /** The ID of the variant set this variant belongs to. */
+  core.String variantSetId;
 
 
   Variant();
@@ -4212,9 +4316,6 @@ class Variant {
     }
     if (_json.containsKey("calls")) {
       calls = _json["calls"].map((value) => new Call.fromJson(value)).toList();
-    }
-    if (_json.containsKey("contig")) {
-      contig = _json["contig"];
     }
     if (_json.containsKey("created")) {
       created = _json["created"];
@@ -4231,14 +4332,17 @@ class Variant {
     if (_json.containsKey("names")) {
       names = _json["names"];
     }
-    if (_json.containsKey("position")) {
-      position = _json["position"];
-    }
     if (_json.containsKey("referenceBases")) {
       referenceBases = _json["referenceBases"];
     }
-    if (_json.containsKey("variantsetId")) {
-      variantsetId = _json["variantsetId"];
+    if (_json.containsKey("referenceName")) {
+      referenceName = _json["referenceName"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
+    }
+    if (_json.containsKey("variantSetId")) {
+      variantSetId = _json["variantSetId"];
     }
   }
 
@@ -4249,9 +4353,6 @@ class Variant {
     }
     if (calls != null) {
       _json["calls"] = calls.map((value) => (value).toJson()).toList();
-    }
-    if (contig != null) {
-      _json["contig"] = contig;
     }
     if (created != null) {
       _json["created"] = created;
@@ -4268,14 +4369,74 @@ class Variant {
     if (names != null) {
       _json["names"] = names;
     }
-    if (position != null) {
-      _json["position"] = position;
-    }
     if (referenceBases != null) {
       _json["referenceBases"] = referenceBases;
     }
-    if (variantsetId != null) {
-      _json["variantsetId"] = variantsetId;
+    if (referenceName != null) {
+      _json["referenceName"] = referenceName;
+    }
+    if (start != null) {
+      _json["start"] = start;
+    }
+    if (variantSetId != null) {
+      _json["variantSetId"] = variantSetId;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * A VariantSet represents a collection of Variants and their summary
+ * statistics.
+ */
+class VariantSet {
+  /** The dataset to which this variant set belongs. Immutable. */
+  core.String datasetId;
+
+  /** The Google-generated ID of the variant set. Immutable. */
+  core.String id;
+
+  /** The metadata associated with this variant set. */
+  core.List<Metadata> metadata;
+
+  /**
+   * A list of all references used by the variants in a variant set with
+   * associated coordinate upper bounds for each one.
+   */
+  core.List<ReferenceBound> referenceBounds;
+
+
+  VariantSet();
+
+  VariantSet.fromJson(core.Map _json) {
+    if (_json.containsKey("datasetId")) {
+      datasetId = _json["datasetId"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = _json["metadata"].map((value) => new Metadata.fromJson(value)).toList();
+    }
+    if (_json.containsKey("referenceBounds")) {
+      referenceBounds = _json["referenceBounds"].map((value) => new ReferenceBound.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (datasetId != null) {
+      _json["datasetId"] = datasetId;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata.map((value) => (value).toJson()).toList();
+    }
+    if (referenceBounds != null) {
+      _json["referenceBounds"] = referenceBounds.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

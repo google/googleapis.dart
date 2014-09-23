@@ -55,7 +55,7 @@ class YoutubeApi {
   WatermarksResourceApi get watermarks => new WatermarksResourceApi(_requester);
 
   YoutubeApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/youtube/v3/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "youtube/v3/");
 }
 
 

@@ -49,40 +49,40 @@ checkTask(api.Task o) {
   buildCounterTask--;
 }
 
-buildUnnamed1077() {
+buildUnnamed1105() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1077(core.List<core.String> o) {
+checkUnnamed1105(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1078() {
+buildUnnamed1106() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1078(core.List<core.String> o) {
+checkUnnamed1106(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1079() {
+buildUnnamed1107() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1079(core.List<core.String> o) {
+checkUnnamed1107(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -93,9 +93,9 @@ buildTaskQueueAcl() {
   var o = new api.TaskQueueAcl();
   buildCounterTaskQueueAcl++;
   if (buildCounterTaskQueueAcl < 3) {
-    o.adminEmails = buildUnnamed1077();
-    o.consumerEmails = buildUnnamed1078();
-    o.producerEmails = buildUnnamed1079();
+    o.adminEmails = buildUnnamed1105();
+    o.consumerEmails = buildUnnamed1106();
+    o.producerEmails = buildUnnamed1107();
   }
   buildCounterTaskQueueAcl--;
   return o;
@@ -104,9 +104,9 @@ buildTaskQueueAcl() {
 checkTaskQueueAcl(api.TaskQueueAcl o) {
   buildCounterTaskQueueAcl++;
   if (buildCounterTaskQueueAcl < 3) {
-    checkUnnamed1077(o.adminEmails);
-    checkUnnamed1078(o.consumerEmails);
-    checkUnnamed1079(o.producerEmails);
+    checkUnnamed1105(o.adminEmails);
+    checkUnnamed1106(o.consumerEmails);
+    checkUnnamed1107(o.producerEmails);
   }
   buildCounterTaskQueueAcl--;
 }
@@ -163,14 +163,14 @@ checkTaskQueue(api.TaskQueue o) {
   buildCounterTaskQueue--;
 }
 
-buildUnnamed1080() {
+buildUnnamed1108() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed1080(core.List<api.Task> o) {
+checkUnnamed1108(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -181,7 +181,7 @@ buildTasks() {
   var o = new api.Tasks();
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
-    o.items = buildUnnamed1080();
+    o.items = buildUnnamed1108();
     o.kind = "foo";
   }
   buildCounterTasks--;
@@ -191,20 +191,20 @@ buildTasks() {
 checkTasks(api.Tasks o) {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
-    checkUnnamed1080(o.items);
+    checkUnnamed1108(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterTasks--;
 }
 
-buildUnnamed1081() {
+buildUnnamed1109() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed1081(core.List<api.Task> o) {
+checkUnnamed1109(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -215,7 +215,7 @@ buildTasks2() {
   var o = new api.Tasks2();
   buildCounterTasks2++;
   if (buildCounterTasks2 < 3) {
-    o.items = buildUnnamed1081();
+    o.items = buildUnnamed1109();
     o.kind = "foo";
   }
   buildCounterTasks2--;
@@ -225,7 +225,7 @@ buildTasks2() {
 checkTasks2(api.Tasks2 o) {
   buildCounterTasks2++;
   if (buildCounterTasks2 < 3) {
-    checkUnnamed1081(o.items);
+    checkUnnamed1109(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterTasks2--;
@@ -300,18 +300,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("/taskqueue/v1beta2/projects/"));
-        pathOffset += 28;
-        index = path.indexOf("/taskqueues/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/taskqueues/"));
-        pathOffset += 12;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_taskqueue"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -359,25 +349,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("/taskqueue/v1beta2/projects/"));
-        pathOffset += 28;
-        index = path.indexOf("/taskqueues/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/taskqueues/"));
-        pathOffset += 12;
-        index = path.indexOf("/tasks/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_taskqueue"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/tasks/"));
-        pathOffset += 7;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_task"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -418,25 +391,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("/taskqueue/v1beta2/projects/"));
-        pathOffset += 28;
-        index = path.indexOf("/taskqueues/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/taskqueues/"));
-        pathOffset += 12;
-        index = path.indexOf("/tasks/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_taskqueue"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/tasks/"));
-        pathOffset += 7;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_task"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -482,22 +438,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("/taskqueue/v1beta2/projects/"));
-        pathOffset += 28;
-        index = path.indexOf("/taskqueues/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/taskqueues/"));
-        pathOffset += 12;
-        index = path.indexOf("/tasks", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_taskqueue"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/tasks"));
-        pathOffset += 6;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -543,22 +485,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("/taskqueue/v1beta2/projects/"));
-        pathOffset += 28;
-        index = path.indexOf("/taskqueues/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/taskqueues/"));
-        pathOffset += 12;
-        index = path.indexOf("/tasks/lease", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_taskqueue"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/tasks/lease"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -604,22 +532,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("/taskqueue/v1beta2/projects/"));
-        pathOffset += 28;
-        index = path.indexOf("/taskqueues/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/taskqueues/"));
-        pathOffset += 12;
-        index = path.indexOf("/tasks", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_taskqueue"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/tasks"));
-        pathOffset += 6;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -667,25 +581,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("/taskqueue/v1beta2/projects/"));
-        pathOffset += 28;
-        index = path.indexOf("/taskqueues/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/taskqueues/"));
-        pathOffset += 12;
-        index = path.indexOf("/tasks/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_taskqueue"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/tasks/"));
-        pathOffset += 7;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_task"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -734,25 +631,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("/taskqueue/v1beta2/projects/"));
-        pathOffset += 28;
-        index = path.indexOf("/taskqueues/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/taskqueues/"));
-        pathOffset += 12;
-        index = path.indexOf("/tasks/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_taskqueue"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/tasks/"));
-        pathOffset += 7;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_task"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;

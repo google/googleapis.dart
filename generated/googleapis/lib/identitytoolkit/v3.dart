@@ -21,7 +21,7 @@ class IdentitytoolkitApi {
   RelyingpartyResourceApi get relyingparty => new RelyingpartyResourceApi(_requester);
 
   IdentitytoolkitApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/identitytoolkit/v3/relyingparty/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "identitytoolkit/v3/relyingparty/");
 }
 
 
@@ -268,7 +268,7 @@ class RelyingpartyResourceApi {
   }
 
   /**
-   * Set account info for a user.
+   * Reset password for a user.
    *
    * [request] - The metadata request object.
    *
@@ -476,6 +476,9 @@ class CreateAuthUriResponse {
   /** The URI used by the IDP to authenticate the user. */
   core.String authUri;
 
+  /** True if captcha is required. */
+  core.bool captchaRequired;
+
   /** True if the authUri is for user's existing provider. */
   core.bool forExistingProvider;
 
@@ -495,6 +498,9 @@ class CreateAuthUriResponse {
     if (_json.containsKey("authUri")) {
       authUri = _json["authUri"];
     }
+    if (_json.containsKey("captchaRequired")) {
+      captchaRequired = _json["captchaRequired"];
+    }
     if (_json.containsKey("forExistingProvider")) {
       forExistingProvider = _json["forExistingProvider"];
     }
@@ -513,6 +519,9 @@ class CreateAuthUriResponse {
     var _json = new core.Map();
     if (authUri != null) {
       _json["authUri"] = authUri;
+    }
+    if (captchaRequired != null) {
+      _json["captchaRequired"] = captchaRequired;
     }
     if (forExistingProvider != null) {
       _json["forExistingProvider"] = forExistingProvider;

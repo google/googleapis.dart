@@ -78,14 +78,14 @@ checkBackupRun(api.BackupRun o) {
   buildCounterBackupRun--;
 }
 
-buildUnnamed1033() {
+buildUnnamed1061() {
   var o = new core.List<api.BackupRun>();
   o.add(buildBackupRun());
   o.add(buildBackupRun());
   return o;
 }
 
-checkUnnamed1033(core.List<api.BackupRun> o) {
+checkUnnamed1061(core.List<api.BackupRun> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBackupRun(o[0]);
   checkBackupRun(o[1]);
@@ -96,7 +96,7 @@ buildBackupRunsListResponse() {
   var o = new api.BackupRunsListResponse();
   buildCounterBackupRunsListResponse++;
   if (buildCounterBackupRunsListResponse < 3) {
-    o.items = buildUnnamed1033();
+    o.items = buildUnnamed1061();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -107,7 +107,7 @@ buildBackupRunsListResponse() {
 checkBackupRunsListResponse(api.BackupRunsListResponse o) {
   buildCounterBackupRunsListResponse++;
   if (buildCounterBackupRunsListResponse < 3) {
-    checkUnnamed1033(o.items);
+    checkUnnamed1061(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -183,27 +183,27 @@ checkDatabaseFlags(api.DatabaseFlags o) {
   buildCounterDatabaseFlags--;
 }
 
-buildUnnamed1034() {
+buildUnnamed1062() {
   var o = new core.List<api.IpMapping>();
   o.add(buildIpMapping());
   o.add(buildIpMapping());
   return o;
 }
 
-checkUnnamed1034(core.List<api.IpMapping> o) {
+checkUnnamed1062(core.List<api.IpMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIpMapping(o[0]);
   checkIpMapping(o[1]);
 }
 
-buildUnnamed1035() {
+buildUnnamed1063() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1035(core.List<core.String> o) {
+checkUnnamed1063(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -219,13 +219,13 @@ buildDatabaseInstance() {
     o.etag = "foo";
     o.instance = "foo";
     o.instanceType = "foo";
-    o.ipAddresses = buildUnnamed1034();
+    o.ipAddresses = buildUnnamed1062();
     o.kind = "foo";
     o.masterInstanceName = "foo";
     o.maxDiskSize = "foo";
     o.project = "foo";
     o.region = "foo";
-    o.replicaNames = buildUnnamed1035();
+    o.replicaNames = buildUnnamed1063();
     o.serverCaCert = buildSslCert();
     o.settings = buildSettings();
     o.state = "foo";
@@ -242,13 +242,13 @@ checkDatabaseInstance(api.DatabaseInstance o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.instance, unittest.equals('foo'));
     unittest.expect(o.instanceType, unittest.equals('foo'));
-    checkUnnamed1034(o.ipAddresses);
+    checkUnnamed1062(o.ipAddresses);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.masterInstanceName, unittest.equals('foo'));
     unittest.expect(o.maxDiskSize, unittest.equals('foo'));
     unittest.expect(o.project, unittest.equals('foo'));
     unittest.expect(o.region, unittest.equals('foo'));
-    checkUnnamed1035(o.replicaNames);
+    checkUnnamed1063(o.replicaNames);
     checkSslCert(o.serverCaCert);
     checkSettings(o.settings);
     unittest.expect(o.state, unittest.equals('foo'));
@@ -256,27 +256,27 @@ checkDatabaseInstance(api.DatabaseInstance o) {
   buildCounterDatabaseInstance--;
 }
 
-buildUnnamed1036() {
+buildUnnamed1064() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1036(core.List<core.String> o) {
+checkUnnamed1064(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1037() {
+buildUnnamed1065() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1037(core.List<core.String> o) {
+checkUnnamed1065(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -287,9 +287,9 @@ buildExportContext() {
   var o = new api.ExportContext();
   buildCounterExportContext++;
   if (buildCounterExportContext < 3) {
-    o.database = buildUnnamed1036();
+    o.database = buildUnnamed1064();
     o.kind = "foo";
-    o.table = buildUnnamed1037();
+    o.table = buildUnnamed1065();
     o.uri = "foo";
   }
   buildCounterExportContext--;
@@ -299,35 +299,35 @@ buildExportContext() {
 checkExportContext(api.ExportContext o) {
   buildCounterExportContext++;
   if (buildCounterExportContext < 3) {
-    checkUnnamed1036(o.database);
+    checkUnnamed1064(o.database);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1037(o.table);
+    checkUnnamed1065(o.table);
     unittest.expect(o.uri, unittest.equals('foo'));
   }
   buildCounterExportContext--;
 }
 
-buildUnnamed1038() {
+buildUnnamed1066() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1038(core.List<core.String> o) {
+checkUnnamed1066(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1039() {
+buildUnnamed1067() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1039(core.List<core.String> o) {
+checkUnnamed1067(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -338,8 +338,8 @@ buildFlag() {
   var o = new api.Flag();
   buildCounterFlag++;
   if (buildCounterFlag < 3) {
-    o.allowedStringValues = buildUnnamed1038();
-    o.appliesTo = buildUnnamed1039();
+    o.allowedStringValues = buildUnnamed1066();
+    o.appliesTo = buildUnnamed1067();
     o.kind = "foo";
     o.maxValue = "foo";
     o.minValue = "foo";
@@ -353,8 +353,8 @@ buildFlag() {
 checkFlag(api.Flag o) {
   buildCounterFlag++;
   if (buildCounterFlag < 3) {
-    checkUnnamed1038(o.allowedStringValues);
-    checkUnnamed1039(o.appliesTo);
+    checkUnnamed1066(o.allowedStringValues);
+    checkUnnamed1067(o.appliesTo);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.maxValue, unittest.equals('foo'));
     unittest.expect(o.minValue, unittest.equals('foo'));
@@ -364,14 +364,14 @@ checkFlag(api.Flag o) {
   buildCounterFlag--;
 }
 
-buildUnnamed1040() {
+buildUnnamed1068() {
   var o = new core.List<api.Flag>();
   o.add(buildFlag());
   o.add(buildFlag());
   return o;
 }
 
-checkUnnamed1040(core.List<api.Flag> o) {
+checkUnnamed1068(core.List<api.Flag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFlag(o[0]);
   checkFlag(o[1]);
@@ -382,7 +382,7 @@ buildFlagsListResponse() {
   var o = new api.FlagsListResponse();
   buildCounterFlagsListResponse++;
   if (buildCounterFlagsListResponse < 3) {
-    o.items = buildUnnamed1040();
+    o.items = buildUnnamed1068();
     o.kind = "foo";
   }
   buildCounterFlagsListResponse--;
@@ -392,20 +392,20 @@ buildFlagsListResponse() {
 checkFlagsListResponse(api.FlagsListResponse o) {
   buildCounterFlagsListResponse++;
   if (buildCounterFlagsListResponse < 3) {
-    checkUnnamed1040(o.items);
+    checkUnnamed1068(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterFlagsListResponse--;
 }
 
-buildUnnamed1041() {
+buildUnnamed1069() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1041(core.List<core.String> o) {
+checkUnnamed1069(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -418,7 +418,7 @@ buildImportContext() {
   if (buildCounterImportContext < 3) {
     o.database = "foo";
     o.kind = "foo";
-    o.uri = buildUnnamed1041();
+    o.uri = buildUnnamed1069();
   }
   buildCounterImportContext--;
   return o;
@@ -429,19 +429,19 @@ checkImportContext(api.ImportContext o) {
   if (buildCounterImportContext < 3) {
     unittest.expect(o.database, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1041(o.uri);
+    checkUnnamed1069(o.uri);
   }
   buildCounterImportContext--;
 }
 
-buildUnnamed1042() {
+buildUnnamed1070() {
   var o = new core.List<api.OperationError>();
   o.add(buildOperationError());
   o.add(buildOperationError());
   return o;
 }
 
-checkUnnamed1042(core.List<api.OperationError> o) {
+checkUnnamed1070(core.List<api.OperationError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationError(o[0]);
   checkOperationError(o[1]);
@@ -454,7 +454,7 @@ buildInstanceOperation() {
   if (buildCounterInstanceOperation < 3) {
     o.endTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.enqueuedTime = core.DateTime.parse("2002-02-27T14:01:02");
-    o.error = buildUnnamed1042();
+    o.error = buildUnnamed1070();
     o.exportContext = buildExportContext();
     o.importContext = buildImportContext();
     o.instance = "foo";
@@ -474,7 +474,7 @@ checkInstanceOperation(api.InstanceOperation o) {
   if (buildCounterInstanceOperation < 3) {
     unittest.expect(o.endTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.enqueuedTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUnnamed1042(o.error);
+    checkUnnamed1070(o.error);
     checkExportContext(o.exportContext);
     checkImportContext(o.importContext);
     unittest.expect(o.instance, unittest.equals('foo'));
@@ -669,14 +669,14 @@ checkInstancesInsertResponse(api.InstancesInsertResponse o) {
   buildCounterInstancesInsertResponse--;
 }
 
-buildUnnamed1043() {
+buildUnnamed1071() {
   var o = new core.List<api.DatabaseInstance>();
   o.add(buildDatabaseInstance());
   o.add(buildDatabaseInstance());
   return o;
 }
 
-checkUnnamed1043(core.List<api.DatabaseInstance> o) {
+checkUnnamed1071(core.List<api.DatabaseInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDatabaseInstance(o[0]);
   checkDatabaseInstance(o[1]);
@@ -687,7 +687,7 @@ buildInstancesListResponse() {
   var o = new api.InstancesListResponse();
   buildCounterInstancesListResponse++;
   if (buildCounterInstancesListResponse < 3) {
-    o.items = buildUnnamed1043();
+    o.items = buildUnnamed1071();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -698,7 +698,7 @@ buildInstancesListResponse() {
 checkInstancesListResponse(api.InstancesListResponse o) {
   buildCounterInstancesListResponse++;
   if (buildCounterInstancesListResponse < 3) {
-    checkUnnamed1043(o.items);
+    checkUnnamed1071(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -831,14 +831,14 @@ checkInstancesUpdateResponse(api.InstancesUpdateResponse o) {
   buildCounterInstancesUpdateResponse--;
 }
 
-buildUnnamed1044() {
+buildUnnamed1072() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1044(core.List<core.String> o) {
+checkUnnamed1072(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -849,7 +849,7 @@ buildIpConfiguration() {
   var o = new api.IpConfiguration();
   buildCounterIpConfiguration++;
   if (buildCounterIpConfiguration < 3) {
-    o.authorizedNetworks = buildUnnamed1044();
+    o.authorizedNetworks = buildUnnamed1072();
     o.enabled = true;
     o.requireSsl = true;
   }
@@ -860,7 +860,7 @@ buildIpConfiguration() {
 checkIpConfiguration(api.IpConfiguration o) {
   buildCounterIpConfiguration++;
   if (buildCounterIpConfiguration < 3) {
-    checkUnnamed1044(o.authorizedNetworks);
+    checkUnnamed1072(o.authorizedNetworks);
     unittest.expect(o.enabled, unittest.isTrue);
     unittest.expect(o.requireSsl, unittest.isTrue);
   }
@@ -932,14 +932,14 @@ checkOperationError(api.OperationError o) {
   buildCounterOperationError--;
 }
 
-buildUnnamed1045() {
+buildUnnamed1073() {
   var o = new core.List<api.InstanceOperation>();
   o.add(buildInstanceOperation());
   o.add(buildInstanceOperation());
   return o;
 }
 
-checkUnnamed1045(core.List<api.InstanceOperation> o) {
+checkUnnamed1073(core.List<api.InstanceOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstanceOperation(o[0]);
   checkInstanceOperation(o[1]);
@@ -950,7 +950,7 @@ buildOperationsListResponse() {
   var o = new api.OperationsListResponse();
   buildCounterOperationsListResponse++;
   if (buildCounterOperationsListResponse < 3) {
-    o.items = buildUnnamed1045();
+    o.items = buildUnnamed1073();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -961,7 +961,7 @@ buildOperationsListResponse() {
 checkOperationsListResponse(api.OperationsListResponse o) {
   buildCounterOperationsListResponse++;
   if (buildCounterOperationsListResponse < 3) {
-    checkUnnamed1045(o.items);
+    checkUnnamed1073(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -989,40 +989,40 @@ checkSetRootPasswordContext(api.SetRootPasswordContext o) {
   buildCounterSetRootPasswordContext--;
 }
 
-buildUnnamed1046() {
+buildUnnamed1074() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1046(core.List<core.String> o) {
+checkUnnamed1074(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1047() {
+buildUnnamed1075() {
   var o = new core.List<api.BackupConfiguration>();
   o.add(buildBackupConfiguration());
   o.add(buildBackupConfiguration());
   return o;
 }
 
-checkUnnamed1047(core.List<api.BackupConfiguration> o) {
+checkUnnamed1075(core.List<api.BackupConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBackupConfiguration(o[0]);
   checkBackupConfiguration(o[1]);
 }
 
-buildUnnamed1048() {
+buildUnnamed1076() {
   var o = new core.List<api.DatabaseFlags>();
   o.add(buildDatabaseFlags());
   o.add(buildDatabaseFlags());
   return o;
 }
 
-checkUnnamed1048(core.List<api.DatabaseFlags> o) {
+checkUnnamed1076(core.List<api.DatabaseFlags> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDatabaseFlags(o[0]);
   checkDatabaseFlags(o[1]);
@@ -1034,9 +1034,9 @@ buildSettings() {
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
     o.activationPolicy = "foo";
-    o.authorizedGaeApplications = buildUnnamed1046();
-    o.backupConfiguration = buildUnnamed1047();
-    o.databaseFlags = buildUnnamed1048();
+    o.authorizedGaeApplications = buildUnnamed1074();
+    o.backupConfiguration = buildUnnamed1075();
+    o.databaseFlags = buildUnnamed1076();
     o.databaseReplicationEnabled = true;
     o.ipConfiguration = buildIpConfiguration();
     o.kind = "foo";
@@ -1054,9 +1054,9 @@ checkSettings(api.Settings o) {
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
     unittest.expect(o.activationPolicy, unittest.equals('foo'));
-    checkUnnamed1046(o.authorizedGaeApplications);
-    checkUnnamed1047(o.backupConfiguration);
-    checkUnnamed1048(o.databaseFlags);
+    checkUnnamed1074(o.authorizedGaeApplications);
+    checkUnnamed1075(o.backupConfiguration);
+    checkUnnamed1076(o.databaseFlags);
     unittest.expect(o.databaseReplicationEnabled, unittest.isTrue);
     checkIpConfiguration(o.ipConfiguration);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -1186,14 +1186,14 @@ checkSslCertsInsertResponse(api.SslCertsInsertResponse o) {
   buildCounterSslCertsInsertResponse--;
 }
 
-buildUnnamed1049() {
+buildUnnamed1077() {
   var o = new core.List<api.SslCert>();
   o.add(buildSslCert());
   o.add(buildSslCert());
   return o;
 }
 
-checkUnnamed1049(core.List<api.SslCert> o) {
+checkUnnamed1077(core.List<api.SslCert> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSslCert(o[0]);
   checkSslCert(o[1]);
@@ -1204,7 +1204,7 @@ buildSslCertsListResponse() {
   var o = new api.SslCertsListResponse();
   buildCounterSslCertsListResponse++;
   if (buildCounterSslCertsListResponse < 3) {
-    o.items = buildUnnamed1049();
+    o.items = buildUnnamed1077();
     o.kind = "foo";
   }
   buildCounterSslCertsListResponse--;
@@ -1214,20 +1214,20 @@ buildSslCertsListResponse() {
 checkSslCertsListResponse(api.SslCertsListResponse o) {
   buildCounterSslCertsListResponse++;
   if (buildCounterSslCertsListResponse < 3) {
-    checkUnnamed1049(o.items);
+    checkUnnamed1077(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterSslCertsListResponse--;
 }
 
-buildUnnamed1050() {
+buildUnnamed1078() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1050(core.List<core.String> o) {
+checkUnnamed1078(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1241,7 +1241,7 @@ buildTier() {
     o.DiskQuota = "foo";
     o.RAM = "foo";
     o.kind = "foo";
-    o.region = buildUnnamed1050();
+    o.region = buildUnnamed1078();
     o.tier = "foo";
   }
   buildCounterTier--;
@@ -1254,20 +1254,20 @@ checkTier(api.Tier o) {
     unittest.expect(o.DiskQuota, unittest.equals('foo'));
     unittest.expect(o.RAM, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1050(o.region);
+    checkUnnamed1078(o.region);
     unittest.expect(o.tier, unittest.equals('foo'));
   }
   buildCounterTier--;
 }
 
-buildUnnamed1051() {
+buildUnnamed1079() {
   var o = new core.List<api.Tier>();
   o.add(buildTier());
   o.add(buildTier());
   return o;
 }
 
-checkUnnamed1051(core.List<api.Tier> o) {
+checkUnnamed1079(core.List<api.Tier> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTier(o[0]);
   checkTier(o[1]);
@@ -1278,7 +1278,7 @@ buildTiersListResponse() {
   var o = new api.TiersListResponse();
   buildCounterTiersListResponse++;
   if (buildCounterTiersListResponse < 3) {
-    o.items = buildUnnamed1051();
+    o.items = buildUnnamed1079();
     o.kind = "foo";
   }
   buildCounterTiersListResponse--;
@@ -1288,7 +1288,7 @@ buildTiersListResponse() {
 checkTiersListResponse(api.TiersListResponse o) {
   buildCounterTiersListResponse++;
   if (buildCounterTiersListResponse < 3) {
-    checkUnnamed1051(o.items);
+    checkUnnamed1079(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterTiersListResponse--;
@@ -1697,8 +1697,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -1763,8 +1765,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -1827,8 +1831,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("flags"));
         pathOffset += 5;
 
@@ -1879,8 +1885,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/clone", pathOffset);
@@ -1931,8 +1939,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -1990,8 +2000,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -2049,8 +2061,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -2108,8 +2122,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -2170,8 +2186,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances", pathOffset);
@@ -2223,8 +2241,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances", pathOffset);
@@ -2281,8 +2301,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -2336,8 +2358,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -2395,8 +2419,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -2454,8 +2480,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -2515,8 +2543,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -2580,8 +2610,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -2643,8 +2675,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -2703,8 +2737,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -2767,8 +2803,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -2833,8 +2871,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -2896,8 +2936,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -2962,8 +3004,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -3021,8 +3065,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/instances/", pathOffset);
@@ -3083,8 +3129,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/sql/v1beta3/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sql/v1beta3/"));
+        pathOffset += 12;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/tiers", pathOffset);

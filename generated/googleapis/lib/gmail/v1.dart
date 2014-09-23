@@ -33,7 +33,7 @@ class GmailApi {
   UsersResourceApi get users => new UsersResourceApi(_requester);
 
   GmailApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/gmail/v1/users/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "gmail/v1/users/");
 }
 
 

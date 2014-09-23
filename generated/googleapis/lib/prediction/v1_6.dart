@@ -37,7 +37,7 @@ class PredictionApi {
   TrainedmodelsResourceApi get trainedmodels => new TrainedmodelsResourceApi(_requester);
 
   PredictionApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/prediction/v1.6/projects/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "prediction/v1.6/projects/");
 }
 
 
@@ -1365,7 +1365,7 @@ class Output {
   core.List<OutputOutputMulti> outputMulti;
 
   /** The estimated regression value (Regression models only). */
-  core.double outputValue;
+  core.String outputValue;
 
   /** A URL to re-request this resource. */
   core.String selfLink;

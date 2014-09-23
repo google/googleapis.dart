@@ -39,7 +39,7 @@ class AdsenseApi {
   UrlchannelsResourceApi get urlchannels => new UrlchannelsResourceApi(_requester);
 
   AdsenseApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/adsense/v1.4/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "adsense/v1.4/");
 }
 
 

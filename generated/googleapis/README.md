@@ -77,7 +77,7 @@ The Admin SDK Directory API lets you view and manage enterprise resources such a
 
 Official API documentation: https://developers.google.com/admin-sdk/directory/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Email Migration API v2 - admin email_migration_v2
+#### ![Logo](https://www.google.com/images/icons/product/googlemail-16.png) Email Migration API v2 - admin email_migration_v2
 
 Email Migration API lets you migrate emails of users to Google backends.
 

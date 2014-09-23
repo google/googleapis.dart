@@ -15,6 +15,9 @@ export '../common/common.dart' show DetailedApiRequestError;
 
 /** API for accessing Google Cloud Datastore. */
 class DatastoreApi {
+  /** View and manage your data across Google Cloud Platform services */
+  static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+
   /** View and manage your Google Cloud Datastore data */
   static const DatastoreScope = "https://www.googleapis.com/auth/datastore";
 
@@ -27,7 +30,7 @@ class DatastoreApi {
   DatasetsResourceApi get datasets => new DatasetsResourceApi(_requester);
 
   DatastoreApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/datastore/v1beta2/datasets/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "datastore/v1beta2/datasets/");
 }
 
 
@@ -552,7 +555,9 @@ class CommitResponse {
 }
 
 
-/** Not documented yet. */
+/**
+ * A filter that merges the multiple other filters using the given operation.
+ */
 class CompositeFilter {
   /** The list of filters to combine. Must contain at least one filter. */
   core.List<Filter> filters;
@@ -590,7 +595,7 @@ class CompositeFilter {
 }
 
 
-/** Not documented yet. */
+/** An entity. */
 class Entity {
   /**
    * The entity's key.
@@ -629,7 +634,7 @@ class Entity {
 }
 
 
-/** Not documented yet. */
+/** The result of fetching an entity from the datastore. */
 class EntityResult {
   /** The resulting entity. */
   Entity entity;
@@ -653,7 +658,7 @@ class EntityResult {
 }
 
 
-/** Not documented yet. */
+/** A holder for any type of filter. Exactly one field should be specified. */
 class Filter {
   /** A composite filter. */
   CompositeFilter compositeFilter;
@@ -686,7 +691,7 @@ class Filter {
 }
 
 
-/** Not documented yet. */
+/** A GQL query. */
 class GqlQuery {
   /** When false, the query string must not contain a literal. */
   core.bool allowLiteral;
@@ -708,7 +713,7 @@ class GqlQuery {
    */
   core.List<GqlQueryArg> numberArgs;
 
-  /** Not documented yet. */
+  /** The query string. */
   core.String queryString;
 
 
@@ -748,7 +753,7 @@ class GqlQuery {
 }
 
 
-/** Not documented yet. */
+/** A binding argument for a GQL query. */
 class GqlQueryArg {
   /** Not documented yet. */
   core.String cursor;
@@ -801,7 +806,7 @@ class GqlQueryArg {
 }
 
 
-/** Not documented yet. */
+/** A unique identifier for an entity. */
 class Key {
   /**
    * Entities are partitioned into subsets, currently identified by a dataset
@@ -908,7 +913,7 @@ class KeyPathElement {
 }
 
 
-/** Not documented yet. */
+/** A representation of a kind. */
 class KindExpression {
   /** The name of the kind. */
   core.String name;
@@ -1016,7 +1021,7 @@ class LookupResponse {
 }
 
 
-/** Not documented yet. */
+/** A set of changes to apply. */
 class Mutation {
   /**
    * Keys of entities to delete. Each key must have a complete key path and must
@@ -1136,7 +1141,12 @@ class MutationResult {
 }
 
 
-/** Not documented yet. */
+/**
+ * An identifier for a particular subset of entities.
+ *
+ * Entities are partitioned into various subsets, each used by different
+ * datasets and different namespaces within a dataset and so forth.
+ */
 class PartitionId {
   /** The dataset ID. */
   core.String datasetId;
@@ -1169,7 +1179,7 @@ class PartitionId {
 }
 
 
-/** Not documented yet. */
+/** An entity property. */
 class Property {
   /** A blob key value. */
   core.String blobKeyValue;
@@ -1315,7 +1325,7 @@ class Property {
 }
 
 
-/** Not documented yet. */
+/** A representation of a property in a projection. */
 class PropertyExpression {
   /**
    * The aggregation function to apply to the property. Optional. Can only be
@@ -1356,7 +1366,7 @@ class PropertyExpression {
 }
 
 
-/** Not documented yet. */
+/** A filter on a specific property. */
 class PropertyFilter {
   /**
    * The operator to filter by. One of lessThan, lessThanOrEqual, greaterThan,
@@ -1408,7 +1418,7 @@ class PropertyFilter {
 }
 
 
-/** Not documented yet. */
+/** The desired order for a specific property. */
 class PropertyOrder {
   /**
    * The direction to order by. One of ascending or descending. Optional,
@@ -1447,7 +1457,7 @@ class PropertyOrder {
 }
 
 
-/** Not documented yet. */
+/** A reference to a property relative to the kind expressions. */
 class PropertyReference {
   /** The name of the property. */
   core.String name;
@@ -1471,7 +1481,7 @@ class PropertyReference {
 }
 
 
-/** Not documented yet. */
+/** A query. */
 class Query {
   /**
    * An ending point for the query results. Optional. Query cursors are returned
@@ -1600,11 +1610,12 @@ class Query {
 }
 
 
-/** Not documented yet. */
+/** A batch of results produced by a query. */
 class QueryResultBatch {
   /**
    * A cursor that points to the position after the last result in the batch.
-   * May be absent.
+   * May be absent. TODO(arfuller): Once all plans produce cursors update
+   * documentation here.
    */
   core.String endCursor;
 
@@ -1916,7 +1927,10 @@ class RunQueryResponse {
 }
 
 
-/** Not documented yet. */
+/**
+ * A message that can hold any of the supported value types and associated
+ * metadata.
+ */
 class Value {
   /** A blob key value. */
   core.String blobKeyValue;

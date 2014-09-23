@@ -16,14 +16,14 @@ import 'package:googleapis/drive/v2.dart' as api;
 
 
 
-buildUnnamed394() {
+buildUnnamed419() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed394(core.List<core.String> o) {
+checkUnnamed419(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -34,7 +34,7 @@ buildAboutAdditionalRoleInfoRoleSets() {
   var o = new api.AboutAdditionalRoleInfoRoleSets();
   buildCounterAboutAdditionalRoleInfoRoleSets++;
   if (buildCounterAboutAdditionalRoleInfoRoleSets < 3) {
-    o.additionalRoles = buildUnnamed394();
+    o.additionalRoles = buildUnnamed419();
     o.primaryRole = "foo";
   }
   buildCounterAboutAdditionalRoleInfoRoleSets--;
@@ -44,20 +44,20 @@ buildAboutAdditionalRoleInfoRoleSets() {
 checkAboutAdditionalRoleInfoRoleSets(api.AboutAdditionalRoleInfoRoleSets o) {
   buildCounterAboutAdditionalRoleInfoRoleSets++;
   if (buildCounterAboutAdditionalRoleInfoRoleSets < 3) {
-    checkUnnamed394(o.additionalRoles);
+    checkUnnamed419(o.additionalRoles);
     unittest.expect(o.primaryRole, unittest.equals('foo'));
   }
   buildCounterAboutAdditionalRoleInfoRoleSets--;
 }
 
-buildUnnamed395() {
+buildUnnamed420() {
   var o = new core.List<api.AboutAdditionalRoleInfoRoleSets>();
   o.add(buildAboutAdditionalRoleInfoRoleSets());
   o.add(buildAboutAdditionalRoleInfoRoleSets());
   return o;
 }
 
-checkUnnamed395(core.List<api.AboutAdditionalRoleInfoRoleSets> o) {
+checkUnnamed420(core.List<api.AboutAdditionalRoleInfoRoleSets> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutAdditionalRoleInfoRoleSets(o[0]);
   checkAboutAdditionalRoleInfoRoleSets(o[1]);
@@ -68,7 +68,7 @@ buildAboutAdditionalRoleInfo() {
   var o = new api.AboutAdditionalRoleInfo();
   buildCounterAboutAdditionalRoleInfo++;
   if (buildCounterAboutAdditionalRoleInfo < 3) {
-    o.roleSets = buildUnnamed395();
+    o.roleSets = buildUnnamed420();
     o.type = "foo";
   }
   buildCounterAboutAdditionalRoleInfo--;
@@ -78,33 +78,33 @@ buildAboutAdditionalRoleInfo() {
 checkAboutAdditionalRoleInfo(api.AboutAdditionalRoleInfo o) {
   buildCounterAboutAdditionalRoleInfo++;
   if (buildCounterAboutAdditionalRoleInfo < 3) {
-    checkUnnamed395(o.roleSets);
+    checkUnnamed420(o.roleSets);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterAboutAdditionalRoleInfo--;
 }
 
-buildUnnamed396() {
+buildUnnamed421() {
   var o = new core.List<api.AboutAdditionalRoleInfo>();
   o.add(buildAboutAdditionalRoleInfo());
   o.add(buildAboutAdditionalRoleInfo());
   return o;
 }
 
-checkUnnamed396(core.List<api.AboutAdditionalRoleInfo> o) {
+checkUnnamed421(core.List<api.AboutAdditionalRoleInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutAdditionalRoleInfo(o[0]);
   checkAboutAdditionalRoleInfo(o[1]);
 }
 
-buildUnnamed397() {
+buildUnnamed422() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed397(core.List<core.String> o) {
+checkUnnamed422(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -116,7 +116,7 @@ buildAboutExportFormats() {
   buildCounterAboutExportFormats++;
   if (buildCounterAboutExportFormats < 3) {
     o.source = "foo";
-    o.targets = buildUnnamed397();
+    o.targets = buildUnnamed422();
   }
   buildCounterAboutExportFormats--;
   return o;
@@ -126,19 +126,19 @@ checkAboutExportFormats(api.AboutExportFormats o) {
   buildCounterAboutExportFormats++;
   if (buildCounterAboutExportFormats < 3) {
     unittest.expect(o.source, unittest.equals('foo'));
-    checkUnnamed397(o.targets);
+    checkUnnamed422(o.targets);
   }
   buildCounterAboutExportFormats--;
 }
 
-buildUnnamed398() {
+buildUnnamed423() {
   var o = new core.List<api.AboutExportFormats>();
   o.add(buildAboutExportFormats());
   o.add(buildAboutExportFormats());
   return o;
 }
 
-checkUnnamed398(core.List<api.AboutExportFormats> o) {
+checkUnnamed423(core.List<api.AboutExportFormats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutExportFormats(o[0]);
   checkAboutExportFormats(o[1]);
@@ -165,27 +165,27 @@ checkAboutFeatures(api.AboutFeatures o) {
   buildCounterAboutFeatures--;
 }
 
-buildUnnamed399() {
+buildUnnamed424() {
   var o = new core.List<api.AboutFeatures>();
   o.add(buildAboutFeatures());
   o.add(buildAboutFeatures());
   return o;
 }
 
-checkUnnamed399(core.List<api.AboutFeatures> o) {
+checkUnnamed424(core.List<api.AboutFeatures> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutFeatures(o[0]);
   checkAboutFeatures(o[1]);
 }
 
-buildUnnamed400() {
+buildUnnamed425() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed400(core.List<core.String> o) {
+checkUnnamed425(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -197,7 +197,7 @@ buildAboutImportFormats() {
   buildCounterAboutImportFormats++;
   if (buildCounterAboutImportFormats < 3) {
     o.source = "foo";
-    o.targets = buildUnnamed400();
+    o.targets = buildUnnamed425();
   }
   buildCounterAboutImportFormats--;
   return o;
@@ -207,19 +207,19 @@ checkAboutImportFormats(api.AboutImportFormats o) {
   buildCounterAboutImportFormats++;
   if (buildCounterAboutImportFormats < 3) {
     unittest.expect(o.source, unittest.equals('foo'));
-    checkUnnamed400(o.targets);
+    checkUnnamed425(o.targets);
   }
   buildCounterAboutImportFormats--;
 }
 
-buildUnnamed401() {
+buildUnnamed426() {
   var o = new core.List<api.AboutImportFormats>();
   o.add(buildAboutImportFormats());
   o.add(buildAboutImportFormats());
   return o;
 }
 
-checkUnnamed401(core.List<api.AboutImportFormats> o) {
+checkUnnamed426(core.List<api.AboutImportFormats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutImportFormats(o[0]);
   checkAboutImportFormats(o[1]);
@@ -246,14 +246,14 @@ checkAboutMaxUploadSizes(api.AboutMaxUploadSizes o) {
   buildCounterAboutMaxUploadSizes--;
 }
 
-buildUnnamed402() {
+buildUnnamed427() {
   var o = new core.List<api.AboutMaxUploadSizes>();
   o.add(buildAboutMaxUploadSizes());
   o.add(buildAboutMaxUploadSizes());
   return o;
 }
 
-checkUnnamed402(core.List<api.AboutMaxUploadSizes> o) {
+checkUnnamed427(core.List<api.AboutMaxUploadSizes> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutMaxUploadSizes(o[0]);
   checkAboutMaxUploadSizes(o[1]);
@@ -280,14 +280,14 @@ checkAboutQuotaBytesByService(api.AboutQuotaBytesByService o) {
   buildCounterAboutQuotaBytesByService--;
 }
 
-buildUnnamed403() {
+buildUnnamed428() {
   var o = new core.List<api.AboutQuotaBytesByService>();
   o.add(buildAboutQuotaBytesByService());
   o.add(buildAboutQuotaBytesByService());
   return o;
 }
 
-checkUnnamed403(core.List<api.AboutQuotaBytesByService> o) {
+checkUnnamed428(core.List<api.AboutQuotaBytesByService> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutQuotaBytesByService(o[0]);
   checkAboutQuotaBytesByService(o[1]);
@@ -298,20 +298,20 @@ buildAbout() {
   var o = new api.About();
   buildCounterAbout++;
   if (buildCounterAbout < 3) {
-    o.additionalRoleInfo = buildUnnamed396();
+    o.additionalRoleInfo = buildUnnamed421();
     o.domainSharingPolicy = "foo";
     o.etag = "foo";
-    o.exportFormats = buildUnnamed398();
-    o.features = buildUnnamed399();
-    o.importFormats = buildUnnamed401();
+    o.exportFormats = buildUnnamed423();
+    o.features = buildUnnamed424();
+    o.importFormats = buildUnnamed426();
     o.isCurrentAppInstalled = true;
     o.kind = "foo";
     o.languageCode = "foo";
     o.largestChangeId = "foo";
-    o.maxUploadSizes = buildUnnamed402();
+    o.maxUploadSizes = buildUnnamed427();
     o.name = "foo";
     o.permissionId = "foo";
-    o.quotaBytesByService = buildUnnamed403();
+    o.quotaBytesByService = buildUnnamed428();
     o.quotaBytesTotal = "foo";
     o.quotaBytesUsed = "foo";
     o.quotaBytesUsedAggregate = "foo";
@@ -329,20 +329,20 @@ buildAbout() {
 checkAbout(api.About o) {
   buildCounterAbout++;
   if (buildCounterAbout < 3) {
-    checkUnnamed396(o.additionalRoleInfo);
+    checkUnnamed421(o.additionalRoleInfo);
     unittest.expect(o.domainSharingPolicy, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed398(o.exportFormats);
-    checkUnnamed399(o.features);
-    checkUnnamed401(o.importFormats);
+    checkUnnamed423(o.exportFormats);
+    checkUnnamed424(o.features);
+    checkUnnamed426(o.importFormats);
     unittest.expect(o.isCurrentAppInstalled, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.languageCode, unittest.equals('foo'));
     unittest.expect(o.largestChangeId, unittest.equals('foo'));
-    checkUnnamed402(o.maxUploadSizes);
+    checkUnnamed427(o.maxUploadSizes);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.permissionId, unittest.equals('foo'));
-    checkUnnamed403(o.quotaBytesByService);
+    checkUnnamed428(o.quotaBytesByService);
     unittest.expect(o.quotaBytesTotal, unittest.equals('foo'));
     unittest.expect(o.quotaBytesUsed, unittest.equals('foo'));
     unittest.expect(o.quotaBytesUsedAggregate, unittest.equals('foo'));
@@ -379,66 +379,66 @@ checkAppIcons(api.AppIcons o) {
   buildCounterAppIcons--;
 }
 
-buildUnnamed404() {
+buildUnnamed429() {
   var o = new core.List<api.AppIcons>();
   o.add(buildAppIcons());
   o.add(buildAppIcons());
   return o;
 }
 
-checkUnnamed404(core.List<api.AppIcons> o) {
+checkUnnamed429(core.List<api.AppIcons> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppIcons(o[0]);
   checkAppIcons(o[1]);
 }
 
-buildUnnamed405() {
+buildUnnamed430() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed405(core.List<core.String> o) {
+checkUnnamed430(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed406() {
+buildUnnamed431() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed406(core.List<core.String> o) {
+checkUnnamed431(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed407() {
+buildUnnamed432() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed407(core.List<core.String> o) {
+checkUnnamed432(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed408() {
+buildUnnamed433() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed408(core.List<core.String> o) {
+checkUnnamed433(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -453,7 +453,7 @@ buildApp() {
     o.createInFolderTemplate = "foo";
     o.createUrl = "foo";
     o.hasDriveWideScope = true;
-    o.icons = buildUnnamed404();
+    o.icons = buildUnnamed429();
     o.id = "foo";
     o.installed = true;
     o.kind = "foo";
@@ -461,12 +461,12 @@ buildApp() {
     o.name = "foo";
     o.objectType = "foo";
     o.openUrlTemplate = "foo";
-    o.primaryFileExtensions = buildUnnamed405();
-    o.primaryMimeTypes = buildUnnamed406();
+    o.primaryFileExtensions = buildUnnamed430();
+    o.primaryMimeTypes = buildUnnamed431();
     o.productId = "foo";
     o.productUrl = "foo";
-    o.secondaryFileExtensions = buildUnnamed407();
-    o.secondaryMimeTypes = buildUnnamed408();
+    o.secondaryFileExtensions = buildUnnamed432();
+    o.secondaryMimeTypes = buildUnnamed433();
     o.shortDescription = "foo";
     o.supportsCreate = true;
     o.supportsImport = true;
@@ -485,7 +485,7 @@ checkApp(api.App o) {
     unittest.expect(o.createInFolderTemplate, unittest.equals('foo'));
     unittest.expect(o.createUrl, unittest.equals('foo'));
     unittest.expect(o.hasDriveWideScope, unittest.isTrue);
-    checkUnnamed404(o.icons);
+    checkUnnamed429(o.icons);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.installed, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -493,12 +493,12 @@ checkApp(api.App o) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.objectType, unittest.equals('foo'));
     unittest.expect(o.openUrlTemplate, unittest.equals('foo'));
-    checkUnnamed405(o.primaryFileExtensions);
-    checkUnnamed406(o.primaryMimeTypes);
+    checkUnnamed430(o.primaryFileExtensions);
+    checkUnnamed431(o.primaryMimeTypes);
     unittest.expect(o.productId, unittest.equals('foo'));
     unittest.expect(o.productUrl, unittest.equals('foo'));
-    checkUnnamed407(o.secondaryFileExtensions);
-    checkUnnamed408(o.secondaryMimeTypes);
+    checkUnnamed432(o.secondaryFileExtensions);
+    checkUnnamed433(o.secondaryMimeTypes);
     unittest.expect(o.shortDescription, unittest.equals('foo'));
     unittest.expect(o.supportsCreate, unittest.isTrue);
     unittest.expect(o.supportsImport, unittest.isTrue);
@@ -509,27 +509,27 @@ checkApp(api.App o) {
   buildCounterApp--;
 }
 
-buildUnnamed409() {
+buildUnnamed434() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed409(core.List<core.String> o) {
+checkUnnamed434(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed410() {
+buildUnnamed435() {
   var o = new core.List<api.App>();
   o.add(buildApp());
   o.add(buildApp());
   return o;
 }
 
-checkUnnamed410(core.List<api.App> o) {
+checkUnnamed435(core.List<api.App> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApp(o[0]);
   checkApp(o[1]);
@@ -540,9 +540,9 @@ buildAppList() {
   var o = new api.AppList();
   buildCounterAppList++;
   if (buildCounterAppList < 3) {
-    o.defaultAppIds = buildUnnamed409();
+    o.defaultAppIds = buildUnnamed434();
     o.etag = "foo";
-    o.items = buildUnnamed410();
+    o.items = buildUnnamed435();
     o.kind = "foo";
     o.selfLink = "foo";
   }
@@ -553,9 +553,9 @@ buildAppList() {
 checkAppList(api.AppList o) {
   buildCounterAppList++;
   if (buildCounterAppList < 3) {
-    checkUnnamed409(o.defaultAppIds);
+    checkUnnamed434(o.defaultAppIds);
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed410(o.items);
+    checkUnnamed435(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
@@ -593,14 +593,14 @@ checkChange(api.Change o) {
   buildCounterChange--;
 }
 
-buildUnnamed411() {
+buildUnnamed436() {
   var o = new core.List<api.Change>();
   o.add(buildChange());
   o.add(buildChange());
   return o;
 }
 
-checkUnnamed411(core.List<api.Change> o) {
+checkUnnamed436(core.List<api.Change> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChange(o[0]);
   checkChange(o[1]);
@@ -612,7 +612,7 @@ buildChangeList() {
   buildCounterChangeList++;
   if (buildCounterChangeList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed411();
+    o.items = buildUnnamed436();
     o.kind = "foo";
     o.largestChangeId = "foo";
     o.nextLink = "foo";
@@ -627,7 +627,7 @@ checkChangeList(api.ChangeList o) {
   buildCounterChangeList++;
   if (buildCounterChangeList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed411(o.items);
+    checkUnnamed436(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.largestChangeId, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
@@ -637,14 +637,14 @@ checkChangeList(api.ChangeList o) {
   buildCounterChangeList--;
 }
 
-buildUnnamed412() {
+buildUnnamed437() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed412(core.Map<core.String, core.String> o) {
+checkUnnamed437(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -659,7 +659,7 @@ buildChannel() {
     o.expiration = "foo";
     o.id = "foo";
     o.kind = "foo";
-    o.params = buildUnnamed412();
+    o.params = buildUnnamed437();
     o.payload = true;
     o.resourceId = "foo";
     o.resourceUri = "foo";
@@ -677,7 +677,7 @@ checkChannel(api.Channel o) {
     unittest.expect(o.expiration, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed412(o.params);
+    checkUnnamed437(o.params);
     unittest.expect(o.payload, unittest.isTrue);
     unittest.expect(o.resourceId, unittest.equals('foo'));
     unittest.expect(o.resourceUri, unittest.equals('foo'));
@@ -687,14 +687,14 @@ checkChannel(api.Channel o) {
   buildCounterChannel--;
 }
 
-buildUnnamed413() {
+buildUnnamed438() {
   var o = new core.List<api.ChildReference>();
   o.add(buildChildReference());
   o.add(buildChildReference());
   return o;
 }
 
-checkUnnamed413(core.List<api.ChildReference> o) {
+checkUnnamed438(core.List<api.ChildReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChildReference(o[0]);
   checkChildReference(o[1]);
@@ -706,7 +706,7 @@ buildChildList() {
   buildCounterChildList++;
   if (buildCounterChildList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed413();
+    o.items = buildUnnamed438();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -720,7 +720,7 @@ checkChildList(api.ChildList o) {
   buildCounterChildList++;
   if (buildCounterChildList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed413(o.items);
+    checkUnnamed438(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -775,14 +775,14 @@ checkCommentContext(api.CommentContext o) {
   buildCounterCommentContext--;
 }
 
-buildUnnamed414() {
+buildUnnamed439() {
   var o = new core.List<api.CommentReply>();
   o.add(buildCommentReply());
   o.add(buildCommentReply());
   return o;
 }
 
-checkUnnamed414(core.List<api.CommentReply> o) {
+checkUnnamed439(core.List<api.CommentReply> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCommentReply(o[0]);
   checkCommentReply(o[1]);
@@ -805,7 +805,7 @@ buildComment() {
     o.htmlContent = "foo";
     o.kind = "foo";
     o.modifiedDate = core.DateTime.parse("2002-02-27T14:01:02");
-    o.replies = buildUnnamed414();
+    o.replies = buildUnnamed439();
     o.selfLink = "foo";
     o.status = "foo";
   }
@@ -828,21 +828,21 @@ checkComment(api.Comment o) {
     unittest.expect(o.htmlContent, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.modifiedDate, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUnnamed414(o.replies);
+    checkUnnamed439(o.replies);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
   }
   buildCounterComment--;
 }
 
-buildUnnamed415() {
+buildUnnamed440() {
   var o = new core.List<api.Comment>();
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-checkUnnamed415(core.List<api.Comment> o) {
+checkUnnamed440(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -853,7 +853,7 @@ buildCommentList() {
   var o = new api.CommentList();
   buildCounterCommentList++;
   if (buildCounterCommentList < 3) {
-    o.items = buildUnnamed415();
+    o.items = buildUnnamed440();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -866,7 +866,7 @@ buildCommentList() {
 checkCommentList(api.CommentList o) {
   buildCounterCommentList++;
   if (buildCounterCommentList < 3) {
-    checkUnnamed415(o.items);
+    checkUnnamed440(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -910,14 +910,14 @@ checkCommentReply(api.CommentReply o) {
   buildCounterCommentReply--;
 }
 
-buildUnnamed416() {
+buildUnnamed441() {
   var o = new core.List<api.CommentReply>();
   o.add(buildCommentReply());
   o.add(buildCommentReply());
   return o;
 }
 
-checkUnnamed416(core.List<api.CommentReply> o) {
+checkUnnamed441(core.List<api.CommentReply> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCommentReply(o[0]);
   checkCommentReply(o[1]);
@@ -928,7 +928,7 @@ buildCommentReplyList() {
   var o = new api.CommentReplyList();
   buildCounterCommentReplyList++;
   if (buildCounterCommentReplyList < 3) {
-    o.items = buildUnnamed416();
+    o.items = buildUnnamed441();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -941,7 +941,7 @@ buildCommentReplyList() {
 checkCommentReplyList(api.CommentReplyList o) {
   buildCounterCommentReplyList++;
   if (buildCounterCommentReplyList < 3) {
-    checkUnnamed416(o.items);
+    checkUnnamed441(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -950,14 +950,14 @@ checkCommentReplyList(api.CommentReplyList o) {
   buildCounterCommentReplyList--;
 }
 
-buildUnnamed417() {
+buildUnnamed442() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed417(core.Map<core.String, core.String> o) {
+checkUnnamed442(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1091,79 +1091,79 @@ checkFileLabels(api.FileLabels o) {
   buildCounterFileLabels--;
 }
 
-buildUnnamed418() {
+buildUnnamed443() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed418(core.Map<core.String, core.String> o) {
+checkUnnamed443(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed419() {
+buildUnnamed444() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed419(core.List<core.String> o) {
+checkUnnamed444(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed420() {
+buildUnnamed445() {
   var o = new core.List<api.User>();
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-checkUnnamed420(core.List<api.User> o) {
+checkUnnamed445(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
 }
 
-buildUnnamed421() {
+buildUnnamed446() {
   var o = new core.List<api.ParentReference>();
   o.add(buildParentReference());
   o.add(buildParentReference());
   return o;
 }
 
-checkUnnamed421(core.List<api.ParentReference> o) {
+checkUnnamed446(core.List<api.ParentReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParentReference(o[0]);
   checkParentReference(o[1]);
 }
 
-buildUnnamed422() {
+buildUnnamed447() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed422(core.List<api.Permission> o) {
+checkUnnamed447(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
 }
 
-buildUnnamed423() {
+buildUnnamed448() {
   var o = new core.List<api.Property>();
   o.add(buildProperty());
   o.add(buildProperty());
   return o;
 }
 
-checkUnnamed423(core.List<api.Property> o) {
+checkUnnamed448(core.List<api.Property> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProperty(o[0]);
   checkProperty(o[1]);
@@ -1190,6 +1190,29 @@ checkFileThumbnail(api.FileThumbnail o) {
   buildCounterFileThumbnail--;
 }
 
+core.int buildCounterFileVideoMediaMetadata = 0;
+buildFileVideoMediaMetadata() {
+  var o = new api.FileVideoMediaMetadata();
+  buildCounterFileVideoMediaMetadata++;
+  if (buildCounterFileVideoMediaMetadata < 3) {
+    o.durationMillis = "foo";
+    o.height = 42;
+    o.width = 42;
+  }
+  buildCounterFileVideoMediaMetadata--;
+  return o;
+}
+
+checkFileVideoMediaMetadata(api.FileVideoMediaMetadata o) {
+  buildCounterFileVideoMediaMetadata++;
+  if (buildCounterFileVideoMediaMetadata < 3) {
+    unittest.expect(o.durationMillis, unittest.equals('foo'));
+    unittest.expect(o.height, unittest.equals(42));
+    unittest.expect(o.width, unittest.equals(42));
+  }
+  buildCounterFileVideoMediaMetadata--;
+}
+
 core.int buildCounterFile = 0;
 buildFile() {
   var o = new api.File();
@@ -1206,7 +1229,7 @@ buildFile() {
     o.embedLink = "foo";
     o.etag = "foo";
     o.explicitlyTrashed = true;
-    o.exportLinks = buildUnnamed417();
+    o.exportLinks = buildUnnamed442();
     o.fileExtension = "foo";
     o.fileSize = "foo";
     o.headRevisionId = "foo";
@@ -1224,13 +1247,13 @@ buildFile() {
     o.mimeType = "foo";
     o.modifiedByMeDate = core.DateTime.parse("2002-02-27T14:01:02");
     o.modifiedDate = core.DateTime.parse("2002-02-27T14:01:02");
-    o.openWithLinks = buildUnnamed418();
+    o.openWithLinks = buildUnnamed443();
     o.originalFilename = "foo";
-    o.ownerNames = buildUnnamed419();
-    o.owners = buildUnnamed420();
-    o.parents = buildUnnamed421();
-    o.permissions = buildUnnamed422();
-    o.properties = buildUnnamed423();
+    o.ownerNames = buildUnnamed444();
+    o.owners = buildUnnamed445();
+    o.parents = buildUnnamed446();
+    o.permissions = buildUnnamed447();
+    o.properties = buildUnnamed448();
     o.quotaBytesUsed = "foo";
     o.selfLink = "foo";
     o.shared = true;
@@ -1241,6 +1264,7 @@ buildFile() {
     o.title = "foo";
     o.userPermission = buildPermission();
     o.version = "foo";
+    o.videoMediaMetadata = buildFileVideoMediaMetadata();
     o.webContentLink = "foo";
     o.webViewLink = "foo";
     o.writersCanShare = true;
@@ -1263,7 +1287,7 @@ checkFile(api.File o) {
     unittest.expect(o.embedLink, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.explicitlyTrashed, unittest.isTrue);
-    checkUnnamed417(o.exportLinks);
+    checkUnnamed442(o.exportLinks);
     unittest.expect(o.fileExtension, unittest.equals('foo'));
     unittest.expect(o.fileSize, unittest.equals('foo'));
     unittest.expect(o.headRevisionId, unittest.equals('foo'));
@@ -1281,13 +1305,13 @@ checkFile(api.File o) {
     unittest.expect(o.mimeType, unittest.equals('foo'));
     unittest.expect(o.modifiedByMeDate, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.modifiedDate, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUnnamed418(o.openWithLinks);
+    checkUnnamed443(o.openWithLinks);
     unittest.expect(o.originalFilename, unittest.equals('foo'));
-    checkUnnamed419(o.ownerNames);
-    checkUnnamed420(o.owners);
-    checkUnnamed421(o.parents);
-    checkUnnamed422(o.permissions);
-    checkUnnamed423(o.properties);
+    checkUnnamed444(o.ownerNames);
+    checkUnnamed445(o.owners);
+    checkUnnamed446(o.parents);
+    checkUnnamed447(o.permissions);
+    checkUnnamed448(o.properties);
     unittest.expect(o.quotaBytesUsed, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.shared, unittest.isTrue);
@@ -1298,6 +1322,7 @@ checkFile(api.File o) {
     unittest.expect(o.title, unittest.equals('foo'));
     checkPermission(o.userPermission);
     unittest.expect(o.version, unittest.equals('foo'));
+    checkFileVideoMediaMetadata(o.videoMediaMetadata);
     unittest.expect(o.webContentLink, unittest.equals('foo'));
     unittest.expect(o.webViewLink, unittest.equals('foo'));
     unittest.expect(o.writersCanShare, unittest.isTrue);
@@ -1305,14 +1330,14 @@ checkFile(api.File o) {
   buildCounterFile--;
 }
 
-buildUnnamed424() {
+buildUnnamed449() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed424(core.List<api.File> o) {
+checkUnnamed449(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -1324,7 +1349,7 @@ buildFileList() {
   buildCounterFileList++;
   if (buildCounterFileList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed424();
+    o.items = buildUnnamed449();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -1338,7 +1363,7 @@ checkFileList(api.FileList o) {
   buildCounterFileList++;
   if (buildCounterFileList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed424(o.items);
+    checkUnnamed449(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -1347,14 +1372,14 @@ checkFileList(api.FileList o) {
   buildCounterFileList--;
 }
 
-buildUnnamed425() {
+buildUnnamed450() {
   var o = new core.List<api.ParentReference>();
   o.add(buildParentReference());
   o.add(buildParentReference());
   return o;
 }
 
-checkUnnamed425(core.List<api.ParentReference> o) {
+checkUnnamed450(core.List<api.ParentReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParentReference(o[0]);
   checkParentReference(o[1]);
@@ -1366,7 +1391,7 @@ buildParentList() {
   buildCounterParentList++;
   if (buildCounterParentList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed425();
+    o.items = buildUnnamed450();
     o.kind = "foo";
     o.selfLink = "foo";
   }
@@ -1378,7 +1403,7 @@ checkParentList(api.ParentList o) {
   buildCounterParentList++;
   if (buildCounterParentList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed425(o.items);
+    checkUnnamed450(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
@@ -1412,14 +1437,14 @@ checkParentReference(api.ParentReference o) {
   buildCounterParentReference--;
 }
 
-buildUnnamed426() {
+buildUnnamed451() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed426(core.List<core.String> o) {
+checkUnnamed451(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1430,7 +1455,7 @@ buildPermission() {
   var o = new api.Permission();
   buildCounterPermission++;
   if (buildCounterPermission < 3) {
-    o.additionalRoles = buildUnnamed426();
+    o.additionalRoles = buildUnnamed451();
     o.authKey = "foo";
     o.domain = "foo";
     o.emailAddress = "foo";
@@ -1452,7 +1477,7 @@ buildPermission() {
 checkPermission(api.Permission o) {
   buildCounterPermission++;
   if (buildCounterPermission < 3) {
-    checkUnnamed426(o.additionalRoles);
+    checkUnnamed451(o.additionalRoles);
     unittest.expect(o.authKey, unittest.equals('foo'));
     unittest.expect(o.domain, unittest.equals('foo'));
     unittest.expect(o.emailAddress, unittest.equals('foo'));
@@ -1491,14 +1516,14 @@ checkPermissionId(api.PermissionId o) {
   buildCounterPermissionId--;
 }
 
-buildUnnamed427() {
+buildUnnamed452() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed427(core.List<api.Permission> o) {
+checkUnnamed452(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
@@ -1510,7 +1535,7 @@ buildPermissionList() {
   buildCounterPermissionList++;
   if (buildCounterPermissionList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed427();
+    o.items = buildUnnamed452();
     o.kind = "foo";
     o.selfLink = "foo";
   }
@@ -1522,7 +1547,7 @@ checkPermissionList(api.PermissionList o) {
   buildCounterPermissionList++;
   if (buildCounterPermissionList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed427(o.items);
+    checkUnnamed452(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
@@ -1558,14 +1583,14 @@ checkProperty(api.Property o) {
   buildCounterProperty--;
 }
 
-buildUnnamed428() {
+buildUnnamed453() {
   var o = new core.List<api.Property>();
   o.add(buildProperty());
   o.add(buildProperty());
   return o;
 }
 
-checkUnnamed428(core.List<api.Property> o) {
+checkUnnamed453(core.List<api.Property> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProperty(o[0]);
   checkProperty(o[1]);
@@ -1577,7 +1602,7 @@ buildPropertyList() {
   buildCounterPropertyList++;
   if (buildCounterPropertyList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed428();
+    o.items = buildUnnamed453();
     o.kind = "foo";
     o.selfLink = "foo";
   }
@@ -1589,21 +1614,21 @@ checkPropertyList(api.PropertyList o) {
   buildCounterPropertyList++;
   if (buildCounterPropertyList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed428(o.items);
+    checkUnnamed453(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
   buildCounterPropertyList--;
 }
 
-buildUnnamed429() {
+buildUnnamed454() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed429(core.Map<core.String, core.String> o) {
+checkUnnamed454(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1616,7 +1641,7 @@ buildRevision() {
   if (buildCounterRevision < 3) {
     o.downloadUrl = "foo";
     o.etag = "foo";
-    o.exportLinks = buildUnnamed429();
+    o.exportLinks = buildUnnamed454();
     o.fileSize = "foo";
     o.id = "foo";
     o.kind = "foo";
@@ -1642,7 +1667,7 @@ checkRevision(api.Revision o) {
   if (buildCounterRevision < 3) {
     unittest.expect(o.downloadUrl, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed429(o.exportLinks);
+    checkUnnamed454(o.exportLinks);
     unittest.expect(o.fileSize, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -1662,14 +1687,14 @@ checkRevision(api.Revision o) {
   buildCounterRevision--;
 }
 
-buildUnnamed430() {
+buildUnnamed455() {
   var o = new core.List<api.Revision>();
   o.add(buildRevision());
   o.add(buildRevision());
   return o;
 }
 
-checkUnnamed430(core.List<api.Revision> o) {
+checkUnnamed455(core.List<api.Revision> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRevision(o[0]);
   checkRevision(o[1]);
@@ -1681,7 +1706,7 @@ buildRevisionList() {
   buildCounterRevisionList++;
   if (buildCounterRevisionList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed430();
+    o.items = buildUnnamed455();
     o.kind = "foo";
     o.selfLink = "foo";
   }
@@ -1693,7 +1718,7 @@ checkRevisionList(api.RevisionList o) {
   buildCounterRevisionList++;
   if (buildCounterRevisionList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed430(o.items);
+    checkUnnamed455(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
@@ -1984,6 +2009,15 @@ main() {
   });
 
 
+  unittest.group("obj-schema-FileVideoMediaMetadata", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildFileVideoMediaMetadata();
+      var od = new api.FileVideoMediaMetadata.fromJson(o.toJson());
+      checkFileVideoMediaMetadata(od);
+    });
+  });
+
+
   unittest.group("obj-schema-File", () {
     unittest.test("to-json--from-json", () {
       var o = buildFile();
@@ -2114,8 +2148,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("about"));
         pathOffset += 5;
 
@@ -2165,8 +2201,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("apps/"));
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2214,8 +2252,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 4), unittest.equals("apps"));
         pathOffset += 4;
 
@@ -2265,8 +2305,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("changes/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2316,8 +2358,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("changes"));
         pathOffset += 7;
 
@@ -2373,8 +2417,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("changes/watch"));
         pathOffset += 13;
 
@@ -2429,8 +2475,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("channels/stop"));
         pathOffset += 13;
 
@@ -2476,8 +2524,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/children/", pathOffset);
@@ -2529,8 +2579,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/children/", pathOffset);
@@ -2587,8 +2639,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/children", pathOffset);
@@ -2641,8 +2695,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/children", pathOffset);
@@ -2700,8 +2756,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/comments/", pathOffset);
@@ -2754,8 +2812,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/comments/", pathOffset);
@@ -2813,8 +2873,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/comments", pathOffset);
@@ -2868,8 +2930,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/comments", pathOffset);
@@ -2928,8 +2992,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/comments/", pathOffset);
@@ -2987,8 +3053,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/comments/", pathOffset);
@@ -3056,8 +3124,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/copy", pathOffset);
@@ -3114,8 +3184,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3158,8 +3230,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("files/trash"));
         pathOffset += 11;
 
@@ -3202,8 +3276,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3264,8 +3340,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("files"));
         pathOffset += 5;
 
@@ -3320,8 +3398,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("files"));
         pathOffset += 5;
 
@@ -3385,8 +3465,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3444,8 +3526,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/touch", pathOffset);
@@ -3495,8 +3579,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/trash", pathOffset);
@@ -3546,8 +3632,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/untrash", pathOffset);
@@ -3615,8 +3703,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3680,8 +3770,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/watch", pathOffset);
@@ -3738,8 +3830,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/parents/", pathOffset);
@@ -3791,8 +3885,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/parents/", pathOffset);
@@ -3849,8 +3945,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/parents", pathOffset);
@@ -3900,8 +3998,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/parents", pathOffset);
@@ -3956,8 +4056,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/permissions/", pathOffset);
@@ -4009,8 +4111,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/permissions/", pathOffset);
@@ -4063,8 +4167,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("permissionIds/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -4116,8 +4222,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/permissions", pathOffset);
@@ -4169,8 +4277,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/permissions", pathOffset);
@@ -4226,8 +4336,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/permissions/", pathOffset);
@@ -4287,8 +4399,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/permissions/", pathOffset);
@@ -4348,8 +4462,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/properties/", pathOffset);
@@ -4403,8 +4519,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/properties/", pathOffset);
@@ -4462,8 +4580,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/properties", pathOffset);
@@ -4513,8 +4633,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/properties", pathOffset);
@@ -4570,8 +4692,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/properties/", pathOffset);
@@ -4631,8 +4755,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/properties/", pathOffset);
@@ -4693,8 +4819,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/realtime", pathOffset);
@@ -4746,8 +4874,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/realtime", pathOffset);
@@ -4802,8 +4932,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/comments/", pathOffset);
@@ -4864,8 +4996,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/comments/", pathOffset);
@@ -4931,8 +5065,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/comments/", pathOffset);
@@ -4993,8 +5129,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/comments/", pathOffset);
@@ -5060,8 +5198,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/comments/", pathOffset);
@@ -5127,8 +5267,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/comments/", pathOffset);
@@ -5193,8 +5335,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/revisions/", pathOffset);
@@ -5246,8 +5390,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/revisions/", pathOffset);
@@ -5300,8 +5446,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/revisions", pathOffset);
@@ -5356,8 +5504,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/revisions/", pathOffset);
@@ -5415,8 +5565,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/drive/v2/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("drive/v2/"));
+        pathOffset += 9;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("files/"));
         pathOffset += 6;
         index = path.indexOf("/revisions/", pathOffset);

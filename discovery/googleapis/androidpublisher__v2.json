@@ -15,7 +15,7 @@
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/tXT4pCufDuL1OYbmvPiKHbGGdkc\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/rvEzY_KAgBOlUM1lQqukKQLrl6Y\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -2004,6 +2004,46 @@
                                 "https://www.googleapis.com/auth/androidpublisher"
                             ]
                         },
+                        "defer": {
+                            "description": "Defers a user's subscription purchase until a specified future expiration time.",
+                            "httpMethod": "POST",
+                            "id": "androidpublisher.purchases.subscriptions.defer",
+                            "parameterOrder": [
+                                "packageName",
+                                "subscriptionId",
+                                "token"
+                            ],
+                            "parameters": {
+                                "packageName": {
+                                    "description": "The package name of the application for which this subscription was purchased (for example, 'com.some.thing').",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "subscriptionId": {
+                                    "description": "The purchased subscription ID (for example, 'monthly001').",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "token": {
+                                    "description": "The token provided to the user's device when the subscription was purchased.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:defer",
+                            "request": {
+                                "$ref": "SubscriptionPurchasesDeferRequest"
+                            },
+                            "response": {
+                                "$ref": "SubscriptionPurchasesDeferResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/androidpublisher"
+                            ]
+                        },
                         "get": {
                             "description": "Checks whether a user's subscription purchase is valid and returns its expiry time.",
                             "httpMethod": "GET",
@@ -2037,6 +2077,74 @@
                             "response": {
                                 "$ref": "SubscriptionPurchase"
                             },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/androidpublisher"
+                            ]
+                        },
+                        "refund": {
+                            "description": "Refunds a user's subscription purchase, but the subscription remains valid until its expiration time and it will continue to recur.",
+                            "httpMethod": "POST",
+                            "id": "androidpublisher.purchases.subscriptions.refund",
+                            "parameterOrder": [
+                                "packageName",
+                                "subscriptionId",
+                                "token"
+                            ],
+                            "parameters": {
+                                "packageName": {
+                                    "description": "The package name of the application for which this subscription was purchased (for example, 'com.some.thing').",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "subscriptionId": {
+                                    "description": "The purchased subscription ID (for example, 'monthly001').",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "token": {
+                                    "description": "The token provided to the user's device when the subscription was purchased.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:refund",
+                            "scopes": [
+                                "https://www.googleapis.com/auth/androidpublisher"
+                            ]
+                        },
+                        "revoke": {
+                            "description": "Refunds and immediately revokes a user's subscription purchase. Access to the subscription will be terminated immediately and it will stop recurring.",
+                            "httpMethod": "POST",
+                            "id": "androidpublisher.purchases.subscriptions.revoke",
+                            "parameterOrder": [
+                                "packageName",
+                                "subscriptionId",
+                                "token"
+                            ],
+                            "parameters": {
+                                "packageName": {
+                                    "description": "The package name of the application for which this subscription was purchased (for example, 'com.some.thing').",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "subscriptionId": {
+                                    "description": "The purchased subscription ID (for example, 'monthly001').",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "token": {
+                                    "description": "The token provided to the user's device when the subscription was purchased.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:revoke",
                             "scopes": [
                                 "https://www.googleapis.com/auth/androidpublisher"
                             ]
@@ -2271,6 +2379,10 @@
                     "description": "Purchase type enum value. Unmodifiable after creation.",
                     "type": "string"
                 },
+                "season": {
+                    "$ref": "Season",
+                    "description": "Definition of a season for a seasonal subscription. Can be defined only for yearly subscriptions."
+                },
                 "sku": {
                     "description": "The stock-keeping-unit (SKU) of the product, unique within an app.",
                     "type": "string"
@@ -2467,6 +2579,22 @@
             },
             "type": "object"
         },
+        "MonthDay": {
+            "id": "MonthDay",
+            "properties": {
+                "day": {
+                    "description": "Day of a month, value in [1, 31] range. Valid range depends on the specified month.",
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "month": {
+                    "description": "Month of a year. e.g. 1 = JAN, 2 = FEB etc.",
+                    "format": "uint32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "PageInfo": {
             "id": "PageInfo",
             "properties": {
@@ -2530,6 +2658,37 @@
             },
             "type": "object"
         },
+        "Season": {
+            "id": "Season",
+            "properties": {
+                "end": {
+                    "$ref": "MonthDay",
+                    "description": "Inclusive end date of the recurrence period."
+                },
+                "start": {
+                    "$ref": "MonthDay",
+                    "description": "Inclusive start date of the recurrence period."
+                }
+            },
+            "type": "object"
+        },
+        "SubscriptionDeferralInfo": {
+            "description": "A SubscriptionDeferralInfo contains the data needed to defer a subscription purchase to a future expiry time.",
+            "id": "SubscriptionDeferralInfo",
+            "properties": {
+                "desiredExpiryTimeMillis": {
+                    "description": "The desired next expiry time for the subscription in milliseconds since Epoch. The given time must be after the current expiry time for the subscription.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "expectedExpiryTimeMillis": {
+                    "description": "The expected expiry time for the subscription. If the current expiry time for the subscription is not the value specified here, the deferral will not occur.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "SubscriptionPurchase": {
             "description": "A SubscriptionPurchase resource indicates the status of a user's subscription purchase.",
             "id": "SubscriptionPurchase",
@@ -2550,6 +2709,27 @@
                 },
                 "startTimeMillis": {
                     "description": "Time at which the subscription was granted, in milliseconds since Epoch.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SubscriptionPurchasesDeferRequest": {
+            "id": "SubscriptionPurchasesDeferRequest",
+            "properties": {
+                "deferralInfo": {
+                    "$ref": "SubscriptionDeferralInfo",
+                    "description": "The information about the new desired expiry time for the subscription."
+                }
+            },
+            "type": "object"
+        },
+        "SubscriptionPurchasesDeferResponse": {
+            "id": "SubscriptionPurchasesDeferResponse",
+            "properties": {
+                "newExpiryTimeMillis": {
+                    "description": "The new expiry time for the subscription in milliseconds since the Epoch.",
                     "format": "int64",
                     "type": "string"
                 }

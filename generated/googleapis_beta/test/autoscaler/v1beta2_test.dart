@@ -25,6 +25,7 @@ buildAutoscaler() {
     o.creationTimestamp = "foo";
     o.description = "foo";
     o.id = "foo";
+    o.kind = "foo";
     o.name = "foo";
     o.selfLink = "foo";
     o.target = "foo";
@@ -40,6 +41,7 @@ checkAutoscaler(api.Autoscaler o) {
     unittest.expect(o.creationTimestamp, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.target, unittest.equals('foo'));
@@ -47,14 +49,14 @@ checkAutoscaler(api.Autoscaler o) {
   buildCounterAutoscaler--;
 }
 
-buildUnnamed1116() {
+buildUnnamed1144() {
   var o = new core.List<api.Autoscaler>();
   o.add(buildAutoscaler());
   o.add(buildAutoscaler());
   return o;
 }
 
-checkUnnamed1116(core.List<api.Autoscaler> o) {
+checkUnnamed1144(core.List<api.Autoscaler> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAutoscaler(o[0]);
   checkAutoscaler(o[1]);
@@ -65,7 +67,8 @@ buildAutoscalerListResponse() {
   var o = new api.AutoscalerListResponse();
   buildCounterAutoscalerListResponse++;
   if (buildCounterAutoscalerListResponse < 3) {
-    o.items = buildUnnamed1116();
+    o.items = buildUnnamed1144();
+    o.kind = "foo";
     o.nextPageToken = "foo";
   }
   buildCounterAutoscalerListResponse--;
@@ -75,20 +78,21 @@ buildAutoscalerListResponse() {
 checkAutoscalerListResponse(api.AutoscalerListResponse o) {
   buildCounterAutoscalerListResponse++;
   if (buildCounterAutoscalerListResponse < 3) {
-    checkUnnamed1116(o.items);
+    checkUnnamed1144(o.items);
+    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterAutoscalerListResponse--;
 }
 
-buildUnnamed1117() {
+buildUnnamed1145() {
   var o = new core.List<api.AutoscalingPolicyCustomMetricUtilization>();
   o.add(buildAutoscalingPolicyCustomMetricUtilization());
   o.add(buildAutoscalingPolicyCustomMetricUtilization());
   return o;
 }
 
-checkUnnamed1117(core.List<api.AutoscalingPolicyCustomMetricUtilization> o) {
+checkUnnamed1145(core.List<api.AutoscalingPolicyCustomMetricUtilization> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAutoscalingPolicyCustomMetricUtilization(o[0]);
   checkAutoscalingPolicyCustomMetricUtilization(o[1]);
@@ -101,7 +105,7 @@ buildAutoscalingPolicy() {
   if (buildCounterAutoscalingPolicy < 3) {
     o.coolDownPeriodSec = 42;
     o.cpuUtilization = buildAutoscalingPolicyCpuUtilization();
-    o.customMetricUtilizations = buildUnnamed1117();
+    o.customMetricUtilizations = buildUnnamed1145();
     o.loadBalancingUtilization = buildAutoscalingPolicyLoadBalancingUtilization();
     o.maxNumReplicas = 42;
     o.minNumReplicas = 42;
@@ -115,7 +119,7 @@ checkAutoscalingPolicy(api.AutoscalingPolicy o) {
   if (buildCounterAutoscalingPolicy < 3) {
     unittest.expect(o.coolDownPeriodSec, unittest.equals(42));
     checkAutoscalingPolicyCpuUtilization(o.cpuUtilization);
-    checkUnnamed1117(o.customMetricUtilizations);
+    checkUnnamed1145(o.customMetricUtilizations);
     checkAutoscalingPolicyLoadBalancingUtilization(o.loadBalancingUtilization);
     unittest.expect(o.maxNumReplicas, unittest.equals(42));
     unittest.expect(o.minNumReplicas, unittest.equals(42));
@@ -149,6 +153,7 @@ buildAutoscalingPolicyCustomMetricUtilization() {
   if (buildCounterAutoscalingPolicyCustomMetricUtilization < 3) {
     o.metric = "foo";
     o.utilizationTarget = 42.0;
+    o.utilizationTargetType = "foo";
   }
   buildCounterAutoscalingPolicyCustomMetricUtilization--;
   return o;
@@ -159,6 +164,7 @@ checkAutoscalingPolicyCustomMetricUtilization(api.AutoscalingPolicyCustomMetricU
   if (buildCounterAutoscalingPolicyCustomMetricUtilization < 3) {
     unittest.expect(o.metric, unittest.equals('foo'));
     unittest.expect(o.utilizationTarget, unittest.equals(42.0));
+    unittest.expect(o.utilizationTargetType, unittest.equals('foo'));
   }
   buildCounterAutoscalingPolicyCustomMetricUtilization--;
 }
@@ -205,14 +211,14 @@ checkOperationErrorErrors(api.OperationErrorErrors o) {
   buildCounterOperationErrorErrors--;
 }
 
-buildUnnamed1118() {
+buildUnnamed1146() {
   var o = new core.List<api.OperationErrorErrors>();
   o.add(buildOperationErrorErrors());
   o.add(buildOperationErrorErrors());
   return o;
 }
 
-checkUnnamed1118(core.List<api.OperationErrorErrors> o) {
+checkUnnamed1146(core.List<api.OperationErrorErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationErrorErrors(o[0]);
   checkOperationErrorErrors(o[1]);
@@ -223,7 +229,7 @@ buildOperationError() {
   var o = new api.OperationError();
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    o.errors = buildUnnamed1118();
+    o.errors = buildUnnamed1146();
   }
   buildCounterOperationError--;
   return o;
@@ -232,7 +238,7 @@ buildOperationError() {
 checkOperationError(api.OperationError o) {
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    checkUnnamed1118(o.errors);
+    checkUnnamed1146(o.errors);
   }
   buildCounterOperationError--;
 }
@@ -258,14 +264,14 @@ checkOperationWarningsData(api.OperationWarningsData o) {
   buildCounterOperationWarningsData--;
 }
 
-buildUnnamed1119() {
+buildUnnamed1147() {
   var o = new core.List<api.OperationWarningsData>();
   o.add(buildOperationWarningsData());
   o.add(buildOperationWarningsData());
   return o;
 }
 
-checkUnnamed1119(core.List<api.OperationWarningsData> o) {
+checkUnnamed1147(core.List<api.OperationWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationWarningsData(o[0]);
   checkOperationWarningsData(o[1]);
@@ -277,7 +283,7 @@ buildOperationWarnings() {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
     o.code = "foo";
-    o.data = buildUnnamed1119();
+    o.data = buildUnnamed1147();
     o.message = "foo";
   }
   buildCounterOperationWarnings--;
@@ -288,20 +294,20 @@ checkOperationWarnings(api.OperationWarnings o) {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
-    checkUnnamed1119(o.data);
+    checkUnnamed1147(o.data);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterOperationWarnings--;
 }
 
-buildUnnamed1120() {
+buildUnnamed1148() {
   var o = new core.List<api.OperationWarnings>();
   o.add(buildOperationWarnings());
   o.add(buildOperationWarnings());
   return o;
 }
 
-checkUnnamed1120(core.List<api.OperationWarnings> o) {
+checkUnnamed1148(core.List<api.OperationWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationWarnings(o[0]);
   checkOperationWarnings(o[1]);
@@ -332,7 +338,7 @@ buildOperation() {
     o.targetId = "foo";
     o.targetLink = "foo";
     o.user = "foo";
-    o.warnings = buildUnnamed1120();
+    o.warnings = buildUnnamed1148();
     o.zone = "foo";
   }
   buildCounterOperation--;
@@ -362,20 +368,20 @@ checkOperation(api.Operation o) {
     unittest.expect(o.targetId, unittest.equals('foo'));
     unittest.expect(o.targetLink, unittest.equals('foo'));
     unittest.expect(o.user, unittest.equals('foo'));
-    checkUnnamed1120(o.warnings);
+    checkUnnamed1148(o.warnings);
     unittest.expect(o.zone, unittest.equals('foo'));
   }
   buildCounterOperation--;
 }
 
-buildUnnamed1121() {
+buildUnnamed1149() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1121(core.List<api.Operation> o) {
+checkUnnamed1149(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -387,7 +393,7 @@ buildOperationList() {
   buildCounterOperationList++;
   if (buildCounterOperationList < 3) {
     o.id = "foo";
-    o.items = buildUnnamed1121();
+    o.items = buildUnnamed1149();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -400,7 +406,7 @@ checkOperationList(api.OperationList o) {
   buildCounterOperationList++;
   if (buildCounterOperationList < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed1121(o.items);
+    checkUnnamed1149(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -531,8 +537,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/autoscaler/v1beta2/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("autoscaler/v1beta2/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/zones/", pathOffset);
@@ -594,8 +602,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/autoscaler/v1beta2/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("autoscaler/v1beta2/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/zones/", pathOffset);
@@ -660,8 +670,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/autoscaler/v1beta2/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("autoscaler/v1beta2/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/zones/", pathOffset);
@@ -722,8 +734,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/autoscaler/v1beta2/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("autoscaler/v1beta2/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/zones/", pathOffset);
@@ -789,8 +803,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/autoscaler/v1beta2/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("autoscaler/v1beta2/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/zones/", pathOffset);
@@ -856,8 +872,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/autoscaler/v1beta2/"));
-        pathOffset += 20;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("autoscaler/v1beta2/"));
+        pathOffset += 19;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/zones/", pathOffset);
@@ -923,25 +941,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/autoscaler/v1beta2/"));
-        pathOffset += 20;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/operations/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/operations/"));
-        pathOffset += 12;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_operation"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -982,25 +983,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/autoscaler/v1beta2/"));
-        pathOffset += 20;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/operations/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/operations/"));
-        pathOffset += 12;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_operation"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1045,22 +1029,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/autoscaler/v1beta2/"));
-        pathOffset += 20;
-        index = path.indexOf("/zones/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_project"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/zones/"));
-        pathOffset += 7;
-        index = path.indexOf("/operations", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_zone"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("/operations"));
-        pathOffset += 11;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;

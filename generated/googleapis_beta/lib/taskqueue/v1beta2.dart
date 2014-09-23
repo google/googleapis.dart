@@ -28,7 +28,7 @@ class TaskqueueApi {
   TasksResourceApi get tasks => new TasksResourceApi(_requester);
 
   TaskqueueApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/taskqueue/v1beta2/projects/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "taskqueue/v1beta2/projects/");
 }
 
 

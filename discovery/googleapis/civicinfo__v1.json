@@ -6,7 +6,7 @@
     "description": "An API for accessing civic information.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/civic-information",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/Sze2Rhamx1amW6d_XzjhazX9mXA\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/E48KE0Nyeq0wTXpsQ1wBH_VLmVc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -162,7 +162,7 @@
             }
         }
     },
-    "revision": "20140815",
+    "revision": "20140918",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AdministrationRegion": {
@@ -532,7 +532,7 @@
             "id": "GeographicDivision",
             "properties": {
                 "alsoKnownAs": {
-                    "description": "Any other valid OCD IDs that refer to the same division. For example, if this division's OCD ID is ocd-division/country:us/district:dc, this will contain ocd-division/country:us/state:dc.",
+                    "description": "Any other valid OCD IDs that refer to the same division.\n\nBecause OCD IDs are meant to be human-readable and at least somewhat predictable, there are occasionally several identifiers for a single division. These identifiers are defined to be equivalent to one another, and one is always indicated as the primary identifier. The primary identifier will be returned in ocd_id above, and any other equivalent valid identifiers will be returned in this list.\n\nFor example, if this division's OCD ID is ocd-division/country:us/district:dc, this will contain ocd-division/country:us/state:dc.",
                     "items": {
                         "type": "string"
                     },
@@ -590,7 +590,7 @@
             "type": "object"
         },
         "Official": {
-            "description": "Information about a official holding an elected office.",
+            "description": "Information about a person holding an elected office.",
             "id": "Official",
             "properties": {
                 "address": {

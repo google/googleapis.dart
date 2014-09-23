@@ -1173,8 +1173,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("/qpxExpress/v1/trips/"));
-        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("qpxExpress/v1/trips/"));
+        pathOffset += 20;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("search"));
         pathOffset += 6;
 

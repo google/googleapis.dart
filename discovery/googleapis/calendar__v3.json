@@ -17,7 +17,7 @@
     "description": "Lets you manipulate events and other calendar data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/cBsbsu-N6Y-_6MMRCb7O-46pRnI\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/vWqMsHvvvKs-y7bO-cWrAXLs9SU\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/calendar-16.png",
         "x32": "http://www.google.com/images/icons/product/calendar-32.png"
@@ -1535,7 +1535,7 @@
             }
         }
     },
-    "revision": "20140902",
+    "revision": "20140914",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {
@@ -2240,6 +2240,7 @@
             "id": "EventAttendee",
             "properties": {
                 "additionalGuests": {
+                    "default": "0",
                     "description": "Number of additional guests. Optional. The default is 0.",
                     "format": "int32",
                     "type": "integer"
@@ -2268,6 +2269,7 @@
                     "type": "string"
                 },
                 "optional": {
+                    "default": "false",
                     "description": "Whether this is an optional attendee. Optional. The default is False.",
                     "type": "boolean"
                 },
@@ -2276,6 +2278,7 @@
                     "type": "boolean"
                 },
                 "resource": {
+                    "default": "false",
                     "description": "Whether the attendee is a resource. Read-only. The default is False.",
                     "type": "boolean"
                 },
@@ -2284,6 +2287,7 @@
                     "type": "string"
                 },
                 "self": {
+                    "default": "false",
                     "description": "Whether this entry represents the calendar on which this copy of the event appears. Read-only. The default is False.",
                     "type": "boolean"
                 }

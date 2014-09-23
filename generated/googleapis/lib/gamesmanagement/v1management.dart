@@ -37,7 +37,7 @@ class GamesManagementApi {
   TurnBasedMatchesResourceApi get turnBasedMatches => new TurnBasedMatchesResourceApi(_requester);
 
   GamesManagementApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/games/v1management/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "games/v1management/");
 }
 
 

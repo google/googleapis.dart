@@ -26,7 +26,7 @@ class AndroidpublisherApi {
   PurchasesResourceApi get purchases => new PurchasesResourceApi(_requester);
 
   AndroidpublisherApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/androidpublisher/v2/applications/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "androidpublisher/v2/applications/");
 }
 
 
@@ -2738,6 +2738,65 @@ class PurchasesSubscriptionsResourceApi {
   }
 
   /**
+   * Defers a user's subscription purchase until a specified future expiration
+   * time.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [packageName] - The package name of the application for which this
+   * subscription was purchased (for example, 'com.some.thing').
+   *
+   * [subscriptionId] - The purchased subscription ID (for example,
+   * 'monthly001').
+   *
+   * [token] - The token provided to the user's device when the subscription was
+   * purchased.
+   *
+   * Completes with a [SubscriptionPurchasesDeferResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<SubscriptionPurchasesDeferResponse> defer(SubscriptionPurchasesDeferRequest request, core.String packageName, core.String subscriptionId, core.String token) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (subscriptionId == null) {
+      throw new core.ArgumentError("Parameter subscriptionId is required.");
+    }
+    if (token == null) {
+      throw new core.ArgumentError("Parameter token is required.");
+    }
+
+
+    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + common_internal.Escaper.ecapeVariable('$token') + ':defer';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SubscriptionPurchasesDeferResponse.fromJson(data));
+  }
+
+  /**
    * Checks whether a user's subscription purchase is valid and returns its
    * expiry time.
    *
@@ -2789,6 +2848,112 @@ class PurchasesSubscriptionsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new SubscriptionPurchase.fromJson(data));
+  }
+
+  /**
+   * Refunds a user's subscription purchase, but the subscription remains valid
+   * until its expiration time and it will continue to recur.
+   *
+   * Request parameters:
+   *
+   * [packageName] - The package name of the application for which this
+   * subscription was purchased (for example, 'com.some.thing').
+   *
+   * [subscriptionId] - The purchased subscription ID (for example,
+   * 'monthly001').
+   *
+   * [token] - The token provided to the user's device when the subscription was
+   * purchased.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future refund(core.String packageName, core.String subscriptionId, core.String token) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (subscriptionId == null) {
+      throw new core.ArgumentError("Parameter subscriptionId is required.");
+    }
+    if (token == null) {
+      throw new core.ArgumentError("Parameter token is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + common_internal.Escaper.ecapeVariable('$token') + ':refund';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Refunds and immediately revokes a user's subscription purchase. Access to
+   * the subscription will be terminated immediately and it will stop recurring.
+   *
+   * Request parameters:
+   *
+   * [packageName] - The package name of the application for which this
+   * subscription was purchased (for example, 'com.some.thing').
+   *
+   * [subscriptionId] - The purchased subscription ID (for example,
+   * 'monthly001').
+   *
+   * [token] - The token provided to the user's device when the subscription was
+   * purchased.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future revoke(core.String packageName, core.String subscriptionId, core.String token) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (subscriptionId == null) {
+      throw new core.ArgumentError("Parameter subscriptionId is required.");
+    }
+    if (token == null) {
+      throw new core.ArgumentError("Parameter token is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + common_internal.Escaper.ecapeVariable('$token') + ':revoke';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
   }
 
 }
@@ -3257,6 +3422,12 @@ class InAppProduct {
   /** Purchase type enum value. Unmodifiable after creation. */
   core.String purchaseType;
 
+  /**
+   * Definition of a season for a seasonal subscription. Can be defined only for
+   * yearly subscriptions.
+   */
+  Season season;
+
   /** The stock-keeping-unit (SKU) of the product, unique within an app. */
   core.String sku;
 
@@ -3299,6 +3470,9 @@ class InAppProduct {
     if (_json.containsKey("purchaseType")) {
       purchaseType = _json["purchaseType"];
     }
+    if (_json.containsKey("season")) {
+      season = new Season.fromJson(_json["season"]);
+    }
     if (_json.containsKey("sku")) {
       sku = _json["sku"];
     }
@@ -3332,6 +3506,9 @@ class InAppProduct {
     }
     if (purchaseType != null) {
       _json["purchaseType"] = purchaseType;
+    }
+    if (season != null) {
+      _json["season"] = (season).toJson();
     }
     if (sku != null) {
       _json["sku"] = sku;
@@ -3788,6 +3965,42 @@ class ListingsListResponse {
 
 
 /** Not documented yet. */
+class MonthDay {
+  /**
+   * Day of a month, value in [1, 31] range. Valid range depends on the
+   * specified month.
+   */
+  core.int day;
+
+  /** Month of a year. e.g. 1 = JAN, 2 = FEB etc. */
+  core.int month;
+
+
+  MonthDay();
+
+  MonthDay.fromJson(core.Map _json) {
+    if (_json.containsKey("day")) {
+      day = _json["day"];
+    }
+    if (_json.containsKey("month")) {
+      month = _json["month"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (day != null) {
+      _json["day"] = day;
+    }
+    if (month != null) {
+      _json["month"] = month;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
 class PageInfo {
   /** Not documented yet. */
   core.int resultPerPage;
@@ -3944,6 +4157,83 @@ class ProductPurchase {
 }
 
 
+/** Not documented yet. */
+class Season {
+  /** Inclusive end date of the recurrence period. */
+  MonthDay end;
+
+  /** Inclusive start date of the recurrence period. */
+  MonthDay start;
+
+
+  Season();
+
+  Season.fromJson(core.Map _json) {
+    if (_json.containsKey("end")) {
+      end = new MonthDay.fromJson(_json["end"]);
+    }
+    if (_json.containsKey("start")) {
+      start = new MonthDay.fromJson(_json["start"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (end != null) {
+      _json["end"] = (end).toJson();
+    }
+    if (start != null) {
+      _json["start"] = (start).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * A SubscriptionDeferralInfo contains the data needed to defer a subscription
+ * purchase to a future expiry time.
+ */
+class SubscriptionDeferralInfo {
+  /**
+   * The desired next expiry time for the subscription in milliseconds since
+   * Epoch. The given time must be after the current expiry time for the
+   * subscription.
+   */
+  core.String desiredExpiryTimeMillis;
+
+  /**
+   * The expected expiry time for the subscription. If the current expiry time
+   * for the subscription is not the value specified here, the deferral will not
+   * occur.
+   */
+  core.String expectedExpiryTimeMillis;
+
+
+  SubscriptionDeferralInfo();
+
+  SubscriptionDeferralInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("desiredExpiryTimeMillis")) {
+      desiredExpiryTimeMillis = _json["desiredExpiryTimeMillis"];
+    }
+    if (_json.containsKey("expectedExpiryTimeMillis")) {
+      expectedExpiryTimeMillis = _json["expectedExpiryTimeMillis"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (desiredExpiryTimeMillis != null) {
+      _json["desiredExpiryTimeMillis"] = desiredExpiryTimeMillis;
+    }
+    if (expectedExpiryTimeMillis != null) {
+      _json["expectedExpiryTimeMillis"] = expectedExpiryTimeMillis;
+    }
+    return _json;
+  }
+}
+
+
 /**
  * A SubscriptionPurchase resource indicates the status of a user's subscription
  * purchase.
@@ -4002,6 +4292,58 @@ class SubscriptionPurchase {
     }
     if (startTimeMillis != null) {
       _json["startTimeMillis"] = startTimeMillis;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class SubscriptionPurchasesDeferRequest {
+  /**
+   * The information about the new desired expiry time for the subscription.
+   */
+  SubscriptionDeferralInfo deferralInfo;
+
+
+  SubscriptionPurchasesDeferRequest();
+
+  SubscriptionPurchasesDeferRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("deferralInfo")) {
+      deferralInfo = new SubscriptionDeferralInfo.fromJson(_json["deferralInfo"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (deferralInfo != null) {
+      _json["deferralInfo"] = (deferralInfo).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class SubscriptionPurchasesDeferResponse {
+  /**
+   * The new expiry time for the subscription in milliseconds since the Epoch.
+   */
+  core.String newExpiryTimeMillis;
+
+
+  SubscriptionPurchasesDeferResponse();
+
+  SubscriptionPurchasesDeferResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("newExpiryTimeMillis")) {
+      newExpiryTimeMillis = _json["newExpiryTimeMillis"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (newExpiryTimeMillis != null) {
+      _json["newExpiryTimeMillis"] = newExpiryTimeMillis;
     }
     return _json;
   }

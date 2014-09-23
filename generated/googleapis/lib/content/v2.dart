@@ -33,7 +33,7 @@ class ContentApi {
   ProductstatusesResourceApi get productstatuses => new ProductstatusesResourceApi(_requester);
 
   ContentApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/content/v2/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "content/v2/");
 }
 
 

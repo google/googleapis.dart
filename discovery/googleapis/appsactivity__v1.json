@@ -23,7 +23,7 @@
     "description": "Provides a historical view of activity.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/activity/",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/MmwdCrDlqhBi2D0-JqsndcBoC3M\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/lSpXo4dql_m7xuje0Y2WPH_dsVA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -149,7 +149,7 @@
             }
         }
     },
-    "revision": "20140619",
+    "revision": "20140828",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Activity": {

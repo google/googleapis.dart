@@ -16,14 +16,14 @@ import 'package:googleapis/doubleclickbidmanager/v1.dart' as api;
 
 
 
-buildUnnamed691() {
+buildUnnamed719() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed691(core.List<core.String> o) {
+checkUnnamed719(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -34,7 +34,7 @@ buildDownloadLineItemsRequest() {
   var o = new api.DownloadLineItemsRequest();
   buildCounterDownloadLineItemsRequest++;
   if (buildCounterDownloadLineItemsRequest < 3) {
-    o.filterIds = buildUnnamed691();
+    o.filterIds = buildUnnamed719();
     o.filterType = "foo";
     o.format = "foo";
   }
@@ -45,7 +45,7 @@ buildDownloadLineItemsRequest() {
 checkDownloadLineItemsRequest(api.DownloadLineItemsRequest o) {
   buildCounterDownloadLineItemsRequest++;
   if (buildCounterDownloadLineItemsRequest < 3) {
-    checkUnnamed691(o.filterIds);
+    checkUnnamed719(o.filterIds);
     unittest.expect(o.filterType, unittest.equals('foo'));
     unittest.expect(o.format, unittest.equals('foo'));
   }
@@ -92,14 +92,14 @@ checkFilterPair(api.FilterPair o) {
   buildCounterFilterPair--;
 }
 
-buildUnnamed692() {
+buildUnnamed720() {
   var o = new core.List<api.Query>();
   o.add(buildQuery());
   o.add(buildQuery());
   return o;
 }
 
-checkUnnamed692(core.List<api.Query> o) {
+checkUnnamed720(core.List<api.Query> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQuery(o[0]);
   checkQuery(o[1]);
@@ -111,7 +111,7 @@ buildListQueriesResponse() {
   buildCounterListQueriesResponse++;
   if (buildCounterListQueriesResponse < 3) {
     o.kind = "foo";
-    o.queries = buildUnnamed692();
+    o.queries = buildUnnamed720();
   }
   buildCounterListQueriesResponse--;
   return o;
@@ -121,19 +121,19 @@ checkListQueriesResponse(api.ListQueriesResponse o) {
   buildCounterListQueriesResponse++;
   if (buildCounterListQueriesResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed692(o.queries);
+    checkUnnamed720(o.queries);
   }
   buildCounterListQueriesResponse--;
 }
 
-buildUnnamed693() {
+buildUnnamed721() {
   var o = new core.List<api.Report>();
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-checkUnnamed693(core.List<api.Report> o) {
+checkUnnamed721(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -145,7 +145,7 @@ buildListReportsResponse() {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     o.kind = "foo";
-    o.reports = buildUnnamed693();
+    o.reports = buildUnnamed721();
   }
   buildCounterListReportsResponse--;
   return o;
@@ -155,45 +155,45 @@ checkListReportsResponse(api.ListReportsResponse o) {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed693(o.reports);
+    checkUnnamed721(o.reports);
   }
   buildCounterListReportsResponse--;
 }
 
-buildUnnamed694() {
+buildUnnamed722() {
   var o = new core.List<api.FilterPair>();
   o.add(buildFilterPair());
   o.add(buildFilterPair());
   return o;
 }
 
-checkUnnamed694(core.List<api.FilterPair> o) {
+checkUnnamed722(core.List<api.FilterPair> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFilterPair(o[0]);
   checkFilterPair(o[1]);
 }
 
-buildUnnamed695() {
+buildUnnamed723() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed695(core.List<core.String> o) {
+checkUnnamed723(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed696() {
+buildUnnamed724() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed696(core.List<core.String> o) {
+checkUnnamed724(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -204,10 +204,10 @@ buildParameters() {
   var o = new api.Parameters();
   buildCounterParameters++;
   if (buildCounterParameters < 3) {
-    o.filters = buildUnnamed694();
-    o.groupBys = buildUnnamed695();
+    o.filters = buildUnnamed722();
+    o.groupBys = buildUnnamed723();
     o.includeInviteData = true;
-    o.metrics = buildUnnamed696();
+    o.metrics = buildUnnamed724();
     o.type = "foo";
   }
   buildCounterParameters--;
@@ -217,10 +217,10 @@ buildParameters() {
 checkParameters(api.Parameters o) {
   buildCounterParameters++;
   if (buildCounterParameters < 3) {
-    checkUnnamed694(o.filters);
-    checkUnnamed695(o.groupBys);
+    checkUnnamed722(o.filters);
+    checkUnnamed723(o.groupBys);
     unittest.expect(o.includeInviteData, unittest.isTrue);
-    checkUnnamed696(o.metrics);
+    checkUnnamed724(o.metrics);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterParameters--;
@@ -259,14 +259,14 @@ checkQuery(api.Query o) {
   buildCounterQuery--;
 }
 
-buildUnnamed697() {
+buildUnnamed725() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed697(core.List<core.String> o) {
+checkUnnamed725(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -285,7 +285,7 @@ buildQueryMetadata() {
     o.reportCount = 42;
     o.running = true;
     o.sendNotification = true;
-    o.shareEmailAddress = buildUnnamed697();
+    o.shareEmailAddress = buildUnnamed725();
     o.title = "foo";
   }
   buildCounterQueryMetadata--;
@@ -303,7 +303,7 @@ checkQueryMetadata(api.QueryMetadata o) {
     unittest.expect(o.reportCount, unittest.equals(42));
     unittest.expect(o.running, unittest.isTrue);
     unittest.expect(o.sendNotification, unittest.isTrue);
-    checkUnnamed697(o.shareEmailAddress);
+    checkUnnamed725(o.shareEmailAddress);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterQueryMetadata--;
@@ -447,14 +447,14 @@ checkReportStatus(api.ReportStatus o) {
   buildCounterReportStatus--;
 }
 
-buildUnnamed698() {
+buildUnnamed726() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed698(core.List<core.String> o) {
+checkUnnamed726(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -468,7 +468,7 @@ buildRowStatus() {
     o.changed = true;
     o.entityId = "foo";
     o.entityName = "foo";
-    o.errors = buildUnnamed698();
+    o.errors = buildUnnamed726();
     o.persisted = true;
     o.rowNumber = 42;
   }
@@ -482,7 +482,7 @@ checkRowStatus(api.RowStatus o) {
     unittest.expect(o.changed, unittest.isTrue);
     unittest.expect(o.entityId, unittest.equals('foo'));
     unittest.expect(o.entityName, unittest.equals('foo'));
-    checkUnnamed698(o.errors);
+    checkUnnamed726(o.errors);
     unittest.expect(o.persisted, unittest.isTrue);
     unittest.expect(o.rowNumber, unittest.equals(42));
   }
@@ -556,27 +556,27 @@ checkUploadLineItemsResponse(api.UploadLineItemsResponse o) {
   buildCounterUploadLineItemsResponse--;
 }
 
-buildUnnamed699() {
+buildUnnamed727() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed699(core.List<core.String> o) {
+checkUnnamed727(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed700() {
+buildUnnamed728() {
   var o = new core.List<api.RowStatus>();
   o.add(buildRowStatus());
   o.add(buildRowStatus());
   return o;
 }
 
-checkUnnamed700(core.List<api.RowStatus> o) {
+checkUnnamed728(core.List<api.RowStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRowStatus(o[0]);
   checkRowStatus(o[1]);
@@ -587,8 +587,8 @@ buildUploadStatus() {
   var o = new api.UploadStatus();
   buildCounterUploadStatus++;
   if (buildCounterUploadStatus < 3) {
-    o.errors = buildUnnamed699();
-    o.rowStatus = buildUnnamed700();
+    o.errors = buildUnnamed727();
+    o.rowStatus = buildUnnamed728();
   }
   buildCounterUploadStatus--;
   return o;
@@ -597,8 +597,8 @@ buildUploadStatus() {
 checkUploadStatus(api.UploadStatus o) {
   buildCounterUploadStatus++;
   if (buildCounterUploadStatus < 3) {
-    checkUnnamed699(o.errors);
-    checkUnnamed700(o.rowStatus);
+    checkUnnamed727(o.errors);
+    checkUnnamed728(o.rowStatus);
   }
   buildCounterUploadStatus--;
 }
@@ -790,8 +790,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/doubleclickbidmanager/v1/"));
-        pathOffset += 26;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        pathOffset += 25;
         unittest.expect(path.substring(pathOffset, pathOffset + 27), unittest.equals("lineitems/downloadlineitems"));
         pathOffset += 27;
 
@@ -837,8 +839,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/doubleclickbidmanager/v1/"));
-        pathOffset += 26;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        pathOffset += 25;
         unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("lineitems/uploadlineitems"));
         pathOffset += 25;
 
@@ -888,8 +892,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/doubleclickbidmanager/v1/"));
-        pathOffset += 26;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        pathOffset += 25;
         unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("query"));
         pathOffset += 5;
 
@@ -932,8 +938,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/doubleclickbidmanager/v1/"));
-        pathOffset += 26;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        pathOffset += 25;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("query/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -977,8 +985,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/doubleclickbidmanager/v1/"));
-        pathOffset += 26;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        pathOffset += 25;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("query/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -1023,8 +1033,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/doubleclickbidmanager/v1/"));
-        pathOffset += 26;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        pathOffset += 25;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("queries"));
         pathOffset += 7;
 
@@ -1071,8 +1083,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/doubleclickbidmanager/v1/"));
-        pathOffset += 26;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        pathOffset += 25;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("query/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -1120,8 +1134,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/doubleclickbidmanager/v1/"));
-        pathOffset += 26;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        pathOffset += 25;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("queries/"));
         pathOffset += 8;
         index = path.indexOf("/reports", pathOffset);

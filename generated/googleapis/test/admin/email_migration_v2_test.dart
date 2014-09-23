@@ -92,15 +92,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/email/v2/users/"));
-        pathOffset += 16;
-        index = path.indexOf("/mail", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_userKey"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("/mail"));
-        pathOffset += 5;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
 
         var query = (req.url).query;
         var queryOffset = 0;

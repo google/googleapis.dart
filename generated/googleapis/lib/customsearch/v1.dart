@@ -21,7 +21,7 @@ class CustomsearchApi {
   CseResourceApi get cse => new CseResourceApi(_requester);
 
   CustomsearchApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/customsearch/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "customsearch/");
 }
 
 

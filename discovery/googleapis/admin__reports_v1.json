@@ -18,7 +18,7 @@
     "description": "Allows the administrators of Google Apps customers to fetch reports about the usage, collaboration, security and risk for their users.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/reports/",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/1CnyuAQi1v-9K692tzB6A2cyPVk\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/kIY0aqiDkZ24yMy88cSNtVuMbHk\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -370,7 +370,7 @@
             }
         }
     },
-    "revision": "20140725",
+    "revision": "20140912",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Activities": {
@@ -450,6 +450,21 @@
                                             "description": "Integral value of the parameter.",
                                             "format": "int64",
                                             "type": "string"
+                                        },
+                                        "multiIntValue": {
+                                            "description": "Multi-int value of the parameter.",
+                                            "items": {
+                                                "format": "int64",
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "multiValue": {
+                                            "description": "Multi-string value of the parameter.",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
                                         },
                                         "name": {
                                             "description": "The name of the parameter.",

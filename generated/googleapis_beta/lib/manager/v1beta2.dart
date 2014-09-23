@@ -49,7 +49,7 @@ class ManagerApi {
   TemplatesResourceApi get templates => new TemplatesResourceApi(_requester);
 
   ManagerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/manager/v1beta2/projects/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "manager/v1beta2/projects/");
 }
 
 
@@ -1736,6 +1736,12 @@ class NewDiskInitializeParams {
   /** The size of the created disk in gigabytes. */
   core.String diskSizeGb;
 
+  /**
+   * Name of the disk type resource describing which disk type to use to create
+   * the disk. For example 'pd-ssd' or 'pd-standard'. Default is 'pd-standard'
+   */
+  core.String diskType;
+
   /** The fully-qualified URL of a source image to use to create this disk. */
   core.String sourceImage;
 
@@ -1746,6 +1752,9 @@ class NewDiskInitializeParams {
     if (_json.containsKey("diskSizeGb")) {
       diskSizeGb = _json["diskSizeGb"];
     }
+    if (_json.containsKey("diskType")) {
+      diskType = _json["diskType"];
+    }
     if (_json.containsKey("sourceImage")) {
       sourceImage = _json["sourceImage"];
     }
@@ -1755,6 +1764,9 @@ class NewDiskInitializeParams {
     var _json = new core.Map();
     if (diskSizeGb != null) {
       _json["diskSizeGb"] = diskSizeGb;
+    }
+    if (diskType != null) {
+      _json["diskType"] = diskType;
     }
     if (sourceImage != null) {
       _json["sourceImage"] = sourceImage;

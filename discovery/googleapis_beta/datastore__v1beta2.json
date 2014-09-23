@@ -2,6 +2,9 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "View and manage your data across Google Cloud Platform services"
+                },
                 "https://www.googleapis.com/auth/datastore": {
                     "description": "View and manage your Google Cloud Datastore data"
                 },
@@ -17,7 +20,7 @@
     "description": "API for accessing Google Cloud Datastore.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/datastore/",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/2BYNDaZqMjLdfTtg3EL0oL8j6oI\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/LDhSkY4UxrCPhfQmh9G4U2uaRlU\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -101,6 +104,7 @@
                         "$ref": "AllocateIdsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/datastore",
                         "https://www.googleapis.com/auth/userinfo.email"
                     ]
@@ -128,6 +132,7 @@
                         "$ref": "BeginTransactionResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/datastore",
                         "https://www.googleapis.com/auth/userinfo.email"
                     ]
@@ -155,6 +160,7 @@
                         "$ref": "CommitResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/datastore",
                         "https://www.googleapis.com/auth/userinfo.email"
                     ]
@@ -182,6 +188,7 @@
                         "$ref": "LookupResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/datastore",
                         "https://www.googleapis.com/auth/userinfo.email"
                     ]
@@ -209,6 +216,7 @@
                         "$ref": "RollbackResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/datastore",
                         "https://www.googleapis.com/auth/userinfo.email"
                     ]
@@ -236,6 +244,7 @@
                         "$ref": "RunQueryResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/datastore",
                         "https://www.googleapis.com/auth/userinfo.email"
                     ]
@@ -243,7 +252,7 @@
             }
         }
     },
-    "revision": "20140613",
+    "revision": "20140916",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AllocateIdsRequest": {
@@ -351,6 +360,7 @@
             "type": "object"
         },
         "CompositeFilter": {
+            "description": "A filter that merges the multiple other filters using the given operation.",
             "id": "CompositeFilter",
             "properties": {
                 "filters": {
@@ -374,6 +384,7 @@
             "type": "object"
         },
         "Entity": {
+            "description": "An entity.",
             "id": "Entity",
             "properties": {
                 "key": {
@@ -392,6 +403,7 @@
             "type": "object"
         },
         "EntityResult": {
+            "description": "The result of fetching an entity from the datastore.",
             "id": "EntityResult",
             "properties": {
                 "entity": {
@@ -402,6 +414,7 @@
             "type": "object"
         },
         "Filter": {
+            "description": "A holder for any type of filter. Exactly one field should be specified.",
             "id": "Filter",
             "properties": {
                 "compositeFilter": {
@@ -416,6 +429,7 @@
             "type": "object"
         },
         "GqlQuery": {
+            "description": "A GQL query.",
             "id": "GqlQuery",
             "properties": {
                 "allowLiteral": {
@@ -437,12 +451,14 @@
                     "type": "array"
                 },
                 "queryString": {
+                    "description": "The query string.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "GqlQueryArg": {
+            "description": "A binding argument for a GQL query.",
             "id": "GqlQueryArg",
             "properties": {
                 "cursor": {
@@ -460,6 +476,7 @@
             "type": "object"
         },
         "Key": {
+            "description": "A unique identifier for an entity.",
             "id": "Key",
             "properties": {
                 "partitionId": {
@@ -497,6 +514,7 @@
             "type": "object"
         },
         "KindExpression": {
+            "description": "A representation of a kind.",
             "id": "KindExpression",
             "properties": {
                 "name": {
@@ -554,6 +572,7 @@
             "type": "object"
         },
         "Mutation": {
+            "description": "A set of changes to apply.",
             "id": "Mutation",
             "properties": {
                 "delete": {
@@ -617,6 +636,7 @@
             "type": "object"
         },
         "PartitionId": {
+            "description": "An identifier for a particular subset of entities.\n\nEntities are partitioned into various subsets, each used by different datasets and different namespaces within a dataset and so forth.",
             "id": "PartitionId",
             "properties": {
                 "datasetId": {
@@ -631,6 +651,7 @@
             "type": "object"
         },
         "Property": {
+            "description": "An entity property.",
             "id": "Property",
             "properties": {
                 "blobKeyValue": {
@@ -693,6 +714,7 @@
             "type": "object"
         },
         "PropertyExpression": {
+            "description": "A representation of a property in a projection.",
             "id": "PropertyExpression",
             "properties": {
                 "aggregationFunction": {
@@ -713,6 +735,7 @@
             "type": "object"
         },
         "PropertyFilter": {
+            "description": "A filter on a specific property.",
             "id": "PropertyFilter",
             "properties": {
                 "operator": {
@@ -747,6 +770,7 @@
             "type": "object"
         },
         "PropertyOrder": {
+            "description": "The desired order for a specific property.",
             "id": "PropertyOrder",
             "properties": {
                 "direction": {
@@ -769,6 +793,7 @@
             "type": "object"
         },
         "PropertyReference": {
+            "description": "A reference to a property relative to the kind expressions.",
             "id": "PropertyReference",
             "properties": {
                 "name": {
@@ -779,6 +804,7 @@
             "type": "object"
         },
         "Query": {
+            "description": "A query.",
             "id": "Query",
             "properties": {
                 "endCursor": {
@@ -837,10 +863,11 @@
             "type": "object"
         },
         "QueryResultBatch": {
+            "description": "A batch of results produced by a query.",
             "id": "QueryResultBatch",
             "properties": {
                 "endCursor": {
-                    "description": "A cursor that points to the position after the last result in the batch. May be absent.",
+                    "description": "A cursor that points to the position after the last result in the batch. May be absent. TODO(arfuller): Once all plans produce cursors update documentation here.",
                     "format": "byte",
                     "type": "string"
                 },
@@ -979,6 +1006,7 @@
             "type": "object"
         },
         "Value": {
+            "description": "A message that can hold any of the supported value types and associated metadata.",
             "id": "Value",
             "properties": {
                 "blobKeyValue": {

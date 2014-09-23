@@ -24,7 +24,7 @@ class AdminApi {
   MailResourceApi get mail => new MailResourceApi(_requester);
 
   AdminApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/email/v2/users/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "email/v2/users/");
 }
 
 

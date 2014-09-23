@@ -32,7 +32,7 @@ class FusiontablesApi {
   TemplateResourceApi get template => new TemplateResourceApi(_requester);
 
   FusiontablesApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/fusiontables/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "fusiontables/v1/");
 }
 
 

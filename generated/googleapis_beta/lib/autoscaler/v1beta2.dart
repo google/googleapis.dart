@@ -31,7 +31,7 @@ class AutoscalerApi {
   ZoneOperationsResourceApi get zoneOperations => new ZoneOperationsResourceApi(_requester);
 
   AutoscalerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/autoscaler/v1beta2/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "autoscaler/v1beta2/");
 }
 
 
@@ -568,6 +568,9 @@ class Autoscaler {
    */
   core.String id;
 
+  /** Type of resource. */
+  core.String kind;
+
   /** Name of the Autoscaler resource. Must be unique per project and zone. */
   core.String name;
 
@@ -597,6 +600,9 @@ class Autoscaler {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -622,6 +628,9 @@ class Autoscaler {
     if (id != null) {
       _json["id"] = id;
     }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -641,6 +650,9 @@ class AutoscalerListResponse {
   /** Autoscaler resources. */
   core.List<Autoscaler> items;
 
+  /** Type of resource. */
+  core.String kind;
+
   /** [Output only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
@@ -651,6 +663,9 @@ class AutoscalerListResponse {
     if (_json.containsKey("items")) {
       items = _json["items"].map((value) => new Autoscaler.fromJson(value)).toList();
     }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
     }
@@ -660,6 +675,9 @@ class AutoscalerListResponse {
     var _json = new core.Map();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -793,6 +811,9 @@ class AutoscalingPolicyCustomMetricUtilization {
    */
   core.double utilizationTarget;
 
+  /** Defines type in which utilization_target is expressed. */
+  core.String utilizationTargetType;
+
 
   AutoscalingPolicyCustomMetricUtilization();
 
@@ -803,6 +824,9 @@ class AutoscalingPolicyCustomMetricUtilization {
     if (_json.containsKey("utilizationTarget")) {
       utilizationTarget = _json["utilizationTarget"];
     }
+    if (_json.containsKey("utilizationTargetType")) {
+      utilizationTargetType = _json["utilizationTargetType"];
+    }
   }
 
   core.Map toJson() {
@@ -812,6 +836,9 @@ class AutoscalingPolicyCustomMetricUtilization {
     }
     if (utilizationTarget != null) {
       _json["utilizationTarget"] = utilizationTarget;
+    }
+    if (utilizationTargetType != null) {
+      _json["utilizationTargetType"] = utilizationTargetType;
     }
     return _json;
   }

@@ -18,7 +18,7 @@
     "description": "The Google Maps Engine API allows developers to store and query geospatial vector and raster data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/maps-engine/",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/jGUBdJqkmjTr16N5VHnjqkXRtPo\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/KLvHOFhlqcmmjqmNE4lM_SMZ6_s\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/maps_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/maps_engine-32.png"
@@ -236,6 +236,34 @@
                             ]
                         }
                     }
+                },
+                "permissions": {
+                    "methods": {
+                        "list": {
+                            "description": "Return all of the permissions for the specified asset.",
+                            "httpMethod": "GET",
+                            "id": "mapsengine.assets.permissions.list",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset whose permissions will be listed.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "assets/{id}/permissions",
+                            "response": {
+                                "$ref": "PermissionsListResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine",
+                                "https://www.googleapis.com/auth/mapsengine.readonly"
+                            ]
+                        }
+                    }
                 }
             }
         },
@@ -321,6 +349,7 @@
                             "type": "string"
                         },
                         "version": {
+                            "description": "Deprecated: The version parameter indicates which version of the layer should be returned. When version is set to published, the published version of the layer will be returned. Please use the layers.getPublished endpoint instead.",
                             "enum": [
                                 "draft",
                                 "published"
@@ -642,6 +671,86 @@
                             ]
                         }
                     }
+                },
+                "permissions": {
+                    "methods": {
+                        "batchDelete": {
+                            "description": "Remove permission entries from an already existing asset.",
+                            "httpMethod": "POST",
+                            "id": "mapsengine.layers.permissions.batchDelete",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset from which permissions will be removed.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "layers/{id}/permissions/batchDelete",
+                            "request": {
+                                "$ref": "PermissionsBatchDeleteRequest"
+                            },
+                            "response": {
+                                "$ref": "PermissionsBatchDeleteResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine"
+                            ]
+                        },
+                        "batchUpdate": {
+                            "description": "Add or update permission entries to an already existing asset.\n\nAn asset can hold up to 20 different permission entries. Each batchInsert request is atomic.",
+                            "httpMethod": "POST",
+                            "id": "mapsengine.layers.permissions.batchUpdate",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset to which permissions will be added.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "layers/{id}/permissions/batchUpdate",
+                            "request": {
+                                "$ref": "PermissionsBatchUpdateRequest"
+                            },
+                            "response": {
+                                "$ref": "PermissionsBatchUpdateResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine"
+                            ]
+                        },
+                        "list": {
+                            "description": "Return all of the permissions for the specified asset.",
+                            "httpMethod": "GET",
+                            "id": "mapsengine.layers.permissions.list",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset whose permissions will be listed.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "layers/{id}/permissions",
+                            "response": {
+                                "$ref": "PermissionsListResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine",
+                                "https://www.googleapis.com/auth/mapsengine.readonly"
+                            ]
+                        }
+                    }
                 }
             }
         },
@@ -697,6 +806,7 @@
                             "type": "string"
                         },
                         "version": {
+                            "description": "Deprecated: The version parameter indicates which version of the map should be returned. When version is set to published, the published version of the map will be returned. Please use the maps.getPublished endpoint instead.",
                             "enum": [
                                 "draft",
                                 "published"
@@ -952,6 +1062,88 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/mapsengine"
                     ]
+                }
+            },
+            "resources": {
+                "permissions": {
+                    "methods": {
+                        "batchDelete": {
+                            "description": "Remove permission entries from an already existing asset.",
+                            "httpMethod": "POST",
+                            "id": "mapsengine.maps.permissions.batchDelete",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset from which permissions will be removed.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "maps/{id}/permissions/batchDelete",
+                            "request": {
+                                "$ref": "PermissionsBatchDeleteRequest"
+                            },
+                            "response": {
+                                "$ref": "PermissionsBatchDeleteResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine"
+                            ]
+                        },
+                        "batchUpdate": {
+                            "description": "Add or update permission entries to an already existing asset.\n\nAn asset can hold up to 20 different permission entries. Each batchInsert request is atomic.",
+                            "httpMethod": "POST",
+                            "id": "mapsengine.maps.permissions.batchUpdate",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset to which permissions will be added.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "maps/{id}/permissions/batchUpdate",
+                            "request": {
+                                "$ref": "PermissionsBatchUpdateRequest"
+                            },
+                            "response": {
+                                "$ref": "PermissionsBatchUpdateResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine"
+                            ]
+                        },
+                        "list": {
+                            "description": "Return all of the permissions for the specified asset.",
+                            "httpMethod": "GET",
+                            "id": "mapsengine.maps.permissions.list",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset whose permissions will be listed.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "maps/{id}/permissions",
+                            "response": {
+                                "$ref": "PermissionsListResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine",
+                                "https://www.googleapis.com/auth/mapsengine.readonly"
+                            ]
+                        }
+                    }
                 }
             }
         },
@@ -1359,6 +1551,86 @@
                             "path": "rasterCollections/{id}/parents",
                             "response": {
                                 "$ref": "ParentsListResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine",
+                                "https://www.googleapis.com/auth/mapsengine.readonly"
+                            ]
+                        }
+                    }
+                },
+                "permissions": {
+                    "methods": {
+                        "batchDelete": {
+                            "description": "Remove permission entries from an already existing asset.",
+                            "httpMethod": "POST",
+                            "id": "mapsengine.rasterCollections.permissions.batchDelete",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset from which permissions will be removed.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "rasterCollections/{id}/permissions/batchDelete",
+                            "request": {
+                                "$ref": "PermissionsBatchDeleteRequest"
+                            },
+                            "response": {
+                                "$ref": "PermissionsBatchDeleteResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine"
+                            ]
+                        },
+                        "batchUpdate": {
+                            "description": "Add or update permission entries to an already existing asset.\n\nAn asset can hold up to 20 different permission entries. Each batchInsert request is atomic.",
+                            "httpMethod": "POST",
+                            "id": "mapsengine.rasterCollections.permissions.batchUpdate",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset to which permissions will be added.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "rasterCollections/{id}/permissions/batchUpdate",
+                            "request": {
+                                "$ref": "PermissionsBatchUpdateRequest"
+                            },
+                            "response": {
+                                "$ref": "PermissionsBatchUpdateResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine"
+                            ]
+                        },
+                        "list": {
+                            "description": "Return all of the permissions for the specified asset.",
+                            "httpMethod": "GET",
+                            "id": "mapsengine.rasterCollections.permissions.list",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset whose permissions will be listed.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "rasterCollections/{id}/permissions",
+                            "response": {
+                                "$ref": "PermissionsListResponse"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/mapsengine",
@@ -1819,6 +2091,86 @@
                             "path": "rasters/{id}/parents",
                             "response": {
                                 "$ref": "ParentsListResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine",
+                                "https://www.googleapis.com/auth/mapsengine.readonly"
+                            ]
+                        }
+                    }
+                },
+                "permissions": {
+                    "methods": {
+                        "batchDelete": {
+                            "description": "Remove permission entries from an already existing asset.",
+                            "httpMethod": "POST",
+                            "id": "mapsengine.rasters.permissions.batchDelete",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset from which permissions will be removed.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "rasters/{id}/permissions/batchDelete",
+                            "request": {
+                                "$ref": "PermissionsBatchDeleteRequest"
+                            },
+                            "response": {
+                                "$ref": "PermissionsBatchDeleteResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine"
+                            ]
+                        },
+                        "batchUpdate": {
+                            "description": "Add or update permission entries to an already existing asset.\n\nAn asset can hold up to 20 different permission entries. Each batchInsert request is atomic.",
+                            "httpMethod": "POST",
+                            "id": "mapsengine.rasters.permissions.batchUpdate",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset to which permissions will be added.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "rasters/{id}/permissions/batchUpdate",
+                            "request": {
+                                "$ref": "PermissionsBatchUpdateRequest"
+                            },
+                            "response": {
+                                "$ref": "PermissionsBatchUpdateResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine"
+                            ]
+                        },
+                        "list": {
+                            "description": "Return all of the permissions for the specified asset.",
+                            "httpMethod": "GET",
+                            "id": "mapsengine.rasters.permissions.list",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset whose permissions will be listed.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "rasters/{id}/permissions",
+                            "response": {
+                                "$ref": "PermissionsListResponse"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/mapsengine",
@@ -2360,11 +2712,91 @@
                             ]
                         }
                     }
+                },
+                "permissions": {
+                    "methods": {
+                        "batchDelete": {
+                            "description": "Remove permission entries from an already existing asset.",
+                            "httpMethod": "POST",
+                            "id": "mapsengine.tables.permissions.batchDelete",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset from which permissions will be removed.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "tables/{id}/permissions/batchDelete",
+                            "request": {
+                                "$ref": "PermissionsBatchDeleteRequest"
+                            },
+                            "response": {
+                                "$ref": "PermissionsBatchDeleteResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine"
+                            ]
+                        },
+                        "batchUpdate": {
+                            "description": "Add or update permission entries to an already existing asset.\n\nAn asset can hold up to 20 different permission entries. Each batchInsert request is atomic.",
+                            "httpMethod": "POST",
+                            "id": "mapsengine.tables.permissions.batchUpdate",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset to which permissions will be added.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "tables/{id}/permissions/batchUpdate",
+                            "request": {
+                                "$ref": "PermissionsBatchUpdateRequest"
+                            },
+                            "response": {
+                                "$ref": "PermissionsBatchUpdateResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine"
+                            ]
+                        },
+                        "list": {
+                            "description": "Return all of the permissions for the specified asset.",
+                            "httpMethod": "GET",
+                            "id": "mapsengine.tables.permissions.list",
+                            "parameterOrder": [
+                                "id"
+                            ],
+                            "parameters": {
+                                "id": {
+                                    "description": "The ID of the asset whose permissions will be listed.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "tables/{id}/permissions",
+                            "response": {
+                                "$ref": "PermissionsListResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/mapsengine",
+                                "https://www.googleapis.com/auth/mapsengine.readonly"
+                            ]
+                        }
+                    }
                 }
             }
         }
     },
-    "revision": "20140909",
+    "revision": "20140919",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AcquisitionTime": {
@@ -2409,7 +2841,7 @@
             "id": "Asset",
             "properties": {
                 "bbox": {
-                    "description": "A rectangular bounding box which contains all of the data in this asset. The numbers represent latitude and longitude in decimal degrees.",
+                    "description": "A rectangular bounding box which contains all of the data in this asset. The box is expressed as \\\"west, south, east, north\\\". The numbers represent latitude and longitude in decimal degrees.",
                     "items": {
                         "format": "double",
                         "type": "number"
@@ -2419,6 +2851,10 @@
                 "creationTime": {
                     "description": "The creation time of this asset. The value is an RFC 3339-formatted date-time value (for example, 1970-01-01T00:00:00Z).",
                     "format": "date-time",
+                    "type": "string"
+                },
+                "creatorEmail": {
+                    "description": "The email address of the creator of this asset. This is only returned on GET requests and not LIST requests.",
                     "type": "string"
                 },
                 "description": {
@@ -2436,6 +2872,10 @@
                 "lastModifiedTime": {
                     "description": "The last modified time of this asset. The value is an RFC 3339-formatted date-time value (for example, 1970-01-01T00:00:00Z).",
                     "format": "date-time",
+                    "type": "string"
+                },
+                "lastModifierEmail": {
+                    "description": "The email address of the last modifier of this asset. This is only returned on GET requests and not LIST requests.",
                     "type": "string"
                 },
                 "name": {
@@ -2474,6 +2914,10 @@
                         ""
                     ],
                     "type": "string"
+                },
+                "writersCanEditPermissions": {
+                    "description": "If true, WRITERs of the asset are able to edit the asset permissions.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2670,7 +3114,8 @@
                     "type": "array"
                 },
                 "normalizeGeometries": {
-                    "description": "If true, the server will normalize feature geometries. It is assumed that the South Pole is exterior to any polygons given. See here for a list of normalizations. If false, the all feature geometries must be given already normalized. The points in all LinearRings must be listed in counter-clockwise order, and LinearRings may not intersect.",
+                    "default": "true",
+                    "description": "If true, the server will normalize feature geometries. It is assumed that the South Pole is exterior to any polygons given. See here for a list of normalizations. If false, all feature geometries must be given already normalized. The points in all LinearRings must be listed in counter-clockwise order, and LinearRings may not intersect.",
                     "type": "boolean"
                 }
             },
@@ -2687,7 +3132,8 @@
                     "type": "array"
                 },
                 "normalizeGeometries": {
-                    "description": "If true, the server will normalize feature geometries. It is assumed that the South Pole is exterior to any polygons given. See here for a list of normalizations. If false, the all feature geometries must be given already normalized. The points in all LinearRings must be listed in counter-clockwise order, and LinearRings may not intersect.",
+                    "default": "true",
+                    "description": "If true, the server will normalize feature geometries. It is assumed that the South Pole is exterior to any polygons given. See here for a list of normalizations. If false, all feature geometries must be given already normalized. The points in all LinearRings must be listed in counter-clockwise order, and LinearRings may not intersect.",
                     "type": "boolean"
                 }
             },
@@ -3008,7 +3454,7 @@
             "id": "GeoJsonPolygon",
             "properties": {
                 "coordinates": {
-                    "description": "An array of LinearRings, each of which is an array of four or more GeoJsonPositions. The first and last coordinates in each LinearRing must be the same. For polygons with multiple rings, the first LinearRing is the external ring, with subsequent rings being interior rings (i.e. hole). All LinearRings must contain GeoJsonPositions in counter-clockwise order.",
+                    "description": "An array of LinearRings. A LinearRing is a GeoJsonLineString which is closed (that is, the first and last GeoJsonPositions are equal), and which contains at least four GeoJsonPositions. For polygons with multiple rings, the first LinearRing is the exterior ring, and any subsequent rings are interior rings (that is, holes).",
                     "items": {
                         "items": {
                             "$ref": "GeoJsonPosition"
@@ -3186,7 +3632,7 @@
             "id": "Layer",
             "properties": {
                 "bbox": {
-                    "description": "A rectangular bounding box which contains all of the data in this Layer. The numbers represent latitude and longitude in decimal degrees.",
+                    "description": "A rectangular bounding box which contains all of the data in this Layer. The box is expressed as \\\"west, south, east, north\\\". The numbers represent latitude and longitude in decimal degrees.",
                     "items": {
                         "format": "double",
                         "type": "number"
@@ -3196,6 +3642,10 @@
                 "creationTime": {
                     "description": "The creation time of this layer. The value is an RFC 3339 formatted date-time value (e.g. 1970-01-01T00:00:00Z).",
                     "format": "date-time",
+                    "type": "string"
+                },
+                "creatorEmail": {
+                    "description": "The email address of the creator of this layer. This is only returned on GET requests and not LIST requests.",
                     "type": "string"
                 },
                 "datasourceType": {
@@ -3212,14 +3662,14 @@
                 },
                 "datasources": {
                     "$ref": "Datasources",
-                    "description": "An array of datasources used to build this Layer. If layerType is \"image\", or layerType is not specified and datasourceType is \"image\", then each element in this array is a reference to an Image or RasterCollection. If layerType is \"vector\", or layerType is not specified and datasourceType is \"table\" then each element in this array is a reference to a Vector Table."
+                    "description": "An array of datasources used to build this layer. If layerType is \"image\", or layerType is not specified and datasourceType is \"image\", then each element in this array is a reference to an Image or RasterCollection. If layerType is \"vector\", or layerType is not specified and datasourceType is \"table\" then each element in this array is a reference to a Vector Table."
                 },
                 "description": {
                     "description": "The description of this Layer, supplied by the author.",
                     "type": "string"
                 },
                 "draftAccessList": {
-                    "description": "Deprecated: The name of an access list of the Map Editor type. The user on whose behalf the request is being sent must be an editor on that access list. Note: Google Maps Engine no longer uses access lists. For backward compatibility, the API still accepts access lists for projects that are already using access lists. If you created a GME account/project after July 14th, 2014, you will not be able to send API requests that include access lists. The API does not yet support the new permissions model. When you create a map via the API without specifying permissions, the account that created the map is the owner and has effective administrator access. Users can then use the Maps Engine user interface to adjust the permissions. This is a temporary workaround until the API supports the new permissions model. Read Add new users and groups in the Google Maps Engine help center for more information.",
+                    "description": "Deprecated: The name of an access list of the Map Editor type. The user on whose behalf the request is being sent must be an editor on that access list. Note: Google Maps Engine no longer uses access lists. Instead, each asset has its own list of permissions. For backward compatibility, the API still accepts access lists for projects that are already using access lists. If you created a GME account/project after July 14th, 2014, you will not be able to send API requests that include access lists. Note: This is an input field only. It is not returned in response to a list or get request.",
                     "type": "string"
                 },
                 "etag": {
@@ -3233,6 +3683,10 @@
                 "lastModifiedTime": {
                     "description": "The last modified time of this layer. The value is an RFC 3339 formatted date-time value (e.g. 1970-01-01T00:00:00Z).",
                     "format": "date-time",
+                    "type": "string"
+                },
+                "lastModifierEmail": {
+                    "description": "The email address of the last modifier of this layer. This is only returned on GET requests and not LIST requests.",
                     "type": "string"
                 },
                 "layerType": {
@@ -3289,7 +3743,7 @@
                     "type": "string"
                 },
                 "publishedAccessList": {
-                    "description": "Deprecated: The access list to whom view permissions are granted. The value must be the name of a Maps Engine access list of the Map Viewer type, and the user must be a viewer on that list. Read Share data, layers, and maps in the Google Maps Engine help center for more information.",
+                    "description": "Deprecated: The access list to whom view permissions are granted. The value must be the name of a Maps Engine access list of the Map Viewer type, and the user must be a viewer on that list. Note: Google Maps Engine no longer uses access lists. Instead, each asset has its own list of permissions. For backward compatibility, the API still accepts access lists for projects that are already using access lists. If you created a GME account/project after July 14th, 2014, you will not be able to send API requests that include access lists. Note: This is an input field only. It is not returned in response to a list or get request.",
                     "type": "string"
                 },
                 "publishingStatus": {
@@ -3306,17 +3760,21 @@
                 },
                 "style": {
                     "$ref": "VectorStyle",
-                    "description": "The Styling information for a vector layer."
+                    "description": "The styling information for a vector layer. Note: Style information is returned in response to a get request but not a list request. After requesting a list of layers, you'll need to send a get request to retrieve the VectorStyles for each layer."
                 },
                 "tags": {
                     "$ref": "Tags",
                     "description": "Tags of this Layer."
+                },
+                "writersCanEditPermissions": {
+                    "description": "If true, WRITERs of the asset are able to edit the asset permissions.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
         },
         "LayersListResponse": {
-            "description": "The response returned by a call to layers.List.",
+            "description": "The response returned by a call to layers.List. Note: The list response does not include all the fields available in a layer. Refer to the layer resource description for details of the fields that are not included. You'll need to send a get request to retrieve the additional fields for each layer.",
             "id": "LayersListResponse",
             "properties": {
                 "layers": {
@@ -3394,7 +3852,7 @@
             "id": "Map",
             "properties": {
                 "bbox": {
-                    "description": "A rectangular bounding box which contains all of the data in this Map. The numbers represent latitude and longitude in decimal degrees.",
+                    "description": "A rectangular bounding box which contains all of the data in this Map. The box is expressed as \\\"west, south, east, north\\\". The numbers represent latitude and longitude in decimal degrees.",
                     "items": {
                         "format": "double",
                         "type": "number"
@@ -3410,6 +3868,10 @@
                     "format": "date-time",
                     "type": "string"
                 },
+                "creatorEmail": {
+                    "description": "The email address of the creator of this map. This is only returned on GET requests and not LIST requests.",
+                    "type": "string"
+                },
                 "defaultViewport": {
                     "$ref": "LatLngBox",
                     "description": "An array of four numbers (west, south, east, north) which defines the rectangular bounding box of the default viewport. The numbers represent latitude and longitude in decimal degrees."
@@ -3419,7 +3881,7 @@
                     "type": "string"
                 },
                 "draftAccessList": {
-                    "description": "Deprecated: The name of an access list of the Map Editor type. The user on whose behalf the request is being sent must be an editor on that access list. Note: Google Maps Engine no longer uses access lists. For backward compatibility, the API still accepts access lists for projects that are already using access lists. If you created a GME account/project after July 14th, 2014, you will not be able to send API requests that include access lists. The API does not yet support the new permissions model. When you create a map via the API without specifying permissions, the account that created the map is the owner and has effective administrator access. Users can then use the Maps Engine user interface to adjust the permissions. This is a temporary workaround until the API supports the new permissions model. Read Add new users and groups in the Google Maps Engine help center for more information.",
+                    "description": "Deprecated: The name of an access list of the Map Editor type. The user on whose behalf the request is being sent must be an editor on that access list. Note: Google Maps Engine no longer uses access lists. Instead, each asset has its own list of permissions. For backward compatibility, the API still accepts access lists for projects that are already using access lists. If you created a GME account/project after July 14th, 2014, you will not be able to send API requests that include access lists. Note: This is an input field only. It is not returned in response to a list or get request.",
                     "type": "string"
                 },
                 "etag": {
@@ -3433,6 +3895,10 @@
                 "lastModifiedTime": {
                     "description": "The last modified time of this map. The value is an RFC 3339 formatted date-time value (e.g. 1970-01-01T00:00:00Z).",
                     "format": "date-time",
+                    "type": "string"
+                },
+                "lastModifierEmail": {
+                    "description": "The email address of the last modifier of this map. This is only returned on GET requests and not LIST requests.",
                     "type": "string"
                 },
                 "name": {
@@ -3472,7 +3938,7 @@
                     "type": "string"
                 },
                 "publishedAccessList": {
-                    "description": "Deprecated: The access list to whom view permissions are granted. The value must be the name of a Maps Engine access list of the Map Viewer type, and the user must be a viewer on that list. Read Share data, layers, and maps in the Google Maps Engine help center for more information.",
+                    "description": "Deprecated: The access list to whom view permissions are granted. The value must be the name of a Maps Engine access list of the Map Viewer type, and the user must be a viewer on that list. Note: Google Maps Engine no longer uses access lists. Instead, each asset has its own list of permissions. For backward compatibility, the API still accepts access lists for projects that are already using access lists. If you created a GME account/project after July 14th, 2014, you will not be able to send API requests that include access lists. This is an input field only. It is not returned in response to a list or get request.",
                     "type": "string"
                 },
                 "publishingStatus": {
@@ -3498,6 +3964,10 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "writersCanEditPermissions": {
+                    "description": "If true, WRITERs of the asset are able to edit the asset permissions.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -3742,6 +4212,134 @@
             },
             "type": "object"
         },
+        "Permission": {
+            "description": "A permission defines the user or group that has access to an asset, and the type of access they have.",
+            "id": "Permission",
+            "properties": {
+                "discoverable": {
+                    "description": "Indicates whether a public asset is listed and can be found via a web search (value true), or is visible only to people who have a link to the asset (value false).",
+                    "type": "boolean"
+                },
+                "id": {
+                    "annotations": {
+                        "required": [
+                            "mapsengine.layers.permissions.batchUpdate",
+                            "mapsengine.maps.permissions.batchUpdate",
+                            "mapsengine.rasterCollections.permissions.batchUpdate",
+                            "mapsengine.tables.permissions.batchUpdate"
+                        ]
+                    },
+                    "description": "The unique identifier of the permission. This could be the email address of the user or group this permission refers to, or the string \"anyone\" for public permissions.",
+                    "type": "string"
+                },
+                "role": {
+                    "annotations": {
+                        "required": [
+                            "mapsengine.layers.permissions.batchUpdate",
+                            "mapsengine.maps.permissions.batchUpdate",
+                            "mapsengine.rasterCollections.permissions.batchUpdate",
+                            "mapsengine.tables.permissions.batchUpdate"
+                        ]
+                    },
+                    "description": "The type of access granted to this user or group.",
+                    "enum": [
+                        "owner",
+                        "reader",
+                        "viewer",
+                        "writer"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The account type.",
+                    "enum": [
+                        "anyone",
+                        "group",
+                        "user"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PermissionsBatchDeleteRequest": {
+            "description": "The request sent to mapsengine.permissions.batchDelete.",
+            "id": "PermissionsBatchDeleteRequest",
+            "properties": {
+                "ids": {
+                    "annotations": {
+                        "required": [
+                            "mapsengine.layers.permissions.batchDelete",
+                            "mapsengine.maps.permissions.batchDelete",
+                            "mapsengine.rasterCollections.permissions.batchDelete",
+                            "mapsengine.tables.permissions.batchDelete"
+                        ]
+                    },
+                    "description": "An array of permission ids to be removed. This could be the email address of the user or group this permission refers to, or the string \"anyone\" for public permissions.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PermissionsBatchDeleteResponse": {
+            "description": "The response returned by a call to mapsengine.permissions.batchDelete.",
+            "id": "PermissionsBatchDeleteResponse",
+            "type": "object"
+        },
+        "PermissionsBatchUpdateRequest": {
+            "description": "The request sent to mapsengine.permissions.batchUpdate.",
+            "id": "PermissionsBatchUpdateRequest",
+            "properties": {
+                "permissions": {
+                    "annotations": {
+                        "required": [
+                            "mapsengine.layers.permissions.batchUpdate",
+                            "mapsengine.maps.permissions.batchUpdate",
+                            "mapsengine.rasterCollections.permissions.batchUpdate",
+                            "mapsengine.tables.permissions.batchUpdate"
+                        ]
+                    },
+                    "description": "The permissions to be inserted or updated.",
+                    "items": {
+                        "$ref": "Permission"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PermissionsBatchUpdateResponse": {
+            "description": "The response returned by a call to mapsengine.permissions.batchUpdate.",
+            "id": "PermissionsBatchUpdateResponse",
+            "type": "object"
+        },
+        "PermissionsListResponse": {
+            "id": "PermissionsListResponse",
+            "properties": {
+                "permissions": {
+                    "description": "The set of permissions associated with this asset.",
+                    "items": {
+                        "$ref": "Permission"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "PointStyle": {
             "description": "Style for points.",
             "id": "PointStyle",
@@ -3825,20 +4423,11 @@
                     "description": "The description of this Layer, supplied by the author.",
                     "type": "string"
                 },
-                "etag": {
-                    "description": "The ETag, used to refer to the current version of the asset.",
-                    "type": "string"
-                },
                 "id": {
                     "description": "A globally unique ID, used to refer to this Layer.",
                     "type": "string"
                 },
                 "layerType": {
-                    "annotations": {
-                        "required": [
-                            "mapsengine.layers.create"
-                        ]
-                    },
                     "description": "The type of the datasources used to build this Layer. This should be used instead of datasourceType. At least one of layerType and datasourceType and must be specified, but layerType takes precedence.",
                     "enum": [
                         "image",
@@ -3851,20 +4440,10 @@
                     "type": "string"
                 },
                 "name": {
-                    "annotations": {
-                        "required": [
-                            "mapsengine.layers.create"
-                        ]
-                    },
                     "description": "The name of this Layer, supplied by the author.",
                     "type": "string"
                 },
                 "projectId": {
-                    "annotations": {
-                        "required": [
-                            "mapsengine.layers.create"
-                        ]
-                    },
                     "description": "The ID of the project that this Layer is in.",
                     "type": "string"
                 }
@@ -3906,29 +4485,15 @@
                     "description": "The description of this Map, supplied by the author.",
                     "type": "string"
                 },
-                "etag": {
-                    "description": "The ETag, used to refer to the current version of the asset.",
-                    "type": "string"
-                },
                 "id": {
                     "description": "A globally unique ID, used to refer to this Map.",
                     "type": "string"
                 },
                 "name": {
-                    "annotations": {
-                        "required": [
-                            "mapsengine.maps.create"
-                        ]
-                    },
                     "description": "The name of this Map, supplied by the author.",
                     "type": "string"
                 },
                 "projectId": {
-                    "annotations": {
-                        "required": [
-                            "mapsengine.maps.create"
-                        ]
-                    },
                     "description": "The ID of the project that this Map is in.",
                     "type": "string"
                 }
@@ -3967,7 +4532,7 @@
                     "type": "string"
                 },
                 "bbox": {
-                    "description": "A rectangular bounding box which contains all of the data in this Raster. The numbers represent latitude and longitude in decimal degrees.",
+                    "description": "A rectangular bounding box which contains all of the data in this Raster. The box is expressed as \\\"west, south, east, north\\\". The numbers represent latitudes and longitudes in decimal degrees.",
                     "items": {
                         "format": "double",
                         "type": "number"
@@ -3979,12 +4544,16 @@
                     "format": "date-time",
                     "type": "string"
                 },
+                "creatorEmail": {
+                    "description": "The email address of the creator of this raster. This is only returned on GET requests and not LIST requests.",
+                    "type": "string"
+                },
                 "description": {
                     "description": "The description of this Raster, supplied by the author.",
                     "type": "string"
                 },
                 "draftAccessList": {
-                    "description": "Deprecated: The name of an access list of the Map Editor type. The user on whose behalf the request is being sent must be an editor on that access list. Note: Google Maps Engine no longer uses access lists. For backward compatibility, the API still accepts access lists for projects that are already using access lists. If you created a GME account/project after July 14th, 2014, you will not be able to send API requests that include access lists. The API does not yet support the new permissions model. When you create a map via the API without specifying permissions, the account that created the map is the owner and has effective administrator access. Users can then use the Maps Engine user interface to adjust the permissions. This is a temporary workaround until the API supports the new permissions model. Read Add new users and groups in the Google Maps Engine help center for more information.",
+                    "description": "Deprecated: The name of an access list of the Map Editor type. The user on whose behalf the request is being sent must be an editor on that access list. Note: Google Maps Engine no longer uses access lists. Instead, each asset has its own list of permissions. For backward compatibility, the API still accepts access lists for projects that are already using access lists. If you created a GME account/project after July 14th, 2014, you will not be able to send API requests that include access lists. Note: This is an input field only. It is not returned in response to a list or get request.",
                     "type": "string"
                 },
                 "etag": {
@@ -4010,6 +4579,10 @@
                 "lastModifiedTime": {
                     "description": "The last modified time of this raster. The value is an RFC 3339 formatted date-time value (e.g. 1970-01-01T00:00:00Z).",
                     "format": "date-time",
+                    "type": "string"
+                },
+                "lastModifierEmail": {
+                    "description": "The email address of the last modifier of this raster. This is only returned on GET requests and not LIST requests.",
                     "type": "string"
                 },
                 "maskType": {
@@ -4071,6 +4644,10 @@
                 "tags": {
                     "$ref": "Tags",
                     "description": "Tags of this Raster."
+                },
+                "writersCanEditPermissions": {
+                    "description": "If true, WRITERs of the asset are able to edit the asset permissions.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -4080,11 +4657,11 @@
             "id": "RasterCollection",
             "properties": {
                 "attribution": {
-                    "description": "The name of the attribution to be used for this RasterCollection.",
+                    "description": "The name of the attribution to be used for this RasterCollection. Note: Attribution is returned in response to a get request but not a list request. After requesting a list of raster collections, you'll need to send a get request to retrieve the attribution for each raster collection.",
                     "type": "string"
                 },
                 "bbox": {
-                    "description": "A rectangular bounding box which contains all of the data in this RasterCollection. The numbers represent latitude and longitude in decimal degrees.",
+                    "description": "A rectangular bounding box which contains all of the data in this RasterCollection. The box is expressed as \\\"west, south, east, north\\\". The numbers represent latitude and longitude in decimal degrees.",
                     "items": {
                         "format": "double",
                         "type": "number"
@@ -4096,12 +4673,16 @@
                     "format": "date-time",
                     "type": "string"
                 },
+                "creatorEmail": {
+                    "description": "The email address of the creator of this raster collection. This is only returned on GET requests and not LIST requests.",
+                    "type": "string"
+                },
                 "description": {
                     "description": "The description of this RasterCollection, supplied by the author.",
                     "type": "string"
                 },
                 "draftAccessList": {
-                    "description": "Deprecated: The name of an access list of the Map Editor type. The user on whose behalf the request is being sent must be an editor on that access list. Note: Google Maps Engine no longer uses access lists. For backward compatibility, the API still accepts access lists for projects that are already using access lists. If you created a GME account/project after July 14th, 2014, you will not be able to send API requests that include access lists. The API does not yet support the new permissions model. When you create a map via the API without specifying permissions, the account that created the map is the owner and has effective administrator access. Users can then use the Maps Engine user interface to adjust the permissions. This is a temporary workaround until the API supports the new permissions model. Read Add new users and groups in the Google Maps Engine help center for more information.",
+                    "description": "Deprecated: The name of an access list of the Map Editor type. The user on whose behalf the request is being sent must be an editor on that access list. Note: Google Maps Engine no longer uses access lists. Instead, each asset has its own list of permissions. For backward compatibility, the API still accepts access lists for projects that are already using access lists. If you created a GME account/project after July 14th, 2014, you will not be able to send API requests that include access lists. Note: This is an input field only. It is not returned in response to a list or get request.",
                     "type": "string"
                 },
                 "etag": {
@@ -4115,6 +4696,10 @@
                 "lastModifiedTime": {
                     "description": "The last modified time of this RasterCollection. The value is an RFC 3339 formatted date-time value (e.g. 1970-01-01T00:00:00Z).",
                     "format": "date-time",
+                    "type": "string"
+                },
+                "lastModifierEmail": {
+                    "description": "The email address of the last modifier of this raster collection. This is only returned on GET requests and not LIST requests.",
                     "type": "string"
                 },
                 "mosaic": {
@@ -4180,12 +4765,16 @@
                 "tags": {
                     "$ref": "Tags",
                     "description": "Tags of this RasterCollection."
+                },
+                "writersCanEditPermissions": {
+                    "description": "If true, WRITERs of the asset are able to edit the asset permissions.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
         },
         "RasterCollectionsListResponse": {
-            "description": "The response returned by a call to raster_collections.List.",
+            "description": "The response returned by a call to raster_collections.List. Note: The list response does not include all the fields available in a raster collection. Refer to the RasterCollection resource description for details of the fields that are not included. You'll need to send a get request to retrieve the additional fields for each raster collection.",
             "id": "RasterCollectionsListResponse",
             "properties": {
                 "nextPageToken": {
@@ -4208,7 +4797,7 @@
             "id": "RasterCollectionsRaster",
             "properties": {
                 "bbox": {
-                    "description": "A rectangular bounding box which contains all of the data in this Raster. The numbers represent latitude and longitude in decimal degrees.",
+                    "description": "A rectangular bounding box which contains all of the data in this Raster. The box is expressed as \\\"west, south, east, north\\\". The numbers represent latitudes and longitudes in decimal degrees.",
                     "items": {
                         "format": "double",
                         "type": "number"
@@ -4471,7 +5060,7 @@
             "id": "Table",
             "properties": {
                 "bbox": {
-                    "description": "A rectangular bounding box which contains all of the data in this table. The numbers represent latitude and longitude in decimal degrees.",
+                    "description": "A rectangular bounding box which contains all of the data in this Table. The box is expressed as \\\"west, south, east, north\\\". The numbers represent latitude and longitude in decimal degrees.",
                     "items": {
                         "format": "double",
                         "type": "number"
@@ -4483,12 +5072,16 @@
                     "format": "date-time",
                     "type": "string"
                 },
+                "creatorEmail": {
+                    "description": "The email address of the creator of this table. This is only returned on GET requests and not LIST requests.",
+                    "type": "string"
+                },
                 "description": {
                     "description": "The description of this table, supplied by the author.",
                     "type": "string"
                 },
                 "draftAccessList": {
-                    "description": "Deprecated: The name of an access list of the Map Editor type. The user on whose behalf the request is being sent must be an editor on that access list. Note: Google Maps Engine no longer uses access lists. For backward compatibility, the API still accepts access lists for projects that are already using access lists. If you created a GME account/project after July 14th, 2014, you will not be able to send API requests that include access lists. The API does not yet support the new permissions model. When you create a map via the API without specifying permissions, the account that created the map is the owner and has effective administrator access. Users can then use the Maps Engine user interface to adjust the permissions. This is a temporary workaround until the API supports the new permissions model. Read Add new users and groups in the Google Maps Engine help center for more information.",
+                    "description": "Deprecated: The name of an access list of the Map Editor type. The user on whose behalf the request is being sent must be an editor on that access list. Note: Google Maps Engine no longer uses access lists. Instead, each asset has its own list of permissions. For backward compatibility, the API still accepts access lists for projects that are already using access lists. If you created a GME account/project after July 14th, 2014, you will not be able to send API requests that include access lists. Note: This is an input field only. It is not returned in response to a list or get request.",
                     "type": "string"
                 },
                 "etag": {
@@ -4514,6 +5107,10 @@
                 "lastModifiedTime": {
                     "description": "The last modified time of this table. The value is an RFC 3339 formatted date-time value (e.g. 1970-01-01T00:00:00Z).",
                     "format": "date-time",
+                    "type": "string"
+                },
+                "lastModifierEmail": {
+                    "description": "The email address of the last modifier of this table. This is only returned on GET requests and not LIST requests.",
                     "type": "string"
                 },
                 "name": {
@@ -4555,7 +5152,7 @@
                     "type": "string"
                 },
                 "publishedAccessList": {
-                    "description": "Deprecated: The access list to whom view permissions are granted. The value must be the name of a Maps Engine access list of the Map Viewer type, and the user must be a viewer on that list. Read Share data, layers, and maps in the Google Maps Engine help center for more information.",
+                    "description": "Deprecated: The access list to whom view permissions are granted. The value must be the name of a Maps Engine access list of the Map Viewer type, and the user must be a viewer on that list. Note: Google Maps Engine no longer uses access lists. Instead, each asset has its own list of permissions. For backward compatibility, the API still accepts access lists for projects that are already using access lists. If you created a GME account/project after July 14th, 2014, you will not be able to send API requests that include access lists. Note: This is an input field only. It is not returned in response to a list or get request.",
                     "type": "string"
                 },
                 "schema": {
@@ -4565,7 +5162,7 @@
                             "mapsengine.tables.create"
                         ]
                     },
-                    "description": "The schema for this table."
+                    "description": "The schema for this table. Note: The schema is returned in response to a get request but not a list request. After requesting a list of tables, you'll need to send a get request to retrieve the schema for each table."
                 },
                 "sourceEncoding": {
                     "default": "UTF-8",
@@ -4575,6 +5172,10 @@
                 "tags": {
                     "$ref": "Tags",
                     "description": "An array of text strings, with each string representing a tag. More information about tags can be found in the Tagging data article of the Maps Engine help center."
+                },
+                "writersCanEditPermissions": {
+                    "description": "If true, WRITERs of the asset are able to edit the asset permissions.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -4624,7 +5225,7 @@
             "type": "object"
         },
         "TablesListResponse": {
-            "description": "The response returned by a call to tables.List.",
+            "description": "The response returned by a call to tables.List. Note: The list response does not include all the fields available in a table. Refer to the table resource description for details of the fields that are not included. You'll need to send a get request to retrieve the additional fields for each table.",
             "id": "TablesListResponse",
             "properties": {
                 "nextPageToken": {

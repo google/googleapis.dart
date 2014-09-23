@@ -14,10 +14,10 @@
     "description": "Email Migration API lets you migrate emails of users to Google backends.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/email-migration/v2/",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/sAW4O9TJFjBOU_nyFti74xIcDhI\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/Dam2iHq0kOgu8qnsdYB9fhgy5SY\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/search-16.gif",
-        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+        "x16": "https://www.google.com/images/icons/product/googlemail-16.png",
+        "x32": "https://www.google.com/images/icons/product/googlemail-32.png"
     },
     "id": "admin:email_migration_v2",
     "kind": "discovery#restDescription",
@@ -116,7 +116,7 @@
             }
         }
     },
-    "revision": "20140130",
+    "revision": "20140903",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "MailItem": {

@@ -36,7 +36,7 @@ class DnsApi {
   ResourceRecordSetsResourceApi get resourceRecordSets => new ResourceRecordSetsResourceApi(_requester);
 
   DnsApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/dns/v1beta1/projects/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "dns/v1beta1/projects/");
 }
 
 

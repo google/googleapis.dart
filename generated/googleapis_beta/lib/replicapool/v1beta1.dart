@@ -46,7 +46,7 @@ class ReplicapoolApi {
   ReplicasResourceApi get replicas => new ReplicasResourceApi(_requester);
 
   ReplicapoolApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/replicapool/v1beta1/projects/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "replicapool/v1beta1/projects/");
 }
 
 

@@ -72,15 +72,18 @@ buildAsset() {
   if (buildCounterAsset < 3) {
     o.bbox = buildUnnamed91();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
+    o.creatorEmail = "foo";
     o.description = "foo";
     o.etag = "foo";
     o.id = "foo";
     o.lastModifiedTime = core.DateTime.parse("2002-02-27T14:01:02");
+    o.lastModifierEmail = "foo";
     o.name = "foo";
     o.projectId = "foo";
     o.resource = "foo";
     o.tags = buildUnnamed92();
     o.type = "foo";
+    o.writersCanEditPermissions = true;
   }
   buildCounterAsset--;
   return o;
@@ -91,15 +94,18 @@ checkAsset(api.Asset o) {
   if (buildCounterAsset < 3) {
     checkUnnamed91(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.lastModifiedTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.lastModifierEmail, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
     unittest.expect(o.resource, unittest.equals('foo'));
     checkUnnamed92(o.tags);
     unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(o.writersCanEditPermissions, unittest.isTrue);
   }
   buildCounterAsset--;
 }
@@ -950,6 +956,7 @@ buildLayer() {
   if (buildCounterLayer < 3) {
     o.bbox = buildUnnamed111();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
+    o.creatorEmail = "foo";
     o.datasourceType = "foo";
     o.datasources = buildDatasources();
     o.description = "foo";
@@ -957,6 +964,7 @@ buildLayer() {
     o.etag = "foo";
     o.id = "foo";
     o.lastModifiedTime = core.DateTime.parse("2002-02-27T14:01:02");
+    o.lastModifierEmail = "foo";
     o.layerType = "foo";
     o.name = "foo";
     o.processingStatus = "foo";
@@ -965,6 +973,7 @@ buildLayer() {
     o.publishingStatus = "foo";
     o.style = buildVectorStyle();
     o.tags = buildTags();
+    o.writersCanEditPermissions = true;
   }
   buildCounterLayer--;
   return o;
@@ -975,6 +984,7 @@ checkLayer(api.Layer o) {
   if (buildCounterLayer < 3) {
     checkUnnamed111(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.datasourceType, unittest.equals('foo'));
     checkDatasources(o.datasources);
     unittest.expect(o.description, unittest.equals('foo'));
@@ -982,6 +992,7 @@ checkLayer(api.Layer o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.lastModifiedTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.lastModifierEmail, unittest.equals('foo'));
     unittest.expect(o.layerType, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.processingStatus, unittest.equals('foo'));
@@ -990,6 +1001,7 @@ checkLayer(api.Layer o) {
     unittest.expect(o.publishingStatus, unittest.equals('foo'));
     checkVectorStyle(o.style);
     checkTags(o.tags);
+    unittest.expect(o.writersCanEditPermissions, unittest.isTrue);
   }
   buildCounterLayer--;
 }
@@ -1123,12 +1135,14 @@ buildMap() {
     o.bbox = buildUnnamed114();
     o.contents = buildMapContents();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
+    o.creatorEmail = "foo";
     o.defaultViewport = buildLatLngBox();
     o.description = "foo";
     o.draftAccessList = "foo";
     o.etag = "foo";
     o.id = "foo";
     o.lastModifiedTime = core.DateTime.parse("2002-02-27T14:01:02");
+    o.lastModifierEmail = "foo";
     o.name = "foo";
     o.processingStatus = "foo";
     o.projectId = "foo";
@@ -1136,6 +1150,7 @@ buildMap() {
     o.publishingStatus = "foo";
     o.tags = buildTags();
     o.versions = buildUnnamed115();
+    o.writersCanEditPermissions = true;
   }
   buildCounterMap--;
   return o;
@@ -1147,12 +1162,14 @@ checkMap(api.Map o) {
     checkUnnamed114(o.bbox);
     checkMapContents(o.contents);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.creatorEmail, unittest.equals('foo'));
     checkLatLngBox(o.defaultViewport);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.draftAccessList, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.lastModifiedTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.lastModifierEmail, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.processingStatus, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
@@ -1160,6 +1177,7 @@ checkMap(api.Map o) {
     unittest.expect(o.publishingStatus, unittest.equals('foo'));
     checkTags(o.tags);
     checkUnnamed115(o.versions);
+    unittest.expect(o.writersCanEditPermissions, unittest.isTrue);
   }
   buildCounterMap--;
 }
@@ -1418,6 +1436,161 @@ checkParentsListResponse(api.ParentsListResponse o) {
   buildCounterParentsListResponse--;
 }
 
+core.int buildCounterPermission = 0;
+buildPermission() {
+  var o = new api.Permission();
+  buildCounterPermission++;
+  if (buildCounterPermission < 3) {
+    o.discoverable = true;
+    o.id = "foo";
+    o.role = "foo";
+    o.type = "foo";
+  }
+  buildCounterPermission--;
+  return o;
+}
+
+checkPermission(api.Permission o) {
+  buildCounterPermission++;
+  if (buildCounterPermission < 3) {
+    unittest.expect(o.discoverable, unittest.isTrue);
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.role, unittest.equals('foo'));
+    unittest.expect(o.type, unittest.equals('foo'));
+  }
+  buildCounterPermission--;
+}
+
+buildUnnamed122() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed122(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterPermissionsBatchDeleteRequest = 0;
+buildPermissionsBatchDeleteRequest() {
+  var o = new api.PermissionsBatchDeleteRequest();
+  buildCounterPermissionsBatchDeleteRequest++;
+  if (buildCounterPermissionsBatchDeleteRequest < 3) {
+    o.ids = buildUnnamed122();
+  }
+  buildCounterPermissionsBatchDeleteRequest--;
+  return o;
+}
+
+checkPermissionsBatchDeleteRequest(api.PermissionsBatchDeleteRequest o) {
+  buildCounterPermissionsBatchDeleteRequest++;
+  if (buildCounterPermissionsBatchDeleteRequest < 3) {
+    checkUnnamed122(o.ids);
+  }
+  buildCounterPermissionsBatchDeleteRequest--;
+}
+
+core.int buildCounterPermissionsBatchDeleteResponse = 0;
+buildPermissionsBatchDeleteResponse() {
+  var o = new api.PermissionsBatchDeleteResponse();
+  buildCounterPermissionsBatchDeleteResponse++;
+  if (buildCounterPermissionsBatchDeleteResponse < 3) {
+  }
+  buildCounterPermissionsBatchDeleteResponse--;
+  return o;
+}
+
+checkPermissionsBatchDeleteResponse(api.PermissionsBatchDeleteResponse o) {
+  buildCounterPermissionsBatchDeleteResponse++;
+  if (buildCounterPermissionsBatchDeleteResponse < 3) {
+  }
+  buildCounterPermissionsBatchDeleteResponse--;
+}
+
+buildUnnamed123() {
+  var o = new core.List<api.Permission>();
+  o.add(buildPermission());
+  o.add(buildPermission());
+  return o;
+}
+
+checkUnnamed123(core.List<api.Permission> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPermission(o[0]);
+  checkPermission(o[1]);
+}
+
+core.int buildCounterPermissionsBatchUpdateRequest = 0;
+buildPermissionsBatchUpdateRequest() {
+  var o = new api.PermissionsBatchUpdateRequest();
+  buildCounterPermissionsBatchUpdateRequest++;
+  if (buildCounterPermissionsBatchUpdateRequest < 3) {
+    o.permissions = buildUnnamed123();
+  }
+  buildCounterPermissionsBatchUpdateRequest--;
+  return o;
+}
+
+checkPermissionsBatchUpdateRequest(api.PermissionsBatchUpdateRequest o) {
+  buildCounterPermissionsBatchUpdateRequest++;
+  if (buildCounterPermissionsBatchUpdateRequest < 3) {
+    checkUnnamed123(o.permissions);
+  }
+  buildCounterPermissionsBatchUpdateRequest--;
+}
+
+core.int buildCounterPermissionsBatchUpdateResponse = 0;
+buildPermissionsBatchUpdateResponse() {
+  var o = new api.PermissionsBatchUpdateResponse();
+  buildCounterPermissionsBatchUpdateResponse++;
+  if (buildCounterPermissionsBatchUpdateResponse < 3) {
+  }
+  buildCounterPermissionsBatchUpdateResponse--;
+  return o;
+}
+
+checkPermissionsBatchUpdateResponse(api.PermissionsBatchUpdateResponse o) {
+  buildCounterPermissionsBatchUpdateResponse++;
+  if (buildCounterPermissionsBatchUpdateResponse < 3) {
+  }
+  buildCounterPermissionsBatchUpdateResponse--;
+}
+
+buildUnnamed124() {
+  var o = new core.List<api.Permission>();
+  o.add(buildPermission());
+  o.add(buildPermission());
+  return o;
+}
+
+checkUnnamed124(core.List<api.Permission> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPermission(o[0]);
+  checkPermission(o[1]);
+}
+
+core.int buildCounterPermissionsListResponse = 0;
+buildPermissionsListResponse() {
+  var o = new api.PermissionsListResponse();
+  buildCounterPermissionsListResponse++;
+  if (buildCounterPermissionsListResponse < 3) {
+    o.permissions = buildUnnamed124();
+  }
+  buildCounterPermissionsListResponse--;
+  return o;
+}
+
+checkPermissionsListResponse(api.PermissionsListResponse o) {
+  buildCounterPermissionsListResponse++;
+  if (buildCounterPermissionsListResponse < 3) {
+    checkUnnamed124(o.permissions);
+  }
+  buildCounterPermissionsListResponse--;
+}
+
 core.int buildCounterPointStyle = 0;
 buildPointStyle() {
   var o = new api.PointStyle();
@@ -1498,14 +1671,14 @@ checkProject(api.Project o) {
   buildCounterProject--;
 }
 
-buildUnnamed122() {
+buildUnnamed125() {
   var o = new core.List<api.Project>();
   o.add(buildProject());
   o.add(buildProject());
   return o;
 }
 
-checkUnnamed122(core.List<api.Project> o) {
+checkUnnamed125(core.List<api.Project> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProject(o[0]);
   checkProject(o[1]);
@@ -1516,7 +1689,7 @@ buildProjectsListResponse() {
   var o = new api.ProjectsListResponse();
   buildCounterProjectsListResponse++;
   if (buildCounterProjectsListResponse < 3) {
-    o.projects = buildUnnamed122();
+    o.projects = buildUnnamed125();
   }
   buildCounterProjectsListResponse--;
   return o;
@@ -1525,7 +1698,7 @@ buildProjectsListResponse() {
 checkProjectsListResponse(api.ProjectsListResponse o) {
   buildCounterProjectsListResponse++;
   if (buildCounterProjectsListResponse < 3) {
-    checkUnnamed122(o.projects);
+    checkUnnamed125(o.projects);
   }
   buildCounterProjectsListResponse--;
 }
@@ -1553,7 +1726,6 @@ buildPublishedLayer() {
   buildCounterPublishedLayer++;
   if (buildCounterPublishedLayer < 3) {
     o.description = "foo";
-    o.etag = "foo";
     o.id = "foo";
     o.layerType = "foo";
     o.name = "foo";
@@ -1567,7 +1739,6 @@ checkPublishedLayer(api.PublishedLayer o) {
   buildCounterPublishedLayer++;
   if (buildCounterPublishedLayer < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.layerType, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1576,14 +1747,14 @@ checkPublishedLayer(api.PublishedLayer o) {
   buildCounterPublishedLayer--;
 }
 
-buildUnnamed123() {
+buildUnnamed126() {
   var o = new core.List<api.PublishedLayer>();
   o.add(buildPublishedLayer());
   o.add(buildPublishedLayer());
   return o;
 }
 
-checkUnnamed123(core.List<api.PublishedLayer> o) {
+checkUnnamed126(core.List<api.PublishedLayer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPublishedLayer(o[0]);
   checkPublishedLayer(o[1]);
@@ -1594,7 +1765,7 @@ buildPublishedLayersListResponse() {
   var o = new api.PublishedLayersListResponse();
   buildCounterPublishedLayersListResponse++;
   if (buildCounterPublishedLayersListResponse < 3) {
-    o.layers = buildUnnamed123();
+    o.layers = buildUnnamed126();
     o.nextPageToken = "foo";
   }
   buildCounterPublishedLayersListResponse--;
@@ -1604,7 +1775,7 @@ buildPublishedLayersListResponse() {
 checkPublishedLayersListResponse(api.PublishedLayersListResponse o) {
   buildCounterPublishedLayersListResponse++;
   if (buildCounterPublishedLayersListResponse < 3) {
-    checkUnnamed123(o.layers);
+    checkUnnamed126(o.layers);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterPublishedLayersListResponse--;
@@ -1618,7 +1789,6 @@ buildPublishedMap() {
     o.contents = buildMapContents();
     o.defaultViewport = buildLatLngBox();
     o.description = "foo";
-    o.etag = "foo";
     o.id = "foo";
     o.name = "foo";
     o.projectId = "foo";
@@ -1633,7 +1803,6 @@ checkPublishedMap(api.PublishedMap o) {
     checkMapContents(o.contents);
     checkLatLngBox(o.defaultViewport);
     unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
@@ -1641,14 +1810,14 @@ checkPublishedMap(api.PublishedMap o) {
   buildCounterPublishedMap--;
 }
 
-buildUnnamed124() {
+buildUnnamed127() {
   var o = new core.List<api.PublishedMap>();
   o.add(buildPublishedMap());
   o.add(buildPublishedMap());
   return o;
 }
 
-checkUnnamed124(core.List<api.PublishedMap> o) {
+checkUnnamed127(core.List<api.PublishedMap> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPublishedMap(o[0]);
   checkPublishedMap(o[1]);
@@ -1659,7 +1828,7 @@ buildPublishedMapsListResponse() {
   var o = new api.PublishedMapsListResponse();
   buildCounterPublishedMapsListResponse++;
   if (buildCounterPublishedMapsListResponse < 3) {
-    o.maps = buildUnnamed124();
+    o.maps = buildUnnamed127();
     o.nextPageToken = "foo";
   }
   buildCounterPublishedMapsListResponse--;
@@ -1669,33 +1838,33 @@ buildPublishedMapsListResponse() {
 checkPublishedMapsListResponse(api.PublishedMapsListResponse o) {
   buildCounterPublishedMapsListResponse++;
   if (buildCounterPublishedMapsListResponse < 3) {
-    checkUnnamed124(o.maps);
+    checkUnnamed127(o.maps);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterPublishedMapsListResponse--;
 }
 
-buildUnnamed125() {
+buildUnnamed128() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed125(core.List<core.double> o) {
+checkUnnamed128(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed126() {
+buildUnnamed129() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed126(core.List<api.File> o) {
+checkUnnamed129(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -1708,20 +1877,23 @@ buildRaster() {
   if (buildCounterRaster < 3) {
     o.acquisitionTime = buildAcquisitionTime();
     o.attribution = "foo";
-    o.bbox = buildUnnamed125();
+    o.bbox = buildUnnamed128();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
+    o.creatorEmail = "foo";
     o.description = "foo";
     o.draftAccessList = "foo";
     o.etag = "foo";
-    o.files = buildUnnamed126();
+    o.files = buildUnnamed129();
     o.id = "foo";
     o.lastModifiedTime = core.DateTime.parse("2002-02-27T14:01:02");
+    o.lastModifierEmail = "foo";
     o.maskType = "foo";
     o.name = "foo";
     o.processingStatus = "foo";
     o.projectId = "foo";
     o.rasterType = "foo";
     o.tags = buildTags();
+    o.writersCanEditPermissions = true;
   }
   buildCounterRaster--;
   return o;
@@ -1732,32 +1904,35 @@ checkRaster(api.Raster o) {
   if (buildCounterRaster < 3) {
     checkAcquisitionTime(o.acquisitionTime);
     unittest.expect(o.attribution, unittest.equals('foo'));
-    checkUnnamed125(o.bbox);
+    checkUnnamed128(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.draftAccessList, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed126(o.files);
+    checkUnnamed129(o.files);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.lastModifiedTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.lastModifierEmail, unittest.equals('foo'));
     unittest.expect(o.maskType, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.processingStatus, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
     unittest.expect(o.rasterType, unittest.equals('foo'));
     checkTags(o.tags);
+    unittest.expect(o.writersCanEditPermissions, unittest.isTrue);
   }
   buildCounterRaster--;
 }
 
-buildUnnamed127() {
+buildUnnamed130() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed127(core.List<core.double> o) {
+checkUnnamed130(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -1769,19 +1944,22 @@ buildRasterCollection() {
   buildCounterRasterCollection++;
   if (buildCounterRasterCollection < 3) {
     o.attribution = "foo";
-    o.bbox = buildUnnamed127();
+    o.bbox = buildUnnamed130();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
+    o.creatorEmail = "foo";
     o.description = "foo";
     o.draftAccessList = "foo";
     o.etag = "foo";
     o.id = "foo";
     o.lastModifiedTime = core.DateTime.parse("2002-02-27T14:01:02");
+    o.lastModifierEmail = "foo";
     o.mosaic = true;
     o.name = "foo";
     o.processingStatus = "foo";
     o.projectId = "foo";
     o.rasterType = "foo";
     o.tags = buildTags();
+    o.writersCanEditPermissions = true;
   }
   buildCounterRasterCollection--;
   return o;
@@ -1791,31 +1969,34 @@ checkRasterCollection(api.RasterCollection o) {
   buildCounterRasterCollection++;
   if (buildCounterRasterCollection < 3) {
     unittest.expect(o.attribution, unittest.equals('foo'));
-    checkUnnamed127(o.bbox);
+    checkUnnamed130(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.draftAccessList, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.lastModifiedTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.lastModifierEmail, unittest.equals('foo'));
     unittest.expect(o.mosaic, unittest.isTrue);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.processingStatus, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
     unittest.expect(o.rasterType, unittest.equals('foo'));
     checkTags(o.tags);
+    unittest.expect(o.writersCanEditPermissions, unittest.isTrue);
   }
   buildCounterRasterCollection--;
 }
 
-buildUnnamed128() {
+buildUnnamed131() {
   var o = new core.List<api.RasterCollection>();
   o.add(buildRasterCollection());
   o.add(buildRasterCollection());
   return o;
 }
 
-checkUnnamed128(core.List<api.RasterCollection> o) {
+checkUnnamed131(core.List<api.RasterCollection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRasterCollection(o[0]);
   checkRasterCollection(o[1]);
@@ -1827,7 +2008,7 @@ buildRasterCollectionsListResponse() {
   buildCounterRasterCollectionsListResponse++;
   if (buildCounterRasterCollectionsListResponse < 3) {
     o.nextPageToken = "foo";
-    o.rasterCollections = buildUnnamed128();
+    o.rasterCollections = buildUnnamed131();
   }
   buildCounterRasterCollectionsListResponse--;
   return o;
@@ -1837,32 +2018,32 @@ checkRasterCollectionsListResponse(api.RasterCollectionsListResponse o) {
   buildCounterRasterCollectionsListResponse++;
   if (buildCounterRasterCollectionsListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed128(o.rasterCollections);
+    checkUnnamed131(o.rasterCollections);
   }
   buildCounterRasterCollectionsListResponse--;
 }
 
-buildUnnamed129() {
+buildUnnamed132() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed129(core.List<core.double> o) {
+checkUnnamed132(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed130() {
+buildUnnamed133() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed130(core.List<core.String> o) {
+checkUnnamed133(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1873,7 +2054,7 @@ buildRasterCollectionsRaster() {
   var o = new api.RasterCollectionsRaster();
   buildCounterRasterCollectionsRaster++;
   if (buildCounterRasterCollectionsRaster < 3) {
-    o.bbox = buildUnnamed129();
+    o.bbox = buildUnnamed132();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.description = "foo";
     o.id = "foo";
@@ -1881,7 +2062,7 @@ buildRasterCollectionsRaster() {
     o.name = "foo";
     o.projectId = "foo";
     o.rasterType = "foo";
-    o.tags = buildUnnamed130();
+    o.tags = buildUnnamed133();
   }
   buildCounterRasterCollectionsRaster--;
   return o;
@@ -1890,7 +2071,7 @@ buildRasterCollectionsRaster() {
 checkRasterCollectionsRaster(api.RasterCollectionsRaster o) {
   buildCounterRasterCollectionsRaster++;
   if (buildCounterRasterCollectionsRaster < 3) {
-    checkUnnamed129(o.bbox);
+    checkUnnamed132(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
@@ -1898,19 +2079,19 @@ checkRasterCollectionsRaster(api.RasterCollectionsRaster o) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
     unittest.expect(o.rasterType, unittest.equals('foo'));
-    checkUnnamed130(o.tags);
+    checkUnnamed133(o.tags);
   }
   buildCounterRasterCollectionsRaster--;
 }
 
-buildUnnamed131() {
+buildUnnamed134() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed131(core.List<core.String> o) {
+checkUnnamed134(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1921,7 +2102,7 @@ buildRasterCollectionsRasterBatchDeleteRequest() {
   var o = new api.RasterCollectionsRasterBatchDeleteRequest();
   buildCounterRasterCollectionsRasterBatchDeleteRequest++;
   if (buildCounterRasterCollectionsRasterBatchDeleteRequest < 3) {
-    o.ids = buildUnnamed131();
+    o.ids = buildUnnamed134();
   }
   buildCounterRasterCollectionsRasterBatchDeleteRequest--;
   return o;
@@ -1930,7 +2111,7 @@ buildRasterCollectionsRasterBatchDeleteRequest() {
 checkRasterCollectionsRasterBatchDeleteRequest(api.RasterCollectionsRasterBatchDeleteRequest o) {
   buildCounterRasterCollectionsRasterBatchDeleteRequest++;
   if (buildCounterRasterCollectionsRasterBatchDeleteRequest < 3) {
-    checkUnnamed131(o.ids);
+    checkUnnamed134(o.ids);
   }
   buildCounterRasterCollectionsRasterBatchDeleteRequest--;
 }
@@ -1952,14 +2133,14 @@ checkRasterCollectionsRastersBatchDeleteResponse(api.RasterCollectionsRastersBat
   buildCounterRasterCollectionsRastersBatchDeleteResponse--;
 }
 
-buildUnnamed132() {
+buildUnnamed135() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed132(core.List<core.String> o) {
+checkUnnamed135(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1970,7 +2151,7 @@ buildRasterCollectionsRastersBatchInsertRequest() {
   var o = new api.RasterCollectionsRastersBatchInsertRequest();
   buildCounterRasterCollectionsRastersBatchInsertRequest++;
   if (buildCounterRasterCollectionsRastersBatchInsertRequest < 3) {
-    o.ids = buildUnnamed132();
+    o.ids = buildUnnamed135();
   }
   buildCounterRasterCollectionsRastersBatchInsertRequest--;
   return o;
@@ -1979,7 +2160,7 @@ buildRasterCollectionsRastersBatchInsertRequest() {
 checkRasterCollectionsRastersBatchInsertRequest(api.RasterCollectionsRastersBatchInsertRequest o) {
   buildCounterRasterCollectionsRastersBatchInsertRequest++;
   if (buildCounterRasterCollectionsRastersBatchInsertRequest < 3) {
-    checkUnnamed132(o.ids);
+    checkUnnamed135(o.ids);
   }
   buildCounterRasterCollectionsRastersBatchInsertRequest--;
 }
@@ -2001,14 +2182,14 @@ checkRasterCollectionsRastersBatchInsertResponse(api.RasterCollectionsRastersBat
   buildCounterRasterCollectionsRastersBatchInsertResponse--;
 }
 
-buildUnnamed133() {
+buildUnnamed136() {
   var o = new core.List<api.RasterCollectionsRaster>();
   o.add(buildRasterCollectionsRaster());
   o.add(buildRasterCollectionsRaster());
   return o;
 }
 
-checkUnnamed133(core.List<api.RasterCollectionsRaster> o) {
+checkUnnamed136(core.List<api.RasterCollectionsRaster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRasterCollectionsRaster(o[0]);
   checkRasterCollectionsRaster(o[1]);
@@ -2020,7 +2201,7 @@ buildRasterCollectionsRastersListResponse() {
   buildCounterRasterCollectionsRastersListResponse++;
   if (buildCounterRasterCollectionsRastersListResponse < 3) {
     o.nextPageToken = "foo";
-    o.rasters = buildUnnamed133();
+    o.rasters = buildUnnamed136();
   }
   buildCounterRasterCollectionsRastersListResponse--;
   return o;
@@ -2030,19 +2211,19 @@ checkRasterCollectionsRastersListResponse(api.RasterCollectionsRastersListRespon
   buildCounterRasterCollectionsRastersListResponse++;
   if (buildCounterRasterCollectionsRastersListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed133(o.rasters);
+    checkUnnamed136(o.rasters);
   }
   buildCounterRasterCollectionsRastersListResponse--;
 }
 
-buildUnnamed134() {
+buildUnnamed137() {
   var o = new core.List<api.Raster>();
   o.add(buildRaster());
   o.add(buildRaster());
   return o;
 }
 
-checkUnnamed134(core.List<api.Raster> o) {
+checkUnnamed137(core.List<api.Raster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRaster(o[0]);
   checkRaster(o[1]);
@@ -2054,7 +2235,7 @@ buildRastersListResponse() {
   buildCounterRastersListResponse++;
   if (buildCounterRastersListResponse < 3) {
     o.nextPageToken = "foo";
-    o.rasters = buildUnnamed134();
+    o.rasters = buildUnnamed137();
   }
   buildCounterRastersListResponse--;
   return o;
@@ -2064,7 +2245,7 @@ checkRastersListResponse(api.RastersListResponse o) {
   buildCounterRastersListResponse++;
   if (buildCounterRastersListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed134(o.rasters);
+    checkUnnamed137(o.rasters);
   }
   buildCounterRastersListResponse--;
 }
@@ -2117,14 +2298,14 @@ checkScalingFunction(api.ScalingFunction o) {
   buildCounterScalingFunction--;
 }
 
-buildUnnamed135() {
+buildUnnamed138() {
   var o = new core.List<api.TableColumn>();
   o.add(buildTableColumn());
   o.add(buildTableColumn());
   return o;
 }
 
-checkUnnamed135(core.List<api.TableColumn> o) {
+checkUnnamed138(core.List<api.TableColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableColumn(o[0]);
   checkTableColumn(o[1]);
@@ -2135,7 +2316,7 @@ buildSchema() {
   var o = new api.Schema();
   buildCounterSchema++;
   if (buildCounterSchema < 3) {
-    o.columns = buildUnnamed135();
+    o.columns = buildUnnamed138();
     o.primaryGeometry = "foo";
     o.primaryKey = "foo";
   }
@@ -2146,7 +2327,7 @@ buildSchema() {
 checkSchema(api.Schema o) {
   buildCounterSchema++;
   if (buildCounterSchema < 3) {
-    checkUnnamed135(o.columns);
+    checkUnnamed138(o.columns);
     unittest.expect(o.primaryGeometry, unittest.equals('foo'));
     unittest.expect(o.primaryKey, unittest.equals('foo'));
   }
@@ -2174,27 +2355,27 @@ checkSizeRange(api.SizeRange o) {
   buildCounterSizeRange--;
 }
 
-buildUnnamed136() {
+buildUnnamed139() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed136(core.List<core.double> o) {
+checkUnnamed139(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed137() {
+buildUnnamed140() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed137(core.List<api.File> o) {
+checkUnnamed140(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -2205,14 +2386,16 @@ buildTable() {
   var o = new api.Table();
   buildCounterTable++;
   if (buildCounterTable < 3) {
-    o.bbox = buildUnnamed136();
+    o.bbox = buildUnnamed139();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
+    o.creatorEmail = "foo";
     o.description = "foo";
     o.draftAccessList = "foo";
     o.etag = "foo";
-    o.files = buildUnnamed137();
+    o.files = buildUnnamed140();
     o.id = "foo";
     o.lastModifiedTime = core.DateTime.parse("2002-02-27T14:01:02");
+    o.lastModifierEmail = "foo";
     o.name = "foo";
     o.processingStatus = "foo";
     o.projectId = "foo";
@@ -2220,6 +2403,7 @@ buildTable() {
     o.schema = buildSchema();
     o.sourceEncoding = "foo";
     o.tags = buildTags();
+    o.writersCanEditPermissions = true;
   }
   buildCounterTable--;
   return o;
@@ -2228,14 +2412,16 @@ buildTable() {
 checkTable(api.Table o) {
   buildCounterTable++;
   if (buildCounterTable < 3) {
-    checkUnnamed136(o.bbox);
+    checkUnnamed139(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.draftAccessList, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed137(o.files);
+    checkUnnamed140(o.files);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.lastModifiedTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.lastModifierEmail, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.processingStatus, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
@@ -2243,6 +2429,7 @@ checkTable(api.Table o) {
     checkSchema(o.schema);
     unittest.expect(o.sourceEncoding, unittest.equals('foo'));
     checkTags(o.tags);
+    unittest.expect(o.writersCanEditPermissions, unittest.isTrue);
   }
   buildCounterTable--;
 }
@@ -2268,14 +2455,14 @@ checkTableColumn(api.TableColumn o) {
   buildCounterTableColumn--;
 }
 
-buildUnnamed138() {
+buildUnnamed141() {
   var o = new core.List<api.Table>();
   o.add(buildTable());
   o.add(buildTable());
   return o;
 }
 
-checkUnnamed138(core.List<api.Table> o) {
+checkUnnamed141(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTable(o[0]);
   checkTable(o[1]);
@@ -2287,7 +2474,7 @@ buildTablesListResponse() {
   buildCounterTablesListResponse++;
   if (buildCounterTablesListResponse < 3) {
     o.nextPageToken = "foo";
-    o.tables = buildUnnamed138();
+    o.tables = buildUnnamed141();
   }
   buildCounterTablesListResponse--;
   return o;
@@ -2297,7 +2484,7 @@ checkTablesListResponse(api.TablesListResponse o) {
   buildCounterTablesListResponse++;
   if (buildCounterTablesListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed138(o.tables);
+    checkUnnamed141(o.tables);
   }
   buildCounterTablesListResponse--;
 }
@@ -2336,14 +2523,14 @@ checkValueRange(api.ValueRange o) {
   buildCounterValueRange--;
 }
 
-buildUnnamed139() {
+buildUnnamed142() {
   var o = new core.List<api.DisplayRule>();
   o.add(buildDisplayRule());
   o.add(buildDisplayRule());
   return o;
 }
 
-checkUnnamed139(core.List<api.DisplayRule> o) {
+checkUnnamed142(core.List<api.DisplayRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDisplayRule(o[0]);
   checkDisplayRule(o[1]);
@@ -2354,7 +2541,7 @@ buildVectorStyle() {
   var o = new api.VectorStyle();
   buildCounterVectorStyle++;
   if (buildCounterVectorStyle < 3) {
-    o.displayRules = buildUnnamed139();
+    o.displayRules = buildUnnamed142();
     o.featureInfo = buildFeatureInfo();
     o.type = "foo";
   }
@@ -2365,7 +2552,7 @@ buildVectorStyle() {
 checkVectorStyle(api.VectorStyle o) {
   buildCounterVectorStyle++;
   if (buildCounterVectorStyle < 3) {
-    checkUnnamed139(o.displayRules);
+    checkUnnamed142(o.displayRules);
     checkFeatureInfo(o.featureInfo);
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -2791,6 +2978,60 @@ main() {
   });
 
 
+  unittest.group("obj-schema-Permission", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPermission();
+      var od = new api.Permission.fromJson(o.toJson());
+      checkPermission(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-PermissionsBatchDeleteRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPermissionsBatchDeleteRequest();
+      var od = new api.PermissionsBatchDeleteRequest.fromJson(o.toJson());
+      checkPermissionsBatchDeleteRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-PermissionsBatchDeleteResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPermissionsBatchDeleteResponse();
+      var od = new api.PermissionsBatchDeleteResponse.fromJson(o.toJson());
+      checkPermissionsBatchDeleteResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-PermissionsBatchUpdateRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPermissionsBatchUpdateRequest();
+      var od = new api.PermissionsBatchUpdateRequest.fromJson(o.toJson());
+      checkPermissionsBatchUpdateRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-PermissionsBatchUpdateResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPermissionsBatchUpdateResponse();
+      var od = new api.PermissionsBatchUpdateResponse.fromJson(o.toJson());
+      checkPermissionsBatchUpdateResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-PermissionsListResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPermissionsListResponse();
+      var od = new api.PermissionsListResponse.fromJson(o.toJson());
+      checkPermissionsListResponse(od);
+    });
+  });
+
+
   unittest.group("obj-schema-PointStyle", () {
     unittest.test("to-json--from-json", () {
       var o = buildPointStyle();
@@ -3081,8 +3322,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("assets/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3140,8 +3383,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("assets"));
         pathOffset += 6;
 
@@ -3203,8 +3448,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("assets/"));
         pathOffset += 7;
         index = path.indexOf("/parents", pathOffset);
@@ -3249,6 +3496,63 @@ main() {
   });
 
 
+  unittest.group("resource-AssetsPermissionsResourceApi", () {
+    unittest.test("method--list", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.AssetsPermissionsResourceApi res = new api.MapsengineApi(mock).assets.permissions;
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("assets/"));
+        pathOffset += 7;
+        index = path.indexOf("/permissions", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/permissions"));
+        pathOffset += 12;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsListResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_id).then(unittest.expectAsync(((api.PermissionsListResponse response) {
+        checkPermissionsListResponse(response);
+      })));
+    });
+
+  });
+
+
   unittest.group("resource-LayersResourceApi", () {
     unittest.test("method--cancelProcessing", () {
 
@@ -3260,8 +3564,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("layers/"));
         pathOffset += 7;
         index = path.indexOf("/cancelProcessing", pathOffset);
@@ -3315,8 +3621,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("layers"));
         pathOffset += 6;
 
@@ -3360,8 +3668,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("layers/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3406,8 +3716,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("layers/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3454,8 +3766,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("layers/"));
         pathOffset += 7;
         index = path.indexOf("/published", pathOffset);
@@ -3517,8 +3831,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("layers"));
         pathOffset += 6;
 
@@ -3576,8 +3892,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("layers/published"));
         pathOffset += 16;
 
@@ -3627,8 +3945,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("layers/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3672,8 +3992,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("layers/"));
         pathOffset += 7;
         index = path.indexOf("/process", pathOffset);
@@ -3724,8 +4046,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("layers/"));
         pathOffset += 7;
         index = path.indexOf("/publish", pathOffset);
@@ -3776,8 +4100,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("layers/"));
         pathOffset += 7;
         index = path.indexOf("/unpublish", pathOffset);
@@ -3833,8 +4159,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("layers/"));
         pathOffset += 7;
         index = path.indexOf("/parents", pathOffset);
@@ -3879,6 +4207,177 @@ main() {
   });
 
 
+  unittest.group("resource-LayersPermissionsResourceApi", () {
+    unittest.test("method--batchDelete", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.LayersPermissionsResourceApi res = new api.MapsengineApi(mock).layers.permissions;
+      var arg_request = buildPermissionsBatchDeleteRequest();
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PermissionsBatchDeleteRequest.fromJson(json);
+        checkPermissionsBatchDeleteRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("layers/"));
+        pathOffset += 7;
+        index = path.indexOf("/permissions/batchDelete", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 24), unittest.equals("/permissions/batchDelete"));
+        pathOffset += 24;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsBatchDeleteResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.batchDelete(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchDeleteResponse response) {
+        checkPermissionsBatchDeleteResponse(response);
+      })));
+    });
+
+    unittest.test("method--batchUpdate", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.LayersPermissionsResourceApi res = new api.MapsengineApi(mock).layers.permissions;
+      var arg_request = buildPermissionsBatchUpdateRequest();
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PermissionsBatchUpdateRequest.fromJson(json);
+        checkPermissionsBatchUpdateRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("layers/"));
+        pathOffset += 7;
+        index = path.indexOf("/permissions/batchUpdate", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 24), unittest.equals("/permissions/batchUpdate"));
+        pathOffset += 24;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsBatchUpdateResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.batchUpdate(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchUpdateResponse response) {
+        checkPermissionsBatchUpdateResponse(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.LayersPermissionsResourceApi res = new api.MapsengineApi(mock).layers.permissions;
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("layers/"));
+        pathOffset += 7;
+        index = path.indexOf("/permissions", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/permissions"));
+        pathOffset += 12;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsListResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_id).then(unittest.expectAsync(((api.PermissionsListResponse response) {
+        checkPermissionsListResponse(response);
+      })));
+    });
+
+  });
+
+
   unittest.group("resource-MapsResourceApi", () {
     unittest.test("method--create", () {
 
@@ -3893,8 +4392,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 4), unittest.equals("maps"));
         pathOffset += 4;
 
@@ -3937,8 +4438,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("maps/"));
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3983,8 +4486,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("maps/"));
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -4031,8 +4536,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("maps/"));
         pathOffset += 5;
         index = path.indexOf("/published", pathOffset);
@@ -4094,8 +4601,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 4), unittest.equals("maps"));
         pathOffset += 4;
 
@@ -4153,8 +4662,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("maps/published"));
         pathOffset += 14;
 
@@ -4204,8 +4715,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("maps/"));
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -4250,8 +4763,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("maps/"));
         pathOffset += 5;
         index = path.indexOf("/publish", pathOffset);
@@ -4302,8 +4817,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("maps/"));
         pathOffset += 5;
         index = path.indexOf("/unpublish", pathOffset);
@@ -4346,6 +4863,177 @@ main() {
   });
 
 
+  unittest.group("resource-MapsPermissionsResourceApi", () {
+    unittest.test("method--batchDelete", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.MapsPermissionsResourceApi res = new api.MapsengineApi(mock).maps.permissions;
+      var arg_request = buildPermissionsBatchDeleteRequest();
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PermissionsBatchDeleteRequest.fromJson(json);
+        checkPermissionsBatchDeleteRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("maps/"));
+        pathOffset += 5;
+        index = path.indexOf("/permissions/batchDelete", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 24), unittest.equals("/permissions/batchDelete"));
+        pathOffset += 24;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsBatchDeleteResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.batchDelete(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchDeleteResponse response) {
+        checkPermissionsBatchDeleteResponse(response);
+      })));
+    });
+
+    unittest.test("method--batchUpdate", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.MapsPermissionsResourceApi res = new api.MapsengineApi(mock).maps.permissions;
+      var arg_request = buildPermissionsBatchUpdateRequest();
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PermissionsBatchUpdateRequest.fromJson(json);
+        checkPermissionsBatchUpdateRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("maps/"));
+        pathOffset += 5;
+        index = path.indexOf("/permissions/batchUpdate", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 24), unittest.equals("/permissions/batchUpdate"));
+        pathOffset += 24;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsBatchUpdateResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.batchUpdate(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchUpdateResponse response) {
+        checkPermissionsBatchUpdateResponse(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.MapsPermissionsResourceApi res = new api.MapsengineApi(mock).maps.permissions;
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("maps/"));
+        pathOffset += 5;
+        index = path.indexOf("/permissions", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/permissions"));
+        pathOffset += 12;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsListResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_id).then(unittest.expectAsync(((api.PermissionsListResponse response) {
+        checkPermissionsListResponse(response);
+      })));
+    });
+
+  });
+
+
   unittest.group("resource-ProjectsResourceApi", () {
     unittest.test("method--list", () {
 
@@ -4356,8 +5044,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("projects"));
         pathOffset += 8;
 
@@ -4410,8 +5100,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/icons", pathOffset);
@@ -4464,8 +5156,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/icons/", pathOffset);
@@ -4520,8 +5214,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("projects/"));
         pathOffset += 9;
         index = path.indexOf("/icons", pathOffset);
@@ -4577,8 +5273,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("rasterCollections/"));
         pathOffset += 18;
         index = path.indexOf("/cancelProcessing", pathOffset);
@@ -4631,8 +5329,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("rasterCollections"));
         pathOffset += 17;
 
@@ -4675,8 +5375,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("rasterCollections/"));
         pathOffset += 18;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -4720,8 +5422,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("rasterCollections/"));
         pathOffset += 18;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -4779,8 +5483,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("rasterCollections"));
         pathOffset += 17;
 
@@ -4840,8 +5546,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("rasterCollections/"));
         pathOffset += 18;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -4885,8 +5593,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("rasterCollections/"));
         pathOffset += 18;
         index = path.indexOf("/process", pathOffset);
@@ -4942,8 +5652,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("rasterCollections/"));
         pathOffset += 18;
         index = path.indexOf("/parents", pathOffset);
@@ -4988,6 +5700,177 @@ main() {
   });
 
 
+  unittest.group("resource-RasterCollectionsPermissionsResourceApi", () {
+    unittest.test("method--batchDelete", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.RasterCollectionsPermissionsResourceApi res = new api.MapsengineApi(mock).rasterCollections.permissions;
+      var arg_request = buildPermissionsBatchDeleteRequest();
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PermissionsBatchDeleteRequest.fromJson(json);
+        checkPermissionsBatchDeleteRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("rasterCollections/"));
+        pathOffset += 18;
+        index = path.indexOf("/permissions/batchDelete", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 24), unittest.equals("/permissions/batchDelete"));
+        pathOffset += 24;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsBatchDeleteResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.batchDelete(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchDeleteResponse response) {
+        checkPermissionsBatchDeleteResponse(response);
+      })));
+    });
+
+    unittest.test("method--batchUpdate", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.RasterCollectionsPermissionsResourceApi res = new api.MapsengineApi(mock).rasterCollections.permissions;
+      var arg_request = buildPermissionsBatchUpdateRequest();
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PermissionsBatchUpdateRequest.fromJson(json);
+        checkPermissionsBatchUpdateRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("rasterCollections/"));
+        pathOffset += 18;
+        index = path.indexOf("/permissions/batchUpdate", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 24), unittest.equals("/permissions/batchUpdate"));
+        pathOffset += 24;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsBatchUpdateResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.batchUpdate(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchUpdateResponse response) {
+        checkPermissionsBatchUpdateResponse(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.RasterCollectionsPermissionsResourceApi res = new api.MapsengineApi(mock).rasterCollections.permissions;
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("rasterCollections/"));
+        pathOffset += 18;
+        index = path.indexOf("/permissions", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/permissions"));
+        pathOffset += 12;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsListResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_id).then(unittest.expectAsync(((api.PermissionsListResponse response) {
+        checkPermissionsListResponse(response);
+      })));
+    });
+
+  });
+
+
   unittest.group("resource-RasterCollectionsRastersResourceApi", () {
     unittest.test("method--batchDelete", () {
 
@@ -5003,8 +5886,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("rasterCollections/"));
         pathOffset += 18;
         index = path.indexOf("/rasters/batchDelete", pathOffset);
@@ -5058,8 +5943,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("rasterCollections/"));
         pathOffset += 18;
         index = path.indexOf("/rasters/batchInsert", pathOffset);
@@ -5120,8 +6007,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("rasterCollections/"));
         pathOffset += 18;
         index = path.indexOf("/rasters", pathOffset);
@@ -5186,8 +6075,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("rasters/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -5231,8 +6122,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("rasters/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -5290,8 +6183,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("rasters"));
         pathOffset += 7;
 
@@ -5351,8 +6246,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("rasters/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -5396,8 +6293,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("rasters/"));
         pathOffset += 8;
         index = path.indexOf("/process", pathOffset);
@@ -5450,8 +6349,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("rasters/upload"));
         pathOffset += 14;
 
@@ -5501,8 +6402,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("rasters/"));
         pathOffset += 8;
         index = path.indexOf("/files", pathOffset);
@@ -5557,8 +6460,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("rasters/"));
         pathOffset += 8;
         index = path.indexOf("/parents", pathOffset);
@@ -5603,6 +6508,177 @@ main() {
   });
 
 
+  unittest.group("resource-RastersPermissionsResourceApi", () {
+    unittest.test("method--batchDelete", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.RastersPermissionsResourceApi res = new api.MapsengineApi(mock).rasters.permissions;
+      var arg_request = buildPermissionsBatchDeleteRequest();
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PermissionsBatchDeleteRequest.fromJson(json);
+        checkPermissionsBatchDeleteRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("rasters/"));
+        pathOffset += 8;
+        index = path.indexOf("/permissions/batchDelete", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 24), unittest.equals("/permissions/batchDelete"));
+        pathOffset += 24;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsBatchDeleteResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.batchDelete(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchDeleteResponse response) {
+        checkPermissionsBatchDeleteResponse(response);
+      })));
+    });
+
+    unittest.test("method--batchUpdate", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.RastersPermissionsResourceApi res = new api.MapsengineApi(mock).rasters.permissions;
+      var arg_request = buildPermissionsBatchUpdateRequest();
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PermissionsBatchUpdateRequest.fromJson(json);
+        checkPermissionsBatchUpdateRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("rasters/"));
+        pathOffset += 8;
+        index = path.indexOf("/permissions/batchUpdate", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 24), unittest.equals("/permissions/batchUpdate"));
+        pathOffset += 24;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsBatchUpdateResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.batchUpdate(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchUpdateResponse response) {
+        checkPermissionsBatchUpdateResponse(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.RastersPermissionsResourceApi res = new api.MapsengineApi(mock).rasters.permissions;
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("rasters/"));
+        pathOffset += 8;
+        index = path.indexOf("/permissions", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/permissions"));
+        pathOffset += 12;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsListResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_id).then(unittest.expectAsync(((api.PermissionsListResponse response) {
+        checkPermissionsListResponse(response);
+      })));
+    });
+
+  });
+
+
   unittest.group("resource-TablesResourceApi", () {
     unittest.test("method--create", () {
 
@@ -5617,8 +6693,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("tables"));
         pathOffset += 6;
 
@@ -5661,8 +6739,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -5707,8 +6787,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -5767,8 +6849,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("tables"));
         pathOffset += 6;
 
@@ -5828,8 +6912,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -5873,8 +6959,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/process", pathOffset);
@@ -5927,8 +7015,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("tables/upload"));
         pathOffset += 13;
 
@@ -5979,8 +7069,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/features/batchDelete", pathOffset);
@@ -6032,8 +7124,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/features/batchInsert", pathOffset);
@@ -6085,8 +7179,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/features/batchPatch", pathOffset);
@@ -6137,8 +7233,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/features/", pathOffset);
@@ -6202,8 +7300,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/features", pathOffset);
@@ -6269,8 +7369,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/files", pathOffset);
@@ -6325,8 +7427,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/mapsengine/v1/"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/parents", pathOffset);
@@ -6365,6 +7469,177 @@ main() {
       }), true);
       res.list(arg_id, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ParentsListResponse response) {
         checkParentsListResponse(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-TablesPermissionsResourceApi", () {
+    unittest.test("method--batchDelete", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.TablesPermissionsResourceApi res = new api.MapsengineApi(mock).tables.permissions;
+      var arg_request = buildPermissionsBatchDeleteRequest();
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PermissionsBatchDeleteRequest.fromJson(json);
+        checkPermissionsBatchDeleteRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        pathOffset += 7;
+        index = path.indexOf("/permissions/batchDelete", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 24), unittest.equals("/permissions/batchDelete"));
+        pathOffset += 24;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsBatchDeleteResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.batchDelete(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchDeleteResponse response) {
+        checkPermissionsBatchDeleteResponse(response);
+      })));
+    });
+
+    unittest.test("method--batchUpdate", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.TablesPermissionsResourceApi res = new api.MapsengineApi(mock).tables.permissions;
+      var arg_request = buildPermissionsBatchUpdateRequest();
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PermissionsBatchUpdateRequest.fromJson(json);
+        checkPermissionsBatchUpdateRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        pathOffset += 7;
+        index = path.indexOf("/permissions/batchUpdate", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 24), unittest.equals("/permissions/batchUpdate"));
+        pathOffset += 24;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsBatchUpdateResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.batchUpdate(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchUpdateResponse response) {
+        checkPermissionsBatchUpdateResponse(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.TablesPermissionsResourceApi res = new api.MapsengineApi(mock).tables.permissions;
+      var arg_id = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("mapsengine/v1/"));
+        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        pathOffset += 7;
+        index = path.indexOf("/permissions", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_id"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/permissions"));
+        pathOffset += 12;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPermissionsListResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_id).then(unittest.expectAsync(((api.PermissionsListResponse response) {
+        checkPermissionsListResponse(response);
       })));
     });
 

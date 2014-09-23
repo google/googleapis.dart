@@ -16,14 +16,14 @@ import 'package:googleapis_beta/pubsub/v1beta1.dart' as api;
 
 
 
-buildUnnamed1170() {
+buildUnnamed1201() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1170(core.List<core.String> o) {
+checkUnnamed1201(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -34,7 +34,7 @@ buildAcknowledgeRequest() {
   var o = new api.AcknowledgeRequest();
   buildCounterAcknowledgeRequest++;
   if (buildCounterAcknowledgeRequest < 3) {
-    o.ackId = buildUnnamed1170();
+    o.ackId = buildUnnamed1201();
     o.subscription = "foo";
   }
   buildCounterAcknowledgeRequest--;
@@ -44,7 +44,7 @@ buildAcknowledgeRequest() {
 checkAcknowledgeRequest(api.AcknowledgeRequest o) {
   buildCounterAcknowledgeRequest++;
   if (buildCounterAcknowledgeRequest < 3) {
-    checkUnnamed1170(o.ackId);
+    checkUnnamed1201(o.ackId);
     unittest.expect(o.subscription, unittest.equals('foo'));
   }
   buildCounterAcknowledgeRequest--;
@@ -73,14 +73,14 @@ checkLabel(api.Label o) {
   buildCounterLabel--;
 }
 
-buildUnnamed1171() {
+buildUnnamed1202() {
   var o = new core.List<api.Subscription>();
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-checkUnnamed1171(core.List<api.Subscription> o) {
+checkUnnamed1202(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -92,7 +92,7 @@ buildListSubscriptionsResponse() {
   buildCounterListSubscriptionsResponse++;
   if (buildCounterListSubscriptionsResponse < 3) {
     o.nextPageToken = "foo";
-    o.subscription = buildUnnamed1171();
+    o.subscription = buildUnnamed1202();
   }
   buildCounterListSubscriptionsResponse--;
   return o;
@@ -102,19 +102,19 @@ checkListSubscriptionsResponse(api.ListSubscriptionsResponse o) {
   buildCounterListSubscriptionsResponse++;
   if (buildCounterListSubscriptionsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1171(o.subscription);
+    checkUnnamed1202(o.subscription);
   }
   buildCounterListSubscriptionsResponse--;
 }
 
-buildUnnamed1172() {
+buildUnnamed1203() {
   var o = new core.List<api.Topic>();
   o.add(buildTopic());
   o.add(buildTopic());
   return o;
 }
 
-checkUnnamed1172(core.List<api.Topic> o) {
+checkUnnamed1203(core.List<api.Topic> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTopic(o[0]);
   checkTopic(o[1]);
@@ -126,7 +126,7 @@ buildListTopicsResponse() {
   buildCounterListTopicsResponse++;
   if (buildCounterListTopicsResponse < 3) {
     o.nextPageToken = "foo";
-    o.topic = buildUnnamed1172();
+    o.topic = buildUnnamed1203();
   }
   buildCounterListTopicsResponse--;
   return o;
@@ -136,7 +136,7 @@ checkListTopicsResponse(api.ListTopicsResponse o) {
   buildCounterListTopicsResponse++;
   if (buildCounterListTopicsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1172(o.topic);
+    checkUnnamed1203(o.topic);
   }
   buildCounterListTopicsResponse--;
 }
@@ -231,14 +231,14 @@ checkPubsubEvent(api.PubsubEvent o) {
   buildCounterPubsubEvent--;
 }
 
-buildUnnamed1173() {
+buildUnnamed1204() {
   var o = new core.List<api.Label>();
   o.add(buildLabel());
   o.add(buildLabel());
   return o;
 }
 
-checkUnnamed1173(core.List<api.Label> o) {
+checkUnnamed1204(core.List<api.Label> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabel(o[0]);
   checkLabel(o[1]);
@@ -250,7 +250,7 @@ buildPubsubMessage() {
   buildCounterPubsubMessage++;
   if (buildCounterPubsubMessage < 3) {
     o.data = "foo";
-    o.label = buildUnnamed1173();
+    o.label = buildUnnamed1204();
   }
   buildCounterPubsubMessage--;
   return o;
@@ -260,7 +260,7 @@ checkPubsubMessage(api.PubsubMessage o) {
   buildCounterPubsubMessage++;
   if (buildCounterPubsubMessage < 3) {
     unittest.expect(o.data, unittest.equals('foo'));
-    checkUnnamed1173(o.label);
+    checkUnnamed1204(o.label);
   }
   buildCounterPubsubMessage--;
 }
@@ -512,8 +512,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/pubsub/v1beta1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("subscriptions/acknowledge"));
         pathOffset += 25;
 
@@ -557,8 +559,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/pubsub/v1beta1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("subscriptions"));
         pathOffset += 13;
 
@@ -601,8 +605,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/pubsub/v1beta1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("subscriptions/"));
         pathOffset += 14;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
@@ -644,8 +650,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/pubsub/v1beta1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("subscriptions/"));
         pathOffset += 14;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
@@ -691,8 +699,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/pubsub/v1beta1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("subscriptions"));
         pathOffset += 13;
 
@@ -741,8 +751,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/pubsub/v1beta1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 31), unittest.equals("subscriptions/modifyAckDeadline"));
         pathOffset += 31;
 
@@ -786,8 +798,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/pubsub/v1beta1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("subscriptions/modifyPushConfig"));
         pathOffset += 30;
 
@@ -831,8 +845,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/pubsub/v1beta1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("subscriptions/pull"));
         pathOffset += 18;
 
@@ -882,8 +898,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/pubsub/v1beta1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("topics"));
         pathOffset += 6;
 
@@ -926,8 +944,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/pubsub/v1beta1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("topics/"));
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
@@ -969,8 +989,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/pubsub/v1beta1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("topics/"));
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
@@ -1016,8 +1038,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/pubsub/v1beta1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("topics"));
         pathOffset += 6;
 
@@ -1066,8 +1090,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/pubsub/v1beta1/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
         unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("topics/publish"));
         pathOffset += 14;
 

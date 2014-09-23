@@ -19,7 +19,7 @@ class FreebaseApi {
   final common_internal.ApiRequester _requester;
 
   FreebaseApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/freebase/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "freebase/v1/");
 
   /**
    * Reconcile entities to Freebase open data.

@@ -21,7 +21,7 @@ class LicensingApi {
   LicenseAssignmentsResourceApi get licenseAssignments => new LicenseAssignmentsResourceApi(_requester);
 
   LicensingApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/apps/licensing/v1/product/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "apps/licensing/v1/product/");
 }
 
 

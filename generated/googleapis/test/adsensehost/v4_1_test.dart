@@ -41,14 +41,14 @@ checkAccount(api.Account o) {
   buildCounterAccount--;
 }
 
-buildUnnamed967() {
+buildUnnamed995() {
   var o = new core.List<api.Account>();
   o.add(buildAccount());
   o.add(buildAccount());
   return o;
 }
 
-checkUnnamed967(core.List<api.Account> o) {
+checkUnnamed995(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccount(o[0]);
   checkAccount(o[1]);
@@ -60,7 +60,7 @@ buildAccounts() {
   buildCounterAccounts++;
   if (buildCounterAccounts < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed967();
+    o.items = buildUnnamed995();
     o.kind = "foo";
   }
   buildCounterAccounts--;
@@ -71,7 +71,7 @@ checkAccounts(api.Accounts o) {
   buildCounterAccounts++;
   if (buildCounterAccounts < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed967(o.items);
+    checkUnnamed995(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAccounts--;
@@ -104,14 +104,14 @@ checkAdClient(api.AdClient o) {
   buildCounterAdClient--;
 }
 
-buildUnnamed968() {
+buildUnnamed996() {
   var o = new core.List<api.AdClient>();
   o.add(buildAdClient());
   o.add(buildAdClient());
   return o;
 }
 
-checkUnnamed968(core.List<api.AdClient> o) {
+checkUnnamed996(core.List<api.AdClient> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdClient(o[0]);
   checkAdClient(o[1]);
@@ -123,7 +123,7 @@ buildAdClients() {
   buildCounterAdClients++;
   if (buildCounterAdClients < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed968();
+    o.items = buildUnnamed996();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -135,7 +135,7 @@ checkAdClients(api.AdClients o) {
   buildCounterAdClients++;
   if (buildCounterAdClients < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed968(o.items);
+    checkUnnamed996(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -340,14 +340,14 @@ checkAdUnit(api.AdUnit o) {
   buildCounterAdUnit--;
 }
 
-buildUnnamed969() {
+buildUnnamed997() {
   var o = new core.List<api.AdUnit>();
   o.add(buildAdUnit());
   o.add(buildAdUnit());
   return o;
 }
 
-checkUnnamed969(core.List<api.AdUnit> o) {
+checkUnnamed997(core.List<api.AdUnit> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdUnit(o[0]);
   checkAdUnit(o[1]);
@@ -359,7 +359,7 @@ buildAdUnits() {
   buildCounterAdUnits++;
   if (buildCounterAdUnits < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed969();
+    o.items = buildUnnamed997();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -371,21 +371,21 @@ checkAdUnits(api.AdUnits o) {
   buildCounterAdUnits++;
   if (buildCounterAdUnits < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed969(o.items);
+    checkUnnamed997(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterAdUnits--;
 }
 
-buildUnnamed970() {
+buildUnnamed998() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed970(core.List<core.String> o) {
+checkUnnamed998(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -399,7 +399,7 @@ buildAssociationSession() {
     o.accountId = "foo";
     o.id = "foo";
     o.kind = "foo";
-    o.productCodes = buildUnnamed970();
+    o.productCodes = buildUnnamed998();
     o.redirectUrl = "foo";
     o.status = "foo";
     o.userLocale = "foo";
@@ -416,7 +416,7 @@ checkAssociationSession(api.AssociationSession o) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed970(o.productCodes);
+    checkUnnamed998(o.productCodes);
     unittest.expect(o.redirectUrl, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.userLocale, unittest.equals('foo'));
@@ -451,14 +451,14 @@ checkCustomChannel(api.CustomChannel o) {
   buildCounterCustomChannel--;
 }
 
-buildUnnamed971() {
+buildUnnamed999() {
   var o = new core.List<api.CustomChannel>();
   o.add(buildCustomChannel());
   o.add(buildCustomChannel());
   return o;
 }
 
-checkUnnamed971(core.List<api.CustomChannel> o) {
+checkUnnamed999(core.List<api.CustomChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomChannel(o[0]);
   checkCustomChannel(o[1]);
@@ -470,7 +470,7 @@ buildCustomChannels() {
   buildCounterCustomChannels++;
   if (buildCounterCustomChannels < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed971();
+    o.items = buildUnnamed999();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -482,21 +482,21 @@ checkCustomChannels(api.CustomChannels o) {
   buildCounterCustomChannels++;
   if (buildCounterCustomChannels < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed971(o.items);
+    checkUnnamed999(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterCustomChannels--;
 }
 
-buildUnnamed972() {
+buildUnnamed1000() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed972(core.List<core.String> o) {
+checkUnnamed1000(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -525,66 +525,66 @@ checkReportHeaders(api.ReportHeaders o) {
   buildCounterReportHeaders--;
 }
 
-buildUnnamed973() {
+buildUnnamed1001() {
   var o = new core.List<api.ReportHeaders>();
   o.add(buildReportHeaders());
   o.add(buildReportHeaders());
   return o;
 }
 
-checkUnnamed973(core.List<api.ReportHeaders> o) {
+checkUnnamed1001(core.List<api.ReportHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportHeaders(o[0]);
   checkReportHeaders(o[1]);
 }
 
-buildUnnamed974() {
+buildUnnamed1002() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed974(core.List<core.String> o) {
+checkUnnamed1002(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed975() {
+buildUnnamed1003() {
   var o = new core.List<core.List<core.String>>();
-  o.add(buildUnnamed974());
-  o.add(buildUnnamed974());
+  o.add(buildUnnamed1002());
+  o.add(buildUnnamed1002());
   return o;
 }
 
-checkUnnamed975(core.List<core.List<core.String>> o) {
+checkUnnamed1003(core.List<core.List<core.String>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed974(o[0]);
-  checkUnnamed974(o[1]);
+  checkUnnamed1002(o[0]);
+  checkUnnamed1002(o[1]);
 }
 
-buildUnnamed976() {
+buildUnnamed1004() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed976(core.List<core.String> o) {
+checkUnnamed1004(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed977() {
+buildUnnamed1005() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed977(core.List<core.String> o) {
+checkUnnamed1005(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -595,13 +595,13 @@ buildReport() {
   var o = new api.Report();
   buildCounterReport++;
   if (buildCounterReport < 3) {
-    o.averages = buildUnnamed972();
-    o.headers = buildUnnamed973();
+    o.averages = buildUnnamed1000();
+    o.headers = buildUnnamed1001();
     o.kind = "foo";
-    o.rows = buildUnnamed975();
+    o.rows = buildUnnamed1003();
     o.totalMatchedRows = "foo";
-    o.totals = buildUnnamed976();
-    o.warnings = buildUnnamed977();
+    o.totals = buildUnnamed1004();
+    o.warnings = buildUnnamed1005();
   }
   buildCounterReport--;
   return o;
@@ -610,13 +610,13 @@ buildReport() {
 checkReport(api.Report o) {
   buildCounterReport++;
   if (buildCounterReport < 3) {
-    checkUnnamed972(o.averages);
-    checkUnnamed973(o.headers);
+    checkUnnamed1000(o.averages);
+    checkUnnamed1001(o.headers);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed975(o.rows);
+    checkUnnamed1003(o.rows);
     unittest.expect(o.totalMatchedRows, unittest.equals('foo'));
-    checkUnnamed976(o.totals);
-    checkUnnamed977(o.warnings);
+    checkUnnamed1004(o.totals);
+    checkUnnamed1005(o.warnings);
   }
   buildCounterReport--;
 }
@@ -644,14 +644,14 @@ checkUrlChannel(api.UrlChannel o) {
   buildCounterUrlChannel--;
 }
 
-buildUnnamed978() {
+buildUnnamed1006() {
   var o = new core.List<api.UrlChannel>();
   o.add(buildUrlChannel());
   o.add(buildUrlChannel());
   return o;
 }
 
-checkUnnamed978(core.List<api.UrlChannel> o) {
+checkUnnamed1006(core.List<api.UrlChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlChannel(o[0]);
   checkUrlChannel(o[1]);
@@ -663,7 +663,7 @@ buildUrlChannels() {
   buildCounterUrlChannels++;
   if (buildCounterUrlChannels < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed978();
+    o.items = buildUnnamed1006();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -675,151 +675,151 @@ checkUrlChannels(api.UrlChannels o) {
   buildCounterUrlChannels++;
   if (buildCounterUrlChannels < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed978(o.items);
+    checkUnnamed1006(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterUrlChannels--;
 }
 
-buildUnnamed979() {
+buildUnnamed1007() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed979(core.List<core.String> o) {
+checkUnnamed1007(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed980() {
+buildUnnamed1008() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed980(core.List<core.String> o) {
+checkUnnamed1008(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed981() {
+buildUnnamed1009() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed981(core.List<core.String> o) {
+checkUnnamed1009(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed982() {
+buildUnnamed1010() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed982(core.List<core.String> o) {
+checkUnnamed1010(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed983() {
+buildUnnamed1011() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed983(core.List<core.String> o) {
+checkUnnamed1011(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed984() {
+buildUnnamed1012() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed984(core.List<core.String> o) {
+checkUnnamed1012(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed985() {
+buildUnnamed1013() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed985(core.List<core.String> o) {
+checkUnnamed1013(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed986() {
+buildUnnamed1014() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed986(core.List<core.String> o) {
+checkUnnamed1014(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed987() {
+buildUnnamed1015() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed987(core.List<core.String> o) {
+checkUnnamed1015(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed988() {
+buildUnnamed1016() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed988(core.List<core.String> o) {
+checkUnnamed1016(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed989() {
+buildUnnamed1017() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed989(core.List<core.String> o) {
+checkUnnamed1017(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1018,8 +1018,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -1059,14 +1061,16 @@ main() {
 
       var mock = new common_test.HttpServerMock();
       api.AccountsResourceApi res = new api.AdsensehostApi(mock).accounts;
-      var arg_filterAdClientId = buildUnnamed979();
+      var arg_filterAdClientId = buildUnnamed1007();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("accounts"));
         pathOffset += 8;
 
@@ -1115,8 +1119,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -1171,8 +1177,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients", pathOffset);
@@ -1230,8 +1238,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -1293,8 +1303,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -1351,14 +1363,16 @@ main() {
       var arg_accountId = "foo";
       var arg_adClientId = "foo";
       var arg_adUnitId = "foo";
-      var arg_hostCustomChannelId = buildUnnamed980();
+      var arg_hostCustomChannelId = buildUnnamed1008();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -1428,8 +1442,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -1490,8 +1506,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -1557,8 +1575,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -1621,8 +1641,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -1680,20 +1702,22 @@ main() {
       var arg_accountId = "foo";
       var arg_startDate = "foo";
       var arg_endDate = "foo";
-      var arg_dimension = buildUnnamed981();
-      var arg_filter = buildUnnamed982();
+      var arg_dimension = buildUnnamed1009();
+      var arg_filter = buildUnnamed1010();
       var arg_locale = "foo";
       var arg_maxResults = 42;
-      var arg_metric = buildUnnamed983();
-      var arg_sort = buildUnnamed984();
+      var arg_metric = buildUnnamed1011();
+      var arg_sort = buildUnnamed1012();
       var arg_startIndex = 42;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/reports", pathOffset);
@@ -1756,8 +1780,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -1804,8 +1830,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("adclients"));
         pathOffset += 9;
 
@@ -1848,7 +1876,7 @@ main() {
 
       var mock = new common_test.HttpServerMock();
       api.AssociationsessionsResourceApi res = new api.AdsensehostApi(mock).associationsessions;
-      var arg_productCode = buildUnnamed985();
+      var arg_productCode = buildUnnamed1013();
       var arg_websiteUrl = "foo";
       var arg_userLocale = "foo";
       var arg_websiteLocale = "foo";
@@ -1857,8 +1885,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("associationsessions/start"));
         pathOffset += 25;
 
@@ -1905,8 +1935,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("associationsessions/verify"));
         pathOffset += 26;
 
@@ -1955,8 +1987,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/customchannels/", pathOffset);
@@ -2010,8 +2044,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/customchannels/", pathOffset);
@@ -2068,8 +2104,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/customchannels", pathOffset);
@@ -2121,8 +2159,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/customchannels", pathOffset);
@@ -2179,8 +2219,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/customchannels", pathOffset);
@@ -2235,8 +2277,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/customchannels", pathOffset);
@@ -2286,20 +2330,22 @@ main() {
       api.ReportsResourceApi res = new api.AdsensehostApi(mock).reports;
       var arg_startDate = "foo";
       var arg_endDate = "foo";
-      var arg_dimension = buildUnnamed986();
-      var arg_filter = buildUnnamed987();
+      var arg_dimension = buildUnnamed1014();
+      var arg_filter = buildUnnamed1015();
       var arg_locale = "foo";
       var arg_maxResults = 42;
-      var arg_metric = buildUnnamed988();
-      var arg_sort = buildUnnamed989();
+      var arg_metric = buildUnnamed1016();
+      var arg_sort = buildUnnamed1017();
       var arg_startIndex = 42;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("reports"));
         pathOffset += 7;
 
@@ -2356,8 +2402,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/urlchannels/", pathOffset);
@@ -2414,8 +2462,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/urlchannels", pathOffset);
@@ -2467,8 +2517,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/adsensehost/v4.1/"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("adsensehost/v4.1/"));
+        pathOffset += 17;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/urlchannels", pathOffset);

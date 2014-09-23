@@ -61,7 +61,7 @@ class ComputeApi {
   ZonesResourceApi get zones => new ZonesResourceApi(_requester);
 
   ComputeApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/compute/v1/projects/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "compute/v1/projects/");
 }
 
 

@@ -35,7 +35,7 @@ class StorageApi {
   ObjectsResourceApi get objects => new ObjectsResourceApi(_requester);
 
   StorageApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/storage/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "storage/v1/");
 }
 
 

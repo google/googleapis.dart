@@ -17,7 +17,7 @@
     "description": "The Google Compute Engine Autoscaler API provides autoscaling for groups of Cloud VMs.",
     "discoveryVersion": "v1",
     "documentationLink": "http://developers.google.com/compute/docs/autoscaler",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/aqfSeC1jGN1VtOnSnFM7d_GgZoI\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/OGrwqagtFyzrQU63rEsuM0hbVC4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -440,7 +440,7 @@
             }
         }
     },
-    "revision": "20140814",
+    "revision": "20140909",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Autoscaler": {
@@ -462,6 +462,11 @@
                 "id": {
                     "description": "[Output Only] Unique identifier for the resource; defined by the server.",
                     "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "compute#autoscaler",
+                    "description": "Type of resource.",
                     "type": "string"
                 },
                 "name": {
@@ -488,6 +493,11 @@
                         "$ref": "Autoscaler"
                     },
                     "type": "array"
+                },
+                "kind": {
+                    "default": "compute#autoscalerList",
+                    "description": "Type of resource.",
+                    "type": "string"
                 },
                 "nextPageToken": {
                     "description": "[Output only] A token used to continue a truncated list request.",
@@ -557,6 +567,10 @@
                     "description": "Target value of the metric which Autoscaler should maintain. Must be a positive value.",
                     "format": "double",
                     "type": "number"
+                },
+                "utilizationTargetType": {
+                    "description": "Defines type in which utilization_target is expressed.",
+                    "type": "string"
                 }
             },
             "type": "object"

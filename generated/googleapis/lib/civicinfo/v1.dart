@@ -23,7 +23,7 @@ class CivicinfoApi {
   RepresentativesResourceApi get representatives => new RepresentativesResourceApi(_requester);
 
   CivicinfoApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/civicinfo/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "civicinfo/v1/");
 }
 
 
@@ -1084,9 +1084,18 @@ class ElectoralDistrict {
 /** Describes a political geography. */
 class GeographicDivision {
   /**
-   * Any other valid OCD IDs that refer to the same division. For example, if
-   * this division's OCD ID is ocd-division/country:us/district:dc, this will
-   * contain ocd-division/country:us/state:dc.
+   * Any other valid OCD IDs that refer to the same division.
+   *
+   * Because OCD IDs are meant to be human-readable and at least somewhat
+   * predictable, there are occasionally several identifiers for a single
+   * division. These identifiers are defined to be equivalent to one another,
+   * and one is always indicated as the primary identifier. The primary
+   * identifier will be returned in ocd_id above, and any other equivalent valid
+   * identifiers will be returned in this list.
+   *
+   * For example, if this division's OCD ID is
+   * ocd-division/country:us/district:dc, this will contain
+   * ocd-division/country:us/state:dc.
    */
   core.List<core.String> alsoKnownAs;
 
@@ -1214,7 +1223,7 @@ class Office {
 }
 
 
-/** Information about a official holding an elected office. */
+/** Information about a person holding an elected office. */
 class Official {
   /** Addresses at which to contact the official. */
   core.List<SimpleAddressType> address;

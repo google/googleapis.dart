@@ -31,7 +31,7 @@ class CoordinateApi {
   WorkerResourceApi get worker => new WorkerResourceApi(_requester);
 
   CoordinateApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/coordinate/v1/teams/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "coordinate/v1/teams/");
 }
 
 

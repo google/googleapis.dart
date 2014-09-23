@@ -16,14 +16,14 @@ import 'package:googleapis/adsense/v1_4.dart' as api;
 
 
 
-buildUnnamed807() {
+buildUnnamed835() {
   var o = new core.List<api.Account>();
   o.add(buildAccount());
   o.add(buildAccount());
   return o;
 }
 
-checkUnnamed807(core.List<api.Account> o) {
+checkUnnamed835(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccount(o[0]);
   checkAccount(o[1]);
@@ -38,7 +38,7 @@ buildAccount() {
     o.kind = "foo";
     o.name = "foo";
     o.premium = true;
-    o.subAccounts = buildUnnamed807();
+    o.subAccounts = buildUnnamed835();
     o.timezone = "foo";
   }
   buildCounterAccount--;
@@ -52,20 +52,20 @@ checkAccount(api.Account o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.premium, unittest.isTrue);
-    checkUnnamed807(o.subAccounts);
+    checkUnnamed835(o.subAccounts);
     unittest.expect(o.timezone, unittest.equals('foo'));
   }
   buildCounterAccount--;
 }
 
-buildUnnamed808() {
+buildUnnamed836() {
   var o = new core.List<api.Account>();
   o.add(buildAccount());
   o.add(buildAccount());
   return o;
 }
 
-checkUnnamed808(core.List<api.Account> o) {
+checkUnnamed836(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccount(o[0]);
   checkAccount(o[1]);
@@ -77,7 +77,7 @@ buildAccounts() {
   buildCounterAccounts++;
   if (buildCounterAccounts < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed808();
+    o.items = buildUnnamed836();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -89,7 +89,7 @@ checkAccounts(api.Accounts o) {
   buildCounterAccounts++;
   if (buildCounterAccounts < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed808(o.items);
+    checkUnnamed836(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -125,14 +125,14 @@ checkAdClient(api.AdClient o) {
   buildCounterAdClient--;
 }
 
-buildUnnamed809() {
+buildUnnamed837() {
   var o = new core.List<api.AdClient>();
   o.add(buildAdClient());
   o.add(buildAdClient());
   return o;
 }
 
-checkUnnamed809(core.List<api.AdClient> o) {
+checkUnnamed837(core.List<api.AdClient> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdClient(o[0]);
   checkAdClient(o[1]);
@@ -144,7 +144,7 @@ buildAdClients() {
   buildCounterAdClients++;
   if (buildCounterAdClients < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed809();
+    o.items = buildUnnamed837();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -156,7 +156,7 @@ checkAdClients(api.AdClients o) {
   buildCounterAdClients++;
   if (buildCounterAdClients < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed809(o.items);
+    checkUnnamed837(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -390,14 +390,14 @@ checkAdUnit(api.AdUnit o) {
   buildCounterAdUnit--;
 }
 
-buildUnnamed810() {
+buildUnnamed838() {
   var o = new core.List<api.AdUnit>();
   o.add(buildAdUnit());
   o.add(buildAdUnit());
   return o;
 }
 
-checkUnnamed810(core.List<api.AdUnit> o) {
+checkUnnamed838(core.List<api.AdUnit> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdUnit(o[0]);
   checkAdUnit(o[1]);
@@ -409,7 +409,7 @@ buildAdUnits() {
   buildCounterAdUnits++;
   if (buildCounterAdUnits < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed810();
+    o.items = buildUnnamed838();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -421,21 +421,21 @@ checkAdUnits(api.AdUnits o) {
   buildCounterAdUnits++;
   if (buildCounterAdUnits < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed810(o.items);
+    checkUnnamed838(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterAdUnits--;
 }
 
-buildUnnamed811() {
+buildUnnamed839() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed811(core.List<core.String> o) {
+checkUnnamed839(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -464,66 +464,66 @@ checkAdsenseReportsGenerateResponseHeaders(api.AdsenseReportsGenerateResponseHea
   buildCounterAdsenseReportsGenerateResponseHeaders--;
 }
 
-buildUnnamed812() {
+buildUnnamed840() {
   var o = new core.List<api.AdsenseReportsGenerateResponseHeaders>();
   o.add(buildAdsenseReportsGenerateResponseHeaders());
   o.add(buildAdsenseReportsGenerateResponseHeaders());
   return o;
 }
 
-checkUnnamed812(core.List<api.AdsenseReportsGenerateResponseHeaders> o) {
+checkUnnamed840(core.List<api.AdsenseReportsGenerateResponseHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdsenseReportsGenerateResponseHeaders(o[0]);
   checkAdsenseReportsGenerateResponseHeaders(o[1]);
 }
 
-buildUnnamed813() {
+buildUnnamed841() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed813(core.List<core.String> o) {
+checkUnnamed841(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed814() {
+buildUnnamed842() {
   var o = new core.List<core.List<core.String>>();
-  o.add(buildUnnamed813());
-  o.add(buildUnnamed813());
+  o.add(buildUnnamed841());
+  o.add(buildUnnamed841());
   return o;
 }
 
-checkUnnamed814(core.List<core.List<core.String>> o) {
+checkUnnamed842(core.List<core.List<core.String>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed813(o[0]);
-  checkUnnamed813(o[1]);
+  checkUnnamed841(o[0]);
+  checkUnnamed841(o[1]);
 }
 
-buildUnnamed815() {
+buildUnnamed843() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed815(core.List<core.String> o) {
+checkUnnamed843(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed816() {
+buildUnnamed844() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed816(core.List<core.String> o) {
+checkUnnamed844(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -534,15 +534,15 @@ buildAdsenseReportsGenerateResponse() {
   var o = new api.AdsenseReportsGenerateResponse();
   buildCounterAdsenseReportsGenerateResponse++;
   if (buildCounterAdsenseReportsGenerateResponse < 3) {
-    o.averages = buildUnnamed811();
+    o.averages = buildUnnamed839();
     o.endDate = "foo";
-    o.headers = buildUnnamed812();
+    o.headers = buildUnnamed840();
     o.kind = "foo";
-    o.rows = buildUnnamed814();
+    o.rows = buildUnnamed842();
     o.startDate = "foo";
     o.totalMatchedRows = "foo";
-    o.totals = buildUnnamed815();
-    o.warnings = buildUnnamed816();
+    o.totals = buildUnnamed843();
+    o.warnings = buildUnnamed844();
   }
   buildCounterAdsenseReportsGenerateResponse--;
   return o;
@@ -551,15 +551,15 @@ buildAdsenseReportsGenerateResponse() {
 checkAdsenseReportsGenerateResponse(api.AdsenseReportsGenerateResponse o) {
   buildCounterAdsenseReportsGenerateResponse++;
   if (buildCounterAdsenseReportsGenerateResponse < 3) {
-    checkUnnamed811(o.averages);
+    checkUnnamed839(o.averages);
     unittest.expect(o.endDate, unittest.equals('foo'));
-    checkUnnamed812(o.headers);
+    checkUnnamed840(o.headers);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed814(o.rows);
+    checkUnnamed842(o.rows);
     unittest.expect(o.startDate, unittest.equals('foo'));
     unittest.expect(o.totalMatchedRows, unittest.equals('foo'));
-    checkUnnamed815(o.totals);
-    checkUnnamed816(o.warnings);
+    checkUnnamed843(o.totals);
+    checkUnnamed844(o.warnings);
   }
   buildCounterAdsenseReportsGenerateResponse--;
 }
@@ -593,14 +593,14 @@ checkAlert(api.Alert o) {
   buildCounterAlert--;
 }
 
-buildUnnamed817() {
+buildUnnamed845() {
   var o = new core.List<api.Alert>();
   o.add(buildAlert());
   o.add(buildAlert());
   return o;
 }
 
-checkUnnamed817(core.List<api.Alert> o) {
+checkUnnamed845(core.List<api.Alert> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAlert(o[0]);
   checkAlert(o[1]);
@@ -611,7 +611,7 @@ buildAlerts() {
   var o = new api.Alerts();
   buildCounterAlerts++;
   if (buildCounterAlerts < 3) {
-    o.items = buildUnnamed817();
+    o.items = buildUnnamed845();
     o.kind = "foo";
   }
   buildCounterAlerts--;
@@ -621,7 +621,7 @@ buildAlerts() {
 checkAlerts(api.Alerts o) {
   buildCounterAlerts++;
   if (buildCounterAlerts < 3) {
-    checkUnnamed817(o.items);
+    checkUnnamed845(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAlerts--;
@@ -679,14 +679,14 @@ checkCustomChannel(api.CustomChannel o) {
   buildCounterCustomChannel--;
 }
 
-buildUnnamed818() {
+buildUnnamed846() {
   var o = new core.List<api.CustomChannel>();
   o.add(buildCustomChannel());
   o.add(buildCustomChannel());
   return o;
 }
 
-checkUnnamed818(core.List<api.CustomChannel> o) {
+checkUnnamed846(core.List<api.CustomChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomChannel(o[0]);
   checkCustomChannel(o[1]);
@@ -698,7 +698,7 @@ buildCustomChannels() {
   buildCounterCustomChannels++;
   if (buildCounterCustomChannels < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed818();
+    o.items = buildUnnamed846();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -710,21 +710,21 @@ checkCustomChannels(api.CustomChannels o) {
   buildCounterCustomChannels++;
   if (buildCounterCustomChannels < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed818(o.items);
+    checkUnnamed846(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterCustomChannels--;
 }
 
-buildUnnamed819() {
+buildUnnamed847() {
   var o = new core.List<api.ReportingMetadataEntry>();
   o.add(buildReportingMetadataEntry());
   o.add(buildReportingMetadataEntry());
   return o;
 }
 
-checkUnnamed819(core.List<api.ReportingMetadataEntry> o) {
+checkUnnamed847(core.List<api.ReportingMetadataEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportingMetadataEntry(o[0]);
   checkReportingMetadataEntry(o[1]);
@@ -735,7 +735,7 @@ buildMetadata() {
   var o = new api.Metadata();
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
-    o.items = buildUnnamed819();
+    o.items = buildUnnamed847();
     o.kind = "foo";
   }
   buildCounterMetadata--;
@@ -745,7 +745,7 @@ buildMetadata() {
 checkMetadata(api.Metadata o) {
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
-    checkUnnamed819(o.items);
+    checkUnnamed847(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterMetadata--;
@@ -778,14 +778,14 @@ checkPayment(api.Payment o) {
   buildCounterPayment--;
 }
 
-buildUnnamed820() {
+buildUnnamed848() {
   var o = new core.List<api.Payment>();
   o.add(buildPayment());
   o.add(buildPayment());
   return o;
 }
 
-checkUnnamed820(core.List<api.Payment> o) {
+checkUnnamed848(core.List<api.Payment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPayment(o[0]);
   checkPayment(o[1]);
@@ -796,7 +796,7 @@ buildPayments() {
   var o = new api.Payments();
   buildCounterPayments++;
   if (buildCounterPayments < 3) {
-    o.items = buildUnnamed820();
+    o.items = buildUnnamed848();
     o.kind = "foo";
   }
   buildCounterPayments--;
@@ -806,72 +806,72 @@ buildPayments() {
 checkPayments(api.Payments o) {
   buildCounterPayments++;
   if (buildCounterPayments < 3) {
-    checkUnnamed820(o.items);
+    checkUnnamed848(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterPayments--;
 }
 
-buildUnnamed821() {
+buildUnnamed849() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed821(core.List<core.String> o) {
+checkUnnamed849(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed822() {
+buildUnnamed850() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed822(core.List<core.String> o) {
+checkUnnamed850(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed823() {
+buildUnnamed851() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed823(core.List<core.String> o) {
+checkUnnamed851(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed824() {
+buildUnnamed852() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed824(core.List<core.String> o) {
+checkUnnamed852(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed825() {
+buildUnnamed853() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed825(core.List<core.String> o) {
+checkUnnamed853(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -882,13 +882,13 @@ buildReportingMetadataEntry() {
   var o = new api.ReportingMetadataEntry();
   buildCounterReportingMetadataEntry++;
   if (buildCounterReportingMetadataEntry < 3) {
-    o.compatibleDimensions = buildUnnamed821();
-    o.compatibleMetrics = buildUnnamed822();
+    o.compatibleDimensions = buildUnnamed849();
+    o.compatibleMetrics = buildUnnamed850();
     o.id = "foo";
     o.kind = "foo";
-    o.requiredDimensions = buildUnnamed823();
-    o.requiredMetrics = buildUnnamed824();
-    o.supportedProducts = buildUnnamed825();
+    o.requiredDimensions = buildUnnamed851();
+    o.requiredMetrics = buildUnnamed852();
+    o.supportedProducts = buildUnnamed853();
   }
   buildCounterReportingMetadataEntry--;
   return o;
@@ -897,13 +897,13 @@ buildReportingMetadataEntry() {
 checkReportingMetadataEntry(api.ReportingMetadataEntry o) {
   buildCounterReportingMetadataEntry++;
   if (buildCounterReportingMetadataEntry < 3) {
-    checkUnnamed821(o.compatibleDimensions);
-    checkUnnamed822(o.compatibleMetrics);
+    checkUnnamed849(o.compatibleDimensions);
+    checkUnnamed850(o.compatibleMetrics);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed823(o.requiredDimensions);
-    checkUnnamed824(o.requiredMetrics);
-    checkUnnamed825(o.supportedProducts);
+    checkUnnamed851(o.requiredDimensions);
+    checkUnnamed852(o.requiredMetrics);
+    checkUnnamed853(o.supportedProducts);
   }
   buildCounterReportingMetadataEntry--;
 }
@@ -933,14 +933,14 @@ checkSavedAdStyle(api.SavedAdStyle o) {
   buildCounterSavedAdStyle--;
 }
 
-buildUnnamed826() {
+buildUnnamed854() {
   var o = new core.List<api.SavedAdStyle>();
   o.add(buildSavedAdStyle());
   o.add(buildSavedAdStyle());
   return o;
 }
 
-checkUnnamed826(core.List<api.SavedAdStyle> o) {
+checkUnnamed854(core.List<api.SavedAdStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSavedAdStyle(o[0]);
   checkSavedAdStyle(o[1]);
@@ -952,7 +952,7 @@ buildSavedAdStyles() {
   buildCounterSavedAdStyles++;
   if (buildCounterSavedAdStyles < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed826();
+    o.items = buildUnnamed854();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -964,7 +964,7 @@ checkSavedAdStyles(api.SavedAdStyles o) {
   buildCounterSavedAdStyles++;
   if (buildCounterSavedAdStyles < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed826(o.items);
+    checkUnnamed854(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -994,14 +994,14 @@ checkSavedReport(api.SavedReport o) {
   buildCounterSavedReport--;
 }
 
-buildUnnamed827() {
+buildUnnamed855() {
   var o = new core.List<api.SavedReport>();
   o.add(buildSavedReport());
   o.add(buildSavedReport());
   return o;
 }
 
-checkUnnamed827(core.List<api.SavedReport> o) {
+checkUnnamed855(core.List<api.SavedReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSavedReport(o[0]);
   checkSavedReport(o[1]);
@@ -1013,7 +1013,7 @@ buildSavedReports() {
   buildCounterSavedReports++;
   if (buildCounterSavedReports < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed827();
+    o.items = buildUnnamed855();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -1025,7 +1025,7 @@ checkSavedReports(api.SavedReports o) {
   buildCounterSavedReports++;
   if (buildCounterSavedReports < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed827(o.items);
+    checkUnnamed855(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -1055,14 +1055,14 @@ checkUrlChannel(api.UrlChannel o) {
   buildCounterUrlChannel--;
 }
 
-buildUnnamed828() {
+buildUnnamed856() {
   var o = new core.List<api.UrlChannel>();
   o.add(buildUrlChannel());
   o.add(buildUrlChannel());
   return o;
 }
 
-checkUnnamed828(core.List<api.UrlChannel> o) {
+checkUnnamed856(core.List<api.UrlChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlChannel(o[0]);
   checkUrlChannel(o[1]);
@@ -1074,7 +1074,7 @@ buildUrlChannels() {
   buildCounterUrlChannels++;
   if (buildCounterUrlChannels < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed828();
+    o.items = buildUnnamed856();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -1086,125 +1086,125 @@ checkUrlChannels(api.UrlChannels o) {
   buildCounterUrlChannels++;
   if (buildCounterUrlChannels < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed828(o.items);
+    checkUnnamed856(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterUrlChannels--;
 }
 
-buildUnnamed829() {
+buildUnnamed857() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed829(core.List<core.String> o) {
+checkUnnamed857(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed830() {
+buildUnnamed858() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed830(core.List<core.String> o) {
+checkUnnamed858(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed831() {
+buildUnnamed859() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed831(core.List<core.String> o) {
+checkUnnamed859(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed832() {
+buildUnnamed860() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed832(core.List<core.String> o) {
+checkUnnamed860(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed833() {
+buildUnnamed861() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed833(core.List<core.String> o) {
+checkUnnamed861(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed834() {
+buildUnnamed862() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed834(core.List<core.String> o) {
+checkUnnamed862(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed835() {
+buildUnnamed863() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed835(core.List<core.String> o) {
+checkUnnamed863(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed836() {
+buildUnnamed864() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed836(core.List<core.String> o) {
+checkUnnamed864(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed837() {
+buildUnnamed865() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed837(core.List<core.String> o) {
+checkUnnamed865(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1503,8 +1503,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -1552,8 +1554,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("accounts"));
         pathOffset += 8;
 
@@ -1604,8 +1608,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients", pathOffset);
@@ -1663,8 +1669,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -1726,8 +1734,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -1795,8 +1805,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -1864,8 +1876,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -1936,8 +1950,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/alerts/", pathOffset);
@@ -1989,8 +2005,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/alerts", pathOffset);
@@ -2047,8 +2065,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -2111,8 +2131,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -2180,8 +2202,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -2252,8 +2276,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/payments", pathOffset);
@@ -2307,12 +2333,12 @@ main() {
       var arg_startDate = "foo";
       var arg_endDate = "foo";
       var arg_currency = "foo";
-      var arg_dimension = buildUnnamed829();
-      var arg_filter = buildUnnamed830();
+      var arg_dimension = buildUnnamed857();
+      var arg_filter = buildUnnamed858();
       var arg_locale = "foo";
       var arg_maxResults = 42;
-      var arg_metric = buildUnnamed831();
-      var arg_sort = buildUnnamed832();
+      var arg_metric = buildUnnamed859();
+      var arg_sort = buildUnnamed860();
       var arg_startIndex = 42;
       var arg_useTimezoneReporting = true;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2320,8 +2346,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/reports", pathOffset);
@@ -2390,8 +2418,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/reports/", pathOffset);
@@ -2449,8 +2479,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/reports/saved", pathOffset);
@@ -2507,8 +2539,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/savedadstyles/", pathOffset);
@@ -2563,8 +2597,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/savedadstyles", pathOffset);
@@ -2623,8 +2659,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("accounts/"));
         pathOffset += 9;
         index = path.indexOf("/adclients/", pathOffset);
@@ -2688,8 +2726,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("adclients"));
         pathOffset += 9;
 
@@ -2739,8 +2779,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/adunits/", pathOffset);
@@ -2794,8 +2836,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/adunits/", pathOffset);
@@ -2855,8 +2899,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/adunits", pathOffset);
@@ -2916,8 +2962,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/adunits/", pathOffset);
@@ -2980,8 +3028,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("alerts/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3025,8 +3075,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("alerts"));
         pathOffset += 6;
 
@@ -3075,8 +3127,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/customchannels/", pathOffset);
@@ -3131,8 +3185,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/customchannels", pathOffset);
@@ -3192,8 +3248,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/customchannels/", pathOffset);
@@ -3256,8 +3314,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("metadata/dimensions"));
         pathOffset += 19;
 
@@ -3303,8 +3363,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("metadata/metrics"));
         pathOffset += 16;
 
@@ -3350,8 +3412,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("payments"));
         pathOffset += 8;
 
@@ -3396,14 +3460,14 @@ main() {
       api.ReportsResourceApi res = new api.AdsenseApi(mock).reports;
       var arg_startDate = "foo";
       var arg_endDate = "foo";
-      var arg_accountId = buildUnnamed833();
+      var arg_accountId = buildUnnamed861();
       var arg_currency = "foo";
-      var arg_dimension = buildUnnamed834();
-      var arg_filter = buildUnnamed835();
+      var arg_dimension = buildUnnamed862();
+      var arg_filter = buildUnnamed863();
       var arg_locale = "foo";
       var arg_maxResults = 42;
-      var arg_metric = buildUnnamed836();
-      var arg_sort = buildUnnamed837();
+      var arg_metric = buildUnnamed864();
+      var arg_sort = buildUnnamed865();
       var arg_startIndex = 42;
       var arg_useTimezoneReporting = true;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3411,8 +3475,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("reports"));
         pathOffset += 7;
 
@@ -3474,8 +3540,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("reports/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3525,8 +3593,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("reports/saved"));
         pathOffset += 13;
 
@@ -3575,8 +3645,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("savedadstyles/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -3623,8 +3695,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("savedadstyles"));
         pathOffset += 13;
 
@@ -3675,8 +3749,10 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/adsense/v1.4/"));
-        pathOffset += 14;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("adsense/v1.4/"));
+        pathOffset += 13;
         unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("adclients/"));
         pathOffset += 10;
         index = path.indexOf("/urlchannels", pathOffset);

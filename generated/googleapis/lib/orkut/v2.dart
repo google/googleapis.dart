@@ -45,7 +45,7 @@ class OrkutApi {
   ScrapsResourceApi get scraps => new ScrapsResourceApi(_requester);
 
   OrkutApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/orkut/v2/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "orkut/v2/");
 }
 
 

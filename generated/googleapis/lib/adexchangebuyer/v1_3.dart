@@ -32,7 +32,7 @@ class AdexchangebuyerApi {
   PretargetingConfigResourceApi get pretargetingConfig => new PretargetingConfigResourceApi(_requester);
 
   AdexchangebuyerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/adexchangebuyer/v1.3/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "adexchangebuyer/v1.3/");
 }
 
 

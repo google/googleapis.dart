@@ -36,7 +36,7 @@ class MapsengineApi {
   TablesResourceApi get tables => new TablesResourceApi(_requester);
 
   MapsengineApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/mapsengine/v1/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "mapsengine/v1/");
 }
 
 
@@ -45,6 +45,7 @@ class AssetsResourceApi {
   final common_internal.ApiRequester _requester;
 
   AssetsParentsResourceApi get parents => new AssetsParentsResourceApi(_requester);
+  AssetsPermissionsResourceApi get permissions => new AssetsPermissionsResourceApi(_requester);
 
   AssetsResourceApi(common_internal.ApiRequester client) : 
       _requester = client;
@@ -281,10 +282,61 @@ class AssetsParentsResourceApi {
 
 
 /** Not documented yet. */
+class AssetsPermissionsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  AssetsPermissionsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Return all of the permissions for the specified asset.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset whose permissions will be listed.
+   *
+   * Completes with a [PermissionsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsListResponse> list(core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'assets/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
 class LayersResourceApi {
   final common_internal.ApiRequester _requester;
 
   LayersParentsResourceApi get parents => new LayersParentsResourceApi(_requester);
+  LayersPermissionsResourceApi get permissions => new LayersPermissionsResourceApi(_requester);
 
   LayersResourceApi(common_internal.ApiRequester client) : 
       _requester = client;
@@ -423,7 +475,10 @@ class LayersResourceApi {
    *
    * [id] - The ID of the layer.
    *
-   * [version] - null
+   * [version] - Deprecated: The version parameter indicates which version of
+   * the layer should be returned. When version is set to published, the
+   * published version of the layer will be returned. Please use the
+   * layers.getPublished endpoint instead.
    * Possible string values are:
    * - "draft" : The draft version.
    * - "published" : The published version.
@@ -927,8 +982,153 @@ class LayersParentsResourceApi {
 
 
 /** Not documented yet. */
+class LayersPermissionsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  LayersPermissionsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Remove permission entries from an already existing asset.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset from which permissions will be removed.
+   *
+   * Completes with a [PermissionsBatchDeleteResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsBatchDeleteResponse> batchDelete(PermissionsBatchDeleteRequest request, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'layers/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions/batchDelete';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsBatchDeleteResponse.fromJson(data));
+  }
+
+  /**
+   * Add or update permission entries to an already existing asset.
+   *
+   * An asset can hold up to 20 different permission entries. Each batchInsert
+   * request is atomic.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset to which permissions will be added.
+   *
+   * Completes with a [PermissionsBatchUpdateResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsBatchUpdateResponse> batchUpdate(PermissionsBatchUpdateRequest request, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'layers/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions/batchUpdate';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsBatchUpdateResponse.fromJson(data));
+  }
+
+  /**
+   * Return all of the permissions for the specified asset.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset whose permissions will be listed.
+   *
+   * Completes with a [PermissionsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsListResponse> list(core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'layers/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
 class MapsResourceApi {
   final common_internal.ApiRequester _requester;
+
+  MapsPermissionsResourceApi get permissions => new MapsPermissionsResourceApi(_requester);
 
   MapsResourceApi(common_internal.ApiRequester client) : 
       _requester = client;
@@ -1021,7 +1221,10 @@ class MapsResourceApi {
    *
    * [id] - The ID of the map.
    *
-   * [version] - null
+   * [version] - Deprecated: The version parameter indicates which version of
+   * the map should be returned. When version is set to published, the published
+   * version of the map will be returned. Please use the maps.getPublished
+   * endpoint instead.
    * Possible string values are:
    * - "draft" : The draft version.
    * - "published" : The published version.
@@ -1421,6 +1624,149 @@ class MapsResourceApi {
 
 
 /** Not documented yet. */
+class MapsPermissionsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  MapsPermissionsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Remove permission entries from an already existing asset.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset from which permissions will be removed.
+   *
+   * Completes with a [PermissionsBatchDeleteResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsBatchDeleteResponse> batchDelete(PermissionsBatchDeleteRequest request, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'maps/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions/batchDelete';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsBatchDeleteResponse.fromJson(data));
+  }
+
+  /**
+   * Add or update permission entries to an already existing asset.
+   *
+   * An asset can hold up to 20 different permission entries. Each batchInsert
+   * request is atomic.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset to which permissions will be added.
+   *
+   * Completes with a [PermissionsBatchUpdateResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsBatchUpdateResponse> batchUpdate(PermissionsBatchUpdateRequest request, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'maps/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions/batchUpdate';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsBatchUpdateResponse.fromJson(data));
+  }
+
+  /**
+   * Return all of the permissions for the specified asset.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset whose permissions will be listed.
+   *
+   * Completes with a [PermissionsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsListResponse> list(core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'maps/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
 class ProjectsResourceApi {
   final common_internal.ApiRequester _requester;
 
@@ -1653,6 +1999,7 @@ class RasterCollectionsResourceApi {
   final common_internal.ApiRequester _requester;
 
   RasterCollectionsParentsResourceApi get parents => new RasterCollectionsParentsResourceApi(_requester);
+  RasterCollectionsPermissionsResourceApi get permissions => new RasterCollectionsPermissionsResourceApi(_requester);
   RasterCollectionsRastersResourceApi get rasters => new RasterCollectionsRastersResourceApi(_requester);
 
   RasterCollectionsResourceApi(common_internal.ApiRequester client) : 
@@ -2100,6 +2447,149 @@ class RasterCollectionsParentsResourceApi {
 
 
 /** Not documented yet. */
+class RasterCollectionsPermissionsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  RasterCollectionsPermissionsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Remove permission entries from an already existing asset.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset from which permissions will be removed.
+   *
+   * Completes with a [PermissionsBatchDeleteResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsBatchDeleteResponse> batchDelete(PermissionsBatchDeleteRequest request, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'rasterCollections/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions/batchDelete';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsBatchDeleteResponse.fromJson(data));
+  }
+
+  /**
+   * Add or update permission entries to an already existing asset.
+   *
+   * An asset can hold up to 20 different permission entries. Each batchInsert
+   * request is atomic.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset to which permissions will be added.
+   *
+   * Completes with a [PermissionsBatchUpdateResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsBatchUpdateResponse> batchUpdate(PermissionsBatchUpdateRequest request, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'rasterCollections/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions/batchUpdate';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsBatchUpdateResponse.fromJson(data));
+  }
+
+  /**
+   * Return all of the permissions for the specified asset.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset whose permissions will be listed.
+   *
+   * Completes with a [PermissionsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsListResponse> list(core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'rasterCollections/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
 class RasterCollectionsRastersResourceApi {
   final common_internal.ApiRequester _requester;
 
@@ -2327,6 +2817,7 @@ class RastersResourceApi {
 
   RastersFilesResourceApi get files => new RastersFilesResourceApi(_requester);
   RastersParentsResourceApi get parents => new RastersParentsResourceApi(_requester);
+  RastersPermissionsResourceApi get permissions => new RastersPermissionsResourceApi(_requester);
 
   RastersResourceApi(common_internal.ApiRequester client) : 
       _requester = client;
@@ -2802,12 +3293,156 @@ class RastersParentsResourceApi {
 
 
 /** Not documented yet. */
+class RastersPermissionsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  RastersPermissionsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Remove permission entries from an already existing asset.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset from which permissions will be removed.
+   *
+   * Completes with a [PermissionsBatchDeleteResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsBatchDeleteResponse> batchDelete(PermissionsBatchDeleteRequest request, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'rasters/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions/batchDelete';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsBatchDeleteResponse.fromJson(data));
+  }
+
+  /**
+   * Add or update permission entries to an already existing asset.
+   *
+   * An asset can hold up to 20 different permission entries. Each batchInsert
+   * request is atomic.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset to which permissions will be added.
+   *
+   * Completes with a [PermissionsBatchUpdateResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsBatchUpdateResponse> batchUpdate(PermissionsBatchUpdateRequest request, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'rasters/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions/batchUpdate';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsBatchUpdateResponse.fromJson(data));
+  }
+
+  /**
+   * Return all of the permissions for the specified asset.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset whose permissions will be listed.
+   *
+   * Completes with a [PermissionsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsListResponse> list(core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'rasters/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
 class TablesResourceApi {
   final common_internal.ApiRequester _requester;
 
   TablesFeaturesResourceApi get features => new TablesFeaturesResourceApi(_requester);
   TablesFilesResourceApi get files => new TablesFilesResourceApi(_requester);
   TablesParentsResourceApi get parents => new TablesParentsResourceApi(_requester);
+  TablesPermissionsResourceApi get permissions => new TablesPermissionsResourceApi(_requester);
 
   TablesResourceApi(common_internal.ApiRequester client) : 
       _requester = client;
@@ -3666,6 +4301,149 @@ class TablesParentsResourceApi {
 }
 
 
+/** Not documented yet. */
+class TablesPermissionsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  TablesPermissionsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Remove permission entries from an already existing asset.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset from which permissions will be removed.
+   *
+   * Completes with a [PermissionsBatchDeleteResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsBatchDeleteResponse> batchDelete(PermissionsBatchDeleteRequest request, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions/batchDelete';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsBatchDeleteResponse.fromJson(data));
+  }
+
+  /**
+   * Add or update permission entries to an already existing asset.
+   *
+   * An asset can hold up to 20 different permission entries. Each batchInsert
+   * request is atomic.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset to which permissions will be added.
+   *
+   * Completes with a [PermissionsBatchUpdateResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsBatchUpdateResponse> batchUpdate(PermissionsBatchUpdateRequest request, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions/batchUpdate';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsBatchUpdateResponse.fromJson(data));
+  }
+
+  /**
+   * Return all of the permissions for the specified asset.
+   *
+   * Request parameters:
+   *
+   * [id] - The ID of the asset whose permissions will be listed.
+   *
+   * Completes with a [PermissionsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PermissionsListResponse> list(core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$id') + '/permissions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PermissionsListResponse.fromJson(data));
+  }
+
+}
+
+
 
 /** Acquisition time represents acquired time of a raster. */
 class AcquisitionTime {
@@ -3735,7 +4513,8 @@ class AcquisitionTime {
 class Asset {
   /**
    * A rectangular bounding box which contains all of the data in this asset.
-   * The numbers represent latitude and longitude in decimal degrees.
+   * The box is expressed as \"west, south, east, north\". The numbers represent
+   * latitude and longitude in decimal degrees.
    */
   core.List<core.double> bbox;
 
@@ -3744,6 +4523,12 @@ class Asset {
    * date-time value (for example, 1970-01-01T00:00:00Z).
    */
   core.DateTime creationTime;
+
+  /**
+   * The email address of the creator of this asset. This is only returned on
+   * GET requests and not LIST requests.
+   */
+  core.String creatorEmail;
 
   /** The asset's description. */
   core.String description;
@@ -3759,6 +4544,12 @@ class Asset {
    * date-time value (for example, 1970-01-01T00:00:00Z).
    */
   core.DateTime lastModifiedTime;
+
+  /**
+   * The email address of the last modifier of this asset. This is only returned
+   * on GET requests and not LIST requests.
+   */
+  core.String lastModifierEmail;
 
   /** The asset's name. */
   core.String name;
@@ -3790,6 +4581,9 @@ class Asset {
    */
   core.String type;
 
+  /** If true, WRITERs of the asset are able to edit the asset permissions. */
+  core.bool writersCanEditPermissions;
+
 
   Asset();
 
@@ -3799,6 +4593,9 @@ class Asset {
     }
     if (_json.containsKey("creationTime")) {
       creationTime = core.DateTime.parse(_json["creationTime"]);
+    }
+    if (_json.containsKey("creatorEmail")) {
+      creatorEmail = _json["creatorEmail"];
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -3811,6 +4608,9 @@ class Asset {
     }
     if (_json.containsKey("lastModifiedTime")) {
       lastModifiedTime = core.DateTime.parse(_json["lastModifiedTime"]);
+    }
+    if (_json.containsKey("lastModifierEmail")) {
+      lastModifierEmail = _json["lastModifierEmail"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -3827,6 +4627,9 @@ class Asset {
     if (_json.containsKey("type")) {
       type = _json["type"];
     }
+    if (_json.containsKey("writersCanEditPermissions")) {
+      writersCanEditPermissions = _json["writersCanEditPermissions"];
+    }
   }
 
   core.Map toJson() {
@@ -3836,6 +4639,9 @@ class Asset {
     }
     if (creationTime != null) {
       _json["creationTime"] = (creationTime).toIso8601String();
+    }
+    if (creatorEmail != null) {
+      _json["creatorEmail"] = creatorEmail;
     }
     if (description != null) {
       _json["description"] = description;
@@ -3848,6 +4654,9 @@ class Asset {
     }
     if (lastModifiedTime != null) {
       _json["lastModifiedTime"] = (lastModifiedTime).toIso8601String();
+    }
+    if (lastModifierEmail != null) {
+      _json["lastModifierEmail"] = lastModifierEmail;
     }
     if (name != null) {
       _json["name"] = name;
@@ -3863,6 +4672,9 @@ class Asset {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    if (writersCanEditPermissions != null) {
+      _json["writersCanEditPermissions"] = writersCanEditPermissions;
     }
     return _json;
   }
@@ -4222,7 +5034,7 @@ class FeaturesBatchInsertRequest {
   /**
    * If true, the server will normalize feature geometries. It is assumed that
    * the South Pole is exterior to any polygons given. See here for a list of
-   * normalizations. If false, the all feature geometries must be given already
+   * normalizations. If false, all feature geometries must be given already
    * normalized. The points in all LinearRings must be listed in
    * counter-clockwise order, and LinearRings may not intersect.
    */
@@ -4261,7 +5073,7 @@ class FeaturesBatchPatchRequest {
   /**
    * If true, the server will normalize feature geometries. It is assumed that
    * the South Pole is exterior to any polygons given. See here for a list of
-   * normalizations. If false, the all feature geometries must be given already
+   * normalizations. If false, all feature geometries must be given already
    * normalized. The points in all LinearRings must be listed in
    * counter-clockwise order, and LinearRings may not intersect.
    */
@@ -4707,11 +5519,11 @@ class GeoJsonPoint  extends GeoJsonGeometry {
 /** Not documented yet. */
 class GeoJsonPolygon  extends GeoJsonGeometry {
   /**
-   * An array of LinearRings, each of which is an array of four or more
-   * GeoJsonPositions. The first and last coordinates in each LinearRing must be
-   * the same. For polygons with multiple rings, the first LinearRing is the
-   * external ring, with subsequent rings being interior rings (i.e. hole). All
-   * LinearRings must contain GeoJsonPositions in counter-clockwise order.
+   * An array of LinearRings. A LinearRing is a GeoJsonLineString which is
+   * closed (that is, the first and last GeoJsonPositions are equal), and which
+   * contains at least four GeoJsonPositions. For polygons with multiple rings,
+   * the first LinearRing is the exterior ring, and any subsequent rings are
+   * interior rings (that is, holes).
    */
   core.List<core.List<GeoJsonPosition>> coordinates;
 
@@ -5082,7 +5894,8 @@ class LatLngBox
 class Layer {
   /**
    * A rectangular bounding box which contains all of the data in this Layer.
-   * The numbers represent latitude and longitude in decimal degrees.
+   * The box is expressed as \"west, south, east, north\". The numbers represent
+   * latitude and longitude in decimal degrees.
    */
   core.List<core.double> bbox;
 
@@ -5091,6 +5904,12 @@ class Layer {
    * date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime creationTime;
+
+  /**
+   * The email address of the creator of this layer. This is only returned on
+   * GET requests and not LIST requests.
+   */
+  core.String creatorEmail;
 
   /**
    * Deprecated: The type of the datasources used to build this Layer. Note:
@@ -5103,7 +5922,7 @@ class Layer {
   core.String datasourceType;
 
   /**
-   * An array of datasources used to build this Layer. If layerType is "image",
+   * An array of datasources used to build this layer. If layerType is "image",
    * or layerType is not specified and datasourceType is "image", then each
    * element in this array is a reference to an Image or RasterCollection. If
    * layerType is "vector", or layerType is not specified and datasourceType is
@@ -5117,17 +5936,13 @@ class Layer {
   /**
    * Deprecated: The name of an access list of the Map Editor type. The user on
    * whose behalf the request is being sent must be an editor on that access
-   * list. Note: Google Maps Engine no longer uses access lists. For backward
-   * compatibility, the API still accepts access lists for projects that are
-   * already using access lists. If you created a GME account/project after July
-   * 14th, 2014, you will not be able to send API requests that include access
-   * lists. The API does not yet support the new permissions model. When you
-   * create a map via the API without specifying permissions, the account that
-   * created the map is the owner and has effective administrator access. Users
-   * can then use the Maps Engine user interface to adjust the permissions. This
-   * is a temporary workaround until the API supports the new permissions model.
-   * Read Add new users and groups in the Google Maps Engine help center for
-   * more information.
+   * list. Note: Google Maps Engine no longer uses access lists. Instead, each
+   * asset has its own list of permissions. For backward compatibility, the API
+   * still accepts access lists for projects that are already using access
+   * lists. If you created a GME account/project after July 14th, 2014, you will
+   * not be able to send API requests that include access lists. Note: This is
+   * an input field only. It is not returned in response to a list or get
+   * request.
    */
   core.String draftAccessList;
 
@@ -5142,6 +5957,12 @@ class Layer {
    * date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime lastModifiedTime;
+
+  /**
+   * The email address of the last modifier of this layer. This is only returned
+   * on GET requests and not LIST requests.
+   */
+  core.String lastModifierEmail;
 
   /**
    * The type of the datasources used to build this Layer. This should be used
@@ -5173,8 +5994,13 @@ class Layer {
   /**
    * Deprecated: The access list to whom view permissions are granted. The value
    * must be the name of a Maps Engine access list of the Map Viewer type, and
-   * the user must be a viewer on that list. Read Share data, layers, and maps
-   * in the Google Maps Engine help center for more information.
+   * the user must be a viewer on that list. Note: Google Maps Engine no longer
+   * uses access lists. Instead, each asset has its own list of permissions. For
+   * backward compatibility, the API still accepts access lists for projects
+   * that are already using access lists. If you created a GME account/project
+   * after July 14th, 2014, you will not be able to send API requests that
+   * include access lists. Note: This is an input field only. It is not returned
+   * in response to a list or get request.
    */
   core.String publishedAccessList;
 
@@ -5186,11 +6012,19 @@ class Layer {
    */
   core.String publishingStatus;
 
-  /** The Styling information for a vector layer. */
+  /**
+   * The styling information for a vector layer. Note: Style information is
+   * returned in response to a get request but not a list request. After
+   * requesting a list of layers, you'll need to send a get request to retrieve
+   * the VectorStyles for each layer.
+   */
   VectorStyle style;
 
   /** Tags of this Layer. */
   Tags tags;
+
+  /** If true, WRITERs of the asset are able to edit the asset permissions. */
+  core.bool writersCanEditPermissions;
 
 
   Layer();
@@ -5201,6 +6035,9 @@ class Layer {
     }
     if (_json.containsKey("creationTime")) {
       creationTime = core.DateTime.parse(_json["creationTime"]);
+    }
+    if (_json.containsKey("creatorEmail")) {
+      creatorEmail = _json["creatorEmail"];
     }
     if (_json.containsKey("datasourceType")) {
       datasourceType = _json["datasourceType"];
@@ -5222,6 +6059,9 @@ class Layer {
     }
     if (_json.containsKey("lastModifiedTime")) {
       lastModifiedTime = core.DateTime.parse(_json["lastModifiedTime"]);
+    }
+    if (_json.containsKey("lastModifierEmail")) {
+      lastModifierEmail = _json["lastModifierEmail"];
     }
     if (_json.containsKey("layerType")) {
       layerType = _json["layerType"];
@@ -5247,6 +6087,9 @@ class Layer {
     if (_json.containsKey("tags")) {
       tags = new Tags.fromJson(_json["tags"]);
     }
+    if (_json.containsKey("writersCanEditPermissions")) {
+      writersCanEditPermissions = _json["writersCanEditPermissions"];
+    }
   }
 
   core.Map toJson() {
@@ -5256,6 +6099,9 @@ class Layer {
     }
     if (creationTime != null) {
       _json["creationTime"] = (creationTime).toIso8601String();
+    }
+    if (creatorEmail != null) {
+      _json["creatorEmail"] = creatorEmail;
     }
     if (datasourceType != null) {
       _json["datasourceType"] = datasourceType;
@@ -5277,6 +6123,9 @@ class Layer {
     }
     if (lastModifiedTime != null) {
       _json["lastModifiedTime"] = (lastModifiedTime).toIso8601String();
+    }
+    if (lastModifierEmail != null) {
+      _json["lastModifierEmail"] = lastModifierEmail;
     }
     if (layerType != null) {
       _json["layerType"] = layerType;
@@ -5302,12 +6151,20 @@ class Layer {
     if (tags != null) {
       _json["tags"] = tags;
     }
+    if (writersCanEditPermissions != null) {
+      _json["writersCanEditPermissions"] = writersCanEditPermissions;
+    }
     return _json;
   }
 }
 
 
-/** The response returned by a call to layers.List. */
+/**
+ * The response returned by a call to layers.List. Note: The list response does
+ * not include all the fields available in a layer. Refer to the layer resource
+ * description for details of the fields that are not included. You'll need to
+ * send a get request to retrieve the additional fields for each layer.
+ */
 class LayersListResponse {
   /** Resources returned. */
   core.List<Layer> layers;
@@ -5453,7 +6310,8 @@ class LineStyle {
 class Map {
   /**
    * A rectangular bounding box which contains all of the data in this Map. The
-   * numbers represent latitude and longitude in decimal degrees.
+   * box is expressed as \"west, south, east, north\". The numbers represent
+   * latitude and longitude in decimal degrees.
    */
   core.List<core.double> bbox;
 
@@ -5465,6 +6323,12 @@ class Map {
    * value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime creationTime;
+
+  /**
+   * The email address of the creator of this map. This is only returned on GET
+   * requests and not LIST requests.
+   */
+  core.String creatorEmail;
 
   /**
    * An array of four numbers (west, south, east, north) which defines the
@@ -5479,17 +6343,13 @@ class Map {
   /**
    * Deprecated: The name of an access list of the Map Editor type. The user on
    * whose behalf the request is being sent must be an editor on that access
-   * list. Note: Google Maps Engine no longer uses access lists. For backward
-   * compatibility, the API still accepts access lists for projects that are
-   * already using access lists. If you created a GME account/project after July
-   * 14th, 2014, you will not be able to send API requests that include access
-   * lists. The API does not yet support the new permissions model. When you
-   * create a map via the API without specifying permissions, the account that
-   * created the map is the owner and has effective administrator access. Users
-   * can then use the Maps Engine user interface to adjust the permissions. This
-   * is a temporary workaround until the API supports the new permissions model.
-   * Read Add new users and groups in the Google Maps Engine help center for
-   * more information.
+   * list. Note: Google Maps Engine no longer uses access lists. Instead, each
+   * asset has its own list of permissions. For backward compatibility, the API
+   * still accepts access lists for projects that are already using access
+   * lists. If you created a GME account/project after July 14th, 2014, you will
+   * not be able to send API requests that include access lists. Note: This is
+   * an input field only. It is not returned in response to a list or get
+   * request.
    */
   core.String draftAccessList;
 
@@ -5504,6 +6364,12 @@ class Map {
    * date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime lastModifiedTime;
+
+  /**
+   * The email address of the last modifier of this map. This is only returned
+   * on GET requests and not LIST requests.
+   */
+  core.String lastModifierEmail;
 
   /** The name of this Map, supplied by the author. */
   core.String name;
@@ -5526,8 +6392,13 @@ class Map {
   /**
    * Deprecated: The access list to whom view permissions are granted. The value
    * must be the name of a Maps Engine access list of the Map Viewer type, and
-   * the user must be a viewer on that list. Read Share data, layers, and maps
-   * in the Google Maps Engine help center for more information.
+   * the user must be a viewer on that list. Note: Google Maps Engine no longer
+   * uses access lists. Instead, each asset has its own list of permissions. For
+   * backward compatibility, the API still accepts access lists for projects
+   * that are already using access lists. If you created a GME account/project
+   * after July 14th, 2014, you will not be able to send API requests that
+   * include access lists. This is an input field only. It is not returned in
+   * response to a list or get request.
    */
   core.String publishedAccessList;
 
@@ -5549,6 +6420,9 @@ class Map {
    */
   core.List<core.String> versions;
 
+  /** If true, WRITERs of the asset are able to edit the asset permissions. */
+  core.bool writersCanEditPermissions;
+
 
   Map();
 
@@ -5561,6 +6435,9 @@ class Map {
     }
     if (_json.containsKey("creationTime")) {
       creationTime = core.DateTime.parse(_json["creationTime"]);
+    }
+    if (_json.containsKey("creatorEmail")) {
+      creatorEmail = _json["creatorEmail"];
     }
     if (_json.containsKey("defaultViewport")) {
       defaultViewport = new LatLngBox.fromJson(_json["defaultViewport"]);
@@ -5579,6 +6456,9 @@ class Map {
     }
     if (_json.containsKey("lastModifiedTime")) {
       lastModifiedTime = core.DateTime.parse(_json["lastModifiedTime"]);
+    }
+    if (_json.containsKey("lastModifierEmail")) {
+      lastModifierEmail = _json["lastModifierEmail"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -5601,6 +6481,9 @@ class Map {
     if (_json.containsKey("versions")) {
       versions = _json["versions"];
     }
+    if (_json.containsKey("writersCanEditPermissions")) {
+      writersCanEditPermissions = _json["writersCanEditPermissions"];
+    }
   }
 
   core.Map toJson() {
@@ -5613,6 +6496,9 @@ class Map {
     }
     if (creationTime != null) {
       _json["creationTime"] = (creationTime).toIso8601String();
+    }
+    if (creatorEmail != null) {
+      _json["creatorEmail"] = creatorEmail;
     }
     if (defaultViewport != null) {
       _json["defaultViewport"] = defaultViewport;
@@ -5631,6 +6517,9 @@ class Map {
     }
     if (lastModifiedTime != null) {
       _json["lastModifiedTime"] = (lastModifiedTime).toIso8601String();
+    }
+    if (lastModifierEmail != null) {
+      _json["lastModifierEmail"] = lastModifierEmail;
     }
     if (name != null) {
       _json["name"] = name;
@@ -5652,6 +6541,9 @@ class Map {
     }
     if (versions != null) {
       _json["versions"] = versions;
+    }
+    if (writersCanEditPermissions != null) {
+      _json["writersCanEditPermissions"] = writersCanEditPermissions;
     }
     return _json;
   }
@@ -6043,6 +6935,187 @@ class ParentsListResponse {
 }
 
 
+/**
+ * A permission defines the user or group that has access to an asset, and the
+ * type of access they have.
+ */
+class Permission {
+  /**
+   * Indicates whether a public asset is listed and can be found via a web
+   * search (value true), or is visible only to people who have a link to the
+   * asset (value false).
+   */
+  core.bool discoverable;
+
+  /**
+   * The unique identifier of the permission. This could be the email address of
+   * the user or group this permission refers to, or the string "anyone" for
+   * public permissions.
+   */
+  core.String id;
+
+  /**
+   * The type of access granted to this user or group.
+   * Possible string values are:
+   * - "owner"
+   * - "reader"
+   * - "viewer"
+   * - "writer"
+   */
+  core.String role;
+
+  /**
+   * The account type.
+   * Possible string values are:
+   * - "anyone"
+   * - "group"
+   * - "user"
+   */
+  core.String type;
+
+
+  Permission();
+
+  Permission.fromJson(core.Map _json) {
+    if (_json.containsKey("discoverable")) {
+      discoverable = _json["discoverable"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (discoverable != null) {
+      _json["discoverable"] = discoverable;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (role != null) {
+      _json["role"] = role;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+
+/** The request sent to mapsengine.permissions.batchDelete. */
+class PermissionsBatchDeleteRequest {
+  /**
+   * An array of permission ids to be removed. This could be the email address
+   * of the user or group this permission refers to, or the string "anyone" for
+   * public permissions.
+   */
+  core.List<core.String> ids;
+
+
+  PermissionsBatchDeleteRequest();
+
+  PermissionsBatchDeleteRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("ids")) {
+      ids = _json["ids"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (ids != null) {
+      _json["ids"] = ids;
+    }
+    return _json;
+  }
+}
+
+
+/** The response returned by a call to mapsengine.permissions.batchDelete. */
+class PermissionsBatchDeleteResponse {
+
+  PermissionsBatchDeleteResponse();
+
+  PermissionsBatchDeleteResponse.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
+
+/** The request sent to mapsengine.permissions.batchUpdate. */
+class PermissionsBatchUpdateRequest {
+  /** The permissions to be inserted or updated. */
+  core.List<Permission> permissions;
+
+
+  PermissionsBatchUpdateRequest();
+
+  PermissionsBatchUpdateRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"].map((value) => new Permission.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (permissions != null) {
+      _json["permissions"] = permissions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** The response returned by a call to mapsengine.permissions.batchUpdate. */
+class PermissionsBatchUpdateResponse {
+
+  PermissionsBatchUpdateResponse();
+
+  PermissionsBatchUpdateResponse.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class PermissionsListResponse {
+  /** The set of permissions associated with this asset. */
+  core.List<Permission> permissions;
+
+
+  PermissionsListResponse();
+
+  PermissionsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"].map((value) => new Permission.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (permissions != null) {
+      _json["permissions"] = permissions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
 /** Style for points. */
 class PointStyle {
   /**
@@ -6207,9 +7280,6 @@ class PublishedLayer {
   /** The description of this Layer, supplied by the author. */
   core.String description;
 
-  /** The ETag, used to refer to the current version of the asset. */
-  core.String etag;
-
   /** A globally unique ID, used to refer to this Layer. */
   core.String id;
 
@@ -6236,9 +7306,6 @@ class PublishedLayer {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
-    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -6257,9 +7324,6 @@ class PublishedLayer {
     var _json = new core.Map();
     if (description != null) {
       _json["description"] = description;
-    }
-    if (etag != null) {
-      _json["etag"] = etag;
     }
     if (id != null) {
       _json["id"] = id;
@@ -6334,9 +7398,6 @@ class PublishedMap {
   /** The description of this Map, supplied by the author. */
   core.String description;
 
-  /** The ETag, used to refer to the current version of the asset. */
-  core.String etag;
-
   /** A globally unique ID, used to refer to this Map. */
   core.String id;
 
@@ -6359,9 +7420,6 @@ class PublishedMap {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
-    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -6383,9 +7441,6 @@ class PublishedMap {
     }
     if (description != null) {
       _json["description"] = description;
-    }
-    if (etag != null) {
-      _json["etag"] = etag;
     }
     if (id != null) {
       _json["id"] = id;
@@ -6452,7 +7507,8 @@ class Raster {
 
   /**
    * A rectangular bounding box which contains all of the data in this Raster.
-   * The numbers represent latitude and longitude in decimal degrees.
+   * The box is expressed as \"west, south, east, north\". The numbers represent
+   * latitudes and longitudes in decimal degrees.
    */
   core.List<core.double> bbox;
 
@@ -6462,23 +7518,25 @@ class Raster {
    */
   core.DateTime creationTime;
 
+  /**
+   * The email address of the creator of this raster. This is only returned on
+   * GET requests and not LIST requests.
+   */
+  core.String creatorEmail;
+
   /** The description of this Raster, supplied by the author. */
   core.String description;
 
   /**
    * Deprecated: The name of an access list of the Map Editor type. The user on
    * whose behalf the request is being sent must be an editor on that access
-   * list. Note: Google Maps Engine no longer uses access lists. For backward
-   * compatibility, the API still accepts access lists for projects that are
-   * already using access lists. If you created a GME account/project after July
-   * 14th, 2014, you will not be able to send API requests that include access
-   * lists. The API does not yet support the new permissions model. When you
-   * create a map via the API without specifying permissions, the account that
-   * created the map is the owner and has effective administrator access. Users
-   * can then use the Maps Engine user interface to adjust the permissions. This
-   * is a temporary workaround until the API supports the new permissions model.
-   * Read Add new users and groups in the Google Maps Engine help center for
-   * more information.
+   * list. Note: Google Maps Engine no longer uses access lists. Instead, each
+   * asset has its own list of permissions. For backward compatibility, the API
+   * still accepts access lists for projects that are already using access
+   * lists. If you created a GME account/project after July 14th, 2014, you will
+   * not be able to send API requests that include access lists. Note: This is
+   * an input field only. It is not returned in response to a list or get
+   * request.
    */
   core.String draftAccessList;
 
@@ -6496,6 +7554,12 @@ class Raster {
    * date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime lastModifiedTime;
+
+  /**
+   * The email address of the last modifier of this raster. This is only
+   * returned on GET requests and not LIST requests.
+   */
+  core.String lastModifierEmail;
 
   /** The mask processing type of this Raster. */
   core.String maskType;
@@ -6527,6 +7591,9 @@ class Raster {
   /** Tags of this Raster. */
   Tags tags;
 
+  /** If true, WRITERs of the asset are able to edit the asset permissions. */
+  core.bool writersCanEditPermissions;
+
 
   Raster();
 
@@ -6542,6 +7609,9 @@ class Raster {
     }
     if (_json.containsKey("creationTime")) {
       creationTime = core.DateTime.parse(_json["creationTime"]);
+    }
+    if (_json.containsKey("creatorEmail")) {
+      creatorEmail = _json["creatorEmail"];
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -6561,6 +7631,9 @@ class Raster {
     if (_json.containsKey("lastModifiedTime")) {
       lastModifiedTime = core.DateTime.parse(_json["lastModifiedTime"]);
     }
+    if (_json.containsKey("lastModifierEmail")) {
+      lastModifierEmail = _json["lastModifierEmail"];
+    }
     if (_json.containsKey("maskType")) {
       maskType = _json["maskType"];
     }
@@ -6579,6 +7652,9 @@ class Raster {
     if (_json.containsKey("tags")) {
       tags = new Tags.fromJson(_json["tags"]);
     }
+    if (_json.containsKey("writersCanEditPermissions")) {
+      writersCanEditPermissions = _json["writersCanEditPermissions"];
+    }
   }
 
   core.Map toJson() {
@@ -6594,6 +7670,9 @@ class Raster {
     }
     if (creationTime != null) {
       _json["creationTime"] = (creationTime).toIso8601String();
+    }
+    if (creatorEmail != null) {
+      _json["creatorEmail"] = creatorEmail;
     }
     if (description != null) {
       _json["description"] = description;
@@ -6613,6 +7692,9 @@ class Raster {
     if (lastModifiedTime != null) {
       _json["lastModifiedTime"] = (lastModifiedTime).toIso8601String();
     }
+    if (lastModifierEmail != null) {
+      _json["lastModifierEmail"] = lastModifierEmail;
+    }
     if (maskType != null) {
       _json["maskType"] = maskType;
     }
@@ -6631,6 +7713,9 @@ class Raster {
     if (tags != null) {
       _json["tags"] = tags;
     }
+    if (writersCanEditPermissions != null) {
+      _json["writersCanEditPermissions"] = writersCanEditPermissions;
+    }
     return _json;
   }
 }
@@ -6641,13 +7726,18 @@ class Raster {
  * Layer.
  */
 class RasterCollection {
-  /** The name of the attribution to be used for this RasterCollection. */
+  /**
+   * The name of the attribution to be used for this RasterCollection. Note:
+   * Attribution is returned in response to a get request but not a list
+   * request. After requesting a list of raster collections, you'll need to send
+   * a get request to retrieve the attribution for each raster collection.
+   */
   core.String attribution;
 
   /**
    * A rectangular bounding box which contains all of the data in this
-   * RasterCollection. The numbers represent latitude and longitude in decimal
-   * degrees.
+   * RasterCollection. The box is expressed as \"west, south, east, north\". The
+   * numbers represent latitude and longitude in decimal degrees.
    */
   core.List<core.double> bbox;
 
@@ -6657,23 +7747,25 @@ class RasterCollection {
    */
   core.DateTime creationTime;
 
+  /**
+   * The email address of the creator of this raster collection. This is only
+   * returned on GET requests and not LIST requests.
+   */
+  core.String creatorEmail;
+
   /** The description of this RasterCollection, supplied by the author. */
   core.String description;
 
   /**
    * Deprecated: The name of an access list of the Map Editor type. The user on
    * whose behalf the request is being sent must be an editor on that access
-   * list. Note: Google Maps Engine no longer uses access lists. For backward
-   * compatibility, the API still accepts access lists for projects that are
-   * already using access lists. If you created a GME account/project after July
-   * 14th, 2014, you will not be able to send API requests that include access
-   * lists. The API does not yet support the new permissions model. When you
-   * create a map via the API without specifying permissions, the account that
-   * created the map is the owner and has effective administrator access. Users
-   * can then use the Maps Engine user interface to adjust the permissions. This
-   * is a temporary workaround until the API supports the new permissions model.
-   * Read Add new users and groups in the Google Maps Engine help center for
-   * more information.
+   * list. Note: Google Maps Engine no longer uses access lists. Instead, each
+   * asset has its own list of permissions. For backward compatibility, the API
+   * still accepts access lists for projects that are already using access
+   * lists. If you created a GME account/project after July 14th, 2014, you will
+   * not be able to send API requests that include access lists. Note: This is
+   * an input field only. It is not returned in response to a list or get
+   * request.
    */
   core.String draftAccessList;
 
@@ -6688,6 +7780,12 @@ class RasterCollection {
    * formatted date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime lastModifiedTime;
+
+  /**
+   * The email address of the last modifier of this raster collection. This is
+   * only returned on GET requests and not LIST requests.
+   */
+  core.String lastModifierEmail;
 
   /** True if this RasterCollection is a mosaic. */
   core.bool mosaic;
@@ -6719,6 +7817,9 @@ class RasterCollection {
   /** Tags of this RasterCollection. */
   Tags tags;
 
+  /** If true, WRITERs of the asset are able to edit the asset permissions. */
+  core.bool writersCanEditPermissions;
+
 
   RasterCollection();
 
@@ -6731,6 +7832,9 @@ class RasterCollection {
     }
     if (_json.containsKey("creationTime")) {
       creationTime = core.DateTime.parse(_json["creationTime"]);
+    }
+    if (_json.containsKey("creatorEmail")) {
+      creatorEmail = _json["creatorEmail"];
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -6746,6 +7850,9 @@ class RasterCollection {
     }
     if (_json.containsKey("lastModifiedTime")) {
       lastModifiedTime = core.DateTime.parse(_json["lastModifiedTime"]);
+    }
+    if (_json.containsKey("lastModifierEmail")) {
+      lastModifierEmail = _json["lastModifierEmail"];
     }
     if (_json.containsKey("mosaic")) {
       mosaic = _json["mosaic"];
@@ -6765,6 +7872,9 @@ class RasterCollection {
     if (_json.containsKey("tags")) {
       tags = new Tags.fromJson(_json["tags"]);
     }
+    if (_json.containsKey("writersCanEditPermissions")) {
+      writersCanEditPermissions = _json["writersCanEditPermissions"];
+    }
   }
 
   core.Map toJson() {
@@ -6777,6 +7887,9 @@ class RasterCollection {
     }
     if (creationTime != null) {
       _json["creationTime"] = (creationTime).toIso8601String();
+    }
+    if (creatorEmail != null) {
+      _json["creatorEmail"] = creatorEmail;
     }
     if (description != null) {
       _json["description"] = description;
@@ -6792,6 +7905,9 @@ class RasterCollection {
     }
     if (lastModifiedTime != null) {
       _json["lastModifiedTime"] = (lastModifiedTime).toIso8601String();
+    }
+    if (lastModifierEmail != null) {
+      _json["lastModifierEmail"] = lastModifierEmail;
     }
     if (mosaic != null) {
       _json["mosaic"] = mosaic;
@@ -6811,12 +7927,21 @@ class RasterCollection {
     if (tags != null) {
       _json["tags"] = tags;
     }
+    if (writersCanEditPermissions != null) {
+      _json["writersCanEditPermissions"] = writersCanEditPermissions;
+    }
     return _json;
   }
 }
 
 
-/** The response returned by a call to raster_collections.List. */
+/**
+ * The response returned by a call to raster_collections.List. Note: The list
+ * response does not include all the fields available in a raster collection.
+ * Refer to the RasterCollection resource description for details of the fields
+ * that are not included. You'll need to send a get request to retrieve the
+ * additional fields for each raster collection.
+ */
 class RasterCollectionsListResponse {
   /** Next page token. */
   core.String nextPageToken;
@@ -6861,7 +7986,8 @@ class RasterCollectionsListResponse {
 class RasterCollectionsRaster {
   /**
    * A rectangular bounding box which contains all of the data in this Raster.
-   * The numbers represent latitude and longitude in decimal degrees.
+   * The box is expressed as \"west, south, east, north\". The numbers represent
+   * latitudes and longitudes in decimal degrees.
    */
   core.List<core.double> bbox;
 
@@ -7316,8 +8442,9 @@ class SizeRange {
 /** A collection of geographic features, and associated metadata. */
 class Table {
   /**
-   * A rectangular bounding box which contains all of the data in this table.
-   * The numbers represent latitude and longitude in decimal degrees.
+   * A rectangular bounding box which contains all of the data in this Table.
+   * The box is expressed as \"west, south, east, north\". The numbers represent
+   * latitude and longitude in decimal degrees.
    */
   core.List<core.double> bbox;
 
@@ -7327,23 +8454,25 @@ class Table {
    */
   core.DateTime creationTime;
 
+  /**
+   * The email address of the creator of this table. This is only returned on
+   * GET requests and not LIST requests.
+   */
+  core.String creatorEmail;
+
   /** The description of this table, supplied by the author. */
   core.String description;
 
   /**
    * Deprecated: The name of an access list of the Map Editor type. The user on
    * whose behalf the request is being sent must be an editor on that access
-   * list. Note: Google Maps Engine no longer uses access lists. For backward
-   * compatibility, the API still accepts access lists for projects that are
-   * already using access lists. If you created a GME account/project after July
-   * 14th, 2014, you will not be able to send API requests that include access
-   * lists. The API does not yet support the new permissions model. When you
-   * create a map via the API without specifying permissions, the account that
-   * created the map is the owner and has effective administrator access. Users
-   * can then use the Maps Engine user interface to adjust the permissions. This
-   * is a temporary workaround until the API supports the new permissions model.
-   * Read Add new users and groups in the Google Maps Engine help center for
-   * more information.
+   * list. Note: Google Maps Engine no longer uses access lists. Instead, each
+   * asset has its own list of permissions. For backward compatibility, the API
+   * still accepts access lists for projects that are already using access
+   * lists. If you created a GME account/project after July 14th, 2014, you will
+   * not be able to send API requests that include access lists. Note: This is
+   * an input field only. It is not returned in response to a list or get
+   * request.
    */
   core.String draftAccessList;
 
@@ -7361,6 +8490,12 @@ class Table {
    * date-time value (e.g. 1970-01-01T00:00:00Z).
    */
   core.DateTime lastModifiedTime;
+
+  /**
+   * The email address of the last modifier of this table. This is only returned
+   * on GET requests and not LIST requests.
+   */
+  core.String lastModifierEmail;
 
   /** The name of this table, supplied by the author. */
   core.String name;
@@ -7382,12 +8517,21 @@ class Table {
   /**
    * Deprecated: The access list to whom view permissions are granted. The value
    * must be the name of a Maps Engine access list of the Map Viewer type, and
-   * the user must be a viewer on that list. Read Share data, layers, and maps
-   * in the Google Maps Engine help center for more information.
+   * the user must be a viewer on that list. Note: Google Maps Engine no longer
+   * uses access lists. Instead, each asset has its own list of permissions. For
+   * backward compatibility, the API still accepts access lists for projects
+   * that are already using access lists. If you created a GME account/project
+   * after July 14th, 2014, you will not be able to send API requests that
+   * include access lists. Note: This is an input field only. It is not returned
+   * in response to a list or get request.
    */
   core.String publishedAccessList;
 
-  /** The schema for this table. */
+  /**
+   * The schema for this table. Note: The schema is returned in response to a
+   * get request but not a list request. After requesting a list of tables,
+   * you'll need to send a get request to retrieve the schema for each table.
+   */
   Schema schema;
 
   /**
@@ -7403,6 +8547,9 @@ class Table {
    */
   Tags tags;
 
+  /** If true, WRITERs of the asset are able to edit the asset permissions. */
+  core.bool writersCanEditPermissions;
+
 
   Table();
 
@@ -7412,6 +8559,9 @@ class Table {
     }
     if (_json.containsKey("creationTime")) {
       creationTime = core.DateTime.parse(_json["creationTime"]);
+    }
+    if (_json.containsKey("creatorEmail")) {
+      creatorEmail = _json["creatorEmail"];
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -7430,6 +8580,9 @@ class Table {
     }
     if (_json.containsKey("lastModifiedTime")) {
       lastModifiedTime = core.DateTime.parse(_json["lastModifiedTime"]);
+    }
+    if (_json.containsKey("lastModifierEmail")) {
+      lastModifierEmail = _json["lastModifierEmail"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -7452,6 +8605,9 @@ class Table {
     if (_json.containsKey("tags")) {
       tags = new Tags.fromJson(_json["tags"]);
     }
+    if (_json.containsKey("writersCanEditPermissions")) {
+      writersCanEditPermissions = _json["writersCanEditPermissions"];
+    }
   }
 
   core.Map toJson() {
@@ -7461,6 +8617,9 @@ class Table {
     }
     if (creationTime != null) {
       _json["creationTime"] = (creationTime).toIso8601String();
+    }
+    if (creatorEmail != null) {
+      _json["creatorEmail"] = creatorEmail;
     }
     if (description != null) {
       _json["description"] = description;
@@ -7479,6 +8638,9 @@ class Table {
     }
     if (lastModifiedTime != null) {
       _json["lastModifiedTime"] = (lastModifiedTime).toIso8601String();
+    }
+    if (lastModifierEmail != null) {
+      _json["lastModifierEmail"] = lastModifierEmail;
     }
     if (name != null) {
       _json["name"] = name;
@@ -7500,6 +8662,9 @@ class Table {
     }
     if (tags != null) {
       _json["tags"] = tags;
+    }
+    if (writersCanEditPermissions != null) {
+      _json["writersCanEditPermissions"] = writersCanEditPermissions;
     }
     return _json;
   }
@@ -7550,7 +8715,12 @@ class TableColumn {
 }
 
 
-/** The response returned by a call to tables.List. */
+/**
+ * The response returned by a call to tables.List. Note: The list response does
+ * not include all the fields available in a table. Refer to the table resource
+ * description for details of the fields that are not included. You'll need to
+ * send a get request to retrieve the additional fields for each table.
+ */
 class TablesListResponse {
   /** Next page token. */
   core.String nextPageToken;

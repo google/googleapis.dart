@@ -32,7 +32,7 @@ class SqladminApi {
   TiersResourceApi get tiers => new TiersResourceApi(_requester);
 
   SqladminApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "/sql/v1beta3/");
+      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "sql/v1beta3/");
 }
 
 

@@ -32,7 +32,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/9I9Zl6d27F88N6e-Q2Opsw4M-bY\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/-2NkK8k7_hT4MS2pNsIOEUlM2A0\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -2429,7 +2429,7 @@
             }
         }
     },
-    "revision": "20140902",
+    "revision": "20140916",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -3578,6 +3578,27 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "videoMediaMetadata": {
+                    "description": "Metadata about video media. This will only be present for video types.",
+                    "properties": {
+                        "durationMillis": {
+                            "description": "The duration of the video in milliseconds.",
+                            "format": "int64",
+                            "type": "string"
+                        },
+                        "height": {
+                            "description": "The height of the video in pixels.",
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "width": {
+                            "description": "The width of the video in pixels.",
+                            "format": "int32",
+                            "type": "integer"
+                        }
+                    },
+                    "type": "object"
+                },
                 "webContentLink": {
                     "description": "A link for downloading the content of the file in a browser using cookie based authentication. In cases where the content is shared publicly, the content can be downloaded without any credentials.",
                     "type": "string"
@@ -3708,7 +3729,7 @@
                     "type": "string"
                 },
                 "emailAddress": {
-                    "description": "The email address of the user this permission refers to. This is an output-only field which is present when the permission type is user and the given user's Google+ profile privacy settings allow exposing their email address.",
+                    "description": "The email address of the user this permission refers to. This is an output-only field which is present when the permission type is user.",
                     "type": "string"
                 },
                 "etag": {
