@@ -1,8 +1,8 @@
 packages:
 - googleapis:
-    version: 0.1.1
+    version: 0.2.0
     author: Dart Team <misc@dartlang.org>
-    homepage: http://www.dartlang.org
+    homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
     license: resources/LICENSE
     changelog: resources/googleapis/CHANGELOG.md
@@ -62,9 +62,9 @@ packages:
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
-    version: 0.1.1
+    version: 0.2.0
     author: Dart Team <misc@dartlang.org>
-    homepage: http://www.dartlang.org
+    homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
     license: resources/LICENSE
     changelog: resources/googleapis_beta/CHANGELOG.md
