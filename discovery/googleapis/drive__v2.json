@@ -32,7 +32,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/-2NkK8k7_hT4MS2pNsIOEUlM2A0\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/y7eWP2ztQoapytMeEl_x5nhF6LI\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -2429,7 +2429,7 @@
             }
         }
     },
-    "revision": "20140916",
+    "revision": "20140923",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {

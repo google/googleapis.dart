@@ -27,10 +27,10 @@
     "description": "Programmatic access to YouTube features.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/3kbeo8dbfJy5lT2_hpLO-AsyQJ0\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/zEREGG39JVAwsC_sGxbLLJMqhV0\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/youtube-16.png",
-        "x32": "http://www.google.com/images/icons/product/youtube-32.png"
+        "x16": "https://www.google.com/images/icons/product/youtube-16.png",
+        "x32": "https://www.google.com/images/icons/product/youtube-32.png"
     },
     "id": "youtube:v3",
     "kind": "discovery#restDescription",
@@ -2315,7 +2315,7 @@
             }
         }
     },
-    "revision": "20140905",
+    "revision": "20140923",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -3333,6 +3333,22 @@
                 "isLinked": {
                     "description": "If true, then the user is linked to either a YouTube username or G+ account. Otherwise, the user doesn't have a public YouTube identity.",
                     "type": "boolean"
+                },
+                "longUploadsStatus": {
+                    "description": "The long uploads status of this channel. See",
+                    "enum": [
+                        "allowed",
+                        "disallowed",
+                        "eligible",
+                        "longUploadsUnspecified"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 },
                 "privacyStatus": {
                     "description": "Privacy status of the channel.",
@@ -5104,6 +5120,10 @@
                 "position": {
                     "$ref": "InvideoPosition",
                     "description": "The spatial position within the video where the promoted item will be displayed."
+                },
+                "useSmartTiming": {
+                    "description": "Indicates whether the channel's promotional campaign uses \"smart timing.\" This feature attempts to show promotions at a point in the video when they are more likely to be clicked and less likely to disrupt the viewing experience. This feature also picks up a single promotion to show on each video.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -5479,6 +5499,10 @@
                 "closedCaptionsIngestionUrl": {
                     "description": "The ingestion URL where the closed captions of this stream are sent.",
                     "type": "string"
+                },
+                "isReusable": {
+                    "description": "Indicates whether the stream is reusable, which means that it can be bound to multiple broadcasts. It is common for broadcasters to reuse the same stream for many different broadcasts if those broadcasts occur at different times.\n\nIf you set this value to false, then the stream will not be reusable, which means that it can only be bound to one broadcast. Non-reusable streams differ from reusable streams in the following ways:  \n- A non-reusable stream can only be bound to one broadcast. \n- A non-reusable stream might be deleted by an automated process after the broadcast ends. \n- The  liveStreams.list method does not list non-reusable streams if you call the method and set the mine parameter to true. The only way to use that method to retrieve the resource for a non-reusable stream is to use the id parameter to identify the stream.",
+                    "type": "boolean"
                 }
             },
             "type": "object"

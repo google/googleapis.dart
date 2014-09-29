@@ -16,14 +16,14 @@ import 'package:googleapis/gamesmanagement/v1management.dart' as api;
 
 
 
-buildUnnamed456() {
+buildUnnamed75() {
   var o = new core.List<api.AchievementResetResponse>();
   o.add(buildAchievementResetResponse());
   o.add(buildAchievementResetResponse());
   return o;
 }
 
-checkUnnamed456(core.List<api.AchievementResetResponse> o) {
+checkUnnamed75(core.List<api.AchievementResetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementResetResponse(o[0]);
   checkAchievementResetResponse(o[1]);
@@ -35,7 +35,7 @@ buildAchievementResetAllResponse() {
   buildCounterAchievementResetAllResponse++;
   if (buildCounterAchievementResetAllResponse < 3) {
     o.kind = "foo";
-    o.results = buildUnnamed456();
+    o.results = buildUnnamed75();
   }
   buildCounterAchievementResetAllResponse--;
   return o;
@@ -45,7 +45,7 @@ checkAchievementResetAllResponse(api.AchievementResetAllResponse o) {
   buildCounterAchievementResetAllResponse++;
   if (buildCounterAchievementResetAllResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed456(o.results);
+    checkUnnamed75(o.results);
   }
   buildCounterAchievementResetAllResponse--;
 }
@@ -167,14 +167,14 @@ checkHiddenPlayer(api.HiddenPlayer o) {
   buildCounterHiddenPlayer--;
 }
 
-buildUnnamed457() {
+buildUnnamed76() {
   var o = new core.List<api.HiddenPlayer>();
   o.add(buildHiddenPlayer());
   o.add(buildHiddenPlayer());
   return o;
 }
 
-checkUnnamed457(core.List<api.HiddenPlayer> o) {
+checkUnnamed76(core.List<api.HiddenPlayer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHiddenPlayer(o[0]);
   checkHiddenPlayer(o[1]);
@@ -185,7 +185,7 @@ buildHiddenPlayerList() {
   var o = new api.HiddenPlayerList();
   buildCounterHiddenPlayerList++;
   if (buildCounterHiddenPlayerList < 3) {
-    o.items = buildUnnamed457();
+    o.items = buildUnnamed76();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -196,7 +196,7 @@ buildHiddenPlayerList() {
 checkHiddenPlayerList(api.HiddenPlayerList o) {
   buildCounterHiddenPlayerList++;
   if (buildCounterHiddenPlayerList < 3) {
-    checkUnnamed457(o.items);
+    checkUnnamed76(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -257,14 +257,14 @@ checkPlayer(api.Player o) {
   buildCounterPlayer--;
 }
 
-buildUnnamed458() {
+buildUnnamed77() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed458(core.List<core.String> o) {
+checkUnnamed77(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -276,7 +276,7 @@ buildPlayerScoreResetResponse() {
   buildCounterPlayerScoreResetResponse++;
   if (buildCounterPlayerScoreResetResponse < 3) {
     o.kind = "foo";
-    o.resetScoreTimeSpans = buildUnnamed458();
+    o.resetScoreTimeSpans = buildUnnamed77();
   }
   buildCounterPlayerScoreResetResponse--;
   return o;
@@ -286,7 +286,7 @@ checkPlayerScoreResetResponse(api.PlayerScoreResetResponse o) {
   buildCounterPlayerScoreResetResponse++;
   if (buildCounterPlayerScoreResetResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed458(o.resetScoreTimeSpans);
+    checkUnnamed77(o.resetScoreTimeSpans);
   }
   buildCounterPlayerScoreResetResponse--;
 }

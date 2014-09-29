@@ -1511,6 +1511,8 @@ class VariantsResourceApi {
 
   /**
    * Creates variant data by asynchronously importing the provided information.
+   * If the destination variant set already contains data, new variants will be
+   * merged according to the behavior of mergeVariants.
    *
    * [request] - The metadata request object.
    *
@@ -1723,6 +1725,57 @@ class VariantsetsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new VariantSet.fromJson(data));
+  }
+
+  /**
+   * Merges the given variants with existing variants. Each variant will be
+   * merged with an existing variant that matches its reference sequence, start,
+   * end, reference bases, and alternative bases. If no such variant exists, a
+   * new one will be created.
+   *
+   * When variants are merged, the call information from the new variant is
+   * added to the existing variant, and other fields (such as key/value pairs)
+   * are discarded.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [variantSetId] - The destination variant set.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future mergeVariants(Variant request, core.String variantSetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (variantSetId == null) {
+      throw new core.ArgumentError("Parameter variantSetId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'variantsets/' + common_internal.Escaper.ecapeVariable('$variantSetId') + '/mergeVariants';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
   }
 
   /**
@@ -2053,7 +2106,7 @@ class Dataset {
 }
 
 
-/** The job creation request. */
+/** The job creation request. Next ID: 12 */
 class ExperimentalCreateJobRequest {
   /**
    * Specifies whether or not to run the alignment pipeline. At least one of
@@ -2075,6 +2128,9 @@ class ExperimentalCreateJobRequest {
    */
   core.String gcsOutputPath;
 
+  /** For alignment from FASTQ files, this specifies the library name. */
+  core.String libraryName;
+
   /**
    * A list of Google Cloud Storage URIs of paired end .fastq files to operate
    * upon. If specified, this represents the second file of each paired .fastq
@@ -2082,10 +2138,22 @@ class ExperimentalCreateJobRequest {
    */
   core.List<core.String> pairedSourceUris;
 
+  /** For alignment from FASTQ files, this specifies the platform name. */
+  core.String platformName;
+
+  /** For alignment from FASTQ files, this specifies the platform unit. */
+  core.String platformUnit;
+
   /**
    * Required. The Google Cloud Project ID with which to associate the request.
    */
   core.String projectId;
+
+  /** For alignment from FASTQ files, this specifies the read group ID. */
+  core.String readGroupId;
+
+  /** For alignment from FASTQ files, this specifies the sample name. */
+  core.String sampleName;
 
   /**
    * A list of Google Cloud Storage URIs of data files to operate upon. These
@@ -2108,11 +2176,26 @@ class ExperimentalCreateJobRequest {
     if (_json.containsKey("gcsOutputPath")) {
       gcsOutputPath = _json["gcsOutputPath"];
     }
+    if (_json.containsKey("libraryName")) {
+      libraryName = _json["libraryName"];
+    }
     if (_json.containsKey("pairedSourceUris")) {
       pairedSourceUris = _json["pairedSourceUris"];
     }
+    if (_json.containsKey("platformName")) {
+      platformName = _json["platformName"];
+    }
+    if (_json.containsKey("platformUnit")) {
+      platformUnit = _json["platformUnit"];
+    }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
+    }
+    if (_json.containsKey("readGroupId")) {
+      readGroupId = _json["readGroupId"];
+    }
+    if (_json.containsKey("sampleName")) {
+      sampleName = _json["sampleName"];
     }
     if (_json.containsKey("sourceUris")) {
       sourceUris = _json["sourceUris"];
@@ -2130,11 +2213,26 @@ class ExperimentalCreateJobRequest {
     if (gcsOutputPath != null) {
       _json["gcsOutputPath"] = gcsOutputPath;
     }
+    if (libraryName != null) {
+      _json["libraryName"] = libraryName;
+    }
     if (pairedSourceUris != null) {
       _json["pairedSourceUris"] = pairedSourceUris;
     }
+    if (platformName != null) {
+      _json["platformName"] = platformName;
+    }
+    if (platformUnit != null) {
+      _json["platformUnit"] = platformUnit;
+    }
     if (projectId != null) {
       _json["projectId"] = projectId;
+    }
+    if (readGroupId != null) {
+      _json["readGroupId"] = readGroupId;
+    }
+    if (sampleName != null) {
+      _json["sampleName"] = sampleName;
     }
     if (sourceUris != null) {
       _json["sourceUris"] = sourceUris;
@@ -2177,10 +2275,7 @@ class ExportReadsetsRequest {
    */
   core.String exportUri;
 
-  /**
-   * The Google Developers Console project number that owns this export. This is
-   * the project that will be billed.
-   */
+  /** The Google Developers Console project number that owns this export. */
   core.String projectId;
 
   /** The IDs of the readsets to export. */
@@ -2258,14 +2353,13 @@ class ExportReadsetsResponse {
 class ExportVariantsRequest {
   /**
    * The BigQuery dataset to export data to. Note that this is distinct from the
-   * Genomics concept of "dataset". The caller must have WRITE access to this
-   * BigQuery dataset.
+   * Genomics concept of "dataset".
    */
   core.String bigqueryDataset;
 
   /**
-   * The BigQuery table to export data to. The caller must have WRITE access to
-   * this BigQuery table.
+   * The BigQuery table to export data to. If the table doesn't exist, it will
+   * be created. If it already exists, it will be overwritten.
    */
   core.String bigqueryTable;
 
@@ -2283,8 +2377,9 @@ class ExportVariantsRequest {
   core.String format;
 
   /**
-   * The Google Cloud project number that owns this export. This is the project
-   * that will be billed.
+   * The Google Cloud project number that owns the destination BigQuery dataset.
+   * The caller must have WRITE access to this project. This project will also
+   * own the resulting export job.
    */
   core.String projectId;
 
@@ -4281,6 +4376,12 @@ class Variant {
    */
   core.String end;
 
+  /**
+   * A list of filters (normally quality filters) this variant has failed. PASS
+   * indicates this variant has passed all filters.
+   */
+  core.List<core.String> filter;
+
   /** The Google generated ID of the variant, immutable. */
   core.String id;
 
@@ -4289,6 +4390,12 @@ class Variant {
 
   /** Names for the variant, for example a RefSNP ID. */
   core.List<core.String> names;
+
+  /**
+   * A measure of how likely this variant is to be real. A higher value is
+   * better.
+   */
+  core.double quality;
 
   /**
    * The reference bases for this variant. They start at the given position.
@@ -4323,6 +4430,9 @@ class Variant {
     if (_json.containsKey("end")) {
       end = _json["end"];
     }
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -4331,6 +4441,9 @@ class Variant {
     }
     if (_json.containsKey("names")) {
       names = _json["names"];
+    }
+    if (_json.containsKey("quality")) {
+      quality = _json["quality"];
     }
     if (_json.containsKey("referenceBases")) {
       referenceBases = _json["referenceBases"];
@@ -4360,6 +4473,9 @@ class Variant {
     if (end != null) {
       _json["end"] = end;
     }
+    if (filter != null) {
+      _json["filter"] = filter;
+    }
     if (id != null) {
       _json["id"] = id;
     }
@@ -4368,6 +4484,9 @@ class Variant {
     }
     if (names != null) {
       _json["names"] = names;
+    }
+    if (quality != null) {
+      _json["quality"] = quality;
     }
     if (referenceBases != null) {
       _json["referenceBases"] = referenceBases;

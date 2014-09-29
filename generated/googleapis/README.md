@@ -71,6 +71,12 @@ Gives Ad Exchange seller users access to their inventory and the ability to gene
 
 Official API documentation: https://developers.google.com/ad-exchange/seller-rest/
 
+#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) Ad Exchange Seller API - adexchangeseller v2.0
+
+Gives Ad Exchange seller users access to their inventory and the ability to generate reports
+
+Official API documentation: https://developers.google.com/ad-exchange/seller-rest/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Admin Directory API - admin directory_v1
 
 The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.
@@ -156,6 +162,12 @@ An API for accessing civic information.
 Official API documentation: https://developers.google.com/civic-information
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Civic Information API - civicinfo v1
+
+An API for accessing civic information.
+
+Official API documentation: https://developers.google.com/civic-information
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Civic Information API - civicinfo v2
 
 An API for accessing civic information.
 
@@ -365,7 +377,13 @@ The Google Fonts Developer API.
 
 Official API documentation: https://developers.google.com/fonts/docs/developer_api
 
-#### ![Logo](http://www.google.com/images/icons/product/youtube-16.png) YouTube Data API - youtube v3
+#### ![Logo](https://www.google.com/images/icons/product/webmaster_tools-16.png) Webmaster Tools API - webmasters v3
+
+Lets you view Google Webmaster Tools data for your verified sites.
+
+Official API documentation: https://developers.google.com/webmaster-tools/v3/welcome
+
+#### ![Logo](https://www.google.com/images/icons/product/youtube-16.png) YouTube Data API - youtube v3
 
 Programmatic access to YouTube features.
 

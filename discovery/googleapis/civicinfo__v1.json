@@ -6,7 +6,7 @@
     "description": "An API for accessing civic information.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/civic-information",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/E48KE0Nyeq0wTXpsQ1wBH_VLmVc\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/8e9yfjQviGE-Eza63-qXipcXCgI\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -162,7 +162,7 @@
             }
         }
     },
-    "revision": "20140918",
+    "revision": "20140814",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AdministrationRegion": {
@@ -842,6 +842,9 @@
                         "$ref": "PollingLocation"
                     },
                     "type": "array"
+                },
+                "precinctId": {
+                    "type": "string"
                 },
                 "state": {
                     "description": "Local Election Information for the state that the voter votes in. For the US, there will only be one element in this array.",

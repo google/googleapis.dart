@@ -17,7 +17,7 @@
     "description": "Lets you manipulate events and other calendar data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/vWqMsHvvvKs-y7bO-cWrAXLs9SU\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/1bNdTf1HZZJP00wxpVt8ADRg0P0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/calendar-16.png",
         "x32": "http://www.google.com/images/icons/product/calendar-32.png"
@@ -1535,7 +1535,7 @@
             }
         }
     },
-    "revision": "20140914",
+    "revision": "20140917",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {

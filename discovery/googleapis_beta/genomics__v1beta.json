@@ -23,7 +23,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta/reference",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/Z3uHhhm6ncEawcl8acPHr16tDuw\"",
+    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/JbtSbt7h4k1-H-5yVc1lnMxsqb4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -821,7 +821,7 @@
                     ]
                 },
                 "import": {
-                    "description": "Creates variant data by asynchronously importing the provided information.",
+                    "description": "Creates variant data by asynchronously importing the provided information. If the destination variant set already contains data, new variants will be merged according to the behavior of mergeVariants.",
                     "httpMethod": "POST",
                     "id": "genomics.variants.import",
                     "path": "variants/import",
@@ -926,6 +926,26 @@
                         "https://www.googleapis.com/auth/genomics.readonly"
                     ]
                 },
+                "mergeVariants": {
+                    "description": "Merges the given variants with existing variants. Each variant will be merged with an existing variant that matches its reference sequence, start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created.\n\nWhen variants are merged, the call information from the new variant is added to the existing variant, and other fields (such as key/value pairs) are discarded.",
+                    "httpMethod": "POST",
+                    "id": "genomics.variantsets.mergeVariants",
+                    "parameterOrder": [
+                        "variantSetId"
+                    ],
+                    "parameters": {
+                        "variantSetId": {
+                            "description": "The destination variant set.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "variantsets/{variantSetId}/mergeVariants",
+                    "request": {
+                        "$ref": "Variant"
+                    }
+                },
                 "search": {
                     "description": "Returns a list of all variant sets matching search criteria.",
                     "httpMethod": "POST",
@@ -945,7 +965,7 @@
             }
         }
     },
-    "revision": "20140917",
+    "revision": "20140924",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Beacon": {
@@ -1088,7 +1108,7 @@
             "type": "object"
         },
         "ExperimentalCreateJobRequest": {
-            "description": "The job creation request.",
+            "description": "The job creation request. Next ID: 12",
             "id": "ExperimentalCreateJobRequest",
             "properties": {
                 "align": {
@@ -1103,6 +1123,10 @@
                     "description": "Specifies where to copy the results of certain pipelines. This should be in the form of gs://bucket/path.",
                     "type": "string"
                 },
+                "libraryName": {
+                    "description": "For alignment from FASTQ files, this specifies the library name.",
+                    "type": "string"
+                },
                 "pairedSourceUris": {
                     "description": "A list of Google Cloud Storage URIs of paired end .fastq files to operate upon. If specified, this represents the second file of each paired .fastq file. The first file of each pair should be specified in sourceUris.",
                     "items": {
@@ -1110,9 +1134,25 @@
                     },
                     "type": "array"
                 },
+                "platformName": {
+                    "description": "For alignment from FASTQ files, this specifies the platform name.",
+                    "type": "string"
+                },
+                "platformUnit": {
+                    "description": "For alignment from FASTQ files, this specifies the platform unit.",
+                    "type": "string"
+                },
                 "projectId": {
                     "description": "Required. The Google Cloud Project ID with which to associate the request.",
                     "format": "int64",
+                    "type": "string"
+                },
+                "readGroupId": {
+                    "description": "For alignment from FASTQ files, this specifies the read group ID.",
+                    "type": "string"
+                },
+                "sampleName": {
+                    "description": "For alignment from FASTQ files, this specifies the sample name.",
                     "type": "string"
                 },
                 "sourceUris": {
@@ -1145,7 +1185,7 @@
                     "type": "string"
                 },
                 "projectId": {
-                    "description": "The Google Developers Console project number that owns this export. This is the project that will be billed.",
+                    "description": "The Google Developers Console project number that owns this export.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -1182,11 +1222,11 @@
             "id": "ExportVariantsRequest",
             "properties": {
                 "bigqueryDataset": {
-                    "description": "The BigQuery dataset to export data to. Note that this is distinct from the Genomics concept of \"dataset\". The caller must have WRITE access to this BigQuery dataset.",
+                    "description": "The BigQuery dataset to export data to. Note that this is distinct from the Genomics concept of \"dataset\".",
                     "type": "string"
                 },
                 "bigqueryTable": {
-                    "description": "The BigQuery table to export data to. The caller must have WRITE access to this BigQuery table.",
+                    "description": "The BigQuery table to export data to. If the table doesn't exist, it will be created. If it already exists, it will be overwritten.",
                     "type": "string"
                 },
                 "callSetIds": {
@@ -1207,7 +1247,7 @@
                     "type": "string"
                 },
                 "projectId": {
-                    "description": "The Google Cloud project number that owns this export. This is the project that will be billed.",
+                    "description": "The Google Cloud project number that owns the destination BigQuery dataset. The caller must have WRITE access to this project. This project will also own the resulting export job.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -2187,6 +2227,13 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "filter": {
+                    "description": "A list of filters (normally quality filters) this variant has failed. PASS indicates this variant has passed all filters.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "id": {
                     "description": "The Google generated ID of the variant, immutable.",
                     "type": "string"
@@ -2208,6 +2255,11 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "quality": {
+                    "description": "A measure of how likely this variant is to be real. A higher value is better.",
+                    "format": "double",
+                    "type": "number"
                 },
                 "referenceBases": {
                     "description": "The reference bases for this variant. They start at the given position.",

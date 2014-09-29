@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.2.0
+    version: 0.2.1
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -9,6 +9,7 @@ packages:
     apis:
     - adexchangebuyer:v1.3  # https://developers.google.com/ad-exchange/buyer-rest/
     - adexchangeseller:v1.1  # https://developers.google.com/ad-exchange/seller-rest/
+    - adexchangeseller:v2.0  # https://developers.google.com/ad-exchange/seller-rest/
     - admin:directory_v1  # https://developers.google.com/admin-sdk/directory/
     - admin:email_migration_v2  #https://developers.google.com/admin-sdk/email-migration/
     - admin:reports_v1  # https://developers.google.com/admin-sdk/reports/
@@ -23,6 +24,7 @@ packages:
     - books:v1  # https://developers.google.com/books/
     - civicinfo:us_v1  # https://developers.google.com/civic-information/
     - civicinfo:v1  # https://developers.google.com/civic-information/
+    - civicinfo:v2  # https://developers.google.com/civic-information/
     - calendar:v3  # https://developers.google.com/google-apps/calendar/
     - compute:v1  # https://developers.google.com/compute/
     - content:v2  # https://developers.google.com/shopping-content/
@@ -58,11 +60,12 @@ packages:
     - translate:v2  # https://developers.google.com/translate/
     - urlshortener:v1  # https://developers.google.com/url-shortener/
     - webfonts:v1  # https://developers.google.com/fonts/docs/developer_api
+    - webmasters:v3  # https://developers.google.com/webmaster-tools/
     - youtube:v3  # https://developers.google.com/youtube/
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
-    version: 0.2.0
+    version: 0.2.1
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -77,7 +80,8 @@ packages:
     - manager:v1beta2  # https://developers.google.com/deployment-manager/
     - pubsub:v1beta1  # https://developers.google.com/pubsub/ (Limited Preview)
     - replicapool:v1beta1  # https://developers.google.com/compute/docs/replica-pool/ (Limited Preview)
-    - resourceviews:v1beta1  # https://developers.google.com/compute/docs/resource-views/ (Limited Preview)
+    - resourceviews:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/ (Limited Preview)
+    - resourceviews:v1beta2  # https://cloud.google.com/compute/docs/instance-groups/
     - sqladmin:v1beta3  # https://developers.google.com/cloud-sql/docs/admin-api/
     - taskqueue:v1beta2  # https://developers.google.com/appengine/docs/python/taskqueue/rest/libraries
 

@@ -113,6 +113,12 @@ The Resource View API allows users to create and manage logical sets of Google C
 
 Official API documentation: https://developers.google.com/compute/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Resource Views API - resourceviews v1beta2
+
+The Resource View API allows users to create and manage logical sets of Google Compute Engine instances.
+
+Official API documentation: https://developers.google.com/compute/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud SQL Administration API - sqladmin v1beta3
 
 API for Cloud SQL database instance management.

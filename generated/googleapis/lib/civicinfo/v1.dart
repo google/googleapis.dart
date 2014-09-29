@@ -1708,6 +1708,9 @@ class VoterInfoResponse {
    */
   core.List<PollingLocation> pollingLocations;
 
+  /** Not documented yet. */
+  core.String precinctId;
+
   /**
    * Local Election Information for the state that the voter votes in. For the
    * US, there will only be one element in this array.
@@ -1743,6 +1746,9 @@ class VoterInfoResponse {
     if (_json.containsKey("pollingLocations")) {
       pollingLocations = _json["pollingLocations"].map((value) => new PollingLocation.fromJson(value)).toList();
     }
+    if (_json.containsKey("precinctId")) {
+      precinctId = _json["precinctId"];
+    }
     if (_json.containsKey("state")) {
       state = _json["state"].map((value) => new AdministrationRegion.fromJson(value)).toList();
     }
@@ -1770,6 +1776,9 @@ class VoterInfoResponse {
     }
     if (pollingLocations != null) {
       _json["pollingLocations"] = pollingLocations.map((value) => (value).toJson()).toList();
+    }
+    if (precinctId != null) {
+      _json["precinctId"] = precinctId;
     }
     if (state != null) {
       _json["state"] = state.map((value) => (value).toJson()).toList();

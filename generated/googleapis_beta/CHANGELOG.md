@@ -1,3 +1,8 @@
+## 0.2.1
+
+* [apis-new] resourceviews:v1beta2: API added
+* [apis] genomics:v1beta: additional method/schema changes
+
 ## 0.2.0
 
 * [apis] autoscaler:v1beta2: schema changes

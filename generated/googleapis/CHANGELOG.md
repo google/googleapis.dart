@@ -1,3 +1,11 @@
+## 0.2.1
+
+* [apis-new] adexchangeseller:v2.0: API added
+* [apis-new] civicinfo:v2: API added
+* [apis-new] webmasters:v3: API added
+* [apis] civicinfo:v1: schema changes
+* [apis] youtube:v3: schema changes
+
 ## 0.2.0
 
 * [apis] admin:directory: additional schemas/methods
@@ -7,6 +15,7 @@
 * [apis] identitytoolkit:v3: schema changes
 * [apis] mirror:v1: schema changes
 * [apis-breaking] mapsengine:v1: major changes (additional schemas/methods)
+* [apis-breaking] prediction:v1.6: double -> String change
 * [generator] Bugfix in resumable media uploader.
 * [generator] Bugfix json decoding optimization.
 
