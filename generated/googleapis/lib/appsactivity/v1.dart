@@ -15,7 +15,7 @@ export '../common/common.dart' show DetailedApiRequestError;
 
 /** Provides a historical view of activity. */
 class AppsactivityApi {
-  /** View historical activity for Google services */
+  /** View the activity history of your Google Apps */
   static const ActivityScope = "https://www.googleapis.com/auth/activity";
 
   /** View and manage the files and documents in your Google Drive */

@@ -173,7 +173,7 @@ An API for accessing civic information.
 
 Official API documentation: https://developers.google.com/civic-information
 
-#### ![Logo](http://www.google.com/images/icons/product/compute_engine-16.png) Compute Engine API - compute v1
+#### ![Logo](https://www.google.com/images/icons/product/compute_engine-16.png) Compute Engine API - compute v1
 
 API for the Google Compute Engine service.
 
@@ -299,13 +299,7 @@ Lets you access OAuth2 protocol related APIs.
 
 Official API documentation: https://developers.google.com/accounts/docs/OAuth2
 
-#### ![Logo](http://www.google.com/images/icons/product/orkut-16.png) Orkut API - orkut v2
-
-Lets you manage activities, comments and badges in Orkut. More stuff coming in time.
-
-Official API documentation: http://code.google.com/apis/orkut/v2/reference.html
-
-#### ![Logo](http://www.google.com/images/icons/product/pagespeed-16.png) PageSpeed Insights API - pagespeedonline v1
+#### ![Logo](https://www.google.com/images/icons/product/pagespeed-16.png) PageSpeed Insights API - pagespeedonline v1
 
 Lets you analyze the performance of a web page and get tailored suggestions to make that page faster.
 

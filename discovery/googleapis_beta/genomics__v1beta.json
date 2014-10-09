@@ -23,7 +23,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta/reference",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/JbtSbt7h4k1-H-5yVc1lnMxsqb4\"",
+    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/KuyG9Uj3SRA52u3K-KvNS1fR_Xw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -821,7 +821,7 @@
                     ]
                 },
                 "import": {
-                    "description": "Creates variant data by asynchronously importing the provided information. If the destination variant set already contains data, new variants will be merged according to the behavior of mergeVariants.",
+                    "description": "Creates variant data by asynchronously importing the provided information. The variants for import will be merged with any existing data and each other according to the behavior of mergeVariants. In particular, this means for merged VCF variants that have conflicting INFO fields, some data will be arbitrarily discarded. As a special case, for single-sample VCF files, QUAL and FILTER fields will be moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF headers are appended to the metadata already in a VariantSet.",
                     "httpMethod": "POST",
                     "id": "genomics.variants.import",
                     "path": "variants/import",
@@ -943,7 +943,7 @@
                     },
                     "path": "variantsets/{variantSetId}/mergeVariants",
                     "request": {
-                        "$ref": "Variant"
+                        "$ref": "MergeVariantsRequest"
                     }
                 },
                 "search": {
@@ -965,7 +965,7 @@
             }
         }
     },
-    "revision": "20140924",
+    "revision": "20141001",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Beacon": {
@@ -1577,6 +1577,19 @@
             },
             "type": "object"
         },
+        "MergeVariantsRequest": {
+            "id": "MergeVariantsRequest",
+            "properties": {
+                "variants": {
+                    "description": "The variants to be merged with existing variants.",
+                    "items": {
+                        "$ref": "Variant"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "Metadata": {
             "description": "Metadata describes a single piece of variant call metadata. These data include a top level key and either a single value string (value) or a list of key-value pairs (info.) Value and info are mutually exclusive.",
             "id": "Metadata",
@@ -2133,7 +2146,7 @@
             "id": "SearchVariantsRequest",
             "properties": {
                 "callSetIds": {
-                    "description": "Only return variant calls which belong to call sets with these ids. Leaving this blank returns all variant calls.",
+                    "description": "Only return variant calls which belong to call sets with these ids. Leaving this blank returns all variant calls. If a variant has no calls belonging to any of these call sets, it won't be returned at all. Currently, variants with no calls from any call set will never be returned.",
                     "items": {
                         "type": "string"
                     },

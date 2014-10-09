@@ -23,7 +23,7 @@
     "description": "The Gmail REST API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/gmail/api/",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/5fnY39OGLjxI_epC657MRv3fFjE\"",
+    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/FGWIXwFi3bZjyIWUjsVvCy3aEZU\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/googlemail-16.png",
         "x32": "https://www.google.com/images/icons/product/googlemail-32.png"
@@ -707,6 +707,7 @@
                             ],
                             "parameters": {
                                 "internalDateSource": {
+                                    "default": "dateHeader",
                                     "description": "Source for Gmail's internal date of the message.",
                                     "enum": [
                                         "dateHeader",
@@ -765,6 +766,7 @@
                             ],
                             "parameters": {
                                 "internalDateSource": {
+                                    "default": "receivedTime",
                                     "description": "Source for Gmail's internal date of the message.",
                                     "enum": [
                                         "dateHeader",
@@ -1268,7 +1270,7 @@
             }
         }
     },
-    "revision": "20140902",
+    "revision": "20141001",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Draft": {
@@ -1361,6 +1363,16 @@
                     ],
                     "type": "string"
                 },
+                "messagesTotal": {
+                    "description": "The total number of messages with the label.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "messagesUnread": {
+                    "description": "The number of unread messages with the label.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "name": {
                     "annotations": {
                         "required": [
@@ -1370,6 +1382,16 @@
                     },
                     "description": "The display name of the label.",
                     "type": "string"
+                },
+                "threadsTotal": {
+                    "description": "The total number of threads with the label.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "threadsUnread": {
+                    "description": "The number of unread threads with the label.",
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "type": {
                     "description": "The owner type for the label. User labels are created by the user and can be modified and deleted by the user and can be applied to any message or thread. System labels are internally created and cannot be added, modified, or deleted. System labels may be able to be applied to or removed from messages and threads under some circumstances but this is not guaranteed. For example, users can apply and remove the INBOX and UNREAD labels from messages and threads, but cannot apply or remove the DRAFTS or SENT labels from messages or threads.",
@@ -1534,7 +1556,7 @@
                     "type": "string"
                 },
                 "threadId": {
-                    "description": "The ID of the thread the message belongs to. To add a message or draft to a thread, the following criteria must be met: \n- The requested threadId must be specified on the Message or Draft.Message you supply with your request. \n- The References and In-Reply-To headers must be set in compliance with the <a href=\"https://tools.ietf.org/html/rfc2822\"RFC 2822 standard. \n- The Subject headers must match.",
+                    "description": "The ID of the thread the message belongs to. To add a message or draft to a thread, the following criteria must be met: \n- The requested threadId must be specified on the Message or Draft.Message you supply with your request. \n- The References and In-Reply-To headers must be set in compliance with the RFC 2822 standard. \n- The Subject headers must match.",
                     "type": "string"
                 }
             },

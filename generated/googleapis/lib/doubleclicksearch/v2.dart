@@ -1179,8 +1179,19 @@ class ReportApiColumnSpec {
    * advertiser or lower, and the custom dimension must already be set up in
    * DoubleClick Search. The custom dimension name, which appears in DoubleClick
    * Search, is case sensitive.
+   * If used in a conversion report, returns the value of the specified custom
+   * dimension for the given conversion, if set. This column does not segment
+   * the conversion report.
    */
   core.String customDimensionName;
+
+  /**
+   * Reports on the provided custom metric. The report must be scoped to an
+   * advertiser or lower, and the custom metric must already be set up in
+   * DoubleClick Search. The custom metric name, which appears in DoubleClick
+   * Search, is case sensitive.
+   */
+  core.String customMetricName;
 
   /**
    * Inclusive day in YYYY-MM-DD format. When provided, this overrides the
@@ -1233,6 +1244,9 @@ class ReportApiColumnSpec {
     if (_json.containsKey("customDimensionName")) {
       customDimensionName = _json["customDimensionName"];
     }
+    if (_json.containsKey("customMetricName")) {
+      customMetricName = _json["customMetricName"];
+    }
     if (_json.containsKey("endDate")) {
       endDate = _json["endDate"];
     }
@@ -1260,6 +1274,9 @@ class ReportApiColumnSpec {
     }
     if (customDimensionName != null) {
       _json["customDimensionName"] = customDimensionName;
+    }
+    if (customMetricName != null) {
+      _json["customMetricName"] = customMetricName;
     }
     if (endDate != null) {
       _json["endDate"] = endDate;

@@ -44,6 +44,7 @@ class ComputeApi {
   GlobalOperationsResourceApi get globalOperations => new GlobalOperationsResourceApi(_requester);
   HttpHealthChecksResourceApi get httpHealthChecks => new HttpHealthChecksResourceApi(_requester);
   ImagesResourceApi get images => new ImagesResourceApi(_requester);
+  InstanceTemplatesResourceApi get instanceTemplates => new InstanceTemplatesResourceApi(_requester);
   InstancesResourceApi get instances => new InstancesResourceApi(_requester);
   LicensesResourceApi get licenses => new LicensesResourceApi(_requester);
   MachineTypesResourceApi get machineTypes => new MachineTypesResourceApi(_requester);
@@ -3271,6 +3272,221 @@ class ImagesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ImageList.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class InstanceTemplatesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  InstanceTemplatesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes the specified instance template resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [instanceTemplate] - Name of the instance template resource to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String instanceTemplate) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (instanceTemplate == null) {
+      throw new core.ArgumentError("Parameter instanceTemplate is required.");
+    }
+
+
+    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/instanceTemplates/' + common_internal.Escaper.ecapeVariable('$instanceTemplate');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified instance template resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [instanceTemplate] - Name of the instance template resource to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [InstanceTemplate].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<InstanceTemplate> get(core.String project, core.String instanceTemplate) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (instanceTemplate == null) {
+      throw new core.ArgumentError("Parameter instanceTemplate is required.");
+    }
+
+
+    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/instanceTemplates/' + common_internal.Escaper.ecapeVariable('$instanceTemplate');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new InstanceTemplate.fromJson(data));
+  }
+
+  /**
+   * Creates an instance template resource in the specified project using the
+   * data included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Operation> insert(InstanceTemplate request, core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+
+    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/instanceTemplates';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of instance template resources contained within the
+   * specified project.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Optional. Filter expression for filtering listed resources.
+   *
+   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
+   * value is 500 and default value is 500.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Optional. Tag returned by a previous list request truncated
+   * by maxResults. Used to continue a previous list request.
+   *
+   * Completes with a [InstanceTemplateList].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<InstanceTemplateList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+
+    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/instanceTemplates';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new InstanceTemplateList.fromJson(data));
   }
 
 }
@@ -8171,7 +8387,10 @@ class BackendService {
    */
   core.String name;
 
-  /** The TCP port to connect on the backend. The default value is 80. */
+  /**
+   * Deprecated in favor of port_name. The TCP port to connect on the backend.
+   * The default value is 80.
+   */
   core.int port;
 
   /**
@@ -8505,11 +8724,7 @@ class Disk {
    */
   core.String sizeGb;
 
-  /**
-   * The source image used to create this disk. Once the source image has been
-   * deleted from the system, this field will not be set, even if an image with
-   * the same name has been re-created.
-   */
+  /** The source image used to create this disk. */
   core.String sourceImage;
 
   /**
@@ -8519,11 +8734,7 @@ class Disk {
    */
   core.String sourceImageId;
 
-  /**
-   * The source snapshot used to create this disk. Once the source snapshot has
-   * been deleted from the system, this field will be cleared, and will not be
-   * set even if a snapshot with the same name has been re-created.
-   */
+  /** The source snapshot used to create this disk. */
   core.String sourceSnapshot;
 
   /**
@@ -10390,11 +10601,7 @@ class Image {
   /** Server defined URL for the resource (output only). */
   core.String selfLink;
 
-  /**
-   * The source disk used to create this image. Once the source disk has been
-   * deleted from the system, this field will be cleared, and will not be set
-   * even if a disk with the same name has been re-created.
-   */
+  /** The source disk used to create this image. */
   core.String sourceDisk;
 
   /**
@@ -10931,6 +11138,138 @@ class InstanceList {
 
 
 /** Not documented yet. */
+class InstanceProperties {
+  /**
+   * Allows instances created based on this template to send packets with source
+   * IP addresses other than their own and receive packets with destination IP
+   * addresses other than their own. If these instances will be used as an IP
+   * gateway or it will be set as the next-hop in a Route resource, say true. If
+   * unsure, leave this set to false.
+   */
+  core.bool canIpForward;
+
+  /**
+   * An optional textual description for the instances created based on the
+   * instance template resource; provided by the client when the template is
+   * created.
+   */
+  core.String description;
+
+  /**
+   * Array of disks associated with instance created based on this template.
+   */
+  core.List<AttachedDisk> disks;
+
+  /**
+   * Name of the machine type resource describing which machine type to use to
+   * host the instances created based on this template; provided by the client
+   * when the instance template is created.
+   */
+  core.String machineType;
+
+  /**
+   * Metadata key/value pairs assigned to instances created based on this
+   * template. Consists of custom metadata or predefined keys; see Instance
+   * documentation for more information.
+   */
+  Metadata metadata;
+
+  /**
+   * Array of configurations for this interface. This specifies how this
+   * interface is configured to interact with other network services, such as
+   * connecting to the internet. Currently, ONE_TO_ONE_NAT is the only access
+   * config supported. If there are no accessConfigs specified, then this
+   * instances created based based on this template will have no external
+   * internet access.
+   */
+  core.List<NetworkInterface> networkInterfaces;
+
+  /** Scheduling options for the instances created based on this template. */
+  Scheduling scheduling;
+
+  /**
+   * A list of service accounts each with specified scopes, for which access
+   * tokens are to be made available to the instances created based on this
+   * template, through metadata queries.
+   */
+  core.List<ServiceAccount> serviceAccounts;
+
+  /**
+   * A list of tags to be applied to the instances created based on this
+   * template used to identify valid sources or targets for network firewalls.
+   * Provided by the client on instance creation. The tags can be later modified
+   * by the setTags method. Each tag within the list must comply with RFC1035.
+   */
+  Tags tags;
+
+
+  InstanceProperties();
+
+  InstanceProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("canIpForward")) {
+      canIpForward = _json["canIpForward"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("disks")) {
+      disks = _json["disks"].map((value) => new AttachedDisk.fromJson(value)).toList();
+    }
+    if (_json.containsKey("machineType")) {
+      machineType = _json["machineType"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new Metadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("networkInterfaces")) {
+      networkInterfaces = _json["networkInterfaces"].map((value) => new NetworkInterface.fromJson(value)).toList();
+    }
+    if (_json.containsKey("scheduling")) {
+      scheduling = new Scheduling.fromJson(_json["scheduling"]);
+    }
+    if (_json.containsKey("serviceAccounts")) {
+      serviceAccounts = _json["serviceAccounts"].map((value) => new ServiceAccount.fromJson(value)).toList();
+    }
+    if (_json.containsKey("tags")) {
+      tags = new Tags.fromJson(_json["tags"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (canIpForward != null) {
+      _json["canIpForward"] = canIpForward;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (disks != null) {
+      _json["disks"] = disks.map((value) => (value).toJson()).toList();
+    }
+    if (machineType != null) {
+      _json["machineType"] = machineType;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (networkInterfaces != null) {
+      _json["networkInterfaces"] = networkInterfaces.map((value) => (value).toJson()).toList();
+    }
+    if (scheduling != null) {
+      _json["scheduling"] = (scheduling).toJson();
+    }
+    if (serviceAccounts != null) {
+      _json["serviceAccounts"] = serviceAccounts.map((value) => (value).toJson()).toList();
+    }
+    if (tags != null) {
+      _json["tags"] = (tags).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
 class InstanceReference {
   /** Not documented yet. */
   core.String instance;
@@ -10948,6 +11287,155 @@ class InstanceReference {
     var _json = new core.Map();
     if (instance != null) {
       _json["instance"] = instance;
+    }
+    return _json;
+  }
+}
+
+
+/** An Instance Template resource. */
+class InstanceTemplate {
+  /** Creation timestamp in RFC3339 text format (output only). */
+  core.String creationTimestamp;
+
+  /**
+   * An optional textual description of the instance template resource; provided
+   * by the client when the resource is created.
+   */
+  core.String description;
+
+  /**
+   * Unique identifier for the resource; defined by the server (output only).
+   */
+  core.String id;
+
+  /** Type of the resource. */
+  core.String kind;
+
+  /**
+   * Name of the instance template resource; provided by the client when the
+   * resource is created. The name must be 1-63 characters long, and comply with
+   * RFC1035
+   */
+  core.String name;
+
+  /** The instance properties portion of this instance template resource. */
+  InstanceProperties properties;
+
+  /** Server defined URL for the resource (output only). */
+  core.String selfLink;
+
+
+  InstanceTemplate();
+
+  InstanceTemplate.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("properties")) {
+      properties = new InstanceProperties.fromJson(_json["properties"]);
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (properties != null) {
+      _json["properties"] = (properties).toJson();
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+
+/** Contains a list of instance template resources. */
+class InstanceTemplateList {
+  /**
+   * Unique identifier for the resource; defined by the server (output only).
+   */
+  core.String id;
+
+  /** A list of instance template resources. */
+  core.List<InstanceTemplate> items;
+
+  /** Type of resource. */
+  core.String kind;
+
+  /** A token used to continue a truncated list request (output only). */
+  core.String nextPageToken;
+
+  /** Server defined URL for this resource (output only). */
+  core.String selfLink;
+
+
+  InstanceTemplateList();
+
+  InstanceTemplateList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new InstanceTemplate.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
     }
     return _json;
   }
@@ -13528,11 +14016,7 @@ class Snapshot {
   /** Server defined URL for the resource (output only). */
   core.String selfLink;
 
-  /**
-   * The source disk used to create this snapshot. Once the source disk has been
-   * deleted from the system, this field will be cleared, and will not be set
-   * even if a disk with the same name has been re-created (output only).
-   */
+  /** The source disk used to create this snapshot. */
   core.String sourceDisk;
 
   /**

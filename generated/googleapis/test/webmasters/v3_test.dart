@@ -16,14 +16,14 @@ import 'package:googleapis/webmasters/v3.dart' as api;
 
 
 
-buildUnnamed82() {
+buildUnnamed83() {
   var o = new core.List<api.WmxSitemap>();
   o.add(buildWmxSitemap());
   o.add(buildWmxSitemap());
   return o;
 }
 
-checkUnnamed82(core.List<api.WmxSitemap> o) {
+checkUnnamed83(core.List<api.WmxSitemap> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSitemap(o[0]);
   checkWmxSitemap(o[1]);
@@ -34,7 +34,7 @@ buildSitemapsListResponse() {
   var o = new api.SitemapsListResponse();
   buildCounterSitemapsListResponse++;
   if (buildCounterSitemapsListResponse < 3) {
-    o.sitemap = buildUnnamed82();
+    o.sitemap = buildUnnamed83();
   }
   buildCounterSitemapsListResponse--;
   return o;
@@ -43,19 +43,19 @@ buildSitemapsListResponse() {
 checkSitemapsListResponse(api.SitemapsListResponse o) {
   buildCounterSitemapsListResponse++;
   if (buildCounterSitemapsListResponse < 3) {
-    checkUnnamed82(o.sitemap);
+    checkUnnamed83(o.sitemap);
   }
   buildCounterSitemapsListResponse--;
 }
 
-buildUnnamed83() {
+buildUnnamed84() {
   var o = new core.List<api.WmxSite>();
   o.add(buildWmxSite());
   o.add(buildWmxSite());
   return o;
 }
 
-checkUnnamed83(core.List<api.WmxSite> o) {
+checkUnnamed84(core.List<api.WmxSite> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSite(o[0]);
   checkWmxSite(o[1]);
@@ -66,7 +66,7 @@ buildSitesListResponse() {
   var o = new api.SitesListResponse();
   buildCounterSitesListResponse++;
   if (buildCounterSitesListResponse < 3) {
-    o.siteEntry = buildUnnamed83();
+    o.siteEntry = buildUnnamed84();
   }
   buildCounterSitesListResponse--;
   return o;
@@ -75,7 +75,7 @@ buildSitesListResponse() {
 checkSitesListResponse(api.SitesListResponse o) {
   buildCounterSitesListResponse++;
   if (buildCounterSitesListResponse < 3) {
-    checkUnnamed83(o.siteEntry);
+    checkUnnamed84(o.siteEntry);
   }
   buildCounterSitesListResponse--;
 }
@@ -101,14 +101,14 @@ checkUrlCrawlErrorCount(api.UrlCrawlErrorCount o) {
   buildCounterUrlCrawlErrorCount--;
 }
 
-buildUnnamed84() {
+buildUnnamed85() {
   var o = new core.List<api.UrlCrawlErrorCount>();
   o.add(buildUrlCrawlErrorCount());
   o.add(buildUrlCrawlErrorCount());
   return o;
 }
 
-checkUnnamed84(core.List<api.UrlCrawlErrorCount> o) {
+checkUnnamed85(core.List<api.UrlCrawlErrorCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorCount(o[0]);
   checkUrlCrawlErrorCount(o[1]);
@@ -120,7 +120,7 @@ buildUrlCrawlErrorCountsPerType() {
   buildCounterUrlCrawlErrorCountsPerType++;
   if (buildCounterUrlCrawlErrorCountsPerType < 3) {
     o.category = "foo";
-    o.entries = buildUnnamed84();
+    o.entries = buildUnnamed85();
     o.platform = "foo";
   }
   buildCounterUrlCrawlErrorCountsPerType--;
@@ -131,20 +131,20 @@ checkUrlCrawlErrorCountsPerType(api.UrlCrawlErrorCountsPerType o) {
   buildCounterUrlCrawlErrorCountsPerType++;
   if (buildCounterUrlCrawlErrorCountsPerType < 3) {
     unittest.expect(o.category, unittest.equals('foo'));
-    checkUnnamed84(o.entries);
+    checkUnnamed85(o.entries);
     unittest.expect(o.platform, unittest.equals('foo'));
   }
   buildCounterUrlCrawlErrorCountsPerType--;
 }
 
-buildUnnamed85() {
+buildUnnamed86() {
   var o = new core.List<api.UrlCrawlErrorCountsPerType>();
   o.add(buildUrlCrawlErrorCountsPerType());
   o.add(buildUrlCrawlErrorCountsPerType());
   return o;
 }
 
-checkUnnamed85(core.List<api.UrlCrawlErrorCountsPerType> o) {
+checkUnnamed86(core.List<api.UrlCrawlErrorCountsPerType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorCountsPerType(o[0]);
   checkUrlCrawlErrorCountsPerType(o[1]);
@@ -155,7 +155,7 @@ buildUrlCrawlErrorsCountsQueryResponse() {
   var o = new api.UrlCrawlErrorsCountsQueryResponse();
   buildCounterUrlCrawlErrorsCountsQueryResponse++;
   if (buildCounterUrlCrawlErrorsCountsQueryResponse < 3) {
-    o.countPerTypes = buildUnnamed85();
+    o.countPerTypes = buildUnnamed86();
   }
   buildCounterUrlCrawlErrorsCountsQueryResponse--;
   return o;
@@ -164,7 +164,7 @@ buildUrlCrawlErrorsCountsQueryResponse() {
 checkUrlCrawlErrorsCountsQueryResponse(api.UrlCrawlErrorsCountsQueryResponse o) {
   buildCounterUrlCrawlErrorsCountsQueryResponse++;
   if (buildCounterUrlCrawlErrorsCountsQueryResponse < 3) {
-    checkUnnamed85(o.countPerTypes);
+    checkUnnamed86(o.countPerTypes);
   }
   buildCounterUrlCrawlErrorsCountsQueryResponse--;
 }
@@ -196,14 +196,14 @@ checkUrlCrawlErrorsSample(api.UrlCrawlErrorsSample o) {
   buildCounterUrlCrawlErrorsSample--;
 }
 
-buildUnnamed86() {
+buildUnnamed87() {
   var o = new core.List<api.UrlCrawlErrorsSample>();
   o.add(buildUrlCrawlErrorsSample());
   o.add(buildUrlCrawlErrorsSample());
   return o;
 }
 
-checkUnnamed86(core.List<api.UrlCrawlErrorsSample> o) {
+checkUnnamed87(core.List<api.UrlCrawlErrorsSample> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorsSample(o[0]);
   checkUrlCrawlErrorsSample(o[1]);
@@ -214,7 +214,7 @@ buildUrlCrawlErrorsSamplesListResponse() {
   var o = new api.UrlCrawlErrorsSamplesListResponse();
   buildCounterUrlCrawlErrorsSamplesListResponse++;
   if (buildCounterUrlCrawlErrorsSamplesListResponse < 3) {
-    o.urlCrawlErrorSample = buildUnnamed86();
+    o.urlCrawlErrorSample = buildUnnamed87();
   }
   buildCounterUrlCrawlErrorsSamplesListResponse--;
   return o;
@@ -223,22 +223,9 @@ buildUrlCrawlErrorsSamplesListResponse() {
 checkUrlCrawlErrorsSamplesListResponse(api.UrlCrawlErrorsSamplesListResponse o) {
   buildCounterUrlCrawlErrorsSamplesListResponse++;
   if (buildCounterUrlCrawlErrorsSamplesListResponse < 3) {
-    checkUnnamed86(o.urlCrawlErrorSample);
+    checkUnnamed87(o.urlCrawlErrorSample);
   }
   buildCounterUrlCrawlErrorsSamplesListResponse--;
-}
-
-buildUnnamed87() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed87(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 buildUnnamed88() {
@@ -254,13 +241,26 @@ checkUnnamed88(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+buildUnnamed89() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed89(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterUrlSampleDetails = 0;
 buildUrlSampleDetails() {
   var o = new api.UrlSampleDetails();
   buildCounterUrlSampleDetails++;
   if (buildCounterUrlSampleDetails < 3) {
-    o.containingSitemaps = buildUnnamed87();
-    o.linkedFromUrls = buildUnnamed88();
+    o.containingSitemaps = buildUnnamed88();
+    o.linkedFromUrls = buildUnnamed89();
   }
   buildCounterUrlSampleDetails--;
   return o;
@@ -269,8 +269,8 @@ buildUrlSampleDetails() {
 checkUrlSampleDetails(api.UrlSampleDetails o) {
   buildCounterUrlSampleDetails++;
   if (buildCounterUrlSampleDetails < 3) {
-    checkUnnamed87(o.containingSitemaps);
-    checkUnnamed88(o.linkedFromUrls);
+    checkUnnamed88(o.containingSitemaps);
+    checkUnnamed89(o.linkedFromUrls);
   }
   buildCounterUrlSampleDetails--;
 }
@@ -296,14 +296,14 @@ checkWmxSite(api.WmxSite o) {
   buildCounterWmxSite--;
 }
 
-buildUnnamed89() {
+buildUnnamed90() {
   var o = new core.List<api.WmxSitemapContent>();
   o.add(buildWmxSitemapContent());
   o.add(buildWmxSitemapContent());
   return o;
 }
 
-checkUnnamed89(core.List<api.WmxSitemapContent> o) {
+checkUnnamed90(core.List<api.WmxSitemapContent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSitemapContent(o[0]);
   checkWmxSitemapContent(o[1]);
@@ -314,7 +314,7 @@ buildWmxSitemap() {
   var o = new api.WmxSitemap();
   buildCounterWmxSitemap++;
   if (buildCounterWmxSitemap < 3) {
-    o.contents = buildUnnamed89();
+    o.contents = buildUnnamed90();
     o.errors = "foo";
     o.isPending = true;
     o.isSitemapsIndex = true;
@@ -331,7 +331,7 @@ buildWmxSitemap() {
 checkWmxSitemap(api.WmxSitemap o) {
   buildCounterWmxSitemap++;
   if (buildCounterWmxSitemap < 3) {
-    checkUnnamed89(o.contents);
+    checkUnnamed90(o.contents);
     unittest.expect(o.errors, unittest.equals('foo'));
     unittest.expect(o.isPending, unittest.isTrue);
     unittest.expect(o.isSitemapsIndex, unittest.isTrue);

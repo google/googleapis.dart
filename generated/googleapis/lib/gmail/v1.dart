@@ -1780,8 +1780,20 @@ class Label {
    */
   core.String messageListVisibility;
 
+  /** The total number of messages with the label. */
+  core.int messagesTotal;
+
+  /** The number of unread messages with the label. */
+  core.int messagesUnread;
+
   /** The display name of the label. */
   core.String name;
+
+  /** The total number of threads with the label. */
+  core.int threadsTotal;
+
+  /** The number of unread threads with the label. */
+  core.int threadsUnread;
 
   /**
    * The owner type for the label. User labels are created by the user and can
@@ -1811,8 +1823,20 @@ class Label {
     if (_json.containsKey("messageListVisibility")) {
       messageListVisibility = _json["messageListVisibility"];
     }
+    if (_json.containsKey("messagesTotal")) {
+      messagesTotal = _json["messagesTotal"];
+    }
+    if (_json.containsKey("messagesUnread")) {
+      messagesUnread = _json["messagesUnread"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("threadsTotal")) {
+      threadsTotal = _json["threadsTotal"];
+    }
+    if (_json.containsKey("threadsUnread")) {
+      threadsUnread = _json["threadsUnread"];
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -1830,8 +1854,20 @@ class Label {
     if (messageListVisibility != null) {
       _json["messageListVisibility"] = messageListVisibility;
     }
+    if (messagesTotal != null) {
+      _json["messagesTotal"] = messagesTotal;
+    }
+    if (messagesUnread != null) {
+      _json["messagesUnread"] = messagesUnread;
+    }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (threadsTotal != null) {
+      _json["threadsTotal"] = threadsTotal;
+    }
+    if (threadsUnread != null) {
+      _json["threadsUnread"] = threadsUnread;
     }
     if (type != null) {
       _json["type"] = type;
@@ -2074,7 +2110,7 @@ class Message {
    * - The requested threadId must be specified on the Message or Draft.Message
    * you supply with your request.
    * - The References and In-Reply-To headers must be set in compliance with the
-   * <a href="https://tools.ietf.org/html/rfc2822"RFC 2822 standard.
+   * RFC 2822 standard.
    * - The Subject headers must match.
    */
   core.String threadId;

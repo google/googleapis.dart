@@ -79,14 +79,14 @@ checkSiteVerificationWebResourceGettokenResponse(api.SiteVerificationWebResource
   buildCounterSiteVerificationWebResourceGettokenResponse--;
 }
 
-buildUnnamed304() {
+buildUnnamed278() {
   var o = new core.List<api.SiteVerificationWebResourceResource>();
   o.add(buildSiteVerificationWebResourceResource());
   o.add(buildSiteVerificationWebResourceResource());
   return o;
 }
 
-checkUnnamed304(core.List<api.SiteVerificationWebResourceResource> o) {
+checkUnnamed278(core.List<api.SiteVerificationWebResourceResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteVerificationWebResourceResource(o[0]);
   checkSiteVerificationWebResourceResource(o[1]);
@@ -97,7 +97,7 @@ buildSiteVerificationWebResourceListResponse() {
   var o = new api.SiteVerificationWebResourceListResponse();
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    o.items = buildUnnamed304();
+    o.items = buildUnnamed278();
   }
   buildCounterSiteVerificationWebResourceListResponse--;
   return o;
@@ -106,19 +106,19 @@ buildSiteVerificationWebResourceListResponse() {
 checkSiteVerificationWebResourceListResponse(api.SiteVerificationWebResourceListResponse o) {
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    checkUnnamed304(o.items);
+    checkUnnamed278(o.items);
   }
   buildCounterSiteVerificationWebResourceListResponse--;
 }
 
-buildUnnamed305() {
+buildUnnamed279() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed305(core.List<core.String> o) {
+checkUnnamed279(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -151,7 +151,7 @@ buildSiteVerificationWebResourceResource() {
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     o.id = "foo";
-    o.owners = buildUnnamed305();
+    o.owners = buildUnnamed279();
     o.site = buildSiteVerificationWebResourceResourceSite();
   }
   buildCounterSiteVerificationWebResourceResource--;
@@ -162,7 +162,7 @@ checkSiteVerificationWebResourceResource(api.SiteVerificationWebResourceResource
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed305(o.owners);
+    checkUnnamed279(o.owners);
     checkSiteVerificationWebResourceResourceSite(o.site);
   }
   buildCounterSiteVerificationWebResourceResource--;

@@ -17,7 +17,7 @@
     "description": "Lets you programatically verify ownership of websites or domains with Google.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/site-verification/",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/RwYHc_wr_RI-M8LU9rCXtGC2FOg\"",
+    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/RwYHc_wr_RI-M8LU9rCXtGC2FOg\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

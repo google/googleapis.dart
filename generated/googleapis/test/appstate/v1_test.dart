@@ -41,14 +41,14 @@ checkGetResponse(api.GetResponse o) {
   buildCounterGetResponse--;
 }
 
-buildUnnamed762() {
+buildUnnamed736() {
   var o = new core.List<api.GetResponse>();
   o.add(buildGetResponse());
   o.add(buildGetResponse());
   return o;
 }
 
-checkUnnamed762(core.List<api.GetResponse> o) {
+checkUnnamed736(core.List<api.GetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGetResponse(o[0]);
   checkGetResponse(o[1]);
@@ -59,7 +59,7 @@ buildListResponse() {
   var o = new api.ListResponse();
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    o.items = buildUnnamed762();
+    o.items = buildUnnamed736();
     o.kind = "foo";
     o.maximumKeyCount = 42;
   }
@@ -70,7 +70,7 @@ buildListResponse() {
 checkListResponse(api.ListResponse o) {
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    checkUnnamed762(o.items);
+    checkUnnamed736(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.maximumKeyCount, unittest.equals(42));
   }

@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/activity": {
-                    "description": "View historical activity for Google services"
+                    "description": "View the activity history of your Google Apps"
                 },
                 "https://www.googleapis.com/auth/drive": {
                     "description": "View and manage the files and documents in your Google Drive"
@@ -23,7 +23,7 @@
     "description": "Provides a historical view of activity.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/activity/",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/lSpXo4dql_m7xuje0Y2WPH_dsVA\"",
+    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/0zYm3U9WhfJU7WORU2EWqKp-P40\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

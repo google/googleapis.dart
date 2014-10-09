@@ -18,7 +18,7 @@
     "description": "Gives Ad Exchange seller users access to their inventory and the ability to generate reports",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/seller-rest/",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/0shkiGXf4cKks9c34Wn8kZ2sXrA\"",
+    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/tWYKKrV62eVz4FKUf7inu6a5kwQ\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -654,7 +654,7 @@
             }
         }
     },
-    "revision": "20140924",
+    "revision": "20141006",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

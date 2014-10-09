@@ -17,7 +17,7 @@
     "description": "The Google Compute Engine Autoscaler API provides autoscaling for groups of Cloud VMs.",
     "discoveryVersion": "v1",
     "documentationLink": "http://developers.google.com/compute/docs/autoscaler",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/OGrwqagtFyzrQU63rEsuM0hbVC4\"",
+    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/BoJiTEWHJN3oMRPgh3rGgk87M0g\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -440,7 +440,7 @@
             }
         }
     },
-    "revision": "20140909",
+    "revision": "20141001",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Autoscaler": {

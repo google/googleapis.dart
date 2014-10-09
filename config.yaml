@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.2.1
+    version: 0.3.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -47,7 +47,6 @@ packages:
     - mapsengine:v1  # https://developers.google.com/maps-engine/
     - mirror:v1  # https://developers.google.com/glass/develop/mirror/
     - oauth2:v2  # https://developers.google.com/accounts/docs/OAuth2UserAgent
-    - orkut:v2  # https://developers.google.com/orkut/docs/off-site-apps/v2restapi
     - pagespeedonline:v1  # https://developers.google.com/speed/docs/insights/about
     - plus:v1  # https://developers.google.com/+/api/
     - plusDomains:v1  # https://developers.google.com/+/domains/
@@ -65,7 +64,7 @@ packages:
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
-    version: 0.2.1
+    version: 0.3.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md

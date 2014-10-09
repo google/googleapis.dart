@@ -50,6 +50,40 @@ checkAchievementResetAllResponse(api.AchievementResetAllResponse o) {
   buildCounterAchievementResetAllResponse--;
 }
 
+buildUnnamed76() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed76(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterAchievementResetMultipleForAllRequest = 0;
+buildAchievementResetMultipleForAllRequest() {
+  var o = new api.AchievementResetMultipleForAllRequest();
+  buildCounterAchievementResetMultipleForAllRequest++;
+  if (buildCounterAchievementResetMultipleForAllRequest < 3) {
+    o.achievementIds = buildUnnamed76();
+    o.kind = "foo";
+  }
+  buildCounterAchievementResetMultipleForAllRequest--;
+  return o;
+}
+
+checkAchievementResetMultipleForAllRequest(api.AchievementResetMultipleForAllRequest o) {
+  buildCounterAchievementResetMultipleForAllRequest++;
+  if (buildCounterAchievementResetMultipleForAllRequest < 3) {
+    checkUnnamed76(o.achievementIds);
+    unittest.expect(o.kind, unittest.equals('foo'));
+  }
+  buildCounterAchievementResetMultipleForAllRequest--;
+}
+
 core.int buildCounterAchievementResetResponse = 0;
 buildAchievementResetResponse() {
   var o = new api.AchievementResetResponse();
@@ -167,14 +201,14 @@ checkHiddenPlayer(api.HiddenPlayer o) {
   buildCounterHiddenPlayer--;
 }
 
-buildUnnamed76() {
+buildUnnamed77() {
   var o = new core.List<api.HiddenPlayer>();
   o.add(buildHiddenPlayer());
   o.add(buildHiddenPlayer());
   return o;
 }
 
-checkUnnamed76(core.List<api.HiddenPlayer> o) {
+checkUnnamed77(core.List<api.HiddenPlayer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHiddenPlayer(o[0]);
   checkHiddenPlayer(o[1]);
@@ -185,7 +219,7 @@ buildHiddenPlayerList() {
   var o = new api.HiddenPlayerList();
   buildCounterHiddenPlayerList++;
   if (buildCounterHiddenPlayerList < 3) {
-    o.items = buildUnnamed76();
+    o.items = buildUnnamed77();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -196,7 +230,7 @@ buildHiddenPlayerList() {
 checkHiddenPlayerList(api.HiddenPlayerList o) {
   buildCounterHiddenPlayerList++;
   if (buildCounterHiddenPlayerList < 3) {
-    checkUnnamed76(o.items);
+    checkUnnamed77(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -257,14 +291,14 @@ checkPlayer(api.Player o) {
   buildCounterPlayer--;
 }
 
-buildUnnamed77() {
+buildUnnamed78() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed77(core.List<core.String> o) {
+checkUnnamed78(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -276,7 +310,7 @@ buildPlayerScoreResetResponse() {
   buildCounterPlayerScoreResetResponse++;
   if (buildCounterPlayerScoreResetResponse < 3) {
     o.kind = "foo";
-    o.resetScoreTimeSpans = buildUnnamed77();
+    o.resetScoreTimeSpans = buildUnnamed78();
   }
   buildCounterPlayerScoreResetResponse--;
   return o;
@@ -286,7 +320,7 @@ checkPlayerScoreResetResponse(api.PlayerScoreResetResponse o) {
   buildCounterPlayerScoreResetResponse++;
   if (buildCounterPlayerScoreResetResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed77(o.resetScoreTimeSpans);
+    checkUnnamed78(o.resetScoreTimeSpans);
   }
   buildCounterPlayerScoreResetResponse--;
 }
@@ -298,6 +332,15 @@ main() {
       var o = buildAchievementResetAllResponse();
       var od = new api.AchievementResetAllResponse.fromJson(o.toJson());
       checkAchievementResetAllResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-AchievementResetMultipleForAllRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAchievementResetMultipleForAllRequest();
+      var od = new api.AchievementResetMultipleForAllRequest.fromJson(o.toJson());
+      checkAchievementResetMultipleForAllRequest(od);
     });
   });
 
@@ -482,6 +525,49 @@ main() {
       })));
     });
 
+    unittest.test("method--resetAllForAllPlayers", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.AchievementsResourceApi res = new api.GamesManagementApi(mock).achievements;
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
+        unittest.expect(path.substring(pathOffset, pathOffset + 34), unittest.equals("achievements/resetAllForAllPlayers"));
+        pathOffset += 34;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.resetAllForAllPlayers().then(unittest.expectAsync((_) {}));
+    });
+
     unittest.test("method--resetForAllPlayers", () {
 
       var mock = new common_test.HttpServerMock();
@@ -531,6 +617,53 @@ main() {
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
       res.resetForAllPlayers(arg_achievementId).then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--resetMultipleForAllPlayers", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.AchievementsResourceApi res = new api.GamesManagementApi(mock).achievements;
+      var arg_request = buildAchievementResetMultipleForAllRequest();
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.AchievementResetMultipleForAllRequest.fromJson(json);
+        checkAchievementResetMultipleForAllRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
+        unittest.expect(path.substring(pathOffset, pathOffset + 39), unittest.equals("achievements/resetMultipleForAllPlayers"));
+        pathOffset += 39;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync((_) {}));
     });
 
   });

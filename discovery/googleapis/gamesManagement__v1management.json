@@ -18,7 +18,7 @@
     "description": "The Management API for Google Play Game Services.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/games/services",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/SnsF096M9PHKlmCnRlQrCODnADg\"",
+    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/IxsRVKhlHvQqb_TC5IIo_pE2aNs\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -114,8 +114,18 @@
                         "https://www.googleapis.com/auth/plus.login"
                     ]
                 },
+                "resetAllForAllPlayers": {
+                    "description": "Resets all draft achievements for all players. This method is only available to user accounts for your developer console.",
+                    "httpMethod": "POST",
+                    "id": "gamesManagement.achievements.resetAllForAllPlayers",
+                    "path": "achievements/resetAllForAllPlayers",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/games",
+                        "https://www.googleapis.com/auth/plus.login"
+                    ]
+                },
                 "resetForAllPlayers": {
-                    "description": "Resets the achievement with the given ID for the all players. This method is only available to user accounts for your developer console. Only draft achievements can be reset.",
+                    "description": "Resets the achievement with the given ID for all players. This method is only available to user accounts for your developer console. Only draft achievements can be reset.",
                     "httpMethod": "POST",
                     "id": "gamesManagement.achievements.resetForAllPlayers",
                     "parameterOrder": [
@@ -130,6 +140,19 @@
                         }
                     },
                     "path": "achievements/{achievementId}/resetForAllPlayers",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/games",
+                        "https://www.googleapis.com/auth/plus.login"
+                    ]
+                },
+                "resetMultipleForAllPlayers": {
+                    "description": "Resets the achievement with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft achievements may be reset.",
+                    "httpMethod": "POST",
+                    "id": "gamesManagement.achievements.resetMultipleForAllPlayers",
+                    "path": "achievements/resetMultipleForAllPlayers",
+                    "request": {
+                        "$ref": "AchievementResetMultipleForAllRequest"
+                    },
                     "scopes": [
                         "https://www.googleapis.com/auth/games",
                         "https://www.googleapis.com/auth/plus.login"
@@ -397,7 +420,7 @@
             }
         }
     },
-    "revision": "20140918",
+    "revision": "20141002",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AchievementResetAllResponse": {
@@ -415,6 +438,25 @@
                         "$ref": "AchievementResetResponse"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AchievementResetMultipleForAllRequest": {
+            "description": "This is a JSON template for multiple achievements reset all request.",
+            "id": "AchievementResetMultipleForAllRequest",
+            "properties": {
+                "achievement_ids": {
+                    "description": "The IDs of achievements to reset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "gamesManagement#achievementResetMultipleForAllRequest",
+                    "description": "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#achievementResetMultipleForAllRequest.",
+                    "type": "string"
                 }
             },
             "type": "object"

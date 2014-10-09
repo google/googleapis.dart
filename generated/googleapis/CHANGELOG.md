@@ -1,3 +1,11 @@
+## 0.3.0
+
+* [apis-removed] orkut:v2: removed (Orkut is shut down)
+* [apis] compute:v1: additional schemas/methods
+* [apis] doubleclicksearch:v2: schema changes
+* [apis] gamesManagement:v1management: schema changes
+* [apis] gmail:v1: schema changes
+
 ## 0.2.1
 
 * [apis-new] adexchangeseller:v2.0: API added

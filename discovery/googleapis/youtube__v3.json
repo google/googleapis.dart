@@ -27,7 +27,7 @@
     "description": "Programmatic access to YouTube features.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/zEREGG39JVAwsC_sGxbLLJMqhV0\"",
+    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/AH-IEbavfgCCcxMvonELgSqtbcY\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -2315,7 +2315,7 @@
             }
         }
     },
-    "revision": "20140923",
+    "revision": "20140930",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -4461,9 +4461,13 @@
                         "oflcR15",
                         "oflcR16",
                         "oflcR18",
+                        "oflcRp13",
+                        "oflcRp16",
                         "oflcUnrated"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
                         "",
                         "",
                         "",

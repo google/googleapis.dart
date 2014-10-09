@@ -23,7 +23,7 @@
     "description": "Lets you access OAuth2 protocol related APIs.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/accounts/docs/OAuth2",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/GL-dbqdl5oZGNiFahadB80nONis\"",
+    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/GL-dbqdl5oZGNiFahadB80nONis\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

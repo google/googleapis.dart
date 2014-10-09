@@ -1511,8 +1511,13 @@ class VariantsResourceApi {
 
   /**
    * Creates variant data by asynchronously importing the provided information.
-   * If the destination variant set already contains data, new variants will be
-   * merged according to the behavior of mergeVariants.
+   * The variants for import will be merged with any existing data and each
+   * other according to the behavior of mergeVariants. In particular, this means
+   * for merged VCF variants that have conflicting INFO fields, some data will
+   * be arbitrarily discarded. As a special case, for single-sample VCF files,
+   * QUAL and FILTER fields will be moved to the call level; these are sometimes
+   * interpreted in a call-specific context. Imported VCF headers are appended
+   * to the metadata already in a VariantSet.
    *
    * [request] - The metadata request object.
    *
@@ -1749,7 +1754,7 @@ class VariantsetsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future mergeVariants(Variant request, core.String variantSetId) {
+  async.Future mergeVariants(MergeVariantsRequest request, core.String variantSetId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3024,6 +3029,30 @@ class ListDatasetsResponse {
 }
 
 
+/** Not documented yet. */
+class MergeVariantsRequest {
+  /** The variants to be merged with existing variants. */
+  core.List<Variant> variants;
+
+
+  MergeVariantsRequest();
+
+  MergeVariantsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("variants")) {
+      variants = _json["variants"].map((value) => new Variant.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (variants != null) {
+      _json["variants"] = variants.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
 /**
  * Metadata describes a single piece of variant call metadata. These data
  * include a top level key and either a single value string (value) or a list of
@@ -4202,7 +4231,9 @@ class SearchVariantSetsResponse {
 class SearchVariantsRequest {
   /**
    * Only return variant calls which belong to call sets with these ids. Leaving
-   * this blank returns all variant calls.
+   * this blank returns all variant calls. If a variant has no calls belonging
+   * to any of these call sets, it won't be returned at all. Currently, variants
+   * with no calls from any call set will never be returned.
    */
   core.List<core.String> callSetIds;
 

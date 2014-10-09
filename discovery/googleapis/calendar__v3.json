@@ -17,7 +17,7 @@
     "description": "Lets you manipulate events and other calendar data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/1bNdTf1HZZJP00wxpVt8ADRg0P0\"",
+    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/vJn-IbIFOuzj-0Iuor__XCxLfRw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/calendar-16.png",
         "x32": "http://www.google.com/images/icons/product/calendar-32.png"
@@ -1535,7 +1535,7 @@
             }
         }
     },
-    "revision": "20140917",
+    "revision": "20140925",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {
@@ -2308,7 +2308,7 @@
                     "type": "string"
                 },
                 "timeZone": {
-                    "description": "The name of the time zone in which the time is specified (e.g. \"Europe/Zurich\"). Optional. The default is the time zone of the calendar.",
+                    "description": "The name of the time zone in which the time is specified (e.g. \"Europe/Zurich\"). For recurring events this field is required and specifies the time zone in which the recurrence is expanded. For single events this field is optional and indicates a custom time zone for the event start/end.",
                     "type": "string"
                 }
             },

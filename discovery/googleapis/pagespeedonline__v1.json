@@ -5,10 +5,10 @@
     "description": "Lets you analyze the performance of a web page and get tailored suggestions to make that page faster.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/speed/docs/insights/v1/getting_started",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/i9zrKH7a71FIACHf4pP1Da2VYE4\"",
+    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/d-8yA-cBFtVSz2k25Ky8r9ibOxE\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/pagespeed-16.png",
-        "x32": "http://www.google.com/images/icons/product/pagespeed-32.png"
+        "x16": "https://www.google.com/images/icons/product/pagespeed-16.png",
+        "x32": "https://www.google.com/images/icons/product/pagespeed-32.png"
     },
     "id": "pagespeedonline:v1",
     "kind": "discovery#restDescription",
@@ -126,7 +126,7 @@
             }
         }
     },
-    "revision": "20140528",
+    "revision": "20140930",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Result": {

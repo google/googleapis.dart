@@ -21,7 +21,7 @@
     "description": "The API for Google Play Game Services.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/games/services/",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/xvi2uGQDV15HRXwhaUx6I3l2kvA\"",
+    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/NncFgBJeCrnXAbpnOtRcRiDDkZg\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1907,7 +1907,7 @@
             }
         }
     },
-    "revision": "20140918",
+    "revision": "20141002",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AchievementDefinition": {
@@ -2283,6 +2283,10 @@
                 },
                 "name": {
                     "description": "The name of the application.",
+                    "type": "string"
+                },
+                "themeColor": {
+                    "description": "A hint to the client UI for what color to use as an app-themed color. The color is given as an RGB triplet (e.g. \"E0E0E0\").",
                     "type": "string"
                 }
             },

@@ -7150,6 +7150,8 @@ class ContentRating {
    * - "oflcR15"
    * - "oflcR16"
    * - "oflcR18"
+   * - "oflcRp13"
+   * - "oflcRp16"
    * - "oflcUnrated"
    */
   core.String oflcRating;

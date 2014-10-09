@@ -128,8 +128,43 @@ class AchievementsResourceApi {
   }
 
   /**
-   * Resets the achievement with the given ID for the all players. This method
-   * is only available to user accounts for your developer console. Only draft
+   * Resets all draft achievements for all players. This method is only
+   * available to user accounts for your developer console.
+   *
+   * Request parameters:
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future resetAllForAllPlayers() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+
+    _downloadOptions = null;
+
+    _url = 'achievements/resetAllForAllPlayers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Resets the achievement with the given ID for all players. This method is
+   * only available to user accounts for your developer console. Only draft
    * achievements can be reset.
    *
    * Request parameters:
@@ -157,6 +192,47 @@ class AchievementsResourceApi {
     _downloadOptions = null;
 
     _url = 'achievements/' + common_internal.Escaper.ecapeVariable('$achievementId') + '/resetForAllPlayers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Resets the achievement with the given IDs for all players. This method is
+   * only available to user accounts for your developer console. Only draft
+   * achievements may be reset.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future resetMultipleForAllPlayers(AchievementResetMultipleForAllRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _downloadOptions = null;
+
+    _url = 'achievements/resetMultipleForAllPlayers';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -732,6 +808,42 @@ class AchievementResetAllResponse {
     }
     if (results != null) {
       _json["results"] = results.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** This is a JSON template for multiple achievements reset all request. */
+class AchievementResetMultipleForAllRequest {
+  /** The IDs of achievements to reset. */
+  core.List<core.String> achievementIds;
+
+  /**
+   * Uniquely identifies the type of this resource. Value is always the fixed
+   * string gamesManagement#achievementResetMultipleForAllRequest.
+   */
+  core.String kind;
+
+
+  AchievementResetMultipleForAllRequest();
+
+  AchievementResetMultipleForAllRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("achievement_ids")) {
+      achievementIds = _json["achievement_ids"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (achievementIds != null) {
+      _json["achievement_ids"] = achievementIds;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }

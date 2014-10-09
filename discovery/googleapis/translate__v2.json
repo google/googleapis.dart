@@ -5,7 +5,7 @@
     "description": "Lets you translate text from one language to another",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/translate/v2/using_rest",
-    "etag": "\"uUWyYHXmEn-ab7WLvo8qNz2S8ws/x8y0eeapVY09xfAj-RIWaraLUFU\"",
+    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/x8y0eeapVY09xfAj-RIWaraLUFU\"",
     "features": [
         "dataWrapper"
     ],

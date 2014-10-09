@@ -3718,6 +3718,12 @@ class Application {
   /** The name of the application. */
   core.String name;
 
+  /**
+   * A hint to the client UI for what color to use as an app-themed color. The
+   * color is given as an RGB triplet (e.g. "E0E0E0").
+   */
+  core.String themeColor;
+
 
   Application();
 
@@ -3758,6 +3764,9 @@ class Application {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("themeColor")) {
+      themeColor = _json["themeColor"];
+    }
   }
 
   core.Map toJson() {
@@ -3797,6 +3806,9 @@ class Application {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (themeColor != null) {
+      _json["themeColor"] = themeColor;
     }
     return _json;
   }

@@ -1,3 +1,7 @@
+## 0.3.0
+
+* [apis-breaking] genomics:v1beta: breaking changes (method argument changes and schema change)
+
 ## 0.2.1
 
 * [apis-new] resourceviews:v1beta2: API added
