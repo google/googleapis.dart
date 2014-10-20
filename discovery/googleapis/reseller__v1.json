@@ -17,7 +17,7 @@
     "description": "Lets you create and manage your customers and their subscriptions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/reseller/",
-    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/WKsRWBQXvzPbkJLogUZV4PnpLRk\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/zxsqVn0Yn5fs87TjHWbdqkRtKVI\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -181,6 +181,36 @@
         },
         "subscriptions": {
             "methods": {
+                "activate": {
+                    "description": "Activates a subscription previously suspended by the reseller",
+                    "httpMethod": "POST",
+                    "id": "reseller.subscriptions.activate",
+                    "parameterOrder": [
+                        "customerId",
+                        "subscriptionId"
+                    ],
+                    "parameters": {
+                        "customerId": {
+                            "description": "Id of the Customer",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "subscriptionId": {
+                            "description": "Id of the subscription, which is unique for a customer",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "customers/{customerId}/subscriptions/{subscriptionId}/activate",
+                    "response": {
+                        "$ref": "Subscription"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/apps.order"
+                    ]
+                },
                 "changePlan": {
                     "description": "Changes the plan of a subscription",
                     "httpMethod": "POST",
@@ -458,11 +488,41 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/apps.order"
                     ]
+                },
+                "suspend": {
+                    "description": "Suspends an active subscription",
+                    "httpMethod": "POST",
+                    "id": "reseller.subscriptions.suspend",
+                    "parameterOrder": [
+                        "customerId",
+                        "subscriptionId"
+                    ],
+                    "parameters": {
+                        "customerId": {
+                            "description": "Id of the Customer",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "subscriptionId": {
+                            "description": "Id of the subscription, which is unique for a customer",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "customers/{customerId}/subscriptions/{subscriptionId}/suspend",
+                    "response": {
+                        "$ref": "Subscription"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/apps.order"
+                    ]
                 }
             }
         }
     },
-    "revision": "20131109",
+    "revision": "20140821",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Address": {
@@ -597,6 +657,11 @@
                     "default": "subscriptions#seats",
                     "description": "Identifies the resource as a subscription change plan request.",
                     "type": "string"
+                },
+                "licensedNumberOfSeats": {
+                    "description": "Read only field containing the current number of licensed seats. Resellers can utilize this field to gather insights into usage for FLEXIBLE Google-Apps subscriptions and other secondary subscriptions (e.g. Google-Vault, Drive-storage).",
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "maximumNumberOfSeats": {
                     "description": "Maximum number of seats that can be purchased. This needs to be provided only for a non-commitment plan. For a commitment plan it is decided by the contract.",

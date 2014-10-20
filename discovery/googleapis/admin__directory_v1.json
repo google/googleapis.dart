@@ -69,7 +69,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/s9KxklGD8Epkl54bOAhZ92wO9kY\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/l5pod8YqQveewbHEUdz0VFkXQt0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -2511,7 +2511,7 @@
             }
         }
     },
-    "revision": "20141001",
+    "revision": "20141014",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {
@@ -2683,6 +2683,25 @@
             "description": "JSON template for Chrome Os Device resource in Directory API.",
             "id": "ChromeOsDevice",
             "properties": {
+                "activeTimeRanges": {
+                    "description": "List of active time ranges (Read-only)",
+                    "items": {
+                        "properties": {
+                            "activeTime": {
+                                "description": "Duration in milliseconds",
+                                "format": "int32",
+                                "type": "integer"
+                            },
+                            "date": {
+                                "description": "Date of usage",
+                                "format": "date",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
                 "annotatedLocation": {
                     "description": "Address or location of the device as noted by the administrator",
                     "type": "string"

@@ -2,6 +2,9 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "View and manage your data across Google Cloud Platform services"
+                },
                 "https://www.googleapis.com/auth/devstorage.full_control": {
                     "description": "Manage your data and permissions in Google Cloud Storage"
                 },
@@ -20,7 +23,7 @@
     "description": "Lets you store and retrieve potentially-large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/J4NEKl25SgasPn8QqRPJTF8nCH8\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/Q51lUpUSFLOUeZvWamXhAxA0IDI\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -287,6 +290,7 @@
                     },
                     "path": "b/{bucket}",
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_write"
                     ]
@@ -336,6 +340,7 @@
                         "$ref": "Bucket"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_only",
                         "https://www.googleapis.com/auth/devstorage.read_write"
@@ -396,6 +401,7 @@
                         "$ref": "Bucket"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_write"
                     ]
@@ -445,6 +451,7 @@
                         "$ref": "Buckets"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_only",
                         "https://www.googleapis.com/auth/devstorage.read_write"
@@ -517,6 +524,7 @@
                         "$ref": "Bucket"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_write"
                     ]
@@ -588,6 +596,7 @@
                         "$ref": "Bucket"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_write"
                     ]
@@ -606,6 +615,7 @@
                         "parameterName": "resource"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_only",
                         "https://www.googleapis.com/auth/devstorage.read_write"
@@ -1120,6 +1130,7 @@
                         "$ref": "Object"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_write"
                     ],
@@ -1257,6 +1268,7 @@
                         "$ref": "Object"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_write"
                     ],
@@ -1316,12 +1328,13 @@
                     },
                     "path": "b/{bucket}/o/{object}",
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_write"
                     ]
                 },
                 "get": {
-                    "description": "Retrieves objects or their metadata.",
+                    "description": "Retrieves an object or its metadata.",
                     "httpMethod": "GET",
                     "id": "storage.objects.get",
                     "parameterOrder": [
@@ -1390,6 +1403,7 @@
                         "$ref": "Object"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_only",
                         "https://www.googleapis.com/auth/devstorage.read_write"
@@ -1502,6 +1516,7 @@
                         "$ref": "Object"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_write"
                     ],
@@ -1568,6 +1583,7 @@
                         "$ref": "Objects"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_only",
                         "https://www.googleapis.com/auth/devstorage.read_write"
@@ -1668,6 +1684,7 @@
                         "$ref": "Object"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_write"
                     ]
@@ -1766,6 +1783,7 @@
                         "$ref": "Object"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_write"
                     ],
@@ -1835,6 +1853,7 @@
                         "$ref": "Channel"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_only",
                         "https://www.googleapis.com/auth/devstorage.read_write"
@@ -1844,7 +1863,7 @@
             }
         }
     },
-    "revision": "20140911",
+    "revision": "20141010",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {

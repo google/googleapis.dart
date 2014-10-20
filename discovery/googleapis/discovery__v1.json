@@ -5,7 +5,7 @@
     "description": "Lets you discover information about other Google APIs, such as what APIs are available, the resource and method details for each API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/discovery/",
-    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/UNFMI_ENJ3hAFRWSi4GLSerTeFg\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/UNFMI_ENJ3hAFRWSi4GLSerTeFg\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/feature/filing_cabinet_search-g16.png",
         "x32": "http://www.google.com/images/icons/feature/filing_cabinet_search-g32.png"

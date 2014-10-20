@@ -18,7 +18,7 @@
     "description": "The Google Maps Engine API allows developers to store and query geospatial vector and raster data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/maps-engine/",
-    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/mIaACfaLFy1GFFH2NY85fbhSr_I\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/qPyTs6YgupnkPPausvgVVCo1k4I\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/maps_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/maps_engine-32.png"
@@ -2796,7 +2796,7 @@
             }
         }
     },
-    "revision": "20141001",
+    "revision": "20141015",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AcquisitionTime": {
@@ -4382,15 +4382,15 @@
             "type": "object"
         },
         "Project": {
-            "description": "A project groups a collection of resources.",
+            "description": "A Maps Engine project groups a collection of resources.",
             "id": "Project",
             "properties": {
                 "id": {
-                    "description": "An ID used to refer to this project.",
+                    "description": "An ID used to refer to this Maps Engine project.",
                     "type": "string"
                 },
                 "name": {
-                    "description": "A user provided name for this project.",
+                    "description": "A user provided name for this Maps Engine project.",
                     "type": "string"
                 }
             },

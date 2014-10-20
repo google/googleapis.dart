@@ -1,3 +1,8 @@
+## 0.4.0
+
+* [apis] cloudmonitoring:v2beta1: additional schemas/methods
+* [apis-breaking] genomics:v1beta: additional schemas/methods, minor removal of schema properties
+
 ## 0.3.0
 
 * [apis-breaking] genomics:v1beta: breaking changes (method argument changes and schema change)

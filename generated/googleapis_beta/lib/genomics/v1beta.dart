@@ -509,7 +509,8 @@ class DatasetsResourceApi {
    * value of nextPageToken from the previous response.
    *
    * [projectId] - Only return datasets which belong to this Google Developers
-   * Console project. Only accepts project numbers.
+   * Console project. Only accepts project numbers. Returns all public projects
+   * if no project number is specified.
    *
    * Completes with a [ListDatasetsResponse].
    *
@@ -1784,6 +1785,53 @@ class VariantsetsResourceApi {
   }
 
   /**
+   * Updates a variant set's metadata. All other modifications are silently
+   * ignored. Returns the modified variant set. This method supports patch
+   * semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [variantSetId] - The ID of the variant to be updated.
+   *
+   * Completes with a [VariantSet].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<VariantSet> patch(VariantSet request, core.String variantSetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (variantSetId == null) {
+      throw new core.ArgumentError("Parameter variantSetId is required.");
+    }
+
+
+    _url = 'variantsets/' + common_internal.Escaper.ecapeVariable('$variantSetId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new VariantSet.fromJson(data));
+  }
+
+  /**
    * Returns a list of all variant sets matching search criteria.
    *
    * [request] - The metadata request object.
@@ -1821,6 +1869,52 @@ class VariantsetsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new SearchVariantSetsResponse.fromJson(data));
+  }
+
+  /**
+   * Updates a variant set's metadata. All other modifications are silently
+   * ignored. Returns the modified variant set.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [variantSetId] - The ID of the variant to be updated.
+   *
+   * Completes with a [VariantSet].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<VariantSet> update(VariantSet request, core.String variantSetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (variantSetId == null) {
+      throw new core.ArgumentError("Parameter variantSetId is required.");
+    }
+
+
+    _url = 'variantsets/' + common_internal.Escaper.ecapeVariable('$variantSetId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new VariantSet.fromJson(data));
   }
 
 }
@@ -2111,7 +2205,7 @@ class Dataset {
 }
 
 
-/** The job creation request. Next ID: 12 */
+/** The job creation request. */
 class ExperimentalCreateJobRequest {
   /**
    * Specifies whether or not to run the alignment pipeline. At least one of
@@ -2133,9 +2227,6 @@ class ExperimentalCreateJobRequest {
    */
   core.String gcsOutputPath;
 
-  /** For alignment from FASTQ files, this specifies the library name. */
-  core.String libraryName;
-
   /**
    * A list of Google Cloud Storage URIs of paired end .fastq files to operate
    * upon. If specified, this represents the second file of each paired .fastq
@@ -2143,22 +2234,10 @@ class ExperimentalCreateJobRequest {
    */
   core.List<core.String> pairedSourceUris;
 
-  /** For alignment from FASTQ files, this specifies the platform name. */
-  core.String platformName;
-
-  /** For alignment from FASTQ files, this specifies the platform unit. */
-  core.String platformUnit;
-
   /**
    * Required. The Google Cloud Project ID with which to associate the request.
    */
   core.String projectId;
-
-  /** For alignment from FASTQ files, this specifies the read group ID. */
-  core.String readGroupId;
-
-  /** For alignment from FASTQ files, this specifies the sample name. */
-  core.String sampleName;
 
   /**
    * A list of Google Cloud Storage URIs of data files to operate upon. These
@@ -2181,26 +2260,11 @@ class ExperimentalCreateJobRequest {
     if (_json.containsKey("gcsOutputPath")) {
       gcsOutputPath = _json["gcsOutputPath"];
     }
-    if (_json.containsKey("libraryName")) {
-      libraryName = _json["libraryName"];
-    }
     if (_json.containsKey("pairedSourceUris")) {
       pairedSourceUris = _json["pairedSourceUris"];
     }
-    if (_json.containsKey("platformName")) {
-      platformName = _json["platformName"];
-    }
-    if (_json.containsKey("platformUnit")) {
-      platformUnit = _json["platformUnit"];
-    }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
-    }
-    if (_json.containsKey("readGroupId")) {
-      readGroupId = _json["readGroupId"];
-    }
-    if (_json.containsKey("sampleName")) {
-      sampleName = _json["sampleName"];
     }
     if (_json.containsKey("sourceUris")) {
       sourceUris = _json["sourceUris"];
@@ -2218,26 +2282,11 @@ class ExperimentalCreateJobRequest {
     if (gcsOutputPath != null) {
       _json["gcsOutputPath"] = gcsOutputPath;
     }
-    if (libraryName != null) {
-      _json["libraryName"] = libraryName;
-    }
     if (pairedSourceUris != null) {
       _json["pairedSourceUris"] = pairedSourceUris;
     }
-    if (platformName != null) {
-      _json["platformName"] = platformName;
-    }
-    if (platformUnit != null) {
-      _json["platformUnit"] = platformUnit;
-    }
     if (projectId != null) {
       _json["projectId"] = projectId;
-    }
-    if (readGroupId != null) {
-      _json["readGroupId"] = readGroupId;
-    }
-    if (sampleName != null) {
-      _json["sampleName"] = sampleName;
     }
     if (sourceUris != null) {
       _json["sourceUris"] = sourceUris;

@@ -7203,12 +7203,12 @@ class ProcessResponse {
 }
 
 
-/** A project groups a collection of resources. */
+/** A Maps Engine project groups a collection of resources. */
 class Project {
-  /** An ID used to refer to this project. */
+  /** An ID used to refer to this Maps Engine project. */
   core.String id;
 
-  /** A user provided name for this project. */
+  /** A user provided name for this Maps Engine project. */
   core.String name;
 
 

@@ -228,6 +228,51 @@ class SubscriptionsResourceApi {
       _requester = client;
 
   /**
+   * Activates a subscription previously suspended by the reseller
+   *
+   * Request parameters:
+   *
+   * [customerId] - Id of the Customer
+   *
+   * [subscriptionId] - Id of the subscription, which is unique for a customer
+   *
+   * Completes with a [Subscription].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Subscription> activate(core.String customerId, core.String subscriptionId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customerId == null) {
+      throw new core.ArgumentError("Parameter customerId is required.");
+    }
+    if (subscriptionId == null) {
+      throw new core.ArgumentError("Parameter subscriptionId is required.");
+    }
+
+
+    _url = 'customers/' + common_internal.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/activate';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Subscription.fromJson(data));
+  }
+
+  /**
    * Changes the plan of a subscription
    *
    * [request] - The metadata request object.
@@ -640,6 +685,51 @@ class SubscriptionsResourceApi {
     return _response.then((data) => new Subscription.fromJson(data));
   }
 
+  /**
+   * Suspends an active subscription
+   *
+   * Request parameters:
+   *
+   * [customerId] - Id of the Customer
+   *
+   * [subscriptionId] - Id of the subscription, which is unique for a customer
+   *
+   * Completes with a [Subscription].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Subscription> suspend(core.String customerId, core.String subscriptionId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (customerId == null) {
+      throw new core.ArgumentError("Parameter customerId is required.");
+    }
+    if (subscriptionId == null) {
+      throw new core.ArgumentError("Parameter subscriptionId is required.");
+    }
+
+
+    _url = 'customers/' + common_internal.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/suspend';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Subscription.fromJson(data));
+  }
+
 }
 
 
@@ -926,6 +1016,14 @@ class Seats {
   core.String kind;
 
   /**
+   * Read only field containing the current number of licensed seats. Resellers
+   * can utilize this field to gather insights into usage for FLEXIBLE
+   * Google-Apps subscriptions and other secondary subscriptions (e.g.
+   * Google-Vault, Drive-storage).
+   */
+  core.int licensedNumberOfSeats;
+
+  /**
    * Maximum number of seats that can be purchased. This needs to be provided
    * only for a non-commitment plan. For a commitment plan it is decided by the
    * contract.
@@ -944,6 +1042,9 @@ class Seats {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("licensedNumberOfSeats")) {
+      licensedNumberOfSeats = _json["licensedNumberOfSeats"];
+    }
     if (_json.containsKey("maximumNumberOfSeats")) {
       maximumNumberOfSeats = _json["maximumNumberOfSeats"];
     }
@@ -956,6 +1057,9 @@ class Seats {
     var _json = new core.Map();
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (licensedNumberOfSeats != null) {
+      _json["licensedNumberOfSeats"] = licensedNumberOfSeats;
     }
     if (maximumNumberOfSeats != null) {
       _json["maximumNumberOfSeats"] = maximumNumberOfSeats;

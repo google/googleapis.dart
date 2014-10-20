@@ -49,6 +49,48 @@ class UsersResourceApi {
 
   UsersResourceApi(common_internal.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Gets the current user's Gmail profile.
+   *
+   * Request parameters:
+   *
+   * [userId] - The user's email address. The special value me can be used to
+   * indicate the authenticated user.
+   *
+   * Completes with a [Profile].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Profile> getProfile(core.String userId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+
+
+    _url = common_internal.Escaper.ecapeVariable('$userId') + '/profile';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Profile.fromJson(data));
+  }
+
 }
 
 
@@ -2415,6 +2457,57 @@ class ModifyThreadRequest {
     }
     if (removeLabelIds != null) {
       _json["removeLabelIds"] = removeLabelIds;
+    }
+    return _json;
+  }
+}
+
+
+/** Profile for a Gmail user. */
+class Profile {
+  /** The user's email address. */
+  core.String emailAddress;
+
+  /** The ID of the mailbox's current history record. */
+  core.String historyId;
+
+  /** The total number of messages in the mailbox. */
+  core.int messagesTotal;
+
+  /** The total number of threads in the mailbox. */
+  core.int threadsTotal;
+
+
+  Profile();
+
+  Profile.fromJson(core.Map _json) {
+    if (_json.containsKey("emailAddress")) {
+      emailAddress = _json["emailAddress"];
+    }
+    if (_json.containsKey("historyId")) {
+      historyId = _json["historyId"];
+    }
+    if (_json.containsKey("messagesTotal")) {
+      messagesTotal = _json["messagesTotal"];
+    }
+    if (_json.containsKey("threadsTotal")) {
+      threadsTotal = _json["threadsTotal"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (emailAddress != null) {
+      _json["emailAddress"] = emailAddress;
+    }
+    if (historyId != null) {
+      _json["historyId"] = historyId;
+    }
+    if (messagesTotal != null) {
+      _json["messagesTotal"] = messagesTotal;
+    }
+    if (threadsTotal != null) {
+      _json["threadsTotal"] = threadsTotal;
     }
     return _json;
   }

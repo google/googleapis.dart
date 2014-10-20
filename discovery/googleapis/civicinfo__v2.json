@@ -6,7 +6,7 @@
     "description": "An API for accessing civic information.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/civic-information",
-    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/YV4QnTSNnV4r4LSJ23wzwsBf0U0\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/5v6NdAJI6D9bRU7oDGpNoBkCKy8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -301,7 +301,7 @@
             }
         }
     },
-    "revision": "20140814",
+    "revision": "20141013",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AdministrationRegion": {

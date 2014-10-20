@@ -5,7 +5,7 @@
     "description": "Licensing API to view and manage license for your domain.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/licensing/",
-    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/5nv4m0pBrnwpGqw9jwk2yynQNrg\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/5nv4m0pBrnwpGqw9jwk2yynQNrg\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

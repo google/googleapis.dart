@@ -3963,6 +3963,39 @@ class Channel {
 
 
 /** Not documented yet. */
+class ChromeOsDeviceActiveTimeRanges {
+  /** Duration in milliseconds */
+  core.int activeTime;
+
+  /** Date of usage */
+  core.DateTime date;
+
+
+  ChromeOsDeviceActiveTimeRanges();
+
+  ChromeOsDeviceActiveTimeRanges.fromJson(core.Map _json) {
+    if (_json.containsKey("activeTime")) {
+      activeTime = _json["activeTime"];
+    }
+    if (_json.containsKey("date")) {
+      date = core.DateTime.parse(_json["date"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (activeTime != null) {
+      _json["activeTime"] = activeTime;
+    }
+    if (date != null) {
+      _json["date"] = "${(date).year.toString().padLeft(4, '0')}-${(date).month.toString().padLeft(2, '0')}-${(date).day.toString().padLeft(2, '0')}";
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
 class ChromeOsDeviceRecentUsers {
   /** Email address of the user. Present only if the user type is managed */
   core.String email;
@@ -3997,6 +4030,9 @@ class ChromeOsDeviceRecentUsers {
 
 /** JSON template for Chrome Os Device resource in Directory API. */
 class ChromeOsDevice {
+  /** List of active time ranges (Read-only) */
+  core.List<ChromeOsDeviceActiveTimeRanges> activeTimeRanges;
+
   /** Address or location of the device as noted by the administrator */
   core.String annotatedLocation;
 
@@ -4079,6 +4115,9 @@ class ChromeOsDevice {
   ChromeOsDevice();
 
   ChromeOsDevice.fromJson(core.Map _json) {
+    if (_json.containsKey("activeTimeRanges")) {
+      activeTimeRanges = _json["activeTimeRanges"].map((value) => new ChromeOsDeviceActiveTimeRanges.fromJson(value)).toList();
+    }
     if (_json.containsKey("annotatedLocation")) {
       annotatedLocation = _json["annotatedLocation"];
     }
@@ -4152,6 +4191,9 @@ class ChromeOsDevice {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (activeTimeRanges != null) {
+      _json["activeTimeRanges"] = activeTimeRanges.map((value) => (value).toJson()).toList();
+    }
     if (annotatedLocation != null) {
       _json["annotatedLocation"] = annotatedLocation;
     }

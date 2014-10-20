@@ -17,7 +17,7 @@
     "description": "Lets you access a Google App Engine Pull Task Queue over REST.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/appengine/docs/python/taskqueue/rest",
-    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/NdbJrHMoZLPwtpKFHEyZMJzpuTM\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/NdbJrHMoZLPwtpKFHEyZMJzpuTM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/app_engine-16.png",
         "x32": "http://www.google.com/images/icons/product/app_engine-32.png"

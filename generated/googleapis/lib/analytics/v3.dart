@@ -449,7 +449,8 @@ class ManagementAccountSummariesResourceApi {
    *
    * Request parameters:
    *
-   * [max_results] - The maximum number of filters to include in this response.
+   * [max_results] - The maximum number of account summaries to include in this
+   * response, where the largest acceptable value is 1000.
    *
    * [start_index] - An index of the first entity to retrieve. Use this
    * parameter as a pagination mechanism along with the max-results parameter.
@@ -9381,6 +9382,12 @@ class Profile {
    */
   core.bool eCommerceTracking;
 
+  /**
+   * Indicates whether enhanced ecommerce tracking is enabled for this view
+   * (profile).
+   */
+  core.bool enhancedECommerceTracking;
+
   /** The query parameters that are excluded from this view (profile). */
   core.String excludeQueryParameters;
 
@@ -9469,6 +9476,9 @@ class Profile {
     if (_json.containsKey("eCommerceTracking")) {
       eCommerceTracking = _json["eCommerceTracking"];
     }
+    if (_json.containsKey("enhancedECommerceTracking")) {
+      enhancedECommerceTracking = _json["enhancedECommerceTracking"];
+    }
     if (_json.containsKey("excludeQueryParameters")) {
       excludeQueryParameters = _json["excludeQueryParameters"];
     }
@@ -9541,6 +9551,9 @@ class Profile {
     }
     if (eCommerceTracking != null) {
       _json["eCommerceTracking"] = eCommerceTracking;
+    }
+    if (enhancedECommerceTracking != null) {
+      _json["enhancedECommerceTracking"] = enhancedECommerceTracking;
     }
     if (excludeQueryParameters != null) {
       _json["excludeQueryParameters"] = excludeQueryParameters;

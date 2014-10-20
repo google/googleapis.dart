@@ -15,6 +15,9 @@ export '../common/common.dart' show DetailedApiRequestError;
 
 /** Lets you store and retrieve potentially-large, immutable data objects. */
 class StorageApi {
+  /** View and manage your data across Google Cloud Platform services */
+  static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+
   /** Manage your data and permissions in Google Cloud Storage */
   static const DevstorageFullControlScope = "https://www.googleapis.com/auth/devstorage.full_control";
 
@@ -1804,7 +1807,7 @@ class ObjectsResourceApi {
   }
 
   /**
-   * Retrieves objects or their metadata.
+   * Retrieves an object or its metadata.
    *
    * Request parameters:
    *

@@ -23,7 +23,7 @@
     "description": "Lets you access a cloud hosted machine learning service that makes it easy to build smart apps",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/prediction/docs/developer-guide",
-    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/MKubU0FmYvcCiak8-htY8xGlT7I\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/MKubU0FmYvcCiak8-htY8xGlT7I\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/feature/predictionapi-16.png",
         "x32": "http://www.google.com/images/icons/feature/predictionapi-32.png"

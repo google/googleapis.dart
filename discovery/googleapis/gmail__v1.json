@@ -23,7 +23,7 @@
     "description": "The Gmail REST API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/gmail/api/",
-    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/FGWIXwFi3bZjyIWUjsVvCy3aEZU\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/VTv_VctBdqXjsksB5IcLu4ps6Nw\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/googlemail-16.png",
         "x32": "https://www.google.com/images/icons/product/googlemail-32.png"
@@ -81,6 +81,35 @@
     "protocol": "rest",
     "resources": {
         "users": {
+            "methods": {
+                "getProfile": {
+                    "description": "Gets the current user's Gmail profile.",
+                    "httpMethod": "GET",
+                    "id": "gmail.users.getProfile",
+                    "parameterOrder": [
+                        "userId"
+                    ],
+                    "parameters": {
+                        "userId": {
+                            "default": "me",
+                            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{userId}/profile",
+                    "response": {
+                        "$ref": "Profile"
+                    },
+                    "scopes": [
+                        "https://mail.google.com/",
+                        "https://www.googleapis.com/auth/gmail.compose",
+                        "https://www.googleapis.com/auth/gmail.modify",
+                        "https://www.googleapis.com/auth/gmail.readonly"
+                    ]
+                }
+            },
             "resources": {
                 "drafts": {
                     "methods": {
@@ -1270,7 +1299,7 @@
             }
         }
     },
-    "revision": "20141001",
+    "revision": "20141009",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Draft": {
@@ -1670,6 +1699,32 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Profile": {
+            "description": "Profile for a Gmail user.",
+            "id": "Profile",
+            "properties": {
+                "emailAddress": {
+                    "description": "The user's email address.",
+                    "type": "string"
+                },
+                "historyId": {
+                    "description": "The ID of the mailbox's current history record.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "messagesTotal": {
+                    "description": "The total number of messages in the mailbox.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "threadsTotal": {
+                    "description": "The total number of threads in the mailbox.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"

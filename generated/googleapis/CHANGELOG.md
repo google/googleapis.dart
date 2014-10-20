@@ -1,8 +1,16 @@
+## 0.3.1
+
+* [apis] admin_directory:v1: additional schema/methods
+* [apis] analytics:v3: additional schemas/methods
+* [apis] gmail:v1: additional schemas/methods
+* [apis] reseller:v1: additional schemas/methods
+
 ## 0.3.0
 
 * [apis-removed] orkut:v2: removed (Orkut is shut down)
 * [apis] compute:v1: additional schemas/methods
 * [apis] doubleclicksearch:v2: schema changes
+* [apis] games:v1: schema changes
 * [apis] gamesManagement:v1management: schema changes
 * [apis] gmail:v1: schema changes
 

@@ -107,7 +107,7 @@ Gives AdSense Hosts access to report generation, ad code generation, and publish
 
 Official API documentation: https://developers.google.com/adsense/host/
 
-#### ![Logo](http://www.google.com/images/icons/product/analytics-16.png) Google Analytics API - analytics v3
+#### ![Logo](https://www.google.com/images/icons/product/analytics-16.png) Google Analytics API - analytics v3
 
 View and manage your Google Analytics data
 

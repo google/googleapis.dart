@@ -26,10 +26,10 @@
     "description": "View and manage your Google Analytics data",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/analytics/",
-    "etag": "\"8MqRhZzx1kw0pwpjahVJEB3eI6w/SYGRjopRmK4Bczs5VKxKJQKTU8s\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/2bkMw2SQFkDhH1qCY3r_qXKtIUI\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/analytics-16.png",
-        "x32": "http://www.google.com/images/icons/product/analytics-32.png"
+        "x16": "https://www.google.com/images/icons/product/analytics-16.png",
+        "x32": "https://www.google.com/images/icons/product/analytics-32.png"
     },
     "id": "analytics:v3",
     "kind": "discovery#restDescription",
@@ -374,7 +374,7 @@
                             "id": "analytics.management.accountSummaries.list",
                             "parameters": {
                                 "max-results": {
-                                    "description": "The maximum number of filters to include in this response.",
+                                    "description": "The maximum number of account summaries to include in this response, where the largest acceptable value is 1000.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
@@ -3297,7 +3297,7 @@
             }
         }
     },
-    "revision": "20140723",
+    "revision": "20141013",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -5354,6 +5354,10 @@
                 },
                 "eCommerceTracking": {
                     "description": "Indicates whether ecommerce tracking is enabled for this view (profile).",
+                    "type": "boolean"
+                },
+                "enhancedECommerceTracking": {
+                    "description": "Indicates whether enhanced ecommerce tracking is enabled for this view (profile).",
                     "type": "boolean"
                 },
                 "excludeQueryParameters": {

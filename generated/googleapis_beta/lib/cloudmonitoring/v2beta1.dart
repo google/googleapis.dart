@@ -804,7 +804,7 @@ class Point {
    * applies. For gauge metrics, whose values are instantaneous measurements,
    * this interval should be empty (start should equal end). For cumulative
    * metrics (of which deltas and rates are special cases), the interval should
-   * be non-empty. Both start and end are RFC 3999 strings.
+   * be non-empty. Both start and end are RFC 3339 strings.
    */
   core.DateTime end;
 
@@ -816,7 +816,7 @@ class Point {
    * applies. For gauge metrics, whose values are instantaneous measurements,
    * this interval should be empty (start should equal end). For cumulative
    * metrics (of which deltas and rates are special cases), the interval should
-   * be non-empty. Both start and end are RFC 3999 strings.
+   * be non-empty. Both start and end are RFC 3339 strings.
    */
   core.DateTime start;
 
@@ -1095,10 +1095,7 @@ class Timeseries {
 
 /** TimeseriesDescriptor identifies a single time series. */
 class TimeseriesDescriptor {
-  /**
-   * The set of key-value pairs that describe this time series, including
-   * target-specific labels and metric-specific labels.
-   */
+  /** The label's name. */
   core.Map<core.String, core.String> labels;
 
   /** The name of the metric. */
@@ -1134,6 +1131,39 @@ class TimeseriesDescriptor {
     }
     if (project != null) {
       _json["project"] = project;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class TimeseriesDescriptorLabel {
+  /** The label's name. */
+  core.String key;
+
+  /** The label's value. */
+  core.String value;
+
+
+  TimeseriesDescriptorLabel();
+
+  TimeseriesDescriptorLabel.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }
