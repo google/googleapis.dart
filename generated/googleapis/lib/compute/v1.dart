@@ -8067,6 +8067,14 @@ class AttachedDisk {
   /** Initialization parameters. */
   AttachedDiskInitializeParams initializeParams;
 
+  /**
+   * Not documented yet.
+   * Possible string values are:
+   * - "NVME"
+   * - "SCSI"
+   */
+  core.String interface;
+
   /** Type of the resource. */
   core.String kind;
 
@@ -8112,6 +8120,9 @@ class AttachedDisk {
     if (_json.containsKey("initializeParams")) {
       initializeParams = new AttachedDiskInitializeParams.fromJson(_json["initializeParams"]);
     }
+    if (_json.containsKey("interface")) {
+      interface = _json["interface"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -8145,6 +8156,9 @@ class AttachedDisk {
     }
     if (initializeParams != null) {
       _json["initializeParams"] = (initializeParams).toJson();
+    }
+    if (interface != null) {
+      _json["interface"] = interface;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -13284,6 +13298,7 @@ class Quota {
    * - "IN_USE_ADDRESSES"
    * - "KERNELS"
    * - "KERNELS_TOTAL_GB"
+   * - "LOCAL_SSD_TOTAL_GB"
    * - "NETWORKS"
    * - "OPERATIONS"
    * - "ROUTES"

@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.3.1
+    version: 0.4.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -35,6 +35,7 @@ packages:
     - dfareporting:v1.3  # https://developers.google.com/doubleclick-advertisers/reporting/
     - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
     - doubleclicksearch:v2  # https://developers.google.com/doubleclick-search/
+    - fitness:v1  # https://developers.google.com/fitness/
     - freebase:v1  # https://developers.google.com/freebase/
     - fusiontables:v1  # https://developers.google.com/fusiontables/
     - games:v1  # https://developers.google.com/games/services/
@@ -55,6 +56,7 @@ packages:
     - reseller:v1  # https://developers.google.com/admin-sdk/reseller/
     - siteVerification:v1  # https://developers.google.com/site-verification/
     - storage:v1  # https://developers.google.com/storage/
+    - tagmanager:v1  # https://developers.google.com/tag-manager/
     - tasks:v1  # https://developers.google.com/google-apps/tasks/
     - translate:v2  # https://developers.google.com/translate/
     - urlshortener:v1  # https://developers.google.com/url-shortener/
@@ -64,7 +66,7 @@ packages:
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
-    version: 0.4.0
+    version: 0.5.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -73,12 +75,15 @@ packages:
     apis:
     - autoscaler:v1beta2  # https://developers.google.com/compute/docs/autoscaler/ (Limited Preview)
     - cloudmonitoring:v2beta1  # https://developers.google.com/cloud-monitoring/
+    - container:v1beta1  #
     - datastore:v1beta2  # https://developers.google.com/datastore/
     - dns:v1beta1  # https://developers.google.com/cloud-dns/
     - genomics:v1beta  # https://developers.google.com/genomics/
+    - genomics:v1beta2  # https://developers.google.com/genomics/
     - manager:v1beta2  # https://developers.google.com/deployment-manager/
     - pubsub:v1beta1  # https://developers.google.com/pubsub/ (Limited Preview)
-    - replicapool:v1beta1  # https://developers.google.com/compute/docs/replica-pool/ (Limited Preview)
+    - replicapool:v1beta2  # https://cloud.google.com/compute/docs/instance-groups/manager/
+    - replicapoolupdater:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/manager/
     - resourceviews:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/ (Limited Preview)
     - resourceviews:v1beta2  # https://cloud.google.com/compute/docs/instance-groups/
     - sqladmin:v1beta3  # https://developers.google.com/cloud-sql/docs/admin-api/
@@ -111,6 +116,7 @@ skipped_apis:
 - prediction:v1.4  # v1.6 included
 - prediction:v1.5  # v1.6 included
 - reseller:v1sandbox  # v1 included
+- replicapool:v1beta1  # Deprecated
 - spectrum:v1explorer  # Not included, https://developers.google.com/spectrum/
 - sqladmin:v1beta1  # v1beta3 included
 - storage:v1beta1  # v1 included

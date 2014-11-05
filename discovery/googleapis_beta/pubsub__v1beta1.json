@@ -17,7 +17,7 @@
     "description": "Provides reliable, many-to-many, asynchronous messaging between applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/pubsub/v1beta1",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/ywePitQXGabB9vHcCh_sNtCXjDU\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/ZNCHPHCSd3g-pKxhKxXU20RmqpY\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -93,7 +93,7 @@
                     ]
                 },
                 "create": {
-                    "description": "Creates a subscription on a given topic for a given subscriber. If the subscription already exists, returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND.",
+                    "description": "Creates a subscription on a given topic for a given subscriber. If the subscription already exists, returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND.\n\nIf the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic.",
                     "httpMethod": "POST",
                     "id": "pubsub.subscriptions.create",
                     "path": "subscriptions",
@@ -338,7 +338,7 @@
             }
         }
     },
-    "revision": "20140919",
+    "revision": "20141028",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AcknowledgeRequest": {
@@ -453,7 +453,7 @@
                     "description": "The message to publish."
                 },
                 "topic": {
-                    "description": "The name of the topic for which the message is being added.",
+                    "description": "The message in the request will be published on this topic.",
                     "type": "string"
                 }
             },

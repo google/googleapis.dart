@@ -89,6 +89,9 @@ class SubscriptionsResourceApi {
    * subscription already exists, returns ALREADY_EXISTS. If the corresponding
    * topic doesn't exist, returns NOT_FOUND.
    *
+   * If the name is not provided in the request, the server will assign a random
+   * name for this subscription on the same project as the topic.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -862,7 +865,7 @@ class PublishRequest {
   /** The message to publish. */
   PubsubMessage message;
 
-  /** The name of the topic for which the message is being added. */
+  /** The message in the request will be published on this topic. */
   core.String topic;
 
 

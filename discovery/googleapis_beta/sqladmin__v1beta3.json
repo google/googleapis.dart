@@ -18,7 +18,7 @@
     "description": "API for Cloud SQL database instance management.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-sql/docs/admin-api/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/9fwQA8H2k5NmzsvEUWIyM_KlxbQ\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/hSgBYRvTI2dDR9CzjHO6eIajaXc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -95,7 +95,7 @@
                             "type": "string"
                         },
                         "dueTime": {
-                            "description": "The time when this run is due to start in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.",
+                            "description": "The start time of the four-hour backup window. The backup can occur any time in the window. The time is in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.",
                             "location": "query",
                             "required": true,
                             "type": "string"
@@ -542,7 +542,7 @@
                             "type": "string"
                         },
                         "dueTime": {
-                            "description": "The time when this run is due to start in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.",
+                            "description": "The start time of the four-hour backup window. The backup can occur any time in the window. The time is in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.",
                             "location": "query",
                             "required": true,
                             "type": "string"
@@ -888,7 +888,7 @@
             }
         }
     },
-    "revision": "20140827",
+    "revision": "20141020",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BackupConfiguration": {
@@ -1087,6 +1087,10 @@
                         "$ref": "IpMapping"
                     },
                     "type": "array"
+                },
+                "ipv6Address": {
+                    "description": "The IPv6 address assigned to the instance.",
+                    "type": "string"
                 },
                 "kind": {
                     "default": "sql#instance",
@@ -1573,6 +1577,11 @@
                 "enabled": {
                     "description": "Whether the instance should be assigned an IP address or not.",
                     "type": "boolean"
+                },
+                "kind": {
+                    "default": "sql#ipConfiguration",
+                    "description": "This is always sql#ipConfiguration.",
+                    "type": "string"
                 },
                 "requireSsl": {
                     "description": "Whether the mysqld should default to 'REQUIRE X509' for users connecting over IP.",

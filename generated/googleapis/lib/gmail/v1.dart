@@ -1475,6 +1475,15 @@ class UsersThreadsResourceApi {
    *
    * [id] - The ID of the thread to retrieve.
    *
+   * [format] - The format to return the messages in.
+   * Possible string values are:
+   * - "full"
+   * - "metadata"
+   * - "minimal"
+   *
+   * [metadataHeaders] - When given and format is METADATA, only include headers
+   * specified.
+   *
    * Completes with a [Thread].
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
@@ -1483,7 +1492,7 @@ class UsersThreadsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Thread> get(core.String userId, core.String id) {
+  async.Future<Thread> get(core.String userId, core.String id, {core.String format, core.List<core.String> metadataHeaders}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1496,6 +1505,12 @@ class UsersThreadsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if (format != null) {
+      _queryParams["format"] = [format];
+    }
+    if (metadataHeaders != null) {
+      _queryParams["metadataHeaders"] = metadataHeaders;
     }
 
 

@@ -21,7 +21,7 @@
     "description": "The API for Google Play Game Services.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/games/services/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/BZizlPQP52YM5WPuW178a0ClK98\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/uuQc6kwFPfNAC-7Dz3U2UNVRUdM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -325,7 +325,7 @@
                     ],
                     "parameters": {
                         "applicationId": {
-                            "description": "The application being requested.",
+                            "description": "The application ID from the Google Play developer console.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1907,7 +1907,7 @@
             }
         }
     },
-    "revision": "20141005",
+    "revision": "20141027",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AchievementDefinition": {
@@ -4343,6 +4343,11 @@
                 },
                 "lastModifiedMillis": {
                     "description": "The timestamp (in millis since Unix epoch) of the last modification to this snapshot.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "progressValue": {
+                    "description": "The progress value (64-bit integer set by developer) associated with this snapshot.",
                     "format": "int64",
                     "type": "string"
                 },

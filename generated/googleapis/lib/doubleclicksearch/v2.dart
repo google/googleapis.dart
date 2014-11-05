@@ -749,7 +749,10 @@ class Conversion {
   /** The segmentation type of this conversion (for example, FLOODLIGHT). */
   core.String segmentationType;
 
-  /** The state of the conversion, that is, either ACTIVE or DELETED. */
+  /**
+   * The state of the conversion, that is, either ACTIVE or REMOVED. Note: state
+   * DELETED is deprecated.
+   */
   core.String state;
 
   /**
@@ -1186,8 +1189,8 @@ class ReportApiColumnSpec {
   core.String customDimensionName;
 
   /**
-   * Reports on the provided custom metric. The report must be scoped to an
-   * advertiser or lower, and the custom metric must already be set up in
+   * Name of a custom metric to include in the report. The report must be scoped
+   * to an advertiser or lower, and the custom metric must already be set up in
    * DoubleClick Search. The custom metric name, which appears in DoubleClick
    * Search, is case sensitive.
    */

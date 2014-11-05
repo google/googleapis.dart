@@ -227,6 +227,10 @@ The API to interact with Drive.
 
 Official API documentation: https://developers.google.com/drive/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Fitness - fitness v1
+
+Google Fit API
+
 #### ![Logo](http://www.google.com/images/icons/product/freebase-16.png) Freebase Search - freebase v1
 
 Find Freebase entities using textual queries and other constraints.
@@ -347,7 +351,13 @@ Lets you store and retrieve potentially-large, immutable data objects.
 
 Official API documentation: https://developers.google.com/storage/docs/json_api/
 
-#### ![Logo](http://www.google.com/images/icons/product/tasks-16.png) Tasks API - tasks v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Tag Manager API - tagmanager v1
+
+API for accessing Tag Manager accounts and containers.
+
+Official API documentation: https://developers.google.com/tag-manager/api/v1/
+
+#### ![Logo](https://www.google.com/images/icons/product/tasks-16.png) Tasks API - tasks v1
 
 Lets you manage your tasks and task lists.
 

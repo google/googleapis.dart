@@ -7160,6 +7160,9 @@ class PolygonStyle {
    */
   Color fill;
 
+  /** Label style for the polygon. */
+  LabelStyle label;
+
   /** Border of the polygon. 0 < border.width <= 10. */
   Border stroke;
 
@@ -7170,6 +7173,9 @@ class PolygonStyle {
     if (_json.containsKey("fill")) {
       fill = new Color.fromJson(_json["fill"]);
     }
+    if (_json.containsKey("label")) {
+      label = new LabelStyle.fromJson(_json["label"]);
+    }
     if (_json.containsKey("stroke")) {
       stroke = new Border.fromJson(_json["stroke"]);
     }
@@ -7179,6 +7185,9 @@ class PolygonStyle {
     var _json = new core.Map();
     if (fill != null) {
       _json["fill"] = (fill).toJson();
+    }
+    if (label != null) {
+      _json["label"] = (label).toJson();
     }
     if (stroke != null) {
       _json["stroke"] = (stroke).toJson();

@@ -3441,10 +3441,9 @@ class InAppProduct {
   core.String subscriptionPeriod;
 
   /**
-   * Trial duration (if any) of the subscription, defined as ISO 8601. i.e.
-   * "P10D" means an initial period of 10 days during which ownership is granted
-   * prior to any payment. Acceptable values are between "P7D" and "P999D".
-   * Seasonal subscriptions cannot have a trial period.
+   * Trial period, specified in ISO 8601 format. Acceptable values are anything
+   * between "P7D" (seven days) and "P999D" (999 days). Seasonal subscriptions
+   * cannot have a trial period.
    */
   core.String trialPeriod;
 

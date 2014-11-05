@@ -15,7 +15,7 @@
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/rvEzY_KAgBOlUM1lQqukKQLrl6Y\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/DrMyiBR493_IBfZvqlikbYuZEB0\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -2154,7 +2154,7 @@
             }
         }
     },
-    "revision": "20140813",
+    "revision": "20141022",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Apk": {
@@ -2395,7 +2395,7 @@
                     "type": "string"
                 },
                 "trialPeriod": {
-                    "description": "Trial duration (if any) of the subscription, defined as ISO 8601. i.e. \"P10D\" means an initial period of 10 days during which ownership is granted prior to any payment. Acceptable values are between \"P7D\" and \"P999D\". Seasonal subscriptions cannot have a trial period.",
+                    "description": "Trial period, specified in ISO 8601 format. Acceptable values are anything between \"P7D\" (seven days) and \"P999D\" (999 days). Seasonal subscriptions cannot have a trial period.",
                     "type": "string"
                 }
             },

@@ -30,7 +30,6 @@ class GenomicsApi {
 
   final common_internal.ApiRequester _requester;
 
-  BeaconsResourceApi get beacons => new BeaconsResourceApi(_requester);
   CallsetsResourceApi get callsets => new CallsetsResourceApi(_requester);
   DatasetsResourceApi get datasets => new DatasetsResourceApi(_requester);
   ExperimentalResourceApi get experimental => new ExperimentalResourceApi(_requester);
@@ -42,73 +41,6 @@ class GenomicsApi {
 
   GenomicsApi(http.Client client) : 
       _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "genomics/v1beta/");
-}
-
-
-/** Not documented yet. */
-class BeaconsResourceApi {
-  final common_internal.ApiRequester _requester;
-
-  BeaconsResourceApi(common_internal.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * This is an experimental API that provides a Global Alliance for Genomics
-   * and Health Beacon. It may change at any time.
-   *
-   * Request parameters:
-   *
-   * [variantSetId] - The ID of the variant set to query over. It must be
-   * public. Private variant sets will return an unauthorized exception.
-   *
-   * [allele] - Required. The allele to look for ('A', 'C', 'G' or 'T').
-   *
-   * [position] - Required. The 0-based position to query.
-   *
-   * [referenceName] - Required. The reference to query over.
-   *
-   * Completes with a [Beacon].
-   *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
-   */
-  async.Future<Beacon> get(core.String variantSetId, {core.String allele, core.String position, core.String referenceName}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (variantSetId == null) {
-      throw new core.ArgumentError("Parameter variantSetId is required.");
-    }
-    if (allele != null) {
-      _queryParams["allele"] = [allele];
-    }
-    if (position != null) {
-      _queryParams["position"] = [position];
-    }
-    if (referenceName != null) {
-      _queryParams["referenceName"] = [referenceName];
-    }
-
-
-    _url = 'beacons/' + common_internal.Escaper.ecapeVariable('$variantSetId');
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Beacon.fromJson(data));
-  }
-
 }
 
 
@@ -164,7 +96,7 @@ class CallsetsResourceApi {
    *
    * Request parameters:
    *
-   * [callSetId] - The ID of the callset to be deleted.
+   * [callSetId] - The ID of the call set to be deleted.
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
    * error.
@@ -203,7 +135,7 @@ class CallsetsResourceApi {
    *
    * Request parameters:
    *
-   * [callSetId] - The ID of the callset.
+   * [callSetId] - The ID of the call set.
    *
    * Completes with a [CallSet].
    *
@@ -245,7 +177,7 @@ class CallsetsResourceApi {
    *
    * Request parameters:
    *
-   * [callSetId] - The ID of the callset to be updated.
+   * [callSetId] - The ID of the call set to be updated.
    *
    * Completes with a [CallSet].
    *
@@ -285,6 +217,8 @@ class CallsetsResourceApi {
 
   /**
    * Gets a list of call sets matching the criteria.
+   *
+   * Implements GlobalAllianceApi.searchCallSets.
    *
    * [request] - The metadata request object.
    *
@@ -330,7 +264,7 @@ class CallsetsResourceApi {
    *
    * Request parameters:
    *
-   * [callSetId] - The ID of the callset to be updated.
+   * [callSetId] - The ID of the call set to be updated.
    *
    * Completes with a [CallSet].
    *
@@ -1518,7 +1452,7 @@ class VariantsResourceApi {
    * be arbitrarily discarded. As a special case, for single-sample VCF files,
    * QUAL and FILTER fields will be moved to the call level; these are sometimes
    * interpreted in a call-specific context. Imported VCF headers are appended
-   * to the metadata already in a VariantSet.
+   * to the metadata already in a variant set.
    *
    * [request] - The metadata request object.
    *
@@ -1559,6 +1493,8 @@ class VariantsResourceApi {
 
   /**
    * Gets a list of variants matching the criteria.
+   *
+   * Implements GlobalAllianceApi.searchVariants.
    *
    * [request] - The metadata request object.
    *
@@ -1786,8 +1722,7 @@ class VariantsetsResourceApi {
 
   /**
    * Updates a variant set's metadata. All other modifications are silently
-   * ignored. Returns the modified variant set. This method supports patch
-   * semantics.
+   * ignored. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -1834,6 +1769,8 @@ class VariantsetsResourceApi {
   /**
    * Returns a list of all variant sets matching search criteria.
    *
+   * Implements GlobalAllianceApi.searchVariantSets.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -1873,7 +1810,7 @@ class VariantsetsResourceApi {
 
   /**
    * Updates a variant set's metadata. All other modifications are silently
-   * ignored. Returns the modified variant set.
+   * ignored.
    *
    * [request] - The metadata request object.
    *
@@ -1922,36 +1859,9 @@ class VariantsetsResourceApi {
 
 
 /**
- * A beacon represents whether any variant call in a variant set has a specific
- * allele at a particular position.
- */
-class Beacon {
-  /** True if the allele exists on any variant call, false otherwise. */
-  core.bool exists;
-
-
-  Beacon();
-
-  Beacon.fromJson(core.Map _json) {
-    if (_json.containsKey("exists")) {
-      exists = _json["exists"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (exists != null) {
-      _json["exists"] = exists;
-    }
-    return _json;
-  }
-}
-
-
-/**
- * A Call represents the determination of genotype with respect to a particular
+ * A call represents the determination of genotype with respect to a particular
  * variant. It may include associated information such as quality and phasing.
- * For example, a Call might assign a probability of 0.32 to the occurrence of a
+ * For example, a call might assign a probability of 0.32 to the occurrence of a
  * SNP named rs1234 in a call set with the name NA12345.
  */
 class Call {
@@ -2041,7 +1951,10 @@ class Call {
 }
 
 
-/** A CallSet is a collection of variant calls. It belongs to a variant set. */
+/**
+ * A call set is a collection of variant calls, typically for one sample. It
+ * belongs to a variant set.
+ */
 class CallSet {
   /** The date this call set was created in milliseconds from the epoch. */
   core.String created;
@@ -2049,10 +1962,10 @@ class CallSet {
   /** The Google generated ID of the call set, immutable. */
   core.String id;
 
-  /** A map of additional callset information. */
+  /** A map of additional call set information. */
   core.Map<core.String, core.List<core.String>> info;
 
-  /** The callset name. */
+  /** The call set name. */
   core.String name;
 
   /** The sample ID this call set corresponds to. */
@@ -2208,16 +2121,14 @@ class Dataset {
 /** The job creation request. */
 class ExperimentalCreateJobRequest {
   /**
-   * Specifies whether or not to run the alignment pipeline. At least one of
-   * align or callVariants must be provided.
+   * Specifies whether or not to run the alignment pipeline. Either align or
+   * callVariants must be set.
    */
   core.bool align;
 
   /**
-   * Specifies whether or not to run the variant calling pipeline. If specified,
-   * alignment will be performed first and the aligned BAMs will passed as input
-   * to the variant caller. At least one of align or callVariants must be
-   * provided.
+   * Specifies whether or not to run the variant calling pipeline. Either align
+   * or callVariants must be set.
    */
   core.bool callVariants;
 
@@ -2945,6 +2856,8 @@ class JobRequest {
   /**
    * The original request type.
    * Possible string values are:
+   * - "alignReadsets"
+   * - "callReadsets"
    * - "experimentalCreateJob"
    * - "exportReadsets"
    * - "exportVariants"
@@ -4431,9 +4344,13 @@ class SearchVariantsResponse {
 
 
 /**
- * A Variant represents a change in DNA sequence relative to some reference. For
- * example, a Variant could represent a SNP or an insertion. Variants belong to
- * a variant set.
+ * A variant represents a change in DNA sequence relative to a reference
+ * sequence. For example, a variant could represent a SNP or an insertion.
+ * Variants belong to a variant set. Each of the calls on a variant represent a
+ * determination of genotype with respect to that variant. For example, a call
+ * might assign probability of 0.32 to the occurrence of a SNP named rs1234 in a
+ * sample named NA12345. A call belongs to a call set, which contains related
+ * calls typically from one sample.
  */
 class Variant {
   /** The bases that appear instead of the reference bases. */
@@ -4586,8 +4503,8 @@ class Variant {
 
 
 /**
- * A VariantSet represents a collection of Variants and their summary
- * statistics.
+ * A variant set is a collection of call sets and variants. It contains summary
+ * statistics of those contents. A variant set belongs to a dataset.
  */
 class VariantSet {
   /** The dataset to which this variant set belongs. Immutable. */

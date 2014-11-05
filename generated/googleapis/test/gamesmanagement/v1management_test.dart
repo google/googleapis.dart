@@ -16,14 +16,14 @@ import 'package:googleapis/gamesmanagement/v1management.dart' as api;
 
 
 
-buildUnnamed437() {
+buildUnnamed841() {
   var o = new core.List<api.AchievementResetResponse>();
   o.add(buildAchievementResetResponse());
   o.add(buildAchievementResetResponse());
   return o;
 }
 
-checkUnnamed437(core.List<api.AchievementResetResponse> o) {
+checkUnnamed841(core.List<api.AchievementResetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementResetResponse(o[0]);
   checkAchievementResetResponse(o[1]);
@@ -35,7 +35,7 @@ buildAchievementResetAllResponse() {
   buildCounterAchievementResetAllResponse++;
   if (buildCounterAchievementResetAllResponse < 3) {
     o.kind = "foo";
-    o.results = buildUnnamed437();
+    o.results = buildUnnamed841();
   }
   buildCounterAchievementResetAllResponse--;
   return o;
@@ -45,19 +45,19 @@ checkAchievementResetAllResponse(api.AchievementResetAllResponse o) {
   buildCounterAchievementResetAllResponse++;
   if (buildCounterAchievementResetAllResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed437(o.results);
+    checkUnnamed841(o.results);
   }
   buildCounterAchievementResetAllResponse--;
 }
 
-buildUnnamed438() {
+buildUnnamed842() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed438(core.List<core.String> o) {
+checkUnnamed842(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -68,7 +68,7 @@ buildAchievementResetMultipleForAllRequest() {
   var o = new api.AchievementResetMultipleForAllRequest();
   buildCounterAchievementResetMultipleForAllRequest++;
   if (buildCounterAchievementResetMultipleForAllRequest < 3) {
-    o.achievementIds = buildUnnamed438();
+    o.achievementIds = buildUnnamed842();
     o.kind = "foo";
   }
   buildCounterAchievementResetMultipleForAllRequest--;
@@ -78,7 +78,7 @@ buildAchievementResetMultipleForAllRequest() {
 checkAchievementResetMultipleForAllRequest(api.AchievementResetMultipleForAllRequest o) {
   buildCounterAchievementResetMultipleForAllRequest++;
   if (buildCounterAchievementResetMultipleForAllRequest < 3) {
-    checkUnnamed438(o.achievementIds);
+    checkUnnamed842(o.achievementIds);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAchievementResetMultipleForAllRequest--;
@@ -107,6 +107,40 @@ checkAchievementResetResponse(api.AchievementResetResponse o) {
     unittest.expect(o.updateOccurred, unittest.isTrue);
   }
   buildCounterAchievementResetResponse--;
+}
+
+buildUnnamed843() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed843(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterEventsResetMultipleForAllRequest = 0;
+buildEventsResetMultipleForAllRequest() {
+  var o = new api.EventsResetMultipleForAllRequest();
+  buildCounterEventsResetMultipleForAllRequest++;
+  if (buildCounterEventsResetMultipleForAllRequest < 3) {
+    o.eventIds = buildUnnamed843();
+    o.kind = "foo";
+  }
+  buildCounterEventsResetMultipleForAllRequest--;
+  return o;
+}
+
+checkEventsResetMultipleForAllRequest(api.EventsResetMultipleForAllRequest o) {
+  buildCounterEventsResetMultipleForAllRequest++;
+  if (buildCounterEventsResetMultipleForAllRequest < 3) {
+    checkUnnamed843(o.eventIds);
+    unittest.expect(o.kind, unittest.equals('foo'));
+  }
+  buildCounterEventsResetMultipleForAllRequest--;
 }
 
 core.int buildCounterGamesPlayedResource = 0;
@@ -201,14 +235,14 @@ checkHiddenPlayer(api.HiddenPlayer o) {
   buildCounterHiddenPlayer--;
 }
 
-buildUnnamed439() {
+buildUnnamed844() {
   var o = new core.List<api.HiddenPlayer>();
   o.add(buildHiddenPlayer());
   o.add(buildHiddenPlayer());
   return o;
 }
 
-checkUnnamed439(core.List<api.HiddenPlayer> o) {
+checkUnnamed844(core.List<api.HiddenPlayer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHiddenPlayer(o[0]);
   checkHiddenPlayer(o[1]);
@@ -219,7 +253,7 @@ buildHiddenPlayerList() {
   var o = new api.HiddenPlayerList();
   buildCounterHiddenPlayerList++;
   if (buildCounterHiddenPlayerList < 3) {
-    o.items = buildUnnamed439();
+    o.items = buildUnnamed844();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -230,7 +264,7 @@ buildHiddenPlayerList() {
 checkHiddenPlayerList(api.HiddenPlayerList o) {
   buildCounterHiddenPlayerList++;
   if (buildCounterHiddenPlayerList < 3) {
-    checkUnnamed439(o.items);
+    checkUnnamed844(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -291,14 +325,48 @@ checkPlayer(api.Player o) {
   buildCounterPlayer--;
 }
 
-buildUnnamed440() {
+buildUnnamed845() {
+  var o = new core.List<api.PlayerScoreResetResponse>();
+  o.add(buildPlayerScoreResetResponse());
+  o.add(buildPlayerScoreResetResponse());
+  return o;
+}
+
+checkUnnamed845(core.List<api.PlayerScoreResetResponse> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPlayerScoreResetResponse(o[0]);
+  checkPlayerScoreResetResponse(o[1]);
+}
+
+core.int buildCounterPlayerScoreResetAllResponse = 0;
+buildPlayerScoreResetAllResponse() {
+  var o = new api.PlayerScoreResetAllResponse();
+  buildCounterPlayerScoreResetAllResponse++;
+  if (buildCounterPlayerScoreResetAllResponse < 3) {
+    o.kind = "foo";
+    o.results = buildUnnamed845();
+  }
+  buildCounterPlayerScoreResetAllResponse--;
+  return o;
+}
+
+checkPlayerScoreResetAllResponse(api.PlayerScoreResetAllResponse o) {
+  buildCounterPlayerScoreResetAllResponse++;
+  if (buildCounterPlayerScoreResetAllResponse < 3) {
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed845(o.results);
+  }
+  buildCounterPlayerScoreResetAllResponse--;
+}
+
+buildUnnamed846() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed440(core.List<core.String> o) {
+checkUnnamed846(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -309,8 +377,9 @@ buildPlayerScoreResetResponse() {
   var o = new api.PlayerScoreResetResponse();
   buildCounterPlayerScoreResetResponse++;
   if (buildCounterPlayerScoreResetResponse < 3) {
+    o.definitionId = "foo";
     o.kind = "foo";
-    o.resetScoreTimeSpans = buildUnnamed440();
+    o.resetScoreTimeSpans = buildUnnamed846();
   }
   buildCounterPlayerScoreResetResponse--;
   return o;
@@ -319,10 +388,79 @@ buildPlayerScoreResetResponse() {
 checkPlayerScoreResetResponse(api.PlayerScoreResetResponse o) {
   buildCounterPlayerScoreResetResponse++;
   if (buildCounterPlayerScoreResetResponse < 3) {
+    unittest.expect(o.definitionId, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed440(o.resetScoreTimeSpans);
+    checkUnnamed846(o.resetScoreTimeSpans);
   }
   buildCounterPlayerScoreResetResponse--;
+}
+
+buildUnnamed847() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed847(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterQuestsResetMultipleForAllRequest = 0;
+buildQuestsResetMultipleForAllRequest() {
+  var o = new api.QuestsResetMultipleForAllRequest();
+  buildCounterQuestsResetMultipleForAllRequest++;
+  if (buildCounterQuestsResetMultipleForAllRequest < 3) {
+    o.kind = "foo";
+    o.questIds = buildUnnamed847();
+  }
+  buildCounterQuestsResetMultipleForAllRequest--;
+  return o;
+}
+
+checkQuestsResetMultipleForAllRequest(api.QuestsResetMultipleForAllRequest o) {
+  buildCounterQuestsResetMultipleForAllRequest++;
+  if (buildCounterQuestsResetMultipleForAllRequest < 3) {
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed847(o.questIds);
+  }
+  buildCounterQuestsResetMultipleForAllRequest--;
+}
+
+buildUnnamed848() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed848(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterScoresResetMultipleForAllRequest = 0;
+buildScoresResetMultipleForAllRequest() {
+  var o = new api.ScoresResetMultipleForAllRequest();
+  buildCounterScoresResetMultipleForAllRequest++;
+  if (buildCounterScoresResetMultipleForAllRequest < 3) {
+    o.kind = "foo";
+    o.leaderboardIds = buildUnnamed848();
+  }
+  buildCounterScoresResetMultipleForAllRequest--;
+  return o;
+}
+
+checkScoresResetMultipleForAllRequest(api.ScoresResetMultipleForAllRequest o) {
+  buildCounterScoresResetMultipleForAllRequest++;
+  if (buildCounterScoresResetMultipleForAllRequest < 3) {
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed848(o.leaderboardIds);
+  }
+  buildCounterScoresResetMultipleForAllRequest--;
 }
 
 
@@ -350,6 +488,15 @@ main() {
       var o = buildAchievementResetResponse();
       var od = new api.AchievementResetResponse.fromJson(o.toJson());
       checkAchievementResetResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-EventsResetMultipleForAllRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildEventsResetMultipleForAllRequest();
+      var od = new api.EventsResetMultipleForAllRequest.fromJson(o.toJson());
+      checkEventsResetMultipleForAllRequest(od);
     });
   });
 
@@ -417,11 +564,38 @@ main() {
   });
 
 
+  unittest.group("obj-schema-PlayerScoreResetAllResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPlayerScoreResetAllResponse();
+      var od = new api.PlayerScoreResetAllResponse.fromJson(o.toJson());
+      checkPlayerScoreResetAllResponse(od);
+    });
+  });
+
+
   unittest.group("obj-schema-PlayerScoreResetResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildPlayerScoreResetResponse();
       var od = new api.PlayerScoreResetResponse.fromJson(o.toJson());
       checkPlayerScoreResetResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-QuestsResetMultipleForAllRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildQuestsResetMultipleForAllRequest();
+      var od = new api.QuestsResetMultipleForAllRequest.fromJson(o.toJson());
+      checkQuestsResetMultipleForAllRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ScoresResetMultipleForAllRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildScoresResetMultipleForAllRequest();
+      var od = new api.ScoresResetMultipleForAllRequest.fromJson(o.toJson());
+      checkScoresResetMultipleForAllRequest(od);
     });
   });
 
@@ -825,6 +999,49 @@ main() {
       res.resetAll().then(unittest.expectAsync((_) {}));
     });
 
+    unittest.test("method--resetAllForAllPlayers", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.EventsResourceApi res = new api.GamesManagementApi(mock).events;
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
+        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("events/resetAllForAllPlayers"));
+        pathOffset += 28;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.resetAllForAllPlayers().then(unittest.expectAsync((_) {}));
+    });
+
     unittest.test("method--resetForAllPlayers", () {
 
       var mock = new common_test.HttpServerMock();
@@ -874,6 +1091,53 @@ main() {
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
       res.resetForAllPlayers(arg_eventId).then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--resetMultipleForAllPlayers", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.EventsResourceApi res = new api.GamesManagementApi(mock).events;
+      var arg_request = buildEventsResetMultipleForAllRequest();
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.EventsResetMultipleForAllRequest.fromJson(json);
+        checkEventsResetMultipleForAllRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33), unittest.equals("events/resetMultipleForAllPlayers"));
+        pathOffset += 33;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync((_) {}));
     });
 
   });
@@ -1045,6 +1309,190 @@ main() {
       res.reset(arg_questId).then(unittest.expectAsync((_) {}));
     });
 
+    unittest.test("method--resetAll", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.QuestsResourceApi res = new api.GamesManagementApi(mock).quests;
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("quests/reset"));
+        pathOffset += 12;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.resetAll().then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--resetAllForAllPlayers", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.QuestsResourceApi res = new api.GamesManagementApi(mock).quests;
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
+        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("quests/resetAllForAllPlayers"));
+        pathOffset += 28;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.resetAllForAllPlayers().then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--resetForAllPlayers", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.QuestsResourceApi res = new api.GamesManagementApi(mock).quests;
+      var arg_questId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
+        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("quests/"));
+        pathOffset += 7;
+        index = path.indexOf("/resetForAllPlayers", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_questId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/resetForAllPlayers"));
+        pathOffset += 19;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.resetForAllPlayers(arg_questId).then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--resetMultipleForAllPlayers", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.QuestsResourceApi res = new api.GamesManagementApi(mock).quests;
+      var arg_request = buildQuestsResetMultipleForAllRequest();
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.QuestsResetMultipleForAllRequest.fromJson(json);
+        checkQuestsResetMultipleForAllRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33), unittest.equals("quests/resetMultipleForAllPlayers"));
+        pathOffset += 33;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync((_) {}));
+    });
+
   });
 
 
@@ -1090,6 +1538,49 @@ main() {
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
       res.reset().then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--resetForAllPlayers", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.RoomsResourceApi res = new api.GamesManagementApi(mock).rooms;
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
+        unittest.expect(path.substring(pathOffset, pathOffset + 24), unittest.equals("rooms/resetForAllPlayers"));
+        pathOffset += 24;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.resetForAllPlayers().then(unittest.expectAsync((_) {}));
     });
 
   });
@@ -1149,6 +1640,94 @@ main() {
       })));
     });
 
+    unittest.test("method--resetAll", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.ScoresResourceApi res = new api.GamesManagementApi(mock).scores;
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
+        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("scores/reset"));
+        pathOffset += 12;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPlayerScoreResetAllResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.resetAll().then(unittest.expectAsync(((api.PlayerScoreResetAllResponse response) {
+        checkPlayerScoreResetAllResponse(response);
+      })));
+    });
+
+    unittest.test("method--resetAllForAllPlayers", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.ScoresResourceApi res = new api.GamesManagementApi(mock).scores;
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
+        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("scores/resetAllForAllPlayers"));
+        pathOffset += 28;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.resetAllForAllPlayers().then(unittest.expectAsync((_) {}));
+    });
+
     unittest.test("method--resetForAllPlayers", () {
 
       var mock = new common_test.HttpServerMock();
@@ -1200,6 +1779,53 @@ main() {
       res.resetForAllPlayers(arg_leaderboardId).then(unittest.expectAsync((_) {}));
     });
 
+    unittest.test("method--resetMultipleForAllPlayers", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.ScoresResourceApi res = new api.GamesManagementApi(mock).scores;
+      var arg_request = buildScoresResetMultipleForAllRequest();
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.ScoresResetMultipleForAllRequest.fromJson(json);
+        checkScoresResetMultipleForAllRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33), unittest.equals("scores/resetMultipleForAllPlayers"));
+        pathOffset += 33;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync((_) {}));
+    });
+
   });
 
 
@@ -1245,6 +1871,49 @@ main() {
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
       res.reset().then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--resetForAllPlayers", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.TurnBasedMatchesResourceApi res = new api.GamesManagementApi(mock).turnBasedMatches;
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        pathOffset += 19;
+        unittest.expect(path.substring(pathOffset, pathOffset + 35), unittest.equals("turnbasedmatches/resetForAllPlayers"));
+        pathOffset += 35;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.resetForAllPlayers().then(unittest.expectAsync((_) {}));
     });
 
   });

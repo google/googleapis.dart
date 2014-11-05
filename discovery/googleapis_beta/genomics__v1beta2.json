@@ -1,0 +1,2895 @@
+{
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/bigquery": {
+                    "description": "View and manage your data in Google BigQuery"
+                },
+                "https://www.googleapis.com/auth/devstorage.read_write": {
+                    "description": "Manage your data in Google Cloud Storage"
+                },
+                "https://www.googleapis.com/auth/genomics": {
+                    "description": "View and manage Genomics data"
+                },
+                "https://www.googleapis.com/auth/genomics.readonly": {
+                    "description": "View Genomics data"
+                }
+            }
+        }
+    },
+    "basePath": "/genomics/v1beta2/",
+    "baseUrl": "https://www.googleapis.com/genomics/v1beta2/",
+    "batchPath": "batch",
+    "description": "Provides access to Genomics data.",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/EKP2HqTiCFaMtGY4TKqgoDAIFBQ\"",
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "genomics:v1beta2",
+    "kind": "discovery#restDescription",
+    "name": "genomics",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "alt": {
+            "default": "json",
+            "description": "Data format for the response.",
+            "enum": [
+                "json"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+            "location": "query",
+            "type": "string"
+        },
+        "userIp": {
+            "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "callsets": {
+            "methods": {
+                "create": {
+                    "description": "Creates a new call set.",
+                    "httpMethod": "POST",
+                    "id": "genomics.callsets.create",
+                    "path": "callsets",
+                    "request": {
+                        "$ref": "CallSet"
+                    },
+                    "response": {
+                        "$ref": "CallSet"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "delete": {
+                    "description": "Deletes a call set.",
+                    "httpMethod": "DELETE",
+                    "id": "genomics.callsets.delete",
+                    "parameterOrder": [
+                        "callSetId"
+                    ],
+                    "parameters": {
+                        "callSetId": {
+                            "description": "The ID of the call set to be deleted.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "callsets/{callSetId}",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "get": {
+                    "description": "Gets a call set by ID.",
+                    "httpMethod": "GET",
+                    "id": "genomics.callsets.get",
+                    "parameterOrder": [
+                        "callSetId"
+                    ],
+                    "parameters": {
+                        "callSetId": {
+                            "description": "The ID of the call set.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "callsets/{callSetId}",
+                    "response": {
+                        "$ref": "CallSet"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                },
+                "patch": {
+                    "description": "Updates a call set. This method supports patch semantics.",
+                    "httpMethod": "PATCH",
+                    "id": "genomics.callsets.patch",
+                    "parameterOrder": [
+                        "callSetId"
+                    ],
+                    "parameters": {
+                        "callSetId": {
+                            "description": "The ID of the call set to be updated.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "callsets/{callSetId}",
+                    "request": {
+                        "$ref": "CallSet"
+                    },
+                    "response": {
+                        "$ref": "CallSet"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "search": {
+                    "description": "Gets a list of call sets matching the criteria.\n\nImplements GlobalAllianceApi.searchCallSets.",
+                    "httpMethod": "POST",
+                    "id": "genomics.callsets.search",
+                    "path": "callsets/search",
+                    "request": {
+                        "$ref": "SearchCallSetsRequest"
+                    },
+                    "response": {
+                        "$ref": "SearchCallSetsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                },
+                "update": {
+                    "description": "Updates a call set.",
+                    "httpMethod": "PUT",
+                    "id": "genomics.callsets.update",
+                    "parameterOrder": [
+                        "callSetId"
+                    ],
+                    "parameters": {
+                        "callSetId": {
+                            "description": "The ID of the call set to be updated.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "callsets/{callSetId}",
+                    "request": {
+                        "$ref": "CallSet"
+                    },
+                    "response": {
+                        "$ref": "CallSet"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                }
+            }
+        },
+        "datasets": {
+            "methods": {
+                "create": {
+                    "description": "Creates a new dataset.",
+                    "httpMethod": "POST",
+                    "id": "genomics.datasets.create",
+                    "path": "datasets",
+                    "request": {
+                        "$ref": "Dataset"
+                    },
+                    "response": {
+                        "$ref": "Dataset"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "delete": {
+                    "description": "Deletes a dataset.",
+                    "httpMethod": "DELETE",
+                    "id": "genomics.datasets.delete",
+                    "parameterOrder": [
+                        "datasetId"
+                    ],
+                    "parameters": {
+                        "datasetId": {
+                            "description": "The ID of the dataset to be deleted.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "datasets/{datasetId}",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "get": {
+                    "description": "Gets a dataset by ID.",
+                    "httpMethod": "GET",
+                    "id": "genomics.datasets.get",
+                    "parameterOrder": [
+                        "datasetId"
+                    ],
+                    "parameters": {
+                        "datasetId": {
+                            "description": "The ID of the dataset.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "datasets/{datasetId}",
+                    "response": {
+                        "$ref": "Dataset"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                },
+                "list": {
+                    "description": "Lists all datasets.",
+                    "httpMethod": "GET",
+                    "id": "genomics.datasets.list",
+                    "parameters": {
+                        "pageSize": {
+                            "default": "50",
+                            "description": "The maximum number of results returned by this request.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of nextPageToken from the previous response.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "projectNumber": {
+                            "description": "Only return datasets which belong to this Google Developers Console project. Only accepts project numbers. Returns all public projects if no project number is specified.",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "datasets",
+                    "response": {
+                        "$ref": "ListDatasetsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                },
+                "patch": {
+                    "description": "Updates a dataset. This method supports patch semantics.",
+                    "httpMethod": "PATCH",
+                    "id": "genomics.datasets.patch",
+                    "parameterOrder": [
+                        "datasetId"
+                    ],
+                    "parameters": {
+                        "datasetId": {
+                            "description": "The ID of the dataset to be updated.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "datasets/{datasetId}",
+                    "request": {
+                        "$ref": "Dataset"
+                    },
+                    "response": {
+                        "$ref": "Dataset"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "undelete": {
+                    "description": "Undeletes a dataset by restoring a dataset which was deleted via this API. This operation is only possible for a week after the deletion occurred.",
+                    "httpMethod": "POST",
+                    "id": "genomics.datasets.undelete",
+                    "parameterOrder": [
+                        "datasetId"
+                    ],
+                    "parameters": {
+                        "datasetId": {
+                            "description": "The ID of the dataset to be undeleted.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "datasets/{datasetId}/undelete",
+                    "response": {
+                        "$ref": "Dataset"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "update": {
+                    "description": "Updates a dataset.",
+                    "httpMethod": "PUT",
+                    "id": "genomics.datasets.update",
+                    "parameterOrder": [
+                        "datasetId"
+                    ],
+                    "parameters": {
+                        "datasetId": {
+                            "description": "The ID of the dataset to be updated.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "datasets/{datasetId}",
+                    "request": {
+                        "$ref": "Dataset"
+                    },
+                    "response": {
+                        "$ref": "Dataset"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                }
+            }
+        },
+        "experimental": {
+            "resources": {
+                "jobs": {
+                    "methods": {
+                        "create": {
+                            "description": "Creates and asynchronously runs an ad-hoc job. This is an experimental call and may be removed or changed at any time.",
+                            "httpMethod": "POST",
+                            "id": "genomics.experimental.jobs.create",
+                            "path": "experimental/jobs/create",
+                            "request": {
+                                "$ref": "ExperimentalCreateJobRequest"
+                            },
+                            "response": {
+                                "$ref": "ExperimentalCreateJobResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/devstorage.read_write",
+                                "https://www.googleapis.com/auth/genomics"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "jobs": {
+            "methods": {
+                "cancel": {
+                    "description": "Cancels a job by ID. Note that it is possible for partial results to be generated and stored for cancelled jobs.",
+                    "httpMethod": "POST",
+                    "id": "genomics.jobs.cancel",
+                    "parameterOrder": [
+                        "jobId"
+                    ],
+                    "parameters": {
+                        "jobId": {
+                            "description": "Required. The ID of the job.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "jobs/{jobId}/cancel",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "get": {
+                    "description": "Gets a job by ID.",
+                    "httpMethod": "GET",
+                    "id": "genomics.jobs.get",
+                    "parameterOrder": [
+                        "jobId"
+                    ],
+                    "parameters": {
+                        "jobId": {
+                            "description": "Required. The ID of the job.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "jobs/{jobId}",
+                    "response": {
+                        "$ref": "Job"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                },
+                "search": {
+                    "description": "Gets a list of jobs matching the criteria.",
+                    "httpMethod": "POST",
+                    "id": "genomics.jobs.search",
+                    "path": "jobs/search",
+                    "request": {
+                        "$ref": "SearchJobsRequest"
+                    },
+                    "response": {
+                        "$ref": "SearchJobsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                }
+            }
+        },
+        "readgroupsets": {
+            "methods": {
+                "align": {
+                    "description": "Aligns read data from existing read group sets or files from Google Cloud Storage. See the  alignment and variant calling documentation for more details.",
+                    "httpMethod": "POST",
+                    "id": "genomics.readgroupsets.align",
+                    "path": "readgroupsets/align",
+                    "request": {
+                        "$ref": "AlignReadGroupSetsRequest"
+                    },
+                    "response": {
+                        "$ref": "AlignReadGroupSetsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "call": {
+                    "description": "Calls variants on read data from existing read group sets or files from Google Cloud Storage. See the  alignment and variant calling documentation for more details.",
+                    "httpMethod": "POST",
+                    "id": "genomics.readgroupsets.call",
+                    "path": "readgroupsets/call",
+                    "request": {
+                        "$ref": "CallReadGroupSetsRequest"
+                    },
+                    "response": {
+                        "$ref": "CallReadGroupSetsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "delete": {
+                    "description": "Deletes a read group set.",
+                    "httpMethod": "DELETE",
+                    "id": "genomics.readgroupsets.delete",
+                    "parameterOrder": [
+                        "readGroupSetId"
+                    ],
+                    "parameters": {
+                        "readGroupSetId": {
+                            "description": "The ID of the read group set to be deleted. The caller must have WRITE permissions to the dataset associated with this read group set.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "readgroupsets/{readGroupSetId}",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "export": {
+                    "description": "Exports read group sets to a BAM file in Google Cloud Storage.\n\nNote that currently there may be some differences between exported BAM files and the original BAM file at the time of import. In particular, comments in the input file header will not be preserved, and some custom tags will be converted to strings.",
+                    "httpMethod": "POST",
+                    "id": "genomics.readgroupsets.export",
+                    "path": "readgroupsets/export",
+                    "request": {
+                        "$ref": "ExportReadGroupSetsRequest"
+                    },
+                    "response": {
+                        "$ref": "ExportReadGroupSetsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/devstorage.read_write",
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "get": {
+                    "description": "Gets a read group set by ID.",
+                    "httpMethod": "GET",
+                    "id": "genomics.readgroupsets.get",
+                    "parameterOrder": [
+                        "readGroupSetId"
+                    ],
+                    "parameters": {
+                        "readGroupSetId": {
+                            "description": "The ID of the read group set.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "readgroupsets/{readGroupSetId}",
+                    "response": {
+                        "$ref": "ReadGroupSet"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                },
+                "import": {
+                    "description": "Creates read group sets by asynchronously importing the provided information.\n\nNote that currently comments in the input file header are not imported and some custom tags will be converted to strings, rather than preserving tag types. The caller must have WRITE permissions to the dataset.",
+                    "httpMethod": "POST",
+                    "id": "genomics.readgroupsets.import",
+                    "path": "readgroupsets/import",
+                    "request": {
+                        "$ref": "ImportReadGroupSetsRequest"
+                    },
+                    "response": {
+                        "$ref": "ImportReadGroupSetsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/devstorage.read_write",
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "patch": {
+                    "description": "Updates a read group set. This method supports patch semantics.",
+                    "httpMethod": "PATCH",
+                    "id": "genomics.readgroupsets.patch",
+                    "parameterOrder": [
+                        "readGroupSetId"
+                    ],
+                    "parameters": {
+                        "readGroupSetId": {
+                            "description": "The ID of the read group set to be updated. The caller must have WRITE permissions to the dataset associated with this read group set.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "readgroupsets/{readGroupSetId}",
+                    "request": {
+                        "$ref": "ReadGroupSet"
+                    },
+                    "response": {
+                        "$ref": "ReadGroupSet"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "search": {
+                    "description": "Searches for read group sets matching the criteria.\n\nImplements GlobalAllianceApi.searchReadGroupSets.",
+                    "httpMethod": "POST",
+                    "id": "genomics.readgroupsets.search",
+                    "path": "readgroupsets/search",
+                    "request": {
+                        "$ref": "SearchReadGroupSetsRequest"
+                    },
+                    "response": {
+                        "$ref": "SearchReadGroupSetsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                },
+                "update": {
+                    "description": "Updates a read group set.",
+                    "httpMethod": "PUT",
+                    "id": "genomics.readgroupsets.update",
+                    "parameterOrder": [
+                        "readGroupSetId"
+                    ],
+                    "parameters": {
+                        "readGroupSetId": {
+                            "description": "The ID of the read group set to be updated. The caller must have WRITE permissions to the dataset associated with this read group set.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "readgroupsets/{readGroupSetId}",
+                    "request": {
+                        "$ref": "ReadGroupSet"
+                    },
+                    "response": {
+                        "$ref": "ReadGroupSet"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                }
+            },
+            "resources": {
+                "coveragebuckets": {
+                    "methods": {
+                        "list": {
+                            "description": "Lists fixed width coverage buckets for a read group set, each of which correspond to a range of a reference sequence. Each bucket summarizes coverage information across its corresponding genomic range.\n\nCoverage is defined as the number of reads which are aligned to a given base in the reference sequence. Coverage buckets are available at several precomputed bucket widths, enabling retrieval of various coverage 'zoom levels'. The caller must have READ permissions for the target read group set.",
+                            "httpMethod": "GET",
+                            "id": "genomics.readgroupsets.coveragebuckets.list",
+                            "parameterOrder": [
+                                "readGroupSetId"
+                            ],
+                            "parameters": {
+                                "pageSize": {
+                                    "default": "1024",
+                                    "description": "The maximum number of results to return in a single page. If unspecified, defaults to 1024. The maximum value is 2048.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of nextPageToken from the previous response.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "range.end": {
+                                    "description": "The end position of the range on the reference, 0-based exclusive. If specified, referenceName must also be specified.",
+                                    "format": "int64",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "range.referenceName": {
+                                    "description": "The reference sequence name, for example chr1, 1, or chrX.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "range.start": {
+                                    "description": "The start position of the range on the reference, 0-based inclusive. If specified, referenceName must also be specified.",
+                                    "format": "int64",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "readGroupSetId": {
+                                    "description": "Required. The ID of the read group set over which coverage is requested.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "targetBucketWidth": {
+                                    "description": "The desired width of each reported coverage bucket in base pairs. This will be rounded down to the nearest precomputed bucket width; the value of which is returned as bucketWidth in the response. Defaults to infinity (each bucket spans an entire reference sequence) or the length of the target range, if specified. The smallest precomputed bucketWidth is currently 2048 base pairs; this is subject to change.",
+                                    "format": "int64",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "readgroupsets/{readGroupSetId}/coveragebuckets",
+                            "response": {
+                                "$ref": "ListCoverageBucketsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/genomics",
+                                "https://www.googleapis.com/auth/genomics.readonly"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "reads": {
+            "methods": {
+                "search": {
+                    "description": "Gets a list of reads for one or more read group sets. Reads search operates over a genomic coordinate space of reference sequence & position defined over the reference sequences to which the requested read group sets are aligned.\n\nIf a target positional range is specified, search returns all reads whose alignment to the reference genome overlap the range. A query which specifies only read group set IDs yields all reads in those read group sets, including unmapped reads.\n\nAll reads returned (including reads on subsequent pages) are ordered by genomic coordinate (reference sequence & position). Reads with equivalent genomic coordinates are returned in a deterministic order.\n\nImplements GlobalAllianceApi.searchReads.",
+                    "httpMethod": "POST",
+                    "id": "genomics.reads.search",
+                    "path": "reads/search",
+                    "request": {
+                        "$ref": "SearchReadsRequest"
+                    },
+                    "response": {
+                        "$ref": "SearchReadsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                }
+            }
+        },
+        "references": {
+            "methods": {
+                "get": {
+                    "description": "Gets a reference.\n\nImplements GlobalAllianceApi.getReference.",
+                    "httpMethod": "GET",
+                    "id": "genomics.references.get",
+                    "parameterOrder": [
+                        "referenceId"
+                    ],
+                    "parameters": {
+                        "referenceId": {
+                            "description": "The ID of the reference.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "references/{referenceId}",
+                    "response": {
+                        "$ref": "Reference"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                },
+                "search": {
+                    "description": "Searches for references which match the given criteria.\n\nImplements GlobalAllianceApi.searchReferences.",
+                    "httpMethod": "POST",
+                    "id": "genomics.references.search",
+                    "path": "references/search",
+                    "request": {
+                        "$ref": "SearchReferencesRequest"
+                    },
+                    "response": {
+                        "$ref": "SearchReferencesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                }
+            },
+            "resources": {
+                "bases": {
+                    "methods": {
+                        "list": {
+                            "description": "Lists the bases in a reference, optionally restricted to a range.\n\nImplements GlobalAllianceApi.getReferenceBases.",
+                            "httpMethod": "GET",
+                            "id": "genomics.references.bases.list",
+                            "parameterOrder": [
+                                "referenceId"
+                            ],
+                            "parameters": {
+                                "end": {
+                                    "description": "The end position (0-based, exclusive) of this query. Defaults to the length of this reference.",
+                                    "format": "int64",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "default": "200000",
+                                    "description": "Specifies the maximum number of bases to return in a single page.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of nextPageToken from the previous response.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "referenceId": {
+                                    "description": "The ID of the reference.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "start": {
+                                    "description": "The start position (0-based) of this query. Defaults to 0.",
+                                    "format": "int64",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "references/{referenceId}/bases",
+                            "response": {
+                                "$ref": "ListBasesResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/genomics",
+                                "https://www.googleapis.com/auth/genomics.readonly"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "referencesets": {
+            "methods": {
+                "get": {
+                    "description": "Gets a reference set.\n\nImplements GlobalAllianceApi.getReferenceSet.",
+                    "httpMethod": "GET",
+                    "id": "genomics.referencesets.get",
+                    "parameterOrder": [
+                        "referenceSetId"
+                    ],
+                    "parameters": {
+                        "referenceSetId": {
+                            "description": "The ID of the reference set.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "referencesets/{referenceSetId}",
+                    "response": {
+                        "$ref": "ReferenceSet"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                },
+                "search": {
+                    "description": "Searches for reference sets which match the given criteria.\n\nImplements GlobalAllianceApi.searchReferenceSets.",
+                    "httpMethod": "POST",
+                    "id": "genomics.referencesets.search",
+                    "path": "referencesets/search",
+                    "request": {
+                        "$ref": "SearchReferenceSetsRequest"
+                    },
+                    "response": {
+                        "$ref": "SearchReferenceSetsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                }
+            }
+        },
+        "variants": {
+            "methods": {
+                "create": {
+                    "description": "Creates a new variant.",
+                    "httpMethod": "POST",
+                    "id": "genomics.variants.create",
+                    "path": "variants",
+                    "request": {
+                        "$ref": "Variant"
+                    },
+                    "response": {
+                        "$ref": "Variant"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "delete": {
+                    "description": "Deletes a variant.",
+                    "httpMethod": "DELETE",
+                    "id": "genomics.variants.delete",
+                    "parameterOrder": [
+                        "variantId"
+                    ],
+                    "parameters": {
+                        "variantId": {
+                            "description": "The ID of the variant to be deleted.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "variants/{variantId}",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "get": {
+                    "description": "Gets a variant by ID.",
+                    "httpMethod": "GET",
+                    "id": "genomics.variants.get",
+                    "parameterOrder": [
+                        "variantId"
+                    ],
+                    "parameters": {
+                        "variantId": {
+                            "description": "The ID of the variant.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "variants/{variantId}",
+                    "response": {
+                        "$ref": "Variant"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                },
+                "search": {
+                    "description": "Gets a list of variants matching the criteria.\n\nImplements GlobalAllianceApi.searchVariants.",
+                    "httpMethod": "POST",
+                    "id": "genomics.variants.search",
+                    "path": "variants/search",
+                    "request": {
+                        "$ref": "SearchVariantsRequest"
+                    },
+                    "response": {
+                        "$ref": "SearchVariantsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                },
+                "update": {
+                    "description": "Updates a variant's names and info fields. All other modifications are silently ignored. Returns the modified variant without its calls.",
+                    "httpMethod": "PUT",
+                    "id": "genomics.variants.update",
+                    "parameterOrder": [
+                        "variantId"
+                    ],
+                    "parameters": {
+                        "variantId": {
+                            "description": "The ID of the variant to be updated.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "variants/{variantId}",
+                    "request": {
+                        "$ref": "Variant"
+                    },
+                    "response": {
+                        "$ref": "Variant"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                }
+            }
+        },
+        "variantsets": {
+            "methods": {
+                "delete": {
+                    "description": "Deletes the contents of a variant set. The variant set object is not deleted.",
+                    "httpMethod": "DELETE",
+                    "id": "genomics.variantsets.delete",
+                    "parameterOrder": [
+                        "variantSetId"
+                    ],
+                    "parameters": {
+                        "variantSetId": {
+                            "description": "The ID of the variant set to be deleted.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "variantsets/{variantSetId}",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "export": {
+                    "description": "Exports variant set data to an external destination.",
+                    "httpMethod": "POST",
+                    "id": "genomics.variantsets.export",
+                    "parameterOrder": [
+                        "variantSetId"
+                    ],
+                    "parameters": {
+                        "variantSetId": {
+                            "description": "Required. The ID of the variant set that contains variant data which should be exported. The caller must have READ access to this variant set.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "variantsets/{variantSetId}/export",
+                    "request": {
+                        "$ref": "ExportVariantSetRequest"
+                    },
+                    "response": {
+                        "$ref": "ExportVariantSetResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/bigquery",
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "get": {
+                    "description": "Gets a variant set by ID.",
+                    "httpMethod": "GET",
+                    "id": "genomics.variantsets.get",
+                    "parameterOrder": [
+                        "variantSetId"
+                    ],
+                    "parameters": {
+                        "variantSetId": {
+                            "description": "Required. The ID of the variant set.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "variantsets/{variantSetId}",
+                    "response": {
+                        "$ref": "VariantSet"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                },
+                "importVariants": {
+                    "description": "Creates variant data by asynchronously importing the provided information.\n\nThe variants for import will be merged with any existing data and each other according to the behavior of mergeVariants. In particular, this means for merged VCF variants that have conflicting INFO fields, some data will be arbitrarily discarded. As a special case, for single-sample VCF files, QUAL and FILTER fields will be moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF headers are appended to the metadata already in a variant set.",
+                    "httpMethod": "POST",
+                    "id": "genomics.variantsets.importVariants",
+                    "parameterOrder": [
+                        "variantSetId"
+                    ],
+                    "parameters": {
+                        "variantSetId": {
+                            "description": "Required. The variant set to which variant data should be imported.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "variantsets/{variantSetId}/importVariants",
+                    "request": {
+                        "$ref": "ImportVariantsRequest"
+                    },
+                    "response": {
+                        "$ref": "ImportVariantsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/devstorage.read_write",
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "mergeVariants": {
+                    "description": "Merges the given variants with existing variants. Each variant will be merged with an existing variant that matches its reference sequence, start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created.\n\nWhen variants are merged, the call information from the new variant is added to the existing variant, and other fields (such as key/value pairs) are discarded.",
+                    "httpMethod": "POST",
+                    "id": "genomics.variantsets.mergeVariants",
+                    "parameterOrder": [
+                        "variantSetId"
+                    ],
+                    "parameters": {
+                        "variantSetId": {
+                            "description": "The destination variant set.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "variantsets/{variantSetId}/mergeVariants",
+                    "request": {
+                        "$ref": "MergeVariantsRequest"
+                    }
+                },
+                "patch": {
+                    "description": "Updates a variant set's metadata. All other modifications are silently ignored. This method supports patch semantics.",
+                    "httpMethod": "PATCH",
+                    "id": "genomics.variantsets.patch",
+                    "parameterOrder": [
+                        "variantSetId"
+                    ],
+                    "parameters": {
+                        "variantSetId": {
+                            "description": "The ID of the variant to be updated.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "variantsets/{variantSetId}",
+                    "request": {
+                        "$ref": "VariantSet"
+                    },
+                    "response": {
+                        "$ref": "VariantSet"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
+                "search": {
+                    "description": "Returns a list of all variant sets matching search criteria.\n\nImplements GlobalAllianceApi.searchVariantSets.",
+                    "httpMethod": "POST",
+                    "id": "genomics.variantsets.search",
+                    "path": "variantsets/search",
+                    "request": {
+                        "$ref": "SearchVariantSetsRequest"
+                    },
+                    "response": {
+                        "$ref": "SearchVariantSetsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics",
+                        "https://www.googleapis.com/auth/genomics.readonly"
+                    ]
+                },
+                "update": {
+                    "description": "Updates a variant set's metadata. All other modifications are silently ignored.",
+                    "httpMethod": "PUT",
+                    "id": "genomics.variantsets.update",
+                    "parameterOrder": [
+                        "variantSetId"
+                    ],
+                    "parameters": {
+                        "variantSetId": {
+                            "description": "The ID of the variant to be updated.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "variantsets/{variantSetId}",
+                    "request": {
+                        "$ref": "VariantSet"
+                    },
+                    "response": {
+                        "$ref": "VariantSet"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                }
+            }
+        }
+    },
+    "revision": "20141028",
+    "rootUrl": "https://www.googleapis.com/",
+    "schemas": {
+        "AlignReadGroupSetsRequest": {
+            "description": "The read group set align request.",
+            "id": "AlignReadGroupSetsRequest",
+            "properties": {
+                "bamSourceUris": {
+                    "description": "The BAM source files for alignment. Exactly one of readGroupSetIds, bamSourceUris, interleavedFastqSource or pairedFastqSource must be provided. The caller must have READ permissions for these files.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "datasetId": {
+                    "description": "Required. The ID of the dataset the newly aligned read group sets will belong to. The caller must have WRITE permissions to this dataset.",
+                    "type": "string"
+                },
+                "interleavedFastqSource": {
+                    "$ref": "InterleavedFastqSource",
+                    "description": "The interleaved FASTQ source files for alignment, where both members of each pair of reads are found on consecutive records within the same FASTQ file. Exactly one of readGroupSetIds, bamSourceUris, interleavedFastqSource or pairedFastqSource must be provided."
+                },
+                "pairedFastqSource": {
+                    "$ref": "PairedFastqSource",
+                    "description": "The paired end FASTQ source files for alignment, where each member of a pair of reads are found in separate files. Exactly one of readGroupSetIds, bamSourceUris, interleavedFastqSource or pairedFastqSource must be provided."
+                },
+                "readGroupSetIds": {
+                    "description": "The IDs of the read group sets which will be aligned. New read group sets will be generated to hold the aligned data, the originals will not be modified. The caller must have READ permissions for these read group sets. Exactly one of readGroupSetIds, bamSourceUris, interleavedFastqSource or pairedFastqSource must be provided.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AlignReadGroupSetsResponse": {
+            "description": "The read group set align response.",
+            "id": "AlignReadGroupSetsResponse",
+            "properties": {
+                "jobId": {
+                    "description": "A job ID that can be used to get status information.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Call": {
+            "description": "A call represents the determination of genotype with respect to a particular variant. It may include associated information such as quality and phasing. For example, a call might assign a probability of 0.32 to the occurrence of a SNP named rs1234 in a call set with the name NA12345.",
+            "id": "Call",
+            "properties": {
+                "callSetId": {
+                    "description": "The ID of the call set this variant call belongs to.",
+                    "type": "string"
+                },
+                "callSetName": {
+                    "description": "The name of the call set this variant call belongs to.",
+                    "type": "string"
+                },
+                "genotype": {
+                    "description": "The genotype of this variant call. Each value represents either the value of the referenceBases field or a 1-based index into alternateBases. If a variant had a referenceBases value of T and an alternateBases value of [\"A\", \"C\"], and the genotype was [2, 1], that would mean the call represented the heterozygous value CA for this variant. If the genotype was instead [0, 1], the represented value would be TA. Ordering of the genotype values is important if the phaseset is present. If a genotype is not called (that is, a . is present in the GT string) -1 is returned.",
+                    "items": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "genotypeLikelihood": {
+                    "description": "The genotype likelihoods for this variant call. Each array entry represents how likely a specific genotype is for this call. The value ordering is defined by the GL tag in the VCF spec.",
+                    "items": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "type": "array"
+                },
+                "info": {
+                    "additionalProperties": {
+                        "description": "A string which maps to an array of values.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "description": "A map of additional variant call information.",
+                    "type": "object"
+                },
+                "phaseset": {
+                    "description": "If this field is present, this variant call's genotype ordering implies the phase of the bases and is consistent with any other variant calls in the same reference sequence which have the same phaseset value. When importing data from VCF, if the genotype data was phased but no phase set was specified this field will be set to *.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CallReadGroupSetsRequest": {
+            "description": "The read group set call request.",
+            "id": "CallReadGroupSetsRequest",
+            "properties": {
+                "datasetId": {
+                    "description": "Required. The ID of the dataset the called variants will belong to. The caller must have WRITE permissions to this dataset.",
+                    "type": "string"
+                },
+                "readGroupSetIds": {
+                    "description": "The IDs of the read group sets which will be called. The caller must have READ permissions for these read group sets. One of readGroupSetIds or sourceUris must be provided.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sourceUris": {
+                    "description": "A list of URIs pointing at BAM files in Google Cloud Storage which will be called. FASTQ files are not allowed. The caller must have READ permissions for these files. One of readGroupSetIds or sourceUris must be provided.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CallReadGroupSetsResponse": {
+            "description": "The read group set call response.",
+            "id": "CallReadGroupSetsResponse",
+            "properties": {
+                "jobId": {
+                    "description": "A job ID that can be used to get status information.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CallSet": {
+            "description": "A call set is a collection of variant calls, typically for one sample. It belongs to a variant set.",
+            "id": "CallSet",
+            "properties": {
+                "created": {
+                    "description": "The date this call set was created in milliseconds from the epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The Google generated ID of the call set, immutable.",
+                    "type": "string"
+                },
+                "info": {
+                    "additionalProperties": {
+                        "description": "A string which maps to an array of values.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "description": "A map of additional call set information.",
+                    "type": "object"
+                },
+                "name": {
+                    "description": "The call set name.",
+                    "type": "string"
+                },
+                "sampleId": {
+                    "description": "The sample ID this call set corresponds to.",
+                    "type": "string"
+                },
+                "variantSetIds": {
+                    "description": "The IDs of the variant sets this call set belongs to.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CigarUnit": {
+            "description": "A single CIGAR operation.",
+            "id": "CigarUnit",
+            "properties": {
+                "operation": {
+                    "enum": [
+                        "ALIGNMENT_MATCH",
+                        "CLIP_HARD",
+                        "CLIP_SOFT",
+                        "DELETE",
+                        "INSERT",
+                        "PAD",
+                        "SEQUENCE_MATCH",
+                        "SEQUENCE_MISMATCH",
+                        "SKIP"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "operationLength": {
+                    "description": "The number of bases that the operation runs for. Required.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "referenceSequence": {
+                    "description": "referenceSequence is only used at mismatches (SEQUENCE_MISMATCH) and deletions (DELETE). Filling this field replaces SAM's MD tag. If the relevant information is not available, this field is unset.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CoverageBucket": {
+            "description": "A bucket over which read coverage has been precomputed. A bucket corresponds to a specific range of the reference sequence.",
+            "id": "CoverageBucket",
+            "properties": {
+                "meanCoverage": {
+                    "description": "The average number of reads which are aligned to each individual reference base in this bucket.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "range": {
+                    "$ref": "Range",
+                    "description": "The genomic coordinate range spanned by this bucket."
+                }
+            },
+            "type": "object"
+        },
+        "Dataset": {
+            "description": "A Dataset is a collection of genomic data.",
+            "id": "Dataset",
+            "properties": {
+                "id": {
+                    "description": "The Google generated ID of the dataset, immutable.",
+                    "type": "string"
+                },
+                "isPublic": {
+                    "description": "Flag indicating whether or not a dataset is publicly viewable. If a dataset is not public, it inherits viewing permissions from its project.",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "The dataset name.",
+                    "type": "string"
+                },
+                "projectNumber": {
+                    "description": "The Google Developers Console project number that this dataset belongs to.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ExperimentalCreateJobRequest": {
+            "description": "The job creation request.",
+            "id": "ExperimentalCreateJobRequest",
+            "properties": {
+                "align": {
+                    "description": "Specifies whether or not to run the alignment pipeline. Either align or callVariants must be set.",
+                    "type": "boolean"
+                },
+                "callVariants": {
+                    "description": "Specifies whether or not to run the variant calling pipeline. Either align or callVariants must be set.",
+                    "type": "boolean"
+                },
+                "gcsOutputPath": {
+                    "description": "Specifies where to copy the results of certain pipelines. This should be in the form of gs://bucket/path.",
+                    "type": "string"
+                },
+                "pairedSourceUris": {
+                    "description": "A list of Google Cloud Storage URIs of paired end .fastq files to operate upon. If specified, this represents the second file of each paired .fastq file. The first file of each pair should be specified in sourceUris.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "projectNumber": {
+                    "description": "Required. The Google Cloud Project ID with which to associate the request.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "sourceUris": {
+                    "description": "A list of Google Cloud Storage URIs of data files to operate upon. These can be .bam, interleaved .fastq, or paired .fastq. If specifying paired .fastq files, the first of each pair of files should be listed here, and the second of each pair should be listed in pairedSourceUris.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ExperimentalCreateJobResponse": {
+            "description": "The job creation response.",
+            "id": "ExperimentalCreateJobResponse",
+            "properties": {
+                "jobId": {
+                    "description": "A job ID that can be used to get status information.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ExportReadGroupSetsRequest": {
+            "description": "The read group set export request.",
+            "id": "ExportReadGroupSetsRequest",
+            "properties": {
+                "exportUri": {
+                    "description": "A Google Cloud Storage URI where the exported BAM file will be created. The currently authenticated user must have write access to the new file location. An error will be returned if the URI already contains data.",
+                    "type": "string"
+                },
+                "projectNumber": {
+                    "description": "The Google Developers Console project number that owns this export.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "readGroupSetIds": {
+                    "description": "The IDs of the read group sets to export.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "referenceNames": {
+                    "description": "The reference names to export. If this is not specified, all reference sequences, including unmapped reads, are exported. Use * to export only unmapped reads.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ExportReadGroupSetsResponse": {
+            "description": "The read group set export response.",
+            "id": "ExportReadGroupSetsResponse",
+            "properties": {
+                "jobId": {
+                    "description": "A job ID that can be used to get status information.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ExportVariantSetRequest": {
+            "description": "The variant data export request.",
+            "id": "ExportVariantSetRequest",
+            "properties": {
+                "bigqueryDataset": {
+                    "description": "The BigQuery dataset to export data to. Note that this is distinct from the Genomics concept of \"dataset\".",
+                    "type": "string"
+                },
+                "bigqueryTable": {
+                    "description": "The BigQuery table to export data to. If the table doesn't exist, it will be created. If it already exists, it will be overwritten.",
+                    "type": "string"
+                },
+                "callSetIds": {
+                    "description": "If provided, only variant call information from the specified call sets will be exported. By default all variant calls are exported.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "format": {
+                    "description": "The format for the exported data.",
+                    "enum": [
+                        "BIGQUERY"
+                    ],
+                    "enumDescriptions": [
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "projectNumber": {
+                    "description": "The Google Cloud project number that owns the destination BigQuery dataset. The caller must have WRITE access to this project. This project will also own the resulting export job.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ExportVariantSetResponse": {
+            "description": "The variant data export response.",
+            "id": "ExportVariantSetResponse",
+            "properties": {
+                "jobId": {
+                    "description": "A job ID that can be used to get status information.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FastqMetadata": {
+            "id": "FastqMetadata",
+            "properties": {
+                "libraryName": {
+                    "description": "Optionally specifies the library name for alignment from FASTQ.",
+                    "type": "string"
+                },
+                "platformName": {
+                    "description": "Optionally specifies the platform name for alignment from FASTQ. For example: CAPILLARY, LS454, ILLUMINA, SOLID, HELICOS, IONTORRENT, PACBIO.",
+                    "type": "string"
+                },
+                "platformUnit": {
+                    "description": "Optionally specifies the platform unit for alignment from FASTQ. For example: flowcell-barcode.lane for Illumina or slide for SOLID.",
+                    "type": "string"
+                },
+                "readGroupName": {
+                    "description": "Optionally specifies the read group name for alignment from FASTQ.",
+                    "type": "string"
+                },
+                "sampleName": {
+                    "description": "Optionally specifies the sample name for alignment from FASTQ.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ImportReadGroupSetsRequest": {
+            "description": "The read group set import request.",
+            "id": "ImportReadGroupSetsRequest",
+            "properties": {
+                "datasetId": {
+                    "description": "Required. The ID of the dataset these read group sets will belong to. The caller must have WRITE permissions to this dataset.",
+                    "type": "string"
+                },
+                "referenceSetId": {
+                    "description": "The reference set to which the imported read group sets are aligned to, if any. The reference names of this reference set must be a superset of those found in the imported file headers. If no reference set id is provided, a best effort is made to associate with a matching reference set.",
+                    "type": "string"
+                },
+                "sourceUris": {
+                    "description": "A list of URIs pointing at BAM files in Google Cloud Storage.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ImportReadGroupSetsResponse": {
+            "description": "The read group set import response.",
+            "id": "ImportReadGroupSetsResponse",
+            "properties": {
+                "jobId": {
+                    "description": "A job ID that can be used to get status information.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ImportVariantsRequest": {
+            "description": "The variant data import request.",
+            "id": "ImportVariantsRequest",
+            "properties": {
+                "format": {
+                    "description": "The format of the variant data being imported.",
+                    "enum": [
+                        "COMPLETE_GENOMICS",
+                        "VCF"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "sourceUris": {
+                    "description": "A list of URIs pointing at VCF files in Google Cloud Storage. See the VCF Specification for more details on the input format.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ImportVariantsResponse": {
+            "description": "The variant data import response.",
+            "id": "ImportVariantsResponse",
+            "properties": {
+                "jobId": {
+                    "description": "A job ID that can be used to get status information.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InterleavedFastqSource": {
+            "description": "Describes an interleaved FASTQ file source for alignment.",
+            "id": "InterleavedFastqSource",
+            "properties": {
+                "metadata": {
+                    "$ref": "FastqMetadata",
+                    "description": "Optionally specifies the metadata to be associated with the final aligned read group set."
+                },
+                "sourceUris": {
+                    "description": "A list of URIs pointing at interleaved FASTQ files in Google Cloud Storage which will be aligned. The caller must have READ permissions for these files.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Job": {
+            "description": "A Job represents an ongoing process that can be monitored for status information.",
+            "id": "Job",
+            "properties": {
+                "created": {
+                    "description": "The date this job was created, in milliseconds from the epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "detailedStatus": {
+                    "description": "A more detailed description of this job's current status.",
+                    "type": "string"
+                },
+                "errors": {
+                    "description": "Any errors that occurred during processing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "The job ID.",
+                    "type": "string"
+                },
+                "importedIds": {
+                    "description": "If this Job represents an import, this field will contain the IDs of the objects that were successfully imported.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "projectNumber": {
+                    "description": "The Google Developers Console project number to which this job belongs.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "request": {
+                    "$ref": "JobRequest",
+                    "description": "A summarized representation of the original service request."
+                },
+                "status": {
+                    "description": "The status of this job.",
+                    "enum": [
+                        "CANCELED",
+                        "FAILURE",
+                        "NEW",
+                        "PENDING",
+                        "RUNNING",
+                        "SUCCESS",
+                        "UNKNOWN_STATUS"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "warnings": {
+                    "description": "Any warnings that occurred during processing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "JobRequest": {
+            "description": "A summary representation of the service request that spawned the job.",
+            "id": "JobRequest",
+            "properties": {
+                "destination": {
+                    "description": "The data destination of the request, for example, a Google BigQuery Table or Dataset ID.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "source": {
+                    "description": "The data source of the request, for example, a Google Cloud Storage object path or Readset ID.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "description": "The original request type.",
+                    "enum": [
+                        "ALIGN_READSETS",
+                        "CALL_READSETS",
+                        "EXPERIMENTAL_CREATE_JOB",
+                        "EXPORT_READSETS",
+                        "EXPORT_VARIANTS",
+                        "IMPORT_READSETS",
+                        "IMPORT_VARIANTS",
+                        "UNKNOWN_TYPE"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LinearAlignment": {
+            "description": "A linear alignment can be represented by one CIGAR string. Describes the mapped position and local alignment of the read to the reference.",
+            "id": "LinearAlignment",
+            "properties": {
+                "cigar": {
+                    "description": "Represents the local alignment of this sequence (alignment matches, indels, etc) against the reference.",
+                    "items": {
+                        "$ref": "CigarUnit"
+                    },
+                    "type": "array"
+                },
+                "mappingQuality": {
+                    "description": "The mapping quality of this alignment. Represents how likely the read maps to this position as opposed to other locations.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "position": {
+                    "$ref": "Position",
+                    "description": "The position of this alignment."
+                }
+            },
+            "type": "object"
+        },
+        "ListBasesResponse": {
+            "id": "ListBasesResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results. This field will be empty if there aren't any additional results.",
+                    "type": "string"
+                },
+                "offset": {
+                    "description": "The offset position (0-based) of the given sequence from the start of this Reference. This value will differ for each page in a paginated request.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "sequence": {
+                    "description": "A substring of the bases that make up this reference.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListCoverageBucketsResponse": {
+            "id": "ListCoverageBucketsResponse",
+            "properties": {
+                "bucketWidth": {
+                    "description": "The length of each coverage bucket in base pairs. Note that buckets at the end of a reference sequence may be shorter. This value is omitted if the bucket width is infinity (the default behaviour, with no range or targetBucketWidth).",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "coverageBuckets": {
+                    "description": "The coverage buckets. The list of buckets is sparse; a bucket with 0 overlapping reads is not returned. A bucket never crosses more than one reference sequence. Each bucket has width bucketWidth, unless its end is the end of the reference sequence.",
+                    "items": {
+                        "$ref": "CoverageBucket"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results. This field will be empty if there aren't any additional results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListDatasetsResponse": {
+            "description": "The dataset list response.",
+            "id": "ListDatasetsResponse",
+            "properties": {
+                "datasets": {
+                    "description": "The list of matching Datasets.",
+                    "items": {
+                        "$ref": "Dataset"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results. This field will be empty if there aren't any additional results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MergeVariantsRequest": {
+            "id": "MergeVariantsRequest",
+            "properties": {
+                "variants": {
+                    "description": "The variants to be merged with existing variants.",
+                    "items": {
+                        "$ref": "Variant"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Metadata": {
+            "description": "Metadata describes a single piece of variant call metadata. These data include a top level key and either a single value string (value) or a list of key-value pairs (info.) Value and info are mutually exclusive.",
+            "id": "Metadata",
+            "properties": {
+                "description": {
+                    "description": "A textual description of this metadata.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "User-provided ID field, not enforced by this API. Two or more pieces of structured metadata with identical id and key fields are considered equivalent.",
+                    "type": "string"
+                },
+                "info": {
+                    "additionalProperties": {
+                        "description": "A string which maps to an array of values.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "description": "Remaining structured metadata key-value pairs.",
+                    "type": "object"
+                },
+                "key": {
+                    "description": "The top-level key.",
+                    "type": "string"
+                },
+                "number": {
+                    "description": "The number of values that can be included in a field described by this metadata.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of data. Possible types include: Integer, Float, Flag, Character, and String.",
+                    "enum": [
+                        "CHARACTER",
+                        "FLAG",
+                        "FLOAT",
+                        "INTEGER",
+                        "STRING",
+                        "UNKNOWN_TYPE"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value field for simple metadata",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PairedFastqSource": {
+            "description": "Describes a paired-end FASTQ file source for alignment.",
+            "id": "PairedFastqSource",
+            "properties": {
+                "firstSourceUris": {
+                    "description": "A list of URIs pointing at paired end FASTQ files in Google Cloud Storage which will be aligned. The first of each paired file should be specified here, in an order that matches the second of each paired file specified in secondSourceUris. For example: firstSourceUris: [file1_1.fq, file2_1.fq], secondSourceUris: [file1_2.fq, file2_2.fq]. The caller must have READ permissions for these files.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "metadata": {
+                    "$ref": "FastqMetadata",
+                    "description": "Optionally specifies the metadata to be associated with the final aligned read group set."
+                },
+                "secondSourceUris": {
+                    "description": "A list of URIs pointing at paired end FASTQ files in Google Cloud Storage which will be aligned. The second of each paired file should be specified here, in an order that matches the first of each paired file specified in firstSourceUris. For example: firstSourceUris: [file1_1.fq, file2_1.fq], secondSourceUris: [file1_2.fq, file2_2.fq]. The caller must have READ permissions for these files.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Position": {
+            "description": "An abstraction for referring to a genomic position, in relation to some already known reference. For now, represents a genomic position as a reference name, a base number on that reference (0-based), and a determination of forward or reverse strand.",
+            "id": "Position",
+            "properties": {
+                "position": {
+                    "description": "The 0-based offset from the start of the forward strand for that reference.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "referenceName": {
+                    "description": "The name of the reference in whatever reference set is being used.",
+                    "type": "string"
+                },
+                "reverseStrand": {
+                    "description": "Whether this position is on the reverse strand, as opposed to the forward strand.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "Range": {
+            "description": "A 0-based half-open genomic coordinate range over a reference sequence.",
+            "id": "Range",
+            "properties": {
+                "end": {
+                    "description": "The end position of the range on the reference, 0-based exclusive. If specified, referenceName must also be specified.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "referenceName": {
+                    "description": "The reference sequence name, for example chr1, 1, or chrX.",
+                    "type": "string"
+                },
+                "start": {
+                    "description": "The start position of the range on the reference, 0-based inclusive. If specified, referenceName must also be specified.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Read": {
+            "description": "A read alignment describes a linear alignment of a string of DNA to a reference sequence, in addition to metadata about the fragment (the molecule of DNA sequenced) and the read (the bases which were read by the sequencer). A read is equivalent to a line in a SAM file. A read belongs to exactly one read group and exactly one read group set.",
+            "id": "Read",
+            "properties": {
+                "alignedQuality": {
+                    "description": "The quality of the read sequence contained in this alignment record. alignedSequence and alignedQuality may be shorter than the full read sequence and quality. This will occur if the alignment is part of a chimeric alignment, or if the read was trimmed. When this occurs, the CIGAR for this read will begin/end with a hard clip operator that will indicate the length of the excised sequence.",
+                    "items": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "alignedSequence": {
+                    "description": "The bases of the read sequence contained in this alignment record. alignedSequence and alignedQuality may be shorter than the full read sequence and quality. This will occur if the alignment is part of a chimeric alignment, or if the read was trimmed. When this occurs, the CIGAR for this read will begin/end with a hard clip operator that will indicate the length of the excised sequence.",
+                    "type": "string"
+                },
+                "alignment": {
+                    "$ref": "LinearAlignment",
+                    "description": "The linear alignment for this alignment record. This field will be null if the read is unmapped."
+                },
+                "duplicateFragment": {
+                    "description": "The fragment is a PCR or optical duplicate (SAM flag 0x400)",
+                    "type": "boolean"
+                },
+                "failedVendorQualityChecks": {
+                    "description": "SAM flag 0x200",
+                    "type": "boolean"
+                },
+                "fragmentLength": {
+                    "description": "The observed length of the fragment, equivalent to TLEN in SAM.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "fragmentName": {
+                    "description": "The fragment name. Equivalent to QNAME (query template name) in SAM.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The unique ID for this read. This is a generated unique ID, not to be confused with fragmentName.",
+                    "type": "string"
+                },
+                "info": {
+                    "additionalProperties": {
+                        "description": "A string which maps to an array of values.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "description": "A map of additional read alignment information.",
+                    "type": "object"
+                },
+                "nextMatePosition": {
+                    "$ref": "Position",
+                    "description": "The mapping of the primary alignment of the (readNumber+1)%numberReads read in the fragment. It replaces mate position and mate strand in SAM."
+                },
+                "numberReads": {
+                    "description": "The number of reads in the fragment (extension to SAM flag 0x1).",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "properPlacement": {
+                    "description": "The orientation and the distance between reads from the fragment are consistent with the sequencing protocol (extension to SAM flag 0x2)",
+                    "type": "boolean"
+                },
+                "readGroupId": {
+                    "description": "The ID of the read group this read belongs to. (Every read must belong to exactly one read group.)",
+                    "type": "string"
+                },
+                "readGroupSetId": {
+                    "description": "The ID of the read group set this read belongs to. (Every read must belong to exactly one read group set.)",
+                    "type": "string"
+                },
+                "readNumber": {
+                    "description": "The read number in sequencing. 0-based and less than numberReads. This field replaces SAM flag 0x40 and 0x80.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "secondaryAlignment": {
+                    "description": "Whether this alignment is secondary. Equivalent to SAM flag 0x100. A secondary alignment represents an alternative to the primary alignment for this read. Aligners may return secondary alignments if a read can map ambiguously to multiple coordinates in the genome. By convention, each read has one and only one alignment where both secondaryAlignment and supplementaryAlignment are false.",
+                    "type": "boolean"
+                },
+                "supplementaryAlignment": {
+                    "description": "Whether this alignment is supplementary. Equivalent to SAM flag 0x800. Supplementary alignments are used in the representation of a chimeric alignment. In a chimeric alignment, a read is split into multiple linear alignments that map to different reference contigs. The first linear alignment in the read will be designated as the representative alignment; the remaining linear alignments will be designated as supplementary alignments. These alignments may have different mapping quality scores. In each linear alignment in a chimeric alignment, the read will be hard clipped. The alignedSequence and alignedQuality fields in the alignment record will only represent the bases for its respective linear alignment.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "ReadGroup": {
+            "description": "A read group is all the data that's processed the same way by the sequencer.",
+            "id": "ReadGroup",
+            "properties": {
+                "datasetId": {
+                    "description": "The ID of the dataset this read group belongs to.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "A free-form text description of this read group.",
+                    "type": "string"
+                },
+                "experiment": {
+                    "$ref": "ReadGroupExperiment",
+                    "description": "The experiment used to generate this read group."
+                },
+                "id": {
+                    "description": "The generated unique read group ID. Note: This is different than the @RG ID field in the SAM spec. For that value, see the name field.",
+                    "type": "string"
+                },
+                "info": {
+                    "additionalProperties": {
+                        "description": "A string which maps to an array of values.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "description": "A map of additional read group information.",
+                    "type": "object"
+                },
+                "name": {
+                    "description": "The read group name. This corresponds to the @RG ID field in the SAM spec.",
+                    "type": "string"
+                },
+                "predictedInsertSize": {
+                    "description": "The predicted insert size of this read group. The insert size is the length the sequenced DNA fragment from end-to-end, not including the adapters.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "programs": {
+                    "description": "The programs used to generate this read group. Programs are always identical for all read groups within a read group set. For this reason, only the first read group in a returned set will have this field populated.",
+                    "items": {
+                        "$ref": "ReadGroupProgram"
+                    },
+                    "type": "array"
+                },
+                "referenceSetId": {
+                    "description": "The reference set the reads in this read group are aligned to. Required if there are any read alignments.",
+                    "type": "string"
+                },
+                "sampleId": {
+                    "description": "The sample this read group's data was generated from. Note: This is not an actual ID within this repository, but rather an identifier for a sample which may be meaningful to some external system.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReadGroupExperiment": {
+            "id": "ReadGroupExperiment",
+            "properties": {
+                "instrumentModel": {
+                    "description": "The instrument model used as part of this experiment. This maps to sequencing technology in BAM.",
+                    "type": "string"
+                },
+                "libraryId": {
+                    "description": "The library used as part of this experiment. Note: This is not an actual ID within this repository, but rather an identifier for a library which may be meaningful to some external system.",
+                    "type": "string"
+                },
+                "platformUnit": {
+                    "description": "The platform unit used as part of this experiment e.g. flowcell-barcode.lane for Illumina or slide for SOLiD. Corresponds to the",
+                    "type": "string"
+                },
+                "sequencingCenter": {
+                    "description": "The sequencing center used as part of this experiment.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReadGroupProgram": {
+            "id": "ReadGroupProgram",
+            "properties": {
+                "commandLine": {
+                    "description": "The command line used to run this program.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The user specified locally unique ID of the program. Used along with prevProgramId to define an ordering between programs.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the program.",
+                    "type": "string"
+                },
+                "prevProgramId": {
+                    "description": "The ID of the program run before this one.",
+                    "type": "string"
+                },
+                "version": {
+                    "description": "The version of the program run.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReadGroupSet": {
+            "description": "A read group set is a logical collection of read groups, which are collections of reads produced by a sequencer. A read group set typically models reads corresponding to one sample, sequenced one way, and aligned one way.  \n- A read group set belongs to one dataset.\n- A read group belongs to one read group set.\n- A read belongs to one read group.",
+            "id": "ReadGroupSet",
+            "properties": {
+                "datasetId": {
+                    "description": "The dataset ID.",
+                    "type": "string"
+                },
+                "filename": {
+                    "description": "The filename of the original source file for this read group set, if any.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The read group set ID.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The read group set name. By default this will be initialized to the sample name of the sequenced data contained in this set.",
+                    "type": "string"
+                },
+                "readGroups": {
+                    "description": "The read groups in this set. There are typically 1-10 read groups in a read group set.",
+                    "items": {
+                        "$ref": "ReadGroup"
+                    },
+                    "type": "array"
+                },
+                "referenceSetId": {
+                    "description": "The reference set the reads in this read group set are aligned to.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Reference": {
+            "description": "A reference is a canonical assembled DNA sequence, intended to act as a reference coordinate space for other genomic annotations. A single reference might represent the human chromosome 1 or mitochandrial DNA, for instance. A reference belongs to one or more reference sets.",
+            "id": "Reference",
+            "properties": {
+                "id": {
+                    "description": "The Google generated immutable ID of the reference.",
+                    "type": "string"
+                },
+                "length": {
+                    "description": "The length of this reference's sequence.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "md5checksum": {
+                    "description": "MD5 of the upper-case sequence excluding all whitespace characters (this is equivalent to SQ:M5 in SAM). This value is represented in lower case hexadecimal format.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of this reference, for example 22.",
+                    "type": "string"
+                },
+                "ncbiTaxonId": {
+                    "description": "ID from http://www.ncbi.nlm.nih.gov/taxonomy (e.g. 9606->human) if not specified by the containing reference set.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "sourceAccessions": {
+                    "description": "All known corresponding accession IDs in INSDC (GenBank/ENA/DDBJ) ideally with a version number, for example GCF_000001405.26.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sourceURI": {
+                    "description": "The URI from which the sequence was obtained. Specifies a FASTA format file/string with one name, sequence pair.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReferenceBound": {
+            "description": "ReferenceBound records an upper bound for the starting coordinate of variants in a particular reference.",
+            "id": "ReferenceBound",
+            "properties": {
+                "referenceName": {
+                    "description": "The reference the bound is associate with.",
+                    "type": "string"
+                },
+                "upperBound": {
+                    "description": "An upper bound (inclusive) on the starting coordinate of any variant in the reference sequence.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReferenceSet": {
+            "description": "A reference set is a set of references which typically comprise a reference assembly for a species, such as GRCh38 which is representative of the human genome. A reference set defines a common coordinate space for comparing reference-aligned experimental data. A reference set contains 1 or more references.",
+            "id": "ReferenceSet",
+            "properties": {
+                "assemblyId": {
+                    "description": "Public id of this reference set, such as GRCh37.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Optional free text description of this reference set.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The Google generated immutable ID of the reference set.",
+                    "type": "string"
+                },
+                "md5checksum": {
+                    "description": "Order-independent MD5 checksum which identifies this reference set. The checksum is computed by sorting all lower case hexidecimal string reference.md5checksum (for all reference in this set) in ascending lexicographic order, concatenating, and taking the MD5 of that value. The resulting value is represented in lower case hexadecimal format.",
+                    "type": "string"
+                },
+                "ncbiTaxonId": {
+                    "description": "ID from http://www.ncbi.nlm.nih.gov/taxonomy (e.g. 9606->human) indicating the species which this assembly is intended to model. Note that contained references may specify a different ncbiTaxonId, as assemblies may contain reference sequences which do not belong to the modeled species, e.g. EBV in a human reference genome.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "referenceIds": {
+                    "description": "The IDs of the reference objects that are part of this set. Reference.md5checksum must be unique within this set.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sourceAccessions": {
+                    "description": "All known corresponding accession IDs in INSDC (GenBank/ENA/DDBJ) ideally with a version number, for example NC_000001.11.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sourceURI": {
+                    "description": "The URI from which the references were obtained.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchCallSetsRequest": {
+            "description": "The call set search request.",
+            "id": "SearchCallSetsRequest",
+            "properties": {
+                "name": {
+                    "description": "Only return call sets for which a substring of the name matches this string.",
+                    "type": "string"
+                },
+                "pageSize": {
+                    "description": "The maximum number of call sets to return.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of nextPageToken from the previous response.",
+                    "type": "string"
+                },
+                "variantSetIds": {
+                    "description": "Restrict the query to call sets within the given variant sets. At least one ID must be provided.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SearchCallSetsResponse": {
+            "description": "The call set search response.",
+            "id": "SearchCallSetsResponse",
+            "properties": {
+                "callSets": {
+                    "description": "The list of matching call sets.",
+                    "items": {
+                        "$ref": "CallSet"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results. This field will be empty if there aren't any additional results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchJobsRequest": {
+            "description": "The jobs search request.",
+            "id": "SearchJobsRequest",
+            "properties": {
+                "createdAfter": {
+                    "description": "If specified, only jobs created on or after this date, given in milliseconds since Unix epoch, will be returned.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "createdBefore": {
+                    "description": "If specified, only jobs created prior to this date, given in milliseconds since Unix epoch, will be returned.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "pageSize": {
+                    "description": "Specifies the number of results to return in a single page. Defaults to 128. The maximum value is 256.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageToken": {
+                    "description": "The continuation token which is used to page through large result sets. To get the next page of results, set this parameter to the value of the nextPageToken from the previous response.",
+                    "type": "string"
+                },
+                "projectNumber": {
+                    "description": "Required. Only return jobs which belong to this Google Developers",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Only return jobs which have a matching status.",
+                    "items": {
+                        "enum": [
+                            "CANCELED",
+                            "FAILURE",
+                            "NEW",
+                            "PENDING",
+                            "RUNNING",
+                            "SUCCESS",
+                            "UNKNOWN_STATUS"
+                        ],
+                        "enumDescriptions": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SearchJobsResponse": {
+            "description": "The job search response.",
+            "id": "SearchJobsResponse",
+            "properties": {
+                "jobs": {
+                    "description": "The list of jobs results, ordered newest to oldest.",
+                    "items": {
+                        "$ref": "Job"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The continuation token which is used to page through large result sets. Provide this value is a subsequent request to return the next page of results. This field will be empty if there are no more results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchReadGroupSetsRequest": {
+            "description": "The read group set search request.",
+            "id": "SearchReadGroupSetsRequest",
+            "properties": {
+                "datasetIds": {
+                    "description": "Restricts this query to read group sets within the given datasets. At least one ID must be provided.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "Only return read group sets for which a substring of the name matches this string.",
+                    "type": "string"
+                },
+                "pageSize": {
+                    "description": "Specifies number of results to return in a single page. If unspecified, it will default to 128. The maximum value is 1024.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of nextPageToken from the previous response.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchReadGroupSetsResponse": {
+            "description": "The read group set search response.",
+            "id": "SearchReadGroupSetsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results. This field will be empty if there aren't any additional results.",
+                    "type": "string"
+                },
+                "readGroupSets": {
+                    "description": "The list of matching read group sets.",
+                    "items": {
+                        "$ref": "ReadGroupSet"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SearchReadsRequest": {
+            "description": "The read search request.",
+            "id": "SearchReadsRequest",
+            "properties": {
+                "end": {
+                    "description": "The end position of the range on the reference, 0-based exclusive. If specified, referenceName must also be specified.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "pageSize": {
+                    "description": "Specifies number of results to return in a single page. If unspecified, it will default to 256. The maximum value is 2048.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of nextPageToken from the previous response.",
+                    "type": "string"
+                },
+                "readGroupIds": {
+                    "description": "The IDs of the read groups within which to search for reads. All specified read groups must belong to the same read group sets. Must specify one of readGroupSetIds or readGroupIds.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "readGroupSetIds": {
+                    "description": "The IDs of the read groups sets within which to search for reads. All specified read group sets must be aligned against a common set of reference sequences; this defines the genomic coordinates for the query. Must specify one of readGroupSetIds or readGroupIds.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "referenceName": {
+                    "description": "The reference sequence name, for example chr1, 1, or chrX. If set to *, only unmapped reads are returned.",
+                    "type": "string"
+                },
+                "start": {
+                    "description": "The start position of the range on the reference, 0-based inclusive. If specified, referenceName must also be specified.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchReadsResponse": {
+            "description": "The read search response.",
+            "id": "SearchReadsResponse",
+            "properties": {
+                "alignments": {
+                    "description": "The list of matching alignments sorted by mapped genomic coordinate, if any, ascending in position within the same reference. Unmapped reads, which have no position, are returned last and are further sorted in ascending lexicographic order by fragment name.",
+                    "items": {
+                        "$ref": "Read"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results. This field will be empty if there aren't any additional results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchReferenceSetsRequest": {
+            "id": "SearchReferenceSetsRequest",
+            "properties": {
+                "accessions": {
+                    "description": "If present, return references for which the accession matches any of these strings. Best to give a version number, for example GCF_000001405.26. If only the main accession number is given then all records with that main accession will be returned, whichever version. Note that different versions will have different sequences.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "md5checksums": {
+                    "description": "If present, return references for which the md5checksum matches. See ReferenceSet.md5checksum for details.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "pageSize": {
+                    "description": "Specifies the maximum number of results to return in a single page.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of nextPageToken from the previous response.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchReferenceSetsResponse": {
+            "id": "SearchReferenceSetsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results. This field will be empty if there aren't any additional results.",
+                    "type": "string"
+                },
+                "referenceSets": {
+                    "description": "The matching references sets.",
+                    "items": {
+                        "$ref": "ReferenceSet"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SearchReferencesRequest": {
+            "description": "",
+            "id": "SearchReferencesRequest",
+            "properties": {
+                "accessions": {
+                    "description": "If present, return references for which the accession matches this string. Best to give a version number, for example GCF_000001405.26. If only the main accession number is given then all records with that main accession will be returned, whichever version. Note that different versions will have different sequences.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "md5checksums": {
+                    "description": "If present, return references for which the md5checksum matches. See Reference.md5checksum for construction details.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "pageSize": {
+                    "description": "Specifies the maximum number of results to return in a single page.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of nextPageToken from the previous response.",
+                    "type": "string"
+                },
+                "referenceSetId": {
+                    "description": "If present, return only references which belong to this reference set.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchReferencesResponse": {
+            "id": "SearchReferencesResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results. This field will be empty if there aren't any additional results.",
+                    "type": "string"
+                },
+                "references": {
+                    "description": "The matching references.",
+                    "items": {
+                        "$ref": "Reference"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SearchVariantSetsRequest": {
+            "description": "The search variant sets request.",
+            "id": "SearchVariantSetsRequest",
+            "properties": {
+                "datasetIds": {
+                    "description": "Exactly one dataset ID must be provided here. Only variant sets which belong to this dataset will be returned.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "pageSize": {
+                    "description": "The maximum number of variant sets to return in a request.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of nextPageToken from the previous response.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchVariantSetsResponse": {
+            "description": "The search variant sets response.",
+            "id": "SearchVariantSetsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results. This field will be empty if there aren't any additional results.",
+                    "type": "string"
+                },
+                "variantSets": {
+                    "description": "The variant sets belonging to the requested dataset.",
+                    "items": {
+                        "$ref": "VariantSet"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SearchVariantsRequest": {
+            "description": "The variant search request.",
+            "id": "SearchVariantsRequest",
+            "properties": {
+                "callSetIds": {
+                    "description": "Only return variant calls which belong to call sets with these ids. Leaving this blank returns all variant calls. If a variant has no calls belonging to any of these call sets, it won't be returned at all. Currently, variants with no calls from any call set will never be returned.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "end": {
+                    "description": "Required. The end of the window (0-based, exclusive) for which overlapping variants should be returned.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "maxCalls": {
+                    "description": "The maximum number of calls to return. However, at least one variant will always be returned, even if it has more calls than this limit.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "The maximum number of variants to return.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of nextPageToken from the previous response.",
+                    "type": "string"
+                },
+                "referenceName": {
+                    "description": "Required. Only return variants in this reference sequence.",
+                    "type": "string"
+                },
+                "start": {
+                    "description": "Required. The beginning of the window (0-based, inclusive) for which overlapping variants should be returned.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "variantName": {
+                    "description": "Only return variants which have exactly this name.",
+                    "type": "string"
+                },
+                "variantSetIds": {
+                    "description": "Exactly one variant set ID must be provided. Only variants from this variant set will be returned.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SearchVariantsResponse": {
+            "description": "The variant search response.",
+            "id": "SearchVariantsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results. This field will be empty if there aren't any additional results.",
+                    "type": "string"
+                },
+                "variants": {
+                    "description": "The list of matching Variants.",
+                    "items": {
+                        "$ref": "Variant"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Variant": {
+            "description": "A variant represents a change in DNA sequence relative to a reference sequence. For example, a variant could represent a SNP or an insertion. Variants belong to a variant set. Each of the calls on a variant represent a determination of genotype with respect to that variant. For example, a call might assign probability of 0.32 to the occurrence of a SNP named rs1234 in a sample named NA12345. A call belongs to a call set, which contains related calls typically from one sample.",
+            "id": "Variant",
+            "properties": {
+                "alternateBases": {
+                    "description": "The bases that appear instead of the reference bases.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "calls": {
+                    "description": "The variant calls for this particular variant. Each one represents the determination of genotype with respect to this variant.",
+                    "items": {
+                        "$ref": "Call"
+                    },
+                    "type": "array"
+                },
+                "created": {
+                    "description": "The date this variant was created, in milliseconds from the epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "end": {
+                    "description": "The end position (0-based) of this variant. This corresponds to the first base after the last base in the reference allele. So, the length of the reference allele is (end - start). This is useful for variants that don't explicitly give alternate bases, for example large deletions.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "filter": {
+                    "description": "A list of filters (normally quality filters) this variant has failed. PASS indicates this variant has passed all filters.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "The Google generated ID of the variant, immutable.",
+                    "type": "string"
+                },
+                "info": {
+                    "additionalProperties": {
+                        "description": "A string which maps to an array of values.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "description": "A map of additional variant information.",
+                    "type": "object"
+                },
+                "names": {
+                    "description": "Names for the variant, for example a RefSNP ID.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "quality": {
+                    "description": "A measure of how likely this variant is to be real. A higher value is better.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "referenceBases": {
+                    "description": "The reference bases for this variant. They start at the given position.",
+                    "type": "string"
+                },
+                "referenceName": {
+                    "description": "The reference on which this variant occurs. (such as chr20 or X)",
+                    "type": "string"
+                },
+                "start": {
+                    "description": "The position at which this variant occurs (0-based). This corresponds to the first base of the string of reference bases.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "variantSetId": {
+                    "description": "The ID of the variant set this variant belongs to.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "VariantSet": {
+            "description": "A variant set is a collection of call sets and variants. It contains summary statistics of those contents. A variant set belongs to a dataset.",
+            "id": "VariantSet",
+            "properties": {
+                "datasetId": {
+                    "description": "The dataset to which this variant set belongs. Immutable.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The Google-generated ID of the variant set. Immutable.",
+                    "type": "string"
+                },
+                "metadata": {
+                    "description": "The metadata associated with this variant set.",
+                    "items": {
+                        "$ref": "Metadata"
+                    },
+                    "type": "array"
+                },
+                "referenceBounds": {
+                    "description": "A list of all references used by the variants in a variant set with associated coordinate upper bounds for each one.",
+                    "items": {
+                        "$ref": "ReferenceBound"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "genomics/v1beta2/",
+    "title": "Genomics API",
+    "version": "v1beta2"
+}

@@ -32,7 +32,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/8O8WdcLF8cXKLqmsbUzfLValrE8\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/8QMIKXQb4gLNnKU_aYZeGRdMS08\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -585,8 +585,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/drive",
-                        "https://www.googleapis.com/auth/drive.file",
-                        "https://www.googleapis.com/auth/drive.readonly"
+                        "https://www.googleapis.com/auth/drive.file"
                     ]
                 },
                 "list": {
@@ -826,6 +825,12 @@
                         "fileId"
                     ],
                     "parameters": {
+                        "acknowledgeAbuse": {
+                            "default": "false",
+                            "description": "Whether the user is acknowledging the risk of downloading known malware or other abusive files.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "fileId": {
                             "description": "The ID for the file in question.",
                             "location": "path",
@@ -864,6 +869,7 @@
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ],
+                    "supportsMediaDownload": true,
                     "supportsSubscription": true
                 },
                 "insert": {
@@ -1315,6 +1321,12 @@
                         "fileId"
                     ],
                     "parameters": {
+                        "acknowledgeAbuse": {
+                            "default": "false",
+                            "description": "Whether the user is acknowledging the risk of downloading known malware or other abusive files.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "fileId": {
                             "description": "The ID for the file in question.",
                             "location": "path",
@@ -1357,6 +1369,7 @@
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
                     ],
+                    "supportsMediaDownload": true,
                     "supportsSubscription": true
                 }
             }
@@ -2429,7 +2442,7 @@
             }
         }
     },
-    "revision": "20141009",
+    "revision": "20141024",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {

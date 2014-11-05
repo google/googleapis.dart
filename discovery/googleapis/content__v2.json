@@ -15,7 +15,7 @@
     "description": "Manage product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content/v2/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/7JtHRkerzIVCOlD80Ybyn4STFoY\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/EfYKK5AfY2_HGyMN7vFlDQDdSbY\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -476,10 +476,22 @@
                         "merchantId"
                     ],
                     "parameters": {
+                        "maxResults": {
+                            "description": "The maximum number of products to return in the response, used for paging.",
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "merchantId": {
+                            "description": "The ID of the managing account.",
                             "format": "uint64",
                             "location": "path",
                             "required": true,
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "description": "The token returned by the previous request.",
+                            "location": "query",
                             "type": "string"
                         }
                     },
@@ -613,10 +625,22 @@
                         "merchantId"
                     ],
                     "parameters": {
+                        "maxResults": {
+                            "description": "The maximum number of products to return in the response, used for paging.",
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "merchantId": {
+                            "description": "The ID of the managing account.",
                             "format": "uint64",
                             "location": "path",
                             "required": true,
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "description": "The token returned by the previous request.",
+                            "location": "query",
                             "type": "string"
                         }
                     },
@@ -933,10 +957,11 @@
             }
         }
     },
-    "revision": "20141010",
+    "revision": "20141028",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
+            "description": "Account data.",
             "id": "Account",
             "properties": {
                 "adultContent": {
@@ -1122,6 +1147,7 @@
             "id": "AccountsCustomBatchRequest",
             "properties": {
                 "entries": {
+                    "description": "The request entries to be processed in the batch.",
                     "items": {
                         "$ref": "AccountsCustomBatchRequestEntry"
                     },
@@ -1154,7 +1180,6 @@
                     "type": "string"
                 },
                 "method": {
-                    "description": "The method (get, insert, update, or delete).",
                     "type": "string"
                 }
             },
@@ -1164,6 +1189,7 @@
             "id": "AccountsCustomBatchResponse",
             "properties": {
                 "entries": {
+                    "description": "The result of the execution of the batch requests.",
                     "items": {
                         "$ref": "AccountsCustomBatchResponseEntry"
                     },
@@ -1211,6 +1237,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
+                    "description": "The token for the retrieval of the next page of accounts.",
                     "type": "string"
                 },
                 "resources": {
@@ -1226,6 +1253,7 @@
             "id": "AccountstatusesCustomBatchRequest",
             "properties": {
                 "entries": {
+                    "description": "The request entries to be processed in the batch.",
                     "items": {
                         "$ref": "AccountstatusesCustomBatchRequestEntry"
                     },
@@ -1264,6 +1292,7 @@
             "id": "AccountstatusesCustomBatchResponse",
             "properties": {
                 "entries": {
+                    "description": "The result of the execution of the batch requests.",
                     "items": {
                         "$ref": "AccountstatusesCustomBatchResponseEntry"
                     },
@@ -1306,6 +1335,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
+                    "description": "The token for the retrieval of the next page of account statuses.",
                     "type": "string"
                 },
                 "resources": {
@@ -1318,6 +1348,7 @@
             "type": "object"
         },
         "Datafeed": {
+            "description": "Datafeed data.",
             "id": "Datafeed",
             "properties": {
                 "attributeLanguage": {
@@ -1461,6 +1492,7 @@
             "type": "object"
         },
         "DatafeedStatus": {
+            "description": "The status of a datafeed, i.e., the result of the last retrieval of the datafeed computed asynchronously when the feed processing is finished.",
             "id": "DatafeedStatus",
             "properties": {
                 "datafeedId": {
@@ -1555,6 +1587,7 @@
             "id": "DatafeedsCustomBatchRequest",
             "properties": {
                 "entries": {
+                    "description": "The request entries to be processed in the batch.",
                     "items": {
                         "$ref": "DatafeedsCustomBatchRequestEntry"
                     },
@@ -1587,7 +1620,6 @@
                     "type": "string"
                 },
                 "method": {
-                    "description": "The method (get, insert, update, or delete).",
                     "type": "string"
                 }
             },
@@ -1597,6 +1629,7 @@
             "id": "DatafeedsCustomBatchResponse",
             "properties": {
                 "entries": {
+                    "description": "The result of the execution of the batch requests.",
                     "items": {
                         "$ref": "DatafeedsCustomBatchResponseEntry"
                     },
@@ -1638,6 +1671,10 @@
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#datafeedsListResponse\".",
                     "type": "string"
                 },
+                "nextPageToken": {
+                    "description": "The token for the retrieval of the next page of datafeeds.",
+                    "type": "string"
+                },
                 "resources": {
                     "items": {
                         "$ref": "Datafeed"
@@ -1651,6 +1688,7 @@
             "id": "DatafeedstatusesCustomBatchRequest",
             "properties": {
                 "entries": {
+                    "description": "The request entries to be processed in the batch.",
                     "items": {
                         "$ref": "DatafeedstatusesCustomBatchRequestEntry"
                     },
@@ -1679,7 +1717,6 @@
                     "type": "string"
                 },
                 "method": {
-                    "description": "The method (get).",
                     "type": "string"
                 }
             },
@@ -1689,6 +1726,7 @@
             "id": "DatafeedstatusesCustomBatchResponse",
             "properties": {
                 "entries": {
+                    "description": "The result of the execution of the batch requests.",
                     "items": {
                         "$ref": "DatafeedstatusesCustomBatchResponseEntry"
                     },
@@ -1728,6 +1766,10 @@
                 "kind": {
                     "default": "content#datafeedstatusesListResponse",
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#datafeedstatusesListResponse\".",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "The token for the retrieval of the next page of datafeed statuses.",
                     "type": "string"
                 },
                 "resources": {
@@ -1817,6 +1859,7 @@
             "id": "InventoryCustomBatchRequest",
             "properties": {
                 "entries": {
+                    "description": "The request entries to be processed in the batch.",
                     "items": {
                         "$ref": "InventoryCustomBatchRequestEntry"
                     },
@@ -1858,6 +1901,7 @@
             "id": "InventoryCustomBatchResponse",
             "properties": {
                 "entries": {
+                    "description": "The result of the execution of the batch requests.",
                     "items": {
                         "$ref": "InventoryCustomBatchResponseEntry"
                     },
@@ -2542,6 +2586,7 @@
             "id": "ProductsCustomBatchRequest",
             "properties": {
                 "entries": {
+                    "description": "The request entries to be processed in the batch.",
                     "items": {
                         "$ref": "ProductsCustomBatchRequestEntry"
                     },
@@ -2565,7 +2610,6 @@
                     "type": "string"
                 },
                 "method": {
-                    "description": "The method (get, insert or delete).",
                     "type": "string"
                 },
                 "product": {
@@ -2583,6 +2627,7 @@
             "id": "ProductsCustomBatchResponse",
             "properties": {
                 "entries": {
+                    "description": "The result of the execution of the batch requests.",
                     "items": {
                         "$ref": "ProductsCustomBatchResponseEntry"
                     },
@@ -2630,6 +2675,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
+                    "description": "The token for the retrieval of the next page of products.",
                     "type": "string"
                 },
                 "resources": {
@@ -2645,6 +2691,7 @@
             "id": "ProductstatusesCustomBatchRequest",
             "properties": {
                 "entries": {
+                    "description": "The request entries to be processed in the batch.",
                     "items": {
                         "$ref": "ProductstatusesCustomBatchRequestEntry"
                     },
@@ -2668,7 +2715,6 @@
                     "type": "string"
                 },
                 "method": {
-                    "description": "The method (get).",
                     "type": "string"
                 },
                 "productId": {
@@ -2682,6 +2728,7 @@
             "id": "ProductstatusesCustomBatchResponse",
             "properties": {
                 "entries": {
+                    "description": "The result of the execution of the batch requests.",
                     "items": {
                         "$ref": "ProductstatusesCustomBatchResponseEntry"
                     },
@@ -2729,6 +2776,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
+                    "description": "The token for the retrieval of the next page of products statuses.",
                     "type": "string"
                 },
                 "resources": {

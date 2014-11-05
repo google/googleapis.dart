@@ -17,7 +17,7 @@
     "description": "The Google Compute Engine Autoscaler API provides autoscaling for groups of Cloud VMs.",
     "discoveryVersion": "v1",
     "documentationLink": "http://developers.google.com/compute/docs/autoscaler",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/mXaVlrmfb2VNKELCD4Zc-7YB4IU\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/5UzSOWUO3ZYn_NUebnJd-hd4w8w\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -438,9 +438,53 @@
                     ]
                 }
             }
+        },
+        "zones": {
+            "methods": {
+                "list": {
+                    "description": "",
+                    "httpMethod": "GET",
+                    "id": "autoscaler.zones.list",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones",
+                    "response": {
+                        "$ref": "ZoneList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                }
+            }
         }
     },
-    "revision": "20141013",
+    "revision": "20141024",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Autoscaler": {
@@ -583,6 +627,27 @@
                     "description": "Fraction of backend capacity utilization (set in HTTP load balancing configuration) that Autoscaler should maintain. Must be a positive float value. If not defined, the default is 0.8. For example if your maxRatePerInstance capacity (in HTTP Load Balancing configuration) is set at 10 and you would like to keep number of instances such that each instance receives 7 QPS on average, set this to 0.7.",
                     "format": "double",
                     "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "DeprecationStatus": {
+            "id": "DeprecationStatus",
+            "properties": {
+                "deleted": {
+                    "type": "string"
+                },
+                "deprecated": {
+                    "type": "string"
+                },
+                "obsolete": {
+                    "type": "string"
+                },
+                "replacement": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -730,6 +795,90 @@
                     "type": "string"
                 },
                 "selfLink": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Zone": {
+            "id": "Zone",
+            "properties": {
+                "creationTimestamp": {
+                    "type": "string"
+                },
+                "deprecated": {
+                    "$ref": "DeprecationStatus"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "autoscaler#zone",
+                    "description": "Type of the resource.",
+                    "type": "string"
+                },
+                "maintenanceWindows": {
+                    "items": {
+                        "properties": {
+                            "beginTime": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "endTime": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "Server defined URL for the resource (output only).",
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ZoneList": {
+            "id": "ZoneList",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "items": {
+                    "items": {
+                        "$ref": "Zone"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "autoscaler#zoneList",
+                    "description": "Type of resource.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "Server defined URL for this resource (output only).",
                     "type": "string"
                 }
             },

@@ -71,6 +71,10 @@ API for accessing Google Cloud and API monitoring data.
 
 Official API documentation: https://developers.google.com/cloud-monitoring/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Container Engine API - container v1beta1
+
+The Google Container Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Datastore API - datastore v1beta2
 
 API for accessing Google Cloud Datastore.
@@ -89,6 +93,12 @@ Provides access to Genomics data.
 
 Official API documentation: https://developers.google.com/genomics/v1beta/reference
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Genomics API - genomics v1beta2
+
+Provides access to Genomics data.
+
+Official API documentation: https://developers.google.com/genomics/v1beta2/reference
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Deployment Manager API - manager v1beta2
 
 The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.
@@ -101,11 +111,17 @@ Provides reliable, many-to-many, asynchronous messaging between applications.
 
 Official API documentation: https://developers.google.com/pubsub/v1beta1
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Replica Pool API - replicapool v1beta1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Instance Group Manager API - replicapool v1beta2
 
-The Replica Pool API allows users to declaratively provision and manage groups of Google Compute Engine instances based on a common template.
+The Google Compute Engine Instance Group Manager API provides groups of homogenous Compute Engine Instances.
 
-Official API documentation: https://developers.google.com/compute/docs/replica-pool/
+Official API documentation: https://developers.google.com/compute/docs/instance-groups/manager/v1beta2
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Instance Group Updater API - replicapoolupdater v1beta1
+
+The Google Compute Engine Instance Group Updater API provides services for updating groups of Compute Engine Instances.
+
+Official API documentation: 
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Resource Views API - resourceviews v1beta1
 

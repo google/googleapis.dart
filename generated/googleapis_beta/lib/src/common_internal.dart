@@ -9,7 +9,7 @@ import "../common/common.dart" as common_external;
 import "package:http/http.dart" as http;
 
 const String USER_AGENT_STRING =
-    'google-api-dart-client googleapis_beta/0.4.0';
+    'google-api-dart-client googleapis_beta/0.5.0';
 
 const CONTENT_TYPE_JSON_UTF8 = 'application/json; charset=utf-8';
 
@@ -482,8 +482,8 @@ class ResumableMediaUploader {
                   'Received less bytes than indicated by [Media.length].'));
               return;
             } else if (end > _uploadMedia.length) {
-              completer.completeError(
-                  'Received more bytes than indicated by [Media.length].');
+              completer.completeError(new common_external.ApiRequestError(
+                  'Received more bytes than indicated by [Media.length].'));
               return;
             }
           }

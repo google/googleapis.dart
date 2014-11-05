@@ -4033,6 +4033,30 @@ class Event {
 
 
 /** Not documented yet. */
+class EventAttachment {
+  /** File name. */
+  core.String title;
+
+
+  EventAttachment();
+
+  EventAttachment.fromJson(core.Map _json) {
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
 class EventAttendee {
   /** Number of additional guests. Optional. The default is 0. */
   core.int additionalGuests;

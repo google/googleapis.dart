@@ -18,7 +18,7 @@
     "description": "The Google Maps Engine API allows developers to store and query geospatial vector and raster data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/maps-engine/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/qPyTs6YgupnkPPausvgVVCo1k4I\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/S3CrUoJ8uvc_hw3CQly01B5yfX4\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/maps_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/maps_engine-32.png"
@@ -2796,7 +2796,7 @@
             }
         }
     },
-    "revision": "20141015",
+    "revision": "20141030",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AcquisitionTime": {
@@ -4368,6 +4368,10 @@
                 "fill": {
                     "$ref": "Color",
                     "description": "Fill color of the polygon. If not provided, the polygon will be transparent and not visible if there is no border."
+                },
+                "label": {
+                    "$ref": "LabelStyle",
+                    "description": "Label style for the polygon."
                 },
                 "stroke": {
                     "$ref": "Border",

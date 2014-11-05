@@ -1311,16 +1311,16 @@ class Official {
 
 
 /**
- * A location where a voter can vote. This may be an early vote site or an
- * election day voting location.
+ * A location where a voter can vote. This may be an early vote site, an
+ * election day voting location, or a drop off location for a completed ballot.
  */
 class PollingLocation {
-  /** The address of the location */
+  /** The address of the location. */
   SimpleAddressType address;
 
   /**
-   * The last date that this early vote site may be used. This field is not
-   * populated for polling locations.
+   * The last date that this early vote site or drop off location may be used.
+   * This field is not populated for polling locations.
    */
   core.String endDate;
 
@@ -1332,12 +1332,14 @@ class PollingLocation {
   core.String id;
 
   /**
-   * The name of the early vote site. This field is not populated for polling
-   * locations.
+   * The name of the early vote site or drop off location. This field is not
+   * populated for polling locations.
    */
   core.String name;
 
-  /** Notes about this location (e.g. accessibility ramp or entrance to use) */
+  /**
+   * Notes about this location (e.g. accessibility ramp or entrance to use).
+   */
   core.String notes;
 
   /** A description of when this location is open. */
@@ -1350,14 +1352,14 @@ class PollingLocation {
   core.List<Source> sources;
 
   /**
-   * The first date that this early vote site may be used. This field is not
-   * populated for polling locations.
+   * The first date that this early vote site or drop off location may be used.
+   * This field is not populated for polling locations.
    */
   core.String startDate;
 
   /**
-   * The services provided by this early vote site. This field is not populated
-   * for polling locations.
+   * The services provided by this early vote site or drop off location. This
+   * field is not populated for polling locations.
    */
   core.String voterServices;
 
@@ -1680,11 +1682,20 @@ class VoterInfoRequest {
 
 /** The result of a voter info lookup query. */
 class VoterInfoResponse {
-  /** Contests that will appear on the voter's ballot */
+  /** Contests that will appear on the voter's ballot. */
   core.List<Contest> contests;
 
   /**
-   * Locations where the voter is eligible to vote early, prior to election day
+   * Locations where a voter is eligible to drop off a completed ballot. The
+   * voter must have received and completed a ballot prior to arriving at the
+   * location. The location may not have ballots available on the premises.
+   * These locations could be open on or before election day as indicated in the
+   * pollingHours field.
+   */
+  core.List<PollingLocation> dropOffLocations;
+
+  /**
+   * Locations where the voter is eligible to vote early, prior to election day.
    */
   core.List<PollingLocation> earlyVoteSites;
 
@@ -1700,12 +1711,7 @@ class VoterInfoResponse {
   /** The normalized version of the requested address */
   SimpleAddressType normalizedInput;
 
-  /**
-   * Locations where the voter is eligible to vote on election day. For states
-   * with mail-in voting only, these locations will be nearby drop box
-   * locations. Drop box locations are free to the voter and may be used instead
-   * of placing the ballot in the mail.
-   */
+  /** Locations where the voter is eligible to vote on election day. */
   core.List<PollingLocation> pollingLocations;
 
   /** Not documented yet. */
@@ -1730,6 +1736,9 @@ class VoterInfoResponse {
   VoterInfoResponse.fromJson(core.Map _json) {
     if (_json.containsKey("contests")) {
       contests = _json["contests"].map((value) => new Contest.fromJson(value)).toList();
+    }
+    if (_json.containsKey("dropOffLocations")) {
+      dropOffLocations = _json["dropOffLocations"].map((value) => new PollingLocation.fromJson(value)).toList();
     }
     if (_json.containsKey("earlyVoteSites")) {
       earlyVoteSites = _json["earlyVoteSites"].map((value) => new PollingLocation.fromJson(value)).toList();
@@ -1761,6 +1770,9 @@ class VoterInfoResponse {
     var _json = new core.Map();
     if (contests != null) {
       _json["contests"] = contests.map((value) => (value).toJson()).toList();
+    }
+    if (dropOffLocations != null) {
+      _json["dropOffLocations"] = dropOffLocations.map((value) => (value).toJson()).toList();
     }
     if (earlyVoteSites != null) {
       _json["earlyVoteSites"] = earlyVoteSites.map((value) => (value).toJson()).toList();

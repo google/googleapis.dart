@@ -26,7 +26,7 @@
     "description": "API for the Google Compute Engine service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/GzT3QuznikNBeUl_jZ6mEw13u7c\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/qp3DHGvWPpREzEdWk7WwxnpgC9w\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -5289,7 +5289,7 @@
             }
         }
     },
-    "revision": "20141008",
+    "revision": "20141014",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {
@@ -5547,6 +5547,17 @@
                 "initializeParams": {
                     "$ref": "AttachedDiskInitializeParams",
                     "description": "Initialization parameters."
+                },
+                "interface": {
+                    "enum": [
+                        "NVME",
+                        "SCSI"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 },
                 "kind": {
                     "default": "compute#attachedDisk",
@@ -6296,12 +6307,6 @@
                     "type": "string"
                 },
                 "network": {
-                    "annotations": {
-                        "required": [
-                            "compute.firewalls.insert",
-                            "compute.firewalls.patch"
-                        ]
-                    },
                     "description": "URL of the network to which this firewall is applied; provided by the client when the firewall is created.",
                     "type": "string"
                 },
@@ -8116,6 +8121,7 @@
                         "IN_USE_ADDRESSES",
                         "KERNELS",
                         "KERNELS_TOTAL_GB",
+                        "LOCAL_SSD_TOTAL_GB",
                         "NETWORKS",
                         "OPERATIONS",
                         "ROUTES",
@@ -8128,6 +8134,7 @@
                         "URL_MAPS"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",

@@ -1365,7 +1365,7 @@ class Output {
   core.List<OutputOutputMulti> outputMulti;
 
   /** The estimated regression value (Regression models only). */
-  core.String outputValue;
+  core.double outputValue;
 
   /** A URL to re-request this resource. */
   core.String selfLink;

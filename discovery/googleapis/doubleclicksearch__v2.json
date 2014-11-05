@@ -14,7 +14,7 @@
     "description": "Report and modify your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/doubleclick-search/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/g6aF7RN46wc-YTVBZvZs-zRkgLA\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/olnNoM2FZr43Cdq75yAMe9UNVWM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -430,7 +430,7 @@
             }
         }
     },
-    "revision": "20140923",
+    "revision": "20141021",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Availability": {
@@ -611,7 +611,7 @@
                     "type": "string"
                 },
                 "state": {
-                    "description": "The state of the conversion, that is, either ACTIVE or DELETED.",
+                    "description": "The state of the conversion, that is, either ACTIVE or REMOVED. Note: state DELETED is deprecated.",
                     "type": "string"
                 },
                 "type": {
@@ -746,7 +746,7 @@
                     "type": "string"
                 },
                 "customMetricName": {
-                    "description": "Reports on the provided custom metric. The report must be scoped to an advertiser or lower, and the custom metric must already be set up in DoubleClick Search. The custom metric name, which appears in DoubleClick Search, is case sensitive.",
+                    "description": "Name of a custom metric to include in the report. The report must be scoped to an advertiser or lower, and the custom metric must already be set up in DoubleClick Search. The custom metric name, which appears in DoubleClick Search, is case sensitive.",
                     "type": "string"
                 },
                 "endDate": {

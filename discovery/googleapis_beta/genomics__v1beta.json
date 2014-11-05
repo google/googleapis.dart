@@ -23,7 +23,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta/reference",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/QFkFkv2LMi0ob1p4dyYfQYJIVYc\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/xe5Z99J2tlpBm9VuKqX5fLUBm4I\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -80,46 +80,6 @@
     },
     "protocol": "rest",
     "resources": {
-        "beacons": {
-            "methods": {
-                "get": {
-                    "description": "This is an experimental API that provides a Global Alliance for Genomics and Health Beacon. It may change at any time.",
-                    "httpMethod": "GET",
-                    "id": "genomics.beacons.get",
-                    "parameterOrder": [
-                        "variantSetId"
-                    ],
-                    "parameters": {
-                        "allele": {
-                            "description": "Required. The allele to look for ('A', 'C', 'G' or 'T').",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "position": {
-                            "description": "Required. The 0-based position to query.",
-                            "format": "int64",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "referenceName": {
-                            "description": "Required. The reference to query over.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "variantSetId": {
-                            "description": "The ID of the variant set to query over. It must be public. Private variant sets will return an unauthorized exception.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "beacons/{variantSetId}",
-                    "response": {
-                        "$ref": "Beacon"
-                    }
-                }
-            }
-        },
         "callsets": {
             "methods": {
                 "create": {
@@ -146,7 +106,7 @@
                     ],
                     "parameters": {
                         "callSetId": {
-                            "description": "The ID of the callset to be deleted.",
+                            "description": "The ID of the call set to be deleted.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -166,7 +126,7 @@
                     ],
                     "parameters": {
                         "callSetId": {
-                            "description": "The ID of the callset.",
+                            "description": "The ID of the call set.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -190,7 +150,7 @@
                     ],
                     "parameters": {
                         "callSetId": {
-                            "description": "The ID of the callset to be updated.",
+                            "description": "The ID of the call set to be updated.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -208,7 +168,7 @@
                     ]
                 },
                 "search": {
-                    "description": "Gets a list of call sets matching the criteria.",
+                    "description": "Gets a list of call sets matching the criteria.\n\nImplements GlobalAllianceApi.searchCallSets.",
                     "httpMethod": "POST",
                     "id": "genomics.callsets.search",
                     "path": "callsets/search",
@@ -232,7 +192,7 @@
                     ],
                     "parameters": {
                         "callSetId": {
-                            "description": "The ID of the callset to be updated.",
+                            "description": "The ID of the call set to be updated.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -821,7 +781,7 @@
                     ]
                 },
                 "import": {
-                    "description": "Creates variant data by asynchronously importing the provided information. The variants for import will be merged with any existing data and each other according to the behavior of mergeVariants. In particular, this means for merged VCF variants that have conflicting INFO fields, some data will be arbitrarily discarded. As a special case, for single-sample VCF files, QUAL and FILTER fields will be moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF headers are appended to the metadata already in a VariantSet.",
+                    "description": "Creates variant data by asynchronously importing the provided information. The variants for import will be merged with any existing data and each other according to the behavior of mergeVariants. In particular, this means for merged VCF variants that have conflicting INFO fields, some data will be arbitrarily discarded. As a special case, for single-sample VCF files, QUAL and FILTER fields will be moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF headers are appended to the metadata already in a variant set.",
                     "httpMethod": "POST",
                     "id": "genomics.variants.import",
                     "path": "variants/import",
@@ -837,7 +797,7 @@
                     ]
                 },
                 "search": {
-                    "description": "Gets a list of variants matching the criteria.",
+                    "description": "Gets a list of variants matching the criteria.\n\nImplements GlobalAllianceApi.searchVariants.",
                     "httpMethod": "POST",
                     "id": "genomics.variants.search",
                     "path": "variants/search",
@@ -947,7 +907,7 @@
                     }
                 },
                 "patch": {
-                    "description": "Updates a variant set's metadata. All other modifications are silently ignored. Returns the modified variant set. This method supports patch semantics.",
+                    "description": "Updates a variant set's metadata. All other modifications are silently ignored. This method supports patch semantics.",
                     "httpMethod": "PATCH",
                     "id": "genomics.variantsets.patch",
                     "parameterOrder": [
@@ -973,7 +933,7 @@
                     ]
                 },
                 "search": {
-                    "description": "Returns a list of all variant sets matching search criteria.",
+                    "description": "Returns a list of all variant sets matching search criteria.\n\nImplements GlobalAllianceApi.searchVariantSets.",
                     "httpMethod": "POST",
                     "id": "genomics.variantsets.search",
                     "path": "variantsets/search",
@@ -989,7 +949,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates a variant set's metadata. All other modifications are silently ignored. Returns the modified variant set.",
+                    "description": "Updates a variant set's metadata. All other modifications are silently ignored.",
                     "httpMethod": "PUT",
                     "id": "genomics.variantsets.update",
                     "parameterOrder": [
@@ -1017,22 +977,11 @@
             }
         }
     },
-    "revision": "20141015",
+    "revision": "20141028",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
-        "Beacon": {
-            "description": "A beacon represents whether any variant call in a variant set has a specific allele at a particular position.",
-            "id": "Beacon",
-            "properties": {
-                "exists": {
-                    "description": "True if the allele exists on any variant call, false otherwise.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
         "Call": {
-            "description": "A Call represents the determination of genotype with respect to a particular variant. It may include associated information such as quality and phasing. For example, a Call might assign a probability of 0.32 to the occurrence of a SNP named rs1234 in a call set with the name NA12345.",
+            "description": "A call represents the determination of genotype with respect to a particular variant. It may include associated information such as quality and phasing. For example, a call might assign a probability of 0.32 to the occurrence of a SNP named rs1234 in a call set with the name NA12345.",
             "id": "Call",
             "properties": {
                 "callSetId": {
@@ -1078,7 +1027,7 @@
             "type": "object"
         },
         "CallSet": {
-            "description": "A CallSet is a collection of variant calls. It belongs to a variant set.",
+            "description": "A call set is a collection of variant calls, typically for one sample. It belongs to a variant set.",
             "id": "CallSet",
             "properties": {
                 "created": {
@@ -1098,11 +1047,11 @@
                         },
                         "type": "array"
                     },
-                    "description": "A map of additional callset information.",
+                    "description": "A map of additional call set information.",
                     "type": "object"
                 },
                 "name": {
-                    "description": "The callset name.",
+                    "description": "The call set name.",
                     "type": "string"
                 },
                 "sampleId": {
@@ -1164,11 +1113,11 @@
             "id": "ExperimentalCreateJobRequest",
             "properties": {
                 "align": {
-                    "description": "Specifies whether or not to run the alignment pipeline. At least one of align or callVariants must be provided.",
+                    "description": "Specifies whether or not to run the alignment pipeline. Either align or callVariants must be set.",
                     "type": "boolean"
                 },
                 "callVariants": {
-                    "description": "Specifies whether or not to run the variant calling pipeline. If specified, alignment will be performed first and the aligned BAMs will passed as input to the variant caller. At least one of align or callVariants must be provided.",
+                    "description": "Specifies whether or not to run the variant calling pipeline. Either align or callVariants must be set.",
                     "type": "boolean"
                 },
                 "gcsOutputPath": {
@@ -1549,6 +1498,8 @@
                 "type": {
                     "description": "The original request type.",
                     "enum": [
+                        "alignReadsets",
+                        "callReadsets",
                         "experimentalCreateJob",
                         "exportReadsets",
                         "exportVariants",
@@ -1557,6 +1508,8 @@
                         "unknownType"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -2245,7 +2198,7 @@
             "type": "object"
         },
         "Variant": {
-            "description": "A Variant represents a change in DNA sequence relative to some reference. For example, a Variant could represent a SNP or an insertion. Variants belong to a variant set.",
+            "description": "A variant represents a change in DNA sequence relative to a reference sequence. For example, a variant could represent a SNP or an insertion. Variants belong to a variant set. Each of the calls on a variant represent a determination of genotype with respect to that variant. For example, a call might assign probability of 0.32 to the occurrence of a SNP named rs1234 in a sample named NA12345. A call belongs to a call set, which contains related calls typically from one sample.",
             "id": "Variant",
             "properties": {
                 "alternateBases": {
@@ -2327,7 +2280,7 @@
             "type": "object"
         },
         "VariantSet": {
-            "description": "A VariantSet represents a collection of Variants and their summary statistics.",
+            "description": "A variant set is a collection of call sets and variants. It contains summary statistics of those contents. A variant set belongs to a dataset.",
             "id": "VariantSet",
             "properties": {
                 "datasetId": {

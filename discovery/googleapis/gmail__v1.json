@@ -23,7 +23,7 @@
     "description": "The Gmail REST API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/gmail/api/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/VTv_VctBdqXjsksB5IcLu4ps6Nw\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/oTc1ZFBBKYPWVfuhl_PGLzRZK7E\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/googlemail-16.png",
         "x32": "https://www.google.com/images/icons/product/googlemail-32.png"
@@ -1116,10 +1116,32 @@
                                 "id"
                             ],
                             "parameters": {
+                                "format": {
+                                    "default": "full",
+                                    "description": "The format to return the messages in.",
+                                    "enum": [
+                                        "full",
+                                        "metadata",
+                                        "minimal"
+                                    ],
+                                    "enumDescriptions": [
+                                        "",
+                                        "",
+                                        ""
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "id": {
                                     "description": "The ID of the thread to retrieve.",
                                     "location": "path",
                                     "required": true,
+                                    "type": "string"
+                                },
+                                "metadataHeaders": {
+                                    "description": "When given and format is METADATA, only include headers specified.",
+                                    "location": "query",
+                                    "repeated": true,
                                     "type": "string"
                                 },
                                 "userId": {
@@ -1299,7 +1321,7 @@
             }
         }
     },
-    "revision": "20141009",
+    "revision": "20141017",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Draft": {

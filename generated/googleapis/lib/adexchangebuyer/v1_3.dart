@@ -986,10 +986,23 @@ class Account {
   core.String kind;
 
   /**
+   * The maximum number of active creatives that an account can have, where a
+   * creative is active if it was inserted or bid with in the last 30 days.
+   * Please contact your technical account manager if you need to change this.
+   */
+  core.int maximumActiveCreatives;
+
+  /**
    * The sum of all bidderLocation.maximumQps values cannot exceed this. Please
    * contact your technical account manager if you need to change this.
    */
   core.int maximumTotalQps;
+
+  /**
+   * The number of creatives that this account inserted or bid with in the last
+   * 30 days.
+   */
+  core.int numberActiveCreatives;
 
 
   Account();
@@ -1010,8 +1023,14 @@ class Account {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("maximumActiveCreatives")) {
+      maximumActiveCreatives = _json["maximumActiveCreatives"];
+    }
     if (_json.containsKey("maximumTotalQps")) {
       maximumTotalQps = _json["maximumTotalQps"];
+    }
+    if (_json.containsKey("numberActiveCreatives")) {
+      numberActiveCreatives = _json["numberActiveCreatives"];
     }
   }
 
@@ -1032,8 +1051,14 @@ class Account {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (maximumActiveCreatives != null) {
+      _json["maximumActiveCreatives"] = maximumActiveCreatives;
+    }
     if (maximumTotalQps != null) {
       _json["maximumTotalQps"] = maximumTotalQps;
+    }
+    if (numberActiveCreatives != null) {
+      _json["numberActiveCreatives"] = numberActiveCreatives;
     }
     return _json;
   }

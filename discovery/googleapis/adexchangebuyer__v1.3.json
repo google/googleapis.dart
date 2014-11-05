@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/IVGyzh-ksfiNeReN3JTCPs1PtOY\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/bOoBgOb8TcnyMQXYMKjYeQ3PEwA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -593,7 +593,7 @@
             }
         }
     },
-    "revision": "20141015",
+    "revision": "20141101",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -640,8 +640,18 @@
                     "description": "Resource type.",
                     "type": "string"
                 },
+                "maximumActiveCreatives": {
+                    "description": "The maximum number of active creatives that an account can have, where a creative is active if it was inserted or bid with in the last 30 days. Please contact your technical account manager if you need to change this.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "maximumTotalQps": {
                     "description": "The sum of all bidderLocation.maximumQps values cannot exceed this. Please contact your technical account manager if you need to change this.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "numberActiveCreatives": {
+                    "description": "The number of creatives that this account inserted or bid with in the last 30 days.",
                     "format": "int32",
                     "type": "integer"
                 }

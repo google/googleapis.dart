@@ -705,7 +705,12 @@ class DatafeedsResourceApi {
    *
    * Request parameters:
    *
-   * [merchantId] - null
+   * [merchantId] - The ID of the managing account.
+   *
+   * [maxResults] - The maximum number of products to return in the response,
+   * used for paging.
+   *
+   * [pageToken] - The token returned by the previous request.
    *
    * Completes with a [DatafeedsListResponse].
    *
@@ -715,7 +720,7 @@ class DatafeedsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<DatafeedsListResponse> list(core.String merchantId) {
+  async.Future<DatafeedsListResponse> list(core.String merchantId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -725,6 +730,12 @@ class DatafeedsResourceApi {
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
 
@@ -941,7 +952,12 @@ class DatafeedstatusesResourceApi {
    *
    * Request parameters:
    *
-   * [merchantId] - null
+   * [merchantId] - The ID of the managing account.
+   *
+   * [maxResults] - The maximum number of products to return in the response,
+   * used for paging.
+   *
+   * [pageToken] - The token returned by the previous request.
    *
    * Completes with a [DatafeedstatusesListResponse].
    *
@@ -951,7 +967,7 @@ class DatafeedstatusesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<DatafeedstatusesListResponse> list(core.String merchantId) {
+  async.Future<DatafeedstatusesListResponse> list(core.String merchantId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -961,6 +977,12 @@ class DatafeedstatusesResourceApi {
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
 
@@ -1486,7 +1508,7 @@ class ProductstatusesResourceApi {
 
 
 
-/** Not documented yet. */
+/** Account data. */
 class Account {
   /** Indicates whether the merchant sells adult content. */
   core.bool adultContent;
@@ -1859,7 +1881,7 @@ class AccountUser {
 
 /** Not documented yet. */
 class AccountsCustomBatchRequest {
-  /** Not documented yet. */
+  /** The request entries to be processed in the batch. */
   core.List<AccountsCustomBatchRequestEntry> entries;
 
 
@@ -1904,7 +1926,7 @@ class AccountsCustomBatchRequestEntry {
   /** The ID of the managing account. */
   core.String merchantId;
 
-  /** The method (get, insert, update, or delete). */
+  /** Not documented yet. */
   core.String method;
 
 
@@ -1952,7 +1974,7 @@ class AccountsCustomBatchRequestEntry {
 
 /** Not documented yet. */
 class AccountsCustomBatchResponse {
-  /** Not documented yet. */
+  /** The result of the execution of the batch requests. */
   core.List<AccountsCustomBatchResponseEntry> entries;
 
   /**
@@ -2054,7 +2076,7 @@ class AccountsListResponse {
    */
   core.String kind;
 
-  /** Not documented yet. */
+  /** The token for the retrieval of the next page of accounts. */
   core.String nextPageToken;
 
   /** Not documented yet. */
@@ -2093,7 +2115,7 @@ class AccountsListResponse {
 
 /** Not documented yet. */
 class AccountstatusesCustomBatchRequest {
-  /** Not documented yet. */
+  /** The request entries to be processed in the batch. */
   core.List<AccountstatusesCustomBatchRequestEntry> entries;
 
 
@@ -2171,7 +2193,7 @@ class AccountstatusesCustomBatchRequestEntry {
 
 /** Not documented yet. */
 class AccountstatusesCustomBatchResponse {
-  /** Not documented yet. */
+  /** The result of the execution of the batch requests. */
   core.List<AccountstatusesCustomBatchResponseEntry> entries;
 
   /**
@@ -2261,7 +2283,7 @@ class AccountstatusesListResponse {
    */
   core.String kind;
 
-  /** Not documented yet. */
+  /** The token for the retrieval of the next page of account statuses. */
   core.String nextPageToken;
 
   /** Not documented yet. */
@@ -2298,7 +2320,7 @@ class AccountstatusesListResponse {
 }
 
 
-/** Not documented yet. */
+/** Datafeed data. */
 class Datafeed {
   /**
    * The two-letter ISO 639-1 language in which the attributes are defined in
@@ -2566,7 +2588,10 @@ class DatafeedFormat {
 }
 
 
-/** Not documented yet. */
+/**
+ * The status of a datafeed, i.e., the result of the last retrieval of the
+ * datafeed computed asynchronously when the feed processing is finished.
+ */
 class DatafeedStatus {
   /** The ID of the feed for which the status is reported. */
   core.String datafeedId;
@@ -2742,7 +2767,7 @@ class DatafeedStatusExample {
 
 /** Not documented yet. */
 class DatafeedsCustomBatchRequest {
-  /** Not documented yet. */
+  /** The request entries to be processed in the batch. */
   core.List<DatafeedsCustomBatchRequestEntry> entries;
 
 
@@ -2781,7 +2806,7 @@ class DatafeedsCustomBatchRequestEntry {
   /** The ID of the managing account. */
   core.String merchantId;
 
-  /** The method (get, insert, update, or delete). */
+  /** Not documented yet. */
   core.String method;
 
 
@@ -2829,7 +2854,7 @@ class DatafeedsCustomBatchRequestEntry {
 
 /** Not documented yet. */
 class DatafeedsCustomBatchResponse {
-  /** Not documented yet. */
+  /** The result of the execution of the batch requests. */
   core.List<DatafeedsCustomBatchResponseEntry> entries;
 
   /**
@@ -2918,6 +2943,9 @@ class DatafeedsListResponse {
    */
   core.String kind;
 
+  /** The token for the retrieval of the next page of datafeeds. */
+  core.String nextPageToken;
+
   /** Not documented yet. */
   core.List<Datafeed> resources;
 
@@ -2927,6 +2955,9 @@ class DatafeedsListResponse {
   DatafeedsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("resources")) {
       resources = _json["resources"].map((value) => new Datafeed.fromJson(value)).toList();
@@ -2938,6 +2969,9 @@ class DatafeedsListResponse {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
     if (resources != null) {
       _json["resources"] = resources.map((value) => (value).toJson()).toList();
     }
@@ -2948,7 +2982,7 @@ class DatafeedsListResponse {
 
 /** Not documented yet. */
 class DatafeedstatusesCustomBatchRequest {
-  /** Not documented yet. */
+  /** The request entries to be processed in the batch. */
   core.List<DatafeedstatusesCustomBatchRequestEntry> entries;
 
 
@@ -2984,7 +3018,7 @@ class DatafeedstatusesCustomBatchRequestEntry {
   /** The ID of the managing account. */
   core.String merchantId;
 
-  /** The method (get). */
+  /** Not documented yet. */
   core.String method;
 
 
@@ -3026,7 +3060,7 @@ class DatafeedstatusesCustomBatchRequestEntry {
 
 /** Not documented yet. */
 class DatafeedstatusesCustomBatchResponse {
-  /** Not documented yet. */
+  /** The result of the execution of the batch requests. */
   core.List<DatafeedstatusesCustomBatchResponseEntry> entries;
 
   /**
@@ -3116,6 +3150,9 @@ class DatafeedstatusesListResponse {
    */
   core.String kind;
 
+  /** The token for the retrieval of the next page of datafeed statuses. */
+  core.String nextPageToken;
+
   /** Not documented yet. */
   core.List<DatafeedStatus> resources;
 
@@ -3126,6 +3163,9 @@ class DatafeedstatusesListResponse {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
     if (_json.containsKey("resources")) {
       resources = _json["resources"].map((value) => new DatafeedStatus.fromJson(value)).toList();
     }
@@ -3135,6 +3175,9 @@ class DatafeedstatusesListResponse {
     var _json = new core.Map();
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     if (resources != null) {
       _json["resources"] = resources.map((value) => (value).toJson()).toList();
@@ -3311,7 +3354,7 @@ class Inventory {
 
 /** Not documented yet. */
 class InventoryCustomBatchRequest {
-  /** Not documented yet. */
+  /** The request entries to be processed in the batch. */
   core.List<InventoryCustomBatchRequestEntry> entries;
 
 
@@ -3401,7 +3444,7 @@ class InventoryCustomBatchRequestEntry {
 
 /** Not documented yet. */
 class InventoryCustomBatchResponse {
-  /** Not documented yet. */
+  /** The result of the execution of the batch requests. */
   core.List<InventoryCustomBatchResponseEntry> entries;
 
   /**
@@ -4865,7 +4908,7 @@ class ProductUnitPricingMeasure {
 
 /** Not documented yet. */
 class ProductsCustomBatchRequest {
-  /** Not documented yet. */
+  /** The request entries to be processed in the batch. */
   core.List<ProductsCustomBatchRequestEntry> entries;
 
 
@@ -4898,7 +4941,7 @@ class ProductsCustomBatchRequestEntry {
   /** The ID of the managing account. */
   core.String merchantId;
 
-  /** The method (get, insert or delete). */
+  /** Not documented yet. */
   core.String method;
 
   /** The product to insert. Only required if the method is insert. */
@@ -4955,7 +4998,7 @@ class ProductsCustomBatchRequestEntry {
 
 /** Not documented yet. */
 class ProductsCustomBatchResponse {
-  /** Not documented yet. */
+  /** The result of the execution of the batch requests. */
   core.List<ProductsCustomBatchResponseEntry> entries;
 
   /**
@@ -5057,7 +5100,7 @@ class ProductsListResponse {
    */
   core.String kind;
 
-  /** Not documented yet. */
+  /** The token for the retrieval of the next page of products. */
   core.String nextPageToken;
 
   /** Not documented yet. */
@@ -5096,7 +5139,7 @@ class ProductsListResponse {
 
 /** Not documented yet. */
 class ProductstatusesCustomBatchRequest {
-  /** Not documented yet. */
+  /** The request entries to be processed in the batch. */
   core.List<ProductstatusesCustomBatchRequestEntry> entries;
 
 
@@ -5129,7 +5172,7 @@ class ProductstatusesCustomBatchRequestEntry {
   /** The ID of the managing account. */
   core.String merchantId;
 
-  /** The method (get). */
+  /** Not documented yet. */
   core.String method;
 
   /** The ID of the product whose status to get. */
@@ -5174,7 +5217,7 @@ class ProductstatusesCustomBatchRequestEntry {
 
 /** Not documented yet. */
 class ProductstatusesCustomBatchResponse {
-  /** Not documented yet. */
+  /** The result of the execution of the batch requests. */
   core.List<ProductstatusesCustomBatchResponseEntry> entries;
 
   /**
@@ -5275,7 +5318,7 @@ class ProductstatusesListResponse {
    */
   core.String kind;
 
-  /** Not documented yet. */
+  /** The token for the retrieval of the next page of products statuses. */
   core.String nextPageToken;
 
   /** Not documented yet. */

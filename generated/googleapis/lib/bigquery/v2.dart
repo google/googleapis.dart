@@ -2167,8 +2167,9 @@ class JobConfigurationLoad {
   core.String sourceFormat;
 
   /**
-   * [Required] The fully-qualified URIs that point to your data on Google Cloud
-   * Storage.
+   * [Required] The fully-qualified URIs that point to your data in Google Cloud
+   * Storage. Wildcard names are only supported when they appear at the end of
+   * the URI.
    */
   core.List<core.String> sourceUris;
 
@@ -2678,7 +2679,11 @@ class JobList {
 
 /** Not documented yet. */
 class JobReference {
-  /** [Required] ID of the job. */
+  /**
+   * [Required] The ID of the job. The ID must contain only letters (a-z, A-Z),
+   * numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024
+   * characters.
+   */
   core.String jobId;
 
   /** [Required] Project ID being billed for the job. */
@@ -3390,10 +3395,16 @@ class Table {
    */
   core.String lastModifiedTime;
 
-  /** [Output-only] The size of the table in bytes. */
+  /**
+   * [Output-only] The size of the table in bytes. This property is unavailable
+   * for tables that are actively receiving streaming inserts.
+   */
   core.String numBytes;
 
-  /** [Output-only] The number of rows of data in this table. */
+  /**
+   * [Output-only] The number of rows of data in this table. This property is
+   * unavailable for tables that are actively receiving streaming inserts.
+   */
   core.String numRows;
 
   /** [Optional] Describes the schema of this table. */
@@ -3755,7 +3766,9 @@ class TableDataList {
 
 /** Not documented yet. */
 class TableFieldSchema {
-  /** [Optional] The field description. */
+  /**
+   * [Optional] The field description. The maximum length is 16K characters.
+   */
   core.String description;
 
   /**
@@ -3770,7 +3783,11 @@ class TableFieldSchema {
    */
   core.String mode;
 
-  /** [Required] The field name. */
+  /**
+   * [Required] The field name. The name must contain only letters (a-z, A-Z),
+   * numbers (0-9), or underscores (_), and must start with a letter or
+   * underscore. The maximum length is 128 characters.
+   */
   core.String name;
 
   /**

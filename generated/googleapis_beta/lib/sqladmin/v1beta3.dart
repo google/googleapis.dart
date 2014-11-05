@@ -56,8 +56,9 @@ class BackupRunsResourceApi {
    * [backupConfiguration] - Identifier for the backup configuration. This gets
    * generated automatically when a backup configuration is created.
    *
-   * [dueTime] - The time when this run is due to start in RFC 3339 format, for
-   * example 2012-11-15T16:19:00.094Z.
+   * [dueTime] - The start time of the four-hour backup window. The backup can
+   * occur any time in the window. The time is in RFC 3339 format, for example
+   * 2012-11-15T16:19:00.094Z.
    *
    * Completes with a [BackupRun].
    *
@@ -759,8 +760,9 @@ class InstancesResourceApi {
    * [backupConfiguration] - The identifier of the backup configuration. This
    * gets generated automatically when a backup configuration is created.
    *
-   * [dueTime] - The time when this run is due to start in RFC 3339 format, for
-   * example 2012-11-15T16:19:00.094Z.
+   * [dueTime] - The start time of the four-hour backup window. The backup can
+   * occur any time in the window. The time is in RFC 3339 format, for example
+   * 2012-11-15T16:19:00.094Z.
    *
    * Completes with a [InstancesRestoreBackupResponse].
    *
@@ -1690,6 +1692,9 @@ class DatabaseInstance {
   /** The assigned IP addresses for the instance. */
   core.List<IpMapping> ipAddresses;
 
+  /** The IPv6 address assigned to the instance. */
+  core.String ipv6Address;
+
   /** This is always sql#instance. */
   core.String kind;
 
@@ -1757,6 +1762,9 @@ class DatabaseInstance {
     if (_json.containsKey("ipAddresses")) {
       ipAddresses = _json["ipAddresses"].map((value) => new IpMapping.fromJson(value)).toList();
     }
+    if (_json.containsKey("ipv6Address")) {
+      ipv6Address = _json["ipv6Address"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -1805,6 +1813,9 @@ class DatabaseInstance {
     }
     if (ipAddresses != null) {
       _json["ipAddresses"] = ipAddresses.map((value) => (value).toJson()).toList();
+    }
+    if (ipv6Address != null) {
+      _json["ipv6Address"] = ipv6Address;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2782,6 +2793,9 @@ class IpConfiguration {
   /** Whether the instance should be assigned an IP address or not. */
   core.bool enabled;
 
+  /** This is always sql#ipConfiguration. */
+  core.String kind;
+
   /**
    * Whether the mysqld should default to 'REQUIRE X509' for users connecting
    * over IP.
@@ -2798,6 +2812,9 @@ class IpConfiguration {
     if (_json.containsKey("enabled")) {
       enabled = _json["enabled"];
     }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
     if (_json.containsKey("requireSsl")) {
       requireSsl = _json["requireSsl"];
     }
@@ -2810,6 +2827,9 @@ class IpConfiguration {
     }
     if (enabled != null) {
       _json["enabled"] = enabled;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     if (requireSsl != null) {
       _json["requireSsl"] = requireSsl;

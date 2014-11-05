@@ -17,7 +17,7 @@
     "description": "Lets you manipulate events and other calendar data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/kfT5pFWI9VnCK4GzEz7hf4hMjew\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/ChhI5_AHHLTSiJjr6RSC6c9iFo0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/calendar-16.png",
         "x32": "http://www.google.com/images/icons/product/calendar-32.png"
@@ -1535,7 +1535,7 @@
             }
         }
     },
-    "revision": "20140930",
+    "revision": "20141020",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {
@@ -2231,6 +2231,16 @@
                 "visibility": {
                     "default": "default",
                     "description": "Visibility of the event. Optional. Possible values are:  \n- \"default\" - Uses the default visibility for events on the calendar. This is the default value. \n- \"public\" - The event is public and event details are visible to all readers of the calendar. \n- \"private\" - The event is private and only event attendees may view event details. \n- \"confidential\" - The event is private. This value is provided for compatibility reasons.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "EventAttachment": {
+            "id": "EventAttachment",
+            "properties": {
+                "title": {
+                    "description": "File name.",
                     "type": "string"
                 }
             },

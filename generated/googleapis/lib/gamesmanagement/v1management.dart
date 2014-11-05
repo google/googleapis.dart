@@ -204,8 +204,8 @@ class AchievementsResourceApi {
   }
 
   /**
-   * Resets the achievement with the given IDs for all players. This method is
-   * only available to user accounts for your developer console. Only draft
+   * Resets achievements with the given IDs for all players. This method is only
+   * available to user accounts for your developer console. Only draft
    * achievements may be reset.
    *
    * [request] - The metadata request object.
@@ -260,7 +260,8 @@ class ApplicationsResourceApi {
    *
    * Request parameters:
    *
-   * [applicationId] - The application being requested.
+   * [applicationId] - The application ID from the Google Play developer
+   * console.
    *
    * [maxResults] - The maximum number of player resources to return in the
    * response, used for paging. For any response, the actual number of player
@@ -319,9 +320,10 @@ class EventsResourceApi {
       _requester = client;
 
   /**
-   * Reset all player progress on the event for the currently authenticated
-   * player. This method is only accessible to whitelisted tester accounts for
-   * your application. All resources that use the event will also be reset.
+   * Resets all player progress on the event with the given ID for the currently
+   * authenticated player. This method is only accessible to whitelisted tester
+   * accounts for your application. All quests for this player that use the
+   * event will also be reset.
    *
    * Request parameters:
    *
@@ -360,10 +362,9 @@ class EventsResourceApi {
   }
 
   /**
-   * Reset all player progress on all unpublished events for the currently
-   * authenticated player. This method is only accessible to whitelisted tester
-   * accounts for your application. All resources that use the events will also
-   * be reset.
+   * Resets all player progress on all events for the currently authenticated
+   * player. This method is only accessible to whitelisted tester accounts for
+   * your application. All quests for this player will also be reset.
    *
    * Request parameters:
    *
@@ -397,9 +398,45 @@ class EventsResourceApi {
   }
 
   /**
-   * Reset all player progress on the event for all players. This method is only
+   * Resets all draft events for all players. This method is only available to
+   * user accounts for your developer console. All quests that use any of these
+   * events will also be reset.
+   *
+   * Request parameters:
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future resetAllForAllPlayers() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+
+    _downloadOptions = null;
+
+    _url = 'events/resetAllForAllPlayers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Resets the event with the given ID for all players. This method is only
    * available to user accounts for your developer console. Only draft events
-   * can be reset. All resources that use the event will also be reset.
+   * can be reset. All quests that use the event will also be reset.
    *
    * Request parameters:
    *
@@ -437,6 +474,47 @@ class EventsResourceApi {
     return _response.then((data) => null);
   }
 
+  /**
+   * Resets events with the given IDs for all players. This method is only
+   * available to user accounts for your developer console. Only draft events
+   * may be reset. All quests that use any of the events will also be reset.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future resetMultipleForAllPlayers(EventsResetMultipleForAllRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _downloadOptions = null;
+
+    _url = 'events/resetMultipleForAllPlayers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
 }
 
 
@@ -453,7 +531,8 @@ class PlayersResourceApi {
    *
    * Request parameters:
    *
-   * [applicationId] - The application being requested.
+   * [applicationId] - The application ID from the Google Play developer
+   * console.
    *
    * [playerId] - A player ID. A value of me may be used in place of the
    * authenticated player's ID.
@@ -499,7 +578,8 @@ class PlayersResourceApi {
    *
    * Request parameters:
    *
-   * [applicationId] - The application being requested.
+   * [applicationId] - The application ID from the Google Play developer
+   * console.
    *
    * [playerId] - A player ID. A value of me may be used in place of the
    * authenticated player's ID.
@@ -550,9 +630,9 @@ class QuestsResourceApi {
       _requester = client;
 
   /**
-   * Reset all player progress on the quest for the currently authenticated
-   * player. This method is only accessible to whitelisted tester accounts for
-   * your application.
+   * Resets all player progress on the quest with the given ID for the currently
+   * authenticated player. This method is only accessible to whitelisted tester
+   * accounts for your application.
    *
    * Request parameters:
    *
@@ -579,6 +659,159 @@ class QuestsResourceApi {
     _downloadOptions = null;
 
     _url = 'quests/' + common_internal.Escaper.ecapeVariable('$questId') + '/reset';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Resets all player progress on all quests for the currently authenticated
+   * player. This method is only accessible to whitelisted tester accounts for
+   * your application.
+   *
+   * Request parameters:
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future resetAll() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+
+    _downloadOptions = null;
+
+    _url = 'quests/reset';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Resets all draft quests for all players. This method is only available to
+   * user accounts for your developer console.
+   *
+   * Request parameters:
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future resetAllForAllPlayers() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+
+    _downloadOptions = null;
+
+    _url = 'quests/resetAllForAllPlayers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Resets all player progress on the quest with the given ID for all players.
+   * This method is only available to user accounts for your developer console.
+   * Only draft quests can be reset.
+   *
+   * Request parameters:
+   *
+   * [questId] - The ID of the quest.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future resetForAllPlayers(core.String questId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (questId == null) {
+      throw new core.ArgumentError("Parameter questId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'quests/' + common_internal.Escaper.ecapeVariable('$questId') + '/resetForAllPlayers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Resets quests with the given IDs for all players. This method is only
+   * available to user accounts for your developer console. Only draft quests
+   * may be reset.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future resetMultipleForAllPlayers(QuestsResetMultipleForAllRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _downloadOptions = null;
+
+    _url = 'quests/resetMultipleForAllPlayers';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -636,6 +869,42 @@ class RoomsResourceApi {
     return _response.then((data) => null);
   }
 
+  /**
+   * Deletes rooms where the only room participants are from whitelisted tester
+   * accounts for your application. This method is only available to user
+   * accounts for your developer console.
+   *
+   * Request parameters:
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future resetForAllPlayers() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+
+    _downloadOptions = null;
+
+    _url = 'rooms/resetForAllPlayers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
 }
 
 
@@ -647,9 +916,9 @@ class ScoresResourceApi {
       _requester = client;
 
   /**
-   * Reset scores for the specified leaderboard for the currently authenticated
-   * player. This method is only accessible to whitelisted tester accounts for
-   * your application.
+   * Resets scores for the leaderboard with the given ID for the currently
+   * authenticated player. This method is only accessible to whitelisted tester
+   * accounts for your application.
    *
    * Request parameters:
    *
@@ -689,9 +958,81 @@ class ScoresResourceApi {
   }
 
   /**
-   * Reset scores for the specified leaderboard for all players. This method is
-   * only available to user accounts for your developer console. Only draft
-   * leaderboards can be reset.
+   * Resets all scores for all leaderboards for the currently authenticated
+   * players. This method is only accessible to whitelisted tester accounts for
+   * your application.
+   *
+   * Request parameters:
+   *
+   * Completes with a [PlayerScoreResetAllResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PlayerScoreResetAllResponse> resetAll() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+
+
+    _url = 'scores/reset';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PlayerScoreResetAllResponse.fromJson(data));
+  }
+
+  /**
+   * Resets scores for all draft leaderboards for all players. This method is
+   * only available to user accounts for your developer console.
+   *
+   * Request parameters:
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future resetAllForAllPlayers() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+
+    _downloadOptions = null;
+
+    _url = 'scores/resetAllForAllPlayers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Resets scores for the leaderboard with the given ID for all players. This
+   * method is only available to user accounts for your developer console. Only
+   * draft leaderboards can be reset.
    *
    * Request parameters:
    *
@@ -718,6 +1059,47 @@ class ScoresResourceApi {
     _downloadOptions = null;
 
     _url = 'leaderboards/' + common_internal.Escaper.ecapeVariable('$leaderboardId') + '/scores/resetForAllPlayers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Resets scores for the leaderboards with the given IDs for all players. This
+   * method is only available to user accounts for your developer console. Only
+   * draft leaderboards may be reset.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future resetMultipleForAllPlayers(ScoresResetMultipleForAllRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _downloadOptions = null;
+
+    _url = 'scores/resetMultipleForAllPlayers';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -763,6 +1145,42 @@ class TurnBasedMatchesResourceApi {
     _downloadOptions = null;
 
     _url = 'turnbasedmatches/reset';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Deletes turn-based matches where the only match participants are from
+   * whitelisted tester accounts for your application. This method is only
+   * available to user accounts for your developer console.
+   *
+   * Request parameters:
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future resetForAllPlayers() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+
+    _downloadOptions = null;
+
+    _url = 'turnbasedmatches/resetForAllPlayers';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -905,6 +1323,42 @@ class AchievementResetResponse {
     }
     if (updateOccurred != null) {
       _json["updateOccurred"] = updateOccurred;
+    }
+    return _json;
+  }
+}
+
+
+/** This is a JSON template for multiple events reset all request. */
+class EventsResetMultipleForAllRequest {
+  /** The IDs of events to reset. */
+  core.List<core.String> eventIds;
+
+  /**
+   * Uniquely identifies the type of this resource. Value is always the fixed
+   * string gamesManagement#eventsResetMultipleForAllRequest.
+   */
+  core.String kind;
+
+
+  EventsResetMultipleForAllRequest();
+
+  EventsResetMultipleForAllRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("event_ids")) {
+      eventIds = _json["event_ids"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (eventIds != null) {
+      _json["event_ids"] = eventIds;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }
@@ -1284,8 +1738,47 @@ class Player {
 }
 
 
+/** This is a JSON template for a list of leaderboard reset resources. */
+class PlayerScoreResetAllResponse {
+  /**
+   * Uniquely identifies the type of this resource. Value is always the fixed
+   * string gamesManagement#playerScoreResetResponse.
+   */
+  core.String kind;
+
+  /** The leaderboard reset results. */
+  core.List<PlayerScoreResetResponse> results;
+
+
+  PlayerScoreResetAllResponse();
+
+  PlayerScoreResetAllResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("results")) {
+      results = _json["results"].map((value) => new PlayerScoreResetResponse.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (results != null) {
+      _json["results"] = results.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
 /** This is a JSON template for a list of reset leaderboard entry resources. */
 class PlayerScoreResetResponse {
+  /** The ID of an leaderboard for which player state has been updated. */
+  core.String definitionId;
+
   /**
    * Uniquely identifies the type of this resource. Value is always the fixed
    * string gamesManagement#playerScoreResetResponse.
@@ -1305,6 +1798,9 @@ class PlayerScoreResetResponse {
   PlayerScoreResetResponse();
 
   PlayerScoreResetResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("definitionId")) {
+      definitionId = _json["definitionId"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -1315,11 +1811,86 @@ class PlayerScoreResetResponse {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (definitionId != null) {
+      _json["definitionId"] = definitionId;
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (resetScoreTimeSpans != null) {
       _json["resetScoreTimeSpans"] = resetScoreTimeSpans;
+    }
+    return _json;
+  }
+}
+
+
+/** This is a JSON template for multiple quests reset all request. */
+class QuestsResetMultipleForAllRequest {
+  /**
+   * Uniquely identifies the type of this resource. Value is always the fixed
+   * string gamesManagement#questsResetMultipleForAllRequest.
+   */
+  core.String kind;
+
+  /** The IDs of quests to reset. */
+  core.List<core.String> questIds;
+
+
+  QuestsResetMultipleForAllRequest();
+
+  QuestsResetMultipleForAllRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("quest_ids")) {
+      questIds = _json["quest_ids"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (questIds != null) {
+      _json["quest_ids"] = questIds;
+    }
+    return _json;
+  }
+}
+
+
+/** This is a JSON template for multiple scores reset all request. */
+class ScoresResetMultipleForAllRequest {
+  /**
+   * Uniquely identifies the type of this resource. Value is always the fixed
+   * string gamesManagement#scoresResetMultipleForAllRequest.
+   */
+  core.String kind;
+
+  /** The IDs of leaderboards to reset. */
+  core.List<core.String> leaderboardIds;
+
+
+  ScoresResetMultipleForAllRequest();
+
+  ScoresResetMultipleForAllRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("leaderboard_ids")) {
+      leaderboardIds = _json["leaderboard_ids"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (leaderboardIds != null) {
+      _json["leaderboard_ids"] = leaderboardIds;
     }
     return _json;
   }

@@ -29,7 +29,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/bigquery/docs/overview",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/m8edoc2ZO3cKKMgqC6cKOK0fVjI\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/NNNGrlMYqSi04hOh0Khd5qX9Gcs\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -889,7 +889,7 @@
             }
         }
     },
-    "revision": "20141016",
+    "revision": "20141030",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Dataset": {
@@ -1301,7 +1301,7 @@
                     "type": "string"
                 },
                 "sourceUris": {
-                    "description": "[Required] The fully-qualified URIs that point to your data on Google Cloud Storage.",
+                    "description": "[Required] The fully-qualified URIs that point to your data in Google Cloud Storage. Wildcard names are only supported when they appear at the end of the URI.",
                     "items": {
                         "type": "string"
                     },
@@ -1468,7 +1468,7 @@
                             "bigquery.jobs.getQueryResults"
                         ]
                     },
-                    "description": "[Required] ID of the job.",
+                    "description": "[Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.",
                     "type": "string"
                 },
                 "projectId": {
@@ -1790,12 +1790,12 @@
                     "type": "string"
                 },
                 "numBytes": {
-                    "description": "[Output-only] The size of the table in bytes.",
+                    "description": "[Output-only] The size of the table in bytes. This property is unavailable for tables that are actively receiving streaming inserts.",
                     "format": "int64",
                     "type": "string"
                 },
                 "numRows": {
-                    "description": "[Output-only] The number of rows of data in this table.",
+                    "description": "[Output-only] The number of rows of data in this table. This property is unavailable for tables that are actively receiving streaming inserts.",
                     "format": "uint64",
                     "type": "string"
                 },
@@ -1927,7 +1927,7 @@
             "id": "TableFieldSchema",
             "properties": {
                 "description": {
-                    "description": "[Optional] The field description.",
+                    "description": "[Optional] The field description. The maximum length is 16K characters.",
                     "type": "string"
                 },
                 "fields": {
@@ -1942,7 +1942,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "[Required] The field name.",
+                    "description": "[Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 128 characters.",
                     "type": "string"
                 },
                 "type": {

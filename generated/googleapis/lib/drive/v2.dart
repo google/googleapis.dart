@@ -1155,6 +1155,9 @@ class FilesResourceApi {
    *
    * [fileId] - The ID for the file in question.
    *
+   * [acknowledgeAbuse] - Whether the user is acknowledging the risk of
+   * downloading known malware or other abusive files.
+   *
    * [projection] - This parameter is deprecated and has no function.
    * Possible string values are:
    * - "BASIC" : Deprecated
@@ -1163,7 +1166,15 @@ class FilesResourceApi {
    * [updateViewedDate] - Whether to update the view date after successfully
    * retrieving the file.
    *
-   * Completes with a [File].
+   * [downloadOptions] - Options for downloading. A download can be either a
+   * Metadata (default) or Media download. Partial Media downloads are possible
+   * as well.
+   *
+   * Completes with a
+   *
+   * - [File] for Metadata downloads (see [downloadOptions]).
+   *
+   * - [common.Media] for Media downloads (see [downloadOptions]).
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
    * error.
@@ -1171,7 +1182,7 @@ class FilesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<File> get(core.String fileId, {core.String projection, core.bool updateViewedDate}) {
+  async.Future get(core.String fileId, {core.bool acknowledgeAbuse, core.String projection, core.bool updateViewedDate, common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1182,6 +1193,9 @@ class FilesResourceApi {
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
     }
+    if (acknowledgeAbuse != null) {
+      _queryParams["acknowledgeAbuse"] = ["${acknowledgeAbuse}"];
+    }
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
@@ -1189,6 +1203,7 @@ class FilesResourceApi {
       _queryParams["updateViewedDate"] = ["${updateViewedDate}"];
     }
 
+    _downloadOptions = downloadOptions;
 
     _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId');
 
@@ -1199,7 +1214,12 @@ class FilesResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new File.fromJson(data));
+    if (_downloadOptions == null ||
+        _downloadOptions == common.DownloadOptions.Metadata) {
+      return _response.then((data) => new File.fromJson(data));
+    } else {
+      return _response;
+    }
   }
 
   /**
@@ -1739,6 +1759,9 @@ class FilesResourceApi {
    *
    * [fileId] - The ID for the file in question.
    *
+   * [acknowledgeAbuse] - Whether the user is acknowledging the risk of
+   * downloading known malware or other abusive files.
+   *
    * [projection] - This parameter is deprecated and has no function.
    * Possible string values are:
    * - "BASIC" : Deprecated
@@ -1747,7 +1770,15 @@ class FilesResourceApi {
    * [updateViewedDate] - Whether to update the view date after successfully
    * retrieving the file.
    *
-   * Completes with a [Channel].
+   * [downloadOptions] - Options for downloading. A download can be either a
+   * Metadata (default) or Media download. Partial Media downloads are possible
+   * as well.
+   *
+   * Completes with a
+   *
+   * - [Channel] for Metadata downloads (see [downloadOptions]).
+   *
+   * - [common.Media] for Media downloads (see [downloadOptions]).
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
    * error.
@@ -1755,7 +1786,7 @@ class FilesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Channel> watch(Channel request, core.String fileId, {core.String projection, core.bool updateViewedDate}) {
+  async.Future watch(Channel request, core.String fileId, {core.bool acknowledgeAbuse, core.String projection, core.bool updateViewedDate, common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1769,6 +1800,9 @@ class FilesResourceApi {
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
     }
+    if (acknowledgeAbuse != null) {
+      _queryParams["acknowledgeAbuse"] = ["${acknowledgeAbuse}"];
+    }
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
@@ -1776,6 +1810,7 @@ class FilesResourceApi {
       _queryParams["updateViewedDate"] = ["${updateViewedDate}"];
     }
 
+    _downloadOptions = downloadOptions;
 
     _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/watch';
 
@@ -1786,7 +1821,12 @@ class FilesResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Channel.fromJson(data));
+    if (_downloadOptions == null ||
+        _downloadOptions == common.DownloadOptions.Metadata) {
+      return _response.then((data) => new Channel.fromJson(data));
+    } else {
+      return _response;
+    }
   }
 
 }

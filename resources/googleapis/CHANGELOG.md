@@ -1,3 +1,21 @@
+## 0.4.0
+
+* [apis-new] fitness:v1: API added
+* [apis-new] tagmanager:v1: API added
+* [apis] adexchangebuyer:v1.3: schema changes
+* [apis] calendar:v3: schema changes
+* [apis] civicinfo:us_v1: schema changes
+* [apis] civicinfo:v1: schema changes
+* [apis] civicinfo:v2: schema changes
+* [apis] compute:v1: schema changes
+* [apis] content:v2: schema/method changes
+* [apis] drive:v2: schema/method changes
+* [apis] games:v1: schema changes
+* [apis] gamesManagement:v1management: schema/method changes
+* [apis] gmail:v1: method changes
+* [apis] mapsengine:v1: schema changes
+* [apis-breaking] prediction:v1.6: String -> double change
+
 ## 0.3.1
 
 * [apis] admin_directory:v1: additional schema/methods

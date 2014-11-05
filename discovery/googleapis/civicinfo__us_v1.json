@@ -6,7 +6,7 @@
     "description": "An API for accessing civic information.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/civic-information",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/3_1avFY-y0DJdFQjOVCYJj_vesI\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/ixlTlCZ6lprJQCHG1SmuBjDXiaM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -162,7 +162,7 @@
             }
         }
     },
-    "revision": "20141013",
+    "revision": "20141023",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AdministrationRegion": {
@@ -644,15 +644,15 @@
             "type": "object"
         },
         "PollingLocation": {
-            "description": "A location where a voter can vote. This may be an early vote site or an election day voting location.",
+            "description": "A location where a voter can vote. This may be an early vote site, an election day voting location, or a drop off location for a completed ballot.",
             "id": "PollingLocation",
             "properties": {
                 "address": {
                     "$ref": "SimpleAddressType",
-                    "description": "The address of the location"
+                    "description": "The address of the location."
                 },
                 "endDate": {
-                    "description": "The last date that this early vote site may be used. This field is not populated for polling locations.",
+                    "description": "The last date that this early vote site or drop off location may be used. This field is not populated for polling locations.",
                     "type": "string"
                 },
                 "id": {
@@ -660,11 +660,11 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The name of the early vote site. This field is not populated for polling locations.",
+                    "description": "The name of the early vote site or drop off location. This field is not populated for polling locations.",
                     "type": "string"
                 },
                 "notes": {
-                    "description": "Notes about this location (e.g. accessibility ramp or entrance to use)",
+                    "description": "Notes about this location (e.g. accessibility ramp or entrance to use).",
                     "type": "string"
                 },
                 "pollingHours": {
@@ -679,11 +679,11 @@
                     "type": "array"
                 },
                 "startDate": {
-                    "description": "The first date that this early vote site may be used. This field is not populated for polling locations.",
+                    "description": "The first date that this early vote site or drop off location may be used. This field is not populated for polling locations.",
                     "type": "string"
                 },
                 "voterServices": {
-                    "description": "The services provided by this early vote site. This field is not populated for polling locations.",
+                    "description": "The services provided by this early vote site or drop off location. This field is not populated for polling locations.",
                     "type": "string"
                 }
             },
@@ -810,14 +810,21 @@
             "id": "VoterInfoResponse",
             "properties": {
                 "contests": {
-                    "description": "Contests that will appear on the voter's ballot",
+                    "description": "Contests that will appear on the voter's ballot.",
                     "items": {
                         "$ref": "Contest"
                     },
                     "type": "array"
                 },
+                "dropOffLocations": {
+                    "description": "Locations where a voter is eligible to drop off a completed ballot. The voter must have received and completed a ballot prior to arriving at the location. The location may not have ballots available on the premises. These locations could be open on or before election day as indicated in the pollingHours field.",
+                    "items": {
+                        "$ref": "PollingLocation"
+                    },
+                    "type": "array"
+                },
                 "earlyVoteSites": {
-                    "description": "Locations where the voter is eligible to vote early, prior to election day",
+                    "description": "Locations where the voter is eligible to vote early, prior to election day.",
                     "items": {
                         "$ref": "PollingLocation"
                     },
@@ -837,7 +844,7 @@
                     "description": "The normalized version of the requested address"
                 },
                 "pollingLocations": {
-                    "description": "Locations where the voter is eligible to vote on election day. For states with mail-in voting only, these locations will be nearby drop box locations. Drop box locations are free to the voter and may be used instead of placing the ballot in the mail.",
+                    "description": "Locations where the voter is eligible to vote on election day.",
                     "items": {
                         "$ref": "PollingLocation"
                     },

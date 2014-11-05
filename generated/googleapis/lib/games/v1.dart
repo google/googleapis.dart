@@ -435,7 +435,8 @@ class ApplicationsResourceApi {
    *
    * Request parameters:
    *
-   * [applicationId] - The application being requested.
+   * [applicationId] - The application ID from the Google Play developer
+   * console.
    *
    * [language] - The preferred language to use for strings returned by this
    * method.
@@ -8549,6 +8550,12 @@ class Snapshot {
    */
   core.String lastModifiedMillis;
 
+  /**
+   * The progress value (64-bit integer set by developer) associated with this
+   * snapshot.
+   */
+  core.String progressValue;
+
   /** The title of this snapshot. */
   core.String title;
 
@@ -8587,6 +8594,9 @@ class Snapshot {
     if (_json.containsKey("lastModifiedMillis")) {
       lastModifiedMillis = _json["lastModifiedMillis"];
     }
+    if (_json.containsKey("progressValue")) {
+      progressValue = _json["progressValue"];
+    }
     if (_json.containsKey("title")) {
       title = _json["title"];
     }
@@ -8620,6 +8630,9 @@ class Snapshot {
     }
     if (lastModifiedMillis != null) {
       _json["lastModifiedMillis"] = lastModifiedMillis;
+    }
+    if (progressValue != null) {
+      _json["progressValue"] = progressValue;
     }
     if (title != null) {
       _json["title"] = title;

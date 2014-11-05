@@ -29,6 +29,7 @@ class AutoscalerApi {
 
   AutoscalersResourceApi get autoscalers => new AutoscalersResourceApi(_requester);
   ZoneOperationsResourceApi get zoneOperations => new ZoneOperationsResourceApi(_requester);
+  ZonesResourceApi get zones => new ZonesResourceApi(_requester);
 
   AutoscalerApi(http.Client client) : 
       _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "autoscaler/v1beta2/");
@@ -549,6 +550,74 @@ class ZoneOperationsResourceApi {
 }
 
 
+/** Not documented yet. */
+class ZonesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  ZonesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Not documented yet.
+   *
+   * Request parameters:
+   *
+   * [project] - null
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - null
+   *
+   * [maxResults] - null
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - null
+   *
+   * Completes with a [ZoneList].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<ZoneList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+
+    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ZoneList.fromJson(data));
+  }
+
+}
+
+
 
 /** Cloud Autoscaler resource. */
 class Autoscaler {
@@ -870,6 +939,66 @@ class AutoscalingPolicyLoadBalancingUtilization {
     var _json = new core.Map();
     if (utilizationTarget != null) {
       _json["utilizationTarget"] = utilizationTarget;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class DeprecationStatus {
+  /** Not documented yet. */
+  core.String deleted;
+
+  /** Not documented yet. */
+  core.String deprecated;
+
+  /** Not documented yet. */
+  core.String obsolete;
+
+  /** Not documented yet. */
+  core.String replacement;
+
+  /** Not documented yet. */
+  core.String state;
+
+
+  DeprecationStatus();
+
+  DeprecationStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("deleted")) {
+      deleted = _json["deleted"];
+    }
+    if (_json.containsKey("deprecated")) {
+      deprecated = _json["deprecated"];
+    }
+    if (_json.containsKey("obsolete")) {
+      obsolete = _json["obsolete"];
+    }
+    if (_json.containsKey("replacement")) {
+      replacement = _json["replacement"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (deleted != null) {
+      _json["deleted"] = deleted;
+    }
+    if (deprecated != null) {
+      _json["deprecated"] = deprecated;
+    }
+    if (obsolete != null) {
+      _json["obsolete"] = obsolete;
+    }
+    if (replacement != null) {
+      _json["replacement"] = replacement;
+    }
+    if (state != null) {
+      _json["state"] = state;
     }
     return _json;
   }
@@ -1256,6 +1385,222 @@ class OperationList {
     }
     if (_json.containsKey("items")) {
       items = _json["items"].map((value) => new Operation.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class ZoneMaintenanceWindows {
+  /** Not documented yet. */
+  core.String beginTime;
+
+  /** Not documented yet. */
+  core.String description;
+
+  /** Not documented yet. */
+  core.String endTime;
+
+  /** Not documented yet. */
+  core.String name;
+
+
+  ZoneMaintenanceWindows();
+
+  ZoneMaintenanceWindows.fromJson(core.Map _json) {
+    if (_json.containsKey("beginTime")) {
+      beginTime = _json["beginTime"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (beginTime != null) {
+      _json["beginTime"] = beginTime;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Zone {
+  /** Not documented yet. */
+  core.String creationTimestamp;
+
+  /** Not documented yet. */
+  DeprecationStatus deprecated;
+
+  /** Not documented yet. */
+  core.String description;
+
+  /** Not documented yet. */
+  core.String id;
+
+  /** Type of the resource. */
+  core.String kind;
+
+  /** Not documented yet. */
+  core.List<ZoneMaintenanceWindows> maintenanceWindows;
+
+  /** Not documented yet. */
+  core.String name;
+
+  /** Not documented yet. */
+  core.String region;
+
+  /** Server defined URL for the resource (output only). */
+  core.String selfLink;
+
+  /** Not documented yet. */
+  core.String status;
+
+
+  Zone();
+
+  Zone.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("deprecated")) {
+      deprecated = new DeprecationStatus.fromJson(_json["deprecated"]);
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("maintenanceWindows")) {
+      maintenanceWindows = _json["maintenanceWindows"].map((value) => new ZoneMaintenanceWindows.fromJson(value)).toList();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (deprecated != null) {
+      _json["deprecated"] = (deprecated).toJson();
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (maintenanceWindows != null) {
+      _json["maintenanceWindows"] = maintenanceWindows.map((value) => (value).toJson()).toList();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class ZoneList {
+  /** Not documented yet. */
+  core.String id;
+
+  /** Not documented yet. */
+  core.List<Zone> items;
+
+  /** Type of resource. */
+  core.String kind;
+
+  /** Not documented yet. */
+  core.String nextPageToken;
+
+  /** Server defined URL for this resource (output only). */
+  core.String selfLink;
+
+
+  ZoneList();
+
+  ZoneList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Zone.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];

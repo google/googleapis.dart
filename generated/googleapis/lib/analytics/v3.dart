@@ -7401,6 +7401,7 @@ class FilterExpression {
    * - Mobile device
    * - IS_MOBILE,
    * - IS_TABLET,
+   * - DEVICE_CATEGORY,
    * - MOBILE_HAS_QWERTY_KEYBOARD,
    * - MOBILE_HAS_NFC_SUPPORT,
    * - MOBILE_HAS_CELLULAR_RADIO,
@@ -9384,7 +9385,8 @@ class Profile {
 
   /**
    * Indicates whether enhanced ecommerce tracking is enabled for this view
-   * (profile).
+   * (profile). This property can only be enabled if ecommerce tracking is
+   * enabled.
    */
   core.bool enhancedECommerceTracking;
 

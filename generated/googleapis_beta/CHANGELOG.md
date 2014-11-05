@@ -1,3 +1,14 @@
+## 0.5.0
+
+* [apis-new] container:v1beta1: API added
+* [apis-new] genomics:v1beta2: API added
+* [apis-new] replicapool:v1beta2: API added
+* [apis-new] replicapoolupdater:v1beta1: API added
+* [apis] autoscaler:v1beta2: additional schemas/methods
+* [apis] qladmin:v1beta3: schema changes
+* [apis-breaking] genomics:v1beta: removed methods
+* [apis-removed] replicapool:v1beta1: removed (Deprecated)
+
 ## 0.4.0
 
 * [apis] cloudmonitoring:v2beta1: additional schemas/methods
