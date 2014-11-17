@@ -16,14 +16,14 @@ import 'package:googleapis_beta/pubsub/v1beta1.dart' as api;
 
 
 
-buildUnnamed1361() {
+buildUnnamed1390() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1361(core.List<core.String> o) {
+checkUnnamed1390(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -34,7 +34,7 @@ buildAcknowledgeRequest() {
   var o = new api.AcknowledgeRequest();
   buildCounterAcknowledgeRequest++;
   if (buildCounterAcknowledgeRequest < 3) {
-    o.ackId = buildUnnamed1361();
+    o.ackId = buildUnnamed1390();
     o.subscription = "foo";
   }
   buildCounterAcknowledgeRequest--;
@@ -44,7 +44,7 @@ buildAcknowledgeRequest() {
 checkAcknowledgeRequest(api.AcknowledgeRequest o) {
   buildCounterAcknowledgeRequest++;
   if (buildCounterAcknowledgeRequest < 3) {
-    checkUnnamed1361(o.ackId);
+    checkUnnamed1390(o.ackId);
     unittest.expect(o.subscription, unittest.equals('foo'));
   }
   buildCounterAcknowledgeRequest--;
@@ -73,14 +73,14 @@ checkLabel(api.Label o) {
   buildCounterLabel--;
 }
 
-buildUnnamed1362() {
+buildUnnamed1391() {
   var o = new core.List<api.Subscription>();
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-checkUnnamed1362(core.List<api.Subscription> o) {
+checkUnnamed1391(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -92,7 +92,7 @@ buildListSubscriptionsResponse() {
   buildCounterListSubscriptionsResponse++;
   if (buildCounterListSubscriptionsResponse < 3) {
     o.nextPageToken = "foo";
-    o.subscription = buildUnnamed1362();
+    o.subscription = buildUnnamed1391();
   }
   buildCounterListSubscriptionsResponse--;
   return o;
@@ -102,19 +102,19 @@ checkListSubscriptionsResponse(api.ListSubscriptionsResponse o) {
   buildCounterListSubscriptionsResponse++;
   if (buildCounterListSubscriptionsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1362(o.subscription);
+    checkUnnamed1391(o.subscription);
   }
   buildCounterListSubscriptionsResponse--;
 }
 
-buildUnnamed1363() {
+buildUnnamed1392() {
   var o = new core.List<api.Topic>();
   o.add(buildTopic());
   o.add(buildTopic());
   return o;
 }
 
-checkUnnamed1363(core.List<api.Topic> o) {
+checkUnnamed1392(core.List<api.Topic> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTopic(o[0]);
   checkTopic(o[1]);
@@ -126,7 +126,7 @@ buildListTopicsResponse() {
   buildCounterListTopicsResponse++;
   if (buildCounterListTopicsResponse < 3) {
     o.nextPageToken = "foo";
-    o.topic = buildUnnamed1363();
+    o.topic = buildUnnamed1392();
   }
   buildCounterListTopicsResponse--;
   return o;
@@ -136,7 +136,7 @@ checkListTopicsResponse(api.ListTopicsResponse o) {
   buildCounterListTopicsResponse++;
   if (buildCounterListTopicsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1363(o.topic);
+    checkUnnamed1392(o.topic);
   }
   buildCounterListTopicsResponse--;
 }
@@ -185,6 +185,72 @@ checkModifyPushConfigRequest(api.ModifyPushConfigRequest o) {
   buildCounterModifyPushConfigRequest--;
 }
 
+buildUnnamed1393() {
+  var o = new core.List<api.PubsubMessage>();
+  o.add(buildPubsubMessage());
+  o.add(buildPubsubMessage());
+  return o;
+}
+
+checkUnnamed1393(core.List<api.PubsubMessage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPubsubMessage(o[0]);
+  checkPubsubMessage(o[1]);
+}
+
+core.int buildCounterPublishBatchRequest = 0;
+buildPublishBatchRequest() {
+  var o = new api.PublishBatchRequest();
+  buildCounterPublishBatchRequest++;
+  if (buildCounterPublishBatchRequest < 3) {
+    o.messages = buildUnnamed1393();
+    o.topic = "foo";
+  }
+  buildCounterPublishBatchRequest--;
+  return o;
+}
+
+checkPublishBatchRequest(api.PublishBatchRequest o) {
+  buildCounterPublishBatchRequest++;
+  if (buildCounterPublishBatchRequest < 3) {
+    checkUnnamed1393(o.messages);
+    unittest.expect(o.topic, unittest.equals('foo'));
+  }
+  buildCounterPublishBatchRequest--;
+}
+
+buildUnnamed1394() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed1394(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterPublishBatchResponse = 0;
+buildPublishBatchResponse() {
+  var o = new api.PublishBatchResponse();
+  buildCounterPublishBatchResponse++;
+  if (buildCounterPublishBatchResponse < 3) {
+    o.messageIds = buildUnnamed1394();
+  }
+  buildCounterPublishBatchResponse--;
+  return o;
+}
+
+checkPublishBatchResponse(api.PublishBatchResponse o) {
+  buildCounterPublishBatchResponse++;
+  if (buildCounterPublishBatchResponse < 3) {
+    checkUnnamed1394(o.messageIds);
+  }
+  buildCounterPublishBatchResponse--;
+}
+
 core.int buildCounterPublishRequest = 0;
 buildPublishRequest() {
   var o = new api.PublishRequest();
@@ -231,14 +297,14 @@ checkPubsubEvent(api.PubsubEvent o) {
   buildCounterPubsubEvent--;
 }
 
-buildUnnamed1364() {
+buildUnnamed1395() {
   var o = new core.List<api.Label>();
   o.add(buildLabel());
   o.add(buildLabel());
   return o;
 }
 
-checkUnnamed1364(core.List<api.Label> o) {
+checkUnnamed1395(core.List<api.Label> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabel(o[0]);
   checkLabel(o[1]);
@@ -250,7 +316,8 @@ buildPubsubMessage() {
   buildCounterPubsubMessage++;
   if (buildCounterPubsubMessage < 3) {
     o.data = "foo";
-    o.label = buildUnnamed1364();
+    o.label = buildUnnamed1395();
+    o.messageId = "foo";
   }
   buildCounterPubsubMessage--;
   return o;
@@ -260,9 +327,65 @@ checkPubsubMessage(api.PubsubMessage o) {
   buildCounterPubsubMessage++;
   if (buildCounterPubsubMessage < 3) {
     unittest.expect(o.data, unittest.equals('foo'));
-    checkUnnamed1364(o.label);
+    checkUnnamed1395(o.label);
+    unittest.expect(o.messageId, unittest.equals('foo'));
   }
   buildCounterPubsubMessage--;
+}
+
+core.int buildCounterPullBatchRequest = 0;
+buildPullBatchRequest() {
+  var o = new api.PullBatchRequest();
+  buildCounterPullBatchRequest++;
+  if (buildCounterPullBatchRequest < 3) {
+    o.maxEvents = 42;
+    o.returnImmediately = true;
+    o.subscription = "foo";
+  }
+  buildCounterPullBatchRequest--;
+  return o;
+}
+
+checkPullBatchRequest(api.PullBatchRequest o) {
+  buildCounterPullBatchRequest++;
+  if (buildCounterPullBatchRequest < 3) {
+    unittest.expect(o.maxEvents, unittest.equals(42));
+    unittest.expect(o.returnImmediately, unittest.isTrue);
+    unittest.expect(o.subscription, unittest.equals('foo'));
+  }
+  buildCounterPullBatchRequest--;
+}
+
+buildUnnamed1396() {
+  var o = new core.List<api.PullResponse>();
+  o.add(buildPullResponse());
+  o.add(buildPullResponse());
+  return o;
+}
+
+checkUnnamed1396(core.List<api.PullResponse> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPullResponse(o[0]);
+  checkPullResponse(o[1]);
+}
+
+core.int buildCounterPullBatchResponse = 0;
+buildPullBatchResponse() {
+  var o = new api.PullBatchResponse();
+  buildCounterPullBatchResponse++;
+  if (buildCounterPullBatchResponse < 3) {
+    o.pullResponses = buildUnnamed1396();
+  }
+  buildCounterPullBatchResponse--;
+  return o;
+}
+
+checkPullBatchResponse(api.PullBatchResponse o) {
+  buildCounterPullBatchResponse++;
+  if (buildCounterPullBatchResponse < 3) {
+    checkUnnamed1396(o.pullResponses);
+  }
+  buildCounterPullBatchResponse--;
 }
 
 core.int buildCounterPullRequest = 0;
@@ -426,6 +549,24 @@ main() {
   });
 
 
+  unittest.group("obj-schema-PublishBatchRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPublishBatchRequest();
+      var od = new api.PublishBatchRequest.fromJson(o.toJson());
+      checkPublishBatchRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-PublishBatchResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPublishBatchResponse();
+      var od = new api.PublishBatchResponse.fromJson(o.toJson());
+      checkPublishBatchResponse(od);
+    });
+  });
+
+
   unittest.group("obj-schema-PublishRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildPublishRequest();
@@ -449,6 +590,24 @@ main() {
       var o = buildPubsubMessage();
       var od = new api.PubsubMessage.fromJson(o.toJson());
       checkPubsubMessage(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-PullBatchRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPullBatchRequest();
+      var od = new api.PullBatchRequest.fromJson(o.toJson());
+      checkPullBatchRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-PullBatchResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPullBatchResponse();
+      var od = new api.PullBatchResponse.fromJson(o.toJson());
+      checkPullBatchResponse(od);
     });
   });
 
@@ -881,6 +1040,55 @@ main() {
       })));
     });
 
+    unittest.test("method--pullBatch", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.SubscriptionsResourceApi res = new api.PubsubApi(mock).subscriptions;
+      var arg_request = buildPullBatchRequest();
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PullBatchRequest.fromJson(json);
+        checkPullBatchRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 23), unittest.equals("subscriptions/pullBatch"));
+        pathOffset += 23;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPullBatchResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.pullBatch(arg_request).then(unittest.expectAsync(((api.PullBatchResponse response) {
+        checkPullBatchResponse(response);
+      })));
+    });
+
   });
 
 
@@ -1122,6 +1330,55 @@ main() {
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
       res.publish(arg_request).then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--publishBatch", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.TopicsResourceApi res = new api.PubsubApi(mock).topics;
+      var arg_request = buildPublishBatchRequest();
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PublishBatchRequest.fromJson(json);
+        checkPublishBatchRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("pubsub/v1beta1/"));
+        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("topics/publishBatch"));
+        pathOffset += 19;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPublishBatchResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.publishBatch(arg_request).then(unittest.expectAsync(((api.PublishBatchResponse response) {
+        checkPublishBatchResponse(response);
+      })));
     });
 
   });

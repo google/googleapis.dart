@@ -18,7 +18,7 @@
     "description": "Gives AdSense publishers access to their inventory and the ability to generate reports",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/adsense/management/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/GcHEAAHTHkKoMQMBzrbqtOPCibk\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/VkNy0KUdWO-QpiJ1DxQh7QJh7h8\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/adsense-16.png",
         "x32": "https://www.google.com/images/icons/product/adsense-32.png"
@@ -1624,7 +1624,7 @@
             }
         }
     },
-    "revision": "20141021",
+    "revision": "20141110",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

@@ -56,14 +56,14 @@ checkInstanceUpdate(api.InstanceUpdate o) {
   buildCounterInstanceUpdate--;
 }
 
-buildUnnamed1375() {
+buildUnnamed1278() {
   var o = new core.List<api.InstanceUpdate>();
   o.add(buildInstanceUpdate());
   o.add(buildInstanceUpdate());
   return o;
 }
 
-checkUnnamed1375(core.List<api.InstanceUpdate> o) {
+checkUnnamed1278(core.List<api.InstanceUpdate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstanceUpdate(o[0]);
   checkInstanceUpdate(o[1]);
@@ -77,7 +77,7 @@ buildUpdate() {
     o.details = "foo";
     o.handle = "foo";
     o.instanceTemplate = "foo";
-    o.instanceUpdates = buildUnnamed1375();
+    o.instanceUpdates = buildUnnamed1278();
     o.kind = "foo";
     o.policy = buildUpdatePolicy();
     o.selfLink = "foo";
@@ -94,7 +94,7 @@ checkUpdate(api.Update o) {
     unittest.expect(o.details, unittest.equals('foo'));
     unittest.expect(o.handle, unittest.equals('foo'));
     unittest.expect(o.instanceTemplate, unittest.equals('foo'));
-    checkUnnamed1375(o.instanceUpdates);
+    checkUnnamed1278(o.instanceUpdates);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUpdatePolicy(o.policy);
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -104,14 +104,14 @@ checkUpdate(api.Update o) {
   buildCounterUpdate--;
 }
 
-buildUnnamed1376() {
+buildUnnamed1279() {
   var o = new core.List<api.Update>();
   o.add(buildUpdate());
   o.add(buildUpdate());
   return o;
 }
 
-checkUnnamed1376(core.List<api.Update> o) {
+checkUnnamed1279(core.List<api.Update> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpdate(o[0]);
   checkUpdate(o[1]);
@@ -122,7 +122,7 @@ buildUpdateList() {
   var o = new api.UpdateList();
   buildCounterUpdateList++;
   if (buildCounterUpdateList < 3) {
-    o.items = buildUnnamed1376();
+    o.items = buildUnnamed1279();
     o.nextPageToken = "foo";
   }
   buildCounterUpdateList--;
@@ -132,7 +132,7 @@ buildUpdateList() {
 checkUpdateList(api.UpdateList o) {
   buildCounterUpdateList++;
   if (buildCounterUpdateList < 3) {
-    checkUnnamed1376(o.items);
+    checkUnnamed1279(o.items);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterUpdateList--;

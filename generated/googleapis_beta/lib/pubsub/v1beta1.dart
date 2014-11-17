@@ -387,6 +387,48 @@ class SubscriptionsResourceApi {
     return _response.then((data) => new PullResponse.fromJson(data));
   }
 
+  /**
+   * Pulls messages from the server. Returns an empty list if there are no
+   * messages available in the backlog. The system is free to return UNAVAILABLE
+   * if there too many pull requests outstanding for a given subscription.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [PullBatchResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PullBatchResponse> pullBatch(PullBatchRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+
+    _url = 'subscriptions/pullBatch';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PullBatchResponse.fromJson(data));
+  }
+
 }
 
 
@@ -610,11 +652,52 @@ class TopicsResourceApi {
     return _response.then((data) => null);
   }
 
+  /**
+   * Adds one or more messages to the topic. Returns NOT_FOUND if the topic does
+   * not exist.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [PublishBatchResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PublishBatchResponse> publishBatch(PublishBatchRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+
+    _url = 'topics/publishBatch';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PublishBatchResponse.fromJson(data));
+  }
+
 }
 
 
 
-/** Not documented yet. */
+/** Request for the Acknowledge method. */
 class AcknowledgeRequest {
   /**
    * The Ack ID for the message being acknowledged. This was returned by the
@@ -709,7 +792,7 @@ class Label {
 }
 
 
-/** Not documented yet. */
+/** Response for the ListSubscriptions method. */
 class ListSubscriptionsResponse {
   /**
    * If not empty, indicates that there are more subscriptions that match the
@@ -746,7 +829,7 @@ class ListSubscriptionsResponse {
 }
 
 
-/** Not documented yet. */
+/** Response for the ListTopics method. */
 class ListTopicsResponse {
   /**
    * If not empty, indicates that there are more topics that match the request,
@@ -782,7 +865,7 @@ class ListTopicsResponse {
 }
 
 
-/** Not documented yet. */
+/** Request for the ModifyAckDeadline method. */
 class ModifyAckDeadlineRequest {
   /** The new Ack deadline. Must be >= 0. */
   core.int ackDeadlineSeconds;
@@ -824,7 +907,7 @@ class ModifyAckDeadlineRequest {
 }
 
 
-/** Not documented yet. */
+/** Request for the ModifyPushConfig method. */
 class ModifyPushConfigRequest {
   /**
    * An empty push_config indicates that the Pub/Sub system should pause pushing
@@ -860,7 +943,67 @@ class ModifyPushConfigRequest {
 }
 
 
-/** Not documented yet. */
+/** Request for the PublishBatch method. */
+class PublishBatchRequest {
+  /** The messages to publish. */
+  core.List<PubsubMessage> messages;
+
+  /** The messages in the request will be published on this topic. */
+  core.String topic;
+
+
+  PublishBatchRequest();
+
+  PublishBatchRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("messages")) {
+      messages = _json["messages"].map((value) => new PubsubMessage.fromJson(value)).toList();
+    }
+    if (_json.containsKey("topic")) {
+      topic = _json["topic"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (messages != null) {
+      _json["messages"] = messages.map((value) => (value).toJson()).toList();
+    }
+    if (topic != null) {
+      _json["topic"] = topic;
+    }
+    return _json;
+  }
+}
+
+
+/** Response for the PublishBatch method. */
+class PublishBatchResponse {
+  /**
+   * The server-assigned ID of each published message, in the same order as the
+   * messages in the request. IDs are guaranteed to be unique within the topic.
+   */
+  core.List<core.String> messageIds;
+
+
+  PublishBatchResponse();
+
+  PublishBatchResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("messageIds")) {
+      messageIds = _json["messageIds"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (messageIds != null) {
+      _json["messageIds"] = messageIds;
+    }
+    return _json;
+  }
+}
+
+
+/** Request for the Publish method. */
 class PublishRequest {
   /** The message to publish. */
   PubsubMessage message;
@@ -967,6 +1110,14 @@ class PubsubMessage {
    */
   core.List<Label> label;
 
+  /**
+   * ID of this message assigned by the server at publication time. Guaranteed
+   * to be unique within the topic. This value may be read by a subscriber that
+   * receives a PubsubMessage via a Pull call or a push delivery. It must not be
+   * populated by a publisher in a Publish call.
+   */
+  core.String messageId;
+
 
   PubsubMessage();
 
@@ -976,6 +1127,9 @@ class PubsubMessage {
     }
     if (_json.containsKey("label")) {
       label = _json["label"].map((value) => new Label.fromJson(value)).toList();
+    }
+    if (_json.containsKey("messageId")) {
+      messageId = _json["messageId"];
     }
   }
 
@@ -987,12 +1141,95 @@ class PubsubMessage {
     if (label != null) {
       _json["label"] = label.map((value) => (value).toJson()).toList();
     }
+    if (messageId != null) {
+      _json["messageId"] = messageId;
+    }
     return _json;
   }
 }
 
 
-/** Not documented yet. */
+/** Request for the PullBatch method. */
+class PullBatchRequest {
+  /**
+   * The maximum number of PubsubEvents returned for this request. The Pub/Sub
+   * system may return fewer than the number of events specified.
+   */
+  core.int maxEvents;
+
+  /**
+   * If this is specified as true the system will respond immediately even if it
+   * is not able to return a message in the Pull response. Otherwise the system
+   * is allowed to wait until at least one message is available rather than
+   * returning no messages. The client may cancel the request if it does not
+   * wish to wait any longer for the response.
+   */
+  core.bool returnImmediately;
+
+  /** The subscription from which messages should be pulled. */
+  core.String subscription;
+
+
+  PullBatchRequest();
+
+  PullBatchRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("maxEvents")) {
+      maxEvents = _json["maxEvents"];
+    }
+    if (_json.containsKey("returnImmediately")) {
+      returnImmediately = _json["returnImmediately"];
+    }
+    if (_json.containsKey("subscription")) {
+      subscription = _json["subscription"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (maxEvents != null) {
+      _json["maxEvents"] = maxEvents;
+    }
+    if (returnImmediately != null) {
+      _json["returnImmediately"] = returnImmediately;
+    }
+    if (subscription != null) {
+      _json["subscription"] = subscription;
+    }
+    return _json;
+  }
+}
+
+
+/** Response for the PullBatch method. */
+class PullBatchResponse {
+  /**
+   * Received Pub/Sub messages or status events. The Pub/Sub system will return
+   * zero messages if there are no more messages available in the backlog. The
+   * Pub/Sub system may return fewer than the max_events requested even if there
+   * are more messages available in the backlog.
+   */
+  core.List<PullResponse> pullResponses;
+
+
+  PullBatchResponse();
+
+  PullBatchResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("pullResponses")) {
+      pullResponses = _json["pullResponses"].map((value) => new PullResponse.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (pullResponses != null) {
+      _json["pullResponses"] = pullResponses.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Request for the Pull method. */
 class PullRequest {
   /**
    * If this is specified as true the system will respond immediately even if it

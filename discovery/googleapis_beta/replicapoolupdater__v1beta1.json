@@ -19,8 +19,8 @@
     "batchPath": "batch",
     "description": "The Google Compute Engine Instance Group Updater API provides services for updating groups of Compute Engine Instances.",
     "discoveryVersion": "v1",
-    "documentationLink": "",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/7FRX0hPrcBX5nF_FMe00xO_Wdmw\"",
+    "documentationLink": "https://developers.google.com/compute/docs/instance-groups/manager/v1beta2",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/MkEFbbfro6Rau0xbZXwz9DhAfqM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -393,7 +393,7 @@
             }
         }
     },
-    "revision": "20141016",
+    "revision": "20141105",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InsertResponse": {

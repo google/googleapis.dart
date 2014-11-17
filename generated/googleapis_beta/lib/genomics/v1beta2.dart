@@ -2375,7 +2375,10 @@ class Call {
   /**
    * The genotype likelihoods for this variant call. Each array entry represents
    * how likely a specific genotype is for this call. The value ordering is
-   * defined by the GL tag in the VCF spec.
+   * defined by the GL tag in the VCF spec. If Phred-scaled genotype likelihood
+   * scores (PL) are available and log10(P) genotype likelihood scores (GL) are
+   * not, PL scores are converted to GL scores. If both are available, PL scores
+   * are stored in info.
    */
   core.List<core.double> genotypeLikelihood;
 
@@ -3998,7 +4001,7 @@ class Read {
 
   /**
    * The orientation and the distance between reads from the fragment are
-   * consistent with the sequencing protocol (extension to SAM flag 0x2)
+   * consistent with the sequencing protocol (SAM flag 0x2)
    */
   core.bool properPlacement;
 

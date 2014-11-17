@@ -27,7 +27,7 @@
     "description": "Programmatic access to YouTube features.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/AH-IEbavfgCCcxMvonELgSqtbcY\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/cf7c5ZG6Hlk1gdHCokdY0_0FpV8\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -245,6 +245,11 @@
                             "location": "query",
                             "required": true,
                             "type": "string"
+                        },
+                        "onBehalfOfContentOwner": {
+                            "description": "Note: This parameter is intended exclusively for YouTube content partners.\n\nThe onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner.",
+                            "location": "query",
+                            "type": "string"
                         }
                     },
                     "path": "channelSections",
@@ -343,6 +348,11 @@
                         "part"
                     ],
                     "parameters": {
+                        "onBehalfOfContentOwner": {
+                            "description": "Note: This parameter is intended exclusively for YouTube content partners.\n\nThe onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "part": {
                             "description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.\n\nThe part names that you can include in the parameter value are snippet and contentDetails.",
                             "location": "query",
@@ -2315,7 +2325,7 @@
             }
         }
     },
-    "revision": "20140930",
+    "revision": "20141030",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -3382,7 +3392,7 @@
             "type": "object"
         },
         "ContentRating": {
-            "description": "Ratings schemes. The country-specific ratings are mostly for movies and shows.",
+            "description": "Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 65",
             "id": "ContentRating",
             "properties": {
                 "acbRating": {
@@ -3782,6 +3792,40 @@
                         ""
                     ],
                     "type": "string"
+                },
+                "djctqRatingReasons": {
+                    "items": {
+                        "enum": [
+                            "djctqCriminalActs",
+                            "djctqDrugs",
+                            "djctqExplicitSex",
+                            "djctqExtremeViolence",
+                            "djctqIllegalDrugs",
+                            "djctqImpactingContent",
+                            "djctqInappropriateLanguage",
+                            "djctqLegalDrugs",
+                            "djctqNudity",
+                            "djctqSex",
+                            "djctqSexualContent",
+                            "djctqViolence"
+                        ],
+                        "enumDescriptions": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "eefilmRating": {
                     "description": "Rating system for Estonia - Estonia Rating System",

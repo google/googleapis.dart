@@ -23,7 +23,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/EKP2HqTiCFaMtGY4TKqgoDAIFBQ\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/6ckREvRjfWsdC7sKQKylGfPy3tY\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1171,7 +1171,7 @@
             }
         }
     },
-    "revision": "20141028",
+    "revision": "20141112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AlignReadGroupSetsRequest": {
@@ -1239,7 +1239,7 @@
                     "type": "array"
                 },
                 "genotypeLikelihood": {
-                    "description": "The genotype likelihoods for this variant call. Each array entry represents how likely a specific genotype is for this call. The value ordering is defined by the GL tag in the VCF spec.",
+                    "description": "The genotype likelihoods for this variant call. Each array entry represents how likely a specific genotype is for this call. The value ordering is defined by the GL tag in the VCF spec. If Phred-scaled genotype likelihood scores (PL) are available and log10(P) genotype likelihood scores (GL) are not, PL scores are converted to GL scores. If both are available, PL scores are stored in info.",
                     "items": {
                         "format": "double",
                         "type": "number"
@@ -2073,7 +2073,7 @@
                     "type": "integer"
                 },
                 "properPlacement": {
-                    "description": "The orientation and the distance between reads from the fragment are consistent with the sequencing protocol (extension to SAM flag 0x2)",
+                    "description": "The orientation and the distance between reads from the fragment are consistent with the sequencing protocol (SAM flag 0x2)",
                     "type": "boolean"
                 },
                 "readGroupId": {

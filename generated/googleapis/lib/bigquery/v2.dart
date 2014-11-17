@@ -1527,10 +1527,14 @@ class DatasetList {
 
 /** Not documented yet. */
 class DatasetReference {
-  /** [Required] A unique ID for this dataset, without the project name. */
+  /**
+   * [Required] A unique ID for this dataset, without the project name. The ID
+   * must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
+   * The maximum length is 1,024 characters.
+   */
   core.String datasetId;
 
-  /** [Optional] The ID of the container project. */
+  /** [Optional] The ID of the project containing this dataset. */
   core.String projectId;
 
 
@@ -1656,6 +1660,9 @@ class GetQueryResultsResponse {
    */
   TableSchema schema;
 
+  /** The total number of bytes processed for this query. */
+  core.String totalBytesProcessed;
+
   /**
    * The total number of rows in the complete query result set, which can be
    * more than the number of rows in this single page of results. Present only
@@ -1691,6 +1698,9 @@ class GetQueryResultsResponse {
     if (_json.containsKey("schema")) {
       schema = new TableSchema.fromJson(_json["schema"]);
     }
+    if (_json.containsKey("totalBytesProcessed")) {
+      totalBytesProcessed = _json["totalBytesProcessed"];
+    }
     if (_json.containsKey("totalRows")) {
       totalRows = _json["totalRows"];
     }
@@ -1721,6 +1731,9 @@ class GetQueryResultsResponse {
     }
     if (schema != null) {
       _json["schema"] = (schema).toJson();
+    }
+    if (totalBytesProcessed != null) {
+      _json["totalBytesProcessed"] = totalBytesProcessed;
     }
     if (totalRows != null) {
       _json["totalRows"] = totalRows;
@@ -2686,7 +2699,7 @@ class JobReference {
    */
   core.String jobId;
 
-  /** [Required] Project ID being billed for the job. */
+  /** [Required] The ID of the project containing this job. */
   core.String projectId;
 
 
@@ -3962,13 +3975,17 @@ class TableList {
 
 /** Not documented yet. */
 class TableReference {
-  /** [Required] ID of the dataset containing the table. */
+  /** [Required] The ID of the dataset containing this table. */
   core.String datasetId;
 
-  /** [Required] ID of the project billed for storage of the table. */
+  /** [Required] The ID of the project containing this table. */
   core.String projectId;
 
-  /** [Required] ID of the table. */
+  /**
+   * [Required] The ID of the table. The ID must contain only letters (a-z,
+   * A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024
+   * characters.
+   */
   core.String tableId;
 
 

@@ -28,7 +28,8 @@
     "batchPath": "batch",
     "description": "Google Fit API",
     "discoveryVersion": "v1",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/TfpgqPaBHwKM6ZXQvQNWyFJhjHY\"",
+    "documentationLink": "https://developers.google.com/fit/rest/",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/yxNeceYSHu-EXL2AcqvgpSJSqDU\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -330,6 +331,11 @@
                                             "required": true,
                                             "type": "string"
                                         },
+                                        "pageToken": {
+                                            "description": "The continuation token, which is used to page through large datasets. To get the next page of a dataset, set this parameter to the value of nextPageToken from the previous response. Each subsequent call will yield a partial dataset with data point end timestamps that are strictly smaller than those in the previous partial response.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
                                         "userId": {
                                             "description": "Retrieve a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.",
                                             "location": "path",
@@ -529,7 +535,7 @@
             }
         }
     },
-    "revision": "20141030",
+    "revision": "20141107",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Application": {
@@ -799,13 +805,17 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "nextPageToken": {
+                    "description": "This token will be set when a dataset is received in response to a GET request and the dataset is too large to be included in a single response. Provide this value in a subsequent GET request to return the next page of data points within this dataset.",
+                    "type": "string"
+                },
                 "point": {
                     "annotations": {
                         "required": [
                             "fitness.users.dataSources.datasets.patch"
                         ]
                     },
-                    "description": "A partial list of data points contained in the dataset. This list is considered complete when retrieving a dataset and partial when patching a dataset.",
+                    "description": "A partial list of data points contained in the dataset, ordered by largest endTimeNanos first. This list is considered complete when retrieving a small dataset and partial when patching a dataset or retrieving a dataset that is too large to include in a single response.",
                     "items": {
                         "$ref": "DataPoint"
                     },
@@ -1002,22 +1012,12 @@
             "id": "Value",
             "properties": {
                 "fpVal": {
-                    "annotations": {
-                        "required": [
-                            "fitness.users.dataSources.datasets.patch"
-                        ]
-                    },
-                    "description": "Floating point value.",
+                    "description": "Floating point value. When this is set, intVal must not be set.",
                     "format": "double",
                     "type": "number"
                 },
                 "intVal": {
-                    "annotations": {
-                        "required": [
-                            "fitness.users.dataSources.datasets.patch"
-                        ]
-                    },
-                    "description": "Integer value.",
+                    "description": "Integer value. When this is set, fpVal must not be set.",
                     "format": "int32",
                     "type": "integer"
                 }

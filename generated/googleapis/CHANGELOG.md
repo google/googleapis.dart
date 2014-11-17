@@ -1,3 +1,9 @@
+## 0.4.1
+
+* [apis] bigquery:v2: schema changes
+* [apis] fitness:v1: schema changes
+* [apis] youtube:v3: schema changes
+
 ## 0.4.0
 
 * [apis-new] fitness:v1: API added

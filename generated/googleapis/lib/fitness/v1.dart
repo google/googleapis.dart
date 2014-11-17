@@ -427,6 +427,12 @@ class UsersDataSourcesDatasetsResourceApi {
    * from the epoch. The ID is formatted like: "startTime-endTime" where
    * startTime and endTime are 64 bit integers.
    *
+   * [pageToken] - The continuation token, which is used to page through large
+   * datasets. To get the next page of a dataset, set this parameter to the
+   * value of nextPageToken from the previous response. Each subsequent call
+   * will yield a partial dataset with data point end timestamps that are
+   * strictly smaller than those in the previous partial response.
+   *
    * Completes with a [Dataset].
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
@@ -435,7 +441,7 @@ class UsersDataSourcesDatasetsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Dataset> get(core.String userId, core.String dataSourceId, core.String datasetId) {
+  async.Future<Dataset> get(core.String userId, core.String dataSourceId, core.String datasetId, {core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -451,6 +457,9 @@ class UsersDataSourcesDatasetsResourceApi {
     }
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
 
@@ -1174,9 +1183,18 @@ class Dataset {
   core.String minStartTimeNs;
 
   /**
-   * A partial list of data points contained in the dataset. This list is
-   * considered complete when retrieving a dataset and partial when patching a
-   * dataset.
+   * This token will be set when a dataset is received in response to a GET
+   * request and the dataset is too large to be included in a single response.
+   * Provide this value in a subsequent GET request to return the next page of
+   * data points within this dataset.
+   */
+  core.String nextPageToken;
+
+  /**
+   * A partial list of data points contained in the dataset, ordered by largest
+   * endTimeNanos first. This list is considered complete when retrieving a
+   * small dataset and partial when patching a dataset or retrieving a dataset
+   * that is too large to include in a single response.
    */
   core.List<DataPoint> point;
 
@@ -1193,6 +1211,9 @@ class Dataset {
     if (_json.containsKey("minStartTimeNs")) {
       minStartTimeNs = _json["minStartTimeNs"];
     }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
     if (_json.containsKey("point")) {
       point = _json["point"].map((value) => new DataPoint.fromJson(value)).toList();
     }
@@ -1208,6 +1229,9 @@ class Dataset {
     }
     if (minStartTimeNs != null) {
       _json["minStartTimeNs"] = minStartTimeNs;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     if (point != null) {
       _json["point"] = point.map((value) => (value).toJson()).toList();
@@ -1481,10 +1505,10 @@ class Session {
  * integer or a floating point value.
  */
 class Value {
-  /** Floating point value. */
+  /** Floating point value. When this is set, intVal must not be set. */
   core.double fpVal;
 
-  /** Integer value. */
+  /** Integer value. When this is set, fpVal must not be set. */
   core.int intVal;
 
 

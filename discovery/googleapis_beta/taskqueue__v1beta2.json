@@ -17,10 +17,10 @@
     "description": "Lets you access a Google App Engine Pull Task Queue over REST.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/appengine/docs/python/taskqueue/rest",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/NdbJrHMoZLPwtpKFHEyZMJzpuTM\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/LPLXKKjaGUbCz_MfuhQ-STkNWfw\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/app_engine-16.png",
-        "x32": "http://www.google.com/images/icons/product/app_engine-32.png"
+        "x16": "https://www.google.com/images/icons/product/app_engine-16.png",
+        "x32": "https://www.google.com/images/icons/product/app_engine-32.png"
     },
     "id": "taskqueue:v1beta2",
     "kind": "discovery#restDescription",
@@ -408,7 +408,7 @@
             }
         }
     },
-    "revision": "20130318",
+    "revision": "20141111",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Task": {

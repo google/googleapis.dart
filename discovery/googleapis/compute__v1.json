@@ -26,7 +26,7 @@
     "description": "API for the Google Compute Engine service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/qp3DHGvWPpREzEdWk7WwxnpgC9w\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/-BgSACntyU8GgmwDEZuxapImoKg\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -5289,7 +5289,7 @@
             }
         }
     },
-    "revision": "20141014",
+    "revision": "20141105",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {

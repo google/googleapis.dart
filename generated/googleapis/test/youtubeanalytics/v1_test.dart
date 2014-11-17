@@ -16,14 +16,14 @@ import 'package:googleapis/youtubeanalytics/v1.dart' as api;
 
 
 
-buildUnnamed1155() {
+buildUnnamed182() {
   var o = new core.List<api.BatchReportDefinitionTemplate>();
   o.add(buildBatchReportDefinitionTemplate());
   o.add(buildBatchReportDefinitionTemplate());
   return o;
 }
 
-checkUnnamed1155(core.List<api.BatchReportDefinitionTemplate> o) {
+checkUnnamed182(core.List<api.BatchReportDefinitionTemplate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBatchReportDefinitionTemplate(o[0]);
   checkBatchReportDefinitionTemplate(o[1]);
@@ -34,7 +34,7 @@ buildBatchReportDefinitionList() {
   var o = new api.BatchReportDefinitionList();
   buildCounterBatchReportDefinitionList++;
   if (buildCounterBatchReportDefinitionList < 3) {
-    o.items = buildUnnamed1155();
+    o.items = buildUnnamed182();
     o.kind = "foo";
   }
   buildCounterBatchReportDefinitionList--;
@@ -44,7 +44,7 @@ buildBatchReportDefinitionList() {
 checkBatchReportDefinitionList(api.BatchReportDefinitionList o) {
   buildCounterBatchReportDefinitionList++;
   if (buildCounterBatchReportDefinitionList < 3) {
-    checkUnnamed1155(o.items);
+    checkUnnamed182(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBatchReportDefinitionList--;
@@ -71,14 +71,14 @@ checkBatchReportDefinitionTemplateDefaultOutput(api.BatchReportDefinitionTemplat
   buildCounterBatchReportDefinitionTemplateDefaultOutput--;
 }
 
-buildUnnamed1156() {
+buildUnnamed183() {
   var o = new core.List<api.BatchReportDefinitionTemplateDefaultOutput>();
   o.add(buildBatchReportDefinitionTemplateDefaultOutput());
   o.add(buildBatchReportDefinitionTemplateDefaultOutput());
   return o;
 }
 
-checkUnnamed1156(core.List<api.BatchReportDefinitionTemplateDefaultOutput> o) {
+checkUnnamed183(core.List<api.BatchReportDefinitionTemplateDefaultOutput> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBatchReportDefinitionTemplateDefaultOutput(o[0]);
   checkBatchReportDefinitionTemplateDefaultOutput(o[1]);
@@ -89,7 +89,7 @@ buildBatchReportDefinitionTemplate() {
   var o = new api.BatchReportDefinitionTemplate();
   buildCounterBatchReportDefinitionTemplate++;
   if (buildCounterBatchReportDefinitionTemplate < 3) {
-    o.defaultOutput = buildUnnamed1156();
+    o.defaultOutput = buildUnnamed183();
     o.id = "foo";
     o.name = "foo";
     o.status = "foo";
@@ -102,7 +102,7 @@ buildBatchReportDefinitionTemplate() {
 checkBatchReportDefinitionTemplate(api.BatchReportDefinitionTemplate o) {
   buildCounterBatchReportDefinitionTemplate++;
   if (buildCounterBatchReportDefinitionTemplate < 3) {
-    checkUnnamed1156(o.defaultOutput);
+    checkUnnamed183(o.defaultOutput);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
@@ -111,14 +111,14 @@ checkBatchReportDefinitionTemplate(api.BatchReportDefinitionTemplate o) {
   buildCounterBatchReportDefinitionTemplate--;
 }
 
-buildUnnamed1157() {
+buildUnnamed184() {
   var o = new core.List<api.BatchReportTemplate>();
   o.add(buildBatchReportTemplate());
   o.add(buildBatchReportTemplate());
   return o;
 }
 
-checkUnnamed1157(core.List<api.BatchReportTemplate> o) {
+checkUnnamed184(core.List<api.BatchReportTemplate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBatchReportTemplate(o[0]);
   checkBatchReportTemplate(o[1]);
@@ -129,7 +129,7 @@ buildBatchReportList() {
   var o = new api.BatchReportList();
   buildCounterBatchReportList++;
   if (buildCounterBatchReportList < 3) {
-    o.items = buildUnnamed1157();
+    o.items = buildUnnamed184();
     o.kind = "foo";
   }
   buildCounterBatchReportList--;
@@ -139,7 +139,7 @@ buildBatchReportList() {
 checkBatchReportList(api.BatchReportList o) {
   buildCounterBatchReportList++;
   if (buildCounterBatchReportList < 3) {
-    checkUnnamed1157(o.items);
+    checkUnnamed184(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBatchReportList--;
@@ -168,14 +168,14 @@ checkBatchReportTemplateOutputs(api.BatchReportTemplateOutputs o) {
   buildCounterBatchReportTemplateOutputs--;
 }
 
-buildUnnamed1158() {
+buildUnnamed185() {
   var o = new core.List<api.BatchReportTemplateOutputs>();
   o.add(buildBatchReportTemplateOutputs());
   o.add(buildBatchReportTemplateOutputs());
   return o;
 }
 
-checkUnnamed1158(core.List<api.BatchReportTemplateOutputs> o) {
+checkUnnamed185(core.List<api.BatchReportTemplateOutputs> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBatchReportTemplateOutputs(o[0]);
   checkBatchReportTemplateOutputs(o[1]);
@@ -208,7 +208,7 @@ buildBatchReportTemplate() {
   buildCounterBatchReportTemplate++;
   if (buildCounterBatchReportTemplate < 3) {
     o.id = "foo";
-    o.outputs = buildUnnamed1158();
+    o.outputs = buildUnnamed185();
     o.reportId = "foo";
     o.timeSpan = buildBatchReportTemplateTimeSpan();
     o.timeUpdated = core.DateTime.parse("2002-02-27T14:01:02");
@@ -221,7 +221,7 @@ checkBatchReportTemplate(api.BatchReportTemplate o) {
   buildCounterBatchReportTemplate++;
   if (buildCounterBatchReportTemplate < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed1158(o.outputs);
+    checkUnnamed185(o.outputs);
     unittest.expect(o.reportId, unittest.equals('foo'));
     checkBatchReportTemplateTimeSpan(o.timeSpan);
     unittest.expect(o.timeUpdated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
@@ -252,43 +252,43 @@ checkResultTableColumnHeaders(api.ResultTableColumnHeaders o) {
   buildCounterResultTableColumnHeaders--;
 }
 
-buildUnnamed1159() {
+buildUnnamed186() {
   var o = new core.List<api.ResultTableColumnHeaders>();
   o.add(buildResultTableColumnHeaders());
   o.add(buildResultTableColumnHeaders());
   return o;
 }
 
-checkUnnamed1159(core.List<api.ResultTableColumnHeaders> o) {
+checkUnnamed186(core.List<api.ResultTableColumnHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResultTableColumnHeaders(o[0]);
   checkResultTableColumnHeaders(o[1]);
 }
 
-buildUnnamed1160() {
+buildUnnamed187() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed1160(core.List<core.Object> o) {
+checkUnnamed187(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o[1]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed1161() {
+buildUnnamed188() {
   var o = new core.List<core.List<core.Object>>();
-  o.add(buildUnnamed1160());
-  o.add(buildUnnamed1160());
+  o.add(buildUnnamed187());
+  o.add(buildUnnamed187());
   return o;
 }
 
-checkUnnamed1161(core.List<core.List<core.Object>> o) {
+checkUnnamed188(core.List<core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1160(o[0]);
-  checkUnnamed1160(o[1]);
+  checkUnnamed187(o[0]);
+  checkUnnamed187(o[1]);
 }
 
 core.int buildCounterResultTable = 0;
@@ -296,9 +296,9 @@ buildResultTable() {
   var o = new api.ResultTable();
   buildCounterResultTable++;
   if (buildCounterResultTable < 3) {
-    o.columnHeaders = buildUnnamed1159();
+    o.columnHeaders = buildUnnamed186();
     o.kind = "foo";
-    o.rows = buildUnnamed1161();
+    o.rows = buildUnnamed188();
   }
   buildCounterResultTable--;
   return o;
@@ -307,9 +307,9 @@ buildResultTable() {
 checkResultTable(api.ResultTable o) {
   buildCounterResultTable++;
   if (buildCounterResultTable < 3) {
-    checkUnnamed1159(o.columnHeaders);
+    checkUnnamed186(o.columnHeaders);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1161(o.rows);
+    checkUnnamed188(o.rows);
   }
   buildCounterResultTable--;
 }

@@ -349,13 +349,26 @@ class ChannelSectionsResourceApi {
    * resource that is being deleted. In a channelSection resource, the id
    * property specifies the YouTube channelSection ID.
    *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The CMS
+   * account that the user authenticates with must be linked to the specified
+   * YouTube content owner.
+   *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future delete(core.String id) {
+  async.Future delete(core.String id, {core.String onBehalfOfContentOwner}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -367,6 +380,9 @@ class ChannelSectionsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
 
     _downloadOptions = null;
 
@@ -572,6 +588,19 @@ class ChannelSectionsResourceApi {
    * The part names that you can include in the parameter value are snippet and
    * contentDetails.
    *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The CMS
+   * account that the user authenticates with must be linked to the specified
+   * YouTube content owner.
+   *
    * Completes with a [ChannelSection].
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
@@ -580,7 +609,7 @@ class ChannelSectionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<ChannelSection> update(ChannelSection request, core.String part) {
+  async.Future<ChannelSection> update(ChannelSection request, core.String part, {core.String onBehalfOfContentOwner}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -595,6 +624,9 @@ class ChannelSectionsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = [part];
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
 
 
     _url = 'channelSections';
@@ -6492,7 +6524,7 @@ class ChannelTopicDetails {
 
 /**
  * Ratings schemes. The country-specific ratings are mostly for movies and
- * shows.
+ * shows. NEXT_ID: 65
  */
 class ContentRating {
   /**
@@ -6734,6 +6766,9 @@ class ContentRating {
    * - "djctqUnrated"
    */
   core.String djctqRating;
+
+  /** Not documented yet. */
+  core.List<core.String> djctqRatingReasons;
 
   /**
    * Rating system for Estonia - Estonia Rating System
@@ -7346,6 +7381,9 @@ class ContentRating {
     if (_json.containsKey("djctqRating")) {
       djctqRating = _json["djctqRating"];
     }
+    if (_json.containsKey("djctqRatingReasons")) {
+      djctqRatingReasons = _json["djctqRatingReasons"];
+    }
     if (_json.containsKey("eefilmRating")) {
       eefilmRating = _json["eefilmRating"];
     }
@@ -7538,6 +7576,9 @@ class ContentRating {
     }
     if (djctqRating != null) {
       _json["djctqRating"] = djctqRating;
+    }
+    if (djctqRatingReasons != null) {
+      _json["djctqRatingReasons"] = djctqRatingReasons;
     }
     if (eefilmRating != null) {
       _json["eefilmRating"] = eefilmRating;

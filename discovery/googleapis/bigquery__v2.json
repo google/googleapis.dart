@@ -29,7 +29,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/bigquery/docs/overview",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/NNNGrlMYqSi04hOh0Khd5qX9Gcs\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/5IKwzbIHryxgSxtnlOLBEle-PM8\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -889,7 +889,7 @@
             }
         }
     },
-    "revision": "20141030",
+    "revision": "20141113",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Dataset": {
@@ -1024,7 +1024,7 @@
                             "bigquery.datasets.update"
                         ]
                     },
-                    "description": "[Required] A unique ID for this dataset, without the project name.",
+                    "description": "[Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.",
                     "type": "string"
                 },
                 "projectId": {
@@ -1033,7 +1033,7 @@
                             "bigquery.datasets.update"
                         ]
                     },
-                    "description": "[Optional] The ID of the container project.",
+                    "description": "[Optional] The ID of the project containing this dataset.",
                     "type": "string"
                 }
             },
@@ -1099,6 +1099,11 @@
                 "schema": {
                     "$ref": "TableSchema",
                     "description": "The schema of the results. Present only when the query completes successfully."
+                },
+                "totalBytesProcessed": {
+                    "description": "The total number of bytes processed for this query.",
+                    "format": "int64",
+                    "type": "string"
                 },
                 "totalRows": {
                     "description": "The total number of rows in the complete query result set, which can be more than the number of rows in this single page of results. Present only when the query completes successfully.",
@@ -1477,7 +1482,7 @@
                             "bigquery.jobs.getQueryResults"
                         ]
                     },
-                    "description": "[Required] Project ID being billed for the job.",
+                    "description": "[Required] The ID of the project containing this job.",
                     "type": "string"
                 }
             },
@@ -2015,7 +2020,7 @@
                             "bigquery.tables.update"
                         ]
                     },
-                    "description": "[Required] ID of the dataset containing the table.",
+                    "description": "[Required] The ID of the dataset containing this table.",
                     "type": "string"
                 },
                 "projectId": {
@@ -2024,7 +2029,7 @@
                             "bigquery.tables.update"
                         ]
                     },
-                    "description": "[Required] ID of the project billed for storage of the table.",
+                    "description": "[Required] The ID of the project containing this table.",
                     "type": "string"
                 },
                 "tableId": {
@@ -2033,7 +2038,7 @@
                             "bigquery.tables.update"
                         ]
                     },
-                    "description": "[Required] ID of the table.",
+                    "description": "[Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.",
                     "type": "string"
                 }
             },

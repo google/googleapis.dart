@@ -1886,7 +1886,10 @@ class Call {
   /**
    * The genotype likelihoods for this variant call. Each array entry represents
    * how likely a specific genotype is for this call. The value ordering is
-   * defined by the GL tag in the VCF spec.
+   * defined by the GL tag in the VCF spec. If Phred-scaled genotype likelihood
+   * scores (PL) are available and log10(P) genotype likelihood scores (GL) are
+   * not, PL scores are converted to GL scores. If both are available, PL scores
+   * are stored in info.
    */
   core.List<core.double> genotypeLikelihood;
 

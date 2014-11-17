@@ -1,3 +1,7 @@
+## 0.5.1
+
+* [apis] pubsub:v1beta1: schema changes
+
 ## 0.5.0
 
 * [apis-new] container:v1beta1: API added

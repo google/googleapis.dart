@@ -17,7 +17,7 @@
     "description": "Provides reliable, many-to-many, asynchronous messaging between applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/pubsub/v1beta1",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/ZNCHPHCSd3g-pKxhKxXU20RmqpY\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/xuml-cR3i2tpiaxCozjiT_iUO9o\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -225,6 +225,22 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/pubsub"
                     ]
+                },
+                "pullBatch": {
+                    "description": "Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The system is free to return UNAVAILABLE if there too many pull requests outstanding for a given subscription.",
+                    "httpMethod": "POST",
+                    "id": "pubsub.subscriptions.pullBatch",
+                    "path": "subscriptions/pullBatch",
+                    "request": {
+                        "$ref": "PullBatchRequest"
+                    },
+                    "response": {
+                        "$ref": "PullBatchResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/pubsub"
+                    ]
                 }
             }
         },
@@ -334,14 +350,31 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/pubsub"
                     ]
+                },
+                "publishBatch": {
+                    "description": "Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not exist.",
+                    "httpMethod": "POST",
+                    "id": "pubsub.topics.publishBatch",
+                    "path": "topics/publishBatch",
+                    "request": {
+                        "$ref": "PublishBatchRequest"
+                    },
+                    "response": {
+                        "$ref": "PublishBatchResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/pubsub"
+                    ]
                 }
             }
         }
     },
-    "revision": "20141028",
+    "revision": "20141107",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AcknowledgeRequest": {
+            "description": "Request for the Acknowledge method.",
             "id": "AcknowledgeRequest",
             "properties": {
                 "ackId": {
@@ -379,6 +412,7 @@
             "type": "object"
         },
         "ListSubscriptionsResponse": {
+            "description": "Response for the ListSubscriptions method.",
             "id": "ListSubscriptionsResponse",
             "properties": {
                 "nextPageToken": {
@@ -396,6 +430,7 @@
             "type": "object"
         },
         "ListTopicsResponse": {
+            "description": "Response for the ListTopics method.",
             "id": "ListTopicsResponse",
             "properties": {
                 "nextPageToken": {
@@ -413,6 +448,7 @@
             "type": "object"
         },
         "ModifyAckDeadlineRequest": {
+            "description": "Request for the ModifyAckDeadline method.",
             "id": "ModifyAckDeadlineRequest",
             "properties": {
                 "ackDeadlineSeconds": {
@@ -432,6 +468,7 @@
             "type": "object"
         },
         "ModifyPushConfigRequest": {
+            "description": "Request for the ModifyPushConfig method.",
             "id": "ModifyPushConfigRequest",
             "properties": {
                 "pushConfig": {
@@ -445,7 +482,40 @@
             },
             "type": "object"
         },
+        "PublishBatchRequest": {
+            "description": "Request for the PublishBatch method.",
+            "id": "PublishBatchRequest",
+            "properties": {
+                "messages": {
+                    "description": "The messages to publish.",
+                    "items": {
+                        "$ref": "PubsubMessage"
+                    },
+                    "type": "array"
+                },
+                "topic": {
+                    "description": "The messages in the request will be published on this topic.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PublishBatchResponse": {
+            "description": "Response for the PublishBatch method.",
+            "id": "PublishBatchResponse",
+            "properties": {
+                "messageIds": {
+                    "description": "The server-assigned ID of each published message, in the same order as the messages in the request. IDs are guaranteed to be unique within the topic.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "PublishRequest": {
+            "description": "Request for the Publish method.",
             "id": "PublishRequest",
             "properties": {
                 "message": {
@@ -497,11 +567,50 @@
                         "$ref": "Label"
                     },
                     "type": "array"
+                },
+                "messageId": {
+                    "description": "ID of this message assigned by the server at publication time. Guaranteed to be unique within the topic. This value may be read by a subscriber that receives a PubsubMessage via a Pull call or a push delivery. It must not be populated by a publisher in a Publish call.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PullBatchRequest": {
+            "description": "Request for the PullBatch method.",
+            "id": "PullBatchRequest",
+            "properties": {
+                "maxEvents": {
+                    "description": "The maximum number of PubsubEvents returned for this request. The Pub/Sub system may return fewer than the number of events specified.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "returnImmediately": {
+                    "description": "If this is specified as true the system will respond immediately even if it is not able to return a message in the Pull response. Otherwise the system is allowed to wait until at least one message is available rather than returning no messages. The client may cancel the request if it does not wish to wait any longer for the response.",
+                    "type": "boolean"
+                },
+                "subscription": {
+                    "description": "The subscription from which messages should be pulled.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PullBatchResponse": {
+            "description": "Response for the PullBatch method.",
+            "id": "PullBatchResponse",
+            "properties": {
+                "pullResponses": {
+                    "description": "Received Pub/Sub messages or status events. The Pub/Sub system will return zero messages if there are no more messages available in the backlog. The Pub/Sub system may return fewer than the max_events requested even if there are more messages available in the backlog.",
+                    "items": {
+                        "$ref": "PullResponse"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
         },
         "PullRequest": {
+            "description": "Request for the Pull method.",
             "id": "PullRequest",
             "properties": {
                 "returnImmediately": {

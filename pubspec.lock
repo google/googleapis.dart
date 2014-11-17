@@ -4,11 +4,15 @@ packages:
   args:
     description: args
     source: hosted
-    version: "0.11.0+1"
+    version: "0.10.0"
   collection:
     description: collection
     source: hosted
-    version: "0.9.4"
+    version: "1.1.0"
+  collection_helpers:
+    description: collection_helpers
+    source: hosted
+    version: "0.9.1"
   crypto:
     description: crypto
     source: hosted
@@ -43,8 +47,8 @@ packages:
   string_scanner:
     description: string_scanner
     source: hosted
-    version: "0.1.1"
+    version: "0.1.2"
   yaml:
     description: yaml
     source: hosted
-    version: "2.0.1+1"
+    version: "2.1.0"

@@ -18,7 +18,7 @@
     "description": "Allows the administrators of Google Apps customers to fetch reports about the usage, collaboration, security and risk for their users.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/reports/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/xAcUzwpzdxH1jAgqcRwqHIGqlSk\"",
+    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/kJZsFL2AtxHJ8zBLAO6NO99YjxA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -95,7 +95,7 @@
                         "applicationName": {
                             "description": "Application name for which the events are to be retrieved.",
                             "location": "path",
-                            "pattern": "(admin)|(docs)|(drive)|(login)",
+                            "pattern": "(admin)|(docs)|(drive)|(login)|(token)",
                             "required": true,
                             "type": "string"
                         },
@@ -174,7 +174,7 @@
                         "applicationName": {
                             "description": "Application name for which the events are to be retrieved.",
                             "location": "path",
-                            "pattern": "(admin)|(docs)|(drive)|(login)",
+                            "pattern": "(admin)|(docs)|(drive)|(login)|(token)",
                             "required": true,
                             "type": "string"
                         },
@@ -370,7 +370,7 @@
             }
         }
     },
-    "revision": "20141024",
+    "revision": "20141111",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Activities": {
