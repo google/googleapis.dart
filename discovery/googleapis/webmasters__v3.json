@@ -17,7 +17,7 @@
     "description": "Lets you view Google Webmaster Tools data for your verified sites.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/webmaster-tools/v3/welcome",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/sCAxuVQJb4ynjZxsnsm28T2muEw\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/sCAxuVQJb4ynjZxsnsm28T2muEw\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/webmaster_tools-16.png",
         "x32": "https://www.google.com/images/icons/product/webmaster_tools-32.png"

@@ -17,7 +17,7 @@
     "description": "Lets you create and manage your customers and their subscriptions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/reseller/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/zxsqVn0Yn5fs87TjHWbdqkRtKVI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/30NaCo58E-23RA5z0DPpA4cSWB8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -331,12 +331,14 @@
                             "enum": [
                                 "cancel",
                                 "downgrade",
-                                "suspend"
+                                "suspend",
+                                "transfer_to_direct"
                             ],
                             "enumDescriptions": [
                                 "Cancels the subscription immediately",
                                 "Downgrades a Google Apps for Business subscription to Google Apps",
-                                "Suspends the subscriptions for 4 days before cancelling it"
+                                "Suspends the subscriptions for 4 days before cancelling it",
+                                "Transfers a subscription directly to Google"
                             ],
                             "location": "query",
                             "required": true,
@@ -522,7 +524,7 @@
             }
         }
     },
-    "revision": "20140821",
+    "revision": "20141112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Address": {
@@ -659,7 +661,7 @@
                     "type": "string"
                 },
                 "licensedNumberOfSeats": {
-                    "description": "Read only field containing the current number of licensed seats. Resellers can utilize this field to gather insights into usage for FLEXIBLE Google-Apps subscriptions and other secondary subscriptions (e.g. Google-Vault, Drive-storage).",
+                    "description": "Read-only field containing the current number of licensed seats for FLEXIBLE Google-Apps subscriptions and secondary subscriptions such as Google-Vault and Drive-storage.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -680,6 +682,10 @@
             "description": "JSON template for a subscription.",
             "id": "Subscription",
             "properties": {
+                "billingMethod": {
+                    "description": "Billing method of this subscription.",
+                    "type": "string"
+                },
                 "creationTime": {
                     "description": "Creation time of this subscription in milliseconds since Unix epoch.",
                     "format": "int64",

@@ -281,8 +281,8 @@ class UpdatesResourceApi {
   }
 
   /**
-   * Called on the particular Update endpoint. Pauses the update in state from {
-   * ROLLING_FORWARD, ROLLING_BACK, PAUSED }. No-op if invoked in state PAUSED.
+   * Called on the particular Update endpoint. Pauses the update in state
+   * ROLLING_FORWARD or ROLLING_BACK. No-op if invoked in state PAUSED.
    *
    * Request parameters:
    *
@@ -338,8 +338,8 @@ class UpdatesResourceApi {
 
   /**
    * Called on the particular Update endpoint. Rolls back the update in state
-   * from { ROLLING_FORWARD, ROLLING_BACK, PAUSED }. No-op if invoked in state
-   * ROLLED_BACK.
+   * ROLLING_FORWARD or PAUSED. No-op if invoked in state ROLLED_BACK or
+   * ROLLING_BACK.
    *
    * Request parameters:
    *
@@ -395,8 +395,8 @@ class UpdatesResourceApi {
 
   /**
    * Called on the particular Update endpoint. Rolls forward the update in state
-   * from { ROLLING_FORWARD, ROLLING_BACK, PAUSED }. No-op if invoked in state
-   * ROLLED_OUT.
+   * ROLLING_BACK or PAUSED. No-op if invoked in state ROLLED_OUT or
+   * ROLLING_FORWARD.
    *
    * Request parameters:
    *
@@ -483,7 +483,19 @@ class InstanceUpdate {
   /** Name of an instance. */
   core.String instanceName;
 
-  /** State of an instance update. */
+  /**
+   * State of an instance update. Possible values are:
+   * - "PENDING/code>": The instance update is pending execution.
+   * - "ROLLING_FORWARD": The instance update is going forward.
+   * - "ROLLING_BACK": The instance update being rolled back.
+   * - "PAUSED": The instance update is temporarily paused (inactive).
+   * - "ROLLED_OUT": The instance update is finished, the instance is running
+   * the new template.
+   * - "ROLLED_BACK": The instance update is finished, the instance has been
+   * reverted to the previous template.
+   * - "CANCELLED": The instance update is paused and no longer can be resumed,
+   * undefined in which template the instance is running.
+   */
   core.String state;
 
 
@@ -516,11 +528,14 @@ class InstanceUpdate {
  * given template.
  */
 class Update {
-  /** [Output Only] Human-readable description of an update progress. */
+  /** [Output only] The time the update was created, in RFC3339 text format. */
+  core.String creationTimestamp;
+
+  /** [Output only] Human-readable description of an update progress. */
   core.String details;
 
   /**
-   * [Output Only] Unique (in the context of a group) handle assigned to this
+   * [Output only] Unique (in the context of a group) handle assigned to this
    * update.
    */
   core.String handle;
@@ -528,7 +543,7 @@ class Update {
   /** Url of an instance template to be applied. */
   core.String instanceTemplate;
 
-  /** [Output Only] Collection of instance updates. */
+  /** [Output only] Collection of instance updates. */
   core.List<InstanceUpdate> instanceUpdates;
 
   /** [Output only] The resource type. Always replicapoolupdater#update. */
@@ -540,11 +555,22 @@ class Update {
   /** [Output only] The fully qualified URL for this resource. */
   core.String selfLink;
 
-  /** [Output Only] Current state of an update. */
+  /**
+   * [Output only] Current state of an update. Possible values are:
+   * - "ROLLING_FORWARD": The update is going forward.
+   * - "ROLLING_BACK": The update is being rolled back.
+   * - "PAUSED": The update is temporarily paused (inactive).
+   * - "ROLLED_OUT": The update is finished, all instances have been updated
+   * successfully.
+   * - "ROLLED_BACK": The update is finished, all instances have been reverted
+   * to the previous template.
+   * - "CANCELLED": The update is paused and no longer can be resumed, undefined
+   * how many instances are running in which template.
+   */
   core.String state;
 
   /**
-   * [Output Only] Requested state of an update. This is the state that the
+   * [Output only] Requested state of an update. This is the state that the
    * updater is moving towards. Acceptable values are:
    * - "ROLLED_OUT": The user has requested the update to go forward.
    * - "ROLLED_BACK": The user has requested the update to be rolled back.
@@ -555,10 +581,18 @@ class Update {
    */
   core.String targetState;
 
+  /**
+   * [Output only] User who requested the update, for example: user@example.com.
+   */
+  core.String user;
+
 
   Update();
 
   Update.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
     if (_json.containsKey("details")) {
       details = _json["details"];
     }
@@ -586,10 +620,16 @@ class Update {
     if (_json.containsKey("targetState")) {
       targetState = _json["targetState"];
     }
+    if (_json.containsKey("user")) {
+      user = _json["user"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
     if (details != null) {
       _json["details"] = details;
     }
@@ -616,6 +656,9 @@ class Update {
     }
     if (targetState != null) {
       _json["targetState"] = targetState;
+    }
+    if (user != null) {
+      _json["user"] = user;
     }
     return _json;
   }

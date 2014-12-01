@@ -3940,7 +3940,25 @@ class Range {
  * reference sequence, in addition to metadata about the fragment (the molecule
  * of DNA sequenced) and the read (the bases which were read by the sequencer).
  * A read is equivalent to a line in a SAM file. A read belongs to exactly one
- * read group and exactly one read group set.
+ * read group and exactly one read group set. Generating a reference-aligned
+ * sequence string When interacting with mapped reads, it's often useful to
+ * produce a string representing the local alignment of the read to reference.
+ * The following pseudocode demonstrates one way of doing this:
+ * out = "" offset = 0 for c in read.alignment.cigar { switch c.operation { case
+ * "ALIGNMENT_MATCH", "SEQUENCE_MATCH", "SEQUENCE_MISMATCH": out +=
+ * read.alignedSequence[offset:offset+c.operationLength] offset +=
+ * c.operationLength break case "CLIP_SOFT", "INSERT": offset +=
+ * c.operationLength break case "PAD": out += repeat("*", c.operationLength)
+ * break case "DELETE": out += repeat("-", c.operationLength) break case "SKIP":
+ * out += repeat(" ", c.operationLength) break case "CLIP_HARD": break } }
+ * return out
+ * Converting to SAM's CIGAR string The following pseudocode generates a SAM
+ * CIGAR string from the cigar field. Note that this is a lossy conversion
+ * (cigar.referenceSequence is lost).
+ * cigarMap = { "ALIGNMENT_MATCH": "M", "INSERT": "I", "DELETE": "D", "SKIP":
+ * "N", "CLIP_SOFT": "S", "CLIP_HARD": "H", "PAD": "P", "SEQUENCE_MATCH": "=",
+ * "SEQUENCE_MISMATCH": "X", } cigarStr = "" for c in read.alignment.cigar {
+ * cigarStr += c.operationLength + cigarMap[c.operation] } return cigarStr
  */
 class Read {
   /**
@@ -3954,12 +3972,12 @@ class Read {
   core.List<core.int> alignedQuality;
 
   /**
-   * The bases of the read sequence contained in this alignment record.
-   * alignedSequence and alignedQuality may be shorter than the full read
-   * sequence and quality. This will occur if the alignment is part of a
-   * chimeric alignment, or if the read was trimmed. When this occurs, the CIGAR
-   * for this read will begin/end with a hard clip operator that will indicate
-   * the length of the excised sequence.
+   * The bases of the read sequence contained in this alignment record, without
+   * CIGAR operations applied. alignedSequence and alignedQuality may be shorter
+   * than the full read sequence and quality. This will occur if the alignment
+   * is part of a chimeric alignment, or if the read was trimmed. When this
+   * occurs, the CIGAR for this read will begin/end with a hard clip operator
+   * that will indicate the length of the excised sequence.
    */
   core.String alignedSequence;
 

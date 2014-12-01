@@ -427,6 +427,10 @@ class UsersDataSourcesDatasetsResourceApi {
    * from the epoch. The ID is formatted like: "startTime-endTime" where
    * startTime and endTime are 64 bit integers.
    *
+   * [limit] - If specified, no more than this many data points will be included
+   * in the dataset. If the there are more data points in the dataset,
+   * nextPageToken will be set in the dataset response.
+   *
    * [pageToken] - The continuation token, which is used to page through large
    * datasets. To get the next page of a dataset, set this parameter to the
    * value of nextPageToken from the previous response. Each subsequent call
@@ -441,7 +445,7 @@ class UsersDataSourcesDatasetsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Dataset> get(core.String userId, core.String dataSourceId, core.String datasetId, {core.String pageToken}) {
+  async.Future<Dataset> get(core.String userId, core.String dataSourceId, core.String datasetId, {core.int limit, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -457,6 +461,9 @@ class UsersDataSourcesDatasetsResourceApi {
     }
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if (limit != null) {
+      _queryParams["limit"] = ["${limit}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];

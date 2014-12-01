@@ -1,3 +1,16 @@
+## 0.5.0
+
+* [apis] bigquery:v2: schema changes
+* [apis] books:v1: additional resource/schema changes
+* [apis] doubleclicksearch:v2: schema changes
+* [apis] fitness:v1: method changes
+* [apis] reseller:v1: schema changes
+* [apis] youtube:v3: schema changes
+* [apis-breaking] calendar:v3: Removed title from EventAttachment
+* [apis-breaking] tagmanager:v1: Removed dependencies from Tag and schema changes
+* [apis-breaking] youtubeanalytics:v1: schema changes
+
+
 ## 0.4.1
 
 * [apis] bigquery:v2: schema changes

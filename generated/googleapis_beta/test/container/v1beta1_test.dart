@@ -28,6 +28,7 @@ buildCluster() {
     o.endpoint = "foo";
     o.masterAuth = buildMasterAuth();
     o.name = "foo";
+    o.network = "foo";
     o.nodeConfig = buildNodeConfig();
     o.nodeRoutingPrefixSize = 42;
     o.numNodes = 42;
@@ -50,6 +51,7 @@ checkCluster(api.Cluster o) {
     unittest.expect(o.endpoint, unittest.equals('foo'));
     checkMasterAuth(o.masterAuth);
     unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(o.network, unittest.equals('foo'));
     checkNodeConfig(o.nodeConfig);
     unittest.expect(o.nodeRoutingPrefixSize, unittest.equals(42));
     unittest.expect(o.numNodes, unittest.equals(42));
@@ -80,14 +82,14 @@ checkCreateClusterRequest(api.CreateClusterRequest o) {
   buildCounterCreateClusterRequest--;
 }
 
-buildUnnamed1233() {
+buildUnnamed1203() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed1233(core.List<api.Cluster> o) {
+checkUnnamed1203(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
@@ -98,7 +100,7 @@ buildListAggregatedClustersResponse() {
   var o = new api.ListAggregatedClustersResponse();
   buildCounterListAggregatedClustersResponse++;
   if (buildCounterListAggregatedClustersResponse < 3) {
-    o.clusters = buildUnnamed1233();
+    o.clusters = buildUnnamed1203();
   }
   buildCounterListAggregatedClustersResponse--;
   return o;
@@ -107,19 +109,19 @@ buildListAggregatedClustersResponse() {
 checkListAggregatedClustersResponse(api.ListAggregatedClustersResponse o) {
   buildCounterListAggregatedClustersResponse++;
   if (buildCounterListAggregatedClustersResponse < 3) {
-    checkUnnamed1233(o.clusters);
+    checkUnnamed1203(o.clusters);
   }
   buildCounterListAggregatedClustersResponse--;
 }
 
-buildUnnamed1234() {
+buildUnnamed1204() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1234(core.List<api.Operation> o) {
+checkUnnamed1204(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -130,7 +132,7 @@ buildListAggregatedOperationsResponse() {
   var o = new api.ListAggregatedOperationsResponse();
   buildCounterListAggregatedOperationsResponse++;
   if (buildCounterListAggregatedOperationsResponse < 3) {
-    o.operations = buildUnnamed1234();
+    o.operations = buildUnnamed1204();
   }
   buildCounterListAggregatedOperationsResponse--;
   return o;
@@ -139,19 +141,19 @@ buildListAggregatedOperationsResponse() {
 checkListAggregatedOperationsResponse(api.ListAggregatedOperationsResponse o) {
   buildCounterListAggregatedOperationsResponse++;
   if (buildCounterListAggregatedOperationsResponse < 3) {
-    checkUnnamed1234(o.operations);
+    checkUnnamed1204(o.operations);
   }
   buildCounterListAggregatedOperationsResponse--;
 }
 
-buildUnnamed1235() {
+buildUnnamed1205() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed1235(core.List<api.Cluster> o) {
+checkUnnamed1205(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
@@ -162,7 +164,7 @@ buildListClustersResponse() {
   var o = new api.ListClustersResponse();
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    o.clusters = buildUnnamed1235();
+    o.clusters = buildUnnamed1205();
   }
   buildCounterListClustersResponse--;
   return o;
@@ -171,19 +173,19 @@ buildListClustersResponse() {
 checkListClustersResponse(api.ListClustersResponse o) {
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    checkUnnamed1235(o.clusters);
+    checkUnnamed1205(o.clusters);
   }
   buildCounterListClustersResponse--;
 }
 
-buildUnnamed1236() {
+buildUnnamed1206() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1236(core.List<api.Operation> o) {
+checkUnnamed1206(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -194,7 +196,7 @@ buildListOperationsResponse() {
   var o = new api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.operations = buildUnnamed1236();
+    o.operations = buildUnnamed1206();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -203,7 +205,7 @@ buildListOperationsResponse() {
 checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    checkUnnamed1236(o.operations);
+    checkUnnamed1206(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
@@ -258,6 +260,7 @@ buildOperation() {
     o.errorMessage = "foo";
     o.name = "foo";
     o.operationType = "foo";
+    o.selfLink = "foo";
     o.status = "foo";
     o.target = "foo";
     o.zone = "foo";
@@ -272,6 +275,7 @@ checkOperation(api.Operation o) {
     unittest.expect(o.errorMessage, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.operationType, unittest.equals('foo'));
+    unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.target, unittest.equals('foo'));
     unittest.expect(o.zone, unittest.equals('foo'));

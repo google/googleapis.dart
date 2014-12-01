@@ -5225,6 +5225,7 @@ class CdnSettings {
   /**
    * The method or protocol used to transmit the video stream.
    * Possible string values are:
+   * - "dash"
    * - "rtmp"
    */
   core.String ingestionType;
@@ -12768,6 +12769,9 @@ class VideoGetRatingResponse {
   /** Etag of this resource. */
   core.String etag;
 
+  /** Serialized EventId of the request which produced this response. */
+  core.String eventId;
+
   /** A list of ratings that match the request criteria. */
   core.List<VideoRating> items;
 
@@ -12777,6 +12781,9 @@ class VideoGetRatingResponse {
    */
   core.String kind;
 
+  /** The visitorId identifies the visitor. */
+  core.String visitorId;
+
 
   VideoGetRatingResponse();
 
@@ -12784,11 +12791,17 @@ class VideoGetRatingResponse {
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
+    if (_json.containsKey("eventId")) {
+      eventId = _json["eventId"];
+    }
     if (_json.containsKey("items")) {
       items = _json["items"].map((value) => new VideoRating.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("visitorId")) {
+      visitorId = _json["visitorId"];
     }
   }
 
@@ -12797,11 +12810,17 @@ class VideoGetRatingResponse {
     if (etag != null) {
       _json["etag"] = etag;
     }
+    if (eventId != null) {
+      _json["eventId"] = eventId;
+    }
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (visitorId != null) {
+      _json["visitorId"] = visitorId;
     }
     return _json;
   }

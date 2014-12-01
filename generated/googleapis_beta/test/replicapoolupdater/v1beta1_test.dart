@@ -56,14 +56,14 @@ checkInstanceUpdate(api.InstanceUpdate o) {
   buildCounterInstanceUpdate--;
 }
 
-buildUnnamed1278() {
+buildUnnamed1402() {
   var o = new core.List<api.InstanceUpdate>();
   o.add(buildInstanceUpdate());
   o.add(buildInstanceUpdate());
   return o;
 }
 
-checkUnnamed1278(core.List<api.InstanceUpdate> o) {
+checkUnnamed1402(core.List<api.InstanceUpdate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstanceUpdate(o[0]);
   checkInstanceUpdate(o[1]);
@@ -74,15 +74,17 @@ buildUpdate() {
   var o = new api.Update();
   buildCounterUpdate++;
   if (buildCounterUpdate < 3) {
+    o.creationTimestamp = "foo";
     o.details = "foo";
     o.handle = "foo";
     o.instanceTemplate = "foo";
-    o.instanceUpdates = buildUnnamed1278();
+    o.instanceUpdates = buildUnnamed1402();
     o.kind = "foo";
     o.policy = buildUpdatePolicy();
     o.selfLink = "foo";
     o.state = "foo";
     o.targetState = "foo";
+    o.user = "foo";
   }
   buildCounterUpdate--;
   return o;
@@ -91,27 +93,29 @@ buildUpdate() {
 checkUpdate(api.Update o) {
   buildCounterUpdate++;
   if (buildCounterUpdate < 3) {
+    unittest.expect(o.creationTimestamp, unittest.equals('foo'));
     unittest.expect(o.details, unittest.equals('foo'));
     unittest.expect(o.handle, unittest.equals('foo'));
     unittest.expect(o.instanceTemplate, unittest.equals('foo'));
-    checkUnnamed1278(o.instanceUpdates);
+    checkUnnamed1402(o.instanceUpdates);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUpdatePolicy(o.policy);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.targetState, unittest.equals('foo'));
+    unittest.expect(o.user, unittest.equals('foo'));
   }
   buildCounterUpdate--;
 }
 
-buildUnnamed1279() {
+buildUnnamed1403() {
   var o = new core.List<api.Update>();
   o.add(buildUpdate());
   o.add(buildUpdate());
   return o;
 }
 
-checkUnnamed1279(core.List<api.Update> o) {
+checkUnnamed1403(core.List<api.Update> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpdate(o[0]);
   checkUpdate(o[1]);
@@ -122,7 +126,7 @@ buildUpdateList() {
   var o = new api.UpdateList();
   buildCounterUpdateList++;
   if (buildCounterUpdateList < 3) {
-    o.items = buildUnnamed1279();
+    o.items = buildUnnamed1403();
     o.nextPageToken = "foo";
   }
   buildCounterUpdateList--;
@@ -132,7 +136,7 @@ buildUpdateList() {
 checkUpdateList(api.UpdateList o) {
   buildCounterUpdateList++;
   if (buildCounterUpdateList < 3) {
-    checkUnnamed1279(o.items);
+    checkUnnamed1403(o.items);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterUpdateList--;

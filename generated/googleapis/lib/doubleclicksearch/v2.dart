@@ -684,6 +684,9 @@ class Conversion {
   /** DS agency ID. */
   core.String agencyId;
 
+  /** Attribution model name. */
+  core.String attributionModel;
+
   /** DS campaign ID. */
   core.String campaignId;
 
@@ -700,6 +703,9 @@ class Conversion {
 
   /** The time at which the conversion took place, in epoch millis UTC. */
   core.String conversionTimestamp;
+
+  /** Conversion count in millis. */
+  core.String countMillis;
 
   /** DS criterion (keyword) ID. */
   core.String criterionId;
@@ -780,6 +786,9 @@ class Conversion {
     if (_json.containsKey("agencyId")) {
       agencyId = _json["agencyId"];
     }
+    if (_json.containsKey("attributionModel")) {
+      attributionModel = _json["attributionModel"];
+    }
     if (_json.containsKey("campaignId")) {
       campaignId = _json["campaignId"];
     }
@@ -794,6 +803,9 @@ class Conversion {
     }
     if (_json.containsKey("conversionTimestamp")) {
       conversionTimestamp = _json["conversionTimestamp"];
+    }
+    if (_json.containsKey("countMillis")) {
+      countMillis = _json["countMillis"];
     }
     if (_json.containsKey("criterionId")) {
       criterionId = _json["criterionId"];
@@ -853,6 +865,9 @@ class Conversion {
     if (agencyId != null) {
       _json["agencyId"] = agencyId;
     }
+    if (attributionModel != null) {
+      _json["attributionModel"] = attributionModel;
+    }
     if (campaignId != null) {
       _json["campaignId"] = campaignId;
     }
@@ -867,6 +882,9 @@ class Conversion {
     }
     if (conversionTimestamp != null) {
       _json["conversionTimestamp"] = conversionTimestamp;
+    }
+    if (countMillis != null) {
+      _json["countMillis"] = countMillis;
     }
     if (criterionId != null) {
       _json["criterionId"] = criterionId;

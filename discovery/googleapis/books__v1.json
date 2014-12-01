@@ -14,10 +14,10 @@
     "description": "Lets you search for books and manage your Google Books library.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/XYINYydMW1yxY9sZ7pYYpIG24qI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/dPbUdi5gPnAdRztFfCAhfKJ-jSQ\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/ebooks-16.png",
-        "x32": "http://www.google.com/images/icons/product/ebooks-32.png"
+        "x16": "https://www.google.com/images/icons/product/ebooks-16.png",
+        "x32": "https://www.google.com/images/icons/product/ebooks-32.png"
     },
     "id": "books:v1",
     "kind": "discovery#restDescription",
@@ -263,6 +263,33 @@
                     },
                     "response": {
                         "$ref": "BooksCloudloadingResource"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/books"
+                    ]
+                }
+            }
+        },
+        "dictionary": {
+            "methods": {
+                "listOfflineMetadata": {
+                    "description": "Returns a list of offline dictionary meatadata available",
+                    "httpMethod": "GET",
+                    "id": "books.dictionary.listOfflineMetadata",
+                    "parameterOrder": [
+                        "cpksver"
+                    ],
+                    "parameters": {
+                        "cpksver": {
+                            "description": "The device/version ID from which to request the data.",
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "dictionary/listOfflineMetadata",
+                    "response": {
+                        "$ref": "Metadata"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/books"
@@ -926,6 +953,11 @@
                             "httpMethod": "POST",
                             "id": "books.mylibrary.annotations.insert",
                             "parameters": {
+                                "country": {
+                                    "description": "ISO-3166-1 code to override the IP-based location.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "showOnlySummaryInResponse": {
                                     "description": "Requests that only the summary of the specified layer be provided in the response.",
                                     "location": "query",
@@ -2069,7 +2101,7 @@
             }
         }
     },
-    "revision": "20140507",
+    "revision": "20141112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {
@@ -2994,6 +3026,43 @@
                 },
                 "volumeId": {
                     "description": "The volume id this resource is for.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Metadata": {
+            "id": "Metadata",
+            "properties": {
+                "items": {
+                    "description": "A list of offline dictionary metadata.",
+                    "items": {
+                        "properties": {
+                            "download_url": {
+                                "type": "string"
+                            },
+                            "encrypted_key": {
+                                "type": "string"
+                            },
+                            "language": {
+                                "type": "string"
+                            },
+                            "size": {
+                                "format": "int64",
+                                "type": "string"
+                            },
+                            "version": {
+                                "format": "int64",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "dictionary#metadata",
+                    "description": "Resource type.",
                     "type": "string"
                 }
             },

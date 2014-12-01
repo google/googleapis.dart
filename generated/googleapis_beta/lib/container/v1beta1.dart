@@ -538,6 +538,12 @@ class Cluster {
   core.String name;
 
   /**
+   * The name of the Google Compute Engine network to which the cluster is
+   * connected.
+   */
+  core.String network;
+
+  /**
    * The machine type and image to use for all nodes in this cluster. See the
    * descriptions of the child properties of nodeConfig.
    */
@@ -611,6 +617,9 @@ class Cluster {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
     if (_json.containsKey("nodeConfig")) {
       nodeConfig = new NodeConfig.fromJson(_json["nodeConfig"]);
     }
@@ -656,6 +665,9 @@ class Cluster {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (network != null) {
+      _json["network"] = network;
     }
     if (nodeConfig != null) {
       _json["nodeConfig"] = (nodeConfig).toJson();
@@ -900,6 +912,9 @@ class Operation {
    */
   core.String operationType;
 
+  /** Server-defined URL for the resource. */
+  core.String selfLink;
+
   /**
    * The current status of the operation.
    * Possible string values are:
@@ -934,6 +949,9 @@ class Operation {
     if (_json.containsKey("operationType")) {
       operationType = _json["operationType"];
     }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
     if (_json.containsKey("status")) {
       status = _json["status"];
     }
@@ -955,6 +973,9 @@ class Operation {
     }
     if (operationType != null) {
       _json["operationType"] = operationType;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
     }
     if (status != null) {
       _json["status"] = status;

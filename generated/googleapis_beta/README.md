@@ -84,6 +84,8 @@ Official API documentation: https://developers.google.com/cloud-monitoring/
 
 The Google Container Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.
 
+Official API documentation: https://cloud.google.com/container-engine/docs/v1beta1/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Datastore API - datastore v1beta2
 
 API for accessing Google Cloud Datastore.
@@ -130,7 +132,7 @@ Official API documentation: https://developers.google.com/compute/docs/instance-
 
 The Google Compute Engine Instance Group Updater API provides services for updating groups of Compute Engine Instances.
 
-Official API documentation: https://developers.google.com/compute/docs/instance-groups/manager/v1beta2
+Official API documentation: https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Resource Views API - resourceviews v1beta1
 

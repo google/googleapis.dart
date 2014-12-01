@@ -19,8 +19,8 @@
     "batchPath": "batch",
     "description": "The Google Compute Engine Instance Group Updater API provides services for updating groups of Compute Engine Instances.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/compute/docs/instance-groups/manager/v1beta2",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/MkEFbbfro6Rau0xbZXwz9DhAfqM\"",
+    "documentationLink": "https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/p4N2iDg-K9khNxP-otwGtbGFX0M\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -265,7 +265,7 @@
                     ]
                 },
                 "pause": {
-                    "description": "Called on the particular Update endpoint. Pauses the update in state from { ROLLING_FORWARD, ROLLING_BACK, PAUSED }. No-op if invoked in state PAUSED.",
+                    "description": "Called on the particular Update endpoint. Pauses the update in state ROLLING_FORWARD or ROLLING_BACK. No-op if invoked in state PAUSED.",
                     "httpMethod": "POST",
                     "id": "replicapoolupdater.updates.pause",
                     "parameterOrder": [
@@ -307,7 +307,7 @@
                     ]
                 },
                 "rollback": {
-                    "description": "Called on the particular Update endpoint. Rolls back the update in state from { ROLLING_FORWARD, ROLLING_BACK, PAUSED }. No-op if invoked in state ROLLED_BACK.",
+                    "description": "Called on the particular Update endpoint. Rolls back the update in state ROLLING_FORWARD or PAUSED. No-op if invoked in state ROLLED_BACK or ROLLING_BACK.",
                     "httpMethod": "POST",
                     "id": "replicapoolupdater.updates.rollback",
                     "parameterOrder": [
@@ -349,7 +349,7 @@
                     ]
                 },
                 "rollforward": {
-                    "description": "Called on the particular Update endpoint. Rolls forward the update in state from { ROLLING_FORWARD, ROLLING_BACK, PAUSED }. No-op if invoked in state ROLLED_OUT.",
+                    "description": "Called on the particular Update endpoint. Rolls forward the update in state ROLLING_BACK or PAUSED. No-op if invoked in state ROLLED_OUT or ROLLING_FORWARD.",
                     "httpMethod": "POST",
                     "id": "replicapoolupdater.updates.rollforward",
                     "parameterOrder": [
@@ -393,7 +393,7 @@
             }
         }
     },
-    "revision": "20141105",
+    "revision": "20141117",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InsertResponse": {
@@ -416,7 +416,7 @@
                     "type": "string"
                 },
                 "state": {
-                    "description": "State of an instance update.",
+                    "description": "State of an instance update. Possible values are:  \n- \"PENDING/code>\": The instance update is pending execution. \n- \"ROLLING_FORWARD\": The instance update is going forward. \n- \"ROLLING_BACK\": The instance update being rolled back. \n- \"PAUSED\": The instance update is temporarily paused (inactive). \n- \"ROLLED_OUT\": The instance update is finished, the instance is running the new template. \n- \"ROLLED_BACK\": The instance update is finished, the instance has been reverted to the previous template. \n- \"CANCELLED\": The instance update is paused and no longer can be resumed, undefined in which template the instance is running.",
                     "type": "string"
                 }
             },
@@ -426,12 +426,16 @@
             "description": "Resource describing a single update (rollout) of an instance group to the given template.",
             "id": "Update",
             "properties": {
+                "creationTimestamp": {
+                    "description": "[Output only] The time the update was created, in RFC3339 text format.",
+                    "type": "string"
+                },
                 "details": {
-                    "description": "[Output Only] Human-readable description of an update progress.",
+                    "description": "[Output only] Human-readable description of an update progress.",
                     "type": "string"
                 },
                 "handle": {
-                    "description": "[Output Only] Unique (in the context of a group) handle assigned to this update.",
+                    "description": "[Output only] Unique (in the context of a group) handle assigned to this update.",
                     "type": "string"
                 },
                 "instanceTemplate": {
@@ -439,7 +443,7 @@
                     "type": "string"
                 },
                 "instanceUpdates": {
-                    "description": "[Output Only] Collection of instance updates.",
+                    "description": "[Output only] Collection of instance updates.",
                     "items": {
                         "$ref": "InstanceUpdate"
                     },
@@ -459,11 +463,15 @@
                     "type": "string"
                 },
                 "state": {
-                    "description": "[Output Only] Current state of an update.",
+                    "description": "[Output only] Current state of an update. Possible values are:  \n- \"ROLLING_FORWARD\": The update is going forward. \n- \"ROLLING_BACK\": The update is being rolled back. \n- \"PAUSED\": The update is temporarily paused (inactive). \n- \"ROLLED_OUT\": The update is finished, all instances have been updated successfully. \n- \"ROLLED_BACK\": The update is finished, all instances have been reverted to the previous template. \n- \"CANCELLED\": The update is paused and no longer can be resumed, undefined how many instances are running in which template.",
                     "type": "string"
                 },
                 "targetState": {
-                    "description": "[Output Only] Requested state of an update. This is the state that the updater is moving towards. Acceptable values are:  \n- \"ROLLED_OUT\": The user has requested the update to go forward. \n- \"ROLLED_BACK\": The user has requested the update to be rolled back. \n- \"PAUSED\": The user has requested the update to be paused.\n \n- \"CANCELLED\": The user has requested the update to be cancelled. The updater service is in the process of canceling the update.",
+                    "description": "[Output only] Requested state of an update. This is the state that the updater is moving towards. Acceptable values are:  \n- \"ROLLED_OUT\": The user has requested the update to go forward. \n- \"ROLLED_BACK\": The user has requested the update to be rolled back. \n- \"PAUSED\": The user has requested the update to be paused.\n \n- \"CANCELLED\": The user has requested the update to be cancelled. The updater service is in the process of canceling the update.",
+                    "type": "string"
+                },
+                "user": {
+                    "description": "[Output only] User who requested the update, for example: user@example.com.",
                     "type": "string"
                 }
             },

@@ -26,7 +26,7 @@
     "description": "API for the Google Compute Engine service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/-BgSACntyU8GgmwDEZuxapImoKg\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/vsvLdIv49o6nVslSjOWeUZPaQTM\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -3156,7 +3156,7 @@
                             "type": "string"
                         },
                         "project": {
-                            "description": "Name of the project scoping this request.",
+                            "description": "Project ID for this request.",
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
@@ -3190,7 +3190,7 @@
                             "type": "string"
                         },
                         "project": {
-                            "description": "Name of the project scoping this request.",
+                            "description": "Project ID for this request.",
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
@@ -3242,7 +3242,7 @@
                             "type": "string"
                         },
                         "project": {
-                            "description": "Name of the project scoping this request.",
+                            "description": "Project ID for this request.",
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
@@ -5289,7 +5289,7 @@
             }
         }
     },
-    "revision": "20141105",
+    "revision": "20141112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {
@@ -7306,7 +7306,7 @@
             "id": "MachineType",
             "properties": {
                 "creationTimestamp": {
-                    "description": "Creation timestamp in RFC3339 text format (output only).",
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
                     "type": "string"
                 },
                 "deprecated": {
@@ -7323,7 +7323,7 @@
                     "type": "integer"
                 },
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
                     "format": "uint64",
                     "type": "string"
                 },
@@ -7372,11 +7372,11 @@
                     "type": "array"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for the resource (output only).",
+                    "description": "[Output Only] Server defined URL for the resource.",
                     "type": "string"
                 },
                 "zone": {
-                    "description": "Url of the zone where the machine type resides (output only).",
+                    "description": "[Output Only] The name of the zone where the machine type resides, such as us-central1-a.",
                     "type": "string"
                 }
             },
@@ -7386,7 +7386,7 @@
             "id": "MachineTypeAggregatedList",
             "properties": {
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
                     "type": "string"
                 },
                 "items": {
@@ -7403,7 +7403,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request (output only).",
+                    "description": "[Output Only] A token used to continue a truncated list request.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -7455,7 +7455,7 @@
                     "type": "array"
                 },
                 "warning": {
-                    "description": "Informational warning which replaces the list of machine types when the list is empty.",
+                    "description": "An informational warning that appears when the machine types list is empty.",
                     "properties": {
                         "code": {
                             "description": "The warning type identifier for this warning.",

@@ -1,3 +1,8 @@
+## 0.5.2
+
+* [apis] container:v1beta1: schema changes
+* [apis] replicapoolupdater:v1beta1: schema changes
+
 ## 0.5.1
 
 * [apis] pubsub:v1beta1: schema changes

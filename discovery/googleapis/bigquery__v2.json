@@ -29,7 +29,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/bigquery/docs/overview",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/5IKwzbIHryxgSxtnlOLBEle-PM8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/irflzEU1C_NxQHyDRKExZd4eUWU\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -889,7 +889,7 @@
             }
         }
     },
-    "revision": "20141113",
+    "revision": "20141124",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Dataset": {
@@ -1501,6 +1501,10 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "extract": {
+                    "$ref": "JobStatistics4",
+                    "description": "[Output-only] Statistics for an extract job."
+                },
                 "load": {
                     "$ref": "JobStatistics3",
                     "description": "[Output-only] Statistics for a load job."
@@ -1559,6 +1563,20 @@
                     "description": "[Output-only] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.",
                     "format": "int64",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "JobStatistics4": {
+            "id": "JobStatistics4",
+            "properties": {
+                "destinationUriFileCounts": {
+                    "description": "[Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.",
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

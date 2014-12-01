@@ -438,6 +438,7 @@ class SubscriptionsResourceApi {
    * - "downgrade" : Downgrades a Google Apps for Business subscription to
    * Google Apps
    * - "suspend" : Suspends the subscriptions for 4 days before cancelling it
+   * - "transfer_to_direct" : Transfers a subscription directly to Google
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
    * error.
@@ -1016,10 +1017,9 @@ class Seats {
   core.String kind;
 
   /**
-   * Read only field containing the current number of licensed seats. Resellers
-   * can utilize this field to gather insights into usage for FLEXIBLE
-   * Google-Apps subscriptions and other secondary subscriptions (e.g.
-   * Google-Vault, Drive-storage).
+   * Read-only field containing the current number of licensed seats for
+   * FLEXIBLE Google-Apps subscriptions and secondary subscriptions such as
+   * Google-Vault and Drive-storage.
    */
   core.int licensedNumberOfSeats;
 
@@ -1217,6 +1217,9 @@ class SubscriptionTrialSettings {
 
 /** JSON template for a subscription. */
 class Subscription {
+  /** Billing method of this subscription. */
+  core.String billingMethod;
+
   /** Creation time of this subscription in milliseconds since Unix epoch. */
   core.String creationTime;
 
@@ -1260,6 +1263,9 @@ class Subscription {
   Subscription();
 
   Subscription.fromJson(core.Map _json) {
+    if (_json.containsKey("billingMethod")) {
+      billingMethod = _json["billingMethod"];
+    }
     if (_json.containsKey("creationTime")) {
       creationTime = _json["creationTime"];
     }
@@ -1303,6 +1309,9 @@ class Subscription {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (billingMethod != null) {
+      _json["billingMethod"] = billingMethod;
+    }
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
     }

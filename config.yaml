@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.4.1
+    version: 0.5.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -38,6 +38,7 @@ packages:
     - fitness:v1  # https://developers.google.com/fitness/
     - freebase:v1  # https://developers.google.com/freebase/
     - fusiontables:v1  # https://developers.google.com/fusiontables/
+    - fusiontables:v2  # https://developers.google.com/fusiontables/
     - games:v1  # https://developers.google.com/games/services/
     - gamesManagement:v1management  # https://developers.google.com/games/services/management/api/
     - gmail:v1  # https://developers.google.com/gmail/
@@ -66,7 +67,7 @@ packages:
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
-    version: 0.5.1
+    version: 0.5.2
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md

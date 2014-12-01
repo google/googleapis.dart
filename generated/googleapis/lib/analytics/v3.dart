@@ -24,6 +24,9 @@ class AnalyticsApi {
   /** Manage Google Analytics Account users by email address */
   static const AnalyticsManageUsersScope = "https://www.googleapis.com/auth/analytics.manage.users";
 
+  /** View Google Analytics user permissions */
+  static const AnalyticsManageUsersReadonlyScope = "https://www.googleapis.com/auth/analytics.manage.users.readonly";
+
   /**
    * Create a new Google Analytics account along with its default property and
    * view

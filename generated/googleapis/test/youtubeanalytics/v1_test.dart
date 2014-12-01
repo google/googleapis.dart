@@ -16,17 +16,130 @@ import 'package:googleapis/youtubeanalytics/v1.dart' as api;
 
 
 
-buildUnnamed182() {
-  var o = new core.List<api.BatchReportDefinitionTemplate>();
-  o.add(buildBatchReportDefinitionTemplate());
-  o.add(buildBatchReportDefinitionTemplate());
+core.int buildCounterBatchReportOutputs = 0;
+buildBatchReportOutputs() {
+  var o = new api.BatchReportOutputs();
+  buildCounterBatchReportOutputs++;
+  if (buildCounterBatchReportOutputs < 3) {
+    o.downloadUrl = "foo";
+    o.format = "foo";
+    o.type = "foo";
+  }
+  buildCounterBatchReportOutputs--;
   return o;
 }
 
-checkUnnamed182(core.List<api.BatchReportDefinitionTemplate> o) {
+checkBatchReportOutputs(api.BatchReportOutputs o) {
+  buildCounterBatchReportOutputs++;
+  if (buildCounterBatchReportOutputs < 3) {
+    unittest.expect(o.downloadUrl, unittest.equals('foo'));
+    unittest.expect(o.format, unittest.equals('foo'));
+    unittest.expect(o.type, unittest.equals('foo'));
+  }
+  buildCounterBatchReportOutputs--;
+}
+
+buildUnnamed1180() {
+  var o = new core.List<api.BatchReportOutputs>();
+  o.add(buildBatchReportOutputs());
+  o.add(buildBatchReportOutputs());
+  return o;
+}
+
+checkUnnamed1180(core.List<api.BatchReportOutputs> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBatchReportDefinitionTemplate(o[0]);
-  checkBatchReportDefinitionTemplate(o[1]);
+  checkBatchReportOutputs(o[0]);
+  checkBatchReportOutputs(o[1]);
+}
+
+core.int buildCounterBatchReportTimeSpan = 0;
+buildBatchReportTimeSpan() {
+  var o = new api.BatchReportTimeSpan();
+  buildCounterBatchReportTimeSpan++;
+  if (buildCounterBatchReportTimeSpan < 3) {
+    o.endTime = core.DateTime.parse("2002-02-27T14:01:02");
+    o.startTime = core.DateTime.parse("2002-02-27T14:01:02");
+  }
+  buildCounterBatchReportTimeSpan--;
+  return o;
+}
+
+checkBatchReportTimeSpan(api.BatchReportTimeSpan o) {
+  buildCounterBatchReportTimeSpan++;
+  if (buildCounterBatchReportTimeSpan < 3) {
+    unittest.expect(o.endTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.startTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+  }
+  buildCounterBatchReportTimeSpan--;
+}
+
+core.int buildCounterBatchReport = 0;
+buildBatchReport() {
+  var o = new api.BatchReport();
+  buildCounterBatchReport++;
+  if (buildCounterBatchReport < 3) {
+    o.id = "foo";
+    o.kind = "foo";
+    o.outputs = buildUnnamed1180();
+    o.reportId = "foo";
+    o.timeSpan = buildBatchReportTimeSpan();
+    o.timeUpdated = core.DateTime.parse("2002-02-27T14:01:02");
+  }
+  buildCounterBatchReport--;
+  return o;
+}
+
+checkBatchReport(api.BatchReport o) {
+  buildCounterBatchReport++;
+  if (buildCounterBatchReport < 3) {
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed1180(o.outputs);
+    unittest.expect(o.reportId, unittest.equals('foo'));
+    checkBatchReportTimeSpan(o.timeSpan);
+    unittest.expect(o.timeUpdated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+  }
+  buildCounterBatchReport--;
+}
+
+core.int buildCounterBatchReportDefinition = 0;
+buildBatchReportDefinition() {
+  var o = new api.BatchReportDefinition();
+  buildCounterBatchReportDefinition++;
+  if (buildCounterBatchReportDefinition < 3) {
+    o.id = "foo";
+    o.kind = "foo";
+    o.name = "foo";
+    o.status = "foo";
+    o.type = "foo";
+  }
+  buildCounterBatchReportDefinition--;
+  return o;
+}
+
+checkBatchReportDefinition(api.BatchReportDefinition o) {
+  buildCounterBatchReportDefinition++;
+  if (buildCounterBatchReportDefinition < 3) {
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(o.status, unittest.equals('foo'));
+    unittest.expect(o.type, unittest.equals('foo'));
+  }
+  buildCounterBatchReportDefinition--;
+}
+
+buildUnnamed1181() {
+  var o = new core.List<api.BatchReportDefinition>();
+  o.add(buildBatchReportDefinition());
+  o.add(buildBatchReportDefinition());
+  return o;
+}
+
+checkUnnamed1181(core.List<api.BatchReportDefinition> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkBatchReportDefinition(o[0]);
+  checkBatchReportDefinition(o[1]);
 }
 
 core.int buildCounterBatchReportDefinitionList = 0;
@@ -34,7 +147,7 @@ buildBatchReportDefinitionList() {
   var o = new api.BatchReportDefinitionList();
   buildCounterBatchReportDefinitionList++;
   if (buildCounterBatchReportDefinitionList < 3) {
-    o.items = buildUnnamed182();
+    o.items = buildUnnamed1181();
     o.kind = "foo";
   }
   buildCounterBatchReportDefinitionList--;
@@ -44,84 +157,23 @@ buildBatchReportDefinitionList() {
 checkBatchReportDefinitionList(api.BatchReportDefinitionList o) {
   buildCounterBatchReportDefinitionList++;
   if (buildCounterBatchReportDefinitionList < 3) {
-    checkUnnamed182(o.items);
+    checkUnnamed1181(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBatchReportDefinitionList--;
 }
 
-core.int buildCounterBatchReportDefinitionTemplateDefaultOutput = 0;
-buildBatchReportDefinitionTemplateDefaultOutput() {
-  var o = new api.BatchReportDefinitionTemplateDefaultOutput();
-  buildCounterBatchReportDefinitionTemplateDefaultOutput++;
-  if (buildCounterBatchReportDefinitionTemplateDefaultOutput < 3) {
-    o.format = "foo";
-    o.type = "foo";
-  }
-  buildCounterBatchReportDefinitionTemplateDefaultOutput--;
+buildUnnamed1182() {
+  var o = new core.List<api.BatchReport>();
+  o.add(buildBatchReport());
+  o.add(buildBatchReport());
   return o;
 }
 
-checkBatchReportDefinitionTemplateDefaultOutput(api.BatchReportDefinitionTemplateDefaultOutput o) {
-  buildCounterBatchReportDefinitionTemplateDefaultOutput++;
-  if (buildCounterBatchReportDefinitionTemplateDefaultOutput < 3) {
-    unittest.expect(o.format, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
-  }
-  buildCounterBatchReportDefinitionTemplateDefaultOutput--;
-}
-
-buildUnnamed183() {
-  var o = new core.List<api.BatchReportDefinitionTemplateDefaultOutput>();
-  o.add(buildBatchReportDefinitionTemplateDefaultOutput());
-  o.add(buildBatchReportDefinitionTemplateDefaultOutput());
-  return o;
-}
-
-checkUnnamed183(core.List<api.BatchReportDefinitionTemplateDefaultOutput> o) {
+checkUnnamed1182(core.List<api.BatchReport> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBatchReportDefinitionTemplateDefaultOutput(o[0]);
-  checkBatchReportDefinitionTemplateDefaultOutput(o[1]);
-}
-
-core.int buildCounterBatchReportDefinitionTemplate = 0;
-buildBatchReportDefinitionTemplate() {
-  var o = new api.BatchReportDefinitionTemplate();
-  buildCounterBatchReportDefinitionTemplate++;
-  if (buildCounterBatchReportDefinitionTemplate < 3) {
-    o.defaultOutput = buildUnnamed183();
-    o.id = "foo";
-    o.name = "foo";
-    o.status = "foo";
-    o.type = "foo";
-  }
-  buildCounterBatchReportDefinitionTemplate--;
-  return o;
-}
-
-checkBatchReportDefinitionTemplate(api.BatchReportDefinitionTemplate o) {
-  buildCounterBatchReportDefinitionTemplate++;
-  if (buildCounterBatchReportDefinitionTemplate < 3) {
-    checkUnnamed183(o.defaultOutput);
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.status, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
-  }
-  buildCounterBatchReportDefinitionTemplate--;
-}
-
-buildUnnamed184() {
-  var o = new core.List<api.BatchReportTemplate>();
-  o.add(buildBatchReportTemplate());
-  o.add(buildBatchReportTemplate());
-  return o;
-}
-
-checkUnnamed184(core.List<api.BatchReportTemplate> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkBatchReportTemplate(o[0]);
-  checkBatchReportTemplate(o[1]);
+  checkBatchReport(o[0]);
+  checkBatchReport(o[1]);
 }
 
 core.int buildCounterBatchReportList = 0;
@@ -129,7 +181,7 @@ buildBatchReportList() {
   var o = new api.BatchReportList();
   buildCounterBatchReportList++;
   if (buildCounterBatchReportList < 3) {
-    o.items = buildUnnamed184();
+    o.items = buildUnnamed1182();
     o.kind = "foo";
   }
   buildCounterBatchReportList--;
@@ -139,94 +191,10 @@ buildBatchReportList() {
 checkBatchReportList(api.BatchReportList o) {
   buildCounterBatchReportList++;
   if (buildCounterBatchReportList < 3) {
-    checkUnnamed184(o.items);
+    checkUnnamed1182(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBatchReportList--;
-}
-
-core.int buildCounterBatchReportTemplateOutputs = 0;
-buildBatchReportTemplateOutputs() {
-  var o = new api.BatchReportTemplateOutputs();
-  buildCounterBatchReportTemplateOutputs++;
-  if (buildCounterBatchReportTemplateOutputs < 3) {
-    o.downloadUrl = "foo";
-    o.format = "foo";
-    o.type = "foo";
-  }
-  buildCounterBatchReportTemplateOutputs--;
-  return o;
-}
-
-checkBatchReportTemplateOutputs(api.BatchReportTemplateOutputs o) {
-  buildCounterBatchReportTemplateOutputs++;
-  if (buildCounterBatchReportTemplateOutputs < 3) {
-    unittest.expect(o.downloadUrl, unittest.equals('foo'));
-    unittest.expect(o.format, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
-  }
-  buildCounterBatchReportTemplateOutputs--;
-}
-
-buildUnnamed185() {
-  var o = new core.List<api.BatchReportTemplateOutputs>();
-  o.add(buildBatchReportTemplateOutputs());
-  o.add(buildBatchReportTemplateOutputs());
-  return o;
-}
-
-checkUnnamed185(core.List<api.BatchReportTemplateOutputs> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkBatchReportTemplateOutputs(o[0]);
-  checkBatchReportTemplateOutputs(o[1]);
-}
-
-core.int buildCounterBatchReportTemplateTimeSpan = 0;
-buildBatchReportTemplateTimeSpan() {
-  var o = new api.BatchReportTemplateTimeSpan();
-  buildCounterBatchReportTemplateTimeSpan++;
-  if (buildCounterBatchReportTemplateTimeSpan < 3) {
-    o.endTime = core.DateTime.parse("2002-02-27T14:01:02");
-    o.startTime = core.DateTime.parse("2002-02-27T14:01:02");
-  }
-  buildCounterBatchReportTemplateTimeSpan--;
-  return o;
-}
-
-checkBatchReportTemplateTimeSpan(api.BatchReportTemplateTimeSpan o) {
-  buildCounterBatchReportTemplateTimeSpan++;
-  if (buildCounterBatchReportTemplateTimeSpan < 3) {
-    unittest.expect(o.endTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    unittest.expect(o.startTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-  }
-  buildCounterBatchReportTemplateTimeSpan--;
-}
-
-core.int buildCounterBatchReportTemplate = 0;
-buildBatchReportTemplate() {
-  var o = new api.BatchReportTemplate();
-  buildCounterBatchReportTemplate++;
-  if (buildCounterBatchReportTemplate < 3) {
-    o.id = "foo";
-    o.outputs = buildUnnamed185();
-    o.reportId = "foo";
-    o.timeSpan = buildBatchReportTemplateTimeSpan();
-    o.timeUpdated = core.DateTime.parse("2002-02-27T14:01:02");
-  }
-  buildCounterBatchReportTemplate--;
-  return o;
-}
-
-checkBatchReportTemplate(api.BatchReportTemplate o) {
-  buildCounterBatchReportTemplate++;
-  if (buildCounterBatchReportTemplate < 3) {
-    unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed185(o.outputs);
-    unittest.expect(o.reportId, unittest.equals('foo'));
-    checkBatchReportTemplateTimeSpan(o.timeSpan);
-    unittest.expect(o.timeUpdated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-  }
-  buildCounterBatchReportTemplate--;
 }
 
 core.int buildCounterResultTableColumnHeaders = 0;
@@ -252,43 +220,43 @@ checkResultTableColumnHeaders(api.ResultTableColumnHeaders o) {
   buildCounterResultTableColumnHeaders--;
 }
 
-buildUnnamed186() {
+buildUnnamed1183() {
   var o = new core.List<api.ResultTableColumnHeaders>();
   o.add(buildResultTableColumnHeaders());
   o.add(buildResultTableColumnHeaders());
   return o;
 }
 
-checkUnnamed186(core.List<api.ResultTableColumnHeaders> o) {
+checkUnnamed1183(core.List<api.ResultTableColumnHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResultTableColumnHeaders(o[0]);
   checkResultTableColumnHeaders(o[1]);
 }
 
-buildUnnamed187() {
+buildUnnamed1184() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed187(core.List<core.Object> o) {
+checkUnnamed1184(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o[1]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed188() {
+buildUnnamed1185() {
   var o = new core.List<core.List<core.Object>>();
-  o.add(buildUnnamed187());
-  o.add(buildUnnamed187());
+  o.add(buildUnnamed1184());
+  o.add(buildUnnamed1184());
   return o;
 }
 
-checkUnnamed188(core.List<core.List<core.Object>> o) {
+checkUnnamed1185(core.List<core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed187(o[0]);
-  checkUnnamed187(o[1]);
+  checkUnnamed1184(o[0]);
+  checkUnnamed1184(o[1]);
 }
 
 core.int buildCounterResultTable = 0;
@@ -296,9 +264,9 @@ buildResultTable() {
   var o = new api.ResultTable();
   buildCounterResultTable++;
   if (buildCounterResultTable < 3) {
-    o.columnHeaders = buildUnnamed186();
+    o.columnHeaders = buildUnnamed1183();
     o.kind = "foo";
-    o.rows = buildUnnamed188();
+    o.rows = buildUnnamed1185();
   }
   buildCounterResultTable--;
   return o;
@@ -307,15 +275,51 @@ buildResultTable() {
 checkResultTable(api.ResultTable o) {
   buildCounterResultTable++;
   if (buildCounterResultTable < 3) {
-    checkUnnamed186(o.columnHeaders);
+    checkUnnamed1183(o.columnHeaders);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed188(o.rows);
+    checkUnnamed1185(o.rows);
   }
   buildCounterResultTable--;
 }
 
 
 main() {
+  unittest.group("obj-schema-BatchReportOutputs", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBatchReportOutputs();
+      var od = new api.BatchReportOutputs.fromJson(o.toJson());
+      checkBatchReportOutputs(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-BatchReportTimeSpan", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBatchReportTimeSpan();
+      var od = new api.BatchReportTimeSpan.fromJson(o.toJson());
+      checkBatchReportTimeSpan(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-BatchReport", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBatchReport();
+      var od = new api.BatchReport.fromJson(o.toJson());
+      checkBatchReport(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-BatchReportDefinition", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBatchReportDefinition();
+      var od = new api.BatchReportDefinition.fromJson(o.toJson());
+      checkBatchReportDefinition(od);
+    });
+  });
+
+
   unittest.group("obj-schema-BatchReportDefinitionList", () {
     unittest.test("to-json--from-json", () {
       var o = buildBatchReportDefinitionList();
@@ -325,56 +329,11 @@ main() {
   });
 
 
-  unittest.group("obj-schema-BatchReportDefinitionTemplateDefaultOutput", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildBatchReportDefinitionTemplateDefaultOutput();
-      var od = new api.BatchReportDefinitionTemplateDefaultOutput.fromJson(o.toJson());
-      checkBatchReportDefinitionTemplateDefaultOutput(od);
-    });
-  });
-
-
-  unittest.group("obj-schema-BatchReportDefinitionTemplate", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildBatchReportDefinitionTemplate();
-      var od = new api.BatchReportDefinitionTemplate.fromJson(o.toJson());
-      checkBatchReportDefinitionTemplate(od);
-    });
-  });
-
-
   unittest.group("obj-schema-BatchReportList", () {
     unittest.test("to-json--from-json", () {
       var o = buildBatchReportList();
       var od = new api.BatchReportList.fromJson(o.toJson());
       checkBatchReportList(od);
-    });
-  });
-
-
-  unittest.group("obj-schema-BatchReportTemplateOutputs", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildBatchReportTemplateOutputs();
-      var od = new api.BatchReportTemplateOutputs.fromJson(o.toJson());
-      checkBatchReportTemplateOutputs(od);
-    });
-  });
-
-
-  unittest.group("obj-schema-BatchReportTemplateTimeSpan", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildBatchReportTemplateTimeSpan();
-      var od = new api.BatchReportTemplateTimeSpan.fromJson(o.toJson());
-      checkBatchReportTemplateTimeSpan(od);
-    });
-  });
-
-
-  unittest.group("obj-schema-BatchReportTemplate", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildBatchReportTemplate();
-      var od = new api.BatchReportTemplate.fromJson(o.toJson());
-      checkBatchReportTemplate(od);
     });
   });
 

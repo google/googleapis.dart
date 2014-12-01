@@ -27,7 +27,7 @@
     "description": "Programmatic access to YouTube features.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/cf7c5ZG6Hlk1gdHCokdY0_0FpV8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/zFXBHo_XoP3u5i4h1cV-J_NP6rE\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -2325,7 +2325,7 @@
             }
         }
     },
-    "revision": "20141030",
+    "revision": "20141119",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -2794,9 +2794,11 @@
                     },
                     "description": "The method or protocol used to transmit the video stream.",
                     "enum": [
+                        "dash",
                         "rtmp"
                     ],
                     "enumDescriptions": [
+                        "",
                         ""
                     ],
                     "type": "string"
@@ -7015,6 +7017,10 @@
                     "description": "Etag of this resource.",
                     "type": "string"
                 },
+                "eventId": {
+                    "description": "Serialized EventId of the request which produced this response.",
+                    "type": "string"
+                },
                 "items": {
                     "description": "A list of ratings that match the request criteria.",
                     "items": {
@@ -7025,6 +7031,10 @@
                 "kind": {
                     "default": "youtube#videoGetRatingResponse",
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoGetRatingResponse\".",
+                    "type": "string"
+                },
+                "visitorId": {
+                    "description": "The visitorId identifies the visitor.",
                     "type": "string"
                 }
             },

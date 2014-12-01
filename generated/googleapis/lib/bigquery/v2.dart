@@ -2741,6 +2741,9 @@ class JobStatistics {
    */
   core.String endTime;
 
+  /** [Output-only] Statistics for an extract job. */
+  JobStatistics4 extract;
+
   /** [Output-only] Statistics for a load job. */
   JobStatistics3 load;
 
@@ -2770,6 +2773,9 @@ class JobStatistics {
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
+    if (_json.containsKey("extract")) {
+      extract = new JobStatistics4.fromJson(_json["extract"]);
+    }
     if (_json.containsKey("load")) {
       load = new JobStatistics3.fromJson(_json["load"]);
     }
@@ -2791,6 +2797,9 @@ class JobStatistics {
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
+    }
+    if (extract != null) {
+      _json["extract"] = (extract).toJson();
     }
     if (load != null) {
       _json["load"] = (load).toJson();
@@ -2895,6 +2904,34 @@ class JobStatistics3 {
     }
     if (outputRows != null) {
       _json["outputRows"] = outputRows;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class JobStatistics4 {
+  /**
+   * [Output-only] Number of files per destination URI or URI pattern specified
+   * in the extract configuration. These values will be in the same order as the
+   * URIs specified in the 'destinationUris' field.
+   */
+  core.List<core.String> destinationUriFileCounts;
+
+
+  JobStatistics4();
+
+  JobStatistics4.fromJson(core.Map _json) {
+    if (_json.containsKey("destinationUriFileCounts")) {
+      destinationUriFileCounts = _json["destinationUriFileCounts"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (destinationUriFileCounts != null) {
+      _json["destinationUriFileCounts"] = destinationUriFileCounts;
     }
     return _json;
   }

@@ -1225,6 +1225,8 @@ class EditsImagesResourceApi {
    * - "promoGraphic"
    * - "sevenInchScreenshots"
    * - "tenInchScreenshots"
+   * - "tvBanner"
+   * - "tvScreenshots"
    *
    * [imageId] - Unique identifier an image within the set of images attached to
    * this edit.
@@ -1295,6 +1297,8 @@ class EditsImagesResourceApi {
    * - "promoGraphic"
    * - "sevenInchScreenshots"
    * - "tenInchScreenshots"
+   * - "tvBanner"
+   * - "tvScreenshots"
    *
    * Completes with a [ImagesDeleteAllResponse].
    *
@@ -1360,6 +1364,8 @@ class EditsImagesResourceApi {
    * - "promoGraphic"
    * - "sevenInchScreenshots"
    * - "tenInchScreenshots"
+   * - "tvBanner"
+   * - "tvScreenshots"
    *
    * Completes with a [ImagesListResponse].
    *
@@ -1426,6 +1432,8 @@ class EditsImagesResourceApi {
    * - "promoGraphic"
    * - "sevenInchScreenshots"
    * - "tenInchScreenshots"
+   * - "tvBanner"
+   * - "tvScreenshots"
    *
    * [uploadMedia] - The media to upload.
    *

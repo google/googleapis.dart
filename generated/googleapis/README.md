@@ -152,7 +152,7 @@ API for access to the data within Blogger.
 
 Official API documentation: https://developers.google.com/blogger/docs/3.0/getting_started
 
-#### ![Logo](http://www.google.com/images/icons/product/ebooks-16.png) Books API - books v1
+#### ![Logo](https://www.google.com/images/icons/product/ebooks-16.png) Books API - books v1
 
 Lets you search for books and manage your Google Books library.
 
@@ -249,6 +249,12 @@ Find Freebase entities using textual queries and other constraints.
 Official API documentation: https://developers.google.com/freebase/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Fusion Tables API - fusiontables v1
+
+API for working with Fusion Tables data.
+
+Official API documentation: https://developers.google.com/fusiontables
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Fusion Tables API - fusiontables v2
 
 API for working with Fusion Tables data.
 
@@ -374,7 +380,7 @@ Lets you manage your tasks and task lists.
 
 Official API documentation: https://developers.google.com/google-apps/tasks/firstapp
 
-#### ![Logo](http://www.google.com/images/icons/product/translate-16.png) Translate API - translate v2
+#### ![Logo](https://www.google.com/images/icons/product/translate-16.png) Translate API - translate v2
 
 Lets you translate text from one language to another
 
@@ -404,7 +410,7 @@ Programmatic access to YouTube features.
 
 Official API documentation: https://developers.google.com/youtube/v3
 
-#### ![Logo](http://www.google.com/images/icons/product/youtube-16.png) YouTube Analytics API - youtubeAnalytics v1
+#### ![Logo](https://www.google.com/images/icons/product/youtube-16.png) YouTube Analytics API - youtubeAnalytics v1
 
 Retrieve your YouTube Analytics reports.
 

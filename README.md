@@ -14,7 +14,7 @@ Repository for building the [googleapis] and [googleapis_beta] packages.
     $ pub run discovery_api_client_generator:generate run_config
 
 - Diff with previous APIs and determine whether to do minor or major version
-  update.
+  update. Update CHANGELOG.md files in resources/.
 
 - Update `config.yaml` with new version and generate again.
 

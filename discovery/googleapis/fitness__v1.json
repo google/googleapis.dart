@@ -29,7 +29,7 @@
     "description": "Google Fit API",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/fit/rest/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/yxNeceYSHu-EXL2AcqvgpSJSqDU\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/gKV_MRd0rwxyq49wtWHS6wrGc3Y\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -331,6 +331,12 @@
                                             "required": true,
                                             "type": "string"
                                         },
+                                        "limit": {
+                                            "description": "If specified, no more than this many data points will be included in the dataset. If the there are more data points in the dataset, nextPageToken will be set in the dataset response.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
                                         "pageToken": {
                                             "description": "The continuation token, which is used to page through large datasets. To get the next page of a dataset, set this parameter to the value of nextPageToken from the previous response. Each subsequent call will yield a partial dataset with data point end timestamps that are strictly smaller than those in the previous partial response.",
                                             "location": "query",
@@ -535,7 +541,7 @@
             }
         }
     },
-    "revision": "20141107",
+    "revision": "20141115",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Application": {

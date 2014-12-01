@@ -273,185 +273,8 @@ class ReportsResourceApi {
 
 
 
-/**
- * A paginated list of batchReportDefinition resources returned in response to a
- * youtubeAnalytics.batchReportDefinitions.list request.
- */
-class BatchReportDefinitionList {
-  /**
-   * A list of batchReportDefinition resources that match the request criteria.
-   */
-  core.List<BatchReportDefinitionTemplate> items;
-
-  /**
-   * This value specifies the type of data included in the API response. For the
-   * list method, the kind property value is
-   * youtubeAnalytics#batchReportDefinitionList.
-   */
-  core.String kind;
-
-
-  BatchReportDefinitionList();
-
-  BatchReportDefinitionList.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new BatchReportDefinitionTemplate.fromJson(value)).toList();
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    return _json;
-  }
-}
-
-
 /** Not documented yet. */
-class BatchReportDefinitionTemplateDefaultOutput {
-  /** Format of the output. */
-  core.String format;
-
-  /** Type of the output. */
-  core.String type;
-
-
-  BatchReportDefinitionTemplateDefaultOutput();
-
-  BatchReportDefinitionTemplateDefaultOutput.fromJson(core.Map _json) {
-    if (_json.containsKey("format")) {
-      format = _json["format"];
-    }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (format != null) {
-      _json["format"] = format;
-    }
-    if (type != null) {
-      _json["type"] = type;
-    }
-    return _json;
-  }
-}
-
-
-/** Contains single batchReportDefinition resource. */
-class BatchReportDefinitionTemplate {
-  /** Default report definition's output. */
-  core.List<BatchReportDefinitionTemplateDefaultOutput> defaultOutput;
-
-  /**
-   * The ID that YouTube assigns and uses to uniquely identify the report
-   * definition.
-   */
-  core.String id;
-
-  /** Name of the report definition. */
-  core.String name;
-
-  /** Status of the report definition. */
-  core.String status;
-
-  /** Type of the report definition. */
-  core.String type;
-
-
-  BatchReportDefinitionTemplate();
-
-  BatchReportDefinitionTemplate.fromJson(core.Map _json) {
-    if (_json.containsKey("defaultOutput")) {
-      defaultOutput = _json["defaultOutput"].map((value) => new BatchReportDefinitionTemplateDefaultOutput.fromJson(value)).toList();
-    }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
-    }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (defaultOutput != null) {
-      _json["defaultOutput"] = defaultOutput.map((value) => (value).toJson()).toList();
-    }
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (status != null) {
-      _json["status"] = status;
-    }
-    if (type != null) {
-      _json["type"] = type;
-    }
-    return _json;
-  }
-}
-
-
-/**
- * A paginated list of batchReport resources returned in response to a
- * youtubeAnalytics.batchReport.list request.
- */
-class BatchReportList {
-  /** A list of batchReport resources that match the request criteria. */
-  core.List<BatchReportTemplate> items;
-
-  /**
-   * This value specifies the type of data included in the API response. For the
-   * list method, the kind property value is youtubeAnalytics#batchReportList.
-   */
-  core.String kind;
-
-
-  BatchReportList();
-
-  BatchReportList.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new BatchReportTemplate.fromJson(value)).toList();
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    return _json;
-  }
-}
-
-
-/** Not documented yet. */
-class BatchReportTemplateOutputs {
+class BatchReportOutputs {
   /**
    * Cloud storage URL to download this report. This URL is valid for 30
    * minutes.
@@ -465,9 +288,9 @@ class BatchReportTemplateOutputs {
   core.String type;
 
 
-  BatchReportTemplateOutputs();
+  BatchReportOutputs();
 
-  BatchReportTemplateOutputs.fromJson(core.Map _json) {
+  BatchReportOutputs.fromJson(core.Map _json) {
     if (_json.containsKey("downloadUrl")) {
       downloadUrl = _json["downloadUrl"];
     }
@@ -499,7 +322,7 @@ class BatchReportTemplateOutputs {
  * Period included in the report. For reports containing all entities endTime is
  * not set. Both startTime and endTime are inclusive.
  */
-class BatchReportTemplateTimeSpan {
+class BatchReportTimeSpan {
   /**
    * End of the period included in the report. Inclusive. For reports containing
    * all entities endTime is not set.
@@ -510,9 +333,9 @@ class BatchReportTemplateTimeSpan {
   core.DateTime startTime;
 
 
-  BatchReportTemplateTimeSpan();
+  BatchReportTimeSpan();
 
-  BatchReportTemplateTimeSpan.fromJson(core.Map _json) {
+  BatchReportTimeSpan.fromJson(core.Map _json) {
     if (_json.containsKey("endTime")) {
       endTime = core.DateTime.parse(_json["endTime"]);
     }
@@ -535,12 +358,18 @@ class BatchReportTemplateTimeSpan {
 
 
 /** Contains single batchReport resource. */
-class BatchReportTemplate {
+class BatchReport {
   /** The ID that YouTube assigns and uses to uniquely identify the report. */
   core.String id;
 
+  /**
+   * This value specifies the type of data of this item. For batch report the
+   * kind property value is youtubeAnalytics#batchReport.
+   */
+  core.String kind;
+
   /** Report outputs. */
-  core.List<BatchReportTemplateOutputs> outputs;
+  core.List<BatchReportOutputs> outputs;
 
   /** The ID of the the report definition. */
   core.String reportId;
@@ -549,26 +378,29 @@ class BatchReportTemplate {
    * Period included in the report. For reports containing all entities endTime
    * is not set. Both startTime and endTime are inclusive.
    */
-  BatchReportTemplateTimeSpan timeSpan;
+  BatchReportTimeSpan timeSpan;
 
   /** The time when the report was updated. */
   core.DateTime timeUpdated;
 
 
-  BatchReportTemplate();
+  BatchReport();
 
-  BatchReportTemplate.fromJson(core.Map _json) {
+  BatchReport.fromJson(core.Map _json) {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
-    if (_json.containsKey("outputs")) {
-      outputs = _json["outputs"].map((value) => new BatchReportTemplateOutputs.fromJson(value)).toList();
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
     }
-    if (_json.containsKey("report_id")) {
-      reportId = _json["report_id"];
+    if (_json.containsKey("outputs")) {
+      outputs = _json["outputs"].map((value) => new BatchReportOutputs.fromJson(value)).toList();
+    }
+    if (_json.containsKey("reportId")) {
+      reportId = _json["reportId"];
     }
     if (_json.containsKey("timeSpan")) {
-      timeSpan = new BatchReportTemplateTimeSpan.fromJson(_json["timeSpan"]);
+      timeSpan = new BatchReportTimeSpan.fromJson(_json["timeSpan"]);
     }
     if (_json.containsKey("timeUpdated")) {
       timeUpdated = core.DateTime.parse(_json["timeUpdated"]);
@@ -580,17 +412,168 @@ class BatchReportTemplate {
     if (id != null) {
       _json["id"] = id;
     }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
     if (outputs != null) {
       _json["outputs"] = outputs.map((value) => (value).toJson()).toList();
     }
     if (reportId != null) {
-      _json["report_id"] = reportId;
+      _json["reportId"] = reportId;
     }
     if (timeSpan != null) {
       _json["timeSpan"] = (timeSpan).toJson();
     }
     if (timeUpdated != null) {
       _json["timeUpdated"] = (timeUpdated).toIso8601String();
+    }
+    return _json;
+  }
+}
+
+
+/** Contains single batchReportDefinition resource. */
+class BatchReportDefinition {
+  /**
+   * The ID that YouTube assigns and uses to uniquely identify the report
+   * definition.
+   */
+  core.String id;
+
+  /**
+   * This value specifies the type of data of this item. For batch report
+   * definition the kind property value is
+   * youtubeAnalytics#batchReportDefinition.
+   */
+  core.String kind;
+
+  /** Name of the report definition. */
+  core.String name;
+
+  /** Status of the report definition. */
+  core.String status;
+
+  /** Type of the report definition. */
+  core.String type;
+
+
+  BatchReportDefinition();
+
+  BatchReportDefinition.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * A paginated list of batchReportDefinition resources returned in response to a
+ * youtubeAnalytics.batchReportDefinitions.list request.
+ */
+class BatchReportDefinitionList {
+  /**
+   * A list of batchReportDefinition resources that match the request criteria.
+   */
+  core.List<BatchReportDefinition> items;
+
+  /**
+   * This value specifies the type of data included in the API response. For the
+   * list method, the kind property value is
+   * youtubeAnalytics#batchReportDefinitionList.
+   */
+  core.String kind;
+
+
+  BatchReportDefinitionList();
+
+  BatchReportDefinitionList.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new BatchReportDefinition.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * A paginated list of batchReport resources returned in response to a
+ * youtubeAnalytics.batchReport.list request.
+ */
+class BatchReportList {
+  /** A list of batchReport resources that match the request criteria. */
+  core.List<BatchReport> items;
+
+  /**
+   * This value specifies the type of data included in the API response. For the
+   * list method, the kind property value is youtubeAnalytics#batchReportList.
+   */
+  core.String kind;
+
+
+  BatchReportList();
+
+  BatchReportList.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new BatchReport.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }

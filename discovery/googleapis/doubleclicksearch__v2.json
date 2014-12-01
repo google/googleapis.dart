@@ -14,7 +14,7 @@
     "description": "Report and modify your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/doubleclick-search/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/olnNoM2FZr43Cdq75yAMe9UNVWM\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/iox0BHqWM54fnf8jaiSWZ0a8oFc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -430,7 +430,7 @@
             }
         }
     },
-    "revision": "20141021",
+    "revision": "20141105",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Availability": {
@@ -512,6 +512,10 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "attributionModel": {
+                    "description": "Attribution model name.",
+                    "type": "string"
+                },
                 "campaignId": {
                     "description": "DS campaign ID.",
                     "format": "int64",
@@ -543,6 +547,11 @@
                     },
                     "description": "The time at which the conversion took place, in epoch millis UTC.",
                     "format": "uint64",
+                    "type": "string"
+                },
+                "countMillis": {
+                    "description": "Conversion count in millis.",
+                    "format": "int64",
                     "type": "string"
                 },
                 "criterionId": {

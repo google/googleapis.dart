@@ -18,10 +18,10 @@ export '../common/common.dart' show DetailedApiRequestError;
  * vector and raster data.
  */
 class MapsengineApi {
-  /** View and manage your Google Maps Engine data */
+  /** View and manage your Google My Maps data */
   static const MapsengineScope = "https://www.googleapis.com/auth/mapsengine";
 
-  /** View your Google Maps Engine data */
+  /** View your Google My Maps data */
   static const MapsengineReadonlyScope = "https://www.googleapis.com/auth/mapsengine.readonly";
 
 

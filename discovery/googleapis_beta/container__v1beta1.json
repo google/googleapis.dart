@@ -13,7 +13,8 @@
     "batchPath": "batch",
     "description": "The Google Container Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.",
     "discoveryVersion": "v1",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/ZrZBeDfQYPqAxFURJt0IhCOLUHQ\"",
+    "documentationLink": "https://cloud.google.com/container-engine/docs/v1beta1/",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/UyZr6gRNA--6ruBaV-TxMA3zr8s\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -345,7 +346,7 @@
             }
         }
     },
-    "revision": "20141103",
+    "revision": "20141112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Cluster": {
@@ -377,6 +378,10 @@
                 },
                 "name": {
                     "description": "The name of this cluster. The name must be unique within this project and zone, and can be up to 40 characters with the following restrictions:  \n- Lowercase letters, numbers, and hyphens only.\n- Must start with a letter.\n- Must end with a number or a letter.",
+                    "type": "string"
+                },
+                "network": {
+                    "description": "The name of the Google Compute Engine network to which the cluster is connected.",
                     "type": "string"
                 },
                 "nodeConfig": {
@@ -536,6 +541,10 @@
                         "",
                         ""
                     ],
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "Server-defined URL for the resource.",
                     "type": "string"
                 },
                 "status": {

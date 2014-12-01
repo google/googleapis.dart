@@ -2572,6 +2572,9 @@ class Container {
   /** Optional list of domain names associated with the Container. */
   core.List<core.String> domainName;
 
+  /** List of enabled built-in variables. */
+  core.List<core.String> enabledBuiltInVariable;
+
   /**
    * The fingerprint of the GTM Container as computed at storage time. This
    * value is recomputed whenever the account is modified.
@@ -2612,6 +2615,9 @@ class Container {
     if (_json.containsKey("domainName")) {
       domainName = _json["domainName"];
     }
+    if (_json.containsKey("enabledBuiltInVariable")) {
+      enabledBuiltInVariable = _json["enabledBuiltInVariable"];
+    }
     if (_json.containsKey("fingerprint")) {
       fingerprint = _json["fingerprint"];
     }
@@ -2645,6 +2651,9 @@ class Container {
     }
     if (domainName != null) {
       _json["domainName"] = domainName;
+    }
+    if (enabledBuiltInVariable != null) {
+      _json["enabledBuiltInVariable"] = enabledBuiltInVariable;
     }
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;
@@ -3606,13 +3615,6 @@ class Tag {
   core.String containerId;
 
   /**
-   * An optional list of tag names that this tag depends on to fire. Execution
-   * of this tag will be prevented until the tags with the given names complete
-   * their execution.
-   */
-  Parameter dependencies;
-
-  /**
    * The fingerprint of the GTM Tag as computed at storage time. This value is
    * recomputed whenever the tag is modified.
    */
@@ -3680,9 +3682,6 @@ class Tag {
     if (_json.containsKey("containerId")) {
       containerId = _json["containerId"];
     }
-    if (_json.containsKey("dependencies")) {
-      dependencies = new Parameter.fromJson(_json["dependencies"]);
-    }
     if (_json.containsKey("fingerprint")) {
       fingerprint = _json["fingerprint"];
     }
@@ -3734,9 +3733,6 @@ class Tag {
     }
     if (containerId != null) {
       _json["containerId"] = containerId;
-    }
-    if (dependencies != null) {
-      _json["dependencies"] = (dependencies).toJson();
     }
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;

@@ -23,6 +23,7 @@ class BooksApi {
 
   BookshelvesResourceApi get bookshelves => new BookshelvesResourceApi(_requester);
   CloudloadingResourceApi get cloudloading => new CloudloadingResourceApi(_requester);
+  DictionaryResourceApi get dictionary => new DictionaryResourceApi(_requester);
   LayersResourceApi get layers => new LayersResourceApi(_requester);
   MyconfigResourceApi get myconfig => new MyconfigResourceApi(_requester);
   MylibraryResourceApi get mylibrary => new MylibraryResourceApi(_requester);
@@ -359,6 +360,57 @@ class CloudloadingResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new BooksCloudloadingResource.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class DictionaryResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  DictionaryResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns a list of offline dictionary meatadata available
+   *
+   * Request parameters:
+   *
+   * [cpksver] - The device/version ID from which to request the data.
+   *
+   * Completes with a [Metadata].
+   *
+   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Metadata> listOfflineMetadata(core.String cpksver) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (cpksver == null) {
+      throw new core.ArgumentError("Parameter cpksver is required.");
+    }
+    _queryParams["cpksver"] = [cpksver];
+
+
+    _url = 'dictionary/listOfflineMetadata';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Metadata.fromJson(data));
   }
 
 }
@@ -1224,6 +1276,8 @@ class MylibraryAnnotationsResourceApi {
    *
    * Request parameters:
    *
+   * [country] - ISO-3166-1 code to override the IP-based location.
+   *
    * [showOnlySummaryInResponse] - Requests that only the summary of the
    * specified layer be provided in the response.
    *
@@ -1237,7 +1291,7 @@ class MylibraryAnnotationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Annotation> insert(Annotation request, {core.bool showOnlySummaryInResponse, core.String source}) {
+  async.Future<Annotation> insert(Annotation request, {core.String country, core.bool showOnlySummaryInResponse, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1247,6 +1301,9 @@ class MylibraryAnnotationsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (country != null) {
+      _queryParams["country"] = [country];
     }
     if (showOnlySummaryInResponse != null) {
       _queryParams["showOnlySummaryInResponse"] = ["${showOnlySummaryInResponse}"];
@@ -5174,6 +5231,99 @@ class Layersummary {
     }
     if (volumeId != null) {
       _json["volumeId"] = volumeId;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class MetadataItems {
+  /** Not documented yet. */
+  core.String downloadUrl;
+
+  /** Not documented yet. */
+  core.String encryptedKey;
+
+  /** Not documented yet. */
+  core.String language;
+
+  /** Not documented yet. */
+  core.String size;
+
+  /** Not documented yet. */
+  core.String version;
+
+
+  MetadataItems();
+
+  MetadataItems.fromJson(core.Map _json) {
+    if (_json.containsKey("download_url")) {
+      downloadUrl = _json["download_url"];
+    }
+    if (_json.containsKey("encrypted_key")) {
+      encryptedKey = _json["encrypted_key"];
+    }
+    if (_json.containsKey("language")) {
+      language = _json["language"];
+    }
+    if (_json.containsKey("size")) {
+      size = _json["size"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (downloadUrl != null) {
+      _json["download_url"] = downloadUrl;
+    }
+    if (encryptedKey != null) {
+      _json["encrypted_key"] = encryptedKey;
+    }
+    if (language != null) {
+      _json["language"] = language;
+    }
+    if (size != null) {
+      _json["size"] = size;
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Metadata {
+  /** A list of offline dictionary metadata. */
+  core.List<MetadataItems> items;
+
+  /** Resource type. */
+  core.String kind;
+
+
+  Metadata();
+
+  Metadata.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new MetadataItems.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }

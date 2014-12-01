@@ -4466,7 +4466,7 @@ class MachineTypesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4526,7 +4526,7 @@ class MachineTypesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4581,7 +4581,7 @@ class MachineTypesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -11668,7 +11668,7 @@ class MachineTypeScratchDisks {
 
 /** A machine type resource. */
 class MachineType {
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
 
   /** The deprecation status associated with this machine type. */
@@ -11681,7 +11681,7 @@ class MachineType {
   core.int guestCpus;
 
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
@@ -11706,10 +11706,13 @@ class MachineType {
   /** List of extended scratch disks assigned to the instance. */
   core.List<MachineTypeScratchDisks> scratchDisks;
 
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
 
-  /** Url of the zone where the machine type resides (output only). */
+  /**
+   * [Output Only] The name of the zone where the machine type resides, such as
+   * us-central1-a.
+   */
   core.String zone;
 
 
@@ -11812,7 +11815,7 @@ class MachineType {
 /** Not documented yet. */
 class MachineTypeAggregatedList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
@@ -11822,7 +11825,7 @@ class MachineTypeAggregatedList {
   /** Type of resource. */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
   /** Server defined URL for this resource (output only). */
@@ -11967,8 +11970,7 @@ class MachineTypesScopedListWarningData {
 
 
 /**
- * Informational warning which replaces the list of machine types when the list
- * is empty.
+ * An informational warning that appears when the machine types list is empty.
  */
 class MachineTypesScopedListWarning {
   /**
@@ -12032,8 +12034,7 @@ class MachineTypesScopedList {
   core.List<MachineType> machineTypes;
 
   /**
-   * Informational warning which replaces the list of machine types when the
-   * list is empty.
+   * An informational warning that appears when the machine types list is empty.
    */
   MachineTypesScopedListWarning warning;
 

@@ -15,7 +15,7 @@
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/DrMyiBR493_IBfZvqlikbYuZEB0\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/S5ypkYRuyek1RrNfMVi9ZUu1mcQ\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -518,7 +518,7 @@
                                     "application/octet-stream",
                                     "application/vnd.android.package-archive"
                                 ],
-                                "maxSize": "50MB",
+                                "maxSize": "1GB",
                                 "protocols": {
                                     "resumable": {
                                         "multipart": true,
@@ -927,9 +927,13 @@
                                         "phoneScreenshots",
                                         "promoGraphic",
                                         "sevenInchScreenshots",
-                                        "tenInchScreenshots"
+                                        "tenInchScreenshots",
+                                        "tvBanner",
+                                        "tvScreenshots"
                                     ],
                                     "enumDescriptions": [
+                                        "",
+                                        "",
                                         "",
                                         "",
                                         "",
@@ -983,9 +987,13 @@
                                         "phoneScreenshots",
                                         "promoGraphic",
                                         "sevenInchScreenshots",
-                                        "tenInchScreenshots"
+                                        "tenInchScreenshots",
+                                        "tvBanner",
+                                        "tvScreenshots"
                                     ],
                                     "enumDescriptions": [
+                                        "",
+                                        "",
                                         "",
                                         "",
                                         "",
@@ -1042,9 +1050,13 @@
                                         "phoneScreenshots",
                                         "promoGraphic",
                                         "sevenInchScreenshots",
-                                        "tenInchScreenshots"
+                                        "tenInchScreenshots",
+                                        "tvBanner",
+                                        "tvScreenshots"
                                     ],
                                     "enumDescriptions": [
+                                        "",
+                                        "",
                                         "",
                                         "",
                                         "",
@@ -1117,9 +1129,13 @@
                                         "phoneScreenshots",
                                         "promoGraphic",
                                         "sevenInchScreenshots",
-                                        "tenInchScreenshots"
+                                        "tenInchScreenshots",
+                                        "tvBanner",
+                                        "tvScreenshots"
                                     ],
                                     "enumDescriptions": [
+                                        "",
+                                        "",
                                         "",
                                         "",
                                         "",
@@ -2154,7 +2170,7 @@
             }
         }
     },
-    "revision": "20141022",
+    "revision": "20141111",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Apk": {

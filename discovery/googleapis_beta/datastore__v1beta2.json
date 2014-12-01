@@ -20,7 +20,7 @@
     "description": "API for accessing Google Cloud Datastore.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/datastore/",
-    "etag": "\"l66ggWbucbkBw9Lpos72oziyefE/LDhSkY4UxrCPhfQmh9G4U2uaRlU\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/LDhSkY4UxrCPhfQmh9G4U2uaRlU\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
