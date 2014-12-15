@@ -41,8 +41,8 @@ class TagmanagerApi {
 
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
 
-  TagmanagerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "tagmanager/v1/");
+  TagmanagerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "tagmanager/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

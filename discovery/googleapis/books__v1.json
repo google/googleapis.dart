@@ -14,7 +14,7 @@
     "description": "Lets you search for books and manage your Google Books library.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/dPbUdi5gPnAdRztFfCAhfKJ-jSQ\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/YgyXWJOaz5Ed1XjmHrSKw1DsJks\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/ebooks-16.png",
         "x32": "https://www.google.com/images/icons/product/ebooks-32.png"
@@ -719,6 +719,18 @@
         },
         "myconfig": {
             "methods": {
+                "getUserSettings": {
+                    "description": "Gets the current settings for the user.",
+                    "httpMethod": "GET",
+                    "id": "books.myconfig.getUserSettings",
+                    "path": "myconfig/getUserSettings",
+                    "response": {
+                        "$ref": "Usersettings"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/books"
+                    ]
+                },
                 "releaseDownloadAccess": {
                     "description": "Release downloaded content access restriction.",
                     "httpMethod": "POST",
@@ -884,6 +896,21 @@
                     "path": "myconfig/syncVolumeLicenses",
                     "response": {
                         "$ref": "Volumes"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/books"
+                    ]
+                },
+                "updateUserSettings": {
+                    "description": "Sets the settings for the user. Unspecified sub-objects will retain the existing value.",
+                    "httpMethod": "POST",
+                    "id": "books.myconfig.updateUserSettings",
+                    "path": "myconfig/updateUserSettings",
+                    "request": {
+                        "$ref": "Usersettings"
+                    },
+                    "response": {
+                        "$ref": "Usersettings"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/books"
@@ -1480,6 +1507,65 @@
                             ]
                         }
                     }
+                }
+            }
+        },
+        "onboarding": {
+            "methods": {
+                "listCategories": {
+                    "description": "List categories for onboarding experience.",
+                    "httpMethod": "GET",
+                    "id": "books.onboarding.listCategories",
+                    "parameters": {
+                        "locale": {
+                            "description": "ISO-639-1 language and ISO-3166-1 country code. Default is en-US if unset.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "onboarding/listCategories",
+                    "response": {
+                        "$ref": "Category"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/books"
+                    ]
+                },
+                "listCategoryVolumes": {
+                    "description": "List available volumes under categories for onboarding experience.",
+                    "httpMethod": "GET",
+                    "id": "books.onboarding.listCategoryVolumes",
+                    "parameters": {
+                        "categoryId": {
+                            "description": "List of category ids requested.",
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "locale": {
+                            "description": "ISO-639-1 language and ISO-3166-1 country code. Default is en-US if unset.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "description": "Number of maximum results per page to be included in the response.",
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "The value of the nextToken from the previous page.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "onboarding/listCategoryVolumes",
+                    "response": {
+                        "$ref": "Volume2"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/books"
+                    ]
                 }
             }
         },
@@ -2101,7 +2187,7 @@
             }
         }
     },
-    "revision": "20141112",
+    "revision": "20141113",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {
@@ -2490,6 +2576,35 @@
                 },
                 "kind": {
                     "default": "books#bookshelves",
+                    "description": "Resource type.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Category": {
+            "id": "Category",
+            "properties": {
+                "items": {
+                    "description": "A list of onboarding categories.",
+                    "items": {
+                        "properties": {
+                            "badgeUrl": {
+                                "type": "string"
+                            },
+                            "categoryId": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "onboarding#category",
                     "description": "Resource type.",
                     "type": "string"
                 }
@@ -3242,6 +3357,29 @@
             },
             "type": "object"
         },
+        "Usersettings": {
+            "id": "Usersettings",
+            "properties": {
+                "kind": {
+                    "default": "books#usersettings",
+                    "description": "Resource type.",
+                    "type": "string"
+                },
+                "notesExport": {
+                    "description": "User settings in sub-objects, each for different purposes.",
+                    "properties": {
+                        "folderName": {
+                            "type": "string"
+                        },
+                        "isEnabled": {
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "Volume": {
             "id": "Volume",
             "properties": {
@@ -3743,6 +3881,27 @@
                         }
                     },
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Volume2": {
+            "id": "Volume2",
+            "properties": {
+                "items": {
+                    "description": "A list of volumes.",
+                    "items": {
+                        "$ref": "Volume"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "onboarding#volume",
+                    "description": "Resource type.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "type": "string"
                 }
             },
             "type": "object"

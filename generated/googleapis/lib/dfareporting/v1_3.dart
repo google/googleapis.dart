@@ -26,8 +26,8 @@ class DfareportingApi {
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
   UserProfilesResourceApi get userProfiles => new UserProfilesResourceApi(_requester);
 
-  DfareportingApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "dfareporting/v1.3/");
+  DfareportingApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "dfareporting/v1.3/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

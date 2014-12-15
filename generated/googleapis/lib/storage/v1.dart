@@ -37,8 +37,8 @@ class StorageApi {
   ObjectAccessControlsResourceApi get objectAccessControls => new ObjectAccessControlsResourceApi(_requester);
   ObjectsResourceApi get objects => new ObjectsResourceApi(_requester);
 
-  StorageApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "storage/v1/");
+  StorageApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "storage/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -477,6 +477,21 @@ class BucketsResourceApi {
    * - "publicReadWrite" : Project team owners get OWNER access, and allUsers
    * get WRITER access.
    *
+   * [predefinedDefaultObjectAcl] - Apply a predefined set of default object
+   * access controls to this bucket.
+   * Possible string values are:
+   * - "authenticatedRead" : Object owner gets OWNER access, and
+   * allAuthenticatedUsers get READER access.
+   * - "bucketOwnerFullControl" : Object owner gets OWNER access, and project
+   * team owners get OWNER access.
+   * - "bucketOwnerRead" : Object owner gets OWNER access, and project team
+   * owners get READER access.
+   * - "private" : Object owner gets OWNER access.
+   * - "projectPrivate" : Object owner gets OWNER access, and project team
+   * members get access according to their roles.
+   * - "publicRead" : Object owner gets OWNER access, and allUsers get READER
+   * access.
+   *
    * [projection] - Set of properties to return. Defaults to noAcl, unless the
    * bucket resource specifies acl or defaultObjectAcl properties, when it
    * defaults to full.
@@ -492,7 +507,7 @@ class BucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Bucket> insert(Bucket request, core.String project, {core.String predefinedAcl, core.String projection}) {
+  async.Future<Bucket> insert(Bucket request, core.String project, {core.String predefinedAcl, core.String predefinedDefaultObjectAcl, core.String projection}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -509,6 +524,9 @@ class BucketsResourceApi {
     _queryParams["project"] = [project];
     if (predefinedAcl != null) {
       _queryParams["predefinedAcl"] = [predefinedAcl];
+    }
+    if (predefinedDefaultObjectAcl != null) {
+      _queryParams["predefinedDefaultObjectAcl"] = [predefinedDefaultObjectAcl];
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
@@ -616,6 +634,21 @@ class BucketsResourceApi {
    * - "publicReadWrite" : Project team owners get OWNER access, and allUsers
    * get WRITER access.
    *
+   * [predefinedDefaultObjectAcl] - Apply a predefined set of default object
+   * access controls to this bucket.
+   * Possible string values are:
+   * - "authenticatedRead" : Object owner gets OWNER access, and
+   * allAuthenticatedUsers get READER access.
+   * - "bucketOwnerFullControl" : Object owner gets OWNER access, and project
+   * team owners get OWNER access.
+   * - "bucketOwnerRead" : Object owner gets OWNER access, and project team
+   * owners get READER access.
+   * - "private" : Object owner gets OWNER access.
+   * - "projectPrivate" : Object owner gets OWNER access, and project team
+   * members get access according to their roles.
+   * - "publicRead" : Object owner gets OWNER access, and allUsers get READER
+   * access.
+   *
    * [projection] - Set of properties to return. Defaults to full.
    * Possible string values are:
    * - "full" : Include all properties.
@@ -629,7 +662,7 @@ class BucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Bucket> patch(Bucket request, core.String bucket, {core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String projection}) {
+  async.Future<Bucket> patch(Bucket request, core.String bucket, {core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String predefinedDefaultObjectAcl, core.String projection}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -651,6 +684,9 @@ class BucketsResourceApi {
     }
     if (predefinedAcl != null) {
       _queryParams["predefinedAcl"] = [predefinedAcl];
+    }
+    if (predefinedDefaultObjectAcl != null) {
+      _queryParams["predefinedDefaultObjectAcl"] = [predefinedDefaultObjectAcl];
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
@@ -698,6 +734,21 @@ class BucketsResourceApi {
    * - "publicReadWrite" : Project team owners get OWNER access, and allUsers
    * get WRITER access.
    *
+   * [predefinedDefaultObjectAcl] - Apply a predefined set of default object
+   * access controls to this bucket.
+   * Possible string values are:
+   * - "authenticatedRead" : Object owner gets OWNER access, and
+   * allAuthenticatedUsers get READER access.
+   * - "bucketOwnerFullControl" : Object owner gets OWNER access, and project
+   * team owners get OWNER access.
+   * - "bucketOwnerRead" : Object owner gets OWNER access, and project team
+   * owners get READER access.
+   * - "private" : Object owner gets OWNER access.
+   * - "projectPrivate" : Object owner gets OWNER access, and project team
+   * members get access according to their roles.
+   * - "publicRead" : Object owner gets OWNER access, and allUsers get READER
+   * access.
+   *
    * [projection] - Set of properties to return. Defaults to full.
    * Possible string values are:
    * - "full" : Include all properties.
@@ -711,7 +762,7 @@ class BucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Bucket> update(Bucket request, core.String bucket, {core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String projection}) {
+  async.Future<Bucket> update(Bucket request, core.String bucket, {core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String predefinedDefaultObjectAcl, core.String projection}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -733,6 +784,9 @@ class BucketsResourceApi {
     }
     if (predefinedAcl != null) {
       _queryParams["predefinedAcl"] = [predefinedAcl];
+    }
+    if (predefinedDefaultObjectAcl != null) {
+      _queryParams["predefinedDefaultObjectAcl"] = [predefinedDefaultObjectAcl];
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];

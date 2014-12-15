@@ -27,8 +27,8 @@ class TasksApi {
   TasklistsResourceApi get tasklists => new TasklistsResourceApi(_requester);
   TasksResourceApi get tasks => new TasksResourceApi(_requester);
 
-  TasksApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "tasks/v1/");
+  TasksApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "tasks/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

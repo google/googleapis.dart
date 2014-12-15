@@ -1,3 +1,14 @@
+## 0.5.1
+
+* [apis-new] fusiontables:v2: API added
+* [apis] adexchangebuyer:v1.3: method/schema changes
+* [apis] admin_directory:v1: schema changes
+* [apis] books:v1: method/schema changes
+* [apis] compute:v1: method changes
+* [apis] storage:v1: method changes
+* [apis] youtube:v3: schema changes
+* [generator] Roll to include optional rootUrl/servicePath arguments.
+
 ## 0.5.0
 
 * [apis] bigquery:v2: schema changes

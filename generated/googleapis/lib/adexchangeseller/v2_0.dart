@@ -29,8 +29,8 @@ class AdexchangesellerApi {
 
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
 
-  AdexchangesellerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "adexchangeseller/v2.0/");
+  AdexchangesellerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "adexchangeseller/v2.0/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

@@ -20,7 +20,7 @@
     "description": "The Google Compute Engine Instance Group Updater API provides services for updating groups of Compute Engine Instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/p4N2iDg-K9khNxP-otwGtbGFX0M\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/zv-VBZvN3ZIDa4AbjKdO47MpqOo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -94,14 +94,15 @@
                     ],
                     "parameters": {
                         "instanceGroupManager": {
-                            "description": "Name of the instance group manager for this request.",
+                            "description": "The name of the instance group manager.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "project": {
-                            "description": "Project ID for this request.",
+                            "description": "The Google Developers Console project name.",
                             "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
                             "type": "string"
                         },
@@ -112,7 +113,7 @@
                             "type": "string"
                         },
                         "zone": {
-                            "description": "Zone for the instance group manager.",
+                            "description": "The name of the zone in which the update's target resides.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -136,14 +137,15 @@
                     ],
                     "parameters": {
                         "instanceGroupManager": {
-                            "description": "Name of the instance group manager for this request.",
+                            "description": "The name of the instance group manager.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "project": {
-                            "description": "Project ID for this request.",
+                            "description": "The Google Developers Console project name.",
                             "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
                             "type": "string"
                         },
@@ -154,7 +156,7 @@
                             "type": "string"
                         },
                         "zone": {
-                            "description": "Zone for the instance group manager.",
+                            "description": "The name of the zone in which the update's target resides.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -181,19 +183,20 @@
                     ],
                     "parameters": {
                         "instanceGroupManager": {
-                            "description": "Name of the instance group manager for this request.",
+                            "description": "The name of the instance group manager.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "project": {
-                            "description": "Project ID for this request.",
+                            "description": "The Google Developers Console project name.",
                             "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
                             "type": "string"
                         },
                         "zone": {
-                            "description": "Zone for the instance group manager.",
+                            "description": "The name of the zone in which the update's target resides.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -222,7 +225,7 @@
                     ],
                     "parameters": {
                         "instanceGroupManager": {
-                            "description": "Name of the instance group manager for this request.",
+                            "description": "The name of the instance group manager.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -242,13 +245,14 @@
                             "type": "string"
                         },
                         "project": {
-                            "description": "Project ID for this request.",
+                            "description": "The Google Developers Console project name.",
                             "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
                             "type": "string"
                         },
                         "zone": {
-                            "description": "Zone for the instance group manager.",
+                            "description": "The name of the zone in which the update's target resides.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -257,6 +261,67 @@
                     "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updates",
                     "response": {
                         "$ref": "UpdateList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/replicapool",
+                        "https://www.googleapis.com/auth/replicapool.readonly"
+                    ]
+                },
+                "listInstanceUpdates": {
+                    "description": "Called on the particular Update endpoint. Lists instance updates for a given update.",
+                    "httpMethod": "GET",
+                    "id": "replicapoolupdater.updates.listInstanceUpdates",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroupManager",
+                        "update"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "description": "The name of the instance group manager.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "50",
+                            "description": "Maximum count of results to be returned. Acceptable values are 1 to 100, inclusive. (Default: 50)",
+                            "format": "int32",
+                            "location": "query",
+                            "maximum": "100",
+                            "minimum": "1",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Set this to the nextPageToken value returned by a previous list request to obtain the next page of results from the previous list request.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "The Google Developers Console project name.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "update": {
+                            "description": "Unique (in the context of a group) handle of an update.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The name of the zone in which the update's target resides.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updates/{update}/instanceUpdates",
+                    "response": {
+                        "$ref": "InstanceUpdateList"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
@@ -276,14 +341,15 @@
                     ],
                     "parameters": {
                         "instanceGroupManager": {
-                            "description": "Name of the instance group manager for this request.",
+                            "description": "The name of the instance group manager.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "project": {
-                            "description": "Project ID for this request.",
+                            "description": "The Google Developers Console project name.",
                             "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
                             "type": "string"
                         },
@@ -294,7 +360,7 @@
                             "type": "string"
                         },
                         "zone": {
-                            "description": "Zone for the instance group manager.",
+                            "description": "The name of the zone in which the update's target resides.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -318,14 +384,15 @@
                     ],
                     "parameters": {
                         "instanceGroupManager": {
-                            "description": "Name of the instance group manager for this request.",
+                            "description": "The name of the instance group manager.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "project": {
-                            "description": "Project ID for this request.",
+                            "description": "The Google Developers Console project name.",
                             "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
                             "type": "string"
                         },
@@ -336,7 +403,7 @@
                             "type": "string"
                         },
                         "zone": {
-                            "description": "Zone for the instance group manager.",
+                            "description": "The name of the zone in which the update's target resides.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -360,14 +427,15 @@
                     ],
                     "parameters": {
                         "instanceGroupManager": {
-                            "description": "Name of the instance group manager for this request.",
+                            "description": "The name of the instance group manager.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "project": {
-                            "description": "Project ID for this request.",
+                            "description": "The Google Developers Console project name.",
                             "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
                             "type": "string"
                         },
@@ -378,7 +446,7 @@
                             "type": "string"
                         },
                         "zone": {
-                            "description": "Zone for the instance group manager.",
+                            "description": "The name of the zone in which the update's target resides.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -393,7 +461,7 @@
             }
         }
     },
-    "revision": "20141117",
+    "revision": "20141123",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InsertResponse": {
@@ -411,67 +479,112 @@
             "description": "Update of a single instance.",
             "id": "InstanceUpdate",
             "properties": {
-                "instanceName": {
-                    "description": "Name of an instance.",
+                "instance": {
+                    "description": "URL of the instance being updated.",
                     "type": "string"
                 },
                 "state": {
-                    "description": "State of an instance update. Possible values are:  \n- \"PENDING/code>\": The instance update is pending execution. \n- \"ROLLING_FORWARD\": The instance update is going forward. \n- \"ROLLING_BACK\": The instance update being rolled back. \n- \"PAUSED\": The instance update is temporarily paused (inactive). \n- \"ROLLED_OUT\": The instance update is finished, the instance is running the new template. \n- \"ROLLED_BACK\": The instance update is finished, the instance has been reverted to the previous template. \n- \"CANCELLED\": The instance update is paused and no longer can be resumed, undefined in which template the instance is running.",
+                    "description": "State of the instance update. Possible values are:  \n- \"PENDING/code>\": The instance update is pending execution. \n- \"ROLLING_FORWARD\": The instance update is going forward. \n- \"ROLLING_BACK\": The instance update is being rolled back. \n- \"PAUSED\": The instance update is temporarily paused (inactive). \n- \"ROLLED_OUT\": The instance update is finished, the instance is running the new template. \n- \"ROLLED_BACK\": The instance update is finished, the instance has been reverted to the previous template. \n- \"CANCELLED\": The instance update is paused and no longer can be resumed, undefined in which template the instance is running.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Status of the instance update. Possible values are:  \n- \"PENDING/code>\": The instance update is pending execution. \n- \"ROLLING_FORWARD\": The instance update is going forward. \n- \"ROLLING_BACK\": The instance update is being rolled back. \n- \"PAUSED\": The instance update is temporarily paused (inactive). \n- \"ROLLED_OUT\": The instance update is finished, the instance is running the new template. \n- \"ROLLED_BACK\": The instance update is finished, the instance has been reverted to the previous template. \n- \"CANCELLED\": The instance update is paused and no longer can be resumed, undefined in which template the instance is running.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
-        "Update": {
-            "description": "Resource describing a single update (rollout) of an instance group to the given template.",
-            "id": "Update",
+        "InstanceUpdateList": {
+            "description": "Response returned by ListInstanceUpdates method.",
+            "id": "InstanceUpdateList",
             "properties": {
-                "creationTimestamp": {
-                    "description": "[Output only] The time the update was created, in RFC3339 text format.",
-                    "type": "string"
-                },
-                "details": {
-                    "description": "[Output only] Human-readable description of an update progress.",
-                    "type": "string"
-                },
-                "handle": {
-                    "description": "[Output only] Unique (in the context of a group) handle assigned to this update.",
-                    "type": "string"
-                },
-                "instanceTemplate": {
-                    "description": "Url of an instance template to be applied.",
-                    "type": "string"
-                },
-                "instanceUpdates": {
-                    "description": "[Output only] Collection of instance updates.",
+                "items": {
+                    "description": "A list of instance updates.",
                     "items": {
                         "$ref": "InstanceUpdate"
                     },
                     "type": "array"
                 },
                 "kind": {
+                    "default": "replicapoolupdater#instanceUpdateList",
+                    "description": "[Output Only] Type of the resource.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "A token used to continue a truncated list request (output only).",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] The fully qualified URL for the resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Update": {
+            "description": "Resource describing a single update (rollout) of a group of instances to the given template.",
+            "id": "Update",
+            "properties": {
+                "creationTimestamp": {
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
+                    "type": "string"
+                },
+                "details": {
+                    "description": "[Output Only] An optional textual description of the current status of the update.",
+                    "type": "string"
+                },
+                "handle": {
+                    "description": "[Output Only] Unique (in the context of a group) handle assigned to this update.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+                    "type": "string"
+                },
+                "instanceGroupManager": {
+                    "description": "[Output Only] URL of an instance group manager being updated.",
+                    "type": "string"
+                },
+                "instanceTemplate": {
+                    "description": "URL of an instance template to be applied.",
+                    "type": "string"
+                },
+                "kind": {
                     "default": "replicapoolupdater#update",
-                    "description": "[Output only] The resource type. Always replicapoolupdater#update.",
+                    "description": "[Output Only] Type of the resource.",
                     "type": "string"
                 },
                 "policy": {
                     "$ref": "UpdatePolicy",
                     "description": "Parameters of an update process."
                 },
+                "progress": {
+                    "description": "[Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess at when the update will be complete. This number should be monotonically increasing as the update progresses.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "selfLink": {
-                    "description": "[Output only] The fully qualified URL for this resource.",
+                    "description": "[Output Only] The fully qualified URL for the resource.",
                     "type": "string"
                 },
                 "state": {
-                    "description": "[Output only] Current state of an update. Possible values are:  \n- \"ROLLING_FORWARD\": The update is going forward. \n- \"ROLLING_BACK\": The update is being rolled back. \n- \"PAUSED\": The update is temporarily paused (inactive). \n- \"ROLLED_OUT\": The update is finished, all instances have been updated successfully. \n- \"ROLLED_BACK\": The update is finished, all instances have been reverted to the previous template. \n- \"CANCELLED\": The update is paused and no longer can be resumed, undefined how many instances are running in which template.",
+                    "description": "[Output Only] Current state of the update. Possible values are:  \n- \"ROLLING_FORWARD\": The update is going forward. \n- \"ROLLING_BACK\": The update is being rolled back. \n- \"PAUSED\": The update is temporarily paused (inactive). \n- \"ROLLED_OUT\": The update is finished, all instances have been updated successfully. \n- \"ROLLED_BACK\": The update is finished, all instances have been reverted to the previous template. \n- \"CANCELLED\": The update is paused and no longer can be resumed, undefined how many instances are running in which template.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "[Output Only] Status of the update. Possible values are:  \n- \"ROLLING_FORWARD\": The update is going forward. \n- \"ROLLING_BACK\": The update is being rolled back. \n- \"PAUSED\": The update is temporarily paused (inactive). \n- \"ROLLED_OUT\": The update is finished, all instances have been updated successfully. \n- \"ROLLED_BACK\": The update is finished, all instances have been reverted to the previous template. \n- \"CANCELLED\": The update is paused and no longer can be resumed, undefined how many instances are running in which template.",
+                    "type": "string"
+                },
+                "statusMessage": {
+                    "description": "[Output Only] An optional textual description of the current status of the update.",
                     "type": "string"
                 },
                 "targetState": {
-                    "description": "[Output only] Requested state of an update. This is the state that the updater is moving towards. Acceptable values are:  \n- \"ROLLED_OUT\": The user has requested the update to go forward. \n- \"ROLLED_BACK\": The user has requested the update to be rolled back. \n- \"PAUSED\": The user has requested the update to be paused.\n \n- \"CANCELLED\": The user has requested the update to be cancelled. The updater service is in the process of canceling the update.",
+                    "description": "[Output Only] Requested state of the update. This is the state that the updater is moving towards. Acceptable values are:  \n- \"ROLLED_OUT\": The user has requested the update to go forward. \n- \"ROLLED_BACK\": The user has requested the update to be rolled back. \n- \"PAUSED\": The user has requested the update to be paused.\n \n- \"CANCELLED\": The user has requested the update to be cancelled. The updater service is in the process of canceling the update.",
                     "type": "string"
                 },
                 "user": {
-                    "description": "[Output only] User who requested the update, for example: user@example.com.",
+                    "description": "[Output Only] User who requested the update, for example: user@example.com.",
                     "type": "string"
                 }
             },
@@ -482,14 +595,23 @@
             "id": "UpdateList",
             "properties": {
                 "items": {
-                    "description": "Collection of requested updates.",
+                    "description": "A list of update resources.",
                     "items": {
                         "$ref": "Update"
                     },
                     "type": "array"
                 },
+                "kind": {
+                    "default": "replicapoolupdater#updateList",
+                    "description": "[Output Only] Type of the resource.",
+                    "type": "string"
+                },
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request.",
+                    "description": "A token used to continue a truncated list request (output only).",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] The fully qualified URL for the resource.",
                     "type": "string"
                 }
             },

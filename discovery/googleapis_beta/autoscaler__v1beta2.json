@@ -17,7 +17,7 @@
     "description": "The Google Compute Engine Autoscaler API provides autoscaling for groups of Cloud VMs.",
     "discoveryVersion": "v1",
     "documentationLink": "http://developers.google.com/compute/docs/autoscaler",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/5UzSOWUO3ZYn_NUebnJd-hd4w8w\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/nHGuU-ZWpZ4KpLWJiQ2L2nYZjNQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -484,7 +484,7 @@
             }
         }
     },
-    "revision": "20141024",
+    "revision": "20141112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Autoscaler": {
@@ -702,7 +702,7 @@
                 },
                 "kind": {
                     "default": "autoscaler#operation",
-                    "description": "Type of the resource.",
+                    "description": "[Output Only] Type of the resource. Always kind#operation for Operation resources.",
                     "type": "string"
                 },
                 "name": {
@@ -788,7 +788,7 @@
                 },
                 "kind": {
                     "default": "autoscaler#operationList",
-                    "description": "Type of resource.",
+                    "description": "Type of resource. Always compute#operations for Operations resource.",
                     "type": "string"
                 },
                 "nextPageToken": {

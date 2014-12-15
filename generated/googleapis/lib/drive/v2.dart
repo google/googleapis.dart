@@ -56,8 +56,8 @@ class DriveApi {
   RepliesResourceApi get replies => new RepliesResourceApi(_requester);
   RevisionsResourceApi get revisions => new RevisionsResourceApi(_requester);
 
-  DriveApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "drive/v2/");
+  DriveApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "drive/v2/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -6203,8 +6203,9 @@ class Permission {
   core.String domain;
 
   /**
-   * The email address of the user this permission refers to. This is an
-   * output-only field which is present when the permission type is user.
+   * The email address of the user or group this permission refers to. This is
+   * an output-only field which is present when the permission type is user or
+   * group.
    */
   core.String emailAddress;
 

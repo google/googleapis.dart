@@ -20,8 +20,8 @@ class LicensingApi {
 
   LicenseAssignmentsResourceApi get licenseAssignments => new LicenseAssignmentsResourceApi(_requester);
 
-  LicensingApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "apps/licensing/v1/product/");
+  LicensingApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "apps/licensing/v1/product/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

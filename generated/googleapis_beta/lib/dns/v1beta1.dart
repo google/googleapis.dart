@@ -35,8 +35,8 @@ class DnsApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
   ResourceRecordSetsResourceApi get resourceRecordSets => new ResourceRecordSetsResourceApi(_requester);
 
-  DnsApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "dns/v1beta1/projects/");
+  DnsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "dns/v1beta1/projects/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -722,8 +722,17 @@ class ManagedZone {
 
   /**
    * User assigned name for this resource. Must be unique within the project.
+   * The name must be 1-32 characters long, must begin with a letter, end with a
+   * letter or digit, and only contain lowercase letters, digits or dashes.
    */
   core.String name;
+
+  /**
+   * Optionally specifies the NameServerSet for this ManagedZone. A
+   * NameServerSet is a set of DNS name servers that all host the same
+   * ManagedZones. Most users will leave this field unset.
+   */
+  core.String nameServerSet;
 
   /**
    * Delegate your managed_zone to these virtual name servers; defined by the
@@ -753,6 +762,9 @@ class ManagedZone {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("nameServerSet")) {
+      nameServerSet = _json["nameServerSet"];
+    }
     if (_json.containsKey("nameServers")) {
       nameServers = _json["nameServers"];
     }
@@ -777,6 +789,9 @@ class ManagedZone {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (nameServerSet != null) {
+      _json["nameServerSet"] = nameServerSet;
     }
     if (nameServers != null) {
       _json["nameServers"] = nameServers;

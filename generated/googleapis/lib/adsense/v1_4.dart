@@ -38,8 +38,8 @@ class AdsenseApi {
   SavedadstylesResourceApi get savedadstyles => new SavedadstylesResourceApi(_requester);
   UrlchannelsResourceApi get urlchannels => new UrlchannelsResourceApi(_requester);
 
-  AdsenseApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "adsense/v1.4/");
+  AdsenseApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "adsense/v1.4/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

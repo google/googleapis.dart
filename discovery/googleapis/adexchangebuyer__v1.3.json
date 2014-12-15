@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/C3mhoy7cA_Im1BTsfmai3rrE394\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/TNq58uhDuCyuU5JtNXwx-a0s4AI\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -199,6 +199,112 @@
                     "path": "billinginfo",
                     "response": {
                         "$ref": "BillingInfoList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                    ]
+                }
+            }
+        },
+        "budget": {
+            "methods": {
+                "get": {
+                    "description": "Returns the budget information for the adgroup specified by the accountId and billingId.",
+                    "httpMethod": "GET",
+                    "id": "adexchangebuyer.budget.get",
+                    "parameterOrder": [
+                        "accountId",
+                        "billingId"
+                    ],
+                    "parameters": {
+                        "accountId": {
+                            "description": "The account id to get the budget information for.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "billingId": {
+                            "description": "The billing id to get the budget information for.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "billinginfo/{accountId}/{billingId}",
+                    "response": {
+                        "$ref": "Budget"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                    ]
+                },
+                "patch": {
+                    "description": "Updates the budget amount for the budget of the adgroup specified by the accountId and billingId, with the budget amount in the request. This method supports patch semantics.",
+                    "httpMethod": "PATCH",
+                    "id": "adexchangebuyer.budget.patch",
+                    "parameterOrder": [
+                        "accountId",
+                        "billingId"
+                    ],
+                    "parameters": {
+                        "accountId": {
+                            "description": "The account id associated with the budget being updated.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "billingId": {
+                            "description": "The billing id associated with the budget being updated.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "billinginfo/{accountId}/{billingId}",
+                    "request": {
+                        "$ref": "Budget"
+                    },
+                    "response": {
+                        "$ref": "Budget"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                    ]
+                },
+                "update": {
+                    "description": "Updates the budget amount for the budget of the adgroup specified by the accountId and billingId, with the budget amount in the request.",
+                    "httpMethod": "PUT",
+                    "id": "adexchangebuyer.budget.update",
+                    "parameterOrder": [
+                        "accountId",
+                        "billingId"
+                    ],
+                    "parameters": {
+                        "accountId": {
+                            "description": "The account id associated with the budget being updated.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "billingId": {
+                            "description": "The billing id associated with the budget being updated.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "billinginfo/{accountId}/{billingId}",
+                    "request": {
+                        "$ref": "Budget"
+                    },
+                    "response": {
+                        "$ref": "Budget"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/adexchange.buyer"
@@ -593,7 +699,7 @@
             }
         }
     },
-    "revision": "20141113",
+    "revision": "20141123",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -719,6 +825,41 @@
                 "kind": {
                     "default": "adexchangebuyer#billingInfoList",
                     "description": "Resource type.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Budget": {
+            "description": "The configuration data for Ad Exchange RTB - Budget API.",
+            "id": "Budget",
+            "properties": {
+                "accountId": {
+                    "description": "The id of the account. This is required for get and update requests.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "billingId": {
+                    "description": "The billing id to determine which adgroup to provide budget information for. This is required for get and update requests.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "budgetAmount": {
+                    "description": "The budget amount to apply for the billingId provided. This is required for update requests.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "currencyCode": {
+                    "description": "The currency code for the buyer. This cannot be altered here.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The unique id that describes this item.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "adexchangebuyer#budget",
+                    "description": "The kind of the resource, i.e. \"adexchangebuyer#budget\".",
                     "type": "string"
                 }
             },

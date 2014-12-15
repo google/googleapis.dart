@@ -22,8 +22,8 @@ class TranslateApi {
   LanguagesResourceApi get languages => new LanguagesResourceApi(_requester);
   TranslationsResourceApi get translations => new TranslationsResourceApi(_requester);
 
-  TranslateApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "language/translate/");
+  TranslateApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "language/translate/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

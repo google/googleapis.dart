@@ -40,8 +40,9 @@ buildInstanceUpdate() {
   var o = new api.InstanceUpdate();
   buildCounterInstanceUpdate++;
   if (buildCounterInstanceUpdate < 3) {
-    o.instanceName = "foo";
+    o.instance = "foo";
     o.state = "foo";
+    o.status = "foo";
   }
   buildCounterInstanceUpdate--;
   return o;
@@ -50,23 +51,49 @@ buildInstanceUpdate() {
 checkInstanceUpdate(api.InstanceUpdate o) {
   buildCounterInstanceUpdate++;
   if (buildCounterInstanceUpdate < 3) {
-    unittest.expect(o.instanceName, unittest.equals('foo'));
+    unittest.expect(o.instance, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
+    unittest.expect(o.status, unittest.equals('foo'));
   }
   buildCounterInstanceUpdate--;
 }
 
-buildUnnamed1402() {
+buildUnnamed1305() {
   var o = new core.List<api.InstanceUpdate>();
   o.add(buildInstanceUpdate());
   o.add(buildInstanceUpdate());
   return o;
 }
 
-checkUnnamed1402(core.List<api.InstanceUpdate> o) {
+checkUnnamed1305(core.List<api.InstanceUpdate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstanceUpdate(o[0]);
   checkInstanceUpdate(o[1]);
+}
+
+core.int buildCounterInstanceUpdateList = 0;
+buildInstanceUpdateList() {
+  var o = new api.InstanceUpdateList();
+  buildCounterInstanceUpdateList++;
+  if (buildCounterInstanceUpdateList < 3) {
+    o.items = buildUnnamed1305();
+    o.kind = "foo";
+    o.nextPageToken = "foo";
+    o.selfLink = "foo";
+  }
+  buildCounterInstanceUpdateList--;
+  return o;
+}
+
+checkInstanceUpdateList(api.InstanceUpdateList o) {
+  buildCounterInstanceUpdateList++;
+  if (buildCounterInstanceUpdateList < 3) {
+    checkUnnamed1305(o.items);
+    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    unittest.expect(o.selfLink, unittest.equals('foo'));
+  }
+  buildCounterInstanceUpdateList--;
 }
 
 core.int buildCounterUpdate = 0;
@@ -77,12 +104,16 @@ buildUpdate() {
     o.creationTimestamp = "foo";
     o.details = "foo";
     o.handle = "foo";
+    o.id = "foo";
+    o.instanceGroupManager = "foo";
     o.instanceTemplate = "foo";
-    o.instanceUpdates = buildUnnamed1402();
     o.kind = "foo";
     o.policy = buildUpdatePolicy();
+    o.progress = 42;
     o.selfLink = "foo";
     o.state = "foo";
+    o.status = "foo";
+    o.statusMessage = "foo";
     o.targetState = "foo";
     o.user = "foo";
   }
@@ -96,26 +127,30 @@ checkUpdate(api.Update o) {
     unittest.expect(o.creationTimestamp, unittest.equals('foo'));
     unittest.expect(o.details, unittest.equals('foo'));
     unittest.expect(o.handle, unittest.equals('foo'));
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.instanceGroupManager, unittest.equals('foo'));
     unittest.expect(o.instanceTemplate, unittest.equals('foo'));
-    checkUnnamed1402(o.instanceUpdates);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUpdatePolicy(o.policy);
+    unittest.expect(o.progress, unittest.equals(42));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
+    unittest.expect(o.status, unittest.equals('foo'));
+    unittest.expect(o.statusMessage, unittest.equals('foo'));
     unittest.expect(o.targetState, unittest.equals('foo'));
     unittest.expect(o.user, unittest.equals('foo'));
   }
   buildCounterUpdate--;
 }
 
-buildUnnamed1403() {
+buildUnnamed1306() {
   var o = new core.List<api.Update>();
   o.add(buildUpdate());
   o.add(buildUpdate());
   return o;
 }
 
-checkUnnamed1403(core.List<api.Update> o) {
+checkUnnamed1306(core.List<api.Update> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpdate(o[0]);
   checkUpdate(o[1]);
@@ -126,8 +161,10 @@ buildUpdateList() {
   var o = new api.UpdateList();
   buildCounterUpdateList++;
   if (buildCounterUpdateList < 3) {
-    o.items = buildUnnamed1403();
+    o.items = buildUnnamed1306();
+    o.kind = "foo";
     o.nextPageToken = "foo";
+    o.selfLink = "foo";
   }
   buildCounterUpdateList--;
   return o;
@@ -136,8 +173,10 @@ buildUpdateList() {
 checkUpdateList(api.UpdateList o) {
   buildCounterUpdateList++;
   if (buildCounterUpdateList < 3) {
-    checkUnnamed1403(o.items);
+    checkUnnamed1306(o.items);
+    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    unittest.expect(o.selfLink, unittest.equals('foo'));
   }
   buildCounterUpdateList--;
 }
@@ -200,6 +239,15 @@ main() {
       var o = buildInstanceUpdate();
       var od = new api.InstanceUpdate.fromJson(o.toJson());
       checkInstanceUpdate(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-InstanceUpdateList", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildInstanceUpdateList();
+      var od = new api.InstanceUpdateList.fromJson(o.toJson());
+      checkInstanceUpdateList(od);
     });
   });
 
@@ -422,6 +470,55 @@ main() {
       }), true);
       res.list(arg_project, arg_zone, arg_instanceGroupManager, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.UpdateList response) {
         checkUpdateList(response);
+      })));
+    });
+
+    unittest.test("method--listInstanceUpdates", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.UpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).updates;
+      var arg_project = "foo";
+      var arg_zone = "foo";
+      var arg_instanceGroupManager = "foo";
+      var arg_update = "foo";
+      var arg_maxResults = 42;
+      var arg_pageToken = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildInstanceUpdateList());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.listInstanceUpdates(arg_project, arg_zone, arg_instanceGroupManager, arg_update, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.InstanceUpdateList response) {
+        checkInstanceUpdateList(response);
       })));
     });
 

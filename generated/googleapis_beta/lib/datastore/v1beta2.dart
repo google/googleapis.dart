@@ -29,8 +29,8 @@ class DatastoreApi {
 
   DatasetsResourceApi get datasets => new DatasetsResourceApi(_requester);
 
-  DatastoreApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "datastore/v1beta2/datasets/");
+  DatastoreApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "datastore/v1beta2/datasets/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

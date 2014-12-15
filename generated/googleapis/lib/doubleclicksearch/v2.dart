@@ -28,8 +28,8 @@ class DoubleclicksearchApi {
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
   SavedColumnsResourceApi get savedColumns => new SavedColumnsResourceApi(_requester);
 
-  DoubleclicksearchApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "doubleclicksearch/v2/");
+  DoubleclicksearchApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "doubleclicksearch/v2/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

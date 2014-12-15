@@ -1,4 +1,4 @@
-library googleapis.fusiontables.v1;
+library googleapis.fusiontables.v2;
 
 import "dart:core" as core;
 import "dart:collection" as collection;
@@ -31,7 +31,7 @@ class FusiontablesApi {
   TaskResourceApi get task => new TaskResourceApi(_requester);
   TemplateResourceApi get template => new TemplateResourceApi(_requester);
 
-  FusiontablesApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "fusiontables/v1/"}) :
+  FusiontablesApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "fusiontables/v2/"}) :
       _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
@@ -184,10 +184,9 @@ class ColumnResourceApi {
    *
    * [tableId] - Table whose columns are being listed.
    *
-   * [maxResults] - Maximum number of columns to return. Optional. Default is 5.
+   * [maxResults] - Maximum number of columns to return. Default is 5.
    *
    * [pageToken] - Continuation token specifying which result page to return.
-   * Optional.
    *
    * Completes with a [ColumnList].
    *
@@ -979,9 +978,9 @@ class TableResourceApi {
     if (_uploadMedia == null) {
       _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/import';
     } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/fusiontables/v1/tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/import';
+      _url = '/resumable/upload/fusiontables/v2/tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/import';
     } else {
-      _url = '/upload/fusiontables/v1/tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/import';
+      _url = '/upload/fusiontables/v2/tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/import';
     }
 
 
@@ -1046,9 +1045,9 @@ class TableResourceApi {
     if (_uploadMedia == null) {
       _url = 'tables/import';
     } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/fusiontables/v1/tables/import';
+      _url = '/resumable/upload/fusiontables/v2/tables/import';
     } else {
-      _url = '/upload/fusiontables/v1/tables/import';
+      _url = '/upload/fusiontables/v2/tables/import';
     }
 
 
@@ -1200,6 +1199,95 @@ class TableResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Table.fromJson(data));
+  }
+
+  /**
+   * Replaces rows of an existing table. Current rows remain visible until all
+   * replacement rows are ready.
+   *
+   * Request parameters:
+   *
+   * [tableId] - Table whose rows will be replaced.
+   *
+   * [delimiter] - The delimiter used to separate cell values. This can only
+   * consist of a single character. Default is ','.
+   *
+   * [encoding] - The encoding of the content. Default is UTF-8. Use
+   * 'auto-detect' if you are unsure of the encoding.
+   *
+   * [endLine] - The index of the last line to import, exclusive. 'endLine -
+   * startLine' rows will be imported. Default is to import through the end of
+   * the file. If endLine is negative, it is an offset from the end of the file;
+   * the imported content will exclude the last endLine lines.
+   *
+   * [isStrict] - Whether the CSV must have the same number of column values for
+   * each row. If true, throws an exception if the CSV does not not have the
+   * same number of columns. If false, rows with fewer column values will be
+   * padded with empty values. Default is true.
+   *
+   * [startLine] - The index of the first line from which to start importing,
+   * inclusive. Default is 0.
+   *
+   * [uploadMedia] - The media to upload.
+   *
+   * [uploadOptions] - Options for the media upload. Streaming Media without the
+   * length being known ahead of time is only supported via resumable uploads.
+   *
+   * Completes with a [Task].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Task> replaceRows(core.String tableId, {core.String delimiter, core.String encoding, core.int endLine, core.bool isStrict, core.int startLine, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (tableId == null) {
+      throw new core.ArgumentError("Parameter tableId is required.");
+    }
+    if (delimiter != null) {
+      _queryParams["delimiter"] = [delimiter];
+    }
+    if (encoding != null) {
+      _queryParams["encoding"] = [encoding];
+    }
+    if (endLine != null) {
+      _queryParams["endLine"] = ["${endLine}"];
+    }
+    if (isStrict != null) {
+      _queryParams["isStrict"] = ["${isStrict}"];
+    }
+    if (startLine != null) {
+      _queryParams["startLine"] = ["${startLine}"];
+    }
+
+    _uploadMedia =  uploadMedia;
+    _uploadOptions =  uploadOptions;
+
+    if (_uploadMedia == null) {
+      _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/replace';
+    } else if (_uploadOptions is common.ResumableUploadOptions) {
+      _url = '/resumable/upload/fusiontables/v2/tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/replace';
+    } else {
+      _url = '/upload/fusiontables/v2/tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/replace';
+    }
+
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Task.fromJson(data));
   }
 
   /**
@@ -1361,11 +1449,11 @@ class TaskResourceApi {
    *
    * [tableId] - Table whose tasks are being listed.
    *
-   * [maxResults] - Maximum number of columns to return. Optional. Default is 5.
+   * [maxResults] - Maximum number of tasks to return. Default is 5.
    *
-   * [pageToken] - null
+   * [pageToken] - Continuation token specifying which result page to return.
    *
-   * [startIndex] - null
+   * [startIndex] - Index of the first result returned in the current page.
    *
    * Completes with a [TaskList].
    *
@@ -1788,8 +1876,8 @@ class Bucket {
 
 
 /**
- * Optional identifier of the base column. If present, this column is derived
- * from the specified base column.
+ * Identifier of the base column. If present, this column is derived from the
+ * specified base column.
  */
 class ColumnBaseColumn {
   /**
@@ -1827,35 +1915,53 @@ class ColumnBaseColumn {
 }
 
 
-/** Specifies the id, name and type of a column in a table. */
+/** Specifies the details of a column in a table. */
 class Column {
   /**
-   * Optional identifier of the base column. If present, this column is derived
-   * from the specified base column.
+   * Identifier of the base column. If present, this column is derived from the
+   * specified base column.
    */
   ColumnBaseColumn baseColumn;
 
   /** Identifier for the column. */
   core.int columnId;
 
-  /** Optional column description. */
+  /** JSON schema for interpreting JSON in this column. */
+  core.String columnJsonSchema;
+
+  /** JSON object containing custom column properties. */
+  core.String columnPropertiesJson;
+
+  /** Column description. */
   core.String description;
 
+  /** Format pattern. */
+  core.String formatPattern;
+
   /**
-   * Optional column predicate. Used to map table to graph data model
-   * (subject,predicate,object) See
-   * http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/#data-model
+   * Column graph predicate.
+   * Used to map table to graph data model (subject,predicate,object)
+   * See http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/#data-model
    */
   core.String graphPredicate;
 
   /** Type name: a template for an individual column. */
   core.String kind;
 
-  /** Required name of the column. */
+  /** Name of the column. */
   core.String name;
 
-  /** Required type of the column. */
+  /** Type of the column. */
   core.String type;
+
+  /**
+   * List of valid values used to validate data and supply a drop-down list of
+   * values in the web application.
+   */
+  core.List<core.String> validValues;
+
+  /** If true, data entered via the web application is validated. */
+  core.bool validateData;
 
 
   Column();
@@ -1867,11 +1973,20 @@ class Column {
     if (_json.containsKey("columnId")) {
       columnId = _json["columnId"];
     }
+    if (_json.containsKey("columnJsonSchema")) {
+      columnJsonSchema = _json["columnJsonSchema"];
+    }
+    if (_json.containsKey("columnPropertiesJson")) {
+      columnPropertiesJson = _json["columnPropertiesJson"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
-    if (_json.containsKey("graph_predicate")) {
-      graphPredicate = _json["graph_predicate"];
+    if (_json.containsKey("formatPattern")) {
+      formatPattern = _json["formatPattern"];
+    }
+    if (_json.containsKey("graphPredicate")) {
+      graphPredicate = _json["graphPredicate"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1881,6 +1996,12 @@ class Column {
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
+    }
+    if (_json.containsKey("validValues")) {
+      validValues = _json["validValues"];
+    }
+    if (_json.containsKey("validateData")) {
+      validateData = _json["validateData"];
     }
   }
 
@@ -1892,11 +2013,20 @@ class Column {
     if (columnId != null) {
       _json["columnId"] = columnId;
     }
+    if (columnJsonSchema != null) {
+      _json["columnJsonSchema"] = columnJsonSchema;
+    }
+    if (columnPropertiesJson != null) {
+      _json["columnPropertiesJson"] = columnPropertiesJson;
+    }
     if (description != null) {
       _json["description"] = description;
     }
+    if (formatPattern != null) {
+      _json["formatPattern"] = formatPattern;
+    }
     if (graphPredicate != null) {
-      _json["graph_predicate"] = graphPredicate;
+      _json["graphPredicate"] = graphPredicate;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1906,6 +2036,12 @@ class Column {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    if (validValues != null) {
+      _json["validValues"] = validValues;
+    }
+    if (validateData != null) {
+      _json["validateData"] = validateData;
     }
     return _json;
   }
@@ -2687,26 +2823,24 @@ class StyleSettingList {
 }
 
 
-/**
- * Represents a table. Specifies the name, whether it is exportable,
- * description, attribution, and attribution link.
- */
+/** Represents a table. */
 class Table {
-  /** Optional attribution assigned to the table. */
+  /** Attribution assigned to the table. */
   core.String attribution;
 
   /** Optional link for attribution. */
   core.String attributionLink;
 
-  /**
-   * Optional base table identifier if this table is a view or merged table.
-   */
+  /** Base table identifier if this table is a view or merged table. */
   core.List<core.String> baseTableIds;
+
+  /** Default JSON schema for validating all JSON column properties. */
+  core.String columnPropertiesJsonSchema;
 
   /** Columns in the table. */
   core.List<Column> columns;
 
-  /** Optional description assigned to the table. */
+  /** Description assigned to the table. */
   core.String description;
 
   /** Variable for whether table is exportable. */
@@ -2718,11 +2852,17 @@ class Table {
   /** Name assigned to a table. */
   core.String name;
 
-  /** Optional sql that encodes the table definition for derived tables. */
+  /** SQL that encodes the table definition for derived tables. */
   core.String sql;
 
   /** Encrypted unique alphanumeric identifier for the table. */
   core.String tableId;
+
+  /** JSON object containing custom table properties. */
+  core.String tablePropertiesJson;
+
+  /** JSON schema for validating the JSON table properties. */
+  core.String tablePropertiesJsonSchema;
 
 
   Table();
@@ -2736,6 +2876,9 @@ class Table {
     }
     if (_json.containsKey("baseTableIds")) {
       baseTableIds = _json["baseTableIds"];
+    }
+    if (_json.containsKey("columnPropertiesJsonSchema")) {
+      columnPropertiesJsonSchema = _json["columnPropertiesJsonSchema"];
     }
     if (_json.containsKey("columns")) {
       columns = _json["columns"].map((value) => new Column.fromJson(value)).toList();
@@ -2758,6 +2901,12 @@ class Table {
     if (_json.containsKey("tableId")) {
       tableId = _json["tableId"];
     }
+    if (_json.containsKey("tablePropertiesJson")) {
+      tablePropertiesJson = _json["tablePropertiesJson"];
+    }
+    if (_json.containsKey("tablePropertiesJsonSchema")) {
+      tablePropertiesJsonSchema = _json["tablePropertiesJsonSchema"];
+    }
   }
 
   core.Map toJson() {
@@ -2770,6 +2919,9 @@ class Table {
     }
     if (baseTableIds != null) {
       _json["baseTableIds"] = baseTableIds;
+    }
+    if (columnPropertiesJsonSchema != null) {
+      _json["columnPropertiesJsonSchema"] = columnPropertiesJsonSchema;
     }
     if (columns != null) {
       _json["columns"] = columns.map((value) => (value).toJson()).toList();
@@ -2791,6 +2943,12 @@ class Table {
     }
     if (tableId != null) {
       _json["tableId"] = tableId;
+    }
+    if (tablePropertiesJson != null) {
+      _json["tablePropertiesJson"] = tablePropertiesJson;
+    }
+    if (tablePropertiesJsonSchema != null) {
+      _json["tablePropertiesJsonSchema"] = tablePropertiesJsonSchema;
     }
     return _json;
   }
@@ -2842,21 +3000,27 @@ class TableList {
 }
 
 
-/** Specifies the id, name and type of a task in a table. */
+/**
+ * A background task on a table, initiated for time and or resource consuming
+ * operations such as a column type change or delete all rows operation.
+ */
 class Task {
   /** Type name: a template for an individual task. */
   core.String kind;
 
-  /** An indication of task progress. */
+  /** Task percentage completion. */
   core.String progress;
 
-  /** False while the table is busy with some other task. */
+  /**
+   * True if the task is in progress, its progress indicator will indicated
+   * where it is, and it can't be deleted.
+   */
   core.bool started;
 
   /** Identifier for the task. */
   core.String taskId;
 
-  /** Not documented yet. */
+  /** The type of task being executed in the background. */
   core.String type;
 
 

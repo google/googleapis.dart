@@ -31,8 +31,8 @@ class SqladminApi {
   SslCertsResourceApi get sslCerts => new SslCertsResourceApi(_requester);
   TiersResourceApi get tiers => new TiersResourceApi(_requester);
 
-  SqladminApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "sql/v1beta3/");
+  SqladminApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "sql/v1beta3/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -1713,9 +1713,9 @@ class DatabaseInstance {
   core.String project;
 
   /**
-   * The geographical region. Can be us-east1, us-central, asia-east1 or
-   * europe-west1. Defaults to us-central. The region can not be changed after
-   * instance creation.
+   * The geographical region. Can be us-central, asia-east1 or europe-west1.
+   * Defaults to us-central. The region can not be changed after instance
+   * creation.
    */
   core.String region;
 
@@ -1724,6 +1724,9 @@ class DatabaseInstance {
 
   /** SSL configuration. */
   SslCert serverCaCert;
+
+  /** The service account email address assigned to the instance. */
+  core.String serviceAccountEmailAddress;
 
   /** The user settings. */
   Settings settings;
@@ -1786,6 +1789,9 @@ class DatabaseInstance {
     if (_json.containsKey("serverCaCert")) {
       serverCaCert = new SslCert.fromJson(_json["serverCaCert"]);
     }
+    if (_json.containsKey("serviceAccountEmailAddress")) {
+      serviceAccountEmailAddress = _json["serviceAccountEmailAddress"];
+    }
     if (_json.containsKey("settings")) {
       settings = new Settings.fromJson(_json["settings"]);
     }
@@ -1837,6 +1843,9 @@ class DatabaseInstance {
     }
     if (serverCaCert != null) {
       _json["serverCaCert"] = (serverCaCert).toJson();
+    }
+    if (serviceAccountEmailAddress != null) {
+      _json["serviceAccountEmailAddress"] = serviceAccountEmailAddress;
     }
     if (settings != null) {
       _json["settings"] = (settings).toJson();

@@ -27,7 +27,7 @@
     "description": "Programmatic access to YouTube features.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/zFXBHo_XoP3u5i4h1cV-J_NP6rE\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/BNAEvscDvyjuuQJV9l3B3Bhfhag\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -2325,7 +2325,7 @@
             }
         }
     },
-    "revision": "20141119",
+    "revision": "20141207",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -2847,6 +2847,14 @@
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"youtube#channel\".",
                     "type": "string"
                 },
+                "localizations": {
+                    "additionalProperties": {
+                        "$ref": "ChannelLocalization",
+                        "description": "The language tag, using string since map_key require simple types."
+                    },
+                    "description": "Localizations for different languages",
+                    "type": "object"
+                },
                 "snippet": {
                     "$ref": "ChannelSnippet",
                     "description": "The snippet object contains basic details about the channel, such as its title, description, and thumbnail images."
@@ -3070,6 +3078,21 @@
             },
             "type": "object"
         },
+        "ChannelLocalization": {
+            "description": "Channel localization setting",
+            "id": "ChannelLocalization",
+            "properties": {
+                "description": {
+                    "description": "The localized strings for channel's description.",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "The localized strings for channel's title, read-only.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ChannelSection": {
             "description": "TODO(lxz) follow up with adiamondstein@ to fullfill the doc before deploying",
             "id": "ChannelSection",
@@ -3229,6 +3252,9 @@
             "description": "Branding properties for the channel view.",
             "id": "ChannelSettings",
             "properties": {
+                "defaultLanguage": {
+                    "type": "string"
+                },
                 "defaultTab": {
                     "description": "Which content tab users should see when viewing the channel.",
                     "type": "string"
@@ -3287,9 +3313,17 @@
             "description": "Basic details about a channel, including title, description and thumbnails.",
             "id": "ChannelSnippet",
             "properties": {
+                "defaultLanguage": {
+                    "description": "The language of the channel's default title and description.",
+                    "type": "string"
+                },
                 "description": {
                     "description": "The description of the channel.",
                     "type": "string"
+                },
+                "localized": {
+                    "$ref": "ChannelLocalization",
+                    "description": "Localized title and description, read-only."
                 },
                 "publishedAt": {
                     "description": "The date and time that the channel was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.",
@@ -5207,6 +5241,15 @@
             },
             "type": "object"
         },
+        "LanguageTag": {
+            "id": "LanguageTag",
+            "properties": {
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "LiveBroadcast": {
             "description": "A liveBroadcast resource represents an event that will be streamed, via live video, on YouTube.",
             "id": "LiveBroadcast",
@@ -5655,15 +5698,16 @@
             "type": "object"
         },
         "LocalizedProperty": {
-            "description": "Represent a property available in different languages.",
             "id": "LocalizedProperty",
             "properties": {
                 "default": {
-                    "description": "Default value for the localized property.",
                     "type": "string"
                 },
+                "defaultLanguage": {
+                    "$ref": "LanguageTag",
+                    "description": "The language of the default property."
+                },
                 "localized": {
-                    "description": "The localized values.",
                     "items": {
                         "$ref": "LocalizedString"
                     },
@@ -5673,15 +5717,12 @@
             "type": "object"
         },
         "LocalizedString": {
-            "description": "A localized string.",
             "id": "LocalizedString",
             "properties": {
                 "language": {
-                    "description": "Language associated to this value.",
                     "type": "string"
                 },
                 "value": {
-                    "description": "Value of the property.",
                     "type": "string"
                 }
             },

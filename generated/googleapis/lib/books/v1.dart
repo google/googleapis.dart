@@ -27,11 +27,12 @@ class BooksApi {
   LayersResourceApi get layers => new LayersResourceApi(_requester);
   MyconfigResourceApi get myconfig => new MyconfigResourceApi(_requester);
   MylibraryResourceApi get mylibrary => new MylibraryResourceApi(_requester);
+  OnboardingResourceApi get onboarding => new OnboardingResourceApi(_requester);
   PromoofferResourceApi get promooffer => new PromoofferResourceApi(_requester);
   VolumesResourceApi get volumes => new VolumesResourceApi(_requester);
 
-  BooksApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "books/v1/");
+  BooksApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "books/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -950,6 +951,41 @@ class MyconfigResourceApi {
       _requester = client;
 
   /**
+   * Gets the current settings for the user.
+   *
+   * Request parameters:
+   *
+   * Completes with a [Usersettings].
+   *
+   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Usersettings> getUserSettings() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _body = null;
+
+
+
+    _url = 'myconfig/getUserSettings';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Usersettings.fromJson(data));
+  }
+
+  /**
    * Release downloaded content access restriction.
    *
    * Request parameters:
@@ -1155,6 +1191,47 @@ class MyconfigResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Volumes.fromJson(data));
+  }
+
+  /**
+   * Sets the settings for the user. Unspecified sub-objects will retain the
+   * existing value.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [Usersettings].
+   *
+   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Usersettings> updateUserSettings(Usersettings request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+
+    _url = 'myconfig/updateUserSettings';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Usersettings.fromJson(data));
   }
 
 }
@@ -2043,6 +2120,114 @@ class MylibraryReadingpositionsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
+  }
+
+}
+
+
+/** Not documented yet. */
+class OnboardingResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  OnboardingResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * List categories for onboarding experience.
+   *
+   * Request parameters:
+   *
+   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Default is en-US
+   * if unset.
+   *
+   * Completes with a [Category].
+   *
+   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Category> listCategories({core.String locale}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
+    }
+
+
+    _url = 'onboarding/listCategories';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Category.fromJson(data));
+  }
+
+  /**
+   * List available volumes under categories for onboarding experience.
+   *
+   * Request parameters:
+   *
+   * [categoryId] - List of category ids requested.
+   *
+   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Default is en-US
+   * if unset.
+   *
+   * [pageSize] - Number of maximum results per page to be included in the
+   * response.
+   *
+   * [pageToken] - The value of the nextToken from the previous page.
+   *
+   * Completes with a [Volume2].
+   *
+   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Volume2> listCategoryVolumes({core.List<core.String> categoryId, core.String locale, core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (categoryId != null) {
+      _queryParams["categoryId"] = categoryId;
+    }
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+
+    _url = 'onboarding/listCategoryVolumes';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Volume2.fromJson(data));
   }
 
 }
@@ -3727,6 +3912,81 @@ class Bookshelves {
   Bookshelves.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"].map((value) => new Bookshelf.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class CategoryItems {
+  /** Not documented yet. */
+  core.String badgeUrl;
+
+  /** Not documented yet. */
+  core.String categoryId;
+
+  /** Not documented yet. */
+  core.String name;
+
+
+  CategoryItems();
+
+  CategoryItems.fromJson(core.Map _json) {
+    if (_json.containsKey("badgeUrl")) {
+      badgeUrl = _json["badgeUrl"];
+    }
+    if (_json.containsKey("categoryId")) {
+      categoryId = _json["categoryId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (badgeUrl != null) {
+      _json["badgeUrl"] = badgeUrl;
+    }
+    if (categoryId != null) {
+      _json["categoryId"] = categoryId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Category {
+  /** A list of onboarding categories. */
+  core.List<CategoryItems> items;
+
+  /** Resource type. */
+  core.String kind;
+
+
+  Category();
+
+  Category.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new CategoryItems.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5780,6 +6040,72 @@ class Review {
 }
 
 
+/** User settings in sub-objects, each for different purposes. */
+class UsersettingsNotesExport {
+  /** Not documented yet. */
+  core.String folderName;
+
+  /** Not documented yet. */
+  core.bool isEnabled;
+
+
+  UsersettingsNotesExport();
+
+  UsersettingsNotesExport.fromJson(core.Map _json) {
+    if (_json.containsKey("folderName")) {
+      folderName = _json["folderName"];
+    }
+    if (_json.containsKey("isEnabled")) {
+      isEnabled = _json["isEnabled"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (folderName != null) {
+      _json["folderName"] = folderName;
+    }
+    if (isEnabled != null) {
+      _json["isEnabled"] = isEnabled;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Usersettings {
+  /** Resource type. */
+  core.String kind;
+
+  /** User settings in sub-objects, each for different purposes. */
+  UsersettingsNotesExport notesExport;
+
+
+  Usersettings();
+
+  Usersettings.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("notesExport")) {
+      notesExport = new UsersettingsNotesExport.fromJson(_json["notesExport"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (notesExport != null) {
+      _json["notesExport"] = (notesExport).toJson();
+    }
+    return _json;
+  }
+}
+
+
 /** Information about epub content. (In LITE projection.) */
 class VolumeAccessInfoEpub {
   /** URL to retrieve ACS token for epub download. (In LITE projection.) */
@@ -7249,6 +7575,48 @@ class Volume {
     }
     if (volumeInfo != null) {
       _json["volumeInfo"] = (volumeInfo).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Volume2 {
+  /** A list of volumes. */
+  core.List<Volume> items;
+
+  /** Resource type. */
+  core.String kind;
+
+  /** Not documented yet. */
+  core.String nextPageToken;
+
+
+  Volume2();
+
+  Volume2.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Volume.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }

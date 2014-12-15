@@ -29,7 +29,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/bigquery/docs/overview",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/irflzEU1C_NxQHyDRKExZd4eUWU\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/VRmwTE5wYmzvRlMSDFf9CieOFsk\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -889,7 +889,7 @@
             }
         }
     },
-    "revision": "20141124",
+    "revision": "20141112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Dataset": {
@@ -1571,7 +1571,7 @@
             "id": "JobStatistics4",
             "properties": {
                 "destinationUriFileCounts": {
-                    "description": "[Output-only] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.",
+                    "description": "[Experimental] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.",
                     "items": {
                         "format": "int64",
                         "type": "string"

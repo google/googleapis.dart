@@ -242,7 +242,7 @@ Google Fit API
 
 Official API documentation: https://developers.google.com/fit/rest/
 
-#### ![Logo](http://www.google.com/images/icons/product/freebase-16.png) Freebase Search - freebase v1
+#### ![Logo](https://www.google.com/images/icons/product/freebase-16.png) Freebase Search - freebase v1
 
 Find Freebase entities using textual queries and other constraints.
 
@@ -390,7 +390,7 @@ Official API documentation: https://developers.google.com/translate/v2/using_res
 
 Lets you create, inspect, and manage goo.gl short URLs
 
-Official API documentation: http://code.google.com/apis/urlshortener/v1/getting_started.html
+Official API documentation: https://developers.google.com/url-shortener/v1/getting_started
 
 #### ![Logo](http://www.google.com/images/icons/feature/font_api-16.png) Google Fonts Developer API - webfonts v1
 

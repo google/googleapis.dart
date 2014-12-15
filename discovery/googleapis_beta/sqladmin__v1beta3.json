@@ -18,7 +18,7 @@
     "description": "API for Cloud SQL database instance management.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-sql/docs/admin-api/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/hSgBYRvTI2dDR9CzjHO6eIajaXc\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/hsbAfC9SMMz0njrqp0sUQ-CdpcQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -888,7 +888,7 @@
             }
         }
     },
-    "revision": "20141020",
+    "revision": "20141112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BackupConfiguration": {
@@ -1117,7 +1117,7 @@
                     "type": "string"
                 },
                 "region": {
-                    "description": "The geographical region. Can be us-east1, us-central, asia-east1 or europe-west1. Defaults to us-central. The region can not be changed after instance creation.",
+                    "description": "The geographical region. Can be us-central, asia-east1 or europe-west1. Defaults to us-central. The region can not be changed after instance creation.",
                     "type": "string"
                 },
                 "replicaNames": {
@@ -1130,6 +1130,10 @@
                 "serverCaCert": {
                     "$ref": "SslCert",
                     "description": "SSL configuration."
+                },
+                "serviceAccountEmailAddress": {
+                    "description": "The service account email address assigned to the instance.",
+                    "type": "string"
                 },
                 "settings": {
                     "$ref": "Settings",

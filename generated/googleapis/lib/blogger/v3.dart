@@ -33,8 +33,8 @@ class BloggerApi {
   PostsResourceApi get posts => new PostsResourceApi(_requester);
   UsersResourceApi get users => new UsersResourceApi(_requester);
 
-  BloggerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "blogger/v3/");
+  BloggerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "blogger/v3/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

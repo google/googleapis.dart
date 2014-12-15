@@ -32,8 +32,8 @@ class AdminApi {
   CustomerUsageReportsResourceApi get customerUsageReports => new CustomerUsageReportsResourceApi(_requester);
   UserUsageReportResourceApi get userUsageReport => new UserUsageReportResourceApi(_requester);
 
-  AdminApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "admin/reports/v1/");
+  AdminApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "admin/reports/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -55,7 +55,8 @@ class ActivitiesResourceApi {
    *
    * [applicationName] - Application name for which the events are to be
    * retrieved.
-   * Value must have pattern "(admin)|(docs)|(drive)|(login)|(token)".
+   * Value must have pattern
+   * "(admin)|(calendar)|(docs)|(drive)|(login)|(token)".
    *
    * [actorIpAddress] - IP Address of host where the event was performed.
    * Supports both IPv4 and IPv6 addresses.
@@ -156,7 +157,8 @@ class ActivitiesResourceApi {
    *
    * [applicationName] - Application name for which the events are to be
    * retrieved.
-   * Value must have pattern "(admin)|(docs)|(drive)|(login)|(token)".
+   * Value must have pattern
+   * "(admin)|(calendar)|(docs)|(drive)|(login)|(token)".
    *
    * [actorIpAddress] - IP Address of host where the event was performed.
    * Supports both IPv4 and IPv6 addresses.

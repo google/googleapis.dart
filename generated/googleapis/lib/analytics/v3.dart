@@ -44,8 +44,8 @@ class AnalyticsApi {
   MetadataResourceApi get metadata => new MetadataResourceApi(_requester);
   ProvisioningResourceApi get provisioning => new ProvisioningResourceApi(_requester);
 
-  AnalyticsApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "analytics/v3/");
+  AnalyticsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "analytics/v3/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

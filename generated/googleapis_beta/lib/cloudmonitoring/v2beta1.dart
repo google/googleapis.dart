@@ -25,8 +25,8 @@ class CloudmonitoringApi {
   TimeseriesResourceApi get timeseries => new TimeseriesResourceApi(_requester);
   TimeseriesDescriptorsResourceApi get timeseriesDescriptors => new TimeseriesDescriptorsResourceApi(_requester);
 
-  CloudmonitoringApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "cloudmonitoring/v2beta1/projects/");
+  CloudmonitoringApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "cloudmonitoring/v2beta1/projects/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

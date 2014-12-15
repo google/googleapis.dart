@@ -38,8 +38,8 @@ class FitnessApi {
 
   UsersResourceApi get users => new UsersResourceApi(_requester);
 
-  FitnessApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "fitness/v1/users/");
+  FitnessApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "fitness/v1/users/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

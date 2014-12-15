@@ -39,8 +39,8 @@ class GenomicsApi {
   VariantsResourceApi get variants => new VariantsResourceApi(_requester);
   VariantsetsResourceApi get variantsets => new VariantsetsResourceApi(_requester);
 
-  GenomicsApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "genomics/v1beta/");
+  GenomicsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "genomics/v1beta/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

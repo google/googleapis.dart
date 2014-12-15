@@ -28,8 +28,8 @@ class YoutubeAnalyticsApi {
   BatchReportsResourceApi get batchReports => new BatchReportsResourceApi(_requester);
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
 
-  YoutubeAnalyticsApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "youtube/analytics/v1/");
+  YoutubeAnalyticsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "youtube/analytics/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

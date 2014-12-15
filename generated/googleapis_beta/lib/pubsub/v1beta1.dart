@@ -29,8 +29,8 @@ class PubsubApi {
   SubscriptionsResourceApi get subscriptions => new SubscriptionsResourceApi(_requester);
   TopicsResourceApi get topics => new TopicsResourceApi(_requester);
 
-  PubsubApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "pubsub/v1beta1/");
+  PubsubApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "pubsub/v1beta1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

@@ -23,8 +23,8 @@ class DiscoveryApi {
 
   ApisResourceApi get apis => new ApisResourceApi(_requester);
 
-  DiscoveryApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "discovery/v1/");
+  DiscoveryApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "discovery/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

@@ -25,8 +25,8 @@ class AndroidpublisherApi {
   InappproductsResourceApi get inappproducts => new InappproductsResourceApi(_requester);
   PurchasesResourceApi get purchases => new PurchasesResourceApi(_requester);
 
-  AndroidpublisherApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "androidpublisher/v2/applications/");
+  AndroidpublisherApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "androidpublisher/v2/applications/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

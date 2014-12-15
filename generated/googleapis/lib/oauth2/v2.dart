@@ -32,8 +32,8 @@ class Oauth2Api {
 
   UserinfoResourceApi get userinfo => new UserinfoResourceApi(_requester);
 
-  Oauth2Api(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "");
+  Oauth2Api(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: ""}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 
   /**
    * Not documented yet.

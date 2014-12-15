@@ -35,8 +35,8 @@ class MapsengineApi {
   RastersResourceApi get rasters => new RastersResourceApi(_requester);
   TablesResourceApi get tables => new TablesResourceApi(_requester);
 
-  MapsengineApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "mapsengine/v1/");
+  MapsengineApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "mapsengine/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

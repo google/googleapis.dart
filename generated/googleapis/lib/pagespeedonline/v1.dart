@@ -23,8 +23,8 @@ class PagespeedonlineApi {
 
   PagespeedapiResourceApi get pagespeedapi => new PagespeedapiResourceApi(_requester);
 
-  PagespeedonlineApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "pagespeedonline/v1/");
+  PagespeedonlineApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "pagespeedonline/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

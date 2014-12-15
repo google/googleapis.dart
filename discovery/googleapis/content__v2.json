@@ -15,7 +15,7 @@
     "description": "Manage product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content/v2/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/ADeUU-V-naXCepYNgqNyFFV3IzA\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/mxJxnaJAFqBnZvQqixN7zqS1MSM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -957,7 +957,7 @@
             }
         }
     },
-    "revision": "20141113",
+    "revision": "20141203",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -2523,7 +2523,7 @@
                     "type": "string"
                 },
                 "locationId": {
-                    "description": "The numeric id of a location that the tax rate applies to as defined in the Adwords API (https://developers.google.com/adwords/api/docs/appendix/geotargeting).",
+                    "description": "The numeric id of a location that the tax rate applies to as defined in the AdWords API.",
                     "format": "int64",
                     "type": "string"
                 },

@@ -41,8 +41,8 @@ class GenomicsApi {
   VariantsResourceApi get variants => new VariantsResourceApi(_requester);
   VariantsetsResourceApi get variantsets => new VariantsetsResourceApi(_requester);
 
-  GenomicsApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "genomics/v1beta2/");
+  GenomicsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "genomics/v1beta2/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -3117,6 +3117,15 @@ class ImportReadGroupSetsRequest {
   core.String datasetId;
 
   /**
+   * The partition strategy describes how read groups are partitioned into read
+   * group sets.
+   * Possible string values are:
+   * - "MERGE_ALL"
+   * - "PER_FILE_PER_SAMPLE"
+   */
+  core.String partitionStrategy;
+
+  /**
    * The reference set to which the imported read group sets are aligned to, if
    * any. The reference names of this reference set must be a superset of those
    * found in the imported file headers. If no reference set id is provided, a
@@ -3134,6 +3143,9 @@ class ImportReadGroupSetsRequest {
     if (_json.containsKey("datasetId")) {
       datasetId = _json["datasetId"];
     }
+    if (_json.containsKey("partitionStrategy")) {
+      partitionStrategy = _json["partitionStrategy"];
+    }
     if (_json.containsKey("referenceSetId")) {
       referenceSetId = _json["referenceSetId"];
     }
@@ -3146,6 +3158,9 @@ class ImportReadGroupSetsRequest {
     var _json = new core.Map();
     if (datasetId != null) {
       _json["datasetId"] = datasetId;
+    }
+    if (partitionStrategy != null) {
+      _json["partitionStrategy"] = partitionStrategy;
     }
     if (referenceSetId != null) {
       _json["referenceSetId"] = referenceSetId;

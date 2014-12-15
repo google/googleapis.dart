@@ -26,7 +26,7 @@
     "description": "API for the Google Compute Engine service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/vsvLdIv49o6nVslSjOWeUZPaQTM\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/p_mCJMb7VwoC3-6YahcTdtq2Nr4\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -3086,6 +3086,86 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/compute"
                     ]
+                },
+                "start": {
+                    "description": "Starts an instance",
+                    "httpMethod": "POST",
+                    "id": "compute.instances.start",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instance"
+                    ],
+                    "parameters": {
+                        "instance": {
+                            "description": "Name of the instance resource to start.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Name of the project scoping this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "Name of the zone scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instances/{instance}/start",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "stop": {
+                    "description": "Stops an instance",
+                    "httpMethod": "POST",
+                    "id": "compute.instances.stop",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instance"
+                    ],
+                    "parameters": {
+                        "instance": {
+                            "description": "Name of the instance resource to start.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Name of the project scoping this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "Name of the zone scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instances/{instance}/stop",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/compute"
+                    ]
                 }
             }
         },
@@ -5289,7 +5369,7 @@
             }
         }
     },
-    "revision": "20141112",
+    "revision": "20141118",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {

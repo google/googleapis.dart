@@ -26,13 +26,14 @@ class AdexchangebuyerApi {
 
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
   BillingInfoResourceApi get billingInfo => new BillingInfoResourceApi(_requester);
+  BudgetResourceApi get budget => new BudgetResourceApi(_requester);
   CreativesResourceApi get creatives => new CreativesResourceApi(_requester);
   DirectDealsResourceApi get directDeals => new DirectDealsResourceApi(_requester);
   PerformanceReportResourceApi get performanceReport => new PerformanceReportResourceApi(_requester);
   PretargetingConfigResourceApi get pretargetingConfig => new PretargetingConfigResourceApi(_requester);
 
-  AdexchangebuyerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "adexchangebuyer/v1.3/");
+  AdexchangebuyerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "adexchangebuyer/v1.3/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -292,6 +293,165 @@ class BillingInfoResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new BillingInfoList.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class BudgetResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  BudgetResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns the budget information for the adgroup specified by the accountId
+   * and billingId.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The account id to get the budget information for.
+   *
+   * [billingId] - The billing id to get the budget information for.
+   *
+   * Completes with a [Budget].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Budget> get(core.String accountId, core.String billingId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (billingId == null) {
+      throw new core.ArgumentError("Parameter billingId is required.");
+    }
+
+
+    _url = 'billinginfo/' + common_internal.Escaper.ecapeVariable('$accountId') + '/' + common_internal.Escaper.ecapeVariable('$billingId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Budget.fromJson(data));
+  }
+
+  /**
+   * Updates the budget amount for the budget of the adgroup specified by the
+   * accountId and billingId, with the budget amount in the request. This method
+   * supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The account id associated with the budget being updated.
+   *
+   * [billingId] - The billing id associated with the budget being updated.
+   *
+   * Completes with a [Budget].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Budget> patch(Budget request, core.String accountId, core.String billingId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (billingId == null) {
+      throw new core.ArgumentError("Parameter billingId is required.");
+    }
+
+
+    _url = 'billinginfo/' + common_internal.Escaper.ecapeVariable('$accountId') + '/' + common_internal.Escaper.ecapeVariable('$billingId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Budget.fromJson(data));
+  }
+
+  /**
+   * Updates the budget amount for the budget of the adgroup specified by the
+   * accountId and billingId, with the budget amount in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The account id associated with the budget being updated.
+   *
+   * [billingId] - The billing id associated with the budget being updated.
+   *
+   * Completes with a [Budget].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Budget> update(Budget request, core.String accountId, core.String billingId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (billingId == null) {
+      throw new core.ArgumentError("Parameter billingId is required.");
+    }
+
+
+    _url = 'billinginfo/' + common_internal.Escaper.ecapeVariable('$accountId') + '/' + common_internal.Escaper.ecapeVariable('$billingId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Budget.fromJson(data));
   }
 
 }
@@ -1183,6 +1343,81 @@ class BillingInfoList {
     var _json = new core.Map();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** The configuration data for Ad Exchange RTB - Budget API. */
+class Budget {
+  /** The id of the account. This is required for get and update requests. */
+  core.String accountId;
+
+  /**
+   * The billing id to determine which adgroup to provide budget information
+   * for. This is required for get and update requests.
+   */
+  core.String billingId;
+
+  /**
+   * The budget amount to apply for the billingId provided. This is required for
+   * update requests.
+   */
+  core.String budgetAmount;
+
+  /** The currency code for the buyer. This cannot be altered here. */
+  core.String currencyCode;
+
+  /** The unique id that describes this item. */
+  core.String id;
+
+  /** The kind of the resource, i.e. "adexchangebuyer#budget". */
+  core.String kind;
+
+
+  Budget();
+
+  Budget.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("billingId")) {
+      billingId = _json["billingId"];
+    }
+    if (_json.containsKey("budgetAmount")) {
+      budgetAmount = _json["budgetAmount"];
+    }
+    if (_json.containsKey("currencyCode")) {
+      currencyCode = _json["currencyCode"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (billingId != null) {
+      _json["billingId"] = billingId;
+    }
+    if (budgetAmount != null) {
+      _json["budgetAmount"] = budgetAmount;
+    }
+    if (currencyCode != null) {
+      _json["currencyCode"] = currencyCode;
+    }
+    if (id != null) {
+      _json["id"] = id;
     }
     if (kind != null) {
       _json["kind"] = kind;

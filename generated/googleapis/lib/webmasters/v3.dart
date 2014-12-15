@@ -29,8 +29,8 @@ class WebmastersApi {
   UrlcrawlerrorscountsResourceApi get urlcrawlerrorscounts => new UrlcrawlerrorscountsResourceApi(_requester);
   UrlcrawlerrorssamplesResourceApi get urlcrawlerrorssamples => new UrlcrawlerrorssamplesResourceApi(_requester);
 
-  WebmastersApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "webmasters/v3/");
+  WebmastersApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "webmasters/v3/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

@@ -92,8 +92,8 @@ class AdminApi {
   UsersResourceApi get users => new UsersResourceApi(_requester);
   VerificationCodesResourceApi get verificationCodes => new VerificationCodesResourceApi(_requester);
 
-  AdminApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "admin/directory/v1/");
+  AdminApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "admin/directory/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -5746,6 +5746,14 @@ class User {
   /** List of non editable aliases (Read-only) */
   core.List<core.String> nonEditableAliases;
 
+  /**
+   * Not documented yet.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object notes;
+
   /** OrgUnit of User */
   core.String orgUnitPath;
 
@@ -5787,6 +5795,14 @@ class User {
 
   /** Photo Url of the user (Read-only) */
   core.String thumbnailPhotoUrl;
+
+  /**
+   * Not documented yet.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object websites;
 
 
   User();
@@ -5861,6 +5877,9 @@ class User {
     if (_json.containsKey("nonEditableAliases")) {
       nonEditableAliases = _json["nonEditableAliases"];
     }
+    if (_json.containsKey("notes")) {
+      notes = _json["notes"];
+    }
     if (_json.containsKey("orgUnitPath")) {
       orgUnitPath = _json["orgUnitPath"];
     }
@@ -5887,6 +5906,9 @@ class User {
     }
     if (_json.containsKey("thumbnailPhotoUrl")) {
       thumbnailPhotoUrl = _json["thumbnailPhotoUrl"];
+    }
+    if (_json.containsKey("websites")) {
+      websites = _json["websites"];
     }
   }
 
@@ -5961,6 +5983,9 @@ class User {
     if (nonEditableAliases != null) {
       _json["nonEditableAliases"] = nonEditableAliases;
     }
+    if (notes != null) {
+      _json["notes"] = notes;
+    }
     if (orgUnitPath != null) {
       _json["orgUnitPath"] = orgUnitPath;
     }
@@ -5987,6 +6012,46 @@ class User {
     }
     if (thumbnailPhotoUrl != null) {
       _json["thumbnailPhotoUrl"] = thumbnailPhotoUrl;
+    }
+    if (websites != null) {
+      _json["websites"] = websites;
+    }
+    return _json;
+  }
+}
+
+
+/** JSON template for About (notes) of a user in Directory API. */
+class UserAbout {
+  /**
+   * About entry can have a type which indicates the content type. It can either
+   * be plain or html. By default, notes contents are assumed to contain plain
+   * text.
+   */
+  core.String contentType;
+
+  /** Actual value of notes. */
+  core.String value;
+
+
+  UserAbout();
+
+  UserAbout.fromJson(core.Map _json) {
+    if (_json.containsKey("contentType")) {
+      contentType = _json["contentType"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (contentType != null) {
+      _json["contentType"] = contentType;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }
@@ -6765,6 +6830,63 @@ class UserUndelete {
     var _json = new core.Map();
     if (orgUnitPath != null) {
       _json["orgUnitPath"] = orgUnitPath;
+    }
+    return _json;
+  }
+}
+
+
+/** JSON template for a website entry. */
+class UserWebsite {
+  /** Custom Type. */
+  core.String customType;
+
+  /** If this is user's primary website or not. */
+  core.bool primary;
+
+  /**
+   * Each entry can have a type which indicates standard types of that entry.
+   * For example website could be of home, work, blog etc. In addition to the
+   * standard type, an entry can have a custom type and can give it any name.
+   * Such types should have the CUSTOM value as type and also have a customType
+   * value.
+   */
+  core.String type;
+
+  /** Website. */
+  core.String value;
+
+
+  UserWebsite();
+
+  UserWebsite.fromJson(core.Map _json) {
+    if (_json.containsKey("customType")) {
+      customType = _json["customType"];
+    }
+    if (_json.containsKey("primary")) {
+      primary = _json["primary"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (customType != null) {
+      _json["customType"] = customType;
+    }
+    if (primary != null) {
+      _json["primary"] = primary;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }

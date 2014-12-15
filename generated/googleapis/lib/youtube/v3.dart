@@ -54,8 +54,8 @@ class YoutubeApi {
   VideosResourceApi get videos => new VideosResourceApi(_requester);
   WatermarksResourceApi get watermarks => new WatermarksResourceApi(_requester);
 
-  YoutubeApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "youtube/v3/");
+  YoutubeApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "youtube/v3/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -5311,6 +5311,9 @@ class Channel {
    */
   core.String kind;
 
+  /** Localizations for different languages */
+  core.Map<core.String, ChannelLocalization> localizations;
+
   /**
    * The snippet object contains basic details about the channel, such as its
    * title, description, and thumbnail images.
@@ -5363,6 +5366,9 @@ class Channel {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("localizations")) {
+      localizations = common_internal.mapMap(_json["localizations"], (item) => new ChannelLocalization.fromJson(item));
+    }
     if (_json.containsKey("snippet")) {
       snippet = new ChannelSnippet.fromJson(_json["snippet"]);
     }
@@ -5405,6 +5411,9 @@ class Channel {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (localizations != null) {
+      _json["localizations"] = common_internal.mapMap(localizations, (item) => (item).toJson());
     }
     if (snippet != null) {
       _json["snippet"] = (snippet).toJson();
@@ -5923,6 +5932,39 @@ class ChannelListResponse {
 }
 
 
+/** Channel localization setting */
+class ChannelLocalization {
+  /** The localized strings for channel's description. */
+  core.String description;
+
+  /** The localized strings for channel's title, read-only. */
+  core.String title;
+
+
+  ChannelLocalization();
+
+  ChannelLocalization.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+
 /**
  * TODO(lxz) follow up with adiamondstein@ to fullfill the doc before deploying
  */
@@ -6188,6 +6230,9 @@ class ChannelSectionSnippet {
 
 /** Branding properties for the channel view. */
 class ChannelSettings {
+  /** Not documented yet. */
+  core.String defaultLanguage;
+
   /** Which content tab users should see when viewing the channel. */
   core.String defaultTab;
 
@@ -6234,6 +6279,9 @@ class ChannelSettings {
   ChannelSettings();
 
   ChannelSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("defaultLanguage")) {
+      defaultLanguage = _json["defaultLanguage"];
+    }
     if (_json.containsKey("defaultTab")) {
       defaultTab = _json["defaultTab"];
     }
@@ -6274,6 +6322,9 @@ class ChannelSettings {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (defaultLanguage != null) {
+      _json["defaultLanguage"] = defaultLanguage;
+    }
     if (defaultTab != null) {
       _json["defaultTab"] = defaultTab;
     }
@@ -6319,8 +6370,14 @@ class ChannelSettings {
  * Basic details about a channel, including title, description and thumbnails.
  */
 class ChannelSnippet {
+  /** The language of the channel's default title and description. */
+  core.String defaultLanguage;
+
   /** The description of the channel. */
   core.String description;
+
+  /** Localized title and description, read-only. */
+  ChannelLocalization localized;
 
   /**
    * The date and time that the channel was created. The value is specified in
@@ -6342,8 +6399,14 @@ class ChannelSnippet {
   ChannelSnippet();
 
   ChannelSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("defaultLanguage")) {
+      defaultLanguage = _json["defaultLanguage"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("localized")) {
+      localized = new ChannelLocalization.fromJson(_json["localized"]);
     }
     if (_json.containsKey("publishedAt")) {
       publishedAt = core.DateTime.parse(_json["publishedAt"]);
@@ -6358,8 +6421,14 @@ class ChannelSnippet {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (defaultLanguage != null) {
+      _json["defaultLanguage"] = defaultLanguage;
+    }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (localized != null) {
+      _json["localized"] = (localized).toJson();
     }
     if (publishedAt != null) {
       _json["publishedAt"] = (publishedAt).toIso8601String();
@@ -8811,6 +8880,30 @@ class InvideoTiming {
 }
 
 
+/** Not documented yet. */
+class LanguageTag {
+  /** Not documented yet. */
+  core.String value;
+
+
+  LanguageTag();
+
+  LanguageTag.fromJson(core.Map _json) {
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+
 /**
  * A liveBroadcast resource represents an event that will be streamed, via live
  * video, on YouTube.
@@ -9685,12 +9778,15 @@ class LiveStreamStatus {
 }
 
 
-/** Represent a property available in different languages. */
+/** Not documented yet. */
 class LocalizedProperty {
-  /** Default value for the localized property. */
+  /** Not documented yet. */
   core.String default_;
 
-  /** The localized values. */
+  /** The language of the default property. */
+  LanguageTag defaultLanguage;
+
+  /** Not documented yet. */
   core.List<LocalizedString> localized;
 
 
@@ -9699,6 +9795,9 @@ class LocalizedProperty {
   LocalizedProperty.fromJson(core.Map _json) {
     if (_json.containsKey("default")) {
       default_ = _json["default"];
+    }
+    if (_json.containsKey("defaultLanguage")) {
+      defaultLanguage = new LanguageTag.fromJson(_json["defaultLanguage"]);
     }
     if (_json.containsKey("localized")) {
       localized = _json["localized"].map((value) => new LocalizedString.fromJson(value)).toList();
@@ -9710,6 +9809,9 @@ class LocalizedProperty {
     if (default_ != null) {
       _json["default"] = default_;
     }
+    if (defaultLanguage != null) {
+      _json["defaultLanguage"] = (defaultLanguage).toJson();
+    }
     if (localized != null) {
       _json["localized"] = localized.map((value) => (value).toJson()).toList();
     }
@@ -9718,12 +9820,12 @@ class LocalizedProperty {
 }
 
 
-/** A localized string. */
+/** Not documented yet. */
 class LocalizedString {
-  /** Language associated to this value. */
+  /** Not documented yet. */
   core.String language;
 
-  /** Value of the property. */
+  /** Not documented yet. */
   core.String value;
 
 

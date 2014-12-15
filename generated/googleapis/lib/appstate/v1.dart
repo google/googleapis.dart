@@ -23,8 +23,8 @@ class AppstateApi {
 
   StatesResourceApi get states => new StatesResourceApi(_requester);
 
-  AppstateApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "appstate/v1/");
+  AppstateApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "appstate/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

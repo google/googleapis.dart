@@ -30,8 +30,8 @@ class CoordinateApi {
   ScheduleResourceApi get schedule => new ScheduleResourceApi(_requester);
   WorkerResourceApi get worker => new WorkerResourceApi(_requester);
 
-  CoordinateApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "coordinate/v1/teams/");
+  CoordinateApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "coordinate/v1/teams/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

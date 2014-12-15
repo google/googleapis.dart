@@ -27,8 +27,8 @@ class ResellerApi {
   CustomersResourceApi get customers => new CustomersResourceApi(_requester);
   SubscriptionsResourceApi get subscriptions => new SubscriptionsResourceApi(_requester);
 
-  ResellerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "apps/reseller/v1/");
+  ResellerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "apps/reseller/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

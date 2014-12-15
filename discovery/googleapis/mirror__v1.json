@@ -17,7 +17,7 @@
     "description": "API for interacting with Glass users via the timeline.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/glass",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/aKrG4GrAlr18ND3tGm9p7CAJslQ\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/mMnQIQdgLu5YejzljC5zziHV82g\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -735,7 +735,7 @@
             }
         }
     },
-    "revision": "20141113",
+    "revision": "20141112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

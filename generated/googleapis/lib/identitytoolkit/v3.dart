@@ -20,8 +20,8 @@ class IdentitytoolkitApi {
 
   RelyingpartyResourceApi get relyingparty => new RelyingpartyResourceApi(_requester);
 
-  IdentitytoolkitApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "identitytoolkit/v3/relyingparty/");
+  IdentitytoolkitApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "identitytoolkit/v3/relyingparty/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

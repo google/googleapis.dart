@@ -36,8 +36,8 @@ class PredictionApi {
   HostedmodelsResourceApi get hostedmodels => new HostedmodelsResourceApi(_requester);
   TrainedmodelsResourceApi get trainedmodels => new TrainedmodelsResourceApi(_requester);
 
-  PredictionApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "prediction/v1.6/projects/");
+  PredictionApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "prediction/v1.6/projects/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

@@ -32,8 +32,8 @@ class GmailApi {
 
   UsersResourceApi get users => new UsersResourceApi(_requester);
 
-  GmailApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "gmail/v1/users/");
+  GmailApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "gmail/v1/users/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -2141,8 +2141,8 @@ class Message {
   MessagePart payload;
 
   /**
-   * The entire email message in an RFC 2822 formatted and URL-safe base64
-   * encoded string. Returned in messages.get and drafts.get responses when the
+   * The entire email message in an RFC 2822 formatted and base64url encoded
+   * string. Returned in messages.get and drafts.get responses when the
    * format=RAW parameter is supplied.
    */
   core.String raw;

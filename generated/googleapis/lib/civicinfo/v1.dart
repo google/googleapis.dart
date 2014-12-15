@@ -22,8 +22,8 @@ class CivicinfoApi {
   ElectionsResourceApi get elections => new ElectionsResourceApi(_requester);
   RepresentativesResourceApi get representatives => new RepresentativesResourceApi(_requester);
 
-  CivicinfoApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "civicinfo/v1/");
+  CivicinfoApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "civicinfo/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

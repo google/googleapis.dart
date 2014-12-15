@@ -61,8 +61,8 @@ class PlusDomainsApi {
   MediaResourceApi get media => new MediaResourceApi(_requester);
   PeopleResourceApi get people => new PeopleResourceApi(_requester);
 
-  PlusDomainsApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "plusDomains/v1/");
+  PlusDomainsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "plusDomains/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

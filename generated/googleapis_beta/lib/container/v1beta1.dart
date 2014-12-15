@@ -26,8 +26,8 @@ class ContainerApi {
 
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
-  ContainerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "container/v1beta1/projects/");
+  ContainerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "container/v1beta1/projects/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

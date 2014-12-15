@@ -33,8 +33,8 @@ class CalendarApi {
   FreebusyResourceApi get freebusy => new FreebusyResourceApi(_requester);
   SettingsResourceApi get settings => new SettingsResourceApi(_requester);
 
-  CalendarApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "calendar/v3/");
+  CalendarApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "calendar/v3/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

@@ -69,7 +69,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/l5pod8YqQveewbHEUdz0VFkXQt0\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/G0v1rWSx70VoKr67jXxgcXZaRUc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -2511,7 +2511,7 @@
             }
         }
     },
-    "revision": "20141014",
+    "revision": "20141113",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {
@@ -3636,6 +3636,9 @@
                     },
                     "type": "array"
                 },
+                "notes": {
+                    "type": "any"
+                },
                 "orgUnitPath": {
                     "description": "OrgUnit of User",
                     "type": "string"
@@ -3677,6 +3680,24 @@
                 },
                 "thumbnailPhotoUrl": {
                     "description": "Photo Url of the user (Read-only)",
+                    "type": "string"
+                },
+                "websites": {
+                    "type": "any"
+                }
+            },
+            "type": "object"
+        },
+        "UserAbout": {
+            "description": "JSON template for About (notes) of a user in Directory API.",
+            "id": "UserAbout",
+            "properties": {
+                "contentType": {
+                    "description": "About entry can have a type which indicates the content type. It can either be plain or html. By default, notes contents are assumed to contain plain text.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Actual value of notes.",
                     "type": "string"
                 }
             },
@@ -4014,6 +4035,29 @@
             "properties": {
                 "orgUnitPath": {
                     "description": "OrgUnit of User",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UserWebsite": {
+            "description": "JSON template for a website entry.",
+            "id": "UserWebsite",
+            "properties": {
+                "customType": {
+                    "description": "Custom Type.",
+                    "type": "string"
+                },
+                "primary": {
+                    "description": "If this is user's primary website or not.",
+                    "type": "boolean"
+                },
+                "type": {
+                    "description": "Each entry can have a type which indicates standard types of that entry. For example website could be of home, work, blog etc. In addition to the standard type, an entry can have a custom type and can give it any name. Such types should have the CUSTOM value as type and also have a customType value.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Website.",
                     "type": "string"
                 }
             },

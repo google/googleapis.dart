@@ -32,8 +32,8 @@ class ReplicapoolupdaterApi {
 
   UpdatesResourceApi get updates => new UpdatesResourceApi(_requester);
 
-  ReplicapoolupdaterApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "replicapoolupdater/v1beta1/projects/");
+  ReplicapoolupdaterApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "replicapoolupdater/v1beta1/projects/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -50,12 +50,13 @@ class UpdatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Project ID for this request.
+   * [project] - The Google Developers Console project name.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Zone for the instance group manager.
+   * [zone] - The name of the zone in which the update's target resides.
    *
-   * [instanceGroupManager] - Name of the instance group manager for this
-   * request.
+   * [instanceGroupManager] - The name of the instance group manager.
    *
    * [update] - Unique (in the context of a group) handle of an update.
    *
@@ -105,12 +106,13 @@ class UpdatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Project ID for this request.
+   * [project] - The Google Developers Console project name.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Zone for the instance group manager.
+   * [zone] - The name of the zone in which the update's target resides.
    *
-   * [instanceGroupManager] - Name of the instance group manager for this
-   * request.
+   * [instanceGroupManager] - The name of the instance group manager.
    *
    * [update] - Unique (in the context of a group) handle of an update.
    *
@@ -164,12 +166,13 @@ class UpdatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Project ID for this request.
+   * [project] - The Google Developers Console project name.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Zone for the instance group manager.
+   * [zone] - The name of the zone in which the update's target resides.
    *
-   * [instanceGroupManager] - Name of the instance group manager for this
-   * request.
+   * [instanceGroupManager] - The name of the instance group manager.
    *
    * Completes with a [InsertResponse].
    *
@@ -220,12 +223,13 @@ class UpdatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Project ID for this request.
+   * [project] - The Google Developers Console project name.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Zone for the instance group manager.
+   * [zone] - The name of the zone in which the update's target resides.
    *
-   * [instanceGroupManager] - Name of the instance group manager for this
-   * request.
+   * [instanceGroupManager] - The name of the instance group manager.
    *
    * [maxResults] - Maximum count of results to be returned. Acceptable values
    * are 1 to 100, inclusive. (Default: 50)
@@ -281,17 +285,90 @@ class UpdatesResourceApi {
   }
 
   /**
+   * Called on the particular Update endpoint. Lists instance updates for a
+   * given update.
+   *
+   * Request parameters:
+   *
+   * [project] - The Google Developers Console project name.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The name of the zone in which the update's target resides.
+   *
+   * [instanceGroupManager] - The name of the instance group manager.
+   *
+   * [update] - Unique (in the context of a group) handle of an update.
+   *
+   * [maxResults] - Maximum count of results to be returned. Acceptable values
+   * are 1 to 100, inclusive. (Default: 50)
+   * Value must be between "1" and "100".
+   *
+   * [pageToken] - Set this to the nextPageToken value returned by a previous
+   * list request to obtain the next page of results from the previous list
+   * request.
+   *
+   * Completes with a [InstanceUpdateList].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<InstanceUpdateList> listInstanceUpdates(core.String project, core.String zone, core.String instanceGroupManager, core.String update, {core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (update == null) {
+      throw new core.ArgumentError("Parameter update is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+
+    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + common_internal.Escaper.ecapeVariable('$instanceGroupManager') + '/updates/' + common_internal.Escaper.ecapeVariable('$update') + '/instanceUpdates';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new InstanceUpdateList.fromJson(data));
+  }
+
+  /**
    * Called on the particular Update endpoint. Pauses the update in state
    * ROLLING_FORWARD or ROLLING_BACK. No-op if invoked in state PAUSED.
    *
    * Request parameters:
    *
-   * [project] - Project ID for this request.
+   * [project] - The Google Developers Console project name.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Zone for the instance group manager.
+   * [zone] - The name of the zone in which the update's target resides.
    *
-   * [instanceGroupManager] - Name of the instance group manager for this
-   * request.
+   * [instanceGroupManager] - The name of the instance group manager.
    *
    * [update] - Unique (in the context of a group) handle of an update.
    *
@@ -343,12 +420,13 @@ class UpdatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Project ID for this request.
+   * [project] - The Google Developers Console project name.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Zone for the instance group manager.
+   * [zone] - The name of the zone in which the update's target resides.
    *
-   * [instanceGroupManager] - Name of the instance group manager for this
-   * request.
+   * [instanceGroupManager] - The name of the instance group manager.
    *
    * [update] - Unique (in the context of a group) handle of an update.
    *
@@ -400,12 +478,13 @@ class UpdatesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Project ID for this request.
+   * [project] - The Google Developers Console project name.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Zone for the instance group manager.
+   * [zone] - The name of the zone in which the update's target resides.
    *
-   * [instanceGroupManager] - Name of the instance group manager for this
-   * request.
+   * [instanceGroupManager] - The name of the instance group manager.
    *
    * [update] - Unique (in the context of a group) handle of an update.
    *
@@ -480,14 +559,14 @@ class InsertResponse {
 
 /** Update of a single instance. */
 class InstanceUpdate {
-  /** Name of an instance. */
-  core.String instanceName;
+  /** URL of the instance being updated. */
+  core.String instance;
 
   /**
-   * State of an instance update. Possible values are:
+   * State of the instance update. Possible values are:
    * - "PENDING/code>": The instance update is pending execution.
    * - "ROLLING_FORWARD": The instance update is going forward.
-   * - "ROLLING_BACK": The instance update being rolled back.
+   * - "ROLLING_BACK": The instance update is being rolled back.
    * - "PAUSED": The instance update is temporarily paused (inactive).
    * - "ROLLED_OUT": The instance update is finished, the instance is running
    * the new template.
@@ -498,25 +577,97 @@ class InstanceUpdate {
    */
   core.String state;
 
+  /**
+   * Status of the instance update. Possible values are:
+   * - "PENDING/code>": The instance update is pending execution.
+   * - "ROLLING_FORWARD": The instance update is going forward.
+   * - "ROLLING_BACK": The instance update is being rolled back.
+   * - "PAUSED": The instance update is temporarily paused (inactive).
+   * - "ROLLED_OUT": The instance update is finished, the instance is running
+   * the new template.
+   * - "ROLLED_BACK": The instance update is finished, the instance has been
+   * reverted to the previous template.
+   * - "CANCELLED": The instance update is paused and no longer can be resumed,
+   * undefined in which template the instance is running.
+   */
+  core.String status;
+
 
   InstanceUpdate();
 
   InstanceUpdate.fromJson(core.Map _json) {
-    if (_json.containsKey("instanceName")) {
-      instanceName = _json["instanceName"];
+    if (_json.containsKey("instance")) {
+      instance = _json["instance"];
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (instanceName != null) {
-      _json["instanceName"] = instanceName;
+    if (instance != null) {
+      _json["instance"] = instance;
     }
     if (state != null) {
       _json["state"] = state;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+
+/** Response returned by ListInstanceUpdates method. */
+class InstanceUpdateList {
+  /** A list of instance updates. */
+  core.List<InstanceUpdate> items;
+
+  /** [Output Only] Type of the resource. */
+  core.String kind;
+
+  /** A token used to continue a truncated list request (output only). */
+  core.String nextPageToken;
+
+  /** [Output Only] The fully qualified URL for the resource. */
+  core.String selfLink;
+
+
+  InstanceUpdateList();
+
+  InstanceUpdateList.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new InstanceUpdate.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
     }
     return _json;
   }
@@ -524,39 +675,56 @@ class InstanceUpdate {
 
 
 /**
- * Resource describing a single update (rollout) of an instance group to the
+ * Resource describing a single update (rollout) of a group of instances to the
  * given template.
  */
 class Update {
-  /** [Output only] The time the update was created, in RFC3339 text format. */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
 
-  /** [Output only] Human-readable description of an update progress. */
+  /**
+   * [Output Only] An optional textual description of the current status of the
+   * update.
+   */
   core.String details;
 
   /**
-   * [Output only] Unique (in the context of a group) handle assigned to this
+   * [Output Only] Unique (in the context of a group) handle assigned to this
    * update.
    */
   core.String handle;
 
-  /** Url of an instance template to be applied. */
+  /**
+   * [Output Only] Unique identifier for the resource; defined by the server.
+   */
+  core.String id;
+
+  /** [Output Only] URL of an instance group manager being updated. */
+  core.String instanceGroupManager;
+
+  /** URL of an instance template to be applied. */
   core.String instanceTemplate;
 
-  /** [Output only] Collection of instance updates. */
-  core.List<InstanceUpdate> instanceUpdates;
-
-  /** [Output only] The resource type. Always replicapoolupdater#update. */
+  /** [Output Only] Type of the resource. */
   core.String kind;
 
   /** Parameters of an update process. */
   UpdatePolicy policy;
 
-  /** [Output only] The fully qualified URL for this resource. */
+  /**
+   * [Output Only] An optional progress indicator that ranges from 0 to 100.
+   * There is no requirement that this be linear or support any granularity of
+   * operations. This should not be used to guess at when the update will be
+   * complete. This number should be monotonically increasing as the update
+   * progresses.
+   */
+  core.int progress;
+
+  /** [Output Only] The fully qualified URL for the resource. */
   core.String selfLink;
 
   /**
-   * [Output only] Current state of an update. Possible values are:
+   * [Output Only] Current state of the update. Possible values are:
    * - "ROLLING_FORWARD": The update is going forward.
    * - "ROLLING_BACK": The update is being rolled back.
    * - "PAUSED": The update is temporarily paused (inactive).
@@ -570,7 +738,27 @@ class Update {
   core.String state;
 
   /**
-   * [Output only] Requested state of an update. This is the state that the
+   * [Output Only] Status of the update. Possible values are:
+   * - "ROLLING_FORWARD": The update is going forward.
+   * - "ROLLING_BACK": The update is being rolled back.
+   * - "PAUSED": The update is temporarily paused (inactive).
+   * - "ROLLED_OUT": The update is finished, all instances have been updated
+   * successfully.
+   * - "ROLLED_BACK": The update is finished, all instances have been reverted
+   * to the previous template.
+   * - "CANCELLED": The update is paused and no longer can be resumed, undefined
+   * how many instances are running in which template.
+   */
+  core.String status;
+
+  /**
+   * [Output Only] An optional textual description of the current status of the
+   * update.
+   */
+  core.String statusMessage;
+
+  /**
+   * [Output Only] Requested state of the update. This is the state that the
    * updater is moving towards. Acceptable values are:
    * - "ROLLED_OUT": The user has requested the update to go forward.
    * - "ROLLED_BACK": The user has requested the update to be rolled back.
@@ -582,7 +770,7 @@ class Update {
   core.String targetState;
 
   /**
-   * [Output only] User who requested the update, for example: user@example.com.
+   * [Output Only] User who requested the update, for example: user@example.com.
    */
   core.String user;
 
@@ -599,11 +787,14 @@ class Update {
     if (_json.containsKey("handle")) {
       handle = _json["handle"];
     }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("instanceGroupManager")) {
+      instanceGroupManager = _json["instanceGroupManager"];
+    }
     if (_json.containsKey("instanceTemplate")) {
       instanceTemplate = _json["instanceTemplate"];
-    }
-    if (_json.containsKey("instanceUpdates")) {
-      instanceUpdates = _json["instanceUpdates"].map((value) => new InstanceUpdate.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -611,11 +802,20 @@ class Update {
     if (_json.containsKey("policy")) {
       policy = new UpdatePolicy.fromJson(_json["policy"]);
     }
+    if (_json.containsKey("progress")) {
+      progress = _json["progress"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("statusMessage")) {
+      statusMessage = _json["statusMessage"];
     }
     if (_json.containsKey("targetState")) {
       targetState = _json["targetState"];
@@ -636,11 +836,14 @@ class Update {
     if (handle != null) {
       _json["handle"] = handle;
     }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (instanceGroupManager != null) {
+      _json["instanceGroupManager"] = instanceGroupManager;
+    }
     if (instanceTemplate != null) {
       _json["instanceTemplate"] = instanceTemplate;
-    }
-    if (instanceUpdates != null) {
-      _json["instanceUpdates"] = instanceUpdates.map((value) => (value).toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -648,11 +851,20 @@ class Update {
     if (policy != null) {
       _json["policy"] = (policy).toJson();
     }
+    if (progress != null) {
+      _json["progress"] = progress;
+    }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
     if (state != null) {
       _json["state"] = state;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (statusMessage != null) {
+      _json["statusMessage"] = statusMessage;
     }
     if (targetState != null) {
       _json["targetState"] = targetState;
@@ -667,11 +879,17 @@ class Update {
 
 /** Response returned by List method. */
 class UpdateList {
-  /** Collection of requested updates. */
+  /** A list of update resources. */
   core.List<Update> items;
 
-  /** A token used to continue a truncated list request. */
+  /** [Output Only] Type of the resource. */
+  core.String kind;
+
+  /** A token used to continue a truncated list request (output only). */
   core.String nextPageToken;
+
+  /** [Output Only] The fully qualified URL for the resource. */
+  core.String selfLink;
 
 
   UpdateList();
@@ -680,8 +898,14 @@ class UpdateList {
     if (_json.containsKey("items")) {
       items = _json["items"].map((value) => new Update.fromJson(value)).toList();
     }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
     }
   }
 
@@ -690,8 +914,14 @@ class UpdateList {
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
     }
     return _json;
   }

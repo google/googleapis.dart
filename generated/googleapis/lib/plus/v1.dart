@@ -37,8 +37,8 @@ class PlusApi {
   MomentsResourceApi get moments => new MomentsResourceApi(_requester);
   PeopleResourceApi get people => new PeopleResourceApi(_requester);
 
-  PlusApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "plus/v1/");
+  PlusApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "plus/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

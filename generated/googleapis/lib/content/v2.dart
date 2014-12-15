@@ -32,8 +32,8 @@ class ContentApi {
   ProductsResourceApi get products => new ProductsResourceApi(_requester);
   ProductstatusesResourceApi get productstatuses => new ProductstatusesResourceApi(_requester);
 
-  ContentApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "content/v2/");
+  ContentApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "content/v2/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -4769,8 +4769,7 @@ class ProductTax {
 
   /**
    * The numeric id of a location that the tax rate applies to as defined in the
-   * Adwords API
-   * (https://developers.google.com/adwords/api/docs/appendix/geotargeting).
+   * AdWords API.
    */
   core.String locationId;
 

@@ -42,8 +42,8 @@ class BigqueryApi {
   TabledataResourceApi get tabledata => new TabledataResourceApi(_requester);
   TablesResourceApi get tables => new TablesResourceApi(_requester);
 
-  BigqueryApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "bigquery/v2/");
+  BigqueryApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "bigquery/v2/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -2913,7 +2913,7 @@ class JobStatistics3 {
 /** Not documented yet. */
 class JobStatistics4 {
   /**
-   * [Output-only] Number of files per destination URI or URI pattern specified
+   * [Experimental] Number of files per destination URI or URI pattern specified
    * in the extract configuration. These values will be in the same order as the
    * URIs specified in the 'destinationUris' field.
    */

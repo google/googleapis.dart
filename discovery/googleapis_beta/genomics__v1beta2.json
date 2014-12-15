@@ -23,7 +23,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/B0U3dL3DEjo6LTLutBKsRG1fa1o\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/uZHv1LLm_QJEFlLl9KguWTI7Id8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1593,6 +1593,18 @@
             "properties": {
                 "datasetId": {
                     "description": "Required. The ID of the dataset these read group sets will belong to. The caller must have WRITE permissions to this dataset.",
+                    "type": "string"
+                },
+                "partitionStrategy": {
+                    "description": "The partition strategy describes how read groups are partitioned into read group sets.",
+                    "enum": [
+                        "MERGE_ALL",
+                        "PER_FILE_PER_SAMPLE"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
                     "type": "string"
                 },
                 "referenceSetId": {

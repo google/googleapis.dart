@@ -31,8 +31,8 @@ class AutoscalerApi {
   ZoneOperationsResourceApi get zoneOperations => new ZoneOperationsResourceApi(_requester);
   ZonesResourceApi get zones => new ZonesResourceApi(_requester);
 
-  AutoscalerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "autoscaler/v1beta2/");
+  AutoscalerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "autoscaler/v1beta2/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
@@ -1172,7 +1172,10 @@ class Operation {
   /** Not documented yet. */
   core.String insertTime;
 
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always kind#operation for Operation
+   * resources.
+   */
   core.String kind;
 
   /** Not documented yet. */
@@ -1367,7 +1370,7 @@ class OperationList {
   /** Not documented yet. */
   core.List<Operation> items;
 
-  /** Type of resource. */
+  /** Type of resource. Always compute#operations for Operations resource. */
   core.String kind;
 
   /** Not documented yet. */

@@ -20,8 +20,8 @@ class WebfontsApi {
 
   WebfontsResourceApi get webfonts => new WebfontsResourceApi(_requester);
 
-  WebfontsApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "webfonts/v1/");
+  WebfontsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "webfonts/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

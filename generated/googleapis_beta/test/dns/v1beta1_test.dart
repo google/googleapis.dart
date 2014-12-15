@@ -16,27 +16,27 @@ import 'package:googleapis_beta/dns/v1beta1.dart' as api;
 
 
 
-buildUnnamed1231() {
+buildUnnamed1283() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed1231(core.List<api.ResourceRecordSet> o) {
+checkUnnamed1283(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
 }
 
-buildUnnamed1232() {
+buildUnnamed1284() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed1232(core.List<api.ResourceRecordSet> o) {
+checkUnnamed1284(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
@@ -47,8 +47,8 @@ buildChange() {
   var o = new api.Change();
   buildCounterChange++;
   if (buildCounterChange < 3) {
-    o.additions = buildUnnamed1231();
-    o.deletions = buildUnnamed1232();
+    o.additions = buildUnnamed1283();
+    o.deletions = buildUnnamed1284();
     o.id = "foo";
     o.kind = "foo";
     o.startTime = "foo";
@@ -61,8 +61,8 @@ buildChange() {
 checkChange(api.Change o) {
   buildCounterChange++;
   if (buildCounterChange < 3) {
-    checkUnnamed1231(o.additions);
-    checkUnnamed1232(o.deletions);
+    checkUnnamed1283(o.additions);
+    checkUnnamed1284(o.deletions);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.startTime, unittest.equals('foo'));
@@ -71,14 +71,14 @@ checkChange(api.Change o) {
   buildCounterChange--;
 }
 
-buildUnnamed1233() {
+buildUnnamed1285() {
   var o = new core.List<api.Change>();
   o.add(buildChange());
   o.add(buildChange());
   return o;
 }
 
-checkUnnamed1233(core.List<api.Change> o) {
+checkUnnamed1285(core.List<api.Change> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChange(o[0]);
   checkChange(o[1]);
@@ -89,7 +89,7 @@ buildChangesListResponse() {
   var o = new api.ChangesListResponse();
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
-    o.changes = buildUnnamed1233();
+    o.changes = buildUnnamed1285();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -100,21 +100,21 @@ buildChangesListResponse() {
 checkChangesListResponse(api.ChangesListResponse o) {
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
-    checkUnnamed1233(o.changes);
+    checkUnnamed1285(o.changes);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterChangesListResponse--;
 }
 
-buildUnnamed1234() {
+buildUnnamed1286() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1234(core.List<core.String> o) {
+checkUnnamed1286(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -131,7 +131,8 @@ buildManagedZone() {
     o.id = "foo";
     o.kind = "foo";
     o.name = "foo";
-    o.nameServers = buildUnnamed1234();
+    o.nameServerSet = "foo";
+    o.nameServers = buildUnnamed1286();
   }
   buildCounterManagedZone--;
   return o;
@@ -146,19 +147,20 @@ checkManagedZone(api.ManagedZone o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1234(o.nameServers);
+    unittest.expect(o.nameServerSet, unittest.equals('foo'));
+    checkUnnamed1286(o.nameServers);
   }
   buildCounterManagedZone--;
 }
 
-buildUnnamed1235() {
+buildUnnamed1287() {
   var o = new core.List<api.ManagedZone>();
   o.add(buildManagedZone());
   o.add(buildManagedZone());
   return o;
 }
 
-checkUnnamed1235(core.List<api.ManagedZone> o) {
+checkUnnamed1287(core.List<api.ManagedZone> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedZone(o[0]);
   checkManagedZone(o[1]);
@@ -170,7 +172,7 @@ buildManagedZonesListResponse() {
   buildCounterManagedZonesListResponse++;
   if (buildCounterManagedZonesListResponse < 3) {
     o.kind = "foo";
-    o.managedZones = buildUnnamed1235();
+    o.managedZones = buildUnnamed1287();
     o.nextPageToken = "foo";
   }
   buildCounterManagedZonesListResponse--;
@@ -181,7 +183,7 @@ checkManagedZonesListResponse(api.ManagedZonesListResponse o) {
   buildCounterManagedZonesListResponse++;
   if (buildCounterManagedZonesListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1235(o.managedZones);
+    checkUnnamed1287(o.managedZones);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterManagedZonesListResponse--;
@@ -243,14 +245,14 @@ checkQuota(api.Quota o) {
   buildCounterQuota--;
 }
 
-buildUnnamed1236() {
+buildUnnamed1288() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1236(core.List<core.String> o) {
+checkUnnamed1288(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -263,7 +265,7 @@ buildResourceRecordSet() {
   if (buildCounterResourceRecordSet < 3) {
     o.kind = "foo";
     o.name = "foo";
-    o.rrdatas = buildUnnamed1236();
+    o.rrdatas = buildUnnamed1288();
     o.ttl = 42;
     o.type = "foo";
   }
@@ -276,21 +278,21 @@ checkResourceRecordSet(api.ResourceRecordSet o) {
   if (buildCounterResourceRecordSet < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1236(o.rrdatas);
+    checkUnnamed1288(o.rrdatas);
     unittest.expect(o.ttl, unittest.equals(42));
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterResourceRecordSet--;
 }
 
-buildUnnamed1237() {
+buildUnnamed1289() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed1237(core.List<api.ResourceRecordSet> o) {
+checkUnnamed1289(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
@@ -303,7 +305,7 @@ buildResourceRecordSetsListResponse() {
   if (buildCounterResourceRecordSetsListResponse < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.rrsets = buildUnnamed1237();
+    o.rrsets = buildUnnamed1289();
   }
   buildCounterResourceRecordSetsListResponse--;
   return o;
@@ -314,7 +316,7 @@ checkResourceRecordSetsListResponse(api.ResourceRecordSetsListResponse o) {
   if (buildCounterResourceRecordSetsListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1237(o.rrsets);
+    checkUnnamed1289(o.rrsets);
   }
   buildCounterResourceRecordSetsListResponse--;
 }

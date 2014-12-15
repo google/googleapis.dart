@@ -31,8 +31,8 @@ class MirrorApi {
   SubscriptionsResourceApi get subscriptions => new SubscriptionsResourceApi(_requester);
   TimelineResourceApi get timeline => new TimelineResourceApi(_requester);
 
-  MirrorApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "mirror/v1/");
+  MirrorApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "mirror/v1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

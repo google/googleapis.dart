@@ -1,3 +1,11 @@
+## 0.6.0
+
+* [apis] dns:v1beta1: schema changes 
+* [apis] genomics:v1beta2: schema changes 
+* [apis] sqladmin:v1beta3: schema changes
+* [apis-breaking] replicapoolupdater:v1beta1: schema changes
+* [generator] Roll to include optional rootUrl/servicePath arguments.
+
 ## 0.5.2
 
 * [apis] container:v1beta1: schema changes

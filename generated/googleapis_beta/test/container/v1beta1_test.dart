@@ -82,14 +82,14 @@ checkCreateClusterRequest(api.CreateClusterRequest o) {
   buildCounterCreateClusterRequest--;
 }
 
-buildUnnamed1203() {
+buildUnnamed1260() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed1203(core.List<api.Cluster> o) {
+checkUnnamed1260(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
@@ -100,7 +100,7 @@ buildListAggregatedClustersResponse() {
   var o = new api.ListAggregatedClustersResponse();
   buildCounterListAggregatedClustersResponse++;
   if (buildCounterListAggregatedClustersResponse < 3) {
-    o.clusters = buildUnnamed1203();
+    o.clusters = buildUnnamed1260();
   }
   buildCounterListAggregatedClustersResponse--;
   return o;
@@ -109,19 +109,19 @@ buildListAggregatedClustersResponse() {
 checkListAggregatedClustersResponse(api.ListAggregatedClustersResponse o) {
   buildCounterListAggregatedClustersResponse++;
   if (buildCounterListAggregatedClustersResponse < 3) {
-    checkUnnamed1203(o.clusters);
+    checkUnnamed1260(o.clusters);
   }
   buildCounterListAggregatedClustersResponse--;
 }
 
-buildUnnamed1204() {
+buildUnnamed1261() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1204(core.List<api.Operation> o) {
+checkUnnamed1261(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -132,7 +132,7 @@ buildListAggregatedOperationsResponse() {
   var o = new api.ListAggregatedOperationsResponse();
   buildCounterListAggregatedOperationsResponse++;
   if (buildCounterListAggregatedOperationsResponse < 3) {
-    o.operations = buildUnnamed1204();
+    o.operations = buildUnnamed1261();
   }
   buildCounterListAggregatedOperationsResponse--;
   return o;
@@ -141,19 +141,19 @@ buildListAggregatedOperationsResponse() {
 checkListAggregatedOperationsResponse(api.ListAggregatedOperationsResponse o) {
   buildCounterListAggregatedOperationsResponse++;
   if (buildCounterListAggregatedOperationsResponse < 3) {
-    checkUnnamed1204(o.operations);
+    checkUnnamed1261(o.operations);
   }
   buildCounterListAggregatedOperationsResponse--;
 }
 
-buildUnnamed1205() {
+buildUnnamed1262() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed1205(core.List<api.Cluster> o) {
+checkUnnamed1262(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
@@ -164,7 +164,7 @@ buildListClustersResponse() {
   var o = new api.ListClustersResponse();
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    o.clusters = buildUnnamed1205();
+    o.clusters = buildUnnamed1262();
   }
   buildCounterListClustersResponse--;
   return o;
@@ -173,19 +173,19 @@ buildListClustersResponse() {
 checkListClustersResponse(api.ListClustersResponse o) {
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    checkUnnamed1205(o.clusters);
+    checkUnnamed1262(o.clusters);
   }
   buildCounterListClustersResponse--;
 }
 
-buildUnnamed1206() {
+buildUnnamed1263() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1206(core.List<api.Operation> o) {
+checkUnnamed1263(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -196,7 +196,7 @@ buildListOperationsResponse() {
   var o = new api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.operations = buildUnnamed1206();
+    o.operations = buildUnnamed1263();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -205,7 +205,7 @@ buildListOperationsResponse() {
 checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    checkUnnamed1206(o.operations);
+    checkUnnamed1263(o.operations);
   }
   buildCounterListOperationsResponse--;
 }

@@ -48,8 +48,8 @@ class ManagerApi {
   DeploymentsResourceApi get deployments => new DeploymentsResourceApi(_requester);
   TemplatesResourceApi get templates => new TemplatesResourceApi(_requester);
 
-  ManagerApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "manager/v1beta2/projects/");
+  ManagerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "manager/v1beta2/projects/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

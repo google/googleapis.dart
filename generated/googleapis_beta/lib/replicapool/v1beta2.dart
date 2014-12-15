@@ -33,8 +33,8 @@ class ReplicapoolApi {
   InstanceGroupManagersResourceApi get instanceGroupManagers => new InstanceGroupManagersResourceApi(_requester);
   ZoneOperationsResourceApi get zoneOperations => new ZoneOperationsResourceApi(_requester);
 
-  ReplicapoolApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "replicapool/v1beta2/projects/");
+  ReplicapoolApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "replicapool/v1beta2/projects/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 

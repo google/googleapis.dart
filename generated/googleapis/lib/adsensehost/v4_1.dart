@@ -31,8 +31,8 @@ class AdsensehostApi {
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
   UrlchannelsResourceApi get urlchannels => new UrlchannelsResourceApi(_requester);
 
-  AdsensehostApi(http.Client client) : 
-      _requester = new common_internal.ApiRequester(client, "https://www.googleapis.com/", "adsensehost/v4.1/");
+  AdsensehostApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "adsensehost/v4.1/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
 
