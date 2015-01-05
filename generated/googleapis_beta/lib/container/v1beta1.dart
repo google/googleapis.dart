@@ -492,8 +492,8 @@ class ProjectsZonesOperationsResourceApi {
 class Cluster {
   /**
    * The API version of the Kubernetes master and kubelets running in this
-   * cluster. Allowed value is 0.4.2, or leave blank to pick up the latest
-   * stable release.
+   * cluster. Allowed values are 0.4.4, 0.5.5, 0.6.1, or leave blank to pick up
+   * the latest stable release.
    */
   core.String clusterApiVersion;
 
@@ -563,6 +563,9 @@ class Cluster {
    */
   core.int numNodes;
 
+  /** [Output only] Server-defined URL for the resource. */
+  core.String selfLink;
+
   /**
    * [Output only] The IP addresses of the Kubernetes services in this cluster,
    * in  CIDR notation (e.g. 1.2.3.4/29). Service addresses are always in the
@@ -629,6 +632,9 @@ class Cluster {
     if (_json.containsKey("numNodes")) {
       numNodes = _json["numNodes"];
     }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
     if (_json.containsKey("servicesIpv4Cidr")) {
       servicesIpv4Cidr = _json["servicesIpv4Cidr"];
     }
@@ -677,6 +683,9 @@ class Cluster {
     }
     if (numNodes != null) {
       _json["numNodes"] = numNodes;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
     }
     if (servicesIpv4Cidr != null) {
       _json["servicesIpv4Cidr"] = servicesIpv4Cidr;
@@ -930,6 +939,9 @@ class Operation {
    */
   core.String target;
 
+  /** Server-defined URL for the target of the operation. */
+  core.String targetLink;
+
   /**
    * The name of the Google Compute Engine zone in which the operation is taking
    * place.
@@ -958,6 +970,9 @@ class Operation {
     if (_json.containsKey("target")) {
       target = _json["target"];
     }
+    if (_json.containsKey("targetLink")) {
+      targetLink = _json["targetLink"];
+    }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
     }
@@ -982,6 +997,9 @@ class Operation {
     }
     if (target != null) {
       _json["target"] = target;
+    }
+    if (targetLink != null) {
+      _json["targetLink"] = targetLink;
     }
     if (zone != null) {
       _json["zone"] = zone;

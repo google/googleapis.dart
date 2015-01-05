@@ -212,6 +212,12 @@ Lets you create, run and download reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
+#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.0
+
+Manage your DoubleClick Campaign Manager ad campaigns and reports.
+
+Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
+
 #### ![Logo](http://www.google.com/images/icons/feature/filing_cabinet_search-g16.png) APIs Discovery Service - discovery v1
 
 Lets you discover information about other Google APIs, such as what APIs are available, the resource and method details for each API.

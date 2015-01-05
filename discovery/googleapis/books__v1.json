@@ -14,7 +14,7 @@
     "description": "Lets you search for books and manage your Google Books library.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/YgyXWJOaz5Ed1XjmHrSKw1DsJks\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/lAfEsyeytgyVg8h6d-oB1SV1OOA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/ebooks-16.png",
         "x32": "https://www.google.com/images/icons/product/ebooks-32.png"
@@ -1156,6 +1156,17 @@
                                 "volumeId"
                             ],
                             "parameters": {
+                                "reason": {
+                                    "description": "The reason for which the book is added to the library.",
+                                    "enum": [
+                                        "ONBOARDING"
+                                    ],
+                                    "enumDescriptions": [
+                                        "Volumes added from onboarding flow."
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "shelf": {
                                     "description": "ID of bookshelf to which to add a volume.",
                                     "location": "path",
@@ -2187,7 +2198,7 @@
             }
         }
     },
-    "revision": "20141113",
+    "revision": "20141214",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {

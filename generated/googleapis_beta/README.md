@@ -86,11 +86,23 @@ The Google Container Engine API is used for building and managing container base
 
 Official API documentation: https://cloud.google.com/container-engine/docs/v1beta1/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) null - dataflow v1beta3
+
+Google Dataflow API.
+
+Official API documentation: 
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Datastore API - datastore v1beta2
 
 API for accessing Google Cloud Datastore.
 
 Official API documentation: https://developers.google.com/datastore/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Deployment Manager API V2 - deploymentmanager v2beta1
+
+The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.
+
+Official API documentation: https://developers.google.com/deployment-manager/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud DNS API - dns v1beta1
 

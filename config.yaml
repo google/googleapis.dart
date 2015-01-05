@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.5.1
+    version: 0.5.2
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -33,6 +33,7 @@ packages:
     - discovery:v1  # https://developers.google.com/discovery/
     - drive:v2  # https://developers.google.com/drive/v2/reference/
     - dfareporting:v1.3  # https://developers.google.com/doubleclick-advertisers/reporting/
+    - dfareporting:v2.0  # https://developers.google.com/doubleclick-advertisers/reporting/
     - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
     - doubleclicksearch:v2  # https://developers.google.com/doubleclick-search/
     - fitness:v1  # https://developers.google.com/fitness/
@@ -67,7 +68,7 @@ packages:
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
-    version: 0.6.0
+    version: 0.6.1
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -77,7 +78,9 @@ packages:
     - autoscaler:v1beta2  # https://developers.google.com/compute/docs/autoscaler/ (Limited Preview)
     - cloudmonitoring:v2beta1  # https://developers.google.com/cloud-monitoring/
     - container:v1beta1  #
+    - dataflow:v1beta3  # https://cloud.google.com/dataflow/
     - datastore:v1beta2  # https://developers.google.com/datastore/
+    - deploymentmanager:v2beta1  # https://cloud.google.com/deployment-manager/
     - dns:v1beta1  # https://developers.google.com/cloud-dns/
     - genomics:v1beta  # https://developers.google.com/genomics/
     - genomics:v1beta2  # https://developers.google.com/genomics/
@@ -91,8 +94,6 @@ packages:
     - taskqueue:v1beta2  # https://developers.google.com/appengine/docs/python/taskqueue/rest/libraries
 
 skipped_apis:
-- adexchangebuyer:v1  # v1.3 included
-- adexchangebuyer:v1.1  # v1.3 included
 - adexchangebuyer:v1.2  # v1.3 included
 - adexchangeseller:v1  # v1.1 included
 - adsense:v1.2  # v1.4 included

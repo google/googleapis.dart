@@ -1,3 +1,9 @@
+## 0.6.1
+
+* [apis-new] dataflow:v1beta3: API added
+* [apis-new] deploymentmanager:v2beta1: API added
+* [apis] container:v1beta1: schema changes
+
 ## 0.6.0
 
 * [apis] dns:v1beta1: schema changes 

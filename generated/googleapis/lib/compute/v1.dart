@@ -10461,7 +10461,8 @@ class HttpHealthCheck {
 
   /**
    * How long (in seconds) to wait before claiming failure. The default value is
-   * 5 seconds.
+   * 5 seconds. It is invalid for timeoutSec to have greater value than
+   * checkIntervalSec.
    */
   core.int timeoutSec;
 
@@ -12502,16 +12503,16 @@ class NetworkList {
 
 /** Not documented yet. */
 class OperationErrorErrors {
-  /** The error type identifier for this error. */
+  /** [Output Only] The error type identifier for this error. */
   core.String code;
 
   /**
-   * Indicates the field in the request which caused the error. This property is
-   * optional.
+   * [Output Only] Indicates the field in the request which caused the error.
+   * This property is optional.
    */
   core.String location;
 
-  /** An optional, human-readable error message. */
+  /** [Output Only] An optional, human-readable error message. */
   core.String message;
 
 
@@ -12546,11 +12547,14 @@ class OperationErrorErrors {
 
 
 /**
- * If errors occurred during processing of this operation, this field will be
- * populated (output only).
+ * [Output Only] If errors occurred during processing of this operation, this
+ * field will be populated.
  */
 class OperationError {
-  /** The array of errors encountered while processing this operation. */
+  /**
+   * [Output Only] The array of errors encountered while processing this
+   * operation.
+   */
   core.List<OperationErrorErrors> errors;
 
 
@@ -12664,87 +12668,70 @@ class OperationWarnings {
 
 /** An operation resource, used to manage asynchronous API requests. */
 class Operation {
-  /**
-   * An optional identifier specified by the client when the mutation was
-   * initiated. Must be unique for all operation resources in the project
-   * (output only).
-   */
+  /** Not documented yet. */
   core.String clientOperationId;
 
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format (output only). */
   core.String creationTimestamp;
 
-  /**
-   * The time that this operation was completed. This is in RFC 3339 format
-   * (output only).
-   */
+  /** Not documented yet. */
   core.String endTime;
 
   /**
-   * If errors occurred during processing of this operation, this field will be
-   * populated (output only).
+   * [Output Only] If errors occurred during processing of this operation, this
+   * field will be populated.
    */
   OperationError error;
 
-  /**
-   * If operation fails, the HTTP error message returned, e.g. NOT FOUND.
-   * (output only).
-   */
+  /** Not documented yet. */
   core.String httpErrorMessage;
 
-  /**
-   * If operation fails, the HTTP error status code returned, e.g. 404. (output
-   * only).
-   */
+  /** Not documented yet. */
   core.int httpErrorStatusCode;
 
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
   /**
-   * The time that this operation was requested. This is in RFC 3339 format
-   * (output only).
+   * [Output Only] The time that this operation was requested. This is in RFC
+   * 3339 format.
    */
   core.String insertTime;
 
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always kind#operation for Operation
+   * resources.
+   */
   core.String kind;
 
-  /** Name of the resource (output only). */
+  /** [Output Only] Name of the resource (output only). */
   core.String name;
 
-  /**
-   * Type of the operation. Examples include "insert", "update", and "delete"
-   * (output only).
-   */
+  /** Not documented yet. */
   core.String operationType;
 
-  /**
-   * An optional progress indicator that ranges from 0 to 100. There is no
-   * requirement that this be linear or support any granularity of operations.
-   * This should not be used to guess at when the operation will be complete.
-   * This number should be monotonically increasing as the operation progresses
-   * (output only).
-   */
+  /** Not documented yet. */
   core.int progress;
 
-  /** URL of the region where the operation resides (output only). */
+  /**
+   * [Output Only] URL of the region where the operation resides (output only).
+   */
   core.String region;
 
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
 
   /**
-   * The time that this operation was started by the server. This is in RFC 3339
-   * format (output only).
+   * [Output Only] The time that this operation was started by the server. This
+   * is in RFC 3339 format.
    */
   core.String startTime;
 
   /**
-   * Status of the operation. Can be one of the following: "PENDING", "RUNNING",
-   * or "DONE" (output only).
+   * [Output Only] Status of the operation. Can be one of the following:
+   * "PENDING", "RUNNING", or "DONE".
    * Possible string values are:
    * - "DONE"
    * - "PENDING"
@@ -12753,33 +12740,31 @@ class Operation {
   core.String status;
 
   /**
-   * An optional textual description of the current status of the operation
-   * (output only).
+   * [Output Only] An optional textual description of the current status of the
+   * operation.
    */
   core.String statusMessage;
 
   /**
-   * Unique target id which identifies a particular incarnation of the target
-   * (output only).
+   * [Output Only] Unique target id which identifies a particular incarnation of
+   * the target.
    */
   core.String targetId;
 
-  /** URL of the resource the operation is mutating (output only). */
+  /**
+   * [Output Only] URL of the resource the operation is mutating (output only).
+   */
   core.String targetLink;
 
-  /**
-   * User who requested the operation, for example "user@example.com" (output
-   * only).
-   */
+  /** Not documented yet. */
   core.String user;
 
-  /**
-   * If warning messages generated during processing of this operation, this
-   * field will be populated (output only).
-   */
+  /** Not documented yet. */
   core.List<OperationWarnings> warnings;
 
-  /** URL of the zone where the operation resides (output only). */
+  /**
+   * [Output Only] URL of the zone where the operation resides (output only).
+   */
   core.String zone;
 
 
@@ -12930,20 +12915,20 @@ class Operation {
 /** Not documented yet. */
 class OperationAggregatedList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A map of scoped operation lists. */
+  /** [Output Only] A map of scoped operation lists. */
   core.Map<core.String, OperationsScopedList> items;
 
   /** Type of resource. */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
 
@@ -12992,20 +12977,20 @@ class OperationAggregatedList {
 /** Contains a list of operation resources. */
 class OperationList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** The operation resources. */
+  /** [Output Only] The operation resources. */
   core.List<Operation> items;
 
-  /** Type of resource. */
+  /** Type of resource. Always compute#operations for Operations resource. */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncate. */
   core.String nextPageToken;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
 
@@ -13085,8 +13070,8 @@ class OperationsScopedListWarningData {
 
 
 /**
- * Informational warning which replaces the list of operations when the list is
- * empty.
+ * [Output Only] Informational warning which replaces the list of operations
+ * when the list is empty.
  */
 class OperationsScopedListWarning {
   /**
@@ -13146,12 +13131,12 @@ class OperationsScopedListWarning {
 
 /** Not documented yet. */
 class OperationsScopedList {
-  /** List of operations contained in this scope. */
+  /** [Output Only] List of operations contained in this scope. */
   core.List<Operation> operations;
 
   /**
-   * Informational warning which replaces the list of operations when the list
-   * is empty.
+   * [Output Only] Informational warning which replaces the list of operations
+   * when the list is empty.
    */
   OperationsScopedListWarning warning;
 

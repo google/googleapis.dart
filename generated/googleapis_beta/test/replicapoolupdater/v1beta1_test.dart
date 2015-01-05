@@ -58,14 +58,14 @@ checkInstanceUpdate(api.InstanceUpdate o) {
   buildCounterInstanceUpdate--;
 }
 
-buildUnnamed1305() {
+buildUnnamed1705() {
   var o = new core.List<api.InstanceUpdate>();
   o.add(buildInstanceUpdate());
   o.add(buildInstanceUpdate());
   return o;
 }
 
-checkUnnamed1305(core.List<api.InstanceUpdate> o) {
+checkUnnamed1705(core.List<api.InstanceUpdate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstanceUpdate(o[0]);
   checkInstanceUpdate(o[1]);
@@ -76,7 +76,7 @@ buildInstanceUpdateList() {
   var o = new api.InstanceUpdateList();
   buildCounterInstanceUpdateList++;
   if (buildCounterInstanceUpdateList < 3) {
-    o.items = buildUnnamed1305();
+    o.items = buildUnnamed1705();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -88,7 +88,7 @@ buildInstanceUpdateList() {
 checkInstanceUpdateList(api.InstanceUpdateList o) {
   buildCounterInstanceUpdateList++;
   if (buildCounterInstanceUpdateList < 3) {
-    checkUnnamed1305(o.items);
+    checkUnnamed1705(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -143,14 +143,14 @@ checkUpdate(api.Update o) {
   buildCounterUpdate--;
 }
 
-buildUnnamed1306() {
+buildUnnamed1706() {
   var o = new core.List<api.Update>();
   o.add(buildUpdate());
   o.add(buildUpdate());
   return o;
 }
 
-checkUnnamed1306(core.List<api.Update> o) {
+checkUnnamed1706(core.List<api.Update> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpdate(o[0]);
   checkUpdate(o[1]);
@@ -161,7 +161,7 @@ buildUpdateList() {
   var o = new api.UpdateList();
   buildCounterUpdateList++;
   if (buildCounterUpdateList < 3) {
-    o.items = buildUnnamed1306();
+    o.items = buildUnnamed1706();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -173,7 +173,7 @@ buildUpdateList() {
 checkUpdateList(api.UpdateList o) {
   buildCounterUpdateList++;
   if (buildCounterUpdateList < 3) {
-    checkUnnamed1306(o.items);
+    checkUnnamed1706(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));

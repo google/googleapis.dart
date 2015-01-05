@@ -1614,6 +1614,10 @@ class MylibraryBookshelvesResourceApi {
    *
    * [volumeId] - ID of volume to add.
    *
+   * [reason] - The reason for which the book is added to the library.
+   * Possible string values are:
+   * - "ONBOARDING" : Volumes added from onboarding flow.
+   *
    * [source] - String to identify the originator of this request.
    *
    * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
@@ -1622,7 +1626,7 @@ class MylibraryBookshelvesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future addVolume(core.String shelf, core.String volumeId, {core.String source}) {
+  async.Future addVolume(core.String shelf, core.String volumeId, {core.String reason, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1637,6 +1641,9 @@ class MylibraryBookshelvesResourceApi {
       throw new core.ArgumentError("Parameter volumeId is required.");
     }
     _queryParams["volumeId"] = [volumeId];
+    if (reason != null) {
+      _queryParams["reason"] = [reason];
+    }
     if (source != null) {
       _queryParams["source"] = [source];
     }

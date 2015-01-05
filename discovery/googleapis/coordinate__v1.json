@@ -11,13 +11,13 @@
             }
         }
     },
-    "basePath": "/coordinate/v1/teams/",
-    "baseUrl": "https://www.googleapis.com/coordinate/v1/teams/",
+    "basePath": "/coordinate/v1/",
+    "baseUrl": "https://www.googleapis.com/coordinate/v1/",
     "batchPath": "batch",
     "description": "Lets you view and manage jobs in a Coordinate team.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/coordinate/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/ckefd3M0PpbhIY5DVZQuUY4ElY0\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Oe1OM8HbjTHLlKoRM5huCxnk-hs\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -91,7 +91,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "{teamId}/custom_fields",
+                    "path": "teams/{teamId}/custom_fields",
                     "response": {
                         "$ref": "CustomFieldDefListResponse"
                     },
@@ -127,7 +127,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "{teamId}/jobs/{jobId}",
+                    "path": "teams/{teamId}/jobs/{jobId}",
                     "response": {
                         "$ref": "Job"
                     },
@@ -160,7 +160,7 @@
                             "type": "string"
                         },
                         "customField": {
-                            "description": "Map from custom field id (from /team//custom_fields) to the field value. For example '123=Alice'",
+                            "description": "Sets the value of custom fields. To set a custom field, pass the field id (from /team/teamId/custom_fields), a URL escaped '=' character, and the desired value as a parameter. For example, customField=12%3DAlice. Repeat the parameter for each custom field. Note that '=' cannot appear in the parameter value. Specifying an invalid, or inactive enum field will result in an error 500.",
                             "location": "query",
                             "repeated": true,
                             "type": "string"
@@ -207,7 +207,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "{teamId}/jobs",
+                    "path": "teams/{teamId}/jobs",
                     "request": {
                         "$ref": "Job"
                     },
@@ -250,7 +250,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "{teamId}/jobs",
+                    "path": "teams/{teamId}/jobs",
                     "response": {
                         "$ref": "JobListResponse"
                     },
@@ -279,7 +279,7 @@
                             "type": "string"
                         },
                         "customField": {
-                            "description": "Map from custom field id (from /team//custom_fields) to the field value. For example '123=Alice'",
+                            "description": "Sets the value of custom fields. To set a custom field, pass the field id (from /team/teamId/custom_fields), a URL escaped '=' character, and the desired value as a parameter. For example, customField=12%3DAlice. Repeat the parameter for each custom field. Note that '=' cannot appear in the parameter value. Specifying an invalid, or inactive enum field will result in an error 500.",
                             "location": "query",
                             "repeated": true,
                             "type": "string"
@@ -349,7 +349,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "{teamId}/jobs/{jobId}",
+                    "path": "teams/{teamId}/jobs/{jobId}",
                     "request": {
                         "$ref": "Job"
                     },
@@ -380,7 +380,7 @@
                             "type": "string"
                         },
                         "customField": {
-                            "description": "Map from custom field id (from /team//custom_fields) to the field value. For example '123=Alice'",
+                            "description": "Sets the value of custom fields. To set a custom field, pass the field id (from /team/teamId/custom_fields), a URL escaped '=' character, and the desired value as a parameter. For example, customField=12%3DAlice. Repeat the parameter for each custom field. Note that '=' cannot appear in the parameter value. Specifying an invalid, or inactive enum field will result in an error 500.",
                             "location": "query",
                             "repeated": true,
                             "type": "string"
@@ -450,7 +450,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "{teamId}/jobs/{jobId}",
+                    "path": "teams/{teamId}/jobs/{jobId}",
                     "request": {
                         "$ref": "Job"
                     },
@@ -506,7 +506,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "{teamId}/workers/{workerEmail}/locations",
+                    "path": "teams/{teamId}/workers/{workerEmail}/locations",
                     "response": {
                         "$ref": "LocationListResponse"
                     },
@@ -542,7 +542,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "{teamId}/jobs/{jobId}/schedule",
+                    "path": "teams/{teamId}/jobs/{jobId}/schedule",
                     "response": {
                         "$ref": "Schedule"
                     },
@@ -597,7 +597,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "{teamId}/jobs/{jobId}/schedule",
+                    "path": "teams/{teamId}/jobs/{jobId}/schedule",
                     "request": {
                         "$ref": "Schedule"
                     },
@@ -654,7 +654,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "{teamId}/jobs/{jobId}/schedule",
+                    "path": "teams/{teamId}/jobs/{jobId}/schedule",
                     "request": {
                         "$ref": "Schedule"
                     },
@@ -663,6 +663,40 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/coordinate"
+                    ]
+                }
+            }
+        },
+        "team": {
+            "methods": {
+                "list": {
+                    "description": "Retrieves a list of teams for a user.",
+                    "httpMethod": "GET",
+                    "id": "coordinate.team.list",
+                    "parameters": {
+                        "admin": {
+                            "description": "Whether to include teams for which the user has the Admin role.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "dispatcher": {
+                            "description": "Whether to include teams for which the user has the Dispatcher role.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "worker": {
+                            "description": "Whether to include teams for which the user has the Worker role.",
+                            "location": "query",
+                            "type": "boolean"
+                        }
+                    },
+                    "path": "teams",
+                    "response": {
+                        "$ref": "TeamListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/coordinate",
+                        "https://www.googleapis.com/auth/coordinate.readonly"
                     ]
                 }
             }
@@ -684,7 +718,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "{teamId}/workers",
+                    "path": "teams/{teamId}/workers",
                     "response": {
                         "$ref": "WorkerListResponse"
                     },
@@ -696,7 +730,7 @@
             }
         }
     },
-    "revision": "20131114",
+    "revision": "20141215",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CustomField": {
@@ -727,6 +761,13 @@
                 "enabled": {
                     "description": "Whether the field is enabled.",
                     "type": "boolean"
+                },
+                "enumitems": {
+                    "description": "List of enum items for this custom field. Populated only if the field type is enum. Enum fields appear as 'lists' in the Coordinate web and mobile UI.",
+                    "items": {
+                        "$ref": "EnumItemDef"
+                    },
+                    "type": "array"
                 },
                 "id": {
                     "description": "Custom field id.",
@@ -786,6 +827,26 @@
                 "kind": {
                     "default": "coordinate#customFields",
                     "description": "Identifies this object as a collection of custom fields.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "EnumItemDef": {
+            "description": "Enum Item definition.",
+            "id": "EnumItemDef",
+            "properties": {
+                "active": {
+                    "description": "Whether the enum item is active. Jobs may contain inactive enum values; however, setting an enum to an inactive value when creating or updating a job will result in a 500 error.",
+                    "type": "boolean"
+                },
+                "kind": {
+                    "default": "coordinate#enumItemDef",
+                    "description": "Identifies this object as an enum item definition.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Custom field value.",
                     "type": "string"
                 }
             },
@@ -868,7 +929,7 @@
             "id": "JobState",
             "properties": {
                 "assignee": {
-                    "description": "Email address of the assignee.",
+                    "description": "Email address of the assignee, or the string \"DELETED_USER\" if the account is no longer available.",
                     "type": "string"
                 },
                 "customFields": {
@@ -1029,6 +1090,45 @@
             },
             "type": "object"
         },
+        "Team": {
+            "description": "A Coordinate team.",
+            "id": "Team",
+            "properties": {
+                "id": {
+                    "description": "Team id, as found in a coordinate team url e.g. https://coordinate.google.com/f/xyz where \"xyz\" is the team id.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "coordinate#team",
+                    "description": "Identifies this object as a team.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Team name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TeamListResponse": {
+            "description": "Response from a List Teams request.",
+            "id": "TeamListResponse",
+            "properties": {
+                "items": {
+                    "description": "Teams in the collection.",
+                    "items": {
+                        "$ref": "Team"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "coordinate#teamList",
+                    "description": "Identifies this object as a list of teams.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "TokenPagination": {
             "description": "Pagination information.",
             "id": "TokenPagination",
@@ -1054,7 +1154,7 @@
             "id": "Worker",
             "properties": {
                 "id": {
-                    "description": "Worker email address.",
+                    "description": "Worker email address. If a worker has been deleted from your team, the email address will appear as DELETED_USER.",
                     "type": "string"
                 },
                 "kind": {
@@ -1085,7 +1185,7 @@
             "type": "object"
         }
     },
-    "servicePath": "coordinate/v1/teams/",
+    "servicePath": "coordinate/v1/",
     "title": "Google Maps Coordinate API",
     "version": "v1"
 }

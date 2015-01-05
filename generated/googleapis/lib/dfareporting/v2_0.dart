@@ -1,0 +1,24062 @@
+library googleapis.dfareporting.v2_0;
+
+import "dart:core" as core;
+import "dart:collection" as collection;
+import "dart:async" as async;
+import "dart:convert" as convert;
+
+import "package:crypto/crypto.dart" as crypto;
+import 'package:http/http.dart' as http;
+import '../src/common_internal.dart' as common_internal;
+import '../common/common.dart' as common;
+
+export '../common/common.dart' show ApiRequestError;
+export '../common/common.dart' show DetailedApiRequestError;
+
+/** Manage your DoubleClick Campaign Manager ad campaigns and reports. */
+class DfareportingApi {
+  /** View and manage DoubleClick for Advertisers reports */
+  static const DfareportingScope = "https://www.googleapis.com/auth/dfareporting";
+
+  /**
+   * View and manage your DoubleClick Campaign Manager's (DCM) display ad
+   * campaigns
+   */
+  static const DfatraffickingScope = "https://www.googleapis.com/auth/dfatrafficking";
+
+
+  final common_internal.ApiRequester _requester;
+
+  AccountActiveAdSummariesResourceApi get accountActiveAdSummaries => new AccountActiveAdSummariesResourceApi(_requester);
+  AccountPermissionGroupsResourceApi get accountPermissionGroups => new AccountPermissionGroupsResourceApi(_requester);
+  AccountPermissionsResourceApi get accountPermissions => new AccountPermissionsResourceApi(_requester);
+  AccountUserProfilesResourceApi get accountUserProfiles => new AccountUserProfilesResourceApi(_requester);
+  AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
+  AdsResourceApi get ads => new AdsResourceApi(_requester);
+  AdvertiserGroupsResourceApi get advertiserGroups => new AdvertiserGroupsResourceApi(_requester);
+  AdvertisersResourceApi get advertisers => new AdvertisersResourceApi(_requester);
+  BrowsersResourceApi get browsers => new BrowsersResourceApi(_requester);
+  CampaignCreativeAssociationsResourceApi get campaignCreativeAssociations => new CampaignCreativeAssociationsResourceApi(_requester);
+  CampaignsResourceApi get campaigns => new CampaignsResourceApi(_requester);
+  ChangeLogsResourceApi get changeLogs => new ChangeLogsResourceApi(_requester);
+  CitiesResourceApi get cities => new CitiesResourceApi(_requester);
+  ConnectionTypesResourceApi get connectionTypes => new ConnectionTypesResourceApi(_requester);
+  ContentCategoriesResourceApi get contentCategories => new ContentCategoriesResourceApi(_requester);
+  CountriesResourceApi get countries => new CountriesResourceApi(_requester);
+  CreativeAssetsResourceApi get creativeAssets => new CreativeAssetsResourceApi(_requester);
+  CreativeFieldValuesResourceApi get creativeFieldValues => new CreativeFieldValuesResourceApi(_requester);
+  CreativeFieldsResourceApi get creativeFields => new CreativeFieldsResourceApi(_requester);
+  CreativeGroupsResourceApi get creativeGroups => new CreativeGroupsResourceApi(_requester);
+  CreativesResourceApi get creatives => new CreativesResourceApi(_requester);
+  DimensionValuesResourceApi get dimensionValues => new DimensionValuesResourceApi(_requester);
+  DirectorySiteContactsResourceApi get directorySiteContacts => new DirectorySiteContactsResourceApi(_requester);
+  DirectorySitesResourceApi get directorySites => new DirectorySitesResourceApi(_requester);
+  EventTagsResourceApi get eventTags => new EventTagsResourceApi(_requester);
+  FilesResourceApi get files => new FilesResourceApi(_requester);
+  FloodlightActivitiesResourceApi get floodlightActivities => new FloodlightActivitiesResourceApi(_requester);
+  FloodlightActivityGroupsResourceApi get floodlightActivityGroups => new FloodlightActivityGroupsResourceApi(_requester);
+  FloodlightConfigurationsResourceApi get floodlightConfigurations => new FloodlightConfigurationsResourceApi(_requester);
+  LandingPagesResourceApi get landingPages => new LandingPagesResourceApi(_requester);
+  MetrosResourceApi get metros => new MetrosResourceApi(_requester);
+  MobileCarriersResourceApi get mobileCarriers => new MobileCarriersResourceApi(_requester);
+  OperatingSystemVersionsResourceApi get operatingSystemVersions => new OperatingSystemVersionsResourceApi(_requester);
+  OperatingSystemsResourceApi get operatingSystems => new OperatingSystemsResourceApi(_requester);
+  PlacementGroupsResourceApi get placementGroups => new PlacementGroupsResourceApi(_requester);
+  PlacementStrategiesResourceApi get placementStrategies => new PlacementStrategiesResourceApi(_requester);
+  PlacementsResourceApi get placements => new PlacementsResourceApi(_requester);
+  PlatformTypesResourceApi get platformTypes => new PlatformTypesResourceApi(_requester);
+  PostalCodesResourceApi get postalCodes => new PostalCodesResourceApi(_requester);
+  RegionsResourceApi get regions => new RegionsResourceApi(_requester);
+  ReportsResourceApi get reports => new ReportsResourceApi(_requester);
+  SitesResourceApi get sites => new SitesResourceApi(_requester);
+  SizesResourceApi get sizes => new SizesResourceApi(_requester);
+  SubaccountsResourceApi get subaccounts => new SubaccountsResourceApi(_requester);
+  UserProfilesResourceApi get userProfiles => new UserProfilesResourceApi(_requester);
+  UserRolePermissionGroupsResourceApi get userRolePermissionGroups => new UserRolePermissionGroupsResourceApi(_requester);
+  UserRolePermissionsResourceApi get userRolePermissions => new UserRolePermissionsResourceApi(_requester);
+  UserRolesResourceApi get userRoles => new UserRolesResourceApi(_requester);
+
+  DfareportingApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "dfareporting/v2.0/"}) :
+      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+}
+
+
+/** Not documented yet. */
+class AccountActiveAdSummariesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  AccountActiveAdSummariesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets the account's active ad summary by account ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [summaryAccountId] - Account ID.
+   *
+   * Completes with a [AccountActiveAdSummary].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AccountActiveAdSummary> get(core.String profileId, core.String summaryAccountId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (summaryAccountId == null) {
+      throw new core.ArgumentError("Parameter summaryAccountId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountActiveAdSummaries/' + common_internal.Escaper.ecapeVariable('$summaryAccountId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountActiveAdSummary.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class AccountPermissionGroupsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  AccountPermissionGroupsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one account permission group by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Account permission group ID.
+   *
+   * Completes with a [AccountPermissionGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AccountPermissionGroup> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountPermissionGroups/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountPermissionGroup.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of account permission groups.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [AccountPermissionGroupsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AccountPermissionGroupsListResponse> list(core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountPermissionGroups';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountPermissionGroupsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class AccountPermissionsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  AccountPermissionsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one account permission by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Account permission ID.
+   *
+   * Completes with a [AccountPermission].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AccountPermission> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountPermissions/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountPermission.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of account permissions.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [AccountPermissionsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AccountPermissionsListResponse> list(core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountPermissions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountPermissionsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class AccountUserProfilesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  AccountUserProfilesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one account user profile by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - User profile ID.
+   *
+   * Completes with a [AccountUserProfile].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AccountUserProfile> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountUserProfile.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of account user profiles, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [active] - Select only active user profiles.
+   *
+   * [ids] - Select only user profiles with these IDs.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for objects by name, ID or email.
+   * Wildcards (*) are allowed. For example, "user profile*2010" will return
+   * objects with names like "user profile June 2010", "user profile April 2010"
+   * or simply "user profile 2010". Most of the searches also add wildcards
+   * implicitly at the start and the end of the search string. For example, a
+   * search string of "user profile" will match objects with name "my user
+   * profile", "user profile 2010" or simply "user profile".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * [subaccountId] - Select only user profiles with the specified subaccount
+   * ID.
+   *
+   * [userRoleId] - Select only user profiles with the specified user role ID.
+   *
+   * Completes with a [AccountUserProfilesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AccountUserProfilesListResponse> list(core.String profileId, {core.bool active, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder, core.String subaccountId, core.String userRoleId}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (active != null) {
+      _queryParams["active"] = ["${active}"];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (subaccountId != null) {
+      _queryParams["subaccountId"] = [subaccountId];
+    }
+    if (userRoleId != null) {
+      _queryParams["userRoleId"] = [userRoleId];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountUserProfilesListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing account user profile. This method supports patch
+   * semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - User profile ID.
+   *
+   * Completes with a [AccountUserProfile].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AccountUserProfile> patch(AccountUserProfile request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountUserProfile.fromJson(data));
+  }
+
+  /**
+   * Updates an existing account user profile.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [AccountUserProfile].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AccountUserProfile> update(AccountUserProfile request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountUserProfile.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class AccountsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  AccountsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one account by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Account ID.
+   *
+   * Completes with a [Account].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Account> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accounts/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Account.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of accounts, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [active] - Select only active accounts. Don't set this field to select both
+   * active and non-active accounts.
+   *
+   * [ids] - Select only accounts with these IDs.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
+   * are allowed. For example, "account*2010" will return objects with names
+   * like "account June 2010", "account April 2010" or simply "account 2010".
+   * Most of the searches also add wildcards implicitly at the start and the end
+   * of the search string. For example, a search string of "account" will match
+   * objects with name "my account", "account 2010" or simply "account".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * Completes with a [AccountsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AccountsListResponse> list(core.String profileId, {core.bool active, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (active != null) {
+      _queryParams["active"] = ["${active}"];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accounts';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountsListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing account. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Account ID.
+   *
+   * Completes with a [Account].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Account> patch(Account request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accounts';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Account.fromJson(data));
+  }
+
+  /**
+   * Updates an existing account.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Account].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Account> update(Account request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accounts';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Account.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class AdsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  AdsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one ad by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Ad ID.
+   *
+   * Completes with a [Ad].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Ad> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/ads/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Ad.fromJson(data));
+  }
+
+  /**
+   * Inserts a new ad.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Ad].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Ad> insert(Ad request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/ads';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Ad.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of ads, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [active] - Select only active ads.
+   *
+   * [advertiserId] - Select only ads with this advertiser ID.
+   *
+   * [archived] - Select only archived ads.
+   *
+   * [audienceSegmentIds] - Select only ads with these audience segment IDs.
+   *
+   * [campaignIds] - Select only ads with these campaign IDs.
+   *
+   * [compatibility] - Applicable when type is AD_SERVING_DEFAULT_AD. Select
+   * default ads with the specified compatibility. WEB and WEB_INTERSTITIAL
+   * refer to rendering either on desktop or on mobile devices for regular or
+   * interstitial ads respectively. APP and APP_INTERSTITIAL are for rendering
+   * in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads
+   * developed with the VAST standard.
+   * Possible string values are:
+   * - "APP"
+   * - "APP_INTERSTITIAL"
+   * - "IN_STREAM_VIDEO"
+   * - "WEB"
+   * - "WEB_INTERSTITIAL"
+   *
+   * [creativeIds] - Select only ads with these creative IDs assigned.
+   *
+   * [creativeOptimizationConfigurationIds] - Select only ads with these
+   * creative optimization configuration IDs.
+   *
+   * [creativeType] - Select only ads with the specified CreativeType.
+   * Possible string values are:
+   * - "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO"
+   * - "CUSTOM_INPAGE"
+   * - "CUSTOM_INTERSTITIAL"
+   * - "ENHANCED_BANNER"
+   * - "ENHANCED_IMAGE"
+   * - "FLASH_INPAGE"
+   * - "HTML5_BANNER"
+   * - "IMAGE"
+   * - "INSTREAM_VIDEO"
+   * - "INTERNAL_REDIRECT"
+   * - "INTERSTITIAL_INTERNAL_REDIRECT"
+   * - "REDIRECT"
+   * - "RICH_MEDIA_EXPANDING"
+   * - "RICH_MEDIA_IM_EXPAND"
+   * - "RICH_MEDIA_INPAGE"
+   * - "RICH_MEDIA_INPAGE_FLOATING"
+   * - "RICH_MEDIA_INTERSTITIAL_FLOAT"
+   * - "RICH_MEDIA_MOBILE_IN_APP"
+   * - "RICH_MEDIA_MULTI_FLOATING"
+   * - "RICH_MEDIA_PEEL_DOWN"
+   * - "TRACKING_TEXT"
+   * - "VPAID_LINEAR"
+   * - "VPAID_NON_LINEAR"
+   *
+   * [dynamicClickTracker] - Applicable when type is AD_SERVING_CLICK_TRACKER.
+   * If true, select dynamic click trackers. If false, select static click
+   * trackers. Leave unset to select both.
+   *
+   * [ids] - Select only ads with these IDs.
+   *
+   * [landingPageIds] - Select only ads with these landing page IDs.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [overriddenEventTagId] - Select only ads with this event tag override ID.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [placementIds] - Select only ads with these placement IDs assigned.
+   *
+   * [remarketingListIds] - Select only ads whose list targeting expression use
+   * these remarketing list IDs.
+   *
+   * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
+   * are allowed. For example, "ad*2010" will return objects with names like "ad
+   * June 2010", "ad April 2010" or simply "ad 2010". Most of the searches also
+   * add wildcards implicitly at the start and the end of the search string. For
+   * example, a search string of "ad" will match objects with name "my ad", "ad
+   * 2010" or simply "ad".
+   *
+   * [sizeIds] - Select only ads with these size IDs.
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * [sslCompliant] - Select only ads that are ssl compliant.
+   *
+   * [sslRequired] - Select only ads that require ssl.
+   *
+   * [type] - Select only ads with these types.
+   *
+   * Completes with a [AdsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AdsListResponse> list(core.String profileId, {core.bool active, core.String advertiserId, core.bool archived, core.List<core.String> audienceSegmentIds, core.List<core.String> campaignIds, core.String compatibility, core.List<core.String> creativeIds, core.List<core.String> creativeOptimizationConfigurationIds, core.String creativeType, core.bool dynamicClickTracker, core.List<core.String> ids, core.List<core.String> landingPageIds, core.int maxResults, core.String overriddenEventTagId, core.String pageToken, core.List<core.String> placementIds, core.List<core.String> remarketingListIds, core.String searchString, core.List<core.String> sizeIds, core.String sortField, core.String sortOrder, core.bool sslCompliant, core.bool sslRequired, core.List<core.String> type}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (active != null) {
+      _queryParams["active"] = ["${active}"];
+    }
+    if (advertiserId != null) {
+      _queryParams["advertiserId"] = [advertiserId];
+    }
+    if (archived != null) {
+      _queryParams["archived"] = ["${archived}"];
+    }
+    if (audienceSegmentIds != null) {
+      _queryParams["audienceSegmentIds"] = audienceSegmentIds;
+    }
+    if (campaignIds != null) {
+      _queryParams["campaignIds"] = campaignIds;
+    }
+    if (compatibility != null) {
+      _queryParams["compatibility"] = [compatibility];
+    }
+    if (creativeIds != null) {
+      _queryParams["creativeIds"] = creativeIds;
+    }
+    if (creativeOptimizationConfigurationIds != null) {
+      _queryParams["creativeOptimizationConfigurationIds"] = creativeOptimizationConfigurationIds;
+    }
+    if (creativeType != null) {
+      _queryParams["creativeType"] = [creativeType];
+    }
+    if (dynamicClickTracker != null) {
+      _queryParams["dynamicClickTracker"] = ["${dynamicClickTracker}"];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (landingPageIds != null) {
+      _queryParams["landingPageIds"] = landingPageIds;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (overriddenEventTagId != null) {
+      _queryParams["overriddenEventTagId"] = [overriddenEventTagId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (placementIds != null) {
+      _queryParams["placementIds"] = placementIds;
+    }
+    if (remarketingListIds != null) {
+      _queryParams["remarketingListIds"] = remarketingListIds;
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sizeIds != null) {
+      _queryParams["sizeIds"] = sizeIds;
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (sslCompliant != null) {
+      _queryParams["sslCompliant"] = ["${sslCompliant}"];
+    }
+    if (sslRequired != null) {
+      _queryParams["sslRequired"] = ["${sslRequired}"];
+    }
+    if (type != null) {
+      _queryParams["type"] = type;
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/ads';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AdsListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing ad. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Ad ID.
+   *
+   * Completes with a [Ad].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Ad> patch(Ad request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/ads';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Ad.fromJson(data));
+  }
+
+  /**
+   * Updates an existing ad.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Ad].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Ad> update(Ad request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/ads';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Ad.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class AdvertiserGroupsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  AdvertiserGroupsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes an existing advertiser group.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Advertiser group ID.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertiserGroups/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Gets one advertiser group by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Advertiser group ID.
+   *
+   * Completes with a [AdvertiserGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AdvertiserGroup> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertiserGroups/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AdvertiserGroup.fromJson(data));
+  }
+
+  /**
+   * Inserts a new advertiser group.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [AdvertiserGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AdvertiserGroup> insert(AdvertiserGroup request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AdvertiserGroup.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of advertiser groups, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [ids] - Set of IDs of specified advertiser groups to retrieve.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
+   * are allowed. For example, "advertiser*2010" will return objects with names
+   * like "advertiser group June 2010", "advertiser group April 2010" or simply
+   * "advertiser group 2010". Most of the searches also add wildcards implicitly
+   * at the start and the end of the search string. For example, a search string
+   * of "advertisergroup" will match objects with name "my advertisergroup",
+   * "advertisergroup 2010" or simply "advertisergroup".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * Completes with a [AdvertiserGroupsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AdvertiserGroupsListResponse> list(core.String profileId, {core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AdvertiserGroupsListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing advertiser group. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Advertiser group ID.
+   *
+   * Completes with a [AdvertiserGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AdvertiserGroup> patch(AdvertiserGroup request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AdvertiserGroup.fromJson(data));
+  }
+
+  /**
+   * Updates an existing advertiser group.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [AdvertiserGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AdvertiserGroup> update(AdvertiserGroup request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AdvertiserGroup.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class AdvertisersResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  AdvertisersResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one advertiser by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Advertiser ID.
+   *
+   * Completes with a [Advertiser].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Advertiser> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertisers/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Advertiser.fromJson(data));
+  }
+
+  /**
+   * Inserts a new advertiser.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Advertiser].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Advertiser> insert(Advertiser request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertisers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Advertiser.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of advertisers, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [advertiserGroupIds] - Set of advertiser group IDs of advertisers to
+   * retrieve.
+   *
+   * [floodlightConfigurationIds] - Set of floodlight configuration IDs of
+   * advertisers to retrieve.
+   *
+   * [ids] - Set of IDs of specified advertisers to retrieve.
+   *
+   * [includeAdvertisersWithoutGroupsOnly] - If true, will return only
+   * advertisers which do not belong to any advertiser group.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [onlyParent] - If true, will return only advertisers which use another
+   * advertiser's floodlight configuration.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
+   * are allowed. For example, "advertiser*2010" will return objects with names
+   * like "advertiser June 2010", "advertiser April 2010" or simply "advertiser
+   * 2010". Most of the searches also add wildcards implicitly at the start and
+   * the end of the search string. For example, a search string of "advertiser"
+   * will match objects with name "my advertiser", "advertiser 2010" or simply
+   * "advertiser".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * [status] - Specifies the status of retrieved advertisers.
+   * Possible string values are:
+   * - "APPROVED"
+   * - "ON_HOLD"
+   *
+   * [subaccountId] - Subaccount ID of advertisers to retrieve.
+   *
+   * Completes with a [AdvertisersListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AdvertisersListResponse> list(core.String profileId, {core.List<core.String> advertiserGroupIds, core.List<core.String> floodlightConfigurationIds, core.List<core.String> ids, core.bool includeAdvertisersWithoutGroupsOnly, core.int maxResults, core.bool onlyParent, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder, core.String status, core.String subaccountId}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (advertiserGroupIds != null) {
+      _queryParams["advertiserGroupIds"] = advertiserGroupIds;
+    }
+    if (floodlightConfigurationIds != null) {
+      _queryParams["floodlightConfigurationIds"] = floodlightConfigurationIds;
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (includeAdvertisersWithoutGroupsOnly != null) {
+      _queryParams["includeAdvertisersWithoutGroupsOnly"] = ["${includeAdvertisersWithoutGroupsOnly}"];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (onlyParent != null) {
+      _queryParams["onlyParent"] = ["${onlyParent}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (status != null) {
+      _queryParams["status"] = [status];
+    }
+    if (subaccountId != null) {
+      _queryParams["subaccountId"] = [subaccountId];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertisers';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AdvertisersListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing advertiser. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Advertiser ID.
+   *
+   * Completes with a [Advertiser].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Advertiser> patch(Advertiser request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertisers';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Advertiser.fromJson(data));
+  }
+
+  /**
+   * Updates an existing advertiser.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Advertiser].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Advertiser> update(Advertiser request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertisers';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Advertiser.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class BrowsersResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  BrowsersResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a list of browsers.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [BrowsersListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<BrowsersListResponse> list(core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/browsers';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BrowsersListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class CampaignCreativeAssociationsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  CampaignCreativeAssociationsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Associates a creative with this campaign. This method creates a default ad
+   * with dimensions matching the creative in this campaign if such a default ad
+   * does not exist already.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [campaignId] - Campaign ID in this association.
+   *
+   * Completes with a [CampaignCreativeAssociation].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CampaignCreativeAssociation> insert(CampaignCreativeAssociation request, core.String profileId, core.String campaignId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (campaignId == null) {
+      throw new core.ArgumentError("Parameter campaignId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/campaignCreativeAssociations';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CampaignCreativeAssociation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of creative IDs associated with this campaign.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [campaignId] - Campaign ID in this association.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * Completes with a [CampaignCreativeAssociationsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CampaignCreativeAssociationsListResponse> list(core.String profileId, core.String campaignId, {core.int maxResults, core.String pageToken, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (campaignId == null) {
+      throw new core.ArgumentError("Parameter campaignId is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/campaignCreativeAssociations';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CampaignCreativeAssociationsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class CampaignsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  CampaignsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one campaign by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Campaign ID.
+   *
+   * Completes with a [Campaign].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Campaign> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Campaign.fromJson(data));
+  }
+
+  /**
+   * Inserts a new campaign.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [defaultLandingPageName] - Default landing page name for this new campaign.
+   *
+   * [defaultLandingPageUrl] - Default landing page URL for this new campaign.
+   *
+   * Completes with a [Campaign].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Campaign> insert(Campaign request, core.String profileId, core.String defaultLandingPageName, core.String defaultLandingPageUrl) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (defaultLandingPageName == null) {
+      throw new core.ArgumentError("Parameter defaultLandingPageName is required.");
+    }
+    _queryParams["defaultLandingPageName"] = [defaultLandingPageName];
+    if (defaultLandingPageUrl == null) {
+      throw new core.ArgumentError("Parameter defaultLandingPageUrl is required.");
+    }
+    _queryParams["defaultLandingPageUrl"] = [defaultLandingPageUrl];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Campaign.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of campaigns, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [advertiserGroupIds] - Select only campaigns whose advertisers belong to
+   * these advertiser groups.
+   *
+   * [advertiserIds] - Select only campaigns that belong to these advertisers.
+   *
+   * [archived] - Select only archived campaigns. Don't set this field to select
+   * both archived and non-archived campaigns.
+   *
+   * [atLeastOneOptimizationActivity] - Select only campaigns that have at least
+   * one optimization activity.
+   *
+   * [excludedIds] - Exclude campaigns with these IDs.
+   *
+   * [ids] - Select only campaigns with these IDs.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [overriddenEventTagId] - Select only campaigns that have overridden this
+   * event tag ID.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for campaigns by name or ID. Wildcards
+   * (*) are allowed. For example, "campaign*2010" will return campaigns with
+   * names like "campaign June 2010", "campaign April 2010" or simply "campaign
+   * 2010". Most of the searches also add wildcards implicitly at the start and
+   * the end of the search string. For example, a search string of "campaign"
+   * will match campaigns with name "my campaign", "campaign 2010" or simply
+   * "campaign".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * [subaccountId] - Select only campaigns that belong to this subaccount.
+   *
+   * Completes with a [CampaignsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CampaignsListResponse> list(core.String profileId, {core.List<core.String> advertiserGroupIds, core.List<core.String> advertiserIds, core.bool archived, core.bool atLeastOneOptimizationActivity, core.List<core.String> excludedIds, core.List<core.String> ids, core.int maxResults, core.String overriddenEventTagId, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder, core.String subaccountId}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (advertiserGroupIds != null) {
+      _queryParams["advertiserGroupIds"] = advertiserGroupIds;
+    }
+    if (advertiserIds != null) {
+      _queryParams["advertiserIds"] = advertiserIds;
+    }
+    if (archived != null) {
+      _queryParams["archived"] = ["${archived}"];
+    }
+    if (atLeastOneOptimizationActivity != null) {
+      _queryParams["atLeastOneOptimizationActivity"] = ["${atLeastOneOptimizationActivity}"];
+    }
+    if (excludedIds != null) {
+      _queryParams["excludedIds"] = excludedIds;
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (overriddenEventTagId != null) {
+      _queryParams["overriddenEventTagId"] = [overriddenEventTagId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (subaccountId != null) {
+      _queryParams["subaccountId"] = [subaccountId];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CampaignsListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing campaign. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Campaign ID.
+   *
+   * Completes with a [Campaign].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Campaign> patch(Campaign request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Campaign.fromJson(data));
+  }
+
+  /**
+   * Updates an existing campaign.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Campaign].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Campaign> update(Campaign request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Campaign.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class ChangeLogsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  ChangeLogsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one change log by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Change log ID.
+   *
+   * Completes with a [ChangeLog].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<ChangeLog> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/changeLogs/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ChangeLog.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of change logs.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [action] - Select only change logs with the specified action.
+   * Possible string values are:
+   * - "ACTION_ADD"
+   * - "ACTION_ASSIGN"
+   * - "ACTION_ASSOCIATE"
+   * - "ACTION_CREATE"
+   * - "ACTION_DELETE"
+   * - "ACTION_DISABLE"
+   * - "ACTION_EMAIL_TAGS"
+   * - "ACTION_ENABLE"
+   * - "ACTION_LINK"
+   * - "ACTION_MARK_AS_DEFAULT"
+   * - "ACTION_PUSH"
+   * - "ACTION_REMOVE"
+   * - "ACTION_SEND"
+   * - "ACTION_UNASSIGN"
+   * - "ACTION_UNLINK"
+   * - "ACTION_UPDATE"
+   *
+   * [ids] - Select only change logs with these IDs.
+   *
+   * [maxChangeTime] - Select only change logs whose change time is before the
+   * specified maxChangeTime.The time should be formatted as an RFC3339
+   * date/time string. For example, for 10:54 PM on July 18th, 2014, in the
+   * America/New York time zone, the format is "2014-07-18T22:54:00-04:00". In
+   * other words, the year, month, day, the letter T, the hour (24-hour clock
+   * system), minute, second, and then the time zone offset.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [minChangeTime] - Select only change logs whose change time is before the
+   * specified minChangeTime.The time should be formatted as an RFC3339
+   * date/time string. For example, for 10:54 PM on July 18th, 2014, in the
+   * America/New York time zone, the format is "2014-07-18T22:54:00-04:00". In
+   * other words, the year, month, day, the letter T, the hour (24-hour clock
+   * system), minute, second, and then the time zone offset.
+   *
+   * [objectIds] - Select only change logs with these object IDs.
+   *
+   * [objectType] - Select only change logs with the specified object type.
+   * Possible string values are:
+   * - "OBJECT_ACCOUNT"
+   * - "OBJECT_ACCOUNT_BILLING_FEATURE"
+   * - "OBJECT_AD"
+   * - "OBJECT_ADVERTISER"
+   * - "OBJECT_ADVERTISER_GROUP"
+   * - "OBJECT_BILLING_ACCOUNT_GROUP"
+   * - "OBJECT_BILLING_FEATURE"
+   * - "OBJECT_BILLING_MINIMUM_FEE"
+   * - "OBJECT_BILLING_PROFILE"
+   * - "OBJECT_CAMPAIGN"
+   * - "OBJECT_CONTENT_CATEGORY"
+   * - "OBJECT_CREATIVE"
+   * - "OBJECT_CREATIVE_ASSET"
+   * - "OBJECT_CREATIVE_BUNDLE"
+   * - "OBJECT_CREATIVE_FIELD"
+   * - "OBJECT_CREATIVE_GROUP"
+   * - "OBJECT_DFA_SITE"
+   * - "OBJECT_EVENT_TAG"
+   * - "OBJECT_FLOODLIGHT_ACTIVITY_GROUP"
+   * - "OBJECT_FLOODLIGHT_ACTVITY"
+   * - "OBJECT_FLOODLIGHT_CONFIGURATION"
+   * - "OBJECT_INSTREAM_CREATIVE"
+   * - "OBJECT_LANDING_PAGE"
+   * - "OBJECT_MEDIA_ORDER"
+   * - "OBJECT_PLACEMENT"
+   * - "OBJECT_PLACEMENT_STRATEGY"
+   * - "OBJECT_PROVIDED_LIST_CLIENT"
+   * - "OBJECT_RATE_CARD"
+   * - "OBJECT_REMARKETING_LIST"
+   * - "OBJECT_RICHMEDIA_CREATIVE"
+   * - "OBJECT_SD_SITE"
+   * - "OBJECT_SIZE"
+   * - "OBJECT_SUBACCOUNT"
+   * - "OBJECT_USER_PROFILE"
+   * - "OBJECT_USER_PROFILE_FILTER"
+   * - "OBJECT_USER_ROLE"
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Select only change logs whose object ID, user name, old or
+   * new values match the search string.
+   *
+   * [userProfileIds] - Select only change logs with these user profile IDs.
+   *
+   * Completes with a [ChangeLogsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<ChangeLogsListResponse> list(core.String profileId, {core.String action, core.List<core.String> ids, core.String maxChangeTime, core.int maxResults, core.String minChangeTime, core.List<core.String> objectIds, core.String objectType, core.String pageToken, core.String searchString, core.List<core.String> userProfileIds}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (action != null) {
+      _queryParams["action"] = [action];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxChangeTime != null) {
+      _queryParams["maxChangeTime"] = [maxChangeTime];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (minChangeTime != null) {
+      _queryParams["minChangeTime"] = [minChangeTime];
+    }
+    if (objectIds != null) {
+      _queryParams["objectIds"] = objectIds;
+    }
+    if (objectType != null) {
+      _queryParams["objectType"] = [objectType];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (userProfileIds != null) {
+      _queryParams["userProfileIds"] = userProfileIds;
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/changeLogs';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ChangeLogsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class CitiesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  CitiesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a list of cities, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [countryDartIds] - Select cities from these countries.
+   *
+   * [dartIds] - Return cities with these IDs.
+   *
+   * [namePrefix] - Select cities with names starting with this prefix.
+   *
+   * [regionDartIds] - Select cities from these regions.
+   *
+   * Completes with a [CitiesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CitiesListResponse> list(core.String profileId, {core.List<core.String> countryDartIds, core.List<core.String> dartIds, core.String namePrefix, core.List<core.String> regionDartIds}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (countryDartIds != null) {
+      _queryParams["countryDartIds"] = countryDartIds;
+    }
+    if (dartIds != null) {
+      _queryParams["dartIds"] = dartIds;
+    }
+    if (namePrefix != null) {
+      _queryParams["namePrefix"] = [namePrefix];
+    }
+    if (regionDartIds != null) {
+      _queryParams["regionDartIds"] = regionDartIds;
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/cities';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CitiesListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class ConnectionTypesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  ConnectionTypesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a list of connection types.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [ConnectionTypesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<ConnectionTypesListResponse> list(core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/connectionTypes';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ConnectionTypesListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class ContentCategoriesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  ContentCategoriesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes an existing content category.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Content category ID.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/contentCategories/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Gets one content category by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Content category ID.
+   *
+   * Completes with a [ContentCategory].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<ContentCategory> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/contentCategories/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ContentCategory.fromJson(data));
+  }
+
+  /**
+   * Inserts a new content category.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [ContentCategory].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<ContentCategory> insert(ContentCategory request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/contentCategories';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ContentCategory.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of content categories, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [ids] - Set of IDs of specified content categories to retrieve.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
+   * are allowed. For example, "contentcategory*2010" will return objects with
+   * names like "contentcategory June 2010", "contentcategory April 2010" or
+   * simply "contentcategory 2010". Most of the searches also add wildcards
+   * implicitly at the start and the end of the search string. For example, a
+   * search string of "contentcategory" will match objects with name "my
+   * contentcategory", "contentcategory 2010" or simply "contentcategory".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * Completes with a [ContentCategoriesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<ContentCategoriesListResponse> list(core.String profileId, {core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/contentCategories';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ContentCategoriesListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing content category. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Content category ID.
+   *
+   * Completes with a [ContentCategory].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<ContentCategory> patch(ContentCategory request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/contentCategories';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ContentCategory.fromJson(data));
+  }
+
+  /**
+   * Updates an existing content category.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [ContentCategory].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<ContentCategory> update(ContentCategory request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/contentCategories';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ContentCategory.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class CountriesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  CountriesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one country by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [dartId] - Country DART ID.
+   *
+   * Completes with a [Country].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Country> get(core.String profileId, core.String dartId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (dartId == null) {
+      throw new core.ArgumentError("Parameter dartId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/countries/' + common_internal.Escaper.ecapeVariable('$dartId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Country.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of countries.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [CountriesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CountriesListResponse> list(core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/countries';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CountriesListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class CreativeAssetsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  CreativeAssetsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Inserts a new creative asset.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [advertiserId] - Advertiser ID of this creative. This is a required field.
+   *
+   * [uploadMedia] - The media to upload.
+   *
+   * [uploadOptions] - Options for the media upload. Streaming Media without the
+   * length being known ahead of time is only supported via resumable uploads.
+   *
+   * Completes with a [CreativeAssetMetadata].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeAssetMetadata> insert(CreativeAssetMetadata request, core.String profileId, core.String advertiserId, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (advertiserId == null) {
+      throw new core.ArgumentError("Parameter advertiserId is required.");
+    }
+
+    _uploadMedia =  uploadMedia;
+    _uploadOptions =  uploadOptions;
+
+    if (_uploadMedia == null) {
+      _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeAssets/' + common_internal.Escaper.ecapeVariable('$advertiserId') + '/creativeAssets';
+    } else if (_uploadOptions is common.ResumableUploadOptions) {
+      _url = '/resumable/upload/dfareporting/v2.0/userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeAssets/' + common_internal.Escaper.ecapeVariable('$advertiserId') + '/creativeAssets';
+    } else {
+      _url = '/upload/dfareporting/v2.0/userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeAssets/' + common_internal.Escaper.ecapeVariable('$advertiserId') + '/creativeAssets';
+    }
+
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeAssetMetadata.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class CreativeFieldValuesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  CreativeFieldValuesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes an existing creative field value.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [creativeFieldId] - Creative field ID for this creative field value.
+   *
+   * [id] - Creative Field Value ID
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String profileId, core.String creativeFieldId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (creativeFieldId == null) {
+      throw new core.ArgumentError("Parameter creativeFieldId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Gets one creative field value by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [creativeFieldId] - Creative field ID for this creative field value.
+   *
+   * [id] - Creative Field Value ID
+   *
+   * Completes with a [CreativeFieldValue].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeFieldValue> get(core.String profileId, core.String creativeFieldId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (creativeFieldId == null) {
+      throw new core.ArgumentError("Parameter creativeFieldId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeFieldValue.fromJson(data));
+  }
+
+  /**
+   * Inserts a new creative field value.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [creativeFieldId] - Creative field ID for this creative field value.
+   *
+   * Completes with a [CreativeFieldValue].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeFieldValue> insert(CreativeFieldValue request, core.String profileId, core.String creativeFieldId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (creativeFieldId == null) {
+      throw new core.ArgumentError("Parameter creativeFieldId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeFieldValue.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of creative field values, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [creativeFieldId] - Creative field ID for this creative field value.
+   *
+   * [ids] - Select only creative field values with these IDs.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for creative field values by their
+   * values. Wildcards (e.g. *) are not allowed.
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "VALUE"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * Completes with a [CreativeFieldValuesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeFieldValuesListResponse> list(core.String profileId, core.String creativeFieldId, {core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (creativeFieldId == null) {
+      throw new core.ArgumentError("Parameter creativeFieldId is required.");
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeFieldValuesListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing creative field value. This method supports patch
+   * semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [creativeFieldId] - Creative field ID for this creative field value.
+   *
+   * [id] - Creative Field Value ID
+   *
+   * Completes with a [CreativeFieldValue].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeFieldValue> patch(CreativeFieldValue request, core.String profileId, core.String creativeFieldId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (creativeFieldId == null) {
+      throw new core.ArgumentError("Parameter creativeFieldId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeFieldValue.fromJson(data));
+  }
+
+  /**
+   * Updates an existing creative field value.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [creativeFieldId] - Creative field ID for this creative field value.
+   *
+   * Completes with a [CreativeFieldValue].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeFieldValue> update(CreativeFieldValue request, core.String profileId, core.String creativeFieldId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (creativeFieldId == null) {
+      throw new core.ArgumentError("Parameter creativeFieldId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeFieldValue.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class CreativeFieldsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  CreativeFieldsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes an existing creative field.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Creative Field ID
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Gets one creative field by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Creative Field ID
+   *
+   * Completes with a [CreativeField].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeField> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeField.fromJson(data));
+  }
+
+  /**
+   * Inserts a new creative field.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [CreativeField].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeField> insert(CreativeField request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeField.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of creative fields, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [advertiserIds] - Select only creative fields that belong to these
+   * advertisers.
+   *
+   * [ids] - Select only creative fields with these IDs.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for creative fields by name or ID.
+   * Wildcards (*) are allowed. For example, "creativefield*2010" will return
+   * creative fields with names like "creativefield June 2010", "creativefield
+   * April 2010" or simply "creativefield 2010". Most of the searches also add
+   * wild-cards implicitly at the start and the end of the search string. For
+   * example, a search string of "creativefield" will match creative fields with
+   * the name "my creativefield", "creativefield 2010" or simply
+   * "creativefield".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * Completes with a [CreativeFieldsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeFieldsListResponse> list(core.String profileId, {core.List<core.String> advertiserIds, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (advertiserIds != null) {
+      _queryParams["advertiserIds"] = advertiserIds;
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeFieldsListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing creative field. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Creative Field ID
+   *
+   * Completes with a [CreativeField].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeField> patch(CreativeField request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeField.fromJson(data));
+  }
+
+  /**
+   * Updates an existing creative field.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [CreativeField].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeField> update(CreativeField request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeField.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class CreativeGroupsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  CreativeGroupsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one creative group by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Creative group ID.
+   *
+   * Completes with a [CreativeGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeGroup> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeGroups/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeGroup.fromJson(data));
+  }
+
+  /**
+   * Inserts a new creative group.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [CreativeGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeGroup> insert(CreativeGroup request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeGroup.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of creative groups, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [advertiserIds] - Select only creative groups that belong to these
+   * advertisers.
+   *
+   * [groupNumber] - Select only creative groups that belong to this subgroup.
+   *
+   * [ids] - Select only creative groups with these IDs.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for creative groups by name or ID.
+   * Wildcards (*) are allowed. For example, "creativegroup*2010" will return
+   * creative groups with names like "creativegroup June 2010", "creativegroup
+   * April 2010" or simply "creativegroup 2010". Most of the searches also add
+   * wild-cards implicitly at the start and the end of the search string. For
+   * example, a search string of "creativegroup" will match creative groups with
+   * the name "my creativegroup", "creativegroup 2010" or simply
+   * "creativegroup".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * Completes with a [CreativeGroupsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeGroupsListResponse> list(core.String profileId, {core.List<core.String> advertiserIds, core.int groupNumber, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (advertiserIds != null) {
+      _queryParams["advertiserIds"] = advertiserIds;
+    }
+    if (groupNumber != null) {
+      _queryParams["groupNumber"] = ["${groupNumber}"];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeGroupsListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing creative group. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Creative group ID.
+   *
+   * Completes with a [CreativeGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeGroup> patch(CreativeGroup request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeGroup.fromJson(data));
+  }
+
+  /**
+   * Updates an existing creative group.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [CreativeGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativeGroup> update(CreativeGroup request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeGroup.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class CreativesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  CreativesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one creative by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Creative ID.
+   *
+   * Completes with a [Creative].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Creative> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creatives/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Creative.fromJson(data));
+  }
+
+  /**
+   * Inserts a new creative.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Creative].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Creative> insert(Creative request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creatives';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Creative.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of creatives, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [active] - Select only active creatives. Leave blank to select active and
+   * inactive creatives.
+   *
+   * [advertiserId] - Advertiser ID.
+   *
+   * [archived] - Select only archived creatives. Leave blank to select archived
+   * and unarchived creatives.
+   *
+   * [campaignId] - Campaign ID of creatives to retrieve.
+   *
+   * [companionCreativeIds] - Select only in-stream video creatives with
+   * specified companion IDs.
+   *
+   * [creativeFieldIds] - Select only creatives with specified creative field
+   * IDs.
+   *
+   * [ids] - List of creative IDs.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [renderingIds] - Select only creatives with specified rendering IDs.
+   *
+   * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
+   * are allowed. For example, "creative*2010" will return objects with names
+   * like "creative June 2010", "creative April 2010" or simply "creative 2010".
+   * Most of the searches also add wildcards implicitly at the start and the end
+   * of the search string. For example, a search string of "creative" will match
+   * objects with name "my creative", "creative 2010" or simply "creative".
+   *
+   * [sizeIds] - Select only creatives with specified size.
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * [studioCreativeId] - Studio creative ID associated with DCM creatives.
+   *
+   * [types] - Select only creatives with specified type of creative.
+   *
+   * Completes with a [CreativesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CreativesListResponse> list(core.String profileId, {core.bool active, core.String advertiserId, core.bool archived, core.String campaignId, core.List<core.String> companionCreativeIds, core.List<core.String> creativeFieldIds, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.List<core.String> renderingIds, core.String searchString, core.List<core.String> sizeIds, core.String sortField, core.String sortOrder, core.String studioCreativeId, core.List<core.String> types}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (active != null) {
+      _queryParams["active"] = ["${active}"];
+    }
+    if (advertiserId != null) {
+      _queryParams["advertiserId"] = [advertiserId];
+    }
+    if (archived != null) {
+      _queryParams["archived"] = ["${archived}"];
+    }
+    if (campaignId != null) {
+      _queryParams["campaignId"] = [campaignId];
+    }
+    if (companionCreativeIds != null) {
+      _queryParams["companionCreativeIds"] = companionCreativeIds;
+    }
+    if (creativeFieldIds != null) {
+      _queryParams["creativeFieldIds"] = creativeFieldIds;
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (renderingIds != null) {
+      _queryParams["renderingIds"] = renderingIds;
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sizeIds != null) {
+      _queryParams["sizeIds"] = sizeIds;
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (studioCreativeId != null) {
+      _queryParams["studioCreativeId"] = [studioCreativeId];
+    }
+    if (types != null) {
+      _queryParams["types"] = types;
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creatives';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativesListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing creative. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Creative ID.
+   *
+   * Completes with a [Creative].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Creative> patch(Creative request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creatives';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Creative.fromJson(data));
+  }
+
+  /**
+   * Updates an existing creative.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Creative].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Creative> update(Creative request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creatives';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Creative.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class DimensionValuesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  DimensionValuesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves list of report dimension values for a list of filters.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - The DFA user profile ID.
+   *
+   * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "100".
+   *
+   * [pageToken] - The value of the nextToken from the previous result page.
+   *
+   * Completes with a [DimensionValueList].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<DimensionValueList> query(DimensionValueRequest request, core.String profileId, {core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/dimensionvalues/query';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DimensionValueList.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class DirectorySiteContactsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  DirectorySiteContactsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one directory site contact by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Directory site contact ID.
+   *
+   * Completes with a [DirectorySiteContact].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<DirectorySiteContact> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/directorySiteContacts/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DirectorySiteContact.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of directory site contacts, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [directorySiteIds] - Retrieve contacts of directory sites with this set of
+   * IDs. This is a required field.
+   *
+   * [ids] - Set of IDs of specified directory site contacts to retrieve.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for objects by name, ID or email.
+   * Wildcards (*) are allowed. For example, "directory site contact*2010" will
+   * return objects with names like "directory site contact June 2010",
+   * "directory site contact April 2010" or simply "directory site contact
+   * 2010". Most of the searches also add wildcards implicitly at the start and
+   * the end of the search string. For example, a search string of "directory
+   * site contact" will match objects with name "my directory site contact",
+   * "directory site contact 2010" or simply "directory site contact".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * Completes with a [DirectorySiteContactsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<DirectorySiteContactsListResponse> list(core.String profileId, {core.List<core.String> directorySiteIds, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (directorySiteIds != null) {
+      _queryParams["directorySiteIds"] = directorySiteIds;
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/directorySiteContacts';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DirectorySiteContactsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class DirectorySitesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  DirectorySitesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one directory site by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Directory site ID.
+   *
+   * Completes with a [DirectorySite].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<DirectorySite> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/directorySites/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DirectorySite.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of directory sites, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [acceptsInStreamVideoPlacements] - Select only sites that accept in-stream
+   * video placements. This field can be left blank.
+   *
+   * [acceptsInterstitialPlacements] - Select only sites that accept
+   * interstitial placements. This field be left blank.
+   *
+   * [acceptsPublisherPaidPlacements] - Select only directory sites that accept
+   * publisher paid placements. This field can be left blank.
+   *
+   * [active] - Whether to retrieve active directory sites. Leave blank to
+   * retrieve both active and inactive directory sites.
+   *
+   * [countryId] - Country ID of directory sites to retrieve.
+   *
+   * [dfpNetworkCode] - DFP network code of directory sites to retrieve.
+   *
+   * [ids] - Set of IDs of specified directory sites to retrieve.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [parentId] - Parent ID of directory sites to retrieve.
+   *
+   * [searchString] - Allows searching for objects by name, ID or URL. Wildcards
+   * (*) are allowed. For example, "directory site*2010" will return objects
+   * with names like "directory site June 2010", "directory site April 2010" or
+   * simply "directory site 2010". Most of the searches also add wildcards
+   * implicitly at the start and the end of the search string. For example, a
+   * search string of "directory site" will match objects with name "my
+   * directory site", "directory site 2010" or simply "directory site".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * Completes with a [DirectorySitesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<DirectorySitesListResponse> list(core.String profileId, {core.bool acceptsInStreamVideoPlacements, core.bool acceptsInterstitialPlacements, core.bool acceptsPublisherPaidPlacements, core.bool active, core.String countryId, core.String dfpNetworkCode, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String parentId, core.String searchString, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (acceptsInStreamVideoPlacements != null) {
+      _queryParams["acceptsInStreamVideoPlacements"] = ["${acceptsInStreamVideoPlacements}"];
+    }
+    if (acceptsInterstitialPlacements != null) {
+      _queryParams["acceptsInterstitialPlacements"] = ["${acceptsInterstitialPlacements}"];
+    }
+    if (acceptsPublisherPaidPlacements != null) {
+      _queryParams["acceptsPublisherPaidPlacements"] = ["${acceptsPublisherPaidPlacements}"];
+    }
+    if (active != null) {
+      _queryParams["active"] = ["${active}"];
+    }
+    if (countryId != null) {
+      _queryParams["countryId"] = [countryId];
+    }
+    if (dfpNetworkCode != null) {
+      _queryParams["dfp_network_code"] = [dfpNetworkCode];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (parentId != null) {
+      _queryParams["parentId"] = [parentId];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/directorySites';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DirectorySitesListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class EventTagsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  EventTagsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes an existing event tag.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Event tag ID.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/eventTags/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Gets one event tag by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Event tag ID.
+   *
+   * Completes with a [EventTag].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<EventTag> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/eventTags/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new EventTag.fromJson(data));
+  }
+
+  /**
+   * Inserts a new event tag.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [EventTag].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<EventTag> insert(EventTag request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/eventTags';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new EventTag.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of event tags, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [adId] - Select only event tags that belong to this ad.
+   *
+   * [advertiserId] - Select only event tags that belong to this advertiser.
+   *
+   * [campaignId] - Select only event tags that belong to this campaign.
+   *
+   * [definitionsOnly] - Examine only the specified ad or campaign or
+   * advertiser's event tags for matching selector criteria. When set to false,
+   * the parent advertiser and parent campaign is examined as well. In addition,
+   * when set to false, the status field is examined as well along with the
+   * enabledByDefault field.
+   *
+   * [enabled] - Select only enabled event tags. When definitionsOnly is set to
+   * true, only the specified advertiser or campaign's event tags'
+   * enabledByDefault field is examined. When definitionsOnly is set to false,
+   * the specified ad or specified campaign's parent advertiser's or parent
+   * campaign's event tags' enabledByDefault and status fields are examined as
+   * well.
+   *
+   * [eventTagTypes] - Select only event tags with the specified event tag
+   * types. Event tag types can be used to specify whether to use a third-party
+   * pixel, a third-party JavaScript URL, or a third-party click-through URL for
+   * either impression or click tracking.
+   *
+   * [ids] - Set of IDs of specified event tags to retrieve.
+   *
+   * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
+   * are allowed. For example, "eventtag*2010" will return objects with names
+   * like "eventtag June 2010", "eventtag April 2010" or simply "eventtag 2010".
+   * Most of the searches also add wildcards implicitly at the start and the end
+   * of the search string. For example, a search string of "eventtag" will match
+   * objects with name "my eventtag", "eventtag 2010" or simply "eventtag".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * Completes with a [EventTagsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<EventTagsListResponse> list(core.String profileId, {core.String adId, core.String advertiserId, core.String campaignId, core.bool definitionsOnly, core.bool enabled, core.List<core.String> eventTagTypes, core.List<core.String> ids, core.String searchString, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (adId != null) {
+      _queryParams["adId"] = [adId];
+    }
+    if (advertiserId != null) {
+      _queryParams["advertiserId"] = [advertiserId];
+    }
+    if (campaignId != null) {
+      _queryParams["campaignId"] = [campaignId];
+    }
+    if (definitionsOnly != null) {
+      _queryParams["definitionsOnly"] = ["${definitionsOnly}"];
+    }
+    if (enabled != null) {
+      _queryParams["enabled"] = ["${enabled}"];
+    }
+    if (eventTagTypes != null) {
+      _queryParams["eventTagTypes"] = eventTagTypes;
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/eventTags';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new EventTagsListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing event tag. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Event tag ID.
+   *
+   * Completes with a [EventTag].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<EventTag> patch(EventTag request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/eventTags';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new EventTag.fromJson(data));
+  }
+
+  /**
+   * Updates an existing event tag.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [EventTag].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<EventTag> update(EventTag request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/eventTags';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new EventTag.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class FilesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  FilesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a report file by its report ID and file ID.
+   *
+   * Request parameters:
+   *
+   * [reportId] - The ID of the report.
+   *
+   * [fileId] - The ID of the report file.
+   *
+   * [downloadOptions] - Options for downloading. A download can be either a
+   * Metadata (default) or Media download. Partial Media downloads are possible
+   * as well.
+   *
+   * Completes with a
+   *
+   * - [File] for Metadata downloads (see [downloadOptions]).
+   *
+   * - [common.Media] for Media downloads (see [downloadOptions]).
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future get(core.String reportId, core.String fileId, {common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (reportId == null) {
+      throw new core.ArgumentError("Parameter reportId is required.");
+    }
+    if (fileId == null) {
+      throw new core.ArgumentError("Parameter fileId is required.");
+    }
+
+    _downloadOptions = downloadOptions;
+
+    _url = 'reports/' + common_internal.Escaper.ecapeVariable('$reportId') + '/files/' + common_internal.Escaper.ecapeVariable('$fileId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    if (_downloadOptions == null ||
+        _downloadOptions == common.DownloadOptions.Metadata) {
+      return _response.then((data) => new File.fromJson(data));
+    } else {
+      return _response;
+    }
+  }
+
+  /**
+   * Lists files for a user profile.
+   *
+   * Request parameters:
+   *
+   * [profileId] - The DFA profile ID.
+   *
+   * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "10".
+   *
+   * [pageToken] - The value of the nextToken from the previous result page.
+   *
+   * [scope] - The scope that defines which results are returned, default is
+   * 'MINE'.
+   * Possible string values are:
+   * - "ALL" : All files in account.
+   * - "MINE" : My files.
+   * - "SHARED_WITH_ME" : Files shared with me.
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID" : Sort by file ID.
+   * - "LAST_MODIFIED_TIME" : Sort by 'lastmodifiedAt' field.
+   *
+   * [sortOrder] - Order of sorted results, default is 'DESCENDING'.
+   * Possible string values are:
+   * - "ASCENDING" : Ascending order.
+   * - "DESCENDING" : Descending order.
+   *
+   * Completes with a [FileList].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FileList> list(core.String profileId, {core.int maxResults, core.String pageToken, core.String scope, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (scope != null) {
+      _queryParams["scope"] = [scope];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/files';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FileList.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class FloodlightActivitiesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  FloodlightActivitiesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes an existing floodlight activity.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Floodlight activity ID.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivities/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Generates a tag for a floodlight activity.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [floodlightActivityId] - Floodlight activity ID for which we want to
+   * generate a tag.
+   *
+   * Completes with a [FloodlightActivitiesGenerateTagResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightActivitiesGenerateTagResponse> generatetag(core.String profileId, {core.String floodlightActivityId}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (floodlightActivityId != null) {
+      _queryParams["floodlightActivityId"] = [floodlightActivityId];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivities/generatetag';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightActivitiesGenerateTagResponse.fromJson(data));
+  }
+
+  /**
+   * Gets one floodlight activity by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Floodlight activity ID.
+   *
+   * Completes with a [FloodlightActivity].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightActivity> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivities/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightActivity.fromJson(data));
+  }
+
+  /**
+   * Inserts a new floodlight activity.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [FloodlightActivity].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightActivity> insert(FloodlightActivity request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightActivity.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of floodlight activities, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [advertiserId] - Retrieve Floodlight activities for the specified
+   * advertiser ID. Must specify either ids, advertiserId, or
+   * floodlightConfigurationId for a non-empty result.
+   *
+   * [floodlightActivityGroupIds] - Retrieve Floodlight activities with the
+   * specified Floodlight activity group IDs.
+   *
+   * [floodlightActivityGroupName] - Retrieve Floodlight activities with the
+   * specified Floodlight activity group name.
+   *
+   * [floodlightActivityGroupTagString] - Retrieve Floodlight activities with
+   * the specified Floodlight activity group tag string.
+   *
+   * [floodlightActivityGroupType] - Retrieve Floodlight activities with the
+   * specified Floodlight activity group type.
+   * Possible string values are:
+   * - "COUNTER"
+   * - "SALE"
+   *
+   * [floodlightConfigurationId] - Retrieve Floodlight activities for the
+   * specified Floodlight configuration ID. Must specify either ids,
+   * advertiserId, or floodlightConfigurationId for a non-empty result.
+   *
+   * [ids] - Retrieve Floodlight activities with the specified IDs. Must specify
+   * either ids, advertiserId, or floodlightConfigurationId for a non-empty
+   * result.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
+   * are allowed. For example, "floodlightactivity*2010" will return objects
+   * with names like "floodlightactivity June 2010", "floodlightactivity April
+   * 2010" or simply "floodlightactivity 2010". Most of the searches also add
+   * wildcards implicitly at the start and the end of the search string. For
+   * example, a search string of "floodlightactivity" will match objects with
+   * name "my floodlightactivity activity", "floodlightactivity 2010" or simply
+   * "floodlightactivity".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * [tagString] - Retrieve Floodlight activities with the specified tag string.
+   *
+   * Completes with a [FloodlightActivitiesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightActivitiesListResponse> list(core.String profileId, {core.String advertiserId, core.List<core.String> floodlightActivityGroupIds, core.String floodlightActivityGroupName, core.String floodlightActivityGroupTagString, core.String floodlightActivityGroupType, core.String floodlightConfigurationId, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder, core.String tagString}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (advertiserId != null) {
+      _queryParams["advertiserId"] = [advertiserId];
+    }
+    if (floodlightActivityGroupIds != null) {
+      _queryParams["floodlightActivityGroupIds"] = floodlightActivityGroupIds;
+    }
+    if (floodlightActivityGroupName != null) {
+      _queryParams["floodlightActivityGroupName"] = [floodlightActivityGroupName];
+    }
+    if (floodlightActivityGroupTagString != null) {
+      _queryParams["floodlightActivityGroupTagString"] = [floodlightActivityGroupTagString];
+    }
+    if (floodlightActivityGroupType != null) {
+      _queryParams["floodlightActivityGroupType"] = [floodlightActivityGroupType];
+    }
+    if (floodlightConfigurationId != null) {
+      _queryParams["floodlightConfigurationId"] = [floodlightConfigurationId];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (tagString != null) {
+      _queryParams["tagString"] = [tagString];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightActivitiesListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing floodlight activity. This method supports patch
+   * semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Floodlight activity ID.
+   *
+   * Completes with a [FloodlightActivity].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightActivity> patch(FloodlightActivity request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightActivity.fromJson(data));
+  }
+
+  /**
+   * Updates an existing floodlight activity.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [FloodlightActivity].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightActivity> update(FloodlightActivity request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightActivity.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class FloodlightActivityGroupsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  FloodlightActivityGroupsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes an existing floodlight activity group.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Floodlight activity Group ID.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Gets one floodlight activity group by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Floodlight activity Group ID.
+   *
+   * Completes with a [FloodlightActivityGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightActivityGroup> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightActivityGroup.fromJson(data));
+  }
+
+  /**
+   * Inserts a new floodlight activity group.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [FloodlightActivityGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightActivityGroup> insert(FloodlightActivityGroup request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightActivityGroup.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of floodlight activity groups, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [advertiserId] - Retrieve Floodlight activity groups with the specified
+   * advertiser ID. Must specify either ids, advertiserId, or
+   * floodlightConfigurationId for a non-empty result.
+   *
+   * [floodlightConfigurationId] - Retrieve Floodlight activity groups with the
+   * specified Floodlight configuration ID. Must specify either ids,
+   * advertiserId, or floodlightConfigurationId for a non-empty result.
+   *
+   * [ids] - Retrieve Floodlight activity groups with the specified IDs. Must
+   * specify either ids, advertiserId, or floodlightConfigurationId for a
+   * non-empty result.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
+   * are allowed. For example, "floodlightactivitygroup*2010" will return
+   * objects with names like "floodlightactivitygroup June 2010",
+   * "floodlightactivitygroup April 2010" or simply "floodlightactivitygroup
+   * 2010". Most of the searches also add wildcards implicitly at the start and
+   * the end of the search string. For example, a search string of
+   * "floodlightactivitygroup" will match objects with name "my
+   * floodlightactivitygroup activity", "floodlightactivitygroup 2010" or simply
+   * "floodlightactivitygroup".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * [type] - Retrieve Floodlight activity groups with the specified Floodlight
+   * activity group type.
+   * Possible string values are:
+   * - "COUNTER"
+   * - "SALE"
+   *
+   * Completes with a [FloodlightActivityGroupsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightActivityGroupsListResponse> list(core.String profileId, {core.String advertiserId, core.String floodlightConfigurationId, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder, core.String type}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (advertiserId != null) {
+      _queryParams["advertiserId"] = [advertiserId];
+    }
+    if (floodlightConfigurationId != null) {
+      _queryParams["floodlightConfigurationId"] = [floodlightConfigurationId];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (type != null) {
+      _queryParams["type"] = [type];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightActivityGroupsListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing floodlight activity group. This method supports patch
+   * semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Floodlight activity Group ID.
+   *
+   * Completes with a [FloodlightActivityGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightActivityGroup> patch(FloodlightActivityGroup request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightActivityGroup.fromJson(data));
+  }
+
+  /**
+   * Updates an existing floodlight activity group.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [FloodlightActivityGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightActivityGroup> update(FloodlightActivityGroup request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightActivityGroup.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class FloodlightConfigurationsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  FloodlightConfigurationsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one floodlight configuration by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Floodlight configuration ID.
+   *
+   * Completes with a [FloodlightConfiguration].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightConfiguration> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightConfiguration.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of floodlight configurations, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [ids] - Set of IDs of floodlight configurations to retrieve. Required
+   * field; otherwise an empty list will be returned.
+   *
+   * Completes with a [FloodlightConfigurationsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightConfigurationsListResponse> list(core.String profileId, {core.List<core.String> ids}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightConfigurationsListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing floodlight configuration. This method supports patch
+   * semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Floodlight configuration ID.
+   *
+   * Completes with a [FloodlightConfiguration].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightConfiguration> patch(FloodlightConfiguration request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightConfiguration.fromJson(data));
+  }
+
+  /**
+   * Updates an existing floodlight configuration.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [FloodlightConfiguration].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FloodlightConfiguration> update(FloodlightConfiguration request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FloodlightConfiguration.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class LandingPagesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  LandingPagesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes an existing campaign landing page.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [campaignId] - Landing page campaign ID.
+   *
+   * [id] - Landing page ID.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String profileId, core.String campaignId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (campaignId == null) {
+      throw new core.ArgumentError("Parameter campaignId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/landingPages/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Gets one campaign landing page by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [campaignId] - Landing page campaign ID.
+   *
+   * [id] - Landing page ID.
+   *
+   * Completes with a [LandingPage].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<LandingPage> get(core.String profileId, core.String campaignId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (campaignId == null) {
+      throw new core.ArgumentError("Parameter campaignId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/landingPages/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LandingPage.fromJson(data));
+  }
+
+  /**
+   * Inserts a new landing page for this campaign.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [campaignId] - Landing page campaign ID.
+   *
+   * Completes with a [LandingPage].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<LandingPage> insert(LandingPage request, core.String profileId, core.String campaignId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (campaignId == null) {
+      throw new core.ArgumentError("Parameter campaignId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/landingPages';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LandingPage.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of landing pages for this campaign.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [campaignId] - Landing page campaign ID.
+   *
+   * Completes with a [LandingPagesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<LandingPagesListResponse> list(core.String profileId, core.String campaignId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (campaignId == null) {
+      throw new core.ArgumentError("Parameter campaignId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/landingPages';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LandingPagesListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing campaign landing page. This method supports patch
+   * semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [campaignId] - Landing page campaign ID.
+   *
+   * [id] - Landing page ID.
+   *
+   * Completes with a [LandingPage].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<LandingPage> patch(LandingPage request, core.String profileId, core.String campaignId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (campaignId == null) {
+      throw new core.ArgumentError("Parameter campaignId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/landingPages';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LandingPage.fromJson(data));
+  }
+
+  /**
+   * Updates an existing campaign landing page.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [campaignId] - Landing page campaign ID.
+   *
+   * Completes with a [LandingPage].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<LandingPage> update(LandingPage request, core.String profileId, core.String campaignId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (campaignId == null) {
+      throw new core.ArgumentError("Parameter campaignId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/landingPages';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LandingPage.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class MetrosResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  MetrosResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a list of metros.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [MetrosListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<MetrosListResponse> list(core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/metros';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new MetrosListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class MobileCarriersResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  MobileCarriersResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a list of mobile carriers.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [MobileCarriersListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<MobileCarriersListResponse> list(core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/mobileCarriers';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new MobileCarriersListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class OperatingSystemVersionsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  OperatingSystemVersionsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a list of operating system versions.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [OperatingSystemVersionsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<OperatingSystemVersionsListResponse> list(core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/operatingSystemVersions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new OperatingSystemVersionsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class OperatingSystemsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  OperatingSystemsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a list of operating systems.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [OperatingSystemsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<OperatingSystemsListResponse> list(core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/operatingSystems';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new OperatingSystemsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class PlacementGroupsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  PlacementGroupsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one placement group by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Placement group ID.
+   *
+   * Completes with a [PlacementGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PlacementGroup> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementGroups/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PlacementGroup.fromJson(data));
+  }
+
+  /**
+   * Inserts a new placement group.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [PlacementGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PlacementGroup> insert(PlacementGroup request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementGroups';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PlacementGroup.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of placement groups, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [advertiserIds] - Select only placement groups that belong to these
+   * advertisers.
+   *
+   * [archived] - Select only archived placements. Don't set this field to
+   * select both archived and non-archived placements.
+   *
+   * [campaignIds] - Select only placement groups that belong to these
+   * campaigns.
+   *
+   * [contentCategoryIds] - Select only placement groups that are associated
+   * with these content categories.
+   *
+   * [directorySiteIds] - Select only placement groups that are associated with
+   * these directory sites.
+   *
+   * [ids] - Select only placement groups with these IDs.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [placementGroupType] - Select only placement groups belonging with this
+   * group type. A package is a simple group of placements that acts as a single
+   * pricing point for a group of tags. A roadblock is a group of placements
+   * that not only acts as a single pricing point but also assumes that all the
+   * tags in it will be served at the same time. A roadblock requires one of its
+   * assigned placements to be marked as primary for reporting.
+   * Possible string values are:
+   * - "PLACEMENT_PACKAGE"
+   * - "PLACEMENT_ROADBLOCK"
+   *
+   * [placementStrategyIds] - Select only placement groups that are associated
+   * with these placement strategies.
+   *
+   * [pricingTypes] - Select only placement groups with these pricing types.
+   *
+   * [searchString] - Allows searching for placement groups by name or ID.
+   * Wildcards (*) are allowed. For example, "placement*2010" will return
+   * placement groups with names like "placement group June 2010", "placement
+   * group May 2010" or simply "placements 2010". Most of the searches also add
+   * wildcards implicitly at the start and the end of the search string. For
+   * example, a search string of "placementgroup" will match placement groups
+   * with name "my placementgroup", "placementgroup 2010" or simply
+   * "placementgroup".
+   *
+   * [siteIds] - Select only placement groups that are associated with these
+   * sites.
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * Completes with a [PlacementGroupsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PlacementGroupsListResponse> list(core.String profileId, {core.List<core.String> advertiserIds, core.bool archived, core.List<core.String> campaignIds, core.List<core.String> contentCategoryIds, core.List<core.String> directorySiteIds, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String placementGroupType, core.List<core.String> placementStrategyIds, core.List<core.String> pricingTypes, core.String searchString, core.List<core.String> siteIds, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (advertiserIds != null) {
+      _queryParams["advertiserIds"] = advertiserIds;
+    }
+    if (archived != null) {
+      _queryParams["archived"] = ["${archived}"];
+    }
+    if (campaignIds != null) {
+      _queryParams["campaignIds"] = campaignIds;
+    }
+    if (contentCategoryIds != null) {
+      _queryParams["contentCategoryIds"] = contentCategoryIds;
+    }
+    if (directorySiteIds != null) {
+      _queryParams["directorySiteIds"] = directorySiteIds;
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (placementGroupType != null) {
+      _queryParams["placementGroupType"] = [placementGroupType];
+    }
+    if (placementStrategyIds != null) {
+      _queryParams["placementStrategyIds"] = placementStrategyIds;
+    }
+    if (pricingTypes != null) {
+      _queryParams["pricingTypes"] = pricingTypes;
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (siteIds != null) {
+      _queryParams["siteIds"] = siteIds;
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementGroups';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PlacementGroupsListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing placement group. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Placement group ID.
+   *
+   * Completes with a [PlacementGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PlacementGroup> patch(PlacementGroup request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementGroups';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PlacementGroup.fromJson(data));
+  }
+
+  /**
+   * Updates an existing placement group.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [PlacementGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PlacementGroup> update(PlacementGroup request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementGroups';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PlacementGroup.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class PlacementStrategiesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  PlacementStrategiesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes an existing placement strategy.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Placement strategy ID.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementStrategies/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Gets one placement strategy by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Placement strategy ID.
+   *
+   * Completes with a [PlacementStrategy].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PlacementStrategy> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementStrategies/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PlacementStrategy.fromJson(data));
+  }
+
+  /**
+   * Inserts a new placement strategy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [PlacementStrategy].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PlacementStrategy> insert(PlacementStrategy request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PlacementStrategy.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of placement strategies, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [ids] - Set of IDs of specified placement strategies to retrieve.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
+   * are allowed. For example, "placementstrategy*2010" will return objects with
+   * names like "placementstrategy June 2010", "placementstrategy April 2010" or
+   * simply "placementstrategy 2010". Most of the searches also add wildcards
+   * implicitly at the start and the end of the search string. For example, a
+   * search string of "placementstrategy" will match objects with name "my
+   * placementstrategy", "placementstrategy 2010" or simply "placementstrategy".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * Completes with a [PlacementStrategiesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PlacementStrategiesListResponse> list(core.String profileId, {core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PlacementStrategiesListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing placement strategy. This method supports patch
+   * semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Placement strategy ID.
+   *
+   * Completes with a [PlacementStrategy].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PlacementStrategy> patch(PlacementStrategy request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PlacementStrategy.fromJson(data));
+  }
+
+  /**
+   * Updates an existing placement strategy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [PlacementStrategy].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PlacementStrategy> update(PlacementStrategy request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PlacementStrategy.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class PlacementsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  PlacementsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Generates tags for a placement.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [campaignId] - Generate placements belonging to this campaign. This is a
+   * required field.
+   *
+   * [placementIds] - Generate tags for these placements.
+   *
+   * [tagFormats] - Tag formats to generate for these placements.
+   *
+   * Completes with a [PlacementsGenerateTagsResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PlacementsGenerateTagsResponse> generatetags(core.String profileId, {core.String campaignId, core.List<core.String> placementIds, core.List<core.String> tagFormats}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (campaignId != null) {
+      _queryParams["campaignId"] = [campaignId];
+    }
+    if (placementIds != null) {
+      _queryParams["placementIds"] = placementIds;
+    }
+    if (tagFormats != null) {
+      _queryParams["tagFormats"] = tagFormats;
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placements/generatetags';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PlacementsGenerateTagsResponse.fromJson(data));
+  }
+
+  /**
+   * Gets one placement by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Placement ID.
+   *
+   * Completes with a [Placement].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Placement> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placements/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Placement.fromJson(data));
+  }
+
+  /**
+   * Inserts a new placement.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Placement].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Placement> insert(Placement request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placements';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Placement.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of placements, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [advertiserIds] - Select only placements that belong to these advertisers.
+   *
+   * [archived] - Select only archived placements. Don't set this field to
+   * select both archived and non-archived placements.
+   *
+   * [campaignIds] - Select only placements that belong to these campaigns.
+   *
+   * [compatibilities] - Select only placements that are associated with these
+   * compatibilities. WEB and WEB_INTERSTITIAL refer to rendering either on
+   * desktop or on mobile devices for regular or interstitial ads respectively.
+   * APP and APP_INTERSTITIAL are for rendering in mobile apps.IN_STREAM_VIDEO
+   * refers to rendering in in-stream video ads developed with the VAST
+   * standard.
+   *
+   * [contentCategoryIds] - Select only placements that are associated with
+   * these content categories.
+   *
+   * [directorySiteIds] - Select only placements that are associated with these
+   * directory sites.
+   *
+   * [groupIds] - Select only placements that belong to these placement groups.
+   *
+   * [ids] - Select only placements with these IDs.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [paymentSource] - Select only placements with this payment source.
+   * Possible string values are:
+   * - "PLACEMENT_AGENCY_PAID"
+   * - "PLACEMENT_PUBLISHER_PAID"
+   *
+   * [placementStrategyIds] - Select only placements that are associated with
+   * these placement strategies.
+   *
+   * [pricingTypes] - Select only placements with these pricing types.
+   *
+   * [searchString] - Allows searching for placements by name or ID. Wildcards
+   * (*) are allowed. For example, "placement*2010" will return placements with
+   * names like "placement June 2010", "placement May 2010" or simply
+   * "placements 2010". Most of the searches also add wildcards implicitly at
+   * the start and the end of the search string. For example, a search string of
+   * "placement" will match placements with name "my placement", "placement
+   * 2010" or simply "placement".
+   *
+   * [siteIds] - Select only placements that are associated with these sites.
+   *
+   * [sizeIds] - Select only placements that are associated with these sizes.
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * Completes with a [PlacementsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PlacementsListResponse> list(core.String profileId, {core.List<core.String> advertiserIds, core.bool archived, core.List<core.String> campaignIds, core.List<core.String> compatibilities, core.List<core.String> contentCategoryIds, core.List<core.String> directorySiteIds, core.List<core.String> groupIds, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String paymentSource, core.List<core.String> placementStrategyIds, core.List<core.String> pricingTypes, core.String searchString, core.List<core.String> siteIds, core.List<core.String> sizeIds, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (advertiserIds != null) {
+      _queryParams["advertiserIds"] = advertiserIds;
+    }
+    if (archived != null) {
+      _queryParams["archived"] = ["${archived}"];
+    }
+    if (campaignIds != null) {
+      _queryParams["campaignIds"] = campaignIds;
+    }
+    if (compatibilities != null) {
+      _queryParams["compatibilities"] = compatibilities;
+    }
+    if (contentCategoryIds != null) {
+      _queryParams["contentCategoryIds"] = contentCategoryIds;
+    }
+    if (directorySiteIds != null) {
+      _queryParams["directorySiteIds"] = directorySiteIds;
+    }
+    if (groupIds != null) {
+      _queryParams["groupIds"] = groupIds;
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (paymentSource != null) {
+      _queryParams["paymentSource"] = [paymentSource];
+    }
+    if (placementStrategyIds != null) {
+      _queryParams["placementStrategyIds"] = placementStrategyIds;
+    }
+    if (pricingTypes != null) {
+      _queryParams["pricingTypes"] = pricingTypes;
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (siteIds != null) {
+      _queryParams["siteIds"] = siteIds;
+    }
+    if (sizeIds != null) {
+      _queryParams["sizeIds"] = sizeIds;
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placements';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PlacementsListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing placement. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Placement ID.
+   *
+   * Completes with a [Placement].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Placement> patch(Placement request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placements';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Placement.fromJson(data));
+  }
+
+  /**
+   * Updates an existing placement.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Placement].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Placement> update(Placement request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placements';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Placement.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class PlatformTypesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  PlatformTypesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a list of platform types.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [PlatformTypesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PlatformTypesListResponse> list(core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/platformTypes';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PlatformTypesListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class PostalCodesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  PostalCodesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a list of postal codes.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [PostalCodesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<PostalCodesListResponse> list(core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/postalCodes';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PostalCodesListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class RegionsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  RegionsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a list of regions.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [RegionsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<RegionsListResponse> list(core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/regions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RegionsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class ReportsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  ReportsCompatibleFieldsResourceApi get compatibleFields => new ReportsCompatibleFieldsResourceApi(_requester);
+  ReportsFilesResourceApi get files => new ReportsFilesResourceApi(_requester);
+
+  ReportsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a report by its ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - The DFA user profile ID.
+   *
+   * [reportId] - The ID of the report.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String profileId, core.String reportId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (reportId == null) {
+      throw new core.ArgumentError("Parameter reportId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/' + common_internal.Escaper.ecapeVariable('$reportId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Retrieves a report by its ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - The DFA user profile ID.
+   *
+   * [reportId] - The ID of the report.
+   *
+   * Completes with a [Report].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Report> get(core.String profileId, core.String reportId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (reportId == null) {
+      throw new core.ArgumentError("Parameter reportId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/' + common_internal.Escaper.ecapeVariable('$reportId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Report.fromJson(data));
+  }
+
+  /**
+   * Creates a report.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - The DFA user profile ID.
+   *
+   * Completes with a [Report].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Report> insert(Report request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Report.fromJson(data));
+  }
+
+  /**
+   * Retrieves list of reports.
+   *
+   * Request parameters:
+   *
+   * [profileId] - The DFA user profile ID.
+   *
+   * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "10".
+   *
+   * [pageToken] - The value of the nextToken from the previous result page.
+   *
+   * [scope] - The scope that defines which results are returned, default is
+   * 'MINE'.
+   * Possible string values are:
+   * - "ALL" : All reports in account.
+   * - "MINE" : My reports.
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID" : Sort by report ID.
+   * - "LAST_MODIFIED_TIME" : Sort by 'lastModifiedTime' field.
+   * - "NAME" : Sort by name of reports.
+   *
+   * [sortOrder] - Order of sorted results, default is 'DESCENDING'.
+   * Possible string values are:
+   * - "ASCENDING" : Ascending order.
+   * - "DESCENDING" : Descending order.
+   *
+   * Completes with a [ReportList].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<ReportList> list(core.String profileId, {core.int maxResults, core.String pageToken, core.String scope, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (scope != null) {
+      _queryParams["scope"] = [scope];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ReportList.fromJson(data));
+  }
+
+  /**
+   * Updates a report. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - The DFA user profile ID.
+   *
+   * [reportId] - The ID of the report.
+   *
+   * Completes with a [Report].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Report> patch(Report request, core.String profileId, core.String reportId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (reportId == null) {
+      throw new core.ArgumentError("Parameter reportId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/' + common_internal.Escaper.ecapeVariable('$reportId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Report.fromJson(data));
+  }
+
+  /**
+   * Runs a report.
+   *
+   * Request parameters:
+   *
+   * [profileId] - The DFA profile ID.
+   *
+   * [reportId] - The ID of the report.
+   *
+   * [synchronous] - If set and true, tries to run the report synchronously.
+   *
+   * Completes with a [File].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<File> run(core.String profileId, core.String reportId, {core.bool synchronous}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (reportId == null) {
+      throw new core.ArgumentError("Parameter reportId is required.");
+    }
+    if (synchronous != null) {
+      _queryParams["synchronous"] = ["${synchronous}"];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/' + common_internal.Escaper.ecapeVariable('$reportId') + '/run';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new File.fromJson(data));
+  }
+
+  /**
+   * Updates a report.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - The DFA user profile ID.
+   *
+   * [reportId] - The ID of the report.
+   *
+   * Completes with a [Report].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Report> update(Report request, core.String profileId, core.String reportId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (reportId == null) {
+      throw new core.ArgumentError("Parameter reportId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/' + common_internal.Escaper.ecapeVariable('$reportId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Report.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class ReportsCompatibleFieldsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  ReportsCompatibleFieldsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns the fields that are compatible to be selected in the respective
+   * sections of a report criteria, given the fields already selected in the
+   * input report and user permissions.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - The DFA user profile ID.
+   *
+   * Completes with a [CompatibleFields].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CompatibleFields> query(Report request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/compatiblefields/query';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CompatibleFields.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class ReportsFilesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  ReportsFilesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a report file.
+   *
+   * Request parameters:
+   *
+   * [profileId] - The DFA profile ID.
+   *
+   * [reportId] - The ID of the report.
+   *
+   * [fileId] - The ID of the report file.
+   *
+   * [downloadOptions] - Options for downloading. A download can be either a
+   * Metadata (default) or Media download. Partial Media downloads are possible
+   * as well.
+   *
+   * Completes with a
+   *
+   * - [File] for Metadata downloads (see [downloadOptions]).
+   *
+   * - [common.Media] for Media downloads (see [downloadOptions]).
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future get(core.String profileId, core.String reportId, core.String fileId, {common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (reportId == null) {
+      throw new core.ArgumentError("Parameter reportId is required.");
+    }
+    if (fileId == null) {
+      throw new core.ArgumentError("Parameter fileId is required.");
+    }
+
+    _downloadOptions = downloadOptions;
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/' + common_internal.Escaper.ecapeVariable('$reportId') + '/files/' + common_internal.Escaper.ecapeVariable('$fileId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    if (_downloadOptions == null ||
+        _downloadOptions == common.DownloadOptions.Metadata) {
+      return _response.then((data) => new File.fromJson(data));
+    } else {
+      return _response;
+    }
+  }
+
+  /**
+   * Lists files for a report.
+   *
+   * Request parameters:
+   *
+   * [profileId] - The DFA profile ID.
+   *
+   * [reportId] - The ID of the parent report.
+   *
+   * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "10".
+   *
+   * [pageToken] - The value of the nextToken from the previous result page.
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID" : Sort by file ID.
+   * - "LAST_MODIFIED_TIME" : Sort by 'lastmodifiedAt' field.
+   *
+   * [sortOrder] - Order of sorted results, default is 'DESCENDING'.
+   * Possible string values are:
+   * - "ASCENDING" : Ascending order.
+   * - "DESCENDING" : Descending order.
+   *
+   * Completes with a [FileList].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<FileList> list(core.String profileId, core.String reportId, {core.int maxResults, core.String pageToken, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (reportId == null) {
+      throw new core.ArgumentError("Parameter reportId is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/' + common_internal.Escaper.ecapeVariable('$reportId') + '/files';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FileList.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class SitesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  SitesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one site by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Site ID.
+   *
+   * Completes with a [Site].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Site> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sites/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Site.fromJson(data));
+  }
+
+  /**
+   * Inserts a new site.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Site].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Site> insert(Site request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sites';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Site.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of sites, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [acceptsInStreamVideoPlacements] - Select only sites that accept in-stream
+   * video placements.
+   *
+   * [acceptsInterstitialPlacements] - Select only sites that accept
+   * interstitial placements.
+   *
+   * [acceptsPublisherPaidPlacements] - Select only sites that accept publisher
+   * paid placements.
+   *
+   * [adWordsSite] - Select only AdWords sites.
+   *
+   * [approved] - Select only approved sites.
+   *
+   * [campaignIds] - Campaign IDs of sites to retrieve.
+   *
+   * [directorySiteIds] - Directory site IDs of sites to retrieve.
+   *
+   * [ids] - Set of IDs of specified sites to retrieve.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for objects by name, ID or keyName.
+   * Wildcards (*) are allowed. For example, "site*2010" will return objects
+   * with names like "site June 2010", "site April 2010" or simply "site 2010".
+   * Most of the searches also add wildcards implicitly at the start and the end
+   * of the search string. For example, a search string of "site" will match
+   * objects with name "my site", "site 2010" or simply "site".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * [subaccountId] - Subaccount ID of sites to retrieve.
+   *
+   * [unmappedSite] - Select only sites that have not been mapped to a directory
+   * site.
+   *
+   * Completes with a [SitesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<SitesListResponse> list(core.String profileId, {core.bool acceptsInStreamVideoPlacements, core.bool acceptsInterstitialPlacements, core.bool acceptsPublisherPaidPlacements, core.bool adWordsSite, core.bool approved, core.List<core.String> campaignIds, core.List<core.String> directorySiteIds, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder, core.String subaccountId, core.bool unmappedSite}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (acceptsInStreamVideoPlacements != null) {
+      _queryParams["acceptsInStreamVideoPlacements"] = ["${acceptsInStreamVideoPlacements}"];
+    }
+    if (acceptsInterstitialPlacements != null) {
+      _queryParams["acceptsInterstitialPlacements"] = ["${acceptsInterstitialPlacements}"];
+    }
+    if (acceptsPublisherPaidPlacements != null) {
+      _queryParams["acceptsPublisherPaidPlacements"] = ["${acceptsPublisherPaidPlacements}"];
+    }
+    if (adWordsSite != null) {
+      _queryParams["adWordsSite"] = ["${adWordsSite}"];
+    }
+    if (approved != null) {
+      _queryParams["approved"] = ["${approved}"];
+    }
+    if (campaignIds != null) {
+      _queryParams["campaignIds"] = campaignIds;
+    }
+    if (directorySiteIds != null) {
+      _queryParams["directorySiteIds"] = directorySiteIds;
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (subaccountId != null) {
+      _queryParams["subaccountId"] = [subaccountId];
+    }
+    if (unmappedSite != null) {
+      _queryParams["unmappedSite"] = ["${unmappedSite}"];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sites';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SitesListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing site. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Site ID.
+   *
+   * Completes with a [Site].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Site> patch(Site request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sites';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Site.fromJson(data));
+  }
+
+  /**
+   * Updates an existing site.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Site].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Site> update(Site request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sites';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Site.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class SizesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  SizesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one size by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Size ID.
+   *
+   * Completes with a [Size].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Size> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sizes/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Size.fromJson(data));
+  }
+
+  /**
+   * Inserts a new size.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Size].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Size> insert(Size request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sizes';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Size.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of sizes, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [height] - Height of sizes to retrieve.
+   *
+   * [iabStandard] - Whether only IAB standard sizes should be retrieved.
+   *
+   * [ids] - Set of IDs of specified sizes to retrieve.
+   *
+   * [width] - Width of sizes to retrieve.
+   *
+   * Completes with a [SizesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<SizesListResponse> list(core.String profileId, {core.int height, core.bool iabStandard, core.List<core.String> ids, core.int width}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (height != null) {
+      _queryParams["height"] = ["${height}"];
+    }
+    if (iabStandard != null) {
+      _queryParams["iabStandard"] = ["${iabStandard}"];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (width != null) {
+      _queryParams["width"] = ["${width}"];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sizes';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SizesListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class SubaccountsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  SubaccountsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one subaccount by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Subaccount ID.
+   *
+   * Completes with a [Subaccount].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Subaccount> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/subaccounts/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Subaccount.fromJson(data));
+  }
+
+  /**
+   * Inserts a new subaccount.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Subaccount].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Subaccount> insert(Subaccount request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/subaccounts';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Subaccount.fromJson(data));
+  }
+
+  /**
+   * Gets a list of subaccounts, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [ids] - The set of IDs of the subaccounts to retrieve.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
+   * are allowed. For example, "subaccount*2010" will return objects with names
+   * like "subaccount June 2010", "subaccount April 2010" or simply "subaccount
+   * 2010". Most of the searches also add wildcards implicitly at the start and
+   * the end of the search string. For example, a search string of "subaccount"
+   * will match objects with name "my subaccount", "subaccount 2010" or simply
+   * "subaccount".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * Completes with a [SubaccountsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<SubaccountsListResponse> list(core.String profileId, {core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/subaccounts';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SubaccountsListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing subaccount. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - Subaccount ID.
+   *
+   * Completes with a [Subaccount].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Subaccount> patch(Subaccount request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/subaccounts';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Subaccount.fromJson(data));
+  }
+
+  /**
+   * Updates an existing subaccount.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [Subaccount].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Subaccount> update(Subaccount request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/subaccounts';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Subaccount.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class UserProfilesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  UserProfilesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one user profile by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - The user profile ID.
+   *
+   * Completes with a [UserProfile].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<UserProfile> get(core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new UserProfile.fromJson(data));
+  }
+
+  /**
+   * Retrieves list of user profiles for a user.
+   *
+   * Request parameters:
+   *
+   * Completes with a [UserProfileList].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<UserProfileList> list() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+
+
+    _url = 'userprofiles';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new UserProfileList.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class UserRolePermissionGroupsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  UserRolePermissionGroupsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one user role permission group by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - User role permission group ID.
+   *
+   * Completes with a [UserRolePermissionGroup].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<UserRolePermissionGroup> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRolePermissionGroups/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new UserRolePermissionGroup.fromJson(data));
+  }
+
+  /**
+   * Gets a list of all supported user role permission groups.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [UserRolePermissionGroupsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<UserRolePermissionGroupsListResponse> list(core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRolePermissionGroups';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new UserRolePermissionGroupsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class UserRolePermissionsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  UserRolePermissionsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets one user role permission by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - User role permission ID.
+   *
+   * Completes with a [UserRolePermission].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<UserRolePermission> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRolePermissions/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new UserRolePermission.fromJson(data));
+  }
+
+  /**
+   * Gets a list of user role permissions, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [ids] - Set of IDs of specified user role permissions to retrieve.
+   *
+   * Completes with a [UserRolePermissionsListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<UserRolePermissionsListResponse> list(core.String profileId, {core.List<core.String> ids}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRolePermissions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new UserRolePermissionsListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class UserRolesResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  UserRolesResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes an existing user role.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - User role ID.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRoles/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Gets one user role by ID.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - User role ID.
+   *
+   * Completes with a [UserRole].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<UserRole> get(core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRoles/' + common_internal.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new UserRole.fromJson(data));
+  }
+
+  /**
+   * Inserts a new user role.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [UserRole].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<UserRole> insert(UserRole request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRoles';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new UserRole.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of user roles, possibly filtered.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [accountUserRoleOnly] - If true, select only account level user roles not
+   * associated with any specific subaccount.
+   *
+   * [ids] - Set of IDs of specified user roles to retrieve.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *
+   * [pageToken] - The value of the nextPageToken from the previous result page.
+   *
+   * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
+   * are allowed. For example, "userrole*2010" will return objects with names
+   * like "userrole June 2010", "userrole April 2010" or simply "userrole 2010".
+   * Most of the searches also add wildcards implicitly at the start and the end
+   * of the search string. For example, a search string of "userrole" will match
+   * objects with name "my userrole", "userrole 2010" or simply "userrole".
+   *
+   * [sortField] - The field by which to sort the list.
+   * Possible string values are:
+   * - "ID"
+   * - "NAME"
+   *
+   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   *
+   * [subaccountId] - Select only user roles that belong to this subaccount.
+   *
+   * Completes with a [UserRolesListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<UserRolesListResponse> list(core.String profileId, {core.bool accountUserRoleOnly, core.List<core.String> ids, core.int maxResults, core.String pageToken, core.String searchString, core.String sortField, core.String sortOrder, core.String subaccountId}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (accountUserRoleOnly != null) {
+      _queryParams["accountUserRoleOnly"] = ["${accountUserRoleOnly}"];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (subaccountId != null) {
+      _queryParams["subaccountId"] = [subaccountId];
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRoles';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new UserRolesListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an existing user role. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * [id] - User role ID.
+   *
+   * Completes with a [UserRole].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<UserRole> patch(UserRole request, core.String profileId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRoles';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new UserRole.fromJson(data));
+  }
+
+  /**
+   * Updates an existing user role.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [profileId] - User profile ID associated with this request.
+   *
+   * Completes with a [UserRole].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<UserRole> update(UserRole request, core.String profileId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+
+
+    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRoles';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new UserRole.fromJson(data));
+  }
+
+}
+
+
+
+/** Not documented yet. */
+class Account {
+  /** Account permissions assigned to this account. */
+  core.List<core.String> accountPermissionIds;
+
+  /**
+   * Profile for this account.
+   * Possible string values are:
+   * - "ACCOUNT_PROFILE_BASIC"
+   * - "ACCOUNT_PROFILE_STANDARD"
+   */
+  core.String accountProfile;
+
+  /** Active status of this account. */
+  core.bool active;
+
+  /**
+   * Maximum number of active ads allowed for this account.
+   * Possible string values are:
+   * - "ACTIVE_ADS_TIER_100K"
+   * - "ACTIVE_ADS_TIER_200K"
+   * - "ACTIVE_ADS_TIER_300K"
+   * - "ACTIVE_ADS_TIER_40K"
+   * - "ACTIVE_ADS_TIER_75K"
+   */
+  core.String activeAdsLimitTier;
+
+  /**
+   * Whether to serve creatives with Active View tags. If disabled, viewability
+   * data will not be available for any impressions.
+   */
+  core.bool activeViewOptOut;
+
+  /** User role permissions available to the user roles of this account. */
+  core.List<core.String> availablePermissionIds;
+
+  /**
+   * Whether campaigns created in this account will be enabled for comScore vCE
+   * by default.
+   */
+  core.bool comscoreVceEnabled;
+
+  /** ID of country associated with this account. */
+  core.String countryId;
+
+  /** ID of currency associated with this account. */
+  core.String currencyId;
+
+  /** Default placement dimensions for this account. */
+  core.String defaultCreativeSizeId;
+
+  /** Description of this account. */
+  core.String description;
+
+  /** ID of this account. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#account".
+   */
+  core.String kind;
+
+  /**
+   * Locale of this account. Supported values:
+   * - "cs" (Czech)
+   * - "de" (German)
+   * - "en" (English)
+   * - "es" (Spanish)
+   * - "fr" (French)
+   * - "it" (Italian)
+   * - "ja" (Japanese)
+   * - "ko" (Korean)
+   * - "pl" (Polish)
+   * - "pt_BR" (Portuguese Brazil)
+   * - "ru" (Russian)
+   * - "sv" (Swedish)
+   * - "tr" (Turkish)
+   * - "zh_CN" (Chinese Simplified)
+   * - "zh_TW" (Chinese Traditional)
+   */
+  core.String locale;
+
+  /** Maximum image size allowed for this account. */
+  core.String maximumImageSize;
+
+  /** Name of this account. */
+  core.String name;
+
+  /**
+   * Whether campaigns created in this account will be enabled for Nielsen OCR
+   * reach ratings by default.
+   */
+  core.bool nielsenOcrEnabled;
+
+  /** Reporting configuration of this account. */
+  ReportsConfiguration reportsConfiguration;
+
+  /** File size limit in kilobytes of Rich Media teaser creatives. */
+  core.String teaserSizeLimit;
+
+
+  Account();
+
+  Account.fromJson(core.Map _json) {
+    if (_json.containsKey("accountPermissionIds")) {
+      accountPermissionIds = _json["accountPermissionIds"];
+    }
+    if (_json.containsKey("accountProfile")) {
+      accountProfile = _json["accountProfile"];
+    }
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("activeAdsLimitTier")) {
+      activeAdsLimitTier = _json["activeAdsLimitTier"];
+    }
+    if (_json.containsKey("activeViewOptOut")) {
+      activeViewOptOut = _json["activeViewOptOut"];
+    }
+    if (_json.containsKey("availablePermissionIds")) {
+      availablePermissionIds = _json["availablePermissionIds"];
+    }
+    if (_json.containsKey("comscoreVceEnabled")) {
+      comscoreVceEnabled = _json["comscoreVceEnabled"];
+    }
+    if (_json.containsKey("countryId")) {
+      countryId = _json["countryId"];
+    }
+    if (_json.containsKey("currencyId")) {
+      currencyId = _json["currencyId"];
+    }
+    if (_json.containsKey("defaultCreativeSizeId")) {
+      defaultCreativeSizeId = _json["defaultCreativeSizeId"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("locale")) {
+      locale = _json["locale"];
+    }
+    if (_json.containsKey("maximumImageSize")) {
+      maximumImageSize = _json["maximumImageSize"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("nielsenOcrEnabled")) {
+      nielsenOcrEnabled = _json["nielsenOcrEnabled"];
+    }
+    if (_json.containsKey("reportsConfiguration")) {
+      reportsConfiguration = new ReportsConfiguration.fromJson(_json["reportsConfiguration"]);
+    }
+    if (_json.containsKey("teaserSizeLimit")) {
+      teaserSizeLimit = _json["teaserSizeLimit"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountPermissionIds != null) {
+      _json["accountPermissionIds"] = accountPermissionIds;
+    }
+    if (accountProfile != null) {
+      _json["accountProfile"] = accountProfile;
+    }
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (activeAdsLimitTier != null) {
+      _json["activeAdsLimitTier"] = activeAdsLimitTier;
+    }
+    if (activeViewOptOut != null) {
+      _json["activeViewOptOut"] = activeViewOptOut;
+    }
+    if (availablePermissionIds != null) {
+      _json["availablePermissionIds"] = availablePermissionIds;
+    }
+    if (comscoreVceEnabled != null) {
+      _json["comscoreVceEnabled"] = comscoreVceEnabled;
+    }
+    if (countryId != null) {
+      _json["countryId"] = countryId;
+    }
+    if (currencyId != null) {
+      _json["currencyId"] = currencyId;
+    }
+    if (defaultCreativeSizeId != null) {
+      _json["defaultCreativeSizeId"] = defaultCreativeSizeId;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (locale != null) {
+      _json["locale"] = locale;
+    }
+    if (maximumImageSize != null) {
+      _json["maximumImageSize"] = maximumImageSize;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (nielsenOcrEnabled != null) {
+      _json["nielsenOcrEnabled"] = nielsenOcrEnabled;
+    }
+    if (reportsConfiguration != null) {
+      _json["reportsConfiguration"] = (reportsConfiguration).toJson();
+    }
+    if (teaserSizeLimit != null) {
+      _json["teaserSizeLimit"] = teaserSizeLimit;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class AccountActiveAdSummary {
+  /** ID of this account. This is a read-only, auto-generated field. */
+  core.String accountId;
+
+  /**
+   * Ads that have been activated for this account. This is a read-only field.
+   */
+  core.String activeAds;
+
+  /**
+   * Maximum number of active ads allowed for this account. This is a read-only
+   * field.
+   * Possible string values are:
+   * - "ACTIVE_ADS_TIER_100K"
+   * - "ACTIVE_ADS_TIER_200K"
+   * - "ACTIVE_ADS_TIER_300K"
+   * - "ACTIVE_ADS_TIER_40K"
+   * - "ACTIVE_ADS_TIER_75K"
+   */
+  core.String activeAdsLimitTier;
+
+  /** Ads that can be activated for this account. This is a read-only field. */
+  core.String availableAds;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#accountActiveAdSummary".
+   */
+  core.String kind;
+
+
+  AccountActiveAdSummary();
+
+  AccountActiveAdSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("activeAds")) {
+      activeAds = _json["activeAds"];
+    }
+    if (_json.containsKey("activeAdsLimitTier")) {
+      activeAdsLimitTier = _json["activeAdsLimitTier"];
+    }
+    if (_json.containsKey("availableAds")) {
+      availableAds = _json["availableAds"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (activeAds != null) {
+      _json["activeAds"] = activeAds;
+    }
+    if (activeAdsLimitTier != null) {
+      _json["activeAdsLimitTier"] = activeAdsLimitTier;
+    }
+    if (availableAds != null) {
+      _json["availableAds"] = availableAds;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class AccountPermission {
+  /**
+   * Account profiles associated with this account permission.
+   *
+   * Acceptable values are:
+   * - "ACCOUNT_PROFILE_BASIC"
+   * - "ACCOUNT_PROFILE_STANDARD"
+   */
+  core.List<core.String> accountProfiles;
+
+  /**
+   * ID of this account permission. This is a read-only, auto-generated field.
+   */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#accountPermission".
+   */
+  core.String kind;
+
+  /**
+   * Administrative level required to enable this account permission.
+   * Possible string values are:
+   * - "ADMINISTRATOR"
+   * - "USER"
+   */
+  core.String level;
+
+  /** Name of this account permission. */
+  core.String name;
+
+  /** Permission group of this account permission. */
+  core.String permissionGroupId;
+
+
+  AccountPermission();
+
+  AccountPermission.fromJson(core.Map _json) {
+    if (_json.containsKey("accountProfiles")) {
+      accountProfiles = _json["accountProfiles"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("level")) {
+      level = _json["level"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("permissionGroupId")) {
+      permissionGroupId = _json["permissionGroupId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountProfiles != null) {
+      _json["accountProfiles"] = accountProfiles;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (level != null) {
+      _json["level"] = level;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (permissionGroupId != null) {
+      _json["permissionGroupId"] = permissionGroupId;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class AccountPermissionGroup {
+  /**
+   * ID of this account permission group. This is a read-only, auto-generated
+   * field.
+   */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#accountPermissionGroup".
+   */
+  core.String kind;
+
+  /** Name of this account permission group. */
+  core.String name;
+
+
+  AccountPermissionGroup();
+
+  AccountPermissionGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Account Permission Group List Response */
+class AccountPermissionGroupsListResponse {
+  /** Account permission group collection */
+  core.List<AccountPermissionGroup> accountPermissionGroups;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#accountPermissionGroupsListResponse".
+   */
+  core.String kind;
+
+
+  AccountPermissionGroupsListResponse();
+
+  AccountPermissionGroupsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("accountPermissionGroups")) {
+      accountPermissionGroups = _json["accountPermissionGroups"].map((value) => new AccountPermissionGroup.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountPermissionGroups != null) {
+      _json["accountPermissionGroups"] = accountPermissionGroups.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Account Permission List Response */
+class AccountPermissionsListResponse {
+  /** Account permission collection */
+  core.List<AccountPermission> accountPermissions;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#accountPermissionsListResponse".
+   */
+  core.String kind;
+
+
+  AccountPermissionsListResponse();
+
+  AccountPermissionsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("accountPermissions")) {
+      accountPermissions = _json["accountPermissions"].map((value) => new AccountPermission.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountPermissions != null) {
+      _json["accountPermissions"] = accountPermissions.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class AccountUserProfile {
+  /** Account ID of the user profile. */
+  core.String accountId;
+
+  /** Whether this user profile is active. */
+  core.bool active;
+
+  /** Describes which advertisers are visible to the user profile. */
+  ObjectFilter advertiserFilter;
+
+  /** Describes which campaigns are visible to the user profile. */
+  ObjectFilter campaignFilter;
+
+  /** Comments for this user profile. */
+  core.String comments;
+
+  /** Email of the user profile. */
+  core.String email;
+
+  /** ID of the user profile. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#accountUserProfile".
+   */
+  core.String kind;
+
+  /**
+   * Locale of the user profile. Supported values:
+   * - "cs" (Czech)
+   * - "de" (German)
+   * - "en" (English)
+   * - "es" (Spanish)
+   * - "fr" (French)
+   * - "it" (Italian)
+   * - "ja" (Japanese)
+   * - "ko" (Korean)
+   * - "pl" (Polish)
+   * - "pt_BR" (Portuguese Brazil)
+   * - "ru" (Russian)
+   * - "sv" (Swedish)
+   * - "tr" (Turkish)
+   * - "zh_CN" (Chinese Simplified)
+   * - "zh_TW" (Chinese Traditional)
+   */
+  core.String locale;
+
+  /** Name of the user profile. */
+  core.String name;
+
+  /** Describes which sites are visible to the user profile. */
+  ObjectFilter siteFilter;
+
+  /** Subaccount ID of the user profile. */
+  core.String subaccountId;
+
+  /**
+   * Trafficker type of this user profile.
+   * Possible string values are:
+   * - "EXTERNAL_TRAFFICKER"
+   * - "INTERNAL_NON_TRAFFICKER"
+   * - "INTERNAL_TRAFFICKER"
+   */
+  core.String traffickerType;
+
+  /**
+   * User type of the user profile. This is a read-only field.
+   * Possible string values are:
+   * - "INTERNAL_ADMINISTRATOR"
+   * - "MULTIACCOUNT_USER"
+   * - "NORMAL_USER"
+   * - "SUPER_USER"
+   */
+  core.String userAccessType;
+
+  /** Describes which user roles are visible to the user profile. */
+  ObjectFilter userRoleFilter;
+
+  /** User Role ID of the user profile. */
+  core.String userRoleId;
+
+
+  AccountUserProfile();
+
+  AccountUserProfile.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("advertiserFilter")) {
+      advertiserFilter = new ObjectFilter.fromJson(_json["advertiserFilter"]);
+    }
+    if (_json.containsKey("campaignFilter")) {
+      campaignFilter = new ObjectFilter.fromJson(_json["campaignFilter"]);
+    }
+    if (_json.containsKey("comments")) {
+      comments = _json["comments"];
+    }
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("locale")) {
+      locale = _json["locale"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("siteFilter")) {
+      siteFilter = new ObjectFilter.fromJson(_json["siteFilter"]);
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+    if (_json.containsKey("traffickerType")) {
+      traffickerType = _json["traffickerType"];
+    }
+    if (_json.containsKey("userAccessType")) {
+      userAccessType = _json["userAccessType"];
+    }
+    if (_json.containsKey("userRoleFilter")) {
+      userRoleFilter = new ObjectFilter.fromJson(_json["userRoleFilter"]);
+    }
+    if (_json.containsKey("userRoleId")) {
+      userRoleId = _json["userRoleId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (advertiserFilter != null) {
+      _json["advertiserFilter"] = (advertiserFilter).toJson();
+    }
+    if (campaignFilter != null) {
+      _json["campaignFilter"] = (campaignFilter).toJson();
+    }
+    if (comments != null) {
+      _json["comments"] = comments;
+    }
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (locale != null) {
+      _json["locale"] = locale;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (siteFilter != null) {
+      _json["siteFilter"] = (siteFilter).toJson();
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    if (traffickerType != null) {
+      _json["traffickerType"] = traffickerType;
+    }
+    if (userAccessType != null) {
+      _json["userAccessType"] = userAccessType;
+    }
+    if (userRoleFilter != null) {
+      _json["userRoleFilter"] = (userRoleFilter).toJson();
+    }
+    if (userRoleId != null) {
+      _json["userRoleId"] = userRoleId;
+    }
+    return _json;
+  }
+}
+
+
+/** Account User Profile List Response */
+class AccountUserProfilesListResponse {
+  /** Account user profile collection */
+  core.List<AccountUserProfile> accountUserProfiles;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#accountUserProfilesListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  AccountUserProfilesListResponse();
+
+  AccountUserProfilesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("accountUserProfiles")) {
+      accountUserProfiles = _json["accountUserProfiles"].map((value) => new AccountUserProfile.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountUserProfiles != null) {
+      _json["accountUserProfiles"] = accountUserProfiles.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Account List Response */
+class AccountsListResponse {
+  /** Account collection */
+  core.List<Account> accounts;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#accountsListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  AccountsListResponse();
+
+  AccountsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("accounts")) {
+      accounts = _json["accounts"].map((value) => new Account.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accounts != null) {
+      _json["accounts"] = accounts.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Represents an activity group. */
+class Activities {
+  /**
+   * List of activity filters. The dimension values need to be all either of
+   * type "dfa:activity" or "dfa:activityGroup".
+   */
+  core.List<DimensionValue> filters;
+
+  /** The kind of resource this is, in this case dfareporting#activities. */
+  core.String kind;
+
+  /** List of names of floodlight activity metrics. */
+  core.List<core.String> metricNames;
+
+
+  Activities();
+
+  Activities.fromJson(core.Map _json) {
+    if (_json.containsKey("filters")) {
+      filters = _json["filters"].map((value) => new DimensionValue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("metricNames")) {
+      metricNames = _json["metricNames"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (filters != null) {
+      _json["filters"] = filters.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (metricNames != null) {
+      _json["metricNames"] = metricNames;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Ad {
+  /** Account ID of this ad. */
+  core.String accountId;
+
+  /** Whether this ad is active. */
+  core.bool active;
+
+  /** Advertiser ID of this ad. This is a required field on creation. */
+  core.String advertiserId;
+
+  /**
+   * Dimension value for the ID of the advertiser. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue advertiserIdDimensionValue;
+
+  /** Whether this ad is archived. */
+  core.bool archived;
+
+  /**
+   * Applicable when type is AD_SERVING_STANDARD_AD. Audience segment ID that is
+   * being targeted for this ad.
+   */
+  core.String audienceSegmentId;
+
+  /** Campaign ID of this ad. This is a required field on creation. */
+  core.String campaignId;
+
+  /**
+   * Dimension value for the ID of the campaign. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue campaignIdDimensionValue;
+
+  /**
+   * Applicable when type is AD_SERVING_CLICK_TRACKER. Click-through URL for
+   * this ad. This is a required field on creation.
+   */
+  ClickThroughUrl clickThroughUrl;
+
+  /**
+   * Click-through URL suffix properties for this ad. Applies to the URL in the
+   * ad or (if overriding ad properties) the URL in the creative.
+   */
+  ClickThroughUrlSuffixProperties clickThroughUrlSuffixProperties;
+
+  /** Comments for this ad. */
+  core.String comments;
+
+  /**
+   * Applicable when type is AD_SERVING_DEFAULT_AD. Compatibility of this ad.
+   * WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile
+   * devices for regular or interstitial ads respectively. APP and
+   * APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers
+   * to rendering in in-stream video ads developed with the VAST standard.
+   * Possible string values are:
+   * - "APP"
+   * - "APP_INTERSTITIAL"
+   * - "IN_STREAM_VIDEO"
+   * - "WEB"
+   * - "WEB_INTERSTITIAL"
+   */
+  core.String compatibility;
+
+  /** Ad creation information. */
+  LastModifiedInfo createInfo;
+
+  /**
+   * Applicable when type is AD_SERVING_CLICK_TRACKER. Creative group
+   * assignments for this ad. Only one assignment per creative group number is
+   * allowed for a maximum of two assignments.
+   */
+  core.List<CreativeGroupAssignment> creativeGroupAssignments;
+
+  /**
+   * Applicable when type is AD_SERVING_DEFAULT_AD, AD_SERVING_STANDARD_AD, or
+   * AD_SERVING_TRACKING. Creative rotation for this ad. When type is
+   * AD_SERVING_DEFAULT_AD, this field should have exactly one
+   * creativeAssignment.
+   */
+  CreativeRotation creativeRotation;
+
+  /**
+   * Applicable when type is AD_SERVING_STANDARD_AD. Time and day targeting
+   * information for this ad.
+   */
+  DayPartTargeting dayPartTargeting;
+
+  /** Default click-through event tag properties for this ad. */
+  DefaultClickThroughEventTagProperties defaultClickThroughEventTagProperties;
+
+  /**
+   * Applicable when type is AD_SERVING_STANDARD_AD or AD_SERVING_TRACKING.
+   * Delivery schedule information for this ad. This field along with subfields
+   * priority and impressionRatio are required on creation when type is
+   * AD_SERVING_STANDARD_AD.
+   */
+  DeliverySchedule deliverySchedule;
+
+  /**
+   * Applicable when type is AD_SERVING_CLICK_TRACKER. Whether this ad is a
+   * dynamic click tracker. This is a required field on creation, and is
+   * read-only after creation.
+   */
+  core.bool dynamicClickTracker;
+
+  /**
+   * The date and time that this ad should stop serving. Must be after the start
+   * time. This is a required field on creation.
+   */
+  core.DateTime endTime;
+
+  /** Event tag overrides for this ad. */
+  core.List<EventTagOverride> eventTagOverrides;
+
+  /**
+   * Applicable when type is AD_SERVING_STANDARD_AD. Geography targeting
+   * information for this ad.
+   */
+  GeoTargeting geoTargeting;
+
+  /** ID of this ad. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /**
+   * Dimension value for the ID of this ad. This is a read-only, auto-generated
+   * field.
+   */
+  DimensionValue idDimensionValue;
+
+  /**
+   * Applicable when type is AD_SERVING_STANDARD_AD. Key value targeting
+   * information for this ad.
+   */
+  KeyValueTargetingExpression keyValueTargetingExpression;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#ad".
+   */
+  core.String kind;
+
+  /** Ad last modification information. */
+  LastModifiedInfo lastModifiedInfo;
+
+  /** Name of this ad. */
+  core.String name;
+
+  /** Placement assignments for this ad. */
+  core.List<PlacementAssignment> placementAssignments;
+
+  /**
+   * Applicable when type is AD_SERVING_STANDARD_AD. Remarketing list targeting
+   * expression for this ad.
+   */
+  ListTargetingExpression remarketingListExpression;
+
+  /** Applicable when type is AD_SERVING_DEFAULT_AD. Size of this ad. */
+  Size size;
+
+  /**
+   * Whether this ad is ssl compliant. This is a read-only field derived from
+   * the assigned creatives.
+   */
+  core.bool sslCompliant;
+
+  /**
+   * Whether this ad requires ssl. This is a read-only field derived from the
+   * assigned placements.
+   */
+  core.bool sslRequired;
+
+  /**
+   * The date and time that this ad should start serving. If creating an ad,
+   * this field must be a time in the future. This is a required field on
+   * creation.
+   */
+  core.DateTime startTime;
+
+  /** Subaccount ID of this ad. */
+  core.String subaccountId;
+
+  /**
+   * Applicable when type is AD_SERVING_STANDARD_AD. Technology platform
+   * targeting information for this ad.
+   */
+  TechnologyTargeting technologyTargeting;
+
+  /**
+   * Type of ad. This is a required field on creation. Note that default ads
+   * (AD_SERVING_DEFAULT_AD) cannot be created directly (see Creative resource).
+   * Possible string values are:
+   * - "AD_SERVING_CLICK_TRACKER"
+   * - "AD_SERVING_DEFAULT_AD"
+   * - "AD_SERVING_STANDARD_AD"
+   * - "AD_SERVING_TRACKING"
+   */
+  core.String type;
+
+
+  Ad();
+
+  Ad.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("advertiserId")) {
+      advertiserId = _json["advertiserId"];
+    }
+    if (_json.containsKey("advertiserIdDimensionValue")) {
+      advertiserIdDimensionValue = new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+    }
+    if (_json.containsKey("archived")) {
+      archived = _json["archived"];
+    }
+    if (_json.containsKey("audienceSegmentId")) {
+      audienceSegmentId = _json["audienceSegmentId"];
+    }
+    if (_json.containsKey("campaignId")) {
+      campaignId = _json["campaignId"];
+    }
+    if (_json.containsKey("campaignIdDimensionValue")) {
+      campaignIdDimensionValue = new DimensionValue.fromJson(_json["campaignIdDimensionValue"]);
+    }
+    if (_json.containsKey("clickThroughUrl")) {
+      clickThroughUrl = new ClickThroughUrl.fromJson(_json["clickThroughUrl"]);
+    }
+    if (_json.containsKey("clickThroughUrlSuffixProperties")) {
+      clickThroughUrlSuffixProperties = new ClickThroughUrlSuffixProperties.fromJson(_json["clickThroughUrlSuffixProperties"]);
+    }
+    if (_json.containsKey("comments")) {
+      comments = _json["comments"];
+    }
+    if (_json.containsKey("compatibility")) {
+      compatibility = _json["compatibility"];
+    }
+    if (_json.containsKey("createInfo")) {
+      createInfo = new LastModifiedInfo.fromJson(_json["createInfo"]);
+    }
+    if (_json.containsKey("creativeGroupAssignments")) {
+      creativeGroupAssignments = _json["creativeGroupAssignments"].map((value) => new CreativeGroupAssignment.fromJson(value)).toList();
+    }
+    if (_json.containsKey("creativeRotation")) {
+      creativeRotation = new CreativeRotation.fromJson(_json["creativeRotation"]);
+    }
+    if (_json.containsKey("dayPartTargeting")) {
+      dayPartTargeting = new DayPartTargeting.fromJson(_json["dayPartTargeting"]);
+    }
+    if (_json.containsKey("defaultClickThroughEventTagProperties")) {
+      defaultClickThroughEventTagProperties = new DefaultClickThroughEventTagProperties.fromJson(_json["defaultClickThroughEventTagProperties"]);
+    }
+    if (_json.containsKey("deliverySchedule")) {
+      deliverySchedule = new DeliverySchedule.fromJson(_json["deliverySchedule"]);
+    }
+    if (_json.containsKey("dynamicClickTracker")) {
+      dynamicClickTracker = _json["dynamicClickTracker"];
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = core.DateTime.parse(_json["endTime"]);
+    }
+    if (_json.containsKey("eventTagOverrides")) {
+      eventTagOverrides = _json["eventTagOverrides"].map((value) => new EventTagOverride.fromJson(value)).toList();
+    }
+    if (_json.containsKey("geoTargeting")) {
+      geoTargeting = new GeoTargeting.fromJson(_json["geoTargeting"]);
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("idDimensionValue")) {
+      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+    }
+    if (_json.containsKey("keyValueTargetingExpression")) {
+      keyValueTargetingExpression = new KeyValueTargetingExpression.fromJson(_json["keyValueTargetingExpression"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("lastModifiedInfo")) {
+      lastModifiedInfo = new LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("placementAssignments")) {
+      placementAssignments = _json["placementAssignments"].map((value) => new PlacementAssignment.fromJson(value)).toList();
+    }
+    if (_json.containsKey("remarketing_list_expression")) {
+      remarketingListExpression = new ListTargetingExpression.fromJson(_json["remarketing_list_expression"]);
+    }
+    if (_json.containsKey("size")) {
+      size = new Size.fromJson(_json["size"]);
+    }
+    if (_json.containsKey("sslCompliant")) {
+      sslCompliant = _json["sslCompliant"];
+    }
+    if (_json.containsKey("sslRequired")) {
+      sslRequired = _json["sslRequired"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = core.DateTime.parse(_json["startTime"]);
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+    if (_json.containsKey("technologyTargeting")) {
+      technologyTargeting = new TechnologyTargeting.fromJson(_json["technologyTargeting"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (advertiserId != null) {
+      _json["advertiserId"] = advertiserId;
+    }
+    if (advertiserIdDimensionValue != null) {
+      _json["advertiserIdDimensionValue"] = (advertiserIdDimensionValue).toJson();
+    }
+    if (archived != null) {
+      _json["archived"] = archived;
+    }
+    if (audienceSegmentId != null) {
+      _json["audienceSegmentId"] = audienceSegmentId;
+    }
+    if (campaignId != null) {
+      _json["campaignId"] = campaignId;
+    }
+    if (campaignIdDimensionValue != null) {
+      _json["campaignIdDimensionValue"] = (campaignIdDimensionValue).toJson();
+    }
+    if (clickThroughUrl != null) {
+      _json["clickThroughUrl"] = (clickThroughUrl).toJson();
+    }
+    if (clickThroughUrlSuffixProperties != null) {
+      _json["clickThroughUrlSuffixProperties"] = (clickThroughUrlSuffixProperties).toJson();
+    }
+    if (comments != null) {
+      _json["comments"] = comments;
+    }
+    if (compatibility != null) {
+      _json["compatibility"] = compatibility;
+    }
+    if (createInfo != null) {
+      _json["createInfo"] = (createInfo).toJson();
+    }
+    if (creativeGroupAssignments != null) {
+      _json["creativeGroupAssignments"] = creativeGroupAssignments.map((value) => (value).toJson()).toList();
+    }
+    if (creativeRotation != null) {
+      _json["creativeRotation"] = (creativeRotation).toJson();
+    }
+    if (dayPartTargeting != null) {
+      _json["dayPartTargeting"] = (dayPartTargeting).toJson();
+    }
+    if (defaultClickThroughEventTagProperties != null) {
+      _json["defaultClickThroughEventTagProperties"] = (defaultClickThroughEventTagProperties).toJson();
+    }
+    if (deliverySchedule != null) {
+      _json["deliverySchedule"] = (deliverySchedule).toJson();
+    }
+    if (dynamicClickTracker != null) {
+      _json["dynamicClickTracker"] = dynamicClickTracker;
+    }
+    if (endTime != null) {
+      _json["endTime"] = (endTime).toIso8601String();
+    }
+    if (eventTagOverrides != null) {
+      _json["eventTagOverrides"] = eventTagOverrides.map((value) => (value).toJson()).toList();
+    }
+    if (geoTargeting != null) {
+      _json["geoTargeting"] = (geoTargeting).toJson();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (idDimensionValue != null) {
+      _json["idDimensionValue"] = (idDimensionValue).toJson();
+    }
+    if (keyValueTargetingExpression != null) {
+      _json["keyValueTargetingExpression"] = (keyValueTargetingExpression).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (lastModifiedInfo != null) {
+      _json["lastModifiedInfo"] = (lastModifiedInfo).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (placementAssignments != null) {
+      _json["placementAssignments"] = placementAssignments.map((value) => (value).toJson()).toList();
+    }
+    if (remarketingListExpression != null) {
+      _json["remarketing_list_expression"] = (remarketingListExpression).toJson();
+    }
+    if (size != null) {
+      _json["size"] = (size).toJson();
+    }
+    if (sslCompliant != null) {
+      _json["sslCompliant"] = sslCompliant;
+    }
+    if (sslRequired != null) {
+      _json["sslRequired"] = sslRequired;
+    }
+    if (startTime != null) {
+      _json["startTime"] = (startTime).toIso8601String();
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    if (technologyTargeting != null) {
+      _json["technologyTargeting"] = (technologyTargeting).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+
+/** Ad List Response */
+class AdsListResponse {
+  /** Ad collection */
+  core.List<Ad> ads;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#adsListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  AdsListResponse();
+
+  AdsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("ads")) {
+      ads = _json["ads"].map((value) => new Ad.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (ads != null) {
+      _json["ads"] = ads.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Advertiser {
+  /** Account ID of this advertiser. */
+  core.String accountId;
+
+  /**
+   * The ID of the advertiser group the advertiser belongs to. You can group
+   * advertisers for reporting purposes, allowing you to see aggregated
+   * information for all advertisers in each group.
+   */
+  core.String advertiserGroupId;
+
+  /**
+   * Suffix added to click-through URL of ad creative associations under this
+   * advertiser.
+   */
+  core.String clickThroughUrlSuffix;
+
+  /**
+   * The ID of the click-through event tag to apply by default to this
+   * advertiser's campaigns' landing pages.
+   */
+  core.String defaultClickThroughEventTagId;
+
+  /** Default email address used in sender field for tag emails. */
+  core.String defaultEmail;
+
+  /**
+   * Floodlight configuration ID of this advertiser. The floodlight
+   * configuration ID will be created automatically, so on insert this field
+   * should be left blank. This field is presently read-only.
+   */
+  core.String floodlightConfigurationId;
+
+  /**
+   * Dimension value for the ID of the floodlight configuration. This is a
+   * read-only, auto-generated field.
+   */
+  DimensionValue floodlightConfigurationIdDimensionValue;
+
+  /** ID of this advertiser. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /**
+   * Dimension value for the ID of this advertiser. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue idDimensionValue;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#advertiser".
+   */
+  core.String kind;
+
+  /** Name of this advertiser. */
+  core.String name;
+
+  /**
+   * Status of this advertiser.
+   * Possible string values are:
+   * - "APPROVED"
+   * - "ON_HOLD"
+   */
+  core.String status;
+
+  /** Sub-account ID of this advertiser. */
+  core.String subaccountId;
+
+
+  Advertiser();
+
+  Advertiser.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("advertiserGroupId")) {
+      advertiserGroupId = _json["advertiserGroupId"];
+    }
+    if (_json.containsKey("clickThroughUrlSuffix")) {
+      clickThroughUrlSuffix = _json["clickThroughUrlSuffix"];
+    }
+    if (_json.containsKey("defaultClickThroughEventTagId")) {
+      defaultClickThroughEventTagId = _json["defaultClickThroughEventTagId"];
+    }
+    if (_json.containsKey("defaultEmail")) {
+      defaultEmail = _json["defaultEmail"];
+    }
+    if (_json.containsKey("floodlightConfigurationId")) {
+      floodlightConfigurationId = _json["floodlightConfigurationId"];
+    }
+    if (_json.containsKey("floodlightConfigurationIdDimensionValue")) {
+      floodlightConfigurationIdDimensionValue = new DimensionValue.fromJson(_json["floodlightConfigurationIdDimensionValue"]);
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("idDimensionValue")) {
+      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (advertiserGroupId != null) {
+      _json["advertiserGroupId"] = advertiserGroupId;
+    }
+    if (clickThroughUrlSuffix != null) {
+      _json["clickThroughUrlSuffix"] = clickThroughUrlSuffix;
+    }
+    if (defaultClickThroughEventTagId != null) {
+      _json["defaultClickThroughEventTagId"] = defaultClickThroughEventTagId;
+    }
+    if (defaultEmail != null) {
+      _json["defaultEmail"] = defaultEmail;
+    }
+    if (floodlightConfigurationId != null) {
+      _json["floodlightConfigurationId"] = floodlightConfigurationId;
+    }
+    if (floodlightConfigurationIdDimensionValue != null) {
+      _json["floodlightConfigurationIdDimensionValue"] = (floodlightConfigurationIdDimensionValue).toJson();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (idDimensionValue != null) {
+      _json["idDimensionValue"] = (idDimensionValue).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class AdvertiserGroup {
+  /** Account ID of this advertiser group. */
+  core.String accountId;
+
+  /**
+   * ID of this advertiser group. This is a read-only, auto-generated field.
+   */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#advertiserGroup".
+   */
+  core.String kind;
+
+  /** Name of this advertiser group. */
+  core.String name;
+
+
+  AdvertiserGroup();
+
+  AdvertiserGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Advertiser Group List Response */
+class AdvertiserGroupsListResponse {
+  /** Advertiser group collection */
+  core.List<AdvertiserGroup> advertiserGroups;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#advertiserGroupsListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  AdvertiserGroupsListResponse();
+
+  AdvertiserGroupsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("advertiserGroups")) {
+      advertiserGroups = _json["advertiserGroups"].map((value) => new AdvertiserGroup.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (advertiserGroups != null) {
+      _json["advertiserGroups"] = advertiserGroups.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Advertiser List Response */
+class AdvertisersListResponse {
+  /** Advertiser collection */
+  core.List<Advertiser> advertisers;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#advertisersListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  AdvertisersListResponse();
+
+  AdvertisersListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("advertisers")) {
+      advertisers = _json["advertisers"].map((value) => new Advertiser.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (advertisers != null) {
+      _json["advertisers"] = advertisers.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Audience Segment. */
+class AudienceSegment {
+  /** Percentage allocated to this segment. */
+  core.int allocation;
+
+  /**
+   * ID of this audience segment. This is a read-only, auto-generated field.
+   */
+  core.String id;
+
+  /** Name of this audience segment. */
+  core.String name;
+
+
+  AudienceSegment();
+
+  AudienceSegment.fromJson(core.Map _json) {
+    if (_json.containsKey("allocation")) {
+      allocation = _json["allocation"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (allocation != null) {
+      _json["allocation"] = allocation;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Audience Segment Group. */
+class AudienceSegmentGroup {
+  /** Audience segments assigned to this group. */
+  core.List<AudienceSegment> audienceSegments;
+
+  /**
+   * ID of this audience segment group. This is a read-only, auto-generated
+   * field.
+   */
+  core.String id;
+
+  /** Name of this audience segment group. */
+  core.String name;
+
+
+  AudienceSegmentGroup();
+
+  AudienceSegmentGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("audienceSegments")) {
+      audienceSegments = _json["audienceSegments"].map((value) => new AudienceSegment.fromJson(value)).toList();
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (audienceSegments != null) {
+      _json["audienceSegments"] = audienceSegments.map((value) => (value).toJson()).toList();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Browser {
+  /**
+   * ID referring to this grouping of browser and version numbers. This is the
+   * ID used for targeting. If not known, this ID will be derived from the
+   * dartId and version numbers.
+   */
+  core.String browserVersionId;
+
+  /** DART ID of this browser.This is the ID used when generating reports. */
+  core.String dartId;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#browser".
+   */
+  core.String kind;
+
+  /**
+   * Major version number (left-most number) of this browser. For example, for
+   * Chrome 5.0.376.86 beta, this field should be set to 5. An asterisk (*) may
+   * be used to target any version number, and a question mark (?) may be used
+   * to target cases where the version number cannot be identified. For example,
+   * Chrome *.* targets any version of Chrome: 1.2, 2.5, 3.5, etc. Chrome 3.*
+   * targets e.g. Chrome 3.1, 3.5, etc but not 4.0. Firefox ?.? targets cases
+   * where the ad server knows the browser is Firefox but can't tell which
+   * version.
+   */
+  core.String majorVersion;
+
+  /**
+   * Minor version number (number after first dot on left) of this browser. For
+   * example, for Chrome 5.0.375.86 beta, this field should be set to 0. An
+   * asterisk (*) may be used to target any version number, and a question mark
+   * (?) may be used to target cases where the version number cannot be
+   * identified. For example, Chrome *.* targets any version of Chrome: 1.2,
+   * 2.5, 3.5, etc. Chrome 3.* targets e.g. Chrome 3.1, 3.5, etc but not 4.0.
+   * Firefox ?.? targets cases where the ad server knows the browser is Firefox
+   * but can't tell which version.
+   */
+  core.String minorVersion;
+
+  /** Name of this browser. */
+  core.String name;
+
+
+  Browser();
+
+  Browser.fromJson(core.Map _json) {
+    if (_json.containsKey("browserVersionId")) {
+      browserVersionId = _json["browserVersionId"];
+    }
+    if (_json.containsKey("dartId")) {
+      dartId = _json["dartId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("majorVersion")) {
+      majorVersion = _json["majorVersion"];
+    }
+    if (_json.containsKey("minorVersion")) {
+      minorVersion = _json["minorVersion"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (browserVersionId != null) {
+      _json["browserVersionId"] = browserVersionId;
+    }
+    if (dartId != null) {
+      _json["dartId"] = dartId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (majorVersion != null) {
+      _json["majorVersion"] = majorVersion;
+    }
+    if (minorVersion != null) {
+      _json["minorVersion"] = minorVersion;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Browser List Response */
+class BrowsersListResponse {
+  /** Browser collection */
+  core.List<Browser> browsers;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#browsersListResponse".
+   */
+  core.String kind;
+
+
+  BrowsersListResponse();
+
+  BrowsersListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("browsers")) {
+      browsers = _json["browsers"].map((value) => new Browser.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (browsers != null) {
+      _json["browsers"] = browsers.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Campaign {
+  /** Account ID of this campaign. */
+  core.String accountId;
+
+  /** Additional creative optimization configurations for the campaign. */
+  core.List<CreativeOptimizationConfiguration> additionalCreativeOptimizationConfigurations;
+
+  /** Advertiser group ID of the associated advertiser. */
+  core.String advertiserGroupId;
+
+  /** Advertiser ID of this campaign. */
+  core.String advertiserId;
+
+  /**
+   * Dimension value for the advertiser ID of this campaign. This is a
+   * read-only, auto-generated field.
+   */
+  DimensionValue advertiserIdDimensionValue;
+
+  /** Indicates whether this campaign has been archived. */
+  core.bool archived;
+
+  /** Audience segment groups assigned to this campaign. */
+  core.List<AudienceSegmentGroup> audienceSegmentGroups;
+
+  /**
+   * This billing invoice code is included in the DFA client billing invoices in
+   * association with the campaign, along with the advertiser and campaign
+   * names.
+   */
+  core.String billingInvoiceCode;
+
+  /** Click-through URL suffix override properties for this campaign. */
+  ClickThroughUrlSuffixProperties clickThroughUrlSuffixProperties;
+
+  /** Arbitrary comments about this campaign. */
+  core.String comment;
+
+  /** Enables comScore vCE reports for this campaign. */
+  core.bool comscoreVceEnabled;
+
+  /** Campaign creation information. This is a read-only field. */
+  LastModifiedInfo createInfo;
+
+  /** List of Creative group IDs that are assigned to the campaign. */
+  core.List<core.String> creativeGroupIds;
+
+  /** Creative optimization configuration for the campaign. */
+  CreativeOptimizationConfiguration creativeOptimizationConfiguration;
+
+  /** Click-through event tag ID override properties for this campaign. */
+  DefaultClickThroughEventTagProperties defaultClickThroughEventTagProperties;
+
+  /**
+   * Date on which the campaign will stop running. On creation the end date must
+   * be today or a future date. In all cases the end date must come after the
+   * start date. The end date can be the same date as the start date. For
+   * example, if you set 6/25/2010 in both the start and end date, the effective
+   * campaign run date is just 6/25/2010. The hours, minutes and seconds of the
+   * end date should not be set as doing so will result in an error. This is a
+   * required field.
+   */
+  core.DateTime endDate;
+
+  /** Overrides can be used to activate/deactivate advertiser event tags. */
+  core.List<EventTagOverride> eventTagOverrides;
+
+  /** External ID for this campaign. */
+  core.String externalId;
+
+  /** ID of this campaign. This is always auto-generated upon creation. */
+  core.String id;
+
+  /**
+   * Dimension value for the ID of this campaign. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue idDimensionValue;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#campaign".
+   */
+  core.String kind;
+
+  /** Campaign last modification information. This is a read-only field. */
+  LastModifiedInfo lastModifiedInfo;
+
+  /** Look-back window settings for the campaign. */
+  LookbackConfiguration lookbackConfiguration;
+
+  /** Name of this campaign. */
+  core.String name;
+
+  /** Enables Nielsen reports for this campaign. */
+  core.bool nielsenOcrEnabled;
+
+  /**
+   * Date on which the campaign will start running. The start date can be any
+   * date. The hours, minutes and seconds of the start date should not be set as
+   * doing so will result in an error. This is a required field.
+   */
+  core.DateTime startDate;
+
+  /** Subaccount ID of this campaign. */
+  core.String subaccountId;
+
+  /** Campaign trafficker contact emails. */
+  core.List<core.String> traffickerEmails;
+
+
+  Campaign();
+
+  Campaign.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("additionalCreativeOptimizationConfigurations")) {
+      additionalCreativeOptimizationConfigurations = _json["additionalCreativeOptimizationConfigurations"].map((value) => new CreativeOptimizationConfiguration.fromJson(value)).toList();
+    }
+    if (_json.containsKey("advertiserGroupId")) {
+      advertiserGroupId = _json["advertiserGroupId"];
+    }
+    if (_json.containsKey("advertiserId")) {
+      advertiserId = _json["advertiserId"];
+    }
+    if (_json.containsKey("advertiserIdDimensionValue")) {
+      advertiserIdDimensionValue = new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+    }
+    if (_json.containsKey("archived")) {
+      archived = _json["archived"];
+    }
+    if (_json.containsKey("audienceSegmentGroups")) {
+      audienceSegmentGroups = _json["audienceSegmentGroups"].map((value) => new AudienceSegmentGroup.fromJson(value)).toList();
+    }
+    if (_json.containsKey("billingInvoiceCode")) {
+      billingInvoiceCode = _json["billingInvoiceCode"];
+    }
+    if (_json.containsKey("clickThroughUrlSuffixProperties")) {
+      clickThroughUrlSuffixProperties = new ClickThroughUrlSuffixProperties.fromJson(_json["clickThroughUrlSuffixProperties"]);
+    }
+    if (_json.containsKey("comment")) {
+      comment = _json["comment"];
+    }
+    if (_json.containsKey("comscoreVceEnabled")) {
+      comscoreVceEnabled = _json["comscoreVceEnabled"];
+    }
+    if (_json.containsKey("createInfo")) {
+      createInfo = new LastModifiedInfo.fromJson(_json["createInfo"]);
+    }
+    if (_json.containsKey("creativeGroupIds")) {
+      creativeGroupIds = _json["creativeGroupIds"];
+    }
+    if (_json.containsKey("creativeOptimizationConfiguration")) {
+      creativeOptimizationConfiguration = new CreativeOptimizationConfiguration.fromJson(_json["creativeOptimizationConfiguration"]);
+    }
+    if (_json.containsKey("defaultClickThroughEventTagProperties")) {
+      defaultClickThroughEventTagProperties = new DefaultClickThroughEventTagProperties.fromJson(_json["defaultClickThroughEventTagProperties"]);
+    }
+    if (_json.containsKey("endDate")) {
+      endDate = core.DateTime.parse(_json["endDate"]);
+    }
+    if (_json.containsKey("eventTagOverrides")) {
+      eventTagOverrides = _json["eventTagOverrides"].map((value) => new EventTagOverride.fromJson(value)).toList();
+    }
+    if (_json.containsKey("externalId")) {
+      externalId = _json["externalId"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("idDimensionValue")) {
+      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("lastModifiedInfo")) {
+      lastModifiedInfo = new LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
+    }
+    if (_json.containsKey("lookbackConfiguration")) {
+      lookbackConfiguration = new LookbackConfiguration.fromJson(_json["lookbackConfiguration"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("nielsenOcrEnabled")) {
+      nielsenOcrEnabled = _json["nielsenOcrEnabled"];
+    }
+    if (_json.containsKey("startDate")) {
+      startDate = core.DateTime.parse(_json["startDate"]);
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+    if (_json.containsKey("traffickerEmails")) {
+      traffickerEmails = _json["traffickerEmails"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (additionalCreativeOptimizationConfigurations != null) {
+      _json["additionalCreativeOptimizationConfigurations"] = additionalCreativeOptimizationConfigurations.map((value) => (value).toJson()).toList();
+    }
+    if (advertiserGroupId != null) {
+      _json["advertiserGroupId"] = advertiserGroupId;
+    }
+    if (advertiserId != null) {
+      _json["advertiserId"] = advertiserId;
+    }
+    if (advertiserIdDimensionValue != null) {
+      _json["advertiserIdDimensionValue"] = (advertiserIdDimensionValue).toJson();
+    }
+    if (archived != null) {
+      _json["archived"] = archived;
+    }
+    if (audienceSegmentGroups != null) {
+      _json["audienceSegmentGroups"] = audienceSegmentGroups.map((value) => (value).toJson()).toList();
+    }
+    if (billingInvoiceCode != null) {
+      _json["billingInvoiceCode"] = billingInvoiceCode;
+    }
+    if (clickThroughUrlSuffixProperties != null) {
+      _json["clickThroughUrlSuffixProperties"] = (clickThroughUrlSuffixProperties).toJson();
+    }
+    if (comment != null) {
+      _json["comment"] = comment;
+    }
+    if (comscoreVceEnabled != null) {
+      _json["comscoreVceEnabled"] = comscoreVceEnabled;
+    }
+    if (createInfo != null) {
+      _json["createInfo"] = (createInfo).toJson();
+    }
+    if (creativeGroupIds != null) {
+      _json["creativeGroupIds"] = creativeGroupIds;
+    }
+    if (creativeOptimizationConfiguration != null) {
+      _json["creativeOptimizationConfiguration"] = (creativeOptimizationConfiguration).toJson();
+    }
+    if (defaultClickThroughEventTagProperties != null) {
+      _json["defaultClickThroughEventTagProperties"] = (defaultClickThroughEventTagProperties).toJson();
+    }
+    if (endDate != null) {
+      _json["endDate"] = "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}";
+    }
+    if (eventTagOverrides != null) {
+      _json["eventTagOverrides"] = eventTagOverrides.map((value) => (value).toJson()).toList();
+    }
+    if (externalId != null) {
+      _json["externalId"] = externalId;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (idDimensionValue != null) {
+      _json["idDimensionValue"] = (idDimensionValue).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (lastModifiedInfo != null) {
+      _json["lastModifiedInfo"] = (lastModifiedInfo).toJson();
+    }
+    if (lookbackConfiguration != null) {
+      _json["lookbackConfiguration"] = (lookbackConfiguration).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (nielsenOcrEnabled != null) {
+      _json["nielsenOcrEnabled"] = nielsenOcrEnabled;
+    }
+    if (startDate != null) {
+      _json["startDate"] = "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}";
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    if (traffickerEmails != null) {
+      _json["traffickerEmails"] = traffickerEmails;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class CampaignCreativeAssociation {
+  /**
+   * ID of the creative associated with the campaign.This is a required field.
+   */
+  core.String creativeId;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#campaignCreativeAssociation".
+   */
+  core.String kind;
+
+
+  CampaignCreativeAssociation();
+
+  CampaignCreativeAssociation.fromJson(core.Map _json) {
+    if (_json.containsKey("creativeId")) {
+      creativeId = _json["creativeId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creativeId != null) {
+      _json["creativeId"] = creativeId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Campaign Creative Association List Response */
+class CampaignCreativeAssociationsListResponse {
+  /** Campaign creative association collection */
+  core.List<CampaignCreativeAssociation> campaignCreativeAssociations;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#campaignCreativeAssociationsListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  CampaignCreativeAssociationsListResponse();
+
+  CampaignCreativeAssociationsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("campaignCreativeAssociations")) {
+      campaignCreativeAssociations = _json["campaignCreativeAssociations"].map((value) => new CampaignCreativeAssociation.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (campaignCreativeAssociations != null) {
+      _json["campaignCreativeAssociations"] = campaignCreativeAssociations.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Campaign List Response */
+class CampaignsListResponse {
+  /** Campaign collection */
+  core.List<Campaign> campaigns;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#campaignsListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  CampaignsListResponse();
+
+  CampaignsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("campaigns")) {
+      campaigns = _json["campaigns"].map((value) => new Campaign.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (campaigns != null) {
+      _json["campaigns"] = campaigns.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class ChangeLog {
+  /** Account ID of the modified object. */
+  core.String accountId;
+
+  /** Action which caused the change. */
+  core.String action;
+
+  /** Time when the object was modified. */
+  core.DateTime changeTime;
+
+  /** Field name of the object which changed. */
+  core.String fieldName;
+
+  /** ID of this change log. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#changeLog".
+   */
+  core.String kind;
+
+  /** New value of the object field. */
+  core.String newValue;
+
+  /**
+   * ID of the object of this change log. The object could be a campaign,
+   * placement, ad, or other type.
+   */
+  core.String objectId;
+
+  /** Object type of the change log. */
+  core.String objectType;
+
+  /** Old value of the object field. */
+  core.String oldValue;
+
+  /** Subaccount ID of the modified object. */
+  core.String subaccountId;
+
+  /**
+   * Transaction ID of this change log. When a single API call results in many
+   * changes, each change will have a separate ID in the change log but will
+   * share the same transactionId.
+   */
+  core.String transactionId;
+
+  /** ID of the user who modified the object. */
+  core.String userProfileId;
+
+  /** User profile name of user who modified the object. */
+  core.String userProfileName;
+
+
+  ChangeLog();
+
+  ChangeLog.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("action")) {
+      action = _json["action"];
+    }
+    if (_json.containsKey("changeTime")) {
+      changeTime = core.DateTime.parse(_json["changeTime"]);
+    }
+    if (_json.containsKey("fieldName")) {
+      fieldName = _json["fieldName"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("newValue")) {
+      newValue = _json["newValue"];
+    }
+    if (_json.containsKey("objectId")) {
+      objectId = _json["objectId"];
+    }
+    if (_json.containsKey("objectType")) {
+      objectType = _json["objectType"];
+    }
+    if (_json.containsKey("oldValue")) {
+      oldValue = _json["oldValue"];
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+    if (_json.containsKey("transactionId")) {
+      transactionId = _json["transactionId"];
+    }
+    if (_json.containsKey("userProfileId")) {
+      userProfileId = _json["userProfileId"];
+    }
+    if (_json.containsKey("userProfileName")) {
+      userProfileName = _json["userProfileName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (action != null) {
+      _json["action"] = action;
+    }
+    if (changeTime != null) {
+      _json["changeTime"] = (changeTime).toIso8601String();
+    }
+    if (fieldName != null) {
+      _json["fieldName"] = fieldName;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (newValue != null) {
+      _json["newValue"] = newValue;
+    }
+    if (objectId != null) {
+      _json["objectId"] = objectId;
+    }
+    if (objectType != null) {
+      _json["objectType"] = objectType;
+    }
+    if (oldValue != null) {
+      _json["oldValue"] = oldValue;
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    if (transactionId != null) {
+      _json["transactionId"] = transactionId;
+    }
+    if (userProfileId != null) {
+      _json["userProfileId"] = userProfileId;
+    }
+    if (userProfileName != null) {
+      _json["userProfileName"] = userProfileName;
+    }
+    return _json;
+  }
+}
+
+
+/** Change Log List Response */
+class ChangeLogsListResponse {
+  /** Change log collection */
+  core.List<ChangeLog> changeLogs;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#changeLogsListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  ChangeLogsListResponse();
+
+  ChangeLogsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("changeLogs")) {
+      changeLogs = _json["changeLogs"].map((value) => new ChangeLog.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (changeLogs != null) {
+      _json["changeLogs"] = changeLogs.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** City List Response */
+class CitiesListResponse {
+  /** City collection */
+  core.List<City> cities;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#citiesListResponse".
+   */
+  core.String kind;
+
+
+  CitiesListResponse();
+
+  CitiesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("cities")) {
+      cities = _json["cities"].map((value) => new City.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (cities != null) {
+      _json["cities"] = cities.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class City {
+  /** Country code of the country to which this city belongs. */
+  core.String countryCode;
+
+  /** DART ID of the country to which this city belongs. */
+  core.String countryDartId;
+
+  /**
+   * DART ID of this city. This is the ID used for targeting and generating
+   * reports.
+   */
+  core.String dartId;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#city".
+   */
+  core.String kind;
+
+  /**
+   * Metro region code of the metro region (DMA) to which this city belongs.
+   */
+  core.String metroCode;
+
+  /** ID of the metro region (DMA) to which this city belongs. */
+  core.String metroDmaId;
+
+  /** Name of this city. */
+  core.String name;
+
+  /** Region code of the region to which this city belongs. */
+  core.String regionCode;
+
+  /** DART ID of the region to which this city belongs. */
+  core.String regionDartId;
+
+
+  City();
+
+  City.fromJson(core.Map _json) {
+    if (_json.containsKey("countryCode")) {
+      countryCode = _json["countryCode"];
+    }
+    if (_json.containsKey("countryDartId")) {
+      countryDartId = _json["countryDartId"];
+    }
+    if (_json.containsKey("dartId")) {
+      dartId = _json["dartId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("metroCode")) {
+      metroCode = _json["metroCode"];
+    }
+    if (_json.containsKey("metroDmaId")) {
+      metroDmaId = _json["metroDmaId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("regionCode")) {
+      regionCode = _json["regionCode"];
+    }
+    if (_json.containsKey("regionDartId")) {
+      regionDartId = _json["regionDartId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (countryCode != null) {
+      _json["countryCode"] = countryCode;
+    }
+    if (countryDartId != null) {
+      _json["countryDartId"] = countryDartId;
+    }
+    if (dartId != null) {
+      _json["dartId"] = dartId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (metroCode != null) {
+      _json["metroCode"] = metroCode;
+    }
+    if (metroDmaId != null) {
+      _json["metroDmaId"] = metroDmaId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (regionCode != null) {
+      _json["regionCode"] = regionCode;
+    }
+    if (regionDartId != null) {
+      _json["regionDartId"] = regionDartId;
+    }
+    return _json;
+  }
+}
+
+
+/** Creative Click Tag. */
+class ClickTag {
+  /**
+   * Advertiser event name associated with the click tag. This field is used by
+   * ENHANCED_BANNER, ENHANCED_IMAGE, and HTML5_BANNER creatives.
+   */
+  core.String eventName;
+
+  /**
+   * Parameter name for specified click tag. For ENHANCED_IMAGE creative assets
+   * this field must match the value of the creative asset's
+   * creativeAssetId.name field.
+   */
+  core.String name;
+
+  /**
+   * Parameter value for specified click tag. This field contains click-through
+   * url.
+   */
+  core.String value;
+
+
+  ClickTag();
+
+  ClickTag.fromJson(core.Map _json) {
+    if (_json.containsKey("eventName")) {
+      eventName = _json["eventName"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (eventName != null) {
+      _json["eventName"] = eventName;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+
+/** Click-through URL */
+class ClickThroughUrl {
+  /**
+   * Custom click-through URL. Applicable if the defaultLandingPage field is set
+   * to false and the landingPageId field is left unset.
+   */
+  core.String customClickThroughUrl;
+
+  /** Specifies whether the campaign default landing page is used or not. */
+  core.bool defaultLandingPage;
+
+  /**
+   * ID of the landing page for the click-through URL. Applicable if the
+   * defaultLandingPage field is set to false.
+   */
+  core.String landingPageId;
+
+
+  ClickThroughUrl();
+
+  ClickThroughUrl.fromJson(core.Map _json) {
+    if (_json.containsKey("customClickThroughUrl")) {
+      customClickThroughUrl = _json["customClickThroughUrl"];
+    }
+    if (_json.containsKey("defaultLandingPage")) {
+      defaultLandingPage = _json["defaultLandingPage"];
+    }
+    if (_json.containsKey("landingPageId")) {
+      landingPageId = _json["landingPageId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (customClickThroughUrl != null) {
+      _json["customClickThroughUrl"] = customClickThroughUrl;
+    }
+    if (defaultLandingPage != null) {
+      _json["defaultLandingPage"] = defaultLandingPage;
+    }
+    if (landingPageId != null) {
+      _json["landingPageId"] = landingPageId;
+    }
+    return _json;
+  }
+}
+
+
+/** Click Through URL Suffix settings. */
+class ClickThroughUrlSuffixProperties {
+  /**
+   * The click-through URL suffix to apply to all ads in this entity's scope.
+   */
+  core.String clickThroughUrlSuffix;
+
+  /**
+   * Whether this entity should override the inherited click-through URL suffix
+   * with its own defined value.
+   */
+  core.bool overrideInheritedSuffix;
+
+
+  ClickThroughUrlSuffixProperties();
+
+  ClickThroughUrlSuffixProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("clickThroughUrlSuffix")) {
+      clickThroughUrlSuffix = _json["clickThroughUrlSuffix"];
+    }
+    if (_json.containsKey("overrideInheritedSuffix")) {
+      overrideInheritedSuffix = _json["overrideInheritedSuffix"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (clickThroughUrlSuffix != null) {
+      _json["clickThroughUrlSuffix"] = clickThroughUrlSuffix;
+    }
+    if (overrideInheritedSuffix != null) {
+      _json["overrideInheritedSuffix"] = overrideInheritedSuffix;
+    }
+    return _json;
+  }
+}
+
+
+/** Companion Click-through override. */
+class CompanionClickThroughOverride {
+  /** Click-through URL of this companion click-through override. */
+  ClickThroughUrl clickThroughUrl;
+
+  /** ID of the creative for this companion click-through override. */
+  core.String creativeId;
+
+
+  CompanionClickThroughOverride();
+
+  CompanionClickThroughOverride.fromJson(core.Map _json) {
+    if (_json.containsKey("clickThroughUrl")) {
+      clickThroughUrl = new ClickThroughUrl.fromJson(_json["clickThroughUrl"]);
+    }
+    if (_json.containsKey("creativeId")) {
+      creativeId = _json["creativeId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (clickThroughUrl != null) {
+      _json["clickThroughUrl"] = (clickThroughUrl).toJson();
+    }
+    if (creativeId != null) {
+      _json["creativeId"] = creativeId;
+    }
+    return _json;
+  }
+}
+
+
+/** Represents a response to the queryCompatibleFields method. */
+class CompatibleFields {
+  /**
+   * Contains items that are compatible to be selected for a report of type
+   * "CROSS_DIMENSION_REACH".
+   */
+  CrossDimensionReachReportCompatibleFields crossDimensionReachReportCompatibleFields;
+
+  /**
+   * Contains items that are compatible to be selected for a report of type
+   * "FLOODLIGHT".
+   */
+  FloodlightReportCompatibleFields floodlightReportCompatibleFields;
+
+  /**
+   * The kind of resource this is, in this case dfareporting#compatibleFields.
+   */
+  core.String kind;
+
+  /**
+   * Contains items that are compatible to be selected for a report of type
+   * "PATH_TO_CONVERSION".
+   */
+  PathToConversionReportCompatibleFields pathToConversionReportCompatibleFields;
+
+  /**
+   * Contains items that are compatible to be selected for a report of type
+   * "REACH".
+   */
+  ReachReportCompatibleFields reachReportCompatibleFields;
+
+  /**
+   * Contains items that are compatible to be selected for a report of type
+   * "STANDARD".
+   */
+  ReportCompatibleFields reportCompatibleFields;
+
+
+  CompatibleFields();
+
+  CompatibleFields.fromJson(core.Map _json) {
+    if (_json.containsKey("crossDimensionReachReportCompatibleFields")) {
+      crossDimensionReachReportCompatibleFields = new CrossDimensionReachReportCompatibleFields.fromJson(_json["crossDimensionReachReportCompatibleFields"]);
+    }
+    if (_json.containsKey("floodlightReportCompatibleFields")) {
+      floodlightReportCompatibleFields = new FloodlightReportCompatibleFields.fromJson(_json["floodlightReportCompatibleFields"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("pathToConversionReportCompatibleFields")) {
+      pathToConversionReportCompatibleFields = new PathToConversionReportCompatibleFields.fromJson(_json["pathToConversionReportCompatibleFields"]);
+    }
+    if (_json.containsKey("reachReportCompatibleFields")) {
+      reachReportCompatibleFields = new ReachReportCompatibleFields.fromJson(_json["reachReportCompatibleFields"]);
+    }
+    if (_json.containsKey("reportCompatibleFields")) {
+      reportCompatibleFields = new ReportCompatibleFields.fromJson(_json["reportCompatibleFields"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (crossDimensionReachReportCompatibleFields != null) {
+      _json["crossDimensionReachReportCompatibleFields"] = (crossDimensionReachReportCompatibleFields).toJson();
+    }
+    if (floodlightReportCompatibleFields != null) {
+      _json["floodlightReportCompatibleFields"] = (floodlightReportCompatibleFields).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (pathToConversionReportCompatibleFields != null) {
+      _json["pathToConversionReportCompatibleFields"] = (pathToConversionReportCompatibleFields).toJson();
+    }
+    if (reachReportCompatibleFields != null) {
+      _json["reachReportCompatibleFields"] = (reachReportCompatibleFields).toJson();
+    }
+    if (reportCompatibleFields != null) {
+      _json["reportCompatibleFields"] = (reportCompatibleFields).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class ConnectionType {
+  /** ID of this connection type. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#connectionType".
+   */
+  core.String kind;
+
+  /** Name of this connection type. */
+  core.String name;
+
+
+  ConnectionType();
+
+  ConnectionType.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Connection Type List Response */
+class ConnectionTypesListResponse {
+  /** Connection Type Collection. */
+  core.List<ConnectionType> connectionTypes;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#connectionTypesListResponse".
+   */
+  core.String kind;
+
+
+  ConnectionTypesListResponse();
+
+  ConnectionTypesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("connectionTypes")) {
+      connectionTypes = _json["connectionTypes"].map((value) => new ConnectionType.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (connectionTypes != null) {
+      _json["connectionTypes"] = connectionTypes.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Content Category List Response */
+class ContentCategoriesListResponse {
+  /** Content category collection */
+  core.List<ContentCategory> contentCategories;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#contentCategoriesListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  ContentCategoriesListResponse();
+
+  ContentCategoriesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("contentCategories")) {
+      contentCategories = _json["contentCategories"].map((value) => new ContentCategory.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (contentCategories != null) {
+      _json["contentCategories"] = contentCategories.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class ContentCategory {
+  /** Account ID of this content category. */
+  core.String accountId;
+
+  /** Description of this content category. */
+  core.String description;
+
+  /**
+   * ID of this content category. This is a read-only, auto-generated field.
+   */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#contentCategory".
+   */
+  core.String kind;
+
+  /** Name of this content category. */
+  core.String name;
+
+
+  ContentCategory();
+
+  ContentCategory.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Country List Response */
+class CountriesListResponse {
+  /** Country collection */
+  core.List<Country> countries;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#countriesListResponse".
+   */
+  core.String kind;
+
+
+  CountriesListResponse();
+
+  CountriesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("countries")) {
+      countries = _json["countries"].map((value) => new Country.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (countries != null) {
+      _json["countries"] = countries.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Country {
+  /** Country code. */
+  core.String countryCode;
+
+  /**
+   * DART ID of this country. This is the ID used for targeting and generating
+   * reports.
+   */
+  core.String dartId;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#country".
+   */
+  core.String kind;
+
+  /** Name of this country. */
+  core.String name;
+
+  /** Whether ad serving supports secure servers in this country. */
+  core.bool sslEnabled;
+
+
+  Country();
+
+  Country.fromJson(core.Map _json) {
+    if (_json.containsKey("countryCode")) {
+      countryCode = _json["countryCode"];
+    }
+    if (_json.containsKey("dartId")) {
+      dartId = _json["dartId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("sslEnabled")) {
+      sslEnabled = _json["sslEnabled"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (countryCode != null) {
+      _json["countryCode"] = countryCode;
+    }
+    if (dartId != null) {
+      _json["dartId"] = dartId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (sslEnabled != null) {
+      _json["sslEnabled"] = sslEnabled;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Creative {
+  /**
+   * Account ID of this creative. This field, if left unset, will be
+   * auto-generated for both insert and update operations. Applicable to all
+   * creative types.
+   */
+  core.String accountId;
+
+  /**
+   * Status indicating creative is active. Applicable to all creative types.
+   */
+  core.bool active;
+
+  /**
+   * Ad parameters user for VPAID creative. This is a read-only field.
+   * Applicable to the following creative types: all VPAID.
+   */
+  core.String adParameters;
+
+  /**
+   * Keywords let you customize the creative settings of a Rich Media ad running
+   * on your site without having to contact the advertiser. You can use keywords
+   * to dynamically change the look or functionality of a creative. Applicable
+   * to the following creative types: all RICH_MEDIA, and all VPAID.
+   */
+  core.List<core.String> adTagKeys;
+
+  /**
+   * Advertiser ID of this creative. This is a required field. Applicable to all
+   * creative types.
+   */
+  core.String advertiserId;
+
+  /**
+   * Flag indicating if script access is allowed for flash creatives. This is a
+   * read-only and deprecated field which will automatically be set to true on
+   * update. Applicable to the following creative types: FLASH_INPAGE.
+   */
+  core.bool allowScriptAccess;
+
+  /**
+   * Status indicating creative is archived. Applicable to all creative types.
+   */
+  core.bool archived;
+
+  /**
+   * Type of artwork used for the creative. This is a read-only field.
+   * Applicable to the following creative types: all RICH_MEDIA, and all VPAID.
+   * Possible string values are:
+   * - "ARTWORK_TYPE_FLASH"
+   * - "ARTWORK_TYPE_HTML5"
+   * - "ARTWORK_TYPE_MIXED"
+   */
+  core.String artworkType;
+
+  /**
+   * Authoring tool for HTML5 banner creatives. This is a read-only field.
+   * Applicable to the following creative types: HTML5_BANNER.
+   * Possible string values are:
+   * - "NINJA"
+   * - "SWIFFY"
+   */
+  core.String authoringTool;
+
+  /**
+   * Flag indicating images are automatically advanced for enhanced image
+   * creatives. Applicable to the following creative types: ENHANCED_IMAGE.
+   */
+  core.bool autoAdvanceImages;
+
+  /**
+   * The 6-character HTML color code, beginning with #, for the background of
+   * the window area where the Flash file is displayed. Default is white.
+   * Applicable to the following creative types: FLASH_INPAGE.
+   */
+  core.String backgroundColor;
+
+  /**
+   * Click-through URL for backup image. Applicable to the following creative
+   * types: ENHANCED_BANNER, FLASH_INPAGE, and HTML5_BANNER.
+   */
+  core.String backupImageClickThroughUrl;
+
+  /**
+   * Feature dependencies are features that a browser must be able to support in
+   * order to render your HTML5 creative asset correctly. If DCM detects that a
+   * browser can't handle one of these features, it sends the backup image
+   * instead. This field is initially auto-generated to contain all features
+   * detected by DCM for all the assets of this creative and can then be
+   * modified by the client. To reset this field copy over all the
+   * creativeAssets' detected features. Applicable to the following creative
+   * types: ENHANCED_BANNER and HTML5_BANNER.
+   */
+  core.List<core.String> backupImageFeatures;
+
+  /**
+   * Reporting label used for HTML5 banner backup image. Applicable to the
+   * following creative types: ENHANCED_BANNER.
+   */
+  core.String backupImageReportingLabel;
+
+  /**
+   * Target window for backup image. Applicable to the following creative types:
+   * ENHANCED_BANNER, FLASH_INPAGE, and HTML5_BANNER.
+   */
+  TargetWindow backupImageTargetWindow;
+
+  /**
+   * For ENHANCED_BANNER, FLASH_INPAGE, and HTML5_BANNER creatives this is a
+   * subset of detected click tags for the assets associated with this creative.
+   * After creating a flash asset, detected click tags will be returned in the
+   * creativeAssetMetadata. When inserting the creative, populate the creative
+   * clickTags field using the creativeAssetMetadata.clickTags field. For
+   * ENHANCED_IMAGE creatives there should be exactly one entry in this list for
+   * each image creative asset. A click tag is matched with a corresponding
+   * creative asset by matching the clickTag.name field with the
+   * creativeAsset.assetIdentifier.name field. Applicable to the following
+   * creative types: ENHANCED_BANNER, ENHANCED_IMAGE, FLASH_INPAGE,
+   * HTML5_BANNER.
+   */
+  core.List<ClickTag> clickTags;
+
+  /**
+   * Industry standard ID assigned to creative for reach and frequency.
+   * Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.
+   */
+  core.String commercialId;
+
+  /**
+   * List of companion creatives assigned to an in-Stream videocreative.
+   * Acceptable values include IDs of existing flash and image creatives.
+   * Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.
+   */
+  core.List<core.String> companionCreatives;
+
+  /**
+   * Compatibilities associated with this creative. This is a read-only field.
+   * WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile
+   * devices for regular or interstitial ads respectively. APP and
+   * APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers
+   * to rendering in in-stream video ads developed with the VAST standard.
+   * Applicable to all creative types.
+   *
+   * Acceptable values are:
+   * - "APP"
+   * - "APP_INTERSTITIAL"
+   * - "IN_STREAM_VIDEO"
+   * - "WEB"
+   * - "WEB_INTERSTITIAL"
+   */
+  core.List<core.String> compatibility;
+
+  /**
+   * List of counter events configured for the creative. Applicable to the
+   * following creative types: all RICH_MEDIA, and all VPAID.
+   */
+  core.List<CreativeCustomEvent> counterCustomEvents;
+
+  /**
+   * Assets associated with a creative. Applicable to the following creative
+   * types: INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and REDIRECT
+   */
+  core.List<CreativeAsset> creativeAssets;
+
+  /**
+   * Creative field assignments for this creative. Applicable to all creative
+   * types.
+   */
+  core.List<CreativeFieldAssignment> creativeFieldAssignments;
+
+  /**
+   * Key-values let you customize the creative settings of a Rich Media ad
+   * running on your site without having to contact the advertiser. You can use
+   * key-values to dynamically change the look or functionality of a creative.
+   * Applicable to the following creative types: all RICH_MEDIA, and all VPAID.
+   */
+  core.List<core.String> customKeyValues;
+
+  /**
+   * List of exit events configured for the creative. Applicable to the
+   * following creative types: all RICH_MEDIA, and all VPAID.
+   */
+  core.List<CreativeCustomEvent> exitCustomEvents;
+
+  /**
+   * OpenWindow FSCommand lets the SWF file communicate with either Flash Player
+   * or the program hosting Flash Player, such as a web browser. This is only
+   * triggered if allowScriptAccess field is true. Applicable to the following
+   * creative types: FLASH_INPAGE.
+   */
+  FsCommand fsCommand;
+
+  /**
+   * HTML code for the creative. This is a required field when applicable. This
+   * field is ignored if htmlCodeLocked is false. Applicable to the following
+   * creative types: all CUSTOM, FLASH_INPAGE, and HTML5_BANNER, and all
+   * RICH_MEDIA.
+   */
+  core.String htmlCode;
+
+  /**
+   * Flag indicating whether HTML code is DCM generated or manually entered. Set
+   * to true to ignore changes to htmlCode. Applicable to the following creative
+   * types: FLASH_INPAGE and HTML5_BANNER.
+   */
+  core.bool htmlCodeLocked;
+
+  /**
+   * ID of this creative. This field is auto-generated during insert operations;
+   * it is required for update operations. Applicable to all creative types.
+   */
+  core.String id;
+
+  /**
+   * Dimension value for the ID of this creative. This is a read-only field.
+   * Applicable to all creative types.
+   */
+  DimensionValue idDimensionValue;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#creative".
+   */
+  core.String kind;
+
+  /**
+   * Creative last modification information. This is a read-only field.
+   * Applicable to all creative types.
+   */
+  LastModifiedInfo lastModifiedInfo;
+
+  /**
+   * Latest studio trafficked creative ID associated with rich media and VPAID
+   * creatives. This is a read-only field. Applicable to the following creative
+   * types: all RICH_MEDIA, and all VPAID.
+   */
+  core.String latestTraffickedCreativeId;
+
+  /**
+   * Name of the creative. This is a required field. Applicable to all creative
+   * types.
+   */
+  core.String name;
+
+  /**
+   * Override CSS value for rich media creatives. Applicable to the following
+   * creative types: all RICH_MEDIA.
+   */
+  core.String overrideCss;
+
+  /**
+   * URL of hosted image or another ad tag. This is a required field when
+   * applicable. Applicable to the following creative types: INTERNAL_REDIRECT,
+   * INTERSTITIAL_INTERNAL_REDIRECT, and REDIRECT
+   */
+  core.String redirectUrl;
+
+  /**
+   * ID of current rendering version. This is a read-only field. Applicable to
+   * all creative types.
+   */
+  core.String renderingId;
+
+  /**
+   * Dimension value for the rendering ID of this creative. This is a read-only
+   * field. Applicable to all creative types.
+   */
+  DimensionValue renderingIdDimensionValue;
+
+  /**
+   * The minimum required Flash plugin version for this creative. For example,
+   * 11.2.202.235. This is a read-only field. Applicable to the following
+   * creative types: all RICH_MEDIA, and all VPAID.
+   */
+  core.String requiredFlashPluginVersion;
+
+  /**
+   * The internal Flash version for this creative as calculated by DoubleClick
+   * Studio. This is a read-only field. Applicable to the following creative
+   * types: FLASH_INPAGE, ENHANCED_BANNER, all RICH_MEDIA, and all VPAID.
+   */
+  core.int requiredFlashVersion;
+
+  /**
+   * Size associated with this creative. When inserting or updating a creative
+   * either the size ID field or size width and height fields can be used. This
+   * is a required field when applicable; however for IMAGE and FLASH_INPAGE
+   * creatives, if left blank, this field will be automatically set using the
+   * actual size of the associated image assets. Applicable to the following
+   * creative types: ENHANCED_BANNER, ENHANCED_IMAGE, FLASH_INPAGE,
+   * HTML5_BANNER, IMAGE, and all RICH_MEDIA.
+   */
+  Size size;
+
+  /**
+   * User can choose to skip the creative. Applicable to the following creative
+   * types: INSTREAM_VIDEO.
+   */
+  core.bool skippable;
+
+  /**
+   * Status indicating creative is SSL compliant. This is a read-only field.
+   * Applicable to all creative types.
+   */
+  core.bool sslCompliant;
+
+  /**
+   * Studio advertiser ID associated with rich media and VPAID creatives. This
+   * is a read-only field. Applicable to the following creative types: all
+   * RICH_MEDIA, and all VPAID.
+   */
+  core.String studioAdvertiserId;
+
+  /**
+   * Studio creative ID associated with rich media and VPAID creatives. This is
+   * a read-only field. Applicable to the following creative types: all
+   * RICH_MEDIA, and all VPAID.
+   */
+  core.String studioCreativeId;
+
+  /**
+   * Studio trafficked creative ID associated with rich media and VPAID
+   * creatives. This is a read-only field. Applicable to the following creative
+   * types: all RICH_MEDIA, and all VPAID.
+   */
+  core.String studioTraffickedCreativeId;
+
+  /**
+   * Subaccount ID of this creative. This field, if left unset, will be
+   * auto-generated for both insert and update operations. Applicable to all
+   * creative types.
+   */
+  core.String subaccountId;
+
+  /**
+   * Third party URL used to record backup image impressions. Applicable to the
+   * following creative types: all RICH_MEDIA
+   */
+  core.String thirdPartyBackupImageImpressionsUrl;
+
+  /**
+   * Third party URL used to record rich media impressions. Applicable to the
+   * following creative types: all RICH_MEDIA
+   */
+  core.String thirdPartyRichMediaImpressionsUrl;
+
+  /**
+   * Third party URLs for tracking in-stream video creative events. Applicable
+   * to the following creative types: INSTREAM_VIDEO and all VPAID.
+   */
+  core.List<ThirdPartyTrackingUrl> thirdPartyUrls;
+
+  /**
+   * List of timer events configured for the creative. Applicable to the
+   * following creative types: all RICH_MEDIA, and all VPAID.
+   */
+  core.List<CreativeCustomEvent> timerCustomEvents;
+
+  /**
+   * Combined size of all creative assets. This is a read-only field. Applicable
+   * to the following creative types: all RICH_MEDIA, and all VPAID.
+   */
+  core.String totalFileSize;
+
+  /**
+   * Type of this creative.This is a required field. Applicable to all creative
+   * types.
+   * Possible string values are:
+   * - "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO"
+   * - "CUSTOM_INPAGE"
+   * - "CUSTOM_INTERSTITIAL"
+   * - "ENHANCED_BANNER"
+   * - "ENHANCED_IMAGE"
+   * - "FLASH_INPAGE"
+   * - "HTML5_BANNER"
+   * - "IMAGE"
+   * - "INSTREAM_VIDEO"
+   * - "INTERNAL_REDIRECT"
+   * - "INTERSTITIAL_INTERNAL_REDIRECT"
+   * - "REDIRECT"
+   * - "RICH_MEDIA_EXPANDING"
+   * - "RICH_MEDIA_IM_EXPAND"
+   * - "RICH_MEDIA_INPAGE"
+   * - "RICH_MEDIA_INPAGE_FLOATING"
+   * - "RICH_MEDIA_INTERSTITIAL_FLOAT"
+   * - "RICH_MEDIA_MOBILE_IN_APP"
+   * - "RICH_MEDIA_MULTI_FLOATING"
+   * - "RICH_MEDIA_PEEL_DOWN"
+   * - "TRACKING_TEXT"
+   * - "VPAID_LINEAR"
+   * - "VPAID_NON_LINEAR"
+   */
+  core.String type;
+
+  /**
+   * The version number helps you keep track of multiple versions of your
+   * creative in your reports. The version number will always be auto-generated
+   * during insert operations to start at 1. For tracking creatives the version
+   * cannot be incremented and will always remain at 1. For all other creative
+   * types the version can be incremented only by 1 during update operations. In
+   * addition, the version will be automatically incremented by 1 when
+   * undergoing Rich Media creative merging. Applicable to all creative types.
+   */
+  core.int version;
+
+  /**
+   * Description of the video ad. Applicable to the following creative types:
+   * INSTREAM_VIDEO and all VPAID.
+   */
+  core.String videoDescription;
+
+  /**
+   * Creative video duration in seconds. This is a read-only field. Applicable
+   * to the following creative types: INSTREAM_VIDEO, all RICH_MEDIA, and all
+   * VPAID.
+   */
+  core.double videoDuration;
+
+
+  Creative();
+
+  Creative.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("adParameters")) {
+      adParameters = _json["adParameters"];
+    }
+    if (_json.containsKey("adTagKeys")) {
+      adTagKeys = _json["adTagKeys"];
+    }
+    if (_json.containsKey("advertiserId")) {
+      advertiserId = _json["advertiserId"];
+    }
+    if (_json.containsKey("allowScriptAccess")) {
+      allowScriptAccess = _json["allowScriptAccess"];
+    }
+    if (_json.containsKey("archived")) {
+      archived = _json["archived"];
+    }
+    if (_json.containsKey("artworkType")) {
+      artworkType = _json["artworkType"];
+    }
+    if (_json.containsKey("authoringTool")) {
+      authoringTool = _json["authoringTool"];
+    }
+    if (_json.containsKey("auto_advance_images")) {
+      autoAdvanceImages = _json["auto_advance_images"];
+    }
+    if (_json.containsKey("backgroundColor")) {
+      backgroundColor = _json["backgroundColor"];
+    }
+    if (_json.containsKey("backupImageClickThroughUrl")) {
+      backupImageClickThroughUrl = _json["backupImageClickThroughUrl"];
+    }
+    if (_json.containsKey("backupImageFeatures")) {
+      backupImageFeatures = _json["backupImageFeatures"];
+    }
+    if (_json.containsKey("backupImageReportingLabel")) {
+      backupImageReportingLabel = _json["backupImageReportingLabel"];
+    }
+    if (_json.containsKey("backupImageTargetWindow")) {
+      backupImageTargetWindow = new TargetWindow.fromJson(_json["backupImageTargetWindow"]);
+    }
+    if (_json.containsKey("clickTags")) {
+      clickTags = _json["clickTags"].map((value) => new ClickTag.fromJson(value)).toList();
+    }
+    if (_json.containsKey("commercialId")) {
+      commercialId = _json["commercialId"];
+    }
+    if (_json.containsKey("companionCreatives")) {
+      companionCreatives = _json["companionCreatives"];
+    }
+    if (_json.containsKey("compatibility")) {
+      compatibility = _json["compatibility"];
+    }
+    if (_json.containsKey("counterCustomEvents")) {
+      counterCustomEvents = _json["counterCustomEvents"].map((value) => new CreativeCustomEvent.fromJson(value)).toList();
+    }
+    if (_json.containsKey("creativeAssets")) {
+      creativeAssets = _json["creativeAssets"].map((value) => new CreativeAsset.fromJson(value)).toList();
+    }
+    if (_json.containsKey("creativeFieldAssignments")) {
+      creativeFieldAssignments = _json["creativeFieldAssignments"].map((value) => new CreativeFieldAssignment.fromJson(value)).toList();
+    }
+    if (_json.containsKey("customKeyValues")) {
+      customKeyValues = _json["customKeyValues"];
+    }
+    if (_json.containsKey("exitCustomEvents")) {
+      exitCustomEvents = _json["exitCustomEvents"].map((value) => new CreativeCustomEvent.fromJson(value)).toList();
+    }
+    if (_json.containsKey("fsCommand")) {
+      fsCommand = new FsCommand.fromJson(_json["fsCommand"]);
+    }
+    if (_json.containsKey("htmlCode")) {
+      htmlCode = _json["htmlCode"];
+    }
+    if (_json.containsKey("htmlCodeLocked")) {
+      htmlCodeLocked = _json["htmlCodeLocked"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("idDimensionValue")) {
+      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("lastModifiedInfo")) {
+      lastModifiedInfo = new LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
+    }
+    if (_json.containsKey("latestTraffickedCreativeId")) {
+      latestTraffickedCreativeId = _json["latestTraffickedCreativeId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("overrideCss")) {
+      overrideCss = _json["overrideCss"];
+    }
+    if (_json.containsKey("redirectUrl")) {
+      redirectUrl = _json["redirectUrl"];
+    }
+    if (_json.containsKey("renderingId")) {
+      renderingId = _json["renderingId"];
+    }
+    if (_json.containsKey("renderingIdDimensionValue")) {
+      renderingIdDimensionValue = new DimensionValue.fromJson(_json["renderingIdDimensionValue"]);
+    }
+    if (_json.containsKey("requiredFlashPluginVersion")) {
+      requiredFlashPluginVersion = _json["requiredFlashPluginVersion"];
+    }
+    if (_json.containsKey("requiredFlashVersion")) {
+      requiredFlashVersion = _json["requiredFlashVersion"];
+    }
+    if (_json.containsKey("size")) {
+      size = new Size.fromJson(_json["size"]);
+    }
+    if (_json.containsKey("skippable")) {
+      skippable = _json["skippable"];
+    }
+    if (_json.containsKey("sslCompliant")) {
+      sslCompliant = _json["sslCompliant"];
+    }
+    if (_json.containsKey("studioAdvertiserId")) {
+      studioAdvertiserId = _json["studioAdvertiserId"];
+    }
+    if (_json.containsKey("studioCreativeId")) {
+      studioCreativeId = _json["studioCreativeId"];
+    }
+    if (_json.containsKey("studioTraffickedCreativeId")) {
+      studioTraffickedCreativeId = _json["studioTraffickedCreativeId"];
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+    if (_json.containsKey("thirdPartyBackupImageImpressionsUrl")) {
+      thirdPartyBackupImageImpressionsUrl = _json["thirdPartyBackupImageImpressionsUrl"];
+    }
+    if (_json.containsKey("thirdPartyRichMediaImpressionsUrl")) {
+      thirdPartyRichMediaImpressionsUrl = _json["thirdPartyRichMediaImpressionsUrl"];
+    }
+    if (_json.containsKey("thirdPartyUrls")) {
+      thirdPartyUrls = _json["thirdPartyUrls"].map((value) => new ThirdPartyTrackingUrl.fromJson(value)).toList();
+    }
+    if (_json.containsKey("timerCustomEvents")) {
+      timerCustomEvents = _json["timerCustomEvents"].map((value) => new CreativeCustomEvent.fromJson(value)).toList();
+    }
+    if (_json.containsKey("totalFileSize")) {
+      totalFileSize = _json["totalFileSize"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+    if (_json.containsKey("videoDescription")) {
+      videoDescription = _json["videoDescription"];
+    }
+    if (_json.containsKey("videoDuration")) {
+      videoDuration = _json["videoDuration"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (adParameters != null) {
+      _json["adParameters"] = adParameters;
+    }
+    if (adTagKeys != null) {
+      _json["adTagKeys"] = adTagKeys;
+    }
+    if (advertiserId != null) {
+      _json["advertiserId"] = advertiserId;
+    }
+    if (allowScriptAccess != null) {
+      _json["allowScriptAccess"] = allowScriptAccess;
+    }
+    if (archived != null) {
+      _json["archived"] = archived;
+    }
+    if (artworkType != null) {
+      _json["artworkType"] = artworkType;
+    }
+    if (authoringTool != null) {
+      _json["authoringTool"] = authoringTool;
+    }
+    if (autoAdvanceImages != null) {
+      _json["auto_advance_images"] = autoAdvanceImages;
+    }
+    if (backgroundColor != null) {
+      _json["backgroundColor"] = backgroundColor;
+    }
+    if (backupImageClickThroughUrl != null) {
+      _json["backupImageClickThroughUrl"] = backupImageClickThroughUrl;
+    }
+    if (backupImageFeatures != null) {
+      _json["backupImageFeatures"] = backupImageFeatures;
+    }
+    if (backupImageReportingLabel != null) {
+      _json["backupImageReportingLabel"] = backupImageReportingLabel;
+    }
+    if (backupImageTargetWindow != null) {
+      _json["backupImageTargetWindow"] = (backupImageTargetWindow).toJson();
+    }
+    if (clickTags != null) {
+      _json["clickTags"] = clickTags.map((value) => (value).toJson()).toList();
+    }
+    if (commercialId != null) {
+      _json["commercialId"] = commercialId;
+    }
+    if (companionCreatives != null) {
+      _json["companionCreatives"] = companionCreatives;
+    }
+    if (compatibility != null) {
+      _json["compatibility"] = compatibility;
+    }
+    if (counterCustomEvents != null) {
+      _json["counterCustomEvents"] = counterCustomEvents.map((value) => (value).toJson()).toList();
+    }
+    if (creativeAssets != null) {
+      _json["creativeAssets"] = creativeAssets.map((value) => (value).toJson()).toList();
+    }
+    if (creativeFieldAssignments != null) {
+      _json["creativeFieldAssignments"] = creativeFieldAssignments.map((value) => (value).toJson()).toList();
+    }
+    if (customKeyValues != null) {
+      _json["customKeyValues"] = customKeyValues;
+    }
+    if (exitCustomEvents != null) {
+      _json["exitCustomEvents"] = exitCustomEvents.map((value) => (value).toJson()).toList();
+    }
+    if (fsCommand != null) {
+      _json["fsCommand"] = (fsCommand).toJson();
+    }
+    if (htmlCode != null) {
+      _json["htmlCode"] = htmlCode;
+    }
+    if (htmlCodeLocked != null) {
+      _json["htmlCodeLocked"] = htmlCodeLocked;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (idDimensionValue != null) {
+      _json["idDimensionValue"] = (idDimensionValue).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (lastModifiedInfo != null) {
+      _json["lastModifiedInfo"] = (lastModifiedInfo).toJson();
+    }
+    if (latestTraffickedCreativeId != null) {
+      _json["latestTraffickedCreativeId"] = latestTraffickedCreativeId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (overrideCss != null) {
+      _json["overrideCss"] = overrideCss;
+    }
+    if (redirectUrl != null) {
+      _json["redirectUrl"] = redirectUrl;
+    }
+    if (renderingId != null) {
+      _json["renderingId"] = renderingId;
+    }
+    if (renderingIdDimensionValue != null) {
+      _json["renderingIdDimensionValue"] = (renderingIdDimensionValue).toJson();
+    }
+    if (requiredFlashPluginVersion != null) {
+      _json["requiredFlashPluginVersion"] = requiredFlashPluginVersion;
+    }
+    if (requiredFlashVersion != null) {
+      _json["requiredFlashVersion"] = requiredFlashVersion;
+    }
+    if (size != null) {
+      _json["size"] = (size).toJson();
+    }
+    if (skippable != null) {
+      _json["skippable"] = skippable;
+    }
+    if (sslCompliant != null) {
+      _json["sslCompliant"] = sslCompliant;
+    }
+    if (studioAdvertiserId != null) {
+      _json["studioAdvertiserId"] = studioAdvertiserId;
+    }
+    if (studioCreativeId != null) {
+      _json["studioCreativeId"] = studioCreativeId;
+    }
+    if (studioTraffickedCreativeId != null) {
+      _json["studioTraffickedCreativeId"] = studioTraffickedCreativeId;
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    if (thirdPartyBackupImageImpressionsUrl != null) {
+      _json["thirdPartyBackupImageImpressionsUrl"] = thirdPartyBackupImageImpressionsUrl;
+    }
+    if (thirdPartyRichMediaImpressionsUrl != null) {
+      _json["thirdPartyRichMediaImpressionsUrl"] = thirdPartyRichMediaImpressionsUrl;
+    }
+    if (thirdPartyUrls != null) {
+      _json["thirdPartyUrls"] = thirdPartyUrls.map((value) => (value).toJson()).toList();
+    }
+    if (timerCustomEvents != null) {
+      _json["timerCustomEvents"] = timerCustomEvents.map((value) => (value).toJson()).toList();
+    }
+    if (totalFileSize != null) {
+      _json["totalFileSize"] = totalFileSize;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    if (videoDescription != null) {
+      _json["videoDescription"] = videoDescription;
+    }
+    if (videoDuration != null) {
+      _json["videoDuration"] = videoDuration;
+    }
+    return _json;
+  }
+}
+
+
+/** Creative Asset. */
+class CreativeAsset {
+  /**
+   * Flag indicating ActionScript3 is enabled for the flash asset. This is a
+   * read-only field. Applicable to the following creative types: FLASH_INPAGE
+   * and ENHANCED_BANNER.
+   */
+  core.bool actionScript3;
+
+  /**
+   * Status indicating video asset is active. This is a read-only field for
+   * VPAID_NON_LINEAR assets. Applicable to the following creative types:
+   * INSTREAM_VIDEO and all VPAID.
+   */
+  core.bool active;
+
+  /**
+   * Possible alignments for an asset. This is a read-only field. Applicable to
+   * the following creative types: RICH_MEDIA_MULTI_FLOATING.
+   * Possible string values are:
+   * - "ALIGNMENT_BOTTOM"
+   * - "ALIGNMENT_LEFT"
+   * - "ALIGNMENT_RIGHT"
+   * - "ALIGNMENT_TOP"
+   */
+  core.String alignment;
+
+  /**
+   * Artwork type of rich media creative. This is a read-only field. Applicable
+   * to the following creative types: all RICH_MEDIA.
+   * Possible string values are:
+   * - "ARTWORK_TYPE_FLASH"
+   * - "ARTWORK_TYPE_HTML5"
+   * - "ARTWORK_TYPE_MIXED"
+   */
+  core.String artworkType;
+
+  /**
+   * Identifier of this asset. This is the same identifier returned during
+   * creative asset insert operation. This is a required field. Applicable to
+   * all but the following creative types: all REDIRECT and TRACKING_TEXT.
+   */
+  CreativeAssetId assetIdentifier;
+
+  /**
+   * Exit event configured for the backup image. Applicable to the following
+   * creative types: all RICH_MEDIA.
+   */
+  CreativeCustomEvent backupImageExit;
+
+  /**
+   * Detected bit-rate for video asset. This is a read-only field. Applicable to
+   * the following creative types: INSTREAM_VIDEO and all VPAID.
+   */
+  core.int bitRate;
+
+  /**
+   * Rich media child asset type. This is a read-only field. Applicable to the
+   * following creative types: all VPAID.
+   * Possible string values are:
+   * - "CHILD_ASSET_TYPE_DATA"
+   * - "CHILD_ASSET_TYPE_FLASH"
+   * - "CHILD_ASSET_TYPE_IMAGE"
+   * - "CHILD_ASSET_TYPE_VIDEO"
+   */
+  core.String childAssetType;
+
+  /**
+   * Size of an asset when collapsed. This is a read-only field. Applicable to
+   * the following creative types: all RICH_MEDIA and all VPAID. Additionally,
+   * applicable to assets whose displayType is ASSET_DISPLAY_TYPE_EXPANDING or
+   * ASSET_DISPLAY_TYPE_PEEL_DOWN.
+   */
+  Size collapsedSize;
+
+  /**
+   * Custom start time in seconds for making the asset visible. Applicable to
+   * the following creative types: all RICH_MEDIA.
+   */
+  core.int customStartTimeValue;
+
+  /**
+   * Feature dependencies are features that a browser must be able to support in
+   * order to render your HTML5 creative correctly. If DCM detects that a
+   * browser can't handle one of these features, it sends the backup image
+   * instead. DCM generates this list automatically. This is a read-only field.
+   * Applicable to the following creative types: ENHANCED_BANNER and
+   * HTML5_BANNER.
+   */
+  core.List<core.String> detectedFeatures;
+
+  /**
+   * Type of rich media asset. This is a read-only field. Applicable to the
+   * following creative types: all RICH_MEDIA.
+   * Possible string values are:
+   * - "ASSET_DISPLAY_TYPE_EXPANDING"
+   * - "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH"
+   * - "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH_EXPANDING"
+   * - "ASSET_DISPLAY_TYPE_FLOATING"
+   * - "ASSET_DISPLAY_TYPE_INPAGE"
+   * - "ASSET_DISPLAY_TYPE_OVERLAY"
+   * - "ASSET_DISPLAY_TYPE_PEEL_DOWN"
+   * - "ASSET_DISPLAY_TYPE_VPAID_LINEAR"
+   * - "ASSET_DISPLAY_TYPE_VPAID_NON_LINEAR"
+   */
+  core.String displayType;
+
+  /**
+   * Duration in seconds for which an asset will be displayed. Applicable to the
+   * following creative types: INSTREAM_VIDEO and VPAID_LINEAR.
+   */
+  core.int duration;
+
+  /**
+   * Duration type for which an asset will be displayed. Applicable to the
+   * following creative types: all RICH_MEDIA.
+   * Possible string values are:
+   * - "ASSET_DURATION_TYPE_AUTO"
+   * - "ASSET_DURATION_TYPE_CUSTOM"
+   * - "ASSET_DURATION_TYPE_NONE"
+   */
+  core.String durationType;
+
+  /**
+   * Detected expanded dimension for video asset. This is a read-only field.
+   * Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.
+   */
+  Size expandedDimension;
+
+  /**
+   * File size associated with this creative asset. This is a read-only field.
+   * Applicable to all but the following creative types: all REDIRECT and
+   * TRACKING_TEXT.
+   */
+  core.String fileSize;
+
+  /**
+   * Flash version of the asset. This is a read-only field. Applicable to the
+   * following creative types: FLASH_INPAGE, ENHANCED_BANNER, all RICH_MEDIA,
+   * and all VPAID.
+   */
+  core.int flashVersion;
+
+  /**
+   * Hide Flash objects flag for an asset. Applicable to the following creative
+   * types: all RICH_MEDIA.
+   */
+  core.bool hideFlashObjects;
+
+  /**
+   * Hide selection boxes flag for an asset. Applicable to the following
+   * creative types: all RICH_MEDIA.
+   */
+  core.bool hideSelectionBoxes;
+
+  /**
+   * Horizontal lock flag for an asset. This is a read-only field. Applicable to
+   * the following creative types: all RICH_MEDIA.
+   */
+  core.bool horizontallyLocked;
+
+  /**
+   * Numeric ID of this creative asset. This is a required field and should not
+   * be modified. Applicable to all but the following creative types: all
+   * REDIRECT and TRACKING_TEXT.
+   */
+  core.String id;
+
+  /**
+   * Detected MIME type for video asset. This is a read-only field. Applicable
+   * to the following creative types: INSTREAM_VIDEO and all VPAID.
+   */
+  core.String mimeType;
+
+  /**
+   * Offset position for an asset in collapsed mode. This is a read-only field.
+   * Applicable to the following creative types: all RICH_MEDIA and all VPAID.
+   * Additionally, only applicable to assets whose displayType is
+   * ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN.
+   */
+  OffsetPosition offset;
+
+  /**
+   * Flag indicating backup asset is original or changed by user in DCM.
+   * Applicable to the following creative types: all RICH_MEDIA.
+   */
+  core.bool originalBackup;
+
+  /**
+   * Offset position for an asset. Applicable to the following creative types:
+   * all RICH_MEDIA.
+   */
+  OffsetPosition position;
+
+  /**
+   * Offset left unit for an asset. This is a read-only field. Applicable to the
+   * following creative types: all RICH_MEDIA.
+   * Possible string values are:
+   * - "OFFSET_UNIT_PERCENT"
+   * - "OFFSET_UNIT_PIXEL"
+   * - "OFFSET_UNIT_PIXEL_FROM_CENTER"
+   */
+  core.String positionLeftUnit;
+
+  /**
+   * Offset top unit for an asset. This is a read-only field if the asset
+   * displayType is ASSET_DISPLAY_TYPE_OVERLAY. Applicable to the following
+   * creative types: all RICH_MEDIA.
+   * Possible string values are:
+   * - "OFFSET_UNIT_PERCENT"
+   * - "OFFSET_UNIT_PIXEL"
+   * - "OFFSET_UNIT_PIXEL_FROM_CENTER"
+   */
+  core.String positionTopUnit;
+
+  /**
+   * Progressive URL for video asset. This is a read-only field. Applicable to
+   * the following creative types: INSTREAM_VIDEO and all VPAID.
+   */
+  core.String progressiveServingUrl;
+
+  /**
+   * Pushdown flag for an asset. Applicable to the following creative types: all
+   * RICH_MEDIA. Additionally, only applicable when the asset offsets are 0, the
+   * collapsedSize.width matches size.width, and the collapsedSize.height is
+   * less than size.height.
+   */
+  core.bool pushdown;
+
+  /**
+   * Pushdown duration in seconds for an asset. Must be between 0 and 9.99.
+   * Applicable to the following creative types: all RICH_MEDIA.Additionally,
+   * only applicable when the asset pushdown field is true, the offsets are 0,
+   * the collapsedSize.width matches size.width, and the collapsedSize.height is
+   * less than size.height.
+   */
+  core.double pushdownDuration;
+
+  /**
+   * Role of the asset in relation to creative. This is a required field.
+   * Applicable to all but the following creative types: all REDIRECT and
+   * TRACKING_TEXT.
+   * Possible string values are:
+   * - "ADDITIONAL_FLASH"
+   * - "ADDITIONAL_IMAGE"
+   * - "BACKUP_IMAGE"
+   * - "OTHER"
+   * - "PARENT_VIDEO"
+   * - "PRIMARY"
+   * - "TRANSCODED_VIDEO"
+   */
+  core.String role;
+
+  /**
+   * Size associated with this creative asset. This is a required field when
+   * applicable; however for IMAGE and FLASH_INPAGE creatives, if left blank,
+   * this field will be automatically set using the actual size of the
+   * associated image asset. Applicable to the following creative types:
+   * ENHANCED_BANNER, ENHANCED_IMAGE, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all
+   * RICH_MEDIA.
+   */
+  Size size;
+
+  /**
+   * Status indicating asset is SSL compliant. This is a read-only field.
+   * Applicable to all but the following creative types: all REDIRECT and
+   * TRACKING_TEXT.
+   */
+  core.bool sslCompliant;
+
+  /**
+   * Initial wait time type before making the asset visible. Applicable to the
+   * following creative types: all RICH_MEDIA.
+   * Possible string values are:
+   * - "ASSET_START_TIME_TYPE_CUSTOM"
+   * - "ASSET_START_TIME_TYPE_NONE"
+   */
+  core.String startTimeType;
+
+  /**
+   * Streaming URL for video asset. This is a read-only field. Applicable to the
+   * following creative types: INSTREAM_VIDEO and all VPAID.
+   */
+  core.String streamingServingUrl;
+
+  /**
+   * Transparency flag for an asset. Applicable to the following creative types:
+   * all RICH_MEDIA. Additionally, only applicable to HTML5 assets.
+   */
+  core.bool transparency;
+
+  /**
+   * Vertical lock flag for an asset. This is a read-only field. Applicable to
+   * the following creative types: all RICH_MEDIA.
+   */
+  core.bool verticallyLocked;
+
+  /**
+   * Detected video duration for video asset. This is a read-only field.
+   * Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.
+   */
+  core.double videoDuration;
+
+  /**
+   * Window mode options for flash assets. Applicable to the following creative
+   * types: FLASH_INPAGE, RICH_MEDIA_EXPANDING, RICH_MEDIA_IM_EXPAND,
+   * RICH_MEDIA_INPAGE, and RICH_MEDIA_INPAGE_FLOATING.
+   * Possible string values are:
+   * - "OPAQUE"
+   * - "TRANSPARENT"
+   * - "WINDOW"
+   */
+  core.String windowMode;
+
+  /**
+   * zIndex value of an asset. This is a read-only field. Applicable to the
+   * following creative types: all RICH_MEDIA.Additionally, only applicable to
+   * assets whose displayType is NOT one of the following types:
+   * ASSET_DISPLAY_TYPE_INPAGE or ASSET_DISPLAY_TYPE_OVERLAY.
+   */
+  core.int zIndex;
+
+  /**
+   * File name of zip file. This is a read-only field. Applicable to the
+   * following creative types: HTML5_BANNER.
+   */
+  core.String zipFilename;
+
+  /**
+   * Size of zip file. This is a read-only field. Applicable to the following
+   * creative types: HTML5_BANNER.
+   */
+  core.String zipFilesize;
+
+
+  CreativeAsset();
+
+  CreativeAsset.fromJson(core.Map _json) {
+    if (_json.containsKey("actionScript3")) {
+      actionScript3 = _json["actionScript3"];
+    }
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("alignment")) {
+      alignment = _json["alignment"];
+    }
+    if (_json.containsKey("artworkType")) {
+      artworkType = _json["artworkType"];
+    }
+    if (_json.containsKey("assetIdentifier")) {
+      assetIdentifier = new CreativeAssetId.fromJson(_json["assetIdentifier"]);
+    }
+    if (_json.containsKey("backupImageExit")) {
+      backupImageExit = new CreativeCustomEvent.fromJson(_json["backupImageExit"]);
+    }
+    if (_json.containsKey("bitRate")) {
+      bitRate = _json["bitRate"];
+    }
+    if (_json.containsKey("childAssetType")) {
+      childAssetType = _json["childAssetType"];
+    }
+    if (_json.containsKey("collapsedSize")) {
+      collapsedSize = new Size.fromJson(_json["collapsedSize"]);
+    }
+    if (_json.containsKey("customStartTimeValue")) {
+      customStartTimeValue = _json["customStartTimeValue"];
+    }
+    if (_json.containsKey("detectedFeatures")) {
+      detectedFeatures = _json["detectedFeatures"];
+    }
+    if (_json.containsKey("displayType")) {
+      displayType = _json["displayType"];
+    }
+    if (_json.containsKey("duration")) {
+      duration = _json["duration"];
+    }
+    if (_json.containsKey("durationType")) {
+      durationType = _json["durationType"];
+    }
+    if (_json.containsKey("expandedDimension")) {
+      expandedDimension = new Size.fromJson(_json["expandedDimension"]);
+    }
+    if (_json.containsKey("fileSize")) {
+      fileSize = _json["fileSize"];
+    }
+    if (_json.containsKey("flashVersion")) {
+      flashVersion = _json["flashVersion"];
+    }
+    if (_json.containsKey("hideFlashObjects")) {
+      hideFlashObjects = _json["hideFlashObjects"];
+    }
+    if (_json.containsKey("hideSelectionBoxes")) {
+      hideSelectionBoxes = _json["hideSelectionBoxes"];
+    }
+    if (_json.containsKey("horizontallyLocked")) {
+      horizontallyLocked = _json["horizontallyLocked"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("mimeType")) {
+      mimeType = _json["mimeType"];
+    }
+    if (_json.containsKey("offset")) {
+      offset = new OffsetPosition.fromJson(_json["offset"]);
+    }
+    if (_json.containsKey("originalBackup")) {
+      originalBackup = _json["originalBackup"];
+    }
+    if (_json.containsKey("position")) {
+      position = new OffsetPosition.fromJson(_json["position"]);
+    }
+    if (_json.containsKey("positionLeftUnit")) {
+      positionLeftUnit = _json["positionLeftUnit"];
+    }
+    if (_json.containsKey("positionTopUnit")) {
+      positionTopUnit = _json["positionTopUnit"];
+    }
+    if (_json.containsKey("progressiveServingUrl")) {
+      progressiveServingUrl = _json["progressiveServingUrl"];
+    }
+    if (_json.containsKey("pushdown")) {
+      pushdown = _json["pushdown"];
+    }
+    if (_json.containsKey("pushdownDuration")) {
+      pushdownDuration = _json["pushdownDuration"];
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+    if (_json.containsKey("size")) {
+      size = new Size.fromJson(_json["size"]);
+    }
+    if (_json.containsKey("sslCompliant")) {
+      sslCompliant = _json["sslCompliant"];
+    }
+    if (_json.containsKey("startTimeType")) {
+      startTimeType = _json["startTimeType"];
+    }
+    if (_json.containsKey("streamingServingUrl")) {
+      streamingServingUrl = _json["streamingServingUrl"];
+    }
+    if (_json.containsKey("transparency")) {
+      transparency = _json["transparency"];
+    }
+    if (_json.containsKey("verticallyLocked")) {
+      verticallyLocked = _json["verticallyLocked"];
+    }
+    if (_json.containsKey("videoDuration")) {
+      videoDuration = _json["videoDuration"];
+    }
+    if (_json.containsKey("windowMode")) {
+      windowMode = _json["windowMode"];
+    }
+    if (_json.containsKey("zIndex")) {
+      zIndex = _json["zIndex"];
+    }
+    if (_json.containsKey("zipFilename")) {
+      zipFilename = _json["zipFilename"];
+    }
+    if (_json.containsKey("zipFilesize")) {
+      zipFilesize = _json["zipFilesize"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (actionScript3 != null) {
+      _json["actionScript3"] = actionScript3;
+    }
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (alignment != null) {
+      _json["alignment"] = alignment;
+    }
+    if (artworkType != null) {
+      _json["artworkType"] = artworkType;
+    }
+    if (assetIdentifier != null) {
+      _json["assetIdentifier"] = (assetIdentifier).toJson();
+    }
+    if (backupImageExit != null) {
+      _json["backupImageExit"] = (backupImageExit).toJson();
+    }
+    if (bitRate != null) {
+      _json["bitRate"] = bitRate;
+    }
+    if (childAssetType != null) {
+      _json["childAssetType"] = childAssetType;
+    }
+    if (collapsedSize != null) {
+      _json["collapsedSize"] = (collapsedSize).toJson();
+    }
+    if (customStartTimeValue != null) {
+      _json["customStartTimeValue"] = customStartTimeValue;
+    }
+    if (detectedFeatures != null) {
+      _json["detectedFeatures"] = detectedFeatures;
+    }
+    if (displayType != null) {
+      _json["displayType"] = displayType;
+    }
+    if (duration != null) {
+      _json["duration"] = duration;
+    }
+    if (durationType != null) {
+      _json["durationType"] = durationType;
+    }
+    if (expandedDimension != null) {
+      _json["expandedDimension"] = (expandedDimension).toJson();
+    }
+    if (fileSize != null) {
+      _json["fileSize"] = fileSize;
+    }
+    if (flashVersion != null) {
+      _json["flashVersion"] = flashVersion;
+    }
+    if (hideFlashObjects != null) {
+      _json["hideFlashObjects"] = hideFlashObjects;
+    }
+    if (hideSelectionBoxes != null) {
+      _json["hideSelectionBoxes"] = hideSelectionBoxes;
+    }
+    if (horizontallyLocked != null) {
+      _json["horizontallyLocked"] = horizontallyLocked;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (mimeType != null) {
+      _json["mimeType"] = mimeType;
+    }
+    if (offset != null) {
+      _json["offset"] = (offset).toJson();
+    }
+    if (originalBackup != null) {
+      _json["originalBackup"] = originalBackup;
+    }
+    if (position != null) {
+      _json["position"] = (position).toJson();
+    }
+    if (positionLeftUnit != null) {
+      _json["positionLeftUnit"] = positionLeftUnit;
+    }
+    if (positionTopUnit != null) {
+      _json["positionTopUnit"] = positionTopUnit;
+    }
+    if (progressiveServingUrl != null) {
+      _json["progressiveServingUrl"] = progressiveServingUrl;
+    }
+    if (pushdown != null) {
+      _json["pushdown"] = pushdown;
+    }
+    if (pushdownDuration != null) {
+      _json["pushdownDuration"] = pushdownDuration;
+    }
+    if (role != null) {
+      _json["role"] = role;
+    }
+    if (size != null) {
+      _json["size"] = (size).toJson();
+    }
+    if (sslCompliant != null) {
+      _json["sslCompliant"] = sslCompliant;
+    }
+    if (startTimeType != null) {
+      _json["startTimeType"] = startTimeType;
+    }
+    if (streamingServingUrl != null) {
+      _json["streamingServingUrl"] = streamingServingUrl;
+    }
+    if (transparency != null) {
+      _json["transparency"] = transparency;
+    }
+    if (verticallyLocked != null) {
+      _json["verticallyLocked"] = verticallyLocked;
+    }
+    if (videoDuration != null) {
+      _json["videoDuration"] = videoDuration;
+    }
+    if (windowMode != null) {
+      _json["windowMode"] = windowMode;
+    }
+    if (zIndex != null) {
+      _json["zIndex"] = zIndex;
+    }
+    if (zipFilename != null) {
+      _json["zipFilename"] = zipFilename;
+    }
+    if (zipFilesize != null) {
+      _json["zipFilesize"] = zipFilesize;
+    }
+    return _json;
+  }
+}
+
+
+/** Creative Asset ID. */
+class CreativeAssetId {
+  /**
+   * Name of the creative asset. This is a required field while creating an
+   * asset. This field will be the unique asset name after asset creation.
+   */
+  core.String name;
+
+  /**
+   * Type of asset to upload. This is a required field.
+   * Possible string values are:
+   * - "FLASH"
+   * - "HTML"
+   * - "HTML_IMAGE"
+   * - "IMAGE"
+   * - "VIDEO"
+   */
+  core.String type;
+
+
+  CreativeAssetId();
+
+  CreativeAssetId.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class CreativeAssetMetadata {
+  /** ID of the creative asset. This is a required field */
+  CreativeAssetId assetIdentifier;
+
+  /**
+   * List of detected click tags for assets. This is a read-only auto-generated
+   * field.
+   */
+  core.List<ClickTag> clickTags;
+
+  /**
+   * Feature dependencies are features that a browser must be able to support in
+   * order to render your HTML5 creative correctly. This is a list of features
+   * detected by DCM. This is a read-only auto-generated field.
+   */
+  core.List<core.String> detectedFeatures;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#creativeAssetMetadata".
+   */
+  core.String kind;
+
+  /**
+   * Rules validated during code generation that generated a warning. This is a
+   * read-only auto-generated field.
+   *
+   * Acceptable values are:
+   * - "CLICK_TAG_NON_TOP_LEVEL"
+   * - "CLICK_TAG_MISSING"
+   * - "CLICK_TAG_MORE_THAN_ONE"
+   * - "CLICK_TAG_INVALID"
+   * - "ORPHANED_ASSET"
+   * - "PRIMARY_HTML_MISSING"
+   * - "EXTERNAL_FILE_REFERENCED"
+   * - "MRAID_REFERENCED"
+   * - "ADMOB_REFERENCED"
+   * - "FILE_TYPE_INVALID"
+   * - "ZIP_INVALID"
+   * - "LINKED_FILE_NOT_FOUND"
+   * - "MAX_FLASH_VERSION_11"
+   * - "NOT_SSL_COMPLIANT"
+   * - "FILE_DETAIL_EMPTY"
+   * - "ASSET_INVALID"
+   * - "GWD_PROPERTIES_INVALID"
+   * - "ENABLER_UNSUPPORTED_METHOD_DCM"
+   * - "ASSET_FORMAT_UNSUPPORTED_DCM"
+   * - "COMPONENT_UNSUPPORTED_DCM"
+   * - "HTML5_FEATURE_UNSUPPORTED' "
+   */
+  core.List<core.String> warnedValidationRules;
+
+
+  CreativeAssetMetadata();
+
+  CreativeAssetMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("assetIdentifier")) {
+      assetIdentifier = new CreativeAssetId.fromJson(_json["assetIdentifier"]);
+    }
+    if (_json.containsKey("clickTags")) {
+      clickTags = _json["clickTags"].map((value) => new ClickTag.fromJson(value)).toList();
+    }
+    if (_json.containsKey("detectedFeatures")) {
+      detectedFeatures = _json["detectedFeatures"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("warnedValidationRules")) {
+      warnedValidationRules = _json["warnedValidationRules"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (assetIdentifier != null) {
+      _json["assetIdentifier"] = (assetIdentifier).toJson();
+    }
+    if (clickTags != null) {
+      _json["clickTags"] = clickTags.map((value) => (value).toJson()).toList();
+    }
+    if (detectedFeatures != null) {
+      _json["detectedFeatures"] = detectedFeatures;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (warnedValidationRules != null) {
+      _json["warnedValidationRules"] = warnedValidationRules;
+    }
+    return _json;
+  }
+}
+
+
+/** Creative Assignment. */
+class CreativeAssignment {
+  /**
+   * Whether this creative assignment is active. When true, the creative will be
+   * included in the ad's rotation.
+   */
+  core.bool active;
+
+  /**
+   * Whether applicable event tags should fire when this creative assignment is
+   * rendered. If this value is unset when saved, it will default to true for
+   * all creative types EXCEPT for INTERNAL_REDIRECT,
+   * INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO.
+   */
+  core.bool applyEventTags;
+
+  /** Click-through URL of the creative assignment. */
+  ClickThroughUrl clickThroughUrl;
+
+  /**
+   * Companion creative overrides for this creative assignment. Applicable to
+   * video ads.
+   */
+  core.List<CompanionClickThroughOverride> companionCreativeOverrides;
+
+  /**
+   * Creative group assignments for this creative assignment. Only one
+   * assignment per creative group number is allowed for a maximum of two
+   * assignments.
+   */
+  core.List<CreativeGroupAssignment> creativeGroupAssignments;
+
+  /** ID of the creative to be assigned. */
+  core.String creativeId;
+
+  /**
+   * Dimension value for the ID of the creative. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue creativeIdDimensionValue;
+
+  /**
+   * The date and time that the assigned creative should stop serving. Must be
+   * after the start time.
+   */
+  core.DateTime endTime;
+
+  /**
+   * Rich media exit overrides for this creative assignment. Applicable to the
+   * following creative types:
+   * - RICH_MEDIA_INPAGE
+   * - RICH_MEDIA_INPAGE_FLOATING
+   * - RICH_MEDIA_IM_EXPAND
+   * - RICH_MEDIA_EXPANDING
+   * - RICH_MEDIA_INTERSTITIAL_FLOAT
+   * - RICH_MEDIA_MOBILE_IN_APP
+   * - RICH_MEDIA_MULTI_FLOATING
+   * - RICH_MEDIA_PEEL_DOWN
+   * - ADVANCED_BANNER
+   * - VPAID_LINEAR
+   * - VPAID_NON_LINEAR
+   */
+  core.List<RichMediaExitOverride> richMediaExitOverrides;
+
+  /**
+   * Sequence number of the creative assignment, applicable when the rotation
+   * type is CREATIVE_ROTATION_TYPE_SEQUENTIAL.
+   */
+  core.int sequence;
+
+  /**
+   * Whether the creative to be assigned is ssl compliant. This is a read-only
+   * field determined from the creative.
+   */
+  core.bool sslCompliant;
+
+  /** The date and time that the assigned creative should start serving. */
+  core.DateTime startTime;
+
+  /**
+   * Weight of the creative assignment, applicable when the rotation type is
+   * CREATIVE_ROTATION_TYPE_RANDOM.
+   */
+  core.int weight;
+
+
+  CreativeAssignment();
+
+  CreativeAssignment.fromJson(core.Map _json) {
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("applyEventTags")) {
+      applyEventTags = _json["applyEventTags"];
+    }
+    if (_json.containsKey("clickThroughUrl")) {
+      clickThroughUrl = new ClickThroughUrl.fromJson(_json["clickThroughUrl"]);
+    }
+    if (_json.containsKey("companionCreativeOverrides")) {
+      companionCreativeOverrides = _json["companionCreativeOverrides"].map((value) => new CompanionClickThroughOverride.fromJson(value)).toList();
+    }
+    if (_json.containsKey("creativeGroupAssignments")) {
+      creativeGroupAssignments = _json["creativeGroupAssignments"].map((value) => new CreativeGroupAssignment.fromJson(value)).toList();
+    }
+    if (_json.containsKey("creativeId")) {
+      creativeId = _json["creativeId"];
+    }
+    if (_json.containsKey("creativeIdDimensionValue")) {
+      creativeIdDimensionValue = new DimensionValue.fromJson(_json["creativeIdDimensionValue"]);
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = core.DateTime.parse(_json["endTime"]);
+    }
+    if (_json.containsKey("richMediaExitOverrides")) {
+      richMediaExitOverrides = _json["richMediaExitOverrides"].map((value) => new RichMediaExitOverride.fromJson(value)).toList();
+    }
+    if (_json.containsKey("sequence")) {
+      sequence = _json["sequence"];
+    }
+    if (_json.containsKey("sslCompliant")) {
+      sslCompliant = _json["sslCompliant"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = core.DateTime.parse(_json["startTime"]);
+    }
+    if (_json.containsKey("weight")) {
+      weight = _json["weight"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (applyEventTags != null) {
+      _json["applyEventTags"] = applyEventTags;
+    }
+    if (clickThroughUrl != null) {
+      _json["clickThroughUrl"] = (clickThroughUrl).toJson();
+    }
+    if (companionCreativeOverrides != null) {
+      _json["companionCreativeOverrides"] = companionCreativeOverrides.map((value) => (value).toJson()).toList();
+    }
+    if (creativeGroupAssignments != null) {
+      _json["creativeGroupAssignments"] = creativeGroupAssignments.map((value) => (value).toJson()).toList();
+    }
+    if (creativeId != null) {
+      _json["creativeId"] = creativeId;
+    }
+    if (creativeIdDimensionValue != null) {
+      _json["creativeIdDimensionValue"] = (creativeIdDimensionValue).toJson();
+    }
+    if (endTime != null) {
+      _json["endTime"] = (endTime).toIso8601String();
+    }
+    if (richMediaExitOverrides != null) {
+      _json["richMediaExitOverrides"] = richMediaExitOverrides.map((value) => (value).toJson()).toList();
+    }
+    if (sequence != null) {
+      _json["sequence"] = sequence;
+    }
+    if (sslCompliant != null) {
+      _json["sslCompliant"] = sslCompliant;
+    }
+    if (startTime != null) {
+      _json["startTime"] = (startTime).toIso8601String();
+    }
+    if (weight != null) {
+      _json["weight"] = weight;
+    }
+    return _json;
+  }
+}
+
+
+/** Creative Custom Event. */
+class CreativeCustomEvent {
+  /** Status indicating event is active. */
+  core.bool active;
+
+  /** User entered name for the event. */
+  core.String advertiserCustomEventName;
+
+  /**
+   * Type of the event. This is a read-only field.
+   * Possible string values are:
+   * - "ADVERTISER_EVENT_COUNTER"
+   * - "ADVERTISER_EVENT_EXIT"
+   * - "ADVERTISER_EVENT_TIMER"
+   */
+  core.String advertiserCustomEventType;
+
+  /**
+   * Artwork label column is used to link events in DCM back to events in
+   * Studio. This is a required field and should not be modified.
+   */
+  core.String artworkLabel;
+
+  /**
+   * Artwork type used by the creative.This is a read-only field.
+   * Possible string values are:
+   * - "ARTWORK_TYPE_FLASH"
+   * - "ARTWORK_TYPE_HTML5"
+   * - "ARTWORK_TYPE_MIXED"
+   */
+  core.String artworkType;
+
+  /** Exit URL of the event. This is only used for exit events. */
+  core.String exitUrl;
+
+  /** ID of this event. This is a required field and should not be modified. */
+  core.String id;
+
+  /**
+   * Properties for rich media pop-up windows. This is only used for exit
+   * events.
+   */
+  PopupWindowProperties popupWindowProperties;
+
+  /**
+   * Target type used by the event.
+   * Possible string values are:
+   * - "TARGET_BLANK"
+   * - "TARGET_PARENT"
+   * - "TARGET_POPUP"
+   * - "TARGET_SELF"
+   * - "TARGET_TOP"
+   */
+  core.String targetType;
+
+  /**
+   * The reporting ID is used to differentiate multiple videos in a single
+   * creative.
+   */
+  core.String videoReportingId;
+
+
+  CreativeCustomEvent();
+
+  CreativeCustomEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("advertiserCustomEventName")) {
+      advertiserCustomEventName = _json["advertiserCustomEventName"];
+    }
+    if (_json.containsKey("advertiserCustomEventType")) {
+      advertiserCustomEventType = _json["advertiserCustomEventType"];
+    }
+    if (_json.containsKey("artworkLabel")) {
+      artworkLabel = _json["artworkLabel"];
+    }
+    if (_json.containsKey("artworkType")) {
+      artworkType = _json["artworkType"];
+    }
+    if (_json.containsKey("exitUrl")) {
+      exitUrl = _json["exitUrl"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("popupWindowProperties")) {
+      popupWindowProperties = new PopupWindowProperties.fromJson(_json["popupWindowProperties"]);
+    }
+    if (_json.containsKey("targetType")) {
+      targetType = _json["targetType"];
+    }
+    if (_json.containsKey("videoReportingId")) {
+      videoReportingId = _json["videoReportingId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (advertiserCustomEventName != null) {
+      _json["advertiserCustomEventName"] = advertiserCustomEventName;
+    }
+    if (advertiserCustomEventType != null) {
+      _json["advertiserCustomEventType"] = advertiserCustomEventType;
+    }
+    if (artworkLabel != null) {
+      _json["artworkLabel"] = artworkLabel;
+    }
+    if (artworkType != null) {
+      _json["artworkType"] = artworkType;
+    }
+    if (exitUrl != null) {
+      _json["exitUrl"] = exitUrl;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (popupWindowProperties != null) {
+      _json["popupWindowProperties"] = (popupWindowProperties).toJson();
+    }
+    if (targetType != null) {
+      _json["targetType"] = targetType;
+    }
+    if (videoReportingId != null) {
+      _json["videoReportingId"] = videoReportingId;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class CreativeField {
+  /** Account ID of this creative field. This field can be left blank. */
+  core.String accountId;
+
+  /**
+   * Advertiser ID of this creative field. This field is only required on
+   * creation.
+   */
+  core.String advertiserId;
+
+  /**
+   * Dimension value for the ID of the advertiser. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue advertiserIdDimensionValue;
+
+  /** ID of this creative field. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#creativeField".
+   */
+  core.String kind;
+
+  /**
+   * Name of this creative field. It needs to be less than 256 characters in
+   * length and unique per advertiser.
+   */
+  core.String name;
+
+  /** Subaccount ID of this creative field. This field can be left blank. */
+  core.String subaccountId;
+
+
+  CreativeField();
+
+  CreativeField.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("advertiserId")) {
+      advertiserId = _json["advertiserId"];
+    }
+    if (_json.containsKey("advertiserIdDimensionValue")) {
+      advertiserIdDimensionValue = new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (advertiserId != null) {
+      _json["advertiserId"] = advertiserId;
+    }
+    if (advertiserIdDimensionValue != null) {
+      _json["advertiserIdDimensionValue"] = (advertiserIdDimensionValue).toJson();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    return _json;
+  }
+}
+
+
+/** Creative Field Assignment. */
+class CreativeFieldAssignment {
+  /** ID of the creative field. */
+  core.String creativeFieldId;
+
+  /** ID of the creative field value. */
+  core.String creativeFieldValueId;
+
+
+  CreativeFieldAssignment();
+
+  CreativeFieldAssignment.fromJson(core.Map _json) {
+    if (_json.containsKey("creativeFieldId")) {
+      creativeFieldId = _json["creativeFieldId"];
+    }
+    if (_json.containsKey("creativeFieldValueId")) {
+      creativeFieldValueId = _json["creativeFieldValueId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creativeFieldId != null) {
+      _json["creativeFieldId"] = creativeFieldId;
+    }
+    if (creativeFieldValueId != null) {
+      _json["creativeFieldValueId"] = creativeFieldValueId;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class CreativeFieldValue {
+  /**
+   * ID of this creative field value. This is a read-only, auto-generated field.
+   */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#creativeFieldValue".
+   */
+  core.String kind;
+
+  /**
+   * Value of this creative field value. It needs to be less than 256 characters
+   * in length and unique per creative field.
+   */
+  core.String value;
+
+
+  CreativeFieldValue();
+
+  CreativeFieldValue.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+
+/** Creative Field Value List Response */
+class CreativeFieldValuesListResponse {
+  /** Creative field value collection */
+  core.List<CreativeFieldValue> creativeFieldValues;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#creativeFieldValuesListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  CreativeFieldValuesListResponse();
+
+  CreativeFieldValuesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("creativeFieldValues")) {
+      creativeFieldValues = _json["creativeFieldValues"].map((value) => new CreativeFieldValue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creativeFieldValues != null) {
+      _json["creativeFieldValues"] = creativeFieldValues.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Creative Field List Response */
+class CreativeFieldsListResponse {
+  /** Creative field collection */
+  core.List<CreativeField> creativeFields;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#creativeFieldsListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  CreativeFieldsListResponse();
+
+  CreativeFieldsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("creativeFields")) {
+      creativeFields = _json["creativeFields"].map((value) => new CreativeField.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creativeFields != null) {
+      _json["creativeFields"] = creativeFields.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class CreativeGroup {
+  /** Account ID of this creative group. This field can be left blank. */
+  core.String accountId;
+
+  /**
+   * Advertiser ID of this creative group. This field is only required on
+   * creation.
+   */
+  core.String advertiserId;
+
+  /**
+   * Dimension value for the ID of the advertiser. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue advertiserIdDimensionValue;
+
+  /**
+   * The creative group's subgroup. Assign your creative groups to one of the
+   * following subgroups in order to filter or manage them more easily. This
+   * field is only required on creation and can't be changed once the creative
+   * group has been created. Here are the supported values:
+   * - 1
+   * - 2
+   */
+  core.int groupNumber;
+
+  /** ID of this creative group. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#creativeGroup".
+   */
+  core.String kind;
+
+  /**
+   * Name of this creative group. It needs to be less than 256 characters in
+   * length and unique per advertiser.
+   */
+  core.String name;
+
+  /** Subaccount ID of this creative group. This field can be left blank. */
+  core.String subaccountId;
+
+
+  CreativeGroup();
+
+  CreativeGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("advertiserId")) {
+      advertiserId = _json["advertiserId"];
+    }
+    if (_json.containsKey("advertiserIdDimensionValue")) {
+      advertiserIdDimensionValue = new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+    }
+    if (_json.containsKey("groupNumber")) {
+      groupNumber = _json["groupNumber"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (advertiserId != null) {
+      _json["advertiserId"] = advertiserId;
+    }
+    if (advertiserIdDimensionValue != null) {
+      _json["advertiserIdDimensionValue"] = (advertiserIdDimensionValue).toJson();
+    }
+    if (groupNumber != null) {
+      _json["groupNumber"] = groupNumber;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    return _json;
+  }
+}
+
+
+/** Creative Group Assignment. */
+class CreativeGroupAssignment {
+  /** ID of the creative group to be assigned. */
+  core.String creativeGroupId;
+
+  /**
+   * Creative group number of the creative group assignment.
+   * Possible string values are:
+   * - "CREATIVE_GROUP_ONE"
+   * - "CREATIVE_GROUP_TWO"
+   */
+  core.String creativeGroupNumber;
+
+
+  CreativeGroupAssignment();
+
+  CreativeGroupAssignment.fromJson(core.Map _json) {
+    if (_json.containsKey("creativeGroupId")) {
+      creativeGroupId = _json["creativeGroupId"];
+    }
+    if (_json.containsKey("creativeGroupNumber")) {
+      creativeGroupNumber = _json["creativeGroupNumber"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creativeGroupId != null) {
+      _json["creativeGroupId"] = creativeGroupId;
+    }
+    if (creativeGroupNumber != null) {
+      _json["creativeGroupNumber"] = creativeGroupNumber;
+    }
+    return _json;
+  }
+}
+
+
+/** Creative Group List Response */
+class CreativeGroupsListResponse {
+  /** Creative group collection */
+  core.List<CreativeGroup> creativeGroups;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#creativeGroupsListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  CreativeGroupsListResponse();
+
+  CreativeGroupsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("creativeGroups")) {
+      creativeGroups = _json["creativeGroups"].map((value) => new CreativeGroup.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creativeGroups != null) {
+      _json["creativeGroups"] = creativeGroups.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Creative optimization settings. */
+class CreativeOptimizationConfiguration {
+  /**
+   * ID of this creative optimization config. This value is auto-generated when
+   * campaign is saved. It can be null for existing campaigns.
+   */
+  core.String id;
+
+  /** Name of this creative optimization config. */
+  core.String name;
+
+  /** List of optimization activities associated with this configuration. */
+  core.List<OptimizationActivity> optimizationActivitys;
+
+  /**
+   * Optimization model for this configuration.
+   * Possible string values are:
+   * - "CLICK"
+   * - "POST_CLICK"
+   * - "POST_CLICK_AND_IMPRESSION"
+   * - "POST_IMPRESSION"
+   */
+  core.String optimizationModel;
+
+
+  CreativeOptimizationConfiguration();
+
+  CreativeOptimizationConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("optimizationActivitys")) {
+      optimizationActivitys = _json["optimizationActivitys"].map((value) => new OptimizationActivity.fromJson(value)).toList();
+    }
+    if (_json.containsKey("optimizationModel")) {
+      optimizationModel = _json["optimizationModel"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (optimizationActivitys != null) {
+      _json["optimizationActivitys"] = optimizationActivitys.map((value) => (value).toJson()).toList();
+    }
+    if (optimizationModel != null) {
+      _json["optimizationModel"] = optimizationModel;
+    }
+    return _json;
+  }
+}
+
+
+/** Creative Rotation. */
+class CreativeRotation {
+  /** Creative assignments in this creative rotation. */
+  core.List<CreativeAssignment> creativeAssignments;
+
+  /**
+   * Creative optimization configuration that is used by this ad. It should
+   * refer to one of the existing optimization configurations in the ad's
+   * campaign. If it is unset or set to 0, then the campaign's default
+   * optimization configuration will be used for this ad.
+   */
+  core.String creativeOptimizationConfigurationId;
+
+  /**
+   * Type of creative rotation. Can be used to specify whether to use sequential
+   * or random rotation.
+   * Possible string values are:
+   * - "CREATIVE_ROTATION_TYPE_RANDOM"
+   * - "CREATIVE_ROTATION_TYPE_SEQUENTIAL"
+   */
+  core.String type;
+
+  /**
+   * Strategy for calculating weights. Used with CREATIVE_ROTATION_TYPE_RANDOM.
+   * Possible string values are:
+   * - "WEIGHT_STRATEGY_CUSTOM"
+   * - "WEIGHT_STRATEGY_EQUAL"
+   * - "WEIGHT_STRATEGY_HIGHEST_CTR"
+   * - "WEIGHT_STRATEGY_OPTIMIZED"
+   */
+  core.String weightCalculationStrategy;
+
+
+  CreativeRotation();
+
+  CreativeRotation.fromJson(core.Map _json) {
+    if (_json.containsKey("creativeAssignments")) {
+      creativeAssignments = _json["creativeAssignments"].map((value) => new CreativeAssignment.fromJson(value)).toList();
+    }
+    if (_json.containsKey("creativeOptimizationConfigurationId")) {
+      creativeOptimizationConfigurationId = _json["creativeOptimizationConfigurationId"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("weightCalculationStrategy")) {
+      weightCalculationStrategy = _json["weightCalculationStrategy"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creativeAssignments != null) {
+      _json["creativeAssignments"] = creativeAssignments.map((value) => (value).toJson()).toList();
+    }
+    if (creativeOptimizationConfigurationId != null) {
+      _json["creativeOptimizationConfigurationId"] = creativeOptimizationConfigurationId;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (weightCalculationStrategy != null) {
+      _json["weightCalculationStrategy"] = weightCalculationStrategy;
+    }
+    return _json;
+  }
+}
+
+
+/** Creative Settings */
+class CreativeSettings {
+  /** Header text for iFrames for this site. 2000 character limit. */
+  core.String iFrameFooter;
+
+  /** Header text for iFrames for this site. 2000 character limit. */
+  core.String iFrameHeader;
+
+
+  CreativeSettings();
+
+  CreativeSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("iFrameFooter")) {
+      iFrameFooter = _json["iFrameFooter"];
+    }
+    if (_json.containsKey("iFrameHeader")) {
+      iFrameHeader = _json["iFrameHeader"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (iFrameFooter != null) {
+      _json["iFrameFooter"] = iFrameFooter;
+    }
+    if (iFrameHeader != null) {
+      _json["iFrameHeader"] = iFrameHeader;
+    }
+    return _json;
+  }
+}
+
+
+/** Creative List Response */
+class CreativesListResponse {
+  /** Creative collection */
+  core.List<Creative> creatives;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#creativesListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  CreativesListResponse();
+
+  CreativesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("creatives")) {
+      creatives = _json["creatives"].map((value) => new Creative.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creatives != null) {
+      _json["creatives"] = creatives.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * Represents fields that are compatible to be selected for a report of type
+ * "CROSS_DIMENSION_REACH".
+ */
+class CrossDimensionReachReportCompatibleFields {
+  /**
+   * Dimensions which are compatible to be selected in the "breakdown" section
+   * of the report.
+   */
+  core.List<Dimension> breakdown;
+
+  /**
+   * Dimensions which are compatible to be selected in the "dimensionFilters"
+   * section of the report.
+   */
+  core.List<Dimension> dimensionFilters;
+
+  /**
+   * The kind of resource this is, in this case
+   * dfareporting#crossDimensionReachReportCompatibleFields.
+   */
+  core.String kind;
+
+  /**
+   * Metrics which are compatible to be selected in the "metricNames" section of
+   * the report.
+   */
+  core.List<Metric> metrics;
+
+  /**
+   * Metrics which are compatible to be selected in the "overlapMetricNames"
+   * section of the report.
+   */
+  core.List<Metric> overlapMetrics;
+
+
+  CrossDimensionReachReportCompatibleFields();
+
+  CrossDimensionReachReportCompatibleFields.fromJson(core.Map _json) {
+    if (_json.containsKey("breakdown")) {
+      breakdown = _json["breakdown"].map((value) => new Dimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("dimensionFilters")) {
+      dimensionFilters = _json["dimensionFilters"].map((value) => new Dimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("metrics")) {
+      metrics = _json["metrics"].map((value) => new Metric.fromJson(value)).toList();
+    }
+    if (_json.containsKey("overlapMetrics")) {
+      overlapMetrics = _json["overlapMetrics"].map((value) => new Metric.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (breakdown != null) {
+      _json["breakdown"] = breakdown.map((value) => (value).toJson()).toList();
+    }
+    if (dimensionFilters != null) {
+      _json["dimensionFilters"] = dimensionFilters.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (metrics != null) {
+      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+    }
+    if (overlapMetrics != null) {
+      _json["overlapMetrics"] = overlapMetrics.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Represents a Custom Rich Media Events group. */
+class CustomRichMediaEvents {
+  /**
+   * List of custom rich media event IDs. Dimension values must be all of type
+   * dfa:richMediaEventTypeIdAndName.
+   */
+  core.List<DimensionValue> filteredEventIds;
+
+  /**
+   * The kind of resource this is, in this case
+   * dfareporting#customRichMediaEvents.
+   */
+  core.String kind;
+
+
+  CustomRichMediaEvents();
+
+  CustomRichMediaEvents.fromJson(core.Map _json) {
+    if (_json.containsKey("filteredEventIds")) {
+      filteredEventIds = _json["filteredEventIds"].map((value) => new DimensionValue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (filteredEventIds != null) {
+      _json["filteredEventIds"] = filteredEventIds.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Represents a date range. */
+class DateRange {
+  /**
+   * The end date of the date range, inclusive. A string of the format:
+   * "yyyy-MM-dd".
+   */
+  core.DateTime endDate;
+
+  /** The kind of resource this is, in this case dfareporting#dateRange. */
+  core.String kind;
+
+  /**
+   * The date range relative to the date of when the report is run.
+   * Possible string values are:
+   * - "LAST_24_MONTHS"
+   * - "LAST_30_DAYS"
+   * - "LAST_365_DAYS"
+   * - "LAST_7_DAYS"
+   * - "LAST_90_DAYS"
+   * - "MONTH_TO_DATE"
+   * - "PREVIOUS_MONTH"
+   * - "PREVIOUS_QUARTER"
+   * - "PREVIOUS_WEEK"
+   * - "PREVIOUS_YEAR"
+   * - "QUARTER_TO_DATE"
+   * - "TODAY"
+   * - "WEEK_TO_DATE"
+   * - "YEAR_TO_DATE"
+   * - "YESTERDAY"
+   */
+  core.String relativeDateRange;
+
+  /**
+   * The start date of the date range, inclusive. A string of the format:
+   * "yyyy-MM-dd".
+   */
+  core.DateTime startDate;
+
+
+  DateRange();
+
+  DateRange.fromJson(core.Map _json) {
+    if (_json.containsKey("endDate")) {
+      endDate = core.DateTime.parse(_json["endDate"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("relativeDateRange")) {
+      relativeDateRange = _json["relativeDateRange"];
+    }
+    if (_json.containsKey("startDate")) {
+      startDate = core.DateTime.parse(_json["startDate"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (endDate != null) {
+      _json["endDate"] = "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}";
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (relativeDateRange != null) {
+      _json["relativeDateRange"] = relativeDateRange;
+    }
+    if (startDate != null) {
+      _json["startDate"] = "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}";
+    }
+    return _json;
+  }
+}
+
+
+/** Day Part Targeting. */
+class DayPartTargeting {
+  /**
+   * Days of the week when the ad will serve.
+   *
+   * Acceptable values are:
+   * - "SUNDAY"
+   * - "MONDAY"
+   * - "TUESDAY"
+   * - "WEDNESDAY"
+   * - "THURSDAY"
+   * - "FRIDAY"
+   * - "SATURDAY"
+   */
+  core.List<core.String> daysOfWeek;
+
+  /**
+   * Hours of the day when the ad will serve. Supported values: 0 to 23, where 0
+   * is midnight to 1 AM, and 23 is 11 PM to midnight. Can be specified with
+   * days of week, in which case the ad would serve during these hours on the
+   * specified days. For example, if Monday, Wednesday, Friday are the days of
+   * week specified and 9-10am, 3-5pm (hours 9, 15, and 16) is specified, the ad
+   * would serve Monday, Wednesdays, and Fridays at 9-10am and 3-5pm.
+   */
+  core.List<core.int> hoursOfDay;
+
+  /** If false, the America/New York time zone applies. */
+  core.bool userLocalTime;
+
+
+  DayPartTargeting();
+
+  DayPartTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("daysOfWeek")) {
+      daysOfWeek = _json["daysOfWeek"];
+    }
+    if (_json.containsKey("hoursOfDay")) {
+      hoursOfDay = _json["hoursOfDay"];
+    }
+    if (_json.containsKey("userLocalTime")) {
+      userLocalTime = _json["userLocalTime"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (daysOfWeek != null) {
+      _json["daysOfWeek"] = daysOfWeek;
+    }
+    if (hoursOfDay != null) {
+      _json["hoursOfDay"] = hoursOfDay;
+    }
+    if (userLocalTime != null) {
+      _json["userLocalTime"] = userLocalTime;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * Properties of inheriting and overriding the default click-through event tag.
+ * A campaign may override the event tag defined at the advertiser level, and an
+ * ad may also override the campaign's setting further.
+ */
+class DefaultClickThroughEventTagProperties {
+  /**
+   * The click-through event tag to apply to all ads in this entity's scope.
+   */
+  core.String defaultClickThroughEventTagId;
+
+  /**
+   * Whether this entity should override the inherited default click-through
+   * event tag with its own defined value.
+   */
+  core.bool overrideInheritedEventTag;
+
+
+  DefaultClickThroughEventTagProperties();
+
+  DefaultClickThroughEventTagProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("defaultClickThroughEventTagId")) {
+      defaultClickThroughEventTagId = _json["defaultClickThroughEventTagId"];
+    }
+    if (_json.containsKey("overrideInheritedEventTag")) {
+      overrideInheritedEventTag = _json["overrideInheritedEventTag"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (defaultClickThroughEventTagId != null) {
+      _json["defaultClickThroughEventTagId"] = defaultClickThroughEventTagId;
+    }
+    if (overrideInheritedEventTag != null) {
+      _json["overrideInheritedEventTag"] = overrideInheritedEventTag;
+    }
+    return _json;
+  }
+}
+
+
+/** Delivery Schedule. */
+class DeliverySchedule {
+  /**
+   * Limit the number of times an individual user can be served the ad within a
+   * specified period of time.
+   */
+  FrequencyCap frequencyCap;
+
+  /**
+   * Enable hard cutoff to stop the ad from being served past the end date and
+   * time. If this not enabled, the ad will continue to be served until it has
+   * reached its delivery goals.
+   */
+  core.bool hardCutoff;
+
+  /**
+   * The impression ratio for this ad. This determines how often each ad is
+   * served relative to the others. For example, if ad A has an impression ratio
+   * of 1 and ad B has an impression ratio of 3, then DCM will serve ad B three
+   * times as often as ad A. Must be between 1 and 10.
+   */
+  core.String impressionRatio;
+
+  /**
+   * The priority of an ad is how it is served in relation to other ads. The
+   * lower the priority number, the greater the priority with which it is
+   * served.
+   * Possible string values are:
+   * - "AD_PRIORITY_01"
+   * - "AD_PRIORITY_02"
+   * - "AD_PRIORITY_03"
+   * - "AD_PRIORITY_04"
+   * - "AD_PRIORITY_05"
+   * - "AD_PRIORITY_06"
+   * - "AD_PRIORITY_07"
+   * - "AD_PRIORITY_08"
+   * - "AD_PRIORITY_09"
+   * - "AD_PRIORITY_10"
+   * - "AD_PRIORITY_11"
+   * - "AD_PRIORITY_12"
+   * - "AD_PRIORITY_13"
+   * - "AD_PRIORITY_14"
+   * - "AD_PRIORITY_15"
+   * - "AD_PRIORITY_16"
+   */
+  core.String priority;
+
+
+  DeliverySchedule();
+
+  DeliverySchedule.fromJson(core.Map _json) {
+    if (_json.containsKey("frequencyCap")) {
+      frequencyCap = new FrequencyCap.fromJson(_json["frequencyCap"]);
+    }
+    if (_json.containsKey("hardCutoff")) {
+      hardCutoff = _json["hardCutoff"];
+    }
+    if (_json.containsKey("impressionRatio")) {
+      impressionRatio = _json["impressionRatio"];
+    }
+    if (_json.containsKey("priority")) {
+      priority = _json["priority"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (frequencyCap != null) {
+      _json["frequencyCap"] = (frequencyCap).toJson();
+    }
+    if (hardCutoff != null) {
+      _json["hardCutoff"] = hardCutoff;
+    }
+    if (impressionRatio != null) {
+      _json["impressionRatio"] = impressionRatio;
+    }
+    if (priority != null) {
+      _json["priority"] = priority;
+    }
+    return _json;
+  }
+}
+
+
+/** DFP Settings */
+class DfpSettings {
+  /** DFP network code for this directory site. */
+  core.String dfpNetworkCode;
+
+  /** DFP network name for this directory site. */
+  core.String dfpNetworkName;
+
+  /** Whether this directory site accepts programmatic placements. */
+  core.bool programmaticPlacementAccepted;
+
+  /** Whether this directory site accepts publisher-paid tags. */
+  core.bool pubPaidPlacementAccepted;
+
+  /** Whether this directory site is available only via Publisher Portal. */
+  core.bool publisherPortalOnly;
+
+
+  DfpSettings();
+
+  DfpSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("dfp_network_code")) {
+      dfpNetworkCode = _json["dfp_network_code"];
+    }
+    if (_json.containsKey("dfp_network_name")) {
+      dfpNetworkName = _json["dfp_network_name"];
+    }
+    if (_json.containsKey("programmaticPlacementAccepted")) {
+      programmaticPlacementAccepted = _json["programmaticPlacementAccepted"];
+    }
+    if (_json.containsKey("pubPaidPlacementAccepted")) {
+      pubPaidPlacementAccepted = _json["pubPaidPlacementAccepted"];
+    }
+    if (_json.containsKey("publisherPortalOnly")) {
+      publisherPortalOnly = _json["publisherPortalOnly"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dfpNetworkCode != null) {
+      _json["dfp_network_code"] = dfpNetworkCode;
+    }
+    if (dfpNetworkName != null) {
+      _json["dfp_network_name"] = dfpNetworkName;
+    }
+    if (programmaticPlacementAccepted != null) {
+      _json["programmaticPlacementAccepted"] = programmaticPlacementAccepted;
+    }
+    if (pubPaidPlacementAccepted != null) {
+      _json["pubPaidPlacementAccepted"] = pubPaidPlacementAccepted;
+    }
+    if (publisherPortalOnly != null) {
+      _json["publisherPortalOnly"] = publisherPortalOnly;
+    }
+    return _json;
+  }
+}
+
+
+/** Represents a dimension. */
+class Dimension {
+  /** The kind of resource this is, in this case dfareporting#dimension. */
+  core.String kind;
+
+  /** The dimension name, e.g. dfa:advertiser */
+  core.String name;
+
+
+  Dimension();
+
+  Dimension.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Represents a dimension filter. */
+class DimensionFilter {
+  /** The name of the dimension to filter. */
+  core.String dimensionName;
+
+  /**
+   * The kind of resource this is, in this case dfareporting#dimensionFilter.
+   */
+  core.String kind;
+
+  /** The value of the dimension to filter. */
+  core.String value;
+
+
+  DimensionFilter();
+
+  DimensionFilter.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensionName")) {
+      dimensionName = _json["dimensionName"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dimensionName != null) {
+      _json["dimensionName"] = dimensionName;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+
+/** Represents a DimensionValue resource. */
+class DimensionValue {
+  /** The name of the dimension. */
+  core.String dimensionName;
+
+  /** The eTag of this response for caching purposes. */
+  core.String etag;
+
+  /** The ID associated with the value if available. */
+  core.String id;
+
+  /**
+   * The kind of resource this is, in this case dfareporting#dimensionValue.
+   */
+  core.String kind;
+
+  /**
+   * Determines how the 'value' field is matched when filtering. If not
+   * specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is allowed
+   * as a placeholder for variable length character sequences, and it can be
+   * escaped with a backslash. Note, only paid search dimensions
+   * ('dfa:paidSearch*') allow a matchType other than EXACT.
+   * Possible string values are:
+   * - "BEGINS_WITH"
+   * - "CONTAINS"
+   * - "EXACT"
+   * - "WILDCARD_EXPRESSION"
+   */
+  core.String matchType;
+
+  /** The value of the dimension. */
+  core.String value;
+
+
+  DimensionValue();
+
+  DimensionValue.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensionName")) {
+      dimensionName = _json["dimensionName"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("matchType")) {
+      matchType = _json["matchType"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dimensionName != null) {
+      _json["dimensionName"] = dimensionName;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (matchType != null) {
+      _json["matchType"] = matchType;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+
+/** Represents the list of DimensionValue resources. */
+class DimensionValueList {
+  /** The eTag of this response for caching purposes. */
+  core.String etag;
+
+  /** The dimension values returned in this response. */
+  core.List<DimensionValue> items;
+
+  /**
+   * The kind of list this is, in this case dfareporting#dimensionValueList.
+   */
+  core.String kind;
+
+  /**
+   * Continuation token used to page through dimension values. To retrieve the
+   * next page of results, set the next request's "pageToken" to the value of
+   * this field. The page token is only valid for a limited amount of time and
+   * should not be persisted.
+   */
+  core.String nextPageToken;
+
+
+  DimensionValueList();
+
+  DimensionValueList.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new DimensionValue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Represents a DimensionValuesRequest. */
+class DimensionValueRequest {
+  /** The name of the dimension for which values should be requested. */
+  core.String dimensionName;
+
+  /**
+   * The end date of the date range for which to retrieve dimension values. A
+   * string of the format "yyyy-MM-dd".
+   */
+  core.DateTime endDate;
+
+  /** The list of filters by which to filter values. The filters are ANDed. */
+  core.List<DimensionFilter> filters;
+
+  /**
+   * The kind of request this is, in this case
+   * dfareporting#dimensionValueRequest.
+   */
+  core.String kind;
+
+  /**
+   * The start date of the date range for which to retrieve dimension values. A
+   * string of the format "yyyy-MM-dd".
+   */
+  core.DateTime startDate;
+
+
+  DimensionValueRequest();
+
+  DimensionValueRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensionName")) {
+      dimensionName = _json["dimensionName"];
+    }
+    if (_json.containsKey("endDate")) {
+      endDate = core.DateTime.parse(_json["endDate"]);
+    }
+    if (_json.containsKey("filters")) {
+      filters = _json["filters"].map((value) => new DimensionFilter.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("startDate")) {
+      startDate = core.DateTime.parse(_json["startDate"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dimensionName != null) {
+      _json["dimensionName"] = dimensionName;
+    }
+    if (endDate != null) {
+      _json["endDate"] = "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}";
+    }
+    if (filters != null) {
+      _json["filters"] = filters.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (startDate != null) {
+      _json["startDate"] = "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}";
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class DirectorySite {
+  /** Active status of this directory site. */
+  core.bool active;
+
+  /** Directory site contacts. */
+  core.List<DirectorySiteContactAssignment> contactAssignments;
+
+  /** Country ID of this directory site. */
+  core.String countryId;
+
+  /** Currency ID of this directory site. */
+  core.String currencyId;
+
+  /** Description of this directory site. */
+  core.String description;
+
+  /** ID of this directory site. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /**
+   * Dimension value for the ID of this directory site. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue idDimensionValue;
+
+  /**
+   * Tag types for regular placements.
+   *
+   * Acceptable values are:
+   * - "STANDARD"
+   * - "IFRAME_JAVASCRIPT_INPAGE"
+   * - "INTERNAL_REDIRECT_INPAGE"
+   * - "JAVASCRIPT_INPAGE"
+   */
+  core.List<core.String> inpageTagFormats;
+
+  /**
+   * Tag types for interstitial placements.
+   *
+   * Acceptable values are:
+   * - "IFRAME_JAVASCRIPT_INTERSTITIAL"
+   * - "INTERNAL_REDIRECT_INTERSTITIAL"
+   * - "JAVASCRIPT_INTERSTITIAL"
+   */
+  core.List<core.String> interstitialTagFormats;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#directorySite".
+   */
+  core.String kind;
+
+  /** Name of this directory site. */
+  core.String name;
+
+  /** Parent directory site ID. */
+  core.String parentId;
+
+  /** Directory site settings. */
+  DirectorySiteSettings settings;
+
+  /** URL of this directory site. */
+  core.String url;
+
+
+  DirectorySite();
+
+  DirectorySite.fromJson(core.Map _json) {
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("contactAssignments")) {
+      contactAssignments = _json["contactAssignments"].map((value) => new DirectorySiteContactAssignment.fromJson(value)).toList();
+    }
+    if (_json.containsKey("countryId")) {
+      countryId = _json["countryId"];
+    }
+    if (_json.containsKey("currencyId")) {
+      currencyId = _json["currencyId"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("idDimensionValue")) {
+      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+    }
+    if (_json.containsKey("inpageTagFormats")) {
+      inpageTagFormats = _json["inpageTagFormats"];
+    }
+    if (_json.containsKey("interstitialTagFormats")) {
+      interstitialTagFormats = _json["interstitialTagFormats"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("parentId")) {
+      parentId = _json["parentId"];
+    }
+    if (_json.containsKey("settings")) {
+      settings = new DirectorySiteSettings.fromJson(_json["settings"]);
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (contactAssignments != null) {
+      _json["contactAssignments"] = contactAssignments.map((value) => (value).toJson()).toList();
+    }
+    if (countryId != null) {
+      _json["countryId"] = countryId;
+    }
+    if (currencyId != null) {
+      _json["currencyId"] = currencyId;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (idDimensionValue != null) {
+      _json["idDimensionValue"] = (idDimensionValue).toJson();
+    }
+    if (inpageTagFormats != null) {
+      _json["inpageTagFormats"] = inpageTagFormats;
+    }
+    if (interstitialTagFormats != null) {
+      _json["interstitialTagFormats"] = interstitialTagFormats;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (parentId != null) {
+      _json["parentId"] = parentId;
+    }
+    if (settings != null) {
+      _json["settings"] = (settings).toJson();
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class DirectorySiteContact {
+  /** Email address of this directory site contact. */
+  core.String email;
+
+  /** First name of this directory site contact. */
+  core.String firstName;
+
+  /**
+   * ID of this directory site contact. This is a read-only, auto-generated
+   * field.
+   */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#directorySiteContact".
+   */
+  core.String kind;
+
+  /** Last name of this directory site contact. */
+  core.String lastName;
+
+  /**
+   * Directory site contact role.
+   * Possible string values are:
+   * - "ADMIN"
+   * - "EDIT"
+   * - "VIEW"
+   */
+  core.String role;
+
+  /**
+   * Directory site contact type.
+   * Possible string values are:
+   * - "BILLING"
+   * - "OTHER"
+   * - "SALES"
+   * - "TECHNICAL"
+   */
+  core.String type;
+
+
+  DirectorySiteContact();
+
+  DirectorySiteContact.fromJson(core.Map _json) {
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("firstName")) {
+      firstName = _json["firstName"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("lastName")) {
+      lastName = _json["lastName"];
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (firstName != null) {
+      _json["firstName"] = firstName;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (lastName != null) {
+      _json["lastName"] = lastName;
+    }
+    if (role != null) {
+      _json["role"] = role;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+
+/** Directory Site Contact Assignment */
+class DirectorySiteContactAssignment {
+  /**
+   * ID of this directory site contact. This is a read-only, auto-generated
+   * field.
+   */
+  core.String contactId;
+
+  /**
+   * Visibility of this directory site contact assignment. When set to PUBLIC
+   * this contact assignment is visible to all account and agency users; when
+   * set to PRIVATE it is visible only to the site.
+   * Possible string values are:
+   * - "PRIVATE"
+   * - "PUBLIC"
+   */
+  core.String visibility;
+
+
+  DirectorySiteContactAssignment();
+
+  DirectorySiteContactAssignment.fromJson(core.Map _json) {
+    if (_json.containsKey("contactId")) {
+      contactId = _json["contactId"];
+    }
+    if (_json.containsKey("visibility")) {
+      visibility = _json["visibility"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (contactId != null) {
+      _json["contactId"] = contactId;
+    }
+    if (visibility != null) {
+      _json["visibility"] = visibility;
+    }
+    return _json;
+  }
+}
+
+
+/** Directory Site Contact List Response */
+class DirectorySiteContactsListResponse {
+  /** Directory site contact collection */
+  core.List<DirectorySiteContact> directorySiteContacts;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#directorySiteContactsListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  DirectorySiteContactsListResponse();
+
+  DirectorySiteContactsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("directorySiteContacts")) {
+      directorySiteContacts = _json["directorySiteContacts"].map((value) => new DirectorySiteContact.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (directorySiteContacts != null) {
+      _json["directorySiteContacts"] = directorySiteContacts.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Directory Site Settings */
+class DirectorySiteSettings {
+  /** Whether this directory site has disabled active view creatives. */
+  core.bool activeViewOptOut;
+
+  /** Directory site DFP settings. */
+  DfpSettings dfpSettings;
+
+  /** Whether this site accepts in-stream video ads. */
+  core.bool instreamVideoPlacementAccepted;
+
+  /** Whether this site accepts interstitial ads. */
+  core.bool interstitialPlacementAccepted;
+
+  /** Whether this directory site has disabled Nielsen OCR reach ratings. */
+  core.bool nielsenOcrOptOut;
+
+  /**
+   * Whether this directory site has disabled generation of Verification tags.
+   */
+  core.bool verificationTagOptOut;
+
+  /**
+   * Whether this directory site has disabled active view for in-stream video
+   * creatives.
+   */
+  core.bool videoActiveViewOptOut;
+
+
+  DirectorySiteSettings();
+
+  DirectorySiteSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("activeViewOptOut")) {
+      activeViewOptOut = _json["activeViewOptOut"];
+    }
+    if (_json.containsKey("dfp_settings")) {
+      dfpSettings = new DfpSettings.fromJson(_json["dfp_settings"]);
+    }
+    if (_json.containsKey("instream_video_placement_accepted")) {
+      instreamVideoPlacementAccepted = _json["instream_video_placement_accepted"];
+    }
+    if (_json.containsKey("interstitialPlacementAccepted")) {
+      interstitialPlacementAccepted = _json["interstitialPlacementAccepted"];
+    }
+    if (_json.containsKey("nielsenOcrOptOut")) {
+      nielsenOcrOptOut = _json["nielsenOcrOptOut"];
+    }
+    if (_json.containsKey("verificationTagOptOut")) {
+      verificationTagOptOut = _json["verificationTagOptOut"];
+    }
+    if (_json.containsKey("videoActiveViewOptOut")) {
+      videoActiveViewOptOut = _json["videoActiveViewOptOut"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (activeViewOptOut != null) {
+      _json["activeViewOptOut"] = activeViewOptOut;
+    }
+    if (dfpSettings != null) {
+      _json["dfp_settings"] = (dfpSettings).toJson();
+    }
+    if (instreamVideoPlacementAccepted != null) {
+      _json["instream_video_placement_accepted"] = instreamVideoPlacementAccepted;
+    }
+    if (interstitialPlacementAccepted != null) {
+      _json["interstitialPlacementAccepted"] = interstitialPlacementAccepted;
+    }
+    if (nielsenOcrOptOut != null) {
+      _json["nielsenOcrOptOut"] = nielsenOcrOptOut;
+    }
+    if (verificationTagOptOut != null) {
+      _json["verificationTagOptOut"] = verificationTagOptOut;
+    }
+    if (videoActiveViewOptOut != null) {
+      _json["videoActiveViewOptOut"] = videoActiveViewOptOut;
+    }
+    return _json;
+  }
+}
+
+
+/** Directory Site List Response */
+class DirectorySitesListResponse {
+  /** Directory site collection */
+  core.List<DirectorySite> directorySites;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#directorySitesListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  DirectorySitesListResponse();
+
+  DirectorySitesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("directorySites")) {
+      directorySites = _json["directorySites"].map((value) => new DirectorySite.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (directorySites != null) {
+      _json["directorySites"] = directorySites.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class EventTag {
+  /** Account ID of this event tag. This field can be left blank. */
+  core.String accountId;
+
+  /**
+   * Advertiser ID of this event tag. This field or the campaignId field is
+   * required on creation.
+   */
+  core.String advertiserId;
+
+  /**
+   * Dimension value for the ID of the advertiser. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue advertiserIdDimensionValue;
+
+  /**
+   * Campaign ID of this event tag. This field or the advertiserId field is
+   * required on creation.
+   */
+  core.String campaignId;
+
+  /**
+   * Dimension value for the ID of the campaign. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue campaignIdDimensionValue;
+
+  /**
+   * Whether this event tag should be automatically enabled for all of the
+   * advertiser's campaigns and ads.
+   */
+  core.bool enabledByDefault;
+
+  /** ID of this event tag. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#eventTag".
+   */
+  core.String kind;
+
+  /** Name of this event tag. */
+  core.String name;
+
+  /**
+   * Site filter type for this event tag. If no type is specified then the event
+   * tag will be applied to all sites.
+   * Possible string values are:
+   * - "BLACKLIST"
+   * - "WHITELIST"
+   */
+  core.String siteFilterType;
+
+  /**
+   * Filter list of site ids associated with this event tag. The siteFilterType
+   * determines if this is a whitelist or blacklist filter.
+   */
+  core.List<core.String> siteIds;
+
+  /** Whether this tag is ssl compliant or not. */
+  core.bool sslCompliant;
+
+  /**
+   * Whether this event tag should fire at all in any case.
+   * Possible string values are:
+   * - "DISABLED"
+   * - "ENABLED"
+   */
+  core.String status;
+
+  /** Subaccount ID of this event tag. This field can be left blank. */
+  core.String subaccountId;
+
+  /**
+   * Event tag type. Can be used to specify whether to use a third-party pixel,
+   * a third-party JavaScript URL, or a third-party click-through URL for either
+   * impression or click tracking. This field is required on creation.
+   * Possible string values are:
+   * - "CLICK_THROUGH_EVENT_TAG"
+   * - "IMPRESSION_IMAGE_EVENT_TAG"
+   * - "IMPRESSION_JAVASCRIPT_EVENT_TAG"
+   */
+  core.String type;
+
+  /**
+   * Payload URL for this event tag. The URL on a click-through should have a
+   * landing page URL appended to the end of it. This field is required on
+   * creation.
+   */
+  core.String url;
+
+  /**
+   * Number of times the landing page URL should be URL-escaped before being
+   * appended to the click-through event tag URL. Only applies to click-through
+   * event tags as specified by the event tag type.
+   */
+  core.int urlEscapeLevels;
+
+
+  EventTag();
+
+  EventTag.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("advertiserId")) {
+      advertiserId = _json["advertiserId"];
+    }
+    if (_json.containsKey("advertiserIdDimensionValue")) {
+      advertiserIdDimensionValue = new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+    }
+    if (_json.containsKey("campaignId")) {
+      campaignId = _json["campaignId"];
+    }
+    if (_json.containsKey("campaignIdDimensionValue")) {
+      campaignIdDimensionValue = new DimensionValue.fromJson(_json["campaignIdDimensionValue"]);
+    }
+    if (_json.containsKey("enabledByDefault")) {
+      enabledByDefault = _json["enabledByDefault"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("siteFilterType")) {
+      siteFilterType = _json["siteFilterType"];
+    }
+    if (_json.containsKey("siteIds")) {
+      siteIds = _json["siteIds"];
+    }
+    if (_json.containsKey("sslCompliant")) {
+      sslCompliant = _json["sslCompliant"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+    if (_json.containsKey("urlEscapeLevels")) {
+      urlEscapeLevels = _json["urlEscapeLevels"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (advertiserId != null) {
+      _json["advertiserId"] = advertiserId;
+    }
+    if (advertiserIdDimensionValue != null) {
+      _json["advertiserIdDimensionValue"] = (advertiserIdDimensionValue).toJson();
+    }
+    if (campaignId != null) {
+      _json["campaignId"] = campaignId;
+    }
+    if (campaignIdDimensionValue != null) {
+      _json["campaignIdDimensionValue"] = (campaignIdDimensionValue).toJson();
+    }
+    if (enabledByDefault != null) {
+      _json["enabledByDefault"] = enabledByDefault;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (siteFilterType != null) {
+      _json["siteFilterType"] = siteFilterType;
+    }
+    if (siteIds != null) {
+      _json["siteIds"] = siteIds;
+    }
+    if (sslCompliant != null) {
+      _json["sslCompliant"] = sslCompliant;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    if (urlEscapeLevels != null) {
+      _json["urlEscapeLevels"] = urlEscapeLevels;
+    }
+    return _json;
+  }
+}
+
+
+/** Event tag override information. */
+class EventTagOverride {
+  /** Whether this override is enabled. */
+  core.bool enabled;
+
+  /**
+   * ID of this event tag override. This is always auto-generated upon creation.
+   */
+  core.String id;
+
+
+  EventTagOverride();
+
+  EventTagOverride.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    return _json;
+  }
+}
+
+
+/** Event Tag List Response */
+class EventTagsListResponse {
+  /** Event tag collection */
+  core.List<EventTag> eventTags;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#eventTagsListResponse".
+   */
+  core.String kind;
+
+
+  EventTagsListResponse();
+
+  EventTagsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("eventTags")) {
+      eventTags = _json["eventTags"].map((value) => new EventTag.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (eventTags != null) {
+      _json["eventTags"] = eventTags.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** The URLs where the completed report file can be downloaded. */
+class FileUrls {
+  /** The URL for downloading the report data through the API. */
+  core.String apiUrl;
+
+  /** The URL for downloading the report data through a browser. */
+  core.String browserUrl;
+
+
+  FileUrls();
+
+  FileUrls.fromJson(core.Map _json) {
+    if (_json.containsKey("apiUrl")) {
+      apiUrl = _json["apiUrl"];
+    }
+    if (_json.containsKey("browserUrl")) {
+      browserUrl = _json["browserUrl"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (apiUrl != null) {
+      _json["apiUrl"] = apiUrl;
+    }
+    if (browserUrl != null) {
+      _json["browserUrl"] = browserUrl;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * Represents a File resource. A file contains the metadata for a report run. It
+ * shows the status of the run and holds the URLs to the generated report data
+ * if the run is finished and the status is "REPORT_AVAILABLE".
+ */
+class File {
+  /**
+   * The date range for which the file has report data. The date range will
+   * always be the absolute date range for which the report is run.
+   */
+  DateRange dateRange;
+
+  /** The eTag of this response for caching purposes. */
+  core.String etag;
+
+  /** The filename of the file. */
+  core.String fileName;
+
+  /**
+   * The output format of the report. Only available once the file is available.
+   * Possible string values are:
+   * - "CSV"
+   * - "EXCEL"
+   */
+  core.String format;
+
+  /** The unique ID of this report file. */
+  core.String id;
+
+  /** The kind of resource this is, in this case dfareporting#file. */
+  core.String kind;
+
+  /**
+   * The timestamp in milliseconds since epoch when this file was last modified.
+   */
+  core.String lastModifiedTime;
+
+  /** The ID of the report this file was generated from. */
+  core.String reportId;
+
+  /**
+   * The status of the report file.
+   * Possible string values are:
+   * - "CANCELLED"
+   * - "FAILED"
+   * - "PROCESSING"
+   * - "REPORT_AVAILABLE"
+   */
+  core.String status;
+
+  /** The URLs where the completed report file can be downloaded. */
+  FileUrls urls;
+
+
+  File();
+
+  File.fromJson(core.Map _json) {
+    if (_json.containsKey("dateRange")) {
+      dateRange = new DateRange.fromJson(_json["dateRange"]);
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("fileName")) {
+      fileName = _json["fileName"];
+    }
+    if (_json.containsKey("format")) {
+      format = _json["format"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("lastModifiedTime")) {
+      lastModifiedTime = _json["lastModifiedTime"];
+    }
+    if (_json.containsKey("reportId")) {
+      reportId = _json["reportId"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("urls")) {
+      urls = new FileUrls.fromJson(_json["urls"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dateRange != null) {
+      _json["dateRange"] = (dateRange).toJson();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (fileName != null) {
+      _json["fileName"] = fileName;
+    }
+    if (format != null) {
+      _json["format"] = format;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (lastModifiedTime != null) {
+      _json["lastModifiedTime"] = lastModifiedTime;
+    }
+    if (reportId != null) {
+      _json["reportId"] = reportId;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (urls != null) {
+      _json["urls"] = (urls).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Represents the list of File resources. */
+class FileList {
+  /** The eTag of this response for caching purposes. */
+  core.String etag;
+
+  /** The files returned in this response. */
+  core.List<File> items;
+
+  /** The kind of list this is, in this case dfareporting#fileList. */
+  core.String kind;
+
+  /**
+   * Continuation token used to page through files. To retrieve the next page of
+   * results, set the next request's "pageToken" to the value of this field. The
+   * page token is only valid for a limited amount of time and should not be
+   * persisted.
+   */
+  core.String nextPageToken;
+
+
+  FileList();
+
+  FileList.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new File.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Floodlight Activity GenerateTag Response */
+class FloodlightActivitiesGenerateTagResponse {
+  /** Generated tag for this floodlight activity. */
+  core.String floodlightActivityTag;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#floodlightActivitiesGenerateTagResponse".
+   */
+  core.String kind;
+
+
+  FloodlightActivitiesGenerateTagResponse();
+
+  FloodlightActivitiesGenerateTagResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("floodlightActivityTag")) {
+      floodlightActivityTag = _json["floodlightActivityTag"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (floodlightActivityTag != null) {
+      _json["floodlightActivityTag"] = floodlightActivityTag;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Floodlight Activity List Response */
+class FloodlightActivitiesListResponse {
+  /** Floodlight activity collection */
+  core.List<FloodlightActivity> floodlightActivities;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#floodlightActivitiesListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  FloodlightActivitiesListResponse();
+
+  FloodlightActivitiesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("floodlightActivities")) {
+      floodlightActivities = _json["floodlightActivities"].map((value) => new FloodlightActivity.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (floodlightActivities != null) {
+      _json["floodlightActivities"] = floodlightActivities.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class FloodlightActivity {
+  /** Account ID of this floodlight activity. */
+  core.String accountId;
+
+  /**
+   * Advertiser ID of this floodlight activity. When creating or updating an
+   * activity, it could be blank in which case the value will be copied over
+   * either from the floodlight activity group's advertiser or the existing
+   * activity's advertiser.
+   */
+  core.String advertiserId;
+
+  /**
+   * Dimension value for the ID of the advertiser. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue advertiserIdDimensionValue;
+
+  /**
+   * Code type used for cache busting in the generated tag. This is only
+   * applicable for old spotlight tags. New floodlight tags don't really need
+   * this as they are always JavaScript.
+   * Possible string values are:
+   * - "ACTIVE_SERVER_PAGE"
+   * - "COLD_FUSION"
+   * - "JAVASCRIPT"
+   * - "JSP"
+   * - "PHP"
+   */
+  core.String cacheBustingType;
+
+  /**
+   * Counting methods for conversions for floodlight activity.
+   * Possible string values are:
+   * - "ITEMS_SOLD_COUNTING"
+   * - "SESSION_COUNTING"
+   * - "STANDARD_COUNTING"
+   * - "TRANSACTIONS_COUNTING"
+   * - "UNIQUE_COUNTING"
+   */
+  core.String countingMethod;
+
+  /** Dynamic floodlight tags. */
+  core.List<FloodlightActivityDynamicTag> defaultTags;
+
+  /** URL where this tag will be deployed. */
+  core.String expectedUrl;
+
+  /** Floodlight activity group ID of this floodlight activity. */
+  core.String floodlightActivityGroupId;
+
+  /**
+   * The name of the associated floodlight activity group. This is a read-only
+   * field.
+   */
+  core.String floodlightActivityGroupName;
+
+  /**
+   * The tag string of the associated floodlight activity group. This is a
+   * read-only field.
+   */
+  core.String floodlightActivityGroupTagString;
+
+  /**
+   * The type of the associated floodlight activity group. This is a read-only
+   * field.
+   * Possible string values are:
+   * - "COUNTER"
+   * - "SALE"
+   */
+  core.String floodlightActivityGroupType;
+
+  /** Floodlight configuration ID of this floodlight activity. */
+  core.String floodlightConfigurationId;
+
+  /**
+   * Dimension value for the ID of the floodlight configuration. This is a
+   * read-only, auto-generated field.
+   */
+  DimensionValue floodlightConfigurationIdDimensionValue;
+
+  /** Whether this activity is archived. */
+  core.bool hidden;
+
+  /**
+   * ID of this floodlight activity. This is a read-only, auto-generated field.
+   */
+  core.String id;
+
+  /**
+   * Dimension value for the ID of this floodlight activity.This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue idDimensionValue;
+
+  /** Enable image tag for this activity. */
+  core.bool imageTagEnabled;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#floodlightActivity".
+   */
+  core.String kind;
+
+  /** Name of this floodlight activity. */
+  core.String name;
+
+  /** General notes or implementation instructions for the tag. */
+  core.String notes;
+
+  /** Publisher dynamic floodlight tags. */
+  core.List<FloodlightActivityPublisherDynamicTag> publisherTags;
+
+  /** Whether this tag should use SSL. */
+  core.bool secure;
+
+  /**
+   * Whether the floodlight activity is ssl compliant. This is a read-only
+   * field, its value detected by the system from tag.
+   */
+  core.bool sslCompliant;
+
+  /** Indicates floodlight activity must be compliant. */
+  core.bool sslRequired;
+
+  /** Subaccount ID of this floodlight activity. */
+  core.String subaccountId;
+
+  /**
+   * Tag format type for floodlight activity. If left blank, tag format will
+   * default to HTML.
+   * Possible string values are:
+   * - "HTML"
+   * - "XHTML"
+   */
+  core.String tagFormat;
+
+  /**
+   * This key-value identifies the floodlight activity. Use a custom value or
+   * leave blank to use the default value based on the activity name. Once you
+   * save the floodlight activity, this value is final. You can't change it
+   * later.
+   */
+  core.String tagString;
+
+  /**
+   * List of user defined variables used by this conversion tag. These map to
+   * the u[1-20]=" in the tags. Each of these can have a user defined type.
+   *
+   * Acceptable values are:
+   * - "U1"
+   * - "U2"
+   * - "U3"
+   * - "U4"
+   * - "U5"
+   * - "U6"
+   * - "U7"
+   * - "U8"
+   * - "U9"
+   * - "U10"
+   * - "U11"
+   * - "U12"
+   * - "U13"
+   * - "U14"
+   * - "U15"
+   * - "U16"
+   * - "U17"
+   * - "U18"
+   * - "U19"
+   * - "U20"
+   */
+  core.List<core.String> userDefinedVariableTypes;
+
+
+  FloodlightActivity();
+
+  FloodlightActivity.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("advertiserId")) {
+      advertiserId = _json["advertiserId"];
+    }
+    if (_json.containsKey("advertiserIdDimensionValue")) {
+      advertiserIdDimensionValue = new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+    }
+    if (_json.containsKey("cacheBustingType")) {
+      cacheBustingType = _json["cacheBustingType"];
+    }
+    if (_json.containsKey("countingMethod")) {
+      countingMethod = _json["countingMethod"];
+    }
+    if (_json.containsKey("defaultTags")) {
+      defaultTags = _json["defaultTags"].map((value) => new FloodlightActivityDynamicTag.fromJson(value)).toList();
+    }
+    if (_json.containsKey("expectedUrl")) {
+      expectedUrl = _json["expectedUrl"];
+    }
+    if (_json.containsKey("floodlightActivityGroupId")) {
+      floodlightActivityGroupId = _json["floodlightActivityGroupId"];
+    }
+    if (_json.containsKey("floodlightActivityGroupName")) {
+      floodlightActivityGroupName = _json["floodlightActivityGroupName"];
+    }
+    if (_json.containsKey("floodlightActivityGroupTagString")) {
+      floodlightActivityGroupTagString = _json["floodlightActivityGroupTagString"];
+    }
+    if (_json.containsKey("floodlightActivityGroupType")) {
+      floodlightActivityGroupType = _json["floodlightActivityGroupType"];
+    }
+    if (_json.containsKey("floodlightConfigurationId")) {
+      floodlightConfigurationId = _json["floodlightConfigurationId"];
+    }
+    if (_json.containsKey("floodlightConfigurationIdDimensionValue")) {
+      floodlightConfigurationIdDimensionValue = new DimensionValue.fromJson(_json["floodlightConfigurationIdDimensionValue"]);
+    }
+    if (_json.containsKey("hidden")) {
+      hidden = _json["hidden"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("idDimensionValue")) {
+      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+    }
+    if (_json.containsKey("imageTagEnabled")) {
+      imageTagEnabled = _json["imageTagEnabled"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("notes")) {
+      notes = _json["notes"];
+    }
+    if (_json.containsKey("publisherTags")) {
+      publisherTags = _json["publisherTags"].map((value) => new FloodlightActivityPublisherDynamicTag.fromJson(value)).toList();
+    }
+    if (_json.containsKey("secure")) {
+      secure = _json["secure"];
+    }
+    if (_json.containsKey("sslCompliant")) {
+      sslCompliant = _json["sslCompliant"];
+    }
+    if (_json.containsKey("sslRequired")) {
+      sslRequired = _json["sslRequired"];
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+    if (_json.containsKey("tagFormat")) {
+      tagFormat = _json["tagFormat"];
+    }
+    if (_json.containsKey("tagString")) {
+      tagString = _json["tagString"];
+    }
+    if (_json.containsKey("userDefinedVariableTypes")) {
+      userDefinedVariableTypes = _json["userDefinedVariableTypes"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (advertiserId != null) {
+      _json["advertiserId"] = advertiserId;
+    }
+    if (advertiserIdDimensionValue != null) {
+      _json["advertiserIdDimensionValue"] = (advertiserIdDimensionValue).toJson();
+    }
+    if (cacheBustingType != null) {
+      _json["cacheBustingType"] = cacheBustingType;
+    }
+    if (countingMethod != null) {
+      _json["countingMethod"] = countingMethod;
+    }
+    if (defaultTags != null) {
+      _json["defaultTags"] = defaultTags.map((value) => (value).toJson()).toList();
+    }
+    if (expectedUrl != null) {
+      _json["expectedUrl"] = expectedUrl;
+    }
+    if (floodlightActivityGroupId != null) {
+      _json["floodlightActivityGroupId"] = floodlightActivityGroupId;
+    }
+    if (floodlightActivityGroupName != null) {
+      _json["floodlightActivityGroupName"] = floodlightActivityGroupName;
+    }
+    if (floodlightActivityGroupTagString != null) {
+      _json["floodlightActivityGroupTagString"] = floodlightActivityGroupTagString;
+    }
+    if (floodlightActivityGroupType != null) {
+      _json["floodlightActivityGroupType"] = floodlightActivityGroupType;
+    }
+    if (floodlightConfigurationId != null) {
+      _json["floodlightConfigurationId"] = floodlightConfigurationId;
+    }
+    if (floodlightConfigurationIdDimensionValue != null) {
+      _json["floodlightConfigurationIdDimensionValue"] = (floodlightConfigurationIdDimensionValue).toJson();
+    }
+    if (hidden != null) {
+      _json["hidden"] = hidden;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (idDimensionValue != null) {
+      _json["idDimensionValue"] = (idDimensionValue).toJson();
+    }
+    if (imageTagEnabled != null) {
+      _json["imageTagEnabled"] = imageTagEnabled;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (notes != null) {
+      _json["notes"] = notes;
+    }
+    if (publisherTags != null) {
+      _json["publisherTags"] = publisherTags.map((value) => (value).toJson()).toList();
+    }
+    if (secure != null) {
+      _json["secure"] = secure;
+    }
+    if (sslCompliant != null) {
+      _json["sslCompliant"] = sslCompliant;
+    }
+    if (sslRequired != null) {
+      _json["sslRequired"] = sslRequired;
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    if (tagFormat != null) {
+      _json["tagFormat"] = tagFormat;
+    }
+    if (tagString != null) {
+      _json["tagString"] = tagString;
+    }
+    if (userDefinedVariableTypes != null) {
+      _json["userDefinedVariableTypes"] = userDefinedVariableTypes;
+    }
+    return _json;
+  }
+}
+
+
+/** Dynamic Tag */
+class FloodlightActivityDynamicTag {
+  /** ID of this dynamic tag. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /** Name of this tag. */
+  core.String name;
+
+  /** Tag code. */
+  core.String tag;
+
+
+  FloodlightActivityDynamicTag();
+
+  FloodlightActivityDynamicTag.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("tag")) {
+      tag = _json["tag"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (tag != null) {
+      _json["tag"] = tag;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class FloodlightActivityGroup {
+  /** Account ID of this floodlight activity group. */
+  core.String accountId;
+
+  /**
+   * Advertiser ID of this floodlight activity group. When creating or updating
+   * an activity group, it could be blank in which case the value will be copied
+   * over either from floodlight configuration's advertiser or existing activity
+   * group's advertiser.
+   */
+  core.String advertiserId;
+
+  /**
+   * Dimension value for the ID of the advertiser. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue advertiserIdDimensionValue;
+
+  /** Floodlight configuration ID of this floodlight activity group. */
+  core.String floodlightConfigurationId;
+
+  /**
+   * Dimension value for the ID of the floodlight configuration. This is a
+   * read-only, auto-generated field.
+   */
+  DimensionValue floodlightConfigurationIdDimensionValue;
+
+  /**
+   * ID of this floodlight activity group. This is a read-only, auto-generated
+   * field.
+   */
+  core.String id;
+
+  /**
+   * Dimension value for the ID of this floodlight activity group. This is a
+   * read-only, auto-generated field.
+   */
+  DimensionValue idDimensionValue;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#floodlightActivityGroup".
+   */
+  core.String kind;
+
+  /** Name of this floodlight activity group. */
+  core.String name;
+
+  /** Subaccount ID of this floodlight activity group. */
+  core.String subaccountId;
+
+  /**
+   * The value of the type= parameter in the floodlight tag, which the ad
+   * servers use to identify the activity group that the activity belongs to.
+   * This is optional; if empty, a new tag string will be generated for you.
+   * This string must be 1 to 8 characters long, with valid characters being
+   * [a-z][A-Z][0-9][-][ _ ]. You cannot modify this property later.
+   */
+  core.String tagString;
+
+  /**
+   * The type of floodlight activity group. This can be set on creation only.
+   * Possible string values are:
+   * - "COUNTER"
+   * - "SALE"
+   */
+  core.String type;
+
+
+  FloodlightActivityGroup();
+
+  FloodlightActivityGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("advertiserId")) {
+      advertiserId = _json["advertiserId"];
+    }
+    if (_json.containsKey("advertiserIdDimensionValue")) {
+      advertiserIdDimensionValue = new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+    }
+    if (_json.containsKey("floodlightConfigurationId")) {
+      floodlightConfigurationId = _json["floodlightConfigurationId"];
+    }
+    if (_json.containsKey("floodlightConfigurationIdDimensionValue")) {
+      floodlightConfigurationIdDimensionValue = new DimensionValue.fromJson(_json["floodlightConfigurationIdDimensionValue"]);
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("idDimensionValue")) {
+      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+    if (_json.containsKey("tagString")) {
+      tagString = _json["tagString"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (advertiserId != null) {
+      _json["advertiserId"] = advertiserId;
+    }
+    if (advertiserIdDimensionValue != null) {
+      _json["advertiserIdDimensionValue"] = (advertiserIdDimensionValue).toJson();
+    }
+    if (floodlightConfigurationId != null) {
+      _json["floodlightConfigurationId"] = floodlightConfigurationId;
+    }
+    if (floodlightConfigurationIdDimensionValue != null) {
+      _json["floodlightConfigurationIdDimensionValue"] = (floodlightConfigurationIdDimensionValue).toJson();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (idDimensionValue != null) {
+      _json["idDimensionValue"] = (idDimensionValue).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    if (tagString != null) {
+      _json["tagString"] = tagString;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+
+/** Floodlight Activity Group List Response */
+class FloodlightActivityGroupsListResponse {
+  /** Floodlight activity group collection */
+  core.List<FloodlightActivityGroup> floodlightActivityGroups;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#floodlightActivityGroupsListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+
+  FloodlightActivityGroupsListResponse();
+
+  FloodlightActivityGroupsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("floodlightActivityGroups")) {
+      floodlightActivityGroups = _json["floodlightActivityGroups"].map((value) => new FloodlightActivityGroup.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (floodlightActivityGroups != null) {
+      _json["floodlightActivityGroups"] = floodlightActivityGroups.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Publisher Dynamic Tag */
+class FloodlightActivityPublisherDynamicTag {
+  /**
+   * Flag to indicate whether this tag is applicable only for click-throughs.
+   */
+  core.bool clickThrough;
+
+  /**
+   * Directory Site ID of this dynamic tag. This is an alternate write-only
+   * field that can be used as an alternate siteId field. On retrieval only the
+   * siteId field will be populated.
+   */
+  core.String directorySiteId;
+
+  /** Dynamic floodlight tag. */
+  FloodlightActivityDynamicTag dynamicTag;
+
+  /** Site ID of this dynamic tag. */
+  core.String siteId;
+
+  /**
+   * Dimension value for the ID of the site. This is a read-only, auto-generated
+   * field.
+   */
+  DimensionValue siteIdDimensionValue;
+
+  /**
+   * Flag to indicate whether this tag is applicable only for view-throughs.
+   */
+  core.bool viewThrough;
+
+
+  FloodlightActivityPublisherDynamicTag();
+
+  FloodlightActivityPublisherDynamicTag.fromJson(core.Map _json) {
+    if (_json.containsKey("clickThrough")) {
+      clickThrough = _json["clickThrough"];
+    }
+    if (_json.containsKey("directorySiteId")) {
+      directorySiteId = _json["directorySiteId"];
+    }
+    if (_json.containsKey("dynamicTag")) {
+      dynamicTag = new FloodlightActivityDynamicTag.fromJson(_json["dynamicTag"]);
+    }
+    if (_json.containsKey("siteId")) {
+      siteId = _json["siteId"];
+    }
+    if (_json.containsKey("siteIdDimensionValue")) {
+      siteIdDimensionValue = new DimensionValue.fromJson(_json["siteIdDimensionValue"]);
+    }
+    if (_json.containsKey("viewThrough")) {
+      viewThrough = _json["viewThrough"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (clickThrough != null) {
+      _json["clickThrough"] = clickThrough;
+    }
+    if (directorySiteId != null) {
+      _json["directorySiteId"] = directorySiteId;
+    }
+    if (dynamicTag != null) {
+      _json["dynamicTag"] = (dynamicTag).toJson();
+    }
+    if (siteId != null) {
+      _json["siteId"] = siteId;
+    }
+    if (siteIdDimensionValue != null) {
+      _json["siteIdDimensionValue"] = (siteIdDimensionValue).toJson();
+    }
+    if (viewThrough != null) {
+      _json["viewThrough"] = viewThrough;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class FloodlightConfiguration {
+  /** Account ID of this floodlight configuration. */
+  core.String accountId;
+
+  /**
+   * Advertiser ID of the parent advertiser of this floodlight configuration.
+   */
+  core.String advertiserId;
+
+  /**
+   * Dimension value for the ID of the advertiser. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue advertiserIdDimensionValue;
+
+  /**
+   * Indicates that the customer agrees on sharing data for the advertiser with
+   * Google Analytics.
+   */
+  core.bool analyticsDataSharingEnabled;
+
+  /**
+   * Enable this report to show detailed pathway information on up to 10 of the
+   * most recent ad exposures seen by a user before converting.
+   */
+  core.bool exposureToConversionEnabled;
+
+  /**
+   * Choose whether Sunday or Monday will be counted as the first day of the
+   * week in reports.
+   * Possible string values are:
+   * - "MONDAY"
+   * - "SUNDAY"
+   */
+  core.String firstDayOfWeek;
+
+  /**
+   * ID of this floodlight configuration. This is a read-only, auto-generated
+   * field.
+   */
+  core.String id;
+
+  /**
+   * Dimension value for the ID of this floodlight configuration. This is a
+   * read-only, auto-generated field.
+   */
+  DimensionValue idDimensionValue;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#floodlightConfiguration".
+   */
+  core.String kind;
+
+  /** Look-back window settings for this floodlight configuration. */
+  LookbackConfiguration lookbackConfiguration;
+
+  /**
+   * Types of attribution options for natural search conversions.
+   * Possible string values are:
+   * - "EXCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION"
+   * - "INCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION"
+   * - "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION"
+   */
+  core.String naturalSearchConversionAttributionOption;
+
+  /** Settings for DCM Omniture integration. */
+  OmnitureSettings omnitureSettings;
+
+  /**
+   * Indicates floodlight activities owned by this configuration must be
+   * compliant.
+   */
+  core.bool sslRequired;
+
+  /**
+   * List of standard variables enabled for this configuration.
+   *
+   * Acceptable values are:
+   * - "ORD"
+   * - "NUM"
+   */
+  core.List<core.String> standardVariableTypes;
+
+  /** Subaccount ID of this floodlight configuration. */
+  core.String subaccountId;
+
+  /** Configuration settings for dynamic and image floodlight tags. */
+  TagSettings tagSettings;
+
+  /** List of user defined variables enabled for this configuration. */
+  core.List<UserDefinedVariableConfiguration> userDefinedVariableConfigurations;
+
+
+  FloodlightConfiguration();
+
+  FloodlightConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("advertiserId")) {
+      advertiserId = _json["advertiserId"];
+    }
+    if (_json.containsKey("advertiserIdDimensionValue")) {
+      advertiserIdDimensionValue = new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+    }
+    if (_json.containsKey("analyticsDataSharingEnabled")) {
+      analyticsDataSharingEnabled = _json["analyticsDataSharingEnabled"];
+    }
+    if (_json.containsKey("exposureToConversionEnabled")) {
+      exposureToConversionEnabled = _json["exposureToConversionEnabled"];
+    }
+    if (_json.containsKey("firstDayOfWeek")) {
+      firstDayOfWeek = _json["firstDayOfWeek"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("idDimensionValue")) {
+      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("lookbackConfiguration")) {
+      lookbackConfiguration = new LookbackConfiguration.fromJson(_json["lookbackConfiguration"]);
+    }
+    if (_json.containsKey("naturalSearchConversionAttributionOption")) {
+      naturalSearchConversionAttributionOption = _json["naturalSearchConversionAttributionOption"];
+    }
+    if (_json.containsKey("omnitureSettings")) {
+      omnitureSettings = new OmnitureSettings.fromJson(_json["omnitureSettings"]);
+    }
+    if (_json.containsKey("sslRequired")) {
+      sslRequired = _json["sslRequired"];
+    }
+    if (_json.containsKey("standardVariableTypes")) {
+      standardVariableTypes = _json["standardVariableTypes"];
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+    if (_json.containsKey("tagSettings")) {
+      tagSettings = new TagSettings.fromJson(_json["tagSettings"]);
+    }
+    if (_json.containsKey("userDefinedVariableConfigurations")) {
+      userDefinedVariableConfigurations = _json["userDefinedVariableConfigurations"].map((value) => new UserDefinedVariableConfiguration.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (advertiserId != null) {
+      _json["advertiserId"] = advertiserId;
+    }
+    if (advertiserIdDimensionValue != null) {
+      _json["advertiserIdDimensionValue"] = (advertiserIdDimensionValue).toJson();
+    }
+    if (analyticsDataSharingEnabled != null) {
+      _json["analyticsDataSharingEnabled"] = analyticsDataSharingEnabled;
+    }
+    if (exposureToConversionEnabled != null) {
+      _json["exposureToConversionEnabled"] = exposureToConversionEnabled;
+    }
+    if (firstDayOfWeek != null) {
+      _json["firstDayOfWeek"] = firstDayOfWeek;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (idDimensionValue != null) {
+      _json["idDimensionValue"] = (idDimensionValue).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (lookbackConfiguration != null) {
+      _json["lookbackConfiguration"] = (lookbackConfiguration).toJson();
+    }
+    if (naturalSearchConversionAttributionOption != null) {
+      _json["naturalSearchConversionAttributionOption"] = naturalSearchConversionAttributionOption;
+    }
+    if (omnitureSettings != null) {
+      _json["omnitureSettings"] = (omnitureSettings).toJson();
+    }
+    if (sslRequired != null) {
+      _json["sslRequired"] = sslRequired;
+    }
+    if (standardVariableTypes != null) {
+      _json["standardVariableTypes"] = standardVariableTypes;
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    if (tagSettings != null) {
+      _json["tagSettings"] = (tagSettings).toJson();
+    }
+    if (userDefinedVariableConfigurations != null) {
+      _json["userDefinedVariableConfigurations"] = userDefinedVariableConfigurations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Floodlight Configuration List Response */
+class FloodlightConfigurationsListResponse {
+  /** Floodlight configuration collection */
+  core.List<FloodlightConfiguration> floodlightConfigurations;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#floodlightConfigurationsListResponse".
+   */
+  core.String kind;
+
+
+  FloodlightConfigurationsListResponse();
+
+  FloodlightConfigurationsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("floodlightConfigurations")) {
+      floodlightConfigurations = _json["floodlightConfigurations"].map((value) => new FloodlightConfiguration.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (floodlightConfigurations != null) {
+      _json["floodlightConfigurations"] = floodlightConfigurations.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * Represents fields that are compatible to be selected for a report of type
+ * "FlOODLIGHT".
+ */
+class FloodlightReportCompatibleFields {
+  /**
+   * Dimensions which are compatible to be selected in the "dimensionFilters"
+   * section of the report.
+   */
+  core.List<Dimension> dimensionFilters;
+
+  /**
+   * Dimensions which are compatible to be selected in the "dimensions" section
+   * of the report.
+   */
+  core.List<Dimension> dimensions;
+
+  /**
+   * The kind of resource this is, in this case
+   * dfareporting#floodlightReportCompatibleFields.
+   */
+  core.String kind;
+
+  /**
+   * Metrics which are compatible to be selected in the "metricNames" section of
+   * the report.
+   */
+  core.List<Metric> metrics;
+
+
+  FloodlightReportCompatibleFields();
+
+  FloodlightReportCompatibleFields.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensionFilters")) {
+      dimensionFilters = _json["dimensionFilters"].map((value) => new Dimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("dimensions")) {
+      dimensions = _json["dimensions"].map((value) => new Dimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("metrics")) {
+      metrics = _json["metrics"].map((value) => new Metric.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dimensionFilters != null) {
+      _json["dimensionFilters"] = dimensionFilters.map((value) => (value).toJson()).toList();
+    }
+    if (dimensions != null) {
+      _json["dimensions"] = dimensions.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (metrics != null) {
+      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Frequency Cap. */
+class FrequencyCap {
+  /**
+   * Duration of time, in seconds, for this frequency cap. The maximum duration
+   * is 90 days in seconds, or 7,776,000.
+   */
+  core.String duration;
+
+  /**
+   * Number of times an individual user can be served the ad within the
+   * specified duration. The maximum allowed is 15.
+   */
+  core.String impressions;
+
+
+  FrequencyCap();
+
+  FrequencyCap.fromJson(core.Map _json) {
+    if (_json.containsKey("duration")) {
+      duration = _json["duration"];
+    }
+    if (_json.containsKey("impressions")) {
+      impressions = _json["impressions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (duration != null) {
+      _json["duration"] = duration;
+    }
+    if (impressions != null) {
+      _json["impressions"] = impressions;
+    }
+    return _json;
+  }
+}
+
+
+/** FsCommand. */
+class FsCommand {
+  /**
+   * Distance from the left of the browser.Applicable when positionOption is
+   * DISTANCE_FROM_TOP_LEFT_CORNER.
+   */
+  core.int left;
+
+  /**
+   * Position in the browser where the window will open.
+   * Possible string values are:
+   * - "CENTERED"
+   * - "DISTANCE_FROM_TOP_LEFT_CORNER"
+   */
+  core.String positionOption;
+
+  /**
+   * Distance from the top of the browser. Applicable when positionOption is
+   * DISTANCE_FROM_TOP_LEFT_CORNER.
+   */
+  core.int top;
+
+  /** Height of the window. */
+  core.int windowHeight;
+
+  /** Width of the window. */
+  core.int windowWidth;
+
+
+  FsCommand();
+
+  FsCommand.fromJson(core.Map _json) {
+    if (_json.containsKey("left")) {
+      left = _json["left"];
+    }
+    if (_json.containsKey("positionOption")) {
+      positionOption = _json["positionOption"];
+    }
+    if (_json.containsKey("top")) {
+      top = _json["top"];
+    }
+    if (_json.containsKey("windowHeight")) {
+      windowHeight = _json["windowHeight"];
+    }
+    if (_json.containsKey("windowWidth")) {
+      windowWidth = _json["windowWidth"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (left != null) {
+      _json["left"] = left;
+    }
+    if (positionOption != null) {
+      _json["positionOption"] = positionOption;
+    }
+    if (top != null) {
+      _json["top"] = top;
+    }
+    if (windowHeight != null) {
+      _json["windowHeight"] = windowHeight;
+    }
+    if (windowWidth != null) {
+      _json["windowWidth"] = windowWidth;
+    }
+    return _json;
+  }
+}
+
+
+/** Geographical Targeting. */
+class GeoTargeting {
+  /**
+   * Cities to be targeted. If targeting a city, do not target or exclude the
+   * country of the city, and do not target the metro or region of the city.
+   */
+  core.List<City> cities;
+
+  /**
+   * Countries to be targeted or excluded from targeting, depending on the
+   * setting of the excludeCountries field. If targeting or excluding a country,
+   * do not target regions, cities, metros, or postal codes in the same country.
+   */
+  core.List<Country> countries;
+
+  /**
+   * If true, the countries field refers to countries which will be excluded
+   * from targeting. If false, the countries field refers to countries which are
+   * targeted.
+   */
+  core.bool excludeCountries;
+
+  /**
+   * Metros to be targeted. If targeting a metro, do not target or exclude the
+   * country of the metro.
+   */
+  core.List<Metro> metros;
+
+  /**
+   * Postal codes to be targeted. If targeting a postal code, do not target or
+   * exclude the country of the postal code.
+   */
+  core.List<PostalCode> postalCodes;
+
+  /**
+   * Regions to be targeted. If targeting a region, do not target or exclude the
+   * country of the region.
+   */
+  core.List<Region> regions;
+
+
+  GeoTargeting();
+
+  GeoTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("cities")) {
+      cities = _json["cities"].map((value) => new City.fromJson(value)).toList();
+    }
+    if (_json.containsKey("countries")) {
+      countries = _json["countries"].map((value) => new Country.fromJson(value)).toList();
+    }
+    if (_json.containsKey("excludeCountries")) {
+      excludeCountries = _json["excludeCountries"];
+    }
+    if (_json.containsKey("metros")) {
+      metros = _json["metros"].map((value) => new Metro.fromJson(value)).toList();
+    }
+    if (_json.containsKey("postalCodes")) {
+      postalCodes = _json["postalCodes"].map((value) => new PostalCode.fromJson(value)).toList();
+    }
+    if (_json.containsKey("regions")) {
+      regions = _json["regions"].map((value) => new Region.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (cities != null) {
+      _json["cities"] = cities.map((value) => (value).toJson()).toList();
+    }
+    if (countries != null) {
+      _json["countries"] = countries.map((value) => (value).toJson()).toList();
+    }
+    if (excludeCountries != null) {
+      _json["excludeCountries"] = excludeCountries;
+    }
+    if (metros != null) {
+      _json["metros"] = metros.map((value) => (value).toJson()).toList();
+    }
+    if (postalCodes != null) {
+      _json["postalCodes"] = postalCodes.map((value) => (value).toJson()).toList();
+    }
+    if (regions != null) {
+      _json["regions"] = regions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Key Value Targeting Expression. */
+class KeyValueTargetingExpression {
+  /** The keyword expression being targeted by the ad. */
+  core.String expression;
+
+
+  KeyValueTargetingExpression();
+
+  KeyValueTargetingExpression.fromJson(core.Map _json) {
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class LandingPage {
+  /**
+   * If true this landing page will be assigned to any ads or creatives that do
+   * not have a landing page assigned explicitly. You must have one and only one
+   * default landing page per campaign.
+   */
+  core.bool default_;
+
+  /**
+   * ID of this landing page. If left blank during campaign insert or update
+   * this would be considered a new landing page and a new ID will be
+   * auto-generated. Otherwise, this should refer to a valid landing page ID.
+   */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#landingPage".
+   */
+  core.String kind;
+
+  /** Name of this landing page. */
+  core.String name;
+
+  /** URL of this landing page. */
+  core.String url;
+
+
+  LandingPage();
+
+  LandingPage.fromJson(core.Map _json) {
+    if (_json.containsKey("default")) {
+      default_ = _json["default"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (default_ != null) {
+      _json["default"] = default_;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+
+/** Landing Page List Response */
+class LandingPagesListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#landingPagesListResponse".
+   */
+  core.String kind;
+
+  /** Landing page collection */
+  core.List<LandingPage> landingPages;
+
+
+  LandingPagesListResponse();
+
+  LandingPagesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("landingPages")) {
+      landingPages = _json["landingPages"].map((value) => new LandingPage.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (landingPages != null) {
+      _json["landingPages"] = landingPages.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Modification timestamp. */
+class LastModifiedInfo {
+  /** Timestamp of last change in milliseconds since epoch. */
+  core.String time;
+
+
+  LastModifiedInfo();
+
+  LastModifiedInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("time")) {
+      time = _json["time"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (time != null) {
+      _json["time"] = time;
+    }
+    return _json;
+  }
+}
+
+
+/** Remarketing List Targeting Expression. */
+class ListTargetingExpression {
+  /** The expression describing which lists are being targeted by the ad. */
+  core.String expression;
+
+
+  ListTargetingExpression();
+
+  ListTargetingExpression.fromJson(core.Map _json) {
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    return _json;
+  }
+}
+
+
+/** Lookback configuration settings. */
+class LookbackConfiguration {
+  /**
+   * Specify the lookback window, in days, from the last time a given user
+   * clicked on one of your ads. If you enter 0, clicks will not be considered
+   * as triggering events for floodlight tracking. If you leave this field
+   * blank, the default value for your account will be used.
+   */
+  core.int clickDuration;
+
+  /**
+   * Specify the lookback window, in days, from the last time a given user
+   * viewed one of your ads. If you enter 0, impressions will not be considered
+   * as triggering events for floodlight tracking. If you leave this field
+   * blank, the default value for your account will be used.
+   */
+  core.int postImpressionActivitiesDuration;
+
+
+  LookbackConfiguration();
+
+  LookbackConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("clickDuration")) {
+      clickDuration = _json["clickDuration"];
+    }
+    if (_json.containsKey("postImpressionActivitiesDuration")) {
+      postImpressionActivitiesDuration = _json["postImpressionActivitiesDuration"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (clickDuration != null) {
+      _json["clickDuration"] = clickDuration;
+    }
+    if (postImpressionActivitiesDuration != null) {
+      _json["postImpressionActivitiesDuration"] = postImpressionActivitiesDuration;
+    }
+    return _json;
+  }
+}
+
+
+/** Represents a metric. */
+class Metric {
+  /** The kind of resource this is, in this case dfareporting#metric. */
+  core.String kind;
+
+  /** The metric name, e.g. dfa:impressions */
+  core.String name;
+
+
+  Metric();
+
+  Metric.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Metro {
+  /** Country code of the country to which this metro region belongs. */
+  core.String countryCode;
+
+  /** DART ID of the country to which this metro region belongs. */
+  core.String countryDartId;
+
+  /** DART ID of this metro region. */
+  core.String dartId;
+
+  /**
+   * DMA ID of this metro region. This is the ID used for targeting and
+   * generating reports.
+   */
+  core.String dmaId;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#metro".
+   */
+  core.String kind;
+
+  /** Metro code of this metro region. */
+  core.String metroCode;
+
+  /** Name of this metro region. */
+  core.String name;
+
+
+  Metro();
+
+  Metro.fromJson(core.Map _json) {
+    if (_json.containsKey("countryCode")) {
+      countryCode = _json["countryCode"];
+    }
+    if (_json.containsKey("countryDartId")) {
+      countryDartId = _json["countryDartId"];
+    }
+    if (_json.containsKey("dartId")) {
+      dartId = _json["dartId"];
+    }
+    if (_json.containsKey("dmaId")) {
+      dmaId = _json["dmaId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("metroCode")) {
+      metroCode = _json["metroCode"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (countryCode != null) {
+      _json["countryCode"] = countryCode;
+    }
+    if (countryDartId != null) {
+      _json["countryDartId"] = countryDartId;
+    }
+    if (dartId != null) {
+      _json["dartId"] = dartId;
+    }
+    if (dmaId != null) {
+      _json["dmaId"] = dmaId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (metroCode != null) {
+      _json["metroCode"] = metroCode;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Metro List Response */
+class MetrosListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#metrosListResponse".
+   */
+  core.String kind;
+
+  /** Metro collection */
+  core.List<Metro> metros;
+
+
+  MetrosListResponse();
+
+  MetrosListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("metros")) {
+      metros = _json["metros"].map((value) => new Metro.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (metros != null) {
+      _json["metros"] = metros.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class MobileCarrier {
+  /** Country code of the country to which this mobile carrier belongs. */
+  core.String countryCode;
+
+  /** DART ID of the country to which this mobile carrier belongs. */
+  core.String countryDartId;
+
+  /** ID of this mobile carrier. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#mobileCarrier".
+   */
+  core.String kind;
+
+  /** Name of this mobile carrier. */
+  core.String name;
+
+
+  MobileCarrier();
+
+  MobileCarrier.fromJson(core.Map _json) {
+    if (_json.containsKey("countryCode")) {
+      countryCode = _json["countryCode"];
+    }
+    if (_json.containsKey("countryDartId")) {
+      countryDartId = _json["countryDartId"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (countryCode != null) {
+      _json["countryCode"] = countryCode;
+    }
+    if (countryDartId != null) {
+      _json["countryDartId"] = countryDartId;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Mobile Carrier List Response */
+class MobileCarriersListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#mobileCarriersListResponse".
+   */
+  core.String kind;
+
+  /** Mobile carrier collection */
+  core.List<MobileCarrier> mobileCarriers;
+
+
+  MobileCarriersListResponse();
+
+  MobileCarriersListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("mobileCarriers")) {
+      mobileCarriers = _json["mobileCarriers"].map((value) => new MobileCarrier.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (mobileCarriers != null) {
+      _json["mobileCarriers"] = mobileCarriers.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Object Filter. */
+class ObjectFilter {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#objectFilter".
+   */
+  core.String kind;
+
+  /**
+   * Applicable when status is ASSIGNED. The user has access to objects with
+   * these object IDs.
+   */
+  core.List<core.String> objectIds;
+
+  /**
+   * Status of the filter. NONE means the user has access to none of the
+   * objects. ALL means the user has access to all objects. ASSIGNED means the
+   * user has access to the objects with IDs in the objectIds list.
+   * Possible string values are:
+   * - "ALL"
+   * - "ASSIGNED"
+   * - "NONE"
+   */
+  core.String status;
+
+
+  ObjectFilter();
+
+  ObjectFilter.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("objectIds")) {
+      objectIds = _json["objectIds"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (objectIds != null) {
+      _json["objectIds"] = objectIds;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+
+/** Offset Position. */
+class OffsetPosition {
+  /** Offset distance from left side of an asset or a window. */
+  core.int left;
+
+  /** Offset distance from top side of an asset or a window. */
+  core.int top;
+
+
+  OffsetPosition();
+
+  OffsetPosition.fromJson(core.Map _json) {
+    if (_json.containsKey("left")) {
+      left = _json["left"];
+    }
+    if (_json.containsKey("top")) {
+      top = _json["top"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (left != null) {
+      _json["left"] = left;
+    }
+    if (top != null) {
+      _json["top"] = top;
+    }
+    return _json;
+  }
+}
+
+
+/** Omniture Integration Settings. */
+class OmnitureSettings {
+  /**
+   * Allows a user to indicate whether they will be sending placement cost data
+   * to Omniture. This property can be enable only when the "Omniture
+   * Integration" property is enabled.
+   */
+  core.bool omnitureCostDataEnabled;
+
+  /**
+   * Allows the user to integrate Omniture. This property can be enabled only
+   * when the "Advanced Ad Serving" account setting is enabled.
+   */
+  core.bool omnitureIntegrationEnabled;
+
+
+  OmnitureSettings();
+
+  OmnitureSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("omnitureCostDataEnabled")) {
+      omnitureCostDataEnabled = _json["omnitureCostDataEnabled"];
+    }
+    if (_json.containsKey("omnitureIntegrationEnabled")) {
+      omnitureIntegrationEnabled = _json["omnitureIntegrationEnabled"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (omnitureCostDataEnabled != null) {
+      _json["omnitureCostDataEnabled"] = omnitureCostDataEnabled;
+    }
+    if (omnitureIntegrationEnabled != null) {
+      _json["omnitureIntegrationEnabled"] = omnitureIntegrationEnabled;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class OperatingSystem {
+  /** DART ID of this operating system. This is the ID used for targeting. */
+  core.String dartId;
+
+  /** Whether this operating system is for desktop. */
+  core.bool desktop;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#operatingSystem".
+   */
+  core.String kind;
+
+  /** Whether this operating system is for mobile. */
+  core.bool mobile;
+
+  /** Name of this operating system. */
+  core.String name;
+
+
+  OperatingSystem();
+
+  OperatingSystem.fromJson(core.Map _json) {
+    if (_json.containsKey("dartId")) {
+      dartId = _json["dartId"];
+    }
+    if (_json.containsKey("desktop")) {
+      desktop = _json["desktop"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("mobile")) {
+      mobile = _json["mobile"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dartId != null) {
+      _json["dartId"] = dartId;
+    }
+    if (desktop != null) {
+      _json["desktop"] = desktop;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (mobile != null) {
+      _json["mobile"] = mobile;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class OperatingSystemVersion {
+  /** ID of this operating system version. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#operatingSystemVersion".
+   */
+  core.String kind;
+
+  /** Major version (left-most number) of this operating system version. */
+  core.String majorVersion;
+
+  /**
+   * Minor version (number after first dot on the left) of this operating system
+   * version.
+   */
+  core.String minorVersion;
+
+  /** Name of this operating system version. */
+  core.String name;
+
+  /** Operating system of this operating system version. */
+  OperatingSystem operatingSystem;
+
+
+  OperatingSystemVersion();
+
+  OperatingSystemVersion.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("majorVersion")) {
+      majorVersion = _json["majorVersion"];
+    }
+    if (_json.containsKey("minorVersion")) {
+      minorVersion = _json["minorVersion"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("operatingSystem")) {
+      operatingSystem = new OperatingSystem.fromJson(_json["operatingSystem"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (majorVersion != null) {
+      _json["majorVersion"] = majorVersion;
+    }
+    if (minorVersion != null) {
+      _json["minorVersion"] = minorVersion;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (operatingSystem != null) {
+      _json["operatingSystem"] = (operatingSystem).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Operating System Version List Response */
+class OperatingSystemVersionsListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#operatingSystemVersionsListResponse".
+   */
+  core.String kind;
+
+  /** Operating system version collection */
+  core.List<OperatingSystemVersion> operatingSystemVersions;
+
+
+  OperatingSystemVersionsListResponse();
+
+  OperatingSystemVersionsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("operatingSystemVersions")) {
+      operatingSystemVersions = _json["operatingSystemVersions"].map((value) => new OperatingSystemVersion.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (operatingSystemVersions != null) {
+      _json["operatingSystemVersions"] = operatingSystemVersions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Operating System List Response */
+class OperatingSystemsListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#operatingSystemsListResponse".
+   */
+  core.String kind;
+
+  /** Operating system collection */
+  core.List<OperatingSystem> operatingSystems;
+
+
+  OperatingSystemsListResponse();
+
+  OperatingSystemsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("operatingSystems")) {
+      operatingSystems = _json["operatingSystems"].map((value) => new OperatingSystem.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (operatingSystems != null) {
+      _json["operatingSystems"] = operatingSystems.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Creative optimization activity. */
+class OptimizationActivity {
+  /** Floodlight activity ID of this optimization activity. */
+  core.String floodlightActivityId;
+
+  /**
+   * Dimension value for the ID of the floodlight activity. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue floodlightActivityIdDimensionValue;
+
+  /**
+   * Weight associated with this optimization. Any number greater than one is
+   * acceptable. The weight assigned will be understood in proportion to the
+   * weights assigned to the other optimization activities.
+   */
+  core.int weight;
+
+
+  OptimizationActivity();
+
+  OptimizationActivity.fromJson(core.Map _json) {
+    if (_json.containsKey("floodlightActivityId")) {
+      floodlightActivityId = _json["floodlightActivityId"];
+    }
+    if (_json.containsKey("floodlightActivityIdDimensionValue")) {
+      floodlightActivityIdDimensionValue = new DimensionValue.fromJson(_json["floodlightActivityIdDimensionValue"]);
+    }
+    if (_json.containsKey("weight")) {
+      weight = _json["weight"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (floodlightActivityId != null) {
+      _json["floodlightActivityId"] = floodlightActivityId;
+    }
+    if (floodlightActivityIdDimensionValue != null) {
+      _json["floodlightActivityIdDimensionValue"] = (floodlightActivityIdDimensionValue).toJson();
+    }
+    if (weight != null) {
+      _json["weight"] = weight;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * Represents fields that are compatible to be selected for a report of type
+ * "PATH_TO_CONVERSION".
+ */
+class PathToConversionReportCompatibleFields {
+  /**
+   * Conversion dimensions which are compatible to be selected in the
+   * "conversionDimensions" section of the report.
+   */
+  core.List<Dimension> conversionDimensions;
+
+  /**
+   * Custom floodlight variables which are compatible to be selected in the
+   * "customFloodlightVariables" section of the report.
+   */
+  core.List<Dimension> customFloodlightVariables;
+
+  /**
+   * The kind of resource this is, in this case
+   * dfareporting#pathToConversionReportCompatibleFields.
+   */
+  core.String kind;
+
+  /**
+   * Metrics which are compatible to be selected in the "metricNames" section of
+   * the report.
+   */
+  core.List<Metric> metrics;
+
+  /**
+   * Per-interaction dimensions which are compatible to be selected in the
+   * "perInteractionDimensions" section of the report.
+   */
+  core.List<Dimension> perInteractionDimensions;
+
+
+  PathToConversionReportCompatibleFields();
+
+  PathToConversionReportCompatibleFields.fromJson(core.Map _json) {
+    if (_json.containsKey("conversionDimensions")) {
+      conversionDimensions = _json["conversionDimensions"].map((value) => new Dimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("customFloodlightVariables")) {
+      customFloodlightVariables = _json["customFloodlightVariables"].map((value) => new Dimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("metrics")) {
+      metrics = _json["metrics"].map((value) => new Metric.fromJson(value)).toList();
+    }
+    if (_json.containsKey("perInteractionDimensions")) {
+      perInteractionDimensions = _json["perInteractionDimensions"].map((value) => new Dimension.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (conversionDimensions != null) {
+      _json["conversionDimensions"] = conversionDimensions.map((value) => (value).toJson()).toList();
+    }
+    if (customFloodlightVariables != null) {
+      _json["customFloodlightVariables"] = customFloodlightVariables.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (metrics != null) {
+      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+    }
+    if (perInteractionDimensions != null) {
+      _json["perInteractionDimensions"] = perInteractionDimensions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Placement {
+  /** Account ID of this placement. This field can be left blank. */
+  core.String accountId;
+
+  /** Advertiser ID of this placement. This field can be left blank. */
+  core.String advertiserId;
+
+  /**
+   * Dimension value for the ID of the advertiser. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue advertiserIdDimensionValue;
+
+  /** The archived status for this placement. */
+  core.bool archived;
+
+  /**
+   * Campaign ID of this placement. This field is only required on creation.
+   */
+  core.String campaignId;
+
+  /**
+   * Dimension value for the ID of the campaign. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue campaignIdDimensionValue;
+
+  /** Comments for this placement. */
+  core.String comment;
+
+  /**
+   * Placement compatibility. WEB and WEB_INTERSTITIAL refer to rendering either
+   * on desktop or on mobile devices for regular or interstitial ads
+   * respectively. APP and APP_INTERSTITIAL are for rendering in mobile
+   * apps.IN_STREAM_VIDEO refers to rendering in in-stream video ads developed
+   * with the VAST standard. This field is required on creation.
+   * Possible string values are:
+   * - "APP"
+   * - "APP_INTERSTITIAL"
+   * - "IN_STREAM_VIDEO"
+   * - "WEB"
+   * - "WEB_INTERSTITIAL"
+   */
+  core.String compatibility;
+
+  /** ID of the content category assigned to this placement. */
+  core.String contentCategoryId;
+
+  /** Placement creation information. This is a read-only field. */
+  LastModifiedInfo createInfo;
+
+  /**
+   * Directory site ID of this placement. On insert you can specify this field
+   * or the siteId field to specify the site associated with this placement.
+   * This can't be changed once the placement has been created.
+   */
+  core.String directorySiteId;
+
+  /**
+   * Dimension value for the ID of the directory site. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue directorySiteIdDimensionValue;
+
+  /** External ID for this placement. */
+  core.String externalId;
+
+  /** ID of this placement. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /**
+   * Dimension value for the ID of this placement. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue idDimensionValue;
+
+  /** Key name of this placement. This is a read-only, auto-generated field. */
+  core.String keyName;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#placement".
+   */
+  core.String kind;
+
+  /** Placement last modification information. This is a read-only field. */
+  LastModifiedInfo lastModifiedInfo;
+
+  /** Look-back window settings for this placement. */
+  LookbackConfiguration lookbackConfiguration;
+
+  /** Name of this placement. */
+  core.String name;
+
+  /**
+   * The payment approval status for this placement. This is a read-only field
+   * relevant only to publisher paid placements.
+   */
+  core.bool paymentApproved;
+
+  /**
+   * Payment source for this placement. This field can only be set during
+   * placement creation, and is required.
+   * Possible string values are:
+   * - "PLACEMENT_AGENCY_PAID"
+   * - "PLACEMENT_PUBLISHER_PAID"
+   */
+  core.String paymentSource;
+
+  /** ID of this placement's group. */
+  core.String placementGroupId;
+
+  /**
+   * Dimension value for the ID of the placement group. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue placementGroupIdDimensionValue;
+
+  /** ID of the placement strategy assigned to this placement. */
+  core.String placementStrategyId;
+
+  /**
+   * Pricing schedule of this placement. This field is required on creation,
+   * specifically subfields startDate, endDate and pricingType.
+   */
+  PricingSchedule pricingSchedule;
+
+  /**
+   * Primary placement of a roadblock placement group. You can't change this
+   * field from true to false. Setting this field to true will automatically
+   * modify the primary field on original primary placement and will
+   * automatically modify the parent roadblock's primaryPlacementId field.
+   */
+  core.bool primary;
+
+  /**
+   * Placement publisher last modification information. This is a read-only
+   * field.
+   */
+  LastModifiedInfo publisherUpdateInfo;
+
+  /**
+   * Site ID associated with this placement. On insert you can specify this
+   * field or the directorySiteId field to specify the site associated with this
+   * placement. This can't be changed once the placement has been created. This
+   * field is required on creation.
+   */
+  core.String siteId;
+
+  /**
+   * Dimension value for the ID of the site. This is a read-only, auto-generated
+   * field.
+   */
+  DimensionValue siteIdDimensionValue;
+
+  /**
+   * Size associated with this placement. When inserting or updating a placement
+   * only the size ID field is used. This field is required on creation.
+   */
+  Size size;
+
+  /** Whether creatives assigned to this placement must be SSL compliant. */
+  core.bool sslRequired;
+
+  /**
+   * Third party placement status.
+   * Possible string values are:
+   * - "ACKNOWLEDGE_ACCEPTANCE"
+   * - "ACKNOWLEDGE_REJECTION"
+   * - "DRAFT"
+   * - "PAYMENT_ACCEPTED"
+   * - "PAYMENT_REJECTED"
+   * - "PENDING_REVIEW"
+   */
+  core.String status;
+
+  /** Subaccount ID of this placement. This field can be left blank. */
+  core.String subaccountId;
+
+  /**
+   * Tag formats to generate for this placement. This field is required on
+   * creation.
+   *
+   * Acceptable values are:
+   * - "PLACEMENT_TAG_STANDARD"
+   * - "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
+   * - "PLACEMENT_TAG_IFRAME_ILAYER"
+   * - "PLACEMENT_TAG_INTERNAL_REDIRECT"
+   * - "PLACEMENT_TAG_JAVASCRIPT"
+   * - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT"
+   * - "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT"
+   * - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT"
+   * - "PLACEMENT_TAG_CLICK_COMMANDS"
+   * - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH"
+   * - "PLACEMENT_TAG_TRACKING"
+   * - "PLACEMENT_TAG_TRACKING_IFRAME"
+   * - "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
+   */
+  core.List<core.String> tagFormats;
+
+  /** Tag settings for this placement. */
+  TagSetting tagSetting;
+
+
+  Placement();
+
+  Placement.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("advertiserId")) {
+      advertiserId = _json["advertiserId"];
+    }
+    if (_json.containsKey("advertiserIdDimensionValue")) {
+      advertiserIdDimensionValue = new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+    }
+    if (_json.containsKey("archived")) {
+      archived = _json["archived"];
+    }
+    if (_json.containsKey("campaignId")) {
+      campaignId = _json["campaignId"];
+    }
+    if (_json.containsKey("campaignIdDimensionValue")) {
+      campaignIdDimensionValue = new DimensionValue.fromJson(_json["campaignIdDimensionValue"]);
+    }
+    if (_json.containsKey("comment")) {
+      comment = _json["comment"];
+    }
+    if (_json.containsKey("compatibility")) {
+      compatibility = _json["compatibility"];
+    }
+    if (_json.containsKey("contentCategoryId")) {
+      contentCategoryId = _json["contentCategoryId"];
+    }
+    if (_json.containsKey("createInfo")) {
+      createInfo = new LastModifiedInfo.fromJson(_json["createInfo"]);
+    }
+    if (_json.containsKey("directorySiteId")) {
+      directorySiteId = _json["directorySiteId"];
+    }
+    if (_json.containsKey("directorySiteIdDimensionValue")) {
+      directorySiteIdDimensionValue = new DimensionValue.fromJson(_json["directorySiteIdDimensionValue"]);
+    }
+    if (_json.containsKey("externalId")) {
+      externalId = _json["externalId"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("idDimensionValue")) {
+      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+    }
+    if (_json.containsKey("keyName")) {
+      keyName = _json["keyName"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("lastModifiedInfo")) {
+      lastModifiedInfo = new LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
+    }
+    if (_json.containsKey("lookbackConfiguration")) {
+      lookbackConfiguration = new LookbackConfiguration.fromJson(_json["lookbackConfiguration"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("paymentApproved")) {
+      paymentApproved = _json["paymentApproved"];
+    }
+    if (_json.containsKey("paymentSource")) {
+      paymentSource = _json["paymentSource"];
+    }
+    if (_json.containsKey("placementGroupId")) {
+      placementGroupId = _json["placementGroupId"];
+    }
+    if (_json.containsKey("placementGroupIdDimensionValue")) {
+      placementGroupIdDimensionValue = new DimensionValue.fromJson(_json["placementGroupIdDimensionValue"]);
+    }
+    if (_json.containsKey("placementStrategyId")) {
+      placementStrategyId = _json["placementStrategyId"];
+    }
+    if (_json.containsKey("pricingSchedule")) {
+      pricingSchedule = new PricingSchedule.fromJson(_json["pricingSchedule"]);
+    }
+    if (_json.containsKey("primary")) {
+      primary = _json["primary"];
+    }
+    if (_json.containsKey("publisherUpdateInfo")) {
+      publisherUpdateInfo = new LastModifiedInfo.fromJson(_json["publisherUpdateInfo"]);
+    }
+    if (_json.containsKey("siteId")) {
+      siteId = _json["siteId"];
+    }
+    if (_json.containsKey("siteIdDimensionValue")) {
+      siteIdDimensionValue = new DimensionValue.fromJson(_json["siteIdDimensionValue"]);
+    }
+    if (_json.containsKey("size")) {
+      size = new Size.fromJson(_json["size"]);
+    }
+    if (_json.containsKey("sslRequired")) {
+      sslRequired = _json["sslRequired"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+    if (_json.containsKey("tagFormats")) {
+      tagFormats = _json["tagFormats"];
+    }
+    if (_json.containsKey("tagSetting")) {
+      tagSetting = new TagSetting.fromJson(_json["tagSetting"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (advertiserId != null) {
+      _json["advertiserId"] = advertiserId;
+    }
+    if (advertiserIdDimensionValue != null) {
+      _json["advertiserIdDimensionValue"] = (advertiserIdDimensionValue).toJson();
+    }
+    if (archived != null) {
+      _json["archived"] = archived;
+    }
+    if (campaignId != null) {
+      _json["campaignId"] = campaignId;
+    }
+    if (campaignIdDimensionValue != null) {
+      _json["campaignIdDimensionValue"] = (campaignIdDimensionValue).toJson();
+    }
+    if (comment != null) {
+      _json["comment"] = comment;
+    }
+    if (compatibility != null) {
+      _json["compatibility"] = compatibility;
+    }
+    if (contentCategoryId != null) {
+      _json["contentCategoryId"] = contentCategoryId;
+    }
+    if (createInfo != null) {
+      _json["createInfo"] = (createInfo).toJson();
+    }
+    if (directorySiteId != null) {
+      _json["directorySiteId"] = directorySiteId;
+    }
+    if (directorySiteIdDimensionValue != null) {
+      _json["directorySiteIdDimensionValue"] = (directorySiteIdDimensionValue).toJson();
+    }
+    if (externalId != null) {
+      _json["externalId"] = externalId;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (idDimensionValue != null) {
+      _json["idDimensionValue"] = (idDimensionValue).toJson();
+    }
+    if (keyName != null) {
+      _json["keyName"] = keyName;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (lastModifiedInfo != null) {
+      _json["lastModifiedInfo"] = (lastModifiedInfo).toJson();
+    }
+    if (lookbackConfiguration != null) {
+      _json["lookbackConfiguration"] = (lookbackConfiguration).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (paymentApproved != null) {
+      _json["paymentApproved"] = paymentApproved;
+    }
+    if (paymentSource != null) {
+      _json["paymentSource"] = paymentSource;
+    }
+    if (placementGroupId != null) {
+      _json["placementGroupId"] = placementGroupId;
+    }
+    if (placementGroupIdDimensionValue != null) {
+      _json["placementGroupIdDimensionValue"] = (placementGroupIdDimensionValue).toJson();
+    }
+    if (placementStrategyId != null) {
+      _json["placementStrategyId"] = placementStrategyId;
+    }
+    if (pricingSchedule != null) {
+      _json["pricingSchedule"] = (pricingSchedule).toJson();
+    }
+    if (primary != null) {
+      _json["primary"] = primary;
+    }
+    if (publisherUpdateInfo != null) {
+      _json["publisherUpdateInfo"] = (publisherUpdateInfo).toJson();
+    }
+    if (siteId != null) {
+      _json["siteId"] = siteId;
+    }
+    if (siteIdDimensionValue != null) {
+      _json["siteIdDimensionValue"] = (siteIdDimensionValue).toJson();
+    }
+    if (size != null) {
+      _json["size"] = (size).toJson();
+    }
+    if (sslRequired != null) {
+      _json["sslRequired"] = sslRequired;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    if (tagFormats != null) {
+      _json["tagFormats"] = tagFormats;
+    }
+    if (tagSetting != null) {
+      _json["tagSetting"] = (tagSetting).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Placement Assignment. */
+class PlacementAssignment {
+  /**
+   * Whether this placement assignment is active. When true, the placement will
+   * be included in the ad's rotation.
+   */
+  core.bool active;
+
+  /** ID of the placement to be assigned. */
+  core.String placementId;
+
+  /**
+   * Dimension value for the ID of the placement. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue placementIdDimensionValue;
+
+  /**
+   * Whether the placement to be assigned requires ssl. This is a read only
+   * field determined from the placement.
+   */
+  core.bool sslRequired;
+
+
+  PlacementAssignment();
+
+  PlacementAssignment.fromJson(core.Map _json) {
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("placementId")) {
+      placementId = _json["placementId"];
+    }
+    if (_json.containsKey("placementIdDimensionValue")) {
+      placementIdDimensionValue = new DimensionValue.fromJson(_json["placementIdDimensionValue"]);
+    }
+    if (_json.containsKey("sslRequired")) {
+      sslRequired = _json["sslRequired"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (placementId != null) {
+      _json["placementId"] = placementId;
+    }
+    if (placementIdDimensionValue != null) {
+      _json["placementIdDimensionValue"] = (placementIdDimensionValue).toJson();
+    }
+    if (sslRequired != null) {
+      _json["sslRequired"] = sslRequired;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class PlacementGroup {
+  /** Account ID of this placement group. This field can be left blank. */
+  core.String accountId;
+
+  /** Advertiser ID of this placement group. This field can be left blank. */
+  core.String advertiserId;
+
+  /**
+   * Dimension value for the ID of the advertiser. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue advertiserIdDimensionValue;
+
+  /** The archived status for this placement group. */
+  core.bool archived;
+
+  /**
+   * Campaign ID of this placement group. This field is only required on
+   * creation.
+   */
+  core.String campaignId;
+
+  /**
+   * Dimension value for the ID of the campaign. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue campaignIdDimensionValue;
+
+  /**
+   * IDs of placements which are assigned to this placement group. This is a
+   * read-only field.
+   */
+  core.List<core.String> childPlacementIds;
+
+  /** Comments for this placement group. */
+  core.String comment;
+
+  /** ID of the content category assigned to this placement group. */
+  core.String contentCategoryId;
+
+  /** Placement group creation information. This is a read-only field. */
+  LastModifiedInfo createInfo;
+
+  /**
+   * Directory site ID associated with this placement group. On insert you can
+   * specify this field or the site_id field to specify the site associated with
+   * this placement group. This can't be changed once the placement group has
+   * been created.
+   */
+  core.String directorySiteId;
+
+  /**
+   * Dimension value for the ID of the directory site. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue directorySiteIdDimensionValue;
+
+  /** External ID for this placement. */
+  core.String externalId;
+
+  /** ID of this placement group. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /**
+   * Dimension value for the ID of this placement group. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue idDimensionValue;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#placementGroup".
+   */
+  core.String kind;
+
+  /** Placement group last modification information. */
+  LastModifiedInfo lastModifiedInfo;
+
+  /** Name of this placement group. */
+  core.String name;
+
+  /**
+   * Type of this placement group. A package is a simple group of placements
+   * that acts as a single pricing point for a group of tags. A roadblock is a
+   * group of placements that not only acts as a single pricing point but also
+   * assumes that all the tags in it will be served at the same time. A
+   * roadblock requires one of its assigned placements to be marked as primary
+   * for reporting. This field is required on creation.
+   * Possible string values are:
+   * - "PLACEMENT_PACKAGE"
+   * - "PLACEMENT_ROADBLOCK"
+   */
+  core.String placementGroupType;
+
+  /** ID of the placement strategy assigned to this placement group. */
+  core.String placementStrategyId;
+
+  /**
+   * Pricing schedule of this placement group. This field is required on
+   * creation.
+   */
+  PricingSchedule pricingSchedule;
+
+  /**
+   * ID of primary placement is used to calculate the media cost of a roadblock
+   * placement group. Modifying this field will automatically modify the primary
+   * field on all affected roadblock child placements.
+   */
+  core.String primaryPlacementId;
+
+  /**
+   * Dimension value for the ID of the primary placement. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue primaryPlacementIdDimensionValue;
+
+  /**
+   * Whether group is programmatic. If programmatic, it also has other fields
+   * programmatic fields.
+   */
+  ProgrammaticSetting programmaticSetting;
+
+  /**
+   * Site ID associated with this placement group. On insert you can specify
+   * this field or the directorySiteId field to specify the site associated with
+   * this placement group. This can't be changed once the placement group has
+   * been created. This field is required on creation.
+   */
+  core.String siteId;
+
+  /**
+   * Dimension value for the ID of the site. This is a read-only, auto-generated
+   * field.
+   */
+  DimensionValue siteIdDimensionValue;
+
+  /** Subaccount ID of this placement group. This field can be left blank. */
+  core.String subaccountId;
+
+
+  PlacementGroup();
+
+  PlacementGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("advertiserId")) {
+      advertiserId = _json["advertiserId"];
+    }
+    if (_json.containsKey("advertiserIdDimensionValue")) {
+      advertiserIdDimensionValue = new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+    }
+    if (_json.containsKey("archived")) {
+      archived = _json["archived"];
+    }
+    if (_json.containsKey("campaignId")) {
+      campaignId = _json["campaignId"];
+    }
+    if (_json.containsKey("campaignIdDimensionValue")) {
+      campaignIdDimensionValue = new DimensionValue.fromJson(_json["campaignIdDimensionValue"]);
+    }
+    if (_json.containsKey("childPlacementIds")) {
+      childPlacementIds = _json["childPlacementIds"];
+    }
+    if (_json.containsKey("comment")) {
+      comment = _json["comment"];
+    }
+    if (_json.containsKey("contentCategoryId")) {
+      contentCategoryId = _json["contentCategoryId"];
+    }
+    if (_json.containsKey("createInfo")) {
+      createInfo = new LastModifiedInfo.fromJson(_json["createInfo"]);
+    }
+    if (_json.containsKey("directorySiteId")) {
+      directorySiteId = _json["directorySiteId"];
+    }
+    if (_json.containsKey("directorySiteIdDimensionValue")) {
+      directorySiteIdDimensionValue = new DimensionValue.fromJson(_json["directorySiteIdDimensionValue"]);
+    }
+    if (_json.containsKey("externalId")) {
+      externalId = _json["externalId"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("idDimensionValue")) {
+      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("lastModifiedInfo")) {
+      lastModifiedInfo = new LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("placementGroupType")) {
+      placementGroupType = _json["placementGroupType"];
+    }
+    if (_json.containsKey("placementStrategyId")) {
+      placementStrategyId = _json["placementStrategyId"];
+    }
+    if (_json.containsKey("pricingSchedule")) {
+      pricingSchedule = new PricingSchedule.fromJson(_json["pricingSchedule"]);
+    }
+    if (_json.containsKey("primaryPlacementId")) {
+      primaryPlacementId = _json["primaryPlacementId"];
+    }
+    if (_json.containsKey("primaryPlacementIdDimensionValue")) {
+      primaryPlacementIdDimensionValue = new DimensionValue.fromJson(_json["primaryPlacementIdDimensionValue"]);
+    }
+    if (_json.containsKey("programmaticSetting")) {
+      programmaticSetting = new ProgrammaticSetting.fromJson(_json["programmaticSetting"]);
+    }
+    if (_json.containsKey("siteId")) {
+      siteId = _json["siteId"];
+    }
+    if (_json.containsKey("siteIdDimensionValue")) {
+      siteIdDimensionValue = new DimensionValue.fromJson(_json["siteIdDimensionValue"]);
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (advertiserId != null) {
+      _json["advertiserId"] = advertiserId;
+    }
+    if (advertiserIdDimensionValue != null) {
+      _json["advertiserIdDimensionValue"] = (advertiserIdDimensionValue).toJson();
+    }
+    if (archived != null) {
+      _json["archived"] = archived;
+    }
+    if (campaignId != null) {
+      _json["campaignId"] = campaignId;
+    }
+    if (campaignIdDimensionValue != null) {
+      _json["campaignIdDimensionValue"] = (campaignIdDimensionValue).toJson();
+    }
+    if (childPlacementIds != null) {
+      _json["childPlacementIds"] = childPlacementIds;
+    }
+    if (comment != null) {
+      _json["comment"] = comment;
+    }
+    if (contentCategoryId != null) {
+      _json["contentCategoryId"] = contentCategoryId;
+    }
+    if (createInfo != null) {
+      _json["createInfo"] = (createInfo).toJson();
+    }
+    if (directorySiteId != null) {
+      _json["directorySiteId"] = directorySiteId;
+    }
+    if (directorySiteIdDimensionValue != null) {
+      _json["directorySiteIdDimensionValue"] = (directorySiteIdDimensionValue).toJson();
+    }
+    if (externalId != null) {
+      _json["externalId"] = externalId;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (idDimensionValue != null) {
+      _json["idDimensionValue"] = (idDimensionValue).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (lastModifiedInfo != null) {
+      _json["lastModifiedInfo"] = (lastModifiedInfo).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (placementGroupType != null) {
+      _json["placementGroupType"] = placementGroupType;
+    }
+    if (placementStrategyId != null) {
+      _json["placementStrategyId"] = placementStrategyId;
+    }
+    if (pricingSchedule != null) {
+      _json["pricingSchedule"] = (pricingSchedule).toJson();
+    }
+    if (primaryPlacementId != null) {
+      _json["primaryPlacementId"] = primaryPlacementId;
+    }
+    if (primaryPlacementIdDimensionValue != null) {
+      _json["primaryPlacementIdDimensionValue"] = (primaryPlacementIdDimensionValue).toJson();
+    }
+    if (programmaticSetting != null) {
+      _json["programmaticSetting"] = (programmaticSetting).toJson();
+    }
+    if (siteId != null) {
+      _json["siteId"] = siteId;
+    }
+    if (siteIdDimensionValue != null) {
+      _json["siteIdDimensionValue"] = (siteIdDimensionValue).toJson();
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    return _json;
+  }
+}
+
+
+/** Placement Group List Response */
+class PlacementGroupsListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#placementGroupsListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+  /** Placement group collection */
+  core.List<PlacementGroup> placementGroups;
+
+
+  PlacementGroupsListResponse();
+
+  PlacementGroupsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("placementGroups")) {
+      placementGroups = _json["placementGroups"].map((value) => new PlacementGroup.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (placementGroups != null) {
+      _json["placementGroups"] = placementGroups.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Placement Strategy List Response */
+class PlacementStrategiesListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#placementStrategiesListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+  /** Placement strategy collection */
+  core.List<PlacementStrategy> placementStrategies;
+
+
+  PlacementStrategiesListResponse();
+
+  PlacementStrategiesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("placementStrategies")) {
+      placementStrategies = _json["placementStrategies"].map((value) => new PlacementStrategy.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (placementStrategies != null) {
+      _json["placementStrategies"] = placementStrategies.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class PlacementStrategy {
+  /** Account ID of this placement strategy. */
+  core.String accountId;
+
+  /**
+   * ID of this placement strategy. This is a read-only, auto-generated field.
+   */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#placementStrategy".
+   */
+  core.String kind;
+
+  /** Name of this placement strategy. */
+  core.String name;
+
+
+  PlacementStrategy();
+
+  PlacementStrategy.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Placement Tag */
+class PlacementTag {
+  /** Placement ID */
+  core.String placementId;
+
+  /** Tags generated for this placement. */
+  core.List<TagData> tagDatas;
+
+
+  PlacementTag();
+
+  PlacementTag.fromJson(core.Map _json) {
+    if (_json.containsKey("placementId")) {
+      placementId = _json["placementId"];
+    }
+    if (_json.containsKey("tagDatas")) {
+      tagDatas = _json["tagDatas"].map((value) => new TagData.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (placementId != null) {
+      _json["placementId"] = placementId;
+    }
+    if (tagDatas != null) {
+      _json["tagDatas"] = tagDatas.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Placement GenerateTags Response */
+class PlacementsGenerateTagsResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#placementsGenerateTagsResponse".
+   */
+  core.String kind;
+
+  /** Set of generated tags for the specified placements. */
+  core.List<PlacementTag> placementTags;
+
+
+  PlacementsGenerateTagsResponse();
+
+  PlacementsGenerateTagsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("placementTags")) {
+      placementTags = _json["placementTags"].map((value) => new PlacementTag.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (placementTags != null) {
+      _json["placementTags"] = placementTags.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Placement List Response */
+class PlacementsListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#placementsListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+  /** Placement collection */
+  core.List<Placement> placements;
+
+
+  PlacementsListResponse();
+
+  PlacementsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("placements")) {
+      placements = _json["placements"].map((value) => new Placement.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (placements != null) {
+      _json["placements"] = placements.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class PlatformType {
+  /** ID of this platform type. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#platformType".
+   */
+  core.String kind;
+
+  /** Name of this platform type. */
+  core.String name;
+
+
+  PlatformType();
+
+  PlatformType.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Platform Type List Response */
+class PlatformTypesListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#platformTypesListResponse".
+   */
+  core.String kind;
+
+  /** Platform type collection */
+  core.List<PlatformType> platformTypes;
+
+
+  PlatformTypesListResponse();
+
+  PlatformTypesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("platformTypes")) {
+      platformTypes = _json["platformTypes"].map((value) => new PlatformType.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (platformTypes != null) {
+      _json["platformTypes"] = platformTypes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Popup Window Properties. */
+class PopupWindowProperties {
+  /**
+   * Popup dimension for a creative. This is a read-only field. Applicable to
+   * the following creative types: all RICH_MEDIA and all VPAID
+   */
+  Size dimension;
+
+  /** Returns upper left corner coordinates if positionType is COORDINATES. */
+  OffsetPosition offset;
+
+  /**
+   * Popup window position either centered or at specific coordinate.
+   * Possible string values are:
+   * - "CENTER"
+   * - "COORDINATES"
+   */
+  core.String positionType;
+
+  /** Displays browser address bar. */
+  core.bool showAddressBar;
+
+  /** Displays browser menu bar. */
+  core.bool showMenuBar;
+
+  /** Displays browser scroll bar. */
+  core.bool showScrollBar;
+
+  /** Displays browser status bar. */
+  core.bool showStatusBar;
+
+  /** Displays browser tool bar. */
+  core.bool showToolBar;
+
+  /** Title of popup window. */
+  core.String title;
+
+
+  PopupWindowProperties();
+
+  PopupWindowProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("dimension")) {
+      dimension = new Size.fromJson(_json["dimension"]);
+    }
+    if (_json.containsKey("offset")) {
+      offset = new OffsetPosition.fromJson(_json["offset"]);
+    }
+    if (_json.containsKey("positionType")) {
+      positionType = _json["positionType"];
+    }
+    if (_json.containsKey("showAddressBar")) {
+      showAddressBar = _json["showAddressBar"];
+    }
+    if (_json.containsKey("showMenuBar")) {
+      showMenuBar = _json["showMenuBar"];
+    }
+    if (_json.containsKey("showScrollBar")) {
+      showScrollBar = _json["showScrollBar"];
+    }
+    if (_json.containsKey("showStatusBar")) {
+      showStatusBar = _json["showStatusBar"];
+    }
+    if (_json.containsKey("showToolBar")) {
+      showToolBar = _json["showToolBar"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dimension != null) {
+      _json["dimension"] = (dimension).toJson();
+    }
+    if (offset != null) {
+      _json["offset"] = (offset).toJson();
+    }
+    if (positionType != null) {
+      _json["positionType"] = positionType;
+    }
+    if (showAddressBar != null) {
+      _json["showAddressBar"] = showAddressBar;
+    }
+    if (showMenuBar != null) {
+      _json["showMenuBar"] = showMenuBar;
+    }
+    if (showScrollBar != null) {
+      _json["showScrollBar"] = showScrollBar;
+    }
+    if (showStatusBar != null) {
+      _json["showStatusBar"] = showStatusBar;
+    }
+    if (showToolBar != null) {
+      _json["showToolBar"] = showToolBar;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class PostalCode {
+  /** Country code of the country to which this postal code belongs. */
+  core.String countryCode;
+
+  /** DART ID of the country to which this postal code belongs. */
+  core.String countryDartId;
+
+  /** ID of this postal code. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#postalCode".
+   */
+  core.String kind;
+
+
+  PostalCode();
+
+  PostalCode.fromJson(core.Map _json) {
+    if (_json.containsKey("countryCode")) {
+      countryCode = _json["countryCode"];
+    }
+    if (_json.containsKey("countryDartId")) {
+      countryDartId = _json["countryDartId"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (countryCode != null) {
+      _json["countryCode"] = countryCode;
+    }
+    if (countryDartId != null) {
+      _json["countryDartId"] = countryDartId;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Postal Code List Response */
+class PostalCodesListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#postalCodesListResponse".
+   */
+  core.String kind;
+
+  /** Postal code collection */
+  core.List<PostalCode> postalCodes;
+
+
+  PostalCodesListResponse();
+
+  PostalCodesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("postalCodes")) {
+      postalCodes = _json["postalCodes"].map((value) => new PostalCode.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (postalCodes != null) {
+      _json["postalCodes"] = postalCodes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Pricing Schedule */
+class PricingSchedule {
+  /**
+   * Placement cap cost option.
+   * Possible string values are:
+   * - "CAP_COST_CUMULATIVE"
+   * - "CAP_COST_MONTHLY"
+   * - "CAP_COST_NONE"
+   */
+  core.String capCostOption;
+
+  /** Setting to true will mean cap costs are ignored by ad serving. */
+  core.bool disregardOverdelivery;
+
+  /**
+   * Placement end date. This date can not be after the campaign end date. In
+   * addition, the end date must come after the placement start date. The end
+   * date can be the same date as the start date. For example, if you set
+   * 6/25/2010 in both the start and end date, the effective placement date is
+   * just 6/25/2010. The hours, minutes and seconds of the end date should not
+   * be set as doing so will result in an error. This field is required on
+   * creation.
+   */
+  core.DateTime endDate;
+
+  /**
+   * Turns on/off flighting for this placement. Pricing periods will be computed
+   * automatically.
+   */
+  core.bool flighted;
+
+  /**
+   * Floodlight activity ID associated with this placement. This field should be
+   * set when placement pricing type is set to PRICING_TYPE_CPA.
+   */
+  core.String floodlightActivityId;
+
+  /** Pricing periods for this placement. */
+  core.List<PricingSchedulePricingPeriod> pricingPeriods;
+
+  /**
+   * Placement pricing type. This field is required on creation.
+   * Possible string values are:
+   * - "PRICING_TYPE_CPA"
+   * - "PRICING_TYPE_CPC"
+   * - "PRICING_TYPE_CPM"
+   * - "PRICING_TYPE_FLAT_RATE_CLICKS"
+   * - "PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
+   */
+  core.String pricingType;
+
+  /**
+   * Placement start date. This date can not be before the campaign start date.
+   * The hours, minutes and seconds of the start date should not be set as doing
+   * so will result in an error. This field is required on creation.
+   */
+  core.DateTime startDate;
+
+  /**
+   * Test start date of this placement. The hours, minutes and seconds of the
+   * start date should not be set as doing so will result in an error.
+   */
+  core.DateTime testingStartDate;
+
+
+  PricingSchedule();
+
+  PricingSchedule.fromJson(core.Map _json) {
+    if (_json.containsKey("capCostOption")) {
+      capCostOption = _json["capCostOption"];
+    }
+    if (_json.containsKey("disregardOverdelivery")) {
+      disregardOverdelivery = _json["disregardOverdelivery"];
+    }
+    if (_json.containsKey("endDate")) {
+      endDate = core.DateTime.parse(_json["endDate"]);
+    }
+    if (_json.containsKey("flighted")) {
+      flighted = _json["flighted"];
+    }
+    if (_json.containsKey("floodlightActivityId")) {
+      floodlightActivityId = _json["floodlightActivityId"];
+    }
+    if (_json.containsKey("pricingPeriods")) {
+      pricingPeriods = _json["pricingPeriods"].map((value) => new PricingSchedulePricingPeriod.fromJson(value)).toList();
+    }
+    if (_json.containsKey("pricingType")) {
+      pricingType = _json["pricingType"];
+    }
+    if (_json.containsKey("startDate")) {
+      startDate = core.DateTime.parse(_json["startDate"]);
+    }
+    if (_json.containsKey("testingStartDate")) {
+      testingStartDate = core.DateTime.parse(_json["testingStartDate"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (capCostOption != null) {
+      _json["capCostOption"] = capCostOption;
+    }
+    if (disregardOverdelivery != null) {
+      _json["disregardOverdelivery"] = disregardOverdelivery;
+    }
+    if (endDate != null) {
+      _json["endDate"] = "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}";
+    }
+    if (flighted != null) {
+      _json["flighted"] = flighted;
+    }
+    if (floodlightActivityId != null) {
+      _json["floodlightActivityId"] = floodlightActivityId;
+    }
+    if (pricingPeriods != null) {
+      _json["pricingPeriods"] = pricingPeriods.map((value) => (value).toJson()).toList();
+    }
+    if (pricingType != null) {
+      _json["pricingType"] = pricingType;
+    }
+    if (startDate != null) {
+      _json["startDate"] = "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}";
+    }
+    if (testingStartDate != null) {
+      _json["testingStartDate"] = "${(testingStartDate).year.toString().padLeft(4, '0')}-${(testingStartDate).month.toString().padLeft(2, '0')}-${(testingStartDate).day.toString().padLeft(2, '0')}";
+    }
+    return _json;
+  }
+}
+
+
+/** Pricing Period */
+class PricingSchedulePricingPeriod {
+  /**
+   * Placement period end date. This date can not be before the placement period
+   * start date. In addition, this date can not be after the placement end date.
+   * The period end date can be the same date as the period start date. For
+   * example, if you set 6/25/2010 in both the start and end date, the effective
+   * placement period date is just 6/25/2010. The hours, minutes and seconds of
+   * the end date should not be set as doing so will result in an error.
+   */
+  core.DateTime endDate;
+
+  /** Comments for this pricing period. */
+  core.String pricingComment;
+
+  /** Rate or cost of this pricing period. */
+  core.String rateOrCostNanos;
+
+  /**
+   * Placement period start date. This date can not be before the placement
+   * start date. The hours, minutes and seconds of the start date should not be
+   * set as doing so will result in an error.
+   */
+  core.DateTime startDate;
+
+  /** Units of this pricing period. */
+  core.String units;
+
+
+  PricingSchedulePricingPeriod();
+
+  PricingSchedulePricingPeriod.fromJson(core.Map _json) {
+    if (_json.containsKey("endDate")) {
+      endDate = core.DateTime.parse(_json["endDate"]);
+    }
+    if (_json.containsKey("pricingComment")) {
+      pricingComment = _json["pricingComment"];
+    }
+    if (_json.containsKey("rateOrCostNanos")) {
+      rateOrCostNanos = _json["rateOrCostNanos"];
+    }
+    if (_json.containsKey("startDate")) {
+      startDate = core.DateTime.parse(_json["startDate"]);
+    }
+    if (_json.containsKey("units")) {
+      units = _json["units"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (endDate != null) {
+      _json["endDate"] = "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}";
+    }
+    if (pricingComment != null) {
+      _json["pricingComment"] = pricingComment;
+    }
+    if (rateOrCostNanos != null) {
+      _json["rateOrCostNanos"] = rateOrCostNanos;
+    }
+    if (startDate != null) {
+      _json["startDate"] = "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}";
+    }
+    if (units != null) {
+      _json["units"] = units;
+    }
+    return _json;
+  }
+}
+
+
+/** Programmatic Setting */
+class ProgrammaticSetting {
+  /** Adx Deal IDs assigned to placement */
+  core.List<core.String> adxDealIds;
+
+  /** Insertion Order ID */
+  core.String insertionOrderId;
+
+  /**
+   * Whether insertion order ID has been placed in DFP. This is a read-only
+   * field.
+   */
+  core.bool insertionOrderIdStatus;
+
+  /** Media cost for the programmatic placement. */
+  core.String mediaCostNanos;
+
+  /** Programmatic */
+  core.bool programmatic;
+
+  /** Trafficker emails assigned to placement */
+  core.List<core.String> traffickerEmails;
+
+
+  ProgrammaticSetting();
+
+  ProgrammaticSetting.fromJson(core.Map _json) {
+    if (_json.containsKey("adxDealIds")) {
+      adxDealIds = _json["adxDealIds"];
+    }
+    if (_json.containsKey("insertionOrderId")) {
+      insertionOrderId = _json["insertionOrderId"];
+    }
+    if (_json.containsKey("insertionOrderIdStatus")) {
+      insertionOrderIdStatus = _json["insertionOrderIdStatus"];
+    }
+    if (_json.containsKey("mediaCostNanos")) {
+      mediaCostNanos = _json["mediaCostNanos"];
+    }
+    if (_json.containsKey("programmatic")) {
+      programmatic = _json["programmatic"];
+    }
+    if (_json.containsKey("traffickerEmails")) {
+      traffickerEmails = _json["traffickerEmails"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (adxDealIds != null) {
+      _json["adxDealIds"] = adxDealIds;
+    }
+    if (insertionOrderId != null) {
+      _json["insertionOrderId"] = insertionOrderId;
+    }
+    if (insertionOrderIdStatus != null) {
+      _json["insertionOrderIdStatus"] = insertionOrderIdStatus;
+    }
+    if (mediaCostNanos != null) {
+      _json["mediaCostNanos"] = mediaCostNanos;
+    }
+    if (programmatic != null) {
+      _json["programmatic"] = programmatic;
+    }
+    if (traffickerEmails != null) {
+      _json["traffickerEmails"] = traffickerEmails;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * Represents fields that are compatible to be selected for a report of type
+ * "REACH".
+ */
+class ReachReportCompatibleFields {
+  /**
+   * Dimensions which are compatible to be selected in the "dimensionFilters"
+   * section of the report.
+   */
+  core.List<Dimension> dimensionFilters;
+
+  /**
+   * Dimensions which are compatible to be selected in the "dimensions" section
+   * of the report.
+   */
+  core.List<Dimension> dimensions;
+
+  /**
+   * The kind of resource this is, in this case
+   * dfareporting#reachReportCompatibleFields.
+   */
+  core.String kind;
+
+  /**
+   * Metrics which are compatible to be selected in the "metricNames" section of
+   * the report.
+   */
+  core.List<Metric> metrics;
+
+  /**
+   * Metrics which are compatible to be selected as activity metrics to pivot on
+   * in the "activities" section of the report.
+   */
+  core.List<Metric> pivotedActivityMetrics;
+
+  /**
+   * Metrics which are compatible to be selected in the
+   * "reachByFrequencyMetricNames" section of the report.
+   */
+  core.List<Metric> reachByFrequencyMetrics;
+
+
+  ReachReportCompatibleFields();
+
+  ReachReportCompatibleFields.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensionFilters")) {
+      dimensionFilters = _json["dimensionFilters"].map((value) => new Dimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("dimensions")) {
+      dimensions = _json["dimensions"].map((value) => new Dimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("metrics")) {
+      metrics = _json["metrics"].map((value) => new Metric.fromJson(value)).toList();
+    }
+    if (_json.containsKey("pivotedActivityMetrics")) {
+      pivotedActivityMetrics = _json["pivotedActivityMetrics"].map((value) => new Metric.fromJson(value)).toList();
+    }
+    if (_json.containsKey("reachByFrequencyMetrics")) {
+      reachByFrequencyMetrics = _json["reachByFrequencyMetrics"].map((value) => new Metric.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dimensionFilters != null) {
+      _json["dimensionFilters"] = dimensionFilters.map((value) => (value).toJson()).toList();
+    }
+    if (dimensions != null) {
+      _json["dimensions"] = dimensions.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (metrics != null) {
+      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+    }
+    if (pivotedActivityMetrics != null) {
+      _json["pivotedActivityMetrics"] = pivotedActivityMetrics.map((value) => (value).toJson()).toList();
+    }
+    if (reachByFrequencyMetrics != null) {
+      _json["reachByFrequencyMetrics"] = reachByFrequencyMetrics.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Represents a recipient. */
+class Recipient {
+  /**
+   * The delivery type for the recipient.
+   * Possible string values are:
+   * - "ATTACHMENT"
+   * - "LINK"
+   */
+  core.String deliveryType;
+
+  /** The email address of the recipient. */
+  core.String email;
+
+  /** The kind of resource this is, in this case dfareporting#recipient. */
+  core.String kind;
+
+
+  Recipient();
+
+  Recipient.fromJson(core.Map _json) {
+    if (_json.containsKey("deliveryType")) {
+      deliveryType = _json["deliveryType"];
+    }
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (deliveryType != null) {
+      _json["deliveryType"] = deliveryType;
+    }
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Region {
+  /** Country code of the country to which this region belongs. */
+  core.String countryCode;
+
+  /** DART ID of the country to which this region belongs. */
+  core.String countryDartId;
+
+  /** DART ID of this region. */
+  core.String dartId;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#region".
+   */
+  core.String kind;
+
+  /** Name of this region. */
+  core.String name;
+
+  /** Region code. */
+  core.String regionCode;
+
+
+  Region();
+
+  Region.fromJson(core.Map _json) {
+    if (_json.containsKey("countryCode")) {
+      countryCode = _json["countryCode"];
+    }
+    if (_json.containsKey("countryDartId")) {
+      countryDartId = _json["countryDartId"];
+    }
+    if (_json.containsKey("dartId")) {
+      dartId = _json["dartId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("regionCode")) {
+      regionCode = _json["regionCode"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (countryCode != null) {
+      _json["countryCode"] = countryCode;
+    }
+    if (countryDartId != null) {
+      _json["countryDartId"] = countryDartId;
+    }
+    if (dartId != null) {
+      _json["dartId"] = dartId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (regionCode != null) {
+      _json["regionCode"] = regionCode;
+    }
+    return _json;
+  }
+}
+
+
+/** Region List Response */
+class RegionsListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#regionsListResponse".
+   */
+  core.String kind;
+
+  /** Region Collection. */
+  core.List<Region> regions;
+
+
+  RegionsListResponse();
+
+  RegionsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("regions")) {
+      regions = _json["regions"].map((value) => new Region.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (regions != null) {
+      _json["regions"] = regions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** The report criteria for a report of type "STANDARD". */
+class ReportCriteria {
+  /** Activity group. */
+  Activities activities;
+
+  /** Custom Rich Media Events group. */
+  CustomRichMediaEvents customRichMediaEvents;
+
+  /** The date range for which this report should be run. */
+  DateRange dateRange;
+
+  /**
+   * The list of filters on which dimensions are filtered.
+   * Filters for different dimensions are ANDed, filters for the same dimension
+   * are grouped together and ORed.
+   */
+  core.List<DimensionValue> dimensionFilters;
+
+  /** The list of standard dimensions the report should include. */
+  core.List<SortedDimension> dimensions;
+
+  /** The list of names of metrics the report should include. */
+  core.List<core.String> metricNames;
+
+
+  ReportCriteria();
+
+  ReportCriteria.fromJson(core.Map _json) {
+    if (_json.containsKey("activities")) {
+      activities = new Activities.fromJson(_json["activities"]);
+    }
+    if (_json.containsKey("customRichMediaEvents")) {
+      customRichMediaEvents = new CustomRichMediaEvents.fromJson(_json["customRichMediaEvents"]);
+    }
+    if (_json.containsKey("dateRange")) {
+      dateRange = new DateRange.fromJson(_json["dateRange"]);
+    }
+    if (_json.containsKey("dimensionFilters")) {
+      dimensionFilters = _json["dimensionFilters"].map((value) => new DimensionValue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("dimensions")) {
+      dimensions = _json["dimensions"].map((value) => new SortedDimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("metricNames")) {
+      metricNames = _json["metricNames"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (activities != null) {
+      _json["activities"] = (activities).toJson();
+    }
+    if (customRichMediaEvents != null) {
+      _json["customRichMediaEvents"] = (customRichMediaEvents).toJson();
+    }
+    if (dateRange != null) {
+      _json["dateRange"] = (dateRange).toJson();
+    }
+    if (dimensionFilters != null) {
+      _json["dimensionFilters"] = dimensionFilters.map((value) => (value).toJson()).toList();
+    }
+    if (dimensions != null) {
+      _json["dimensions"] = dimensions.map((value) => (value).toJson()).toList();
+    }
+    if (metricNames != null) {
+      _json["metricNames"] = metricNames;
+    }
+    return _json;
+  }
+}
+
+
+/** The report criteria for a report of type "CROSS_DIMENSION_REACH". */
+class ReportCrossDimensionReachCriteria {
+  /** The list of dimensions the report should include. */
+  core.List<SortedDimension> breakdown;
+
+  /** The date range this report should be run for. */
+  DateRange dateRange;
+
+  /**
+   * The dimension option.
+   * Possible string values are:
+   * - "ADVERTISER"
+   * - "CAMPAIGN"
+   * - "SITE_BY_ADVERTISER"
+   * - "SITE_BY_CAMPAIGN"
+   */
+  core.String dimension;
+
+  /** The list of filters on which dimensions are filtered. */
+  core.List<DimensionValue> dimensionFilters;
+
+  /** The list of names of metrics the report should include. */
+  core.List<core.String> metricNames;
+
+  /** The list of names of overlap metrics the report should include. */
+  core.List<core.String> overlapMetricNames;
+
+  /** Whether the report is pivoted or not. Defaults to true. */
+  core.bool pivoted;
+
+
+  ReportCrossDimensionReachCriteria();
+
+  ReportCrossDimensionReachCriteria.fromJson(core.Map _json) {
+    if (_json.containsKey("breakdown")) {
+      breakdown = _json["breakdown"].map((value) => new SortedDimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("dateRange")) {
+      dateRange = new DateRange.fromJson(_json["dateRange"]);
+    }
+    if (_json.containsKey("dimension")) {
+      dimension = _json["dimension"];
+    }
+    if (_json.containsKey("dimensionFilters")) {
+      dimensionFilters = _json["dimensionFilters"].map((value) => new DimensionValue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("metricNames")) {
+      metricNames = _json["metricNames"];
+    }
+    if (_json.containsKey("overlapMetricNames")) {
+      overlapMetricNames = _json["overlapMetricNames"];
+    }
+    if (_json.containsKey("pivoted")) {
+      pivoted = _json["pivoted"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (breakdown != null) {
+      _json["breakdown"] = breakdown.map((value) => (value).toJson()).toList();
+    }
+    if (dateRange != null) {
+      _json["dateRange"] = (dateRange).toJson();
+    }
+    if (dimension != null) {
+      _json["dimension"] = dimension;
+    }
+    if (dimensionFilters != null) {
+      _json["dimensionFilters"] = dimensionFilters.map((value) => (value).toJson()).toList();
+    }
+    if (metricNames != null) {
+      _json["metricNames"] = metricNames;
+    }
+    if (overlapMetricNames != null) {
+      _json["overlapMetricNames"] = overlapMetricNames;
+    }
+    if (pivoted != null) {
+      _json["pivoted"] = pivoted;
+    }
+    return _json;
+  }
+}
+
+
+/** The report's email delivery settings. */
+class ReportDelivery {
+  /** Whether the report should be emailed to the report owner. */
+  core.bool emailOwner;
+
+  /**
+   * The type of delivery for the owner to receive, if enabled.
+   * Possible string values are:
+   * - "ATTACHMENT"
+   * - "LINK"
+   */
+  core.String emailOwnerDeliveryType;
+
+  /** The message to be sent with each email. */
+  core.String message;
+
+  /** The list of recipients to which to email the report. */
+  core.List<Recipient> recipients;
+
+
+  ReportDelivery();
+
+  ReportDelivery.fromJson(core.Map _json) {
+    if (_json.containsKey("emailOwner")) {
+      emailOwner = _json["emailOwner"];
+    }
+    if (_json.containsKey("emailOwnerDeliveryType")) {
+      emailOwnerDeliveryType = _json["emailOwnerDeliveryType"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+    if (_json.containsKey("recipients")) {
+      recipients = _json["recipients"].map((value) => new Recipient.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (emailOwner != null) {
+      _json["emailOwner"] = emailOwner;
+    }
+    if (emailOwnerDeliveryType != null) {
+      _json["emailOwnerDeliveryType"] = emailOwnerDeliveryType;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    if (recipients != null) {
+      _json["recipients"] = recipients.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** The properties of the report. */
+class ReportFloodlightCriteriaReportProperties {
+  /** Include conversions that have no cookie, but do have an exposure path. */
+  core.bool includeAttributedIPConversions;
+
+  /**
+   * Include conversions of users with a DoubleClick cookie but without an
+   * exposure. That means the user did not click or see an ad from the
+   * advertiser within the Floodlight group, or that the interaction happened
+   * outside the lookback window.
+   */
+  core.bool includeUnattributedCookieConversions;
+
+  /**
+   * Include conversions that have no associated cookies and no exposures. It’s
+   * therefore impossible to know how the user was exposed to your ads during
+   * the lookback window prior to a conversion.
+   */
+  core.bool includeUnattributedIPConversions;
+
+
+  ReportFloodlightCriteriaReportProperties();
+
+  ReportFloodlightCriteriaReportProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("includeAttributedIPConversions")) {
+      includeAttributedIPConversions = _json["includeAttributedIPConversions"];
+    }
+    if (_json.containsKey("includeUnattributedCookieConversions")) {
+      includeUnattributedCookieConversions = _json["includeUnattributedCookieConversions"];
+    }
+    if (_json.containsKey("includeUnattributedIPConversions")) {
+      includeUnattributedIPConversions = _json["includeUnattributedIPConversions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (includeAttributedIPConversions != null) {
+      _json["includeAttributedIPConversions"] = includeAttributedIPConversions;
+    }
+    if (includeUnattributedCookieConversions != null) {
+      _json["includeUnattributedCookieConversions"] = includeUnattributedCookieConversions;
+    }
+    if (includeUnattributedIPConversions != null) {
+      _json["includeUnattributedIPConversions"] = includeUnattributedIPConversions;
+    }
+    return _json;
+  }
+}
+
+
+/** The report criteria for a report of type "FLOODLIGHT". */
+class ReportFloodlightCriteria {
+  /** The list of custom rich media events to include. */
+  core.List<DimensionValue> customRichMediaEvents;
+
+  /** The date range this report should be run for. */
+  DateRange dateRange;
+
+  /**
+   * The list of filters on which dimensions are filtered.
+   * Filters for different dimensions are ANDed, filters for the same dimension
+   * are grouped together and ORed.
+   */
+  core.List<DimensionValue> dimensionFilters;
+
+  /** The list of dimensions the report should include. */
+  core.List<SortedDimension> dimensions;
+
+  /**
+   * The floodlight ID for which to show data in this report. All advertisers
+   * associated with that ID will automatically be added. The dimension of the
+   * value needs to be 'dfa:floodlightConfigId'.
+   */
+  DimensionValue floodlightConfigId;
+
+  /** The list of names of metrics the report should include. */
+  core.List<core.String> metricNames;
+
+  /** The properties of the report. */
+  ReportFloodlightCriteriaReportProperties reportProperties;
+
+
+  ReportFloodlightCriteria();
+
+  ReportFloodlightCriteria.fromJson(core.Map _json) {
+    if (_json.containsKey("customRichMediaEvents")) {
+      customRichMediaEvents = _json["customRichMediaEvents"].map((value) => new DimensionValue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("dateRange")) {
+      dateRange = new DateRange.fromJson(_json["dateRange"]);
+    }
+    if (_json.containsKey("dimensionFilters")) {
+      dimensionFilters = _json["dimensionFilters"].map((value) => new DimensionValue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("dimensions")) {
+      dimensions = _json["dimensions"].map((value) => new SortedDimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("floodlightConfigId")) {
+      floodlightConfigId = new DimensionValue.fromJson(_json["floodlightConfigId"]);
+    }
+    if (_json.containsKey("metricNames")) {
+      metricNames = _json["metricNames"];
+    }
+    if (_json.containsKey("reportProperties")) {
+      reportProperties = new ReportFloodlightCriteriaReportProperties.fromJson(_json["reportProperties"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (customRichMediaEvents != null) {
+      _json["customRichMediaEvents"] = customRichMediaEvents.map((value) => (value).toJson()).toList();
+    }
+    if (dateRange != null) {
+      _json["dateRange"] = (dateRange).toJson();
+    }
+    if (dimensionFilters != null) {
+      _json["dimensionFilters"] = dimensionFilters.map((value) => (value).toJson()).toList();
+    }
+    if (dimensions != null) {
+      _json["dimensions"] = dimensions.map((value) => (value).toJson()).toList();
+    }
+    if (floodlightConfigId != null) {
+      _json["floodlightConfigId"] = (floodlightConfigId).toJson();
+    }
+    if (metricNames != null) {
+      _json["metricNames"] = metricNames;
+    }
+    if (reportProperties != null) {
+      _json["reportProperties"] = (reportProperties).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** The properties of the report. */
+class ReportPathToConversionCriteriaReportProperties {
+  /**
+   * DFA checks to see if a click interaction occurred within the specified
+   * period of time before a conversion. By default the value is pulled from
+   * Floodlight or you can manually enter a custom value. Valid values: 1-90.
+   */
+  core.int clicksLookbackWindow;
+
+  /**
+   * DFA checks to see if an impression interaction occurred within the
+   * specified period of time before a conversion. By default the value is
+   * pulled from Floodlight or you can manually enter a custom value. Valid
+   * values: 1-90.
+   */
+  core.int impressionsLookbackWindow;
+
+  /** Deprecated: has no effect. */
+  core.bool includeAttributedIPConversions;
+
+  /**
+   * Include conversions of users with a DoubleClick cookie but without an
+   * exposure. That means the user did not click or see an ad from the
+   * advertiser within the Floodlight group, or that the interaction happened
+   * outside the lookback window.
+   */
+  core.bool includeUnattributedCookieConversions;
+
+  /**
+   * Include conversions that have no associated cookies and no exposures. It’s
+   * therefore impossible to know how the user was exposed to your ads during
+   * the lookback window prior to a conversion.
+   */
+  core.bool includeUnattributedIPConversions;
+
+  /**
+   * The maximum number of click interactions to include in the report.
+   * Advertisers currently paying for E2C reports get up to 200 (100 clicks, 100
+   * impressions). If another advertiser in your network is paying for E2C, you
+   * can have up to 5 total exposures per report.
+   */
+  core.int maximumClickInteractions;
+
+  /**
+   * The maximum number of click interactions to include in the report.
+   * Advertisers currently paying for E2C reports get up to 200 (100 clicks, 100
+   * impressions). If another advertiser in your network is paying for E2C, you
+   * can have up to 5 total exposures per report.
+   */
+  core.int maximumImpressionInteractions;
+
+  /**
+   * The maximum amount of time that can take place between interactions (clicks
+   * or impressions) by the same user. Valid values: 1-90.
+   */
+  core.int maximumInteractionGap;
+
+  /** Enable pivoting on interaction path. */
+  core.bool pivotOnInteractionPath;
+
+
+  ReportPathToConversionCriteriaReportProperties();
+
+  ReportPathToConversionCriteriaReportProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("clicksLookbackWindow")) {
+      clicksLookbackWindow = _json["clicksLookbackWindow"];
+    }
+    if (_json.containsKey("impressionsLookbackWindow")) {
+      impressionsLookbackWindow = _json["impressionsLookbackWindow"];
+    }
+    if (_json.containsKey("includeAttributedIPConversions")) {
+      includeAttributedIPConversions = _json["includeAttributedIPConversions"];
+    }
+    if (_json.containsKey("includeUnattributedCookieConversions")) {
+      includeUnattributedCookieConversions = _json["includeUnattributedCookieConversions"];
+    }
+    if (_json.containsKey("includeUnattributedIPConversions")) {
+      includeUnattributedIPConversions = _json["includeUnattributedIPConversions"];
+    }
+    if (_json.containsKey("maximumClickInteractions")) {
+      maximumClickInteractions = _json["maximumClickInteractions"];
+    }
+    if (_json.containsKey("maximumImpressionInteractions")) {
+      maximumImpressionInteractions = _json["maximumImpressionInteractions"];
+    }
+    if (_json.containsKey("maximumInteractionGap")) {
+      maximumInteractionGap = _json["maximumInteractionGap"];
+    }
+    if (_json.containsKey("pivotOnInteractionPath")) {
+      pivotOnInteractionPath = _json["pivotOnInteractionPath"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (clicksLookbackWindow != null) {
+      _json["clicksLookbackWindow"] = clicksLookbackWindow;
+    }
+    if (impressionsLookbackWindow != null) {
+      _json["impressionsLookbackWindow"] = impressionsLookbackWindow;
+    }
+    if (includeAttributedIPConversions != null) {
+      _json["includeAttributedIPConversions"] = includeAttributedIPConversions;
+    }
+    if (includeUnattributedCookieConversions != null) {
+      _json["includeUnattributedCookieConversions"] = includeUnattributedCookieConversions;
+    }
+    if (includeUnattributedIPConversions != null) {
+      _json["includeUnattributedIPConversions"] = includeUnattributedIPConversions;
+    }
+    if (maximumClickInteractions != null) {
+      _json["maximumClickInteractions"] = maximumClickInteractions;
+    }
+    if (maximumImpressionInteractions != null) {
+      _json["maximumImpressionInteractions"] = maximumImpressionInteractions;
+    }
+    if (maximumInteractionGap != null) {
+      _json["maximumInteractionGap"] = maximumInteractionGap;
+    }
+    if (pivotOnInteractionPath != null) {
+      _json["pivotOnInteractionPath"] = pivotOnInteractionPath;
+    }
+    return _json;
+  }
+}
+
+
+/** The report criteria for a report of type "PATH_TO_CONVERSION". */
+class ReportPathToConversionCriteria {
+  /** The list of 'dfa:activity' values to filter on. */
+  core.List<DimensionValue> activityFilters;
+
+  /** The list of conversion dimensions the report should include. */
+  core.List<SortedDimension> conversionDimensions;
+
+  /** The list of custom floodlight variables the report should include. */
+  core.List<SortedDimension> customFloodlightVariables;
+
+  /** The list of custom rich media events to include. */
+  core.List<DimensionValue> customRichMediaEvents;
+
+  /** The date range this report should be run for. */
+  DateRange dateRange;
+
+  /**
+   * The floodlight ID for which to show data in this report. All advertisers
+   * associated with that ID will automatically be added. The dimension of the
+   * value needs to be 'dfa:floodlightConfigId'.
+   */
+  DimensionValue floodlightConfigId;
+
+  /** The list of names of metrics the report should include. */
+  core.List<core.String> metricNames;
+
+  /** The list of per interaction dimensions the report should include. */
+  core.List<SortedDimension> perInteractionDimensions;
+
+  /** The properties of the report. */
+  ReportPathToConversionCriteriaReportProperties reportProperties;
+
+
+  ReportPathToConversionCriteria();
+
+  ReportPathToConversionCriteria.fromJson(core.Map _json) {
+    if (_json.containsKey("activityFilters")) {
+      activityFilters = _json["activityFilters"].map((value) => new DimensionValue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("conversionDimensions")) {
+      conversionDimensions = _json["conversionDimensions"].map((value) => new SortedDimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("customFloodlightVariables")) {
+      customFloodlightVariables = _json["customFloodlightVariables"].map((value) => new SortedDimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("customRichMediaEvents")) {
+      customRichMediaEvents = _json["customRichMediaEvents"].map((value) => new DimensionValue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("dateRange")) {
+      dateRange = new DateRange.fromJson(_json["dateRange"]);
+    }
+    if (_json.containsKey("floodlightConfigId")) {
+      floodlightConfigId = new DimensionValue.fromJson(_json["floodlightConfigId"]);
+    }
+    if (_json.containsKey("metricNames")) {
+      metricNames = _json["metricNames"];
+    }
+    if (_json.containsKey("perInteractionDimensions")) {
+      perInteractionDimensions = _json["perInteractionDimensions"].map((value) => new SortedDimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("reportProperties")) {
+      reportProperties = new ReportPathToConversionCriteriaReportProperties.fromJson(_json["reportProperties"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (activityFilters != null) {
+      _json["activityFilters"] = activityFilters.map((value) => (value).toJson()).toList();
+    }
+    if (conversionDimensions != null) {
+      _json["conversionDimensions"] = conversionDimensions.map((value) => (value).toJson()).toList();
+    }
+    if (customFloodlightVariables != null) {
+      _json["customFloodlightVariables"] = customFloodlightVariables.map((value) => (value).toJson()).toList();
+    }
+    if (customRichMediaEvents != null) {
+      _json["customRichMediaEvents"] = customRichMediaEvents.map((value) => (value).toJson()).toList();
+    }
+    if (dateRange != null) {
+      _json["dateRange"] = (dateRange).toJson();
+    }
+    if (floodlightConfigId != null) {
+      _json["floodlightConfigId"] = (floodlightConfigId).toJson();
+    }
+    if (metricNames != null) {
+      _json["metricNames"] = metricNames;
+    }
+    if (perInteractionDimensions != null) {
+      _json["perInteractionDimensions"] = perInteractionDimensions.map((value) => (value).toJson()).toList();
+    }
+    if (reportProperties != null) {
+      _json["reportProperties"] = (reportProperties).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** The report criteria for a report of type "REACH". */
+class ReportReachCriteria {
+  /** Activity group. */
+  Activities activities;
+
+  /** Custom Rich Media Events group. */
+  CustomRichMediaEvents customRichMediaEvents;
+
+  /** The date range this report should be run for. */
+  DateRange dateRange;
+
+  /**
+   * The list of filters on which dimensions are filtered.
+   * Filters for different dimensions are ANDed, filters for the same dimension
+   * are grouped together and ORed.
+   */
+  core.List<DimensionValue> dimensionFilters;
+
+  /** The list of dimensions the report should include. */
+  core.List<SortedDimension> dimensions;
+
+  /**
+   * Whether to enable all reach dimension combinations in the report. Defaults
+   * to false. If enabled, the date range of the report should be within the
+   * last three months.
+   */
+  core.bool enableAllDimensionCombinations;
+
+  /** The list of names of metrics the report should include. */
+  core.List<core.String> metricNames;
+
+  /**
+   * The list of names of  Reach By Frequency metrics the report should include.
+   */
+  core.List<core.String> reachByFrequencyMetricNames;
+
+
+  ReportReachCriteria();
+
+  ReportReachCriteria.fromJson(core.Map _json) {
+    if (_json.containsKey("activities")) {
+      activities = new Activities.fromJson(_json["activities"]);
+    }
+    if (_json.containsKey("customRichMediaEvents")) {
+      customRichMediaEvents = new CustomRichMediaEvents.fromJson(_json["customRichMediaEvents"]);
+    }
+    if (_json.containsKey("dateRange")) {
+      dateRange = new DateRange.fromJson(_json["dateRange"]);
+    }
+    if (_json.containsKey("dimensionFilters")) {
+      dimensionFilters = _json["dimensionFilters"].map((value) => new DimensionValue.fromJson(value)).toList();
+    }
+    if (_json.containsKey("dimensions")) {
+      dimensions = _json["dimensions"].map((value) => new SortedDimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("enableAllDimensionCombinations")) {
+      enableAllDimensionCombinations = _json["enableAllDimensionCombinations"];
+    }
+    if (_json.containsKey("metricNames")) {
+      metricNames = _json["metricNames"];
+    }
+    if (_json.containsKey("reachByFrequencyMetricNames")) {
+      reachByFrequencyMetricNames = _json["reachByFrequencyMetricNames"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (activities != null) {
+      _json["activities"] = (activities).toJson();
+    }
+    if (customRichMediaEvents != null) {
+      _json["customRichMediaEvents"] = (customRichMediaEvents).toJson();
+    }
+    if (dateRange != null) {
+      _json["dateRange"] = (dateRange).toJson();
+    }
+    if (dimensionFilters != null) {
+      _json["dimensionFilters"] = dimensionFilters.map((value) => (value).toJson()).toList();
+    }
+    if (dimensions != null) {
+      _json["dimensions"] = dimensions.map((value) => (value).toJson()).toList();
+    }
+    if (enableAllDimensionCombinations != null) {
+      _json["enableAllDimensionCombinations"] = enableAllDimensionCombinations;
+    }
+    if (metricNames != null) {
+      _json["metricNames"] = metricNames;
+    }
+    if (reachByFrequencyMetricNames != null) {
+      _json["reachByFrequencyMetricNames"] = reachByFrequencyMetricNames;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * The report's schedule. Can only be set if the report's 'dateRange' is a
+ * relative date range and the relative date range is not "TODAY".
+ */
+class ReportSchedule {
+  /**
+   * Whether the schedule is active or not. Must be set to either true or false.
+   */
+  core.bool active;
+
+  /**
+   * Defines every how many days, weeks or months the report should be run.
+   * Needs to be set when "repeats" is either "DAILY", "WEEKLY" or "MONTHLY".
+   */
+  core.int every;
+
+  /** The expiration date when the scheduled report stops running. */
+  core.DateTime expirationDate;
+
+  /**
+   * The interval for which the report is repeated. Note:
+   * - "DAILY" also requires field "every" to be set.
+   * - "WEEKLY" also requires fields "every" and "repeatsOnWeekDays" to be set.
+   * - "MONTHLY" also requires fields "every" and "runsOnDayOfMonth" to be set.
+   */
+  core.String repeats;
+
+  /** List of week days "WEEKLY" on which scheduled reports should run. */
+  core.List<core.String> repeatsOnWeekDays;
+
+  /**
+   * Enum to define for "MONTHLY" scheduled reports whether reports should be
+   * repeated on the same day of the month as "startDate" or the same day of the
+   * week of the month.
+   * Example: If 'startDate' is Monday, April 2nd 2012 (2012-04-02),
+   * "DAY_OF_MONTH" would run subsequent reports on the 2nd of every Month, and
+   * "WEEK_OF_MONTH" would run subsequent reports on the first Monday of the
+   * month.
+   * Possible string values are:
+   * - "DAY_OF_MONTH"
+   * - "WEEK_OF_MONTH"
+   */
+  core.String runsOnDayOfMonth;
+
+  /** Start date of date range for which scheduled reports should be run. */
+  core.DateTime startDate;
+
+
+  ReportSchedule();
+
+  ReportSchedule.fromJson(core.Map _json) {
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("every")) {
+      every = _json["every"];
+    }
+    if (_json.containsKey("expirationDate")) {
+      expirationDate = core.DateTime.parse(_json["expirationDate"]);
+    }
+    if (_json.containsKey("repeats")) {
+      repeats = _json["repeats"];
+    }
+    if (_json.containsKey("repeatsOnWeekDays")) {
+      repeatsOnWeekDays = _json["repeatsOnWeekDays"];
+    }
+    if (_json.containsKey("runsOnDayOfMonth")) {
+      runsOnDayOfMonth = _json["runsOnDayOfMonth"];
+    }
+    if (_json.containsKey("startDate")) {
+      startDate = core.DateTime.parse(_json["startDate"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (every != null) {
+      _json["every"] = every;
+    }
+    if (expirationDate != null) {
+      _json["expirationDate"] = "${(expirationDate).year.toString().padLeft(4, '0')}-${(expirationDate).month.toString().padLeft(2, '0')}-${(expirationDate).day.toString().padLeft(2, '0')}";
+    }
+    if (repeats != null) {
+      _json["repeats"] = repeats;
+    }
+    if (repeatsOnWeekDays != null) {
+      _json["repeatsOnWeekDays"] = repeatsOnWeekDays;
+    }
+    if (runsOnDayOfMonth != null) {
+      _json["runsOnDayOfMonth"] = runsOnDayOfMonth;
+    }
+    if (startDate != null) {
+      _json["startDate"] = "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}";
+    }
+    return _json;
+  }
+}
+
+
+/** Represents a Report resource. */
+class Report {
+  /** The account ID to which this report belongs. */
+  core.String accountId;
+
+  /** The report criteria for a report of type "STANDARD". */
+  ReportCriteria criteria;
+
+  /** The report criteria for a report of type "CROSS_DIMENSION_REACH". */
+  ReportCrossDimensionReachCriteria crossDimensionReachCriteria;
+
+  /** The report's email delivery settings. */
+  ReportDelivery delivery;
+
+  /** The eTag of this response for caching purposes. */
+  core.String etag;
+
+  /** The filename used when generating report files for this report. */
+  core.String fileName;
+
+  /** The report criteria for a report of type "FLOODLIGHT". */
+  ReportFloodlightCriteria floodlightCriteria;
+
+  /**
+   * The output format of the report. If not specified, default format is "CSV".
+   * Note that the actual format in the completed report file might differ if
+   * for instance the report's size exceeds the format's capabilities. "CSV"
+   * will then be the fallback format.
+   * Possible string values are:
+   * - "CSV"
+   * - "EXCEL"
+   */
+  core.String format;
+
+  /** The unique ID identifying this report resource. */
+  core.String id;
+
+  /** The kind of resource this is, in this case dfareporting#report. */
+  core.String kind;
+
+  /**
+   * The timestamp (in milliseconds since epoch) of when this report was last
+   * modified.
+   */
+  core.String lastModifiedTime;
+
+  /** The name of the report. */
+  core.String name;
+
+  /** The user profile id of the owner of this report. */
+  core.String ownerProfileId;
+
+  /** The report criteria for a report of type "PATH_TO_CONVERSION". */
+  ReportPathToConversionCriteria pathToConversionCriteria;
+
+  /** The report criteria for a report of type "REACH". */
+  ReportReachCriteria reachCriteria;
+
+  /**
+   * The report's schedule. Can only be set if the report's 'dateRange' is a
+   * relative date range and the relative date range is not "TODAY".
+   */
+  ReportSchedule schedule;
+
+  /** The subbaccount ID to which this report belongs if applicable. */
+  core.String subAccountId;
+
+  /**
+   * The type of the report.
+   * Possible string values are:
+   * - "CROSS_DIMENSION_REACH"
+   * - "FLOODLIGHT"
+   * - "PATH_TO_CONVERSION"
+   * - "REACH"
+   * - "STANDARD"
+   */
+  core.String type;
+
+
+  Report();
+
+  Report.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("criteria")) {
+      criteria = new ReportCriteria.fromJson(_json["criteria"]);
+    }
+    if (_json.containsKey("crossDimensionReachCriteria")) {
+      crossDimensionReachCriteria = new ReportCrossDimensionReachCriteria.fromJson(_json["crossDimensionReachCriteria"]);
+    }
+    if (_json.containsKey("delivery")) {
+      delivery = new ReportDelivery.fromJson(_json["delivery"]);
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("fileName")) {
+      fileName = _json["fileName"];
+    }
+    if (_json.containsKey("floodlightCriteria")) {
+      floodlightCriteria = new ReportFloodlightCriteria.fromJson(_json["floodlightCriteria"]);
+    }
+    if (_json.containsKey("format")) {
+      format = _json["format"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("lastModifiedTime")) {
+      lastModifiedTime = _json["lastModifiedTime"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("ownerProfileId")) {
+      ownerProfileId = _json["ownerProfileId"];
+    }
+    if (_json.containsKey("pathToConversionCriteria")) {
+      pathToConversionCriteria = new ReportPathToConversionCriteria.fromJson(_json["pathToConversionCriteria"]);
+    }
+    if (_json.containsKey("reachCriteria")) {
+      reachCriteria = new ReportReachCriteria.fromJson(_json["reachCriteria"]);
+    }
+    if (_json.containsKey("schedule")) {
+      schedule = new ReportSchedule.fromJson(_json["schedule"]);
+    }
+    if (_json.containsKey("subAccountId")) {
+      subAccountId = _json["subAccountId"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (criteria != null) {
+      _json["criteria"] = (criteria).toJson();
+    }
+    if (crossDimensionReachCriteria != null) {
+      _json["crossDimensionReachCriteria"] = (crossDimensionReachCriteria).toJson();
+    }
+    if (delivery != null) {
+      _json["delivery"] = (delivery).toJson();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (fileName != null) {
+      _json["fileName"] = fileName;
+    }
+    if (floodlightCriteria != null) {
+      _json["floodlightCriteria"] = (floodlightCriteria).toJson();
+    }
+    if (format != null) {
+      _json["format"] = format;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (lastModifiedTime != null) {
+      _json["lastModifiedTime"] = lastModifiedTime;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (ownerProfileId != null) {
+      _json["ownerProfileId"] = ownerProfileId;
+    }
+    if (pathToConversionCriteria != null) {
+      _json["pathToConversionCriteria"] = (pathToConversionCriteria).toJson();
+    }
+    if (reachCriteria != null) {
+      _json["reachCriteria"] = (reachCriteria).toJson();
+    }
+    if (schedule != null) {
+      _json["schedule"] = (schedule).toJson();
+    }
+    if (subAccountId != null) {
+      _json["subAccountId"] = subAccountId;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * Represents fields that are compatible to be selected for a report of type
+ * "STANDARD".
+ */
+class ReportCompatibleFields {
+  /**
+   * Dimensions which are compatible to be selected in the "dimensionFilters"
+   * section of the report.
+   */
+  core.List<Dimension> dimensionFilters;
+
+  /**
+   * Dimensions which are compatible to be selected in the "dimensions" section
+   * of the report.
+   */
+  core.List<Dimension> dimensions;
+
+  /**
+   * The kind of resource this is, in this case
+   * dfareporting#reportCompatibleFields.
+   */
+  core.String kind;
+
+  /**
+   * Metrics which are compatible to be selected in the "metricNames" section of
+   * the report.
+   */
+  core.List<Metric> metrics;
+
+  /**
+   * Metrics which are compatible to be selected as activity metrics to pivot on
+   * in the "activities" section of the report.
+   */
+  core.List<Metric> pivotedActivityMetrics;
+
+
+  ReportCompatibleFields();
+
+  ReportCompatibleFields.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensionFilters")) {
+      dimensionFilters = _json["dimensionFilters"].map((value) => new Dimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("dimensions")) {
+      dimensions = _json["dimensions"].map((value) => new Dimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("metrics")) {
+      metrics = _json["metrics"].map((value) => new Metric.fromJson(value)).toList();
+    }
+    if (_json.containsKey("pivotedActivityMetrics")) {
+      pivotedActivityMetrics = _json["pivotedActivityMetrics"].map((value) => new Metric.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dimensionFilters != null) {
+      _json["dimensionFilters"] = dimensionFilters.map((value) => (value).toJson()).toList();
+    }
+    if (dimensions != null) {
+      _json["dimensions"] = dimensions.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (metrics != null) {
+      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+    }
+    if (pivotedActivityMetrics != null) {
+      _json["pivotedActivityMetrics"] = pivotedActivityMetrics.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Represents the list of reports. */
+class ReportList {
+  /** The eTag of this response for caching purposes. */
+  core.String etag;
+
+  /** The reports returned in this response. */
+  core.List<Report> items;
+
+  /** The kind of list this is, in this case dfareporting#reportList. */
+  core.String kind;
+
+  /**
+   * Continuation token used to page through reports. To retrieve the next page
+   * of results, set the next request's "pageToken" to the value of this field.
+   * The page token is only valid for a limited amount of time and should not be
+   * persisted.
+   */
+  core.String nextPageToken;
+
+
+  ReportList();
+
+  ReportList.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Report.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+
+/** Reporting Configuration */
+class ReportsConfiguration {
+  /** Enable premium path to conversion report. */
+  core.bool exposureToConversionEnabled;
+
+  /** Default look-back windows for new advertisers in this account. */
+  LookbackConfiguration lookbackConfiguration;
+
+  /** Report generation time zone ID of this account. */
+  core.String reportGenerationTimeZoneId;
+
+
+  ReportsConfiguration();
+
+  ReportsConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("exposureToConversionEnabled")) {
+      exposureToConversionEnabled = _json["exposureToConversionEnabled"];
+    }
+    if (_json.containsKey("lookbackConfiguration")) {
+      lookbackConfiguration = new LookbackConfiguration.fromJson(_json["lookbackConfiguration"]);
+    }
+    if (_json.containsKey("reportGenerationTimeZoneId")) {
+      reportGenerationTimeZoneId = _json["reportGenerationTimeZoneId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (exposureToConversionEnabled != null) {
+      _json["exposureToConversionEnabled"] = exposureToConversionEnabled;
+    }
+    if (lookbackConfiguration != null) {
+      _json["lookbackConfiguration"] = (lookbackConfiguration).toJson();
+    }
+    if (reportGenerationTimeZoneId != null) {
+      _json["reportGenerationTimeZoneId"] = reportGenerationTimeZoneId;
+    }
+    return _json;
+  }
+}
+
+
+/** Rich Media Exit Override. */
+class RichMediaExitOverride {
+  /**
+   * The click-through URL to override the default exit URL. Applicable if the
+   * useCustomExitUrl field is set to true.
+   */
+  core.String customExitUrl;
+
+  /** ID for the override to refer to a specific exit in the creative. */
+  core.String exitId;
+
+  /** Whether to use the custom exit URL. */
+  core.bool useCustomExitUrl;
+
+
+  RichMediaExitOverride();
+
+  RichMediaExitOverride.fromJson(core.Map _json) {
+    if (_json.containsKey("customExitUrl")) {
+      customExitUrl = _json["customExitUrl"];
+    }
+    if (_json.containsKey("exitId")) {
+      exitId = _json["exitId"];
+    }
+    if (_json.containsKey("useCustomExitUrl")) {
+      useCustomExitUrl = _json["useCustomExitUrl"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (customExitUrl != null) {
+      _json["customExitUrl"] = customExitUrl;
+    }
+    if (exitId != null) {
+      _json["exitId"] = exitId;
+    }
+    if (useCustomExitUrl != null) {
+      _json["useCustomExitUrl"] = useCustomExitUrl;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Site {
+  /** Account ID of this site. This field can be left blank. */
+  core.String accountId;
+
+  /** Site approval status. */
+  core.bool approved;
+
+  /**
+   * Directory site associated with this site. This field can only be set on
+   * site creation.
+   */
+  core.String directorySiteId;
+
+  /**
+   * Dimension value for the ID of the directory site. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue directorySiteIdDimensionValue;
+
+  /** ID of this site. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /**
+   * Dimension value for the ID of this site. This is a read-only,
+   * auto-generated field.
+   */
+  DimensionValue idDimensionValue;
+
+  /** Key name of this site. This is a read-only, auto-generated field. */
+  core.String keyName;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#site".
+   */
+  core.String kind;
+
+  /** Name of this site. */
+  core.String name;
+
+  /** Site contacts. */
+  core.List<SiteContact> siteContacts;
+
+  /** Site-wide settings. */
+  SiteSettings siteSettings;
+
+  /** Subaccount ID of this site. This field can be left blank. */
+  core.String subaccountId;
+
+
+  Site();
+
+  Site.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("approved")) {
+      approved = _json["approved"];
+    }
+    if (_json.containsKey("directorySiteId")) {
+      directorySiteId = _json["directorySiteId"];
+    }
+    if (_json.containsKey("directorySiteIdDimensionValue")) {
+      directorySiteIdDimensionValue = new DimensionValue.fromJson(_json["directorySiteIdDimensionValue"]);
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("idDimensionValue")) {
+      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+    }
+    if (_json.containsKey("keyName")) {
+      keyName = _json["keyName"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("siteContacts")) {
+      siteContacts = _json["siteContacts"].map((value) => new SiteContact.fromJson(value)).toList();
+    }
+    if (_json.containsKey("siteSettings")) {
+      siteSettings = new SiteSettings.fromJson(_json["siteSettings"]);
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (approved != null) {
+      _json["approved"] = approved;
+    }
+    if (directorySiteId != null) {
+      _json["directorySiteId"] = directorySiteId;
+    }
+    if (directorySiteIdDimensionValue != null) {
+      _json["directorySiteIdDimensionValue"] = (directorySiteIdDimensionValue).toJson();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (idDimensionValue != null) {
+      _json["idDimensionValue"] = (idDimensionValue).toJson();
+    }
+    if (keyName != null) {
+      _json["keyName"] = keyName;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (siteContacts != null) {
+      _json["siteContacts"] = siteContacts.map((value) => (value).toJson()).toList();
+    }
+    if (siteSettings != null) {
+      _json["siteSettings"] = (siteSettings).toJson();
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    return _json;
+  }
+}
+
+
+/** Site Contact */
+class SiteContact {
+  /**
+   * Site contact type.
+   * Possible string values are:
+   * - "SALES_PERSON"
+   * - "TRAFFICKER"
+   */
+  core.String contactType;
+
+  /** Email address of this site contact. */
+  core.String email;
+
+  /** First name of this site contact. */
+  core.String firstName;
+
+  /** ID of this site contact. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /** Last name of this site contact. */
+  core.String lastName;
+
+
+  SiteContact();
+
+  SiteContact.fromJson(core.Map _json) {
+    if (_json.containsKey("contactType")) {
+      contactType = _json["contactType"];
+    }
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("firstName")) {
+      firstName = _json["firstName"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("lastName")) {
+      lastName = _json["lastName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (contactType != null) {
+      _json["contactType"] = contactType;
+    }
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (firstName != null) {
+      _json["firstName"] = firstName;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (lastName != null) {
+      _json["lastName"] = lastName;
+    }
+    return _json;
+  }
+}
+
+
+/** Site Settings */
+class SiteSettings {
+  /** Disable active view creatives for this site. */
+  core.bool activeViewOptOut;
+
+  /** Site-wide creative settings. */
+  CreativeSettings creativeSettings;
+
+  /** Disable brand safe ads for this site. */
+  core.bool disableBrandSafeAds;
+
+  /** Do not set new cookies for this site. */
+  core.bool disableNewCookie;
+
+  /** Look-back window settings for this site. */
+  LookbackConfiguration lookbackConfiguration;
+
+  /** Configuration settings for dynamic and image floodlight tags. */
+  TagSetting tagSetting;
+
+
+  SiteSettings();
+
+  SiteSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("activeViewOptOut")) {
+      activeViewOptOut = _json["activeViewOptOut"];
+    }
+    if (_json.containsKey("creativeSettings")) {
+      creativeSettings = new CreativeSettings.fromJson(_json["creativeSettings"]);
+    }
+    if (_json.containsKey("disableBrandSafeAds")) {
+      disableBrandSafeAds = _json["disableBrandSafeAds"];
+    }
+    if (_json.containsKey("disableNewCookie")) {
+      disableNewCookie = _json["disableNewCookie"];
+    }
+    if (_json.containsKey("lookbackConfiguration")) {
+      lookbackConfiguration = new LookbackConfiguration.fromJson(_json["lookbackConfiguration"]);
+    }
+    if (_json.containsKey("tagSetting")) {
+      tagSetting = new TagSetting.fromJson(_json["tagSetting"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (activeViewOptOut != null) {
+      _json["activeViewOptOut"] = activeViewOptOut;
+    }
+    if (creativeSettings != null) {
+      _json["creativeSettings"] = (creativeSettings).toJson();
+    }
+    if (disableBrandSafeAds != null) {
+      _json["disableBrandSafeAds"] = disableBrandSafeAds;
+    }
+    if (disableNewCookie != null) {
+      _json["disableNewCookie"] = disableNewCookie;
+    }
+    if (lookbackConfiguration != null) {
+      _json["lookbackConfiguration"] = (lookbackConfiguration).toJson();
+    }
+    if (tagSetting != null) {
+      _json["tagSetting"] = (tagSetting).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Site List Response */
+class SitesListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#sitesListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+  /** Site collection */
+  core.List<Site> sites;
+
+
+  SitesListResponse();
+
+  SitesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("sites")) {
+      sites = _json["sites"].map((value) => new Site.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (sites != null) {
+      _json["sites"] = sites.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Size {
+  /** Height of this size. */
+  core.int height;
+
+  /** IAB standard size. This is a read-only, auto-generated field. */
+  core.bool iab;
+
+  /** ID of this size. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#size".
+   */
+  core.String kind;
+
+  /** Width of this size. */
+  core.int width;
+
+
+  Size();
+
+  Size.fromJson(core.Map _json) {
+    if (_json.containsKey("height")) {
+      height = _json["height"];
+    }
+    if (_json.containsKey("iab")) {
+      iab = _json["iab"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (height != null) {
+      _json["height"] = height;
+    }
+    if (iab != null) {
+      _json["iab"] = iab;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (width != null) {
+      _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
+
+/** Size List Response */
+class SizesListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#sizesListResponse".
+   */
+  core.String kind;
+
+  /** Size collection */
+  core.List<Size> sizes;
+
+
+  SizesListResponse();
+
+  SizesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("sizes")) {
+      sizes = _json["sizes"].map((value) => new Size.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (sizes != null) {
+      _json["sizes"] = sizes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Represents a sorted dimension. */
+class SortedDimension {
+  /**
+   * The kind of resource this is, in this case dfareporting#sortedDimension.
+   */
+  core.String kind;
+
+  /** The name of the dimension. */
+  core.String name;
+
+  /**
+   * An optional sort order for the dimension column.
+   * Possible string values are:
+   * - "ASCENDING"
+   * - "DESCENDING"
+   */
+  core.String sortOrder;
+
+
+  SortedDimension();
+
+  SortedDimension.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("sortOrder")) {
+      sortOrder = _json["sortOrder"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (sortOrder != null) {
+      _json["sortOrder"] = sortOrder;
+    }
+    return _json;
+  }
+}
+
+
+/** Subaccount */
+class Subaccount {
+  /** ID of the account that contains this subaccount. */
+  core.String accountId;
+
+  /** The available user role permissions for this subaccount. */
+  core.List<core.String> availablePermissionIds;
+
+  /** ID of this subaccount. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#subaccount".
+   */
+  core.String kind;
+
+  /** Name of this subaccount. */
+  core.String name;
+
+
+  Subaccount();
+
+  Subaccount.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("availablePermissionIds")) {
+      availablePermissionIds = _json["availablePermissionIds"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (availablePermissionIds != null) {
+      _json["availablePermissionIds"] = availablePermissionIds;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Subaccount List Response */
+class SubaccountsListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#subaccountsListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+  /** Subaccount collection */
+  core.List<Subaccount> subaccounts;
+
+
+  SubaccountsListResponse();
+
+  SubaccountsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("subaccounts")) {
+      subaccounts = _json["subaccounts"].map((value) => new Subaccount.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (subaccounts != null) {
+      _json["subaccounts"] = subaccounts.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Placement Tag Data */
+class TagData {
+  /** Ad associated with this placement tag. */
+  core.String adId;
+
+  /** Tag string to record a click. */
+  core.String clickTag;
+
+  /** Creative associated with this placement tag. */
+  core.String creativeId;
+
+  /**
+   * TagData tag format of this tag.
+   * Possible string values are:
+   * - "PLACEMENT_TAG_CLICK_COMMANDS"
+   * - "PLACEMENT_TAG_IFRAME_ILAYER"
+   * - "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
+   * - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH"
+   * - "PLACEMENT_TAG_INTERNAL_REDIRECT"
+   * - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT"
+   * - "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT"
+   * - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT"
+   * - "PLACEMENT_TAG_JAVASCRIPT"
+   * - "PLACEMENT_TAG_STANDARD"
+   * - "PLACEMENT_TAG_TRACKING"
+   * - "PLACEMENT_TAG_TRACKING_IFRAME"
+   * - "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
+   */
+  core.String format;
+
+  /** Tag string for serving an ad. */
+  core.String impressionTag;
+
+
+  TagData();
+
+  TagData.fromJson(core.Map _json) {
+    if (_json.containsKey("adId")) {
+      adId = _json["adId"];
+    }
+    if (_json.containsKey("clickTag")) {
+      clickTag = _json["clickTag"];
+    }
+    if (_json.containsKey("creativeId")) {
+      creativeId = _json["creativeId"];
+    }
+    if (_json.containsKey("format")) {
+      format = _json["format"];
+    }
+    if (_json.containsKey("impressionTag")) {
+      impressionTag = _json["impressionTag"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (adId != null) {
+      _json["adId"] = adId;
+    }
+    if (clickTag != null) {
+      _json["clickTag"] = clickTag;
+    }
+    if (creativeId != null) {
+      _json["creativeId"] = creativeId;
+    }
+    if (format != null) {
+      _json["format"] = format;
+    }
+    if (impressionTag != null) {
+      _json["impressionTag"] = impressionTag;
+    }
+    return _json;
+  }
+}
+
+
+/** Tag Settings */
+class TagSetting {
+  /** Additional key-values to be included in tags. */
+  core.String additionalKeyValues;
+
+  /**
+   * Whether static landing page URLs should be included in the tags. This
+   * setting applies only to placements.
+   */
+  core.bool includeClickThroughUrls;
+
+  /** Whether click-tracking string should be included in the tags. */
+  core.bool includeClickTracking;
+
+  /**
+   * Option specifying how keywords are embedded in ad tags. This setting can be
+   * used to specify if keyword placeholders are inserted in placement tags for
+   * this site. Publishers can then add keywords to those placeholders.
+   * Possible string values are:
+   * - "GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD"
+   * - "IGNORE"
+   * - "PLACEHOLDER_WITH_LIST_OF_KEYWORDS"
+   */
+  core.String keywordOption;
+
+
+  TagSetting();
+
+  TagSetting.fromJson(core.Map _json) {
+    if (_json.containsKey("additionalKeyValues")) {
+      additionalKeyValues = _json["additionalKeyValues"];
+    }
+    if (_json.containsKey("includeClickThroughUrls")) {
+      includeClickThroughUrls = _json["includeClickThroughUrls"];
+    }
+    if (_json.containsKey("includeClickTracking")) {
+      includeClickTracking = _json["includeClickTracking"];
+    }
+    if (_json.containsKey("keywordOption")) {
+      keywordOption = _json["keywordOption"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (additionalKeyValues != null) {
+      _json["additionalKeyValues"] = additionalKeyValues;
+    }
+    if (includeClickThroughUrls != null) {
+      _json["includeClickThroughUrls"] = includeClickThroughUrls;
+    }
+    if (includeClickTracking != null) {
+      _json["includeClickTracking"] = includeClickTracking;
+    }
+    if (keywordOption != null) {
+      _json["keywordOption"] = keywordOption;
+    }
+    return _json;
+  }
+}
+
+
+/** Dynamic and Image Tag Settings. */
+class TagSettings {
+  /**
+   * True if dynamic floodlight tags are enabled. False if the dynamic
+   * floodlight tags are not enabled.
+   */
+  core.bool dynamicTagEnabled;
+
+  /** True if image tags are enabled. False if image tags are not enabled. */
+  core.bool imageTagEnabled;
+
+
+  TagSettings();
+
+  TagSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("dynamicTagEnabled")) {
+      dynamicTagEnabled = _json["dynamicTagEnabled"];
+    }
+    if (_json.containsKey("imageTagEnabled")) {
+      imageTagEnabled = _json["imageTagEnabled"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dynamicTagEnabled != null) {
+      _json["dynamicTagEnabled"] = dynamicTagEnabled;
+    }
+    if (imageTagEnabled != null) {
+      _json["imageTagEnabled"] = imageTagEnabled;
+    }
+    return _json;
+  }
+}
+
+
+/** Target Window. */
+class TargetWindow {
+  /** User entered value. */
+  core.String customHtml;
+
+  /**
+   * Types of browser window of which backup image of the flash creative can be
+   * displayed.
+   * Possible string values are:
+   * - "CURRENT_WINDOW"
+   * - "CUSTOM"
+   * - "NEW_WINDOW"
+   */
+  core.String targetWindowOption;
+
+
+  TargetWindow();
+
+  TargetWindow.fromJson(core.Map _json) {
+    if (_json.containsKey("customHtml")) {
+      customHtml = _json["customHtml"];
+    }
+    if (_json.containsKey("targetWindowOption")) {
+      targetWindowOption = _json["targetWindowOption"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (customHtml != null) {
+      _json["customHtml"] = customHtml;
+    }
+    if (targetWindowOption != null) {
+      _json["targetWindowOption"] = targetWindowOption;
+    }
+    return _json;
+  }
+}
+
+
+/** Technology Targeting. */
+class TechnologyTargeting {
+  /**
+   * Browsers that this ad targets. For write operations, either set the
+   * browserVersionId, or set the dartId along with the version numbers. If both
+   * are specified, only the browserVersionId will be used.
+   */
+  core.List<Browser> browsers;
+
+  /**
+   * Connection types that this ad targets. For write operations, only the id
+   * field is required.
+   */
+  core.List<ConnectionType> connectionTypes;
+
+  /**
+   * Mobile carriers that this ad targets. For write operations, only the id
+   * field is required. If targeting a mobile carrier, do not set any geographic
+   * targeting.
+   */
+  core.List<MobileCarrier> mobileCarriers;
+
+  /**
+   * Operating system versions that this ad targets. To target all versions, use
+   * operatingSystems. For write operations, only the id field is required. If
+   * targeting an operating system version, do not set targeting for the
+   * corresponding operating system.
+   */
+  core.List<OperatingSystemVersion> operatingSystemVersions;
+
+  /**
+   * Operating systems that this ad targets. To target specific versions, use
+   * operatingSystemVersions. For write operations, only the dartId field is
+   * required. If targeting an operating system, do not set targeting for
+   * operating system versions for the same operating system.
+   */
+  core.List<OperatingSystem> operatingSystems;
+
+  /**
+   * Platform types that this ad targets. For example, desktop, mobile, or
+   * tablet. For write operations, only the id field is required.
+   */
+  core.List<PlatformType> platformTypes;
+
+
+  TechnologyTargeting();
+
+  TechnologyTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("browsers")) {
+      browsers = _json["browsers"].map((value) => new Browser.fromJson(value)).toList();
+    }
+    if (_json.containsKey("connectionTypes")) {
+      connectionTypes = _json["connectionTypes"].map((value) => new ConnectionType.fromJson(value)).toList();
+    }
+    if (_json.containsKey("mobileCarriers")) {
+      mobileCarriers = _json["mobileCarriers"].map((value) => new MobileCarrier.fromJson(value)).toList();
+    }
+    if (_json.containsKey("operatingSystemVersions")) {
+      operatingSystemVersions = _json["operatingSystemVersions"].map((value) => new OperatingSystemVersion.fromJson(value)).toList();
+    }
+    if (_json.containsKey("operatingSystems")) {
+      operatingSystems = _json["operatingSystems"].map((value) => new OperatingSystem.fromJson(value)).toList();
+    }
+    if (_json.containsKey("platformTypes")) {
+      platformTypes = _json["platformTypes"].map((value) => new PlatformType.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (browsers != null) {
+      _json["browsers"] = browsers.map((value) => (value).toJson()).toList();
+    }
+    if (connectionTypes != null) {
+      _json["connectionTypes"] = connectionTypes.map((value) => (value).toJson()).toList();
+    }
+    if (mobileCarriers != null) {
+      _json["mobileCarriers"] = mobileCarriers.map((value) => (value).toJson()).toList();
+    }
+    if (operatingSystemVersions != null) {
+      _json["operatingSystemVersions"] = operatingSystemVersions.map((value) => (value).toJson()).toList();
+    }
+    if (operatingSystems != null) {
+      _json["operatingSystems"] = operatingSystems.map((value) => (value).toJson()).toList();
+    }
+    if (platformTypes != null) {
+      _json["platformTypes"] = platformTypes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Third Party Tracking URL. */
+class ThirdPartyTrackingUrl {
+  /**
+   * Third party URL type for in-stream video creatives.
+   * Possible string values are:
+   * - "CLICK_TRACKING"
+   * - "IMPRESSION"
+   * - "RICH_MEDIA_BACKUP_IMPRESSION"
+   * - "RICH_MEDIA_IMPRESSION"
+   * - "RICH_MEDIA_RM_IMPRESSION"
+   * - "SURVEY"
+   * - "VIDEO_COMPLETE"
+   * - "VIDEO_CUSTOM"
+   * - "VIDEO_FIRST_QUARTILE"
+   * - "VIDEO_FULLSCREEN"
+   * - "VIDEO_MIDPOINT"
+   * - "VIDEO_MUTE"
+   * - "VIDEO_PAUSE"
+   * - "VIDEO_REWIND"
+   * - "VIDEO_START"
+   * - "VIDEO_STOP"
+   * - "VIDEO_THIRD_QUARTILE"
+   */
+  core.String thirdPartyUrlType;
+
+  /** URL for specified third party URL type. */
+  core.String url;
+
+
+  ThirdPartyTrackingUrl();
+
+  ThirdPartyTrackingUrl.fromJson(core.Map _json) {
+    if (_json.containsKey("thirdPartyUrlType")) {
+      thirdPartyUrlType = _json["thirdPartyUrlType"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (thirdPartyUrlType != null) {
+      _json["thirdPartyUrlType"] = thirdPartyUrlType;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+
+/** User Defined Variable configuration. */
+class UserDefinedVariableConfiguration {
+  /**
+   * The data type for the variable.
+   * Possible string values are:
+   * - "NUMBER"
+   * - "STRING"
+   */
+  core.String dataType;
+
+  /**
+   * An optional user friendly name for the variable. This will appear in the
+   * reports.
+   */
+  core.String reportName;
+
+  /**
+   * The variable.
+   * Possible string values are:
+   * - "U1"
+   * - "U10"
+   * - "U11"
+   * - "U12"
+   * - "U13"
+   * - "U14"
+   * - "U15"
+   * - "U16"
+   * - "U17"
+   * - "U18"
+   * - "U19"
+   * - "U2"
+   * - "U20"
+   * - "U3"
+   * - "U4"
+   * - "U5"
+   * - "U6"
+   * - "U7"
+   * - "U8"
+   * - "U9"
+   */
+  core.String variableType;
+
+
+  UserDefinedVariableConfiguration();
+
+  UserDefinedVariableConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("dataType")) {
+      dataType = _json["dataType"];
+    }
+    if (_json.containsKey("reportName")) {
+      reportName = _json["reportName"];
+    }
+    if (_json.containsKey("variableType")) {
+      variableType = _json["variableType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dataType != null) {
+      _json["dataType"] = dataType;
+    }
+    if (reportName != null) {
+      _json["reportName"] = reportName;
+    }
+    if (variableType != null) {
+      _json["variableType"] = variableType;
+    }
+    return _json;
+  }
+}
+
+
+/** Represents a UserProfile resource. */
+class UserProfile {
+  /** The account ID to which this profile belongs. */
+  core.String accountId;
+
+  /** The account name this profile belongs to. */
+  core.String accountName;
+
+  /** The eTag of this response for caching purposes. */
+  core.String etag;
+
+  /** The kind of resource this is, in this case dfareporting#userProfile. */
+  core.String kind;
+
+  /** The unique ID of the user profile. */
+  core.String profileId;
+
+  /** The sub account ID this profile belongs to if applicable. */
+  core.String subAccountId;
+
+  /** The sub account name this profile belongs to if applicable. */
+  core.String subAccountName;
+
+  /** The user name. */
+  core.String userName;
+
+
+  UserProfile();
+
+  UserProfile.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("accountName")) {
+      accountName = _json["accountName"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("profileId")) {
+      profileId = _json["profileId"];
+    }
+    if (_json.containsKey("subAccountId")) {
+      subAccountId = _json["subAccountId"];
+    }
+    if (_json.containsKey("subAccountName")) {
+      subAccountName = _json["subAccountName"];
+    }
+    if (_json.containsKey("userName")) {
+      userName = _json["userName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (accountName != null) {
+      _json["accountName"] = accountName;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (profileId != null) {
+      _json["profileId"] = profileId;
+    }
+    if (subAccountId != null) {
+      _json["subAccountId"] = subAccountId;
+    }
+    if (subAccountName != null) {
+      _json["subAccountName"] = subAccountName;
+    }
+    if (userName != null) {
+      _json["userName"] = userName;
+    }
+    return _json;
+  }
+}
+
+
+/** Represents the list of user profiles. */
+class UserProfileList {
+  /** The eTag of this response for caching purposes. */
+  core.String etag;
+
+  /** The user profiles returned in this response. */
+  core.List<UserProfile> items;
+
+  /** The kind of list this is, in this case dfareporting#userProfileList. */
+  core.String kind;
+
+
+  UserProfileList();
+
+  UserProfileList.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new UserProfile.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class UserRole {
+  /** Account ID of this user role. */
+  core.String accountId;
+
+  /**
+   * Whether this is a default user role. Default user roles are created by the
+   * system for the account/subaccount and cannot be modified or deleted. Each
+   * default user role comes with a basic set of preassigned permissions.
+   */
+  core.bool defaultUserRole;
+
+  /** ID of this user role. This is a read-only, auto-generated field. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#userRole".
+   */
+  core.String kind;
+
+  /** Name of this user role. */
+  core.String name;
+
+  /** Parent user role ID of this user role. */
+  core.String parentUserRoleId;
+
+  /** List of permissions associated with this user role. */
+  core.List<UserRolePermission> permissions;
+
+  /** Subaccount ID of this user role. */
+  core.String subaccountId;
+
+
+  UserRole();
+
+  UserRole.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("defaultUserRole")) {
+      defaultUserRole = _json["defaultUserRole"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("parentUserRoleId")) {
+      parentUserRoleId = _json["parentUserRoleId"];
+    }
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"].map((value) => new UserRolePermission.fromJson(value)).toList();
+    }
+    if (_json.containsKey("subaccountId")) {
+      subaccountId = _json["subaccountId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (defaultUserRole != null) {
+      _json["defaultUserRole"] = defaultUserRole;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (parentUserRoleId != null) {
+      _json["parentUserRoleId"] = parentUserRoleId;
+    }
+    if (permissions != null) {
+      _json["permissions"] = permissions.map((value) => (value).toJson()).toList();
+    }
+    if (subaccountId != null) {
+      _json["subaccountId"] = subaccountId;
+    }
+    return _json;
+  }
+}
+
+
+/** UserRolePermission */
+class UserRolePermission {
+  /**
+   * Levels of availability for a user role permission.
+   * Possible string values are:
+   * - "ACCOUNT_ALWAYS"
+   * - "ACCOUNT_BY_DEFAULT"
+   * - "NOT_AVAILABLE_BY_DEFAULT"
+   * - "SUBACCOUNT_AND_ACCOUNT_ALWAYS"
+   * - "SUBACCOUNT_AND_ACCOUNT_BY_DEFAULT"
+   */
+  core.String availability;
+
+  /**
+   * ID of this user role permission. This is a read-only, auto-generated field.
+   */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#userRolePermission".
+   */
+  core.String kind;
+
+  /** Name of this user role permission. */
+  core.String name;
+
+  /** ID of the permission group that this user role permission belongs to. */
+  core.String permissionGroupId;
+
+
+  UserRolePermission();
+
+  UserRolePermission.fromJson(core.Map _json) {
+    if (_json.containsKey("availability")) {
+      availability = _json["availability"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("permissionGroupId")) {
+      permissionGroupId = _json["permissionGroupId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (availability != null) {
+      _json["availability"] = availability;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (permissionGroupId != null) {
+      _json["permissionGroupId"] = permissionGroupId;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class UserRolePermissionGroup {
+  /**
+   * ID of this user role permission. This is a read-only,auto-generated field.
+   */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#userRolePermissionGroup".
+   */
+  core.String kind;
+
+  /** Name of this user role permission group. */
+  core.String name;
+
+
+  UserRolePermissionGroup();
+
+  UserRolePermissionGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** User Role Permission Group List Response */
+class UserRolePermissionGroupsListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#userRolePermissionGroupsListResponse".
+   */
+  core.String kind;
+
+  /** User role permission group collection */
+  core.List<UserRolePermissionGroup> userRolePermissionGroups;
+
+
+  UserRolePermissionGroupsListResponse();
+
+  UserRolePermissionGroupsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("userRolePermissionGroups")) {
+      userRolePermissionGroups = _json["userRolePermissionGroups"].map((value) => new UserRolePermissionGroup.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (userRolePermissionGroups != null) {
+      _json["userRolePermissionGroups"] = userRolePermissionGroups.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** User Role Permission List Response */
+class UserRolePermissionsListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#userRolePermissionsListResponse".
+   */
+  core.String kind;
+
+  /** User role permission collection */
+  core.List<UserRolePermission> userRolePermissions;
+
+
+  UserRolePermissionsListResponse();
+
+  UserRolePermissionsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("userRolePermissions")) {
+      userRolePermissions = _json["userRolePermissions"].map((value) => new UserRolePermission.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (userRolePermissions != null) {
+      _json["userRolePermissions"] = userRolePermissions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** User Role List Response */
+class UserRolesListResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "dfareporting#userRolesListResponse".
+   */
+  core.String kind;
+
+  /** Pagination token to be used for the next list operation. */
+  core.String nextPageToken;
+
+  /** User role collection */
+  core.List<UserRole> userRoles;
+
+
+  UserRolesListResponse();
+
+  UserRolesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("userRoles")) {
+      userRoles = _json["userRoles"].map((value) => new UserRole.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (userRoles != null) {
+      _json["userRoles"] = userRoles.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+

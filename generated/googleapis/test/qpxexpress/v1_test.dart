@@ -64,14 +64,14 @@ checkAirportData(api.AirportData o) {
   buildCounterAirportData--;
 }
 
-buildUnnamed1() {
+buildUnnamed1273() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1(core.List<core.String> o) {
+checkUnnamed1273(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -84,7 +84,7 @@ buildBagDescriptor() {
   if (buildCounterBagDescriptor < 3) {
     o.commercialName = "foo";
     o.count = 42;
-    o.description = buildUnnamed1();
+    o.description = buildUnnamed1273();
     o.kind = "foo";
     o.subcode = "foo";
   }
@@ -97,7 +97,7 @@ checkBagDescriptor(api.BagDescriptor o) {
   if (buildCounterBagDescriptor < 3) {
     unittest.expect(o.commercialName, unittest.equals('foo'));
     unittest.expect(o.count, unittest.equals(42));
-    checkUnnamed1(o.description);
+    checkUnnamed1273(o.description);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.subcode, unittest.equals('foo'));
   }
@@ -152,66 +152,66 @@ checkCityData(api.CityData o) {
   buildCounterCityData--;
 }
 
-buildUnnamed2() {
+buildUnnamed1274() {
   var o = new core.List<api.AircraftData>();
   o.add(buildAircraftData());
   o.add(buildAircraftData());
   return o;
 }
 
-checkUnnamed2(core.List<api.AircraftData> o) {
+checkUnnamed1274(core.List<api.AircraftData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAircraftData(o[0]);
   checkAircraftData(o[1]);
 }
 
-buildUnnamed3() {
+buildUnnamed1275() {
   var o = new core.List<api.AirportData>();
   o.add(buildAirportData());
   o.add(buildAirportData());
   return o;
 }
 
-checkUnnamed3(core.List<api.AirportData> o) {
+checkUnnamed1275(core.List<api.AirportData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAirportData(o[0]);
   checkAirportData(o[1]);
 }
 
-buildUnnamed4() {
+buildUnnamed1276() {
   var o = new core.List<api.CarrierData>();
   o.add(buildCarrierData());
   o.add(buildCarrierData());
   return o;
 }
 
-checkUnnamed4(core.List<api.CarrierData> o) {
+checkUnnamed1276(core.List<api.CarrierData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCarrierData(o[0]);
   checkCarrierData(o[1]);
 }
 
-buildUnnamed5() {
+buildUnnamed1277() {
   var o = new core.List<api.CityData>();
   o.add(buildCityData());
   o.add(buildCityData());
   return o;
 }
 
-checkUnnamed5(core.List<api.CityData> o) {
+checkUnnamed1277(core.List<api.CityData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCityData(o[0]);
   checkCityData(o[1]);
 }
 
-buildUnnamed6() {
+buildUnnamed1278() {
   var o = new core.List<api.TaxData>();
   o.add(buildTaxData());
   o.add(buildTaxData());
   return o;
 }
 
-checkUnnamed6(core.List<api.TaxData> o) {
+checkUnnamed1278(core.List<api.TaxData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaxData(o[0]);
   checkTaxData(o[1]);
@@ -222,12 +222,12 @@ buildData() {
   var o = new api.Data();
   buildCounterData++;
   if (buildCounterData < 3) {
-    o.aircraft = buildUnnamed2();
-    o.airport = buildUnnamed3();
-    o.carrier = buildUnnamed4();
-    o.city = buildUnnamed5();
+    o.aircraft = buildUnnamed1274();
+    o.airport = buildUnnamed1275();
+    o.carrier = buildUnnamed1276();
+    o.city = buildUnnamed1277();
     o.kind = "foo";
-    o.tax = buildUnnamed6();
+    o.tax = buildUnnamed1278();
   }
   buildCounterData--;
   return o;
@@ -236,12 +236,12 @@ buildData() {
 checkData(api.Data o) {
   buildCounterData++;
   if (buildCounterData < 3) {
-    checkUnnamed2(o.aircraft);
-    checkUnnamed3(o.airport);
-    checkUnnamed4(o.carrier);
-    checkUnnamed5(o.city);
+    checkUnnamed1274(o.aircraft);
+    checkUnnamed1275(o.airport);
+    checkUnnamed1276(o.carrier);
+    checkUnnamed1277(o.city);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed6(o.tax);
+    checkUnnamed1278(o.tax);
   }
   buildCounterData--;
 }
@@ -298,14 +298,14 @@ checkFlightInfo(api.FlightInfo o) {
   buildCounterFlightInfo--;
 }
 
-buildUnnamed7() {
+buildUnnamed1279() {
   var o = new core.List<api.BagDescriptor>();
   o.add(buildBagDescriptor());
   o.add(buildBagDescriptor());
   return o;
 }
 
-checkUnnamed7(core.List<api.BagDescriptor> o) {
+checkUnnamed1279(core.List<api.BagDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBagDescriptor(o[0]);
   checkBagDescriptor(o[1]);
@@ -316,7 +316,7 @@ buildFreeBaggageAllowance() {
   var o = new api.FreeBaggageAllowance();
   buildCounterFreeBaggageAllowance++;
   if (buildCounterFreeBaggageAllowance < 3) {
-    o.bagDescriptor = buildUnnamed7();
+    o.bagDescriptor = buildUnnamed1279();
     o.kilos = 42;
     o.kilosPerPiece = 42;
     o.kind = "foo";
@@ -330,7 +330,7 @@ buildFreeBaggageAllowance() {
 checkFreeBaggageAllowance(api.FreeBaggageAllowance o) {
   buildCounterFreeBaggageAllowance++;
   if (buildCounterFreeBaggageAllowance < 3) {
-    checkUnnamed7(o.bagDescriptor);
+    checkUnnamed1279(o.bagDescriptor);
     unittest.expect(o.kilos, unittest.equals(42));
     unittest.expect(o.kilosPerPiece, unittest.equals(42));
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -420,40 +420,40 @@ checkPassengerCounts(api.PassengerCounts o) {
   buildCounterPassengerCounts--;
 }
 
-buildUnnamed8() {
+buildUnnamed1280() {
   var o = new core.List<api.FareInfo>();
   o.add(buildFareInfo());
   o.add(buildFareInfo());
   return o;
 }
 
-checkUnnamed8(core.List<api.FareInfo> o) {
+checkUnnamed1280(core.List<api.FareInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFareInfo(o[0]);
   checkFareInfo(o[1]);
 }
 
-buildUnnamed9() {
+buildUnnamed1281() {
   var o = new core.List<api.SegmentPricing>();
   o.add(buildSegmentPricing());
   o.add(buildSegmentPricing());
   return o;
 }
 
-checkUnnamed9(core.List<api.SegmentPricing> o) {
+checkUnnamed1281(core.List<api.SegmentPricing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSegmentPricing(o[0]);
   checkSegmentPricing(o[1]);
 }
 
-buildUnnamed10() {
+buildUnnamed1282() {
   var o = new core.List<api.TaxInfo>();
   o.add(buildTaxInfo());
   o.add(buildTaxInfo());
   return o;
 }
 
-checkUnnamed10(core.List<api.TaxInfo> o) {
+checkUnnamed1282(core.List<api.TaxInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaxInfo(o[0]);
   checkTaxInfo(o[1]);
@@ -465,7 +465,7 @@ buildPricingInfo() {
   buildCounterPricingInfo++;
   if (buildCounterPricingInfo < 3) {
     o.baseFareTotal = "foo";
-    o.fare = buildUnnamed8();
+    o.fare = buildUnnamed1280();
     o.fareCalculation = "foo";
     o.kind = "foo";
     o.latestTicketingTime = "foo";
@@ -475,8 +475,8 @@ buildPricingInfo() {
     o.saleFareTotal = "foo";
     o.saleTaxTotal = "foo";
     o.saleTotal = "foo";
-    o.segmentPricing = buildUnnamed9();
-    o.tax = buildUnnamed10();
+    o.segmentPricing = buildUnnamed1281();
+    o.tax = buildUnnamed1282();
   }
   buildCounterPricingInfo--;
   return o;
@@ -486,7 +486,7 @@ checkPricingInfo(api.PricingInfo o) {
   buildCounterPricingInfo++;
   if (buildCounterPricingInfo < 3) {
     unittest.expect(o.baseFareTotal, unittest.equals('foo'));
-    checkUnnamed8(o.fare);
+    checkUnnamed1280(o.fare);
     unittest.expect(o.fareCalculation, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.latestTicketingTime, unittest.equals('foo'));
@@ -496,20 +496,20 @@ checkPricingInfo(api.PricingInfo o) {
     unittest.expect(o.saleFareTotal, unittest.equals('foo'));
     unittest.expect(o.saleTaxTotal, unittest.equals('foo'));
     unittest.expect(o.saleTotal, unittest.equals('foo'));
-    checkUnnamed9(o.segmentPricing);
-    checkUnnamed10(o.tax);
+    checkUnnamed1281(o.segmentPricing);
+    checkUnnamed1282(o.tax);
   }
   buildCounterPricingInfo--;
 }
 
-buildUnnamed11() {
+buildUnnamed1283() {
   var o = new core.List<api.LegInfo>();
   o.add(buildLegInfo());
   o.add(buildLegInfo());
   return o;
 }
 
-checkUnnamed11(core.List<api.LegInfo> o) {
+checkUnnamed1283(core.List<api.LegInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLegInfo(o[0]);
   checkLegInfo(o[1]);
@@ -528,7 +528,7 @@ buildSegmentInfo() {
     o.flight = buildFlightInfo();
     o.id = "foo";
     o.kind = "foo";
-    o.leg = buildUnnamed11();
+    o.leg = buildUnnamed1283();
     o.marriedSegmentGroup = "foo";
     o.subjectToGovernmentApproval = true;
   }
@@ -547,21 +547,21 @@ checkSegmentInfo(api.SegmentInfo o) {
     checkFlightInfo(o.flight);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed11(o.leg);
+    checkUnnamed1283(o.leg);
     unittest.expect(o.marriedSegmentGroup, unittest.equals('foo'));
     unittest.expect(o.subjectToGovernmentApproval, unittest.isTrue);
   }
   buildCounterSegmentInfo--;
 }
 
-buildUnnamed12() {
+buildUnnamed1284() {
   var o = new core.List<api.FreeBaggageAllowance>();
   o.add(buildFreeBaggageAllowance());
   o.add(buildFreeBaggageAllowance());
   return o;
 }
 
-checkUnnamed12(core.List<api.FreeBaggageAllowance> o) {
+checkUnnamed1284(core.List<api.FreeBaggageAllowance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFreeBaggageAllowance(o[0]);
   checkFreeBaggageAllowance(o[1]);
@@ -573,7 +573,7 @@ buildSegmentPricing() {
   buildCounterSegmentPricing++;
   if (buildCounterSegmentPricing < 3) {
     o.fareId = "foo";
-    o.freeBaggageOption = buildUnnamed12();
+    o.freeBaggageOption = buildUnnamed1284();
     o.kind = "foo";
     o.segmentId = "foo";
   }
@@ -585,21 +585,21 @@ checkSegmentPricing(api.SegmentPricing o) {
   buildCounterSegmentPricing++;
   if (buildCounterSegmentPricing < 3) {
     unittest.expect(o.fareId, unittest.equals('foo'));
-    checkUnnamed12(o.freeBaggageOption);
+    checkUnnamed1284(o.freeBaggageOption);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.segmentId, unittest.equals('foo'));
   }
   buildCounterSegmentPricing--;
 }
 
-buildUnnamed13() {
+buildUnnamed1285() {
   var o = new core.List<api.SegmentInfo>();
   o.add(buildSegmentInfo());
   o.add(buildSegmentInfo());
   return o;
 }
 
-checkUnnamed13(core.List<api.SegmentInfo> o) {
+checkUnnamed1285(core.List<api.SegmentInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSegmentInfo(o[0]);
   checkSegmentInfo(o[1]);
@@ -612,7 +612,7 @@ buildSliceInfo() {
   if (buildCounterSliceInfo < 3) {
     o.duration = 42;
     o.kind = "foo";
-    o.segment = buildUnnamed13();
+    o.segment = buildUnnamed1285();
   }
   buildCounterSliceInfo--;
   return o;
@@ -623,32 +623,32 @@ checkSliceInfo(api.SliceInfo o) {
   if (buildCounterSliceInfo < 3) {
     unittest.expect(o.duration, unittest.equals(42));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed13(o.segment);
+    checkUnnamed1285(o.segment);
   }
   buildCounterSliceInfo--;
 }
 
-buildUnnamed14() {
+buildUnnamed1286() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed14(core.List<core.String> o) {
+checkUnnamed1286(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed15() {
+buildUnnamed1287() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed15(core.List<core.String> o) {
+checkUnnamed1287(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -666,10 +666,10 @@ buildSliceInput() {
     o.maxConnectionDuration = 42;
     o.maxStops = 42;
     o.origin = "foo";
-    o.permittedCarrier = buildUnnamed14();
+    o.permittedCarrier = buildUnnamed1286();
     o.permittedDepartureTime = buildTimeOfDayRange();
     o.preferredCabin = "foo";
-    o.prohibitedCarrier = buildUnnamed15();
+    o.prohibitedCarrier = buildUnnamed1287();
   }
   buildCounterSliceInput--;
   return o;
@@ -685,10 +685,10 @@ checkSliceInput(api.SliceInput o) {
     unittest.expect(o.maxConnectionDuration, unittest.equals(42));
     unittest.expect(o.maxStops, unittest.equals(42));
     unittest.expect(o.origin, unittest.equals('foo'));
-    checkUnnamed14(o.permittedCarrier);
+    checkUnnamed1286(o.permittedCarrier);
     checkTimeOfDayRange(o.permittedDepartureTime);
     unittest.expect(o.preferredCabin, unittest.equals('foo'));
-    checkUnnamed15(o.prohibitedCarrier);
+    checkUnnamed1287(o.prohibitedCarrier);
   }
   buildCounterSliceInput--;
 }
@@ -768,27 +768,27 @@ checkTimeOfDayRange(api.TimeOfDayRange o) {
   buildCounterTimeOfDayRange--;
 }
 
-buildUnnamed16() {
+buildUnnamed1288() {
   var o = new core.List<api.PricingInfo>();
   o.add(buildPricingInfo());
   o.add(buildPricingInfo());
   return o;
 }
 
-checkUnnamed16(core.List<api.PricingInfo> o) {
+checkUnnamed1288(core.List<api.PricingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPricingInfo(o[0]);
   checkPricingInfo(o[1]);
 }
 
-buildUnnamed17() {
+buildUnnamed1289() {
   var o = new core.List<api.SliceInfo>();
   o.add(buildSliceInfo());
   o.add(buildSliceInfo());
   return o;
 }
 
-checkUnnamed17(core.List<api.SliceInfo> o) {
+checkUnnamed1289(core.List<api.SliceInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSliceInfo(o[0]);
   checkSliceInfo(o[1]);
@@ -801,9 +801,9 @@ buildTripOption() {
   if (buildCounterTripOption < 3) {
     o.id = "foo";
     o.kind = "foo";
-    o.pricing = buildUnnamed16();
+    o.pricing = buildUnnamed1288();
     o.saleTotal = "foo";
-    o.slice = buildUnnamed17();
+    o.slice = buildUnnamed1289();
   }
   buildCounterTripOption--;
   return o;
@@ -814,21 +814,21 @@ checkTripOption(api.TripOption o) {
   if (buildCounterTripOption < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed16(o.pricing);
+    checkUnnamed1288(o.pricing);
     unittest.expect(o.saleTotal, unittest.equals('foo'));
-    checkUnnamed17(o.slice);
+    checkUnnamed1289(o.slice);
   }
   buildCounterTripOption--;
 }
 
-buildUnnamed18() {
+buildUnnamed1290() {
   var o = new core.List<api.SliceInput>();
   o.add(buildSliceInput());
   o.add(buildSliceInput());
   return o;
 }
 
-checkUnnamed18(core.List<api.SliceInput> o) {
+checkUnnamed1290(core.List<api.SliceInput> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSliceInput(o[0]);
   checkSliceInput(o[1]);
@@ -843,7 +843,7 @@ buildTripOptionsRequest() {
     o.passengers = buildPassengerCounts();
     o.refundable = true;
     o.saleCountry = "foo";
-    o.slice = buildUnnamed18();
+    o.slice = buildUnnamed1290();
     o.solutions = 42;
   }
   buildCounterTripOptionsRequest--;
@@ -857,20 +857,20 @@ checkTripOptionsRequest(api.TripOptionsRequest o) {
     checkPassengerCounts(o.passengers);
     unittest.expect(o.refundable, unittest.isTrue);
     unittest.expect(o.saleCountry, unittest.equals('foo'));
-    checkUnnamed18(o.slice);
+    checkUnnamed1290(o.slice);
     unittest.expect(o.solutions, unittest.equals(42));
   }
   buildCounterTripOptionsRequest--;
 }
 
-buildUnnamed19() {
+buildUnnamed1291() {
   var o = new core.List<api.TripOption>();
   o.add(buildTripOption());
   o.add(buildTripOption());
   return o;
 }
 
-checkUnnamed19(core.List<api.TripOption> o) {
+checkUnnamed1291(core.List<api.TripOption> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTripOption(o[0]);
   checkTripOption(o[1]);
@@ -884,7 +884,7 @@ buildTripOptionsResponse() {
     o.data = buildData();
     o.kind = "foo";
     o.requestId = "foo";
-    o.tripOption = buildUnnamed19();
+    o.tripOption = buildUnnamed1291();
   }
   buildCounterTripOptionsResponse--;
   return o;
@@ -896,7 +896,7 @@ checkTripOptionsResponse(api.TripOptionsResponse o) {
     checkData(o.data);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.requestId, unittest.equals('foo'));
-    checkUnnamed19(o.tripOption);
+    checkUnnamed1291(o.tripOption);
   }
   buildCounterTripOptionsResponse--;
 }

@@ -14,7 +14,7 @@
     "description": "The Google Container Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/container-engine/docs/v1beta1/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/UyZr6gRNA--6ruBaV-TxMA3zr8s\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/bknEg4GrqSygHKiAnR4oD-XWFQs\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -346,14 +346,14 @@
             }
         }
     },
-    "revision": "20141112",
+    "revision": "20141213",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Cluster": {
             "id": "Cluster",
             "properties": {
                 "clusterApiVersion": {
-                    "description": "The API version of the Kubernetes master and kubelets running in this cluster. Allowed value is 0.4.2, or leave blank to pick up the latest stable release.",
+                    "description": "The API version of the Kubernetes master and kubelets running in this cluster. Allowed values are 0.4.4, 0.5.5, 0.6.1, or leave blank to pick up the latest stable release.",
                     "type": "string"
                 },
                 "containerIpv4Cidr": {
@@ -397,6 +397,10 @@
                     "description": "The number of nodes to create in this cluster. You must ensure that your Compute Engine resource quota is sufficient for this number of instances plus one (to include the master). You must also have available firewall and routes quota.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "selfLink": {
+                    "description": "[Output only] Server-defined URL for the resource.",
+                    "type": "string"
                 },
                 "servicesIpv4Cidr": {
                     "description": "[Output only] The IP addresses of the Kubernetes services in this cluster, in  CIDR notation (e.g. 1.2.3.4/29). Service addresses are always in the 10.0.0.0/16 range.",
@@ -563,6 +567,10 @@
                 },
                 "target": {
                     "description": "[Optional] The URL of the cluster resource that this operation is associated with.",
+                    "type": "string"
+                },
+                "targetLink": {
+                    "description": "Server-defined URL for the target of the operation.",
                     "type": "string"
                 },
                 "zone": {

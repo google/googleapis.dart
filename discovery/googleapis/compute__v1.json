@@ -26,7 +26,7 @@
     "description": "API for the Google Compute Engine service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/p_mCJMb7VwoC3-6YahcTdtq2Nr4\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/q0HPcsO3_Sdy-4PCTKTzL-JtI64\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -5369,7 +5369,7 @@
             }
         }
     },
-    "revision": "20141118",
+    "revision": "20141112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {
@@ -6767,7 +6767,7 @@
                     "type": "string"
                 },
                 "timeoutSec": {
-                    "description": "How long (in seconds) to wait before claiming failure. The default value is 5 seconds.",
+                    "description": "How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -7764,34 +7764,32 @@
             "id": "Operation",
             "properties": {
                 "clientOperationId": {
-                    "description": "An optional identifier specified by the client when the mutation was initiated. Must be unique for all operation resources in the project (output only).",
                     "type": "string"
                 },
                 "creationTimestamp": {
-                    "description": "Creation timestamp in RFC3339 text format (output only).",
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format (output only).",
                     "type": "string"
                 },
                 "endTime": {
-                    "description": "The time that this operation was completed. This is in RFC 3339 format (output only).",
                     "type": "string"
                 },
                 "error": {
-                    "description": "If errors occurred during processing of this operation, this field will be populated (output only).",
+                    "description": "[Output Only] If errors occurred during processing of this operation, this field will be populated.",
                     "properties": {
                         "errors": {
-                            "description": "The array of errors encountered while processing this operation.",
+                            "description": "[Output Only] The array of errors encountered while processing this operation.",
                             "items": {
                                 "properties": {
                                     "code": {
-                                        "description": "The error type identifier for this error.",
+                                        "description": "[Output Only] The error type identifier for this error.",
                                         "type": "string"
                                     },
                                     "location": {
-                                        "description": "Indicates the field in the request which caused the error. This property is optional.",
+                                        "description": "[Output Only] Indicates the field in the request which caused the error. This property is optional.",
                                         "type": "string"
                                     },
                                     "message": {
-                                        "description": "An optional, human-readable error message.",
+                                        "description": "[Output Only] An optional, human-readable error message.",
                                         "type": "string"
                                     }
                                 },
@@ -7803,55 +7801,51 @@
                     "type": "object"
                 },
                 "httpErrorMessage": {
-                    "description": "If operation fails, the HTTP error message returned, e.g. NOT FOUND. (output only).",
                     "type": "string"
                 },
                 "httpErrorStatusCode": {
-                    "description": "If operation fails, the HTTP error status code returned, e.g. 404. (output only).",
                     "format": "int32",
                     "type": "integer"
                 },
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
                     "format": "uint64",
                     "type": "string"
                 },
                 "insertTime": {
-                    "description": "The time that this operation was requested. This is in RFC 3339 format (output only).",
+                    "description": "[Output Only] The time that this operation was requested. This is in RFC 3339 format.",
                     "type": "string"
                 },
                 "kind": {
                     "default": "compute#operation",
-                    "description": "Type of the resource.",
+                    "description": "[Output Only] Type of the resource. Always kind#operation for Operation resources.",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Name of the resource (output only).",
+                    "description": "[Output Only] Name of the resource (output only).",
                     "type": "string"
                 },
                 "operationType": {
-                    "description": "Type of the operation. Examples include \"insert\", \"update\", and \"delete\" (output only).",
                     "type": "string"
                 },
                 "progress": {
-                    "description": "An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess at when the operation will be complete. This number should be monotonically increasing as the operation progresses (output only).",
                     "format": "int32",
                     "type": "integer"
                 },
                 "region": {
-                    "description": "URL of the region where the operation resides (output only).",
+                    "description": "[Output Only] URL of the region where the operation resides (output only).",
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for the resource (output only).",
+                    "description": "[Output Only] Server defined URL for the resource.",
                     "type": "string"
                 },
                 "startTime": {
-                    "description": "The time that this operation was started by the server. This is in RFC 3339 format (output only).",
+                    "description": "[Output Only] The time that this operation was started by the server. This is in RFC 3339 format.",
                     "type": "string"
                 },
                 "status": {
-                    "description": "Status of the operation. Can be one of the following: \"PENDING\", \"RUNNING\", or \"DONE\" (output only).",
+                    "description": "[Output Only] Status of the operation. Can be one of the following: \"PENDING\", \"RUNNING\", or \"DONE\".",
                     "enum": [
                         "DONE",
                         "PENDING",
@@ -7865,24 +7859,22 @@
                     "type": "string"
                 },
                 "statusMessage": {
-                    "description": "An optional textual description of the current status of the operation (output only).",
+                    "description": "[Output Only] An optional textual description of the current status of the operation.",
                     "type": "string"
                 },
                 "targetId": {
-                    "description": "Unique target id which identifies a particular incarnation of the target (output only).",
+                    "description": "[Output Only] Unique target id which identifies a particular incarnation of the target.",
                     "format": "uint64",
                     "type": "string"
                 },
                 "targetLink": {
-                    "description": "URL of the resource the operation is mutating (output only).",
+                    "description": "[Output Only] URL of the resource the operation is mutating (output only).",
                     "type": "string"
                 },
                 "user": {
-                    "description": "User who requested the operation, for example \"user@example.com\" (output only).",
                     "type": "string"
                 },
                 "warnings": {
-                    "description": "If warning messages generated during processing of this operation, this field will be populated (output only).",
                     "items": {
                         "properties": {
                             "code": {
@@ -7944,7 +7936,7 @@
                     "type": "array"
                 },
                 "zone": {
-                    "description": "URL of the zone where the operation resides (output only).",
+                    "description": "[Output Only] URL of the zone where the operation resides (output only).",
                     "type": "string"
                 }
             },
@@ -7954,15 +7946,15 @@
             "id": "OperationAggregatedList",
             "properties": {
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
                     "type": "string"
                 },
                 "items": {
                     "additionalProperties": {
                         "$ref": "OperationsScopedList",
-                        "description": "Name of the scope containing this set of operations."
+                        "description": "[Output Only] Name of the scope containing this set of operations."
                     },
-                    "description": "A map of scoped operation lists.",
+                    "description": "[Output Only] A map of scoped operation lists.",
                     "type": "object"
                 },
                 "kind": {
@@ -7971,11 +7963,11 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request (output only).",
+                    "description": "[Output Only] A token used to continue a truncated list request.",
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for this resource (output only).",
+                    "description": "[Output Only] Server defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -7986,11 +7978,11 @@
             "id": "OperationList",
             "properties": {
                 "id": {
-                    "description": "Unique identifier for the resource; defined by the server (output only).",
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
                     "type": "string"
                 },
                 "items": {
-                    "description": "The operation resources.",
+                    "description": "[Output Only] The operation resources.",
                     "items": {
                         "$ref": "Operation"
                     },
@@ -7998,15 +7990,15 @@
                 },
                 "kind": {
                     "default": "compute#operationList",
-                    "description": "Type of resource.",
+                    "description": "Type of resource. Always compute#operations for Operations resource.",
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request (output only).",
+                    "description": "[Output Only] A token used to continue a truncate.",
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "Server defined URL for this resource (output only).",
+                    "description": "[Output Only] Server defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -8016,14 +8008,14 @@
             "id": "OperationsScopedList",
             "properties": {
                 "operations": {
-                    "description": "List of operations contained in this scope.",
+                    "description": "[Output Only] List of operations contained in this scope.",
                     "items": {
                         "$ref": "Operation"
                     },
                     "type": "array"
                 },
                 "warning": {
-                    "description": "Informational warning which replaces the list of operations when the list is empty.",
+                    "description": "[Output Only] Informational warning which replaces the list of operations when the list is empty.",
                     "properties": {
                         "code": {
                             "description": "The warning type identifier for this warning.",

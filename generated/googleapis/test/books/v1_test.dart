@@ -93,14 +93,14 @@ checkAnnotationLayerSummary(api.AnnotationLayerSummary o) {
   buildCounterAnnotationLayerSummary--;
 }
 
-buildUnnamed537() {
+buildUnnamed305() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed537(core.List<core.String> o) {
+checkUnnamed305(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -123,7 +123,7 @@ buildAnnotation() {
     o.kind = "foo";
     o.layerId = "foo";
     o.layerSummary = buildAnnotationLayerSummary();
-    o.pageIds = buildUnnamed537();
+    o.pageIds = buildUnnamed305();
     o.selectedText = "foo";
     o.selfLink = "foo";
     o.updated = core.DateTime.parse("2002-02-27T14:01:02");
@@ -148,7 +148,7 @@ checkAnnotation(api.Annotation o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.layerId, unittest.equals('foo'));
     checkAnnotationLayerSummary(o.layerSummary);
-    checkUnnamed537(o.pageIds);
+    checkUnnamed305(o.pageIds);
     unittest.expect(o.selectedText, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
@@ -192,14 +192,14 @@ checkAnnotationdata(api.Annotationdata o) {
   buildCounterAnnotationdata--;
 }
 
-buildUnnamed538() {
+buildUnnamed306() {
   var o = new core.List<api.Annotation>();
   o.add(buildAnnotation());
   o.add(buildAnnotation());
   return o;
 }
 
-checkUnnamed538(core.List<api.Annotation> o) {
+checkUnnamed306(core.List<api.Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotation(o[0]);
   checkAnnotation(o[1]);
@@ -210,7 +210,7 @@ buildAnnotations() {
   var o = new api.Annotations();
   buildCounterAnnotations++;
   if (buildCounterAnnotations < 3) {
-    o.items = buildUnnamed538();
+    o.items = buildUnnamed306();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -222,7 +222,7 @@ buildAnnotations() {
 checkAnnotations(api.Annotations o) {
   buildCounterAnnotations++;
   if (buildCounterAnnotations < 3) {
-    checkUnnamed538(o.items);
+    checkUnnamed306(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -257,14 +257,14 @@ checkAnnotationsSummaryLayers(api.AnnotationsSummaryLayers o) {
   buildCounterAnnotationsSummaryLayers--;
 }
 
-buildUnnamed539() {
+buildUnnamed307() {
   var o = new core.List<api.AnnotationsSummaryLayers>();
   o.add(buildAnnotationsSummaryLayers());
   o.add(buildAnnotationsSummaryLayers());
   return o;
 }
 
-checkUnnamed539(core.List<api.AnnotationsSummaryLayers> o) {
+checkUnnamed307(core.List<api.AnnotationsSummaryLayers> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotationsSummaryLayers(o[0]);
   checkAnnotationsSummaryLayers(o[1]);
@@ -276,7 +276,7 @@ buildAnnotationsSummary() {
   buildCounterAnnotationsSummary++;
   if (buildCounterAnnotationsSummary < 3) {
     o.kind = "foo";
-    o.layers = buildUnnamed539();
+    o.layers = buildUnnamed307();
   }
   buildCounterAnnotationsSummary--;
   return o;
@@ -286,19 +286,19 @@ checkAnnotationsSummary(api.AnnotationsSummary o) {
   buildCounterAnnotationsSummary++;
   if (buildCounterAnnotationsSummary < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed539(o.layers);
+    checkUnnamed307(o.layers);
   }
   buildCounterAnnotationsSummary--;
 }
 
-buildUnnamed540() {
+buildUnnamed308() {
   var o = new core.List<api.Annotationdata>();
   o.add(buildAnnotationdata());
   o.add(buildAnnotationdata());
   return o;
 }
 
-checkUnnamed540(core.List<api.Annotationdata> o) {
+checkUnnamed308(core.List<api.Annotationdata> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotationdata(o[0]);
   checkAnnotationdata(o[1]);
@@ -309,7 +309,7 @@ buildAnnotationsdata() {
   var o = new api.Annotationsdata();
   buildCounterAnnotationsdata++;
   if (buildCounterAnnotationsdata < 3) {
-    o.items = buildUnnamed540();
+    o.items = buildUnnamed308();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -321,7 +321,7 @@ buildAnnotationsdata() {
 checkAnnotationsdata(api.Annotationsdata o) {
   buildCounterAnnotationsdata++;
   if (buildCounterAnnotationsdata < 3) {
-    checkUnnamed540(o.items);
+    checkUnnamed308(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -435,14 +435,14 @@ checkBookshelf(api.Bookshelf o) {
   buildCounterBookshelf--;
 }
 
-buildUnnamed541() {
+buildUnnamed309() {
   var o = new core.List<api.Bookshelf>();
   o.add(buildBookshelf());
   o.add(buildBookshelf());
   return o;
 }
 
-checkUnnamed541(core.List<api.Bookshelf> o) {
+checkUnnamed309(core.List<api.Bookshelf> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBookshelf(o[0]);
   checkBookshelf(o[1]);
@@ -453,7 +453,7 @@ buildBookshelves() {
   var o = new api.Bookshelves();
   buildCounterBookshelves++;
   if (buildCounterBookshelves < 3) {
-    o.items = buildUnnamed541();
+    o.items = buildUnnamed309();
     o.kind = "foo";
   }
   buildCounterBookshelves--;
@@ -463,7 +463,7 @@ buildBookshelves() {
 checkBookshelves(api.Bookshelves o) {
   buildCounterBookshelves++;
   if (buildCounterBookshelves < 3) {
-    checkUnnamed541(o.items);
+    checkUnnamed309(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBookshelves--;
@@ -492,14 +492,14 @@ checkCategoryItems(api.CategoryItems o) {
   buildCounterCategoryItems--;
 }
 
-buildUnnamed542() {
+buildUnnamed310() {
   var o = new core.List<api.CategoryItems>();
   o.add(buildCategoryItems());
   o.add(buildCategoryItems());
   return o;
 }
 
-checkUnnamed542(core.List<api.CategoryItems> o) {
+checkUnnamed310(core.List<api.CategoryItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCategoryItems(o[0]);
   checkCategoryItems(o[1]);
@@ -510,7 +510,7 @@ buildCategory() {
   var o = new api.Category();
   buildCounterCategory++;
   if (buildCounterCategory < 3) {
-    o.items = buildUnnamed542();
+    o.items = buildUnnamed310();
     o.kind = "foo";
   }
   buildCounterCategory--;
@@ -520,7 +520,7 @@ buildCategory() {
 checkCategory(api.Category o) {
   buildCounterCategory++;
   if (buildCounterCategory < 3) {
-    checkUnnamed542(o.items);
+    checkUnnamed310(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterCategory--;
@@ -647,14 +647,14 @@ checkDictlayerdataDictWordsDerivatives(api.DictlayerdataDictWordsDerivatives o) 
   buildCounterDictlayerdataDictWordsDerivatives--;
 }
 
-buildUnnamed543() {
+buildUnnamed311() {
   var o = new core.List<api.DictlayerdataDictWordsDerivatives>();
   o.add(buildDictlayerdataDictWordsDerivatives());
   o.add(buildDictlayerdataDictWordsDerivatives());
   return o;
 }
 
-checkUnnamed543(core.List<api.DictlayerdataDictWordsDerivatives> o) {
+checkUnnamed311(core.List<api.DictlayerdataDictWordsDerivatives> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsDerivatives(o[0]);
   checkDictlayerdataDictWordsDerivatives(o[1]);
@@ -702,14 +702,14 @@ checkDictlayerdataDictWordsExamples(api.DictlayerdataDictWordsExamples o) {
   buildCounterDictlayerdataDictWordsExamples--;
 }
 
-buildUnnamed544() {
+buildUnnamed312() {
   var o = new core.List<api.DictlayerdataDictWordsExamples>();
   o.add(buildDictlayerdataDictWordsExamples());
   o.add(buildDictlayerdataDictWordsExamples());
   return o;
 }
 
-checkUnnamed544(core.List<api.DictlayerdataDictWordsExamples> o) {
+checkUnnamed312(core.List<api.DictlayerdataDictWordsExamples> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsExamples(o[0]);
   checkDictlayerdataDictWordsExamples(o[1]);
@@ -736,14 +736,14 @@ checkDictlayerdataDictWordsSensesConjugations(api.DictlayerdataDictWordsSensesCo
   buildCounterDictlayerdataDictWordsSensesConjugations--;
 }
 
-buildUnnamed545() {
+buildUnnamed313() {
   var o = new core.List<api.DictlayerdataDictWordsSensesConjugations>();
   o.add(buildDictlayerdataDictWordsSensesConjugations());
   o.add(buildDictlayerdataDictWordsSensesConjugations());
   return o;
 }
 
-checkUnnamed545(core.List<api.DictlayerdataDictWordsSensesConjugations> o) {
+checkUnnamed313(core.List<api.DictlayerdataDictWordsSensesConjugations> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSensesConjugations(o[0]);
   checkDictlayerdataDictWordsSensesConjugations(o[1]);
@@ -791,14 +791,14 @@ checkDictlayerdataDictWordsSensesDefinitionsExamples(api.DictlayerdataDictWordsS
   buildCounterDictlayerdataDictWordsSensesDefinitionsExamples--;
 }
 
-buildUnnamed546() {
+buildUnnamed314() {
   var o = new core.List<api.DictlayerdataDictWordsSensesDefinitionsExamples>();
   o.add(buildDictlayerdataDictWordsSensesDefinitionsExamples());
   o.add(buildDictlayerdataDictWordsSensesDefinitionsExamples());
   return o;
 }
 
-checkUnnamed546(core.List<api.DictlayerdataDictWordsSensesDefinitionsExamples> o) {
+checkUnnamed314(core.List<api.DictlayerdataDictWordsSensesDefinitionsExamples> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSensesDefinitionsExamples(o[0]);
   checkDictlayerdataDictWordsSensesDefinitionsExamples(o[1]);
@@ -810,7 +810,7 @@ buildDictlayerdataDictWordsSensesDefinitions() {
   buildCounterDictlayerdataDictWordsSensesDefinitions++;
   if (buildCounterDictlayerdataDictWordsSensesDefinitions < 3) {
     o.definition = "foo";
-    o.examples = buildUnnamed546();
+    o.examples = buildUnnamed314();
   }
   buildCounterDictlayerdataDictWordsSensesDefinitions--;
   return o;
@@ -820,19 +820,19 @@ checkDictlayerdataDictWordsSensesDefinitions(api.DictlayerdataDictWordsSensesDef
   buildCounterDictlayerdataDictWordsSensesDefinitions++;
   if (buildCounterDictlayerdataDictWordsSensesDefinitions < 3) {
     unittest.expect(o.definition, unittest.equals('foo'));
-    checkUnnamed546(o.examples);
+    checkUnnamed314(o.examples);
   }
   buildCounterDictlayerdataDictWordsSensesDefinitions--;
 }
 
-buildUnnamed547() {
+buildUnnamed315() {
   var o = new core.List<api.DictlayerdataDictWordsSensesDefinitions>();
   o.add(buildDictlayerdataDictWordsSensesDefinitions());
   o.add(buildDictlayerdataDictWordsSensesDefinitions());
   return o;
 }
 
-checkUnnamed547(core.List<api.DictlayerdataDictWordsSensesDefinitions> o) {
+checkUnnamed315(core.List<api.DictlayerdataDictWordsSensesDefinitions> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSensesDefinitions(o[0]);
   checkDictlayerdataDictWordsSensesDefinitions(o[1]);
@@ -901,14 +901,14 @@ checkDictlayerdataDictWordsSensesSynonyms(api.DictlayerdataDictWordsSensesSynony
   buildCounterDictlayerdataDictWordsSensesSynonyms--;
 }
 
-buildUnnamed548() {
+buildUnnamed316() {
   var o = new core.List<api.DictlayerdataDictWordsSensesSynonyms>();
   o.add(buildDictlayerdataDictWordsSensesSynonyms());
   o.add(buildDictlayerdataDictWordsSensesSynonyms());
   return o;
 }
 
-checkUnnamed548(core.List<api.DictlayerdataDictWordsSensesSynonyms> o) {
+checkUnnamed316(core.List<api.DictlayerdataDictWordsSensesSynonyms> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSensesSynonyms(o[0]);
   checkDictlayerdataDictWordsSensesSynonyms(o[1]);
@@ -919,14 +919,14 @@ buildDictlayerdataDictWordsSenses() {
   var o = new api.DictlayerdataDictWordsSenses();
   buildCounterDictlayerdataDictWordsSenses++;
   if (buildCounterDictlayerdataDictWordsSenses < 3) {
-    o.conjugations = buildUnnamed545();
-    o.definitions = buildUnnamed547();
+    o.conjugations = buildUnnamed313();
+    o.definitions = buildUnnamed315();
     o.partOfSpeech = "foo";
     o.pronunciation = "foo";
     o.pronunciationUrl = "foo";
     o.source = buildDictlayerdataDictWordsSensesSource();
     o.syllabification = "foo";
-    o.synonyms = buildUnnamed548();
+    o.synonyms = buildUnnamed316();
   }
   buildCounterDictlayerdataDictWordsSenses--;
   return o;
@@ -935,26 +935,26 @@ buildDictlayerdataDictWordsSenses() {
 checkDictlayerdataDictWordsSenses(api.DictlayerdataDictWordsSenses o) {
   buildCounterDictlayerdataDictWordsSenses++;
   if (buildCounterDictlayerdataDictWordsSenses < 3) {
-    checkUnnamed545(o.conjugations);
-    checkUnnamed547(o.definitions);
+    checkUnnamed313(o.conjugations);
+    checkUnnamed315(o.definitions);
     unittest.expect(o.partOfSpeech, unittest.equals('foo'));
     unittest.expect(o.pronunciation, unittest.equals('foo'));
     unittest.expect(o.pronunciationUrl, unittest.equals('foo'));
     checkDictlayerdataDictWordsSensesSource(o.source);
     unittest.expect(o.syllabification, unittest.equals('foo'));
-    checkUnnamed548(o.synonyms);
+    checkUnnamed316(o.synonyms);
   }
   buildCounterDictlayerdataDictWordsSenses--;
 }
 
-buildUnnamed549() {
+buildUnnamed317() {
   var o = new core.List<api.DictlayerdataDictWordsSenses>();
   o.add(buildDictlayerdataDictWordsSenses());
   o.add(buildDictlayerdataDictWordsSenses());
   return o;
 }
 
-checkUnnamed549(core.List<api.DictlayerdataDictWordsSenses> o) {
+checkUnnamed317(core.List<api.DictlayerdataDictWordsSenses> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSenses(o[0]);
   checkDictlayerdataDictWordsSenses(o[1]);
@@ -986,9 +986,9 @@ buildDictlayerdataDictWords() {
   var o = new api.DictlayerdataDictWords();
   buildCounterDictlayerdataDictWords++;
   if (buildCounterDictlayerdataDictWords < 3) {
-    o.derivatives = buildUnnamed543();
-    o.examples = buildUnnamed544();
-    o.senses = buildUnnamed549();
+    o.derivatives = buildUnnamed311();
+    o.examples = buildUnnamed312();
+    o.senses = buildUnnamed317();
     o.source = buildDictlayerdataDictWordsSource();
   }
   buildCounterDictlayerdataDictWords--;
@@ -998,22 +998,22 @@ buildDictlayerdataDictWords() {
 checkDictlayerdataDictWords(api.DictlayerdataDictWords o) {
   buildCounterDictlayerdataDictWords++;
   if (buildCounterDictlayerdataDictWords < 3) {
-    checkUnnamed543(o.derivatives);
-    checkUnnamed544(o.examples);
-    checkUnnamed549(o.senses);
+    checkUnnamed311(o.derivatives);
+    checkUnnamed312(o.examples);
+    checkUnnamed317(o.senses);
     checkDictlayerdataDictWordsSource(o.source);
   }
   buildCounterDictlayerdataDictWords--;
 }
 
-buildUnnamed550() {
+buildUnnamed318() {
   var o = new core.List<api.DictlayerdataDictWords>();
   o.add(buildDictlayerdataDictWords());
   o.add(buildDictlayerdataDictWords());
   return o;
 }
 
-checkUnnamed550(core.List<api.DictlayerdataDictWords> o) {
+checkUnnamed318(core.List<api.DictlayerdataDictWords> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWords(o[0]);
   checkDictlayerdataDictWords(o[1]);
@@ -1025,7 +1025,7 @@ buildDictlayerdataDict() {
   buildCounterDictlayerdataDict++;
   if (buildCounterDictlayerdataDict < 3) {
     o.source = buildDictlayerdataDictSource();
-    o.words = buildUnnamed550();
+    o.words = buildUnnamed318();
   }
   buildCounterDictlayerdataDict--;
   return o;
@@ -1035,7 +1035,7 @@ checkDictlayerdataDict(api.DictlayerdataDict o) {
   buildCounterDictlayerdataDict++;
   if (buildCounterDictlayerdataDict < 3) {
     checkDictlayerdataDictSource(o.source);
-    checkUnnamed550(o.words);
+    checkUnnamed318(o.words);
   }
   buildCounterDictlayerdataDict--;
 }
@@ -1104,14 +1104,14 @@ checkDownloadAccessRestriction(api.DownloadAccessRestriction o) {
   buildCounterDownloadAccessRestriction--;
 }
 
-buildUnnamed551() {
+buildUnnamed319() {
   var o = new core.List<api.DownloadAccessRestriction>();
   o.add(buildDownloadAccessRestriction());
   o.add(buildDownloadAccessRestriction());
   return o;
 }
 
-checkUnnamed551(core.List<api.DownloadAccessRestriction> o) {
+checkUnnamed319(core.List<api.DownloadAccessRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDownloadAccessRestriction(o[0]);
   checkDownloadAccessRestriction(o[1]);
@@ -1122,7 +1122,7 @@ buildDownloadAccesses() {
   var o = new api.DownloadAccesses();
   buildCounterDownloadAccesses++;
   if (buildCounterDownloadAccesses < 3) {
-    o.downloadAccessList = buildUnnamed551();
+    o.downloadAccessList = buildUnnamed319();
     o.kind = "foo";
   }
   buildCounterDownloadAccesses--;
@@ -1132,7 +1132,7 @@ buildDownloadAccesses() {
 checkDownloadAccesses(api.DownloadAccesses o) {
   buildCounterDownloadAccesses++;
   if (buildCounterDownloadAccesses < 3) {
-    checkUnnamed551(o.downloadAccessList);
+    checkUnnamed319(o.downloadAccessList);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterDownloadAccesses--;
@@ -1186,30 +1186,30 @@ checkGeolayerdataGeoBoundary(api.GeolayerdataGeoBoundary o) {
   buildCounterGeolayerdataGeoBoundary--;
 }
 
-buildUnnamed552() {
+buildUnnamed320() {
   var o = new core.List<api.GeolayerdataGeoBoundary>();
   o.add(buildGeolayerdataGeoBoundary());
   o.add(buildGeolayerdataGeoBoundary());
   return o;
 }
 
-checkUnnamed552(core.List<api.GeolayerdataGeoBoundary> o) {
+checkUnnamed320(core.List<api.GeolayerdataGeoBoundary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeolayerdataGeoBoundary(o[0]);
   checkGeolayerdataGeoBoundary(o[1]);
 }
 
-buildUnnamed553() {
+buildUnnamed321() {
   var o = new core.List<core.List<api.GeolayerdataGeoBoundary>>();
-  o.add(buildUnnamed552());
-  o.add(buildUnnamed552());
+  o.add(buildUnnamed320());
+  o.add(buildUnnamed320());
   return o;
 }
 
-checkUnnamed553(core.List<core.List<api.GeolayerdataGeoBoundary>> o) {
+checkUnnamed321(core.List<core.List<api.GeolayerdataGeoBoundary>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed552(o[0]);
-  checkUnnamed552(o[1]);
+  checkUnnamed320(o[0]);
+  checkUnnamed320(o[1]);
 }
 
 core.int buildCounterGeolayerdataGeoViewportHi = 0;
@@ -1280,7 +1280,7 @@ buildGeolayerdataGeo() {
   var o = new api.GeolayerdataGeo();
   buildCounterGeolayerdataGeo++;
   if (buildCounterGeolayerdataGeo < 3) {
-    o.boundary = buildUnnamed553();
+    o.boundary = buildUnnamed321();
     o.cachePolicy = "foo";
     o.countryCode = "foo";
     o.latitude = 42.0;
@@ -1296,7 +1296,7 @@ buildGeolayerdataGeo() {
 checkGeolayerdataGeo(api.GeolayerdataGeo o) {
   buildCounterGeolayerdataGeo++;
   if (buildCounterGeolayerdataGeo < 3) {
-    checkUnnamed553(o.boundary);
+    checkUnnamed321(o.boundary);
     unittest.expect(o.cachePolicy, unittest.equals('foo'));
     unittest.expect(o.countryCode, unittest.equals('foo'));
     unittest.expect(o.latitude, unittest.equals(42.0));
@@ -1331,14 +1331,14 @@ checkGeolayerdata(api.Geolayerdata o) {
   buildCounterGeolayerdata--;
 }
 
-buildUnnamed554() {
+buildUnnamed322() {
   var o = new core.List<api.Layersummary>();
   o.add(buildLayersummary());
   o.add(buildLayersummary());
   return o;
 }
 
-checkUnnamed554(core.List<api.Layersummary> o) {
+checkUnnamed322(core.List<api.Layersummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLayersummary(o[0]);
   checkLayersummary(o[1]);
@@ -1349,7 +1349,7 @@ buildLayersummaries() {
   var o = new api.Layersummaries();
   buildCounterLayersummaries++;
   if (buildCounterLayersummaries < 3) {
-    o.items = buildUnnamed554();
+    o.items = buildUnnamed322();
     o.kind = "foo";
     o.totalItems = 42;
   }
@@ -1360,21 +1360,21 @@ buildLayersummaries() {
 checkLayersummaries(api.Layersummaries o) {
   buildCounterLayersummaries++;
   if (buildCounterLayersummaries < 3) {
-    checkUnnamed554(o.items);
+    checkUnnamed322(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
   }
   buildCounterLayersummaries--;
 }
 
-buildUnnamed555() {
+buildUnnamed323() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed555(core.List<core.String> o) {
+checkUnnamed323(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1386,7 +1386,7 @@ buildLayersummary() {
   buildCounterLayersummary++;
   if (buildCounterLayersummary < 3) {
     o.annotationCount = 42;
-    o.annotationTypes = buildUnnamed555();
+    o.annotationTypes = buildUnnamed323();
     o.annotationsDataLink = "foo";
     o.annotationsLink = "foo";
     o.contentVersion = "foo";
@@ -1407,7 +1407,7 @@ checkLayersummary(api.Layersummary o) {
   buildCounterLayersummary++;
   if (buildCounterLayersummary < 3) {
     unittest.expect(o.annotationCount, unittest.equals(42));
-    checkUnnamed555(o.annotationTypes);
+    checkUnnamed323(o.annotationTypes);
     unittest.expect(o.annotationsDataLink, unittest.equals('foo'));
     unittest.expect(o.annotationsLink, unittest.equals('foo'));
     unittest.expect(o.contentVersion, unittest.equals('foo'));
@@ -1450,14 +1450,14 @@ checkMetadataItems(api.MetadataItems o) {
   buildCounterMetadataItems--;
 }
 
-buildUnnamed556() {
+buildUnnamed324() {
   var o = new core.List<api.MetadataItems>();
   o.add(buildMetadataItems());
   o.add(buildMetadataItems());
   return o;
 }
 
-checkUnnamed556(core.List<api.MetadataItems> o) {
+checkUnnamed324(core.List<api.MetadataItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetadataItems(o[0]);
   checkMetadataItems(o[1]);
@@ -1468,7 +1468,7 @@ buildMetadata() {
   var o = new api.Metadata();
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
-    o.items = buildUnnamed556();
+    o.items = buildUnnamed324();
     o.kind = "foo";
   }
   buildCounterMetadata--;
@@ -1478,7 +1478,7 @@ buildMetadata() {
 checkMetadata(api.Metadata o) {
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
-    checkUnnamed556(o.items);
+    checkUnnamed324(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterMetadata--;
@@ -1513,14 +1513,14 @@ checkOffersItemsItems(api.OffersItemsItems o) {
   buildCounterOffersItemsItems--;
 }
 
-buildUnnamed557() {
+buildUnnamed325() {
   var o = new core.List<api.OffersItemsItems>();
   o.add(buildOffersItemsItems());
   o.add(buildOffersItemsItems());
   return o;
 }
 
-checkUnnamed557(core.List<api.OffersItemsItems> o) {
+checkUnnamed325(core.List<api.OffersItemsItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOffersItemsItems(o[0]);
   checkOffersItemsItems(o[1]);
@@ -1533,7 +1533,7 @@ buildOffersItems() {
   if (buildCounterOffersItems < 3) {
     o.artUrl = "foo";
     o.id = "foo";
-    o.items = buildUnnamed557();
+    o.items = buildUnnamed325();
   }
   buildCounterOffersItems--;
   return o;
@@ -1544,19 +1544,19 @@ checkOffersItems(api.OffersItems o) {
   if (buildCounterOffersItems < 3) {
     unittest.expect(o.artUrl, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed557(o.items);
+    checkUnnamed325(o.items);
   }
   buildCounterOffersItems--;
 }
 
-buildUnnamed558() {
+buildUnnamed326() {
   var o = new core.List<api.OffersItems>();
   o.add(buildOffersItems());
   o.add(buildOffersItems());
   return o;
 }
 
-checkUnnamed558(core.List<api.OffersItems> o) {
+checkUnnamed326(core.List<api.OffersItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOffersItems(o[0]);
   checkOffersItems(o[1]);
@@ -1567,7 +1567,7 @@ buildOffers() {
   var o = new api.Offers();
   buildCounterOffers++;
   if (buildCounterOffers < 3) {
-    o.items = buildUnnamed558();
+    o.items = buildUnnamed326();
     o.kind = "foo";
   }
   buildCounterOffers--;
@@ -1577,7 +1577,7 @@ buildOffers() {
 checkOffers(api.Offers o) {
   buildCounterOffers++;
   if (buildCounterOffers < 3) {
-    checkUnnamed558(o.items);
+    checkUnnamed326(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterOffers--;
@@ -1870,14 +1870,14 @@ checkVolumeLayerInfoLayers(api.VolumeLayerInfoLayers o) {
   buildCounterVolumeLayerInfoLayers--;
 }
 
-buildUnnamed559() {
+buildUnnamed327() {
   var o = new core.List<api.VolumeLayerInfoLayers>();
   o.add(buildVolumeLayerInfoLayers());
   o.add(buildVolumeLayerInfoLayers());
   return o;
 }
 
-checkUnnamed559(core.List<api.VolumeLayerInfoLayers> o) {
+checkUnnamed327(core.List<api.VolumeLayerInfoLayers> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeLayerInfoLayers(o[0]);
   checkVolumeLayerInfoLayers(o[1]);
@@ -1888,7 +1888,7 @@ buildVolumeLayerInfo() {
   var o = new api.VolumeLayerInfo();
   buildCounterVolumeLayerInfo++;
   if (buildCounterVolumeLayerInfo < 3) {
-    o.layers = buildUnnamed559();
+    o.layers = buildUnnamed327();
   }
   buildCounterVolumeLayerInfo--;
   return o;
@@ -1897,7 +1897,7 @@ buildVolumeLayerInfo() {
 checkVolumeLayerInfo(api.VolumeLayerInfo o) {
   buildCounterVolumeLayerInfo++;
   if (buildCounterVolumeLayerInfo < 3) {
-    checkUnnamed559(o.layers);
+    checkUnnamed327(o.layers);
   }
   buildCounterVolumeLayerInfo--;
 }
@@ -2030,14 +2030,14 @@ checkVolumeSaleInfoOffers(api.VolumeSaleInfoOffers o) {
   buildCounterVolumeSaleInfoOffers--;
 }
 
-buildUnnamed560() {
+buildUnnamed328() {
   var o = new core.List<api.VolumeSaleInfoOffers>();
   o.add(buildVolumeSaleInfoOffers());
   o.add(buildVolumeSaleInfoOffers());
   return o;
 }
 
-checkUnnamed560(core.List<api.VolumeSaleInfoOffers> o) {
+checkUnnamed328(core.List<api.VolumeSaleInfoOffers> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeSaleInfoOffers(o[0]);
   checkVolumeSaleInfoOffers(o[1]);
@@ -2073,7 +2073,7 @@ buildVolumeSaleInfo() {
     o.country = "foo";
     o.isEbook = true;
     o.listPrice = buildVolumeSaleInfoListPrice();
-    o.offers = buildUnnamed560();
+    o.offers = buildUnnamed328();
     o.onSaleDate = core.DateTime.parse("2002-02-27T14:01:02");
     o.retailPrice = buildVolumeSaleInfoRetailPrice();
     o.saleability = "foo";
@@ -2089,7 +2089,7 @@ checkVolumeSaleInfo(api.VolumeSaleInfo o) {
     unittest.expect(o.country, unittest.equals('foo'));
     unittest.expect(o.isEbook, unittest.isTrue);
     checkVolumeSaleInfoListPrice(o.listPrice);
-    checkUnnamed560(o.offers);
+    checkUnnamed328(o.offers);
     unittest.expect(o.onSaleDate, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     checkVolumeSaleInfoRetailPrice(o.retailPrice);
     unittest.expect(o.saleability, unittest.equals('foo'));
@@ -2220,27 +2220,27 @@ checkVolumeUserInfo(api.VolumeUserInfo o) {
   buildCounterVolumeUserInfo--;
 }
 
-buildUnnamed561() {
+buildUnnamed329() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed561(core.List<core.String> o) {
+checkUnnamed329(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed562() {
+buildUnnamed330() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed562(core.List<core.String> o) {
+checkUnnamed330(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2319,14 +2319,14 @@ checkVolumeVolumeInfoIndustryIdentifiers(api.VolumeVolumeInfoIndustryIdentifiers
   buildCounterVolumeVolumeInfoIndustryIdentifiers--;
 }
 
-buildUnnamed563() {
+buildUnnamed331() {
   var o = new core.List<api.VolumeVolumeInfoIndustryIdentifiers>();
   o.add(buildVolumeVolumeInfoIndustryIdentifiers());
   o.add(buildVolumeVolumeInfoIndustryIdentifiers());
   return o;
 }
 
-checkUnnamed563(core.List<api.VolumeVolumeInfoIndustryIdentifiers> o) {
+checkUnnamed331(core.List<api.VolumeVolumeInfoIndustryIdentifiers> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeVolumeInfoIndustryIdentifiers(o[0]);
   checkVolumeVolumeInfoIndustryIdentifiers(o[1]);
@@ -2337,15 +2337,15 @@ buildVolumeVolumeInfo() {
   var o = new api.VolumeVolumeInfo();
   buildCounterVolumeVolumeInfo++;
   if (buildCounterVolumeVolumeInfo < 3) {
-    o.authors = buildUnnamed561();
+    o.authors = buildUnnamed329();
     o.averageRating = 42.0;
     o.canonicalVolumeLink = "foo";
-    o.categories = buildUnnamed562();
+    o.categories = buildUnnamed330();
     o.contentVersion = "foo";
     o.description = "foo";
     o.dimensions = buildVolumeVolumeInfoDimensions();
     o.imageLinks = buildVolumeVolumeInfoImageLinks();
-    o.industryIdentifiers = buildUnnamed563();
+    o.industryIdentifiers = buildUnnamed331();
     o.infoLink = "foo";
     o.language = "foo";
     o.mainCategory = "foo";
@@ -2367,15 +2367,15 @@ buildVolumeVolumeInfo() {
 checkVolumeVolumeInfo(api.VolumeVolumeInfo o) {
   buildCounterVolumeVolumeInfo++;
   if (buildCounterVolumeVolumeInfo < 3) {
-    checkUnnamed561(o.authors);
+    checkUnnamed329(o.authors);
     unittest.expect(o.averageRating, unittest.equals(42.0));
     unittest.expect(o.canonicalVolumeLink, unittest.equals('foo'));
-    checkUnnamed562(o.categories);
+    checkUnnamed330(o.categories);
     unittest.expect(o.contentVersion, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     checkVolumeVolumeInfoDimensions(o.dimensions);
     checkVolumeVolumeInfoImageLinks(o.imageLinks);
-    checkUnnamed563(o.industryIdentifiers);
+    checkUnnamed331(o.industryIdentifiers);
     unittest.expect(o.infoLink, unittest.equals('foo'));
     unittest.expect(o.language, unittest.equals('foo'));
     unittest.expect(o.mainCategory, unittest.equals('foo'));
@@ -2432,14 +2432,14 @@ checkVolume(api.Volume o) {
   buildCounterVolume--;
 }
 
-buildUnnamed564() {
+buildUnnamed332() {
   var o = new core.List<api.Volume>();
   o.add(buildVolume());
   o.add(buildVolume());
   return o;
 }
 
-checkUnnamed564(core.List<api.Volume> o) {
+checkUnnamed332(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolume(o[0]);
   checkVolume(o[1]);
@@ -2450,7 +2450,7 @@ buildVolume2() {
   var o = new api.Volume2();
   buildCounterVolume2++;
   if (buildCounterVolume2 < 3) {
-    o.items = buildUnnamed564();
+    o.items = buildUnnamed332();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -2461,7 +2461,7 @@ buildVolume2() {
 checkVolume2(api.Volume2 o) {
   buildCounterVolume2++;
   if (buildCounterVolume2 < 3) {
-    checkUnnamed564(o.items);
+    checkUnnamed332(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -2493,14 +2493,14 @@ checkVolumeannotationContentRanges(api.VolumeannotationContentRanges o) {
   buildCounterVolumeannotationContentRanges--;
 }
 
-buildUnnamed565() {
+buildUnnamed333() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed565(core.List<core.String> o) {
+checkUnnamed333(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2520,7 +2520,7 @@ buildVolumeannotation() {
     o.id = "foo";
     o.kind = "foo";
     o.layerId = "foo";
-    o.pageIds = buildUnnamed565();
+    o.pageIds = buildUnnamed333();
     o.selectedText = "foo";
     o.selfLink = "foo";
     o.updated = core.DateTime.parse("2002-02-27T14:01:02");
@@ -2542,7 +2542,7 @@ checkVolumeannotation(api.Volumeannotation o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.layerId, unittest.equals('foo'));
-    checkUnnamed565(o.pageIds);
+    checkUnnamed333(o.pageIds);
     unittest.expect(o.selectedText, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
@@ -2551,14 +2551,14 @@ checkVolumeannotation(api.Volumeannotation o) {
   buildCounterVolumeannotation--;
 }
 
-buildUnnamed566() {
+buildUnnamed334() {
   var o = new core.List<api.Volumeannotation>();
   o.add(buildVolumeannotation());
   o.add(buildVolumeannotation());
   return o;
 }
 
-checkUnnamed566(core.List<api.Volumeannotation> o) {
+checkUnnamed334(core.List<api.Volumeannotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeannotation(o[0]);
   checkVolumeannotation(o[1]);
@@ -2569,7 +2569,7 @@ buildVolumeannotations() {
   var o = new api.Volumeannotations();
   buildCounterVolumeannotations++;
   if (buildCounterVolumeannotations < 3) {
-    o.items = buildUnnamed566();
+    o.items = buildUnnamed334();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -2582,7 +2582,7 @@ buildVolumeannotations() {
 checkVolumeannotations(api.Volumeannotations o) {
   buildCounterVolumeannotations++;
   if (buildCounterVolumeannotations < 3) {
-    checkUnnamed566(o.items);
+    checkUnnamed334(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -2591,14 +2591,14 @@ checkVolumeannotations(api.Volumeannotations o) {
   buildCounterVolumeannotations--;
 }
 
-buildUnnamed567() {
+buildUnnamed335() {
   var o = new core.List<api.Volume>();
   o.add(buildVolume());
   o.add(buildVolume());
   return o;
 }
 
-checkUnnamed567(core.List<api.Volume> o) {
+checkUnnamed335(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolume(o[0]);
   checkVolume(o[1]);
@@ -2609,7 +2609,7 @@ buildVolumes() {
   var o = new api.Volumes();
   buildCounterVolumes++;
   if (buildCounterVolumes < 3) {
-    o.items = buildUnnamed567();
+    o.items = buildUnnamed335();
     o.kind = "foo";
     o.totalItems = 42;
   }
@@ -2620,164 +2620,164 @@ buildVolumes() {
 checkVolumes(api.Volumes o) {
   buildCounterVolumes++;
   if (buildCounterVolumes < 3) {
-    checkUnnamed567(o.items);
+    checkUnnamed335(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
   }
   buildCounterVolumes--;
 }
 
-buildUnnamed568() {
+buildUnnamed336() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed568(core.List<core.String> o) {
+checkUnnamed336(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed569() {
+buildUnnamed337() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed569(core.List<core.String> o) {
+checkUnnamed337(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed570() {
+buildUnnamed338() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed570(core.List<core.String> o) {
+checkUnnamed338(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed571() {
+buildUnnamed339() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed571(core.List<core.String> o) {
+checkUnnamed339(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed572() {
+buildUnnamed340() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed572(core.List<core.String> o) {
+checkUnnamed340(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed573() {
+buildUnnamed341() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed573(core.List<core.String> o) {
+checkUnnamed341(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed574() {
+buildUnnamed342() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed574(core.List<core.String> o) {
+checkUnnamed342(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed575() {
+buildUnnamed343() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed575(core.List<core.String> o) {
+checkUnnamed343(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed576() {
+buildUnnamed344() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed576(core.List<core.String> o) {
+checkUnnamed344(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed577() {
+buildUnnamed345() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed577(core.List<core.String> o) {
+checkUnnamed345(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed578() {
+buildUnnamed346() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed578(core.List<core.String> o) {
+checkUnnamed346(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed579() {
+buildUnnamed347() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed579(core.List<core.String> o) {
+checkUnnamed347(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4165,7 +4165,7 @@ main() {
       var arg_volumeId = "foo";
       var arg_layerId = "foo";
       var arg_contentVersion = "foo";
-      var arg_annotationDataId = buildUnnamed568();
+      var arg_annotationDataId = buildUnnamed336();
       var arg_h = 42;
       var arg_locale = "foo";
       var arg_maxResults = 42;
@@ -4450,7 +4450,7 @@ main() {
 
       var mock = new common_test.HttpServerMock();
       api.MyconfigResourceApi res = new api.BooksApi(mock).myconfig;
-      var arg_volumeIds = buildUnnamed569();
+      var arg_volumeIds = buildUnnamed337();
       var arg_cpksver = "foo";
       var arg_locale = "foo";
       var arg_source = "foo";
@@ -4563,10 +4563,10 @@ main() {
       var arg_source = "foo";
       var arg_nonce = "foo";
       var arg_cpksver = "foo";
-      var arg_features = buildUnnamed570();
+      var arg_features = buildUnnamed338();
       var arg_locale = "foo";
       var arg_showPreorders = true;
-      var arg_volumeIds = buildUnnamed571();
+      var arg_volumeIds = buildUnnamed339();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4829,9 +4829,9 @@ main() {
       api.MylibraryAnnotationsResourceApi res = new api.BooksApi(mock).mylibrary.annotations;
       var arg_contentVersion = "foo";
       var arg_layerId = "foo";
-      var arg_layerIds = buildUnnamed572();
+      var arg_layerIds = buildUnnamed340();
       var arg_maxResults = 42;
-      var arg_pageIds = buildUnnamed573();
+      var arg_pageIds = buildUnnamed341();
       var arg_pageToken = "foo";
       var arg_showDeleted = true;
       var arg_source = "foo";
@@ -4894,7 +4894,7 @@ main() {
 
       var mock = new common_test.HttpServerMock();
       api.MylibraryAnnotationsResourceApi res = new api.BooksApi(mock).mylibrary.annotations;
-      var arg_layerIds = buildUnnamed574();
+      var arg_layerIds = buildUnnamed342();
       var arg_volumeId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5004,6 +5004,7 @@ main() {
       api.MylibraryBookshelvesResourceApi res = new api.BooksApi(mock).mylibrary.bookshelves;
       var arg_shelf = "foo";
       var arg_volumeId = "foo";
+      var arg_reason = "foo";
       var arg_source = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5041,6 +5042,7 @@ main() {
           }
         }
         unittest.expect(queryMap["volumeId"].first, unittest.equals(arg_volumeId));
+        unittest.expect(queryMap["reason"].first, unittest.equals(arg_reason));
         unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
 
 
@@ -5050,7 +5052,7 @@ main() {
         var resp = "";
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.addVolume(arg_shelf, arg_volumeId, source: arg_source).then(unittest.expectAsync((_) {}));
+      res.addVolume(arg_shelf, arg_volumeId, reason: arg_reason, source: arg_source).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--clearVolumes", () {
@@ -5562,7 +5564,7 @@ main() {
 
       var mock = new common_test.HttpServerMock();
       api.OnboardingResourceApi res = new api.BooksApi(mock).onboarding;
-      var arg_categoryId = buildUnnamed575();
+      var arg_categoryId = buildUnnamed343();
       var arg_locale = "foo";
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
@@ -5991,10 +5993,10 @@ main() {
 
       var mock = new common_test.HttpServerMock();
       api.VolumesMybooksResourceApi res = new api.BooksApi(mock).volumes.mybooks;
-      var arg_acquireMethod = buildUnnamed576();
+      var arg_acquireMethod = buildUnnamed344();
       var arg_locale = "foo";
       var arg_maxResults = 42;
-      var arg_processingState = buildUnnamed577();
+      var arg_processingState = buildUnnamed345();
       var arg_source = "foo";
       var arg_startIndex = 42;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -6160,10 +6162,10 @@ main() {
       api.VolumesUseruploadedResourceApi res = new api.BooksApi(mock).volumes.useruploaded;
       var arg_locale = "foo";
       var arg_maxResults = 42;
-      var arg_processingState = buildUnnamed578();
+      var arg_processingState = buildUnnamed346();
       var arg_source = "foo";
       var arg_startIndex = 42;
-      var arg_volumeId = buildUnnamed579();
+      var arg_volumeId = buildUnnamed347();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;

@@ -1,3 +1,9 @@
+## 0.5.2
+
+* [apis-new] dfareporting:v2.0: API added
+* [apis] books:v1: method changes
+* [apis] coordinate:v1: method/schema changes
+
 ## 0.5.1
 
 * [apis-new] fusiontables:v2: API added

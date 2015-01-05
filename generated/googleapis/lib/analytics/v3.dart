@@ -7331,8 +7331,6 @@ class FilterExpression {
 
   /**
    * Field to filter. Possible values:
-   * - Reserved
-   * - UNUSED,
    * - Content and Traffic
    * - PAGE_REQUEST_URI,
    * - PAGE_HOSTNAME,
@@ -7372,7 +7370,7 @@ class FilterExpression {
    * - LANGUAGE,
    * - SCREEN_RESOLUTION,
    * - SCREEN_COLORS,
-   * - JAVA_ENABLED,
+   * - JAVA_ENABLED (Boolean Field),
    * - FLASH_VERSION,
    * - GEO_SPEED (Connection speed),
    * - VISITOR_TYPE,
@@ -7398,17 +7396,17 @@ class FilterExpression {
    * - APP_NAME,
    * - APP_VERSION,
    * - SCREEN,
-   * - IS_APP,
-   * - IS_FATAL_EXCEPTION,
+   * - IS_APP (Boolean Field),
+   * - IS_FATAL_EXCEPTION (Boolean Field),
    * - EXCEPTION_DESCRIPTION,
    * - Mobile device
-   * - IS_MOBILE,
-   * - IS_TABLET,
+   * - IS_MOBILE (Boolean Field, Deprecated. Use DEVICE_CATEGORY=mobile),
+   * - IS_TABLET (Boolean Field, Deprecated. Use DEVICE_CATEGORY=tablet),
    * - DEVICE_CATEGORY,
-   * - MOBILE_HAS_QWERTY_KEYBOARD,
-   * - MOBILE_HAS_NFC_SUPPORT,
-   * - MOBILE_HAS_CELLULAR_RADIO,
-   * - MOBILE_HAS_WIFI_SUPPORT,
+   * - MOBILE_HAS_QWERTY_KEYBOARD (Boolean Field),
+   * - MOBILE_HAS_NFC_SUPPORT (Boolean Field),
+   * - MOBILE_HAS_CELLULAR_RADIO (Boolean Field),
+   * - MOBILE_HAS_WIFI_SUPPORT (Boolean Field),
    * - MOBILE_BRAND_NAME,
    * - MOBILE_MODEL_NAME,
    * - MOBILE_MARKETING_NAME,

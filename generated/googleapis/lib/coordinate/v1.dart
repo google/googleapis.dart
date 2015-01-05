@@ -28,9 +28,10 @@ class CoordinateApi {
   JobsResourceApi get jobs => new JobsResourceApi(_requester);
   LocationResourceApi get location => new LocationResourceApi(_requester);
   ScheduleResourceApi get schedule => new ScheduleResourceApi(_requester);
+  TeamResourceApi get team => new TeamResourceApi(_requester);
   WorkerResourceApi get worker => new WorkerResourceApi(_requester);
 
-  CoordinateApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "coordinate/v1/teams/"}) :
+  CoordinateApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "coordinate/v1/"}) :
       _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
@@ -70,7 +71,7 @@ class CustomFieldDefResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$teamId') + '/custom_fields';
+    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/custom_fields';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -125,7 +126,7 @@ class JobsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId');
+    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -156,8 +157,12 @@ class JobsResourceApi {
    *
    * [assignee] - Assignee email address, or empty string to unassign.
    *
-   * [customField] - Map from custom field id (from /team//custom_fields) to the
-   * field value. For example '123=Alice'
+   * [customField] - Sets the value of custom fields. To set a custom field,
+   * pass the field id (from /team/teamId/custom_fields), a URL escaped '='
+   * character, and the desired value as a parameter. For example,
+   * customField=12%3DAlice. Repeat the parameter for each custom field. Note
+   * that '=' cannot appear in the parameter value. Specifying an invalid, or
+   * inactive enum field will result in an error 500.
    *
    * [customerName] - Customer name
    *
@@ -220,7 +225,7 @@ class JobsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$teamId') + '/jobs';
+    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -276,7 +281,7 @@ class JobsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$teamId') + '/jobs';
+    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -304,8 +309,12 @@ class JobsResourceApi {
    *
    * [assignee] - Assignee email address, or empty string to unassign.
    *
-   * [customField] - Map from custom field id (from /team//custom_fields) to the
-   * field value. For example '123=Alice'
+   * [customField] - Sets the value of custom fields. To set a custom field,
+   * pass the field id (from /team/teamId/custom_fields), a URL escaped '='
+   * character, and the desired value as a parameter. For example,
+   * customField=12%3DAlice. Repeat the parameter for each custom field. Note
+   * that '=' cannot appear in the parameter value. Specifying an invalid, or
+   * inactive enum field will result in an error 500.
    *
    * [customerName] - Customer name
    *
@@ -384,7 +393,7 @@ class JobsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId');
+    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -411,8 +420,12 @@ class JobsResourceApi {
    *
    * [assignee] - Assignee email address, or empty string to unassign.
    *
-   * [customField] - Map from custom field id (from /team//custom_fields) to the
-   * field value. For example '123=Alice'
+   * [customField] - Sets the value of custom fields. To set a custom field,
+   * pass the field id (from /team/teamId/custom_fields), a URL escaped '='
+   * character, and the desired value as a parameter. For example,
+   * customField=12%3DAlice. Repeat the parameter for each custom field. Note
+   * that '=' cannot appear in the parameter value. Specifying an invalid, or
+   * inactive enum field will result in an error 500.
    *
    * [customerName] - Customer name
    *
@@ -491,7 +504,7 @@ class JobsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId');
+    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -562,7 +575,7 @@ class LocationResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$teamId') + '/workers/' + common_internal.Escaper.ecapeVariable('$workerEmail') + '/locations';
+    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/workers/' + common_internal.Escaper.ecapeVariable('$workerEmail') + '/locations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -617,7 +630,7 @@ class ScheduleResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId') + '/schedule';
+    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId') + '/schedule';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -689,7 +702,7 @@ class ScheduleResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId') + '/schedule';
+    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId') + '/schedule';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -760,7 +773,7 @@ class ScheduleResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId') + '/schedule';
+    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId') + '/schedule';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -770,6 +783,67 @@ class ScheduleResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Schedule.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class TeamResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  TeamResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves a list of teams for a user.
+   *
+   * Request parameters:
+   *
+   * [admin] - Whether to include teams for which the user has the Admin role.
+   *
+   * [dispatcher] - Whether to include teams for which the user has the
+   * Dispatcher role.
+   *
+   * [worker] - Whether to include teams for which the user has the Worker role.
+   *
+   * Completes with a [TeamListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<TeamListResponse> list({core.bool admin, core.bool dispatcher, core.bool worker}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (admin != null) {
+      _queryParams["admin"] = ["${admin}"];
+    }
+    if (dispatcher != null) {
+      _queryParams["dispatcher"] = ["${dispatcher}"];
+    }
+    if (worker != null) {
+      _queryParams["worker"] = ["${worker}"];
+    }
+
+
+    _url = 'teams';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TeamListResponse.fromJson(data));
   }
 
 }
@@ -810,7 +884,7 @@ class WorkerResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$teamId') + '/workers';
+    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/workers';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -873,6 +947,12 @@ class CustomFieldDef {
   /** Whether the field is enabled. */
   core.bool enabled;
 
+  /**
+   * List of enum items for this custom field. Populated only if the field type
+   * is enum. Enum fields appear as 'lists' in the Coordinate web and mobile UI.
+   */
+  core.List<EnumItemDef> enumitems;
+
   /** Custom field id. */
   core.String id;
 
@@ -895,6 +975,9 @@ class CustomFieldDef {
     if (_json.containsKey("enabled")) {
       enabled = _json["enabled"];
     }
+    if (_json.containsKey("enumitems")) {
+      enumitems = _json["enumitems"].map((value) => new EnumItemDef.fromJson(value)).toList();
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -916,6 +999,9 @@ class CustomFieldDef {
     var _json = new core.Map();
     if (enabled != null) {
       _json["enabled"] = enabled;
+    }
+    if (enumitems != null) {
+      _json["enumitems"] = enumitems.map((value) => (value).toJson()).toList();
     }
     if (id != null) {
       _json["id"] = id;
@@ -1000,6 +1086,52 @@ class CustomFields {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Enum Item definition. */
+class EnumItemDef {
+  /**
+   * Whether the enum item is active. Jobs may contain inactive enum values;
+   * however, setting an enum to an inactive value when creating or updating a
+   * job will result in a 500 error.
+   */
+  core.bool active;
+
+  /** Identifies this object as an enum item definition. */
+  core.String kind;
+
+  /** Custom field value. */
+  core.String value;
+
+
+  EnumItemDef();
+
+  EnumItemDef.fromJson(core.Map _json) {
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }
@@ -1146,7 +1278,10 @@ class JobListResponse {
 
 /** Current state of a job. */
 class JobState {
-  /** Email address of the assignee. */
+  /**
+   * Email address of the assignee, or the string "DELETED_USER" if the account
+   * is no longer available.
+   */
   core.String assignee;
 
   /** Custom fields. */
@@ -1468,6 +1603,84 @@ class Schedule {
 }
 
 
+/** A Coordinate team. */
+class Team {
+  /**
+   * Team id, as found in a coordinate team url e.g.
+   * https://coordinate.google.com/f/xyz where "xyz" is the team id.
+   */
+  core.String id;
+
+  /** Identifies this object as a team. */
+  core.String kind;
+
+  /** Team name */
+  core.String name;
+
+
+  Team();
+
+  Team.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+
+/** Response from a List Teams request. */
+class TeamListResponse {
+  /** Teams in the collection. */
+  core.List<Team> items;
+
+  /** Identifies this object as a list of teams. */
+  core.String kind;
+
+
+  TeamListResponse();
+
+  TeamListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Team.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
 /** Pagination information. */
 class TokenPagination {
   /** Identifies this object as pagination information. */
@@ -1512,7 +1725,10 @@ class TokenPagination {
 
 /** A worker in a Coordinate team. */
 class Worker {
-  /** Worker email address. */
+  /**
+   * Worker email address. If a worker has been deleted from your team, the
+   * email address will appear as DELETED_USER.
+   */
   core.String id;
 
   /** Identifies this object as a worker. */
