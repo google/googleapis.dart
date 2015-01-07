@@ -1,3 +1,8 @@
+## 0.6.2
+
+* [generator] Roll to use DetailedApiRequestError when only a HTTP status code
+  is present.
+
 ## 0.6.1
 
 * [apis-new] dataflow:v1beta3: API added

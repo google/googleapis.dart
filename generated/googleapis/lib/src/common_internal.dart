@@ -9,7 +9,7 @@ import "../common/common.dart" as common_external;
 import "package:http/http.dart" as http;
 
 const String USER_AGENT_STRING =
-    'google-api-dart-client googleapis/0.5.2';
+    'google-api-dart-client googleapis/0.5.3';
 
 const CONTENT_TYPE_JSON_UTF8 = 'application/json; charset=utf-8';
 
@@ -865,8 +865,8 @@ Future<http.StreamedResponse> _validateResponse(
   // Can we assume this?
   if (statusCode < 200 || statusCode >= 400) {
     throwGeneralError() {
-      throw new common_external.ApiRequestError(
-          'No error details. Http status was: ${response.statusCode}.');
+      throw new common_external.DetailedApiRequestError(
+          statusCode, 'No error details. HTTP status was: ${statusCode}.');
     }
 
     // Some error happened, try to decode the response and fetch the error.

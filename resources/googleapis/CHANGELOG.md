@@ -1,3 +1,8 @@
+## 0.5.3
+
+* [generator] Roll to use DetailedApiRequestError when only a HTTP status code
+  is present.
+
 ## 0.5.2
 
 * [apis-new] dfareporting:v2.0: API added

@@ -1,5 +1,5 @@
 name: googleapis
-version: 0.5.2
+version: 0.5.3
 author: Dart Team <misc@dartlang.org>
 description: "Auto-generated client libraries for accessing the following APIs:adexchangebuyer:v1.3, adexchangeseller:v1.1, adexchangeseller:v2.0, admin:directory_v1, admin:email_migration_v2, admin:reports_v1, adsense:v1.4, adsensehost:v4.1, analytics:v3, androidpublisher:v2, appsactivity:v1, appstate:v1, bigquery:v2, blogger:v3, books:v1, calendar:v3, civicinfo:us_v1, civicinfo:v1, civicinfo:v2, compute:v1, content:v2, coordinate:v1, customsearch:v1, dfareporting:v1.3, dfareporting:v2.0, discovery:v1, doubleclickbidmanager:v1, doubleclicksearch:v2, drive:v2, fitness:v1, freebase:v1, fusiontables:v1, fusiontables:v2, games:v1, gamesManagement:v1management, gmail:v1, groupsmigration:v1, groupssettings:v1, identitytoolkit:v3, licensing:v1, mapsengine:v1, mirror:v1, oauth2:v2, pagespeedonline:v1, plus:v1, plusDomains:v1, prediction:v1.6, qpxExpress:v1, reseller:v1, siteVerification:v1, storage:v1, tagmanager:v1, tasks:v1, translate:v2, urlshortener:v1, webfonts:v1, webmasters:v3, youtube:v3, youtubeAnalytics:v1"
 homepage: http://www.dartlang.org/googleapis/

@@ -18,7 +18,16 @@ Repository for building the [googleapis] and [googleapis_beta] packages.
 
 - Update `config.yaml` with new version and generate again.
 
-- Run tests.
+- Run tests:
+
+    $ pub global activate test_runner
+    $ pushd generated/googleapis
+    $ pub get
+    $ pub global run test_runner
+    $ cd ../googleapis_beta
+    $ pub get
+    $ pub global run test_runner
+    $ popd
 
 - Commit downloaded discovery documents and generated packages.
 
