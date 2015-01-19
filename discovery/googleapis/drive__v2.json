@@ -32,7 +32,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/AHEGWruKyBAhYtcPNc0aloAxe6E\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Tndtd0xUqwZ7nEywvF_TXbq6aYo\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -2444,7 +2444,7 @@
             }
         }
     },
-    "revision": "20141201",
+    "revision": "20141212",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -2527,6 +2527,13 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "type": "array"
+                },
+                "folderColorPalette": {
+                    "description": "The palette of allowable folder colors as RGB hex strings.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 },
@@ -3285,6 +3292,10 @@
                 "fileSize": {
                     "description": "The size of the file in bytes. This is only populated for files with content stored in Drive.",
                     "format": "int64",
+                    "type": "string"
+                },
+                "folderColorRgb": {
+                    "description": "Folder color as an RGB hex string if the file is a folder. The list of supported colors is available in the folderColorPalette field of the About resource. If an unsupported color is specified, it will be changed to the closest color in the palette.",
                     "type": "string"
                 },
                 "headRevisionId": {

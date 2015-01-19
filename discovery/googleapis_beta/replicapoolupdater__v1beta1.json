@@ -20,7 +20,7 @@
     "description": "The Google Compute Engine Instance Group Updater API provides services for updating groups of Compute Engine Instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/zv-VBZvN3ZIDa4AbjKdO47MpqOo\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/AT-fnbTxTHlPDlbWlx4KZrEt53M\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -80,25 +80,18 @@
     },
     "protocol": "rest",
     "resources": {
-        "updates": {
+        "rollingUpdates": {
             "methods": {
                 "cancel": {
-                    "description": "Called on the particular Update endpoint. Cancels the update in state PAUSED. No-op if invoked in state CANCELLED.",
+                    "description": "Cancels an update. The update must be PAUSED before it can be cancelled. This has no effect if the update is already CANCELLED.",
                     "httpMethod": "POST",
-                    "id": "replicapoolupdater.updates.cancel",
+                    "id": "replicapoolupdater.rollingUpdates.cancel",
                     "parameterOrder": [
                         "project",
                         "zone",
-                        "instanceGroupManager",
-                        "update"
+                        "rollingUpdate"
                     ],
                     "parameters": {
-                        "instanceGroupManager": {
-                            "description": "The name of the instance group manager.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
                         "project": {
                             "description": "The Google Developers Console project name.",
                             "location": "path",
@@ -106,8 +99,8 @@
                             "required": true,
                             "type": "string"
                         },
-                        "update": {
-                            "description": "Unique (in the context of a group) handle of an update.",
+                        "rollingUpdate": {
+                            "description": "The name of the update.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -119,29 +112,22 @@
                             "type": "string"
                         }
                     },
-                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updates/{update}/cancel",
+                    "path": "{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/cancel",
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/replicapool"
                     ]
                 },
                 "get": {
-                    "description": "Called on the particular Update endpoint. Returns the Update resource.",
+                    "description": "Returns information about an update.",
                     "httpMethod": "GET",
-                    "id": "replicapoolupdater.updates.get",
+                    "id": "replicapoolupdater.rollingUpdates.get",
                     "parameterOrder": [
                         "project",
                         "zone",
-                        "instanceGroupManager",
-                        "update"
+                        "rollingUpdate"
                     ],
                     "parameters": {
-                        "instanceGroupManager": {
-                            "description": "The name of the instance group manager.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
                         "project": {
                             "description": "The Google Developers Console project name.",
                             "location": "path",
@@ -149,8 +135,8 @@
                             "required": true,
                             "type": "string"
                         },
-                        "update": {
-                            "description": "Unique (in the context of a group) handle of an update.",
+                        "rollingUpdate": {
+                            "description": "The name of the update.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -162,9 +148,9 @@
                             "type": "string"
                         }
                     },
-                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updates/{update}",
+                    "path": "{project}/zones/{zone}/rollingUpdates/{rollingUpdate}",
                     "response": {
-                        "$ref": "Update"
+                        "$ref": "RollingUpdate"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
@@ -173,21 +159,14 @@
                     ]
                 },
                 "insert": {
-                    "description": "Called on the collection endpoint. Inserts the new Update resource and starts the update.",
+                    "description": "Inserts and starts a new update.",
                     "httpMethod": "POST",
-                    "id": "replicapoolupdater.updates.insert",
+                    "id": "replicapoolupdater.rollingUpdates.insert",
                     "parameterOrder": [
                         "project",
-                        "zone",
-                        "instanceGroupManager"
+                        "zone"
                     ],
                     "parameters": {
-                        "instanceGroupManager": {
-                            "description": "The name of the instance group manager.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
                         "project": {
                             "description": "The Google Developers Console project name.",
                             "location": "path",
@@ -202,9 +181,9 @@
                             "type": "string"
                         }
                     },
-                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updates",
+                    "path": "{project}/zones/{zone}/rollingUpdates",
                     "request": {
-                        "$ref": "Update"
+                        "$ref": "RollingUpdate"
                     },
                     "response": {
                         "$ref": "InsertResponse"
@@ -215,19 +194,17 @@
                     ]
                 },
                 "list": {
-                    "description": "Called on the collection endpoint. Lists updates for a given instance group, in reverse chronological order. Pagination is supported, see ListRequestHeader.",
+                    "description": "Lists recent updates for a given managed instance group, in reverse chronological order and paginated format.",
                     "httpMethod": "GET",
-                    "id": "replicapoolupdater.updates.list",
+                    "id": "replicapoolupdater.rollingUpdates.list",
                     "parameterOrder": [
                         "project",
-                        "zone",
-                        "instanceGroupManager"
+                        "zone"
                     ],
                     "parameters": {
                         "instanceGroupManager": {
                             "description": "The name of the instance group manager.",
-                            "location": "path",
-                            "required": true,
+                            "location": "query",
                             "type": "string"
                         },
                         "maxResults": {
@@ -258,9 +235,9 @@
                             "type": "string"
                         }
                     },
-                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updates",
+                    "path": "{project}/zones/{zone}/rollingUpdates",
                     "response": {
-                        "$ref": "UpdateList"
+                        "$ref": "RollingUpdateList"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
@@ -269,22 +246,15 @@
                     ]
                 },
                 "listInstanceUpdates": {
-                    "description": "Called on the particular Update endpoint. Lists instance updates for a given update.",
+                    "description": "Lists the current status for each instance within a given update.",
                     "httpMethod": "GET",
-                    "id": "replicapoolupdater.updates.listInstanceUpdates",
+                    "id": "replicapoolupdater.rollingUpdates.listInstanceUpdates",
                     "parameterOrder": [
                         "project",
                         "zone",
-                        "instanceGroupManager",
-                        "update"
+                        "rollingUpdate"
                     ],
                     "parameters": {
-                        "instanceGroupManager": {
-                            "description": "The name of the instance group manager.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
                         "maxResults": {
                             "default": "50",
                             "description": "Maximum count of results to be returned. Acceptable values are 1 to 100, inclusive. (Default: 50)",
@@ -306,8 +276,8 @@
                             "required": true,
                             "type": "string"
                         },
-                        "update": {
-                            "description": "Unique (in the context of a group) handle of an update.",
+                        "rollingUpdate": {
+                            "description": "The name of the update.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -319,7 +289,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updates/{update}/instanceUpdates",
+                    "path": "{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/instanceUpdates",
                     "response": {
                         "$ref": "InstanceUpdateList"
                     },
@@ -330,22 +300,15 @@
                     ]
                 },
                 "pause": {
-                    "description": "Called on the particular Update endpoint. Pauses the update in state ROLLING_FORWARD or ROLLING_BACK. No-op if invoked in state PAUSED.",
+                    "description": "Pauses the update in state from ROLLING_FORWARD or ROLLING_BACK. Has no effect if invoked when the state of the update is PAUSED.",
                     "httpMethod": "POST",
-                    "id": "replicapoolupdater.updates.pause",
+                    "id": "replicapoolupdater.rollingUpdates.pause",
                     "parameterOrder": [
                         "project",
                         "zone",
-                        "instanceGroupManager",
-                        "update"
+                        "rollingUpdate"
                     ],
                     "parameters": {
-                        "instanceGroupManager": {
-                            "description": "The name of the instance group manager.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
                         "project": {
                             "description": "The Google Developers Console project name.",
                             "location": "path",
@@ -353,8 +316,8 @@
                             "required": true,
                             "type": "string"
                         },
-                        "update": {
-                            "description": "Unique (in the context of a group) handle of an update.",
+                        "rollingUpdate": {
+                            "description": "The name of the update.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -366,29 +329,58 @@
                             "type": "string"
                         }
                     },
-                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updates/{update}/pause",
+                    "path": "{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/pause",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/replicapool"
+                    ]
+                },
+                "resume": {
+                    "description": "Continues an update in PAUSED state. Has no effect if invoked when the state of the update is ROLLED_OUT.",
+                    "httpMethod": "POST",
+                    "id": "replicapoolupdater.rollingUpdates.resume",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "rollingUpdate"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "The Google Developers Console project name.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "rollingUpdate": {
+                            "description": "The name of the update.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The name of the zone in which the update's target resides.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/resume",
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/replicapool"
                     ]
                 },
                 "rollback": {
-                    "description": "Called on the particular Update endpoint. Rolls back the update in state ROLLING_FORWARD or PAUSED. No-op if invoked in state ROLLED_BACK or ROLLING_BACK.",
+                    "description": "Rolls back the update in state from ROLLING_FORWARD or PAUSED. Has no effect if invoked when the state of the update is ROLLED_BACK.",
                     "httpMethod": "POST",
-                    "id": "replicapoolupdater.updates.rollback",
+                    "id": "replicapoolupdater.rollingUpdates.rollback",
                     "parameterOrder": [
                         "project",
                         "zone",
-                        "instanceGroupManager",
-                        "update"
+                        "rollingUpdate"
                     ],
                     "parameters": {
-                        "instanceGroupManager": {
-                            "description": "The name of the instance group manager.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
                         "project": {
                             "description": "The Google Developers Console project name.",
                             "location": "path",
@@ -396,8 +388,8 @@
                             "required": true,
                             "type": "string"
                         },
-                        "update": {
-                            "description": "Unique (in the context of a group) handle of an update.",
+                        "rollingUpdate": {
+                            "description": "The name of the update.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -409,50 +401,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updates/{update}/rollback",
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/replicapool"
-                    ]
-                },
-                "rollforward": {
-                    "description": "Called on the particular Update endpoint. Rolls forward the update in state ROLLING_BACK or PAUSED. No-op if invoked in state ROLLED_OUT or ROLLING_FORWARD.",
-                    "httpMethod": "POST",
-                    "id": "replicapoolupdater.updates.rollforward",
-                    "parameterOrder": [
-                        "project",
-                        "zone",
-                        "instanceGroupManager",
-                        "update"
-                    ],
-                    "parameters": {
-                        "instanceGroupManager": {
-                            "description": "The name of the instance group manager.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "project": {
-                            "description": "The Google Developers Console project name.",
-                            "location": "path",
-                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "update": {
-                            "description": "Unique (in the context of a group) handle of an update.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "zone": {
-                            "description": "The name of the zone in which the update's target resides.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updates/{update}/rollforward",
+                    "path": "{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/rollback",
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/replicapool"
@@ -461,15 +410,15 @@
             }
         }
     },
-    "revision": "20141123",
+    "revision": "20141227",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InsertResponse": {
             "description": "Response returned by Insert method.",
             "id": "InsertResponse",
             "properties": {
-                "update": {
-                    "description": "Unique (in the context of a group) handle of an update.",
+                "rollingUpdate": {
+                    "description": "The name of the update.",
                     "type": "string"
                 }
             },
@@ -483,12 +432,8 @@
                     "description": "URL of the instance being updated.",
                     "type": "string"
                 },
-                "state": {
-                    "description": "State of the instance update. Possible values are:  \n- \"PENDING/code>\": The instance update is pending execution. \n- \"ROLLING_FORWARD\": The instance update is going forward. \n- \"ROLLING_BACK\": The instance update is being rolled back. \n- \"PAUSED\": The instance update is temporarily paused (inactive). \n- \"ROLLED_OUT\": The instance update is finished, the instance is running the new template. \n- \"ROLLED_BACK\": The instance update is finished, the instance has been reverted to the previous template. \n- \"CANCELLED\": The instance update is paused and no longer can be resumed, undefined in which template the instance is running.",
-                    "type": "string"
-                },
                 "status": {
-                    "description": "Status of the instance update. Possible values are:  \n- \"PENDING/code>\": The instance update is pending execution. \n- \"ROLLING_FORWARD\": The instance update is going forward. \n- \"ROLLING_BACK\": The instance update is being rolled back. \n- \"PAUSED\": The instance update is temporarily paused (inactive). \n- \"ROLLED_OUT\": The instance update is finished, the instance is running the new template. \n- \"ROLLED_BACK\": The instance update is finished, the instance has been reverted to the previous template. \n- \"CANCELLED\": The instance update is paused and no longer can be resumed, undefined in which template the instance is running.",
+                    "description": "Status of the instance update. Possible values are:  \n- \"PENDING\": The instance update is pending execution. \n- \"ROLLING_FORWARD\": The instance update is going forward. \n- \"ROLLING_BACK\": The instance update is being rolled back. \n- \"PAUSED\": The instance update is temporarily paused (inactive). \n- \"ROLLED_OUT\": The instance update is finished, the instance is running the new template. \n- \"ROLLED_BACK\": The instance update is finished, the instance has been reverted to the previous template. \n- \"CANCELLED\": The instance update is paused and no longer can be resumed, undefined in which template the instance is running.",
                     "type": "string"
                 }
             },
@@ -499,7 +444,7 @@
             "id": "InstanceUpdateList",
             "properties": {
                 "items": {
-                    "description": "A list of instance updates.",
+                    "description": "Collection of requested instance updates.",
                     "items": {
                         "$ref": "InstanceUpdate"
                     },
@@ -511,7 +456,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request (output only).",
+                    "description": "A token used to continue a truncated list request.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -521,20 +466,12 @@
             },
             "type": "object"
         },
-        "Update": {
+        "RollingUpdate": {
             "description": "Resource describing a single update (rollout) of a group of instances to the given template.",
-            "id": "Update",
+            "id": "RollingUpdate",
             "properties": {
                 "creationTimestamp": {
                     "description": "[Output Only] Creation timestamp in RFC3339 text format.",
-                    "type": "string"
-                },
-                "details": {
-                    "description": "[Output Only] An optional textual description of the current status of the update.",
-                    "type": "string"
-                },
-                "handle": {
-                    "description": "[Output Only] Unique (in the context of a group) handle assigned to this update.",
                     "type": "string"
                 },
                 "id": {
@@ -542,21 +479,44 @@
                     "type": "string"
                 },
                 "instanceGroupManager": {
-                    "description": "[Output Only] URL of an instance group manager being updated.",
+                    "description": "URL of an instance group manager being updated.",
                     "type": "string"
                 },
                 "instanceTemplate": {
-                    "description": "URL of an instance template to be applied.",
+                    "description": "URL of an instance template to apply.",
                     "type": "string"
                 },
                 "kind": {
-                    "default": "replicapoolupdater#update",
+                    "default": "replicapoolupdater#rollingUpdate",
                     "description": "[Output Only] Type of the resource.",
                     "type": "string"
                 },
                 "policy": {
-                    "$ref": "UpdatePolicy",
-                    "description": "Parameters of an update process."
+                    "description": "Parameters of the update process. Setting (api.field).field_number manually is a workaround for b/16512602.",
+                    "properties": {
+                        "canary": {
+                            "description": "Parameters of a canary phase. If absent, canary will NOT be performed.",
+                            "properties": {
+                                "numInstances": {
+                                    "description": "Number of instances updated as a part of canary phase. If absent, the default number of instances will be used.",
+                                    "format": "int32",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "maxNumConcurrentInstances": {
+                            "description": "Maximum number of instances that can be updated simultaneously (concurrently). An update of an instance starts when the instance is about to be restarted and finishes after the instance has been restarted and the sleep period (defined by sleepAfterInstanceRestartSec) has passed.",
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "sleepAfterInstanceRestartSec": {
+                            "description": "The number of seconds to wait between when the instance has been successfully updated and restarted, to when it is marked as done.",
+                            "format": "int32",
+                            "type": "integer"
+                        }
+                    },
+                    "type": "object"
                 },
                 "progress": {
                     "description": "[Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess at when the update will be complete. This number should be monotonically increasing as the update progresses.",
@@ -567,20 +527,12 @@
                     "description": "[Output Only] The fully qualified URL for the resource.",
                     "type": "string"
                 },
-                "state": {
-                    "description": "[Output Only] Current state of the update. Possible values are:  \n- \"ROLLING_FORWARD\": The update is going forward. \n- \"ROLLING_BACK\": The update is being rolled back. \n- \"PAUSED\": The update is temporarily paused (inactive). \n- \"ROLLED_OUT\": The update is finished, all instances have been updated successfully. \n- \"ROLLED_BACK\": The update is finished, all instances have been reverted to the previous template. \n- \"CANCELLED\": The update is paused and no longer can be resumed, undefined how many instances are running in which template.",
-                    "type": "string"
-                },
                 "status": {
                     "description": "[Output Only] Status of the update. Possible values are:  \n- \"ROLLING_FORWARD\": The update is going forward. \n- \"ROLLING_BACK\": The update is being rolled back. \n- \"PAUSED\": The update is temporarily paused (inactive). \n- \"ROLLED_OUT\": The update is finished, all instances have been updated successfully. \n- \"ROLLED_BACK\": The update is finished, all instances have been reverted to the previous template. \n- \"CANCELLED\": The update is paused and no longer can be resumed, undefined how many instances are running in which template.",
                     "type": "string"
                 },
                 "statusMessage": {
                     "description": "[Output Only] An optional textual description of the current status of the update.",
-                    "type": "string"
-                },
-                "targetState": {
-                    "description": "[Output Only] Requested state of the update. This is the state that the updater is moving towards. Acceptable values are:  \n- \"ROLLED_OUT\": The user has requested the update to go forward. \n- \"ROLLED_BACK\": The user has requested the update to be rolled back. \n- \"PAUSED\": The user has requested the update to be paused.\n \n- \"CANCELLED\": The user has requested the update to be cancelled. The updater service is in the process of canceling the update.",
                     "type": "string"
                 },
                 "user": {
@@ -590,62 +542,29 @@
             },
             "type": "object"
         },
-        "UpdateList": {
+        "RollingUpdateList": {
             "description": "Response returned by List method.",
-            "id": "UpdateList",
+            "id": "RollingUpdateList",
             "properties": {
                 "items": {
-                    "description": "A list of update resources.",
+                    "description": "Collection of requested updates.",
                     "items": {
-                        "$ref": "Update"
+                        "$ref": "RollingUpdate"
                     },
                     "type": "array"
                 },
                 "kind": {
-                    "default": "replicapoolupdater#updateList",
+                    "default": "replicapoolupdater#rollingUpdateList",
                     "description": "[Output Only] Type of the resource.",
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request (output only).",
+                    "description": "A token used to continue a truncated list request.",
                     "type": "string"
                 },
                 "selfLink": {
                     "description": "[Output Only] The fully qualified URL for the resource.",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "UpdatePolicy": {
-            "description": "Parameters of an update process.",
-            "id": "UpdatePolicy",
-            "properties": {
-                "canary": {
-                    "$ref": "UpdatePolicyCanary",
-                    "description": "Parameters of a canary phase. If absent, canary will NOT be performed."
-                },
-                "maxNumConcurrentInstances": {
-                    "description": "Maximum number of instances that can be updated simultaneously (concurrently). An update of an instance starts when the instance is about to be restarted and finishes after the instance has been restarted and the sleep period (defined by sleep_after_instance_restart_sec) has passed.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "sleepAfterInstanceRestartSec": {
-                    "description": "Time period after the instance has been restarted but before marking the update of this instance as done.",
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "UpdatePolicyCanary": {
-            "description": "Parameters of a canary phase.",
-            "id": "UpdatePolicyCanary",
-            "properties": {
-                "numInstances": {
-                    "description": "Number of instances updated as a part of canary phase. If absent, the default number of instances will be used.",
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
             "type": "object"

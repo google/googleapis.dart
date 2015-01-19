@@ -3631,6 +3631,9 @@ class About {
   /** List of additional features enabled on this account. */
   core.List<AboutFeatures> features;
 
+  /** The palette of allowable folder colors as RGB hex strings. */
+  core.List<core.String> folderColorPalette;
+
   /** The allowable import formats. */
   core.List<AboutImportFormats> importFormats;
 
@@ -3720,6 +3723,9 @@ class About {
     if (_json.containsKey("features")) {
       features = _json["features"].map((value) => new AboutFeatures.fromJson(value)).toList();
     }
+    if (_json.containsKey("folderColorPalette")) {
+      folderColorPalette = _json["folderColorPalette"];
+    }
     if (_json.containsKey("importFormats")) {
       importFormats = _json["importFormats"].map((value) => new AboutImportFormats.fromJson(value)).toList();
     }
@@ -3792,6 +3798,9 @@ class About {
     }
     if (features != null) {
       _json["features"] = features.map((value) => (value).toJson()).toList();
+    }
+    if (folderColorPalette != null) {
+      _json["folderColorPalette"] = folderColorPalette;
     }
     if (importFormats != null) {
       _json["importFormats"] = importFormats.map((value) => (value).toJson()).toList();
@@ -5532,6 +5541,14 @@ class File {
   core.String fileSize;
 
   /**
+   * Folder color as an RGB hex string if the file is a folder. The list of
+   * supported colors is available in the folderColorPalette field of the About
+   * resource. If an unsupported color is specified, it will be changed to the
+   * closest color in the palette.
+   */
+  core.String folderColorRgb;
+
+  /**
    * The ID of the file's head revision. This will only be populated for files
    * with content stored in Drive.
    */
@@ -5740,6 +5757,9 @@ class File {
     if (_json.containsKey("fileSize")) {
       fileSize = _json["fileSize"];
     }
+    if (_json.containsKey("folderColorRgb")) {
+      folderColorRgb = _json["folderColorRgb"];
+    }
     if (_json.containsKey("headRevisionId")) {
       headRevisionId = _json["headRevisionId"];
     }
@@ -5893,6 +5913,9 @@ class File {
     }
     if (fileSize != null) {
       _json["fileSize"] = fileSize;
+    }
+    if (folderColorRgb != null) {
+      _json["folderColorRgb"] = folderColorRgb;
     }
     if (headRevisionId != null) {
       _json["headRevisionId"] = headRevisionId;

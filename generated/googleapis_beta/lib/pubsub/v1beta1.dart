@@ -302,7 +302,7 @@ class SubscriptionsResourceApi {
 
   /**
    * Modifies the PushConfig for a specified subscription. This method can be
-   * used to suspend the flow of messages to an end point by clearing the
+   * used to suspend the flow of messages to an endpoint by clearing the
    * PushConfig field in the request. Messages will be accumulated for delivery
    * even if no push configuration is defined or while the configuration is
    * modified.
@@ -390,7 +390,7 @@ class SubscriptionsResourceApi {
   /**
    * Pulls messages from the server. Returns an empty list if there are no
    * messages available in the backlog. The system is free to return UNAVAILABLE
-   * if there too many pull requests outstanding for a given subscription.
+   * if there are too many pull requests outstanding for the given subscription.
    *
    * [request] - The metadata request object.
    *
@@ -700,8 +700,8 @@ class TopicsResourceApi {
 /** Request for the Acknowledge method. */
 class AcknowledgeRequest {
   /**
-   * The Ack ID for the message being acknowledged. This was returned by the
-   * Pub/Sub system in the Pull response.
+   * The acknowledgment ID for the message being acknowledged. This was returned
+   * by the Pub/Sub system in the Pull response.
    */
   core.List<core.String> ackId;
 
@@ -870,7 +870,7 @@ class ModifyAckDeadlineRequest {
   /** The new Ack deadline. Must be >= 0. */
   core.int ackDeadlineSeconds;
 
-  /** The Ack ID. */
+  /** The acknowledgment ID. */
   core.String ackId;
 
   /** The name of the subscription from which messages are being pulled. */

@@ -492,8 +492,11 @@ class ProjectsZonesOperationsResourceApi {
 class Cluster {
   /**
    * The API version of the Kubernetes master and kubelets running in this
-   * cluster. Allowed values are 0.4.4, 0.5.5, 0.6.1, or leave blank to pick up
-   * the latest stable release.
+   * cluster. Leave blank to pick up the latest stable release, or specify a
+   * version of the form "x.y.z". The Google Container Engine release notes
+   * lists the currently supported versions. If an incorrect version is
+   * specified, the server returns an error listing the currently supported
+   * versions.
    */
   core.String clusterApiVersion;
 
@@ -867,6 +870,16 @@ class NodeConfig {
   core.String machineType;
 
   /**
+   * The optional list of ServiceAccounts, each with their specified scopes, to
+   * be made available on all of the node VMs. In addition to the service
+   * accounts and scopes specified, the "default" account will always be created
+   * with the following scopes to ensure the correct functioning of the cluster:
+   * - https://www.googleapis.com/auth/compute,
+   * - https://www.googleapis.com/auth/devstorage.read_only
+   */
+  core.List<ServiceAccount> serviceAccounts;
+
+  /**
    * The fully-specified name of a Google Compute Engine image. For example:
    * https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/backports-debian-7-wheezy-vYYYYMMDD
    * (where YYYMMDD is the version date).
@@ -884,6 +897,9 @@ class NodeConfig {
     if (_json.containsKey("machineType")) {
       machineType = _json["machineType"];
     }
+    if (_json.containsKey("serviceAccounts")) {
+      serviceAccounts = _json["serviceAccounts"].map((value) => new ServiceAccount.fromJson(value)).toList();
+    }
     if (_json.containsKey("sourceImage")) {
       sourceImage = _json["sourceImage"];
     }
@@ -893,6 +909,9 @@ class NodeConfig {
     var _json = new core.Map();
     if (machineType != null) {
       _json["machineType"] = machineType;
+    }
+    if (serviceAccounts != null) {
+      _json["serviceAccounts"] = serviceAccounts.map((value) => (value).toJson()).toList();
     }
     if (sourceImage != null) {
       _json["sourceImage"] = sourceImage;
@@ -1003,6 +1022,39 @@ class Operation {
     }
     if (zone != null) {
       _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+
+/** A Compute Engine service account. */
+class ServiceAccount {
+  /** Email address of the service account. */
+  core.String email;
+
+  /** The list of scopes to be made available for this service account. */
+  core.List<core.String> scopes;
+
+
+  ServiceAccount();
+
+  ServiceAccount.fromJson(core.Map _json) {
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("scopes")) {
+      scopes = _json["scopes"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (scopes != null) {
+      _json["scopes"] = scopes;
     }
     return _json;
   }

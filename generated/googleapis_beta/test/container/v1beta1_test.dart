@@ -84,14 +84,14 @@ checkCreateClusterRequest(api.CreateClusterRequest o) {
   buildCounterCreateClusterRequest--;
 }
 
-buildUnnamed1444() {
+buildUnnamed1498() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed1444(core.List<api.Cluster> o) {
+checkUnnamed1498(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
@@ -102,7 +102,7 @@ buildListAggregatedClustersResponse() {
   var o = new api.ListAggregatedClustersResponse();
   buildCounterListAggregatedClustersResponse++;
   if (buildCounterListAggregatedClustersResponse < 3) {
-    o.clusters = buildUnnamed1444();
+    o.clusters = buildUnnamed1498();
   }
   buildCounterListAggregatedClustersResponse--;
   return o;
@@ -111,19 +111,19 @@ buildListAggregatedClustersResponse() {
 checkListAggregatedClustersResponse(api.ListAggregatedClustersResponse o) {
   buildCounterListAggregatedClustersResponse++;
   if (buildCounterListAggregatedClustersResponse < 3) {
-    checkUnnamed1444(o.clusters);
+    checkUnnamed1498(o.clusters);
   }
   buildCounterListAggregatedClustersResponse--;
 }
 
-buildUnnamed1445() {
+buildUnnamed1499() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1445(core.List<api.Operation> o) {
+checkUnnamed1499(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -134,7 +134,7 @@ buildListAggregatedOperationsResponse() {
   var o = new api.ListAggregatedOperationsResponse();
   buildCounterListAggregatedOperationsResponse++;
   if (buildCounterListAggregatedOperationsResponse < 3) {
-    o.operations = buildUnnamed1445();
+    o.operations = buildUnnamed1499();
   }
   buildCounterListAggregatedOperationsResponse--;
   return o;
@@ -143,19 +143,19 @@ buildListAggregatedOperationsResponse() {
 checkListAggregatedOperationsResponse(api.ListAggregatedOperationsResponse o) {
   buildCounterListAggregatedOperationsResponse++;
   if (buildCounterListAggregatedOperationsResponse < 3) {
-    checkUnnamed1445(o.operations);
+    checkUnnamed1499(o.operations);
   }
   buildCounterListAggregatedOperationsResponse--;
 }
 
-buildUnnamed1446() {
+buildUnnamed1500() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed1446(core.List<api.Cluster> o) {
+checkUnnamed1500(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
@@ -166,7 +166,7 @@ buildListClustersResponse() {
   var o = new api.ListClustersResponse();
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    o.clusters = buildUnnamed1446();
+    o.clusters = buildUnnamed1500();
   }
   buildCounterListClustersResponse--;
   return o;
@@ -175,19 +175,19 @@ buildListClustersResponse() {
 checkListClustersResponse(api.ListClustersResponse o) {
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    checkUnnamed1446(o.clusters);
+    checkUnnamed1500(o.clusters);
   }
   buildCounterListClustersResponse--;
 }
 
-buildUnnamed1447() {
+buildUnnamed1501() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1447(core.List<api.Operation> o) {
+checkUnnamed1501(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -198,7 +198,7 @@ buildListOperationsResponse() {
   var o = new api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.operations = buildUnnamed1447();
+    o.operations = buildUnnamed1501();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -207,7 +207,7 @@ buildListOperationsResponse() {
 checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    checkUnnamed1447(o.operations);
+    checkUnnamed1501(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
@@ -233,12 +233,26 @@ checkMasterAuth(api.MasterAuth o) {
   buildCounterMasterAuth--;
 }
 
+buildUnnamed1502() {
+  var o = new core.List<api.ServiceAccount>();
+  o.add(buildServiceAccount());
+  o.add(buildServiceAccount());
+  return o;
+}
+
+checkUnnamed1502(core.List<api.ServiceAccount> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkServiceAccount(o[0]);
+  checkServiceAccount(o[1]);
+}
+
 core.int buildCounterNodeConfig = 0;
 buildNodeConfig() {
   var o = new api.NodeConfig();
   buildCounterNodeConfig++;
   if (buildCounterNodeConfig < 3) {
     o.machineType = "foo";
+    o.serviceAccounts = buildUnnamed1502();
     o.sourceImage = "foo";
   }
   buildCounterNodeConfig--;
@@ -249,6 +263,7 @@ checkNodeConfig(api.NodeConfig o) {
   buildCounterNodeConfig++;
   if (buildCounterNodeConfig < 3) {
     unittest.expect(o.machineType, unittest.equals('foo'));
+    checkUnnamed1502(o.serviceAccounts);
     unittest.expect(o.sourceImage, unittest.equals('foo'));
   }
   buildCounterNodeConfig--;
@@ -285,6 +300,40 @@ checkOperation(api.Operation o) {
     unittest.expect(o.zone, unittest.equals('foo'));
   }
   buildCounterOperation--;
+}
+
+buildUnnamed1503() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed1503(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterServiceAccount = 0;
+buildServiceAccount() {
+  var o = new api.ServiceAccount();
+  buildCounterServiceAccount++;
+  if (buildCounterServiceAccount < 3) {
+    o.email = "foo";
+    o.scopes = buildUnnamed1503();
+  }
+  buildCounterServiceAccount--;
+  return o;
+}
+
+checkServiceAccount(api.ServiceAccount o) {
+  buildCounterServiceAccount++;
+  if (buildCounterServiceAccount < 3) {
+    unittest.expect(o.email, unittest.equals('foo'));
+    checkUnnamed1503(o.scopes);
+  }
+  buildCounterServiceAccount--;
 }
 
 
@@ -366,6 +415,15 @@ main() {
       var o = buildOperation();
       var od = new api.Operation.fromJson(o.toJson());
       checkOperation(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ServiceAccount", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildServiceAccount();
+      var od = new api.ServiceAccount.fromJson(o.toJson());
+      checkServiceAccount(od);
     });
   });
 

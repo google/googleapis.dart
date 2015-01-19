@@ -17,7 +17,7 @@
     "description": "Provides reliable, many-to-many, asynchronous messaging between applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/pubsub/v1beta1",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/xuml-cR3i2tpiaxCozjiT_iUO9o\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/O6c4hqlf7a-JwyG37WvCKR3ZHMk\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -198,7 +198,7 @@
                     ]
                 },
                 "modifyPushConfig": {
-                    "description": "Modifies the PushConfig for a specified subscription. This method can be used to suspend the flow of messages to an end point by clearing the PushConfig field in the request. Messages will be accumulated for delivery even if no push configuration is defined or while the configuration is modified.",
+                    "description": "Modifies the PushConfig for a specified subscription. This method can be used to suspend the flow of messages to an endpoint by clearing the PushConfig field in the request. Messages will be accumulated for delivery even if no push configuration is defined or while the configuration is modified.",
                     "httpMethod": "POST",
                     "id": "pubsub.subscriptions.modifyPushConfig",
                     "path": "subscriptions/modifyPushConfig",
@@ -227,7 +227,7 @@
                     ]
                 },
                 "pullBatch": {
-                    "description": "Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The system is free to return UNAVAILABLE if there too many pull requests outstanding for a given subscription.",
+                    "description": "Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The system is free to return UNAVAILABLE if there are too many pull requests outstanding for the given subscription.",
                     "httpMethod": "POST",
                     "id": "pubsub.subscriptions.pullBatch",
                     "path": "subscriptions/pullBatch",
@@ -370,7 +370,7 @@
             }
         }
     },
-    "revision": "20141107",
+    "revision": "20141230",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AcknowledgeRequest": {
@@ -378,7 +378,7 @@
             "id": "AcknowledgeRequest",
             "properties": {
                 "ackId": {
-                    "description": "The Ack ID for the message being acknowledged. This was returned by the Pub/Sub system in the Pull response.",
+                    "description": "The acknowledgment ID for the message being acknowledged. This was returned by the Pub/Sub system in the Pull response.",
                     "items": {
                         "type": "string"
                     },
@@ -457,7 +457,7 @@
                     "type": "integer"
                 },
                 "ackId": {
-                    "description": "The Ack ID.",
+                    "description": "The acknowledgment ID.",
                     "type": "string"
                 },
                 "subscription": {

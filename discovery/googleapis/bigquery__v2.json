@@ -29,7 +29,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/bigquery/docs/overview",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/1ZGpzzKS4Zm-lRDWSuLtbVCf49E\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/JODnNAHf3o-qpbXI_EVrMUK3yFU\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -889,7 +889,7 @@
             }
         }
     },
-    "revision": "20141211",
+    "revision": "20150106",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Dataset": {

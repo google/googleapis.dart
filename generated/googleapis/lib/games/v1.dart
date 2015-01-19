@@ -1810,7 +1810,7 @@ class ScoresResourceApi {
    * [maxResults] - The maximum number of leaderboard scores to return in the
    * response. For any response, the actual number of leaderboard scores
    * returned may be less than the specified maxResults.
-   * Value must be between "1" and "25".
+   * Value must be between "1" and "30".
    *
    * [pageToken] - The token returned by the previous request.
    *
@@ -1889,7 +1889,7 @@ class ScoresResourceApi {
    * [maxResults] - The maximum number of leaderboard scores to return in the
    * response. For any response, the actual number of leaderboard scores
    * returned may be less than the specified maxResults.
-   * Value must be between "1" and "25".
+   * Value must be between "1" and "30".
    *
    * [pageToken] - The token returned by the previous request.
    *
@@ -1966,7 +1966,7 @@ class ScoresResourceApi {
    * [maxResults] - The maximum number of leaderboard scores to return in the
    * response. For any response, the actual number of leaderboard scores
    * returned may be less than the specified maxResults.
-   * Value must be between "1" and "25".
+   * Value must be between "1" and "30".
    *
    * [pageToken] - The token returned by the previous request.
    *

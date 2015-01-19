@@ -23,7 +23,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/sIs8D8__kcAFnZahengpt48j0uE\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/GQ8G6h803bhAihV7tJKOVvj6RSc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -525,7 +525,7 @@
                     ]
                 },
                 "export": {
-                    "description": "Exports read group sets to a BAM file in Google Cloud Storage.\n\nNote that currently there may be some differences between exported BAM files and the original BAM file at the time of import. In particular, comments in the input file header will not be preserved, and some custom tags will be converted to strings.",
+                    "description": "Exports read group sets to a BAM file in Google Cloud Storage.\n\nNote that currently there may be some differences between exported BAM files and the original BAM file at the time of import. In particular, comments in the input file header will not be preserved, some custom tags will be converted to strings, and original reference sequence order is not necessarily preserved.",
                     "httpMethod": "POST",
                     "id": "genomics.readgroupsets.export",
                     "path": "readgroupsets/export",
@@ -1173,7 +1173,7 @@
             }
         }
     },
-    "revision": "20141201",
+    "revision": "20150106",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AlignReadGroupSetsRequest": {
@@ -1181,7 +1181,7 @@
             "id": "AlignReadGroupSetsRequest",
             "properties": {
                 "bamSourceUris": {
-                    "description": "The BAM source files for alignment. Exactly one of readGroupSetIds, bamSourceUris, interleavedFastqSource or pairedFastqSource must be provided. The caller must have READ permissions for these files.",
+                    "description": "The BAM source files for alignment. Exactly one of readGroupSetId, bamSourceUris, interleavedFastqSource or pairedFastqSource must be provided. The caller must have READ permissions for these files.",
                     "items": {
                         "type": "string"
                     },
@@ -1193,18 +1193,15 @@
                 },
                 "interleavedFastqSource": {
                     "$ref": "InterleavedFastqSource",
-                    "description": "The interleaved FASTQ source files for alignment, where both members of each pair of reads are found on consecutive records within the same FASTQ file. Exactly one of readGroupSetIds, bamSourceUris, interleavedFastqSource or pairedFastqSource must be provided."
+                    "description": "The interleaved FASTQ source files for alignment, where both members of each pair of reads are found on consecutive records within the same FASTQ file. Exactly one of readGroupSetId, bamSourceUris, interleavedFastqSource or pairedFastqSource must be provided."
                 },
                 "pairedFastqSource": {
                     "$ref": "PairedFastqSource",
-                    "description": "The paired end FASTQ source files for alignment, where each member of a pair of reads are found in separate files. Exactly one of readGroupSetIds, bamSourceUris, interleavedFastqSource or pairedFastqSource must be provided."
+                    "description": "The paired end FASTQ source files for alignment, where each member of a pair of reads are found in separate files. Exactly one of readGroupSetId, bamSourceUris, interleavedFastqSource or pairedFastqSource must be provided."
                 },
-                "readGroupSetIds": {
-                    "description": "The IDs of the read group sets which will be aligned. New read group sets will be generated to hold the aligned data, the originals will not be modified. The caller must have READ permissions for these read group sets. Exactly one of readGroupSetIds, bamSourceUris, interleavedFastqSource or pairedFastqSource must be provided.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
+                "readGroupSetId": {
+                    "description": "The ID of the read group set which will be aligned. A new read group set will be generated to hold the aligned data, the originals will not be modified. The caller must have READ permissions for this read group set. Exactly one of readGroupSetId, bamSourceUris, interleavedFastqSource or pairedFastqSource must be provided.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1274,15 +1271,12 @@
                     "description": "Required. The ID of the dataset the called variants will belong to. The caller must have WRITE permissions to this dataset.",
                     "type": "string"
                 },
-                "readGroupSetIds": {
-                    "description": "The IDs of the read group sets which will be called. The caller must have READ permissions for these read group sets. One of readGroupSetIds or sourceUris must be provided.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
+                "readGroupSetId": {
+                    "description": "The IDs of the read group sets which will be called. The caller must have READ permissions for these read group sets. One of readGroupSetId or sourceUris must be provided.",
+                    "type": "string"
                 },
                 "sourceUris": {
-                    "description": "A list of URIs pointing at BAM files in Google Cloud Storage which will be called. FASTQ files are not allowed. The caller must have READ permissions for these files. One of readGroupSetIds or sourceUris must be provided.",
+                    "description": "A list of URIs pointing at BAM files in Google Cloud Storage which will be called. FASTQ files are not allowed. The caller must have READ permissions for these files. One of readGroupSetId or sourceUris must be provided.",
                     "items": {
                         "type": "string"
                     },
@@ -2235,6 +2229,17 @@
                 "id": {
                     "description": "The read group set ID.",
                     "type": "string"
+                },
+                "info": {
+                    "additionalProperties": {
+                        "description": "A string which maps to an array of values.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "description": "A map of additional read group set information.",
+                    "type": "object"
                 },
                 "name": {
                     "description": "The read group set name. By default this will be initialized to the sample name of the sequenced data contained in this set.",

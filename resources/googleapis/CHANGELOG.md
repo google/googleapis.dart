@@ -1,3 +1,7 @@
+## 0.5.4
+
+* [apis] drive:v2: schema changes
+
 ## 0.5.3
 
 * [generator] Roll to use DetailedApiRequestError when only a HTTP status code

@@ -952,8 +952,9 @@ class ReadgroupsetsResourceApi {
    *
    * Note that currently there may be some differences between exported BAM
    * files and the original BAM file at the time of import. In particular,
-   * comments in the input file header will not be preserved, and some custom
-   * tags will be converted to strings.
+   * comments in the input file header will not be preserved, some custom tags
+   * will be converted to strings, and original reference sequence order is not
+   * necessarily preserved.
    *
    * [request] - The metadata request object.
    *
@@ -2243,7 +2244,7 @@ class VariantsetsResourceApi {
 /** The read group set align request. */
 class AlignReadGroupSetsRequest {
   /**
-   * The BAM source files for alignment. Exactly one of readGroupSetIds,
+   * The BAM source files for alignment. Exactly one of readGroupSetId,
    * bamSourceUris, interleavedFastqSource or pairedFastqSource must be
    * provided. The caller must have READ permissions for these files.
    */
@@ -2258,27 +2259,27 @@ class AlignReadGroupSetsRequest {
   /**
    * The interleaved FASTQ source files for alignment, where both members of
    * each pair of reads are found on consecutive records within the same FASTQ
-   * file. Exactly one of readGroupSetIds, bamSourceUris, interleavedFastqSource
+   * file. Exactly one of readGroupSetId, bamSourceUris, interleavedFastqSource
    * or pairedFastqSource must be provided.
    */
   InterleavedFastqSource interleavedFastqSource;
 
   /**
    * The paired end FASTQ source files for alignment, where each member of a
-   * pair of reads are found in separate files. Exactly one of readGroupSetIds,
+   * pair of reads are found in separate files. Exactly one of readGroupSetId,
    * bamSourceUris, interleavedFastqSource or pairedFastqSource must be
    * provided.
    */
   PairedFastqSource pairedFastqSource;
 
   /**
-   * The IDs of the read group sets which will be aligned. New read group sets
+   * The ID of the read group set which will be aligned. A new read group set
    * will be generated to hold the aligned data, the originals will not be
-   * modified. The caller must have READ permissions for these read group sets.
-   * Exactly one of readGroupSetIds, bamSourceUris, interleavedFastqSource or
+   * modified. The caller must have READ permissions for this read group set.
+   * Exactly one of readGroupSetId, bamSourceUris, interleavedFastqSource or
    * pairedFastqSource must be provided.
    */
-  core.List<core.String> readGroupSetIds;
+  core.String readGroupSetId;
 
 
   AlignReadGroupSetsRequest();
@@ -2296,8 +2297,8 @@ class AlignReadGroupSetsRequest {
     if (_json.containsKey("pairedFastqSource")) {
       pairedFastqSource = new PairedFastqSource.fromJson(_json["pairedFastqSource"]);
     }
-    if (_json.containsKey("readGroupSetIds")) {
-      readGroupSetIds = _json["readGroupSetIds"];
+    if (_json.containsKey("readGroupSetId")) {
+      readGroupSetId = _json["readGroupSetId"];
     }
   }
 
@@ -2315,8 +2316,8 @@ class AlignReadGroupSetsRequest {
     if (pairedFastqSource != null) {
       _json["pairedFastqSource"] = (pairedFastqSource).toJson();
     }
-    if (readGroupSetIds != null) {
-      _json["readGroupSetIds"] = readGroupSetIds;
+    if (readGroupSetId != null) {
+      _json["readGroupSetId"] = readGroupSetId;
     }
     return _json;
   }
@@ -2453,15 +2454,15 @@ class CallReadGroupSetsRequest {
 
   /**
    * The IDs of the read group sets which will be called. The caller must have
-   * READ permissions for these read group sets. One of readGroupSetIds or
+   * READ permissions for these read group sets. One of readGroupSetId or
    * sourceUris must be provided.
    */
-  core.List<core.String> readGroupSetIds;
+  core.String readGroupSetId;
 
   /**
    * A list of URIs pointing at BAM files in Google Cloud Storage which will be
    * called. FASTQ files are not allowed. The caller must have READ permissions
-   * for these files. One of readGroupSetIds or sourceUris must be provided.
+   * for these files. One of readGroupSetId or sourceUris must be provided.
    */
   core.List<core.String> sourceUris;
 
@@ -2472,8 +2473,8 @@ class CallReadGroupSetsRequest {
     if (_json.containsKey("datasetId")) {
       datasetId = _json["datasetId"];
     }
-    if (_json.containsKey("readGroupSetIds")) {
-      readGroupSetIds = _json["readGroupSetIds"];
+    if (_json.containsKey("readGroupSetId")) {
+      readGroupSetId = _json["readGroupSetId"];
     }
     if (_json.containsKey("sourceUris")) {
       sourceUris = _json["sourceUris"];
@@ -2485,8 +2486,8 @@ class CallReadGroupSetsRequest {
     if (datasetId != null) {
       _json["datasetId"] = datasetId;
     }
-    if (readGroupSetIds != null) {
-      _json["readGroupSetIds"] = readGroupSetIds;
+    if (readGroupSetId != null) {
+      _json["readGroupSetId"] = readGroupSetId;
     }
     if (sourceUris != null) {
       _json["sourceUris"] = sourceUris;
@@ -4466,6 +4467,9 @@ class ReadGroupSet {
   /** The read group set ID. */
   core.String id;
 
+  /** A map of additional read group set information. */
+  core.Map<core.String, core.List<core.String>> info;
+
   /**
    * The read group set name. By default this will be initialized to the sample
    * name of the sequenced data contained in this set.
@@ -4494,6 +4498,9 @@ class ReadGroupSet {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
+    if (_json.containsKey("info")) {
+      info = _json["info"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -4515,6 +4522,9 @@ class ReadGroupSet {
     }
     if (id != null) {
       _json["id"] = id;
+    }
+    if (info != null) {
+      _json["info"] = info;
     }
     if (name != null) {
       _json["name"] = name;

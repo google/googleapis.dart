@@ -21,7 +21,7 @@
     "description": "The API for Google Play Game Services.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/games/services/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/PLVs_RJGUBOqRZGJ_zM-KtukzgI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/hKogzlFCeoQ2aH_L_DGXt68-_r4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1136,7 +1136,7 @@
                             "description": "The maximum number of leaderboard scores to return in the response. For any response, the actual number of leaderboard scores returned may be less than the specified maxResults.",
                             "format": "int32",
                             "location": "query",
-                            "maximum": "25",
+                            "maximum": "30",
                             "minimum": "1",
                             "type": "integer"
                         },
@@ -1218,7 +1218,7 @@
                             "description": "The maximum number of leaderboard scores to return in the response. For any response, the actual number of leaderboard scores returned may be less than the specified maxResults.",
                             "format": "int32",
                             "location": "query",
-                            "maximum": "25",
+                            "maximum": "30",
                             "minimum": "1",
                             "type": "integer"
                         },
@@ -1292,7 +1292,7 @@
                             "description": "The maximum number of leaderboard scores to return in the response. For any response, the actual number of leaderboard scores returned may be less than the specified maxResults.",
                             "format": "int32",
                             "location": "query",
-                            "maximum": "25",
+                            "maximum": "30",
                             "minimum": "1",
                             "type": "integer"
                         },
@@ -1907,7 +1907,7 @@
             }
         }
     },
-    "revision": "20141208",
+    "revision": "20150105",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AchievementDefinition": {

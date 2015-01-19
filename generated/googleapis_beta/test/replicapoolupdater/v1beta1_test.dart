@@ -21,7 +21,7 @@ buildInsertResponse() {
   var o = new api.InsertResponse();
   buildCounterInsertResponse++;
   if (buildCounterInsertResponse < 3) {
-    o.update = "foo";
+    o.rollingUpdate = "foo";
   }
   buildCounterInsertResponse--;
   return o;
@@ -30,7 +30,7 @@ buildInsertResponse() {
 checkInsertResponse(api.InsertResponse o) {
   buildCounterInsertResponse++;
   if (buildCounterInsertResponse < 3) {
-    unittest.expect(o.update, unittest.equals('foo'));
+    unittest.expect(o.rollingUpdate, unittest.equals('foo'));
   }
   buildCounterInsertResponse--;
 }
@@ -41,7 +41,6 @@ buildInstanceUpdate() {
   buildCounterInstanceUpdate++;
   if (buildCounterInstanceUpdate < 3) {
     o.instance = "foo";
-    o.state = "foo";
     o.status = "foo";
   }
   buildCounterInstanceUpdate--;
@@ -52,20 +51,19 @@ checkInstanceUpdate(api.InstanceUpdate o) {
   buildCounterInstanceUpdate++;
   if (buildCounterInstanceUpdate < 3) {
     unittest.expect(o.instance, unittest.equals('foo'));
-    unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
   }
   buildCounterInstanceUpdate--;
 }
 
-buildUnnamed1705() {
+buildUnnamed1545() {
   var o = new core.List<api.InstanceUpdate>();
   o.add(buildInstanceUpdate());
   o.add(buildInstanceUpdate());
   return o;
 }
 
-checkUnnamed1705(core.List<api.InstanceUpdate> o) {
+checkUnnamed1545(core.List<api.InstanceUpdate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstanceUpdate(o[0]);
   checkInstanceUpdate(o[1]);
@@ -76,7 +74,7 @@ buildInstanceUpdateList() {
   var o = new api.InstanceUpdateList();
   buildCounterInstanceUpdateList++;
   if (buildCounterInstanceUpdateList < 3) {
-    o.items = buildUnnamed1705();
+    o.items = buildUnnamed1545();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -88,7 +86,7 @@ buildInstanceUpdateList() {
 checkInstanceUpdateList(api.InstanceUpdateList o) {
   buildCounterInstanceUpdateList++;
   if (buildCounterInstanceUpdateList < 3) {
-    checkUnnamed1705(o.items);
+    checkUnnamed1545(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -96,131 +94,123 @@ checkInstanceUpdateList(api.InstanceUpdateList o) {
   buildCounterInstanceUpdateList--;
 }
 
-core.int buildCounterUpdate = 0;
-buildUpdate() {
-  var o = new api.Update();
-  buildCounterUpdate++;
-  if (buildCounterUpdate < 3) {
+core.int buildCounterRollingUpdatePolicyCanary = 0;
+buildRollingUpdatePolicyCanary() {
+  var o = new api.RollingUpdatePolicyCanary();
+  buildCounterRollingUpdatePolicyCanary++;
+  if (buildCounterRollingUpdatePolicyCanary < 3) {
+    o.numInstances = 42;
+  }
+  buildCounterRollingUpdatePolicyCanary--;
+  return o;
+}
+
+checkRollingUpdatePolicyCanary(api.RollingUpdatePolicyCanary o) {
+  buildCounterRollingUpdatePolicyCanary++;
+  if (buildCounterRollingUpdatePolicyCanary < 3) {
+    unittest.expect(o.numInstances, unittest.equals(42));
+  }
+  buildCounterRollingUpdatePolicyCanary--;
+}
+
+core.int buildCounterRollingUpdatePolicy = 0;
+buildRollingUpdatePolicy() {
+  var o = new api.RollingUpdatePolicy();
+  buildCounterRollingUpdatePolicy++;
+  if (buildCounterRollingUpdatePolicy < 3) {
+    o.canary = buildRollingUpdatePolicyCanary();
+    o.maxNumConcurrentInstances = 42;
+    o.sleepAfterInstanceRestartSec = 42;
+  }
+  buildCounterRollingUpdatePolicy--;
+  return o;
+}
+
+checkRollingUpdatePolicy(api.RollingUpdatePolicy o) {
+  buildCounterRollingUpdatePolicy++;
+  if (buildCounterRollingUpdatePolicy < 3) {
+    checkRollingUpdatePolicyCanary(o.canary);
+    unittest.expect(o.maxNumConcurrentInstances, unittest.equals(42));
+    unittest.expect(o.sleepAfterInstanceRestartSec, unittest.equals(42));
+  }
+  buildCounterRollingUpdatePolicy--;
+}
+
+core.int buildCounterRollingUpdate = 0;
+buildRollingUpdate() {
+  var o = new api.RollingUpdate();
+  buildCounterRollingUpdate++;
+  if (buildCounterRollingUpdate < 3) {
     o.creationTimestamp = "foo";
-    o.details = "foo";
-    o.handle = "foo";
     o.id = "foo";
     o.instanceGroupManager = "foo";
     o.instanceTemplate = "foo";
     o.kind = "foo";
-    o.policy = buildUpdatePolicy();
+    o.policy = buildRollingUpdatePolicy();
     o.progress = 42;
     o.selfLink = "foo";
-    o.state = "foo";
     o.status = "foo";
     o.statusMessage = "foo";
-    o.targetState = "foo";
     o.user = "foo";
   }
-  buildCounterUpdate--;
+  buildCounterRollingUpdate--;
   return o;
 }
 
-checkUpdate(api.Update o) {
-  buildCounterUpdate++;
-  if (buildCounterUpdate < 3) {
+checkRollingUpdate(api.RollingUpdate o) {
+  buildCounterRollingUpdate++;
+  if (buildCounterRollingUpdate < 3) {
     unittest.expect(o.creationTimestamp, unittest.equals('foo'));
-    unittest.expect(o.details, unittest.equals('foo'));
-    unittest.expect(o.handle, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.instanceGroupManager, unittest.equals('foo'));
     unittest.expect(o.instanceTemplate, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUpdatePolicy(o.policy);
+    checkRollingUpdatePolicy(o.policy);
     unittest.expect(o.progress, unittest.equals(42));
     unittest.expect(o.selfLink, unittest.equals('foo'));
-    unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.statusMessage, unittest.equals('foo'));
-    unittest.expect(o.targetState, unittest.equals('foo'));
     unittest.expect(o.user, unittest.equals('foo'));
   }
-  buildCounterUpdate--;
+  buildCounterRollingUpdate--;
 }
 
-buildUnnamed1706() {
-  var o = new core.List<api.Update>();
-  o.add(buildUpdate());
-  o.add(buildUpdate());
+buildUnnamed1546() {
+  var o = new core.List<api.RollingUpdate>();
+  o.add(buildRollingUpdate());
+  o.add(buildRollingUpdate());
   return o;
 }
 
-checkUnnamed1706(core.List<api.Update> o) {
+checkUnnamed1546(core.List<api.RollingUpdate> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUpdate(o[0]);
-  checkUpdate(o[1]);
+  checkRollingUpdate(o[0]);
+  checkRollingUpdate(o[1]);
 }
 
-core.int buildCounterUpdateList = 0;
-buildUpdateList() {
-  var o = new api.UpdateList();
-  buildCounterUpdateList++;
-  if (buildCounterUpdateList < 3) {
-    o.items = buildUnnamed1706();
+core.int buildCounterRollingUpdateList = 0;
+buildRollingUpdateList() {
+  var o = new api.RollingUpdateList();
+  buildCounterRollingUpdateList++;
+  if (buildCounterRollingUpdateList < 3) {
+    o.items = buildUnnamed1546();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
   }
-  buildCounterUpdateList--;
+  buildCounterRollingUpdateList--;
   return o;
 }
 
-checkUpdateList(api.UpdateList o) {
-  buildCounterUpdateList++;
-  if (buildCounterUpdateList < 3) {
-    checkUnnamed1706(o.items);
+checkRollingUpdateList(api.RollingUpdateList o) {
+  buildCounterRollingUpdateList++;
+  if (buildCounterRollingUpdateList < 3) {
+    checkUnnamed1546(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
-  buildCounterUpdateList--;
-}
-
-core.int buildCounterUpdatePolicy = 0;
-buildUpdatePolicy() {
-  var o = new api.UpdatePolicy();
-  buildCounterUpdatePolicy++;
-  if (buildCounterUpdatePolicy < 3) {
-    o.canary = buildUpdatePolicyCanary();
-    o.maxNumConcurrentInstances = 42;
-    o.sleepAfterInstanceRestartSec = 42;
-  }
-  buildCounterUpdatePolicy--;
-  return o;
-}
-
-checkUpdatePolicy(api.UpdatePolicy o) {
-  buildCounterUpdatePolicy++;
-  if (buildCounterUpdatePolicy < 3) {
-    checkUpdatePolicyCanary(o.canary);
-    unittest.expect(o.maxNumConcurrentInstances, unittest.equals(42));
-    unittest.expect(o.sleepAfterInstanceRestartSec, unittest.equals(42));
-  }
-  buildCounterUpdatePolicy--;
-}
-
-core.int buildCounterUpdatePolicyCanary = 0;
-buildUpdatePolicyCanary() {
-  var o = new api.UpdatePolicyCanary();
-  buildCounterUpdatePolicyCanary++;
-  if (buildCounterUpdatePolicyCanary < 3) {
-    o.numInstances = 42;
-  }
-  buildCounterUpdatePolicyCanary--;
-  return o;
-}
-
-checkUpdatePolicyCanary(api.UpdatePolicyCanary o) {
-  buildCounterUpdatePolicyCanary++;
-  if (buildCounterUpdatePolicyCanary < 3) {
-    unittest.expect(o.numInstances, unittest.equals(42));
-  }
-  buildCounterUpdatePolicyCanary--;
+  buildCounterRollingUpdateList--;
 }
 
 
@@ -252,51 +242,50 @@ main() {
   });
 
 
-  unittest.group("obj-schema-Update", () {
+  unittest.group("obj-schema-RollingUpdatePolicyCanary", () {
     unittest.test("to-json--from-json", () {
-      var o = buildUpdate();
-      var od = new api.Update.fromJson(o.toJson());
-      checkUpdate(od);
+      var o = buildRollingUpdatePolicyCanary();
+      var od = new api.RollingUpdatePolicyCanary.fromJson(o.toJson());
+      checkRollingUpdatePolicyCanary(od);
     });
   });
 
 
-  unittest.group("obj-schema-UpdateList", () {
+  unittest.group("obj-schema-RollingUpdatePolicy", () {
     unittest.test("to-json--from-json", () {
-      var o = buildUpdateList();
-      var od = new api.UpdateList.fromJson(o.toJson());
-      checkUpdateList(od);
+      var o = buildRollingUpdatePolicy();
+      var od = new api.RollingUpdatePolicy.fromJson(o.toJson());
+      checkRollingUpdatePolicy(od);
     });
   });
 
 
-  unittest.group("obj-schema-UpdatePolicy", () {
+  unittest.group("obj-schema-RollingUpdate", () {
     unittest.test("to-json--from-json", () {
-      var o = buildUpdatePolicy();
-      var od = new api.UpdatePolicy.fromJson(o.toJson());
-      checkUpdatePolicy(od);
+      var o = buildRollingUpdate();
+      var od = new api.RollingUpdate.fromJson(o.toJson());
+      checkRollingUpdate(od);
     });
   });
 
 
-  unittest.group("obj-schema-UpdatePolicyCanary", () {
+  unittest.group("obj-schema-RollingUpdateList", () {
     unittest.test("to-json--from-json", () {
-      var o = buildUpdatePolicyCanary();
-      var od = new api.UpdatePolicyCanary.fromJson(o.toJson());
-      checkUpdatePolicyCanary(od);
+      var o = buildRollingUpdateList();
+      var od = new api.RollingUpdateList.fromJson(o.toJson());
+      checkRollingUpdateList(od);
     });
   });
 
 
-  unittest.group("resource-UpdatesResourceApi", () {
+  unittest.group("resource-RollingUpdatesResourceApi", () {
     unittest.test("method--cancel", () {
 
       var mock = new common_test.HttpServerMock();
-      api.UpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).updates;
+      api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
       var arg_project = "foo";
       var arg_zone = "foo";
-      var arg_instanceGroupManager = "foo";
-      var arg_update = "foo";
+      var arg_rollingUpdate = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -329,17 +318,16 @@ main() {
         var resp = "";
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.cancel(arg_project, arg_zone, arg_instanceGroupManager, arg_update).then(unittest.expectAsync((_) {}));
+      res.cancel(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
       var mock = new common_test.HttpServerMock();
-      api.UpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).updates;
+      api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
       var arg_project = "foo";
       var arg_zone = "foo";
-      var arg_instanceGroupManager = "foo";
-      var arg_update = "foo";
+      var arg_rollingUpdate = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -369,25 +357,24 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildUpdate());
+        var resp = convert.JSON.encode(buildRollingUpdate());
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_zone, arg_instanceGroupManager, arg_update).then(unittest.expectAsync(((api.Update response) {
-        checkUpdate(response);
+      res.get(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync(((api.RollingUpdate response) {
+        checkRollingUpdate(response);
       })));
     });
 
     unittest.test("method--insert", () {
 
       var mock = new common_test.HttpServerMock();
-      api.UpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).updates;
-      var arg_request = buildUpdate();
+      api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
+      var arg_request = buildRollingUpdate();
       var arg_project = "foo";
       var arg_zone = "foo";
-      var arg_instanceGroupManager = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
-        var obj = new api.Update.fromJson(json);
-        checkUpdate(obj);
+        var obj = new api.RollingUpdate.fromJson(json);
+        checkRollingUpdate(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -420,7 +407,7 @@ main() {
         var resp = convert.JSON.encode(buildInsertResponse());
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.InsertResponse response) {
+      res.insert(arg_request, arg_project, arg_zone).then(unittest.expectAsync(((api.InsertResponse response) {
         checkInsertResponse(response);
       })));
     });
@@ -428,7 +415,7 @@ main() {
     unittest.test("method--list", () {
 
       var mock = new common_test.HttpServerMock();
-      api.UpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).updates;
+      api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_instanceGroupManager = "foo";
@@ -458,6 +445,7 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["instanceGroupManager"].first, unittest.equals(arg_instanceGroupManager));
         unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
@@ -465,22 +453,21 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildUpdateList());
+        var resp = convert.JSON.encode(buildRollingUpdateList());
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, arg_zone, arg_instanceGroupManager, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.UpdateList response) {
-        checkUpdateList(response);
+      res.list(arg_project, arg_zone, instanceGroupManager: arg_instanceGroupManager, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.RollingUpdateList response) {
+        checkRollingUpdateList(response);
       })));
     });
 
     unittest.test("method--listInstanceUpdates", () {
 
       var mock = new common_test.HttpServerMock();
-      api.UpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).updates;
+      api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
       var arg_project = "foo";
       var arg_zone = "foo";
-      var arg_instanceGroupManager = "foo";
-      var arg_update = "foo";
+      var arg_rollingUpdate = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -517,7 +504,7 @@ main() {
         var resp = convert.JSON.encode(buildInstanceUpdateList());
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.listInstanceUpdates(arg_project, arg_zone, arg_instanceGroupManager, arg_update, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.InstanceUpdateList response) {
+      res.listInstanceUpdates(arg_project, arg_zone, arg_rollingUpdate, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.InstanceUpdateList response) {
         checkInstanceUpdateList(response);
       })));
     });
@@ -525,11 +512,10 @@ main() {
     unittest.test("method--pause", () {
 
       var mock = new common_test.HttpServerMock();
-      api.UpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).updates;
+      api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
       var arg_project = "foo";
       var arg_zone = "foo";
-      var arg_instanceGroupManager = "foo";
-      var arg_update = "foo";
+      var arg_rollingUpdate = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -562,17 +548,58 @@ main() {
         var resp = "";
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.pause(arg_project, arg_zone, arg_instanceGroupManager, arg_update).then(unittest.expectAsync((_) {}));
+      res.pause(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync((_) {}));
+    });
+
+    unittest.test("method--resume", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
+      var arg_project = "foo";
+      var arg_zone = "foo";
+      var arg_rollingUpdate = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.resume(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--rollback", () {
 
       var mock = new common_test.HttpServerMock();
-      api.UpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).updates;
+      api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
       var arg_project = "foo";
       var arg_zone = "foo";
-      var arg_instanceGroupManager = "foo";
-      var arg_update = "foo";
+      var arg_rollingUpdate = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -605,50 +632,7 @@ main() {
         var resp = "";
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.rollback(arg_project, arg_zone, arg_instanceGroupManager, arg_update).then(unittest.expectAsync((_) {}));
-    });
-
-    unittest.test("method--rollforward", () {
-
-      var mock = new common_test.HttpServerMock();
-      api.UpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).updates;
-      var arg_project = "foo";
-      var arg_zone = "foo";
-      var arg_instanceGroupManager = "foo";
-      var arg_update = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = {};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-
-
-        var h = {
-          "content-type" : "application/json; charset=utf-8",
-        };
-        var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
-      }), true);
-      res.rollforward(arg_project, arg_zone, arg_instanceGroupManager, arg_update).then(unittest.expectAsync((_) {}));
+      res.rollback(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync((_) {}));
     });
 
   });
