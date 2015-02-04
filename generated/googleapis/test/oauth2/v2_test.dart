@@ -16,6 +16,67 @@ import 'package:googleapis/oauth2/v2.dart' as api;
 
 
 
+core.int buildCounterJwkKeys = 0;
+buildJwkKeys() {
+  var o = new api.JwkKeys();
+  buildCounterJwkKeys++;
+  if (buildCounterJwkKeys < 3) {
+    o.alg = "foo";
+    o.e = "foo";
+    o.kid = "foo";
+    o.kty = "foo";
+    o.n = "foo";
+    o.use = "foo";
+  }
+  buildCounterJwkKeys--;
+  return o;
+}
+
+checkJwkKeys(api.JwkKeys o) {
+  buildCounterJwkKeys++;
+  if (buildCounterJwkKeys < 3) {
+    unittest.expect(o.alg, unittest.equals('foo'));
+    unittest.expect(o.e, unittest.equals('foo'));
+    unittest.expect(o.kid, unittest.equals('foo'));
+    unittest.expect(o.kty, unittest.equals('foo'));
+    unittest.expect(o.n, unittest.equals('foo'));
+    unittest.expect(o.use, unittest.equals('foo'));
+  }
+  buildCounterJwkKeys--;
+}
+
+buildUnnamed1231() {
+  var o = new core.List<api.JwkKeys>();
+  o.add(buildJwkKeys());
+  o.add(buildJwkKeys());
+  return o;
+}
+
+checkUnnamed1231(core.List<api.JwkKeys> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkJwkKeys(o[0]);
+  checkJwkKeys(o[1]);
+}
+
+core.int buildCounterJwk = 0;
+buildJwk() {
+  var o = new api.Jwk();
+  buildCounterJwk++;
+  if (buildCounterJwk < 3) {
+    o.keys = buildUnnamed1231();
+  }
+  buildCounterJwk--;
+  return o;
+}
+
+checkJwk(api.Jwk o) {
+  buildCounterJwk++;
+  if (buildCounterJwk < 3) {
+    checkUnnamed1231(o.keys);
+  }
+  buildCounterJwk--;
+}
+
 core.int buildCounterTokeninfo = 0;
 buildTokeninfo() {
   var o = new api.Tokeninfo();
@@ -90,6 +151,24 @@ checkUserinfoplus(api.Userinfoplus o) {
 
 
 main() {
+  unittest.group("obj-schema-JwkKeys", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildJwkKeys();
+      var od = new api.JwkKeys.fromJson(o.toJson());
+      checkJwkKeys(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-Jwk", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildJwk();
+      var od = new api.Jwk.fromJson(o.toJson());
+      checkJwk(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Tokeninfo", () {
     unittest.test("to-json--from-json", () {
       var o = buildTokeninfo();
@@ -109,6 +188,49 @@ main() {
 
 
   unittest.group("resource-Oauth2Api", () {
+    unittest.test("method--getCertForOpenIdConnect", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.Oauth2Api res = new api.Oauth2Api(mock);
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("oauth2/v2/certs"));
+        pathOffset += 15;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildJwk());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.getCertForOpenIdConnect().then(unittest.expectAsync(((api.Jwk response) {
+        checkJwk(response);
+      })));
+    });
+
     unittest.test("method--tokeninfo", () {
 
       var mock = new common_test.HttpServerMock();

@@ -2572,7 +2572,14 @@ class Container {
   /** Optional list of domain names associated with the Container. */
   core.List<core.String> domainName;
 
-  /** List of enabled built-in variables. */
+  /**
+   * List of enabled built-in variables. Valid values include: pageUrl,
+   * pageHostname, pagePath, referrer, event, clickElement, clickClasses,
+   * clickId, clickTarget, clickUrl, clickText, formElement, formClasses,
+   * formId, formTarget, formUrl, formText, errorMessage, errorUrl, errorLine,
+   * newHistoryFragment, oldHistoryFragment, newHistoryState, oldHistoryState,
+   * historySource, containerVersion, debugMode, randomNumber, containerId.
+   */
   core.List<core.String> enabledBuiltInVariable;
 
   /**
@@ -3857,11 +3864,12 @@ class Trigger {
   core.String type;
 
   /**
-   * Globally unique id of the trigger that auto-generates this Form Submit or
-   * Link Click listeners if any. Used to make incompatible auto-events work
-   * together with trigger filtering based on trigger ids. This value is
+   * Globally unique id of the trigger that auto-generates this (a Form Submit,
+   * Link Click or Timer listener) if any. Used to make incompatible auto-events
+   * work together with trigger filtering based on trigger ids. This value is
    * populated during output generation since the tags implied by triggers don't
-   * exist until then. Only valid for Form Submission and Link Click triggers.
+   * exist until then. Only valid for Form Submit, Link Click and Timer
+   * triggers.
    */
   Parameter uniqueTriggerId;
 

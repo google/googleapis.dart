@@ -15,7 +15,7 @@
     "description": "API for accessing Google Cloud and API monitoring data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-monitoring/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/YRzPcCfM8n4JDcuNuAKt7HespQc\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/4VHSfl3BviRe7CEi12nEfPJjScU\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -133,6 +133,23 @@
                         "youngest"
                     ],
                     "parameters": {
+                        "aggregator": {
+                            "description": "The aggregation function that will reduce the data points in each window to a single point. This parameter is only valid for non-cumulative metric types.",
+                            "enum": [
+                                "max",
+                                "mean",
+                                "min",
+                                "sum"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
                         "count": {
                             "default": "6000",
                             "description": "Maximum number of data points per page, which is used for pagination of results.",
@@ -177,6 +194,12 @@
                             "pattern": "[0-9]+[smhdw]?",
                             "type": "string"
                         },
+                        "window": {
+                            "description": "The sampling window. At most one data point will be returned for each window in the requested time interval. This parameter is only valid for non-cumulative metric types. Units:  \n- m: minute \n- h: hour \n- d: day \n- w: week  Examples: 3m, 4w. Only one unit is allowed, for example: 2w3d is not allowed; you should use 17d instead.",
+                            "location": "query",
+                            "pattern": "[0-9]+[mhdw]?",
+                            "type": "string"
+                        },
                         "youngest": {
                             "description": "End of the time interval (inclusive), which is expressed as an RFC 3339 timestamp.",
                             "location": "query",
@@ -209,6 +232,23 @@
                         "youngest"
                     ],
                     "parameters": {
+                        "aggregator": {
+                            "description": "The aggregation function that will reduce the data points in each window to a single point. This parameter is only valid for non-cumulative metric types.",
+                            "enum": [
+                                "max",
+                                "mean",
+                                "min",
+                                "sum"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
                         "count": {
                             "default": "100",
                             "description": "Maximum number of time series descriptors per page. Used for pagination. If not specified, count = 100.",
@@ -253,6 +293,12 @@
                             "pattern": "[0-9]+[smhdw]?",
                             "type": "string"
                         },
+                        "window": {
+                            "description": "The sampling window. At most one data point will be returned for each window in the requested time interval. This parameter is only valid for non-cumulative metric types. Units:  \n- m: minute \n- h: hour \n- d: day \n- w: week  Examples: 3m, 4w. Only one unit is allowed, for example: 2w3d is not allowed; you should use 17d instead.",
+                            "location": "query",
+                            "pattern": "[0-9]+[mhdw]?",
+                            "type": "string"
+                        },
                         "youngest": {
                             "description": "End of the time interval (inclusive), which is expressed as an RFC 3339 timestamp.",
                             "location": "query",
@@ -274,7 +320,7 @@
             }
         }
     },
-    "revision": "20150109",
+    "revision": "20141213",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "ListMetricDescriptorsRequest": {

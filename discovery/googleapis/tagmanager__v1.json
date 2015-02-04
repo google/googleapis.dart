@@ -33,7 +33,7 @@
     "description": "API for accessing Tag Manager accounts and containers.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/tag-manager/api/v1/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/xcGgQKwhk2lzAuNnzm2cQsk-PZM\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/VOqeEOPH-o9v8dt3uW3tHJ6u1a4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1696,7 +1696,7 @@
             }
         }
     },
-    "revision": "20141112",
+    "revision": "20150121",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1827,7 +1827,7 @@
                     "type": "array"
                 },
                 "enabledBuiltInVariable": {
-                    "description": "List of enabled built-in variables.",
+                    "description": "List of enabled built-in variables. Valid values include: pageUrl, pageHostname, pagePath, referrer, event, clickElement, clickClasses, clickId, clickTarget, clickUrl, clickText, formElement, formClasses, formId, formTarget, formUrl, formText, errorMessage, errorUrl, errorLine, newHistoryFragment, oldHistoryFragment, newHistoryState, oldHistoryState, historySource, containerVersion, debugMode, randomNumber, containerId.",
                     "items": {
                         "enum": [
                             "clickClasses",
@@ -2680,7 +2680,7 @@
                 },
                 "uniqueTriggerId": {
                     "$ref": "Parameter",
-                    "description": "Globally unique id of the trigger that auto-generates this Form Submit or Link Click listeners if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submission and Link Click triggers."
+                    "description": "Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submit, Link Click and Timer triggers."
                 },
                 "videoPercentageList": {
                     "$ref": "Parameter",

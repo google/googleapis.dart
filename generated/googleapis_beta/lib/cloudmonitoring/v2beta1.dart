@@ -141,6 +141,15 @@ class TimeseriesResourceApi {
    * [youngest] - End of the time interval (inclusive), which is expressed as an
    * RFC 3339 timestamp.
    *
+   * [aggregator] - The aggregation function that will reduce the data points in
+   * each window to a single point. This parameter is only valid for
+   * non-cumulative metric types.
+   * Possible string values are:
+   * - "max"
+   * - "mean"
+   * - "min"
+   * - "sum"
+   *
    * [count] - Maximum number of data points per page, which is used for
    * pagination of results.
    * Value must be between "1" and "12000".
@@ -178,6 +187,16 @@ class TimeseriesResourceApi {
    * be (youngest - 4 hours, youngest].
    * Value must have pattern "[0-9]+[smhdw]?".
    *
+   * [window] - The sampling window. At most one data point will be returned for
+   * each window in the requested time interval. This parameter is only valid
+   * for non-cumulative metric types. Units:
+   * - m: minute
+   * - h: hour
+   * - d: day
+   * - w: week  Examples: 3m, 4w. Only one unit is allowed, for example: 2w3d is
+   * not allowed; you should use 17d instead.
+   * Value must have pattern "[0-9]+[mhdw]?".
+   *
    * Completes with a [ListTimeseriesResponse].
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
@@ -186,7 +205,7 @@ class TimeseriesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<ListTimeseriesResponse> list(ListTimeseriesRequest request, core.String project, core.String metric, core.String youngest, {core.int count, core.List<core.String> labels, core.String oldest, core.String pageToken, core.String timespan}) {
+  async.Future<ListTimeseriesResponse> list(ListTimeseriesRequest request, core.String project, core.String metric, core.String youngest, {core.String aggregator, core.int count, core.List<core.String> labels, core.String oldest, core.String pageToken, core.String timespan, core.String window}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -207,6 +226,9 @@ class TimeseriesResourceApi {
       throw new core.ArgumentError("Parameter youngest is required.");
     }
     _queryParams["youngest"] = [youngest];
+    if (aggregator != null) {
+      _queryParams["aggregator"] = [aggregator];
+    }
     if (count != null) {
       _queryParams["count"] = ["${count}"];
     }
@@ -221,6 +243,9 @@ class TimeseriesResourceApi {
     }
     if (timespan != null) {
       _queryParams["timespan"] = [timespan];
+    }
+    if (window != null) {
+      _queryParams["window"] = [window];
     }
 
 
@@ -267,6 +292,15 @@ class TimeseriesDescriptorsResourceApi {
    * [youngest] - End of the time interval (inclusive), which is expressed as an
    * RFC 3339 timestamp.
    *
+   * [aggregator] - The aggregation function that will reduce the data points in
+   * each window to a single point. This parameter is only valid for
+   * non-cumulative metric types.
+   * Possible string values are:
+   * - "max"
+   * - "mean"
+   * - "min"
+   * - "sum"
+   *
    * [count] - Maximum number of time series descriptors per page. Used for
    * pagination. If not specified, count = 100.
    * Value must be between "1" and "1000".
@@ -304,6 +338,16 @@ class TimeseriesDescriptorsResourceApi {
    * be (youngest - 4 hours, youngest].
    * Value must have pattern "[0-9]+[smhdw]?".
    *
+   * [window] - The sampling window. At most one data point will be returned for
+   * each window in the requested time interval. This parameter is only valid
+   * for non-cumulative metric types. Units:
+   * - m: minute
+   * - h: hour
+   * - d: day
+   * - w: week  Examples: 3m, 4w. Only one unit is allowed, for example: 2w3d is
+   * not allowed; you should use 17d instead.
+   * Value must have pattern "[0-9]+[mhdw]?".
+   *
    * Completes with a [ListTimeseriesDescriptorsResponse].
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
@@ -312,7 +356,7 @@ class TimeseriesDescriptorsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<ListTimeseriesDescriptorsResponse> list(ListTimeseriesDescriptorsRequest request, core.String project, core.String metric, core.String youngest, {core.int count, core.List<core.String> labels, core.String oldest, core.String pageToken, core.String timespan}) {
+  async.Future<ListTimeseriesDescriptorsResponse> list(ListTimeseriesDescriptorsRequest request, core.String project, core.String metric, core.String youngest, {core.String aggregator, core.int count, core.List<core.String> labels, core.String oldest, core.String pageToken, core.String timespan, core.String window}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -333,6 +377,9 @@ class TimeseriesDescriptorsResourceApi {
       throw new core.ArgumentError("Parameter youngest is required.");
     }
     _queryParams["youngest"] = [youngest];
+    if (aggregator != null) {
+      _queryParams["aggregator"] = [aggregator];
+    }
     if (count != null) {
       _queryParams["count"] = ["${count}"];
     }
@@ -347,6 +394,9 @@ class TimeseriesDescriptorsResourceApi {
     }
     if (timespan != null) {
       _queryParams["timespan"] = [timespan];
+    }
+    if (window != null) {
+      _queryParams["window"] = [window];
     }
 
 

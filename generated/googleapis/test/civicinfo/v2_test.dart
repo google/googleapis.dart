@@ -16,14 +16,14 @@ import 'package:googleapis/civicinfo/v2.dart' as api;
 
 
 
-buildUnnamed1298() {
+buildUnnamed432() {
   var o = new core.List<api.Source>();
   o.add(buildSource());
   o.add(buildSource());
   return o;
 }
 
-checkUnnamed1298(core.List<api.Source> o) {
+checkUnnamed432(core.List<api.Source> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSource(o[0]);
   checkSource(o[1]);
@@ -38,7 +38,7 @@ buildAdministrationRegion() {
     o.id = "foo";
     o.localJurisdiction = buildAdministrationRegion();
     o.name = "foo";
-    o.sources = buildUnnamed1298();
+    o.sources = buildUnnamed432();
   }
   buildCounterAdministrationRegion--;
   return o;
@@ -51,32 +51,32 @@ checkAdministrationRegion(api.AdministrationRegion o) {
     unittest.expect(o.id, unittest.equals('foo'));
     checkAdministrationRegion(o.localJurisdiction);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1298(o.sources);
+    checkUnnamed432(o.sources);
   }
   buildCounterAdministrationRegion--;
 }
 
-buildUnnamed1299() {
+buildUnnamed433() {
   var o = new core.List<api.ElectionOfficial>();
   o.add(buildElectionOfficial());
   o.add(buildElectionOfficial());
   return o;
 }
 
-checkUnnamed1299(core.List<api.ElectionOfficial> o) {
+checkUnnamed433(core.List<api.ElectionOfficial> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkElectionOfficial(o[0]);
   checkElectionOfficial(o[1]);
 }
 
-buildUnnamed1300() {
+buildUnnamed434() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1300(core.List<core.String> o) {
+checkUnnamed434(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -91,14 +91,14 @@ buildAdministrativeBody() {
     o.ballotInfoUrl = "foo";
     o.correspondenceAddress = buildSimpleAddressType();
     o.electionInfoUrl = "foo";
-    o.electionOfficials = buildUnnamed1299();
+    o.electionOfficials = buildUnnamed433();
     o.electionRegistrationConfirmationUrl = "foo";
     o.electionRegistrationUrl = "foo";
     o.electionRulesUrl = "foo";
     o.hoursOfOperation = "foo";
     o.name = "foo";
     o.physicalAddress = buildSimpleAddressType();
-    o.voterServices = buildUnnamed1300();
+    o.voterServices = buildUnnamed434();
     o.votingLocationFinderUrl = "foo";
   }
   buildCounterAdministrativeBody--;
@@ -112,27 +112,27 @@ checkAdministrativeBody(api.AdministrativeBody o) {
     unittest.expect(o.ballotInfoUrl, unittest.equals('foo'));
     checkSimpleAddressType(o.correspondenceAddress);
     unittest.expect(o.electionInfoUrl, unittest.equals('foo'));
-    checkUnnamed1299(o.electionOfficials);
+    checkUnnamed433(o.electionOfficials);
     unittest.expect(o.electionRegistrationConfirmationUrl, unittest.equals('foo'));
     unittest.expect(o.electionRegistrationUrl, unittest.equals('foo'));
     unittest.expect(o.electionRulesUrl, unittest.equals('foo'));
     unittest.expect(o.hoursOfOperation, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     checkSimpleAddressType(o.physicalAddress);
-    checkUnnamed1300(o.voterServices);
+    checkUnnamed434(o.voterServices);
     unittest.expect(o.votingLocationFinderUrl, unittest.equals('foo'));
   }
   buildCounterAdministrativeBody--;
 }
 
-buildUnnamed1301() {
+buildUnnamed435() {
   var o = new core.List<api.Channel>();
   o.add(buildChannel());
   o.add(buildChannel());
   return o;
 }
 
-checkUnnamed1301(core.List<api.Channel> o) {
+checkUnnamed435(core.List<api.Channel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChannel(o[0]);
   checkChannel(o[1]);
@@ -144,7 +144,7 @@ buildCandidate() {
   buildCounterCandidate++;
   if (buildCounterCandidate < 3) {
     o.candidateUrl = "foo";
-    o.channels = buildUnnamed1301();
+    o.channels = buildUnnamed435();
     o.email = "foo";
     o.name = "foo";
     o.orderOnBallot = "foo";
@@ -160,7 +160,7 @@ checkCandidate(api.Candidate o) {
   buildCounterCandidate++;
   if (buildCounterCandidate < 3) {
     unittest.expect(o.candidateUrl, unittest.equals('foo'));
-    checkUnnamed1301(o.channels);
+    checkUnnamed435(o.channels);
     unittest.expect(o.email, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.orderOnBallot, unittest.equals('foo'));
@@ -192,53 +192,53 @@ checkChannel(api.Channel o) {
   buildCounterChannel--;
 }
 
-buildUnnamed1302() {
+buildUnnamed436() {
   var o = new core.List<api.Candidate>();
   o.add(buildCandidate());
   o.add(buildCandidate());
   return o;
 }
 
-checkUnnamed1302(core.List<api.Candidate> o) {
+checkUnnamed436(core.List<api.Candidate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCandidate(o[0]);
   checkCandidate(o[1]);
 }
 
-buildUnnamed1303() {
+buildUnnamed437() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1303(core.List<core.String> o) {
+checkUnnamed437(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1304() {
+buildUnnamed438() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1304(core.List<core.String> o) {
+checkUnnamed438(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1305() {
+buildUnnamed439() {
   var o = new core.List<api.Source>();
   o.add(buildSource());
   o.add(buildSource());
   return o;
 }
 
-checkUnnamed1305(core.List<api.Source> o) {
+checkUnnamed439(core.List<api.Source> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSource(o[0]);
   checkSource(o[1]);
@@ -250,11 +250,11 @@ buildContest() {
   buildCounterContest++;
   if (buildCounterContest < 3) {
     o.ballotPlacement = "foo";
-    o.candidates = buildUnnamed1302();
+    o.candidates = buildUnnamed436();
     o.district = buildElectoralDistrict();
     o.electorateSpecifications = "foo";
     o.id = "foo";
-    o.level = buildUnnamed1303();
+    o.level = buildUnnamed437();
     o.numberElected = "foo";
     o.numberVotingFor = "foo";
     o.office = "foo";
@@ -262,8 +262,8 @@ buildContest() {
     o.referendumSubtitle = "foo";
     o.referendumTitle = "foo";
     o.referendumUrl = "foo";
-    o.roles = buildUnnamed1304();
-    o.sources = buildUnnamed1305();
+    o.roles = buildUnnamed438();
+    o.sources = buildUnnamed439();
     o.special = "foo";
     o.type = "foo";
   }
@@ -275,11 +275,11 @@ checkContest(api.Contest o) {
   buildCounterContest++;
   if (buildCounterContest < 3) {
     unittest.expect(o.ballotPlacement, unittest.equals('foo'));
-    checkUnnamed1302(o.candidates);
+    checkUnnamed436(o.candidates);
     checkElectoralDistrict(o.district);
     unittest.expect(o.electorateSpecifications, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed1303(o.level);
+    checkUnnamed437(o.level);
     unittest.expect(o.numberElected, unittest.equals('foo'));
     unittest.expect(o.numberVotingFor, unittest.equals('foo'));
     unittest.expect(o.office, unittest.equals('foo'));
@@ -287,22 +287,22 @@ checkContest(api.Contest o) {
     unittest.expect(o.referendumSubtitle, unittest.equals('foo'));
     unittest.expect(o.referendumTitle, unittest.equals('foo'));
     unittest.expect(o.referendumUrl, unittest.equals('foo'));
-    checkUnnamed1304(o.roles);
-    checkUnnamed1305(o.sources);
+    checkUnnamed438(o.roles);
+    checkUnnamed439(o.sources);
     unittest.expect(o.special, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterContest--;
 }
 
-buildUnnamed1306() {
+buildUnnamed440() {
   var o = new core.List<api.DivisionSearchResult>();
   o.add(buildDivisionSearchResult());
   o.add(buildDivisionSearchResult());
   return o;
 }
 
-checkUnnamed1306(core.List<api.DivisionSearchResult> o) {
+checkUnnamed440(core.List<api.DivisionSearchResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDivisionSearchResult(o[0]);
   checkDivisionSearchResult(o[1]);
@@ -314,7 +314,7 @@ buildDivisionSearchResponse() {
   buildCounterDivisionSearchResponse++;
   if (buildCounterDivisionSearchResponse < 3) {
     o.kind = "foo";
-    o.results = buildUnnamed1306();
+    o.results = buildUnnamed440();
   }
   buildCounterDivisionSearchResponse--;
   return o;
@@ -324,19 +324,19 @@ checkDivisionSearchResponse(api.DivisionSearchResponse o) {
   buildCounterDivisionSearchResponse++;
   if (buildCounterDivisionSearchResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1306(o.results);
+    checkUnnamed440(o.results);
   }
   buildCounterDivisionSearchResponse--;
 }
 
-buildUnnamed1307() {
+buildUnnamed441() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1307(core.List<core.String> o) {
+checkUnnamed441(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -347,7 +347,7 @@ buildDivisionSearchResult() {
   var o = new api.DivisionSearchResult();
   buildCounterDivisionSearchResult++;
   if (buildCounterDivisionSearchResult < 3) {
-    o.aliases = buildUnnamed1307();
+    o.aliases = buildUnnamed441();
     o.name = "foo";
     o.ocdId = "foo";
   }
@@ -358,7 +358,7 @@ buildDivisionSearchResult() {
 checkDivisionSearchResult(api.DivisionSearchResult o) {
   buildCounterDivisionSearchResult++;
   if (buildCounterDivisionSearchResult < 3) {
-    checkUnnamed1307(o.aliases);
+    checkUnnamed441(o.aliases);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.ocdId, unittest.equals('foo'));
   }
@@ -415,14 +415,14 @@ checkElectionOfficial(api.ElectionOfficial o) {
   buildCounterElectionOfficial--;
 }
 
-buildUnnamed1308() {
+buildUnnamed442() {
   var o = new core.List<api.Election>();
   o.add(buildElection());
   o.add(buildElection());
   return o;
 }
 
-checkUnnamed1308(core.List<api.Election> o) {
+checkUnnamed442(core.List<api.Election> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkElection(o[0]);
   checkElection(o[1]);
@@ -433,7 +433,7 @@ buildElectionsQueryResponse() {
   var o = new api.ElectionsQueryResponse();
   buildCounterElectionsQueryResponse++;
   if (buildCounterElectionsQueryResponse < 3) {
-    o.elections = buildUnnamed1308();
+    o.elections = buildUnnamed442();
     o.kind = "foo";
   }
   buildCounterElectionsQueryResponse--;
@@ -443,7 +443,7 @@ buildElectionsQueryResponse() {
 checkElectionsQueryResponse(api.ElectionsQueryResponse o) {
   buildCounterElectionsQueryResponse++;
   if (buildCounterElectionsQueryResponse < 3) {
-    checkUnnamed1308(o.elections);
+    checkUnnamed442(o.elections);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterElectionsQueryResponse--;
@@ -472,27 +472,27 @@ checkElectoralDistrict(api.ElectoralDistrict o) {
   buildCounterElectoralDistrict--;
 }
 
-buildUnnamed1309() {
+buildUnnamed443() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1309(core.List<core.String> o) {
+checkUnnamed443(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1310() {
+buildUnnamed444() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed1310(core.List<core.int> o) {
+checkUnnamed444(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -503,9 +503,9 @@ buildGeographicDivision() {
   var o = new api.GeographicDivision();
   buildCounterGeographicDivision++;
   if (buildCounterGeographicDivision < 3) {
-    o.alsoKnownAs = buildUnnamed1309();
+    o.alsoKnownAs = buildUnnamed443();
     o.name = "foo";
-    o.officeIndices = buildUnnamed1310();
+    o.officeIndices = buildUnnamed444();
   }
   buildCounterGeographicDivision--;
   return o;
@@ -514,60 +514,60 @@ buildGeographicDivision() {
 checkGeographicDivision(api.GeographicDivision o) {
   buildCounterGeographicDivision++;
   if (buildCounterGeographicDivision < 3) {
-    checkUnnamed1309(o.alsoKnownAs);
+    checkUnnamed443(o.alsoKnownAs);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1310(o.officeIndices);
+    checkUnnamed444(o.officeIndices);
   }
   buildCounterGeographicDivision--;
 }
 
-buildUnnamed1311() {
+buildUnnamed445() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1311(core.List<core.String> o) {
+checkUnnamed445(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1312() {
+buildUnnamed446() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed1312(core.List<core.int> o) {
+checkUnnamed446(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
 }
 
-buildUnnamed1313() {
+buildUnnamed447() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1313(core.List<core.String> o) {
+checkUnnamed447(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1314() {
+buildUnnamed448() {
   var o = new core.List<api.Source>();
   o.add(buildSource());
   o.add(buildSource());
   return o;
 }
 
-checkUnnamed1314(core.List<api.Source> o) {
+checkUnnamed448(core.List<api.Source> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSource(o[0]);
   checkSource(o[1]);
@@ -579,11 +579,11 @@ buildOffice() {
   buildCounterOffice++;
   if (buildCounterOffice < 3) {
     o.divisionId = "foo";
-    o.levels = buildUnnamed1311();
+    o.levels = buildUnnamed445();
     o.name = "foo";
-    o.officialIndices = buildUnnamed1312();
-    o.roles = buildUnnamed1313();
-    o.sources = buildUnnamed1314();
+    o.officialIndices = buildUnnamed446();
+    o.roles = buildUnnamed447();
+    o.sources = buildUnnamed448();
   }
   buildCounterOffice--;
   return o;
@@ -593,75 +593,75 @@ checkOffice(api.Office o) {
   buildCounterOffice++;
   if (buildCounterOffice < 3) {
     unittest.expect(o.divisionId, unittest.equals('foo'));
-    checkUnnamed1311(o.levels);
+    checkUnnamed445(o.levels);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1312(o.officialIndices);
-    checkUnnamed1313(o.roles);
-    checkUnnamed1314(o.sources);
+    checkUnnamed446(o.officialIndices);
+    checkUnnamed447(o.roles);
+    checkUnnamed448(o.sources);
   }
   buildCounterOffice--;
 }
 
-buildUnnamed1315() {
+buildUnnamed449() {
   var o = new core.List<api.SimpleAddressType>();
   o.add(buildSimpleAddressType());
   o.add(buildSimpleAddressType());
   return o;
 }
 
-checkUnnamed1315(core.List<api.SimpleAddressType> o) {
+checkUnnamed449(core.List<api.SimpleAddressType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSimpleAddressType(o[0]);
   checkSimpleAddressType(o[1]);
 }
 
-buildUnnamed1316() {
+buildUnnamed450() {
   var o = new core.List<api.Channel>();
   o.add(buildChannel());
   o.add(buildChannel());
   return o;
 }
 
-checkUnnamed1316(core.List<api.Channel> o) {
+checkUnnamed450(core.List<api.Channel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChannel(o[0]);
   checkChannel(o[1]);
 }
 
-buildUnnamed1317() {
+buildUnnamed451() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1317(core.List<core.String> o) {
+checkUnnamed451(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1318() {
+buildUnnamed452() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1318(core.List<core.String> o) {
+checkUnnamed452(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1319() {
+buildUnnamed453() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1319(core.List<core.String> o) {
+checkUnnamed453(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -672,14 +672,14 @@ buildOfficial() {
   var o = new api.Official();
   buildCounterOfficial++;
   if (buildCounterOfficial < 3) {
-    o.address = buildUnnamed1315();
-    o.channels = buildUnnamed1316();
-    o.emails = buildUnnamed1317();
+    o.address = buildUnnamed449();
+    o.channels = buildUnnamed450();
+    o.emails = buildUnnamed451();
     o.name = "foo";
     o.party = "foo";
-    o.phones = buildUnnamed1318();
+    o.phones = buildUnnamed452();
     o.photoUrl = "foo";
-    o.urls = buildUnnamed1319();
+    o.urls = buildUnnamed453();
   }
   buildCounterOfficial--;
   return o;
@@ -688,26 +688,26 @@ buildOfficial() {
 checkOfficial(api.Official o) {
   buildCounterOfficial++;
   if (buildCounterOfficial < 3) {
-    checkUnnamed1315(o.address);
-    checkUnnamed1316(o.channels);
-    checkUnnamed1317(o.emails);
+    checkUnnamed449(o.address);
+    checkUnnamed450(o.channels);
+    checkUnnamed451(o.emails);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.party, unittest.equals('foo'));
-    checkUnnamed1318(o.phones);
+    checkUnnamed452(o.phones);
     unittest.expect(o.photoUrl, unittest.equals('foo'));
-    checkUnnamed1319(o.urls);
+    checkUnnamed453(o.urls);
   }
   buildCounterOfficial--;
 }
 
-buildUnnamed1320() {
+buildUnnamed454() {
   var o = new core.List<api.Source>();
   o.add(buildSource());
   o.add(buildSource());
   return o;
 }
 
-checkUnnamed1320(core.List<api.Source> o) {
+checkUnnamed454(core.List<api.Source> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSource(o[0]);
   checkSource(o[1]);
@@ -724,7 +724,7 @@ buildPollingLocation() {
     o.name = "foo";
     o.notes = "foo";
     o.pollingHours = "foo";
-    o.sources = buildUnnamed1320();
+    o.sources = buildUnnamed454();
     o.startDate = "foo";
     o.voterServices = "foo";
   }
@@ -741,47 +741,47 @@ checkPollingLocation(api.PollingLocation o) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
     unittest.expect(o.pollingHours, unittest.equals('foo'));
-    checkUnnamed1320(o.sources);
+    checkUnnamed454(o.sources);
     unittest.expect(o.startDate, unittest.equals('foo'));
     unittest.expect(o.voterServices, unittest.equals('foo'));
   }
   buildCounterPollingLocation--;
 }
 
-buildUnnamed1321() {
+buildUnnamed455() {
   var o = new core.Map<core.String, api.GeographicDivision>();
   o["x"] = buildGeographicDivision();
   o["y"] = buildGeographicDivision();
   return o;
 }
 
-checkUnnamed1321(core.Map<core.String, api.GeographicDivision> o) {
+checkUnnamed455(core.Map<core.String, api.GeographicDivision> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeographicDivision(o["x"]);
   checkGeographicDivision(o["y"]);
 }
 
-buildUnnamed1322() {
+buildUnnamed456() {
   var o = new core.List<api.Office>();
   o.add(buildOffice());
   o.add(buildOffice());
   return o;
 }
 
-checkUnnamed1322(core.List<api.Office> o) {
+checkUnnamed456(core.List<api.Office> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOffice(o[0]);
   checkOffice(o[1]);
 }
 
-buildUnnamed1323() {
+buildUnnamed457() {
   var o = new core.List<api.Official>();
   o.add(buildOfficial());
   o.add(buildOfficial());
   return o;
 }
 
-checkUnnamed1323(core.List<api.Official> o) {
+checkUnnamed457(core.List<api.Official> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOfficial(o[0]);
   checkOfficial(o[1]);
@@ -792,9 +792,9 @@ buildRepresentativeInfoData() {
   var o = new api.RepresentativeInfoData();
   buildCounterRepresentativeInfoData++;
   if (buildCounterRepresentativeInfoData < 3) {
-    o.divisions = buildUnnamed1321();
-    o.offices = buildUnnamed1322();
-    o.officials = buildUnnamed1323();
+    o.divisions = buildUnnamed455();
+    o.offices = buildUnnamed456();
+    o.officials = buildUnnamed457();
   }
   buildCounterRepresentativeInfoData--;
   return o;
@@ -803,47 +803,47 @@ buildRepresentativeInfoData() {
 checkRepresentativeInfoData(api.RepresentativeInfoData o) {
   buildCounterRepresentativeInfoData++;
   if (buildCounterRepresentativeInfoData < 3) {
-    checkUnnamed1321(o.divisions);
-    checkUnnamed1322(o.offices);
-    checkUnnamed1323(o.officials);
+    checkUnnamed455(o.divisions);
+    checkUnnamed456(o.offices);
+    checkUnnamed457(o.officials);
   }
   buildCounterRepresentativeInfoData--;
 }
 
-buildUnnamed1324() {
+buildUnnamed458() {
   var o = new core.Map<core.String, api.GeographicDivision>();
   o["x"] = buildGeographicDivision();
   o["y"] = buildGeographicDivision();
   return o;
 }
 
-checkUnnamed1324(core.Map<core.String, api.GeographicDivision> o) {
+checkUnnamed458(core.Map<core.String, api.GeographicDivision> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeographicDivision(o["x"]);
   checkGeographicDivision(o["y"]);
 }
 
-buildUnnamed1325() {
+buildUnnamed459() {
   var o = new core.List<api.Office>();
   o.add(buildOffice());
   o.add(buildOffice());
   return o;
 }
 
-checkUnnamed1325(core.List<api.Office> o) {
+checkUnnamed459(core.List<api.Office> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOffice(o[0]);
   checkOffice(o[1]);
 }
 
-buildUnnamed1326() {
+buildUnnamed460() {
   var o = new core.List<api.Official>();
   o.add(buildOfficial());
   o.add(buildOfficial());
   return o;
 }
 
-checkUnnamed1326(core.List<api.Official> o) {
+checkUnnamed460(core.List<api.Official> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOfficial(o[0]);
   checkOfficial(o[1]);
@@ -854,11 +854,11 @@ buildRepresentativeInfoResponse() {
   var o = new api.RepresentativeInfoResponse();
   buildCounterRepresentativeInfoResponse++;
   if (buildCounterRepresentativeInfoResponse < 3) {
-    o.divisions = buildUnnamed1324();
+    o.divisions = buildUnnamed458();
     o.kind = "foo";
     o.normalizedInput = buildSimpleAddressType();
-    o.offices = buildUnnamed1325();
-    o.officials = buildUnnamed1326();
+    o.offices = buildUnnamed459();
+    o.officials = buildUnnamed460();
   }
   buildCounterRepresentativeInfoResponse--;
   return o;
@@ -867,11 +867,11 @@ buildRepresentativeInfoResponse() {
 checkRepresentativeInfoResponse(api.RepresentativeInfoResponse o) {
   buildCounterRepresentativeInfoResponse++;
   if (buildCounterRepresentativeInfoResponse < 3) {
-    checkUnnamed1324(o.divisions);
+    checkUnnamed458(o.divisions);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkSimpleAddressType(o.normalizedInput);
-    checkUnnamed1325(o.offices);
-    checkUnnamed1326(o.officials);
+    checkUnnamed459(o.offices);
+    checkUnnamed460(o.officials);
   }
   buildCounterRepresentativeInfoResponse--;
 }
@@ -928,79 +928,79 @@ checkSource(api.Source o) {
   buildCounterSource--;
 }
 
-buildUnnamed1327() {
+buildUnnamed461() {
   var o = new core.List<api.Contest>();
   o.add(buildContest());
   o.add(buildContest());
   return o;
 }
 
-checkUnnamed1327(core.List<api.Contest> o) {
+checkUnnamed461(core.List<api.Contest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContest(o[0]);
   checkContest(o[1]);
 }
 
-buildUnnamed1328() {
+buildUnnamed462() {
   var o = new core.List<api.PollingLocation>();
   o.add(buildPollingLocation());
   o.add(buildPollingLocation());
   return o;
 }
 
-checkUnnamed1328(core.List<api.PollingLocation> o) {
+checkUnnamed462(core.List<api.PollingLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPollingLocation(o[0]);
   checkPollingLocation(o[1]);
 }
 
-buildUnnamed1329() {
+buildUnnamed463() {
   var o = new core.List<api.PollingLocation>();
   o.add(buildPollingLocation());
   o.add(buildPollingLocation());
   return o;
 }
 
-checkUnnamed1329(core.List<api.PollingLocation> o) {
+checkUnnamed463(core.List<api.PollingLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPollingLocation(o[0]);
   checkPollingLocation(o[1]);
 }
 
-buildUnnamed1330() {
+buildUnnamed464() {
   var o = new core.List<api.Election>();
   o.add(buildElection());
   o.add(buildElection());
   return o;
 }
 
-checkUnnamed1330(core.List<api.Election> o) {
+checkUnnamed464(core.List<api.Election> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkElection(o[0]);
   checkElection(o[1]);
 }
 
-buildUnnamed1331() {
+buildUnnamed465() {
   var o = new core.List<api.PollingLocation>();
   o.add(buildPollingLocation());
   o.add(buildPollingLocation());
   return o;
 }
 
-checkUnnamed1331(core.List<api.PollingLocation> o) {
+checkUnnamed465(core.List<api.PollingLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPollingLocation(o[0]);
   checkPollingLocation(o[1]);
 }
 
-buildUnnamed1332() {
+buildUnnamed466() {
   var o = new core.List<api.AdministrationRegion>();
   o.add(buildAdministrationRegion());
   o.add(buildAdministrationRegion());
   return o;
 }
 
-checkUnnamed1332(core.List<api.AdministrationRegion> o) {
+checkUnnamed466(core.List<api.AdministrationRegion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdministrationRegion(o[0]);
   checkAdministrationRegion(o[1]);
@@ -1011,16 +1011,16 @@ buildVoterInfoResponse() {
   var o = new api.VoterInfoResponse();
   buildCounterVoterInfoResponse++;
   if (buildCounterVoterInfoResponse < 3) {
-    o.contests = buildUnnamed1327();
-    o.dropOffLocations = buildUnnamed1328();
-    o.earlyVoteSites = buildUnnamed1329();
+    o.contests = buildUnnamed461();
+    o.dropOffLocations = buildUnnamed462();
+    o.earlyVoteSites = buildUnnamed463();
     o.election = buildElection();
     o.kind = "foo";
     o.normalizedInput = buildSimpleAddressType();
-    o.otherElections = buildUnnamed1330();
-    o.pollingLocations = buildUnnamed1331();
+    o.otherElections = buildUnnamed464();
+    o.pollingLocations = buildUnnamed465();
     o.precinctId = "foo";
-    o.state = buildUnnamed1332();
+    o.state = buildUnnamed466();
   }
   buildCounterVoterInfoResponse--;
   return o;
@@ -1029,67 +1029,67 @@ buildVoterInfoResponse() {
 checkVoterInfoResponse(api.VoterInfoResponse o) {
   buildCounterVoterInfoResponse++;
   if (buildCounterVoterInfoResponse < 3) {
-    checkUnnamed1327(o.contests);
-    checkUnnamed1328(o.dropOffLocations);
-    checkUnnamed1329(o.earlyVoteSites);
+    checkUnnamed461(o.contests);
+    checkUnnamed462(o.dropOffLocations);
+    checkUnnamed463(o.earlyVoteSites);
     checkElection(o.election);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkSimpleAddressType(o.normalizedInput);
-    checkUnnamed1330(o.otherElections);
-    checkUnnamed1331(o.pollingLocations);
+    checkUnnamed464(o.otherElections);
+    checkUnnamed465(o.pollingLocations);
     unittest.expect(o.precinctId, unittest.equals('foo'));
-    checkUnnamed1332(o.state);
+    checkUnnamed466(o.state);
   }
   buildCounterVoterInfoResponse--;
 }
 
-buildUnnamed1333() {
+buildUnnamed467() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1333(core.List<core.String> o) {
+checkUnnamed467(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1334() {
+buildUnnamed468() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1334(core.List<core.String> o) {
+checkUnnamed468(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1335() {
+buildUnnamed469() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1335(core.List<core.String> o) {
+checkUnnamed469(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1336() {
+buildUnnamed470() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1336(core.List<core.String> o) {
+checkUnnamed470(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1435,8 +1435,8 @@ main() {
       api.RepresentativesResourceApi res = new api.CivicinfoApi(mock).representatives;
       var arg_address = "foo";
       var arg_includeOffices = true;
-      var arg_levels = buildUnnamed1333();
-      var arg_roles = buildUnnamed1334();
+      var arg_levels = buildUnnamed467();
+      var arg_roles = buildUnnamed468();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1487,9 +1487,9 @@ main() {
       var mock = new common_test.HttpServerMock();
       api.RepresentativesResourceApi res = new api.CivicinfoApi(mock).representatives;
       var arg_ocdId = "foo";
-      var arg_levels = buildUnnamed1335();
+      var arg_levels = buildUnnamed469();
       var arg_recursive = true;
-      var arg_roles = buildUnnamed1336();
+      var arg_roles = buildUnnamed470();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;

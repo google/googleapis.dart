@@ -4,23 +4,19 @@ packages:
   args:
     description: args
     source: hosted
-    version: "0.10.0"
+    version: "0.12.2+3"
   collection:
     description: collection
     source: hosted
     version: "1.1.0"
-  collection_helpers:
-    description: collection_helpers
-    source: hosted
-    version: "0.9.1"
   crypto:
     description: crypto
     source: hosted
     version: "0.9.0"
   discovery_api_client_generator:
     description:
-      ref: "91ebfa5b5b70dd90c50dd4f855d22b33040aff60"
-      resolved-ref: "91ebfa5b5b70dd90c50dd4f855d22b33040aff60"
+      ref: a87c587ea52a44b56c44f2a5b40478a5429764fc
+      resolved-ref: a87c587ea52a44b56c44f2a5b40478a5429764fc
       url: "https://github.com/dart-lang/discovery_api_dart_client_generator"
     source: git
     version: "0.5.1-dev"
@@ -35,11 +31,11 @@ packages:
   path:
     description: path
     source: hosted
-    version: "1.3.1"
+    version: "1.3.2"
   source_span:
     description: source_span
     source: hosted
-    version: "1.0.2"
+    version: "1.0.3"
   stack_trace:
     description: stack_trace
     source: hosted

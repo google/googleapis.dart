@@ -420,6 +420,8 @@ class ManagementResourceApi {
   ManagementAccountUserLinksResourceApi get accountUserLinks => new ManagementAccountUserLinksResourceApi(_requester);
   ManagementAccountsResourceApi get accounts => new ManagementAccountsResourceApi(_requester);
   ManagementCustomDataSourcesResourceApi get customDataSources => new ManagementCustomDataSourcesResourceApi(_requester);
+  ManagementCustomDimensionsResourceApi get customDimensions => new ManagementCustomDimensionsResourceApi(_requester);
+  ManagementCustomMetricsResourceApi get customMetrics => new ManagementCustomMetricsResourceApi(_requester);
   ManagementDailyUploadsResourceApi get dailyUploads => new ManagementDailyUploadsResourceApi(_requester);
   ManagementExperimentsResourceApi get experiments => new ManagementExperimentsResourceApi(_requester);
   ManagementFiltersResourceApi get filters => new ManagementFiltersResourceApi(_requester);
@@ -820,6 +822,590 @@ class ManagementCustomDataSourcesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new CustomDataSources.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class ManagementCustomDimensionsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  ManagementCustomDimensionsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Get a custom dimension to which the user has access.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID for the custom dimension to retrieve.
+   *
+   * [webPropertyId] - Web property ID for the custom dimension to retrieve.
+   *
+   * [customDimensionId] - The ID of the custom dimension to retrieve.
+   *
+   * Completes with a [CustomDimension].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CustomDimension> get(core.String accountId, core.String webPropertyId, core.String customDimensionId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if (customDimensionId == null) {
+      throw new core.ArgumentError("Parameter customDimensionId is required.");
+    }
+
+
+    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions/' + common_internal.Escaper.ecapeVariable('$customDimensionId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CustomDimension.fromJson(data));
+  }
+
+  /**
+   * Create a new custom dimension.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID for the custom dimension to create.
+   *
+   * [webPropertyId] - Web property ID for the custom dimension to create.
+   *
+   * Completes with a [CustomDimension].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CustomDimension> insert(CustomDimension request, core.String accountId, core.String webPropertyId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+
+
+    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CustomDimension.fromJson(data));
+  }
+
+  /**
+   * Lists custom dimensions to which the user has access.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID for the custom dimensions to retrieve.
+   *
+   * [webPropertyId] - Web property ID for the custom dimensions to retrieve.
+   *
+   * [max_results] - The maximum number of custom dimensions to include in this
+   * response.
+   *
+   * [start_index] - An index of the first entity to retrieve. Use this
+   * parameter as a pagination mechanism along with the max-results parameter.
+   *
+   * Completes with a [CustomDimensions].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CustomDimensions> list(core.String accountId, core.String webPropertyId, {core.int max_results, core.int start_index}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if (max_results != null) {
+      _queryParams["max-results"] = ["${max_results}"];
+    }
+    if (start_index != null) {
+      _queryParams["start-index"] = ["${start_index}"];
+    }
+
+
+    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CustomDimensions.fromJson(data));
+  }
+
+  /**
+   * Updates an existing custom dimension. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID for the custom dimension to update.
+   *
+   * [webPropertyId] - Web property ID for the custom dimension to update.
+   *
+   * [customDimensionId] - Custom dimension ID for the custom dimension to
+   * update.
+   *
+   * [ignoreCustomDataSourceLinks] - Force the update and ignore any warnings
+   * related to the custom dimension being linked to a custom data source / data
+   * set.
+   *
+   * Completes with a [CustomDimension].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CustomDimension> patch(CustomDimension request, core.String accountId, core.String webPropertyId, core.String customDimensionId, {core.bool ignoreCustomDataSourceLinks}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if (customDimensionId == null) {
+      throw new core.ArgumentError("Parameter customDimensionId is required.");
+    }
+    if (ignoreCustomDataSourceLinks != null) {
+      _queryParams["ignoreCustomDataSourceLinks"] = ["${ignoreCustomDataSourceLinks}"];
+    }
+
+
+    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions/' + common_internal.Escaper.ecapeVariable('$customDimensionId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CustomDimension.fromJson(data));
+  }
+
+  /**
+   * Updates an existing custom dimension.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID for the custom dimension to update.
+   *
+   * [webPropertyId] - Web property ID for the custom dimension to update.
+   *
+   * [customDimensionId] - Custom dimension ID for the custom dimension to
+   * update.
+   *
+   * [ignoreCustomDataSourceLinks] - Force the update and ignore any warnings
+   * related to the custom dimension being linked to a custom data source / data
+   * set.
+   *
+   * Completes with a [CustomDimension].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CustomDimension> update(CustomDimension request, core.String accountId, core.String webPropertyId, core.String customDimensionId, {core.bool ignoreCustomDataSourceLinks}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if (customDimensionId == null) {
+      throw new core.ArgumentError("Parameter customDimensionId is required.");
+    }
+    if (ignoreCustomDataSourceLinks != null) {
+      _queryParams["ignoreCustomDataSourceLinks"] = ["${ignoreCustomDataSourceLinks}"];
+    }
+
+
+    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions/' + common_internal.Escaper.ecapeVariable('$customDimensionId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CustomDimension.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class ManagementCustomMetricsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  ManagementCustomMetricsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Get a custom metric to which the user has access.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID for the custom metric to retrieve.
+   *
+   * [webPropertyId] - Web property ID for the custom metric to retrieve.
+   *
+   * [customMetricId] - The ID of the custom metric to retrieve.
+   *
+   * Completes with a [CustomMetric].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CustomMetric> get(core.String accountId, core.String webPropertyId, core.String customMetricId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if (customMetricId == null) {
+      throw new core.ArgumentError("Parameter customMetricId is required.");
+    }
+
+
+    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics/' + common_internal.Escaper.ecapeVariable('$customMetricId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CustomMetric.fromJson(data));
+  }
+
+  /**
+   * Create a new custom metric.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID for the custom metric to create.
+   *
+   * [webPropertyId] - Web property ID for the custom dimension to create.
+   *
+   * Completes with a [CustomMetric].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CustomMetric> insert(CustomMetric request, core.String accountId, core.String webPropertyId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+
+
+    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CustomMetric.fromJson(data));
+  }
+
+  /**
+   * Lists custom metrics to which the user has access.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID for the custom metrics to retrieve.
+   *
+   * [webPropertyId] - Web property ID for the custom metrics to retrieve.
+   *
+   * [max_results] - The maximum number of custom metrics to include in this
+   * response.
+   *
+   * [start_index] - An index of the first entity to retrieve. Use this
+   * parameter as a pagination mechanism along with the max-results parameter.
+   *
+   * Completes with a [CustomMetrics].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CustomMetrics> list(core.String accountId, core.String webPropertyId, {core.int max_results, core.int start_index}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if (max_results != null) {
+      _queryParams["max-results"] = ["${max_results}"];
+    }
+    if (start_index != null) {
+      _queryParams["start-index"] = ["${start_index}"];
+    }
+
+
+    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CustomMetrics.fromJson(data));
+  }
+
+  /**
+   * Updates an existing custom metric. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID for the custom metric to update.
+   *
+   * [webPropertyId] - Web property ID for the custom metric to update.
+   *
+   * [customMetricId] - Custom metric ID for the custom metric to update.
+   *
+   * [ignoreCustomDataSourceLinks] - Force the update and ignore any warnings
+   * related to the custom metric being linked to a custom data source / data
+   * set.
+   *
+   * Completes with a [CustomMetric].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CustomMetric> patch(CustomMetric request, core.String accountId, core.String webPropertyId, core.String customMetricId, {core.bool ignoreCustomDataSourceLinks}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if (customMetricId == null) {
+      throw new core.ArgumentError("Parameter customMetricId is required.");
+    }
+    if (ignoreCustomDataSourceLinks != null) {
+      _queryParams["ignoreCustomDataSourceLinks"] = ["${ignoreCustomDataSourceLinks}"];
+    }
+
+
+    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics/' + common_internal.Escaper.ecapeVariable('$customMetricId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CustomMetric.fromJson(data));
+  }
+
+  /**
+   * Updates an existing custom metric.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID for the custom metric to update.
+   *
+   * [webPropertyId] - Web property ID for the custom metric to update.
+   *
+   * [customMetricId] - Custom metric ID for the custom metric to update.
+   *
+   * [ignoreCustomDataSourceLinks] - Force the update and ignore any warnings
+   * related to the custom metric being linked to a custom data source / data
+   * set.
+   *
+   * Completes with a [CustomMetric].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CustomMetric> update(CustomMetric request, core.String accountId, core.String webPropertyId, core.String customMetricId, {core.bool ignoreCustomDataSourceLinks}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if (customMetricId == null) {
+      throw new core.ArgumentError("Parameter customMetricId is required.");
+    }
+    if (ignoreCustomDataSourceLinks != null) {
+      _queryParams["ignoreCustomDataSourceLinks"] = ["${ignoreCustomDataSourceLinks}"];
+    }
+
+
+    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics/' + common_internal.Escaper.ecapeVariable('$customMetricId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CustomMetric.fromJson(data));
   }
 
 }
@@ -5464,6 +6050,567 @@ class CustomDataSources {
   CustomDataSources.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = _json["items"].map((value) => new CustomDataSource.fromJson(value)).toList();
+    }
+    if (_json.containsKey("itemsPerPage")) {
+      itemsPerPage = _json["itemsPerPage"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextLink")) {
+      nextLink = _json["nextLink"];
+    }
+    if (_json.containsKey("previousLink")) {
+      previousLink = _json["previousLink"];
+    }
+    if (_json.containsKey("startIndex")) {
+      startIndex = _json["startIndex"];
+    }
+    if (_json.containsKey("totalResults")) {
+      totalResults = _json["totalResults"];
+    }
+    if (_json.containsKey("username")) {
+      username = _json["username"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (itemsPerPage != null) {
+      _json["itemsPerPage"] = itemsPerPage;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextLink != null) {
+      _json["nextLink"] = nextLink;
+    }
+    if (previousLink != null) {
+      _json["previousLink"] = previousLink;
+    }
+    if (startIndex != null) {
+      _json["startIndex"] = startIndex;
+    }
+    if (totalResults != null) {
+      _json["totalResults"] = totalResults;
+    }
+    if (username != null) {
+      _json["username"] = username;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * Parent link for the custom dimension. Points to the property to which the
+ * custom dimension belongs.
+ */
+class CustomDimensionParentLink {
+  /** Link to the property to which the custom dimension belongs. */
+  core.String href;
+
+  /** Type of the parent link. Set to "analytics#webproperty". */
+  core.String type;
+
+
+  CustomDimensionParentLink();
+
+  CustomDimensionParentLink.fromJson(core.Map _json) {
+    if (_json.containsKey("href")) {
+      href = _json["href"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (href != null) {
+      _json["href"] = href;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+
+/** JSON template for Analytics Custom Dimension. */
+class CustomDimension {
+  /** Account ID. */
+  core.String accountId;
+
+  /** Boolean indicating whether the custom dimension is active. */
+  core.bool active;
+
+  /** Time the custom dimension was created. */
+  core.DateTime created;
+
+  /** Custom dimension ID. */
+  core.String id;
+
+  /** Index of the custom dimension. */
+  core.int index;
+
+  /**
+   * Kind value for a custom dimension. Set to "analytics#customDimension". It
+   * is a read-only field.
+   */
+  core.String kind;
+
+  /** Name of the custom dimension. */
+  core.String name;
+
+  /**
+   * Parent link for the custom dimension. Points to the property to which the
+   * custom dimension belongs.
+   */
+  CustomDimensionParentLink parentLink;
+
+  /** Scope of the custom dimension: HIT, SESSION, USER or PRODUCT. */
+  core.String scope;
+
+  /** Link for the custom dimension */
+  core.String selfLink;
+
+  /** Time the custom dimension was last modified. */
+  core.DateTime updated;
+
+  /** Property ID. */
+  core.String webPropertyId;
+
+
+  CustomDimension();
+
+  CustomDimension.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("created")) {
+      created = core.DateTime.parse(_json["created"]);
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("index")) {
+      index = _json["index"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("parentLink")) {
+      parentLink = new CustomDimensionParentLink.fromJson(_json["parentLink"]);
+    }
+    if (_json.containsKey("scope")) {
+      scope = _json["scope"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("updated")) {
+      updated = core.DateTime.parse(_json["updated"]);
+    }
+    if (_json.containsKey("webPropertyId")) {
+      webPropertyId = _json["webPropertyId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (created != null) {
+      _json["created"] = (created).toIso8601String();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (index != null) {
+      _json["index"] = index;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (parentLink != null) {
+      _json["parentLink"] = (parentLink).toJson();
+    }
+    if (scope != null) {
+      _json["scope"] = scope;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (updated != null) {
+      _json["updated"] = (updated).toIso8601String();
+    }
+    if (webPropertyId != null) {
+      _json["webPropertyId"] = webPropertyId;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * A custom dimension collection lists Analytics custom dimensions to which the
+ * user has access. Each resource in the collection corresponds to a single
+ * Analytics custom dimension.
+ */
+class CustomDimensions {
+  /** Collection of custom dimensions. */
+  core.List<CustomDimension> items;
+
+  /**
+   * The maximum number of resources the response can contain, regardless of the
+   * actual number of resources returned. Its value ranges from 1 to 1000 with a
+   * value of 1000 by default, or otherwise specified by the max-results query
+   * parameter.
+   */
+  core.int itemsPerPage;
+
+  /** Collection type. */
+  core.String kind;
+
+  /** Link to next page for this custom dimension collection. */
+  core.String nextLink;
+
+  /** Link to previous page for this custom dimension collection. */
+  core.String previousLink;
+
+  /**
+   * The starting index of the resources, which is 1 by default or otherwise
+   * specified by the start-index query parameter.
+   */
+  core.int startIndex;
+
+  /**
+   * The total number of results for the query, regardless of the number of
+   * results in the response.
+   */
+  core.int totalResults;
+
+  /** Email ID of the authenticated user */
+  core.String username;
+
+
+  CustomDimensions();
+
+  CustomDimensions.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new CustomDimension.fromJson(value)).toList();
+    }
+    if (_json.containsKey("itemsPerPage")) {
+      itemsPerPage = _json["itemsPerPage"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextLink")) {
+      nextLink = _json["nextLink"];
+    }
+    if (_json.containsKey("previousLink")) {
+      previousLink = _json["previousLink"];
+    }
+    if (_json.containsKey("startIndex")) {
+      startIndex = _json["startIndex"];
+    }
+    if (_json.containsKey("totalResults")) {
+      totalResults = _json["totalResults"];
+    }
+    if (_json.containsKey("username")) {
+      username = _json["username"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (itemsPerPage != null) {
+      _json["itemsPerPage"] = itemsPerPage;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextLink != null) {
+      _json["nextLink"] = nextLink;
+    }
+    if (previousLink != null) {
+      _json["previousLink"] = previousLink;
+    }
+    if (startIndex != null) {
+      _json["startIndex"] = startIndex;
+    }
+    if (totalResults != null) {
+      _json["totalResults"] = totalResults;
+    }
+    if (username != null) {
+      _json["username"] = username;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * Parent link for the custom metric. Points to the property to which the custom
+ * metric belongs.
+ */
+class CustomMetricParentLink {
+  /** Link to the property to which the custom metric belongs. */
+  core.String href;
+
+  /** Type of the parent link. Set to "analytics#webproperty". */
+  core.String type;
+
+
+  CustomMetricParentLink();
+
+  CustomMetricParentLink.fromJson(core.Map _json) {
+    if (_json.containsKey("href")) {
+      href = _json["href"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (href != null) {
+      _json["href"] = href;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+
+/** JSON template for Analytics Custom Metric. */
+class CustomMetric {
+  /** Account ID. */
+  core.String accountId;
+
+  /** Boolean indicating whether the custom metric is active. */
+  core.bool active;
+
+  /** Time the custom metric was created. */
+  core.DateTime created;
+
+  /** Custom metric ID. */
+  core.String id;
+
+  /** Index of the custom metric. */
+  core.int index;
+
+  /**
+   * Kind value for a custom metric. Set to "analytics#customMetric". It is a
+   * read-only field.
+   */
+  core.String kind;
+
+  /** Max value of custom metric. */
+  core.String maxValue;
+
+  /** Min value of custom metric. */
+  core.String minValue;
+
+  /** Name of the custom metric. */
+  core.String name;
+
+  /**
+   * Parent link for the custom metric. Points to the property to which the
+   * custom metric belongs.
+   */
+  CustomMetricParentLink parentLink;
+
+  /** Scope of the custom metric: HIT or PRODUCT. */
+  core.String scope;
+
+  /** Link for the custom metric */
+  core.String selfLink;
+
+  /** Data type of custom metric. */
+  core.String type;
+
+  /** Time the custom metric was last modified. */
+  core.DateTime updated;
+
+  /** Property ID. */
+  core.String webPropertyId;
+
+
+  CustomMetric();
+
+  CustomMetric.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("created")) {
+      created = core.DateTime.parse(_json["created"]);
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("index")) {
+      index = _json["index"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("max_value")) {
+      maxValue = _json["max_value"];
+    }
+    if (_json.containsKey("min_value")) {
+      minValue = _json["min_value"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("parentLink")) {
+      parentLink = new CustomMetricParentLink.fromJson(_json["parentLink"]);
+    }
+    if (_json.containsKey("scope")) {
+      scope = _json["scope"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("updated")) {
+      updated = core.DateTime.parse(_json["updated"]);
+    }
+    if (_json.containsKey("webPropertyId")) {
+      webPropertyId = _json["webPropertyId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (created != null) {
+      _json["created"] = (created).toIso8601String();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (index != null) {
+      _json["index"] = index;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (maxValue != null) {
+      _json["max_value"] = maxValue;
+    }
+    if (minValue != null) {
+      _json["min_value"] = minValue;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (parentLink != null) {
+      _json["parentLink"] = (parentLink).toJson();
+    }
+    if (scope != null) {
+      _json["scope"] = scope;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (updated != null) {
+      _json["updated"] = (updated).toIso8601String();
+    }
+    if (webPropertyId != null) {
+      _json["webPropertyId"] = webPropertyId;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * A custom metric collection lists Analytics custom metrics to which the user
+ * has access. Each resource in the collection corresponds to a single Analytics
+ * custom metric.
+ */
+class CustomMetrics {
+  /** Collection of custom metrics. */
+  core.List<CustomMetric> items;
+
+  /**
+   * The maximum number of resources the response can contain, regardless of the
+   * actual number of resources returned. Its value ranges from 1 to 1000 with a
+   * value of 1000 by default, or otherwise specified by the max-results query
+   * parameter.
+   */
+  core.int itemsPerPage;
+
+  /** Collection type. */
+  core.String kind;
+
+  /** Link to next page for this custom metric collection. */
+  core.String nextLink;
+
+  /** Link to previous page for this custom metric collection. */
+  core.String previousLink;
+
+  /**
+   * The starting index of the resources, which is 1 by default or otherwise
+   * specified by the start-index query parameter.
+   */
+  core.int startIndex;
+
+  /**
+   * The total number of results for the query, regardless of the number of
+   * results in the response.
+   */
+  core.int totalResults;
+
+  /** Email ID of the authenticated user */
+  core.String username;
+
+
+  CustomMetrics();
+
+  CustomMetrics.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new CustomMetric.fromJson(value)).toList();
     }
     if (_json.containsKey("itemsPerPage")) {
       itemsPerPage = _json["itemsPerPage"];

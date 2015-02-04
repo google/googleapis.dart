@@ -2901,6 +2901,9 @@ class TaskRunnerSettings {
   WorkerSettings parallelWorkerSettings;
 
   /** Not documented yet. */
+  core.String streamingWorkerMainClass;
+
+  /** Not documented yet. */
   core.String taskGroup;
 
   /** Not documented yet. */
@@ -2957,6 +2960,9 @@ class TaskRunnerSettings {
     }
     if (_json.containsKey("parallelWorkerSettings")) {
       parallelWorkerSettings = new WorkerSettings.fromJson(_json["parallelWorkerSettings"]);
+    }
+    if (_json.containsKey("streamingWorkerMainClass")) {
+      streamingWorkerMainClass = _json["streamingWorkerMainClass"];
     }
     if (_json.containsKey("taskGroup")) {
       taskGroup = _json["taskGroup"];
@@ -3015,6 +3021,9 @@ class TaskRunnerSettings {
     }
     if (parallelWorkerSettings != null) {
       _json["parallelWorkerSettings"] = (parallelWorkerSettings).toJson();
+    }
+    if (streamingWorkerMainClass != null) {
+      _json["streamingWorkerMainClass"] = streamingWorkerMainClass;
     }
     if (taskGroup != null) {
       _json["taskGroup"] = taskGroup;

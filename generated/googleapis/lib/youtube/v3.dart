@@ -11865,6 +11865,9 @@ class Video {
    */
   VideoLiveStreamingDetails liveStreamingDetails;
 
+  /** List with all localizations. */
+  core.Map<core.String, VideoLocalization> localizations;
+
   /**
    * The monetizationDetails object encapsulates information about the
    * monetization status of the video.
@@ -11959,6 +11962,9 @@ class Video {
     if (_json.containsKey("liveStreamingDetails")) {
       liveStreamingDetails = new VideoLiveStreamingDetails.fromJson(_json["liveStreamingDetails"]);
     }
+    if (_json.containsKey("localizations")) {
+      localizations = common_internal.mapMap(_json["localizations"], (item) => new VideoLocalization.fromJson(item));
+    }
     if (_json.containsKey("monetizationDetails")) {
       monetizationDetails = new VideoMonetizationDetails.fromJson(_json["monetizationDetails"]);
     }
@@ -12016,6 +12022,9 @@ class Video {
     }
     if (liveStreamingDetails != null) {
       _json["liveStreamingDetails"] = (liveStreamingDetails).toJson();
+    }
+    if (localizations != null) {
+      _json["localizations"] = common_internal.mapMap(localizations, (item) => (item).toJson());
     }
     if (monetizationDetails != null) {
       _json["monetizationDetails"] = (monetizationDetails).toJson();
@@ -13117,6 +13126,39 @@ class VideoLiveStreamingDetails {
 }
 
 
+/** Localized versions of certain video properties (e.g. title). */
+class VideoLocalization {
+  /** Localized version of the video's description. */
+  core.String description;
+
+  /** Localized version of the video's title. */
+  core.String title;
+
+
+  VideoLocalization();
+
+  VideoLocalization.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+
 /** Details about monetization of a YouTube Video. */
 class VideoMonetizationDetails {
   /**
@@ -13485,6 +13527,9 @@ class VideoSnippet {
   /** Channel title for the channel that the video belongs to. */
   core.String channelTitle;
 
+  /** The language of the videos's default snippet. */
+  LanguageTag defaultLanguage;
+
   /** The video's description. */
   core.String description;
 
@@ -13497,6 +13542,12 @@ class VideoSnippet {
    * - "upcoming"
    */
   core.String liveBroadcastContent;
+
+  /**
+   * Localized snippet selected with the hl parameter. If no such localization
+   * exists, this field is populated with the default snippet. (Read-only)
+   */
+  VideoLocalization localized;
 
   /**
    * The date and time that the video was uploaded. The value is specified in
@@ -13533,11 +13584,17 @@ class VideoSnippet {
     if (_json.containsKey("channelTitle")) {
       channelTitle = _json["channelTitle"];
     }
+    if (_json.containsKey("defaultLanguage")) {
+      defaultLanguage = new LanguageTag.fromJson(_json["defaultLanguage"]);
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
     if (_json.containsKey("liveBroadcastContent")) {
       liveBroadcastContent = _json["liveBroadcastContent"];
+    }
+    if (_json.containsKey("localized")) {
+      localized = new VideoLocalization.fromJson(_json["localized"]);
     }
     if (_json.containsKey("publishedAt")) {
       publishedAt = core.DateTime.parse(_json["publishedAt"]);
@@ -13564,11 +13621,17 @@ class VideoSnippet {
     if (channelTitle != null) {
       _json["channelTitle"] = channelTitle;
     }
+    if (defaultLanguage != null) {
+      _json["defaultLanguage"] = (defaultLanguage).toJson();
+    }
     if (description != null) {
       _json["description"] = description;
     }
     if (liveBroadcastContent != null) {
       _json["liveBroadcastContent"] = liveBroadcastContent;
+    }
+    if (localized != null) {
+      _json["localized"] = (localized).toJson();
     }
     if (publishedAt != null) {
       _json["publishedAt"] = (publishedAt).toIso8601String();

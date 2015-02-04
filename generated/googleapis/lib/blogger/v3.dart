@@ -559,6 +559,8 @@ class CommentsResourceApi {
    * [startDate] - Earliest date of comment to fetch, a date-time with RFC 3339
    * formatting.
    *
+   * [status] - null
+   *
    * Completes with a [CommentList].
    *
    * Completes with a [common.ApiRequestError] if the API endpoint returned an
@@ -567,7 +569,7 @@ class CommentsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<CommentList> listByBlog(core.String blogId, {core.DateTime endDate, core.bool fetchBodies, core.int maxResults, core.String pageToken, core.DateTime startDate}) {
+  async.Future<CommentList> listByBlog(core.String blogId, {core.DateTime endDate, core.bool fetchBodies, core.int maxResults, core.String pageToken, core.DateTime startDate, core.List<core.String> status}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -592,6 +594,9 @@ class CommentsResourceApi {
     }
     if (startDate != null) {
       _queryParams["startDate"] = [(startDate).toIso8601String()];
+    }
+    if (status != null) {
+      _queryParams["status"] = status;
     }
 
 

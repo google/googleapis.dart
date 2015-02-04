@@ -27,7 +27,7 @@
     "description": "Programmatic access to YouTube features.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/BNAEvscDvyjuuQJV9l3B3Bhfhag\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/pRYO6vyWfgwTEqSglFHV1zT4jYY\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -2325,7 +2325,7 @@
             }
         }
     },
-    "revision": "20141207",
+    "revision": "20150120",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -6619,6 +6619,14 @@
                     "$ref": "VideoLiveStreamingDetails",
                     "description": "The liveStreamingDetails object contains metadata about a live video broadcast. The object will only be present in a video resource if the video is an upcoming, live, or completed live broadcast."
                 },
+                "localizations": {
+                    "additionalProperties": {
+                        "$ref": "VideoLocalization",
+                        "description": "The language tag, using string since map_key require simple types."
+                    },
+                    "description": "List with all localizations.",
+                    "type": "object"
+                },
                 "monetizationDetails": {
                     "$ref": "VideoMonetizationDetails",
                     "description": "The monetizationDetails object encapsulates information about the monetization status of the video."
@@ -7157,6 +7165,21 @@
             },
             "type": "object"
         },
+        "VideoLocalization": {
+            "description": "Localized versions of certain video properties (e.g. title).",
+            "id": "VideoLocalization",
+            "properties": {
+                "description": {
+                    "description": "Localized version of the video's description.",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Localized version of the video's title.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "VideoMonetizationDetails": {
             "description": "Details about monetization of a YouTube Video.",
             "id": "VideoMonetizationDetails",
@@ -7338,6 +7361,10 @@
                     "description": "Channel title for the channel that the video belongs to.",
                     "type": "string"
                 },
+                "defaultLanguage": {
+                    "$ref": "LanguageTag",
+                    "description": "The language of the videos's default snippet."
+                },
                 "description": {
                     "description": "The video's description.",
                     "type": "string"
@@ -7355,6 +7382,10 @@
                         ""
                     ],
                     "type": "string"
+                },
+                "localized": {
+                    "$ref": "VideoLocalization",
+                    "description": "Localized snippet selected with the hl parameter. If no such localization exists, this field is populated with the default snippet. (Read-only)"
                 },
                 "publishedAt": {
                     "description": "The date and time that the video was uploaded. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.",

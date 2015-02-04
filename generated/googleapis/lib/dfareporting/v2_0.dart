@@ -391,17 +391,17 @@ class AccountUserProfilesResourceApi {
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for objects by name, ID or email.
-   * Wildcards (*) are allowed. For example, "user profile*2010" will return
-   * objects with names like "user profile June 2010", "user profile April 2010"
-   * or simply "user profile 2010". Most of the searches also add wildcards
+   * Wildcards (*) are allowed. For example, "user profile*2015" will return
+   * objects with names like "user profile June 2015", "user profile April 2015"
+   * or simply "user profile 2015". Most of the searches also add wildcards
    * implicitly at the start and the end of the search string. For example, a
    * search string of "user profile" will match objects with name "my user
-   * profile", "user profile 2010" or simply "user profile".
+   * profile", "user profile 2015" or simply "user profile".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -642,16 +642,16 @@ class AccountsResourceApi {
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
-   * are allowed. For example, "account*2010" will return objects with names
-   * like "account June 2010", "account April 2010" or simply "account 2010".
+   * are allowed. For example, "account*2015" will return objects with names
+   * like "account June 2015", "account April 2015" or simply "account 2015".
    * Most of the searches also add wildcards implicitly at the start and the end
    * of the search string. For example, a search string of "account" will match
-   * objects with name "my account", "account 2010" or simply "account".
+   * objects with name "my account", "account 2015" or simply "account".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -928,11 +928,11 @@ class AdsResourceApi {
    *
    * [campaignIds] - Select only ads with these campaign IDs.
    *
-   * [compatibility] - Applicable when type is AD_SERVING_DEFAULT_AD. Select
-   * default ads with the specified compatibility. WEB and WEB_INTERSTITIAL
+   * [compatibility] - Select default ads with the specified compatibility.
+   * Applicable when type is AD_SERVING_DEFAULT_AD. WEB and WEB_INTERSTITIAL
    * refer to rendering either on desktop or on mobile devices for regular or
-   * interstitial ads respectively. APP and APP_INTERSTITIAL are for rendering
-   * in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads
+   * interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering
+   * in mobile apps. IN_STREAM_VIDEO refers to rendering an in-stream video ads
    * developed with the VAST standard.
    * Possible string values are:
    * - "APP"
@@ -946,7 +946,7 @@ class AdsResourceApi {
    * [creativeOptimizationConfigurationIds] - Select only ads with these
    * creative optimization configuration IDs.
    *
-   * [creativeType] - Select only ads with the specified CreativeType.
+   * [creativeType] - Select only ads with the specified creativeType.
    * Possible string values are:
    * - "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO"
    * - "CUSTOM_INPAGE"
@@ -972,9 +972,9 @@ class AdsResourceApi {
    * - "VPAID_LINEAR"
    * - "VPAID_NON_LINEAR"
    *
-   * [dynamicClickTracker] - Applicable when type is AD_SERVING_CLICK_TRACKER.
-   * If true, select dynamic click trackers. If false, select static click
-   * trackers. Leave unset to select both.
+   * [dynamicClickTracker] - Select only dynamic click trackers. Applicable when
+   * type is AD_SERVING_CLICK_TRACKER. If true, select dynamic click trackers.
+   * If false, select static click trackers. Leave unset to select both.
    *
    * [ids] - Select only ads with these IDs.
    *
@@ -984,7 +984,7 @@ class AdsResourceApi {
    *
    * [overriddenEventTagId] - Select only ads with this event tag override ID.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [placementIds] - Select only ads with these placement IDs assigned.
    *
@@ -992,15 +992,15 @@ class AdsResourceApi {
    * these remarketing list IDs.
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
-   * are allowed. For example, "ad*2010" will return objects with names like "ad
-   * June 2010", "ad April 2010" or simply "ad 2010". Most of the searches also
+   * are allowed. For example, "ad*2015" will return objects with names like "ad
+   * June 2015", "ad April 2015" or simply "ad 2015". Most of the searches also
    * add wildcards implicitly at the start and the end of the search string. For
    * example, a search string of "ad" will match objects with name "my ad", "ad
-   * 2010" or simply "ad".
+   * 2015" or simply "ad".
    *
    * [sizeIds] - Select only ads with these size IDs.
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -1010,9 +1010,9 @@ class AdsResourceApi {
    * - "ASCENDING"
    * - "DESCENDING"
    *
-   * [sslCompliant] - Select only ads that are ssl compliant.
+   * [sslCompliant] - Select only ads that are SSL-compliant.
    *
-   * [sslRequired] - Select only ads that require ssl.
+   * [sslRequired] - Select only ads that require SSL.
    *
    * [type] - Select only ads with these types.
    *
@@ -1368,21 +1368,21 @@ class AdvertiserGroupsResourceApi {
    *
    * [profileId] - User profile ID associated with this request.
    *
-   * [ids] - Set of IDs of specified advertiser groups to retrieve.
+   * [ids] - Select only advertiser groups with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
-   * are allowed. For example, "advertiser*2010" will return objects with names
-   * like "advertiser group June 2010", "advertiser group April 2010" or simply
-   * "advertiser group 2010". Most of the searches also add wildcards implicitly
+   * are allowed. For example, "advertiser*2015" will return objects with names
+   * like "advertiser group June 2015", "advertiser group April 2015" or simply
+   * "advertiser group 2015". Most of the searches also add wildcards implicitly
    * at the start and the end of the search string. For example, a search string
    * of "advertisergroup" will match objects with name "my advertisergroup",
-   * "advertisergroup 2010" or simply "advertisergroup".
+   * "advertisergroup 2015" or simply "advertisergroup".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -1646,33 +1646,33 @@ class AdvertisersResourceApi {
    *
    * [profileId] - User profile ID associated with this request.
    *
-   * [advertiserGroupIds] - Set of advertiser group IDs of advertisers to
-   * retrieve.
+   * [advertiserGroupIds] - Select only advertisers with these advertiser group
+   * IDs.
    *
-   * [floodlightConfigurationIds] - Set of floodlight configuration IDs of
-   * advertisers to retrieve.
+   * [floodlightConfigurationIds] - Select only advertisers with these
+   * floodlight configuration IDs.
    *
-   * [ids] - Set of IDs of specified advertisers to retrieve.
+   * [ids] - Select only advertisers with these IDs.
    *
-   * [includeAdvertisersWithoutGroupsOnly] - If true, will return only
-   * advertisers which do not belong to any advertiser group.
+   * [includeAdvertisersWithoutGroupsOnly] - Select only advertisers which do
+   * not belong to any advertiser group.
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [onlyParent] - If true, will return only advertisers which use another
-   * advertiser's floodlight configuration.
+   * [onlyParent] - Select only advertisers which use another advertiser's
+   * floodlight configuration.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
-   * are allowed. For example, "advertiser*2010" will return objects with names
-   * like "advertiser June 2010", "advertiser April 2010" or simply "advertiser
-   * 2010". Most of the searches also add wildcards implicitly at the start and
+   * are allowed. For example, "advertiser*2015" will return objects with names
+   * like "advertiser June 2015", "advertiser April 2015" or simply "advertiser
+   * 2015". Most of the searches also add wildcards implicitly at the start and
    * the end of the search string. For example, a search string of "advertiser"
-   * will match objects with name "my advertiser", "advertiser 2010" or simply
+   * will match objects with name "my advertiser", "advertiser 2015" or simply
    * "advertiser".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -1682,12 +1682,12 @@ class AdvertisersResourceApi {
    * - "ASCENDING"
    * - "DESCENDING"
    *
-   * [status] - Specifies the status of retrieved advertisers.
+   * [status] - Select only advertisers with the specified status.
    * Possible string values are:
    * - "APPROVED"
    * - "ON_HOLD"
    *
-   * [subaccountId] - Subaccount ID of advertisers to retrieve.
+   * [subaccountId] - Select only advertisers with these subaccount IDs.
    *
    * Completes with a [AdvertisersListResponse].
    *
@@ -1915,9 +1915,9 @@ class CampaignCreativeAssociationsResourceApi {
       _requester = client;
 
   /**
-   * Associates a creative with this campaign. This method creates a default ad
-   * with dimensions matching the creative in this campaign if such a default ad
-   * does not exist already.
+   * Associates a creative with the specified campaign. This method creates a
+   * default ad with dimensions matching the creative in the campaign if such a
+   * default ad does not exist already.
    *
    * [request] - The metadata request object.
    *
@@ -1967,7 +1967,7 @@ class CampaignCreativeAssociationsResourceApi {
   }
 
   /**
-   * Retrieves the list of creative IDs associated with this campaign.
+   * Retrieves the list of creative IDs associated with the specified campaign.
    *
    * Request parameters:
    *
@@ -1977,7 +1977,7 @@ class CampaignCreativeAssociationsResourceApi {
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [sortOrder] - Order of sorted results, default is ASCENDING.
    * Possible string values are:
@@ -2094,6 +2094,7 @@ class CampaignsResourceApi {
    * [profileId] - User profile ID associated with this request.
    *
    * [defaultLandingPageName] - Default landing page name for this new campaign.
+   * Must be less than 256 characters long.
    *
    * [defaultLandingPageUrl] - Default landing page URL for this new campaign.
    *
@@ -2168,17 +2169,17 @@ class CampaignsResourceApi {
    * [overriddenEventTagId] - Select only campaigns that have overridden this
    * event tag ID.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for campaigns by name or ID. Wildcards
-   * (*) are allowed. For example, "campaign*2010" will return campaigns with
-   * names like "campaign June 2010", "campaign April 2010" or simply "campaign
-   * 2010". Most of the searches also add wildcards implicitly at the start and
+   * (*) are allowed. For example, "campaign*2015" will return campaigns with
+   * names like "campaign June 2015", "campaign April 2015" or simply "campaign
+   * 2015". Most of the searches also add wildcards implicitly at the start and
    * the end of the search string. For example, a search string of "campaign"
-   * will match campaigns with name "my campaign", "campaign 2010" or simply
+   * will match campaigns with name "my campaign", "campaign 2015" or simply
    * "campaign".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -2443,8 +2444,8 @@ class ChangeLogsResourceApi {
    *
    * [maxChangeTime] - Select only change logs whose change time is before the
    * specified maxChangeTime.The time should be formatted as an RFC3339
-   * date/time string. For example, for 10:54 PM on July 18th, 2014, in the
-   * America/New York time zone, the format is "2014-07-18T22:54:00-04:00". In
+   * date/time string. For example, for 10:54 PM on July 18th, 2015, in the
+   * America/New York time zone, the format is "2015-07-18T22:54:00-04:00". In
    * other words, the year, month, day, the letter T, the hour (24-hour clock
    * system), minute, second, and then the time zone offset.
    *
@@ -2452,8 +2453,8 @@ class ChangeLogsResourceApi {
    *
    * [minChangeTime] - Select only change logs whose change time is before the
    * specified minChangeTime.The time should be formatted as an RFC3339
-   * date/time string. For example, for 10:54 PM on July 18th, 2014, in the
-   * America/New York time zone, the format is "2014-07-18T22:54:00-04:00". In
+   * date/time string. For example, for 10:54 PM on July 18th, 2015, in the
+   * America/New York time zone, the format is "2015-07-18T22:54:00-04:00". In
    * other words, the year, month, day, the letter T, the hour (24-hour clock
    * system), minute, second, and then the time zone offset.
    *
@@ -2498,7 +2499,7 @@ class ChangeLogsResourceApi {
    * - "OBJECT_USER_PROFILE_FILTER"
    * - "OBJECT_USER_ROLE"
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Select only change logs whose object ID, user name, old or
    * new values match the search string.
@@ -2585,13 +2586,13 @@ class CitiesResourceApi {
    *
    * [profileId] - User profile ID associated with this request.
    *
-   * [countryDartIds] - Select cities from these countries.
+   * [countryDartIds] - Select only cities from these countries.
    *
-   * [dartIds] - Return cities with these IDs.
+   * [dartIds] - Select only cities with these DART IDs.
    *
-   * [namePrefix] - Select cities with names starting with this prefix.
+   * [namePrefix] - Select only cities with names starting with this prefix.
    *
-   * [regionDartIds] - Select cities from these regions.
+   * [regionDartIds] - Select only cities from these regions.
    *
    * Completes with a [CitiesListResponse].
    *
@@ -2839,21 +2840,21 @@ class ContentCategoriesResourceApi {
    *
    * [profileId] - User profile ID associated with this request.
    *
-   * [ids] - Set of IDs of specified content categories to retrieve.
+   * [ids] - Select only content categories with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
-   * are allowed. For example, "contentcategory*2010" will return objects with
-   * names like "contentcategory June 2010", "contentcategory April 2010" or
-   * simply "contentcategory 2010". Most of the searches also add wildcards
+   * are allowed. For example, "contentcategory*2015" will return objects with
+   * names like "contentcategory June 2015", "contentcategory April 2015" or
+   * simply "contentcategory 2015". Most of the searches also add wildcards
    * implicitly at the start and the end of the search string. For example, a
    * search string of "contentcategory" will match objects with name "my
-   * contentcategory", "contentcategory 2010" or simply "contentcategory".
+   * contentcategory", "contentcategory 2015" or simply "contentcategory".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -3351,12 +3352,12 @@ class CreativeFieldValuesResourceApi {
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for creative field values by their
    * values. Wildcards (e.g. *) are not allowed.
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "VALUE"
@@ -3685,18 +3686,18 @@ class CreativeFieldsResourceApi {
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for creative fields by name or ID.
-   * Wildcards (*) are allowed. For example, "creativefield*2010" will return
-   * creative fields with names like "creativefield June 2010", "creativefield
-   * April 2010" or simply "creativefield 2010". Most of the searches also add
+   * Wildcards (*) are allowed. For example, "creativefield*2015" will return
+   * creative fields with names like "creativefield June 2015", "creativefield
+   * April 2015" or simply "creativefield 2015". Most of the searches also add
    * wild-cards implicitly at the start and the end of the search string. For
    * example, a search string of "creativefield" will match creative fields with
-   * the name "my creativefield", "creativefield 2010" or simply
+   * the name "my creativefield", "creativefield 2015" or simply
    * "creativefield".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -3972,18 +3973,18 @@ class CreativeGroupsResourceApi {
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for creative groups by name or ID.
-   * Wildcards (*) are allowed. For example, "creativegroup*2010" will return
-   * creative groups with names like "creativegroup June 2010", "creativegroup
-   * April 2010" or simply "creativegroup 2010". Most of the searches also add
+   * Wildcards (*) are allowed. For example, "creativegroup*2015" will return
+   * creative groups with names like "creativegroup June 2015", "creativegroup
+   * April 2015" or simply "creativegroup 2015". Most of the searches also add
    * wild-cards implicitly at the start and the end of the search string. For
    * example, a search string of "creativegroup" will match creative groups with
-   * the name "my creativegroup", "creativegroup 2010" or simply
+   * the name "my creativegroup", "creativegroup 2015" or simply
    * "creativegroup".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -4256,37 +4257,36 @@ class CreativesResourceApi {
    * [active] - Select only active creatives. Leave blank to select active and
    * inactive creatives.
    *
-   * [advertiserId] - Advertiser ID.
+   * [advertiserId] - Select only creatives with this advertiser ID.
    *
    * [archived] - Select only archived creatives. Leave blank to select archived
    * and unarchived creatives.
    *
-   * [campaignId] - Campaign ID of creatives to retrieve.
+   * [campaignId] - Select only creatives with this campaign ID.
    *
-   * [companionCreativeIds] - Select only in-stream video creatives with
-   * specified companion IDs.
+   * [companionCreativeIds] - Select only in-stream video creatives with these
+   * companion IDs.
    *
-   * [creativeFieldIds] - Select only creatives with specified creative field
-   * IDs.
+   * [creativeFieldIds] - Select only creatives with these creative field IDs.
    *
-   * [ids] - List of creative IDs.
+   * [ids] - Select only creatives with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
-   * [renderingIds] - Select only creatives with specified rendering IDs.
+   * [renderingIds] - Select only creatives with these rendering IDs.
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
-   * are allowed. For example, "creative*2010" will return objects with names
-   * like "creative June 2010", "creative April 2010" or simply "creative 2010".
+   * are allowed. For example, "creative*2015" will return objects with names
+   * like "creative June 2015", "creative April 2015" or simply "creative 2015".
    * Most of the searches also add wildcards implicitly at the start and the end
    * of the search string. For example, a search string of "creative" will match
-   * objects with name "my creative", "creative 2010" or simply "creative".
+   * objects with name "my creative", "creative 2015" or simply "creative".
    *
-   * [sizeIds] - Select only creatives with specified size.
+   * [sizeIds] - Select only creatives with these size IDs.
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -4296,9 +4296,10 @@ class CreativesResourceApi {
    * - "ASCENDING"
    * - "DESCENDING"
    *
-   * [studioCreativeId] - Studio creative ID associated with DCM creatives.
+   * [studioCreativeId] - Select only creatives corresponding to this Studio
+   * creative ID.
    *
-   * [types] - Select only creatives with specified type of creative.
+   * [types] - Select only creatives with these creative types.
    *
    * Completes with a [CreativesListResponse].
    *
@@ -4605,25 +4606,25 @@ class DirectorySiteContactsResourceApi {
    *
    * [profileId] - User profile ID associated with this request.
    *
-   * [directorySiteIds] - Retrieve contacts of directory sites with this set of
-   * IDs. This is a required field.
+   * [directorySiteIds] - Select only directory site contacts with these
+   * directory site IDs. This is a required field.
    *
-   * [ids] - Set of IDs of specified directory site contacts to retrieve.
+   * [ids] - Select only directory site contacts with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for objects by name, ID or email.
-   * Wildcards (*) are allowed. For example, "directory site contact*2010" will
-   * return objects with names like "directory site contact June 2010",
-   * "directory site contact April 2010" or simply "directory site contact
-   * 2010". Most of the searches also add wildcards implicitly at the start and
+   * Wildcards (*) are allowed. For example, "directory site contact*2015" will
+   * return objects with names like "directory site contact June 2015",
+   * "directory site contact April 2015" or simply "directory site contact
+   * 2015". Most of the searches also add wildcards implicitly at the start and
    * the end of the search string. For example, a search string of "directory
    * site contact" will match objects with name "my directory site contact",
-   * "directory site contact 2010" or simply "directory site contact".
+   * "directory site contact 2015" or simply "directory site contact".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -4749,39 +4750,39 @@ class DirectorySitesResourceApi {
    *
    * [profileId] - User profile ID associated with this request.
    *
-   * [acceptsInStreamVideoPlacements] - Select only sites that accept in-stream
-   * video placements. This field can be left blank.
+   * [acceptsInStreamVideoPlacements] - This search filter is no longer
+   * supported and will have no effect on the results returned.
    *
-   * [acceptsInterstitialPlacements] - Select only sites that accept
-   * interstitial placements. This field be left blank.
+   * [acceptsInterstitialPlacements] - This search filter is no longer supported
+   * and will have no effect on the results returned.
    *
    * [acceptsPublisherPaidPlacements] - Select only directory sites that accept
    * publisher paid placements. This field can be left blank.
    *
-   * [active] - Whether to retrieve active directory sites. Leave blank to
-   * retrieve both active and inactive directory sites.
+   * [active] - Select only active directory sites. Leave blank to retrieve both
+   * active and inactive directory sites.
    *
-   * [countryId] - Country ID of directory sites to retrieve.
+   * [countryId] - Select only directory sites with this country ID.
    *
-   * [dfpNetworkCode] - DFP network code of directory sites to retrieve.
+   * [dfpNetworkCode] - Select only directory sites with this DFP network code.
    *
-   * [ids] - Set of IDs of specified directory sites to retrieve.
+   * [ids] - Select only directory sites with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
-   * [parentId] - Parent ID of directory sites to retrieve.
+   * [parentId] - Select only directory sites with this parent ID.
    *
    * [searchString] - Allows searching for objects by name, ID or URL. Wildcards
-   * (*) are allowed. For example, "directory site*2010" will return objects
-   * with names like "directory site June 2010", "directory site April 2010" or
-   * simply "directory site 2010". Most of the searches also add wildcards
+   * (*) are allowed. For example, "directory site*2015" will return objects
+   * with names like "directory site June 2015", "directory site April 2015" or
+   * simply "directory site 2015". Most of the searches also add wildcards
    * implicitly at the start and the end of the search string. For example, a
    * search string of "directory site" will match objects with name "my
-   * directory site", "directory site 2010" or simply "directory site".
+   * directory site", "directory site 2015" or simply "directory site".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -5038,16 +5039,16 @@ class EventTagsResourceApi {
    * pixel, a third-party JavaScript URL, or a third-party click-through URL for
    * either impression or click tracking.
    *
-   * [ids] - Set of IDs of specified event tags to retrieve.
+   * [ids] - Select only event tags with these IDs.
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
-   * are allowed. For example, "eventtag*2010" will return objects with names
-   * like "eventtag June 2010", "eventtag April 2010" or simply "eventtag 2010".
+   * are allowed. For example, "eventtag*2015" will return objects with names
+   * like "eventtag June 2015", "eventtag April 2015" or simply "eventtag 2015".
    * Most of the searches also add wildcards implicitly at the start and the end
    * of the search string. For example, a search string of "eventtag" will match
-   * objects with name "my eventtag", "eventtag 2010" or simply "eventtag".
+   * objects with name "my eventtag", "eventtag 2015" or simply "eventtag".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -5559,47 +5560,47 @@ class FloodlightActivitiesResourceApi {
    *
    * [profileId] - User profile ID associated with this request.
    *
-   * [advertiserId] - Retrieve Floodlight activities for the specified
+   * [advertiserId] - Select only floodlight activities for the specified
    * advertiser ID. Must specify either ids, advertiserId, or
    * floodlightConfigurationId for a non-empty result.
    *
-   * [floodlightActivityGroupIds] - Retrieve Floodlight activities with the
-   * specified Floodlight activity group IDs.
+   * [floodlightActivityGroupIds] - Select only floodlight activities with the
+   * specified floodlight activity group IDs.
    *
-   * [floodlightActivityGroupName] - Retrieve Floodlight activities with the
-   * specified Floodlight activity group name.
+   * [floodlightActivityGroupName] - Select only floodlight activities with the
+   * specified floodlight activity group name.
    *
-   * [floodlightActivityGroupTagString] - Retrieve Floodlight activities with
-   * the specified Floodlight activity group tag string.
+   * [floodlightActivityGroupTagString] - Select only floodlight activities with
+   * the specified floodlight activity group tag string.
    *
-   * [floodlightActivityGroupType] - Retrieve Floodlight activities with the
-   * specified Floodlight activity group type.
+   * [floodlightActivityGroupType] - Select only floodlight activities with the
+   * specified floodlight activity group type.
    * Possible string values are:
    * - "COUNTER"
    * - "SALE"
    *
-   * [floodlightConfigurationId] - Retrieve Floodlight activities for the
-   * specified Floodlight configuration ID. Must specify either ids,
+   * [floodlightConfigurationId] - Select only floodlight activities for the
+   * specified floodlight configuration ID. Must specify either ids,
    * advertiserId, or floodlightConfigurationId for a non-empty result.
    *
-   * [ids] - Retrieve Floodlight activities with the specified IDs. Must specify
-   * either ids, advertiserId, or floodlightConfigurationId for a non-empty
-   * result.
+   * [ids] - Select only floodlight activities with the specified IDs. Must
+   * specify either ids, advertiserId, or floodlightConfigurationId for a
+   * non-empty result.
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
-   * are allowed. For example, "floodlightactivity*2010" will return objects
-   * with names like "floodlightactivity June 2010", "floodlightactivity April
-   * 2010" or simply "floodlightactivity 2010". Most of the searches also add
+   * are allowed. For example, "floodlightactivity*2015" will return objects
+   * with names like "floodlightactivity June 2015", "floodlightactivity April
+   * 2015" or simply "floodlightactivity 2015". Most of the searches also add
    * wildcards implicitly at the start and the end of the search string. For
    * example, a search string of "floodlightactivity" will match objects with
-   * name "my floodlightactivity activity", "floodlightactivity 2010" or simply
+   * name "my floodlightactivity activity", "floodlightactivity 2015" or simply
    * "floodlightactivity".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -5609,7 +5610,8 @@ class FloodlightActivitiesResourceApi {
    * - "ASCENDING"
    * - "DESCENDING"
    *
-   * [tagString] - Retrieve Floodlight activities with the specified tag string.
+   * [tagString] - Select only floodlight activities with the specified tag
+   * string.
    *
    * Completes with a [FloodlightActivitiesListResponse].
    *
@@ -5931,33 +5933,33 @@ class FloodlightActivityGroupsResourceApi {
    *
    * [profileId] - User profile ID associated with this request.
    *
-   * [advertiserId] - Retrieve Floodlight activity groups with the specified
+   * [advertiserId] - Select only floodlight activity groups with the specified
    * advertiser ID. Must specify either ids, advertiserId, or
    * floodlightConfigurationId for a non-empty result.
    *
-   * [floodlightConfigurationId] - Retrieve Floodlight activity groups with the
-   * specified Floodlight configuration ID. Must specify either ids,
+   * [floodlightConfigurationId] - Select only floodlight activity groups with
+   * the specified floodlight configuration ID. Must specify either ids,
    * advertiserId, or floodlightConfigurationId for a non-empty result.
    *
-   * [ids] - Retrieve Floodlight activity groups with the specified IDs. Must
+   * [ids] - Select only floodlight activity groups with the specified IDs. Must
    * specify either ids, advertiserId, or floodlightConfigurationId for a
    * non-empty result.
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
-   * are allowed. For example, "floodlightactivitygroup*2010" will return
-   * objects with names like "floodlightactivitygroup June 2010",
-   * "floodlightactivitygroup April 2010" or simply "floodlightactivitygroup
-   * 2010". Most of the searches also add wildcards implicitly at the start and
+   * are allowed. For example, "floodlightactivitygroup*2015" will return
+   * objects with names like "floodlightactivitygroup June 2015",
+   * "floodlightactivitygroup April 2015" or simply "floodlightactivitygroup
+   * 2015". Most of the searches also add wildcards implicitly at the start and
    * the end of the search string. For example, a search string of
    * "floodlightactivitygroup" will match objects with name "my
-   * floodlightactivitygroup activity", "floodlightactivitygroup 2010" or simply
+   * floodlightactivitygroup activity", "floodlightactivitygroup 2015" or simply
    * "floodlightactivitygroup".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -5967,8 +5969,8 @@ class FloodlightActivityGroupsResourceApi {
    * - "ASCENDING"
    * - "DESCENDING"
    *
-   * [type] - Retrieve Floodlight activity groups with the specified Floodlight
-   * activity group type.
+   * [type] - Select only floodlight activity groups with the specified
+   * floodlight activity group type.
    * Possible string values are:
    * - "COUNTER"
    * - "SALE"
@@ -6438,7 +6440,7 @@ class LandingPagesResourceApi {
   }
 
   /**
-   * Inserts a new landing page for this campaign.
+   * Inserts a new landing page for the specified campaign.
    *
    * [request] - The metadata request object.
    *
@@ -6488,7 +6490,7 @@ class LandingPagesResourceApi {
   }
 
   /**
-   * Retrieves the list of landing pages for this campaign.
+   * Retrieves the list of landing pages for the specified campaign.
    *
    * Request parameters:
    *
@@ -6965,7 +6967,7 @@ class PlacementGroupsResourceApi {
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [placementGroupType] - Select only placement groups belonging with this
    * group type. A package is a simple group of placements that acts as a single
@@ -6983,18 +6985,18 @@ class PlacementGroupsResourceApi {
    * [pricingTypes] - Select only placement groups with these pricing types.
    *
    * [searchString] - Allows searching for placement groups by name or ID.
-   * Wildcards (*) are allowed. For example, "placement*2010" will return
-   * placement groups with names like "placement group June 2010", "placement
-   * group May 2010" or simply "placements 2010". Most of the searches also add
+   * Wildcards (*) are allowed. For example, "placement*2015" will return
+   * placement groups with names like "placement group June 2015", "placement
+   * group May 2015" or simply "placements 2015". Most of the searches also add
    * wildcards implicitly at the start and the end of the search string. For
    * example, a search string of "placementgroup" will match placement groups
-   * with name "my placementgroup", "placementgroup 2010" or simply
+   * with name "my placementgroup", "placementgroup 2015" or simply
    * "placementgroup".
    *
    * [siteIds] - Select only placement groups that are associated with these
    * sites.
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -7329,21 +7331,21 @@ class PlacementStrategiesResourceApi {
    *
    * [profileId] - User profile ID associated with this request.
    *
-   * [ids] - Set of IDs of specified placement strategies to retrieve.
+   * [ids] - Select only placement strategies with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
-   * are allowed. For example, "placementstrategy*2010" will return objects with
-   * names like "placementstrategy June 2010", "placementstrategy April 2010" or
-   * simply "placementstrategy 2010". Most of the searches also add wildcards
+   * are allowed. For example, "placementstrategy*2015" will return objects with
+   * names like "placementstrategy June 2015", "placementstrategy April 2015" or
+   * simply "placementstrategy 2015". Most of the searches also add wildcards
    * implicitly at the start and the end of the search string. For example, a
    * search string of "placementstrategy" will match objects with name "my
-   * placementstrategy", "placementstrategy 2010" or simply "placementstrategy".
+   * placementstrategy", "placementstrategy 2015" or simply "placementstrategy".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -7690,7 +7692,7 @@ class PlacementsResourceApi {
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [paymentSource] - Select only placements with this payment source.
    * Possible string values are:
@@ -7703,18 +7705,18 @@ class PlacementsResourceApi {
    * [pricingTypes] - Select only placements with these pricing types.
    *
    * [searchString] - Allows searching for placements by name or ID. Wildcards
-   * (*) are allowed. For example, "placement*2010" will return placements with
-   * names like "placement June 2010", "placement May 2010" or simply
-   * "placements 2010". Most of the searches also add wildcards implicitly at
+   * (*) are allowed. For example, "placement*2015" will return placements with
+   * names like "placement June 2015", "placement May 2015" or simply
+   * "placements 2015". Most of the searches also add wildcards implicitly at
    * the start and the end of the search string. For example, a search string of
    * "placement" will match placements with name "my placement", "placement
-   * 2010" or simply "placement".
+   * 2015" or simply "placement".
    *
    * [siteIds] - Select only placements that are associated with these sites.
    *
    * [sizeIds] - Select only placements that are associated with these sizes.
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -8741,11 +8743,11 @@ class SitesResourceApi {
    *
    * [profileId] - User profile ID associated with this request.
    *
-   * [acceptsInStreamVideoPlacements] - Select only sites that accept in-stream
-   * video placements.
+   * [acceptsInStreamVideoPlacements] - This search filter is no longer
+   * supported and will have no effect on the results returned.
    *
-   * [acceptsInterstitialPlacements] - Select only sites that accept
-   * interstitial placements.
+   * [acceptsInterstitialPlacements] - This search filter is no longer supported
+   * and will have no effect on the results returned.
    *
    * [acceptsPublisherPaidPlacements] - Select only sites that accept publisher
    * paid placements.
@@ -8754,24 +8756,24 @@ class SitesResourceApi {
    *
    * [approved] - Select only approved sites.
    *
-   * [campaignIds] - Campaign IDs of sites to retrieve.
+   * [campaignIds] - Select only sites with these campaign IDs.
    *
-   * [directorySiteIds] - Directory site IDs of sites to retrieve.
+   * [directorySiteIds] - Select only sites with these directory site IDs.
    *
-   * [ids] - Set of IDs of specified sites to retrieve.
+   * [ids] - Select only sites with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for objects by name, ID or keyName.
-   * Wildcards (*) are allowed. For example, "site*2010" will return objects
-   * with names like "site June 2010", "site April 2010" or simply "site 2010".
+   * Wildcards (*) are allowed. For example, "site*2015" will return objects
+   * with names like "site June 2015", "site April 2015" or simply "site 2015".
    * Most of the searches also add wildcards implicitly at the start and the end
    * of the search string. For example, a search string of "site" will match
-   * objects with name "my site", "site 2010" or simply "site".
+   * objects with name "my site", "site 2015" or simply "site".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -8781,7 +8783,7 @@ class SitesResourceApi {
    * - "ASCENDING"
    * - "DESCENDING"
    *
-   * [subaccountId] - Subaccount ID of sites to retrieve.
+   * [subaccountId] - Select only sites with this subaccount ID.
    *
    * [unmappedSite] - Select only sites that have not been mapped to a directory
    * site.
@@ -9067,13 +9069,13 @@ class SizesResourceApi {
    *
    * [profileId] - User profile ID associated with this request.
    *
-   * [height] - Height of sizes to retrieve.
+   * [height] - Select only sizes with this height.
    *
-   * [iabStandard] - Whether only IAB standard sizes should be retrieved.
+   * [iabStandard] - Select only IAB standard sizes.
    *
-   * [ids] - Set of IDs of specified sizes to retrieve.
+   * [ids] - Select only sizes with these IDs.
    *
-   * [width] - Width of sizes to retrieve.
+   * [width] - Select only sizes with this width.
    *
    * Completes with a [SizesListResponse].
    *
@@ -9227,21 +9229,21 @@ class SubaccountsResourceApi {
    *
    * [profileId] - User profile ID associated with this request.
    *
-   * [ids] - The set of IDs of the subaccounts to retrieve.
+   * [ids] - Select only subaccounts with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
-   * are allowed. For example, "subaccount*2010" will return objects with names
-   * like "subaccount June 2010", "subaccount April 2010" or simply "subaccount
-   * 2010". Most of the searches also add wildcards implicitly at the start and
+   * are allowed. For example, "subaccount*2015" will return objects with names
+   * like "subaccount June 2015", "subaccount April 2015" or simply "subaccount
+   * 2015". Most of the searches also add wildcards implicitly at the start and
    * the end of the search string. For example, a search string of "subaccount"
-   * will match objects with name "my subaccount", "subaccount 2010" or simply
+   * will match objects with name "my subaccount", "subaccount 2015" or simply
    * "subaccount".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -9640,7 +9642,7 @@ class UserRolePermissionsResourceApi {
    *
    * [profileId] - User profile ID associated with this request.
    *
-   * [ids] - Set of IDs of specified user role permissions to retrieve.
+   * [ids] - Select only user role permissions with these IDs.
    *
    * Completes with a [UserRolePermissionsListResponse].
    *
@@ -9829,23 +9831,23 @@ class UserRolesResourceApi {
    *
    * [profileId] - User profile ID associated with this request.
    *
-   * [accountUserRoleOnly] - If true, select only account level user roles not
-   * associated with any specific subaccount.
+   * [accountUserRoleOnly] - Select only account level user roles not associated
+   * with any specific subaccount.
    *
-   * [ids] - Set of IDs of specified user roles to retrieve.
+   * [ids] - Select only user roles with the specified IDs.
    *
    * [maxResults] - Maximum number of results to return.
    *
-   * [pageToken] - The value of the nextPageToken from the previous result page.
+   * [pageToken] - Value of the nextPageToken from the previous result page.
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
-   * are allowed. For example, "userrole*2010" will return objects with names
-   * like "userrole June 2010", "userrole April 2010" or simply "userrole 2010".
+   * are allowed. For example, "userrole*2015" will return objects with names
+   * like "userrole June 2015", "userrole April 2015" or simply "userrole 2015".
    * Most of the searches also add wildcards implicitly at the start and the end
    * of the search string. For example, a search string of "userrole" will match
-   * objects with name "my userrole", "userrole 2010" or simply "userrole".
+   * objects with name "my userrole", "userrole 2015" or simply "userrole".
    *
-   * [sortField] - The field by which to sort the list.
+   * [sortField] - Field by which to sort the list.
    * Possible string values are:
    * - "ID"
    * - "NAME"
@@ -10014,20 +10016,20 @@ class UserRolesResourceApi {
 
 
 
-/** Not documented yet. */
+/** Contains properties of a DCM account. */
 class Account {
   /** Account permissions assigned to this account. */
   core.List<core.String> accountPermissionIds;
 
   /**
-   * Profile for this account.
+   * Profile for this account. This is a read-only field that can be left blank.
    * Possible string values are:
    * - "ACCOUNT_PROFILE_BASIC"
    * - "ACCOUNT_PROFILE_STANDARD"
    */
   core.String accountProfile;
 
-  /** Active status of this account. */
+  /** Whether this account is active. */
   core.bool active;
 
   /**
@@ -10056,10 +10058,49 @@ class Account {
    */
   core.bool comscoreVceEnabled;
 
-  /** ID of country associated with this account. */
+  /** ID of the country associated with this account. */
   core.String countryId;
 
-  /** ID of currency associated with this account. */
+  /**
+   * ID of currency associated with this account. This is a required field.
+   * Acceptable values are:
+   * - "1" for USD
+   * - "2" for GBP
+   * - "3" for ESP
+   * - "4" for SEK
+   * - "5" for CAD
+   * - "6" for JPY
+   * - "7" for DEM
+   * - "8" for AUD
+   * - "9" for FRF
+   * - "10" for ITL
+   * - "11" for DKK
+   * - "12" for NOK
+   * - "13" for FIM
+   * - "14" for ZAR
+   * - "15" for IEP
+   * - "16" for NLG
+   * - "17" for EUR
+   * - "18" for KRW
+   * - "19" for TWD
+   * - "20" for SGD
+   * - "21" for CNY
+   * - "22" for HKD
+   * - "23" for NZD
+   * - "24" for MYR
+   * - "25" for BRL
+   * - "26" for PTE
+   * - "27" for MXP
+   * - "28" for CLP
+   * - "29" for TRY
+   * - "30" for ARS
+   * - "31" for PEN
+   * - "32" for ILS
+   * - "33" for CHF
+   * - "34" for VEF
+   * - "35" for COP
+   * - "36" for GTQ
+   */
   core.String currencyId;
 
   /** Default placement dimensions for this account. */
@@ -10078,29 +10119,34 @@ class Account {
   core.String kind;
 
   /**
-   * Locale of this account. Supported values:
+   * Locale of this account.
+   * Acceptable values are:
    * - "cs" (Czech)
    * - "de" (German)
    * - "en" (English)
+   * - "en-GB" (English United Kingdom)
    * - "es" (Spanish)
    * - "fr" (French)
    * - "it" (Italian)
    * - "ja" (Japanese)
    * - "ko" (Korean)
    * - "pl" (Polish)
-   * - "pt_BR" (Portuguese Brazil)
+   * - "pt-BR" (Portuguese Brazil)
    * - "ru" (Russian)
    * - "sv" (Swedish)
    * - "tr" (Turkish)
-   * - "zh_CN" (Chinese Simplified)
-   * - "zh_TW" (Chinese Traditional)
+   * - "zh-CN" (Chinese Simplified)
+   * - "zh-TW" (Chinese Traditional)
    */
   core.String locale;
 
   /** Maximum image size allowed for this account. */
   core.String maximumImageSize;
 
-  /** Name of this account. */
+  /**
+   * Name of this account. This is a required field, and must be less than 128
+   * characters long and be globally unique.
+   */
   core.String name;
 
   /**
@@ -10112,7 +10158,10 @@ class Account {
   /** Reporting configuration of this account. */
   ReportsConfiguration reportsConfiguration;
 
-  /** File size limit in kilobytes of Rich Media teaser creatives. */
+  /**
+   * File size limit in kilobytes of Rich Media teaser creatives. Must be
+   * between 1 and 10240.
+   */
   core.String teaserSizeLimit;
 
 
@@ -10242,19 +10291,16 @@ class Account {
 }
 
 
-/** Not documented yet. */
+/** Gets a summary of active ads in an account. */
 class AccountActiveAdSummary {
-  /** ID of this account. This is a read-only, auto-generated field. */
+  /** ID of the account. */
   core.String accountId;
 
-  /**
-   * Ads that have been activated for this account. This is a read-only field.
-   */
+  /** Ads that have been activated for the account */
   core.String activeAds;
 
   /**
-   * Maximum number of active ads allowed for this account. This is a read-only
-   * field.
+   * Maximum number of active ads allowed for the account.
    * Possible string values are:
    * - "ACTIVE_ADS_TIER_100K"
    * - "ACTIVE_ADS_TIER_200K"
@@ -10264,7 +10310,7 @@ class AccountActiveAdSummary {
    */
   core.String activeAdsLimitTier;
 
-  /** Ads that can be activated for this account. This is a read-only field. */
+  /** Ads that can be activated for the account. */
   core.String availableAds;
 
   /**
@@ -10316,20 +10362,22 @@ class AccountActiveAdSummary {
 }
 
 
-/** Not documented yet. */
+/**
+ * AccountPermissions contains information about a particular account
+ * permission. Some features of DCM require an account permission to be present
+ * in the account.
+ */
 class AccountPermission {
   /**
    * Account profiles associated with this account permission.
    *
-   * Acceptable values are:
+   * Possible values are:
    * - "ACCOUNT_PROFILE_BASIC"
    * - "ACCOUNT_PROFILE_STANDARD"
    */
   core.List<core.String> accountProfiles;
 
-  /**
-   * ID of this account permission. This is a read-only, auto-generated field.
-   */
+  /** ID of this account permission. */
   core.String id;
 
   /**
@@ -10401,12 +10449,12 @@ class AccountPermission {
 }
 
 
-/** Not documented yet. */
+/**
+ * AccountPermissionGroups contains a mapping of permission group IDs to names.
+ * A permission group is a grouping of account permissions.
+ */
 class AccountPermissionGroup {
-  /**
-   * ID of this account permission group. This is a read-only, auto-generated
-   * field.
-   */
+  /** ID of this account permission group. */
   core.String id;
 
   /**
@@ -10521,24 +10569,40 @@ class AccountPermissionsListResponse {
 }
 
 
-/** Not documented yet. */
+/**
+ * AccountUserProfiles contains properties of a DCM user profile. This resource
+ * is specifically for managing user profiles, whereas UserProfiles is for
+ * accessing the API.
+ */
 class AccountUserProfile {
-  /** Account ID of the user profile. */
+  /**
+   * Account ID of the user profile. This is a read-only field that can be left
+   * blank.
+   */
   core.String accountId;
 
-  /** Whether this user profile is active. */
+  /**
+   * Whether this user profile is active. This defaults to false, and must be
+   * set true on insert for the user profile to be usable.
+   */
   core.bool active;
 
-  /** Describes which advertisers are visible to the user profile. */
+  /**
+   * Filter that describes which advertisers are visible to the user profile.
+   */
   ObjectFilter advertiserFilter;
 
-  /** Describes which campaigns are visible to the user profile. */
+  /** Filter that describes which campaigns are visible to the user profile. */
   ObjectFilter campaignFilter;
 
   /** Comments for this user profile. */
   core.String comments;
 
-  /** Email of the user profile. */
+  /**
+   * Email of the user profile. The email addresss must be linked to a Google
+   * Account. This field is required on insertion and is read-only after
+   * insertion.
+   */
   core.String email;
 
   /** ID of the user profile. This is a read-only, auto-generated field. */
@@ -10551,32 +10615,41 @@ class AccountUserProfile {
   core.String kind;
 
   /**
-   * Locale of the user profile. Supported values:
+   * Locale of the user profile. This is a required field.
+   * Acceptable values are:
    * - "cs" (Czech)
    * - "de" (German)
    * - "en" (English)
+   * - "en-GB" (English United Kingdom)
    * - "es" (Spanish)
    * - "fr" (French)
    * - "it" (Italian)
    * - "ja" (Japanese)
    * - "ko" (Korean)
    * - "pl" (Polish)
-   * - "pt_BR" (Portuguese Brazil)
+   * - "pt-BR" (Portuguese Brazil)
    * - "ru" (Russian)
    * - "sv" (Swedish)
    * - "tr" (Turkish)
-   * - "zh_CN" (Chinese Simplified)
-   * - "zh_TW" (Chinese Traditional)
+   * - "zh-CN" (Chinese Simplified)
+   * - "zh-TW" (Chinese Traditional)
    */
   core.String locale;
 
-  /** Name of the user profile. */
+  /**
+   * Name of the user profile. This is a required field. Must be less than 64
+   * characters long, must be globally unique, and cannot contain whitespace or
+   * any of the following characters: "&;"#%,".
+   */
   core.String name;
 
-  /** Describes which sites are visible to the user profile. */
+  /** Filter that describes which sites are visible to the user profile. */
   ObjectFilter siteFilter;
 
-  /** Subaccount ID of the user profile. */
+  /**
+   * Subaccount ID of the user profile. This is a read-only field that can be
+   * left blank.
+   */
   core.String subaccountId;
 
   /**
@@ -10589,19 +10662,21 @@ class AccountUserProfile {
   core.String traffickerType;
 
   /**
-   * User type of the user profile. This is a read-only field.
+   * User type of the user profile. This is a read-only field that can be left
+   * blank.
    * Possible string values are:
    * - "INTERNAL_ADMINISTRATOR"
-   * - "MULTIACCOUNT_USER"
    * - "NORMAL_USER"
    * - "SUPER_USER"
    */
   core.String userAccessType;
 
-  /** Describes which user roles are visible to the user profile. */
+  /**
+   * Filter that describes which user roles are visible to the user profile.
+   */
   ObjectFilter userRoleFilter;
 
-  /** User Role ID of the user profile. */
+  /** User role ID of the user profile. This is a required field. */
   core.String userRoleId;
 
 
@@ -10848,15 +10923,17 @@ class Activities {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a DCM ad. */
 class Ad {
-  /** Account ID of this ad. */
+  /**
+   * Account ID of this ad. This is a read-only field that can be left blank.
+   */
   core.String accountId;
 
   /** Whether this ad is active. */
   core.bool active;
 
-  /** Advertiser ID of this ad. This is a required field on creation. */
+  /** Advertiser ID of this ad. This is a required field on insertion. */
   core.String advertiserId;
 
   /**
@@ -10869,12 +10946,12 @@ class Ad {
   core.bool archived;
 
   /**
-   * Applicable when type is AD_SERVING_STANDARD_AD. Audience segment ID that is
-   * being targeted for this ad.
+   * Audience segment ID that is being targeted for this ad. Applicable when
+   * type is AD_SERVING_STANDARD_AD.
    */
   core.String audienceSegmentId;
 
-  /** Campaign ID of this ad. This is a required field on creation. */
+  /** Campaign ID of this ad. This is a required field on insertion. */
   core.String campaignId;
 
   /**
@@ -10884,8 +10961,8 @@ class Ad {
   DimensionValue campaignIdDimensionValue;
 
   /**
-   * Applicable when type is AD_SERVING_CLICK_TRACKER. Click-through URL for
-   * this ad. This is a required field on creation.
+   * Click-through URL for this ad. This is a required field on insertion.
+   * Applicable when type is AD_SERVING_CLICK_TRACKER.
    */
   ClickThroughUrl clickThroughUrl;
 
@@ -10899,11 +10976,11 @@ class Ad {
   core.String comments;
 
   /**
-   * Applicable when type is AD_SERVING_DEFAULT_AD. Compatibility of this ad.
+   * Compatibility of this ad. Applicable when type is AD_SERVING_DEFAULT_AD.
    * WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile
-   * devices for regular or interstitial ads respectively. APP and
+   * devices for regular or interstitial ads, respectively. APP and
    * APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers
-   * to rendering in in-stream video ads developed with the VAST standard.
+   * to rendering an in-stream video ads developed with the VAST standard.
    * Possible string values are:
    * - "APP"
    * - "APP_INTERSTITIAL"
@@ -10913,27 +10990,27 @@ class Ad {
    */
   core.String compatibility;
 
-  /** Ad creation information. */
+  /** Information about the creation of this ad.This is a read-only field. */
   LastModifiedInfo createInfo;
 
   /**
-   * Applicable when type is AD_SERVING_CLICK_TRACKER. Creative group
-   * assignments for this ad. Only one assignment per creative group number is
+   * Creative group assignments for this ad. Applicable when type is
+   * AD_SERVING_CLICK_TRACKER. Only one assignment per creative group number is
    * allowed for a maximum of two assignments.
    */
   core.List<CreativeGroupAssignment> creativeGroupAssignments;
 
   /**
-   * Applicable when type is AD_SERVING_DEFAULT_AD, AD_SERVING_STANDARD_AD, or
-   * AD_SERVING_TRACKING. Creative rotation for this ad. When type is
-   * AD_SERVING_DEFAULT_AD, this field should have exactly one
+   * Creative rotation for this ad. Applicable when type is
+   * AD_SERVING_DEFAULT_AD, AD_SERVING_STANDARD_AD, or AD_SERVING_TRACKING. When
+   * type is AD_SERVING_DEFAULT_AD, this field should have exactly one
    * creativeAssignment.
    */
   CreativeRotation creativeRotation;
 
   /**
-   * Applicable when type is AD_SERVING_STANDARD_AD. Time and day targeting
-   * information for this ad.
+   * Time and day targeting information for this ad. Applicable when type is
+   * AD_SERVING_STANDARD_AD.
    */
   DayPartTargeting dayPartTargeting;
 
@@ -10941,23 +11018,23 @@ class Ad {
   DefaultClickThroughEventTagProperties defaultClickThroughEventTagProperties;
 
   /**
-   * Applicable when type is AD_SERVING_STANDARD_AD or AD_SERVING_TRACKING.
-   * Delivery schedule information for this ad. This field along with subfields
-   * priority and impressionRatio are required on creation when type is
-   * AD_SERVING_STANDARD_AD.
+   * Delivery schedule information for this ad. Applicable when type is
+   * AD_SERVING_STANDARD_AD or AD_SERVING_TRACKING. This field along with
+   * subfields priority and impressionRatio are required on insertion when type
+   * is AD_SERVING_STANDARD_AD.
    */
   DeliverySchedule deliverySchedule;
 
   /**
-   * Applicable when type is AD_SERVING_CLICK_TRACKER. Whether this ad is a
-   * dynamic click tracker. This is a required field on creation, and is
-   * read-only after creation.
+   * Whether this ad is a dynamic click tracker. Applicable when type is
+   * AD_SERVING_CLICK_TRACKER. This is a required field on insert, and is
+   * read-only after insert.
    */
   core.bool dynamicClickTracker;
 
   /**
-   * The date and time that this ad should stop serving. Must be after the start
-   * time. This is a required field on creation.
+   * Date and time that this ad should stop serving. Must be later than the
+   * start time. This is a required field on insertion.
    */
   core.DateTime endTime;
 
@@ -10965,8 +11042,8 @@ class Ad {
   core.List<EventTagOverride> eventTagOverrides;
 
   /**
-   * Applicable when type is AD_SERVING_STANDARD_AD. Geography targeting
-   * information for this ad.
+   * Geographical targeting information for this ad.Applicable when type is
+   * AD_SERVING_STANDARD_AD.
    */
   GeoTargeting geoTargeting;
 
@@ -10980,8 +11057,8 @@ class Ad {
   DimensionValue idDimensionValue;
 
   /**
-   * Applicable when type is AD_SERVING_STANDARD_AD. Key value targeting
-   * information for this ad.
+   * Key-value targeting information for this ad. Applicable when type is
+   * AD_SERVING_STANDARD_AD.
    */
   KeyValueTargetingExpression keyValueTargetingExpression;
 
@@ -10991,10 +11068,16 @@ class Ad {
    */
   core.String kind;
 
-  /** Ad last modification information. */
+  /**
+   * Information about the most recent modification of this ad. This is a
+   * read-only field.
+   */
   LastModifiedInfo lastModifiedInfo;
 
-  /** Name of this ad. */
+  /**
+   * Name of this ad. This is a required field and must be less than 256
+   * characters long.
+   */
   core.String name;
 
   /** Placement assignments for this ad. */
@@ -11006,39 +11089,40 @@ class Ad {
    */
   ListTargetingExpression remarketingListExpression;
 
-  /** Applicable when type is AD_SERVING_DEFAULT_AD. Size of this ad. */
+  /** Size of this ad. Applicable when type is AD_SERVING_DEFAULT_AD. */
   Size size;
 
   /**
-   * Whether this ad is ssl compliant. This is a read-only field derived from
-   * the assigned creatives.
+   * Whether this ad is ssl compliant. This is a read-only field that is
+   * auto-generated when the ad is inserted or updated.
    */
   core.bool sslCompliant;
 
   /**
-   * Whether this ad requires ssl. This is a read-only field derived from the
-   * assigned placements.
+   * Whether this ad requires ssl. This is a read-only field that is
+   * auto-generated when the ad is inserted or updated.
    */
   core.bool sslRequired;
 
   /**
-   * The date and time that this ad should start serving. If creating an ad,
-   * this field must be a time in the future. This is a required field on
-   * creation.
+   * Date and time that this ad should start serving. If creating an ad, this
+   * field must be a time in the future. This is a required field on insertion.
    */
   core.DateTime startTime;
 
-  /** Subaccount ID of this ad. */
+  /**
+   * Subaccount ID of this ad. This is a read-only field that can be left blank.
+   */
   core.String subaccountId;
 
   /**
-   * Applicable when type is AD_SERVING_STANDARD_AD. Technology platform
-   * targeting information for this ad.
+   * Technology platform targeting information for this ad. Applicable when type
+   * is AD_SERVING_STANDARD_AD.
    */
   TechnologyTargeting technologyTargeting;
 
   /**
-   * Type of ad. This is a required field on creation. Note that default ads
+   * Type of ad. This is a required field on insertion. Note that default ads
    * (AD_SERVING_DEFAULT_AD) cannot be created directly (see Creative resource).
    * Possible string values are:
    * - "AD_SERVING_CLICK_TRACKER"
@@ -11328,13 +11412,16 @@ class AdsListResponse {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a DCM advertiser. */
 class Advertiser {
-  /** Account ID of this advertiser. */
+  /**
+   * Account ID of this advertiser.This is a read-only field that can be left
+   * blank.
+   */
   core.String accountId;
 
   /**
-   * The ID of the advertiser group the advertiser belongs to. You can group
+   * ID of the advertiser group this advertiser belongs to. You can group
    * advertisers for reporting purposes, allowing you to see aggregated
    * information for all advertisers in each group.
    */
@@ -11342,13 +11429,13 @@ class Advertiser {
 
   /**
    * Suffix added to click-through URL of ad creative associations under this
-   * advertiser.
+   * advertiser. Must be less than 129 characters long.
    */
   core.String clickThroughUrlSuffix;
 
   /**
-   * The ID of the click-through event tag to apply by default to this
-   * advertiser's campaigns' landing pages.
+   * ID of the click-through event tag to apply by default to the landing pages
+   * of this advertiser's campaigns.
    */
   core.String defaultClickThroughEventTagId;
 
@@ -11358,7 +11445,13 @@ class Advertiser {
   /**
    * Floodlight configuration ID of this advertiser. The floodlight
    * configuration ID will be created automatically, so on insert this field
-   * should be left blank. This field is presently read-only.
+   * should be left blank. This field can be set to another advertiser's
+   * floodlight configuration ID in order to share that advertiser's floodlight
+   * configuration with this advertiser, so long as:
+   * - This advertiser's original floodlight configuration is not already
+   * associated with floodlight activities or floodlight activity groups.
+   * - This advertiser's original floodlight configuration is not already shared
+   * with another advertiser.
    */
   core.String floodlightConfigurationId;
 
@@ -11383,7 +11476,10 @@ class Advertiser {
    */
   core.String kind;
 
-  /** Name of this advertiser. */
+  /**
+   * Name of this advertiser. This is a required field and must be less than 256
+   * characters long and unique among advertisers of the same account.
+   */
   core.String name;
 
   /**
@@ -11394,7 +11490,10 @@ class Advertiser {
    */
   core.String status;
 
-  /** Sub-account ID of this advertiser. */
+  /**
+   * Subaccount ID of this advertiser.This is a read-only field that can be left
+   * blank.
+   */
   core.String subaccountId;
 
 
@@ -11488,9 +11587,15 @@ class Advertiser {
 }
 
 
-/** Not documented yet. */
+/**
+ * Groups advertisers together so that reports can be generated for the entire
+ * group at once.
+ */
 class AdvertiserGroup {
-  /** Account ID of this advertiser group. */
+  /**
+   * Account ID of this advertiser group. This is a read-only field that can be
+   * left blank.
+   */
   core.String accountId;
 
   /**
@@ -11504,7 +11609,11 @@ class AdvertiserGroup {
    */
   core.String kind;
 
-  /** Name of this advertiser group. */
+  /**
+   * Name of this advertiser group. This is a required field and must be less
+   * than 256 characters long and unique among advertiser groups of the same
+   * account.
+   */
   core.String name;
 
 
@@ -11636,7 +11745,11 @@ class AdvertisersListResponse {
 
 /** Audience Segment. */
 class AudienceSegment {
-  /** Percentage allocated to this segment. */
+  /**
+   * Weight allocated to this segment. Must be between 1 and 1000. The weight
+   * assigned will be understood in proportion to the weights assigned to other
+   * segments in the same segment group.
+   */
   core.int allocation;
 
   /**
@@ -11644,7 +11757,10 @@ class AudienceSegment {
    */
   core.String id;
 
-  /** Name of this audience segment. */
+  /**
+   * Name of this audience segment. This is a required field and must be less
+   * than 65 characters long.
+   */
   core.String name;
 
 
@@ -11680,7 +11796,10 @@ class AudienceSegment {
 
 /** Audience Segment Group. */
 class AudienceSegmentGroup {
-  /** Audience segments assigned to this group. */
+  /**
+   * Audience segments assigned to this group. The number of segments must be
+   * between 2 and 100.
+   */
   core.List<AudienceSegment> audienceSegments;
 
   /**
@@ -11689,7 +11808,10 @@ class AudienceSegmentGroup {
    */
   core.String id;
 
-  /** Name of this audience segment group. */
+  /**
+   * Name of this audience segment group. This is a required field and must be
+   * less than 65 characters long.
+   */
   core.String name;
 
 
@@ -11723,16 +11845,15 @@ class AudienceSegmentGroup {
 }
 
 
-/** Not documented yet. */
+/** Contains information about a browser that can be targeted by ads. */
 class Browser {
   /**
    * ID referring to this grouping of browser and version numbers. This is the
-   * ID used for targeting. If not known, this ID will be derived from the
-   * dartId and version numbers.
+   * ID used for targeting.
    */
   core.String browserVersionId;
 
-  /** DART ID of this browser.This is the ID used when generating reports. */
+  /** DART ID of this browser. This is the ID used when generating reports. */
   core.String dartId;
 
   /**
@@ -11742,14 +11863,14 @@ class Browser {
   core.String kind;
 
   /**
-   * Major version number (left-most number) of this browser. For example, for
+   * Major version number (leftmost number) of this browser. For example, for
    * Chrome 5.0.376.86 beta, this field should be set to 5. An asterisk (*) may
    * be used to target any version number, and a question mark (?) may be used
    * to target cases where the version number cannot be identified. For example,
-   * Chrome *.* targets any version of Chrome: 1.2, 2.5, 3.5, etc. Chrome 3.*
-   * targets e.g. Chrome 3.1, 3.5, etc but not 4.0. Firefox ?.? targets cases
-   * where the ad server knows the browser is Firefox but can't tell which
-   * version.
+   * Chrome *.* targets any version of Chrome: 1.2, 2.5, 3.5, and so on. Chrome
+   * 3.* targets Chrome 3.1, 3.5, but not 4.0. Firefox ?.? targets cases where
+   * the ad server knows the browser is Firefox but can't tell which version it
+   * is.
    */
   core.String majorVersion;
 
@@ -11759,9 +11880,9 @@ class Browser {
    * asterisk (*) may be used to target any version number, and a question mark
    * (?) may be used to target cases where the version number cannot be
    * identified. For example, Chrome *.* targets any version of Chrome: 1.2,
-   * 2.5, 3.5, etc. Chrome 3.* targets e.g. Chrome 3.1, 3.5, etc but not 4.0.
+   * 2.5, 3.5, and so on. Chrome 3.* targets Chrome 3.1, 3.5, but not 4.0.
    * Firefox ?.? targets cases where the ad server knows the browser is Firefox
-   * but can't tell which version.
+   * but can't tell which version it is.
    */
   core.String minorVersion;
 
@@ -11853,9 +11974,12 @@ class BrowsersListResponse {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a DCM campaign. */
 class Campaign {
-  /** Account ID of this campaign. */
+  /**
+   * Account ID of this campaign. This is a read-only field that can be left
+   * blank.
+   */
   core.String accountId;
 
   /** Additional creative optimization configurations for the campaign. */
@@ -11864,7 +11988,7 @@ class Campaign {
   /** Advertiser group ID of the associated advertiser. */
   core.String advertiserGroupId;
 
-  /** Advertiser ID of this campaign. */
+  /** Advertiser ID of this campaign. This is a required field. */
   core.String advertiserId;
 
   /**
@@ -11873,32 +11997,39 @@ class Campaign {
    */
   DimensionValue advertiserIdDimensionValue;
 
-  /** Indicates whether this campaign has been archived. */
+  /** Whether this campaign has been archived. */
   core.bool archived;
 
-  /** Audience segment groups assigned to this campaign. */
+  /**
+   * Audience segment groups assigned to this campaign. Cannot have more than
+   * 300 segment groups.
+   */
   core.List<AudienceSegmentGroup> audienceSegmentGroups;
 
   /**
-   * This billing invoice code is included in the DFA client billing invoices in
-   * association with the campaign, along with the advertiser and campaign
-   * names.
+   * Billing invoice code included in the DCM client billing invoices associated
+   * with the campaign.
    */
   core.String billingInvoiceCode;
 
   /** Click-through URL suffix override properties for this campaign. */
   ClickThroughUrlSuffixProperties clickThroughUrlSuffixProperties;
 
-  /** Arbitrary comments about this campaign. */
+  /**
+   * Arbitrary comments about this campaign. Must be less than 256 characters
+   * long.
+   */
   core.String comment;
 
-  /** Enables comScore vCE reports for this campaign. */
+  /** Whether comScore vCE reports are enabled for this campaign. */
   core.bool comscoreVceEnabled;
 
-  /** Campaign creation information. This is a read-only field. */
+  /**
+   * Information about the creation of this campaign. This is a read-only field.
+   */
   LastModifiedInfo createInfo;
 
-  /** List of Creative group IDs that are assigned to the campaign. */
+  /** List of creative group IDs that are assigned to the campaign. */
   core.List<core.String> creativeGroupIds;
 
   /** Creative optimization configuration for the campaign. */
@@ -11908,23 +12039,24 @@ class Campaign {
   DefaultClickThroughEventTagProperties defaultClickThroughEventTagProperties;
 
   /**
-   * Date on which the campaign will stop running. On creation the end date must
-   * be today or a future date. In all cases the end date must come after the
-   * start date. The end date can be the same date as the start date. For
-   * example, if you set 6/25/2010 in both the start and end date, the effective
-   * campaign run date is just 6/25/2010. The hours, minutes and seconds of the
-   * end date should not be set as doing so will result in an error. This is a
-   * required field.
+   * Date on which the campaign will stop running. On insert, the end date must
+   * be today or a future date. The end date must be later than or be the same
+   * as the start date. If, for example, you set 6/25/2015 as both the start and
+   * end dates, the effective campaign run date is just that day only,
+   * 6/25/2015. The hours, minutes, and seconds of the end date should not be
+   * set, as doing so will result in an error. This is a required field.
    */
   core.DateTime endDate;
 
-  /** Overrides can be used to activate/deactivate advertiser event tags. */
+  /**
+   * Overrides that can be used to activate or deactivate advertiser event tags.
+   */
   core.List<EventTagOverride> eventTagOverrides;
 
   /** External ID for this campaign. */
   core.String externalId;
 
-  /** ID of this campaign. This is always auto-generated upon creation. */
+  /** ID of this campaign. This is a read-only auto-generated field. */
   core.String id;
 
   /**
@@ -11939,26 +12071,35 @@ class Campaign {
    */
   core.String kind;
 
-  /** Campaign last modification information. This is a read-only field. */
+  /**
+   * Information about the most recent modification of this campaign. This is a
+   * read-only field.
+   */
   LastModifiedInfo lastModifiedInfo;
 
-  /** Look-back window settings for the campaign. */
+  /** Lookback window settings for the campaign. */
   LookbackConfiguration lookbackConfiguration;
 
-  /** Name of this campaign. */
+  /**
+   * Name of this campaign. This is a required field and must be less than 256
+   * characters long and unique among campaigns of the same advertiser.
+   */
   core.String name;
 
-  /** Enables Nielsen reports for this campaign. */
+  /** Whether Nielsen reports are enabled for this campaign. */
   core.bool nielsenOcrEnabled;
 
   /**
-   * Date on which the campaign will start running. The start date can be any
-   * date. The hours, minutes and seconds of the start date should not be set as
+   * Date on which the campaign starts running. The start date can be any date.
+   * The hours, minutes, and seconds of the start date should not be set, as
    * doing so will result in an error. This is a required field.
    */
   core.DateTime startDate;
 
-  /** Subaccount ID of this campaign. */
+  /**
+   * Subaccount ID of this campaign. This is a read-only field that can be left
+   * blank.
+   */
   core.String subaccountId;
 
   /** Campaign trafficker contact emails. */
@@ -12145,10 +12286,10 @@ class Campaign {
 }
 
 
-/** Not documented yet. */
+/** Identifies a creative which has been associated with a given campaign. */
 class CampaignCreativeAssociation {
   /**
-   * ID of the creative associated with the campaign.This is a required field.
+   * ID of the creative associated with the campaign. This is a required field.
    */
   core.String creativeId;
 
@@ -12273,7 +12414,7 @@ class CampaignsListResponse {
 }
 
 
-/** Not documented yet. */
+/** Describes a change that a user has made to a resource. */
 class ChangeLog {
   /** Account ID of the modified object. */
   core.String accountId;
@@ -12324,7 +12465,7 @@ class ChangeLog {
   /** ID of the user who modified the object. */
   core.String userProfileId;
 
-  /** User profile name of user who modified the object. */
+  /** User profile name of the user who modified the object. */
   core.String userProfileName;
 
 
@@ -12505,7 +12646,7 @@ class CitiesListResponse {
 }
 
 
-/** Not documented yet. */
+/** Contains information about a city that can be targeted by ads. */
 class City {
   /** Country code of the country to which this city belongs. */
   core.String countryCode;
@@ -12618,15 +12759,15 @@ class ClickTag {
   core.String eventName;
 
   /**
-   * Parameter name for specified click tag. For ENHANCED_IMAGE creative assets
-   * this field must match the value of the creative asset's
+   * Parameter name for the specified click tag. For ENHANCED_IMAGE creative
+   * assets, this field must match the value of the creative asset's
    * creativeAssetId.name field.
    */
   core.String name;
 
   /**
-   * Parameter value for specified click tag. This field contains click-through
-   * url.
+   * Parameter value for the specified click tag. This field contains a
+   * click-through url.
    */
   core.String value;
 
@@ -12669,7 +12810,7 @@ class ClickThroughUrl {
    */
   core.String customClickThroughUrl;
 
-  /** Specifies whether the campaign default landing page is used or not. */
+  /** Whether the campaign default landing page is used. */
   core.bool defaultLandingPage;
 
   /**
@@ -12712,7 +12853,8 @@ class ClickThroughUrl {
 /** Click Through URL Suffix settings. */
 class ClickThroughUrlSuffixProperties {
   /**
-   * The click-through URL suffix to apply to all ads in this entity's scope.
+   * Click-through URL suffix to apply to all ads in this entity's scope. Must
+   * be less than 128 characters long.
    */
   core.String clickThroughUrlSuffix;
 
@@ -12866,7 +13008,9 @@ class CompatibleFields {
 }
 
 
-/** Not documented yet. */
+/**
+ * Contains information about a connection type that can be targeted by ads.
+ */
 class ConnectionType {
   /** ID of this connection type. */
   core.String id;
@@ -12992,9 +13136,14 @@ class ContentCategoriesListResponse {
 }
 
 
-/** Not documented yet. */
+/**
+ * Organizes placements according to the contents of their associated webpages.
+ */
 class ContentCategory {
-  /** Account ID of this content category. */
+  /**
+   * Account ID of this content category.This is a read-only field that can be
+   * left blank.
+   */
   core.String accountId;
 
   /** Description of this content category. */
@@ -13011,7 +13160,11 @@ class ContentCategory {
    */
   core.String kind;
 
-  /** Name of this content category. */
+  /**
+   * Name of this content category. This is a required field and must be less
+   * than 256 characters long and unique among content categories of the same
+   * account.
+   */
   core.String name;
 
 
@@ -13093,7 +13246,7 @@ class CountriesListResponse {
 }
 
 
-/** Not documented yet. */
+/** Contains information about a country that can be targeted by ads. */
 class Country {
   /** Country code. */
   core.String countryCode;
@@ -13159,7 +13312,7 @@ class Country {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a Creative. */
 class Creative {
   /**
    * Account ID of this creative. This field, if left unset, will be
@@ -13168,9 +13321,7 @@ class Creative {
    */
   core.String accountId;
 
-  /**
-   * Status indicating creative is active. Applicable to all creative types.
-   */
+  /** Whether the creative is active. Applicable to all creative types. */
   core.bool active;
 
   /**
@@ -13180,10 +13331,11 @@ class Creative {
   core.String adParameters;
 
   /**
-   * Keywords let you customize the creative settings of a Rich Media ad running
-   * on your site without having to contact the advertiser. You can use keywords
-   * to dynamically change the look or functionality of a creative. Applicable
-   * to the following creative types: all RICH_MEDIA, and all VPAID.
+   * Keywords for a Rich Media creative. Keywords let you customize the creative
+   * settings of a Rich Media ad running on your site without having to contact
+   * the advertiser. You can use keywords to dynamically change the look or
+   * functionality of a creative. Applicable to the following creative types:
+   * all RICH_MEDIA, and all VPAID.
    */
   core.List<core.String> adTagKeys;
 
@@ -13194,15 +13346,13 @@ class Creative {
   core.String advertiserId;
 
   /**
-   * Flag indicating if script access is allowed for flash creatives. This is a
-   * read-only and deprecated field which will automatically be set to true on
-   * update. Applicable to the following creative types: FLASH_INPAGE.
+   * Whether script access is allowed for this creative. This is a read-only and
+   * deprecated field which will automatically be set to true on update.
+   * Applicable to the following creative types: FLASH_INPAGE.
    */
   core.bool allowScriptAccess;
 
-  /**
-   * Status indicating creative is archived. Applicable to all creative types.
-   */
+  /** Whether the creative is archived. Applicable to all creative types. */
   core.bool archived;
 
   /**
@@ -13225,8 +13375,8 @@ class Creative {
   core.String authoringTool;
 
   /**
-   * Flag indicating images are automatically advanced for enhanced image
-   * creatives. Applicable to the following creative types: ENHANCED_IMAGE.
+   * Whether images are automatically advanced for enhanced image creatives.
+   * Applicable to the following creative types: ENHANCED_IMAGE.
    */
   core.bool autoAdvanceImages;
 
@@ -13244,13 +13394,13 @@ class Creative {
   core.String backupImageClickThroughUrl;
 
   /**
-   * Feature dependencies are features that a browser must be able to support in
-   * order to render your HTML5 creative asset correctly. If DCM detects that a
-   * browser can't handle one of these features, it sends the backup image
-   * instead. This field is initially auto-generated to contain all features
-   * detected by DCM for all the assets of this creative and can then be
-   * modified by the client. To reset this field copy over all the
-   * creativeAssets' detected features. Applicable to the following creative
+   * List of feature dependencies that will cause a backup image to be served if
+   * the browser that serves the ad does not support them. Feature dependencies
+   * are features that a browser must be able to support in order to render your
+   * HTML5 creative asset correctly. This field is initially auto-generated to
+   * contain all features detected by DCM for all the assets of this creative
+   * and can then be modified by the client. To reset this field, copy over all
+   * the creativeAssets' detected features. Applicable to the following creative
    * types: ENHANCED_BANNER and HTML5_BANNER.
    */
   core.List<core.String> backupImageFeatures;
@@ -13268,17 +13418,17 @@ class Creative {
   TargetWindow backupImageTargetWindow;
 
   /**
-   * For ENHANCED_BANNER, FLASH_INPAGE, and HTML5_BANNER creatives this is a
-   * subset of detected click tags for the assets associated with this creative.
-   * After creating a flash asset, detected click tags will be returned in the
-   * creativeAssetMetadata. When inserting the creative, populate the creative
-   * clickTags field using the creativeAssetMetadata.clickTags field. For
-   * ENHANCED_IMAGE creatives there should be exactly one entry in this list for
-   * each image creative asset. A click tag is matched with a corresponding
-   * creative asset by matching the clickTag.name field with the
-   * creativeAsset.assetIdentifier.name field. Applicable to the following
-   * creative types: ENHANCED_BANNER, ENHANCED_IMAGE, FLASH_INPAGE,
-   * HTML5_BANNER.
+   * Click tags of the creative. For ENHANCED_BANNER, FLASH_INPAGE, and
+   * HTML5_BANNER creatives, this is a subset of detected click tags for the
+   * assets associated with this creative. After creating a flash asset,
+   * detected click tags will be returned in the creativeAssetMetadata. When
+   * inserting the creative, populate the creative clickTags field using the
+   * creativeAssetMetadata.clickTags field. For ENHANCED_IMAGE creatives, there
+   * should be exactly one entry in this list for each image creative asset. A
+   * click tag is matched with a corresponding creative asset by matching the
+   * clickTag.name field with the creativeAsset.assetIdentifier.name field.
+   * Applicable to the following creative types: ENHANCED_BANNER,
+   * ENHANCED_IMAGE, FLASH_INPAGE, HTML5_BANNER.
    */
   core.List<ClickTag> clickTags;
 
@@ -13298,7 +13448,7 @@ class Creative {
   /**
    * Compatibilities associated with this creative. This is a read-only field.
    * WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile
-   * devices for regular or interstitial ads respectively. APP and
+   * devices for regular or interstitial ads, respectively. APP and
    * APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers
    * to rendering in in-stream video ads developed with the VAST standard.
    * Applicable to all creative types.
@@ -13319,8 +13469,9 @@ class Creative {
   core.List<CreativeCustomEvent> counterCustomEvents;
 
   /**
-   * Assets associated with a creative. Applicable to the following creative
-   * types: INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and REDIRECT
+   * Assets associated with a creative. Applicable to all but the following
+   * creative types: INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and
+   * REDIRECT
    */
   core.List<CreativeAsset> creativeAssets;
 
@@ -13331,10 +13482,11 @@ class Creative {
   core.List<CreativeFieldAssignment> creativeFieldAssignments;
 
   /**
-   * Key-values let you customize the creative settings of a Rich Media ad
-   * running on your site without having to contact the advertiser. You can use
-   * key-values to dynamically change the look or functionality of a creative.
-   * Applicable to the following creative types: all RICH_MEDIA, and all VPAID.
+   * Custom key-values for a Rich Media creative. Key-values let you customize
+   * the creative settings of a Rich Media ad running on your site without
+   * having to contact the advertiser. You can use key-values to dynamically
+   * change the look or functionality of a creative. Applicable to the following
+   * creative types: all RICH_MEDIA, and all VPAID.
    */
   core.List<core.String> customKeyValues;
 
@@ -13345,10 +13497,10 @@ class Creative {
   core.List<CreativeCustomEvent> exitCustomEvents;
 
   /**
-   * OpenWindow FSCommand lets the SWF file communicate with either Flash Player
-   * or the program hosting Flash Player, such as a web browser. This is only
-   * triggered if allowScriptAccess field is true. Applicable to the following
-   * creative types: FLASH_INPAGE.
+   * OpenWindow FSCommand of this creative. This lets the SWF file communicate
+   * with either Flash Player or the program hosting Flash Player, such as a web
+   * browser. This is only triggered if allowScriptAccess field is true.
+   * Applicable to the following creative types: FLASH_INPAGE.
    */
   FsCommand fsCommand;
 
@@ -13361,15 +13513,15 @@ class Creative {
   core.String htmlCode;
 
   /**
-   * Flag indicating whether HTML code is DCM generated or manually entered. Set
-   * to true to ignore changes to htmlCode. Applicable to the following creative
-   * types: FLASH_INPAGE and HTML5_BANNER.
+   * Whether HTML code is DCM generated or manually entered. Set to true to
+   * ignore changes to htmlCode. Applicable to the following creative types:
+   * FLASH_INPAGE and HTML5_BANNER.
    */
   core.bool htmlCodeLocked;
 
   /**
-   * ID of this creative. This field is auto-generated during insert operations;
-   * it is required for update operations. Applicable to all creative types.
+   * ID of this creative. This is a read-only, auto-generated field. Applicable
+   * to all creative types.
    */
   core.String id;
 
@@ -13392,15 +13544,15 @@ class Creative {
   LastModifiedInfo lastModifiedInfo;
 
   /**
-   * Latest studio trafficked creative ID associated with rich media and VPAID
+   * Latest Studio trafficked creative ID associated with rich media and VPAID
    * creatives. This is a read-only field. Applicable to the following creative
    * types: all RICH_MEDIA, and all VPAID.
    */
   core.String latestTraffickedCreativeId;
 
   /**
-   * Name of the creative. This is a required field. Applicable to all creative
-   * types.
+   * Name of the creative. This is a required field and must be less than 256
+   * characters long. Applicable to all creative types.
    */
   core.String name;
 
@@ -13455,13 +13607,13 @@ class Creative {
   Size size;
 
   /**
-   * User can choose to skip the creative. Applicable to the following creative
-   * types: INSTREAM_VIDEO.
+   * Whether the user can choose to skip the creative. Applicable to the
+   * following creative types: INSTREAM_VIDEO.
    */
   core.bool skippable;
 
   /**
-   * Status indicating creative is SSL compliant. This is a read-only field.
+   * Whether the creative is SSL-compliant. This is a read-only field.
    * Applicable to all creative types.
    */
   core.bool sslCompliant;
@@ -13495,19 +13647,19 @@ class Creative {
   core.String subaccountId;
 
   /**
-   * Third party URL used to record backup image impressions. Applicable to the
+   * Third-party URL used to record backup image impressions. Applicable to the
    * following creative types: all RICH_MEDIA
    */
   core.String thirdPartyBackupImageImpressionsUrl;
 
   /**
-   * Third party URL used to record rich media impressions. Applicable to the
+   * Third-party URL used to record rich media impressions. Applicable to the
    * following creative types: all RICH_MEDIA
    */
   core.String thirdPartyRichMediaImpressionsUrl;
 
   /**
-   * Third party URLs for tracking in-stream video creative events. Applicable
+   * Third-party URLs for tracking in-stream video creative events. Applicable
    * to the following creative types: INSTREAM_VIDEO and all VPAID.
    */
   core.List<ThirdPartyTrackingUrl> thirdPartyUrls;
@@ -13924,14 +14076,14 @@ class Creative {
 /** Creative Asset. */
 class CreativeAsset {
   /**
-   * Flag indicating ActionScript3 is enabled for the flash asset. This is a
-   * read-only field. Applicable to the following creative types: FLASH_INPAGE
-   * and ENHANCED_BANNER.
+   * Whether ActionScript3 is enabled for the flash asset. This is a read-only
+   * field. Applicable to the following creative types: FLASH_INPAGE and
+   * ENHANCED_BANNER.
    */
   core.bool actionScript3;
 
   /**
-   * Status indicating video asset is active. This is a read-only field for
+   * Whether the video asset is active. This is a read-only field for
    * VPAID_NON_LINEAR assets. Applicable to the following creative types:
    * INSTREAM_VIDEO and all VPAID.
    */
@@ -14003,12 +14155,11 @@ class CreativeAsset {
   core.int customStartTimeValue;
 
   /**
-   * Feature dependencies are features that a browser must be able to support in
-   * order to render your HTML5 creative correctly. If DCM detects that a
-   * browser can't handle one of these features, it sends the backup image
-   * instead. DCM generates this list automatically. This is a read-only field.
-   * Applicable to the following creative types: ENHANCED_BANNER and
-   * HTML5_BANNER.
+   * List of feature dependencies for the creative asset that are detected by
+   * DCM. Feature dependencies are features that a browser must be able to
+   * support in order to render your HTML5 creative correctly. This is a
+   * read-only, auto-generated field. Applicable to the following creative
+   * types: ENHANCED_BANNER and HTML5_BANNER.
    */
   core.List<core.String> detectedFeatures;
 
@@ -14065,20 +14216,20 @@ class CreativeAsset {
   core.int flashVersion;
 
   /**
-   * Hide Flash objects flag for an asset. Applicable to the following creative
-   * types: all RICH_MEDIA.
+   * Whether to hide Flash objects flag for an asset. Applicable to the
+   * following creative types: all RICH_MEDIA.
    */
   core.bool hideFlashObjects;
 
   /**
-   * Hide selection boxes flag for an asset. Applicable to the following
-   * creative types: all RICH_MEDIA.
+   * Whether to hide selection boxes flag for an asset. Applicable to the
+   * following creative types: all RICH_MEDIA.
    */
   core.bool hideSelectionBoxes;
 
   /**
-   * Horizontal lock flag for an asset. This is a read-only field. Applicable to
-   * the following creative types: all RICH_MEDIA.
+   * Wheter the asset is horizontally locked. This is a read-only field.
+   * Applicable to the following creative types: all RICH_MEDIA.
    */
   core.bool horizontallyLocked;
 
@@ -14104,7 +14255,7 @@ class CreativeAsset {
   OffsetPosition offset;
 
   /**
-   * Flag indicating backup asset is original or changed by user in DCM.
+   * Whether the backup asset is original or changed by the user in DCM.
    * Applicable to the following creative types: all RICH_MEDIA.
    */
   core.bool originalBackup;
@@ -14143,10 +14294,10 @@ class CreativeAsset {
   core.String progressiveServingUrl;
 
   /**
-   * Pushdown flag for an asset. Applicable to the following creative types: all
-   * RICH_MEDIA. Additionally, only applicable when the asset offsets are 0, the
-   * collapsedSize.width matches size.width, and the collapsedSize.height is
-   * less than size.height.
+   * Whether the asset pushes down other content. Applicable to the following
+   * creative types: all RICH_MEDIA. Additionally, only applicable when the
+   * asset offsets are 0, the collapsedSize.width matches size.width, and the
+   * collapsedSize.height is less than size.height.
    */
   core.bool pushdown;
 
@@ -14160,12 +14311,32 @@ class CreativeAsset {
   core.double pushdownDuration;
 
   /**
-   * Role of the asset in relation to creative. This is a required field.
-   * Applicable to all but the following creative types: all REDIRECT and
-   * TRACKING_TEXT.
+   * Role of the asset in relation to creative. Applicable to all but the
+   * following creative types: all REDIRECT and TRACKING_TEXT. This is a
+   * required field.
+   * PRIMARY applies to ENHANCED_BANNER, FLASH_INPAGE, HTML5_BANNER, IMAGE,
+   * IMAGE_GALLERY, all RICH_MEDIA (which may contain multiple primary assets),
+   * and all VPAID creatives.
+   * BACKUP_IMAGE applies to ENHANCED_BANNER, FLASH_INPAGE, HTML5_BANNER, all
+   * RICH_MEDIA, and all VPAID creatives.
+   * ADDITIONAL_IMAGE and ADDITIONAL_FLASH apply to FLASH_INPAGE creatives.
+   * OTHER refers to assets from sources other than DCM, such as Studio uploaded
+   * assets, applicable to all RICH_MEDIA and all VPAID creatives.
+   * PARENT_VIDEO refers to videos uploaded by the user in DCM and is applicable
+   * to INSTREAM_VIDEO and VPAID_LINEAR creatives.
+   * TRANSCODED_VIDEO refers to videos transcoded by DCM from PARENT_VIDEO
+   * assets and is applicable to INSTREAM_VIDEO and VPAID_LINEAR creatives.
+   * ALTERNATE_VIDEO refers to the DCM representation of child asset videos from
+   * Studio, and is applicable to VPAID_LINEAR creatives. These cannot be added
+   * or removed within DCM.
+   * For VPAID_LINEAR creatives, PARENT_VIDEO, TRANSCODED_VIDEO and
+   * ALTERNATE_VIDEO assets that are marked active serve as backup in case the
+   * VPAID creative cannot be served. Only PARENT_VIDEO assets can be added or
+   * removed for an INSTREAM_VIDEO or VPAID_LINEAR creative.
    * Possible string values are:
    * - "ADDITIONAL_FLASH"
    * - "ADDITIONAL_IMAGE"
+   * - "ALTERNATE_VIDEO"
    * - "BACKUP_IMAGE"
    * - "OTHER"
    * - "PARENT_VIDEO"
@@ -14185,9 +14356,8 @@ class CreativeAsset {
   Size size;
 
   /**
-   * Status indicating asset is SSL compliant. This is a read-only field.
-   * Applicable to all but the following creative types: all REDIRECT and
-   * TRACKING_TEXT.
+   * Whether the asset is SSL-compliant. This is a read-only field. Applicable
+   * to all but the following creative types: all REDIRECT and TRACKING_TEXT.
    */
   core.bool sslCompliant;
 
@@ -14207,14 +14377,14 @@ class CreativeAsset {
   core.String streamingServingUrl;
 
   /**
-   * Transparency flag for an asset. Applicable to the following creative types:
-   * all RICH_MEDIA. Additionally, only applicable to HTML5 assets.
+   * Whether the asset is transparent. Applicable to the following creative
+   * types: all RICH_MEDIA. Additionally, only applicable to HTML5 assets.
    */
   core.bool transparency;
 
   /**
-   * Vertical lock flag for an asset. This is a read-only field. Applicable to
-   * the following creative types: all RICH_MEDIA.
+   * Whether the asset is vertically locked. This is a read-only field.
+   * Applicable to the following creative types: all RICH_MEDIA.
    */
   core.bool verticallyLocked;
 
@@ -14523,13 +14693,16 @@ class CreativeAsset {
 /** Creative Asset ID. */
 class CreativeAssetId {
   /**
-   * Name of the creative asset. This is a required field while creating an
-   * asset. This field will be the unique asset name after asset creation.
+   * Name of the creative asset. This is a required field while inserting an
+   * asset. After insertion, this assetIdentifier is used to identify the
+   * uploaded asset. Characters in the name must be alphanumeric or one of the
+   * following: ".-_ ". Spaces are allowed.
    */
   core.String name;
 
   /**
-   * Type of asset to upload. This is a required field.
+   * Type of asset to upload. This is a required field. IMAGE is solely used for
+   * IMAGE creatives. Other image assets should use HTML_IMAGE.
    * Possible string values are:
    * - "FLASH"
    * - "HTML"
@@ -14564,9 +14737,13 @@ class CreativeAssetId {
 }
 
 
-/** Not documented yet. */
+/**
+ * CreativeAssets contains properties of a creative asset file which will be
+ * uploaded or has already been uploaded. Refer to the creative sample code for
+ * how to upload assets and insert a creative.
+ */
 class CreativeAssetMetadata {
-  /** ID of the creative asset. This is a required field */
+  /** ID of the creative asset. This is a required field. */
   CreativeAssetId assetIdentifier;
 
   /**
@@ -14576,9 +14753,10 @@ class CreativeAssetMetadata {
   core.List<ClickTag> clickTags;
 
   /**
-   * Feature dependencies are features that a browser must be able to support in
-   * order to render your HTML5 creative correctly. This is a list of features
-   * detected by DCM. This is a read-only auto-generated field.
+   * List of feature dependencies for the creative asset that are detected by
+   * DCM. Feature dependencies are features that a browser must be able to
+   * support in order to render your HTML5 creative correctly. This is a
+   * read-only, auto-generated field.
    */
   core.List<core.String> detectedFeatures;
 
@@ -14590,9 +14768,9 @@ class CreativeAssetMetadata {
 
   /**
    * Rules validated during code generation that generated a warning. This is a
-   * read-only auto-generated field.
+   * read-only, auto-generated field.
    *
-   * Acceptable values are:
+   * Possible values are:
    * - "CLICK_TAG_NON_TOP_LEVEL"
    * - "CLICK_TAG_MISSING"
    * - "CLICK_TAG_MORE_THAN_ONE"
@@ -14670,8 +14848,8 @@ class CreativeAssignment {
 
   /**
    * Whether applicable event tags should fire when this creative assignment is
-   * rendered. If this value is unset when saved, it will default to true for
-   * all creative types EXCEPT for INTERNAL_REDIRECT,
+   * rendered. If this value is unset when the ad is inserted or updated, it
+   * will default to true for all creative types EXCEPT for INTERNAL_REDIRECT,
    * INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO.
    */
   core.bool applyEventTags;
@@ -14692,7 +14870,7 @@ class CreativeAssignment {
    */
   core.List<CreativeGroupAssignment> creativeGroupAssignments;
 
-  /** ID of the creative to be assigned. */
+  /** ID of the creative to be assigned. This is a required field. */
   core.String creativeId;
 
   /**
@@ -14702,14 +14880,14 @@ class CreativeAssignment {
   DimensionValue creativeIdDimensionValue;
 
   /**
-   * The date and time that the assigned creative should stop serving. Must be
-   * after the start time.
+   * Date and time that the assigned creative should stop serving. Must be later
+   * than the start time.
    */
   core.DateTime endTime;
 
   /**
-   * Rich media exit overrides for this creative assignment. Applicable to the
-   * following creative types:
+   * Rich media exit overrides for this creative assignment.
+   * Applicable when the creative type is any of the following:
    * - RICH_MEDIA_INPAGE
    * - RICH_MEDIA_INPAGE_FLOATING
    * - RICH_MEDIA_IM_EXPAND
@@ -14731,12 +14909,12 @@ class CreativeAssignment {
   core.int sequence;
 
   /**
-   * Whether the creative to be assigned is ssl compliant. This is a read-only
-   * field determined from the creative.
+   * Whether the creative to be assigned is SSL-compliant. This is a read-only
+   * field that is auto-generated when the ad is inserted or updated.
    */
   core.bool sslCompliant;
 
-  /** The date and time that the assigned creative should start serving. */
+  /** Date and time that the assigned creative should start serving. */
   core.DateTime startTime;
 
   /**
@@ -14838,10 +15016,10 @@ class CreativeAssignment {
 
 /** Creative Custom Event. */
 class CreativeCustomEvent {
-  /** Status indicating event is active. */
+  /** Whether the event is active. */
   core.bool active;
 
-  /** User entered name for the event. */
+  /** User-entered name for the event. */
   core.String advertiserCustomEventName;
 
   /**
@@ -14854,8 +15032,8 @@ class CreativeCustomEvent {
   core.String advertiserCustomEventType;
 
   /**
-   * Artwork label column is used to link events in DCM back to events in
-   * Studio. This is a required field and should not be modified.
+   * Artwork label column, used to link events in DCM back to events in Studio.
+   * This is a required field and should not be modified after insertion.
    */
   core.String artworkLabel;
 
@@ -14868,14 +15046,17 @@ class CreativeCustomEvent {
    */
   core.String artworkType;
 
-  /** Exit URL of the event. This is only used for exit events. */
+  /** Exit URL of the event. This field is used only for exit events. */
   core.String exitUrl;
 
-  /** ID of this event. This is a required field and should not be modified. */
+  /**
+   * ID of this event. This is a required field and should not be modified after
+   * insertion.
+   */
   core.String id;
 
   /**
-   * Properties for rich media pop-up windows. This is only used for exit
+   * Properties for rich media pop-up windows. This field is used only for exit
    * events.
    */
   PopupWindowProperties popupWindowProperties;
@@ -14892,8 +15073,7 @@ class CreativeCustomEvent {
   core.String targetType;
 
   /**
-   * The reporting ID is used to differentiate multiple videos in a single
-   * creative.
+   * Reporting ID, used to differentiate multiple videos in a single creative.
    */
   core.String videoReportingId;
 
@@ -14970,14 +15150,17 @@ class CreativeCustomEvent {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a creative field. */
 class CreativeField {
-  /** Account ID of this creative field. This field can be left blank. */
+  /**
+   * Account ID of this creative field. This is a read-only field that can be
+   * left blank.
+   */
   core.String accountId;
 
   /**
-   * Advertiser ID of this creative field. This field is only required on
-   * creation.
+   * Advertiser ID of this creative field. This is a required field on
+   * insertion.
    */
   core.String advertiserId;
 
@@ -14997,12 +15180,16 @@ class CreativeField {
   core.String kind;
 
   /**
-   * Name of this creative field. It needs to be less than 256 characters in
-   * length and unique per advertiser.
+   * Name of this creative field. This is a required field and must be less than
+   * 256 characters long and unique among creative fields of the same
+   * advertiser.
    */
   core.String name;
 
-  /** Subaccount ID of this creative field. This field can be left blank. */
+  /**
+   * Subaccount ID of this creative field. This is a read-only field that can be
+   * left blank.
+   */
   core.String subaccountId;
 
 
@@ -15093,7 +15280,7 @@ class CreativeFieldAssignment {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a creative field value. */
 class CreativeFieldValue {
   /**
    * ID of this creative field value. This is a read-only, auto-generated field.
@@ -15233,14 +15420,17 @@ class CreativeFieldsListResponse {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a creative group. */
 class CreativeGroup {
-  /** Account ID of this creative group. This field can be left blank. */
+  /**
+   * Account ID of this creative group. This is a read-only field that can be
+   * left blank.
+   */
   core.String accountId;
 
   /**
-   * Advertiser ID of this creative group. This field is only required on
-   * creation.
+   * Advertiser ID of this creative group. This is a required field on
+   * insertion.
    */
   core.String advertiserId;
 
@@ -15251,10 +15441,10 @@ class CreativeGroup {
   DimensionValue advertiserIdDimensionValue;
 
   /**
-   * The creative group's subgroup. Assign your creative groups to one of the
+   * Subgroup of the creative group. Assign your creative groups to one of the
    * following subgroups in order to filter or manage them more easily. This
-   * field is only required on creation and can't be changed once the creative
-   * group has been created. Here are the supported values:
+   * field is required on insertion and is read-only after insertion.
+   * Acceptable values are:
    * - 1
    * - 2
    */
@@ -15270,12 +15460,16 @@ class CreativeGroup {
   core.String kind;
 
   /**
-   * Name of this creative group. It needs to be less than 256 characters in
-   * length and unique per advertiser.
+   * Name of this creative group. This is a required field and must be less than
+   * 256 characters long and unique among creative groups of the same
+   * advertiser.
    */
   core.String name;
 
-  /** Subaccount ID of this creative group. This field can be left blank. */
+  /**
+   * Subaccount ID of this creative group. This is a read-only field that can be
+   * left blank.
+   */
   core.String subaccountId;
 
 
@@ -15425,12 +15619,15 @@ class CreativeGroupsListResponse {
 /** Creative optimization settings. */
 class CreativeOptimizationConfiguration {
   /**
-   * ID of this creative optimization config. This value is auto-generated when
-   * campaign is saved. It can be null for existing campaigns.
+   * ID of this creative optimization config. This field is auto-generated when
+   * the campaign is inserted or updated. It can be null for existing campaigns.
    */
   core.String id;
 
-  /** Name of this creative optimization config. */
+  /**
+   * Name of this creative optimization config. This is a required field and
+   * must be less than 129 characters long.
+   */
   core.String name;
 
   /** List of optimization activities associated with this configuration. */
@@ -15554,10 +15751,16 @@ class CreativeRotation {
 
 /** Creative Settings */
 class CreativeSettings {
-  /** Header text for iFrames for this site. 2000 character limit. */
+  /**
+   * Header text for iFrames for this site. Must be less than or equal to 2000
+   * characters long.
+   */
   core.String iFrameFooter;
 
-  /** Header text for iFrames for this site. 2000 character limit. */
+  /**
+   * Header text for iFrames for this site. Must be less than or equal to 2000
+   * characters long.
+   */
   core.String iFrameHeader;
 
 
@@ -15839,16 +16042,20 @@ class DayPartTargeting {
   core.List<core.String> daysOfWeek;
 
   /**
-   * Hours of the day when the ad will serve. Supported values: 0 to 23, where 0
-   * is midnight to 1 AM, and 23 is 11 PM to midnight. Can be specified with
-   * days of week, in which case the ad would serve during these hours on the
-   * specified days. For example, if Monday, Wednesday, Friday are the days of
-   * week specified and 9-10am, 3-5pm (hours 9, 15, and 16) is specified, the ad
-   * would serve Monday, Wednesdays, and Fridays at 9-10am and 3-5pm.
+   * Hours of the day when the ad will serve. Must be an integer between 0 and
+   * 23 (inclusive), where 0 is midnight to 1 AM, and 23 is 11 PM to midnight.
+   * Can be specified with days of week, in which case the ad would serve during
+   * these hours on the specified days. For example, if Monday, Wednesday,
+   * Friday are the days of week specified and 9-10am, 3-5pm (hours 9, 15, and
+   * 16) is specified, the ad would serve Monday, Wednesdays, and Fridays at
+   * 9-10am and 3-5pm.
    */
   core.List<core.int> hoursOfDay;
 
-  /** If false, the America/New York time zone applies. */
+  /**
+   * Whether or not to use the user's local time. If false, the America/New York
+   * time zone applies.
+   */
   core.bool userLocalTime;
 
 
@@ -15889,7 +16096,8 @@ class DayPartTargeting {
  */
 class DefaultClickThroughEventTagProperties {
   /**
-   * The click-through event tag to apply to all ads in this entity's scope.
+   * ID of the click-through event tag to apply to all ads in this entity's
+   * scope.
    */
   core.String defaultClickThroughEventTagId;
 
@@ -15927,20 +16135,20 @@ class DefaultClickThroughEventTagProperties {
 /** Delivery Schedule. */
 class DeliverySchedule {
   /**
-   * Limit the number of times an individual user can be served the ad within a
-   * specified period of time.
+   * Limit on the number of times an individual user can be served the ad within
+   * a specified period of time.
    */
   FrequencyCap frequencyCap;
 
   /**
-   * Enable hard cutoff to stop the ad from being served past the end date and
-   * time. If this not enabled, the ad will continue to be served until it has
-   * reached its delivery goals.
+   * Whether or not hard cutoff is enabled. If true, the ad will not serve after
+   * the end date and time. Otherwise the ad will continue to be served until it
+   * has reached its delivery goals.
    */
   core.bool hardCutoff;
 
   /**
-   * The impression ratio for this ad. This determines how often each ad is
+   * Impression ratio for this ad. This ratio determines how often each ad is
    * served relative to the others. For example, if ad A has an impression ratio
    * of 1 and ad B has an impression ratio of 3, then DCM will serve ad B three
    * times as often as ad A. Must be between 1 and 10.
@@ -15948,9 +16156,8 @@ class DeliverySchedule {
   core.String impressionRatio;
 
   /**
-   * The priority of an ad is how it is served in relation to other ads. The
-   * lower the priority number, the greater the priority with which it is
-   * served.
+   * Serving priority of an ad, with respect to other ads. The lower the
+   * priority number, the greater the priority with which it is served.
    * Possible string values are:
    * - "AD_PRIORITY_01"
    * - "AD_PRIORITY_02"
@@ -16354,9 +16561,13 @@ class DimensionValueRequest {
 }
 
 
-/** Not documented yet. */
+/**
+ * DirectorySites contains properties of a website from the Site Directory.
+ * Sites need to be added to an account via the Sites resource before they can
+ * be assigned to a placement.
+ */
 class DirectorySite {
-  /** Active status of this directory site. */
+  /** Whether this directory site is active. */
   core.bool active;
 
   /** Directory site contacts. */
@@ -16365,7 +16576,46 @@ class DirectorySite {
   /** Country ID of this directory site. */
   core.String countryId;
 
-  /** Currency ID of this directory site. */
+  /**
+   * Currency ID of this directory site.
+   * Possible values are:
+   * - "1" for USD
+   * - "2" for GBP
+   * - "3" for ESP
+   * - "4" for SEK
+   * - "5" for CAD
+   * - "6" for JPY
+   * - "7" for DEM
+   * - "8" for AUD
+   * - "9" for FRF
+   * - "10" for ITL
+   * - "11" for DKK
+   * - "12" for NOK
+   * - "13" for FIM
+   * - "14" for ZAR
+   * - "15" for IEP
+   * - "16" for NLG
+   * - "17" for EUR
+   * - "18" for KRW
+   * - "19" for TWD
+   * - "20" for SGD
+   * - "21" for CNY
+   * - "22" for HKD
+   * - "23" for NZD
+   * - "24" for MYR
+   * - "25" for BRL
+   * - "26" for PTE
+   * - "27" for MXP
+   * - "28" for CLP
+   * - "29" for TRY
+   * - "30" for ARS
+   * - "31" for PEN
+   * - "32" for ILS
+   * - "33" for CHF
+   * - "34" for VEF
+   * - "35" for COP
+   * - "36" for GTQ
+   */
   core.String currencyId;
 
   /** Description of this directory site. */
@@ -16516,7 +16766,7 @@ class DirectorySite {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a Site Directory contact. */
 class DirectorySiteContact {
   /** Email address of this directory site contact. */
   core.String email;
@@ -16829,14 +17079,17 @@ class DirectorySitesListResponse {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of an event tag. */
 class EventTag {
-  /** Account ID of this event tag. This field can be left blank. */
+  /**
+   * Account ID of this event tag. This is a read-only field that can be left
+   * blank.
+   */
   core.String accountId;
 
   /**
    * Advertiser ID of this event tag. This field or the campaignId field is
-   * required on creation.
+   * required on insertion.
    */
   core.String advertiserId;
 
@@ -16848,7 +17101,7 @@ class EventTag {
 
   /**
    * Campaign ID of this event tag. This field or the advertiserId field is
-   * required on creation.
+   * required on insertion.
    */
   core.String campaignId;
 
@@ -16873,7 +17126,10 @@ class EventTag {
    */
   core.String kind;
 
-  /** Name of this event tag. */
+  /**
+   * Name of this event tag. This is a required field and must be less than 256
+   * characters long.
+   */
   core.String name;
 
   /**
@@ -16886,29 +17142,33 @@ class EventTag {
   core.String siteFilterType;
 
   /**
-   * Filter list of site ids associated with this event tag. The siteFilterType
-   * determines if this is a whitelist or blacklist filter.
+   * Filter list of site IDs associated with this event tag. The siteFilterType
+   * determines whether this is a whitelist or blacklist filter.
    */
   core.List<core.String> siteIds;
 
-  /** Whether this tag is ssl compliant or not. */
+  /** Whether this tag is SSL-compliant or not. */
   core.bool sslCompliant;
 
   /**
-   * Whether this event tag should fire at all in any case.
+   * Status of this event tag. Must be ENABLED for this event tag to fire. This
+   * is a required field.
    * Possible string values are:
    * - "DISABLED"
    * - "ENABLED"
    */
   core.String status;
 
-  /** Subaccount ID of this event tag. This field can be left blank. */
+  /**
+   * Subaccount ID of this event tag. This is a read-only field that can be left
+   * blank.
+   */
   core.String subaccountId;
 
   /**
    * Event tag type. Can be used to specify whether to use a third-party pixel,
    * a third-party JavaScript URL, or a third-party click-through URL for either
-   * impression or click tracking. This field is required on creation.
+   * impression or click tracking. This is a required field.
    * Possible string values are:
    * - "CLICK_THROUGH_EVENT_TAG"
    * - "IMPRESSION_IMAGE_EVENT_TAG"
@@ -16917,9 +17177,9 @@ class EventTag {
   core.String type;
 
   /**
-   * Payload URL for this event tag. The URL on a click-through should have a
-   * landing page URL appended to the end of it. This field is required on
-   * creation.
+   * Payload URL for this event tag. The URL on a click-through event tag should
+   * have a landing page URL appended to the end of it. This field is required
+   * on insertion.
    */
   core.String url;
 
@@ -17051,7 +17311,7 @@ class EventTagOverride {
   core.bool enabled;
 
   /**
-   * ID of this event tag override. This is always auto-generated upon creation.
+   * ID of this event tag override. This is a read-only, auto-generated field.
    */
   core.String id;
 
@@ -17412,16 +17672,18 @@ class FloodlightActivitiesListResponse {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a Floodlight activity. */
 class FloodlightActivity {
-  /** Account ID of this floodlight activity. */
+  /**
+   * Account ID of this floodlight activity.This is a read-only field that can
+   * be left blank.
+   */
   core.String accountId;
 
   /**
-   * Advertiser ID of this floodlight activity. When creating or updating an
-   * activity, it could be blank in which case the value will be copied over
-   * either from the floodlight activity group's advertiser or the existing
-   * activity's advertiser.
+   * Advertiser ID of this floodlight activity. If this field is left blank, the
+   * value will be copied over either from the activity group's advertiser or
+   * the existing activity's advertiser.
    */
   core.String advertiserId;
 
@@ -17432,9 +17694,7 @@ class FloodlightActivity {
   DimensionValue advertiserIdDimensionValue;
 
   /**
-   * Code type used for cache busting in the generated tag. This is only
-   * applicable for old spotlight tags. New floodlight tags don't really need
-   * this as they are always JavaScript.
+   * Code type used for cache busting in the generated tag.
    * Possible string values are:
    * - "ACTIVE_SERVER_PAGE"
    * - "COLD_FUSION"
@@ -17445,7 +17705,8 @@ class FloodlightActivity {
   core.String cacheBustingType;
 
   /**
-   * Counting methods for conversions for floodlight activity.
+   * Counting method for conversions for this floodlight activity. This is a
+   * required field.
    * Possible string values are:
    * - "ITEMS_SOLD_COUNTING"
    * - "SESSION_COUNTING"
@@ -17458,26 +17719,32 @@ class FloodlightActivity {
   /** Dynamic floodlight tags. */
   core.List<FloodlightActivityDynamicTag> defaultTags;
 
-  /** URL where this tag will be deployed. */
+  /**
+   * URL where this tag will be deployed. If specified, must be less than 256
+   * characters long.
+   */
   core.String expectedUrl;
 
-  /** Floodlight activity group ID of this floodlight activity. */
+  /**
+   * Floodlight activity group ID of this floodlight activity. This is a
+   * required field.
+   */
   core.String floodlightActivityGroupId;
 
   /**
-   * The name of the associated floodlight activity group. This is a read-only
+   * Name of the associated floodlight activity group. This is a read-only
    * field.
    */
   core.String floodlightActivityGroupName;
 
   /**
-   * The tag string of the associated floodlight activity group. This is a
-   * read-only field.
+   * Tag string of the associated floodlight activity group. This is a read-only
+   * field.
    */
   core.String floodlightActivityGroupTagString;
 
   /**
-   * The type of the associated floodlight activity group. This is a read-only
+   * Type of the associated floodlight activity group. This is a read-only
    * field.
    * Possible string values are:
    * - "COUNTER"
@@ -17485,7 +17752,12 @@ class FloodlightActivity {
    */
   core.String floodlightActivityGroupType;
 
-  /** Floodlight configuration ID of this floodlight activity. */
+  /**
+   * Floodlight configuration ID of this floodlight activity. If this field is
+   * left blank, the value will be copied over either from the activity group's
+   * floodlight configuration or from the existing activity's floodlight
+   * configuration.
+   */
   core.String floodlightConfigurationId;
 
   /**
@@ -17508,7 +17780,7 @@ class FloodlightActivity {
    */
   DimensionValue idDimensionValue;
 
-  /** Enable image tag for this activity. */
+  /** Whether the image tag is enabled for this activity. */
   core.bool imageTagEnabled;
 
   /**
@@ -17517,7 +17789,10 @@ class FloodlightActivity {
    */
   core.String kind;
 
-  /** Name of this floodlight activity. */
+  /**
+   * Name of this floodlight activity. This is a required field. Must be less
+   * than 129 characters long and cannot contain quotes.
+   */
   core.String name;
 
   /** General notes or implementation instructions for the tag. */
@@ -17530,20 +17805,23 @@ class FloodlightActivity {
   core.bool secure;
 
   /**
-   * Whether the floodlight activity is ssl compliant. This is a read-only
-   * field, its value detected by the system from tag.
+   * Whether the floodlight activity is SSL-compliant. This is a read-only
+   * field, its value detected by the system from the floodlight tags.
    */
   core.bool sslCompliant;
 
-  /** Indicates floodlight activity must be compliant. */
+  /** Whether this floodlight activity must be SSL-compliant. */
   core.bool sslRequired;
 
-  /** Subaccount ID of this floodlight activity. */
+  /**
+   * Subaccount ID of this floodlight activity.This is a read-only field that
+   * can be left blank.
+   */
   core.String subaccountId;
 
   /**
-   * Tag format type for floodlight activity. If left blank, tag format will
-   * default to HTML.
+   * Tag format type for the floodlight activity. If left blank, the tag format
+   * will default to HTML.
    * Possible string values are:
    * - "HTML"
    * - "XHTML"
@@ -17551,17 +17829,18 @@ class FloodlightActivity {
   core.String tagFormat;
 
   /**
-   * This key-value identifies the floodlight activity. Use a custom value or
-   * leave blank to use the default value based on the activity name. Once you
-   * save the floodlight activity, this value is final. You can't change it
-   * later.
+   * Value of the cat= paramter in the floodlight tag, which the ad servers use
+   * to identify the activity. This is optional: if empty, a new tag string will
+   * be generated for you. This string must be 1 to 8 characters long, with
+   * valid characters being [a-z][A-Z][0-9][-][ _ ]. This tag string must also
+   * be unique among activities of the same activity group. This field is
+   * read-only after insertion.
    */
   core.String tagString;
 
   /**
-   * List of user defined variables used by this conversion tag. These map to
-   * the u[1-20]=" in the tags. Each of these can have a user defined type.
-   *
+   * List of the user-defined variables used by this conversion tag. These map
+   * to the "u[1-20]=" in the tags. Each of these can have a user defined type.
    * Acceptable values are:
    * - "U1"
    * - "U2"
@@ -17809,16 +18088,19 @@ class FloodlightActivityDynamicTag {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a Floodlight activity group. */
 class FloodlightActivityGroup {
-  /** Account ID of this floodlight activity group. */
+  /**
+   * Account ID of this floodlight activity group.This is a read-only field that
+   * can be left blank.
+   */
   core.String accountId;
 
   /**
-   * Advertiser ID of this floodlight activity group. When creating or updating
-   * an activity group, it could be blank in which case the value will be copied
-   * over either from floodlight configuration's advertiser or existing activity
-   * group's advertiser.
+   * Advertiser ID of this floodlight activity group. If this field is left
+   * blank, the value will be copied over either from the floodlight
+   * configuration's advertiser or from the existing activity group's
+   * advertiser.
    */
   core.String advertiserId;
 
@@ -17828,7 +18110,10 @@ class FloodlightActivityGroup {
    */
   DimensionValue advertiserIdDimensionValue;
 
-  /** Floodlight configuration ID of this floodlight activity group. */
+  /**
+   * Floodlight configuration ID of this floodlight activity group. This is a
+   * required field.
+   */
   core.String floodlightConfigurationId;
 
   /**
@@ -17855,23 +18140,32 @@ class FloodlightActivityGroup {
    */
   core.String kind;
 
-  /** Name of this floodlight activity group. */
+  /**
+   * Name of this floodlight activity group. This is a required field. Must be
+   * less than 65 characters long and cannot contain quotes.
+   */
   core.String name;
 
-  /** Subaccount ID of this floodlight activity group. */
+  /**
+   * Subaccount ID of this floodlight activity group. This is a read-only field
+   * that can be left blank.
+   */
   core.String subaccountId;
 
   /**
-   * The value of the type= parameter in the floodlight tag, which the ad
-   * servers use to identify the activity group that the activity belongs to.
-   * This is optional; if empty, a new tag string will be generated for you.
-   * This string must be 1 to 8 characters long, with valid characters being
-   * [a-z][A-Z][0-9][-][ _ ]. You cannot modify this property later.
+   * Value of the type= parameter in the floodlight tag, which the ad servers
+   * use to identify the activity group that the activity belongs to. This is
+   * optional: if empty, a new tag string will be generated for you. This string
+   * must be 1 to 8 characters long, with valid characters being
+   * [a-z][A-Z][0-9][-][ _ ]. This tag string must also be unique among activity
+   * groups of the same floodlight configuration. This field is read-only after
+   * insertion.
    */
   core.String tagString;
 
   /**
-   * The type of floodlight activity group. This can be set on creation only.
+   * The type of floodlight activity group. This is a required field that is
+   * read-only after insertion.
    * Possible string values are:
    * - "COUNTER"
    * - "SALE"
@@ -18010,15 +18304,13 @@ class FloodlightActivityGroupsListResponse {
 
 /** Publisher Dynamic Tag */
 class FloodlightActivityPublisherDynamicTag {
-  /**
-   * Flag to indicate whether this tag is applicable only for click-throughs.
-   */
+  /** Whether this tag is applicable only for click-throughs. */
   core.bool clickThrough;
 
   /**
-   * Directory Site ID of this dynamic tag. This is an alternate write-only
-   * field that can be used as an alternate siteId field. On retrieval only the
-   * siteId field will be populated.
+   * Directory site ID of this dynamic tag. This is a write-only field that can
+   * be used as an alternative to the siteId field. When this resource is
+   * retrieved, only the siteId field will be populated.
    */
   core.String directorySiteId;
 
@@ -18034,9 +18326,7 @@ class FloodlightActivityPublisherDynamicTag {
    */
   DimensionValue siteIdDimensionValue;
 
-  /**
-   * Flag to indicate whether this tag is applicable only for view-throughs.
-   */
+  /** Whether this tag is applicable only for view-throughs. */
   core.bool viewThrough;
 
 
@@ -18088,9 +18378,12 @@ class FloodlightActivityPublisherDynamicTag {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a Floodlight configuration. */
 class FloodlightConfiguration {
-  /** Account ID of this floodlight configuration. */
+  /**
+   * Account ID of this floodlight configuration. This is a read-only field that
+   * can be left blank.
+   */
   core.String accountId;
 
   /**
@@ -18104,21 +18397,19 @@ class FloodlightConfiguration {
    */
   DimensionValue advertiserIdDimensionValue;
 
-  /**
-   * Indicates that the customer agrees on sharing data for the advertiser with
-   * Google Analytics.
-   */
+  /** Whether advertiser data is shared with Google Analytics. */
   core.bool analyticsDataSharingEnabled;
 
   /**
-   * Enable this report to show detailed pathway information on up to 10 of the
-   * most recent ad exposures seen by a user before converting.
+   * Whether the exposure to conversion report is enabled. This report shows
+   * detailed pathway information on up to 10 of the most recent ad exposures
+   * seen by a user before converting.
    */
   core.bool exposureToConversionEnabled;
 
   /**
-   * Choose whether Sunday or Monday will be counted as the first day of the
-   * week in reports.
+   * Day that will be counted as the first day of the week in reports. This is a
+   * required field.
    * Possible string values are:
    * - "MONDAY"
    * - "SUNDAY"
@@ -18143,7 +18434,7 @@ class FloodlightConfiguration {
    */
   core.String kind;
 
-  /** Look-back window settings for this floodlight configuration. */
+  /** Lookback window settings for this floodlight configuration. */
   LookbackConfiguration lookbackConfiguration;
 
   /**
@@ -18159,8 +18450,8 @@ class FloodlightConfiguration {
   OmnitureSettings omnitureSettings;
 
   /**
-   * Indicates floodlight activities owned by this configuration must be
-   * compliant.
+   * Whether floodlight activities owned by this configuration are required to
+   * be SSL-compliant.
    */
   core.bool sslRequired;
 
@@ -18173,7 +18464,10 @@ class FloodlightConfiguration {
    */
   core.List<core.String> standardVariableTypes;
 
-  /** Subaccount ID of this floodlight configuration. */
+  /**
+   * Subaccount ID of this floodlight configuration. This is a read-only field
+   * that can be left blank.
+   */
   core.String subaccountId;
 
   /** Configuration settings for dynamic and image floodlight tags. */
@@ -18512,40 +18806,48 @@ class FsCommand {
 /** Geographical Targeting. */
 class GeoTargeting {
   /**
-   * Cities to be targeted. If targeting a city, do not target or exclude the
-   * country of the city, and do not target the metro or region of the city.
+   * Cities to be targeted. For each city only dartId is required. The other
+   * fields are populated automatically when the ad is inserted or updated. If
+   * targeting a city, do not target or exclude the country of the city, and do
+   * not target the metro or region of the city.
    */
   core.List<City> cities;
 
   /**
    * Countries to be targeted or excluded from targeting, depending on the
-   * setting of the excludeCountries field. If targeting or excluding a country,
-   * do not target regions, cities, metros, or postal codes in the same country.
+   * setting of the excludeCountries field. For each country only dartId is
+   * required. The other fields are populated automatically when the ad is
+   * inserted or updated. If targeting or excluding a country, do not target
+   * regions, cities, metros, or postal codes in the same country.
    */
   core.List<Country> countries;
 
   /**
-   * If true, the countries field refers to countries which will be excluded
-   * from targeting. If false, the countries field refers to countries which are
-   * targeted.
+   * Whether or not to exclude the countries in the countries field from
+   * targeting. If false, the countries field refers to countries which will be
+   * targeted by the ad.
    */
   core.bool excludeCountries;
 
   /**
-   * Metros to be targeted. If targeting a metro, do not target or exclude the
-   * country of the metro.
+   * Metros to be targeted. For each metro only dmaId is required. The other
+   * fields are populated automatically when the ad is inserted or updated. If
+   * targeting a metro, do not target or exclude the country of the metro.
    */
   core.List<Metro> metros;
 
   /**
-   * Postal codes to be targeted. If targeting a postal code, do not target or
-   * exclude the country of the postal code.
+   * Postal codes to be targeted. For each postal code only id is required. The
+   * other fields are populated automatically when the ad is inserted or
+   * updated. If targeting a postal code, do not target or exclude the country
+   * of the postal code.
    */
   core.List<PostalCode> postalCodes;
 
   /**
-   * Regions to be targeted. If targeting a region, do not target or exclude the
-   * country of the region.
+   * Regions to be targeted. For each region only dartId is required. The other
+   * fields are populated automatically when the ad is inserted or updated. If
+   * targeting a region, do not target or exclude the country of the region.
    */
   core.List<Region> regions;
 
@@ -18600,7 +18902,7 @@ class GeoTargeting {
 
 /** Key Value Targeting Expression. */
 class KeyValueTargetingExpression {
-  /** The keyword expression being targeted by the ad. */
+  /** Keyword expression being targeted by the ad. */
   core.String expression;
 
 
@@ -18622,20 +18924,19 @@ class KeyValueTargetingExpression {
 }
 
 
-/** Not documented yet. */
+/**
+ * Contains information about where a user's browser is taken after the user
+ * clicks an ad.
+ */
 class LandingPage {
   /**
-   * If true this landing page will be assigned to any ads or creatives that do
-   * not have a landing page assigned explicitly. You must have one and only one
-   * default landing page per campaign.
+   * Whether or not this landing page will be assigned to any ads or creatives
+   * that do not have a landing page assigned explicitly. Only one default
+   * landing page is allowed per campaign.
    */
   core.bool default_;
 
-  /**
-   * ID of this landing page. If left blank during campaign insert or update
-   * this would be considered a new landing page and a new ID will be
-   * auto-generated. Otherwise, this should refer to a valid landing page ID.
-   */
+  /** ID of this landing page. This is a read-only, auto-generated field. */
   core.String id;
 
   /**
@@ -18644,10 +18945,14 @@ class LandingPage {
    */
   core.String kind;
 
-  /** Name of this landing page. */
+  /**
+   * Name of this landing page. This is a required field. Must be less than 256
+   * characters long, and must be unique among landing pages of the same
+   * campaign.
+   */
   core.String name;
 
-  /** URL of this landing page. */
+  /** URL of this landing page. This is a required field. */
   core.String url;
 
 
@@ -18731,7 +19036,7 @@ class LandingPagesListResponse {
 
 /** Modification timestamp. */
 class LastModifiedInfo {
-  /** Timestamp of last change in milliseconds since epoch. */
+  /** Timestamp of the last change in milliseconds since epoch. */
   core.String time;
 
 
@@ -18755,7 +19060,7 @@ class LastModifiedInfo {
 
 /** Remarketing List Targeting Expression. */
 class ListTargetingExpression {
-  /** The expression describing which lists are being targeted by the ad. */
+  /** Expression describing which lists are being targeted by the ad. */
   core.String expression;
 
 
@@ -18780,18 +19085,18 @@ class ListTargetingExpression {
 /** Lookback configuration settings. */
 class LookbackConfiguration {
   /**
-   * Specify the lookback window, in days, from the last time a given user
-   * clicked on one of your ads. If you enter 0, clicks will not be considered
-   * as triggering events for floodlight tracking. If you leave this field
-   * blank, the default value for your account will be used.
+   * Lookback window, in days, from the last time a given user clicked on one of
+   * your ads. If you enter 0, clicks will not be considered as triggering
+   * events for floodlight tracking. If you leave this field blank, the default
+   * value for your account will be used.
    */
   core.int clickDuration;
 
   /**
-   * Specify the lookback window, in days, from the last time a given user
-   * viewed one of your ads. If you enter 0, impressions will not be considered
-   * as triggering events for floodlight tracking. If you leave this field
-   * blank, the default value for your account will be used.
+   * Lookback window, in days, from the last time a given user viewed one of
+   * your ads. If you enter 0, impressions will not be considered as triggering
+   * events for floodlight tracking. If you leave this field blank, the default
+   * value for your account will be used.
    */
   core.int postImpressionActivitiesDuration;
 
@@ -18853,7 +19158,7 @@ class Metric {
 }
 
 
-/** Not documented yet. */
+/** Contains information about a metro region that can be targeted by ads. */
 class Metro {
   /** Country code of the country to which this metro region belongs. */
   core.String countryCode;
@@ -18866,7 +19171,7 @@ class Metro {
 
   /**
    * DMA ID of this metro region. This is the ID used for targeting and
-   * generating reports.
+   * generating reports, and is equivalent to metro_code.
    */
   core.String dmaId;
 
@@ -18876,7 +19181,7 @@ class Metro {
    */
   core.String kind;
 
-  /** Metro code of this metro region. */
+  /** Metro code of this metro region. This is equivalent to dma_id. */
   core.String metroCode;
 
   /** Name of this metro region. */
@@ -18973,7 +19278,7 @@ class MetrosListResponse {
 }
 
 
-/** Not documented yet. */
+/** Contains information about a mobile carrier that can be targeted by ads. */
 class MobileCarrier {
   /** Country code of the country to which this mobile carrier belongs. */
   core.String countryCode;
@@ -19164,14 +19469,13 @@ class OffsetPosition {
 /** Omniture Integration Settings. */
 class OmnitureSettings {
   /**
-   * Allows a user to indicate whether they will be sending placement cost data
-   * to Omniture. This property can be enable only when the "Omniture
-   * Integration" property is enabled.
+   * Whether placement cost data will be sent to Omniture. This property can be
+   * enabled only if omnitureIntegrationEnabled is true.
    */
   core.bool omnitureCostDataEnabled;
 
   /**
-   * Allows the user to integrate Omniture. This property can be enabled only
+   * Whether Omniture integration is enabled. This property can be enabled only
    * when the "Advanced Ad Serving" account setting is enabled.
    */
   core.bool omnitureIntegrationEnabled;
@@ -19201,7 +19505,9 @@ class OmnitureSettings {
 }
 
 
-/** Not documented yet. */
+/**
+ * Contains information about an operating system that can be targeted by ads.
+ */
 class OperatingSystem {
   /** DART ID of this operating system. This is the ID used for targeting. */
   core.String dartId;
@@ -19264,7 +19570,10 @@ class OperatingSystem {
 }
 
 
-/** Not documented yet. */
+/**
+ * Contains information about a particular version of an operating system that
+ * can be targeted by ads.
+ */
 class OperatingSystemVersion {
   /** ID of this operating system version. */
   core.String id;
@@ -19275,7 +19584,7 @@ class OperatingSystemVersion {
    */
   core.String kind;
 
-  /** Major version (left-most number) of this operating system version. */
+  /** Major version (leftmost number) of this operating system version. */
   core.String majorVersion;
 
   /**
@@ -19413,7 +19722,10 @@ class OperatingSystemsListResponse {
 
 /** Creative optimization activity. */
 class OptimizationActivity {
-  /** Floodlight activity ID of this optimization activity. */
+  /**
+   * Floodlight activity ID of this optimization activity. This is a required
+   * field.
+   */
   core.String floodlightActivityId;
 
   /**
@@ -19423,9 +19735,9 @@ class OptimizationActivity {
   DimensionValue floodlightActivityIdDimensionValue;
 
   /**
-   * Weight associated with this optimization. Any number greater than one is
-   * acceptable. The weight assigned will be understood in proportion to the
-   * weights assigned to the other optimization activities.
+   * Weight associated with this optimization. Must be greater than 1. The
+   * weight assigned will be understood in proportion to the weights assigned to
+   * the other optimization activities.
    */
   core.int weight;
 
@@ -19538,7 +19850,7 @@ class PathToConversionReportCompatibleFields {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a placement. */
 class Placement {
   /** Account ID of this placement. This field can be left blank. */
   core.String accountId;
@@ -19552,11 +19864,11 @@ class Placement {
    */
   DimensionValue advertiserIdDimensionValue;
 
-  /** The archived status for this placement. */
+  /** Whether this placement is archived. */
   core.bool archived;
 
   /**
-   * Campaign ID of this placement. This field is only required on creation.
+   * Campaign ID of this placement. This field is a required field on insertion.
    */
   core.String campaignId;
 
@@ -19571,10 +19883,10 @@ class Placement {
 
   /**
    * Placement compatibility. WEB and WEB_INTERSTITIAL refer to rendering either
-   * on desktop or on mobile devices for regular or interstitial ads
+   * on desktop or on mobile devices for regular or interstitial ads,
    * respectively. APP and APP_INTERSTITIAL are for rendering in mobile
    * apps.IN_STREAM_VIDEO refers to rendering in in-stream video ads developed
-   * with the VAST standard. This field is required on creation.
+   * with the VAST standard. This field is required on insertion.
    * Possible string values are:
    * - "APP"
    * - "APP_INTERSTITIAL"
@@ -19587,13 +19899,16 @@ class Placement {
   /** ID of the content category assigned to this placement. */
   core.String contentCategoryId;
 
-  /** Placement creation information. This is a read-only field. */
+  /**
+   * Information about the creation of this placement. This is a read-only
+   * field.
+   */
   LastModifiedInfo createInfo;
 
   /**
-   * Directory site ID of this placement. On insert you can specify this field
-   * or the siteId field to specify the site associated with this placement.
-   * This can't be changed once the placement has been created.
+   * Directory site ID of this placement. On insert, you must set either this
+   * field or the siteId field to specify the site associated with this
+   * placement. This is a required field that is read-only after insertion.
    */
   core.String directorySiteId;
 
@@ -19624,31 +19939,37 @@ class Placement {
    */
   core.String kind;
 
-  /** Placement last modification information. This is a read-only field. */
+  /**
+   * Information about the most recent modification of this placement. This is a
+   * read-only field.
+   */
   LastModifiedInfo lastModifiedInfo;
 
-  /** Look-back window settings for this placement. */
+  /** Lookback window settings for this placement. */
   LookbackConfiguration lookbackConfiguration;
 
-  /** Name of this placement. */
+  /**
+   * Name of this placement.This is a required field and must be less than 256
+   * characters long.
+   */
   core.String name;
 
   /**
-   * The payment approval status for this placement. This is a read-only field
-   * relevant only to publisher paid placements.
+   * Whether payment was approved for this placement. This is a read-only field
+   * relevant only to publisher-paid placements.
    */
   core.bool paymentApproved;
 
   /**
-   * Payment source for this placement. This field can only be set during
-   * placement creation, and is required.
+   * Payment source for this placement. This is a required field that is
+   * read-only after insertion.
    * Possible string values are:
    * - "PLACEMENT_AGENCY_PAID"
    * - "PLACEMENT_PUBLISHER_PAID"
    */
   core.String paymentSource;
 
-  /** ID of this placement's group. */
+  /** ID of this placement's group, if applicable. */
   core.String placementGroupId;
 
   /**
@@ -19661,30 +19982,29 @@ class Placement {
   core.String placementStrategyId;
 
   /**
-   * Pricing schedule of this placement. This field is required on creation,
+   * Pricing schedule of this placement. This field is required on insertion,
    * specifically subfields startDate, endDate and pricingType.
    */
   PricingSchedule pricingSchedule;
 
   /**
-   * Primary placement of a roadblock placement group. You can't change this
-   * field from true to false. Setting this field to true will automatically
-   * modify the primary field on original primary placement and will
-   * automatically modify the parent roadblock's primaryPlacementId field.
+   * Whether this placement is the primary placement of a roadblock (placement
+   * group). You cannot change this field from true to false. Setting this field
+   * to true will automatically set the primary field on the original primary
+   * placement of the roadblock to false, and it will automatically set the
+   * roadblock's primaryPlacementId field to the ID of this placement.
    */
   core.bool primary;
 
   /**
-   * Placement publisher last modification information. This is a read-only
-   * field.
+   * Information about the last publisher update. This is a read-only field.
    */
   LastModifiedInfo publisherUpdateInfo;
 
   /**
-   * Site ID associated with this placement. On insert you can specify this
+   * Site ID associated with this placement. On insert, you must set either this
    * field or the directorySiteId field to specify the site associated with this
-   * placement. This can't be changed once the placement has been created. This
-   * field is required on creation.
+   * placement. This is a required field that is read-only after insertion.
    */
   core.String siteId;
 
@@ -19695,16 +20015,17 @@ class Placement {
   DimensionValue siteIdDimensionValue;
 
   /**
-   * Size associated with this placement. When inserting or updating a placement
-   * only the size ID field is used. This field is required on creation.
+   * Size associated with this placement. When inserting or updating a
+   * placement, only the size ID field is used. This field is required on
+   * insertion.
    */
   Size size;
 
-  /** Whether creatives assigned to this placement must be SSL compliant. */
+  /** Whether creatives assigned to this placement must be SSL-compliant. */
   core.bool sslRequired;
 
   /**
-   * Third party placement status.
+   * Third-party placement status.
    * Possible string values are:
    * - "ACKNOWLEDGE_ACCEPTANCE"
    * - "ACKNOWLEDGE_REJECTION"
@@ -19720,8 +20041,7 @@ class Placement {
 
   /**
    * Tag formats to generate for this placement. This field is required on
-   * creation.
-   *
+   * insertion.
    * Acceptable values are:
    * - "PLACEMENT_TAG_STANDARD"
    * - "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
@@ -19979,7 +20299,7 @@ class PlacementAssignment {
    */
   core.bool active;
 
-  /** ID of the placement to be assigned. */
+  /** ID of the placement to be assigned. This is a required field. */
   core.String placementId;
 
   /**
@@ -19989,8 +20309,8 @@ class PlacementAssignment {
   DimensionValue placementIdDimensionValue;
 
   /**
-   * Whether the placement to be assigned requires ssl. This is a read only
-   * field determined from the placement.
+   * Whether the placement to be assigned requires SSL. This is a read-only
+   * field that is auto-generated when the ad is inserted or updated.
    */
   core.bool sslRequired;
 
@@ -20031,12 +20351,18 @@ class PlacementAssignment {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a package or roadblock. */
 class PlacementGroup {
-  /** Account ID of this placement group. This field can be left blank. */
+  /**
+   * Account ID of this placement group. This is a read-only field that can be
+   * left blank.
+   */
   core.String accountId;
 
-  /** Advertiser ID of this placement group. This field can be left blank. */
+  /**
+   * Advertiser ID of this placement group. This is a required field on
+   * insertion.
+   */
   core.String advertiserId;
 
   /**
@@ -20045,12 +20371,11 @@ class PlacementGroup {
    */
   DimensionValue advertiserIdDimensionValue;
 
-  /** The archived status for this placement group. */
+  /** Whether this placement group is archived. */
   core.bool archived;
 
   /**
-   * Campaign ID of this placement group. This field is only required on
-   * creation.
+   * Campaign ID of this placement group. This field is required on insertion.
    */
   core.String campaignId;
 
@@ -20062,7 +20387,7 @@ class PlacementGroup {
 
   /**
    * IDs of placements which are assigned to this placement group. This is a
-   * read-only field.
+   * read-only, auto-generated field.
    */
   core.List<core.String> childPlacementIds;
 
@@ -20072,14 +20397,17 @@ class PlacementGroup {
   /** ID of the content category assigned to this placement group. */
   core.String contentCategoryId;
 
-  /** Placement group creation information. This is a read-only field. */
+  /**
+   * Information about the creation of this placement group. This is a read-only
+   * field.
+   */
   LastModifiedInfo createInfo;
 
   /**
-   * Directory site ID associated with this placement group. On insert you can
-   * specify this field or the site_id field to specify the site associated with
-   * this placement group. This can't be changed once the placement group has
-   * been created.
+   * Directory site ID associated with this placement group. On insert, you must
+   * set either this field or the site_id field to specify the site associated
+   * with this placement group. This is a required field that is read-only after
+   * insertion.
    */
   core.String directorySiteId;
 
@@ -20107,19 +20435,25 @@ class PlacementGroup {
    */
   core.String kind;
 
-  /** Placement group last modification information. */
+  /**
+   * Information about the most recent modification of this placement group.
+   * This is a read-only field.
+   */
   LastModifiedInfo lastModifiedInfo;
 
-  /** Name of this placement group. */
+  /**
+   * Name of this placement group. This is a required field and must be less
+   * than 256 characters long.
+   */
   core.String name;
 
   /**
    * Type of this placement group. A package is a simple group of placements
    * that acts as a single pricing point for a group of tags. A roadblock is a
-   * group of placements that not only acts as a single pricing point but also
+   * group of placements that not only acts as a single pricing point, but also
    * assumes that all the tags in it will be served at the same time. A
    * roadblock requires one of its assigned placements to be marked as primary
-   * for reporting. This field is required on creation.
+   * for reporting. This field is required on insertion.
    * Possible string values are:
    * - "PLACEMENT_PACKAGE"
    * - "PLACEMENT_ROADBLOCK"
@@ -20131,14 +20465,14 @@ class PlacementGroup {
 
   /**
    * Pricing schedule of this placement group. This field is required on
-   * creation.
+   * insertion.
    */
   PricingSchedule pricingSchedule;
 
   /**
-   * ID of primary placement is used to calculate the media cost of a roadblock
-   * placement group. Modifying this field will automatically modify the primary
-   * field on all affected roadblock child placements.
+   * ID of the primary placement, used to calculate the media cost of a
+   * roadblock (placement group). Modifying this field will automatically modify
+   * the primary field on all affected roadblock child placements.
    */
   core.String primaryPlacementId;
 
@@ -20148,17 +20482,14 @@ class PlacementGroup {
    */
   DimensionValue primaryPlacementIdDimensionValue;
 
-  /**
-   * Whether group is programmatic. If programmatic, it also has other fields
-   * programmatic fields.
-   */
+  /** Settings for a programmatic placement. */
   ProgrammaticSetting programmaticSetting;
 
   /**
-   * Site ID associated with this placement group. On insert you can specify
-   * this field or the directorySiteId field to specify the site associated with
-   * this placement group. This can't be changed once the placement group has
-   * been created. This field is required on creation.
+   * Site ID associated with this placement group. On insert, you must set
+   * either this field or the directorySiteId field to specify the site
+   * associated with this placement group. This is a required field that is
+   * read-only after insertion.
    */
   core.String siteId;
 
@@ -20168,7 +20499,10 @@ class PlacementGroup {
    */
   DimensionValue siteIdDimensionValue;
 
-  /** Subaccount ID of this placement group. This field can be left blank. */
+  /**
+   * Subaccount ID of this placement group. This is a read-only field that can
+   * be left blank.
+   */
   core.String subaccountId;
 
 
@@ -20436,9 +20770,12 @@ class PlacementStrategiesListResponse {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a placement strategy. */
 class PlacementStrategy {
-  /** Account ID of this placement strategy. */
+  /**
+   * Account ID of this placement strategy.This is a read-only field that can be
+   * left blank.
+   */
   core.String accountId;
 
   /**
@@ -20452,7 +20789,11 @@ class PlacementStrategy {
    */
   core.String kind;
 
-  /** Name of this placement strategy. */
+  /**
+   * Name of this placement strategy. This is a required field. Must be less
+   * than 256 characters long and unique among placement strategies of the same
+   * account.
+   */
   core.String name;
 
 
@@ -20606,7 +20947,7 @@ class PlacementsListResponse {
 }
 
 
-/** Not documented yet. */
+/** Contains information about a platform type that can be targeted by ads. */
 class PlatformType {
   /** ID of this platform type. */
   core.String id;
@@ -20695,7 +21036,10 @@ class PopupWindowProperties {
    */
   Size dimension;
 
-  /** Returns upper left corner coordinates if positionType is COORDINATES. */
+  /**
+   * Upper-left corner coordinates of the popup window. Applicable if
+   * positionType is COORDINATES.
+   */
   OffsetPosition offset;
 
   /**
@@ -20706,19 +21050,19 @@ class PopupWindowProperties {
    */
   core.String positionType;
 
-  /** Displays browser address bar. */
+  /** Whether to display the browser address bar. */
   core.bool showAddressBar;
 
-  /** Displays browser menu bar. */
+  /** Whether to display the browser menu bar. */
   core.bool showMenuBar;
 
-  /** Displays browser scroll bar. */
+  /** Whether to display the browser scroll bar. */
   core.bool showScrollBar;
 
-  /** Displays browser status bar. */
+  /** Whether to display the browser status bar. */
   core.bool showStatusBar;
 
-  /** Displays browser tool bar. */
+  /** Whether to display the browser tool bar. */
   core.bool showToolBar;
 
   /** Title of popup window. */
@@ -20791,7 +21135,7 @@ class PopupWindowProperties {
 }
 
 
-/** Not documented yet. */
+/** Contains information about a postal code that can be targeted by ads. */
 class PostalCode {
   /** Country code of the country to which this postal code belongs. */
   core.String countryCode;
@@ -20892,23 +21236,22 @@ class PricingSchedule {
    */
   core.String capCostOption;
 
-  /** Setting to true will mean cap costs are ignored by ad serving. */
+  /** Whether cap costs are ignored by ad serving. */
   core.bool disregardOverdelivery;
 
   /**
-   * Placement end date. This date can not be after the campaign end date. In
-   * addition, the end date must come after the placement start date. The end
-   * date can be the same date as the start date. For example, if you set
-   * 6/25/2010 in both the start and end date, the effective placement date is
-   * just 6/25/2010. The hours, minutes and seconds of the end date should not
-   * be set as doing so will result in an error. This field is required on
-   * creation.
+   * Placement end date. This date must be later than or be the same day as the
+   * placement start date, but not later than the campaign end date. If, for
+   * example, you set 6/25/2015 as both the start and end dates, the effective
+   * placement date is just that day only, 6/25/2015. The hours, minutes, and
+   * seconds of the end date should not be set, as doing so will result in an
+   * error. This field is required on insertion.
    */
   core.DateTime endDate;
 
   /**
-   * Turns on/off flighting for this placement. Pricing periods will be computed
-   * automatically.
+   * Whether this placement is flighted. If true, pricing periods will be
+   * computed automatically.
    */
   core.bool flighted;
 
@@ -20922,7 +21265,7 @@ class PricingSchedule {
   core.List<PricingSchedulePricingPeriod> pricingPeriods;
 
   /**
-   * Placement pricing type. This field is required on creation.
+   * Placement pricing type. This field is required on insertion.
    * Possible string values are:
    * - "PRICING_TYPE_CPA"
    * - "PRICING_TYPE_CPC"
@@ -20933,15 +21276,15 @@ class PricingSchedule {
   core.String pricingType;
 
   /**
-   * Placement start date. This date can not be before the campaign start date.
-   * The hours, minutes and seconds of the start date should not be set as doing
-   * so will result in an error. This field is required on creation.
+   * Placement start date. This date cannot be earlier than the campaign start
+   * date. The hours, minutes, and seconds of the start date should not be set,
+   * as doing so will result in an error. This field is required on insertion.
    */
   core.DateTime startDate;
 
   /**
-   * Test start date of this placement. The hours, minutes and seconds of the
-   * start date should not be set as doing so will result in an error.
+   * Testing start date of this placement. The hours, minutes, and seconds of
+   * the start date should not be set, as doing so will result in an error.
    */
   core.DateTime testingStartDate;
 
@@ -21015,12 +21358,13 @@ class PricingSchedule {
 /** Pricing Period */
 class PricingSchedulePricingPeriod {
   /**
-   * Placement period end date. This date can not be before the placement period
-   * start date. In addition, this date can not be after the placement end date.
-   * The period end date can be the same date as the period start date. For
-   * example, if you set 6/25/2010 in both the start and end date, the effective
-   * placement period date is just 6/25/2010. The hours, minutes and seconds of
-   * the end date should not be set as doing so will result in an error.
+   * Pricing period end date. This date must be later than or be the same day as
+   * the pricing period start date, but not later than the placement end date.
+   * The period end date can be the same date as the period start date. If, for
+   * example, you set 6/25/2015 as both the start and end dates, the effective
+   * pricing period date is just that day only, 6/25/2015. The hours, minutes,
+   * and seconds of the end date should not be set, as doing so will result in
+   * an error.
    */
   core.DateTime endDate;
 
@@ -21031,9 +21375,9 @@ class PricingSchedulePricingPeriod {
   core.String rateOrCostNanos;
 
   /**
-   * Placement period start date. This date can not be before the placement
-   * start date. The hours, minutes and seconds of the start date should not be
-   * set as doing so will result in an error.
+   * Pricing period start date. This date cannot be earlier than the placement
+   * start date. The hours, minutes, and seconds of the start date should not be
+   * set, as doing so will result in an error.
    */
   core.DateTime startDate;
 
@@ -21085,10 +21429,10 @@ class PricingSchedulePricingPeriod {
 
 /** Programmatic Setting */
 class ProgrammaticSetting {
-  /** Adx Deal IDs assigned to placement */
+  /** Adx deal IDs assigned to the placement. */
   core.List<core.String> adxDealIds;
 
-  /** Insertion Order ID */
+  /** Insertion order ID. */
   core.String insertionOrderId;
 
   /**
@@ -21100,10 +21444,10 @@ class ProgrammaticSetting {
   /** Media cost for the programmatic placement. */
   core.String mediaCostNanos;
 
-  /** Programmatic */
+  /** Whether programmatic is enabled. */
   core.bool programmatic;
 
-  /** Trafficker emails assigned to placement */
+  /** Trafficker emails assigned to the placement. */
   core.List<core.String> traffickerEmails;
 
 
@@ -21292,7 +21636,7 @@ class Recipient {
 }
 
 
-/** Not documented yet. */
+/** Contains information about a region that can be targeted by ads. */
 class Region {
   /** Country code of the country to which this region belongs. */
   core.String countryCode;
@@ -22241,7 +22585,7 @@ class Report {
    */
   ReportSchedule schedule;
 
-  /** The subbaccount ID to which this report belongs if applicable. */
+  /** The subaccount ID to which this report belongs if applicable. */
   core.String subAccountId;
 
   /**
@@ -22512,13 +22856,35 @@ class ReportList {
 
 /** Reporting Configuration */
 class ReportsConfiguration {
-  /** Enable premium path to conversion report. */
+  /**
+   * Whether the exposure to conversion report is enabled. This report shows
+   * detailed pathway information on up to 10 of the most recent ad exposures
+   * seen by a user before converting.
+   */
   core.bool exposureToConversionEnabled;
 
-  /** Default look-back windows for new advertisers in this account. */
+  /** Default lookback windows for new advertisers in this account. */
   LookbackConfiguration lookbackConfiguration;
 
-  /** Report generation time zone ID of this account. */
+  /**
+   * Report generation time zone ID of this account. This is a required field
+   * that can only be changed by a superuser.
+   * Acceptable values are:
+   *
+   * - "1" for "America/New_York"
+   * - "2" for "Europe/London"
+   * - "3" for "Europe/Paris"
+   * - "4" for "Africa/Johannesburg"
+   * - "5" for "Asia/Jerusalem"
+   * - "6" for "Asia/Shanghai"
+   * - "7" for "Asia/Hong_Kong"
+   * - "8" for "Asia/Tokyo"
+   * - "9" for "Australia/Sydney"
+   * - "10" for "Asia/Dubai"
+   * - "11" for "America/Los_Angeles"
+   * - "12" for "Pacific/Auckland"
+   * - "13" for "America/Sao_Paulo"
+   */
   core.String reportGenerationTimeZoneId;
 
 
@@ -22555,7 +22921,7 @@ class ReportsConfiguration {
 /** Rich Media Exit Override. */
 class RichMediaExitOverride {
   /**
-   * The click-through URL to override the default exit URL. Applicable if the
+   * Click-through URL to override the default exit URL. Applicable if the
    * useCustomExitUrl field is set to true.
    */
   core.String customExitUrl;
@@ -22597,17 +22963,19 @@ class RichMediaExitOverride {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of a site. */
 class Site {
-  /** Account ID of this site. This field can be left blank. */
+  /**
+   * Account ID of this site. This is a read-only field that can be left blank.
+   */
   core.String accountId;
 
-  /** Site approval status. */
+  /** Whether this site is approved. */
   core.bool approved;
 
   /**
-   * Directory site associated with this site. This field can only be set on
-   * site creation.
+   * Directory site associated with this site. This is a required field that is
+   * read-only after insertion.
    */
   core.String directorySiteId;
 
@@ -22635,7 +23003,13 @@ class Site {
    */
   core.String kind;
 
-  /** Name of this site. */
+  /**
+   * Name of this site.This is a required field. Must be less than 128
+   * characters long. If this site is under a subaccount, the name must be
+   * unique among sites of the same subaccount. Otherwise, this site is a
+   * top-level site, and the name must be unique among top-level sites of the
+   * same account.
+   */
   core.String name;
 
   /** Site contacts. */
@@ -22644,7 +23018,10 @@ class Site {
   /** Site-wide settings. */
   SiteSettings siteSettings;
 
-  /** Subaccount ID of this site. This field can be left blank. */
+  /**
+   * Subaccount ID of this site. This is a read-only field that can be left
+   * blank.
+   */
   core.String subaccountId;
 
 
@@ -22742,7 +23119,7 @@ class SiteContact {
    */
   core.String contactType;
 
-  /** Email address of this site contact. */
+  /** Email address of this site contact. This is a required field. */
   core.String email;
 
   /** First name of this site contact. */
@@ -22799,19 +23176,19 @@ class SiteContact {
 
 /** Site Settings */
 class SiteSettings {
-  /** Disable active view creatives for this site. */
+  /** Whether active view creatives are disabled for this site. */
   core.bool activeViewOptOut;
 
   /** Site-wide creative settings. */
   CreativeSettings creativeSettings;
 
-  /** Disable brand safe ads for this site. */
+  /** Whether brand safe ads are disabled for this site. */
   core.bool disableBrandSafeAds;
 
-  /** Do not set new cookies for this site. */
+  /** Whether new cookies are disabled for this site. */
   core.bool disableNewCookie;
 
-  /** Look-back window settings for this site. */
+  /** Lookback window settings for this site. */
   LookbackConfiguration lookbackConfiguration;
 
   /** Configuration settings for dynamic and image floodlight tags. */
@@ -22911,7 +23288,9 @@ class SitesListResponse {
 }
 
 
-/** Not documented yet. */
+/**
+ * Represents the dimensions of ads, placements, creatives, or creative assets.
+ */
 class Size {
   /** Height of this size. */
   core.int height;
@@ -23059,12 +23438,15 @@ class SortedDimension {
 }
 
 
-/** Subaccount */
+/** Contains properties of a DCM subaccount. */
 class Subaccount {
-  /** ID of the account that contains this subaccount. */
+  /**
+   * ID of the account that contains this subaccount. This is a read-only field
+   * that can be left blank.
+   */
   core.String accountId;
 
-  /** The available user role permissions for this subaccount. */
+  /** IDs of the available user role permissions for this subaccount. */
   core.List<core.String> availablePermissionIds;
 
   /** ID of this subaccount. This is a read-only, auto-generated field. */
@@ -23076,7 +23458,10 @@ class Subaccount {
    */
   core.String kind;
 
-  /** Name of this subaccount. */
+  /**
+   * Name of this subaccount. This is a required field. Must be less than 128
+   * characters long and be unique among subaccounts of the same account.
+   */
   core.String name;
 
 
@@ -23245,7 +23630,12 @@ class TagData {
 
 /** Tag Settings */
 class TagSetting {
-  /** Additional key-values to be included in tags. */
+  /**
+   * Additional key-values to be included in tags. Each key-value pair must be
+   * of the form key=value, and pairs must be separated by a semicolon (;). Keys
+   * and values must not contain commas. For example, id=2;color=red is a valid
+   * value for this field.
+   */
   core.String additionalKeyValues;
 
   /**
@@ -23259,8 +23649,8 @@ class TagSetting {
 
   /**
    * Option specifying how keywords are embedded in ad tags. This setting can be
-   * used to specify if keyword placeholders are inserted in placement tags for
-   * this site. Publishers can then add keywords to those placeholders.
+   * used to specify whether keyword placeholders are inserted in placement tags
+   * for this site. Publishers can then add keywords to those placeholders.
    * Possible string values are:
    * - "GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD"
    * - "IGNORE"
@@ -23307,13 +23697,10 @@ class TagSetting {
 
 /** Dynamic and Image Tag Settings. */
 class TagSettings {
-  /**
-   * True if dynamic floodlight tags are enabled. False if the dynamic
-   * floodlight tags are not enabled.
-   */
+  /** Whether dynamic floodlight tags are enabled. */
   core.bool dynamicTagEnabled;
 
-  /** True if image tags are enabled. False if image tags are not enabled. */
+  /** Whether image tags are enabled. */
   core.bool imageTagEnabled;
 
 
@@ -23343,12 +23730,12 @@ class TagSettings {
 
 /** Target Window. */
 class TargetWindow {
-  /** User entered value. */
+  /** User-entered value. */
   core.String customHtml;
 
   /**
-   * Types of browser window of which backup image of the flash creative can be
-   * displayed.
+   * Type of browser window for which the backup image of the flash creative can
+   * be displayed.
    * Possible string values are:
    * - "CURRENT_WINDOW"
    * - "CUSTOM"
@@ -23384,44 +23771,50 @@ class TargetWindow {
 /** Technology Targeting. */
 class TechnologyTargeting {
   /**
-   * Browsers that this ad targets. For write operations, either set the
-   * browserVersionId, or set the dartId along with the version numbers. If both
-   * are specified, only the browserVersionId will be used.
+   * Browsers that this ad targets. For each browser either set browserVersionId
+   * or dartId along with the version numbers. If both are specified, only
+   * browserVersionId will be used.The other fields are populated automatically
+   * when the ad is inserted or updated.
    */
   core.List<Browser> browsers;
 
   /**
-   * Connection types that this ad targets. For write operations, only the id
-   * field is required.
+   * Connection types that this ad targets. For each connection type only id is
+   * required.The other fields are populated automatically when the ad is
+   * inserted or updated.
    */
   core.List<ConnectionType> connectionTypes;
 
   /**
-   * Mobile carriers that this ad targets. For write operations, only the id
-   * field is required. If targeting a mobile carrier, do not set any geographic
-   * targeting.
+   * Mobile carriers that this ad targets. For each mobile carrier only id is
+   * required, and the other fields are populated automatically when the ad is
+   * inserted or updated. If targeting a mobile carrier, do not set targeting
+   * for any zip codes.
    */
   core.List<MobileCarrier> mobileCarriers;
 
   /**
    * Operating system versions that this ad targets. To target all versions, use
-   * operatingSystems. For write operations, only the id field is required. If
-   * targeting an operating system version, do not set targeting for the
-   * corresponding operating system.
+   * operatingSystems. For each operating system version, only id is required.
+   * The other fields are populated automatically when the ad is inserted or
+   * updated. If targeting an operating system version, do not set targeting for
+   * the corresponding operating system in operatingSystems.
    */
   core.List<OperatingSystemVersion> operatingSystemVersions;
 
   /**
    * Operating systems that this ad targets. To target specific versions, use
-   * operatingSystemVersions. For write operations, only the dartId field is
-   * required. If targeting an operating system, do not set targeting for
+   * operatingSystemVersions. For each operating system only dartId is required.
+   * The other fields are populated automatically when the ad is inserted or
+   * updated. If targeting an operating system, do not set targeting for
    * operating system versions for the same operating system.
    */
   core.List<OperatingSystem> operatingSystems;
 
   /**
    * Platform types that this ad targets. For example, desktop, mobile, or
-   * tablet. For write operations, only the id field is required.
+   * tablet. For each platform type, only id is required, and the other fields
+   * are populated automatically when the ad is inserted or updated.
    */
   core.List<PlatformType> platformTypes;
 
@@ -23474,10 +23867,10 @@ class TechnologyTargeting {
 }
 
 
-/** Third Party Tracking URL. */
+/** Third-party Tracking URL. */
 class ThirdPartyTrackingUrl {
   /**
-   * Third party URL type for in-stream video creatives.
+   * Third-party URL type for in-stream video creatives.
    * Possible string values are:
    * - "CLICK_TRACKING"
    * - "IMPRESSION"
@@ -23499,7 +23892,7 @@ class ThirdPartyTrackingUrl {
    */
   core.String thirdPartyUrlType;
 
-  /** URL for specified third party URL type. */
+  /** URL for the specified third-party URL type. */
   core.String url;
 
 
@@ -23530,7 +23923,7 @@ class ThirdPartyTrackingUrl {
 /** User Defined Variable configuration. */
 class UserDefinedVariableConfiguration {
   /**
-   * The data type for the variable.
+   * Data type for the variable. This is a required field.
    * Possible string values are:
    * - "NUMBER"
    * - "STRING"
@@ -23538,13 +23931,14 @@ class UserDefinedVariableConfiguration {
   core.String dataType;
 
   /**
-   * An optional user friendly name for the variable. This will appear in the
-   * reports.
+   * User-friendly name for the variable which will appear in reports. This is a
+   * required field, must be less than 65 characters long, and cannot contain
+   * the following characters: """.
    */
   core.String reportName;
 
   /**
-   * The variable.
+   * Variable name in the tag. This is a required field.
    * Possible string values are:
    * - "U1"
    * - "U10"
@@ -23729,9 +24123,12 @@ class UserProfileList {
 }
 
 
-/** Not documented yet. */
+/** Contains properties of auser role, which is used to manage user access. */
 class UserRole {
-  /** Account ID of this user role. */
+  /**
+   * Account ID of this user role. This is a read-only field that can be left
+   * blank.
+   */
   core.String accountId;
 
   /**
@@ -23750,16 +24147,28 @@ class UserRole {
    */
   core.String kind;
 
-  /** Name of this user role. */
+  /**
+   * Name of this user role. This is a required field. Must be less than 256
+   * characters long. If this user role is under a subaccount, the name must be
+   * unique among sites of the same subaccount. Otherwise, this user role is a
+   * top-level user role, and the name must be unique among top-level user roles
+   * of the same account.
+   */
   core.String name;
 
-  /** Parent user role ID of this user role. */
+  /**
+   * ID of the user role that this user role is based on or copied from. This is
+   * a required field.
+   */
   core.String parentUserRoleId;
 
   /** List of permissions associated with this user role. */
   core.List<UserRolePermission> permissions;
 
-  /** Subaccount ID of this user role. */
+  /**
+   * Subaccount ID of this user role. This is a read-only field that can be left
+   * blank.
+   */
   core.String subaccountId;
 
 
@@ -23823,7 +24232,7 @@ class UserRole {
 }
 
 
-/** UserRolePermission */
+/** Contains properties of a user role permission. */
 class UserRolePermission {
   /**
    * Levels of availability for a user role permission.
@@ -23836,9 +24245,7 @@ class UserRolePermission {
    */
   core.String availability;
 
-  /**
-   * ID of this user role permission. This is a read-only, auto-generated field.
-   */
+  /** ID of this user role permission. */
   core.String id;
 
   /**
@@ -23896,11 +24303,9 @@ class UserRolePermission {
 }
 
 
-/** Not documented yet. */
+/** Represents a grouping of related user role permissions. */
 class UserRolePermissionGroup {
-  /**
-   * ID of this user role permission. This is a read-only,auto-generated field.
-   */
+  /** ID of this user role permission. */
   core.String id;
 
   /**

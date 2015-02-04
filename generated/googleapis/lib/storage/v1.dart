@@ -557,6 +557,8 @@ class BucketsResourceApi {
    * [pageToken] - A previously-returned page token representing part of the
    * larger set of results to view.
    *
+   * [prefix] - Filter results to buckets whose names begin with this prefix.
+   *
    * [projection] - Set of properties to return. Defaults to noAcl.
    * Possible string values are:
    * - "full" : Include all properties.
@@ -570,7 +572,7 @@ class BucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Buckets> list(core.String project, {core.int maxResults, core.String pageToken, core.String projection}) {
+  async.Future<Buckets> list(core.String project, {core.int maxResults, core.String pageToken, core.String prefix, core.String projection}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -587,6 +589,9 @@ class BucketsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (prefix != null) {
+      _queryParams["prefix"] = [prefix];
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];

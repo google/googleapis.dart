@@ -20,7 +20,7 @@
     "description": "The Google Compute Engine Instance Group Updater API provides services for updating groups of Compute Engine Instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/AT-fnbTxTHlPDlbWlx4KZrEt53M\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/zq1ELAUSRTf6GroUeKO0EqW62AQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -113,6 +113,9 @@
                         }
                     },
                     "path": "{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/cancel",
+                    "response": {
+                        "$ref": "Operation"
+                    },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/replicapool"
@@ -186,7 +189,7 @@
                         "$ref": "RollingUpdate"
                     },
                     "response": {
-                        "$ref": "InsertResponse"
+                        "$ref": "Operation"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
@@ -202,22 +205,27 @@
                         "zone"
                     ],
                     "parameters": {
+                        "filter": {
+                            "description": "Optional. Filter expression for filtering listed resources.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "instanceGroupManager": {
-                            "description": "The name of the instance group manager.",
+                            "description": "The name of the instance group manager used for filtering.",
                             "location": "query",
                             "type": "string"
                         },
                         "maxResults": {
-                            "default": "50",
-                            "description": "Maximum count of results to be returned. Acceptable values are 1 to 100, inclusive. (Default: 50)",
-                            "format": "int32",
+                            "default": "500",
+                            "description": "Optional. Maximum count of results to be returned. Maximum value is 500 and default value is 500.",
+                            "format": "uint32",
                             "location": "query",
-                            "maximum": "100",
-                            "minimum": "1",
+                            "maximum": "500",
+                            "minimum": "0",
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Set this to the nextPageToken value returned by a previous list request to obtain the next page of results from the previous list request.",
+                            "description": "Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -255,17 +263,22 @@
                         "rollingUpdate"
                     ],
                     "parameters": {
-                        "maxResults": {
-                            "default": "50",
-                            "description": "Maximum count of results to be returned. Acceptable values are 1 to 100, inclusive. (Default: 50)",
-                            "format": "int32",
+                        "filter": {
+                            "description": "Optional. Filter expression for filtering listed resources.",
                             "location": "query",
-                            "maximum": "100",
-                            "minimum": "1",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "Optional. Maximum count of results to be returned. Maximum value is 500 and default value is 500.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Set this to the nextPageToken value returned by a previous list request to obtain the next page of results from the previous list request.",
+                            "description": "Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.",
                             "location": "query",
                             "type": "string"
                         },
@@ -330,6 +343,9 @@
                         }
                     },
                     "path": "{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/pause",
+                    "response": {
+                        "$ref": "Operation"
+                    },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/replicapool"
@@ -366,6 +382,9 @@
                         }
                     },
                     "path": "{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/resume",
+                    "response": {
+                        "$ref": "Operation"
+                    },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/replicapool"
@@ -402,6 +421,52 @@
                         }
                     },
                     "path": "{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/rollback",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/replicapool"
+                    ]
+                }
+            }
+        },
+        "zoneOperations": {
+            "methods": {
+                "get": {
+                    "description": "Retrieves the specified zone-specific operation resource.",
+                    "httpMethod": "GET",
+                    "id": "replicapoolupdater.zoneOperations.get",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "operation"
+                    ],
+                    "parameters": {
+                        "operation": {
+                            "description": "Name of the operation resource to return.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Name of the project scoping this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "Name of the zone scoping this request.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/operations/{operation}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/replicapool"
@@ -410,24 +475,40 @@
             }
         }
     },
-    "revision": "20141227",
+    "revision": "20150115",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
-        "InsertResponse": {
-            "description": "Response returned by Insert method.",
-            "id": "InsertResponse",
-            "properties": {
-                "rollingUpdate": {
-                    "description": "The name of the update.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "InstanceUpdate": {
             "description": "Update of a single instance.",
             "id": "InstanceUpdate",
             "properties": {
+                "error": {
+                    "description": "Errors that occurred during the instance update. Setting (api.field).field_number manually is a workaround for b/16512602.",
+                    "properties": {
+                        "errors": {
+                            "description": "[Output Only] The array of errors encountered while processing this operation.",
+                            "items": {
+                                "properties": {
+                                    "code": {
+                                        "description": "[Output Only] The error type identifier for this error.",
+                                        "type": "string"
+                                    },
+                                    "location": {
+                                        "description": "[Output Only] Indicates the field in the request which caused the error. This property is optional.",
+                                        "type": "string"
+                                    },
+                                    "message": {
+                                        "description": "[Output Only] An optional, human-readable error message.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                },
                 "instance": {
                     "description": "URL of the instance being updated.",
                     "type": "string"
@@ -466,20 +547,177 @@
             },
             "type": "object"
         },
+        "Operation": {
+            "description": "An operation resource, used to manage asynchronous API requests.",
+            "id": "Operation",
+            "properties": {
+                "clientOperationId": {
+                    "type": "string"
+                },
+                "creationTimestamp": {
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format (output only).",
+                    "type": "string"
+                },
+                "endTime": {
+                    "type": "string"
+                },
+                "error": {
+                    "description": "[Output Only] If errors occurred during processing of this operation, this field will be populated.",
+                    "properties": {
+                        "errors": {
+                            "description": "[Output Only] The array of errors encountered while processing this operation.",
+                            "items": {
+                                "properties": {
+                                    "code": {
+                                        "description": "[Output Only] The error type identifier for this error.",
+                                        "type": "string"
+                                    },
+                                    "location": {
+                                        "description": "[Output Only] Indicates the field in the request which caused the error. This property is optional.",
+                                        "type": "string"
+                                    },
+                                    "message": {
+                                        "description": "[Output Only] An optional, human-readable error message.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                },
+                "httpErrorMessage": {
+                    "type": "string"
+                },
+                "httpErrorStatusCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "id": {
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "insertTime": {
+                    "description": "[Output Only] The time that this operation was requested. This is in RFC 3339 format.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "replicapoolupdater#operation",
+                    "description": "[Output Only] Type of the resource. Always kind#operation for Operation resources.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "[Output Only] Name of the resource (output only).",
+                    "type": "string"
+                },
+                "operationType": {
+                    "type": "string"
+                },
+                "progress": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "region": {
+                    "description": "[Output Only] URL of the region where the operation resides (output only).",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server defined URL for the resource.",
+                    "type": "string"
+                },
+                "startTime": {
+                    "description": "[Output Only] The time that this operation was started by the server. This is in RFC 3339 format.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "[Output Only] Status of the operation. Can be one of the following: \"PENDING\", \"RUNNING\", or \"DONE\".",
+                    "type": "string"
+                },
+                "statusMessage": {
+                    "description": "[Output Only] An optional textual description of the current status of the operation.",
+                    "type": "string"
+                },
+                "targetId": {
+                    "description": "[Output Only] Unique target id which identifies a particular incarnation of the target.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "targetLink": {
+                    "description": "[Output Only] URL of the resource the operation is mutating (output only).",
+                    "type": "string"
+                },
+                "user": {
+                    "type": "string"
+                },
+                "warnings": {
+                    "items": {
+                        "properties": {
+                            "code": {
+                                "description": "[Output only] The warning type identifier for this warning.",
+                                "type": "string"
+                            },
+                            "data": {
+                                "description": "[Output only] Metadata for this warning in key:value format.",
+                                "items": {
+                                    "properties": {
+                                        "key": {
+                                            "description": "[Output Only] Metadata key for this warning.",
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "description": "[Output Only] Metadata value for this warning.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "message": {
+                                "description": "[Output only] Optional human-readable details for this warning.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "zone": {
+                    "description": "[Output Only] URL of the zone where the operation resides (output only).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "RollingUpdate": {
             "description": "Resource describing a single update (rollout) of a group of instances to the given template.",
             "id": "RollingUpdate",
             "properties": {
+                "actionType": {
+                    "description": "Action to be performed for each instance. Possible values are:  \n- \"RECREATE\": Instance will be recreated. Only for managed instance groups. \n- \"REBOOT\": Soft reboot will be performed on an instance. Only for non-managed instance groups.",
+                    "type": "string"
+                },
                 "creationTimestamp": {
                     "description": "[Output Only] Creation timestamp in RFC3339 text format.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "An optional textual description of the resource; provided by the client when the resource is created.",
                     "type": "string"
                 },
                 "id": {
                     "description": "[Output Only] Unique identifier for the resource; defined by the server.",
                     "type": "string"
                 },
+                "instanceGroup": {
+                    "description": "URL of an instance group being updated. Exactly one of instance_group_manager and instance_group must be set.",
+                    "type": "string"
+                },
                 "instanceGroupManager": {
-                    "description": "URL of an instance group manager being updated.",
+                    "description": "URL of an instance group manager being updated. Exactly one of instance_group_manager and instance_group must be set.",
                     "type": "string"
                 },
                 "instanceTemplate": {

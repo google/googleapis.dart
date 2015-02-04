@@ -29,7 +29,7 @@
     "description": "View and manage your Google Analytics data",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/analytics/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/di5CV00BXsFLkasXWC9r5t6-kNE\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/nUC94EULkGtP_87573JbcAx06B0\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/analytics-16.png",
         "x32": "https://www.google.com/images/icons/product/analytics-32.png"
@@ -609,6 +609,428 @@
                                 "https://www.googleapis.com/auth/analytics",
                                 "https://www.googleapis.com/auth/analytics.edit",
                                 "https://www.googleapis.com/auth/analytics.readonly"
+                            ]
+                        }
+                    }
+                },
+                "customDimensions": {
+                    "methods": {
+                        "get": {
+                            "description": "Get a custom dimension to which the user has access.",
+                            "httpMethod": "GET",
+                            "id": "analytics.management.customDimensions.get",
+                            "parameterOrder": [
+                                "accountId",
+                                "webPropertyId",
+                                "customDimensionId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Account ID for the custom dimension to retrieve.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "customDimensionId": {
+                                    "description": "The ID of the custom dimension to retrieve.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "webPropertyId": {
+                                    "description": "Web property ID for the custom dimension to retrieve.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}",
+                            "response": {
+                                "$ref": "CustomDimension"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/analytics.edit",
+                                "https://www.googleapis.com/auth/analytics.readonly"
+                            ]
+                        },
+                        "insert": {
+                            "description": "Create a new custom dimension.",
+                            "httpMethod": "POST",
+                            "id": "analytics.management.customDimensions.insert",
+                            "parameterOrder": [
+                                "accountId",
+                                "webPropertyId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Account ID for the custom dimension to create.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "webPropertyId": {
+                                    "description": "Web property ID for the custom dimension to create.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions",
+                            "request": {
+                                "$ref": "CustomDimension"
+                            },
+                            "response": {
+                                "$ref": "CustomDimension"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/analytics.edit"
+                            ]
+                        },
+                        "list": {
+                            "description": "Lists custom dimensions to which the user has access.",
+                            "httpMethod": "GET",
+                            "id": "analytics.management.customDimensions.list",
+                            "parameterOrder": [
+                                "accountId",
+                                "webPropertyId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Account ID for the custom dimensions to retrieve.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "max-results": {
+                                    "description": "The maximum number of custom dimensions to include in this response.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "start-index": {
+                                    "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "minimum": "1",
+                                    "type": "integer"
+                                },
+                                "webPropertyId": {
+                                    "description": "Web property ID for the custom dimensions to retrieve.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions",
+                            "response": {
+                                "$ref": "CustomDimensions"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/analytics",
+                                "https://www.googleapis.com/auth/analytics.readonly"
+                            ]
+                        },
+                        "patch": {
+                            "description": "Updates an existing custom dimension. This method supports patch semantics.",
+                            "httpMethod": "PATCH",
+                            "id": "analytics.management.customDimensions.patch",
+                            "parameterOrder": [
+                                "accountId",
+                                "webPropertyId",
+                                "customDimensionId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Account ID for the custom dimension to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "customDimensionId": {
+                                    "description": "Custom dimension ID for the custom dimension to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "ignoreCustomDataSourceLinks": {
+                                    "default": "false",
+                                    "description": "Force the update and ignore any warnings related to the custom dimension being linked to a custom data source / data set.",
+                                    "location": "query",
+                                    "type": "boolean"
+                                },
+                                "webPropertyId": {
+                                    "description": "Web property ID for the custom dimension to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}",
+                            "request": {
+                                "$ref": "CustomDimension"
+                            },
+                            "response": {
+                                "$ref": "CustomDimension"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/analytics.edit"
+                            ]
+                        },
+                        "update": {
+                            "description": "Updates an existing custom dimension.",
+                            "httpMethod": "PUT",
+                            "id": "analytics.management.customDimensions.update",
+                            "parameterOrder": [
+                                "accountId",
+                                "webPropertyId",
+                                "customDimensionId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Account ID for the custom dimension to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "customDimensionId": {
+                                    "description": "Custom dimension ID for the custom dimension to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "ignoreCustomDataSourceLinks": {
+                                    "default": "false",
+                                    "description": "Force the update and ignore any warnings related to the custom dimension being linked to a custom data source / data set.",
+                                    "location": "query",
+                                    "type": "boolean"
+                                },
+                                "webPropertyId": {
+                                    "description": "Web property ID for the custom dimension to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}",
+                            "request": {
+                                "$ref": "CustomDimension"
+                            },
+                            "response": {
+                                "$ref": "CustomDimension"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/analytics.edit"
+                            ]
+                        }
+                    }
+                },
+                "customMetrics": {
+                    "methods": {
+                        "get": {
+                            "description": "Get a custom metric to which the user has access.",
+                            "httpMethod": "GET",
+                            "id": "analytics.management.customMetrics.get",
+                            "parameterOrder": [
+                                "accountId",
+                                "webPropertyId",
+                                "customMetricId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Account ID for the custom metric to retrieve.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "customMetricId": {
+                                    "description": "The ID of the custom metric to retrieve.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "webPropertyId": {
+                                    "description": "Web property ID for the custom metric to retrieve.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}",
+                            "response": {
+                                "$ref": "CustomMetric"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/analytics.edit",
+                                "https://www.googleapis.com/auth/analytics.readonly"
+                            ]
+                        },
+                        "insert": {
+                            "description": "Create a new custom metric.",
+                            "httpMethod": "POST",
+                            "id": "analytics.management.customMetrics.insert",
+                            "parameterOrder": [
+                                "accountId",
+                                "webPropertyId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Account ID for the custom metric to create.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "webPropertyId": {
+                                    "description": "Web property ID for the custom dimension to create.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics",
+                            "request": {
+                                "$ref": "CustomMetric"
+                            },
+                            "response": {
+                                "$ref": "CustomMetric"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/analytics.edit"
+                            ]
+                        },
+                        "list": {
+                            "description": "Lists custom metrics to which the user has access.",
+                            "httpMethod": "GET",
+                            "id": "analytics.management.customMetrics.list",
+                            "parameterOrder": [
+                                "accountId",
+                                "webPropertyId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Account ID for the custom metrics to retrieve.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "max-results": {
+                                    "description": "The maximum number of custom metrics to include in this response.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "start-index": {
+                                    "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "minimum": "1",
+                                    "type": "integer"
+                                },
+                                "webPropertyId": {
+                                    "description": "Web property ID for the custom metrics to retrieve.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics",
+                            "response": {
+                                "$ref": "CustomMetrics"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/analytics",
+                                "https://www.googleapis.com/auth/analytics.readonly"
+                            ]
+                        },
+                        "patch": {
+                            "description": "Updates an existing custom metric. This method supports patch semantics.",
+                            "httpMethod": "PATCH",
+                            "id": "analytics.management.customMetrics.patch",
+                            "parameterOrder": [
+                                "accountId",
+                                "webPropertyId",
+                                "customMetricId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Account ID for the custom metric to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "customMetricId": {
+                                    "description": "Custom metric ID for the custom metric to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "ignoreCustomDataSourceLinks": {
+                                    "default": "false",
+                                    "description": "Force the update and ignore any warnings related to the custom metric being linked to a custom data source / data set.",
+                                    "location": "query",
+                                    "type": "boolean"
+                                },
+                                "webPropertyId": {
+                                    "description": "Web property ID for the custom metric to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}",
+                            "request": {
+                                "$ref": "CustomMetric"
+                            },
+                            "response": {
+                                "$ref": "CustomMetric"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/analytics.edit"
+                            ]
+                        },
+                        "update": {
+                            "description": "Updates an existing custom metric.",
+                            "httpMethod": "PUT",
+                            "id": "analytics.management.customMetrics.update",
+                            "parameterOrder": [
+                                "accountId",
+                                "webPropertyId",
+                                "customMetricId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Account ID for the custom metric to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "customMetricId": {
+                                    "description": "Custom metric ID for the custom metric to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "ignoreCustomDataSourceLinks": {
+                                    "default": "false",
+                                    "description": "Force the update and ignore any warnings related to the custom metric being linked to a custom data source / data set.",
+                                    "location": "query",
+                                    "type": "boolean"
+                                },
+                                "webPropertyId": {
+                                    "description": "Web property ID for the custom metric to update.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}",
+                            "request": {
+                                "$ref": "CustomMetric"
+                            },
+                            "response": {
+                                "$ref": "CustomMetric"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/analytics.edit"
                             ]
                         }
                     }
@@ -3303,7 +3725,7 @@
             }
         }
     },
-    "revision": "20141112",
+    "revision": "20141226",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -3761,6 +4183,260 @@
                 },
                 "previousLink": {
                     "description": "Link to previous page for this custom data source collection.",
+                    "type": "string"
+                },
+                "startIndex": {
+                    "description": "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "totalResults": {
+                    "description": "The total number of results for the query, regardless of the number of results in the response.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "username": {
+                    "description": "Email ID of the authenticated user",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CustomDimension": {
+            "description": "JSON template for Analytics Custom Dimension.",
+            "id": "CustomDimension",
+            "properties": {
+                "accountId": {
+                    "description": "Account ID.",
+                    "type": "string"
+                },
+                "active": {
+                    "description": "Boolean indicating whether the custom dimension is active.",
+                    "type": "boolean"
+                },
+                "created": {
+                    "description": "Time the custom dimension was created.",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Custom dimension ID.",
+                    "type": "string"
+                },
+                "index": {
+                    "description": "Index of the custom dimension.",
+                    "format": "int32",
+                    "readOnly": true,
+                    "type": "integer"
+                },
+                "kind": {
+                    "default": "analytics#customDimension",
+                    "description": "Kind value for a custom dimension. Set to \"analytics#customDimension\". It is a read-only field.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the custom dimension.",
+                    "type": "string"
+                },
+                "parentLink": {
+                    "description": "Parent link for the custom dimension. Points to the property to which the custom dimension belongs.",
+                    "properties": {
+                        "href": {
+                            "description": "Link to the property to which the custom dimension belongs.",
+                            "type": "string"
+                        },
+                        "type": {
+                            "default": "analytics#webproperty",
+                            "description": "Type of the parent link. Set to \"analytics#webproperty\".",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "scope": {
+                    "description": "Scope of the custom dimension: HIT, SESSION, USER or PRODUCT.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "Link for the custom dimension",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "updated": {
+                    "description": "Time the custom dimension was last modified.",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "webPropertyId": {
+                    "description": "Property ID.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CustomDimensions": {
+            "description": "A custom dimension collection lists Analytics custom dimensions to which the user has access. Each resource in the collection corresponds to a single Analytics custom dimension.",
+            "id": "CustomDimensions",
+            "properties": {
+                "items": {
+                    "description": "Collection of custom dimensions.",
+                    "items": {
+                        "$ref": "CustomDimension"
+                    },
+                    "type": "array"
+                },
+                "itemsPerPage": {
+                    "description": "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "kind": {
+                    "default": "analytics#customDimensions",
+                    "description": "Collection type.",
+                    "type": "string"
+                },
+                "nextLink": {
+                    "description": "Link to next page for this custom dimension collection.",
+                    "type": "string"
+                },
+                "previousLink": {
+                    "description": "Link to previous page for this custom dimension collection.",
+                    "type": "string"
+                },
+                "startIndex": {
+                    "description": "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "totalResults": {
+                    "description": "The total number of results for the query, regardless of the number of results in the response.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "username": {
+                    "description": "Email ID of the authenticated user",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CustomMetric": {
+            "description": "JSON template for Analytics Custom Metric.",
+            "id": "CustomMetric",
+            "properties": {
+                "accountId": {
+                    "description": "Account ID.",
+                    "type": "string"
+                },
+                "active": {
+                    "description": "Boolean indicating whether the custom metric is active.",
+                    "type": "boolean"
+                },
+                "created": {
+                    "description": "Time the custom metric was created.",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Custom metric ID.",
+                    "type": "string"
+                },
+                "index": {
+                    "description": "Index of the custom metric.",
+                    "format": "int32",
+                    "readOnly": true,
+                    "type": "integer"
+                },
+                "kind": {
+                    "default": "analytics#customMetric",
+                    "description": "Kind value for a custom metric. Set to \"analytics#customMetric\". It is a read-only field.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "max_value": {
+                    "description": "Max value of custom metric.",
+                    "type": "string"
+                },
+                "min_value": {
+                    "description": "Min value of custom metric.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the custom metric.",
+                    "type": "string"
+                },
+                "parentLink": {
+                    "description": "Parent link for the custom metric. Points to the property to which the custom metric belongs.",
+                    "properties": {
+                        "href": {
+                            "description": "Link to the property to which the custom metric belongs.",
+                            "type": "string"
+                        },
+                        "type": {
+                            "default": "analytics#webproperty",
+                            "description": "Type of the parent link. Set to \"analytics#webproperty\".",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "scope": {
+                    "description": "Scope of the custom metric: HIT or PRODUCT.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "Link for the custom metric",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Data type of custom metric.",
+                    "type": "string"
+                },
+                "updated": {
+                    "description": "Time the custom metric was last modified.",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "webPropertyId": {
+                    "description": "Property ID.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CustomMetrics": {
+            "description": "A custom metric collection lists Analytics custom metrics to which the user has access. Each resource in the collection corresponds to a single Analytics custom metric.",
+            "id": "CustomMetrics",
+            "properties": {
+                "items": {
+                    "description": "Collection of custom metrics.",
+                    "items": {
+                        "$ref": "CustomMetric"
+                    },
+                    "type": "array"
+                },
+                "itemsPerPage": {
+                    "description": "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "kind": {
+                    "default": "analytics#customMetrics",
+                    "description": "Collection type.",
+                    "type": "string"
+                },
+                "nextLink": {
+                    "description": "Link to next page for this custom metric collection.",
+                    "type": "string"
+                },
+                "previousLink": {
+                    "description": "Link to previous page for this custom metric collection.",
                     "type": "string"
                 },
                 "startIndex": {

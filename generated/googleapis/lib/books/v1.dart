@@ -5672,6 +5672,9 @@ class OffersItems {
   core.String artUrl;
 
   /** Not documented yet. */
+  core.String gservicesKey;
+
+  /** Not documented yet. */
   core.String id;
 
   /** Not documented yet. */
@@ -5683,6 +5686,9 @@ class OffersItems {
   OffersItems.fromJson(core.Map _json) {
     if (_json.containsKey("artUrl")) {
       artUrl = _json["artUrl"];
+    }
+    if (_json.containsKey("gservicesKey")) {
+      gservicesKey = _json["gservicesKey"];
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -5696,6 +5702,9 @@ class OffersItems {
     var _json = new core.Map();
     if (artUrl != null) {
       _json["artUrl"] = artUrl;
+    }
+    if (gservicesKey != null) {
+      _json["gservicesKey"] = gservicesKey;
     }
     if (id != null) {
       _json["id"] = id;

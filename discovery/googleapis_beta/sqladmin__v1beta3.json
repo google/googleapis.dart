@@ -18,7 +18,7 @@
     "description": "API for Cloud SQL database instance management.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-sql/docs/admin-api/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/hsbAfC9SMMz0njrqp0sUQ-CdpcQ\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/4aOFlev9rsa77-rNxhUS8dpcbno\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -888,7 +888,7 @@
             }
         }
     },
-    "revision": "20141112",
+    "revision": "20141230",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BackupConfiguration": {

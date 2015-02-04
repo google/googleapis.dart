@@ -6072,7 +6072,7 @@ class UserAddress {
   /** Extended Address. */
   core.String extendedAddress;
 
-  /** Formatted address (read-only field) */
+  /** Formatted address. */
   core.String formatted;
 
   /** Locality. */

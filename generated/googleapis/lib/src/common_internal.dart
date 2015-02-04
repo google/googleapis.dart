@@ -9,7 +9,7 @@ import "../common/common.dart" as common_external;
 import "package:http/http.dart" as http;
 
 const String USER_AGENT_STRING =
-    'google-api-dart-client googleapis/0.5.4';
+    'google-api-dart-client googleapis/0.5.5';
 
 const CONTENT_TYPE_JSON_UTF8 = 'application/json; charset=utf-8';
 

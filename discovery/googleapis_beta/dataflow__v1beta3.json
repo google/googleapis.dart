@@ -17,7 +17,7 @@
     "description": "Google Dataflow API.",
     "discoveryVersion": "v1",
     "documentationLink": "",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Yu9XQwdntsFmfyGwouzi5PXM_Vc\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/L373kNIz1YIUlLOAHRzzURGZYN8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -451,7 +451,7 @@
             }
         }
     },
-    "revision": "20141128",
+    "revision": "20150109",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "ApproximateProgress": {
@@ -1505,6 +1505,9 @@
                 "parallelWorkerSettings": {
                     "$ref": "WorkerSettings"
                 },
+                "streamingWorkerMainClass": {
+                    "type": "string"
+                },
                 "taskGroup": {
                     "type": "string"
                 },
@@ -1772,5 +1775,6 @@
         }
     },
     "servicePath": "dataflow/v1b3/projects/",
+    "title": "Google Dataflow API",
     "version": "v1beta3"
 }

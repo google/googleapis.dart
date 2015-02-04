@@ -40,6 +40,41 @@ class Oauth2Api {
    *
    * Request parameters:
    *
+   * Completes with a [Jwk].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Jwk> getCertForOpenIdConnect() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+
+
+    _url = 'oauth2/v2/certs';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Jwk.fromJson(data));
+  }
+
+  /**
+   * Not documented yet.
+   *
+   * Request parameters:
+   *
    * [accessToken] - null
    *
    * [idToken] - null
@@ -185,6 +220,99 @@ class UserinfoV2MeResourceApi {
 
 }
 
+
+
+/** Not documented yet. */
+class JwkKeys {
+  /** Not documented yet. */
+  core.String alg;
+
+  /** Not documented yet. */
+  core.String e;
+
+  /** Not documented yet. */
+  core.String kid;
+
+  /** Not documented yet. */
+  core.String kty;
+
+  /** Not documented yet. */
+  core.String n;
+
+  /** Not documented yet. */
+  core.String use;
+
+
+  JwkKeys();
+
+  JwkKeys.fromJson(core.Map _json) {
+    if (_json.containsKey("alg")) {
+      alg = _json["alg"];
+    }
+    if (_json.containsKey("e")) {
+      e = _json["e"];
+    }
+    if (_json.containsKey("kid")) {
+      kid = _json["kid"];
+    }
+    if (_json.containsKey("kty")) {
+      kty = _json["kty"];
+    }
+    if (_json.containsKey("n")) {
+      n = _json["n"];
+    }
+    if (_json.containsKey("use")) {
+      use = _json["use"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (alg != null) {
+      _json["alg"] = alg;
+    }
+    if (e != null) {
+      _json["e"] = e;
+    }
+    if (kid != null) {
+      _json["kid"] = kid;
+    }
+    if (kty != null) {
+      _json["kty"] = kty;
+    }
+    if (n != null) {
+      _json["n"] = n;
+    }
+    if (use != null) {
+      _json["use"] = use;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Jwk {
+  /** Not documented yet. */
+  core.List<JwkKeys> keys;
+
+
+  Jwk();
+
+  Jwk.fromJson(core.Map _json) {
+    if (_json.containsKey("keys")) {
+      keys = _json["keys"].map((value) => new JwkKeys.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (keys != null) {
+      _json["keys"] = keys.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
 
 
 /** Not documented yet. */

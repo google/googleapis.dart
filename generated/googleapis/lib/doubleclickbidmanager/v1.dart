@@ -463,11 +463,13 @@ class FilterPair {
   /**
    * Filter type.
    * Possible string values are:
+   * - "FILTER_ACTIVE_VIEW_EXPECTED_VIEWABILITY"
    * - "FILTER_ACTIVITY_ID"
    * - "FILTER_ADVERTISER"
    * - "FILTER_ADVERTISER_CURRENCY"
    * - "FILTER_ADVERTISER_TIMEZONE"
    * - "FILTER_AD_POSITION"
+   * - "FILTER_AGE"
    * - "FILTER_BRANDSAFE_CHANNEL_ID"
    * - "FILTER_BROWSER"
    * - "FILTER_CAMPAIGN_DAILY_FREQUENCY"
@@ -485,6 +487,7 @@ class FilterPair {
    * - "FILTER_DMA"
    * - "FILTER_EXCHANGE_ID"
    * - "FILTER_FLOODLIGHT_PIXEL_ID"
+   * - "FILTER_GENDER"
    * - "FILTER_INSERTION_ORDER"
    * - "FILTER_INVENTORY_FORMAT"
    * - "FILTER_INVENTORY_SOURCE"
@@ -496,7 +499,13 @@ class FilterPair {
    * - "FILTER_MOBILE_DEVICE_MAKE"
    * - "FILTER_MOBILE_DEVICE_MAKE_MODEL"
    * - "FILTER_MOBILE_DEVICE_TYPE"
+   * - "FILTER_MOBILE_GEO"
    * - "FILTER_MONTH"
+   * - "FILTER_MRAID_SUPPORT"
+   * - "FILTER_NIELSEN_AGE"
+   * - "FILTER_NIELSEN_COUNTRY_CODE"
+   * - "FILTER_NIELSEN_DEVICE_ID"
+   * - "FILTER_NIELSEN_GENDER"
    * - "FILTER_ORDER_ID"
    * - "FILTER_OS"
    * - "FILTER_PAGE_CATEGORY"
@@ -504,18 +513,21 @@ class FilterPair {
    * - "FILTER_PARTNER"
    * - "FILTER_PARTNER_CURRENCY"
    * - "FILTER_PUBLIC_INVENTORY"
+   * - "FILTER_QUARTER"
    * - "FILTER_REGION"
    * - "FILTER_REGULAR_CHANNEL_ID"
    * - "FILTER_SITE_ID"
    * - "FILTER_SITE_LANGUAGE"
    * - "FILTER_TARGETED_USER_LIST"
    * - "FILTER_TIME_OF_DAY"
+   * - "FILTER_TRUEVIEW_CONVERSION_TYPE"
    * - "FILTER_UNKNOWN"
    * - "FILTER_USER_LIST"
    * - "FILTER_USER_LIST_FIRST_PARTY"
    * - "FILTER_USER_LIST_THIRD_PARTY"
    * - "FILTER_VIDEO_AD_POSITION_IN_STREAM"
    * - "FILTER_VIDEO_CREATIVE_DURATION"
+   * - "FILTER_VIDEO_CREATIVE_DURATION_SKIPPABLE"
    * - "FILTER_VIDEO_DURATION_SECONDS"
    * - "FILTER_VIDEO_FORMAT_SUPPORT"
    * - "FILTER_VIDEO_INVENTORY_TYPE"
@@ -651,17 +663,26 @@ class Parameters {
    * - "TYPE_AUDIENCE_COMPOSITION"
    * - "TYPE_AUDIENCE_PERFORMANCE"
    * - "TYPE_CLIENT_SAFE"
+   * - "TYPE_COMSCORE_VCE"
    * - "TYPE_CROSS_FEE"
    * - "TYPE_CROSS_PARTNER"
    * - "TYPE_CROSS_PARTNER_THIRD_PARTY_DATA_PROVIDER"
+   * - "TYPE_ESTIMATED_CONVERSION"
    * - "TYPE_FEE"
    * - "TYPE_GENERAL"
    * - "TYPE_INVENTORY_AVAILABILITY"
    * - "TYPE_KEYWORD"
+   * - "TYPE_NIELSEN_AUDIENCE_PROFILE"
+   * - "TYPE_NIELSEN_DAILY_REACH_BUILD"
+   * - "TYPE_NIELSEN_SITE"
    * - "TYPE_ORDER_ID"
    * - "TYPE_PAGE_CATEGORY"
    * - "TYPE_PIXEL_LOAD"
+   * - "TYPE_REACH_AND_FREQUENCY"
    * - "TYPE_THIRD_PARTY_DATA_PROVIDER"
+   * - "TYPE_TRUEVIEW"
+   * - "TYPE_TRUEVIEW_IAR"
+   * - "TYPE_VERIFICATION"
    * - "TYPE_YOUTUBE_VERTICAL"
    */
   core.String type;
@@ -856,6 +877,16 @@ class QueryMetadata {
   /** The time when the latest report started to run. */
   core.String latestReportRunTimeMs;
 
+  /**
+   * Locale of the generated reports. Valid values are cs CZECH de GERMAN en
+   * ENGLISH es SPANISH fr FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH
+   * pt-BR BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk UKRAINIAN zh-CN
+   * CHINA_CHINESE zh-TW TAIWAN_CHINESE
+   *
+   * An locale string not in the list above will generate reports in English.
+   */
+  core.String locale;
+
   /** Number of reports that have been generated for the query. */
   core.int reportCount;
 
@@ -896,6 +927,9 @@ class QueryMetadata {
     if (_json.containsKey("latestReportRunTimeMs")) {
       latestReportRunTimeMs = _json["latestReportRunTimeMs"];
     }
+    if (_json.containsKey("locale")) {
+      locale = _json["locale"];
+    }
     if (_json.containsKey("reportCount")) {
       reportCount = _json["reportCount"];
     }
@@ -929,6 +963,9 @@ class QueryMetadata {
     }
     if (latestReportRunTimeMs != null) {
       _json["latestReportRunTimeMs"] = latestReportRunTimeMs;
+    }
+    if (locale != null) {
+      _json["locale"] = locale;
     }
     if (reportCount != null) {
       _json["reportCount"] = reportCount;
@@ -969,7 +1006,7 @@ class QuerySchedule {
 
   /**
    * Time of day at which a new report will be generated, represented as minutes
-   * past midnight Range is 0 to 1439. Only applies to scheduled reports.
+   * past midnight. Range is 0 to 1439. Only applies to scheduled reports.
    */
   core.int nextRunMinuteOfDay;
 

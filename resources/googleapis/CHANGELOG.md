@@ -1,3 +1,14 @@
+## 0.5.5
+
+* [apis] analytics:v3: new resource added
+* [apis] blogger:v3: method changes
+* [apis] books:v1: schema changes
+* [apis] content:v2: new resources added, schema changes
+* [apis] doubleclickbidmanager:v1: schema changes
+* [apis] oauth2:v2: new method/schema
+* [apis] storage:v1: method changes
+* [apis] youtube:v3: schema changes
+
 ## 0.5.4
 
 * [apis] drive:v2: schema changes
