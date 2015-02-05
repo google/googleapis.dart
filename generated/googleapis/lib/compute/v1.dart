@@ -7959,7 +7959,7 @@ class AddressList {
    */
   core.String id;
 
-  /** The address resources. */
+  /** A list of Address resources. */
   core.List<Address> items;
 
   /** Type of resource. */
@@ -8668,7 +8668,7 @@ class BackendServiceList {
    */
   core.String id;
 
-  /** The BackendService resources. */
+  /** A list of BackendService resources. */
   core.List<BackendService> items;
 
   /** Type of resource. */
@@ -9063,7 +9063,7 @@ class DiskList {
    */
   core.String id;
 
-  /** The persistent disk resources. */
+  /** A list of Disk resources. */
   core.List<Disk> items;
 
   /** Type of resource. */
@@ -9296,7 +9296,7 @@ class DiskTypeList {
    */
   core.String id;
 
-  /** The disk type resources. */
+  /** A list of DiskType resources. */
   core.List<DiskType> items;
 
   /** Type of resource. */
@@ -9802,7 +9802,7 @@ class FirewallList {
    */
   core.String id;
 
-  /** The firewall resources. */
+  /** A list of Firewall resources. */
   core.List<Firewall> items;
 
   /** Type of resource. */
@@ -10081,7 +10081,7 @@ class ForwardingRuleList {
    */
   core.String id;
 
-  /** The ForwardingRule resources. */
+  /** A list of ForwardingRule resources. */
   core.List<ForwardingRule> items;
 
   /** Type of resource. */
@@ -10570,7 +10570,7 @@ class HttpHealthCheckList {
    */
   core.String id;
 
-  /** The HttpHealthCheck resources. */
+  /** A list of HttpHealthCheck resources. */
   core.List<HttpHealthCheck> items;
 
   /** Type of resource. */
@@ -10865,7 +10865,7 @@ class ImageList {
    */
   core.String id;
 
-  /** The disk image resources. */
+  /** A list of Image resources. */
   core.List<Image> items;
 
   /** Type of resource. */
@@ -11205,7 +11205,7 @@ class InstanceList {
    */
   core.String id;
 
-  /** A list of instance resources. */
+  /** A list of Instance resources. */
   core.List<Instance> items;
 
   /** Type of resource. */
@@ -11510,7 +11510,7 @@ class InstanceTemplateList {
    */
   core.String id;
 
-  /** A list of instance template resources. */
+  /** A list of InstanceTemplate resources. */
   core.List<InstanceTemplate> items;
 
   /** Type of resource. */
@@ -11990,7 +11990,7 @@ class MachineTypeList {
    */
   core.String id;
 
-  /** The machine type resources. */
+  /** A list of MachineType resources. */
   core.List<MachineType> items;
 
   /** Type of resource. */
@@ -12446,7 +12446,7 @@ class NetworkList {
    */
   core.String id;
 
-  /** The network resources. */
+  /** A list of Network resources. */
   core.List<Network> items;
 
   /** Type of resource. */
@@ -13559,7 +13559,7 @@ class RegionList {
    */
   core.String id;
 
-  /** The region resources. */
+  /** A list of Region resources. */
   core.List<Region> items;
 
   /** Type of resource. */
@@ -13919,7 +13919,7 @@ class RouteList {
    */
   core.String id;
 
-  /** The route resources. */
+  /** A list of Route resources. */
   core.List<Route> items;
 
   /** Type of resource. */
@@ -14259,7 +14259,7 @@ class SnapshotList {
    */
   core.String id;
 
-  /** The persistent snapshot resources. */
+  /** A list of Snapshot resources. */
   core.List<Snapshot> items;
 
   /** Type of resource. */
@@ -14458,7 +14458,7 @@ class TargetHttpProxyList {
    */
   core.String id;
 
-  /** The TargetHttpProxy resources. */
+  /** A list of TargetHttpProxy resources. */
   core.List<TargetHttpProxy> items;
 
   /** Type of resource. */
@@ -14694,7 +14694,7 @@ class TargetInstanceList {
    */
   core.String id;
 
-  /** The TargetInstance resources. */
+  /** A list of TargetInstance resources. */
   core.List<TargetInstance> items;
 
   /** Type of resource. */
@@ -15160,7 +15160,7 @@ class TargetPoolList {
    */
   core.String id;
 
-  /** The TargetPool resources. */
+  /** A list of TargetPool resources. */
   core.List<TargetPool> items;
 
   /** Type of resource. */
@@ -15664,7 +15664,7 @@ class UrlMapList {
    */
   core.String id;
 
-  /** The UrlMap resources. */
+  /** A list of UrlMap resources. */
   core.List<UrlMap> items;
 
   /** Type of resource. */
@@ -16120,7 +16120,7 @@ class ZoneList {
    */
   core.String id;
 
-  /** The zone resources. */
+  /** A list of Zone resources. */
   core.List<Zone> items;
 
   /** Type of resource. */

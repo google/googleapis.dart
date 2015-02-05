@@ -1,5 +1,6 @@
 ## 0.8.0
 
+* [apis-new] dataflow:v1b4: API added
 * [apis] cloudmonitoring:v2beta1: method changes
 * [apis] dataflow:v1beta2: schema changes
 * [apis] genomics:v1beta2: new resources and schemas

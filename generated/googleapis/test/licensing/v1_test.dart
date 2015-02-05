@@ -64,14 +64,14 @@ checkLicenseAssignmentInsert(api.LicenseAssignmentInsert o) {
   buildCounterLicenseAssignmentInsert--;
 }
 
-buildUnnamed1160() {
+buildUnnamed1163() {
   var o = new core.List<api.LicenseAssignment>();
   o.add(buildLicenseAssignment());
   o.add(buildLicenseAssignment());
   return o;
 }
 
-checkUnnamed1160(core.List<api.LicenseAssignment> o) {
+checkUnnamed1163(core.List<api.LicenseAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLicenseAssignment(o[0]);
   checkLicenseAssignment(o[1]);
@@ -83,7 +83,7 @@ buildLicenseAssignmentList() {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed1160();
+    o.items = buildUnnamed1163();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -95,7 +95,7 @@ checkLicenseAssignmentList(api.LicenseAssignmentList o) {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1160(o.items);
+    checkUnnamed1163(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }

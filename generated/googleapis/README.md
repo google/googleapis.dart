@@ -272,6 +272,12 @@ The API for Google Play Game Services.
 
 Official API documentation: https://developers.google.com/games/services/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Play Game Services Publishing API - gamesConfiguration v1configuration
+
+The Publishing API for Google Play Game Services.
+
+Official API documentation: https://developers.google.com/games/services
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Play Game Services Management API - gamesManagement v1management
 
 The Management API for Google Play Game Services.
@@ -327,6 +333,12 @@ Lets you access OAuth2 protocol related APIs.
 Official API documentation: https://developers.google.com/accounts/docs/OAuth2
 
 #### ![Logo](https://www.google.com/images/icons/product/pagespeed-16.png) PageSpeed Insights API - pagespeedonline v1
+
+Lets you analyze the performance of a web page and get tailored suggestions to make that page faster.
+
+Official API documentation: https://developers.google.com/speed/docs/insights/v1/getting_started
+
+#### ![Logo](https://www.google.com/images/icons/product/pagespeed-16.png) PageSpeed Insights API - pagespeedonline v2
 
 Lets you analyze the performance of a web page and get tailored suggestions to make that page faster.
 

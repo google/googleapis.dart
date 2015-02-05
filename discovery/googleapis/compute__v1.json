@@ -26,7 +26,7 @@
     "description": "API for the Google Compute Engine service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/q0HPcsO3_Sdy-4PCTKTzL-JtI64\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/JuPeyPkM2UXLYLH4wB0eI_v4Bys\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -5509,7 +5509,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The address resources.",
+                    "description": "A list of Address resources.",
                     "items": {
                         "$ref": "Address"
                     },
@@ -5860,7 +5860,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The BackendService resources.",
+                    "description": "A list of BackendService resources.",
                     "items": {
                         "$ref": "BackendService"
                     },
@@ -6054,7 +6054,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The persistent disk resources.",
+                    "description": "A list of Disk resources.",
                     "items": {
                         "$ref": "Disk"
                     },
@@ -6167,7 +6167,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The disk type resources.",
+                    "description": "A list of DiskType resources.",
                     "items": {
                         "$ref": "DiskType"
                     },
@@ -6427,7 +6427,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The firewall resources.",
+                    "description": "A list of Firewall resources.",
                     "items": {
                         "$ref": "Firewall"
                     },
@@ -6557,7 +6557,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The ForwardingRule resources.",
+                    "description": "A list of ForwardingRule resources.",
                     "items": {
                         "$ref": "ForwardingRule"
                     },
@@ -6788,7 +6788,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The HttpHealthCheck resources.",
+                    "description": "A list of HttpHealthCheck resources.",
                     "items": {
                         "$ref": "HttpHealthCheck"
                     },
@@ -6942,7 +6942,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The disk image resources.",
+                    "description": "A list of Image resources.",
                     "items": {
                         "$ref": "Image"
                     },
@@ -7117,7 +7117,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "A list of instance resources.",
+                    "description": "A list of Instance resources.",
                     "items": {
                         "$ref": "Instance"
                     },
@@ -7257,7 +7257,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "A list of instance template resources.",
+                    "description": "A list of InstanceTemplate resources.",
                     "items": {
                         "$ref": "InstanceTemplate"
                     },
@@ -7502,7 +7502,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The machine type resources.",
+                    "description": "A list of MachineType resources.",
                     "items": {
                         "$ref": "MachineType"
                     },
@@ -7737,7 +7737,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The network resources.",
+                    "description": "A list of Network resources.",
                     "items": {
                         "$ref": "Network"
                     },
@@ -8314,7 +8314,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The region resources.",
+                    "description": "A list of Region resources.",
                     "items": {
                         "$ref": "Region"
                     },
@@ -8512,7 +8512,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The route resources.",
+                    "description": "A list of Route resources.",
                     "items": {
                         "$ref": "Route"
                     },
@@ -8693,7 +8693,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The persistent snapshot resources.",
+                    "description": "A list of Snapshot resources.",
                     "items": {
                         "$ref": "Snapshot"
                     },
@@ -8781,7 +8781,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The TargetHttpProxy resources.",
+                    "description": "A list of TargetHttpProxy resources.",
                     "items": {
                         "$ref": "TargetHttpProxy"
                     },
@@ -8895,7 +8895,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The TargetInstance resources.",
+                    "description": "A list of TargetInstance resources.",
                     "items": {
                         "$ref": "TargetInstance"
                     },
@@ -9121,7 +9121,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The TargetPool resources.",
+                    "description": "A list of TargetPool resources.",
                     "items": {
                         "$ref": "TargetPool"
                     },
@@ -9367,7 +9367,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The UrlMap resources.",
+                    "description": "A list of UrlMap resources.",
                     "items": {
                         "$ref": "UrlMap"
                     },
@@ -9569,7 +9569,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The zone resources.",
+                    "description": "A list of Zone resources.",
                     "items": {
                         "$ref": "Zone"
                     },

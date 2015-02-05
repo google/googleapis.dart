@@ -41,6 +41,7 @@ packages:
     - fusiontables:v1  # https://developers.google.com/fusiontables/
     - fusiontables:v2  # https://developers.google.com/fusiontables/
     - games:v1  # https://developers.google.com/games/services/
+    - gamesConfiguration:v1configuration  # https://developers.google.com/games/services/publishing/api/
     - gamesManagement:v1management  # https://developers.google.com/games/services/management/api/
     - gmail:v1  # https://developers.google.com/gmail/
     - groupsmigration:v1  # https://developers.google.com/admin-sdk/groups-migration/
@@ -51,6 +52,7 @@ packages:
     - mirror:v1  # https://developers.google.com/glass/develop/mirror/
     - oauth2:v2  # https://developers.google.com/accounts/docs/OAuth2UserAgent
     - pagespeedonline:v1  # https://developers.google.com/speed/docs/insights/about
+    - pagespeedonline:v2  # https://developers.google.com/speed/docs/insights/about
     - plus:v1  # https://developers.google.com/+/api/
     - plusDomains:v1  # https://developers.google.com/+/domains/
     - prediction:v1.6  # https://developers.google.com/prediction/
@@ -79,6 +81,7 @@ packages:
     - cloudmonitoring:v2beta1  # https://developers.google.com/cloud-monitoring/
     - container:v1beta1  #
     - dataflow:v1beta3  # https://cloud.google.com/dataflow/
+    - dataflow:v1b4  # https://cloud.google.com/dataflow/
     - datastore:v1beta2  # https://developers.google.com/datastore/
     - deploymentmanager:v2beta1  # https://cloud.google.com/deployment-manager/
     - dns:v1beta1  # https://developers.google.com/cloud-dns/

@@ -1,5 +1,7 @@
 ## 0.5.5
 
+* [apis-new] gamesConfiguration:v1configuration: API added
+* [apis-new] pagespeedonline:v2: API added
 * [apis] analytics:v3: new resource added
 * [apis] blogger:v3: method changes
 * [apis] books:v1: schema changes
