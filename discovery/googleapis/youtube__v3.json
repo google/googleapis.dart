@@ -27,7 +27,7 @@
     "description": "Programmatic access to YouTube features.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/pRYO6vyWfgwTEqSglFHV1zT4jYY\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/QKKVh-U3K8YmHckACHPpbX0hbyk\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -2054,7 +2054,7 @@
                             "type": "string"
                         },
                         "part": {
-                            "description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.\n\nThe part names that you can include in the parameter value are snippet, contentDetails, fileDetails, liveStreamingDetails, player, processingDetails, recordingDetails, statistics, status, suggestions, and topicDetails. However, not all of those parts contain properties that can be set when setting or updating a video's metadata. For example, the statistics object encapsulates statistics that YouTube calculates for a video and does not contain values that you can set or modify. If the parameter value specifies a part that does not contain mutable values, that part will still be included in the API response.",
+                            "description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.\n\nThe part names that you can include in the parameter value are snippet, contentDetails, fileDetails, liveStreamingDetails, localizations, player, processingDetails, recordingDetails, statistics, status, suggestions, and topicDetails. However, not all of those parts contain properties that can be set when setting or updating a video's metadata. For example, the statistics object encapsulates statistics that YouTube calculates for a video and does not contain values that you can set or modify. If the parameter value specifies a part that does not contain mutable values, that part will still be included in the API response.",
                             "location": "query",
                             "required": true,
                             "type": "string"
@@ -2095,6 +2095,11 @@
                             "enumDescriptions": [
                                 "Return the most popular videos for the specified content region and video category."
                             ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "hl": {
+                            "description": "The hl parameter instructs the API to return a localized version of the video details. If localized text is nor available for the requested language, the localizations object in the API response will contain the requested information in the default language instead. The parameter value is a BCP-47 language code. Your application can determine whether the requested localization was returned by checking the value of the snippet.localized.language property in the API response.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2141,7 +2146,7 @@
                             "type": "string"
                         },
                         "part": {
-                            "description": "The part parameter specifies a comma-separated list of one or more video resource properties that the API response will include. The part names that you can include in the parameter value are id, snippet, contentDetails, fileDetails, liveStreamingDetails, player, processingDetails, recordingDetails, statistics, status, suggestions, and topicDetails.\n\nIf the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a video resource, the snippet property contains the channelId, title, description, tags, and categoryId properties. As such, if you set part=snippet, the API response will contain all of those properties.",
+                            "description": "The part parameter specifies a comma-separated list of one or more video resource properties that the API response will include. The part names that you can include in the parameter value are id, snippet, contentDetails, fileDetails, liveStreamingDetails, localizations, player, processingDetails, recordingDetails, statistics, status, suggestions, and topicDetails.\n\nIf the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a video resource, the snippet property contains the channelId, title, description, tags, and categoryId properties. As such, if you set part=snippet, the API response will contain all of those properties.",
                             "location": "query",
                             "required": true,
                             "type": "string"
@@ -2225,7 +2230,7 @@
                             "type": "string"
                         },
                         "part": {
-                            "description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.\n\nThe part names that you can include in the parameter value are snippet, contentDetails, fileDetails, liveStreamingDetails, player, processingDetails, recordingDetails, statistics, status, suggestions, and topicDetails.\n\nNote that this method will override the existing values for all of the mutable properties that are contained in any parts that the parameter value specifies. For example, a video's privacy setting is contained in the status part. As such, if your request is updating a private video, and the request's part parameter value includes the status part, the video's privacy setting will be updated to whatever value the request body specifies. If the request body does not specify a value, the existing privacy setting will be removed and the video will revert to the default privacy setting.\n\nIn addition, not all of those parts contain properties that can be set when setting or updating a video's metadata. For example, the statistics object encapsulates statistics that YouTube calculates for a video and does not contain values that you can set or modify. If the parameter value specifies a part that does not contain mutable values, that part will still be included in the API response.",
+                            "description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.\n\nThe part names that you can include in the parameter value are snippet, contentDetails, fileDetails, liveStreamingDetails, localizations, player, processingDetails, recordingDetails, statistics, status, suggestions, and topicDetails.\n\nNote that this method will override the existing values for all of the mutable properties that are contained in any parts that the parameter value specifies. For example, a video's privacy setting is contained in the status part. As such, if your request is updating a private video, and the request's part parameter value includes the status part, the video's privacy setting will be updated to whatever value the request body specifies. If the request body does not specify a value, the existing privacy setting will be removed and the video will revert to the default privacy setting.\n\nIn addition, not all of those parts contain properties that can be set when setting or updating a video's metadata. For example, the statistics object encapsulates statistics that YouTube calculates for a video and does not contain values that you can set or modify. If the parameter value specifies a part that does not contain mutable values, that part will still be included in the API response.",
                             "location": "query",
                             "required": true,
                             "type": "string"
@@ -2325,7 +2330,7 @@
             }
         }
     },
-    "revision": "20150120",
+    "revision": "20150206",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -3094,19 +3099,18 @@
             "type": "object"
         },
         "ChannelSection": {
-            "description": "TODO(lxz) follow up with adiamondstein@ to fullfill the doc before deploying",
             "id": "ChannelSection",
             "properties": {
                 "contentDetails": {
                     "$ref": "ChannelSectionContentDetails",
-                    "description": "The contentDetails object contains details about the ChannelSection content, such as playlists and channels."
+                    "description": "The contentDetails object contains details about the channel section content, such as a list of playlists or channels featured in the section."
                 },
                 "etag": {
                     "description": "Etag of this resource.",
                     "type": "string"
                 },
                 "id": {
-                    "description": "The ID that YouTube uses to uniquely identify the ChannelSection.",
+                    "description": "The ID that YouTube uses to uniquely identify the channel section.",
                     "type": "string"
                 },
                 "kind": {
@@ -3114,9 +3118,17 @@
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"youtube#channelSection\".",
                     "type": "string"
                 },
+                "localizations": {
+                    "additionalProperties": {
+                        "$ref": "ChannelSectionLocalization",
+                        "description": "The language tag, using string since map_key require simple types."
+                    },
+                    "description": "Localizations for different languages",
+                    "type": "object"
+                },
                 "snippet": {
                     "$ref": "ChannelSectionSnippet",
-                    "description": "The snippet object contains basic details about the ChannelSection, such as its type, style and title."
+                    "description": "The snippet object contains basic details about the channel section, such as its type, style and title."
                 }
             },
             "type": "object"
@@ -3172,21 +3184,40 @@
             },
             "type": "object"
         },
+        "ChannelSectionLocalization": {
+            "description": "ChannelSection localization setting",
+            "id": "ChannelSectionLocalization",
+            "properties": {
+                "title": {
+                    "description": "The localized strings for channel section's title.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ChannelSectionSnippet": {
-            "description": "Basic details about a channelsection, including title, style and position.",
+            "description": "Basic details about a channel section, including title, style and position.",
             "id": "ChannelSectionSnippet",
             "properties": {
                 "channelId": {
-                    "description": "The ID that YouTube uses to uniquely identify the channel that published the channelSection.",
+                    "description": "The ID that YouTube uses to uniquely identify the channel that published the channel section.",
                     "type": "string"
                 },
+                "defaultLanguage": {
+                    "description": "The language of the channel section's default title and description.",
+                    "type": "string"
+                },
+                "localized": {
+                    "$ref": "ChannelSectionLocalization",
+                    "description": "Localized title, read-only."
+                },
                 "position": {
-                    "description": "The position of the channelSection in the channel.",
+                    "description": "The position of the channel section in the channel.",
                     "format": "uint32",
                     "type": "integer"
                 },
                 "style": {
-                    "description": "The style of the channelSection.",
+                    "description": "The style of the channel section.",
                     "enum": [
                         "channelsectionStyleUndefined",
                         "horizontalRow",
@@ -3200,11 +3231,11 @@
                     "type": "string"
                 },
                 "title": {
-                    "description": "The channelSection's title for multiple_playlists and multiple_channels.",
+                    "description": "The channel section's title for multiple_playlists and multiple_channels.",
                     "type": "string"
                 },
                 "type": {
-                    "description": "The type of the channelSection.",
+                    "description": "The type of the channel section.",
                     "enum": [
                         "allPlaylists",
                         "channelsectionTypeUndefined",
@@ -5796,6 +5827,14 @@
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"youtube#playlist\".",
                     "type": "string"
                 },
+                "localizations": {
+                    "additionalProperties": {
+                        "$ref": "PlaylistLocalization",
+                        "description": "The language tag, using string since map_key require simple types."
+                    },
+                    "description": "Localizations for different languages",
+                    "type": "object"
+                },
                 "player": {
                     "$ref": "PlaylistPlayer",
                     "description": "The player object contains information that you would use to play the playlist in an embedded player."
@@ -6042,6 +6081,21 @@
             },
             "type": "object"
         },
+        "PlaylistLocalization": {
+            "description": "Playlist localization setting",
+            "id": "PlaylistLocalization",
+            "properties": {
+                "description": {
+                    "description": "The localized strings for playlist's description.",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "The localized strings for playlist's title.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "PlaylistPlayer": {
             "id": "PlaylistPlayer",
             "properties": {
@@ -6064,9 +6118,17 @@
                     "description": "The channel title of the channel that the video belongs to.",
                     "type": "string"
                 },
+                "defaultLanguage": {
+                    "description": "The language of the playlist's default title and description.",
+                    "type": "string"
+                },
                 "description": {
                     "description": "The playlist's description.",
                     "type": "string"
+                },
+                "localized": {
+                    "$ref": "PlaylistLocalization",
+                    "description": "Localized title and description, read-only."
                 },
                 "publishedAt": {
                     "description": "The date and time that the playlist was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.",
@@ -7362,8 +7424,8 @@
                     "type": "string"
                 },
                 "defaultLanguage": {
-                    "$ref": "LanguageTag",
-                    "description": "The language of the videos's default snippet."
+                    "description": "The language of the videos's default snippet.",
+                    "type": "string"
                 },
                 "description": {
                     "description": "The video's description.",

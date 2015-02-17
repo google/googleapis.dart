@@ -652,6 +652,60 @@ class EditsApksResourceApi {
       _requester = client;
 
   /**
+   * Creates a new APK without uploading the APK itself to Google Play, instead
+   * hosting the APK at a specified URL. This function is only available to
+   * enterprises using Android for Work, for applications distributed within the
+   * enterprise Private Channel.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [packageName] - Unique identifier for the Android app that is being
+   * updated; for example, "com.spiffygame".
+   *
+   * [editId] - Unique identifier for this edit.
+   *
+   * Completes with a [ApksAddExternallyHostedResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<ApksAddExternallyHostedResponse> addexternallyhosted(ApksAddExternallyHostedRequest request, core.String packageName, core.String editId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (editId == null) {
+      throw new core.ArgumentError("Parameter editId is required.");
+    }
+
+
+    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks/externallyHosted';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ApksAddExternallyHostedResponse.fromJson(data));
+  }
+
+  /**
    * Not documented yet.
    *
    * Request parameters:
@@ -2116,8 +2170,9 @@ class EditsTracksResourceApi {
   }
 
   /**
-   * Updates the track configuration for the specified track type. This method
-   * supports patch semantics.
+   * Updates the track configuration for the specified track type. When halted,
+   * the rollout track cannot be updated without adding new APKs, and adding new
+   * APKs will cause it to resume. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -2178,7 +2233,9 @@ class EditsTracksResourceApi {
   }
 
   /**
-   * Updates the track configuration for the specified track type.
+   * Updates the track configuration for the specified track type. When halted,
+   * the rollout track cannot be updated without adding new APKs, and adding new
+   * APKs will cause it to resume.
    *
    * [request] - The metadata request object.
    *
@@ -3098,6 +3155,54 @@ class ApkListingsListResponse {
 
 
 /** Not documented yet. */
+class ApksAddExternallyHostedRequest {
+  /** The definition of the externally-hosted APK and where it is located. */
+  ExternallyHostedApk externallyHostedApk;
+
+
+  ApksAddExternallyHostedRequest();
+
+  ApksAddExternallyHostedRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("externallyHostedApk")) {
+      externallyHostedApk = new ExternallyHostedApk.fromJson(_json["externallyHostedApk"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (externallyHostedApk != null) {
+      _json["externallyHostedApk"] = (externallyHostedApk).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class ApksAddExternallyHostedResponse {
+  /** The definition of the externally-hosted APK and where it is located. */
+  ExternallyHostedApk externallyHostedApk;
+
+
+  ApksAddExternallyHostedResponse();
+
+  ApksAddExternallyHostedResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("externallyHostedApk")) {
+      externallyHostedApk = new ExternallyHostedApk.fromJson(_json["externallyHostedApk"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (externallyHostedApk != null) {
+      _json["externallyHostedApk"] = (externallyHostedApk).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
 class ApksListResponse {
   /** Not documented yet. */
   core.List<Apk> apks;
@@ -3281,6 +3386,204 @@ class ExpansionFilesUploadResponse {
     var _json = new core.Map();
     if (expansionFile != null) {
       _json["expansionFile"] = (expansionFile).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * Defines an APK available for this application that is hosted externally and
+ * not uploaded to Google Play. This function is only available to enterprises
+ * who are using Android for Work, and whos application is restricted to the
+ * enterprise private channel
+ */
+class ExternallyHostedApk {
+  /** The application label. */
+  core.String applicationLabel;
+
+  /**
+   * A certificate (or array of certificates if a certificate-chain is used)
+   * used to signed this APK, represented as a base64 encoded byte array.
+   */
+  core.List<core.String> certificateBase64s;
+
+  /** The URL at which the APK is hosted. This must be an https URL. */
+  core.String externallyHostedUrl;
+
+  /**
+   * The SHA1 checksum of this APK, represented as a base64 encoded byte array.
+   */
+  core.String fileSha1Base64;
+
+  /**
+   * The SHA256 checksum of this APK, represented as a base64 encoded byte
+   * array.
+   */
+  core.String fileSha256Base64;
+
+  /** The file size in bytes of this APK. */
+  core.String fileSize;
+
+  /** The icon image from the APK, as a base64 encoded byte array. */
+  core.String iconBase64;
+
+  /** The maximum SDK supported by this APK (optional). */
+  core.int maximumSdk;
+
+  /** The minimum SDK targeted by this APK. */
+  core.int minimumSdk;
+
+  /** The native code environments supported by this APK (optional). */
+  core.List<core.String> nativeCodes;
+
+  /** The package name. */
+  core.String packageName;
+
+  /** The features required by this APK (optional). */
+  core.List<core.String> usesFeatures;
+
+  /** The permissions requested by this APK. */
+  core.List<ExternallyHostedApkUsesPermission> usesPermissions;
+
+  /** The version code of this APK. */
+  core.int versionCode;
+
+  /** The version name of this APK. */
+  core.String versionName;
+
+
+  ExternallyHostedApk();
+
+  ExternallyHostedApk.fromJson(core.Map _json) {
+    if (_json.containsKey("applicationLabel")) {
+      applicationLabel = _json["applicationLabel"];
+    }
+    if (_json.containsKey("certificateBase64s")) {
+      certificateBase64s = _json["certificateBase64s"];
+    }
+    if (_json.containsKey("externallyHostedUrl")) {
+      externallyHostedUrl = _json["externallyHostedUrl"];
+    }
+    if (_json.containsKey("fileSha1Base64")) {
+      fileSha1Base64 = _json["fileSha1Base64"];
+    }
+    if (_json.containsKey("fileSha256Base64")) {
+      fileSha256Base64 = _json["fileSha256Base64"];
+    }
+    if (_json.containsKey("fileSize")) {
+      fileSize = _json["fileSize"];
+    }
+    if (_json.containsKey("iconBase64")) {
+      iconBase64 = _json["iconBase64"];
+    }
+    if (_json.containsKey("maximumSdk")) {
+      maximumSdk = _json["maximumSdk"];
+    }
+    if (_json.containsKey("minimumSdk")) {
+      minimumSdk = _json["minimumSdk"];
+    }
+    if (_json.containsKey("nativeCodes")) {
+      nativeCodes = _json["nativeCodes"];
+    }
+    if (_json.containsKey("packageName")) {
+      packageName = _json["packageName"];
+    }
+    if (_json.containsKey("usesFeatures")) {
+      usesFeatures = _json["usesFeatures"];
+    }
+    if (_json.containsKey("usesPermissions")) {
+      usesPermissions = _json["usesPermissions"].map((value) => new ExternallyHostedApkUsesPermission.fromJson(value)).toList();
+    }
+    if (_json.containsKey("versionCode")) {
+      versionCode = _json["versionCode"];
+    }
+    if (_json.containsKey("versionName")) {
+      versionName = _json["versionName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (applicationLabel != null) {
+      _json["applicationLabel"] = applicationLabel;
+    }
+    if (certificateBase64s != null) {
+      _json["certificateBase64s"] = certificateBase64s;
+    }
+    if (externallyHostedUrl != null) {
+      _json["externallyHostedUrl"] = externallyHostedUrl;
+    }
+    if (fileSha1Base64 != null) {
+      _json["fileSha1Base64"] = fileSha1Base64;
+    }
+    if (fileSha256Base64 != null) {
+      _json["fileSha256Base64"] = fileSha256Base64;
+    }
+    if (fileSize != null) {
+      _json["fileSize"] = fileSize;
+    }
+    if (iconBase64 != null) {
+      _json["iconBase64"] = iconBase64;
+    }
+    if (maximumSdk != null) {
+      _json["maximumSdk"] = maximumSdk;
+    }
+    if (minimumSdk != null) {
+      _json["minimumSdk"] = minimumSdk;
+    }
+    if (nativeCodes != null) {
+      _json["nativeCodes"] = nativeCodes;
+    }
+    if (packageName != null) {
+      _json["packageName"] = packageName;
+    }
+    if (usesFeatures != null) {
+      _json["usesFeatures"] = usesFeatures;
+    }
+    if (usesPermissions != null) {
+      _json["usesPermissions"] = usesPermissions.map((value) => (value).toJson()).toList();
+    }
+    if (versionCode != null) {
+      _json["versionCode"] = versionCode;
+    }
+    if (versionName != null) {
+      _json["versionName"] = versionName;
+    }
+    return _json;
+  }
+}
+
+
+/** A permission used by this APK. */
+class ExternallyHostedApkUsesPermission {
+  /**
+   * Optionally, the maximum SDK version for which the permission is required.
+   */
+  core.int maxSdkVersion;
+
+  /** The name of the permission requested. */
+  core.String name;
+
+
+  ExternallyHostedApkUsesPermission();
+
+  ExternallyHostedApkUsesPermission.fromJson(core.Map _json) {
+    if (_json.containsKey("maxSdkVersion")) {
+      maxSdkVersion = _json["maxSdkVersion"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (maxSdkVersion != null) {
+      _json["maxSdkVersion"] = maxSdkVersion;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }

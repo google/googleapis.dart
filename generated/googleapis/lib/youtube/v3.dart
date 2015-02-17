@@ -3675,7 +3675,7 @@ class VideosResourceApi {
    * properties that the API response will include.
    *
    * The part names that you can include in the parameter value are snippet,
-   * contentDetails, fileDetails, liveStreamingDetails, player,
+   * contentDetails, fileDetails, liveStreamingDetails, localizations, player,
    * processingDetails, recordingDetails, statistics, status, suggestions, and
    * topicDetails. However, not all of those parts contain properties that can
    * be set when setting or updating a video's metadata. For example, the
@@ -3800,7 +3800,7 @@ class VideosResourceApi {
    * [part] - The part parameter specifies a comma-separated list of one or more
    * video resource properties that the API response will include. The part
    * names that you can include in the parameter value are id, snippet,
-   * contentDetails, fileDetails, liveStreamingDetails, player,
+   * contentDetails, fileDetails, liveStreamingDetails, localizations, player,
    * processingDetails, recordingDetails, statistics, status, suggestions, and
    * topicDetails.
    *
@@ -3815,6 +3815,14 @@ class VideosResourceApi {
    * Possible string values are:
    * - "mostPopular" : Return the most popular videos for the specified content
    * region and video category.
+   *
+   * [hl] - The hl parameter instructs the API to return a localized version of
+   * the video details. If localized text is nor available for the requested
+   * language, the localizations object in the API response will contain the
+   * requested information in the default language instead. The parameter value
+   * is a BCP-47 language code. Your application can determine whether the
+   * requested localization was returned by checking the value of the
+   * snippet.localized.language property in the API response.
    *
    * [id] - The id parameter specifies a comma-separated list of the YouTube
    * video ID(s) for the resource(s) that are being retrieved. In a video
@@ -3875,7 +3883,7 @@ class VideosResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<VideoListResponse> list(core.String part, {core.String chart, core.String id, core.String locale, core.int maxResults, core.String myRating, core.String onBehalfOfContentOwner, core.String pageToken, core.String regionCode, core.String videoCategoryId}) {
+  async.Future<VideoListResponse> list(core.String part, {core.String chart, core.String hl, core.String id, core.String locale, core.int maxResults, core.String myRating, core.String onBehalfOfContentOwner, core.String pageToken, core.String regionCode, core.String videoCategoryId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3889,6 +3897,9 @@ class VideosResourceApi {
     _queryParams["part"] = [part];
     if (chart != null) {
       _queryParams["chart"] = [chart];
+    }
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
     }
     if (id != null) {
       _queryParams["id"] = [id];
@@ -4008,7 +4019,7 @@ class VideosResourceApi {
    * properties that the API response will include.
    *
    * The part names that you can include in the parameter value are snippet,
-   * contentDetails, fileDetails, liveStreamingDetails, player,
+   * contentDetails, fileDetails, liveStreamingDetails, localizations, player,
    * processingDetails, recordingDetails, statistics, status, suggestions, and
    * topicDetails.
    *
@@ -5965,20 +5976,18 @@ class ChannelLocalization {
 }
 
 
-/**
- * TODO(lxz) follow up with adiamondstein@ to fullfill the doc before deploying
- */
+/** Not documented yet. */
 class ChannelSection {
   /**
-   * The contentDetails object contains details about the ChannelSection
-   * content, such as playlists and channels.
+   * The contentDetails object contains details about the channel section
+   * content, such as a list of playlists or channels featured in the section.
    */
   ChannelSectionContentDetails contentDetails;
 
   /** Etag of this resource. */
   core.String etag;
 
-  /** The ID that YouTube uses to uniquely identify the ChannelSection. */
+  /** The ID that YouTube uses to uniquely identify the channel section. */
   core.String id;
 
   /**
@@ -5987,9 +5996,12 @@ class ChannelSection {
    */
   core.String kind;
 
+  /** Localizations for different languages */
+  core.Map<core.String, ChannelSectionLocalization> localizations;
+
   /**
-   * The snippet object contains basic details about the ChannelSection, such as
-   * its type, style and title.
+   * The snippet object contains basic details about the channel section, such
+   * as its type, style and title.
    */
   ChannelSectionSnippet snippet;
 
@@ -6009,6 +6021,9 @@ class ChannelSection {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("localizations")) {
+      localizations = common_internal.mapMap(_json["localizations"], (item) => new ChannelSectionLocalization.fromJson(item));
+    }
     if (_json.containsKey("snippet")) {
       snippet = new ChannelSectionSnippet.fromJson(_json["snippet"]);
     }
@@ -6027,6 +6042,9 @@ class ChannelSection {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (localizations != null) {
+      _json["localizations"] = common_internal.mapMap(localizations, (item) => (item).toJson());
     }
     if (snippet != null) {
       _json["snippet"] = (snippet).toJson();
@@ -6135,21 +6153,51 @@ class ChannelSectionListResponse {
 }
 
 
+/** ChannelSection localization setting */
+class ChannelSectionLocalization {
+  /** The localized strings for channel section's title. */
+  core.String title;
+
+
+  ChannelSectionLocalization();
+
+  ChannelSectionLocalization.fromJson(core.Map _json) {
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+
 /**
- * Basic details about a channelsection, including title, style and position.
+ * Basic details about a channel section, including title, style and position.
  */
 class ChannelSectionSnippet {
   /**
    * The ID that YouTube uses to uniquely identify the channel that published
-   * the channelSection.
+   * the channel section.
    */
   core.String channelId;
 
-  /** The position of the channelSection in the channel. */
+  /** The language of the channel section's default title and description. */
+  core.String defaultLanguage;
+
+  /** Localized title, read-only. */
+  ChannelSectionLocalization localized;
+
+  /** The position of the channel section in the channel. */
   core.int position;
 
   /**
-   * The style of the channelSection.
+   * The style of the channel section.
    * Possible string values are:
    * - "channelsectionStyleUndefined"
    * - "horizontalRow"
@@ -6158,12 +6206,12 @@ class ChannelSectionSnippet {
   core.String style;
 
   /**
-   * The channelSection's title for multiple_playlists and multiple_channels.
+   * The channel section's title for multiple_playlists and multiple_channels.
    */
   core.String title;
 
   /**
-   * The type of the channelSection.
+   * The type of the channel section.
    * Possible string values are:
    * - "allPlaylists"
    * - "channelsectionTypeUndefined"
@@ -6192,6 +6240,12 @@ class ChannelSectionSnippet {
     if (_json.containsKey("channelId")) {
       channelId = _json["channelId"];
     }
+    if (_json.containsKey("defaultLanguage")) {
+      defaultLanguage = _json["defaultLanguage"];
+    }
+    if (_json.containsKey("localized")) {
+      localized = new ChannelSectionLocalization.fromJson(_json["localized"]);
+    }
     if (_json.containsKey("position")) {
       position = _json["position"];
     }
@@ -6210,6 +6264,12 @@ class ChannelSectionSnippet {
     var _json = new core.Map();
     if (channelId != null) {
       _json["channelId"] = channelId;
+    }
+    if (defaultLanguage != null) {
+      _json["defaultLanguage"] = defaultLanguage;
+    }
+    if (localized != null) {
+      _json["localized"] = (localized).toJson();
     }
     if (position != null) {
       _json["position"] = position;
@@ -9984,6 +10044,9 @@ class Playlist {
    */
   core.String kind;
 
+  /** Localizations for different languages */
+  core.Map<core.String, PlaylistLocalization> localizations;
+
   /**
    * The player object contains information that you would use to play the
    * playlist in an embedded player.
@@ -10015,6 +10078,9 @@ class Playlist {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("localizations")) {
+      localizations = common_internal.mapMap(_json["localizations"], (item) => new PlaylistLocalization.fromJson(item));
+    }
     if (_json.containsKey("player")) {
       player = new PlaylistPlayer.fromJson(_json["player"]);
     }
@@ -10039,6 +10105,9 @@ class Playlist {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (localizations != null) {
+      _json["localizations"] = common_internal.mapMap(localizations, (item) => (item).toJson());
     }
     if (player != null) {
       _json["player"] = (player).toJson();
@@ -10606,6 +10675,39 @@ class PlaylistListResponse {
 }
 
 
+/** Playlist localization setting */
+class PlaylistLocalization {
+  /** The localized strings for playlist's description. */
+  core.String description;
+
+  /** The localized strings for playlist's title. */
+  core.String title;
+
+
+  PlaylistLocalization();
+
+  PlaylistLocalization.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+
 /** Not documented yet. */
 class PlaylistPlayer {
   /** An <iframe> tag that embeds a player that will play the playlist. */
@@ -10643,8 +10745,14 @@ class PlaylistSnippet {
   /** The channel title of the channel that the video belongs to. */
   core.String channelTitle;
 
+  /** The language of the playlist's default title and description. */
+  core.String defaultLanguage;
+
   /** The playlist's description. */
   core.String description;
+
+  /** Localized title and description, read-only. */
+  PlaylistLocalization localized;
 
   /**
    * The date and time that the playlist was created. The value is specified in
@@ -10675,8 +10783,14 @@ class PlaylistSnippet {
     if (_json.containsKey("channelTitle")) {
       channelTitle = _json["channelTitle"];
     }
+    if (_json.containsKey("defaultLanguage")) {
+      defaultLanguage = _json["defaultLanguage"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("localized")) {
+      localized = new PlaylistLocalization.fromJson(_json["localized"]);
     }
     if (_json.containsKey("publishedAt")) {
       publishedAt = core.DateTime.parse(_json["publishedAt"]);
@@ -10700,8 +10814,14 @@ class PlaylistSnippet {
     if (channelTitle != null) {
       _json["channelTitle"] = channelTitle;
     }
+    if (defaultLanguage != null) {
+      _json["defaultLanguage"] = defaultLanguage;
+    }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (localized != null) {
+      _json["localized"] = (localized).toJson();
     }
     if (publishedAt != null) {
       _json["publishedAt"] = (publishedAt).toIso8601String();
@@ -13528,7 +13648,7 @@ class VideoSnippet {
   core.String channelTitle;
 
   /** The language of the videos's default snippet. */
-  LanguageTag defaultLanguage;
+  core.String defaultLanguage;
 
   /** The video's description. */
   core.String description;
@@ -13585,7 +13705,7 @@ class VideoSnippet {
       channelTitle = _json["channelTitle"];
     }
     if (_json.containsKey("defaultLanguage")) {
-      defaultLanguage = new LanguageTag.fromJson(_json["defaultLanguage"]);
+      defaultLanguage = _json["defaultLanguage"];
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -13622,7 +13742,7 @@ class VideoSnippet {
       _json["channelTitle"] = channelTitle;
     }
     if (defaultLanguage != null) {
-      _json["defaultLanguage"] = (defaultLanguage).toJson();
+      _json["defaultLanguage"] = defaultLanguage;
     }
     if (description != null) {
       _json["description"] = description;

@@ -6077,7 +6077,10 @@ class SearchJobsRequest {
    */
   core.String pageToken;
 
-  /** Required. Only return jobs which belong to this Google Developers */
+  /**
+   * Required. Only return jobs which belong to this Google Developers Console
+   * project.
+   */
   core.String projectNumber;
 
   /** Only return jobs which have a matching status. */
@@ -6427,6 +6430,12 @@ class SearchReferenceSetsRequest {
   core.List<core.String> accessions;
 
   /**
+   * If present, return reference sets for which a substring of their assemblyId
+   * matches this string (case insensitive).
+   */
+  core.String assemblyId;
+
+  /**
    * If present, return references for which the md5checksum matches. See
    * ReferenceSet.md5checksum for details.
    */
@@ -6449,6 +6458,9 @@ class SearchReferenceSetsRequest {
     if (_json.containsKey("accessions")) {
       accessions = _json["accessions"];
     }
+    if (_json.containsKey("assemblyId")) {
+      assemblyId = _json["assemblyId"];
+    }
     if (_json.containsKey("md5checksums")) {
       md5checksums = _json["md5checksums"];
     }
@@ -6464,6 +6476,9 @@ class SearchReferenceSetsRequest {
     var _json = new core.Map();
     if (accessions != null) {
       _json["accessions"] = accessions;
+    }
+    if (assemblyId != null) {
+      _json["assemblyId"] = assemblyId;
     }
     if (md5checksums != null) {
       _json["md5checksums"] = md5checksums;

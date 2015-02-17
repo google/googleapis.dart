@@ -15,7 +15,7 @@ export '../common/common.dart' show DetailedApiRequestError;
 
 /** The API to interact with Drive. */
 class DriveApi {
-  /** View and manage the files in your Google Drive */
+  /** View and manage the files and documents in your Google Drive */
   static const DriveScope = "https://www.googleapis.com/auth/drive";
 
   /** View and manage its own configuration data in your Google Drive */
@@ -30,10 +30,10 @@ class DriveApi {
    */
   static const DriveFileScope = "https://www.googleapis.com/auth/drive.file";
 
-  /** View metadata for files in your Google Drive */
+  /** View metadata for files and documents in your Google Drive */
   static const DriveMetadataReadonlyScope = "https://www.googleapis.com/auth/drive.metadata.readonly";
 
-  /** View the files in your Google Drive */
+  /** View the files and documents in your Google Drive */
   static const DriveReadonlyScope = "https://www.googleapis.com/auth/drive.readonly";
 
   /** Modify your Google Apps Script scripts' behavior */

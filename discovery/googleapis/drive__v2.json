@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/drive": {
-                    "description": "View and manage the files in your Google Drive"
+                    "description": "View and manage the files and documents in your Google Drive"
                 },
                 "https://www.googleapis.com/auth/drive.appdata": {
                     "description": "View and manage its own configuration data in your Google Drive"
@@ -15,10 +15,10 @@
                     "description": "View and manage Google Drive files that you have opened or created with this app"
                 },
                 "https://www.googleapis.com/auth/drive.metadata.readonly": {
-                    "description": "View metadata for files in your Google Drive"
+                    "description": "View metadata for files and documents in your Google Drive"
                 },
                 "https://www.googleapis.com/auth/drive.readonly": {
-                    "description": "View the files in your Google Drive"
+                    "description": "View the files and documents in your Google Drive"
                 },
                 "https://www.googleapis.com/auth/drive.scripts": {
                     "description": "Modify your Google Apps Script scripts' behavior"
@@ -32,7 +32,7 @@
     "description": "The API to interact with Drive.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/OZ8PEgleUgXQ4GmFEOAlJF6SOng\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/eleVM9swX1MTN0ATwIMDVMJbsE4\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -2444,7 +2444,7 @@
             }
         }
     },
-    "revision": "20150108",
+    "revision": "20141219",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {

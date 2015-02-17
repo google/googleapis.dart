@@ -17,7 +17,7 @@
     "description": "API for access to the data within Blogger.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/blogger/docs/3.0/getting_started",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/XKOX-vHZg1eZpg-SfJQQtRcKqVg\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/IrFCn8z3q4ulYVZWC1SJkXJKYC0\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/blogger-16.png",
         "x32": "https://www.google.com/images/icons/product/blogger-32.png"
@@ -799,7 +799,7 @@
                     ],
                     "parameters": {
                         "blogId": {
-                            "description": "ID of the blog to fetch pages from.",
+                            "description": "ID of the blog to fetch Pages from.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -808,6 +808,17 @@
                             "description": "Whether to retrieve the Page bodies.",
                             "location": "query",
                             "type": "boolean"
+                        },
+                        "maxResults": {
+                            "description": "Maximum number of Pages to fetch.",
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Continuation token if the request is paged.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "status": {
                             "enum": [
@@ -1714,7 +1725,7 @@
             }
         }
     },
-    "revision": "20150201",
+    "revision": "20150208",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Blog": {
@@ -2117,6 +2128,10 @@
                 "kind": {
                     "default": "blogger#pageList",
                     "description": "The kind of this entity. Always blogger#pageList",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "Pagination token to fetch the next page, if one exists.",
                     "type": "string"
                 }
             },

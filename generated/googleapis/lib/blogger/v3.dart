@@ -930,9 +930,13 @@ class PagesResourceApi {
    *
    * Request parameters:
    *
-   * [blogId] - ID of the blog to fetch pages from.
+   * [blogId] - ID of the blog to fetch Pages from.
    *
    * [fetchBodies] - Whether to retrieve the Page bodies.
+   *
+   * [maxResults] - Maximum number of Pages to fetch.
+   *
+   * [pageToken] - Continuation token if the request is paged.
    *
    * [status] - null
    *
@@ -951,7 +955,7 @@ class PagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<PageList> list(core.String blogId, {core.bool fetchBodies, core.List<core.String> status, core.String view}) {
+  async.Future<PageList> list(core.String blogId, {core.bool fetchBodies, core.int maxResults, core.String pageToken, core.List<core.String> status, core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -964,6 +968,12 @@ class PagesResourceApi {
     }
     if (fetchBodies != null) {
       _queryParams["fetchBodies"] = ["${fetchBodies}"];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (status != null) {
       _queryParams["status"] = status;
@@ -3047,6 +3057,9 @@ class PageList {
   /** The kind of this entity. Always blogger#pageList */
   core.String kind;
 
+  /** Pagination token to fetch the next page, if one exists. */
+  core.String nextPageToken;
+
 
   PageList();
 
@@ -3057,6 +3070,9 @@ class PageList {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
   }
 
   core.Map toJson() {
@@ -3066,6 +3082,9 @@ class PageList {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }

@@ -1775,6 +1775,9 @@ class Job {
    */
   JobStatus status;
 
+  /** [Output-only] Email address of the user who ran the job. */
+  core.String userEmail;
+
 
   Job();
 
@@ -1803,6 +1806,9 @@ class Job {
     if (_json.containsKey("status")) {
       status = new JobStatus.fromJson(_json["status"]);
     }
+    if (_json.containsKey("user_email")) {
+      userEmail = _json["user_email"];
+    }
   }
 
   core.Map toJson() {
@@ -1830,6 +1836,9 @@ class Job {
     }
     if (status != null) {
       _json["status"] = (status).toJson();
+    }
+    if (userEmail != null) {
+      _json["user_email"] = userEmail;
     }
     return _json;
   }
@@ -2560,7 +2569,7 @@ class JobListJobs {
   /** [Full-projection-only] Describes the state of the job. */
   JobStatus status;
 
-  /** [Full-projection-only] User who ran the job. */
+  /** [Full-projection-only] Email address of the user who ran the job. */
   core.String userEmail;
 
 
@@ -3182,9 +3191,9 @@ class QueryRequest {
   DatasetReference defaultDataset;
 
   /**
-   * [Optional] If set, don't actually run the query. A valid query will return
-   * an empty response, while an invalid query will return the same error it
-   * would if it wasn't a dry run. The default value is false.
+   * [Optional] If set, don't actually run this job. A valid query will return a
+   * mostly empty response with some processing statistics, while an invalid
+   * query will return the same error it would if it wasn't a dry run.
    */
   core.bool dryRun;
 

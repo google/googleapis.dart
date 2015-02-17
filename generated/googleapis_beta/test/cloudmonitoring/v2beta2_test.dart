@@ -1,4 +1,4 @@
-library googleapis_beta.cloudmonitoring.v2beta1.test;
+library googleapis_beta.cloudmonitoring.v2beta2.test;
 
 import "dart:core" as core;
 import "dart:collection" as collection;
@@ -12,9 +12,28 @@ import 'package:googleapis_beta/common/common.dart' as common;
 import 'package:googleapis_beta/src/common_internal.dart' as common_internal;
 import '../common/common_internal_test.dart' as common_test;
 
-import 'package:googleapis_beta/cloudmonitoring/v2beta1.dart' as api;
+import 'package:googleapis_beta/cloudmonitoring/v2beta2.dart' as api;
 
 
+
+core.int buildCounterDeleteMetricDescriptorResponse = 0;
+buildDeleteMetricDescriptorResponse() {
+  var o = new api.DeleteMetricDescriptorResponse();
+  buildCounterDeleteMetricDescriptorResponse++;
+  if (buildCounterDeleteMetricDescriptorResponse < 3) {
+    o.kind = "foo";
+  }
+  buildCounterDeleteMetricDescriptorResponse--;
+  return o;
+}
+
+checkDeleteMetricDescriptorResponse(api.DeleteMetricDescriptorResponse o) {
+  buildCounterDeleteMetricDescriptorResponse++;
+  if (buildCounterDeleteMetricDescriptorResponse < 3) {
+    unittest.expect(o.kind, unittest.equals('foo'));
+  }
+  buildCounterDeleteMetricDescriptorResponse--;
+}
 
 core.int buildCounterListMetricDescriptorsRequest = 0;
 buildListMetricDescriptorsRequest() {
@@ -35,14 +54,14 @@ checkListMetricDescriptorsRequest(api.ListMetricDescriptorsRequest o) {
   buildCounterListMetricDescriptorsRequest--;
 }
 
-buildUnnamed1471() {
+buildUnnamed1477() {
   var o = new core.List<api.MetricDescriptor>();
   o.add(buildMetricDescriptor());
   o.add(buildMetricDescriptor());
   return o;
 }
 
-checkUnnamed1471(core.List<api.MetricDescriptor> o) {
+checkUnnamed1477(core.List<api.MetricDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricDescriptor(o[0]);
   checkMetricDescriptor(o[1]);
@@ -54,7 +73,7 @@ buildListMetricDescriptorsResponse() {
   buildCounterListMetricDescriptorsResponse++;
   if (buildCounterListMetricDescriptorsResponse < 3) {
     o.kind = "foo";
-    o.metrics = buildUnnamed1471();
+    o.metrics = buildUnnamed1477();
     o.nextPageToken = "foo";
   }
   buildCounterListMetricDescriptorsResponse--;
@@ -65,7 +84,7 @@ checkListMetricDescriptorsResponse(api.ListMetricDescriptorsResponse o) {
   buildCounterListMetricDescriptorsResponse++;
   if (buildCounterListMetricDescriptorsResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1471(o.metrics);
+    checkUnnamed1477(o.metrics);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListMetricDescriptorsResponse--;
@@ -90,14 +109,14 @@ checkListTimeseriesDescriptorsRequest(api.ListTimeseriesDescriptorsRequest o) {
   buildCounterListTimeseriesDescriptorsRequest--;
 }
 
-buildUnnamed1472() {
+buildUnnamed1478() {
   var o = new core.List<api.TimeseriesDescriptor>();
   o.add(buildTimeseriesDescriptor());
   o.add(buildTimeseriesDescriptor());
   return o;
 }
 
-checkUnnamed1472(core.List<api.TimeseriesDescriptor> o) {
+checkUnnamed1478(core.List<api.TimeseriesDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimeseriesDescriptor(o[0]);
   checkTimeseriesDescriptor(o[1]);
@@ -111,7 +130,7 @@ buildListTimeseriesDescriptorsResponse() {
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.oldest = core.DateTime.parse("2002-02-27T14:01:02");
-    o.timeseries = buildUnnamed1472();
+    o.timeseries = buildUnnamed1478();
     o.youngest = core.DateTime.parse("2002-02-27T14:01:02");
   }
   buildCounterListTimeseriesDescriptorsResponse--;
@@ -124,7 +143,7 @@ checkListTimeseriesDescriptorsResponse(api.ListTimeseriesDescriptorsResponse o) 
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.oldest, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUnnamed1472(o.timeseries);
+    checkUnnamed1478(o.timeseries);
     unittest.expect(o.youngest, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
   }
   buildCounterListTimeseriesDescriptorsResponse--;
@@ -149,14 +168,14 @@ checkListTimeseriesRequest(api.ListTimeseriesRequest o) {
   buildCounterListTimeseriesRequest--;
 }
 
-buildUnnamed1473() {
+buildUnnamed1479() {
   var o = new core.List<api.Timeseries>();
   o.add(buildTimeseries());
   o.add(buildTimeseries());
   return o;
 }
 
-checkUnnamed1473(core.List<api.Timeseries> o) {
+checkUnnamed1479(core.List<api.Timeseries> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimeseries(o[0]);
   checkTimeseries(o[1]);
@@ -170,7 +189,7 @@ buildListTimeseriesResponse() {
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.oldest = core.DateTime.parse("2002-02-27T14:01:02");
-    o.timeseries = buildUnnamed1473();
+    o.timeseries = buildUnnamed1479();
     o.youngest = core.DateTime.parse("2002-02-27T14:01:02");
   }
   buildCounterListTimeseriesResponse--;
@@ -183,20 +202,20 @@ checkListTimeseriesResponse(api.ListTimeseriesResponse o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.oldest, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUnnamed1473(o.timeseries);
+    checkUnnamed1479(o.timeseries);
     unittest.expect(o.youngest, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
   }
   buildCounterListTimeseriesResponse--;
 }
 
-buildUnnamed1474() {
+buildUnnamed1480() {
   var o = new core.List<api.MetricDescriptorLabelDescriptor>();
   o.add(buildMetricDescriptorLabelDescriptor());
   o.add(buildMetricDescriptorLabelDescriptor());
   return o;
 }
 
-checkUnnamed1474(core.List<api.MetricDescriptorLabelDescriptor> o) {
+checkUnnamed1480(core.List<api.MetricDescriptorLabelDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricDescriptorLabelDescriptor(o[0]);
   checkMetricDescriptorLabelDescriptor(o[1]);
@@ -208,7 +227,7 @@ buildMetricDescriptor() {
   buildCounterMetricDescriptor++;
   if (buildCounterMetricDescriptor < 3) {
     o.description = "foo";
-    o.labels = buildUnnamed1474();
+    o.labels = buildUnnamed1480();
     o.name = "foo";
     o.project = "foo";
     o.typeDescriptor = buildMetricDescriptorTypeDescriptor();
@@ -221,7 +240,7 @@ checkMetricDescriptor(api.MetricDescriptor o) {
   buildCounterMetricDescriptor++;
   if (buildCounterMetricDescriptor < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed1474(o.labels);
+    checkUnnamed1480(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.project, unittest.equals('foo'));
     checkMetricDescriptorTypeDescriptor(o.typeDescriptor);
@@ -302,14 +321,14 @@ checkPoint(api.Point o) {
   buildCounterPoint--;
 }
 
-buildUnnamed1475() {
+buildUnnamed1481() {
   var o = new core.List<api.PointDistributionBucket>();
   o.add(buildPointDistributionBucket());
   o.add(buildPointDistributionBucket());
   return o;
 }
 
-checkUnnamed1475(core.List<api.PointDistributionBucket> o) {
+checkUnnamed1481(core.List<api.PointDistributionBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPointDistributionBucket(o[0]);
   checkPointDistributionBucket(o[1]);
@@ -320,7 +339,7 @@ buildPointDistribution() {
   var o = new api.PointDistribution();
   buildCounterPointDistribution++;
   if (buildCounterPointDistribution < 3) {
-    o.buckets = buildUnnamed1475();
+    o.buckets = buildUnnamed1481();
     o.overflowBucket = buildPointDistributionOverflowBucket();
     o.underflowBucket = buildPointDistributionUnderflowBucket();
   }
@@ -331,7 +350,7 @@ buildPointDistribution() {
 checkPointDistribution(api.PointDistribution o) {
   buildCounterPointDistribution++;
   if (buildCounterPointDistribution < 3) {
-    checkUnnamed1475(o.buckets);
+    checkUnnamed1481(o.buckets);
     checkPointDistributionOverflowBucket(o.overflowBucket);
     checkPointDistributionUnderflowBucket(o.underflowBucket);
   }
@@ -403,14 +422,14 @@ checkPointDistributionUnderflowBucket(api.PointDistributionUnderflowBucket o) {
   buildCounterPointDistributionUnderflowBucket--;
 }
 
-buildUnnamed1476() {
+buildUnnamed1482() {
   var o = new core.List<api.Point>();
   o.add(buildPoint());
   o.add(buildPoint());
   return o;
 }
 
-checkUnnamed1476(core.List<api.Point> o) {
+checkUnnamed1482(core.List<api.Point> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPoint(o[0]);
   checkPoint(o[1]);
@@ -421,7 +440,7 @@ buildTimeseries() {
   var o = new api.Timeseries();
   buildCounterTimeseries++;
   if (buildCounterTimeseries < 3) {
-    o.points = buildUnnamed1476();
+    o.points = buildUnnamed1482();
     o.timeseriesDesc = buildTimeseriesDescriptor();
   }
   buildCounterTimeseries--;
@@ -431,20 +450,20 @@ buildTimeseries() {
 checkTimeseries(api.Timeseries o) {
   buildCounterTimeseries++;
   if (buildCounterTimeseries < 3) {
-    checkUnnamed1476(o.points);
+    checkUnnamed1482(o.points);
     checkTimeseriesDescriptor(o.timeseriesDesc);
   }
   buildCounterTimeseries--;
 }
 
-buildUnnamed1477() {
+buildUnnamed1483() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1477(core.Map<core.String, core.String> o) {
+checkUnnamed1483(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -455,7 +474,7 @@ buildTimeseriesDescriptor() {
   var o = new api.TimeseriesDescriptor();
   buildCounterTimeseriesDescriptor++;
   if (buildCounterTimeseriesDescriptor < 3) {
-    o.labels = buildUnnamed1477();
+    o.labels = buildUnnamed1483();
     o.metric = "foo";
     o.project = "foo";
   }
@@ -466,7 +485,7 @@ buildTimeseriesDescriptor() {
 checkTimeseriesDescriptor(api.TimeseriesDescriptor o) {
   buildCounterTimeseriesDescriptor++;
   if (buildCounterTimeseriesDescriptor < 3) {
-    checkUnnamed1477(o.labels);
+    checkUnnamed1483(o.labels);
     unittest.expect(o.metric, unittest.equals('foo'));
     unittest.expect(o.project, unittest.equals('foo'));
   }
@@ -494,27 +513,114 @@ checkTimeseriesDescriptorLabel(api.TimeseriesDescriptorLabel o) {
   buildCounterTimeseriesDescriptorLabel--;
 }
 
-buildUnnamed1478() {
+core.int buildCounterTimeseriesPoint = 0;
+buildTimeseriesPoint() {
+  var o = new api.TimeseriesPoint();
+  buildCounterTimeseriesPoint++;
+  if (buildCounterTimeseriesPoint < 3) {
+    o.point = buildPoint();
+    o.timeseriesDesc = buildTimeseriesDescriptor();
+  }
+  buildCounterTimeseriesPoint--;
+  return o;
+}
+
+checkTimeseriesPoint(api.TimeseriesPoint o) {
+  buildCounterTimeseriesPoint++;
+  if (buildCounterTimeseriesPoint < 3) {
+    checkPoint(o.point);
+    checkTimeseriesDescriptor(o.timeseriesDesc);
+  }
+  buildCounterTimeseriesPoint--;
+}
+
+buildUnnamed1484() {
+  var o = new core.Map<core.String, core.String>();
+  o["x"] = "foo";
+  o["y"] = "foo";
+  return o;
+}
+
+checkUnnamed1484(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o["x"], unittest.equals('foo'));
+  unittest.expect(o["y"], unittest.equals('foo'));
+}
+
+buildUnnamed1485() {
+  var o = new core.List<api.TimeseriesPoint>();
+  o.add(buildTimeseriesPoint());
+  o.add(buildTimeseriesPoint());
+  return o;
+}
+
+checkUnnamed1485(core.List<api.TimeseriesPoint> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTimeseriesPoint(o[0]);
+  checkTimeseriesPoint(o[1]);
+}
+
+core.int buildCounterWriteTimeseriesRequest = 0;
+buildWriteTimeseriesRequest() {
+  var o = new api.WriteTimeseriesRequest();
+  buildCounterWriteTimeseriesRequest++;
+  if (buildCounterWriteTimeseriesRequest < 3) {
+    o.commonLabels = buildUnnamed1484();
+    o.timeseries = buildUnnamed1485();
+  }
+  buildCounterWriteTimeseriesRequest--;
+  return o;
+}
+
+checkWriteTimeseriesRequest(api.WriteTimeseriesRequest o) {
+  buildCounterWriteTimeseriesRequest++;
+  if (buildCounterWriteTimeseriesRequest < 3) {
+    checkUnnamed1484(o.commonLabels);
+    checkUnnamed1485(o.timeseries);
+  }
+  buildCounterWriteTimeseriesRequest--;
+}
+
+core.int buildCounterWriteTimeseriesResponse = 0;
+buildWriteTimeseriesResponse() {
+  var o = new api.WriteTimeseriesResponse();
+  buildCounterWriteTimeseriesResponse++;
+  if (buildCounterWriteTimeseriesResponse < 3) {
+    o.kind = "foo";
+  }
+  buildCounterWriteTimeseriesResponse--;
+  return o;
+}
+
+checkWriteTimeseriesResponse(api.WriteTimeseriesResponse o) {
+  buildCounterWriteTimeseriesResponse++;
+  if (buildCounterWriteTimeseriesResponse < 3) {
+    unittest.expect(o.kind, unittest.equals('foo'));
+  }
+  buildCounterWriteTimeseriesResponse--;
+}
+
+buildUnnamed1486() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1478(core.List<core.String> o) {
+checkUnnamed1486(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1479() {
+buildUnnamed1487() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1479(core.List<core.String> o) {
+checkUnnamed1487(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -522,6 +628,15 @@ checkUnnamed1479(core.List<core.String> o) {
 
 
 main() {
+  unittest.group("obj-schema-DeleteMetricDescriptorResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDeleteMetricDescriptorResponse();
+      var od = new api.DeleteMetricDescriptorResponse.fromJson(o.toJson());
+      checkDeleteMetricDescriptorResponse(od);
+    });
+  });
+
+
   unittest.group("obj-schema-ListMetricDescriptorsRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildListMetricDescriptorsRequest();
@@ -675,7 +790,123 @@ main() {
   });
 
 
+  unittest.group("obj-schema-TimeseriesPoint", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildTimeseriesPoint();
+      var od = new api.TimeseriesPoint.fromJson(o.toJson());
+      checkTimeseriesPoint(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-WriteTimeseriesRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildWriteTimeseriesRequest();
+      var od = new api.WriteTimeseriesRequest.fromJson(o.toJson());
+      checkWriteTimeseriesRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-WriteTimeseriesResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildWriteTimeseriesResponse();
+      var od = new api.WriteTimeseriesResponse.fromJson(o.toJson());
+      checkWriteTimeseriesResponse(od);
+    });
+  });
+
+
   unittest.group("resource-MetricDescriptorsResourceApi", () {
+    unittest.test("method--create", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.MetricDescriptorsResourceApi res = new api.CloudmonitoringApi(mock).metricDescriptors;
+      var arg_request = buildMetricDescriptor();
+      var arg_project = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.MetricDescriptor.fromJson(json);
+        checkMetricDescriptor(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildMetricDescriptor());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.create(arg_request, arg_project).then(unittest.expectAsync(((api.MetricDescriptor response) {
+        checkMetricDescriptor(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.MetricDescriptorsResourceApi res = new api.CloudmonitoringApi(mock).metricDescriptors;
+      var arg_project = "foo";
+      var arg_metric = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildDeleteMetricDescriptorResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.delete(arg_project, arg_metric).then(unittest.expectAsync(((api.DeleteMetricDescriptorResponse response) {
+        checkDeleteMetricDescriptorResponse(response);
+      })));
+    });
+
     unittest.test("method--list", () {
 
       var mock = new common_test.HttpServerMock();
@@ -742,7 +973,7 @@ main() {
       var arg_youngest = "foo";
       var arg_aggregator = "foo";
       var arg_count = 42;
-      var arg_labels = buildUnnamed1478();
+      var arg_labels = buildUnnamed1486();
       var arg_oldest = "foo";
       var arg_pageToken = "foo";
       var arg_timespan = "foo";
@@ -795,6 +1026,52 @@ main() {
       })));
     });
 
+    unittest.test("method--write", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.TimeseriesResourceApi res = new api.CloudmonitoringApi(mock).timeseries;
+      var arg_request = buildWriteTimeseriesRequest();
+      var arg_project = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.WriteTimeseriesRequest.fromJson(json);
+        checkWriteTimeseriesRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildWriteTimeseriesResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.write(arg_request, arg_project).then(unittest.expectAsync(((api.WriteTimeseriesResponse response) {
+        checkWriteTimeseriesResponse(response);
+      })));
+    });
+
   });
 
 
@@ -809,7 +1086,7 @@ main() {
       var arg_youngest = "foo";
       var arg_aggregator = "foo";
       var arg_count = 42;
-      var arg_labels = buildUnnamed1479();
+      var arg_labels = buildUnnamed1487();
       var arg_oldest = "foo";
       var arg_pageToken = "foo";
       var arg_timespan = "foo";

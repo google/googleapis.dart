@@ -1,3 +1,11 @@
+## 0.9.0
+
+* [apis-new] cloudmonitoring:v2beta2: API added
+* [apis-new] sqladmin:v1beta4: API added
+* [apis] genomics:v1beta2: schema changes
+* [apis] sqladmin:v1beta3: scope changes
+* [apis-removed] cloudmonitoring:v2beta2: removed
+
 ## 0.8.0
 
 * [apis-new] dataflow:v1b4: API added

@@ -23,7 +23,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/KNK1D4x0xuELibnyKlhZf4lyZls\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Ve-dPhHjhWsL4fKFCzVvJIg5fO8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -2994,7 +2994,7 @@
                     "type": "string"
                 },
                 "projectNumber": {
-                    "description": "Required. Only return jobs which belong to this Google Developers",
+                    "description": "Required. Only return jobs which belong to this Google Developers Console project.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -3152,6 +3152,7 @@
             "type": "object"
         },
         "SearchReferenceSetsRequest": {
+            "description": "",
             "id": "SearchReferenceSetsRequest",
             "properties": {
                 "accessions": {
@@ -3160,6 +3161,10 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "assemblyId": {
+                    "description": "If present, return reference sets for which a substring of their assemblyId matches this string (case insensitive).",
+                    "type": "string"
                 },
                 "md5checksums": {
                     "description": "If present, return references for which the md5checksum matches. See ReferenceSet.md5checksum for details.",

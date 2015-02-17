@@ -15,6 +15,9 @@ export '../common/common.dart' show DetailedApiRequestError;
 
 /** API for the Google Compute Engine service. */
 class ComputeApi {
+  /** View and manage your data across Google Cloud Platform services */
+  static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+
   /** View and manage your Google Compute Engine resources */
   static const ComputeScope = "https://www.googleapis.com/auth/compute";
 

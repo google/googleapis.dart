@@ -23,7 +23,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta/reference",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/HR17ct0QOEWII4nrJitMlcnaZpM\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/OuFsXaFXztU_OO1hb1LsnM5yZtA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1935,7 +1935,7 @@
                     "type": "string"
                 },
                 "projectId": {
-                    "description": "Required. Only return jobs which belong to this Google Developers",
+                    "description": "Required. Only return jobs which belong to this Google Developers Console project.",
                     "format": "int64",
                     "type": "string"
                 },

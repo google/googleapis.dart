@@ -74,11 +74,11 @@ The Google Compute Engine Autoscaler API provides autoscaling for groups of Clou
 
 Official API documentation: http://developers.google.com/compute/docs/autoscaler
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Monitoring API - cloudmonitoring v2beta1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Monitoring API - cloudmonitoring v2beta2
 
 API for accessing Google Cloud and API monitoring data.
 
-Official API documentation: https://developers.google.com/cloud-monitoring/
+Official API documentation: https://developers.google.com/cloud/eap/cloud-monitoring/v2beta2/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Container Engine API - container v1beta1
 
@@ -165,6 +165,12 @@ The Resource View API allows users to create and manage logical sets of Google C
 Official API documentation: https://developers.google.com/compute/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud SQL Administration API - sqladmin v1beta3
+
+API for Cloud SQL database instance management.
+
+Official API documentation: https://developers.google.com/cloud-sql/docs/admin-api/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud SQL Administration API - sqladmin v1beta4
 
 API for Cloud SQL database instance management.
 

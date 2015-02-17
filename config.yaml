@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.5.5
+    version: 0.6.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -70,7 +70,7 @@ packages:
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
-    version: 0.8.0
+    version: 0.9.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -78,7 +78,7 @@ packages:
     changelog: resources/googleapis_beta/CHANGELOG.md
     apis:
     - autoscaler:v1beta2  # https://developers.google.com/compute/docs/autoscaler/ (Limited Preview)
-    - cloudmonitoring:v2beta1  # https://developers.google.com/cloud-monitoring/
+    - cloudmonitoring:v2beta2  # https://developers.google.com/cloud-monitoring/
     - container:v1beta1  #
     - dataflow:v1beta3  # https://cloud.google.com/dataflow/
     - dataflow:v1b4  # https://cloud.google.com/dataflow/
@@ -94,6 +94,7 @@ packages:
     - resourceviews:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/ (Limited Preview)
     - resourceviews:v1beta2  # https://cloud.google.com/compute/docs/instance-groups/
     - sqladmin:v1beta3  # https://developers.google.com/cloud-sql/docs/admin-api/
+    - sqladmin:v1beta4  # https://developers.google.com/cloud-sql/docs/admin-api/
     - taskqueue:v1beta2  # https://developers.google.com/appengine/docs/python/taskqueue/rest/libraries
 
 skipped_apis:

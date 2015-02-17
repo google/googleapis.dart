@@ -16,14 +16,14 @@ import 'package:googleapis/appsactivity/v1.dart' as api;
 
 
 
-buildUnnamed259() {
+buildUnnamed263() {
   var o = new core.List<api.Event>();
   o.add(buildEvent());
   o.add(buildEvent());
   return o;
 }
 
-checkUnnamed259(core.List<api.Event> o) {
+checkUnnamed263(core.List<api.Event> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEvent(o[0]);
   checkEvent(o[1]);
@@ -35,7 +35,7 @@ buildActivity() {
   buildCounterActivity++;
   if (buildCounterActivity < 3) {
     o.combinedEvent = buildEvent();
-    o.singleEvents = buildUnnamed259();
+    o.singleEvents = buildUnnamed263();
   }
   buildCounterActivity--;
   return o;
@@ -45,32 +45,32 @@ checkActivity(api.Activity o) {
   buildCounterActivity++;
   if (buildCounterActivity < 3) {
     checkEvent(o.combinedEvent);
-    checkUnnamed259(o.singleEvents);
+    checkUnnamed263(o.singleEvents);
   }
   buildCounterActivity--;
 }
 
-buildUnnamed260() {
+buildUnnamed264() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed260(core.List<core.String> o) {
+checkUnnamed264(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed261() {
+buildUnnamed265() {
   var o = new core.List<api.PermissionChange>();
   o.add(buildPermissionChange());
   o.add(buildPermissionChange());
   return o;
 }
 
-checkUnnamed261(core.List<api.PermissionChange> o) {
+checkUnnamed265(core.List<api.PermissionChange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermissionChange(o[0]);
   checkPermissionChange(o[1]);
@@ -81,11 +81,11 @@ buildEvent() {
   var o = new api.Event();
   buildCounterEvent++;
   if (buildCounterEvent < 3) {
-    o.additionalEventTypes = buildUnnamed260();
+    o.additionalEventTypes = buildUnnamed264();
     o.eventTimeMillis = "foo";
     o.fromUserDeletion = true;
     o.move = buildMove();
-    o.permissionChanges = buildUnnamed261();
+    o.permissionChanges = buildUnnamed265();
     o.primaryEventType = "foo";
     o.rename = buildRename();
     o.target = buildTarget();
@@ -98,11 +98,11 @@ buildEvent() {
 checkEvent(api.Event o) {
   buildCounterEvent++;
   if (buildCounterEvent < 3) {
-    checkUnnamed260(o.additionalEventTypes);
+    checkUnnamed264(o.additionalEventTypes);
     unittest.expect(o.eventTimeMillis, unittest.equals('foo'));
     unittest.expect(o.fromUserDeletion, unittest.isTrue);
     checkMove(o.move);
-    checkUnnamed261(o.permissionChanges);
+    checkUnnamed265(o.permissionChanges);
     unittest.expect(o.primaryEventType, unittest.equals('foo'));
     checkRename(o.rename);
     checkTarget(o.target);
@@ -111,14 +111,14 @@ checkEvent(api.Event o) {
   buildCounterEvent--;
 }
 
-buildUnnamed262() {
+buildUnnamed266() {
   var o = new core.List<api.Activity>();
   o.add(buildActivity());
   o.add(buildActivity());
   return o;
 }
 
-checkUnnamed262(core.List<api.Activity> o) {
+checkUnnamed266(core.List<api.Activity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivity(o[0]);
   checkActivity(o[1]);
@@ -129,7 +129,7 @@ buildListActivitiesResponse() {
   var o = new api.ListActivitiesResponse();
   buildCounterListActivitiesResponse++;
   if (buildCounterListActivitiesResponse < 3) {
-    o.activities = buildUnnamed262();
+    o.activities = buildUnnamed266();
     o.nextPageToken = "foo";
   }
   buildCounterListActivitiesResponse--;
@@ -139,33 +139,33 @@ buildListActivitiesResponse() {
 checkListActivitiesResponse(api.ListActivitiesResponse o) {
   buildCounterListActivitiesResponse++;
   if (buildCounterListActivitiesResponse < 3) {
-    checkUnnamed262(o.activities);
+    checkUnnamed266(o.activities);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListActivitiesResponse--;
 }
 
-buildUnnamed263() {
+buildUnnamed267() {
   var o = new core.List<api.Parent>();
   o.add(buildParent());
   o.add(buildParent());
   return o;
 }
 
-checkUnnamed263(core.List<api.Parent> o) {
+checkUnnamed267(core.List<api.Parent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParent(o[0]);
   checkParent(o[1]);
 }
 
-buildUnnamed264() {
+buildUnnamed268() {
   var o = new core.List<api.Parent>();
   o.add(buildParent());
   o.add(buildParent());
   return o;
 }
 
-checkUnnamed264(core.List<api.Parent> o) {
+checkUnnamed268(core.List<api.Parent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParent(o[0]);
   checkParent(o[1]);
@@ -176,8 +176,8 @@ buildMove() {
   var o = new api.Move();
   buildCounterMove++;
   if (buildCounterMove < 3) {
-    o.addedParents = buildUnnamed263();
-    o.removedParents = buildUnnamed264();
+    o.addedParents = buildUnnamed267();
+    o.removedParents = buildUnnamed268();
   }
   buildCounterMove--;
   return o;
@@ -186,8 +186,8 @@ buildMove() {
 checkMove(api.Move o) {
   buildCounterMove++;
   if (buildCounterMove < 3) {
-    checkUnnamed263(o.addedParents);
-    checkUnnamed264(o.removedParents);
+    checkUnnamed267(o.addedParents);
+    checkUnnamed268(o.removedParents);
   }
   buildCounterMove--;
 }
@@ -244,27 +244,27 @@ checkPermission(api.Permission o) {
   buildCounterPermission--;
 }
 
-buildUnnamed265() {
+buildUnnamed269() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed265(core.List<api.Permission> o) {
+checkUnnamed269(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
 }
 
-buildUnnamed266() {
+buildUnnamed270() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed266(core.List<api.Permission> o) {
+checkUnnamed270(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
@@ -275,8 +275,8 @@ buildPermissionChange() {
   var o = new api.PermissionChange();
   buildCounterPermissionChange++;
   if (buildCounterPermissionChange < 3) {
-    o.addedPermissions = buildUnnamed265();
-    o.removedPermissions = buildUnnamed266();
+    o.addedPermissions = buildUnnamed269();
+    o.removedPermissions = buildUnnamed270();
   }
   buildCounterPermissionChange--;
   return o;
@@ -285,8 +285,8 @@ buildPermissionChange() {
 checkPermissionChange(api.PermissionChange o) {
   buildCounterPermissionChange++;
   if (buildCounterPermissionChange < 3) {
-    checkUnnamed265(o.addedPermissions);
-    checkUnnamed266(o.removedPermissions);
+    checkUnnamed269(o.addedPermissions);
+    checkUnnamed270(o.removedPermissions);
   }
   buildCounterPermissionChange--;
 }

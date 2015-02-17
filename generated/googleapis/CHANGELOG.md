@@ -1,3 +1,13 @@
+## 0.6.0
+
+* [apis] androidpublisher:v2: additional schemas/methods
+* [apis] bigquery:v2: schema changes
+* [apis] blogger:v3: schemas/methods changes
+* [apis] books:v1: schemas/methods changes
+* [apis] compute:v1: scope changes
+* [apis] gmail:v1: method changes
+* [apis-breaking] youtube:v3: schemas/methods changes
+
 ## 0.5.5
 
 * [apis-new] gamesConfiguration:v1configuration: API added

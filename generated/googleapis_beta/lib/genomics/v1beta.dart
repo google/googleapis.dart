@@ -3781,7 +3781,10 @@ class SearchJobsRequest {
    */
   core.String pageToken;
 
-  /** Required. Only return jobs which belong to this Google Developers */
+  /**
+   * Required. Only return jobs which belong to this Google Developers Console
+   * project.
+   */
   core.String projectId;
 
   /** Only return jobs which have a matching status. */

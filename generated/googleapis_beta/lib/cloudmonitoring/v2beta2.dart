@@ -1,4 +1,4 @@
-library googleapis_beta.cloudmonitoring.v2beta1;
+library googleapis_beta.cloudmonitoring.v2beta2;
 
 import "dart:core" as core;
 import "dart:collection" as collection;
@@ -15,8 +15,11 @@ export '../common/common.dart' show DetailedApiRequestError;
 
 /** API for accessing Google Cloud and API monitoring data. */
 class CloudmonitoringApi {
-  /** View monitoring data for all of your Google Cloud and API projects */
-  static const MonitoringReadonlyScope = "https://www.googleapis.com/auth/monitoring.readonly";
+  /**
+   * View and write monitoring data for all of your Google and third-party Cloud
+   * and API projects
+   */
+  static const MonitoringScope = "https://www.googleapis.com/auth/monitoring";
 
 
   final common_internal.ApiRequester _requester;
@@ -25,7 +28,7 @@ class CloudmonitoringApi {
   TimeseriesResourceApi get timeseries => new TimeseriesResourceApi(_requester);
   TimeseriesDescriptorsResourceApi get timeseriesDescriptors => new TimeseriesDescriptorsResourceApi(_requester);
 
-  CloudmonitoringApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "cloudmonitoring/v2beta1/projects/"}) :
+  CloudmonitoringApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "cloudmonitoring/v2beta2/projects/"}) :
       _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
 }
 
@@ -36,6 +39,97 @@ class MetricDescriptorsResourceApi {
 
   MetricDescriptorsResourceApi(common_internal.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Create a new metric.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - The project id. The value can be the numeric project ID or
+   * string-based project name.
+   *
+   * Completes with a [MetricDescriptor].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<MetricDescriptor> create(MetricDescriptor request, core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+
+    _url = common_internal.Escaper.ecapeVariable('$project') + '/metricDescriptors';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new MetricDescriptor.fromJson(data));
+  }
+
+  /**
+   * Delete an existing metric.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID to which the metric belongs.
+   *
+   * [metric] - Name of the metric.
+   *
+   * Completes with a [DeleteMetricDescriptorResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<DeleteMetricDescriptorResponse> delete(core.String project, core.String metric) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (metric == null) {
+      throw new core.ArgumentError("Parameter metric is required.");
+    }
+
+
+    _url = common_internal.Escaper.ecapeVariable('$project') + '/metricDescriptors/' + common_internal.Escaper.ecapeVariable('$metric');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DeleteMetricDescriptorResponse.fromJson(data));
+  }
 
   /**
    * List metric descriptors that match the query. If the query is not set, then
@@ -261,6 +355,58 @@ class TimeseriesResourceApi {
     return _response.then((data) => new ListTimeseriesResponse.fromJson(data));
   }
 
+  /**
+   * Put data points to one or more time series for one or more metrics. If a
+   * time series does not exist, a new time series will be created. It is not
+   * allowed to write a time series point that is older than the existing
+   * youngest point of that time series. Points that are older than the existing
+   * youngest point of that time series will be discarded silently. Therefore,
+   * users should make sure that points of a time series are written
+   * sequentially in the order of their end time.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - The project ID. The value can be the numeric project ID or
+   * string-based project name.
+   *
+   * Completes with a [WriteTimeseriesResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<WriteTimeseriesResponse> write(WriteTimeseriesRequest request, core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+
+    _url = common_internal.Escaper.ecapeVariable('$project') + '/timeseries:write';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new WriteTimeseriesResponse.fromJson(data));
+  }
+
 }
 
 
@@ -414,6 +560,33 @@ class TimeseriesDescriptorsResourceApi {
 
 }
 
+
+
+/** The response of cloudmonitoring.metricDescriptors.delete. */
+class DeleteMetricDescriptorResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "cloudmonitoring#deleteMetricDescriptorResponse".
+   */
+  core.String kind;
+
+
+  DeleteMetricDescriptorResponse();
+
+  DeleteMetricDescriptorResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
 
 
 /** The request of cloudmonitoring.metricDescriptors.list. */
@@ -1214,6 +1387,107 @@ class TimeseriesDescriptorLabel {
     }
     if (value != null) {
       _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * When writing time series, TimeseriesPoint should be used instead of
+ * Timeseries, to enforce single point for each time series in the
+ * timeseries.write request.
+ */
+class TimeseriesPoint {
+  /** The data point in this time series snapshot. */
+  Point point;
+
+  /** The descriptor of this time series. */
+  TimeseriesDescriptor timeseriesDesc;
+
+
+  TimeseriesPoint();
+
+  TimeseriesPoint.fromJson(core.Map _json) {
+    if (_json.containsKey("point")) {
+      point = new Point.fromJson(_json["point"]);
+    }
+    if (_json.containsKey("timeseriesDesc")) {
+      timeseriesDesc = new TimeseriesDescriptor.fromJson(_json["timeseriesDesc"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (point != null) {
+      _json["point"] = (point).toJson();
+    }
+    if (timeseriesDesc != null) {
+      _json["timeseriesDesc"] = (timeseriesDesc).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** The request of cloudmonitoring.timeseries.write */
+class WriteTimeseriesRequest {
+  /** The label's name. */
+  core.Map<core.String, core.String> commonLabels;
+
+  /**
+   * Provide time series specific labels and the data points for each time
+   * series. The labels in timeseries and the common_labels should form a
+   * complete list of labels that required by the metric.
+   */
+  core.List<TimeseriesPoint> timeseries;
+
+
+  WriteTimeseriesRequest();
+
+  WriteTimeseriesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("commonLabels")) {
+      commonLabels = _json["commonLabels"];
+    }
+    if (_json.containsKey("timeseries")) {
+      timeseries = _json["timeseries"].map((value) => new TimeseriesPoint.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (commonLabels != null) {
+      _json["commonLabels"] = commonLabels;
+    }
+    if (timeseries != null) {
+      _json["timeseries"] = timeseries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** The response of cloudmonitoring.timeseries.write */
+class WriteTimeseriesResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "cloudmonitoring#writeTimeseriesResponse".
+   */
+  core.String kind;
+
+
+  WriteTimeseriesResponse();
+
+  WriteTimeseriesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }

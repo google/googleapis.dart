@@ -1616,7 +1616,9 @@ class MylibraryBookshelvesResourceApi {
    *
    * [reason] - The reason for which the book is added to the library.
    * Possible string values are:
-   * - "ONBOARDING" : Volumes added from onboarding flow.
+   * - "IOS_PREX" : Volumes added from the PREX flow on iOS.
+   * - "IOS_SEARCH" : Volumes added from the Search flow on iOS.
+   * - "ONBOARDING" : Volumes added from the Onboarding flow.
    *
    * [source] - String to identify the originator of this request.
    *
@@ -1859,6 +1861,10 @@ class MylibraryBookshelvesResourceApi {
    *
    * [volumeId] - ID of volume to remove.
    *
+   * [reason] - The reason for which the book is removed from the library.
+   * Possible string values are:
+   * - "ONBOARDING" : Samples removed from the Onboarding flow.
+   *
    * [source] - String to identify the originator of this request.
    *
    * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
@@ -1867,7 +1873,7 @@ class MylibraryBookshelvesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future removeVolume(core.String shelf, core.String volumeId, {core.String source}) {
+  async.Future removeVolume(core.String shelf, core.String volumeId, {core.String reason, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1882,6 +1888,9 @@ class MylibraryBookshelvesResourceApi {
       throw new core.ArgumentError("Parameter volumeId is required.");
     }
     _queryParams["volumeId"] = [volumeId];
+    if (reason != null) {
+      _queryParams["reason"] = [reason];
+    }
     if (source != null) {
       _queryParams["source"] = [source];
     }
@@ -2678,6 +2687,7 @@ class VolumesAssociatedResourceApi {
    * Possible string values are:
    * - "end-of-sample" : Recommendations for display end-of-sample.
    * - "end-of-volume" : Recommendations for display end-of-volume.
+   * - "related-for-play" : Related volumes for Play Store.
    *
    * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
    * Used for generating recommendations.
@@ -7315,6 +7325,9 @@ class VolumeVolumeInfo {
    */
   core.Object readingModes;
 
+  /** Total number of sample pages as per publisher metadata. */
+  core.int samplePageCount;
+
   /** Volume subtitle. (In LITE projection.) */
   core.String subtitle;
 
@@ -7385,6 +7398,9 @@ class VolumeVolumeInfo {
     if (_json.containsKey("readingModes")) {
       readingModes = _json["readingModes"];
     }
+    if (_json.containsKey("samplePageCount")) {
+      samplePageCount = _json["samplePageCount"];
+    }
     if (_json.containsKey("subtitle")) {
       subtitle = _json["subtitle"];
     }
@@ -7454,6 +7470,9 @@ class VolumeVolumeInfo {
     }
     if (readingModes != null) {
       _json["readingModes"] = readingModes;
+    }
+    if (samplePageCount != null) {
+      _json["samplePageCount"] = samplePageCount;
     }
     if (subtitle != null) {
       _json["subtitle"] = subtitle;

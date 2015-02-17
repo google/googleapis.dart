@@ -16,27 +16,27 @@ import 'package:googleapis/dfareporting/v1_3.dart' as api;
 
 
 
-buildUnnamed650() {
+buildUnnamed654() {
   var o = new core.List<api.DimensionValue>();
   o.add(buildDimensionValue());
   o.add(buildDimensionValue());
   return o;
 }
 
-checkUnnamed650(core.List<api.DimensionValue> o) {
+checkUnnamed654(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionValue(o[0]);
   checkDimensionValue(o[1]);
 }
 
-buildUnnamed651() {
+buildUnnamed655() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed651(core.List<core.String> o) {
+checkUnnamed655(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -47,9 +47,9 @@ buildActivities() {
   var o = new api.Activities();
   buildCounterActivities++;
   if (buildCounterActivities < 3) {
-    o.filters = buildUnnamed650();
+    o.filters = buildUnnamed654();
     o.kind = "foo";
-    o.metricNames = buildUnnamed651();
+    o.metricNames = buildUnnamed655();
   }
   buildCounterActivities--;
   return o;
@@ -58,9 +58,9 @@ buildActivities() {
 checkActivities(api.Activities o) {
   buildCounterActivities++;
   if (buildCounterActivities < 3) {
-    checkUnnamed650(o.filters);
+    checkUnnamed654(o.filters);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed651(o.metricNames);
+    checkUnnamed655(o.metricNames);
   }
   buildCounterActivities--;
 }
@@ -94,53 +94,53 @@ checkCompatibleFields(api.CompatibleFields o) {
   buildCounterCompatibleFields--;
 }
 
-buildUnnamed652() {
+buildUnnamed656() {
   var o = new core.List<api.Dimension>();
   o.add(buildDimension());
   o.add(buildDimension());
   return o;
 }
 
-checkUnnamed652(core.List<api.Dimension> o) {
+checkUnnamed656(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimension(o[0]);
   checkDimension(o[1]);
 }
 
-buildUnnamed653() {
+buildUnnamed657() {
   var o = new core.List<api.Dimension>();
   o.add(buildDimension());
   o.add(buildDimension());
   return o;
 }
 
-checkUnnamed653(core.List<api.Dimension> o) {
+checkUnnamed657(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimension(o[0]);
   checkDimension(o[1]);
 }
 
-buildUnnamed654() {
+buildUnnamed658() {
   var o = new core.List<api.Metric>();
   o.add(buildMetric());
   o.add(buildMetric());
   return o;
 }
 
-checkUnnamed654(core.List<api.Metric> o) {
+checkUnnamed658(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o[0]);
   checkMetric(o[1]);
 }
 
-buildUnnamed655() {
+buildUnnamed659() {
   var o = new core.List<api.Metric>();
   o.add(buildMetric());
   o.add(buildMetric());
   return o;
 }
 
-checkUnnamed655(core.List<api.Metric> o) {
+checkUnnamed659(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o[0]);
   checkMetric(o[1]);
@@ -151,11 +151,11 @@ buildCrossDimensionReachReportCompatibleFields() {
   var o = new api.CrossDimensionReachReportCompatibleFields();
   buildCounterCrossDimensionReachReportCompatibleFields++;
   if (buildCounterCrossDimensionReachReportCompatibleFields < 3) {
-    o.breakdown = buildUnnamed652();
-    o.dimensionFilters = buildUnnamed653();
+    o.breakdown = buildUnnamed656();
+    o.dimensionFilters = buildUnnamed657();
     o.kind = "foo";
-    o.metrics = buildUnnamed654();
-    o.overlapMetrics = buildUnnamed655();
+    o.metrics = buildUnnamed658();
+    o.overlapMetrics = buildUnnamed659();
   }
   buildCounterCrossDimensionReachReportCompatibleFields--;
   return o;
@@ -164,23 +164,23 @@ buildCrossDimensionReachReportCompatibleFields() {
 checkCrossDimensionReachReportCompatibleFields(api.CrossDimensionReachReportCompatibleFields o) {
   buildCounterCrossDimensionReachReportCompatibleFields++;
   if (buildCounterCrossDimensionReachReportCompatibleFields < 3) {
-    checkUnnamed652(o.breakdown);
-    checkUnnamed653(o.dimensionFilters);
+    checkUnnamed656(o.breakdown);
+    checkUnnamed657(o.dimensionFilters);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed654(o.metrics);
-    checkUnnamed655(o.overlapMetrics);
+    checkUnnamed658(o.metrics);
+    checkUnnamed659(o.overlapMetrics);
   }
   buildCounterCrossDimensionReachReportCompatibleFields--;
 }
 
-buildUnnamed656() {
+buildUnnamed660() {
   var o = new core.List<api.DimensionValue>();
   o.add(buildDimensionValue());
   o.add(buildDimensionValue());
   return o;
 }
 
-checkUnnamed656(core.List<api.DimensionValue> o) {
+checkUnnamed660(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionValue(o[0]);
   checkDimensionValue(o[1]);
@@ -191,7 +191,7 @@ buildCustomRichMediaEvents() {
   var o = new api.CustomRichMediaEvents();
   buildCounterCustomRichMediaEvents++;
   if (buildCounterCustomRichMediaEvents < 3) {
-    o.filteredEventIds = buildUnnamed656();
+    o.filteredEventIds = buildUnnamed660();
     o.kind = "foo";
   }
   buildCounterCustomRichMediaEvents--;
@@ -201,7 +201,7 @@ buildCustomRichMediaEvents() {
 checkCustomRichMediaEvents(api.CustomRichMediaEvents o) {
   buildCounterCustomRichMediaEvents++;
   if (buildCounterCustomRichMediaEvents < 3) {
-    checkUnnamed656(o.filteredEventIds);
+    checkUnnamed660(o.filteredEventIds);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterCustomRichMediaEvents--;
@@ -305,14 +305,14 @@ checkDimensionValue(api.DimensionValue o) {
   buildCounterDimensionValue--;
 }
 
-buildUnnamed657() {
+buildUnnamed661() {
   var o = new core.List<api.DimensionValue>();
   o.add(buildDimensionValue());
   o.add(buildDimensionValue());
   return o;
 }
 
-checkUnnamed657(core.List<api.DimensionValue> o) {
+checkUnnamed661(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionValue(o[0]);
   checkDimensionValue(o[1]);
@@ -324,7 +324,7 @@ buildDimensionValueList() {
   buildCounterDimensionValueList++;
   if (buildCounterDimensionValueList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed657();
+    o.items = buildUnnamed661();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -336,21 +336,21 @@ checkDimensionValueList(api.DimensionValueList o) {
   buildCounterDimensionValueList++;
   if (buildCounterDimensionValueList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed657(o.items);
+    checkUnnamed661(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterDimensionValueList--;
 }
 
-buildUnnamed658() {
+buildUnnamed662() {
   var o = new core.List<api.DimensionFilter>();
   o.add(buildDimensionFilter());
   o.add(buildDimensionFilter());
   return o;
 }
 
-checkUnnamed658(core.List<api.DimensionFilter> o) {
+checkUnnamed662(core.List<api.DimensionFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionFilter(o[0]);
   checkDimensionFilter(o[1]);
@@ -363,7 +363,7 @@ buildDimensionValueRequest() {
   if (buildCounterDimensionValueRequest < 3) {
     o.dimensionName = "foo";
     o.endDate = core.DateTime.parse("2002-02-27T14:01:02Z");
-    o.filters = buildUnnamed658();
+    o.filters = buildUnnamed662();
     o.kind = "foo";
     o.startDate = core.DateTime.parse("2002-02-27T14:01:02Z");
   }
@@ -376,7 +376,7 @@ checkDimensionValueRequest(api.DimensionValueRequest o) {
   if (buildCounterDimensionValueRequest < 3) {
     unittest.expect(o.dimensionName, unittest.equals('foo'));
     unittest.expect(o.endDate, unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")));
-    checkUnnamed658(o.filters);
+    checkUnnamed662(o.filters);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.startDate, unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")));
   }
@@ -441,14 +441,14 @@ checkFile(api.File o) {
   buildCounterFile--;
 }
 
-buildUnnamed659() {
+buildUnnamed663() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed659(core.List<api.File> o) {
+checkUnnamed663(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -460,7 +460,7 @@ buildFileList() {
   buildCounterFileList++;
   if (buildCounterFileList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed659();
+    o.items = buildUnnamed663();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -472,47 +472,47 @@ checkFileList(api.FileList o) {
   buildCounterFileList++;
   if (buildCounterFileList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed659(o.items);
+    checkUnnamed663(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterFileList--;
 }
 
-buildUnnamed660() {
+buildUnnamed664() {
   var o = new core.List<api.Dimension>();
   o.add(buildDimension());
   o.add(buildDimension());
   return o;
 }
 
-checkUnnamed660(core.List<api.Dimension> o) {
+checkUnnamed664(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimension(o[0]);
   checkDimension(o[1]);
 }
 
-buildUnnamed661() {
+buildUnnamed665() {
   var o = new core.List<api.Dimension>();
   o.add(buildDimension());
   o.add(buildDimension());
   return o;
 }
 
-checkUnnamed661(core.List<api.Dimension> o) {
+checkUnnamed665(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimension(o[0]);
   checkDimension(o[1]);
 }
 
-buildUnnamed662() {
+buildUnnamed666() {
   var o = new core.List<api.Metric>();
   o.add(buildMetric());
   o.add(buildMetric());
   return o;
 }
 
-checkUnnamed662(core.List<api.Metric> o) {
+checkUnnamed666(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o[0]);
   checkMetric(o[1]);
@@ -523,10 +523,10 @@ buildFloodlightReportCompatibleFields() {
   var o = new api.FloodlightReportCompatibleFields();
   buildCounterFloodlightReportCompatibleFields++;
   if (buildCounterFloodlightReportCompatibleFields < 3) {
-    o.dimensionFilters = buildUnnamed660();
-    o.dimensions = buildUnnamed661();
+    o.dimensionFilters = buildUnnamed664();
+    o.dimensions = buildUnnamed665();
     o.kind = "foo";
-    o.metrics = buildUnnamed662();
+    o.metrics = buildUnnamed666();
   }
   buildCounterFloodlightReportCompatibleFields--;
   return o;
@@ -535,10 +535,10 @@ buildFloodlightReportCompatibleFields() {
 checkFloodlightReportCompatibleFields(api.FloodlightReportCompatibleFields o) {
   buildCounterFloodlightReportCompatibleFields++;
   if (buildCounterFloodlightReportCompatibleFields < 3) {
-    checkUnnamed660(o.dimensionFilters);
-    checkUnnamed661(o.dimensions);
+    checkUnnamed664(o.dimensionFilters);
+    checkUnnamed665(o.dimensions);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed662(o.metrics);
+    checkUnnamed666(o.metrics);
   }
   buildCounterFloodlightReportCompatibleFields--;
 }
@@ -562,85 +562,6 @@ checkMetric(api.Metric o) {
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterMetric--;
-}
-
-buildUnnamed663() {
-  var o = new core.List<api.Dimension>();
-  o.add(buildDimension());
-  o.add(buildDimension());
-  return o;
-}
-
-checkUnnamed663(core.List<api.Dimension> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkDimension(o[0]);
-  checkDimension(o[1]);
-}
-
-buildUnnamed664() {
-  var o = new core.List<api.Dimension>();
-  o.add(buildDimension());
-  o.add(buildDimension());
-  return o;
-}
-
-checkUnnamed664(core.List<api.Dimension> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkDimension(o[0]);
-  checkDimension(o[1]);
-}
-
-buildUnnamed665() {
-  var o = new core.List<api.Metric>();
-  o.add(buildMetric());
-  o.add(buildMetric());
-  return o;
-}
-
-checkUnnamed665(core.List<api.Metric> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkMetric(o[0]);
-  checkMetric(o[1]);
-}
-
-buildUnnamed666() {
-  var o = new core.List<api.Dimension>();
-  o.add(buildDimension());
-  o.add(buildDimension());
-  return o;
-}
-
-checkUnnamed666(core.List<api.Dimension> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkDimension(o[0]);
-  checkDimension(o[1]);
-}
-
-core.int buildCounterPathToConversionReportCompatibleFields = 0;
-buildPathToConversionReportCompatibleFields() {
-  var o = new api.PathToConversionReportCompatibleFields();
-  buildCounterPathToConversionReportCompatibleFields++;
-  if (buildCounterPathToConversionReportCompatibleFields < 3) {
-    o.conversionDimensions = buildUnnamed663();
-    o.customFloodlightVariables = buildUnnamed664();
-    o.kind = "foo";
-    o.metrics = buildUnnamed665();
-    o.perInteractionDimensions = buildUnnamed666();
-  }
-  buildCounterPathToConversionReportCompatibleFields--;
-  return o;
-}
-
-checkPathToConversionReportCompatibleFields(api.PathToConversionReportCompatibleFields o) {
-  buildCounterPathToConversionReportCompatibleFields++;
-  if (buildCounterPathToConversionReportCompatibleFields < 3) {
-    checkUnnamed663(o.conversionDimensions);
-    checkUnnamed664(o.customFloodlightVariables);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed665(o.metrics);
-    checkUnnamed666(o.perInteractionDimensions);
-  }
-  buildCounterPathToConversionReportCompatibleFields--;
 }
 
 buildUnnamed667() {
@@ -683,26 +604,105 @@ checkUnnamed669(core.List<api.Metric> o) {
 }
 
 buildUnnamed670() {
+  var o = new core.List<api.Dimension>();
+  o.add(buildDimension());
+  o.add(buildDimension());
+  return o;
+}
+
+checkUnnamed670(core.List<api.Dimension> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDimension(o[0]);
+  checkDimension(o[1]);
+}
+
+core.int buildCounterPathToConversionReportCompatibleFields = 0;
+buildPathToConversionReportCompatibleFields() {
+  var o = new api.PathToConversionReportCompatibleFields();
+  buildCounterPathToConversionReportCompatibleFields++;
+  if (buildCounterPathToConversionReportCompatibleFields < 3) {
+    o.conversionDimensions = buildUnnamed667();
+    o.customFloodlightVariables = buildUnnamed668();
+    o.kind = "foo";
+    o.metrics = buildUnnamed669();
+    o.perInteractionDimensions = buildUnnamed670();
+  }
+  buildCounterPathToConversionReportCompatibleFields--;
+  return o;
+}
+
+checkPathToConversionReportCompatibleFields(api.PathToConversionReportCompatibleFields o) {
+  buildCounterPathToConversionReportCompatibleFields++;
+  if (buildCounterPathToConversionReportCompatibleFields < 3) {
+    checkUnnamed667(o.conversionDimensions);
+    checkUnnamed668(o.customFloodlightVariables);
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed669(o.metrics);
+    checkUnnamed670(o.perInteractionDimensions);
+  }
+  buildCounterPathToConversionReportCompatibleFields--;
+}
+
+buildUnnamed671() {
+  var o = new core.List<api.Dimension>();
+  o.add(buildDimension());
+  o.add(buildDimension());
+  return o;
+}
+
+checkUnnamed671(core.List<api.Dimension> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDimension(o[0]);
+  checkDimension(o[1]);
+}
+
+buildUnnamed672() {
+  var o = new core.List<api.Dimension>();
+  o.add(buildDimension());
+  o.add(buildDimension());
+  return o;
+}
+
+checkUnnamed672(core.List<api.Dimension> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDimension(o[0]);
+  checkDimension(o[1]);
+}
+
+buildUnnamed673() {
   var o = new core.List<api.Metric>();
   o.add(buildMetric());
   o.add(buildMetric());
   return o;
 }
 
-checkUnnamed670(core.List<api.Metric> o) {
+checkUnnamed673(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o[0]);
   checkMetric(o[1]);
 }
 
-buildUnnamed671() {
+buildUnnamed674() {
   var o = new core.List<api.Metric>();
   o.add(buildMetric());
   o.add(buildMetric());
   return o;
 }
 
-checkUnnamed671(core.List<api.Metric> o) {
+checkUnnamed674(core.List<api.Metric> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMetric(o[0]);
+  checkMetric(o[1]);
+}
+
+buildUnnamed675() {
+  var o = new core.List<api.Metric>();
+  o.add(buildMetric());
+  o.add(buildMetric());
+  return o;
+}
+
+checkUnnamed675(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o[0]);
   checkMetric(o[1]);
@@ -713,12 +713,12 @@ buildReachReportCompatibleFields() {
   var o = new api.ReachReportCompatibleFields();
   buildCounterReachReportCompatibleFields++;
   if (buildCounterReachReportCompatibleFields < 3) {
-    o.dimensionFilters = buildUnnamed667();
-    o.dimensions = buildUnnamed668();
+    o.dimensionFilters = buildUnnamed671();
+    o.dimensions = buildUnnamed672();
     o.kind = "foo";
-    o.metrics = buildUnnamed669();
-    o.pivotedActivityMetrics = buildUnnamed670();
-    o.reachByFrequencyMetrics = buildUnnamed671();
+    o.metrics = buildUnnamed673();
+    o.pivotedActivityMetrics = buildUnnamed674();
+    o.reachByFrequencyMetrics = buildUnnamed675();
   }
   buildCounterReachReportCompatibleFields--;
   return o;
@@ -727,12 +727,12 @@ buildReachReportCompatibleFields() {
 checkReachReportCompatibleFields(api.ReachReportCompatibleFields o) {
   buildCounterReachReportCompatibleFields++;
   if (buildCounterReachReportCompatibleFields < 3) {
-    checkUnnamed667(o.dimensionFilters);
-    checkUnnamed668(o.dimensions);
+    checkUnnamed671(o.dimensionFilters);
+    checkUnnamed672(o.dimensions);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed669(o.metrics);
-    checkUnnamed670(o.pivotedActivityMetrics);
-    checkUnnamed671(o.reachByFrequencyMetrics);
+    checkUnnamed673(o.metrics);
+    checkUnnamed674(o.pivotedActivityMetrics);
+    checkUnnamed675(o.reachByFrequencyMetrics);
   }
   buildCounterReachReportCompatibleFields--;
 }
@@ -760,40 +760,40 @@ checkRecipient(api.Recipient o) {
   buildCounterRecipient--;
 }
 
-buildUnnamed672() {
+buildUnnamed676() {
   var o = new core.List<api.DimensionValue>();
   o.add(buildDimensionValue());
   o.add(buildDimensionValue());
   return o;
 }
 
-checkUnnamed672(core.List<api.DimensionValue> o) {
+checkUnnamed676(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionValue(o[0]);
   checkDimensionValue(o[1]);
 }
 
-buildUnnamed673() {
+buildUnnamed677() {
   var o = new core.List<api.SortedDimension>();
   o.add(buildSortedDimension());
   o.add(buildSortedDimension());
   return o;
 }
 
-checkUnnamed673(core.List<api.SortedDimension> o) {
+checkUnnamed677(core.List<api.SortedDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSortedDimension(o[0]);
   checkSortedDimension(o[1]);
 }
 
-buildUnnamed674() {
+buildUnnamed678() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed674(core.List<core.String> o) {
+checkUnnamed678(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -805,9 +805,9 @@ buildReportActiveGrpCriteria() {
   buildCounterReportActiveGrpCriteria++;
   if (buildCounterReportActiveGrpCriteria < 3) {
     o.dateRange = buildDateRange();
-    o.dimensionFilters = buildUnnamed672();
-    o.dimensions = buildUnnamed673();
-    o.metricNames = buildUnnamed674();
+    o.dimensionFilters = buildUnnamed676();
+    o.dimensions = buildUnnamed677();
+    o.metricNames = buildUnnamed678();
   }
   buildCounterReportActiveGrpCriteria--;
   return o;
@@ -817,92 +817,11 @@ checkReportActiveGrpCriteria(api.ReportActiveGrpCriteria o) {
   buildCounterReportActiveGrpCriteria++;
   if (buildCounterReportActiveGrpCriteria < 3) {
     checkDateRange(o.dateRange);
-    checkUnnamed672(o.dimensionFilters);
-    checkUnnamed673(o.dimensions);
-    checkUnnamed674(o.metricNames);
+    checkUnnamed676(o.dimensionFilters);
+    checkUnnamed677(o.dimensions);
+    checkUnnamed678(o.metricNames);
   }
   buildCounterReportActiveGrpCriteria--;
-}
-
-buildUnnamed675() {
-  var o = new core.List<api.DimensionValue>();
-  o.add(buildDimensionValue());
-  o.add(buildDimensionValue());
-  return o;
-}
-
-checkUnnamed675(core.List<api.DimensionValue> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkDimensionValue(o[0]);
-  checkDimensionValue(o[1]);
-}
-
-buildUnnamed676() {
-  var o = new core.List<api.SortedDimension>();
-  o.add(buildSortedDimension());
-  o.add(buildSortedDimension());
-  return o;
-}
-
-checkUnnamed676(core.List<api.SortedDimension> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkSortedDimension(o[0]);
-  checkSortedDimension(o[1]);
-}
-
-buildUnnamed677() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed677(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.int buildCounterReportCriteria = 0;
-buildReportCriteria() {
-  var o = new api.ReportCriteria();
-  buildCounterReportCriteria++;
-  if (buildCounterReportCriteria < 3) {
-    o.activities = buildActivities();
-    o.customRichMediaEvents = buildCustomRichMediaEvents();
-    o.dateRange = buildDateRange();
-    o.dimensionFilters = buildUnnamed675();
-    o.dimensions = buildUnnamed676();
-    o.metricNames = buildUnnamed677();
-  }
-  buildCounterReportCriteria--;
-  return o;
-}
-
-checkReportCriteria(api.ReportCriteria o) {
-  buildCounterReportCriteria++;
-  if (buildCounterReportCriteria < 3) {
-    checkActivities(o.activities);
-    checkCustomRichMediaEvents(o.customRichMediaEvents);
-    checkDateRange(o.dateRange);
-    checkUnnamed675(o.dimensionFilters);
-    checkUnnamed676(o.dimensions);
-    checkUnnamed677(o.metricNames);
-  }
-  buildCounterReportCriteria--;
-}
-
-buildUnnamed678() {
-  var o = new core.List<api.SortedDimension>();
-  o.add(buildSortedDimension());
-  o.add(buildSortedDimension());
-  return o;
-}
-
-checkUnnamed678(core.List<api.SortedDimension> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkSortedDimension(o[0]);
-  checkSortedDimension(o[1]);
 }
 
 buildUnnamed679() {
@@ -919,16 +838,16 @@ checkUnnamed679(core.List<api.DimensionValue> o) {
 }
 
 buildUnnamed680() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
+  var o = new core.List<api.SortedDimension>();
+  o.add(buildSortedDimension());
+  o.add(buildSortedDimension());
   return o;
 }
 
-checkUnnamed680(core.List<core.String> o) {
+checkUnnamed680(core.List<api.SortedDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  checkSortedDimension(o[0]);
+  checkSortedDimension(o[1]);
 }
 
 buildUnnamed681() {
@@ -944,73 +863,46 @@ checkUnnamed681(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.int buildCounterReportCrossDimensionReachCriteria = 0;
-buildReportCrossDimensionReachCriteria() {
-  var o = new api.ReportCrossDimensionReachCriteria();
-  buildCounterReportCrossDimensionReachCriteria++;
-  if (buildCounterReportCrossDimensionReachCriteria < 3) {
-    o.breakdown = buildUnnamed678();
+core.int buildCounterReportCriteria = 0;
+buildReportCriteria() {
+  var o = new api.ReportCriteria();
+  buildCounterReportCriteria++;
+  if (buildCounterReportCriteria < 3) {
+    o.activities = buildActivities();
+    o.customRichMediaEvents = buildCustomRichMediaEvents();
     o.dateRange = buildDateRange();
-    o.dimension = "foo";
     o.dimensionFilters = buildUnnamed679();
-    o.metricNames = buildUnnamed680();
-    o.overlapMetricNames = buildUnnamed681();
-    o.pivoted = true;
+    o.dimensions = buildUnnamed680();
+    o.metricNames = buildUnnamed681();
   }
-  buildCounterReportCrossDimensionReachCriteria--;
+  buildCounterReportCriteria--;
   return o;
 }
 
-checkReportCrossDimensionReachCriteria(api.ReportCrossDimensionReachCriteria o) {
-  buildCounterReportCrossDimensionReachCriteria++;
-  if (buildCounterReportCrossDimensionReachCriteria < 3) {
-    checkUnnamed678(o.breakdown);
+checkReportCriteria(api.ReportCriteria o) {
+  buildCounterReportCriteria++;
+  if (buildCounterReportCriteria < 3) {
+    checkActivities(o.activities);
+    checkCustomRichMediaEvents(o.customRichMediaEvents);
     checkDateRange(o.dateRange);
-    unittest.expect(o.dimension, unittest.equals('foo'));
     checkUnnamed679(o.dimensionFilters);
-    checkUnnamed680(o.metricNames);
-    checkUnnamed681(o.overlapMetricNames);
-    unittest.expect(o.pivoted, unittest.isTrue);
+    checkUnnamed680(o.dimensions);
+    checkUnnamed681(o.metricNames);
   }
-  buildCounterReportCrossDimensionReachCriteria--;
+  buildCounterReportCriteria--;
 }
 
 buildUnnamed682() {
-  var o = new core.List<api.Recipient>();
-  o.add(buildRecipient());
-  o.add(buildRecipient());
+  var o = new core.List<api.SortedDimension>();
+  o.add(buildSortedDimension());
+  o.add(buildSortedDimension());
   return o;
 }
 
-checkUnnamed682(core.List<api.Recipient> o) {
+checkUnnamed682(core.List<api.SortedDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRecipient(o[0]);
-  checkRecipient(o[1]);
-}
-
-core.int buildCounterReportDelivery = 0;
-buildReportDelivery() {
-  var o = new api.ReportDelivery();
-  buildCounterReportDelivery++;
-  if (buildCounterReportDelivery < 3) {
-    o.emailOwner = true;
-    o.emailOwnerDeliveryType = "foo";
-    o.message = "foo";
-    o.recipients = buildUnnamed682();
-  }
-  buildCounterReportDelivery--;
-  return o;
-}
-
-checkReportDelivery(api.ReportDelivery o) {
-  buildCounterReportDelivery++;
-  if (buildCounterReportDelivery < 3) {
-    unittest.expect(o.emailOwner, unittest.isTrue);
-    unittest.expect(o.emailOwnerDeliveryType, unittest.equals('foo'));
-    unittest.expect(o.message, unittest.equals('foo'));
-    checkUnnamed682(o.recipients);
-  }
-  buildCounterReportDelivery--;
+  checkSortedDimension(o[0]);
+  checkSortedDimension(o[1]);
 }
 
 buildUnnamed683() {
@@ -1027,39 +919,147 @@ checkUnnamed683(core.List<api.DimensionValue> o) {
 }
 
 buildUnnamed684() {
-  var o = new core.List<api.DimensionValue>();
-  o.add(buildDimensionValue());
-  o.add(buildDimensionValue());
-  return o;
-}
-
-checkUnnamed684(core.List<api.DimensionValue> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkDimensionValue(o[0]);
-  checkDimensionValue(o[1]);
-}
-
-buildUnnamed685() {
-  var o = new core.List<api.SortedDimension>();
-  o.add(buildSortedDimension());
-  o.add(buildSortedDimension());
-  return o;
-}
-
-checkUnnamed685(core.List<api.SortedDimension> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkSortedDimension(o[0]);
-  checkSortedDimension(o[1]);
-}
-
-buildUnnamed686() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed686(core.List<core.String> o) {
+checkUnnamed684(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed685() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed685(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterReportCrossDimensionReachCriteria = 0;
+buildReportCrossDimensionReachCriteria() {
+  var o = new api.ReportCrossDimensionReachCriteria();
+  buildCounterReportCrossDimensionReachCriteria++;
+  if (buildCounterReportCrossDimensionReachCriteria < 3) {
+    o.breakdown = buildUnnamed682();
+    o.dateRange = buildDateRange();
+    o.dimension = "foo";
+    o.dimensionFilters = buildUnnamed683();
+    o.metricNames = buildUnnamed684();
+    o.overlapMetricNames = buildUnnamed685();
+    o.pivoted = true;
+  }
+  buildCounterReportCrossDimensionReachCriteria--;
+  return o;
+}
+
+checkReportCrossDimensionReachCriteria(api.ReportCrossDimensionReachCriteria o) {
+  buildCounterReportCrossDimensionReachCriteria++;
+  if (buildCounterReportCrossDimensionReachCriteria < 3) {
+    checkUnnamed682(o.breakdown);
+    checkDateRange(o.dateRange);
+    unittest.expect(o.dimension, unittest.equals('foo'));
+    checkUnnamed683(o.dimensionFilters);
+    checkUnnamed684(o.metricNames);
+    checkUnnamed685(o.overlapMetricNames);
+    unittest.expect(o.pivoted, unittest.isTrue);
+  }
+  buildCounterReportCrossDimensionReachCriteria--;
+}
+
+buildUnnamed686() {
+  var o = new core.List<api.Recipient>();
+  o.add(buildRecipient());
+  o.add(buildRecipient());
+  return o;
+}
+
+checkUnnamed686(core.List<api.Recipient> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRecipient(o[0]);
+  checkRecipient(o[1]);
+}
+
+core.int buildCounterReportDelivery = 0;
+buildReportDelivery() {
+  var o = new api.ReportDelivery();
+  buildCounterReportDelivery++;
+  if (buildCounterReportDelivery < 3) {
+    o.emailOwner = true;
+    o.emailOwnerDeliveryType = "foo";
+    o.message = "foo";
+    o.recipients = buildUnnamed686();
+  }
+  buildCounterReportDelivery--;
+  return o;
+}
+
+checkReportDelivery(api.ReportDelivery o) {
+  buildCounterReportDelivery++;
+  if (buildCounterReportDelivery < 3) {
+    unittest.expect(o.emailOwner, unittest.isTrue);
+    unittest.expect(o.emailOwnerDeliveryType, unittest.equals('foo'));
+    unittest.expect(o.message, unittest.equals('foo'));
+    checkUnnamed686(o.recipients);
+  }
+  buildCounterReportDelivery--;
+}
+
+buildUnnamed687() {
+  var o = new core.List<api.DimensionValue>();
+  o.add(buildDimensionValue());
+  o.add(buildDimensionValue());
+  return o;
+}
+
+checkUnnamed687(core.List<api.DimensionValue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDimensionValue(o[0]);
+  checkDimensionValue(o[1]);
+}
+
+buildUnnamed688() {
+  var o = new core.List<api.DimensionValue>();
+  o.add(buildDimensionValue());
+  o.add(buildDimensionValue());
+  return o;
+}
+
+checkUnnamed688(core.List<api.DimensionValue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDimensionValue(o[0]);
+  checkDimensionValue(o[1]);
+}
+
+buildUnnamed689() {
+  var o = new core.List<api.SortedDimension>();
+  o.add(buildSortedDimension());
+  o.add(buildSortedDimension());
+  return o;
+}
+
+checkUnnamed689(core.List<api.SortedDimension> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSortedDimension(o[0]);
+  checkSortedDimension(o[1]);
+}
+
+buildUnnamed690() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed690(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1093,12 +1093,12 @@ buildReportFloodlightCriteria() {
   var o = new api.ReportFloodlightCriteria();
   buildCounterReportFloodlightCriteria++;
   if (buildCounterReportFloodlightCriteria < 3) {
-    o.customRichMediaEvents = buildUnnamed683();
+    o.customRichMediaEvents = buildUnnamed687();
     o.dateRange = buildDateRange();
-    o.dimensionFilters = buildUnnamed684();
-    o.dimensions = buildUnnamed685();
+    o.dimensionFilters = buildUnnamed688();
+    o.dimensions = buildUnnamed689();
     o.floodlightConfigId = buildDimensionValue();
-    o.metricNames = buildUnnamed686();
+    o.metricNames = buildUnnamed690();
     o.reportProperties = buildReportFloodlightCriteriaReportProperties();
   }
   buildCounterReportFloodlightCriteria--;
@@ -1108,80 +1108,28 @@ buildReportFloodlightCriteria() {
 checkReportFloodlightCriteria(api.ReportFloodlightCriteria o) {
   buildCounterReportFloodlightCriteria++;
   if (buildCounterReportFloodlightCriteria < 3) {
-    checkUnnamed683(o.customRichMediaEvents);
+    checkUnnamed687(o.customRichMediaEvents);
     checkDateRange(o.dateRange);
-    checkUnnamed684(o.dimensionFilters);
-    checkUnnamed685(o.dimensions);
+    checkUnnamed688(o.dimensionFilters);
+    checkUnnamed689(o.dimensions);
     checkDimensionValue(o.floodlightConfigId);
-    checkUnnamed686(o.metricNames);
+    checkUnnamed690(o.metricNames);
     checkReportFloodlightCriteriaReportProperties(o.reportProperties);
   }
   buildCounterReportFloodlightCriteria--;
 }
 
-buildUnnamed687() {
-  var o = new core.List<api.DimensionValue>();
-  o.add(buildDimensionValue());
-  o.add(buildDimensionValue());
-  return o;
-}
-
-checkUnnamed687(core.List<api.DimensionValue> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkDimensionValue(o[0]);
-  checkDimensionValue(o[1]);
-}
-
-buildUnnamed688() {
-  var o = new core.List<api.SortedDimension>();
-  o.add(buildSortedDimension());
-  o.add(buildSortedDimension());
-  return o;
-}
-
-checkUnnamed688(core.List<api.SortedDimension> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkSortedDimension(o[0]);
-  checkSortedDimension(o[1]);
-}
-
-buildUnnamed689() {
-  var o = new core.List<api.SortedDimension>();
-  o.add(buildSortedDimension());
-  o.add(buildSortedDimension());
-  return o;
-}
-
-checkUnnamed689(core.List<api.SortedDimension> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkSortedDimension(o[0]);
-  checkSortedDimension(o[1]);
-}
-
-buildUnnamed690() {
-  var o = new core.List<api.DimensionValue>();
-  o.add(buildDimensionValue());
-  o.add(buildDimensionValue());
-  return o;
-}
-
-checkUnnamed690(core.List<api.DimensionValue> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkDimensionValue(o[0]);
-  checkDimensionValue(o[1]);
-}
-
 buildUnnamed691() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
+  var o = new core.List<api.DimensionValue>();
+  o.add(buildDimensionValue());
+  o.add(buildDimensionValue());
   return o;
 }
 
-checkUnnamed691(core.List<core.String> o) {
+checkUnnamed691(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  checkDimensionValue(o[0]);
+  checkDimensionValue(o[1]);
 }
 
 buildUnnamed692() {
@@ -1192,6 +1140,58 @@ buildUnnamed692() {
 }
 
 checkUnnamed692(core.List<api.SortedDimension> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSortedDimension(o[0]);
+  checkSortedDimension(o[1]);
+}
+
+buildUnnamed693() {
+  var o = new core.List<api.SortedDimension>();
+  o.add(buildSortedDimension());
+  o.add(buildSortedDimension());
+  return o;
+}
+
+checkUnnamed693(core.List<api.SortedDimension> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSortedDimension(o[0]);
+  checkSortedDimension(o[1]);
+}
+
+buildUnnamed694() {
+  var o = new core.List<api.DimensionValue>();
+  o.add(buildDimensionValue());
+  o.add(buildDimensionValue());
+  return o;
+}
+
+checkUnnamed694(core.List<api.DimensionValue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDimensionValue(o[0]);
+  checkDimensionValue(o[1]);
+}
+
+buildUnnamed695() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed695(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed696() {
+  var o = new core.List<api.SortedDimension>();
+  o.add(buildSortedDimension());
+  o.add(buildSortedDimension());
+  return o;
+}
+
+checkUnnamed696(core.List<api.SortedDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSortedDimension(o[0]);
   checkSortedDimension(o[1]);
@@ -1237,14 +1237,14 @@ buildReportPathToConversionCriteria() {
   var o = new api.ReportPathToConversionCriteria();
   buildCounterReportPathToConversionCriteria++;
   if (buildCounterReportPathToConversionCriteria < 3) {
-    o.activityFilters = buildUnnamed687();
-    o.conversionDimensions = buildUnnamed688();
-    o.customFloodlightVariables = buildUnnamed689();
-    o.customRichMediaEvents = buildUnnamed690();
+    o.activityFilters = buildUnnamed691();
+    o.conversionDimensions = buildUnnamed692();
+    o.customFloodlightVariables = buildUnnamed693();
+    o.customRichMediaEvents = buildUnnamed694();
     o.dateRange = buildDateRange();
     o.floodlightConfigId = buildDimensionValue();
-    o.metricNames = buildUnnamed691();
-    o.perInteractionDimensions = buildUnnamed692();
+    o.metricNames = buildUnnamed695();
+    o.perInteractionDimensions = buildUnnamed696();
     o.reportProperties = buildReportPathToConversionCriteriaReportProperties();
   }
   buildCounterReportPathToConversionCriteria--;
@@ -1254,66 +1254,66 @@ buildReportPathToConversionCriteria() {
 checkReportPathToConversionCriteria(api.ReportPathToConversionCriteria o) {
   buildCounterReportPathToConversionCriteria++;
   if (buildCounterReportPathToConversionCriteria < 3) {
-    checkUnnamed687(o.activityFilters);
-    checkUnnamed688(o.conversionDimensions);
-    checkUnnamed689(o.customFloodlightVariables);
-    checkUnnamed690(o.customRichMediaEvents);
+    checkUnnamed691(o.activityFilters);
+    checkUnnamed692(o.conversionDimensions);
+    checkUnnamed693(o.customFloodlightVariables);
+    checkUnnamed694(o.customRichMediaEvents);
     checkDateRange(o.dateRange);
     checkDimensionValue(o.floodlightConfigId);
-    checkUnnamed691(o.metricNames);
-    checkUnnamed692(o.perInteractionDimensions);
+    checkUnnamed695(o.metricNames);
+    checkUnnamed696(o.perInteractionDimensions);
     checkReportPathToConversionCriteriaReportProperties(o.reportProperties);
   }
   buildCounterReportPathToConversionCriteria--;
 }
 
-buildUnnamed693() {
+buildUnnamed697() {
   var o = new core.List<api.DimensionValue>();
   o.add(buildDimensionValue());
   o.add(buildDimensionValue());
   return o;
 }
 
-checkUnnamed693(core.List<api.DimensionValue> o) {
+checkUnnamed697(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionValue(o[0]);
   checkDimensionValue(o[1]);
 }
 
-buildUnnamed694() {
+buildUnnamed698() {
   var o = new core.List<api.SortedDimension>();
   o.add(buildSortedDimension());
   o.add(buildSortedDimension());
   return o;
 }
 
-checkUnnamed694(core.List<api.SortedDimension> o) {
+checkUnnamed698(core.List<api.SortedDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSortedDimension(o[0]);
   checkSortedDimension(o[1]);
 }
 
-buildUnnamed695() {
+buildUnnamed699() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed695(core.List<core.String> o) {
+checkUnnamed699(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed696() {
+buildUnnamed700() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed696(core.List<core.String> o) {
+checkUnnamed700(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1327,10 +1327,10 @@ buildReportReachCriteria() {
     o.activities = buildActivities();
     o.customRichMediaEvents = buildCustomRichMediaEvents();
     o.dateRange = buildDateRange();
-    o.dimensionFilters = buildUnnamed693();
-    o.dimensions = buildUnnamed694();
-    o.metricNames = buildUnnamed695();
-    o.reachByFrequencyMetricNames = buildUnnamed696();
+    o.dimensionFilters = buildUnnamed697();
+    o.dimensions = buildUnnamed698();
+    o.metricNames = buildUnnamed699();
+    o.reachByFrequencyMetricNames = buildUnnamed700();
   }
   buildCounterReportReachCriteria--;
   return o;
@@ -1342,22 +1342,22 @@ checkReportReachCriteria(api.ReportReachCriteria o) {
     checkActivities(o.activities);
     checkCustomRichMediaEvents(o.customRichMediaEvents);
     checkDateRange(o.dateRange);
-    checkUnnamed693(o.dimensionFilters);
-    checkUnnamed694(o.dimensions);
-    checkUnnamed695(o.metricNames);
-    checkUnnamed696(o.reachByFrequencyMetricNames);
+    checkUnnamed697(o.dimensionFilters);
+    checkUnnamed698(o.dimensions);
+    checkUnnamed699(o.metricNames);
+    checkUnnamed700(o.reachByFrequencyMetricNames);
   }
   buildCounterReportReachCriteria--;
 }
 
-buildUnnamed697() {
+buildUnnamed701() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed697(core.List<core.String> o) {
+checkUnnamed701(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1372,7 +1372,7 @@ buildReportSchedule() {
     o.every = 42;
     o.expirationDate = core.DateTime.parse("2002-02-27T14:01:02Z");
     o.repeats = "foo";
-    o.repeatsOnWeekDays = buildUnnamed697();
+    o.repeatsOnWeekDays = buildUnnamed701();
     o.runsOnDayOfMonth = "foo";
     o.startDate = core.DateTime.parse("2002-02-27T14:01:02Z");
   }
@@ -1387,7 +1387,7 @@ checkReportSchedule(api.ReportSchedule o) {
     unittest.expect(o.every, unittest.equals(42));
     unittest.expect(o.expirationDate, unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")));
     unittest.expect(o.repeats, unittest.equals('foo'));
-    checkUnnamed697(o.repeatsOnWeekDays);
+    checkUnnamed701(o.repeatsOnWeekDays);
     unittest.expect(o.runsOnDayOfMonth, unittest.equals('foo'));
     unittest.expect(o.startDate, unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")));
   }
@@ -1449,53 +1449,53 @@ checkReport(api.Report o) {
   buildCounterReport--;
 }
 
-buildUnnamed698() {
+buildUnnamed702() {
   var o = new core.List<api.Dimension>();
   o.add(buildDimension());
   o.add(buildDimension());
   return o;
 }
 
-checkUnnamed698(core.List<api.Dimension> o) {
+checkUnnamed702(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimension(o[0]);
   checkDimension(o[1]);
 }
 
-buildUnnamed699() {
+buildUnnamed703() {
   var o = new core.List<api.Dimension>();
   o.add(buildDimension());
   o.add(buildDimension());
   return o;
 }
 
-checkUnnamed699(core.List<api.Dimension> o) {
+checkUnnamed703(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimension(o[0]);
   checkDimension(o[1]);
 }
 
-buildUnnamed700() {
+buildUnnamed704() {
   var o = new core.List<api.Metric>();
   o.add(buildMetric());
   o.add(buildMetric());
   return o;
 }
 
-checkUnnamed700(core.List<api.Metric> o) {
+checkUnnamed704(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o[0]);
   checkMetric(o[1]);
 }
 
-buildUnnamed701() {
+buildUnnamed705() {
   var o = new core.List<api.Metric>();
   o.add(buildMetric());
   o.add(buildMetric());
   return o;
 }
 
-checkUnnamed701(core.List<api.Metric> o) {
+checkUnnamed705(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o[0]);
   checkMetric(o[1]);
@@ -1506,11 +1506,11 @@ buildReportCompatibleFields() {
   var o = new api.ReportCompatibleFields();
   buildCounterReportCompatibleFields++;
   if (buildCounterReportCompatibleFields < 3) {
-    o.dimensionFilters = buildUnnamed698();
-    o.dimensions = buildUnnamed699();
+    o.dimensionFilters = buildUnnamed702();
+    o.dimensions = buildUnnamed703();
     o.kind = "foo";
-    o.metrics = buildUnnamed700();
-    o.pivotedActivityMetrics = buildUnnamed701();
+    o.metrics = buildUnnamed704();
+    o.pivotedActivityMetrics = buildUnnamed705();
   }
   buildCounterReportCompatibleFields--;
   return o;
@@ -1519,23 +1519,23 @@ buildReportCompatibleFields() {
 checkReportCompatibleFields(api.ReportCompatibleFields o) {
   buildCounterReportCompatibleFields++;
   if (buildCounterReportCompatibleFields < 3) {
-    checkUnnamed698(o.dimensionFilters);
-    checkUnnamed699(o.dimensions);
+    checkUnnamed702(o.dimensionFilters);
+    checkUnnamed703(o.dimensions);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed700(o.metrics);
-    checkUnnamed701(o.pivotedActivityMetrics);
+    checkUnnamed704(o.metrics);
+    checkUnnamed705(o.pivotedActivityMetrics);
   }
   buildCounterReportCompatibleFields--;
 }
 
-buildUnnamed702() {
+buildUnnamed706() {
   var o = new core.List<api.Report>();
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-checkUnnamed702(core.List<api.Report> o) {
+checkUnnamed706(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -1547,7 +1547,7 @@ buildReportList() {
   buildCounterReportList++;
   if (buildCounterReportList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed702();
+    o.items = buildUnnamed706();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -1559,7 +1559,7 @@ checkReportList(api.ReportList o) {
   buildCounterReportList++;
   if (buildCounterReportList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed702(o.items);
+    checkUnnamed706(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -1622,14 +1622,14 @@ checkUserProfile(api.UserProfile o) {
   buildCounterUserProfile--;
 }
 
-buildUnnamed703() {
+buildUnnamed707() {
   var o = new core.List<api.UserProfile>();
   o.add(buildUserProfile());
   o.add(buildUserProfile());
   return o;
 }
 
-checkUnnamed703(core.List<api.UserProfile> o) {
+checkUnnamed707(core.List<api.UserProfile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserProfile(o[0]);
   checkUserProfile(o[1]);
@@ -1641,7 +1641,7 @@ buildUserProfileList() {
   buildCounterUserProfileList++;
   if (buildCounterUserProfileList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed703();
+    o.items = buildUnnamed707();
     o.kind = "foo";
   }
   buildCounterUserProfileList--;
@@ -1652,7 +1652,7 @@ checkUserProfileList(api.UserProfileList o) {
   buildCounterUserProfileList++;
   if (buildCounterUserProfileList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed703(o.items);
+    checkUnnamed707(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterUserProfileList--;

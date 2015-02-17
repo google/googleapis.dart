@@ -946,10 +946,20 @@ class UsersMessagesResourceApi {
    * [userId] - The user's email address. The special value me can be used to
    * indicate the authenticated user.
    *
+   * [deleted] - Mark the email as permanently deleted (not TRASH) and only
+   * visible in Google Apps Vault to a Vault administrator. Only used for Google
+   * Apps for Work accounts.
+   *
    * [internalDateSource] - Source for Gmail's internal date of the message.
    * Possible string values are:
    * - "dateHeader"
    * - "receivedTime"
+   *
+   * [neverMarkSpam] - Ignore the Gmail spam classifer decision and never mark
+   * this email as SPAM in the mailbox.
+   *
+   * [processForCalendar] - Process calendar invites in the email and add any
+   * extracted meetings to the Google Calendar for this user.
    *
    * [uploadMedia] - The media to upload.
    *
@@ -964,7 +974,7 @@ class UsersMessagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Message> import(Message request, core.String userId, {core.String internalDateSource, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Message> import(Message request, core.String userId, {core.bool deleted, core.String internalDateSource, core.bool neverMarkSpam, core.bool processForCalendar, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -978,8 +988,17 @@ class UsersMessagesResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
+    if (deleted != null) {
+      _queryParams["deleted"] = ["${deleted}"];
+    }
     if (internalDateSource != null) {
       _queryParams["internalDateSource"] = [internalDateSource];
+    }
+    if (neverMarkSpam != null) {
+      _queryParams["neverMarkSpam"] = ["${neverMarkSpam}"];
+    }
+    if (processForCalendar != null) {
+      _queryParams["processForCalendar"] = ["${processForCalendar}"];
     }
 
     _uploadMedia =  uploadMedia;
