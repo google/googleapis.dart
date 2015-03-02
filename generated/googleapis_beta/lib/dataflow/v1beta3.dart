@@ -799,6 +799,14 @@ class Environment {
   /** Not documented yet. */
   core.List<core.String> experiments;
 
+  /**
+   * Not documented yet.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Map<core.String, core.Object> sdkPipelineOptions;
+
   /** Not documented yet. */
   core.String tempStoragePrefix;
 
@@ -834,6 +842,9 @@ class Environment {
     if (_json.containsKey("experiments")) {
       experiments = _json["experiments"];
     }
+    if (_json.containsKey("sdkPipelineOptions")) {
+      sdkPipelineOptions = _json["sdkPipelineOptions"];
+    }
     if (_json.containsKey("tempStoragePrefix")) {
       tempStoragePrefix = _json["tempStoragePrefix"];
     }
@@ -858,6 +869,9 @@ class Environment {
     }
     if (experiments != null) {
       _json["experiments"] = experiments;
+    }
+    if (sdkPipelineOptions != null) {
+      _json["sdkPipelineOptions"] = sdkPipelineOptions;
     }
     if (tempStoragePrefix != null) {
       _json["tempStoragePrefix"] = tempStoragePrefix;
@@ -1949,7 +1963,16 @@ class Position {
 /** Not documented yet. */
 class PubsubLocation {
   /** Not documented yet. */
+  core.bool dropLateData;
+
+  /** Not documented yet. */
+  core.String idLabel;
+
+  /** Not documented yet. */
   core.String subscription;
+
+  /** Not documented yet. */
+  core.String timestampLabel;
 
   /** Not documented yet. */
   core.String topic;
@@ -1958,8 +1981,17 @@ class PubsubLocation {
   PubsubLocation();
 
   PubsubLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("dropLateData")) {
+      dropLateData = _json["dropLateData"];
+    }
+    if (_json.containsKey("idLabel")) {
+      idLabel = _json["idLabel"];
+    }
     if (_json.containsKey("subscription")) {
       subscription = _json["subscription"];
+    }
+    if (_json.containsKey("timestampLabel")) {
+      timestampLabel = _json["timestampLabel"];
     }
     if (_json.containsKey("topic")) {
       topic = _json["topic"];
@@ -1968,8 +2000,17 @@ class PubsubLocation {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (dropLateData != null) {
+      _json["dropLateData"] = dropLateData;
+    }
+    if (idLabel != null) {
+      _json["idLabel"] = idLabel;
+    }
     if (subscription != null) {
       _json["subscription"] = subscription;
+    }
+    if (timestampLabel != null) {
+      _json["timestampLabel"] = timestampLabel;
     }
     if (topic != null) {
       _json["topic"] = topic;
@@ -2368,6 +2409,39 @@ class Source {
     }
     if (spec != null) {
       _json["spec"] = spec;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class SourceFork {
+  /** Not documented yet. */
+  SourceSplitShard primary;
+
+  /** Not documented yet. */
+  SourceSplitShard residual;
+
+
+  SourceFork();
+
+  SourceFork.fromJson(core.Map _json) {
+    if (_json.containsKey("primary")) {
+      primary = new SourceSplitShard.fromJson(_json["primary"]);
+    }
+    if (_json.containsKey("residual")) {
+      residual = new SourceSplitShard.fromJson(_json["residual"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (primary != null) {
+      _json["primary"] = (primary).toJson();
+    }
+    if (residual != null) {
+      _json["residual"] = (residual).toJson();
     }
     return _json;
   }
@@ -3287,6 +3361,9 @@ class WorkItemStatus {
   core.String requestedLeaseDuration;
 
   /** Not documented yet. */
+  SourceFork sourceFork;
+
+  /** Not documented yet. */
   SourceOperationResponse sourceOperationResponse;
 
   /** Not documented yet. */
@@ -3316,6 +3393,9 @@ class WorkItemStatus {
     }
     if (_json.containsKey("requestedLeaseDuration")) {
       requestedLeaseDuration = _json["requestedLeaseDuration"];
+    }
+    if (_json.containsKey("sourceFork")) {
+      sourceFork = new SourceFork.fromJson(_json["sourceFork"]);
     }
     if (_json.containsKey("sourceOperationResponse")) {
       sourceOperationResponse = new SourceOperationResponse.fromJson(_json["sourceOperationResponse"]);
@@ -3347,6 +3427,9 @@ class WorkItemStatus {
     }
     if (requestedLeaseDuration != null) {
       _json["requestedLeaseDuration"] = requestedLeaseDuration;
+    }
+    if (sourceFork != null) {
+      _json["sourceFork"] = (sourceFork).toJson();
     }
     if (sourceOperationResponse != null) {
       _json["sourceOperationResponse"] = (sourceOperationResponse).toJson();

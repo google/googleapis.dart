@@ -23,7 +23,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Ve-dPhHjhWsL4fKFCzVvJIg5fO8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/wfhG0otVobUDwlejJM3hCJTIZzM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -213,6 +213,21 @@
         },
         "annotations": {
             "methods": {
+                "batchCreate": {
+                    "description": "Creates one or more new annotations atomically. All annotations must belong to the same annotation set. Caller must have WRITE permission for this annotation set. For optimal performance, batch positionally adjacent annotations together.\n\n\nIf the request has a systemic issue, such as an attempt to write to an inaccessible annotation set, the entire RPC will fail accordingly. For lesser data issues, when possible an error will be isolated to the corresponding batch entry in the response; the remaining well formed annotations will be created normally.",
+                    "httpMethod": "POST",
+                    "id": "genomics.annotations.batchCreate",
+                    "path": "annotations:batchCreate",
+                    "request": {
+                        "$ref": "BatchCreateAnnotationsRequest"
+                    },
+                    "response": {
+                        "$ref": "BatchAnnotationsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
                 "create": {
                     "description": "Creates a new annotation. Caller must have WRITE permission for the associated annotation set.",
                     "httpMethod": "POST",
@@ -1362,7 +1377,10 @@
                     "path": "variantsets/{variantSetId}/mergeVariants",
                     "request": {
                         "$ref": "MergeVariantsRequest"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
                 },
                 "patch": {
                     "description": "Updates a variant set's metadata. All other modifications are silently ignored. This method supports patch semantics.",
@@ -1435,7 +1453,7 @@
             }
         }
     },
-    "revision": "20150109",
+    "revision": "20150223",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AlignReadGroupSetsRequest": {
@@ -1587,6 +1605,62 @@
                         ""
                     ],
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BatchAnnotationsResponse": {
+            "id": "BatchAnnotationsResponse",
+            "properties": {
+                "entries": {
+                    "description": "The resulting per-annotation entries, ordered consistently with the original request.",
+                    "items": {
+                        "$ref": "BatchAnnotationsResponseEntry"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BatchAnnotationsResponseEntry": {
+            "id": "BatchAnnotationsResponseEntry",
+            "properties": {
+                "annotation": {
+                    "$ref": "Annotation",
+                    "description": "The annotation, if any."
+                },
+                "status": {
+                    "$ref": "BatchAnnotationsResponseEntryStatus",
+                    "description": "The resulting status for this annotation operation."
+                }
+            },
+            "type": "object"
+        },
+        "BatchAnnotationsResponseEntryStatus": {
+            "description": "",
+            "id": "BatchAnnotationsResponseEntryStatus",
+            "properties": {
+                "code": {
+                    "description": "The HTTP status code for this operation.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "Error message for this status, if any.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BatchCreateAnnotationsRequest": {
+            "id": "BatchCreateAnnotationsRequest",
+            "properties": {
+                "annotations": {
+                    "description": "The annotations to be created. At most 4096 can be specified in a single request.",
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

@@ -2930,6 +2930,14 @@ class SearchResourceApi {
    * The parameter value must be set to a YouTube video ID and, if you are using
    * this parameter, the type parameter must be set to video.
    *
+   * [relevanceLanguage] - The relevanceLanguage parameter instructs the API to
+   * return search results that are most relevant to the specified language. The
+   * parameter value is typically an ISO 639-1 two-letter language code.
+   * However, you should use the values zh-Hans for simplified Chinese and
+   * zh-Hant for traditional Chinese. Please note that results in other
+   * languages will still be returned if they are highly relevant to the search
+   * query term.
+   *
    * [safeSearch] - The safeSearch parameter indicates whether the search
    * results should include restricted content as well as standard content.
    * Possible string values are:
@@ -3026,7 +3034,7 @@ class SearchResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<SearchListResponse> list(core.String part, {core.String channelId, core.String channelType, core.String eventType, core.bool forContentOwner, core.bool forMine, core.String location, core.String locationRadius, core.int maxResults, core.String onBehalfOfContentOwner, core.String order, core.String pageToken, core.DateTime publishedAfter, core.DateTime publishedBefore, core.String q, core.String regionCode, core.String relatedToVideoId, core.String safeSearch, core.String topicId, core.String type, core.String videoCaption, core.String videoCategoryId, core.String videoDefinition, core.String videoDimension, core.String videoDuration, core.String videoEmbeddable, core.String videoLicense, core.String videoSyndicated, core.String videoType}) {
+  async.Future<SearchListResponse> list(core.String part, {core.String channelId, core.String channelType, core.String eventType, core.bool forContentOwner, core.bool forMine, core.String location, core.String locationRadius, core.int maxResults, core.String onBehalfOfContentOwner, core.String order, core.String pageToken, core.DateTime publishedAfter, core.DateTime publishedBefore, core.String q, core.String regionCode, core.String relatedToVideoId, core.String relevanceLanguage, core.String safeSearch, core.String topicId, core.String type, core.String videoCaption, core.String videoCategoryId, core.String videoDefinition, core.String videoDimension, core.String videoDuration, core.String videoEmbeddable, core.String videoLicense, core.String videoSyndicated, core.String videoType}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3085,6 +3093,9 @@ class SearchResourceApi {
     }
     if (relatedToVideoId != null) {
       _queryParams["relatedToVideoId"] = [relatedToVideoId];
+    }
+    if (relevanceLanguage != null) {
+      _queryParams["relevanceLanguage"] = [relevanceLanguage];
     }
     if (safeSearch != null) {
       _queryParams["safeSearch"] = [safeSearch];

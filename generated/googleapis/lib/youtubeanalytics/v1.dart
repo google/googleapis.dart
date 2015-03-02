@@ -15,6 +15,15 @@ export '../common/common.dart' show DetailedApiRequestError;
 
 /** Retrieve your YouTube Analytics reports. */
 class YoutubeAnalyticsApi {
+  /** Manage your YouTube account */
+  static const YoutubeScope = "https://www.googleapis.com/auth/youtube";
+
+  /** View your YouTube account */
+  static const YoutubeReadonlyScope = "https://www.googleapis.com/auth/youtube.readonly";
+
+  /** View and manage your assets and associated content on YouTube */
+  static const YoutubepartnerScope = "https://www.googleapis.com/auth/youtubepartner";
+
   /** View YouTube Analytics monetary reports for your YouTube content */
   static const YtAnalyticsMonetaryReadonlyScope = "https://www.googleapis.com/auth/yt-analytics-monetary.readonly";
 
@@ -26,6 +35,8 @@ class YoutubeAnalyticsApi {
 
   BatchReportDefinitionsResourceApi get batchReportDefinitions => new BatchReportDefinitionsResourceApi(_requester);
   BatchReportsResourceApi get batchReports => new BatchReportsResourceApi(_requester);
+  GroupItemsResourceApi get groupItems => new GroupItemsResourceApi(_requester);
+  GroupsResourceApi get groups => new GroupsResourceApi(_requester);
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
 
   YoutubeAnalyticsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "youtube/analytics/v1/"}) :
@@ -140,6 +151,432 @@ class BatchReportsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new BatchReportList.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class GroupItemsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  GroupItemsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Removes an item from a group.
+   *
+   * Request parameters:
+   *
+   * [id] - The id parameter specifies the YouTube group item ID for the group
+   * that is being deleted.
+   *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The CMS
+   * account that the user authenticates with must be linked to the specified
+   * YouTube content owner.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String id, {core.String onBehalfOfContentOwner}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'groupItems';
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Creates a group item.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The CMS
+   * account that the user authenticates with must be linked to the specified
+   * YouTube content owner.
+   *
+   * Completes with a [GroupItem].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<GroupItem> insert(GroupItem request, {core.String onBehalfOfContentOwner}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+
+
+    _url = 'groupItems';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GroupItem.fromJson(data));
+  }
+
+  /**
+   * Returns a collection of group items that match the API request parameters.
+   *
+   * Request parameters:
+   *
+   * [groupId] - The id parameter specifies the unique ID of the group for which
+   * you want to retrieve group items.
+   *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The CMS
+   * account that the user authenticates with must be linked to the specified
+   * YouTube content owner.
+   *
+   * Completes with a [GroupItemListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<GroupItemListResponse> list(core.String groupId, {core.String onBehalfOfContentOwner}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (groupId == null) {
+      throw new core.ArgumentError("Parameter groupId is required.");
+    }
+    _queryParams["groupId"] = [groupId];
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+
+
+    _url = 'groupItems';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GroupItemListResponse.fromJson(data));
+  }
+
+}
+
+
+/** Not documented yet. */
+class GroupsResourceApi {
+  final common_internal.ApiRequester _requester;
+
+  GroupsResourceApi(common_internal.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a group.
+   *
+   * Request parameters:
+   *
+   * [id] - The id parameter specifies the YouTube group ID for the group that
+   * is being deleted.
+   *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The CMS
+   * account that the user authenticates with must be linked to the specified
+   * YouTube content owner.
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String id, {core.String onBehalfOfContentOwner}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'groups';
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Creates a group.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The CMS
+   * account that the user authenticates with must be linked to the specified
+   * YouTube content owner.
+   *
+   * Completes with a [Group].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Group> insert(Group request, {core.String onBehalfOfContentOwner}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+
+
+    _url = 'groups';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Group.fromJson(data));
+  }
+
+  /**
+   * Returns a collection of groups that match the API request parameters. For
+   * example, you can retrieve all groups that the authenticated user owns, or
+   * you can retrieve one or more groups by their unique IDs.
+   *
+   * Request parameters:
+   *
+   * [id] - The id parameter specifies a comma-separated list of the YouTube
+   * group ID(s) for the resource(s) that are being retrieved. In a group
+   * resource, the id property specifies the group's YouTube group ID.
+   *
+   * [mine] - Set this parameter's value to true to instruct the API to only
+   * return groups owned by the authenticated user.
+   *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The CMS
+   * account that the user authenticates with must be linked to the specified
+   * YouTube content owner.
+   *
+   * Completes with a [GroupListResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<GroupListResponse> list({core.String id, core.bool mine, core.String onBehalfOfContentOwner}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id != null) {
+      _queryParams["id"] = [id];
+    }
+    if (mine != null) {
+      _queryParams["mine"] = ["${mine}"];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+
+
+    _url = 'groups';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GroupListResponse.fromJson(data));
+  }
+
+  /**
+   * Modifies a group. For example, you could change a group's title.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The CMS
+   * account that the user authenticates with must be linked to the specified
+   * YouTube content owner.
+   *
+   * Completes with a [Group].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Group> update(Group request, {core.String onBehalfOfContentOwner}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+
+
+    _url = 'groups';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Group.fromJson(data));
   }
 
 }
@@ -569,6 +1006,315 @@ class BatchReportList {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class GroupContentDetails {
+  /** Not documented yet. */
+  core.String itemCount;
+
+  /** Not documented yet. */
+  core.String itemType;
+
+
+  GroupContentDetails();
+
+  GroupContentDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("itemCount")) {
+      itemCount = _json["itemCount"];
+    }
+    if (_json.containsKey("itemType")) {
+      itemType = _json["itemType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (itemCount != null) {
+      _json["itemCount"] = itemCount;
+    }
+    if (itemType != null) {
+      _json["itemType"] = itemType;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class GroupSnippet {
+  /** Not documented yet. */
+  core.DateTime publishedAt;
+
+  /** Not documented yet. */
+  core.String title;
+
+
+  GroupSnippet();
+
+  GroupSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("publishedAt")) {
+      publishedAt = core.DateTime.parse(_json["publishedAt"]);
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (publishedAt != null) {
+      _json["publishedAt"] = (publishedAt).toIso8601String();
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class Group {
+  /** Not documented yet. */
+  GroupContentDetails contentDetails;
+
+  /** Not documented yet. */
+  core.String etag;
+
+  /** Not documented yet. */
+  core.String id;
+
+  /** Not documented yet. */
+  core.String kind;
+
+  /** Not documented yet. */
+  GroupSnippet snippet;
+
+
+  Group();
+
+  Group.fromJson(core.Map _json) {
+    if (_json.containsKey("contentDetails")) {
+      contentDetails = new GroupContentDetails.fromJson(_json["contentDetails"]);
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new GroupSnippet.fromJson(_json["snippet"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (contentDetails != null) {
+      _json["contentDetails"] = (contentDetails).toJson();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class GroupItemResource {
+  /** Not documented yet. */
+  core.String id;
+
+  /** Not documented yet. */
+  core.String kind;
+
+
+  GroupItemResource();
+
+  GroupItemResource.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class GroupItem {
+  /** Not documented yet. */
+  core.String etag;
+
+  /** Not documented yet. */
+  core.String groupId;
+
+  /** Not documented yet. */
+  core.String id;
+
+  /** Not documented yet. */
+  core.String kind;
+
+  /** Not documented yet. */
+  GroupItemResource resource;
+
+
+  GroupItem();
+
+  GroupItem.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("groupId")) {
+      groupId = _json["groupId"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("resource")) {
+      resource = new GroupItemResource.fromJson(_json["resource"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (groupId != null) {
+      _json["groupId"] = groupId;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (resource != null) {
+      _json["resource"] = (resource).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * A paginated list of grouList resources returned in response to a
+ * youtubeAnalytics.groupApi.list request.
+ */
+class GroupItemListResponse {
+  /** Not documented yet. */
+  core.String etag;
+
+  /** Not documented yet. */
+  core.List<GroupItem> items;
+
+  /** Not documented yet. */
+  core.String kind;
+
+
+  GroupItemListResponse();
+
+  GroupItemListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new GroupItem.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * A paginated list of grouList resources returned in response to a
+ * youtubeAnalytics.groupApi.list request.
+ */
+class GroupListResponse {
+  /** Not documented yet. */
+  core.String etag;
+
+  /** Not documented yet. */
+  core.List<Group> items;
+
+  /** Not documented yet. */
+  core.String kind;
+
+
+  GroupListResponse();
+
+  GroupListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Group.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }

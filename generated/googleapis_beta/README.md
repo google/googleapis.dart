@@ -78,7 +78,7 @@ Official API documentation: http://developers.google.com/compute/docs/autoscaler
 
 API for accessing Google Cloud and API monitoring data.
 
-Official API documentation: https://developers.google.com/cloud/eap/cloud-monitoring/v2beta2/
+Official API documentation: https://cloud.google.com/monitoring/v2beta2/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Container Engine API - container v1beta1
 
@@ -128,13 +128,19 @@ Google Dataflow API.
 
 Official API documentation: 
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Pub/Sub API - pubsub v1beta2
+
+Provides reliable, many-to-many, asynchronous messaging between applications.
+
+Official API documentation: 
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Deployment Manager API - manager v1beta2
 
 The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.
 
 Official API documentation: https://developers.google.com/deployment-manager/
 
-#### ![Logo](https://www.google.com/images/icons/product/search-16.gif) Cloud Pub/Sub API - pubsub v1beta1
+#### ![Logo](https://www.google.com/images/icons/product/search-16.gif) Google Cloud Pub/Sub API - pubsub v1beta1
 
 Provides reliable, many-to-many, asynchronous messaging between applications.
 

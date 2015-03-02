@@ -1,3 +1,11 @@
+## 0.10.0
+
+* [apis-breaking] dataflow:v1b4: Removal of schemas
+* [apis] dataflow:v1beta3: schema changes
+* [apis] genomics:v1beta2: method/schema addition
+* [apis] replicapoolupdater:v1beta1: schema changes
+* [apis-new] pubsub:v1beta2
+
 ## 0.9.0
 
 * [apis-new] cloudmonitoring:v2beta2: API added

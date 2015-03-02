@@ -29,7 +29,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/bigquery/docs/overview",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/27uk3a_8YZ0cWkB9UCvcffgCWp4\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/oDdLsdibHBJaKlk0IjPRWSI7TBM\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -889,7 +889,7 @@
             }
         }
     },
-    "revision": "20150109",
+    "revision": "20150226",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Dataset": {
@@ -1283,6 +1283,13 @@
                     "description": "[Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value, an 'invalid' error is returned in the job result and the job fails. The default value is 0, which requires that all records are valid.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "projectionFields": {
+                    "description": "[Experimental] Names(case-sensitive) of properties to keep when importing data. If this is populated, only the specified properties will be imported for each entity. Currently, this is only supported for DATASTORE_BACKUP imports and only top level properties are supported. If any specified property is not found in the Datastore 'Kind' being imported, that is an error. Note: This feature is experimental and can change in the future.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "quote": {
                     "description": "[Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('\"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.",
@@ -1813,7 +1820,7 @@
                 },
                 "lastModifiedTime": {
                     "description": "[Output-only] The time when this table was last modified, in milliseconds since the epoch.",
-                    "format": "int64",
+                    "format": "uint64",
                     "type": "string"
                 },
                 "numBytes": {

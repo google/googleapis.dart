@@ -1,3 +1,13 @@
+## 0.6.1
+
+* [apis] bigquery:v2: schema changes
+* [apis] books:v1: method changes
+* [apis] content:v2: schema changes
+* [apis] fitness:v1: schema changes
+* [apis] gmail:v1: additional schemas
+* [apis] youtube:v3: method changes
+* [apis] youtubeanalytics:v1: new resources
+
 ## 0.6.0
 
 * [apis] androidpublisher:v2: additional schemas/methods

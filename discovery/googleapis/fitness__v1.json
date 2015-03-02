@@ -29,7 +29,7 @@
     "description": "Google Fit API",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/fit/rest/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/YjudB0g0FadK_RnVkIXtDsBeafM\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/lDyElxcTuD_AINzagoHaFK_1_Y4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -541,7 +541,7 @@
             }
         }
     },
-    "revision": "20141115",
+    "revision": "20150222",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Application": {
@@ -564,7 +564,7 @@
                     "type": "string"
                 },
                 "packageName": {
-                    "description": "Package name for this application. This is used as a unique identifier when creaed by Android applications, but cannot be specified by REST clients. REST clients will have their developer project number reflected into the Data Source data stream IDs, instead of the packageName.",
+                    "description": "Package name for this application. This is used as a unique identifier when created by Android applications, but cannot be specified by REST clients. REST clients will have their developer project number reflected into the Data Source data stream IDs, instead of the packageName.",
                     "type": "string"
                 },
                 "version": {
@@ -774,6 +774,9 @@
                     },
                     "description": "Defines the name and format of data. Unlike data type names, field names are not namespaced, and only need to be unique within the data type.",
                     "type": "string"
+                },
+                "optional": {
+                    "type": "boolean"
                 }
             },
             "type": "object"

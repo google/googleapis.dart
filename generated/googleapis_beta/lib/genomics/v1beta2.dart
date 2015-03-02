@@ -325,6 +325,56 @@ class AnnotationsResourceApi {
       _requester = client;
 
   /**
+   * Creates one or more new annotations atomically. All annotations must belong
+   * to the same annotation set. Caller must have WRITE permission for this
+   * annotation set. For optimal performance, batch positionally adjacent
+   * annotations together.
+   *
+   *
+   * If the request has a systemic issue, such as an attempt to write to an
+   * inaccessible annotation set, the entire RPC will fail accordingly. For
+   * lesser data issues, when possible an error will be isolated to the
+   * corresponding batch entry in the response; the remaining well formed
+   * annotations will be created normally.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [BatchAnnotationsResponse].
+   *
+   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<BatchAnnotationsResponse> batchCreate(BatchCreateAnnotationsRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+
+    _url = 'annotations:batchCreate';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BatchAnnotationsResponse.fromJson(data));
+  }
+
+  /**
    * Creates a new annotation. Caller must have WRITE permission for the
    * associated annotation set.
    *
@@ -3089,6 +3139,126 @@ class AnnotationSet {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class BatchAnnotationsResponse {
+  /**
+   * The resulting per-annotation entries, ordered consistently with the
+   * original request.
+   */
+  core.List<BatchAnnotationsResponseEntry> entries;
+
+
+  BatchAnnotationsResponse();
+
+  BatchAnnotationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("entries")) {
+      entries = _json["entries"].map((value) => new BatchAnnotationsResponseEntry.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (entries != null) {
+      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class BatchAnnotationsResponseEntry {
+  /** The annotation, if any. */
+  Annotation annotation;
+
+  /** The resulting status for this annotation operation. */
+  BatchAnnotationsResponseEntryStatus status;
+
+
+  BatchAnnotationsResponseEntry();
+
+  BatchAnnotationsResponseEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("annotation")) {
+      annotation = new Annotation.fromJson(_json["annotation"]);
+    }
+    if (_json.containsKey("status")) {
+      status = new BatchAnnotationsResponseEntryStatus.fromJson(_json["status"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (annotation != null) {
+      _json["annotation"] = (annotation).toJson();
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class BatchAnnotationsResponseEntryStatus {
+  /** The HTTP status code for this operation. */
+  core.int code;
+
+  /** Error message for this status, if any. */
+  core.String message;
+
+
+  BatchAnnotationsResponseEntryStatus();
+
+  BatchAnnotationsResponseEntryStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class BatchCreateAnnotationsRequest {
+  /**
+   * The annotations to be created. At most 4096 can be specified in a single
+   * request.
+   */
+  core.List<Annotation> annotations;
+
+
+  BatchCreateAnnotationsRequest();
+
+  BatchCreateAnnotationsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("annotations")) {
+      annotations = _json["annotations"].map((value) => new Annotation.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (annotations != null) {
+      _json["annotations"] = annotations.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

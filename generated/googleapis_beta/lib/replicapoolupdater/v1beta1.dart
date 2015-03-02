@@ -614,10 +614,7 @@ class InstanceUpdateErrorErrors {
 }
 
 
-/**
- * Errors that occurred during the instance update. Setting
- * (api.field).field_number manually is a workaround for b/16512602.
- */
+/** Errors that occurred during the instance update. */
 class InstanceUpdateError {
   /**
    * [Output Only] The array of errors encountered while processing this
@@ -646,10 +643,7 @@ class InstanceUpdateError {
 
 /** Update of a single instance. */
 class InstanceUpdate {
-  /**
-   * Errors that occurred during the instance update. Setting
-   * (api.field).field_number manually is a workaround for b/16512602.
-   */
+  /** Errors that occurred during the instance update. */
   InstanceUpdateError error;
 
   /** URL of the instance being updated. */
@@ -1144,6 +1138,78 @@ class Operation {
 }
 
 
+/** Not documented yet. */
+class RollingUpdateErrorErrors {
+  /** [Output Only] The error type identifier for this error. */
+  core.String code;
+
+  /**
+   * [Output Only] Indicates the field in the request which caused the error.
+   * This property is optional.
+   */
+  core.String location;
+
+  /** [Output Only] An optional, human-readable error message. */
+  core.String message;
+
+
+  RollingUpdateErrorErrors();
+
+  RollingUpdateErrorErrors.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+
+/** [Output Only] Errors that occurred during rolling update. */
+class RollingUpdateError {
+  /**
+   * [Output Only] The array of errors encountered while processing this
+   * operation.
+   */
+  core.List<RollingUpdateErrorErrors> errors;
+
+
+  RollingUpdateError();
+
+  RollingUpdateError.fromJson(core.Map _json) {
+    if (_json.containsKey("errors")) {
+      errors = _json["errors"].map((value) => new RollingUpdateErrorErrors.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (errors != null) {
+      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
 /** Parameters of a canary phase. If absent, canary will NOT be performed. */
 class RollingUpdatePolicyCanary {
   /**
@@ -1171,13 +1237,22 @@ class RollingUpdatePolicyCanary {
 }
 
 
-/**
- * Parameters of the update process. Setting (api.field).field_number manually
- * is a workaround for b/16512602.
- */
+/** Parameters of the update process. */
 class RollingUpdatePolicy {
+  /**
+   * Number of instances updated before the update gets automatically paused.
+   */
+  core.int autoPauseAfterInstances;
+
   /** Parameters of a canary phase. If absent, canary will NOT be performed. */
   RollingUpdatePolicyCanary canary;
+
+  /**
+   * Maximum amount of time we will wait after finishing all steps until we
+   * receive HEALTHY state for instance. If this deadline is exceeded instance
+   * update is considered as failed.
+   */
+  core.int instanceStartupTimeoutSec;
 
   /**
    * Maximum number of instances that can be updated simultaneously
@@ -1188,8 +1263,27 @@ class RollingUpdatePolicy {
   core.int maxNumConcurrentInstances;
 
   /**
-   * The number of seconds to wait between when the instance has been
-   * successfully updated and restarted, to when it is marked as done.
+   * Maximum number of instance updates that can fail without failing the group
+   * update. Instance update is considered failed if any of it's update actions
+   * (e.g. Stop call on Instance resource in Rolling Reboot) failed with
+   * permanent failure, or if after finishing all update actions this instance
+   * is in UNHEALTHY state.
+   */
+  core.int maxNumFailedInstances;
+
+  /**
+   * Specifies minimum amount of time we will spend on updating single instance,
+   * measuring at the start of the first update action (e.g. Recreate call on
+   * Instance Group Manager or Stop call on Instance resource). If actual
+   * instance update takes less time we will simply sleep before proceeding with
+   * next instance.
+   */
+  core.int minInstanceUpdateTimeSec;
+
+  /**
+   * Time period after the instance has been restarted but before marking the
+   * update of this instance as done. This field is deprecated and ignored by
+   * Rolling Updater.
    */
   core.int sleepAfterInstanceRestartSec;
 
@@ -1197,11 +1291,23 @@ class RollingUpdatePolicy {
   RollingUpdatePolicy();
 
   RollingUpdatePolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("autoPauseAfterInstances")) {
+      autoPauseAfterInstances = _json["autoPauseAfterInstances"];
+    }
     if (_json.containsKey("canary")) {
       canary = new RollingUpdatePolicyCanary.fromJson(_json["canary"]);
     }
+    if (_json.containsKey("instanceStartupTimeoutSec")) {
+      instanceStartupTimeoutSec = _json["instanceStartupTimeoutSec"];
+    }
     if (_json.containsKey("maxNumConcurrentInstances")) {
       maxNumConcurrentInstances = _json["maxNumConcurrentInstances"];
+    }
+    if (_json.containsKey("maxNumFailedInstances")) {
+      maxNumFailedInstances = _json["maxNumFailedInstances"];
+    }
+    if (_json.containsKey("minInstanceUpdateTimeSec")) {
+      minInstanceUpdateTimeSec = _json["minInstanceUpdateTimeSec"];
     }
     if (_json.containsKey("sleepAfterInstanceRestartSec")) {
       sleepAfterInstanceRestartSec = _json["sleepAfterInstanceRestartSec"];
@@ -1210,11 +1316,23 @@ class RollingUpdatePolicy {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (autoPauseAfterInstances != null) {
+      _json["autoPauseAfterInstances"] = autoPauseAfterInstances;
+    }
     if (canary != null) {
       _json["canary"] = (canary).toJson();
     }
+    if (instanceStartupTimeoutSec != null) {
+      _json["instanceStartupTimeoutSec"] = instanceStartupTimeoutSec;
+    }
     if (maxNumConcurrentInstances != null) {
       _json["maxNumConcurrentInstances"] = maxNumConcurrentInstances;
+    }
+    if (maxNumFailedInstances != null) {
+      _json["maxNumFailedInstances"] = maxNumFailedInstances;
+    }
+    if (minInstanceUpdateTimeSec != null) {
+      _json["minInstanceUpdateTimeSec"] = minInstanceUpdateTimeSec;
     }
     if (sleepAfterInstanceRestartSec != null) {
       _json["sleepAfterInstanceRestartSec"] = sleepAfterInstanceRestartSec;
@@ -1225,15 +1343,16 @@ class RollingUpdatePolicy {
 
 
 /**
- * Resource describing a single update (rollout) of a group of instances to the
- * given template.
+ * The following represents a resource describing a single update (rollout) of a
+ * group of instances to the given template.
  */
 class RollingUpdate {
   /**
-   * Action to be performed for each instance. Possible values are:
-   * - "RECREATE": Instance will be recreated. Only for managed instance groups.
-   * - "REBOOT": Soft reboot will be performed on an instance. Only for
-   * non-managed instance groups.
+   * Specifies the action to take for each instance within the instance group.
+   * This can be RECREATE which will recreate each instance and is only
+   * available for managed instance groups. It can also be REBOOT which performs
+   * a soft reboot for each instance and is only available for regular
+   * (non-managed) instance groups.
    */
   core.String actionType;
 
@@ -1246,33 +1365,33 @@ class RollingUpdate {
    */
   core.String description;
 
+  /** [Output Only] Errors that occurred during rolling update. */
+  RollingUpdateError error;
+
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
   /**
-   * URL of an instance group being updated. Exactly one of
-   * instance_group_manager and instance_group must be set.
+   * Fully-qualified URL of an instance group being updated. Exactly one of
+   * instanceGroupManager and instanceGroup must be set.
    */
   core.String instanceGroup;
 
   /**
-   * URL of an instance group manager being updated. Exactly one of
-   * instance_group_manager and instance_group must be set.
+   * Fully-qualified URL of an instance group manager being updated. Exactly one
+   * of instanceGroupManager and instanceGroup must be set.
    */
   core.String instanceGroupManager;
 
-  /** URL of an instance template to apply. */
+  /** Fully-qualified URL of an instance template to apply. */
   core.String instanceTemplate;
 
   /** [Output Only] Type of the resource. */
   core.String kind;
 
-  /**
-   * Parameters of the update process. Setting (api.field).field_number manually
-   * is a workaround for b/16512602.
-   */
+  /** Parameters of the update process. */
   RollingUpdatePolicy policy;
 
   /**
@@ -1325,6 +1444,9 @@ class RollingUpdate {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("error")) {
+      error = new RollingUpdateError.fromJson(_json["error"]);
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -1370,6 +1492,9 @@ class RollingUpdate {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (error != null) {
+      _json["error"] = (error).toJson();
     }
     if (id != null) {
       _json["id"] = id;

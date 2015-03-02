@@ -654,8 +654,8 @@ class EditsApksResourceApi {
   /**
    * Creates a new APK without uploading the APK itself to Google Play, instead
    * hosting the APK at a specified URL. This function is only available to
-   * enterprises using Android for Work, for applications distributed within the
-   * enterprise Private Channel.
+   * enterprises using Google Play for work whose application is configured to
+   * restrict distribution to the enterprise domain.
    *
    * [request] - The metadata request object.
    *

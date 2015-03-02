@@ -2147,6 +2147,16 @@ class JobConfigurationLoad {
   core.int maxBadRecords;
 
   /**
+   * [Experimental] Names(case-sensitive) of properties to keep when importing
+   * data. If this is populated, only the specified properties will be imported
+   * for each entity. Currently, this is only supported for DATASTORE_BACKUP
+   * imports and only top level properties are supported. If any specified
+   * property is not found in the Datastore 'Kind' being imported, that is an
+   * error. Note: This feature is experimental and can change in the future.
+   */
+  core.List<core.String> projectionFields;
+
+  /**
    * [Optional] The value that is used to quote data sections in a CSV file.
    * BigQuery converts the string to ISO-8859-1 encoding, and then uses the
    * first byte of the encoded string to split the data in its raw, binary
@@ -2236,6 +2246,9 @@ class JobConfigurationLoad {
     if (_json.containsKey("maxBadRecords")) {
       maxBadRecords = _json["maxBadRecords"];
     }
+    if (_json.containsKey("projectionFields")) {
+      projectionFields = _json["projectionFields"];
+    }
     if (_json.containsKey("quote")) {
       quote = _json["quote"];
     }
@@ -2287,6 +2300,9 @@ class JobConfigurationLoad {
     }
     if (maxBadRecords != null) {
       _json["maxBadRecords"] = maxBadRecords;
+    }
+    if (projectionFields != null) {
+      _json["projectionFields"] = projectionFields;
     }
     if (quote != null) {
       _json["quote"] = quote;

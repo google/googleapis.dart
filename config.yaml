@@ -89,6 +89,7 @@ packages:
     - genomics:v1beta2  # https://developers.google.com/genomics/
     - manager:v1beta2  # https://developers.google.com/deployment-manager/
     - pubsub:v1beta1  # https://developers.google.com/pubsub/ (Limited Preview)
+    - pubsub:v1beta2  # https://developers.google.com/pubsub/ (Limited Preview)
     - replicapool:v1beta2  # https://cloud.google.com/compute/docs/instance-groups/manager/
     - replicapoolupdater:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/manager/
     - resourceviews:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/ (Limited Preview)

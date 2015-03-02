@@ -758,7 +758,7 @@ class Application {
 
   /**
    * Package name for this application. This is used as a unique identifier when
-   * creaed by Android applications, but cannot be specified by REST clients.
+   * created by Android applications, but cannot be specified by REST clients.
    * REST clients will have their developer project number reflected into the
    * Data Source data stream IDs, instead of the packageName.
    */
@@ -1138,6 +1138,9 @@ class DataTypeField {
    */
   core.String name;
 
+  /** Not documented yet. */
+  core.bool optional;
+
 
   DataTypeField();
 
@@ -1148,6 +1151,9 @@ class DataTypeField {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("optional")) {
+      optional = _json["optional"];
+    }
   }
 
   core.Map toJson() {
@@ -1157,6 +1163,9 @@ class DataTypeField {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (optional != null) {
+      _json["optional"] = optional;
     }
     return _json;
   }

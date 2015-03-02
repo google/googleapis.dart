@@ -5467,6 +5467,23 @@ class Product {
   /** Specifies the intended destinations for the product. */
   core.List<ProductDestination> destinations;
 
+  /** An identifier for an item for dynamic remarketing campaigns. */
+  core.String displayAdsId;
+
+  /**
+   * URL directly to your item's landing page for dynamic remarketing campaigns.
+   */
+  core.String displayAdsLink;
+
+  /** Advertiser-specified recommendations. */
+  core.List<core.String> displayAdsSimilarIds;
+
+  /** Title of an item for dynamic remarketing campaigns. */
+  core.String displayAdsTitle;
+
+  /** Offer margin for dynamic remarketing campaigns. */
+  core.double displayAdsValue;
+
   /** The energy efficiency class as defined in EU directive 2010/30/EU. */
   core.String energyEfficiencyClass;
 
@@ -5685,6 +5702,21 @@ class Product {
     if (_json.containsKey("destinations")) {
       destinations = _json["destinations"].map((value) => new ProductDestination.fromJson(value)).toList();
     }
+    if (_json.containsKey("displayAdsId")) {
+      displayAdsId = _json["displayAdsId"];
+    }
+    if (_json.containsKey("displayAdsLink")) {
+      displayAdsLink = _json["displayAdsLink"];
+    }
+    if (_json.containsKey("displayAdsSimilarIds")) {
+      displayAdsSimilarIds = _json["displayAdsSimilarIds"];
+    }
+    if (_json.containsKey("displayAdsTitle")) {
+      displayAdsTitle = _json["displayAdsTitle"];
+    }
+    if (_json.containsKey("displayAdsValue")) {
+      displayAdsValue = _json["displayAdsValue"];
+    }
     if (_json.containsKey("energyEfficiencyClass")) {
       energyEfficiencyClass = _json["energyEfficiencyClass"];
     }
@@ -5877,6 +5909,21 @@ class Product {
     }
     if (destinations != null) {
       _json["destinations"] = destinations.map((value) => (value).toJson()).toList();
+    }
+    if (displayAdsId != null) {
+      _json["displayAdsId"] = displayAdsId;
+    }
+    if (displayAdsLink != null) {
+      _json["displayAdsLink"] = displayAdsLink;
+    }
+    if (displayAdsSimilarIds != null) {
+      _json["displayAdsSimilarIds"] = displayAdsSimilarIds;
+    }
+    if (displayAdsTitle != null) {
+      _json["displayAdsTitle"] = displayAdsTitle;
+    }
+    if (displayAdsValue != null) {
+      _json["displayAdsValue"] = displayAdsValue;
     }
     if (energyEfficiencyClass != null) {
       _json["energyEfficiencyClass"] = energyEfficiencyClass;
@@ -6451,6 +6498,9 @@ class ProductStatusDataQualityIssue {
   /** The attribute name that is relevant for the issue. */
   core.String location;
 
+  /** The severity of the data quality issue. */
+  core.String severity;
+
   /** The time stamp of the data quality issue. */
   core.String timestamp;
 
@@ -6476,6 +6526,9 @@ class ProductStatusDataQualityIssue {
     if (_json.containsKey("location")) {
       location = _json["location"];
     }
+    if (_json.containsKey("severity")) {
+      severity = _json["severity"];
+    }
     if (_json.containsKey("timestamp")) {
       timestamp = _json["timestamp"];
     }
@@ -6500,6 +6553,9 @@ class ProductStatusDataQualityIssue {
     }
     if (location != null) {
       _json["location"] = location;
+    }
+    if (severity != null) {
+      _json["severity"] = severity;
     }
     if (timestamp != null) {
       _json["timestamp"] = timestamp;

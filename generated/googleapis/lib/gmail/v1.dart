@@ -955,7 +955,7 @@ class UsersMessagesResourceApi {
    * - "dateHeader"
    * - "receivedTime"
    *
-   * [neverMarkSpam] - Ignore the Gmail spam classifer decision and never mark
+   * [neverMarkSpam] - Ignore the Gmail spam classifier decision and never mark
    * this email as SPAM in the mailbox.
    *
    * [processForCalendar] - Process calendar invites in the email and add any
@@ -1797,15 +1797,33 @@ class Draft {
 
 
 /**
- * A record of a change to the user's mailbox. Each history contains a list of
- * the messages that were affected by this change.
+ * A record of a change to the user's mailbox. Each history change may affect
+ * multiple messages in multiple ways.
  */
 class History {
   /** The mailbox sequence ID. */
   core.String id;
 
-  /** The messages that changed in this history record. */
+  /** Labels added to messages in this history record. */
+  core.List<HistoryLabelAdded> labelsAdded;
+
+  /** Labels removed from messages in this history record. */
+  core.List<HistoryLabelRemoved> labelsRemoved;
+
+  /**
+   * List of messages changed in this history record. The fields for specific
+   * change types, such as messagesAdded may duplicate messages in this field.
+   * We recommend using the specific change-type fields instead of this.
+   */
   core.List<Message> messages;
+
+  /** Messages added to the mailbox in this history record. */
+  core.List<HistoryMessageAdded> messagesAdded;
+
+  /**
+   * Messages deleted (not Trashed) from the mailbox in this history record.
+   */
+  core.List<HistoryMessageDeleted> messagesDeleted;
 
 
   History();
@@ -1814,8 +1832,20 @@ class History {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
+    if (_json.containsKey("labelsAdded")) {
+      labelsAdded = _json["labelsAdded"].map((value) => new HistoryLabelAdded.fromJson(value)).toList();
+    }
+    if (_json.containsKey("labelsRemoved")) {
+      labelsRemoved = _json["labelsRemoved"].map((value) => new HistoryLabelRemoved.fromJson(value)).toList();
+    }
     if (_json.containsKey("messages")) {
       messages = _json["messages"].map((value) => new Message.fromJson(value)).toList();
+    }
+    if (_json.containsKey("messagesAdded")) {
+      messagesAdded = _json["messagesAdded"].map((value) => new HistoryMessageAdded.fromJson(value)).toList();
+    }
+    if (_json.containsKey("messagesDeleted")) {
+      messagesDeleted = _json["messagesDeleted"].map((value) => new HistoryMessageDeleted.fromJson(value)).toList();
     }
   }
 
@@ -1824,8 +1854,134 @@ class History {
     if (id != null) {
       _json["id"] = id;
     }
+    if (labelsAdded != null) {
+      _json["labelsAdded"] = labelsAdded.map((value) => (value).toJson()).toList();
+    }
+    if (labelsRemoved != null) {
+      _json["labelsRemoved"] = labelsRemoved.map((value) => (value).toJson()).toList();
+    }
     if (messages != null) {
       _json["messages"] = messages.map((value) => (value).toJson()).toList();
+    }
+    if (messagesAdded != null) {
+      _json["messagesAdded"] = messagesAdded.map((value) => (value).toJson()).toList();
+    }
+    if (messagesDeleted != null) {
+      _json["messagesDeleted"] = messagesDeleted.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class HistoryLabelAdded {
+  /** Label IDs added to the message. */
+  core.List<core.String> labelIds;
+
+  /** Not documented yet. */
+  Message message;
+
+
+  HistoryLabelAdded();
+
+  HistoryLabelAdded.fromJson(core.Map _json) {
+    if (_json.containsKey("labelIds")) {
+      labelIds = _json["labelIds"];
+    }
+    if (_json.containsKey("message")) {
+      message = new Message.fromJson(_json["message"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (labelIds != null) {
+      _json["labelIds"] = labelIds;
+    }
+    if (message != null) {
+      _json["message"] = (message).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class HistoryLabelRemoved {
+  /** Label IDs removed from the message. */
+  core.List<core.String> labelIds;
+
+  /** Not documented yet. */
+  Message message;
+
+
+  HistoryLabelRemoved();
+
+  HistoryLabelRemoved.fromJson(core.Map _json) {
+    if (_json.containsKey("labelIds")) {
+      labelIds = _json["labelIds"];
+    }
+    if (_json.containsKey("message")) {
+      message = new Message.fromJson(_json["message"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (labelIds != null) {
+      _json["labelIds"] = labelIds;
+    }
+    if (message != null) {
+      _json["message"] = (message).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class HistoryMessageAdded {
+  /** Not documented yet. */
+  Message message;
+
+
+  HistoryMessageAdded();
+
+  HistoryMessageAdded.fromJson(core.Map _json) {
+    if (_json.containsKey("message")) {
+      message = new Message.fromJson(_json["message"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (message != null) {
+      _json["message"] = (message).toJson();
+    }
+    return _json;
+  }
+}
+
+
+/** Not documented yet. */
+class HistoryMessageDeleted {
+  /** Not documented yet. */
+  Message message;
+
+
+  HistoryMessageDeleted();
+
+  HistoryMessageDeleted.fromJson(core.Map _json) {
+    if (_json.containsKey("message")) {
+      message = new Message.fromJson(_json["message"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (message != null) {
+      _json["message"] = (message).toJson();
     }
     return _json;
   }
@@ -1997,7 +2153,10 @@ class ListDraftsResponse {
 
 /** Not documented yet. */
 class ListHistoryResponse {
-  /** List of history records. */
+  /**
+   * List of history records. Any messages contained in the response will
+   * typically only have id and threadId fields populated.
+   */
   core.List<History> history;
 
   /** The ID of the mailbox's current history record. */

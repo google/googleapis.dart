@@ -17,7 +17,7 @@
     "description": "Google Dataflow API.",
     "discoveryVersion": "v1",
     "documentationLink": "",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/L373kNIz1YIUlLOAHRzzURGZYN8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/p23x-gNsMm8R6x-RDoeYGjGvTE0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -451,7 +451,7 @@
             }
         }
     },
-    "revision": "20150109",
+    "revision": "20150130",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "ApproximateProgress": {
@@ -565,6 +565,12 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "sdkPipelineOptions": {
+                    "additionalProperties": {
+                        "type": "any"
+                    },
+                    "type": "object"
                 },
                 "tempStoragePrefix": {
                     "type": "string"
@@ -1075,7 +1081,16 @@
         "PubsubLocation": {
             "id": "PubsubLocation",
             "properties": {
+                "dropLateData": {
+                    "type": "boolean"
+                },
+                "idLabel": {
+                    "type": "string"
+                },
                 "subscription": {
+                    "type": "string"
+                },
+                "timestampLabel": {
                     "type": "string"
                 },
                 "topic": {
@@ -1249,6 +1264,18 @@
                         "type": "any"
                     },
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "SourceFork": {
+            "id": "SourceFork",
+            "properties": {
+                "primary": {
+                    "$ref": "SourceSplitShard"
+                },
+                "residual": {
+                    "$ref": "SourceSplitShard"
                 }
             },
             "type": "object"
@@ -1641,6 +1668,9 @@
                 },
                 "requestedLeaseDuration": {
                     "type": "string"
+                },
+                "sourceFork": {
+                    "$ref": "SourceFork"
                 },
                 "sourceOperationResponse": {
                     "$ref": "SourceOperationResponse"

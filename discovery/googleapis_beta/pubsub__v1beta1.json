@@ -17,7 +17,7 @@
     "description": "Provides reliable, many-to-many, asynchronous messaging between applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/pubsub/v1beta1",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/l0JgsjBWjI1NlzVxkARuHEA3uK8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/LbBwzYbVBam1gVQEBSCOUlfciRc\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -370,7 +370,7 @@
             }
         }
     },
-    "revision": "20141230",
+    "revision": "20141112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AcknowledgeRequest": {
@@ -687,6 +687,6 @@
         }
     },
     "servicePath": "pubsub/v1beta1/",
-    "title": "Cloud Pub/Sub API",
+    "title": "Google Cloud Pub/Sub API",
     "version": "v1beta1"
 }

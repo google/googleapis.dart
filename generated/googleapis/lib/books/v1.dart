@@ -2497,6 +2497,8 @@ class VolumesResourceApi {
    *
    * [source] - String to identify the originator of this request.
    *
+   * [userLibraryConsistentRead] - null
+   *
    * Completes with a [Volume].
    *
    * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
@@ -2505,7 +2507,7 @@ class VolumesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Volume> get(core.String volumeId, {core.String country, core.String partner, core.String projection, core.String source}) {
+  async.Future<Volume> get(core.String volumeId, {core.String country, core.String partner, core.String projection, core.String source, core.bool userLibraryConsistentRead}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2527,6 +2529,9 @@ class VolumesResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if (userLibraryConsistentRead != null) {
+      _queryParams["user_library_consistent_read"] = ["${userLibraryConsistentRead}"];
     }
 
 

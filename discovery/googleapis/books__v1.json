@@ -14,7 +14,7 @@
     "description": "Lets you search for books and manage your Google Books library.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/_8UNzCrzIAVY6np4hy3mmnmxBm8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/kNB4QIeM_hYb1gDtvlVUUPro4uQ\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/ebooks-16.png",
         "x32": "https://www.google.com/images/icons/product/ebooks-32.png"
@@ -1777,6 +1777,10 @@
                             "location": "query",
                             "type": "string"
                         },
+                        "user_library_consistent_read": {
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "volumeId": {
                             "description": "ID of volume to retrieve.",
                             "location": "path",
@@ -2215,7 +2219,7 @@
             }
         }
     },
-    "revision": "20150109",
+    "revision": "20150115",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {

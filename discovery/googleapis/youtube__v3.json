@@ -27,7 +27,7 @@
     "description": "Programmatic access to YouTube features.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/QKKVh-U3K8YmHckACHPpbX0hbyk\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/e9llQCBHLfl4GdN8_SFJWpjcLpU\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -1548,6 +1548,11 @@
                             "location": "query",
                             "type": "string"
                         },
+                        "relevanceLanguage": {
+                            "description": "The relevanceLanguage parameter instructs the API to return search results that are most relevant to the specified language. The parameter value is typically an ISO 639-1 two-letter language code. However, you should use the values zh-Hans for simplified Chinese and zh-Hant for traditional Chinese. Please note that results in other languages will still be returned if they are highly relevant to the search query term.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "safeSearch": {
                             "description": "The safeSearch parameter indicates whether the search results should include restricted content as well as standard content.",
                             "enum": [
@@ -2330,7 +2335,7 @@
             }
         }
     },
-    "revision": "20150206",
+    "revision": "20150218",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {

@@ -1,4 +1,4 @@
-library googleapis_beta.resourceviews.v1beta1.test;
+library googleapis_beta.pubsub.v1beta2.test;
 
 import "dart:core" as core;
 import "dart:collection" as collection;
@@ -12,30 +12,9 @@ import 'package:googleapis_beta/common/common.dart' as common;
 import 'package:googleapis_beta/src/common_internal.dart' as common_internal;
 import '../common/common_internal_test.dart' as common_test;
 
-import 'package:googleapis_beta/resourceviews/v1beta1.dart' as api;
+import 'package:googleapis_beta/pubsub/v1beta2.dart' as api;
 
 
-
-core.int buildCounterLabel = 0;
-buildLabel() {
-  var o = new api.Label();
-  buildCounterLabel++;
-  if (buildCounterLabel < 3) {
-    o.key = "foo";
-    o.value = "foo";
-  }
-  buildCounterLabel--;
-  return o;
-}
-
-checkLabel(api.Label o) {
-  buildCounterLabel++;
-  if (buildCounterLabel < 3) {
-    unittest.expect(o.key, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
-  }
-  buildCounterLabel--;
-}
 
 buildUnnamed1633() {
   var o = new core.List<core.String>();
@@ -50,155 +29,214 @@ checkUnnamed1633(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.int buildCounterRegionViewsAddResourcesRequest = 0;
-buildRegionViewsAddResourcesRequest() {
-  var o = new api.RegionViewsAddResourcesRequest();
-  buildCounterRegionViewsAddResourcesRequest++;
-  if (buildCounterRegionViewsAddResourcesRequest < 3) {
-    o.resources = buildUnnamed1633();
+core.int buildCounterAcknowledgeRequest = 0;
+buildAcknowledgeRequest() {
+  var o = new api.AcknowledgeRequest();
+  buildCounterAcknowledgeRequest++;
+  if (buildCounterAcknowledgeRequest < 3) {
+    o.ackIds = buildUnnamed1633();
   }
-  buildCounterRegionViewsAddResourcesRequest--;
+  buildCounterAcknowledgeRequest--;
   return o;
 }
 
-checkRegionViewsAddResourcesRequest(api.RegionViewsAddResourcesRequest o) {
-  buildCounterRegionViewsAddResourcesRequest++;
-  if (buildCounterRegionViewsAddResourcesRequest < 3) {
-    checkUnnamed1633(o.resources);
+checkAcknowledgeRequest(api.AcknowledgeRequest o) {
+  buildCounterAcknowledgeRequest++;
+  if (buildCounterAcknowledgeRequest < 3) {
+    checkUnnamed1633(o.ackIds);
   }
-  buildCounterRegionViewsAddResourcesRequest--;
+  buildCounterAcknowledgeRequest--;
 }
 
-core.int buildCounterRegionViewsInsertResponse = 0;
-buildRegionViewsInsertResponse() {
-  var o = new api.RegionViewsInsertResponse();
-  buildCounterRegionViewsInsertResponse++;
-  if (buildCounterRegionViewsInsertResponse < 3) {
-    o.resource = buildResourceView();
+core.int buildCounterEmpty = 0;
+buildEmpty() {
+  var o = new api.Empty();
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {
   }
-  buildCounterRegionViewsInsertResponse--;
+  buildCounterEmpty--;
   return o;
 }
 
-checkRegionViewsInsertResponse(api.RegionViewsInsertResponse o) {
-  buildCounterRegionViewsInsertResponse++;
-  if (buildCounterRegionViewsInsertResponse < 3) {
-    checkResourceView(o.resource);
+checkEmpty(api.Empty o) {
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {
   }
-  buildCounterRegionViewsInsertResponse--;
+  buildCounterEmpty--;
 }
 
 buildUnnamed1634() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
+  var o = new core.List<api.Subscription>();
+  o.add(buildSubscription());
+  o.add(buildSubscription());
   return o;
 }
 
-checkUnnamed1634(core.List<core.String> o) {
+checkUnnamed1634(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  checkSubscription(o[0]);
+  checkSubscription(o[1]);
 }
 
-core.int buildCounterRegionViewsListResourcesResponse = 0;
-buildRegionViewsListResourcesResponse() {
-  var o = new api.RegionViewsListResourcesResponse();
-  buildCounterRegionViewsListResourcesResponse++;
-  if (buildCounterRegionViewsListResourcesResponse < 3) {
-    o.members = buildUnnamed1634();
+core.int buildCounterListSubscriptionsResponse = 0;
+buildListSubscriptionsResponse() {
+  var o = new api.ListSubscriptionsResponse();
+  buildCounterListSubscriptionsResponse++;
+  if (buildCounterListSubscriptionsResponse < 3) {
     o.nextPageToken = "foo";
+    o.subscriptions = buildUnnamed1634();
   }
-  buildCounterRegionViewsListResourcesResponse--;
+  buildCounterListSubscriptionsResponse--;
   return o;
 }
 
-checkRegionViewsListResourcesResponse(api.RegionViewsListResourcesResponse o) {
-  buildCounterRegionViewsListResourcesResponse++;
-  if (buildCounterRegionViewsListResourcesResponse < 3) {
-    checkUnnamed1634(o.members);
+checkListSubscriptionsResponse(api.ListSubscriptionsResponse o) {
+  buildCounterListSubscriptionsResponse++;
+  if (buildCounterListSubscriptionsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed1634(o.subscriptions);
   }
-  buildCounterRegionViewsListResourcesResponse--;
+  buildCounterListSubscriptionsResponse--;
 }
 
 buildUnnamed1635() {
-  var o = new core.List<api.ResourceView>();
-  o.add(buildResourceView());
-  o.add(buildResourceView());
-  return o;
-}
-
-checkUnnamed1635(core.List<api.ResourceView> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkResourceView(o[0]);
-  checkResourceView(o[1]);
-}
-
-core.int buildCounterRegionViewsListResponse = 0;
-buildRegionViewsListResponse() {
-  var o = new api.RegionViewsListResponse();
-  buildCounterRegionViewsListResponse++;
-  if (buildCounterRegionViewsListResponse < 3) {
-    o.nextPageToken = "foo";
-    o.resourceViews = buildUnnamed1635();
-  }
-  buildCounterRegionViewsListResponse--;
-  return o;
-}
-
-checkRegionViewsListResponse(api.RegionViewsListResponse o) {
-  buildCounterRegionViewsListResponse++;
-  if (buildCounterRegionViewsListResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1635(o.resourceViews);
-  }
-  buildCounterRegionViewsListResponse--;
-}
-
-buildUnnamed1636() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1636(core.List<core.String> o) {
+checkUnnamed1635(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.int buildCounterRegionViewsRemoveResourcesRequest = 0;
-buildRegionViewsRemoveResourcesRequest() {
-  var o = new api.RegionViewsRemoveResourcesRequest();
-  buildCounterRegionViewsRemoveResourcesRequest++;
-  if (buildCounterRegionViewsRemoveResourcesRequest < 3) {
-    o.resources = buildUnnamed1636();
+core.int buildCounterListTopicSubscriptionsResponse = 0;
+buildListTopicSubscriptionsResponse() {
+  var o = new api.ListTopicSubscriptionsResponse();
+  buildCounterListTopicSubscriptionsResponse++;
+  if (buildCounterListTopicSubscriptionsResponse < 3) {
+    o.nextPageToken = "foo";
+    o.subscriptions = buildUnnamed1635();
   }
-  buildCounterRegionViewsRemoveResourcesRequest--;
+  buildCounterListTopicSubscriptionsResponse--;
   return o;
 }
 
-checkRegionViewsRemoveResourcesRequest(api.RegionViewsRemoveResourcesRequest o) {
-  buildCounterRegionViewsRemoveResourcesRequest++;
-  if (buildCounterRegionViewsRemoveResourcesRequest < 3) {
-    checkUnnamed1636(o.resources);
+checkListTopicSubscriptionsResponse(api.ListTopicSubscriptionsResponse o) {
+  buildCounterListTopicSubscriptionsResponse++;
+  if (buildCounterListTopicSubscriptionsResponse < 3) {
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed1635(o.subscriptions);
   }
-  buildCounterRegionViewsRemoveResourcesRequest--;
+  buildCounterListTopicSubscriptionsResponse--;
+}
+
+buildUnnamed1636() {
+  var o = new core.List<api.Topic>();
+  o.add(buildTopic());
+  o.add(buildTopic());
+  return o;
+}
+
+checkUnnamed1636(core.List<api.Topic> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTopic(o[0]);
+  checkTopic(o[1]);
+}
+
+core.int buildCounterListTopicsResponse = 0;
+buildListTopicsResponse() {
+  var o = new api.ListTopicsResponse();
+  buildCounterListTopicsResponse++;
+  if (buildCounterListTopicsResponse < 3) {
+    o.nextPageToken = "foo";
+    o.topics = buildUnnamed1636();
+  }
+  buildCounterListTopicsResponse--;
+  return o;
+}
+
+checkListTopicsResponse(api.ListTopicsResponse o) {
+  buildCounterListTopicsResponse++;
+  if (buildCounterListTopicsResponse < 3) {
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed1636(o.topics);
+  }
+  buildCounterListTopicsResponse--;
+}
+
+core.int buildCounterModifyAckDeadlineRequest = 0;
+buildModifyAckDeadlineRequest() {
+  var o = new api.ModifyAckDeadlineRequest();
+  buildCounterModifyAckDeadlineRequest++;
+  if (buildCounterModifyAckDeadlineRequest < 3) {
+    o.ackDeadlineSeconds = 42;
+    o.ackId = "foo";
+  }
+  buildCounterModifyAckDeadlineRequest--;
+  return o;
+}
+
+checkModifyAckDeadlineRequest(api.ModifyAckDeadlineRequest o) {
+  buildCounterModifyAckDeadlineRequest++;
+  if (buildCounterModifyAckDeadlineRequest < 3) {
+    unittest.expect(o.ackDeadlineSeconds, unittest.equals(42));
+    unittest.expect(o.ackId, unittest.equals('foo'));
+  }
+  buildCounterModifyAckDeadlineRequest--;
+}
+
+core.int buildCounterModifyPushConfigRequest = 0;
+buildModifyPushConfigRequest() {
+  var o = new api.ModifyPushConfigRequest();
+  buildCounterModifyPushConfigRequest++;
+  if (buildCounterModifyPushConfigRequest < 3) {
+    o.pushConfig = buildPushConfig();
+  }
+  buildCounterModifyPushConfigRequest--;
+  return o;
+}
+
+checkModifyPushConfigRequest(api.ModifyPushConfigRequest o) {
+  buildCounterModifyPushConfigRequest++;
+  if (buildCounterModifyPushConfigRequest < 3) {
+    checkPushConfig(o.pushConfig);
+  }
+  buildCounterModifyPushConfigRequest--;
 }
 
 buildUnnamed1637() {
-  var o = new core.List<api.Label>();
-  o.add(buildLabel());
-  o.add(buildLabel());
+  var o = new core.List<api.PubsubMessage>();
+  o.add(buildPubsubMessage());
+  o.add(buildPubsubMessage());
   return o;
 }
 
-checkUnnamed1637(core.List<api.Label> o) {
+checkUnnamed1637(core.List<api.PubsubMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLabel(o[0]);
-  checkLabel(o[1]);
+  checkPubsubMessage(o[0]);
+  checkPubsubMessage(o[1]);
+}
+
+core.int buildCounterPublishRequest = 0;
+buildPublishRequest() {
+  var o = new api.PublishRequest();
+  buildCounterPublishRequest++;
+  if (buildCounterPublishRequest < 3) {
+    o.messages = buildUnnamed1637();
+  }
+  buildCounterPublishRequest--;
+  return o;
+}
+
+checkPublishRequest(api.PublishRequest o) {
+  buildCounterPublishRequest++;
+  if (buildCounterPublishRequest < 3) {
+    checkUnnamed1637(o.messages);
+  }
+  buildCounterPublishRequest--;
 }
 
 buildUnnamed1638() {
@@ -214,316 +252,369 @@ checkUnnamed1638(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.int buildCounterResourceView = 0;
-buildResourceView() {
-  var o = new api.ResourceView();
-  buildCounterResourceView++;
-  if (buildCounterResourceView < 3) {
-    o.creationTime = "foo";
-    o.description = "foo";
-    o.id = "foo";
-    o.kind = "foo";
-    o.labels = buildUnnamed1637();
-    o.lastModified = "foo";
-    o.members = buildUnnamed1638();
-    o.name = "foo";
-    o.numMembers = 42;
-    o.selfLink = "foo";
+core.int buildCounterPublishResponse = 0;
+buildPublishResponse() {
+  var o = new api.PublishResponse();
+  buildCounterPublishResponse++;
+  if (buildCounterPublishResponse < 3) {
+    o.messageIds = buildUnnamed1638();
   }
-  buildCounterResourceView--;
+  buildCounterPublishResponse--;
   return o;
 }
 
-checkResourceView(api.ResourceView o) {
-  buildCounterResourceView++;
-  if (buildCounterResourceView < 3) {
-    unittest.expect(o.creationTime, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1637(o.labels);
-    unittest.expect(o.lastModified, unittest.equals('foo'));
-    checkUnnamed1638(o.members);
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.numMembers, unittest.equals(42));
-    unittest.expect(o.selfLink, unittest.equals('foo'));
+checkPublishResponse(api.PublishResponse o) {
+  buildCounterPublishResponse++;
+  if (buildCounterPublishResponse < 3) {
+    checkUnnamed1638(o.messageIds);
   }
-  buildCounterResourceView--;
+  buildCounterPublishResponse--;
 }
 
 buildUnnamed1639() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
+  var o = new core.Map<core.String, core.String>();
+  o["x"] = "foo";
+  o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1639(core.List<core.String> o) {
+checkUnnamed1639(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(o["x"], unittest.equals('foo'));
+  unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-core.int buildCounterZoneViewsAddResourcesRequest = 0;
-buildZoneViewsAddResourcesRequest() {
-  var o = new api.ZoneViewsAddResourcesRequest();
-  buildCounterZoneViewsAddResourcesRequest++;
-  if (buildCounterZoneViewsAddResourcesRequest < 3) {
-    o.resources = buildUnnamed1639();
+core.int buildCounterPubsubMessage = 0;
+buildPubsubMessage() {
+  var o = new api.PubsubMessage();
+  buildCounterPubsubMessage++;
+  if (buildCounterPubsubMessage < 3) {
+    o.attributes = buildUnnamed1639();
+    o.data = "foo";
+    o.messageId = "foo";
   }
-  buildCounterZoneViewsAddResourcesRequest--;
+  buildCounterPubsubMessage--;
   return o;
 }
 
-checkZoneViewsAddResourcesRequest(api.ZoneViewsAddResourcesRequest o) {
-  buildCounterZoneViewsAddResourcesRequest++;
-  if (buildCounterZoneViewsAddResourcesRequest < 3) {
-    checkUnnamed1639(o.resources);
+checkPubsubMessage(api.PubsubMessage o) {
+  buildCounterPubsubMessage++;
+  if (buildCounterPubsubMessage < 3) {
+    checkUnnamed1639(o.attributes);
+    unittest.expect(o.data, unittest.equals('foo'));
+    unittest.expect(o.messageId, unittest.equals('foo'));
   }
-  buildCounterZoneViewsAddResourcesRequest--;
+  buildCounterPubsubMessage--;
 }
 
-core.int buildCounterZoneViewsInsertResponse = 0;
-buildZoneViewsInsertResponse() {
-  var o = new api.ZoneViewsInsertResponse();
-  buildCounterZoneViewsInsertResponse++;
-  if (buildCounterZoneViewsInsertResponse < 3) {
-    o.resource = buildResourceView();
+core.int buildCounterPullRequest = 0;
+buildPullRequest() {
+  var o = new api.PullRequest();
+  buildCounterPullRequest++;
+  if (buildCounterPullRequest < 3) {
+    o.maxMessages = 42;
+    o.returnImmediately = true;
   }
-  buildCounterZoneViewsInsertResponse--;
+  buildCounterPullRequest--;
   return o;
 }
 
-checkZoneViewsInsertResponse(api.ZoneViewsInsertResponse o) {
-  buildCounterZoneViewsInsertResponse++;
-  if (buildCounterZoneViewsInsertResponse < 3) {
-    checkResourceView(o.resource);
+checkPullRequest(api.PullRequest o) {
+  buildCounterPullRequest++;
+  if (buildCounterPullRequest < 3) {
+    unittest.expect(o.maxMessages, unittest.equals(42));
+    unittest.expect(o.returnImmediately, unittest.isTrue);
   }
-  buildCounterZoneViewsInsertResponse--;
+  buildCounterPullRequest--;
 }
 
 buildUnnamed1640() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
+  var o = new core.List<api.ReceivedMessage>();
+  o.add(buildReceivedMessage());
+  o.add(buildReceivedMessage());
   return o;
 }
 
-checkUnnamed1640(core.List<core.String> o) {
+checkUnnamed1640(core.List<api.ReceivedMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  checkReceivedMessage(o[0]);
+  checkReceivedMessage(o[1]);
 }
 
-core.int buildCounterZoneViewsListResourcesResponse = 0;
-buildZoneViewsListResourcesResponse() {
-  var o = new api.ZoneViewsListResourcesResponse();
-  buildCounterZoneViewsListResourcesResponse++;
-  if (buildCounterZoneViewsListResourcesResponse < 3) {
-    o.members = buildUnnamed1640();
-    o.nextPageToken = "foo";
+core.int buildCounterPullResponse = 0;
+buildPullResponse() {
+  var o = new api.PullResponse();
+  buildCounterPullResponse++;
+  if (buildCounterPullResponse < 3) {
+    o.receivedMessages = buildUnnamed1640();
   }
-  buildCounterZoneViewsListResourcesResponse--;
+  buildCounterPullResponse--;
   return o;
 }
 
-checkZoneViewsListResourcesResponse(api.ZoneViewsListResourcesResponse o) {
-  buildCounterZoneViewsListResourcesResponse++;
-  if (buildCounterZoneViewsListResourcesResponse < 3) {
-    checkUnnamed1640(o.members);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+checkPullResponse(api.PullResponse o) {
+  buildCounterPullResponse++;
+  if (buildCounterPullResponse < 3) {
+    checkUnnamed1640(o.receivedMessages);
   }
-  buildCounterZoneViewsListResourcesResponse--;
+  buildCounterPullResponse--;
 }
 
 buildUnnamed1641() {
-  var o = new core.List<api.ResourceView>();
-  o.add(buildResourceView());
-  o.add(buildResourceView());
+  var o = new core.Map<core.String, core.String>();
+  o["x"] = "foo";
+  o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1641(core.List<api.ResourceView> o) {
+checkUnnamed1641(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkResourceView(o[0]);
-  checkResourceView(o[1]);
+  unittest.expect(o["x"], unittest.equals('foo'));
+  unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-core.int buildCounterZoneViewsListResponse = 0;
-buildZoneViewsListResponse() {
-  var o = new api.ZoneViewsListResponse();
-  buildCounterZoneViewsListResponse++;
-  if (buildCounterZoneViewsListResponse < 3) {
-    o.nextPageToken = "foo";
-    o.resourceViews = buildUnnamed1641();
+core.int buildCounterPushConfig = 0;
+buildPushConfig() {
+  var o = new api.PushConfig();
+  buildCounterPushConfig++;
+  if (buildCounterPushConfig < 3) {
+    o.attributes = buildUnnamed1641();
+    o.pushEndpoint = "foo";
   }
-  buildCounterZoneViewsListResponse--;
+  buildCounterPushConfig--;
   return o;
 }
 
-checkZoneViewsListResponse(api.ZoneViewsListResponse o) {
-  buildCounterZoneViewsListResponse++;
-  if (buildCounterZoneViewsListResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1641(o.resourceViews);
+checkPushConfig(api.PushConfig o) {
+  buildCounterPushConfig++;
+  if (buildCounterPushConfig < 3) {
+    checkUnnamed1641(o.attributes);
+    unittest.expect(o.pushEndpoint, unittest.equals('foo'));
   }
-  buildCounterZoneViewsListResponse--;
+  buildCounterPushConfig--;
 }
 
-buildUnnamed1642() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
+core.int buildCounterReceivedMessage = 0;
+buildReceivedMessage() {
+  var o = new api.ReceivedMessage();
+  buildCounterReceivedMessage++;
+  if (buildCounterReceivedMessage < 3) {
+    o.ackId = "foo";
+    o.message = buildPubsubMessage();
+  }
+  buildCounterReceivedMessage--;
   return o;
 }
 
-checkUnnamed1642(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+checkReceivedMessage(api.ReceivedMessage o) {
+  buildCounterReceivedMessage++;
+  if (buildCounterReceivedMessage < 3) {
+    unittest.expect(o.ackId, unittest.equals('foo'));
+    checkPubsubMessage(o.message);
+  }
+  buildCounterReceivedMessage--;
 }
 
-core.int buildCounterZoneViewsRemoveResourcesRequest = 0;
-buildZoneViewsRemoveResourcesRequest() {
-  var o = new api.ZoneViewsRemoveResourcesRequest();
-  buildCounterZoneViewsRemoveResourcesRequest++;
-  if (buildCounterZoneViewsRemoveResourcesRequest < 3) {
-    o.resources = buildUnnamed1642();
+core.int buildCounterSubscription = 0;
+buildSubscription() {
+  var o = new api.Subscription();
+  buildCounterSubscription++;
+  if (buildCounterSubscription < 3) {
+    o.ackDeadlineSeconds = 42;
+    o.name = "foo";
+    o.pushConfig = buildPushConfig();
+    o.topic = "foo";
   }
-  buildCounterZoneViewsRemoveResourcesRequest--;
+  buildCounterSubscription--;
   return o;
 }
 
-checkZoneViewsRemoveResourcesRequest(api.ZoneViewsRemoveResourcesRequest o) {
-  buildCounterZoneViewsRemoveResourcesRequest++;
-  if (buildCounterZoneViewsRemoveResourcesRequest < 3) {
-    checkUnnamed1642(o.resources);
+checkSubscription(api.Subscription o) {
+  buildCounterSubscription++;
+  if (buildCounterSubscription < 3) {
+    unittest.expect(o.ackDeadlineSeconds, unittest.equals(42));
+    unittest.expect(o.name, unittest.equals('foo'));
+    checkPushConfig(o.pushConfig);
+    unittest.expect(o.topic, unittest.equals('foo'));
   }
-  buildCounterZoneViewsRemoveResourcesRequest--;
+  buildCounterSubscription--;
+}
+
+core.int buildCounterTopic = 0;
+buildTopic() {
+  var o = new api.Topic();
+  buildCounterTopic++;
+  if (buildCounterTopic < 3) {
+    o.name = "foo";
+  }
+  buildCounterTopic--;
+  return o;
+}
+
+checkTopic(api.Topic o) {
+  buildCounterTopic++;
+  if (buildCounterTopic < 3) {
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterTopic--;
 }
 
 
 main() {
-  unittest.group("obj-schema-Label", () {
+  unittest.group("obj-schema-AcknowledgeRequest", () {
     unittest.test("to-json--from-json", () {
-      var o = buildLabel();
-      var od = new api.Label.fromJson(o.toJson());
-      checkLabel(od);
+      var o = buildAcknowledgeRequest();
+      var od = new api.AcknowledgeRequest.fromJson(o.toJson());
+      checkAcknowledgeRequest(od);
     });
   });
 
 
-  unittest.group("obj-schema-RegionViewsAddResourcesRequest", () {
+  unittest.group("obj-schema-Empty", () {
     unittest.test("to-json--from-json", () {
-      var o = buildRegionViewsAddResourcesRequest();
-      var od = new api.RegionViewsAddResourcesRequest.fromJson(o.toJson());
-      checkRegionViewsAddResourcesRequest(od);
+      var o = buildEmpty();
+      var od = new api.Empty.fromJson(o.toJson());
+      checkEmpty(od);
     });
   });
 
 
-  unittest.group("obj-schema-RegionViewsInsertResponse", () {
+  unittest.group("obj-schema-ListSubscriptionsResponse", () {
     unittest.test("to-json--from-json", () {
-      var o = buildRegionViewsInsertResponse();
-      var od = new api.RegionViewsInsertResponse.fromJson(o.toJson());
-      checkRegionViewsInsertResponse(od);
+      var o = buildListSubscriptionsResponse();
+      var od = new api.ListSubscriptionsResponse.fromJson(o.toJson());
+      checkListSubscriptionsResponse(od);
     });
   });
 
 
-  unittest.group("obj-schema-RegionViewsListResourcesResponse", () {
+  unittest.group("obj-schema-ListTopicSubscriptionsResponse", () {
     unittest.test("to-json--from-json", () {
-      var o = buildRegionViewsListResourcesResponse();
-      var od = new api.RegionViewsListResourcesResponse.fromJson(o.toJson());
-      checkRegionViewsListResourcesResponse(od);
+      var o = buildListTopicSubscriptionsResponse();
+      var od = new api.ListTopicSubscriptionsResponse.fromJson(o.toJson());
+      checkListTopicSubscriptionsResponse(od);
     });
   });
 
 
-  unittest.group("obj-schema-RegionViewsListResponse", () {
+  unittest.group("obj-schema-ListTopicsResponse", () {
     unittest.test("to-json--from-json", () {
-      var o = buildRegionViewsListResponse();
-      var od = new api.RegionViewsListResponse.fromJson(o.toJson());
-      checkRegionViewsListResponse(od);
+      var o = buildListTopicsResponse();
+      var od = new api.ListTopicsResponse.fromJson(o.toJson());
+      checkListTopicsResponse(od);
     });
   });
 
 
-  unittest.group("obj-schema-RegionViewsRemoveResourcesRequest", () {
+  unittest.group("obj-schema-ModifyAckDeadlineRequest", () {
     unittest.test("to-json--from-json", () {
-      var o = buildRegionViewsRemoveResourcesRequest();
-      var od = new api.RegionViewsRemoveResourcesRequest.fromJson(o.toJson());
-      checkRegionViewsRemoveResourcesRequest(od);
+      var o = buildModifyAckDeadlineRequest();
+      var od = new api.ModifyAckDeadlineRequest.fromJson(o.toJson());
+      checkModifyAckDeadlineRequest(od);
     });
   });
 
 
-  unittest.group("obj-schema-ResourceView", () {
+  unittest.group("obj-schema-ModifyPushConfigRequest", () {
     unittest.test("to-json--from-json", () {
-      var o = buildResourceView();
-      var od = new api.ResourceView.fromJson(o.toJson());
-      checkResourceView(od);
+      var o = buildModifyPushConfigRequest();
+      var od = new api.ModifyPushConfigRequest.fromJson(o.toJson());
+      checkModifyPushConfigRequest(od);
     });
   });
 
 
-  unittest.group("obj-schema-ZoneViewsAddResourcesRequest", () {
+  unittest.group("obj-schema-PublishRequest", () {
     unittest.test("to-json--from-json", () {
-      var o = buildZoneViewsAddResourcesRequest();
-      var od = new api.ZoneViewsAddResourcesRequest.fromJson(o.toJson());
-      checkZoneViewsAddResourcesRequest(od);
+      var o = buildPublishRequest();
+      var od = new api.PublishRequest.fromJson(o.toJson());
+      checkPublishRequest(od);
     });
   });
 
 
-  unittest.group("obj-schema-ZoneViewsInsertResponse", () {
+  unittest.group("obj-schema-PublishResponse", () {
     unittest.test("to-json--from-json", () {
-      var o = buildZoneViewsInsertResponse();
-      var od = new api.ZoneViewsInsertResponse.fromJson(o.toJson());
-      checkZoneViewsInsertResponse(od);
+      var o = buildPublishResponse();
+      var od = new api.PublishResponse.fromJson(o.toJson());
+      checkPublishResponse(od);
     });
   });
 
 
-  unittest.group("obj-schema-ZoneViewsListResourcesResponse", () {
+  unittest.group("obj-schema-PubsubMessage", () {
     unittest.test("to-json--from-json", () {
-      var o = buildZoneViewsListResourcesResponse();
-      var od = new api.ZoneViewsListResourcesResponse.fromJson(o.toJson());
-      checkZoneViewsListResourcesResponse(od);
+      var o = buildPubsubMessage();
+      var od = new api.PubsubMessage.fromJson(o.toJson());
+      checkPubsubMessage(od);
     });
   });
 
 
-  unittest.group("obj-schema-ZoneViewsListResponse", () {
+  unittest.group("obj-schema-PullRequest", () {
     unittest.test("to-json--from-json", () {
-      var o = buildZoneViewsListResponse();
-      var od = new api.ZoneViewsListResponse.fromJson(o.toJson());
-      checkZoneViewsListResponse(od);
+      var o = buildPullRequest();
+      var od = new api.PullRequest.fromJson(o.toJson());
+      checkPullRequest(od);
     });
   });
 
 
-  unittest.group("obj-schema-ZoneViewsRemoveResourcesRequest", () {
+  unittest.group("obj-schema-PullResponse", () {
     unittest.test("to-json--from-json", () {
-      var o = buildZoneViewsRemoveResourcesRequest();
-      var od = new api.ZoneViewsRemoveResourcesRequest.fromJson(o.toJson());
-      checkZoneViewsRemoveResourcesRequest(od);
+      var o = buildPullResponse();
+      var od = new api.PullResponse.fromJson(o.toJson());
+      checkPullResponse(od);
     });
   });
 
 
-  unittest.group("resource-RegionViewsResourceApi", () {
-    unittest.test("method--addresources", () {
+  unittest.group("obj-schema-PushConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPushConfig();
+      var od = new api.PushConfig.fromJson(o.toJson());
+      checkPushConfig(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ReceivedMessage", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildReceivedMessage();
+      var od = new api.ReceivedMessage.fromJson(o.toJson());
+      checkReceivedMessage(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-Subscription", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildSubscription();
+      var od = new api.Subscription.fromJson(o.toJson());
+      checkSubscription(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-Topic", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildTopic();
+      var od = new api.Topic.fromJson(o.toJson());
+      checkTopic(od);
+    });
+  });
+
+
+  unittest.group("resource-ProjectsSubscriptionsResourceApi", () {
+    unittest.test("method--acknowledge", () {
 
       var mock = new common_test.HttpServerMock();
-      api.RegionViewsResourceApi res = new api.ResourceviewsApi(mock).regionViews;
-      var arg_request = buildRegionViewsAddResourcesRequest();
-      var arg_projectName = "foo";
-      var arg_region = "foo";
-      var arg_resourceViewName = "foo";
+      api.ProjectsSubscriptionsResourceApi res = new api.PubsubApi(mock).projects.subscriptions;
+      var arg_request = buildAcknowledgeRequest();
+      var arg_subscription = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
-        var obj = new api.RegionViewsAddResourcesRequest.fromJson(json);
-        checkRegionViewsAddResourcesRequest(obj);
+        var obj = new api.AcknowledgeRequest.fromJson(json);
+        checkAcknowledgeRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -553,19 +644,65 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = "";
+        var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.addresources(arg_request, arg_projectName, arg_region, arg_resourceViewName).then(unittest.expectAsync((_) {}));
+      res.acknowledge(arg_request, arg_subscription).then(unittest.expectAsync(((api.Empty response) {
+        checkEmpty(response);
+      })));
+    });
+
+    unittest.test("method--create", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.ProjectsSubscriptionsResourceApi res = new api.PubsubApi(mock).projects.subscriptions;
+      var arg_request = buildSubscription();
+      var arg_name = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.Subscription.fromJson(json);
+        checkSubscription(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildSubscription());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.create(arg_request, arg_name).then(unittest.expectAsync(((api.Subscription response) {
+        checkSubscription(response);
+      })));
     });
 
     unittest.test("method--delete", () {
 
       var mock = new common_test.HttpServerMock();
-      api.RegionViewsResourceApi res = new api.ResourceviewsApi(mock).regionViews;
-      var arg_projectName = "foo";
-      var arg_region = "foo";
-      var arg_resourceViewName = "foo";
+      api.ProjectsSubscriptionsResourceApi res = new api.PubsubApi(mock).projects.subscriptions;
+      var arg_subscription = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -595,19 +732,19 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = "";
+        var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_projectName, arg_region, arg_resourceViewName).then(unittest.expectAsync((_) {}));
+      res.delete(arg_subscription).then(unittest.expectAsync(((api.Empty response) {
+        checkEmpty(response);
+      })));
     });
 
     unittest.test("method--get", () {
 
       var mock = new common_test.HttpServerMock();
-      api.RegionViewsResourceApi res = new api.ResourceviewsApi(mock).regionViews;
-      var arg_projectName = "foo";
-      var arg_region = "foo";
-      var arg_resourceViewName = "foo";
+      api.ProjectsSubscriptionsResourceApi res = new api.PubsubApi(mock).projects.subscriptions;
+      var arg_subscription = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -637,68 +774,20 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildResourceView());
+        var resp = convert.JSON.encode(buildSubscription());
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.get(arg_projectName, arg_region, arg_resourceViewName).then(unittest.expectAsync(((api.ResourceView response) {
-        checkResourceView(response);
-      })));
-    });
-
-    unittest.test("method--insert", () {
-
-      var mock = new common_test.HttpServerMock();
-      api.RegionViewsResourceApi res = new api.ResourceviewsApi(mock).regionViews;
-      var arg_request = buildResourceView();
-      var arg_projectName = "foo";
-      var arg_region = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
-        var obj = new api.ResourceView.fromJson(json);
-        checkResourceView(obj);
-
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = {};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-
-
-        var h = {
-          "content-type" : "application/json; charset=utf-8",
-        };
-        var resp = convert.JSON.encode(buildRegionViewsInsertResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
-      }), true);
-      res.insert(arg_request, arg_projectName, arg_region).then(unittest.expectAsync(((api.RegionViewsInsertResponse response) {
-        checkRegionViewsInsertResponse(response);
+      res.get(arg_subscription).then(unittest.expectAsync(((api.Subscription response) {
+        checkSubscription(response);
       })));
     });
 
     unittest.test("method--list", () {
 
       var mock = new common_test.HttpServerMock();
-      api.RegionViewsResourceApi res = new api.ResourceviewsApi(mock).regionViews;
-      var arg_projectName = "foo";
-      var arg_region = "foo";
-      var arg_maxResults = 42;
+      api.ProjectsSubscriptionsResourceApi res = new api.PubsubApi(mock).projects.subscriptions;
+      var arg_project = "foo";
+      var arg_pageSize = 42;
       var arg_pageToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -724,80 +813,30 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
 
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildRegionViewsListResponse());
+        var resp = convert.JSON.encode(buildListSubscriptionsResponse());
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.list(arg_projectName, arg_region, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.RegionViewsListResponse response) {
-        checkRegionViewsListResponse(response);
+      res.list(arg_project, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListSubscriptionsResponse response) {
+        checkListSubscriptionsResponse(response);
       })));
     });
 
-    unittest.test("method--listresources", () {
+    unittest.test("method--modifyAckDeadline", () {
 
       var mock = new common_test.HttpServerMock();
-      api.RegionViewsResourceApi res = new api.ResourceviewsApi(mock).regionViews;
-      var arg_projectName = "foo";
-      var arg_region = "foo";
-      var arg_resourceViewName = "foo";
-      var arg_maxResults = 42;
-      var arg_pageToken = "foo";
+      api.ProjectsSubscriptionsResourceApi res = new api.PubsubApi(mock).projects.subscriptions;
+      var arg_request = buildModifyAckDeadlineRequest();
+      var arg_subscription = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = {};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
-
-        var h = {
-          "content-type" : "application/json; charset=utf-8",
-        };
-        var resp = convert.JSON.encode(buildRegionViewsListResourcesResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
-      }), true);
-      res.listresources(arg_projectName, arg_region, arg_resourceViewName, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.RegionViewsListResourcesResponse response) {
-        checkRegionViewsListResourcesResponse(response);
-      })));
-    });
-
-    unittest.test("method--removeresources", () {
-
-      var mock = new common_test.HttpServerMock();
-      api.RegionViewsResourceApi res = new api.ResourceviewsApi(mock).regionViews;
-      var arg_request = buildRegionViewsRemoveResourcesRequest();
-      var arg_projectName = "foo";
-      var arg_region = "foo";
-      var arg_resourceViewName = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
-        var obj = new api.RegionViewsRemoveResourcesRequest.fromJson(json);
-        checkRegionViewsRemoveResourcesRequest(obj);
+        var obj = new api.ModifyAckDeadlineRequest.fromJson(json);
+        checkModifyAckDeadlineRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -827,27 +866,119 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = "";
+        var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.removeresources(arg_request, arg_projectName, arg_region, arg_resourceViewName).then(unittest.expectAsync((_) {}));
+      res.modifyAckDeadline(arg_request, arg_subscription).then(unittest.expectAsync(((api.Empty response) {
+        checkEmpty(response);
+      })));
+    });
+
+    unittest.test("method--modifyPushConfig", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.ProjectsSubscriptionsResourceApi res = new api.PubsubApi(mock).projects.subscriptions;
+      var arg_request = buildModifyPushConfigRequest();
+      var arg_subscription = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.ModifyPushConfigRequest.fromJson(json);
+        checkModifyPushConfigRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildEmpty());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.modifyPushConfig(arg_request, arg_subscription).then(unittest.expectAsync(((api.Empty response) {
+        checkEmpty(response);
+      })));
+    });
+
+    unittest.test("method--pull", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.ProjectsSubscriptionsResourceApi res = new api.PubsubApi(mock).projects.subscriptions;
+      var arg_request = buildPullRequest();
+      var arg_subscription = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PullRequest.fromJson(json);
+        checkPullRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPullResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.pull(arg_request, arg_subscription).then(unittest.expectAsync(((api.PullResponse response) {
+        checkPullResponse(response);
+      })));
     });
 
   });
 
 
-  unittest.group("resource-ZoneViewsResourceApi", () {
-    unittest.test("method--addresources", () {
+  unittest.group("resource-ProjectsTopicsResourceApi", () {
+    unittest.test("method--create", () {
 
       var mock = new common_test.HttpServerMock();
-      api.ZoneViewsResourceApi res = new api.ResourceviewsApi(mock).zoneViews;
-      var arg_request = buildZoneViewsAddResourcesRequest();
-      var arg_projectName = "foo";
-      var arg_zone = "foo";
-      var arg_resourceViewName = "foo";
+      api.ProjectsTopicsResourceApi res = new api.PubsubApi(mock).projects.topics;
+      var arg_request = buildTopic();
+      var arg_name = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
-        var obj = new api.ZoneViewsAddResourcesRequest.fromJson(json);
-        checkZoneViewsAddResourcesRequest(obj);
+        var obj = new api.Topic.fromJson(json);
+        checkTopic(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -877,19 +1008,19 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = "";
+        var resp = convert.JSON.encode(buildTopic());
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.addresources(arg_request, arg_projectName, arg_zone, arg_resourceViewName).then(unittest.expectAsync((_) {}));
+      res.create(arg_request, arg_name).then(unittest.expectAsync(((api.Topic response) {
+        checkTopic(response);
+      })));
     });
 
     unittest.test("method--delete", () {
 
       var mock = new common_test.HttpServerMock();
-      api.ZoneViewsResourceApi res = new api.ResourceviewsApi(mock).zoneViews;
-      var arg_projectName = "foo";
-      var arg_zone = "foo";
-      var arg_resourceViewName = "foo";
+      api.ProjectsTopicsResourceApi res = new api.PubsubApi(mock).projects.topics;
+      var arg_topic = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -919,19 +1050,19 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = "";
+        var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_projectName, arg_zone, arg_resourceViewName).then(unittest.expectAsync((_) {}));
+      res.delete(arg_topic).then(unittest.expectAsync(((api.Empty response) {
+        checkEmpty(response);
+      })));
     });
 
     unittest.test("method--get", () {
 
       var mock = new common_test.HttpServerMock();
-      api.ZoneViewsResourceApi res = new api.ResourceviewsApi(mock).zoneViews;
-      var arg_projectName = "foo";
-      var arg_zone = "foo";
-      var arg_resourceViewName = "foo";
+      api.ProjectsTopicsResourceApi res = new api.PubsubApi(mock).projects.topics;
+      var arg_topic = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -961,68 +1092,20 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildResourceView());
+        var resp = convert.JSON.encode(buildTopic());
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.get(arg_projectName, arg_zone, arg_resourceViewName).then(unittest.expectAsync(((api.ResourceView response) {
-        checkResourceView(response);
-      })));
-    });
-
-    unittest.test("method--insert", () {
-
-      var mock = new common_test.HttpServerMock();
-      api.ZoneViewsResourceApi res = new api.ResourceviewsApi(mock).zoneViews;
-      var arg_request = buildResourceView();
-      var arg_projectName = "foo";
-      var arg_zone = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
-        var obj = new api.ResourceView.fromJson(json);
-        checkResourceView(obj);
-
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = {};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-
-
-        var h = {
-          "content-type" : "application/json; charset=utf-8",
-        };
-        var resp = convert.JSON.encode(buildZoneViewsInsertResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
-      }), true);
-      res.insert(arg_request, arg_projectName, arg_zone).then(unittest.expectAsync(((api.ZoneViewsInsertResponse response) {
-        checkZoneViewsInsertResponse(response);
+      res.get(arg_topic).then(unittest.expectAsync(((api.Topic response) {
+        checkTopic(response);
       })));
     });
 
     unittest.test("method--list", () {
 
       var mock = new common_test.HttpServerMock();
-      api.ZoneViewsResourceApi res = new api.ResourceviewsApi(mock).zoneViews;
-      var arg_projectName = "foo";
-      var arg_zone = "foo";
-      var arg_maxResults = 42;
+      api.ProjectsTopicsResourceApi res = new api.PubsubApi(mock).projects.topics;
+      var arg_project = "foo";
+      var arg_pageSize = 42;
       var arg_pageToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1048,29 +1131,77 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
 
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildZoneViewsListResponse());
+        var resp = convert.JSON.encode(buildListTopicsResponse());
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.list(arg_projectName, arg_zone, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ZoneViewsListResponse response) {
-        checkZoneViewsListResponse(response);
+      res.list(arg_project, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListTopicsResponse response) {
+        checkListTopicsResponse(response);
       })));
     });
 
-    unittest.test("method--listresources", () {
+    unittest.test("method--publish", () {
 
       var mock = new common_test.HttpServerMock();
-      api.ZoneViewsResourceApi res = new api.ResourceviewsApi(mock).zoneViews;
-      var arg_projectName = "foo";
-      var arg_zone = "foo";
-      var arg_resourceViewName = "foo";
-      var arg_maxResults = 42;
+      api.ProjectsTopicsResourceApi res = new api.PubsubApi(mock).projects.topics;
+      var arg_request = buildPublishRequest();
+      var arg_topic = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PublishRequest.fromJson(json);
+        checkPublishRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPublishResponse());
+        return new async.Future.value(common_test.stringResponse(200, h, resp));
+      }), true);
+      res.publish(arg_request, arg_topic).then(unittest.expectAsync(((api.PublishResponse response) {
+        checkPublishResponse(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-ProjectsTopicsSubscriptionsResourceApi", () {
+    unittest.test("method--list", () {
+
+      var mock = new common_test.HttpServerMock();
+      api.ProjectsTopicsSubscriptionsResourceApi res = new api.PubsubApi(mock).projects.topics.subscriptions;
+      var arg_topic = "foo";
+      var arg_pageSize = 42;
       var arg_pageToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1096,65 +1227,19 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
 
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildZoneViewsListResourcesResponse());
+        var resp = convert.JSON.encode(buildListTopicSubscriptionsResponse());
         return new async.Future.value(common_test.stringResponse(200, h, resp));
       }), true);
-      res.listresources(arg_projectName, arg_zone, arg_resourceViewName, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ZoneViewsListResourcesResponse response) {
-        checkZoneViewsListResourcesResponse(response);
+      res.list(arg_topic, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListTopicSubscriptionsResponse response) {
+        checkListTopicSubscriptionsResponse(response);
       })));
-    });
-
-    unittest.test("method--removeresources", () {
-
-      var mock = new common_test.HttpServerMock();
-      api.ZoneViewsResourceApi res = new api.ResourceviewsApi(mock).zoneViews;
-      var arg_request = buildZoneViewsRemoveResourcesRequest();
-      var arg_projectName = "foo";
-      var arg_zone = "foo";
-      var arg_resourceViewName = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
-        var obj = new api.ZoneViewsRemoveResourcesRequest.fromJson(json);
-        checkZoneViewsRemoveResourcesRequest(obj);
-
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = {};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-
-
-        var h = {
-          "content-type" : "application/json; charset=utf-8",
-        };
-        var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
-      }), true);
-      res.removeresources(arg_request, arg_projectName, arg_zone, arg_resourceViewName).then(unittest.expectAsync((_) {}));
     });
 
   });

@@ -15,7 +15,7 @@
     "description": "Manage product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content/v2/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/-uPFfUdnJ6wKBvr9hp_nZCg__WI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/BBTSKEMkpDLJMsnU0GdIeG1Mhr8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1269,7 +1269,7 @@
             }
         }
     },
-    "revision": "20150204",
+    "revision": "20150225",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -3065,6 +3065,30 @@
                     },
                     "type": "array"
                 },
+                "displayAdsId": {
+                    "description": "An identifier for an item for dynamic remarketing campaigns.",
+                    "type": "string"
+                },
+                "displayAdsLink": {
+                    "description": "URL directly to your item's landing page for dynamic remarketing campaigns.",
+                    "type": "string"
+                },
+                "displayAdsSimilarIds": {
+                    "description": "Advertiser-specified recommendations.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "displayAdsTitle": {
+                    "description": "Title of an item for dynamic remarketing campaigns.",
+                    "type": "string"
+                },
+                "displayAdsValue": {
+                    "description": "Offer margin for dynamic remarketing campaigns.",
+                    "format": "double",
+                    "type": "number"
+                },
                 "energyEfficiencyClass": {
                     "description": "The energy efficiency class as defined in EU directive 2010/30/EU.",
                     "type": "string"
@@ -3459,6 +3483,10 @@
                 },
                 "location": {
                     "description": "The attribute name that is relevant for the issue.",
+                    "type": "string"
+                },
+                "severity": {
+                    "description": "The severity of the data quality issue.",
                     "type": "string"
                 },
                 "timestamp": {
