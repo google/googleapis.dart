@@ -4,5 +4,5 @@
 
 library _discoveryapis_commons;
 
-export 'src/clients.dart' show ApiRequester, mapMap;
+export 'src/clients.dart' show ApiRequester, Escaper, mapMap;
 export 'src/requests.dart';
