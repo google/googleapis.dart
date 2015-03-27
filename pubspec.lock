@@ -13,13 +13,10 @@ packages:
     description: crypto
     source: hosted
     version: "0.9.0"
-  discovery_api_client_generator:
-    description:
-      ref: a87c587ea52a44b56c44f2a5b40478a5429764fc
-      resolved-ref: a87c587ea52a44b56c44f2a5b40478a5429764fc
-      url: "https://github.com/dart-lang/discovery_api_dart_client_generator"
-    source: git
-    version: "0.5.1-dev"
+  discoveryapis_generator:
+    description: discoveryapis_generator
+    source: hosted
+    version: "0.6.0"
   http:
     description: http
     source: hosted
@@ -39,7 +36,7 @@ packages:
   stack_trace:
     description: stack_trace
     source: hosted
-    version: "1.2.1"
+    version: "1.2.4"
   string_scanner:
     description: string_scanner
     source: hosted
