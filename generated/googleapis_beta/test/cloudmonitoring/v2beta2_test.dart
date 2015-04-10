@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis_beta/common/common.dart' as common;
-import 'package:googleapis_beta/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis_beta/cloudmonitoring/v2beta2.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterDeleteMetricDescriptorResponse = 0;
 buildDeleteMetricDescriptorResponse() {
@@ -54,14 +89,14 @@ checkListMetricDescriptorsRequest(api.ListMetricDescriptorsRequest o) {
   buildCounterListMetricDescriptorsRequest--;
 }
 
-buildUnnamed1695() {
+buildUnnamed1475() {
   var o = new core.List<api.MetricDescriptor>();
   o.add(buildMetricDescriptor());
   o.add(buildMetricDescriptor());
   return o;
 }
 
-checkUnnamed1695(core.List<api.MetricDescriptor> o) {
+checkUnnamed1475(core.List<api.MetricDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricDescriptor(o[0]);
   checkMetricDescriptor(o[1]);
@@ -73,7 +108,7 @@ buildListMetricDescriptorsResponse() {
   buildCounterListMetricDescriptorsResponse++;
   if (buildCounterListMetricDescriptorsResponse < 3) {
     o.kind = "foo";
-    o.metrics = buildUnnamed1695();
+    o.metrics = buildUnnamed1475();
     o.nextPageToken = "foo";
   }
   buildCounterListMetricDescriptorsResponse--;
@@ -84,7 +119,7 @@ checkListMetricDescriptorsResponse(api.ListMetricDescriptorsResponse o) {
   buildCounterListMetricDescriptorsResponse++;
   if (buildCounterListMetricDescriptorsResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1695(o.metrics);
+    checkUnnamed1475(o.metrics);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListMetricDescriptorsResponse--;
@@ -109,14 +144,14 @@ checkListTimeseriesDescriptorsRequest(api.ListTimeseriesDescriptorsRequest o) {
   buildCounterListTimeseriesDescriptorsRequest--;
 }
 
-buildUnnamed1696() {
+buildUnnamed1476() {
   var o = new core.List<api.TimeseriesDescriptor>();
   o.add(buildTimeseriesDescriptor());
   o.add(buildTimeseriesDescriptor());
   return o;
 }
 
-checkUnnamed1696(core.List<api.TimeseriesDescriptor> o) {
+checkUnnamed1476(core.List<api.TimeseriesDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimeseriesDescriptor(o[0]);
   checkTimeseriesDescriptor(o[1]);
@@ -130,7 +165,7 @@ buildListTimeseriesDescriptorsResponse() {
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.oldest = core.DateTime.parse("2002-02-27T14:01:02");
-    o.timeseries = buildUnnamed1696();
+    o.timeseries = buildUnnamed1476();
     o.youngest = core.DateTime.parse("2002-02-27T14:01:02");
   }
   buildCounterListTimeseriesDescriptorsResponse--;
@@ -143,7 +178,7 @@ checkListTimeseriesDescriptorsResponse(api.ListTimeseriesDescriptorsResponse o) 
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.oldest, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUnnamed1696(o.timeseries);
+    checkUnnamed1476(o.timeseries);
     unittest.expect(o.youngest, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
   }
   buildCounterListTimeseriesDescriptorsResponse--;
@@ -168,14 +203,14 @@ checkListTimeseriesRequest(api.ListTimeseriesRequest o) {
   buildCounterListTimeseriesRequest--;
 }
 
-buildUnnamed1697() {
+buildUnnamed1477() {
   var o = new core.List<api.Timeseries>();
   o.add(buildTimeseries());
   o.add(buildTimeseries());
   return o;
 }
 
-checkUnnamed1697(core.List<api.Timeseries> o) {
+checkUnnamed1477(core.List<api.Timeseries> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimeseries(o[0]);
   checkTimeseries(o[1]);
@@ -189,7 +224,7 @@ buildListTimeseriesResponse() {
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.oldest = core.DateTime.parse("2002-02-27T14:01:02");
-    o.timeseries = buildUnnamed1697();
+    o.timeseries = buildUnnamed1477();
     o.youngest = core.DateTime.parse("2002-02-27T14:01:02");
   }
   buildCounterListTimeseriesResponse--;
@@ -202,20 +237,20 @@ checkListTimeseriesResponse(api.ListTimeseriesResponse o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.oldest, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUnnamed1697(o.timeseries);
+    checkUnnamed1477(o.timeseries);
     unittest.expect(o.youngest, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
   }
   buildCounterListTimeseriesResponse--;
 }
 
-buildUnnamed1698() {
+buildUnnamed1478() {
   var o = new core.List<api.MetricDescriptorLabelDescriptor>();
   o.add(buildMetricDescriptorLabelDescriptor());
   o.add(buildMetricDescriptorLabelDescriptor());
   return o;
 }
 
-checkUnnamed1698(core.List<api.MetricDescriptorLabelDescriptor> o) {
+checkUnnamed1478(core.List<api.MetricDescriptorLabelDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricDescriptorLabelDescriptor(o[0]);
   checkMetricDescriptorLabelDescriptor(o[1]);
@@ -227,7 +262,7 @@ buildMetricDescriptor() {
   buildCounterMetricDescriptor++;
   if (buildCounterMetricDescriptor < 3) {
     o.description = "foo";
-    o.labels = buildUnnamed1698();
+    o.labels = buildUnnamed1478();
     o.name = "foo";
     o.project = "foo";
     o.typeDescriptor = buildMetricDescriptorTypeDescriptor();
@@ -240,7 +275,7 @@ checkMetricDescriptor(api.MetricDescriptor o) {
   buildCounterMetricDescriptor++;
   if (buildCounterMetricDescriptor < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed1698(o.labels);
+    checkUnnamed1478(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.project, unittest.equals('foo'));
     checkMetricDescriptorTypeDescriptor(o.typeDescriptor);
@@ -321,14 +356,14 @@ checkPoint(api.Point o) {
   buildCounterPoint--;
 }
 
-buildUnnamed1699() {
+buildUnnamed1479() {
   var o = new core.List<api.PointDistributionBucket>();
   o.add(buildPointDistributionBucket());
   o.add(buildPointDistributionBucket());
   return o;
 }
 
-checkUnnamed1699(core.List<api.PointDistributionBucket> o) {
+checkUnnamed1479(core.List<api.PointDistributionBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPointDistributionBucket(o[0]);
   checkPointDistributionBucket(o[1]);
@@ -339,7 +374,7 @@ buildPointDistribution() {
   var o = new api.PointDistribution();
   buildCounterPointDistribution++;
   if (buildCounterPointDistribution < 3) {
-    o.buckets = buildUnnamed1699();
+    o.buckets = buildUnnamed1479();
     o.overflowBucket = buildPointDistributionOverflowBucket();
     o.underflowBucket = buildPointDistributionUnderflowBucket();
   }
@@ -350,7 +385,7 @@ buildPointDistribution() {
 checkPointDistribution(api.PointDistribution o) {
   buildCounterPointDistribution++;
   if (buildCounterPointDistribution < 3) {
-    checkUnnamed1699(o.buckets);
+    checkUnnamed1479(o.buckets);
     checkPointDistributionOverflowBucket(o.overflowBucket);
     checkPointDistributionUnderflowBucket(o.underflowBucket);
   }
@@ -422,14 +457,14 @@ checkPointDistributionUnderflowBucket(api.PointDistributionUnderflowBucket o) {
   buildCounterPointDistributionUnderflowBucket--;
 }
 
-buildUnnamed1700() {
+buildUnnamed1480() {
   var o = new core.List<api.Point>();
   o.add(buildPoint());
   o.add(buildPoint());
   return o;
 }
 
-checkUnnamed1700(core.List<api.Point> o) {
+checkUnnamed1480(core.List<api.Point> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPoint(o[0]);
   checkPoint(o[1]);
@@ -440,7 +475,7 @@ buildTimeseries() {
   var o = new api.Timeseries();
   buildCounterTimeseries++;
   if (buildCounterTimeseries < 3) {
-    o.points = buildUnnamed1700();
+    o.points = buildUnnamed1480();
     o.timeseriesDesc = buildTimeseriesDescriptor();
   }
   buildCounterTimeseries--;
@@ -450,20 +485,20 @@ buildTimeseries() {
 checkTimeseries(api.Timeseries o) {
   buildCounterTimeseries++;
   if (buildCounterTimeseries < 3) {
-    checkUnnamed1700(o.points);
+    checkUnnamed1480(o.points);
     checkTimeseriesDescriptor(o.timeseriesDesc);
   }
   buildCounterTimeseries--;
 }
 
-buildUnnamed1701() {
+buildUnnamed1481() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1701(core.Map<core.String, core.String> o) {
+checkUnnamed1481(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -474,7 +509,7 @@ buildTimeseriesDescriptor() {
   var o = new api.TimeseriesDescriptor();
   buildCounterTimeseriesDescriptor++;
   if (buildCounterTimeseriesDescriptor < 3) {
-    o.labels = buildUnnamed1701();
+    o.labels = buildUnnamed1481();
     o.metric = "foo";
     o.project = "foo";
   }
@@ -485,7 +520,7 @@ buildTimeseriesDescriptor() {
 checkTimeseriesDescriptor(api.TimeseriesDescriptor o) {
   buildCounterTimeseriesDescriptor++;
   if (buildCounterTimeseriesDescriptor < 3) {
-    checkUnnamed1701(o.labels);
+    checkUnnamed1481(o.labels);
     unittest.expect(o.metric, unittest.equals('foo'));
     unittest.expect(o.project, unittest.equals('foo'));
   }
@@ -534,27 +569,27 @@ checkTimeseriesPoint(api.TimeseriesPoint o) {
   buildCounterTimeseriesPoint--;
 }
 
-buildUnnamed1702() {
+buildUnnamed1482() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1702(core.Map<core.String, core.String> o) {
+checkUnnamed1482(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1703() {
+buildUnnamed1483() {
   var o = new core.List<api.TimeseriesPoint>();
   o.add(buildTimeseriesPoint());
   o.add(buildTimeseriesPoint());
   return o;
 }
 
-checkUnnamed1703(core.List<api.TimeseriesPoint> o) {
+checkUnnamed1483(core.List<api.TimeseriesPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimeseriesPoint(o[0]);
   checkTimeseriesPoint(o[1]);
@@ -565,8 +600,8 @@ buildWriteTimeseriesRequest() {
   var o = new api.WriteTimeseriesRequest();
   buildCounterWriteTimeseriesRequest++;
   if (buildCounterWriteTimeseriesRequest < 3) {
-    o.commonLabels = buildUnnamed1702();
-    o.timeseries = buildUnnamed1703();
+    o.commonLabels = buildUnnamed1482();
+    o.timeseries = buildUnnamed1483();
   }
   buildCounterWriteTimeseriesRequest--;
   return o;
@@ -575,8 +610,8 @@ buildWriteTimeseriesRequest() {
 checkWriteTimeseriesRequest(api.WriteTimeseriesRequest o) {
   buildCounterWriteTimeseriesRequest++;
   if (buildCounterWriteTimeseriesRequest < 3) {
-    checkUnnamed1702(o.commonLabels);
-    checkUnnamed1703(o.timeseries);
+    checkUnnamed1482(o.commonLabels);
+    checkUnnamed1483(o.timeseries);
   }
   buildCounterWriteTimeseriesRequest--;
 }
@@ -600,27 +635,27 @@ checkWriteTimeseriesResponse(api.WriteTimeseriesResponse o) {
   buildCounterWriteTimeseriesResponse--;
 }
 
-buildUnnamed1704() {
+buildUnnamed1484() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1704(core.List<core.String> o) {
+checkUnnamed1484(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1705() {
+buildUnnamed1485() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1705(core.List<core.String> o) {
+checkUnnamed1485(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -820,7 +855,7 @@ main() {
   unittest.group("resource-MetricDescriptorsResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MetricDescriptorsResourceApi res = new api.CloudmonitoringApi(mock).metricDescriptors;
       var arg_request = buildMetricDescriptor();
       var arg_project = "foo";
@@ -857,7 +892,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMetricDescriptor());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, arg_project).then(unittest.expectAsync(((api.MetricDescriptor response) {
         checkMetricDescriptor(response);
@@ -866,7 +901,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MetricDescriptorsResourceApi res = new api.CloudmonitoringApi(mock).metricDescriptors;
       var arg_project = "foo";
       var arg_metric = "foo";
@@ -900,7 +935,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDeleteMetricDescriptorResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_project, arg_metric).then(unittest.expectAsync(((api.DeleteMetricDescriptorResponse response) {
         checkDeleteMetricDescriptorResponse(response);
@@ -909,7 +944,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MetricDescriptorsResourceApi res = new api.CloudmonitoringApi(mock).metricDescriptors;
       var arg_request = buildListMetricDescriptorsRequest();
       var arg_project = "foo";
@@ -952,7 +987,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListMetricDescriptorsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_request, arg_project, count: arg_count, pageToken: arg_pageToken, query: arg_query).then(unittest.expectAsync(((api.ListMetricDescriptorsResponse response) {
         checkListMetricDescriptorsResponse(response);
@@ -965,7 +1000,7 @@ main() {
   unittest.group("resource-TimeseriesResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TimeseriesResourceApi res = new api.CloudmonitoringApi(mock).timeseries;
       var arg_request = buildListTimeseriesRequest();
       var arg_project = "foo";
@@ -973,7 +1008,7 @@ main() {
       var arg_youngest = "foo";
       var arg_aggregator = "foo";
       var arg_count = 42;
-      var arg_labels = buildUnnamed1704();
+      var arg_labels = buildUnnamed1484();
       var arg_oldest = "foo";
       var arg_pageToken = "foo";
       var arg_timespan = "foo";
@@ -1019,7 +1054,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListTimeseriesResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_request, arg_project, arg_metric, arg_youngest, aggregator: arg_aggregator, count: arg_count, labels: arg_labels, oldest: arg_oldest, pageToken: arg_pageToken, timespan: arg_timespan, window: arg_window).then(unittest.expectAsync(((api.ListTimeseriesResponse response) {
         checkListTimeseriesResponse(response);
@@ -1028,7 +1063,7 @@ main() {
 
     unittest.test("method--write", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TimeseriesResourceApi res = new api.CloudmonitoringApi(mock).timeseries;
       var arg_request = buildWriteTimeseriesRequest();
       var arg_project = "foo";
@@ -1065,7 +1100,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildWriteTimeseriesResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.write(arg_request, arg_project).then(unittest.expectAsync(((api.WriteTimeseriesResponse response) {
         checkWriteTimeseriesResponse(response);
@@ -1078,7 +1113,7 @@ main() {
   unittest.group("resource-TimeseriesDescriptorsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TimeseriesDescriptorsResourceApi res = new api.CloudmonitoringApi(mock).timeseriesDescriptors;
       var arg_request = buildListTimeseriesDescriptorsRequest();
       var arg_project = "foo";
@@ -1086,7 +1121,7 @@ main() {
       var arg_youngest = "foo";
       var arg_aggregator = "foo";
       var arg_count = 42;
-      var arg_labels = buildUnnamed1705();
+      var arg_labels = buildUnnamed1485();
       var arg_oldest = "foo";
       var arg_pageToken = "foo";
       var arg_timespan = "foo";
@@ -1132,7 +1167,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListTimeseriesDescriptorsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_request, arg_project, arg_metric, arg_youngest, aggregator: arg_aggregator, count: arg_count, labels: arg_labels, oldest: arg_oldest, pageToken: arg_pageToken, timespan: arg_timespan, window: arg_window).then(unittest.expectAsync(((api.ListTimeseriesDescriptorsResponse response) {
         checkListTimeseriesDescriptorsResponse(response);

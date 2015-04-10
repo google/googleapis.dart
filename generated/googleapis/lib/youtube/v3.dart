@@ -1,22 +1,30 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.youtube.v3;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client youtube/v3';
 
 /** Programmatic access to YouTube features. */
 class YoutubeApi {
   /** Manage your YouTube account */
   static const YoutubeScope = "https://www.googleapis.com/auth/youtube";
+
+  /** Manage your YouTube account */
+  static const YoutubeForceSslScope = "https://www.googleapis.com/auth/youtube.force-ssl";
 
   /** View your YouTube account */
   static const YoutubeReadonlyScope = "https://www.googleapis.com/auth/youtube.readonly";
@@ -34,9 +42,10 @@ class YoutubeApi {
   static const YoutubepartnerChannelAuditScope = "https://www.googleapis.com/auth/youtubepartner-channel-audit";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ActivitiesResourceApi get activities => new ActivitiesResourceApi(_requester);
+  CaptionsResourceApi get captions => new CaptionsResourceApi(_requester);
   ChannelBannersResourceApi get channelBanners => new ChannelBannersResourceApi(_requester);
   ChannelSectionsResourceApi get channelSections => new ChannelSectionsResourceApi(_requester);
   ChannelsResourceApi get channels => new ChannelsResourceApi(_requester);
@@ -55,15 +64,14 @@ class YoutubeApi {
   WatermarksResourceApi get watermarks => new WatermarksResourceApi(_requester);
 
   YoutubeApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "youtube/v3/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class ActivitiesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ActivitiesResourceApi(common_internal.ApiRequester client) : 
+  ActivitiesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -89,7 +97,7 @@ class ActivitiesResourceApi {
    *
    * Completes with a [Activity].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -100,7 +108,7 @@ class ActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -184,7 +192,7 @@ class ActivitiesResourceApi {
    *
    * Completes with a [ActivityListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -195,7 +203,7 @@ class ActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (part == null) {
@@ -243,11 +251,404 @@ class ActivitiesResourceApi {
 }
 
 
-/** Not documented yet. */
-class ChannelBannersResourceApi {
-  final common_internal.ApiRequester _requester;
+class CaptionsResourceApi {
+  final commons.ApiRequester _requester;
 
-  ChannelBannersResourceApi(common_internal.ApiRequester client) : 
+  CaptionsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a specified caption track.
+   *
+   * Request parameters:
+   *
+   * [id] - The id parameter identifies the caption track that is being deleted.
+   * The value is a caption track ID as identified by the id property in a
+   * caption resource.
+   *
+   * [debugProjectIdOverride] - The debugProjectIdOverride parameter should be
+   * used for mimicking a request for a certain project ID
+   *
+   * [onBehalfOf] - ID of the Google+ Page for the channel that the request is
+   * be on behalf of
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String id, {core.String debugProjectIdOverride, core.String onBehalfOf}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+    if (debugProjectIdOverride != null) {
+      _queryParams["debugProjectIdOverride"] = [debugProjectIdOverride];
+    }
+    if (onBehalfOf != null) {
+      _queryParams["onBehalfOf"] = [onBehalfOf];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'captions';
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Downloads a caption track. The caption track is returned in its original
+   * format unless the request specifies a value for the tfmt parameter and in
+   * its original language unless the request specifies a value for the tlang
+   * parameter.
+   *
+   * Request parameters:
+   *
+   * [id] - The id parameter identifies the caption track that is being
+   * retrieved. The value is a caption track ID as identified by the id property
+   * in a caption resource.
+   *
+   * [debugProjectIdOverride] - The debugProjectIdOverride parameter should be
+   * used for mimicking a request for a certain project ID
+   *
+   * [onBehalfOf] - ID of the Google+ Page for the channel that the request is
+   * be on behalf of
+   *
+   * [tfmt] - The tfmt parameter specifies that the caption track should be
+   * returned in a specific format. If the parameter is not included in the
+   * request, the track is returned in its original format.
+   * Possible string values are:
+   * - "sbv" : SubViewer subtitle.
+   * - "scc" : Scenarist Closed Caption format.
+   * - "srt" : SubRip subtitle.
+   * - "ttml" : Timed Text Markup Language caption.
+   * - "vtt" : Web Video Text Tracks caption.
+   *
+   * [tlang] - The tlang parameter specifies that the API response should return
+   * a translation of the specified caption track. The parameter value is an ISO
+   * 639-1 two-letter language code that identifies the desired caption
+   * language. The translation is generated by using machine translation, such
+   * as Google Translate.
+   *
+   * [downloadOptions] - Options for downloading. A download can be either a
+   * Metadata (default) or Media download. Partial Media downloads are possible
+   * as well.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future download(core.String id, {core.String debugProjectIdOverride, core.String onBehalfOf, core.String tfmt, core.String tlang, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    if (debugProjectIdOverride != null) {
+      _queryParams["debugProjectIdOverride"] = [debugProjectIdOverride];
+    }
+    if (onBehalfOf != null) {
+      _queryParams["onBehalfOf"] = [onBehalfOf];
+    }
+    if (tfmt != null) {
+      _queryParams["tfmt"] = [tfmt];
+    }
+    if (tlang != null) {
+      _queryParams["tlang"] = [tlang];
+    }
+
+    _downloadOptions = downloadOptions;
+
+    _url = 'captions/' + commons.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    if (_downloadOptions == null ||
+        _downloadOptions == commons.DownloadOptions.Metadata) {
+      return _response.then((data) => null);
+    } else {
+      return _response;
+    }
+  }
+
+  /**
+   * Uploads a caption track.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter specifies the caption resource parts that the
+   * API response will include. Set the parameter value to snippet.
+   *
+   * [debugProjectIdOverride] - The debugProjectIdOverride parameter should be
+   * used for mimicking a request for a certain project ID.
+   *
+   * [onBehalfOf] - ID of the Google+ Page for the channel that the request is
+   * be on behalf of
+   *
+   * [sync] - The sync parameter indicates whether YouTube should automatically
+   * synchronize the caption file with the audio track of the video. If you set
+   * the value to true, YouTube will disregard any time codes that are in the
+   * uploaded caption file and generate new time codes for the captions.
+   *
+   * You should set the sync parameter to true if you are uploading a
+   * transcript, which has no time codes, or if you suspect the time codes in
+   * your file are incorrect and want YouTube to try to fix them.
+   *
+   * [uploadMedia] - The media to upload.
+   *
+   * [uploadOptions] - Options for the media upload. Streaming Media without the
+   * length being known ahead of time is only supported via resumable uploads.
+   *
+   * Completes with a [Caption].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Caption> insert(Caption request, core.String part, {core.String debugProjectIdOverride, core.String onBehalfOf, core.bool sync, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if (debugProjectIdOverride != null) {
+      _queryParams["debugProjectIdOverride"] = [debugProjectIdOverride];
+    }
+    if (onBehalfOf != null) {
+      _queryParams["onBehalfOf"] = [onBehalfOf];
+    }
+    if (sync != null) {
+      _queryParams["sync"] = ["${sync}"];
+    }
+
+    _uploadMedia =  uploadMedia;
+    _uploadOptions =  uploadOptions;
+
+    if (_uploadMedia == null) {
+      _url = 'captions';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/youtube/v3/captions';
+    } else {
+      _url = '/upload/youtube/v3/captions';
+    }
+
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Caption.fromJson(data));
+  }
+
+  /**
+   * Returns a list of caption tracks that are associated with a specified
+   * video. Note that the API response does not contain the actual captions and
+   * that the captions.download method provides the ability to retrieve a
+   * caption track.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter specifies the caption resource parts that the
+   * API response will include.
+   *
+   * [videoId] - The videoId parameter specifies the YouTube video ID of the
+   * video for which the API should return caption tracks.
+   *
+   * [debugProjectIdOverride] - The debugProjectIdOverride parameter should be
+   * used for mimicking a request for a certain project ID.
+   *
+   * [id] - The id parameter specifies a comma-separated list of IDs that
+   * identify the caption resources that should be retrieved. Each ID must
+   * identify a caption track associated with the specified video.
+   *
+   * [onBehalfOf] - ID of the Google+ Page for the channel that the request is
+   * on behalf of.
+   *
+   * Completes with a [CaptionListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CaptionListResponse> list(core.String part, core.String videoId, {core.String debugProjectIdOverride, core.String id, core.String onBehalfOf}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if (videoId == null) {
+      throw new core.ArgumentError("Parameter videoId is required.");
+    }
+    _queryParams["videoId"] = [videoId];
+    if (debugProjectIdOverride != null) {
+      _queryParams["debugProjectIdOverride"] = [debugProjectIdOverride];
+    }
+    if (id != null) {
+      _queryParams["id"] = [id];
+    }
+    if (onBehalfOf != null) {
+      _queryParams["onBehalfOf"] = [onBehalfOf];
+    }
+
+
+    _url = 'captions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CaptionListResponse.fromJson(data));
+  }
+
+  /**
+   * Updates a caption track. When updating a caption track, you can change the
+   * track's draft status, upload a new caption file for the track, or both.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter serves two purposes in this operation. It
+   * identifies the properties that the write operation will set as well as the
+   * properties that the API response will include. Set the property value to
+   * snippet if you are updating the track's draft status. Otherwise, set the
+   * property value to id.
+   *
+   * [debugProjectIdOverride] - The debugProjectIdOverride parameter should be
+   * used for mimicking a request for a certain project ID.
+   *
+   * [onBehalfOf] - ID of the Google+ Page for the channel that the request is
+   * be on behalf of
+   *
+   * [sync] - Note: The API server only processes the parameter value if the
+   * request contains an updated caption file.
+   *
+   * The sync parameter indicates whether YouTube should automatically
+   * synchronize the caption file with the audio track of the video. If you set
+   * the value to true, YouTube will automatically synchronize the caption track
+   * with the audio track.
+   *
+   * [uploadMedia] - The media to upload.
+   *
+   * [uploadOptions] - Options for the media upload. Streaming Media without the
+   * length being known ahead of time is only supported via resumable uploads.
+   *
+   * Completes with a [Caption].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Caption> update(Caption request, core.String part, {core.String debugProjectIdOverride, core.String onBehalfOf, core.bool sync, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if (debugProjectIdOverride != null) {
+      _queryParams["debugProjectIdOverride"] = [debugProjectIdOverride];
+    }
+    if (onBehalfOf != null) {
+      _queryParams["onBehalfOf"] = [onBehalfOf];
+    }
+    if (sync != null) {
+      _queryParams["sync"] = ["${sync}"];
+    }
+
+    _uploadMedia =  uploadMedia;
+    _uploadOptions =  uploadOptions;
+
+    if (_uploadMedia == null) {
+      _url = 'captions';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/youtube/v3/captions';
+    } else {
+      _url = '/upload/youtube/v3/captions';
+    }
+
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Caption.fromJson(data));
+  }
+
+}
+
+
+class ChannelBannersResourceApi {
+  final commons.ApiRequester _requester;
+
+  ChannelBannersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -287,18 +688,18 @@ class ChannelBannersResourceApi {
    *
    * Completes with a [ChannelBannerResource].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<ChannelBannerResource> insert(ChannelBannerResource request, {core.String onBehalfOfContentOwner, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<ChannelBannerResource> insert(ChannelBannerResource request, {core.String onBehalfOfContentOwner, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -313,7 +714,7 @@ class ChannelBannersResourceApi {
 
     if (_uploadMedia == null) {
       _url = 'channelBanners/insert';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/youtube/v3/channelBanners/insert';
     } else {
       _url = '/upload/youtube/v3/channelBanners/insert';
@@ -333,11 +734,10 @@ class ChannelBannersResourceApi {
 }
 
 
-/** Not documented yet. */
 class ChannelSectionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ChannelSectionsResourceApi(common_internal.ApiRequester client) : 
+  ChannelSectionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -362,7 +762,7 @@ class ChannelSectionsResourceApi {
    * account that the user authenticates with must be linked to the specified
    * YouTube content owner.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -373,7 +773,7 @@ class ChannelSectionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -447,7 +847,7 @@ class ChannelSectionsResourceApi {
    *
    * Completes with a [ChannelSection].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -458,7 +858,7 @@ class ChannelSectionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -507,6 +907,14 @@ class ChannelSectionsResourceApi {
    * [channelId] - The channelId parameter specifies a YouTube channel ID. The
    * API will only return that channel's channelSections.
    *
+   * [hl] - The hl parameter indicates that the snippet.localized property
+   * values in the returned channelSection resources should be in the specified
+   * language if localized values for that language are available. For example,
+   * if the API request specifies hl=de, the snippet.localized properties in the
+   * API response will contain German titles if German titles are available.
+   * Channel owners can provide localized channel section titles using either
+   * the channelSections.insert or channelSections.update method.
+   *
    * [id] - The id parameter specifies a comma-separated list of the YouTube
    * channelSection ID(s) for the resource(s) that are being retrieved. In a
    * channelSection resource, the id property specifies the YouTube
@@ -530,18 +938,18 @@ class ChannelSectionsResourceApi {
    *
    * Completes with a [ChannelSectionListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<ChannelSectionListResponse> list(core.String part, {core.String channelId, core.String id, core.bool mine, core.String onBehalfOfContentOwner}) {
+  async.Future<ChannelSectionListResponse> list(core.String part, {core.String channelId, core.String hl, core.String id, core.bool mine, core.String onBehalfOfContentOwner}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (part == null) {
@@ -550,6 +958,9 @@ class ChannelSectionsResourceApi {
     _queryParams["part"] = [part];
     if (channelId != null) {
       _queryParams["channelId"] = [channelId];
+    }
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
     }
     if (id != null) {
       _queryParams["id"] = [id];
@@ -603,7 +1014,7 @@ class ChannelSectionsResourceApi {
    *
    * Completes with a [ChannelSection].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -614,7 +1025,7 @@ class ChannelSectionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -644,11 +1055,10 @@ class ChannelSectionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ChannelsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ChannelsResourceApi(common_internal.ApiRequester client) : 
+  ChannelsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -673,6 +1083,9 @@ class ChannelsResourceApi {
    *
    * [forUsername] - The forUsername parameter specifies a YouTube username,
    * thereby requesting the channel associated with that username.
+   *
+   * [hl] - The hl parameter should be used for filter out the properties that
+   * are not in the given language. Used for the brandingSettings part.
    *
    * [id] - The id parameter specifies a comma-separated list of the YouTube
    * channel ID(s) for the resource(s) that are being retrieved. In a channel
@@ -710,18 +1123,18 @@ class ChannelsResourceApi {
    *
    * Completes with a [ChannelListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<ChannelListResponse> list(core.String part, {core.String categoryId, core.String forUsername, core.String id, core.bool managedByMe, core.int maxResults, core.bool mine, core.bool mySubscribers, core.String onBehalfOfContentOwner, core.String pageToken}) {
+  async.Future<ChannelListResponse> list(core.String part, {core.String categoryId, core.String forUsername, core.String hl, core.String id, core.bool managedByMe, core.int maxResults, core.bool mine, core.bool mySubscribers, core.String onBehalfOfContentOwner, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (part == null) {
@@ -733,6 +1146,9 @@ class ChannelsResourceApi {
     }
     if (forUsername != null) {
       _queryParams["forUsername"] = [forUsername];
+    }
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
     }
     if (id != null) {
       _queryParams["id"] = [id];
@@ -799,7 +1215,7 @@ class ChannelsResourceApi {
    *
    * Completes with a [Channel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -810,7 +1226,7 @@ class ChannelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -840,11 +1256,10 @@ class ChannelsResourceApi {
 }
 
 
-/** Not documented yet. */
 class GuideCategoriesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  GuideCategoriesResourceApi(common_internal.ApiRequester client) : 
+  GuideCategoriesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -876,7 +1291,7 @@ class GuideCategoriesResourceApi {
    *
    * Completes with a [GuideCategoryListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -887,7 +1302,7 @@ class GuideCategoriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (part == null) {
@@ -920,11 +1335,10 @@ class GuideCategoriesResourceApi {
 }
 
 
-/** Not documented yet. */
 class I18nLanguagesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  I18nLanguagesResourceApi(common_internal.ApiRequester client) : 
+  I18nLanguagesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -941,7 +1355,7 @@ class I18nLanguagesResourceApi {
    *
    * Completes with a [I18nLanguageListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -952,7 +1366,7 @@ class I18nLanguagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (part == null) {
@@ -979,11 +1393,10 @@ class I18nLanguagesResourceApi {
 }
 
 
-/** Not documented yet. */
 class I18nRegionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  I18nRegionsResourceApi(common_internal.ApiRequester client) : 
+  I18nRegionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1000,7 +1413,7 @@ class I18nRegionsResourceApi {
    *
    * Completes with a [I18nRegionListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1011,7 +1424,7 @@ class I18nRegionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (part == null) {
@@ -1038,11 +1451,10 @@ class I18nRegionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class LiveBroadcastsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  LiveBroadcastsResourceApi(common_internal.ApiRequester client) : 
+  LiveBroadcastsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1100,7 +1512,7 @@ class LiveBroadcastsResourceApi {
    *
    * Completes with a [LiveBroadcast].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1111,7 +1523,7 @@ class LiveBroadcastsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -1214,7 +1626,7 @@ class LiveBroadcastsResourceApi {
    *
    * Completes with a [LiveBroadcast].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1225,7 +1637,7 @@ class LiveBroadcastsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -1306,7 +1718,7 @@ class LiveBroadcastsResourceApi {
    * parameter value, without having to provide authentication credentials for
    * each separate channel.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1317,7 +1729,7 @@ class LiveBroadcastsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -1394,7 +1806,7 @@ class LiveBroadcastsResourceApi {
    *
    * Completes with a [LiveBroadcast].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1405,7 +1817,7 @@ class LiveBroadcastsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1504,7 +1916,7 @@ class LiveBroadcastsResourceApi {
    *
    * Completes with a [LiveBroadcastListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1515,7 +1927,7 @@ class LiveBroadcastsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (part == null) {
@@ -1623,7 +2035,7 @@ class LiveBroadcastsResourceApi {
    *
    * Completes with a [LiveBroadcast].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1634,7 +2046,7 @@ class LiveBroadcastsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (broadcastStatus == null) {
@@ -1729,7 +2141,7 @@ class LiveBroadcastsResourceApi {
    *
    * Completes with a [LiveBroadcast].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1740,7 +2152,7 @@ class LiveBroadcastsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1773,11 +2185,10 @@ class LiveBroadcastsResourceApi {
 }
 
 
-/** Not documented yet. */
 class LiveStreamsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  LiveStreamsResourceApi(common_internal.ApiRequester client) : 
+  LiveStreamsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1821,7 +2232,7 @@ class LiveStreamsResourceApi {
    * parameter value, without having to provide authentication credentials for
    * each separate channel.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1832,7 +2243,7 @@ class LiveStreamsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -1910,7 +2321,7 @@ class LiveStreamsResourceApi {
    *
    * Completes with a [LiveStream].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1921,7 +2332,7 @@ class LiveStreamsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2013,7 +2424,7 @@ class LiveStreamsResourceApi {
    *
    * Completes with a [LiveStreamListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2024,7 +2435,7 @@ class LiveStreamsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (part == null) {
@@ -2118,7 +2529,7 @@ class LiveStreamsResourceApi {
    *
    * Completes with a [LiveStream].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2129,7 +2540,7 @@ class LiveStreamsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2162,11 +2573,10 @@ class LiveStreamsResourceApi {
 }
 
 
-/** Not documented yet. */
 class PlaylistItemsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PlaylistItemsResourceApi(common_internal.ApiRequester client) : 
+  PlaylistItemsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2178,7 +2588,7 @@ class PlaylistItemsResourceApi {
    * playlist item that is being deleted. In a playlistItem resource, the id
    * property specifies the playlist item's ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2189,7 +2599,7 @@ class PlaylistItemsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -2240,7 +2650,7 @@ class PlaylistItemsResourceApi {
    *
    * Completes with a [PlaylistItem].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2251,7 +2661,7 @@ class PlaylistItemsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2332,7 +2742,7 @@ class PlaylistItemsResourceApi {
    *
    * Completes with a [PlaylistItemListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2343,7 +2753,7 @@ class PlaylistItemsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (part == null) {
@@ -2410,7 +2820,7 @@ class PlaylistItemsResourceApi {
    *
    * Completes with a [PlaylistItem].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2421,7 +2831,7 @@ class PlaylistItemsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2448,11 +2858,10 @@ class PlaylistItemsResourceApi {
 }
 
 
-/** Not documented yet. */
 class PlaylistsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PlaylistsResourceApi(common_internal.ApiRequester client) : 
+  PlaylistsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2477,7 +2886,7 @@ class PlaylistsResourceApi {
    * account that the user authenticates with must be linked to the specified
    * YouTube content owner.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2488,7 +2897,7 @@ class PlaylistsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -2562,7 +2971,7 @@ class PlaylistsResourceApi {
    *
    * Completes with a [Playlist].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2573,7 +2982,7 @@ class PlaylistsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2623,6 +3032,9 @@ class PlaylistsResourceApi {
    *
    * [channelId] - This value indicates that the API should only return the
    * specified channel's playlists.
+   *
+   * [hl] - The hl parameter should be used for filter out the properties that
+   * are not in the given language. Used for the snippet part.
    *
    * [id] - The id parameter specifies a comma-separated list of the YouTube
    * playlist ID(s) for the resource(s) that are being retrieved. In a playlist
@@ -2674,18 +3086,18 @@ class PlaylistsResourceApi {
    *
    * Completes with a [PlaylistListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<PlaylistListResponse> list(core.String part, {core.String channelId, core.String id, core.int maxResults, core.bool mine, core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.String pageToken}) {
+  async.Future<PlaylistListResponse> list(core.String part, {core.String channelId, core.String hl, core.String id, core.int maxResults, core.bool mine, core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (part == null) {
@@ -2694,6 +3106,9 @@ class PlaylistsResourceApi {
     _queryParams["part"] = [part];
     if (channelId != null) {
       _queryParams["channelId"] = [channelId];
+    }
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
     }
     if (id != null) {
       _queryParams["id"] = [id];
@@ -2767,7 +3182,7 @@ class PlaylistsResourceApi {
    *
    * Completes with a [Playlist].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2778,7 +3193,7 @@ class PlaylistsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2808,11 +3223,10 @@ class PlaylistsResourceApi {
 }
 
 
-/** Not documented yet. */
 class SearchResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SearchResourceApi(common_internal.ApiRequester client) : 
+  SearchResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2857,6 +3271,13 @@ class SearchResourceApi {
    * onBehalfOfContentOwner parameter. The user must be authenticated using a
    * CMS account linked to the specified content owner and
    * onBehalfOfContentOwner must be provided.
+   *
+   * [forDeveloper] - The forDeveloper parameter restricts the search to only
+   * retrieve videos uploaded via the developer's application or website. The
+   * API server uses the request's authorization credentials to identify the
+   * developer. Therefore, a developer can restrict results to videos uploaded
+   * through the developer's own app or website but not to videos uploaded
+   * through other apps or sites.
    *
    * [forMine] - The forMine parameter restricts the search to only retrieve
    * videos owned by the authenticated user. If you set this parameter to true,
@@ -3028,18 +3449,18 @@ class SearchResourceApi {
    *
    * Completes with a [SearchListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<SearchListResponse> list(core.String part, {core.String channelId, core.String channelType, core.String eventType, core.bool forContentOwner, core.bool forMine, core.String location, core.String locationRadius, core.int maxResults, core.String onBehalfOfContentOwner, core.String order, core.String pageToken, core.DateTime publishedAfter, core.DateTime publishedBefore, core.String q, core.String regionCode, core.String relatedToVideoId, core.String relevanceLanguage, core.String safeSearch, core.String topicId, core.String type, core.String videoCaption, core.String videoCategoryId, core.String videoDefinition, core.String videoDimension, core.String videoDuration, core.String videoEmbeddable, core.String videoLicense, core.String videoSyndicated, core.String videoType}) {
+  async.Future<SearchListResponse> list(core.String part, {core.String channelId, core.String channelType, core.String eventType, core.bool forContentOwner, core.bool forDeveloper, core.bool forMine, core.String location, core.String locationRadius, core.int maxResults, core.String onBehalfOfContentOwner, core.String order, core.String pageToken, core.DateTime publishedAfter, core.DateTime publishedBefore, core.String q, core.String regionCode, core.String relatedToVideoId, core.String relevanceLanguage, core.String safeSearch, core.String topicId, core.String type, core.String videoCaption, core.String videoCategoryId, core.String videoDefinition, core.String videoDimension, core.String videoDuration, core.String videoEmbeddable, core.String videoLicense, core.String videoSyndicated, core.String videoType}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (part == null) {
@@ -3057,6 +3478,9 @@ class SearchResourceApi {
     }
     if (forContentOwner != null) {
       _queryParams["forContentOwner"] = ["${forContentOwner}"];
+    }
+    if (forDeveloper != null) {
+      _queryParams["forDeveloper"] = ["${forDeveloper}"];
     }
     if (forMine != null) {
       _queryParams["forMine"] = ["${forMine}"];
@@ -3150,11 +3574,10 @@ class SearchResourceApi {
 }
 
 
-/** Not documented yet. */
 class SubscriptionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SubscriptionsResourceApi(common_internal.ApiRequester client) : 
+  SubscriptionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3166,7 +3589,7 @@ class SubscriptionsResourceApi {
    * resource that is being deleted. In a subscription resource, the id property
    * specifies the YouTube subscription ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3177,7 +3600,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -3215,7 +3638,7 @@ class SubscriptionsResourceApi {
    *
    * Completes with a [Subscription].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3226,7 +3649,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3334,7 +3757,7 @@ class SubscriptionsResourceApi {
    *
    * Completes with a [SubscriptionListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3345,7 +3768,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (part == null) {
@@ -3399,11 +3822,10 @@ class SubscriptionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ThumbnailsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ThumbnailsResourceApi(common_internal.ApiRequester client) : 
+  ThumbnailsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3431,18 +3853,18 @@ class ThumbnailsResourceApi {
    *
    * Completes with a [ThumbnailSetResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<ThumbnailSetResponse> set(core.String videoId, {core.String onBehalfOfContentOwner, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<ThumbnailSetResponse> set(core.String videoId, {core.String onBehalfOfContentOwner, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (videoId == null) {
@@ -3458,7 +3880,7 @@ class ThumbnailsResourceApi {
 
     if (_uploadMedia == null) {
       _url = 'thumbnails/set';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/youtube/v3/thumbnails/set';
     } else {
       _url = '/upload/youtube/v3/thumbnails/set';
@@ -3478,11 +3900,10 @@ class ThumbnailsResourceApi {
 }
 
 
-/** Not documented yet. */
 class VideoCategoriesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  VideoCategoriesResourceApi(common_internal.ApiRequester client) : 
+  VideoCategoriesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3505,7 +3926,7 @@ class VideoCategoriesResourceApi {
    *
    * Completes with a [VideoCategoryListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3516,7 +3937,7 @@ class VideoCategoriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (part == null) {
@@ -3549,11 +3970,10 @@ class VideoCategoriesResourceApi {
 }
 
 
-/** Not documented yet. */
 class VideosResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  VideosResourceApi(common_internal.ApiRequester client) : 
+  VideosResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3578,7 +3998,7 @@ class VideosResourceApi {
    * CMS account that the user authenticates with must be linked to the
    * specified YouTube content owner.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3589,7 +4009,7 @@ class VideosResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -3639,7 +4059,7 @@ class VideosResourceApi {
    *
    * Completes with a [VideoGetRatingResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3650,7 +4070,7 @@ class VideosResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -3744,18 +4164,18 @@ class VideosResourceApi {
    *
    * Completes with a [Video].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Video> insert(Video request, core.String part, {core.bool autoLevels, core.bool notifySubscribers, core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.bool stabilize, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Video> insert(Video request, core.String part, {core.bool autoLevels, core.bool notifySubscribers, core.String onBehalfOfContentOwner, core.String onBehalfOfContentOwnerChannel, core.bool stabilize, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3786,7 +4206,7 @@ class VideosResourceApi {
 
     if (_uploadMedia == null) {
       _url = 'videos';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/youtube/v3/videos';
     } else {
       _url = '/upload/youtube/v3/videos';
@@ -3888,7 +4308,7 @@ class VideosResourceApi {
    *
    * Completes with a [VideoListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3899,7 +4319,7 @@ class VideosResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (part == null) {
@@ -3978,7 +4398,7 @@ class VideosResourceApi {
    * account that the user authenticates with must be linked to the specified
    * YouTube content owner.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3989,7 +4409,7 @@ class VideosResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -4066,7 +4486,7 @@ class VideosResourceApi {
    *
    * Completes with a [Video].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4077,7 +4497,7 @@ class VideosResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4107,11 +4527,10 @@ class VideosResourceApi {
 }
 
 
-/** Not documented yet. */
 class WatermarksResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  WatermarksResourceApi(common_internal.ApiRequester client) : 
+  WatermarksResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -4139,18 +4558,18 @@ class WatermarksResourceApi {
    * [uploadOptions] - Options for the media upload. Streaming Media without the
    * length being known ahead of time is only supported via resumable uploads.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future set(InvideoBranding request, core.String channelId, {core.String onBehalfOfContentOwner, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future set(InvideoBranding request, core.String channelId, {core.String onBehalfOfContentOwner, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4170,7 +4589,7 @@ class WatermarksResourceApi {
 
     if (_uploadMedia == null) {
       _url = 'watermarks/set';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/youtube/v3/watermarks/set';
     } else {
       _url = '/upload/youtube/v3/watermarks/set';
@@ -4205,7 +4624,7 @@ class WatermarksResourceApi {
    * user authenticates with needs to be linked to the specified YouTube content
    * owner.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4216,7 +4635,7 @@ class WatermarksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (channelId == null) {
@@ -5004,7 +5423,6 @@ class ActivityContentDetailsUpload {
 }
 
 
-/** Not documented yet. */
 class ActivityListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -5027,7 +5445,6 @@ class ActivityListResponse {
    */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   PageInfo pageInfo;
 
   /**
@@ -5036,7 +5453,6 @@ class ActivityListResponse {
    */
   core.String prevPageToken;
 
-  /** Not documented yet. */
   TokenPagination tokenPagination;
 
   /** The visitorId identifies the visitor. */
@@ -5233,6 +5649,316 @@ class ActivitySnippet {
 }
 
 
+/**
+ * A caption resource represents a YouTube caption track. A caption track is
+ * associated with exactly one YouTube video.
+ */
+class Caption {
+  /** Etag of this resource. */
+  core.String etag;
+
+  /** The ID that YouTube uses to uniquely identify the caption track. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#caption".
+   */
+  core.String kind;
+
+  /** The snippet object contains basic details about the caption. */
+  CaptionSnippet snippet;
+
+
+  Caption();
+
+  Caption.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new CaptionSnippet.fromJson(_json["snippet"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    return _json;
+  }
+}
+
+
+class CaptionListResponse {
+  /** Etag of this resource. */
+  core.String etag;
+
+  /** Serialized EventId of the request which produced this response. */
+  core.String eventId;
+
+  /** A list of captions that match the request criteria. */
+  core.List<Caption> items;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#captionListResponse".
+   */
+  core.String kind;
+
+  /** The visitorId identifies the visitor. */
+  core.String visitorId;
+
+
+  CaptionListResponse();
+
+  CaptionListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("eventId")) {
+      eventId = _json["eventId"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Caption.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("visitorId")) {
+      visitorId = _json["visitorId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (eventId != null) {
+      _json["eventId"] = eventId;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (visitorId != null) {
+      _json["visitorId"] = visitorId;
+    }
+    return _json;
+  }
+}
+
+
+/** Basic details about a caption track, such as its language and name. */
+class CaptionSnippet {
+  /**
+   * The type of audio track associated with the caption track.
+   * Possible string values are:
+   * - "commentary"
+   * - "descriptive"
+   * - "primary"
+   * - "unknown"
+   */
+  core.String audioTrackType;
+
+  /**
+   * The reason that YouTube failed to process the caption track. This property
+   * is only present if the state property's value is failed.
+   * Possible string values are:
+   * - "processingFailed"
+   * - "unknownFormat"
+   * - "unsupportedFormat"
+   */
+  core.String failureReason;
+
+  /**
+   * Indicates whether YouTube synchronized the caption track to the audio track
+   * in the video. The value will be true if a sync was explicitly requested
+   * when the caption track was uploaded. For example, when calling the
+   * captions.insert or captions.update methods, you can set the sync parameter
+   * to true to instruct YouTube to sync the uploaded track to the video. If the
+   * value is false, YouTube uses the time codes in the uploaded caption track
+   * to determine when to display captions.
+   */
+  core.bool isAutoSynced;
+
+  /**
+   * Indicates whether the track contains closed captions for the deaf and hard
+   * of hearing. The default value is false.
+   */
+  core.bool isCC;
+
+  /**
+   * Indicates whether the caption track is a draft. If the value is true, then
+   * the track is not publicly visible. The default value is false.
+   */
+  core.bool isDraft;
+
+  /**
+   * Indicates whether caption track is formatted for "easy reader," meaning it
+   * is at a third-grade level for language learners. The default value is
+   * false.
+   */
+  core.bool isEasyReader;
+
+  /**
+   * Indicates whether the caption track uses large text for the
+   * vision-impaired. The default value is false.
+   */
+  core.bool isLarge;
+
+  /**
+   * The language of the caption track. The property value is a BCP-47 language
+   * tag.
+   */
+  core.String language;
+
+  /**
+   * The date and time when the caption track was last updated. The value is
+   * specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+   */
+  core.DateTime lastUpdated;
+
+  /**
+   * The name of the caption track. The name is intended to be visible to the
+   * user as an option during playback.
+   */
+  core.String name;
+
+  /**
+   * The caption track's status.
+   * Possible string values are:
+   * - "failed"
+   * - "serving"
+   * - "syncing"
+   */
+  core.String status;
+
+  /**
+   * The caption track's type.
+   * Possible string values are:
+   * - "ASR"
+   * - "forced"
+   * - "standard"
+   */
+  core.String trackKind;
+
+  /**
+   * The ID that YouTube uses to uniquely identify the video associated with the
+   * caption track.
+   */
+  core.String videoId;
+
+
+  CaptionSnippet();
+
+  CaptionSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("audioTrackType")) {
+      audioTrackType = _json["audioTrackType"];
+    }
+    if (_json.containsKey("failureReason")) {
+      failureReason = _json["failureReason"];
+    }
+    if (_json.containsKey("isAutoSynced")) {
+      isAutoSynced = _json["isAutoSynced"];
+    }
+    if (_json.containsKey("isCC")) {
+      isCC = _json["isCC"];
+    }
+    if (_json.containsKey("isDraft")) {
+      isDraft = _json["isDraft"];
+    }
+    if (_json.containsKey("isEasyReader")) {
+      isEasyReader = _json["isEasyReader"];
+    }
+    if (_json.containsKey("isLarge")) {
+      isLarge = _json["isLarge"];
+    }
+    if (_json.containsKey("language")) {
+      language = _json["language"];
+    }
+    if (_json.containsKey("lastUpdated")) {
+      lastUpdated = core.DateTime.parse(_json["lastUpdated"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("trackKind")) {
+      trackKind = _json["trackKind"];
+    }
+    if (_json.containsKey("videoId")) {
+      videoId = _json["videoId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (audioTrackType != null) {
+      _json["audioTrackType"] = audioTrackType;
+    }
+    if (failureReason != null) {
+      _json["failureReason"] = failureReason;
+    }
+    if (isAutoSynced != null) {
+      _json["isAutoSynced"] = isAutoSynced;
+    }
+    if (isCC != null) {
+      _json["isCC"] = isCC;
+    }
+    if (isDraft != null) {
+      _json["isDraft"] = isDraft;
+    }
+    if (isEasyReader != null) {
+      _json["isEasyReader"] = isEasyReader;
+    }
+    if (isLarge != null) {
+      _json["isLarge"] = isLarge;
+    }
+    if (language != null) {
+      _json["language"] = language;
+    }
+    if (lastUpdated != null) {
+      _json["lastUpdated"] = (lastUpdated).toIso8601String();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (trackKind != null) {
+      _json["trackKind"] = trackKind;
+    }
+    if (videoId != null) {
+      _json["videoId"] = videoId;
+    }
+    return _json;
+  }
+}
+
+
 /** Brief description of the live stream cdn settings. */
 class CdnSettings {
   /** The format of the video stream that you are sending to Youtube. */
@@ -5389,7 +6115,7 @@ class Channel {
       kind = _json["kind"];
     }
     if (_json.containsKey("localizations")) {
-      localizations = common_internal.mapMap(_json["localizations"], (item) => new ChannelLocalization.fromJson(item));
+      localizations = commons.mapMap(_json["localizations"], (item) => new ChannelLocalization.fromJson(item));
     }
     if (_json.containsKey("snippet")) {
       snippet = new ChannelSnippet.fromJson(_json["snippet"]);
@@ -5435,7 +6161,7 @@ class Channel {
       _json["kind"] = kind;
     }
     if (localizations != null) {
-      _json["localizations"] = common_internal.mapMap(localizations, (item) => (item).toJson());
+      _json["localizations"] = commons.mapMap(localizations, (item) => (item).toJson());
     }
     if (snippet != null) {
       _json["snippet"] = (snippet).toJson();
@@ -5612,7 +6338,6 @@ class ChannelBrandingSettings {
 }
 
 
-/** Not documented yet. */
 class ChannelContentDetailsRelatedPlaylists {
   /**
    * The ID of the playlist that contains the channel"s favorite videos. Use the
@@ -5700,7 +6425,6 @@ class ChannelContentDetails {
    */
   core.String googlePlusUserId;
 
-  /** Not documented yet. */
   ChannelContentDetailsRelatedPlaylists relatedPlaylists;
 
 
@@ -5849,7 +6573,6 @@ class ChannelConversionPings {
 }
 
 
-/** Not documented yet. */
 class ChannelListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -5872,7 +6595,6 @@ class ChannelListResponse {
    */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   PageInfo pageInfo;
 
   /**
@@ -5881,7 +6603,6 @@ class ChannelListResponse {
    */
   core.String prevPageToken;
 
-  /** Not documented yet. */
   TokenPagination tokenPagination;
 
   /** The visitorId identifies the visitor. */
@@ -5987,7 +6708,6 @@ class ChannelLocalization {
 }
 
 
-/** Not documented yet. */
 class ChannelSection {
   /**
    * The contentDetails object contains details about the channel section
@@ -6033,7 +6753,7 @@ class ChannelSection {
       kind = _json["kind"];
     }
     if (_json.containsKey("localizations")) {
-      localizations = common_internal.mapMap(_json["localizations"], (item) => new ChannelSectionLocalization.fromJson(item));
+      localizations = commons.mapMap(_json["localizations"], (item) => new ChannelSectionLocalization.fromJson(item));
     }
     if (_json.containsKey("snippet")) {
       snippet = new ChannelSectionSnippet.fromJson(_json["snippet"]);
@@ -6055,7 +6775,7 @@ class ChannelSection {
       _json["kind"] = kind;
     }
     if (localizations != null) {
-      _json["localizations"] = common_internal.mapMap(localizations, (item) => (item).toJson());
+      _json["localizations"] = commons.mapMap(localizations, (item) => (item).toJson());
     }
     if (snippet != null) {
       _json["snippet"] = (snippet).toJson();
@@ -6101,7 +6821,6 @@ class ChannelSectionContentDetails {
 }
 
 
-/** Not documented yet. */
 class ChannelSectionListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -6301,7 +7020,6 @@ class ChannelSectionSnippet {
 
 /** Branding properties for the channel view. */
 class ChannelSettings {
-  /** Not documented yet. */
   core.String defaultLanguage;
 
   /** Which content tab users should see when viewing the channel. */
@@ -6908,7 +7626,6 @@ class ContentRating {
    */
   core.String djctqRating;
 
-  /** Not documented yet. */
   core.List<core.String> djctqRatingReasons;
 
   /**
@@ -7963,7 +8680,6 @@ class GuideCategory {
 }
 
 
-/** Not documented yet. */
 class GuideCategoryListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -7990,7 +8706,6 @@ class GuideCategoryListResponse {
    */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   PageInfo pageInfo;
 
   /**
@@ -7999,7 +8714,6 @@ class GuideCategoryListResponse {
    */
   core.String prevPageToken;
 
-  /** Not documented yet. */
   TokenPagination tokenPagination;
 
   /** The visitorId identifies the visitor. */
@@ -8074,7 +8788,6 @@ class GuideCategoryListResponse {
 
 /** Basic details about a guide category. */
 class GuideCategorySnippet {
-  /** Not documented yet. */
   core.String channelId;
 
   /** Description of the guide category. */
@@ -8165,7 +8878,6 @@ class I18nLanguage {
 }
 
 
-/** Not documented yet. */
 class I18nLanguageListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -8324,7 +9036,6 @@ class I18nRegion {
 }
 
 
-/** Not documented yet. */
 class I18nRegionListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -8713,9 +9424,7 @@ class IngestionInfo {
 }
 
 
-/** Not documented yet. */
 class InvideoBranding {
-  /** Not documented yet. */
   core.String imageBytes;
 
   core.List<core.int> get imageBytesAsBytes {
@@ -8726,16 +9435,12 @@ class InvideoBranding {
     imageBytes = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
 
-  /** Not documented yet. */
   core.String imageUrl;
 
-  /** Not documented yet. */
   InvideoPosition position;
 
-  /** Not documented yet. */
   core.String targetChannelId;
 
-  /** Not documented yet. */
   InvideoTiming timing;
 
 
@@ -8951,9 +9656,7 @@ class InvideoTiming {
 }
 
 
-/** Not documented yet. */
 class LanguageTag {
-  /** Not documented yet. */
   core.String value;
 
 
@@ -9189,7 +9892,6 @@ class LiveBroadcastContentDetails {
 }
 
 
-/** Not documented yet. */
 class LiveBroadcastListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -9212,7 +9914,6 @@ class LiveBroadcastListResponse {
    */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   PageInfo pageInfo;
 
   /**
@@ -9221,7 +9922,6 @@ class LiveBroadcastListResponse {
    */
   core.String prevPageToken;
 
-  /** Not documented yet. */
   TokenPagination tokenPagination;
 
   /** The visitorId identifies the visitor. */
@@ -9294,7 +9994,6 @@ class LiveBroadcastListResponse {
 }
 
 
-/** Not documented yet. */
 class LiveBroadcastSnippet {
   /**
    * The date and time that the broadcast actually ended. This information is
@@ -9423,7 +10122,6 @@ class LiveBroadcastSnippet {
 }
 
 
-/** Not documented yet. */
 class LiveBroadcastStatus {
   /**
    * The broadcast's status. The status can be updated using the API's
@@ -9651,7 +10349,6 @@ class LiveStreamContentDetails {
 }
 
 
-/** Not documented yet. */
 class LiveStreamListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -9674,7 +10371,6 @@ class LiveStreamListResponse {
    */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   PageInfo pageInfo;
 
   /**
@@ -9683,7 +10379,6 @@ class LiveStreamListResponse {
    */
   core.String prevPageToken;
 
-  /** Not documented yet. */
   TokenPagination tokenPagination;
 
   /** The visitorId identifies the visitor. */
@@ -9756,7 +10451,6 @@ class LiveStreamListResponse {
 }
 
 
-/** Not documented yet. */
 class LiveStreamSnippet {
   /**
    * The ID that YouTube uses to uniquely identify the channel that is
@@ -9820,7 +10514,7 @@ class LiveStreamSnippet {
 /** Brief description of the live stream status. */
 class LiveStreamStatus {
   /**
-   * Not documented yet.
+   *
    * Possible string values are:
    * - "active"
    * - "created"
@@ -9849,15 +10543,12 @@ class LiveStreamStatus {
 }
 
 
-/** Not documented yet. */
 class LocalizedProperty {
-  /** Not documented yet. */
   core.String default_;
 
   /** The language of the default property. */
   LanguageTag defaultLanguage;
 
-  /** Not documented yet. */
   core.List<LocalizedString> localized;
 
 
@@ -9891,12 +10582,9 @@ class LocalizedProperty {
 }
 
 
-/** Not documented yet. */
 class LocalizedString {
-  /** Not documented yet. */
   core.String language;
 
-  /** Not documented yet. */
   core.String value;
 
 
@@ -10090,7 +10778,7 @@ class Playlist {
       kind = _json["kind"];
     }
     if (_json.containsKey("localizations")) {
-      localizations = common_internal.mapMap(_json["localizations"], (item) => new PlaylistLocalization.fromJson(item));
+      localizations = commons.mapMap(_json["localizations"], (item) => new PlaylistLocalization.fromJson(item));
     }
     if (_json.containsKey("player")) {
       player = new PlaylistPlayer.fromJson(_json["player"]);
@@ -10118,7 +10806,7 @@ class Playlist {
       _json["kind"] = kind;
     }
     if (localizations != null) {
-      _json["localizations"] = common_internal.mapMap(localizations, (item) => (item).toJson());
+      _json["localizations"] = commons.mapMap(localizations, (item) => (item).toJson());
     }
     if (player != null) {
       _json["player"] = (player).toJson();
@@ -10134,7 +10822,6 @@ class Playlist {
 }
 
 
-/** Not documented yet. */
 class PlaylistContentDetails {
   /** The number of videos in the playlist. */
   core.int itemCount;
@@ -10262,7 +10949,6 @@ class PlaylistItem {
 }
 
 
-/** Not documented yet. */
 class PlaylistItemContentDetails {
   /**
    * The time, measured in seconds from the start of the video, when the video
@@ -10328,7 +11014,6 @@ class PlaylistItemContentDetails {
 }
 
 
-/** Not documented yet. */
 class PlaylistItemListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -10351,7 +11036,6 @@ class PlaylistItemListResponse {
    */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   PageInfo pageInfo;
 
   /**
@@ -10360,7 +11044,6 @@ class PlaylistItemListResponse {
    */
   core.String prevPageToken;
 
-  /** Not documented yet. */
   TokenPagination tokenPagination;
 
   /** The visitorId identifies the visitor. */
@@ -10581,7 +11264,6 @@ class PlaylistItemStatus {
 }
 
 
-/** Not documented yet. */
 class PlaylistListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -10604,7 +11286,6 @@ class PlaylistListResponse {
    */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   PageInfo pageInfo;
 
   /**
@@ -10613,7 +11294,6 @@ class PlaylistListResponse {
    */
   core.String prevPageToken;
 
-  /** Not documented yet. */
   TokenPagination tokenPagination;
 
   /** The visitorId identifies the visitor. */
@@ -10719,7 +11399,6 @@ class PlaylistLocalization {
 }
 
 
-/** Not documented yet. */
 class PlaylistPlayer {
   /** An <iframe> tag that embeds a player that will play the playlist. */
   core.String embedHtml;
@@ -10851,7 +11530,6 @@ class PlaylistSnippet {
 }
 
 
-/** Not documented yet. */
 class PlaylistStatus {
   /**
    * The playlist's privacy status.
@@ -11111,7 +11789,6 @@ class ResourceId {
 }
 
 
-/** Not documented yet. */
 class SearchListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -11134,7 +11811,6 @@ class SearchListResponse {
    */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   PageInfo pageInfo;
 
   /**
@@ -11143,7 +11819,6 @@ class SearchListResponse {
    */
   core.String prevPageToken;
 
-  /** Not documented yet. */
   TokenPagination tokenPagination;
 
   /** The visitorId identifies the visitor. */
@@ -11520,7 +12195,6 @@ class SubscriptionContentDetails {
 }
 
 
-/** Not documented yet. */
 class SubscriptionListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -11543,7 +12217,6 @@ class SubscriptionListResponse {
    */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   PageInfo pageInfo;
 
   /**
@@ -11552,7 +12225,6 @@ class SubscriptionListResponse {
    */
   core.String prevPageToken;
 
-  /** Not documented yet. */
   TokenPagination tokenPagination;
 
   /** The visitorId identifies the visitor. */
@@ -11874,7 +12546,6 @@ class ThumbnailDetails {
 }
 
 
-/** Not documented yet. */
 class ThumbnailSetResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -12094,7 +12765,7 @@ class Video {
       liveStreamingDetails = new VideoLiveStreamingDetails.fromJson(_json["liveStreamingDetails"]);
     }
     if (_json.containsKey("localizations")) {
-      localizations = common_internal.mapMap(_json["localizations"], (item) => new VideoLocalization.fromJson(item));
+      localizations = commons.mapMap(_json["localizations"], (item) => new VideoLocalization.fromJson(item));
     }
     if (_json.containsKey("monetizationDetails")) {
       monetizationDetails = new VideoMonetizationDetails.fromJson(_json["monetizationDetails"]);
@@ -12155,7 +12826,7 @@ class Video {
       _json["liveStreamingDetails"] = (liveStreamingDetails).toJson();
     }
     if (localizations != null) {
-      _json["localizations"] = common_internal.mapMap(localizations, (item) => (item).toJson());
+      _json["localizations"] = commons.mapMap(localizations, (item) => (item).toJson());
     }
     if (monetizationDetails != null) {
       _json["monetizationDetails"] = (monetizationDetails).toJson();
@@ -12192,7 +12863,6 @@ class Video {
 }
 
 
-/** Not documented yet. */
 class VideoAgeGating {
   /**
    * Indicates whether or not the video has alcoholic beverage content. Only
@@ -12309,7 +12979,6 @@ class VideoCategory {
 }
 
 
-/** Not documented yet. */
 class VideoCategoryListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -12336,7 +13005,6 @@ class VideoCategoryListResponse {
    */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   PageInfo pageInfo;
 
   /**
@@ -12345,7 +13013,6 @@ class VideoCategoryListResponse {
    */
   core.String prevPageToken;
 
-  /** Not documented yet. */
   TokenPagination tokenPagination;
 
   /** The visitorId identifies the visitor. */
@@ -12420,7 +13087,6 @@ class VideoCategoryListResponse {
 
 /** Basic details about a video category, such as its localized title. */
 class VideoCategorySnippet {
-  /** Not documented yet. */
   core.bool assignable;
 
   /** The YouTube channel that created the video category. */
@@ -12625,7 +13291,6 @@ class VideoContentDetailsRegionRestriction {
 }
 
 
-/** Not documented yet. */
 class VideoConversionPing {
   /**
    * Defines the context of the ping.
@@ -12673,7 +13338,6 @@ class VideoConversionPing {
 }
 
 
-/** Not documented yet. */
 class VideoConversionPings {
   /**
    * Pings that the app shall fire for a video (authenticated by biscotti
@@ -13006,7 +13670,6 @@ class VideoFileDetailsVideoStream {
 }
 
 
-/** Not documented yet. */
 class VideoGetRatingResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -13069,7 +13732,6 @@ class VideoGetRatingResponse {
 }
 
 
-/** Not documented yet. */
 class VideoListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -13092,7 +13754,6 @@ class VideoListResponse {
    */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   PageInfo pageInfo;
 
   /**
@@ -13101,7 +13762,6 @@ class VideoListResponse {
    */
   core.String prevPageToken;
 
-  /** Not documented yet. */
   TokenPagination tokenPagination;
 
   /** The visitorId identifies the visitor. */
@@ -13556,10 +14216,9 @@ class VideoProjectDetails {
 }
 
 
-/** Not documented yet. */
 class VideoRating {
   /**
-   * Not documented yet.
+   *
    * Possible string values are:
    * - "dislike"
    * - "like"
@@ -13568,7 +14227,6 @@ class VideoRating {
    */
   core.String rating;
 
-  /** Not documented yet. */
   core.String videoId;
 
 
@@ -14200,5 +14858,3 @@ class WatchSettings {
     return _json;
   }
 }
-
-

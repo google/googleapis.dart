@@ -1,17 +1,22 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.plusDomains.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection_1;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection_1;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client plusDomains/v1';
 
 /**
  * The Google+ API enables developers to build on top of the Google+ platform.
@@ -52,7 +57,7 @@ class PlusDomainsApi {
   static const UserinfoProfileScope = "https://www.googleapis.com/auth/userinfo.profile";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ActivitiesResourceApi get activities => new ActivitiesResourceApi(_requester);
   AudiencesResourceApi get audiences => new AudiencesResourceApi(_requester);
@@ -62,15 +67,14 @@ class PlusDomainsApi {
   PeopleResourceApi get people => new PeopleResourceApi(_requester);
 
   PlusDomainsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "plusDomains/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class ActivitiesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ActivitiesResourceApi(common_internal.ApiRequester client) : 
+  ActivitiesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -82,7 +86,7 @@ class ActivitiesResourceApi {
    *
    * Completes with a [Activity].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -93,7 +97,7 @@ class ActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (activityId == null) {
@@ -101,7 +105,7 @@ class ActivitiesResourceApi {
     }
 
 
-    _url = 'activities/' + common_internal.Escaper.ecapeVariable('$activityId');
+    _url = 'activities/' + commons.Escaper.ecapeVariable('$activityId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -129,7 +133,7 @@ class ActivitiesResourceApi {
    *
    * Completes with a [Activity].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -140,7 +144,7 @@ class ActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -154,7 +158,7 @@ class ActivitiesResourceApi {
     }
 
 
-    _url = 'people/' + common_internal.Escaper.ecapeVariable('$userId') + '/activities';
+    _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/activities';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -191,7 +195,7 @@ class ActivitiesResourceApi {
    *
    * Completes with a [ActivityFeed].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -202,7 +206,7 @@ class ActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -219,7 +223,7 @@ class ActivitiesResourceApi {
     }
 
 
-    _url = 'people/' + common_internal.Escaper.ecapeVariable('$userId') + '/activities/' + common_internal.Escaper.ecapeVariable('$collection');
+    _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/activities/' + commons.Escaper.ecapeVariable('$collection');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -234,11 +238,10 @@ class ActivitiesResourceApi {
 }
 
 
-/** Not documented yet. */
 class AudiencesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AudiencesResourceApi(common_internal.ApiRequester client) : 
+  AudiencesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -260,7 +263,7 @@ class AudiencesResourceApi {
    *
    * Completes with a [AudiencesFeed].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -271,7 +274,7 @@ class AudiencesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -285,7 +288,7 @@ class AudiencesResourceApi {
     }
 
 
-    _url = 'people/' + common_internal.Escaper.ecapeVariable('$userId') + '/audiences';
+    _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/audiences';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -300,11 +303,10 @@ class AudiencesResourceApi {
 }
 
 
-/** Not documented yet. */
 class CirclesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CirclesResourceApi(common_internal.ApiRequester client) : 
+  CirclesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -323,7 +325,7 @@ class CirclesResourceApi {
    *
    * Completes with a [Circle].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -334,7 +336,7 @@ class CirclesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (circleId == null) {
@@ -348,7 +350,7 @@ class CirclesResourceApi {
     }
 
 
-    _url = 'circles/' + common_internal.Escaper.ecapeVariable('$circleId') + '/people';
+    _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId') + '/people';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -369,7 +371,7 @@ class CirclesResourceApi {
    *
    * Completes with a [Circle].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -380,7 +382,7 @@ class CirclesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (circleId == null) {
@@ -388,7 +390,7 @@ class CirclesResourceApi {
     }
 
 
-    _url = 'circles/' + common_internal.Escaper.ecapeVariable('$circleId');
+    _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -412,7 +414,7 @@ class CirclesResourceApi {
    *
    * Completes with a [Circle].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -423,7 +425,7 @@ class CirclesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -434,7 +436,7 @@ class CirclesResourceApi {
     }
 
 
-    _url = 'people/' + common_internal.Escaper.ecapeVariable('$userId') + '/circles';
+    _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/circles';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -465,7 +467,7 @@ class CirclesResourceApi {
    *
    * Completes with a [CircleFeed].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -476,7 +478,7 @@ class CirclesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -490,7 +492,7 @@ class CirclesResourceApi {
     }
 
 
-    _url = 'people/' + common_internal.Escaper.ecapeVariable('$userId') + '/circles';
+    _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/circles';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -513,7 +515,7 @@ class CirclesResourceApi {
    *
    * Completes with a [Circle].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -524,7 +526,7 @@ class CirclesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -535,7 +537,7 @@ class CirclesResourceApi {
     }
 
 
-    _url = 'circles/' + common_internal.Escaper.ecapeVariable('$circleId');
+    _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -554,7 +556,7 @@ class CirclesResourceApi {
    *
    * [circleId] - The ID of the circle to delete.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -565,7 +567,7 @@ class CirclesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (circleId == null) {
@@ -574,7 +576,7 @@ class CirclesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'circles/' + common_internal.Escaper.ecapeVariable('$circleId');
+    _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -599,7 +601,7 @@ class CirclesResourceApi {
    * [userId] - IDs of the people to remove from the circle. Optional, can be
    * repeated.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -610,7 +612,7 @@ class CirclesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (circleId == null) {
@@ -625,7 +627,7 @@ class CirclesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'circles/' + common_internal.Escaper.ecapeVariable('$circleId') + '/people';
+    _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId') + '/people';
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -648,7 +650,7 @@ class CirclesResourceApi {
    *
    * Completes with a [Circle].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -659,7 +661,7 @@ class CirclesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -670,7 +672,7 @@ class CirclesResourceApi {
     }
 
 
-    _url = 'circles/' + common_internal.Escaper.ecapeVariable('$circleId');
+    _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -685,11 +687,10 @@ class CirclesResourceApi {
 }
 
 
-/** Not documented yet. */
 class CommentsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CommentsResourceApi(common_internal.ApiRequester client) : 
+  CommentsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -701,7 +702,7 @@ class CommentsResourceApi {
    *
    * Completes with a [Comment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -712,7 +713,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (commentId == null) {
@@ -720,7 +721,7 @@ class CommentsResourceApi {
     }
 
 
-    _url = 'comments/' + common_internal.Escaper.ecapeVariable('$commentId');
+    _url = 'comments/' + commons.Escaper.ecapeVariable('$commentId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -743,7 +744,7 @@ class CommentsResourceApi {
    *
    * Completes with a [Comment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -754,7 +755,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -765,7 +766,7 @@ class CommentsResourceApi {
     }
 
 
-    _url = 'activities/' + common_internal.Escaper.ecapeVariable('$activityId') + '/comments';
+    _url = 'activities/' + commons.Escaper.ecapeVariable('$activityId') + '/comments';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -800,7 +801,7 @@ class CommentsResourceApi {
    *
    * Completes with a [CommentFeed].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -811,7 +812,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (activityId == null) {
@@ -828,7 +829,7 @@ class CommentsResourceApi {
     }
 
 
-    _url = 'activities/' + common_internal.Escaper.ecapeVariable('$activityId') + '/comments';
+    _url = 'activities/' + commons.Escaper.ecapeVariable('$activityId') + '/comments';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -843,11 +844,10 @@ class CommentsResourceApi {
 }
 
 
-/** Not documented yet. */
 class MediaResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  MediaResourceApi(common_internal.ApiRequester client) : 
+  MediaResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -873,18 +873,18 @@ class MediaResourceApi {
    *
    * Completes with a [Media].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Media> insert(Media request, core.String userId, core.String collection, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Media> insert(Media request, core.String userId, core.String collection, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -901,11 +901,11 @@ class MediaResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'people/' + common_internal.Escaper.ecapeVariable('$userId') + '/media/' + common_internal.Escaper.ecapeVariable('$collection');
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/plusDomains/v1/people/' + common_internal.Escaper.ecapeVariable('$userId') + '/media/' + common_internal.Escaper.ecapeVariable('$collection');
+      _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/media/' + commons.Escaper.ecapeVariable('$collection');
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/plusDomains/v1/people/' + commons.Escaper.ecapeVariable('$userId') + '/media/' + commons.Escaper.ecapeVariable('$collection');
     } else {
-      _url = '/upload/plusDomains/v1/people/' + common_internal.Escaper.ecapeVariable('$userId') + '/media/' + common_internal.Escaper.ecapeVariable('$collection');
+      _url = '/upload/plusDomains/v1/people/' + commons.Escaper.ecapeVariable('$userId') + '/media/' + commons.Escaper.ecapeVariable('$collection');
     }
 
 
@@ -922,11 +922,10 @@ class MediaResourceApi {
 }
 
 
-/** Not documented yet. */
 class PeopleResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PeopleResourceApi(common_internal.ApiRequester client) : 
+  PeopleResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -939,7 +938,7 @@ class PeopleResourceApi {
    *
    * Completes with a [Person].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -950,7 +949,7 @@ class PeopleResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -958,7 +957,7 @@ class PeopleResourceApi {
     }
 
 
-    _url = 'people/' + common_internal.Escaper.ecapeVariable('$userId');
+    _url = 'people/' + commons.Escaper.ecapeVariable('$userId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -999,7 +998,7 @@ class PeopleResourceApi {
    *
    * Completes with a [PeopleFeed].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1010,7 +1009,7 @@ class PeopleResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -1030,7 +1029,7 @@ class PeopleResourceApi {
     }
 
 
-    _url = 'people/' + common_internal.Escaper.ecapeVariable('$userId') + '/people/' + common_internal.Escaper.ecapeVariable('$collection');
+    _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/people/' + commons.Escaper.ecapeVariable('$collection');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1067,7 +1066,7 @@ class PeopleResourceApi {
    *
    * Completes with a [PeopleFeed].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1078,7 +1077,7 @@ class PeopleResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (activityId == null) {
@@ -1095,7 +1094,7 @@ class PeopleResourceApi {
     }
 
 
-    _url = 'activities/' + common_internal.Escaper.ecapeVariable('$activityId') + '/people/' + common_internal.Escaper.ecapeVariable('$collection');
+    _url = 'activities/' + commons.Escaper.ecapeVariable('$activityId') + '/people/' + commons.Escaper.ecapeVariable('$collection');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1125,7 +1124,7 @@ class PeopleResourceApi {
    *
    * Completes with a [PeopleFeed].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1136,7 +1135,7 @@ class PeopleResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (circleId == null) {
@@ -1150,7 +1149,7 @@ class PeopleResourceApi {
     }
 
 
-    _url = 'circles/' + common_internal.Escaper.ecapeVariable('$circleId') + '/people';
+    _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId') + '/people';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1166,7 +1165,6 @@ class PeopleResourceApi {
 
 
 
-/** Not documented yet. */
 class Acl {
   /** Description of the access granted, suitable for display. */
   core.String description;
@@ -1554,7 +1552,6 @@ class ActivityObjectAttachmentsImage {
 }
 
 
-/** Not documented yet. */
 class ActivityObjectAttachmentsPreviewThumbnails {
   /** URL of the thumbnail image. */
   core.String url;
@@ -1629,7 +1626,6 @@ class ActivityObjectAttachmentsThumbnailsImage {
 }
 
 
-/** Not documented yet. */
 class ActivityObjectAttachmentsThumbnails {
   /** Potential name of the thumbnail. */
   core.String description;
@@ -1671,7 +1667,6 @@ class ActivityObjectAttachmentsThumbnails {
 }
 
 
-/** Not documented yet. */
 class ActivityObjectAttachments {
   /**
    * If the attachment is an article, this property contains a snippet of text
@@ -2108,7 +2103,6 @@ class ActivityProvider {
 }
 
 
-/** Not documented yet. */
 class Activity {
   /** Identifies who has access to see this activity. */
   Acl access;
@@ -2326,7 +2320,6 @@ class Activity {
 }
 
 
-/** Not documented yet. */
 class ActivityFeed {
   /** ETag of this response for caching purposes. */
   core.String etag;
@@ -2435,7 +2428,6 @@ class ActivityFeed {
 }
 
 
-/** Not documented yet. */
 class Audience {
   /** ETag of this response for caching purposes. */
   core.String etag;
@@ -2505,7 +2497,6 @@ class Audience {
 }
 
 
-/** Not documented yet. */
 class AudiencesFeed {
   /** ETag of this response for caching purposes. */
   core.String etag;
@@ -2599,7 +2590,6 @@ class CirclePeople {
 }
 
 
-/** Not documented yet. */
 class Circle {
   /** The description of this circle. */
   core.String description;
@@ -2677,7 +2667,6 @@ class Circle {
 }
 
 
-/** Not documented yet. */
 class CircleFeed {
   /** ETag of this response for caching purposes. */
   core.String etag;
@@ -2853,7 +2842,6 @@ class CommentActor {
 }
 
 
-/** Not documented yet. */
 class CommentInReplyTo {
   /** The ID of the activity. */
   core.String id;
@@ -2959,7 +2947,6 @@ class CommentPlusoners {
 }
 
 
-/** Not documented yet. */
 class Comment {
   /** The person who posted this comment. */
   CommentActor actor;
@@ -3083,7 +3070,6 @@ class Comment {
 }
 
 
-/** Not documented yet. */
 class CommentFeed {
   /** ETag of this response for caching purposes. */
   core.String etag;
@@ -3283,7 +3269,6 @@ class MediaExif {
 }
 
 
-/** Not documented yet. */
 class Media {
   /** The person who uploaded this media. */
   MediaAuthor author;
@@ -3480,7 +3465,6 @@ class Media {
 }
 
 
-/** Not documented yet. */
 class PeopleFeed {
   /** ETag of this response for caching purposes. */
   core.String etag;
@@ -3700,7 +3684,6 @@ class PersonCover {
 }
 
 
-/** Not documented yet. */
 class PersonEmails {
   /**
    * The type of address. Possible values include, but are not limited to, the
@@ -3848,7 +3831,6 @@ class PersonName {
 }
 
 
-/** Not documented yet. */
 class PersonOrganizations {
   /** The department within the organization. Deprecated. */
   core.String department;
@@ -3954,7 +3936,6 @@ class PersonOrganizations {
 }
 
 
-/** Not documented yet. */
 class PersonPlacesLived {
   /** If "true", this place of residence is this person's primary residence. */
   core.bool primary;
@@ -3990,7 +3971,6 @@ class PersonPlacesLived {
 }
 
 
-/** Not documented yet. */
 class PersonUrls {
   /** The label of the URL. */
   core.String label;
@@ -4039,7 +4019,6 @@ class PersonUrls {
 }
 
 
-/** Not documented yet. */
 class Person {
   /** A short biography for this person. */
   core.String aboutMe;
@@ -4404,7 +4383,6 @@ class PlacePosition {
 }
 
 
-/** Not documented yet. */
 class Place {
   /** The physical address of the place. */
   PlaceAddress address;
@@ -4464,7 +4442,6 @@ class Place {
 }
 
 
-/** Not documented yet. */
 class PlusDomainsAclentryResource {
   /** A descriptive name for this entry. Suitable for display. */
   core.String displayName;
@@ -4519,7 +4496,6 @@ class PlusDomainsAclentryResource {
 }
 
 
-/** Not documented yet. */
 class Videostream {
   /** The height, in pixels, of the video resource. */
   core.int height;
@@ -4568,5 +4544,3 @@ class Videostream {
     return _json;
   }
 }
-
-

@@ -8,22 +8,57 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/adsense/v1_4.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
 
-buildUnnamed1196() {
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
+
+buildUnnamed133() {
   var o = new core.List<api.Account>();
   o.add(buildAccount());
   o.add(buildAccount());
   return o;
 }
 
-checkUnnamed1196(core.List<api.Account> o) {
+checkUnnamed133(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccount(o[0]);
   checkAccount(o[1]);
@@ -38,7 +73,7 @@ buildAccount() {
     o.kind = "foo";
     o.name = "foo";
     o.premium = true;
-    o.subAccounts = buildUnnamed1196();
+    o.subAccounts = buildUnnamed133();
     o.timezone = "foo";
   }
   buildCounterAccount--;
@@ -52,20 +87,20 @@ checkAccount(api.Account o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.premium, unittest.isTrue);
-    checkUnnamed1196(o.subAccounts);
+    checkUnnamed133(o.subAccounts);
     unittest.expect(o.timezone, unittest.equals('foo'));
   }
   buildCounterAccount--;
 }
 
-buildUnnamed1197() {
+buildUnnamed134() {
   var o = new core.List<api.Account>();
   o.add(buildAccount());
   o.add(buildAccount());
   return o;
 }
 
-checkUnnamed1197(core.List<api.Account> o) {
+checkUnnamed134(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccount(o[0]);
   checkAccount(o[1]);
@@ -77,7 +112,7 @@ buildAccounts() {
   buildCounterAccounts++;
   if (buildCounterAccounts < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed1197();
+    o.items = buildUnnamed134();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -89,7 +124,7 @@ checkAccounts(api.Accounts o) {
   buildCounterAccounts++;
   if (buildCounterAccounts < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1197(o.items);
+    checkUnnamed134(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -125,14 +160,14 @@ checkAdClient(api.AdClient o) {
   buildCounterAdClient--;
 }
 
-buildUnnamed1198() {
+buildUnnamed135() {
   var o = new core.List<api.AdClient>();
   o.add(buildAdClient());
   o.add(buildAdClient());
   return o;
 }
 
-checkUnnamed1198(core.List<api.AdClient> o) {
+checkUnnamed135(core.List<api.AdClient> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdClient(o[0]);
   checkAdClient(o[1]);
@@ -144,7 +179,7 @@ buildAdClients() {
   buildCounterAdClients++;
   if (buildCounterAdClients < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed1198();
+    o.items = buildUnnamed135();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -156,7 +191,7 @@ checkAdClients(api.AdClients o) {
   buildCounterAdClients++;
   if (buildCounterAdClients < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1198(o.items);
+    checkUnnamed135(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -390,14 +425,14 @@ checkAdUnit(api.AdUnit o) {
   buildCounterAdUnit--;
 }
 
-buildUnnamed1199() {
+buildUnnamed136() {
   var o = new core.List<api.AdUnit>();
   o.add(buildAdUnit());
   o.add(buildAdUnit());
   return o;
 }
 
-checkUnnamed1199(core.List<api.AdUnit> o) {
+checkUnnamed136(core.List<api.AdUnit> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdUnit(o[0]);
   checkAdUnit(o[1]);
@@ -409,7 +444,7 @@ buildAdUnits() {
   buildCounterAdUnits++;
   if (buildCounterAdUnits < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed1199();
+    o.items = buildUnnamed136();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -421,21 +456,21 @@ checkAdUnits(api.AdUnits o) {
   buildCounterAdUnits++;
   if (buildCounterAdUnits < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1199(o.items);
+    checkUnnamed136(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterAdUnits--;
 }
 
-buildUnnamed1200() {
+buildUnnamed137() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1200(core.List<core.String> o) {
+checkUnnamed137(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -464,66 +499,66 @@ checkAdsenseReportsGenerateResponseHeaders(api.AdsenseReportsGenerateResponseHea
   buildCounterAdsenseReportsGenerateResponseHeaders--;
 }
 
-buildUnnamed1201() {
+buildUnnamed138() {
   var o = new core.List<api.AdsenseReportsGenerateResponseHeaders>();
   o.add(buildAdsenseReportsGenerateResponseHeaders());
   o.add(buildAdsenseReportsGenerateResponseHeaders());
   return o;
 }
 
-checkUnnamed1201(core.List<api.AdsenseReportsGenerateResponseHeaders> o) {
+checkUnnamed138(core.List<api.AdsenseReportsGenerateResponseHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdsenseReportsGenerateResponseHeaders(o[0]);
   checkAdsenseReportsGenerateResponseHeaders(o[1]);
 }
 
-buildUnnamed1202() {
+buildUnnamed139() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1202(core.List<core.String> o) {
+checkUnnamed139(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1203() {
+buildUnnamed140() {
   var o = new core.List<core.List<core.String>>();
-  o.add(buildUnnamed1202());
-  o.add(buildUnnamed1202());
+  o.add(buildUnnamed139());
+  o.add(buildUnnamed139());
   return o;
 }
 
-checkUnnamed1203(core.List<core.List<core.String>> o) {
+checkUnnamed140(core.List<core.List<core.String>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1202(o[0]);
-  checkUnnamed1202(o[1]);
+  checkUnnamed139(o[0]);
+  checkUnnamed139(o[1]);
 }
 
-buildUnnamed1204() {
+buildUnnamed141() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1204(core.List<core.String> o) {
+checkUnnamed141(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1205() {
+buildUnnamed142() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1205(core.List<core.String> o) {
+checkUnnamed142(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -534,15 +569,15 @@ buildAdsenseReportsGenerateResponse() {
   var o = new api.AdsenseReportsGenerateResponse();
   buildCounterAdsenseReportsGenerateResponse++;
   if (buildCounterAdsenseReportsGenerateResponse < 3) {
-    o.averages = buildUnnamed1200();
+    o.averages = buildUnnamed137();
     o.endDate = "foo";
-    o.headers = buildUnnamed1201();
+    o.headers = buildUnnamed138();
     o.kind = "foo";
-    o.rows = buildUnnamed1203();
+    o.rows = buildUnnamed140();
     o.startDate = "foo";
     o.totalMatchedRows = "foo";
-    o.totals = buildUnnamed1204();
-    o.warnings = buildUnnamed1205();
+    o.totals = buildUnnamed141();
+    o.warnings = buildUnnamed142();
   }
   buildCounterAdsenseReportsGenerateResponse--;
   return o;
@@ -551,15 +586,15 @@ buildAdsenseReportsGenerateResponse() {
 checkAdsenseReportsGenerateResponse(api.AdsenseReportsGenerateResponse o) {
   buildCounterAdsenseReportsGenerateResponse++;
   if (buildCounterAdsenseReportsGenerateResponse < 3) {
-    checkUnnamed1200(o.averages);
+    checkUnnamed137(o.averages);
     unittest.expect(o.endDate, unittest.equals('foo'));
-    checkUnnamed1201(o.headers);
+    checkUnnamed138(o.headers);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1203(o.rows);
+    checkUnnamed140(o.rows);
     unittest.expect(o.startDate, unittest.equals('foo'));
     unittest.expect(o.totalMatchedRows, unittest.equals('foo'));
-    checkUnnamed1204(o.totals);
-    checkUnnamed1205(o.warnings);
+    checkUnnamed141(o.totals);
+    checkUnnamed142(o.warnings);
   }
   buildCounterAdsenseReportsGenerateResponse--;
 }
@@ -593,14 +628,14 @@ checkAlert(api.Alert o) {
   buildCounterAlert--;
 }
 
-buildUnnamed1206() {
+buildUnnamed143() {
   var o = new core.List<api.Alert>();
   o.add(buildAlert());
   o.add(buildAlert());
   return o;
 }
 
-checkUnnamed1206(core.List<api.Alert> o) {
+checkUnnamed143(core.List<api.Alert> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAlert(o[0]);
   checkAlert(o[1]);
@@ -611,7 +646,7 @@ buildAlerts() {
   var o = new api.Alerts();
   buildCounterAlerts++;
   if (buildCounterAlerts < 3) {
-    o.items = buildUnnamed1206();
+    o.items = buildUnnamed143();
     o.kind = "foo";
   }
   buildCounterAlerts--;
@@ -621,7 +656,7 @@ buildAlerts() {
 checkAlerts(api.Alerts o) {
   buildCounterAlerts++;
   if (buildCounterAlerts < 3) {
-    checkUnnamed1206(o.items);
+    checkUnnamed143(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAlerts--;
@@ -679,14 +714,14 @@ checkCustomChannel(api.CustomChannel o) {
   buildCounterCustomChannel--;
 }
 
-buildUnnamed1207() {
+buildUnnamed144() {
   var o = new core.List<api.CustomChannel>();
   o.add(buildCustomChannel());
   o.add(buildCustomChannel());
   return o;
 }
 
-checkUnnamed1207(core.List<api.CustomChannel> o) {
+checkUnnamed144(core.List<api.CustomChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomChannel(o[0]);
   checkCustomChannel(o[1]);
@@ -698,7 +733,7 @@ buildCustomChannels() {
   buildCounterCustomChannels++;
   if (buildCounterCustomChannels < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed1207();
+    o.items = buildUnnamed144();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -710,21 +745,21 @@ checkCustomChannels(api.CustomChannels o) {
   buildCounterCustomChannels++;
   if (buildCounterCustomChannels < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1207(o.items);
+    checkUnnamed144(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterCustomChannels--;
 }
 
-buildUnnamed1208() {
+buildUnnamed145() {
   var o = new core.List<api.ReportingMetadataEntry>();
   o.add(buildReportingMetadataEntry());
   o.add(buildReportingMetadataEntry());
   return o;
 }
 
-checkUnnamed1208(core.List<api.ReportingMetadataEntry> o) {
+checkUnnamed145(core.List<api.ReportingMetadataEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportingMetadataEntry(o[0]);
   checkReportingMetadataEntry(o[1]);
@@ -735,7 +770,7 @@ buildMetadata() {
   var o = new api.Metadata();
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
-    o.items = buildUnnamed1208();
+    o.items = buildUnnamed145();
     o.kind = "foo";
   }
   buildCounterMetadata--;
@@ -745,7 +780,7 @@ buildMetadata() {
 checkMetadata(api.Metadata o) {
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
-    checkUnnamed1208(o.items);
+    checkUnnamed145(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterMetadata--;
@@ -778,14 +813,14 @@ checkPayment(api.Payment o) {
   buildCounterPayment--;
 }
 
-buildUnnamed1209() {
+buildUnnamed146() {
   var o = new core.List<api.Payment>();
   o.add(buildPayment());
   o.add(buildPayment());
   return o;
 }
 
-checkUnnamed1209(core.List<api.Payment> o) {
+checkUnnamed146(core.List<api.Payment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPayment(o[0]);
   checkPayment(o[1]);
@@ -796,7 +831,7 @@ buildPayments() {
   var o = new api.Payments();
   buildCounterPayments++;
   if (buildCounterPayments < 3) {
-    o.items = buildUnnamed1209();
+    o.items = buildUnnamed146();
     o.kind = "foo";
   }
   buildCounterPayments--;
@@ -806,72 +841,72 @@ buildPayments() {
 checkPayments(api.Payments o) {
   buildCounterPayments++;
   if (buildCounterPayments < 3) {
-    checkUnnamed1209(o.items);
+    checkUnnamed146(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterPayments--;
 }
 
-buildUnnamed1210() {
+buildUnnamed147() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1210(core.List<core.String> o) {
+checkUnnamed147(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1211() {
+buildUnnamed148() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1211(core.List<core.String> o) {
+checkUnnamed148(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1212() {
+buildUnnamed149() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1212(core.List<core.String> o) {
+checkUnnamed149(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1213() {
+buildUnnamed150() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1213(core.List<core.String> o) {
+checkUnnamed150(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1214() {
+buildUnnamed151() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1214(core.List<core.String> o) {
+checkUnnamed151(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -882,13 +917,13 @@ buildReportingMetadataEntry() {
   var o = new api.ReportingMetadataEntry();
   buildCounterReportingMetadataEntry++;
   if (buildCounterReportingMetadataEntry < 3) {
-    o.compatibleDimensions = buildUnnamed1210();
-    o.compatibleMetrics = buildUnnamed1211();
+    o.compatibleDimensions = buildUnnamed147();
+    o.compatibleMetrics = buildUnnamed148();
     o.id = "foo";
     o.kind = "foo";
-    o.requiredDimensions = buildUnnamed1212();
-    o.requiredMetrics = buildUnnamed1213();
-    o.supportedProducts = buildUnnamed1214();
+    o.requiredDimensions = buildUnnamed149();
+    o.requiredMetrics = buildUnnamed150();
+    o.supportedProducts = buildUnnamed151();
   }
   buildCounterReportingMetadataEntry--;
   return o;
@@ -897,13 +932,13 @@ buildReportingMetadataEntry() {
 checkReportingMetadataEntry(api.ReportingMetadataEntry o) {
   buildCounterReportingMetadataEntry++;
   if (buildCounterReportingMetadataEntry < 3) {
-    checkUnnamed1210(o.compatibleDimensions);
-    checkUnnamed1211(o.compatibleMetrics);
+    checkUnnamed147(o.compatibleDimensions);
+    checkUnnamed148(o.compatibleMetrics);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1212(o.requiredDimensions);
-    checkUnnamed1213(o.requiredMetrics);
-    checkUnnamed1214(o.supportedProducts);
+    checkUnnamed149(o.requiredDimensions);
+    checkUnnamed150(o.requiredMetrics);
+    checkUnnamed151(o.supportedProducts);
   }
   buildCounterReportingMetadataEntry--;
 }
@@ -933,14 +968,14 @@ checkSavedAdStyle(api.SavedAdStyle o) {
   buildCounterSavedAdStyle--;
 }
 
-buildUnnamed1215() {
+buildUnnamed152() {
   var o = new core.List<api.SavedAdStyle>();
   o.add(buildSavedAdStyle());
   o.add(buildSavedAdStyle());
   return o;
 }
 
-checkUnnamed1215(core.List<api.SavedAdStyle> o) {
+checkUnnamed152(core.List<api.SavedAdStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSavedAdStyle(o[0]);
   checkSavedAdStyle(o[1]);
@@ -952,7 +987,7 @@ buildSavedAdStyles() {
   buildCounterSavedAdStyles++;
   if (buildCounterSavedAdStyles < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed1215();
+    o.items = buildUnnamed152();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -964,7 +999,7 @@ checkSavedAdStyles(api.SavedAdStyles o) {
   buildCounterSavedAdStyles++;
   if (buildCounterSavedAdStyles < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1215(o.items);
+    checkUnnamed152(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -994,14 +1029,14 @@ checkSavedReport(api.SavedReport o) {
   buildCounterSavedReport--;
 }
 
-buildUnnamed1216() {
+buildUnnamed153() {
   var o = new core.List<api.SavedReport>();
   o.add(buildSavedReport());
   o.add(buildSavedReport());
   return o;
 }
 
-checkUnnamed1216(core.List<api.SavedReport> o) {
+checkUnnamed153(core.List<api.SavedReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSavedReport(o[0]);
   checkSavedReport(o[1]);
@@ -1013,7 +1048,7 @@ buildSavedReports() {
   buildCounterSavedReports++;
   if (buildCounterSavedReports < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed1216();
+    o.items = buildUnnamed153();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -1025,7 +1060,7 @@ checkSavedReports(api.SavedReports o) {
   buildCounterSavedReports++;
   if (buildCounterSavedReports < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1216(o.items);
+    checkUnnamed153(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -1055,14 +1090,14 @@ checkUrlChannel(api.UrlChannel o) {
   buildCounterUrlChannel--;
 }
 
-buildUnnamed1217() {
+buildUnnamed154() {
   var o = new core.List<api.UrlChannel>();
   o.add(buildUrlChannel());
   o.add(buildUrlChannel());
   return o;
 }
 
-checkUnnamed1217(core.List<api.UrlChannel> o) {
+checkUnnamed154(core.List<api.UrlChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlChannel(o[0]);
   checkUrlChannel(o[1]);
@@ -1074,7 +1109,7 @@ buildUrlChannels() {
   buildCounterUrlChannels++;
   if (buildCounterUrlChannels < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed1217();
+    o.items = buildUnnamed154();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -1086,125 +1121,125 @@ checkUrlChannels(api.UrlChannels o) {
   buildCounterUrlChannels++;
   if (buildCounterUrlChannels < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1217(o.items);
+    checkUnnamed154(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterUrlChannels--;
 }
 
-buildUnnamed1218() {
+buildUnnamed155() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1218(core.List<core.String> o) {
+checkUnnamed155(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1219() {
+buildUnnamed156() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1219(core.List<core.String> o) {
+checkUnnamed156(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1220() {
+buildUnnamed157() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1220(core.List<core.String> o) {
+checkUnnamed157(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1221() {
+buildUnnamed158() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1221(core.List<core.String> o) {
+checkUnnamed158(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1222() {
+buildUnnamed159() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1222(core.List<core.String> o) {
+checkUnnamed159(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1223() {
+buildUnnamed160() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1223(core.List<core.String> o) {
+checkUnnamed160(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1224() {
+buildUnnamed161() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1224(core.List<core.String> o) {
+checkUnnamed161(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1225() {
+buildUnnamed162() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1225(core.List<core.String> o) {
+checkUnnamed162(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1226() {
+buildUnnamed163() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1226(core.List<core.String> o) {
+checkUnnamed163(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1494,7 +1529,7 @@ main() {
   unittest.group("resource-AccountsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsResourceApi res = new api.AdsenseApi(mock).accounts;
       var arg_accountId = "foo";
       var arg_tree = true;
@@ -1536,7 +1571,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAccount());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_accountId, tree: arg_tree).then(unittest.expectAsync(((api.Account response) {
         checkAccount(response);
@@ -1545,7 +1580,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsResourceApi res = new api.AdsenseApi(mock).accounts;
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
@@ -1585,7 +1620,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAccounts());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.Accounts response) {
         checkAccounts(response);
@@ -1598,7 +1633,7 @@ main() {
   unittest.group("resource-AccountsAdclientsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsAdclientsResourceApi res = new api.AdsenseApi(mock).accounts.adclients;
       var arg_accountId = "foo";
       var arg_maxResults = 42;
@@ -1646,7 +1681,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdClients());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.AdClients response) {
         checkAdClients(response);
@@ -1659,7 +1694,7 @@ main() {
   unittest.group("resource-AccountsAdunitsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsAdunitsResourceApi res = new api.AdsenseApi(mock).accounts.adunits;
       var arg_accountId = "foo";
       var arg_adClientId = "foo";
@@ -1715,7 +1750,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdUnit());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_accountId, arg_adClientId, arg_adUnitId).then(unittest.expectAsync(((api.AdUnit response) {
         checkAdUnit(response);
@@ -1724,7 +1759,7 @@ main() {
 
     unittest.test("method--getAdCode", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsAdunitsResourceApi res = new api.AdsenseApi(mock).accounts.adunits;
       var arg_accountId = "foo";
       var arg_adClientId = "foo";
@@ -1784,7 +1819,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdCode());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.getAdCode(arg_accountId, arg_adClientId, arg_adUnitId).then(unittest.expectAsync(((api.AdCode response) {
         checkAdCode(response);
@@ -1793,7 +1828,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsAdunitsResourceApi res = new api.AdsenseApi(mock).accounts.adunits;
       var arg_accountId = "foo";
       var arg_adClientId = "foo";
@@ -1851,7 +1886,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdUnits());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, arg_adClientId, includeInactive: arg_includeInactive, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.AdUnits response) {
         checkAdUnits(response);
@@ -1864,7 +1899,7 @@ main() {
   unittest.group("resource-AccountsAdunitsCustomchannelsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsAdunitsCustomchannelsResourceApi res = new api.AdsenseApi(mock).accounts.adunits.customchannels;
       var arg_accountId = "foo";
       var arg_adClientId = "foo";
@@ -1928,7 +1963,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCustomChannels());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, arg_adClientId, arg_adUnitId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.CustomChannels response) {
         checkCustomChannels(response);
@@ -1941,7 +1976,7 @@ main() {
   unittest.group("resource-AccountsAlertsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsAlertsResourceApi res = new api.AdsenseApi(mock).accounts.alerts;
       var arg_accountId = "foo";
       var arg_alertId = "foo";
@@ -1989,14 +2024,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_accountId, arg_alertId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsAlertsResourceApi res = new api.AdsenseApi(mock).accounts.alerts;
       var arg_accountId = "foo";
       var arg_locale = "foo";
@@ -2042,7 +2077,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAlerts());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, locale: arg_locale).then(unittest.expectAsync(((api.Alerts response) {
         checkAlerts(response);
@@ -2055,7 +2090,7 @@ main() {
   unittest.group("resource-AccountsCustomchannelsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsCustomchannelsResourceApi res = new api.AdsenseApi(mock).accounts.customchannels;
       var arg_accountId = "foo";
       var arg_adClientId = "foo";
@@ -2111,7 +2146,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCustomChannel());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_accountId, arg_adClientId, arg_customChannelId).then(unittest.expectAsync(((api.CustomChannel response) {
         checkCustomChannel(response);
@@ -2120,7 +2155,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsCustomchannelsResourceApi res = new api.AdsenseApi(mock).accounts.customchannels;
       var arg_accountId = "foo";
       var arg_adClientId = "foo";
@@ -2176,7 +2211,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCustomChannels());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, arg_adClientId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.CustomChannels response) {
         checkCustomChannels(response);
@@ -2189,7 +2224,7 @@ main() {
   unittest.group("resource-AccountsCustomchannelsAdunitsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsCustomchannelsAdunitsResourceApi res = new api.AdsenseApi(mock).accounts.customchannels.adunits;
       var arg_accountId = "foo";
       var arg_adClientId = "foo";
@@ -2255,7 +2290,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdUnits());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, arg_adClientId, arg_customChannelId, includeInactive: arg_includeInactive, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.AdUnits response) {
         checkAdUnits(response);
@@ -2268,7 +2303,7 @@ main() {
   unittest.group("resource-AccountsPaymentsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsPaymentsResourceApi res = new api.AdsenseApi(mock).accounts.payments;
       var arg_accountId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2312,7 +2347,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPayments());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId).then(unittest.expectAsync(((api.Payments response) {
         checkPayments(response);
@@ -2327,18 +2362,18 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsReportsResourceApi res = new api.AdsenseApi(mock).accounts.reports;
       var arg_accountId = "foo";
       var arg_startDate = "foo";
       var arg_endDate = "foo";
       var arg_currency = "foo";
-      var arg_dimension = buildUnnamed1218();
-      var arg_filter = buildUnnamed1219();
+      var arg_dimension = buildUnnamed155();
+      var arg_filter = buildUnnamed156();
       var arg_locale = "foo";
       var arg_maxResults = 42;
-      var arg_metric = buildUnnamed1220();
-      var arg_sort = buildUnnamed1221();
+      var arg_metric = buildUnnamed157();
+      var arg_sort = buildUnnamed158();
       var arg_startIndex = 42;
       var arg_useTimezoneReporting = true;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2393,7 +2428,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdsenseReportsGenerateResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.generate(arg_accountId, arg_startDate, arg_endDate, currency: arg_currency, dimension: arg_dimension, filter: arg_filter, locale: arg_locale, maxResults: arg_maxResults, metric: arg_metric, sort: arg_sort, startIndex: arg_startIndex, useTimezoneReporting: arg_useTimezoneReporting).then(unittest.expectAsync(((api.AdsenseReportsGenerateResponse response) {
         checkAdsenseReportsGenerateResponse(response);
@@ -2406,7 +2441,7 @@ main() {
   unittest.group("resource-AccountsReportsSavedResourceApi", () {
     unittest.test("method--generate", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsReportsSavedResourceApi res = new api.AdsenseApi(mock).accounts.reports.saved;
       var arg_accountId = "foo";
       var arg_savedReportId = "foo";
@@ -2460,7 +2495,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdsenseReportsGenerateResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.generate(arg_accountId, arg_savedReportId, locale: arg_locale, maxResults: arg_maxResults, startIndex: arg_startIndex).then(unittest.expectAsync(((api.AdsenseReportsGenerateResponse response) {
         checkAdsenseReportsGenerateResponse(response);
@@ -2469,7 +2504,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsReportsSavedResourceApi res = new api.AdsenseApi(mock).accounts.reports.saved;
       var arg_accountId = "foo";
       var arg_maxResults = 42;
@@ -2517,7 +2552,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSavedReports());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.SavedReports response) {
         checkSavedReports(response);
@@ -2530,7 +2565,7 @@ main() {
   unittest.group("resource-AccountsSavedadstylesResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsSavedadstylesResourceApi res = new api.AdsenseApi(mock).accounts.savedadstyles;
       var arg_accountId = "foo";
       var arg_savedAdStyleId = "foo";
@@ -2578,7 +2613,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSavedAdStyle());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_accountId, arg_savedAdStyleId).then(unittest.expectAsync(((api.SavedAdStyle response) {
         checkSavedAdStyle(response);
@@ -2587,7 +2622,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsSavedadstylesResourceApi res = new api.AdsenseApi(mock).accounts.savedadstyles;
       var arg_accountId = "foo";
       var arg_maxResults = 42;
@@ -2635,7 +2670,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSavedAdStyles());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.SavedAdStyles response) {
         checkSavedAdStyles(response);
@@ -2648,7 +2683,7 @@ main() {
   unittest.group("resource-AccountsUrlchannelsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsUrlchannelsResourceApi res = new api.AdsenseApi(mock).accounts.urlchannels;
       var arg_accountId = "foo";
       var arg_adClientId = "foo";
@@ -2704,7 +2739,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUrlChannels());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, arg_adClientId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.UrlChannels response) {
         checkUrlChannels(response);
@@ -2717,7 +2752,7 @@ main() {
   unittest.group("resource-AdclientsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AdclientsResourceApi res = new api.AdsenseApi(mock).adclients;
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
@@ -2757,7 +2792,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdClients());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.AdClients response) {
         checkAdClients(response);
@@ -2770,7 +2805,7 @@ main() {
   unittest.group("resource-AdunitsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AdunitsResourceApi res = new api.AdsenseApi(mock).adunits;
       var arg_adClientId = "foo";
       var arg_adUnitId = "foo";
@@ -2818,7 +2853,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdUnit());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_adClientId, arg_adUnitId).then(unittest.expectAsync(((api.AdUnit response) {
         checkAdUnit(response);
@@ -2827,7 +2862,7 @@ main() {
 
     unittest.test("method--getAdCode", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AdunitsResourceApi res = new api.AdsenseApi(mock).adunits;
       var arg_adClientId = "foo";
       var arg_adUnitId = "foo";
@@ -2879,7 +2914,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdCode());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.getAdCode(arg_adClientId, arg_adUnitId).then(unittest.expectAsync(((api.AdCode response) {
         checkAdCode(response);
@@ -2888,7 +2923,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AdunitsResourceApi res = new api.AdsenseApi(mock).adunits;
       var arg_adClientId = "foo";
       var arg_includeInactive = true;
@@ -2938,7 +2973,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdUnits());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_adClientId, includeInactive: arg_includeInactive, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.AdUnits response) {
         checkAdUnits(response);
@@ -2951,7 +2986,7 @@ main() {
   unittest.group("resource-AdunitsCustomchannelsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AdunitsCustomchannelsResourceApi res = new api.AdsenseApi(mock).adunits.customchannels;
       var arg_adClientId = "foo";
       var arg_adUnitId = "foo";
@@ -3007,7 +3042,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCustomChannels());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_adClientId, arg_adUnitId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.CustomChannels response) {
         checkCustomChannels(response);
@@ -3020,7 +3055,7 @@ main() {
   unittest.group("resource-AlertsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AlertsResourceApi res = new api.AdsenseApi(mock).alerts;
       var arg_alertId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3060,14 +3095,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_alertId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AlertsResourceApi res = new api.AdsenseApi(mock).alerts;
       var arg_locale = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3105,7 +3140,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAlerts());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(locale: arg_locale).then(unittest.expectAsync(((api.Alerts response) {
         checkAlerts(response);
@@ -3118,7 +3153,7 @@ main() {
   unittest.group("resource-CustomchannelsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CustomchannelsResourceApi res = new api.AdsenseApi(mock).customchannels;
       var arg_adClientId = "foo";
       var arg_customChannelId = "foo";
@@ -3166,7 +3201,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCustomChannel());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_adClientId, arg_customChannelId).then(unittest.expectAsync(((api.CustomChannel response) {
         checkCustomChannel(response);
@@ -3175,7 +3210,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CustomchannelsResourceApi res = new api.AdsenseApi(mock).customchannels;
       var arg_adClientId = "foo";
       var arg_maxResults = 42;
@@ -3223,7 +3258,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCustomChannels());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_adClientId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.CustomChannels response) {
         checkCustomChannels(response);
@@ -3236,7 +3271,7 @@ main() {
   unittest.group("resource-CustomchannelsAdunitsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CustomchannelsAdunitsResourceApi res = new api.AdsenseApi(mock).customchannels.adunits;
       var arg_adClientId = "foo";
       var arg_customChannelId = "foo";
@@ -3294,7 +3329,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdUnits());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_adClientId, arg_customChannelId, includeInactive: arg_includeInactive, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.AdUnits response) {
         checkAdUnits(response);
@@ -3307,7 +3342,7 @@ main() {
   unittest.group("resource-MetadataDimensionsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MetadataDimensionsResourceApi res = new api.AdsenseApi(mock).metadata.dimensions;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3343,7 +3378,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMetadata());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list().then(unittest.expectAsync(((api.Metadata response) {
         checkMetadata(response);
@@ -3356,7 +3391,7 @@ main() {
   unittest.group("resource-MetadataMetricsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MetadataMetricsResourceApi res = new api.AdsenseApi(mock).metadata.metrics;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3392,7 +3427,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMetadata());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list().then(unittest.expectAsync(((api.Metadata response) {
         checkMetadata(response);
@@ -3405,7 +3440,7 @@ main() {
   unittest.group("resource-PaymentsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PaymentsResourceApi res = new api.AdsenseApi(mock).payments;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3441,7 +3476,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPayments());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list().then(unittest.expectAsync(((api.Payments response) {
         checkPayments(response);
@@ -3456,18 +3491,18 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ReportsResourceApi res = new api.AdsenseApi(mock).reports;
       var arg_startDate = "foo";
       var arg_endDate = "foo";
-      var arg_accountId = buildUnnamed1222();
+      var arg_accountId = buildUnnamed159();
       var arg_currency = "foo";
-      var arg_dimension = buildUnnamed1223();
-      var arg_filter = buildUnnamed1224();
+      var arg_dimension = buildUnnamed160();
+      var arg_filter = buildUnnamed161();
       var arg_locale = "foo";
       var arg_maxResults = 42;
-      var arg_metric = buildUnnamed1225();
-      var arg_sort = buildUnnamed1226();
+      var arg_metric = buildUnnamed162();
+      var arg_sort = buildUnnamed163();
       var arg_startIndex = 42;
       var arg_useTimezoneReporting = true;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3516,7 +3551,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdsenseReportsGenerateResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.generate(arg_startDate, arg_endDate, accountId: arg_accountId, currency: arg_currency, dimension: arg_dimension, filter: arg_filter, locale: arg_locale, maxResults: arg_maxResults, metric: arg_metric, sort: arg_sort, startIndex: arg_startIndex, useTimezoneReporting: arg_useTimezoneReporting).then(unittest.expectAsync(((api.AdsenseReportsGenerateResponse response) {
         checkAdsenseReportsGenerateResponse(response);
@@ -3529,7 +3564,7 @@ main() {
   unittest.group("resource-ReportsSavedResourceApi", () {
     unittest.test("method--generate", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ReportsSavedResourceApi res = new api.AdsenseApi(mock).reports.saved;
       var arg_savedReportId = "foo";
       var arg_locale = "foo";
@@ -3575,7 +3610,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdsenseReportsGenerateResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.generate(arg_savedReportId, locale: arg_locale, maxResults: arg_maxResults, startIndex: arg_startIndex).then(unittest.expectAsync(((api.AdsenseReportsGenerateResponse response) {
         checkAdsenseReportsGenerateResponse(response);
@@ -3584,7 +3619,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ReportsSavedResourceApi res = new api.AdsenseApi(mock).reports.saved;
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
@@ -3624,7 +3659,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSavedReports());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.SavedReports response) {
         checkSavedReports(response);
@@ -3637,7 +3672,7 @@ main() {
   unittest.group("resource-SavedadstylesResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SavedadstylesResourceApi res = new api.AdsenseApi(mock).savedadstyles;
       var arg_savedAdStyleId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3677,7 +3712,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSavedAdStyle());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_savedAdStyleId).then(unittest.expectAsync(((api.SavedAdStyle response) {
         checkSavedAdStyle(response);
@@ -3686,7 +3721,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SavedadstylesResourceApi res = new api.AdsenseApi(mock).savedadstyles;
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
@@ -3726,7 +3761,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSavedAdStyles());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.SavedAdStyles response) {
         checkSavedAdStyles(response);
@@ -3739,7 +3774,7 @@ main() {
   unittest.group("resource-UrlchannelsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UrlchannelsResourceApi res = new api.AdsenseApi(mock).urlchannels;
       var arg_adClientId = "foo";
       var arg_maxResults = 42;
@@ -3787,7 +3822,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUrlChannels());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_adClientId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.UrlChannels response) {
         checkUrlChannels(response);

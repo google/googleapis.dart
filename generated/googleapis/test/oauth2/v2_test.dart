@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/oauth2/v2.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterJwkKeys = 0;
 buildJwkKeys() {
@@ -45,14 +80,14 @@ checkJwkKeys(api.JwkKeys o) {
   buildCounterJwkKeys--;
 }
 
-buildUnnamed1383() {
+buildUnnamed1233() {
   var o = new core.List<api.JwkKeys>();
   o.add(buildJwkKeys());
   o.add(buildJwkKeys());
   return o;
 }
 
-checkUnnamed1383(core.List<api.JwkKeys> o) {
+checkUnnamed1233(core.List<api.JwkKeys> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJwkKeys(o[0]);
   checkJwkKeys(o[1]);
@@ -63,7 +98,7 @@ buildJwk() {
   var o = new api.Jwk();
   buildCounterJwk++;
   if (buildCounterJwk < 3) {
-    o.keys = buildUnnamed1383();
+    o.keys = buildUnnamed1233();
   }
   buildCounterJwk--;
   return o;
@@ -72,7 +107,7 @@ buildJwk() {
 checkJwk(api.Jwk o) {
   buildCounterJwk++;
   if (buildCounterJwk < 3) {
-    checkUnnamed1383(o.keys);
+    checkUnnamed1233(o.keys);
   }
   buildCounterJwk--;
 }
@@ -88,6 +123,7 @@ buildTokeninfo() {
     o.expiresIn = 42;
     o.issuedTo = "foo";
     o.scope = "foo";
+    o.tokenHandle = "foo";
     o.userId = "foo";
     o.verifiedEmail = true;
   }
@@ -104,6 +140,7 @@ checkTokeninfo(api.Tokeninfo o) {
     unittest.expect(o.expiresIn, unittest.equals(42));
     unittest.expect(o.issuedTo, unittest.equals('foo'));
     unittest.expect(o.scope, unittest.equals('foo'));
+    unittest.expect(o.tokenHandle, unittest.equals('foo'));
     unittest.expect(o.userId, unittest.equals('foo'));
     unittest.expect(o.verifiedEmail, unittest.isTrue);
   }
@@ -190,7 +227,7 @@ main() {
   unittest.group("resource-Oauth2Api", () {
     unittest.test("method--getCertForOpenIdConnect", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.Oauth2Api res = new api.Oauth2Api(mock);
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -224,7 +261,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildJwk());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.getCertForOpenIdConnect().then(unittest.expectAsync(((api.Jwk response) {
         checkJwk(response);
@@ -233,10 +270,11 @@ main() {
 
     unittest.test("method--tokeninfo", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.Oauth2Api res = new api.Oauth2Api(mock);
       var arg_accessToken = "foo";
       var arg_idToken = "foo";
+      var arg_tokenHandle = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -265,15 +303,16 @@ main() {
         }
         unittest.expect(queryMap["access_token"].first, unittest.equals(arg_accessToken));
         unittest.expect(queryMap["id_token"].first, unittest.equals(arg_idToken));
+        unittest.expect(queryMap["token_handle"].first, unittest.equals(arg_tokenHandle));
 
 
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTokeninfo());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.tokeninfo(accessToken: arg_accessToken, idToken: arg_idToken).then(unittest.expectAsync(((api.Tokeninfo response) {
+      res.tokeninfo(accessToken: arg_accessToken, idToken: arg_idToken, tokenHandle: arg_tokenHandle).then(unittest.expectAsync(((api.Tokeninfo response) {
         checkTokeninfo(response);
       })));
     });
@@ -284,7 +323,7 @@ main() {
   unittest.group("resource-UserinfoResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UserinfoResourceApi res = new api.Oauth2Api(mock).userinfo;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -318,7 +357,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUserinfoplus());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get().then(unittest.expectAsync(((api.Userinfoplus response) {
         checkUserinfoplus(response);
@@ -331,7 +370,7 @@ main() {
   unittest.group("resource-UserinfoV2MeResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UserinfoV2MeResourceApi res = new api.Oauth2Api(mock).userinfo.v2.me;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -365,7 +404,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUserinfoplus());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get().then(unittest.expectAsync(((api.Userinfoplus response) {
         checkUserinfoplus(response);

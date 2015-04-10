@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.coordinate.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client coordinate/v1';
 
 /** Lets you view and manage jobs in a Coordinate team. */
 class CoordinateApi {
@@ -22,7 +25,7 @@ class CoordinateApi {
   static const CoordinateReadonlyScope = "https://www.googleapis.com/auth/coordinate.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   CustomFieldDefResourceApi get customFieldDef => new CustomFieldDefResourceApi(_requester);
   JobsResourceApi get jobs => new JobsResourceApi(_requester);
@@ -32,15 +35,14 @@ class CoordinateApi {
   WorkerResourceApi get worker => new WorkerResourceApi(_requester);
 
   CoordinateApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "coordinate/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class CustomFieldDefResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CustomFieldDefResourceApi(common_internal.ApiRequester client) : 
+  CustomFieldDefResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -52,7 +54,7 @@ class CustomFieldDefResourceApi {
    *
    * Completes with a [CustomFieldDefListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -63,7 +65,7 @@ class CustomFieldDefResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (teamId == null) {
@@ -71,7 +73,7 @@ class CustomFieldDefResourceApi {
     }
 
 
-    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/custom_fields';
+    _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/custom_fields';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -86,11 +88,10 @@ class CustomFieldDefResourceApi {
 }
 
 
-/** Not documented yet. */
 class JobsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  JobsResourceApi(common_internal.ApiRequester client) : 
+  JobsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -104,7 +105,7 @@ class JobsResourceApi {
    *
    * Completes with a [Job].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -115,7 +116,7 @@ class JobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (teamId == null) {
@@ -126,7 +127,7 @@ class JobsResourceApi {
     }
 
 
-    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId');
+    _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -172,7 +173,7 @@ class JobsResourceApi {
    *
    * Completes with a [Job].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -183,7 +184,7 @@ class JobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -225,7 +226,7 @@ class JobsResourceApi {
     }
 
 
-    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs';
+    _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -253,7 +254,7 @@ class JobsResourceApi {
    *
    * Completes with a [JobListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -264,7 +265,7 @@ class JobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (teamId == null) {
@@ -281,7 +282,7 @@ class JobsResourceApi {
     }
 
 
-    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs';
+    _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -338,7 +339,7 @@ class JobsResourceApi {
    *
    * Completes with a [Job].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -349,7 +350,7 @@ class JobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -393,7 +394,7 @@ class JobsResourceApi {
     }
 
 
-    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId');
+    _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -449,7 +450,7 @@ class JobsResourceApi {
    *
    * Completes with a [Job].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -460,7 +461,7 @@ class JobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -504,7 +505,7 @@ class JobsResourceApi {
     }
 
 
-    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId');
+    _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -519,11 +520,10 @@ class JobsResourceApi {
 }
 
 
-/** Not documented yet. */
 class LocationResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  LocationResourceApi(common_internal.ApiRequester client) : 
+  LocationResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -543,7 +543,7 @@ class LocationResourceApi {
    *
    * Completes with a [LocationListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -554,7 +554,7 @@ class LocationResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (teamId == null) {
@@ -575,7 +575,7 @@ class LocationResourceApi {
     }
 
 
-    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/workers/' + common_internal.Escaper.ecapeVariable('$workerEmail') + '/locations';
+    _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/workers/' + commons.Escaper.ecapeVariable('$workerEmail') + '/locations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -590,11 +590,10 @@ class LocationResourceApi {
 }
 
 
-/** Not documented yet. */
 class ScheduleResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ScheduleResourceApi(common_internal.ApiRequester client) : 
+  ScheduleResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -608,7 +607,7 @@ class ScheduleResourceApi {
    *
    * Completes with a [Schedule].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -619,7 +618,7 @@ class ScheduleResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (teamId == null) {
@@ -630,7 +629,7 @@ class ScheduleResourceApi {
     }
 
 
-    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId') + '/schedule';
+    _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/schedule';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -665,7 +664,7 @@ class ScheduleResourceApi {
    *
    * Completes with a [Schedule].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -676,7 +675,7 @@ class ScheduleResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -702,7 +701,7 @@ class ScheduleResourceApi {
     }
 
 
-    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId') + '/schedule';
+    _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/schedule';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -736,7 +735,7 @@ class ScheduleResourceApi {
    *
    * Completes with a [Schedule].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -747,7 +746,7 @@ class ScheduleResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -773,7 +772,7 @@ class ScheduleResourceApi {
     }
 
 
-    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId') + '/schedule';
+    _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/schedule';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -788,11 +787,10 @@ class ScheduleResourceApi {
 }
 
 
-/** Not documented yet. */
 class TeamResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TeamResourceApi(common_internal.ApiRequester client) : 
+  TeamResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -809,7 +807,7 @@ class TeamResourceApi {
    *
    * Completes with a [TeamListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -820,7 +818,7 @@ class TeamResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (admin != null) {
@@ -849,11 +847,10 @@ class TeamResourceApi {
 }
 
 
-/** Not documented yet. */
 class WorkerResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  WorkerResourceApi(common_internal.ApiRequester client) : 
+  WorkerResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -865,7 +862,7 @@ class WorkerResourceApi {
    *
    * Completes with a [WorkerListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -876,7 +873,7 @@ class WorkerResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (teamId == null) {
@@ -884,7 +881,7 @@ class WorkerResourceApi {
     }
 
 
-    _url = 'teams/' + common_internal.Escaper.ecapeVariable('$teamId') + '/workers';
+    _url = 'teams/' + commons.Escaper.ecapeVariable('$teamId') + '/workers';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1790,5 +1787,3 @@ class WorkerListResponse {
     return _json;
   }
 }
-
-

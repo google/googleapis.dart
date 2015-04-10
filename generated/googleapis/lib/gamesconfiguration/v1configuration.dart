@@ -1,17 +1,22 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.gamesConfiguration.v1configuration;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client gamesConfiguration/v1configuration';
 
 /** The Publishing API for Google Play Game Services. */
 class GamesConfigurationApi {
@@ -19,22 +24,21 @@ class GamesConfigurationApi {
   static const AndroidpublisherScope = "https://www.googleapis.com/auth/androidpublisher";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AchievementConfigurationsResourceApi get achievementConfigurations => new AchievementConfigurationsResourceApi(_requester);
   ImageConfigurationsResourceApi get imageConfigurations => new ImageConfigurationsResourceApi(_requester);
   LeaderboardConfigurationsResourceApi get leaderboardConfigurations => new LeaderboardConfigurationsResourceApi(_requester);
 
   GamesConfigurationApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "games/v1configuration/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class AchievementConfigurationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AchievementConfigurationsResourceApi(common_internal.ApiRequester client) : 
+  AchievementConfigurationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -44,7 +48,7 @@ class AchievementConfigurationsResourceApi {
    *
    * [achievementId] - The ID of the achievement used by this method.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -55,7 +59,7 @@ class AchievementConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (achievementId == null) {
@@ -64,7 +68,7 @@ class AchievementConfigurationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'achievements/' + common_internal.Escaper.ecapeVariable('$achievementId');
+    _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -85,7 +89,7 @@ class AchievementConfigurationsResourceApi {
    *
    * Completes with a [AchievementConfiguration].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -96,7 +100,7 @@ class AchievementConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (achievementId == null) {
@@ -104,7 +108,7 @@ class AchievementConfigurationsResourceApi {
     }
 
 
-    _url = 'achievements/' + common_internal.Escaper.ecapeVariable('$achievementId');
+    _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -128,7 +132,7 @@ class AchievementConfigurationsResourceApi {
    *
    * Completes with a [AchievementConfiguration].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -139,7 +143,7 @@ class AchievementConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -150,7 +154,7 @@ class AchievementConfigurationsResourceApi {
     }
 
 
-    _url = 'applications/' + common_internal.Escaper.ecapeVariable('$applicationId') + '/achievements';
+    _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId') + '/achievements';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -179,7 +183,7 @@ class AchievementConfigurationsResourceApi {
    *
    * Completes with a [AchievementConfigurationListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -190,7 +194,7 @@ class AchievementConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (applicationId == null) {
@@ -204,7 +208,7 @@ class AchievementConfigurationsResourceApi {
     }
 
 
-    _url = 'applications/' + common_internal.Escaper.ecapeVariable('$applicationId') + '/achievements';
+    _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId') + '/achievements';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -228,7 +232,7 @@ class AchievementConfigurationsResourceApi {
    *
    * Completes with a [AchievementConfiguration].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -239,7 +243,7 @@ class AchievementConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -250,7 +254,7 @@ class AchievementConfigurationsResourceApi {
     }
 
 
-    _url = 'achievements/' + common_internal.Escaper.ecapeVariable('$achievementId');
+    _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -273,7 +277,7 @@ class AchievementConfigurationsResourceApi {
    *
    * Completes with a [AchievementConfiguration].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -284,7 +288,7 @@ class AchievementConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -295,7 +299,7 @@ class AchievementConfigurationsResourceApi {
     }
 
 
-    _url = 'achievements/' + common_internal.Escaper.ecapeVariable('$achievementId');
+    _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -310,11 +314,10 @@ class AchievementConfigurationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ImageConfigurationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ImageConfigurationsResourceApi(common_internal.ApiRequester client) : 
+  ImageConfigurationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -336,18 +339,18 @@ class ImageConfigurationsResourceApi {
    *
    * Completes with a [ImageConfiguration].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<ImageConfiguration> upload(core.String resourceId, core.String imageType, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<ImageConfiguration> upload(core.String resourceId, core.String imageType, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (resourceId == null) {
@@ -361,11 +364,11 @@ class ImageConfigurationsResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'images/' + common_internal.Escaper.ecapeVariable('$resourceId') + '/imageType/' + common_internal.Escaper.ecapeVariable('$imageType');
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/games/v1configuration/images/' + common_internal.Escaper.ecapeVariable('$resourceId') + '/imageType/' + common_internal.Escaper.ecapeVariable('$imageType');
+      _url = 'images/' + commons.Escaper.ecapeVariable('$resourceId') + '/imageType/' + commons.Escaper.ecapeVariable('$imageType');
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/games/v1configuration/images/' + commons.Escaper.ecapeVariable('$resourceId') + '/imageType/' + commons.Escaper.ecapeVariable('$imageType');
     } else {
-      _url = '/upload/games/v1configuration/images/' + common_internal.Escaper.ecapeVariable('$resourceId') + '/imageType/' + common_internal.Escaper.ecapeVariable('$imageType');
+      _url = '/upload/games/v1configuration/images/' + commons.Escaper.ecapeVariable('$resourceId') + '/imageType/' + commons.Escaper.ecapeVariable('$imageType');
     }
 
 
@@ -382,11 +385,10 @@ class ImageConfigurationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class LeaderboardConfigurationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  LeaderboardConfigurationsResourceApi(common_internal.ApiRequester client) : 
+  LeaderboardConfigurationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -396,7 +398,7 @@ class LeaderboardConfigurationsResourceApi {
    *
    * [leaderboardId] - The ID of the leaderboard.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -407,7 +409,7 @@ class LeaderboardConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (leaderboardId == null) {
@@ -416,7 +418,7 @@ class LeaderboardConfigurationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'leaderboards/' + common_internal.Escaper.ecapeVariable('$leaderboardId');
+    _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -437,7 +439,7 @@ class LeaderboardConfigurationsResourceApi {
    *
    * Completes with a [LeaderboardConfiguration].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -448,7 +450,7 @@ class LeaderboardConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (leaderboardId == null) {
@@ -456,7 +458,7 @@ class LeaderboardConfigurationsResourceApi {
     }
 
 
-    _url = 'leaderboards/' + common_internal.Escaper.ecapeVariable('$leaderboardId');
+    _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -480,7 +482,7 @@ class LeaderboardConfigurationsResourceApi {
    *
    * Completes with a [LeaderboardConfiguration].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -491,7 +493,7 @@ class LeaderboardConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -502,7 +504,7 @@ class LeaderboardConfigurationsResourceApi {
     }
 
 
-    _url = 'applications/' + common_internal.Escaper.ecapeVariable('$applicationId') + '/leaderboards';
+    _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId') + '/leaderboards';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -531,7 +533,7 @@ class LeaderboardConfigurationsResourceApi {
    *
    * Completes with a [LeaderboardConfigurationListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -542,7 +544,7 @@ class LeaderboardConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (applicationId == null) {
@@ -556,7 +558,7 @@ class LeaderboardConfigurationsResourceApi {
     }
 
 
-    _url = 'applications/' + common_internal.Escaper.ecapeVariable('$applicationId') + '/leaderboards';
+    _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId') + '/leaderboards';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -580,7 +582,7 @@ class LeaderboardConfigurationsResourceApi {
    *
    * Completes with a [LeaderboardConfiguration].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -591,7 +593,7 @@ class LeaderboardConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -602,7 +604,7 @@ class LeaderboardConfigurationsResourceApi {
     }
 
 
-    _url = 'leaderboards/' + common_internal.Escaper.ecapeVariable('$leaderboardId');
+    _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -625,7 +627,7 @@ class LeaderboardConfigurationsResourceApi {
    *
    * Completes with a [LeaderboardConfiguration].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -636,7 +638,7 @@ class LeaderboardConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -647,7 +649,7 @@ class LeaderboardConfigurationsResourceApi {
     }
 
 
-    _url = 'leaderboards/' + common_internal.Escaper.ecapeVariable('$leaderboardId');
+    _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1370,5 +1372,3 @@ class LocalizedStringBundle {
     return _json;
   }
 }
-
-

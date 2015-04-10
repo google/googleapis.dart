@@ -1,37 +1,39 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.doubleclickbidmanager.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client doubleclickbidmanager/v1';
 
 /** API for viewing and managing your reports in DoubleClick Bid Manager. */
 class DoubleclickbidmanagerApi {
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   LineitemsResourceApi get lineitems => new LineitemsResourceApi(_requester);
   QueriesResourceApi get queries => new QueriesResourceApi(_requester);
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
 
   DoubleclickbidmanagerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "doubleclickbidmanager/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class LineitemsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  LineitemsResourceApi(common_internal.ApiRequester client) : 
+  LineitemsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -43,7 +45,7 @@ class LineitemsResourceApi {
    *
    * Completes with a [DownloadLineItemsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -54,7 +56,7 @@ class LineitemsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -83,7 +85,7 @@ class LineitemsResourceApi {
    *
    * Completes with a [UploadLineItemsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -94,7 +96,7 @@ class LineitemsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -117,11 +119,10 @@ class LineitemsResourceApi {
 }
 
 
-/** Not documented yet. */
 class QueriesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  QueriesResourceApi(common_internal.ApiRequester client) : 
+  QueriesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -133,7 +134,7 @@ class QueriesResourceApi {
    *
    * Completes with a [Query].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -144,7 +145,7 @@ class QueriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -171,7 +172,7 @@ class QueriesResourceApi {
    *
    * [queryId] - Query ID to delete.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -182,7 +183,7 @@ class QueriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (queryId == null) {
@@ -191,7 +192,7 @@ class QueriesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'query/' + common_internal.Escaper.ecapeVariable('$queryId');
+    _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -212,7 +213,7 @@ class QueriesResourceApi {
    *
    * Completes with a [Query].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -223,7 +224,7 @@ class QueriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (queryId == null) {
@@ -231,7 +232,7 @@ class QueriesResourceApi {
     }
 
 
-    _url = 'query/' + common_internal.Escaper.ecapeVariable('$queryId');
+    _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -250,7 +251,7 @@ class QueriesResourceApi {
    *
    * Completes with a [ListQueriesResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -261,7 +262,7 @@ class QueriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -287,7 +288,7 @@ class QueriesResourceApi {
    *
    * [queryId] - Query ID to run.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -298,7 +299,7 @@ class QueriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -310,7 +311,7 @@ class QueriesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'query/' + common_internal.Escaper.ecapeVariable('$queryId');
+    _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -325,11 +326,10 @@ class QueriesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ReportsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ReportsResourceApi(common_internal.ApiRequester client) : 
+  ReportsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -341,7 +341,7 @@ class ReportsResourceApi {
    *
    * Completes with a [ListReportsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -352,7 +352,7 @@ class ReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (queryId == null) {
@@ -360,7 +360,7 @@ class ReportsResourceApi {
     }
 
 
-    _url = 'queries/' + common_internal.Escaper.ecapeVariable('$queryId') + '/reports';
+    _url = 'queries/' + commons.Escaper.ecapeVariable('$queryId') + '/reports';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -491,6 +491,7 @@ class FilterPair {
    * - "FILTER_INSERTION_ORDER"
    * - "FILTER_INVENTORY_FORMAT"
    * - "FILTER_INVENTORY_SOURCE"
+   * - "FILTER_INVENTORY_SOURCE_TYPE"
    * - "FILTER_KEYWORD"
    * - "FILTER_LINE_ITEM"
    * - "FILTER_LINE_ITEM_DAILY_FREQUENCY"
@@ -526,6 +527,8 @@ class FilterPair {
    * - "FILTER_USER_LIST_FIRST_PARTY"
    * - "FILTER_USER_LIST_THIRD_PARTY"
    * - "FILTER_VIDEO_AD_POSITION_IN_STREAM"
+   * - "FILTER_VIDEO_COMPANION_SIZE"
+   * - "FILTER_VIDEO_COMPANION_TYPE"
    * - "FILTER_VIDEO_CREATIVE_DURATION"
    * - "FILTER_VIDEO_CREATIVE_DURATION_SKIPPABLE"
    * - "FILTER_VIDEO_DURATION_SECONDS"
@@ -1548,5 +1551,3 @@ class UploadStatus {
     return _json;
   }
 }
-
-

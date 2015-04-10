@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis_beta/common/common.dart' as common;
-import 'package:googleapis_beta/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis_beta/taskqueue/v1beta2.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterTask = 0;
 buildTask() {
@@ -49,40 +84,40 @@ checkTask(api.Task o) {
   buildCounterTask--;
 }
 
-buildUnnamed1628() {
+buildUnnamed1816() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1628(core.List<core.String> o) {
+checkUnnamed1816(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1629() {
+buildUnnamed1817() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1629(core.List<core.String> o) {
+checkUnnamed1817(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1630() {
+buildUnnamed1818() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1630(core.List<core.String> o) {
+checkUnnamed1818(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -93,9 +128,9 @@ buildTaskQueueAcl() {
   var o = new api.TaskQueueAcl();
   buildCounterTaskQueueAcl++;
   if (buildCounterTaskQueueAcl < 3) {
-    o.adminEmails = buildUnnamed1628();
-    o.consumerEmails = buildUnnamed1629();
-    o.producerEmails = buildUnnamed1630();
+    o.adminEmails = buildUnnamed1816();
+    o.consumerEmails = buildUnnamed1817();
+    o.producerEmails = buildUnnamed1818();
   }
   buildCounterTaskQueueAcl--;
   return o;
@@ -104,9 +139,9 @@ buildTaskQueueAcl() {
 checkTaskQueueAcl(api.TaskQueueAcl o) {
   buildCounterTaskQueueAcl++;
   if (buildCounterTaskQueueAcl < 3) {
-    checkUnnamed1628(o.adminEmails);
-    checkUnnamed1629(o.consumerEmails);
-    checkUnnamed1630(o.producerEmails);
+    checkUnnamed1816(o.adminEmails);
+    checkUnnamed1817(o.consumerEmails);
+    checkUnnamed1818(o.producerEmails);
   }
   buildCounterTaskQueueAcl--;
 }
@@ -163,14 +198,14 @@ checkTaskQueue(api.TaskQueue o) {
   buildCounterTaskQueue--;
 }
 
-buildUnnamed1631() {
+buildUnnamed1819() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed1631(core.List<api.Task> o) {
+checkUnnamed1819(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -181,7 +216,7 @@ buildTasks() {
   var o = new api.Tasks();
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
-    o.items = buildUnnamed1631();
+    o.items = buildUnnamed1819();
     o.kind = "foo";
   }
   buildCounterTasks--;
@@ -191,20 +226,20 @@ buildTasks() {
 checkTasks(api.Tasks o) {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
-    checkUnnamed1631(o.items);
+    checkUnnamed1819(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterTasks--;
 }
 
-buildUnnamed1632() {
+buildUnnamed1820() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed1632(core.List<api.Task> o) {
+checkUnnamed1820(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -215,7 +250,7 @@ buildTasks2() {
   var o = new api.Tasks2();
   buildCounterTasks2++;
   if (buildCounterTasks2 < 3) {
-    o.items = buildUnnamed1632();
+    o.items = buildUnnamed1820();
     o.kind = "foo";
   }
   buildCounterTasks2--;
@@ -225,7 +260,7 @@ buildTasks2() {
 checkTasks2(api.Tasks2 o) {
   buildCounterTasks2++;
   if (buildCounterTasks2 < 3) {
-    checkUnnamed1632(o.items);
+    checkUnnamed1820(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterTasks2--;
@@ -290,7 +325,7 @@ main() {
   unittest.group("resource-TaskqueuesResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TaskqueuesResourceApi res = new api.TaskqueueApi(mock).taskqueues;
       var arg_project = "foo";
       var arg_taskqueue = "foo";
@@ -326,7 +361,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTaskQueue());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_project, arg_taskqueue, getStats: arg_getStats).then(unittest.expectAsync(((api.TaskQueue response) {
         checkTaskQueue(response);
@@ -339,7 +374,7 @@ main() {
   unittest.group("resource-TasksResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_project = "foo";
       var arg_taskqueue = "foo";
@@ -374,14 +409,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_project, arg_taskqueue, arg_task).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_project = "foo";
       var arg_taskqueue = "foo";
@@ -416,7 +451,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTask());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_project, arg_taskqueue, arg_task).then(unittest.expectAsync(((api.Task response) {
         checkTask(response);
@@ -425,7 +460,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_request = buildTask();
       var arg_project = "foo";
@@ -463,7 +498,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTask());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_project, arg_taskqueue).then(unittest.expectAsync(((api.Task response) {
         checkTask(response);
@@ -472,7 +507,7 @@ main() {
 
     unittest.test("method--lease", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_project = "foo";
       var arg_taskqueue = "foo";
@@ -514,7 +549,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTasks());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.lease(arg_project, arg_taskqueue, arg_numTasks, arg_leaseSecs, groupByTag: arg_groupByTag, tag: arg_tag).then(unittest.expectAsync(((api.Tasks response) {
         checkTasks(response);
@@ -523,7 +558,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_project = "foo";
       var arg_taskqueue = "foo";
@@ -557,7 +592,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTasks2());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_project, arg_taskqueue).then(unittest.expectAsync(((api.Tasks2 response) {
         checkTasks2(response);
@@ -566,7 +601,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_request = buildTask();
       var arg_project = "foo";
@@ -607,7 +642,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTask());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_project, arg_taskqueue, arg_task, arg_newLeaseSeconds).then(unittest.expectAsync(((api.Task response) {
         checkTask(response);
@@ -616,7 +651,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_request = buildTask();
       var arg_project = "foo";
@@ -657,7 +692,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTask());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_project, arg_taskqueue, arg_task, arg_newLeaseSeconds).then(unittest.expectAsync(((api.Task response) {
         checkTask(response);

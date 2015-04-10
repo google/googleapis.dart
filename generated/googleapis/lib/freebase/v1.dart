@@ -1,25 +1,30 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.freebase.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client freebase/v1';
 
 /** Find Freebase entities using textual queries and other constraints. */
 class FreebaseApi {
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   FreebaseApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "freebase/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 
   /**
    * Reconcile entities to Freebase open data.
@@ -45,7 +50,7 @@ class FreebaseApi {
    *
    * Completes with a [ReconcileGet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -56,7 +61,7 @@ class FreebaseApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (confidence != null) {
@@ -180,18 +185,18 @@ class FreebaseApi {
    * Metadata (default) or Media download. Partial Media downloads are possible
    * as well.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future search({core.String asOfTime, core.String callback, core.int cursor, core.List<core.String> domain, core.String encode, core.bool exact, core.List<core.String> filter, core.String format, core.String help, core.bool indent, core.List<core.String> lang, core.int limit, core.List<core.String> mid, core.String mqlOutput, core.String output, core.bool prefixed, core.String query, core.String scoring, core.String spell, core.bool stemmed, core.List<core.String> type, core.List<core.String> with_, core.List<core.String> without, common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future search({core.String asOfTime, core.String callback, core.int cursor, core.List<core.String> domain, core.String encode, core.bool exact, core.List<core.String> filter, core.String format, core.String help, core.bool indent, core.List<core.String> lang, core.int limit, core.List<core.String> mid, core.String mqlOutput, core.String output, core.bool prefixed, core.String query, core.String scoring, core.String spell, core.bool stemmed, core.List<core.String> type, core.List<core.String> with_, core.List<core.String> without, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (asOfTime != null) {
@@ -276,7 +281,7 @@ class FreebaseApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => null);
     } else {
       return _response;
@@ -320,7 +325,6 @@ class ReconcileCandidateNotable {
 }
 
 
-/** Not documented yet. */
 class ReconcileCandidate {
   /**
    * Percentage likelihood that this candidate is the unique matching entity.
@@ -416,7 +420,6 @@ class ReconcileGetCosts {
 }
 
 
-/** Not documented yet. */
 class ReconcileGetWarning {
   /** Location of warning in the request e.g. invalid predicate. */
   core.String location;
@@ -458,7 +461,6 @@ class ReconcileGetWarning {
 }
 
 
-/** Not documented yet. */
 class ReconcileGet {
   /**
    * If filled, then the listed candidates are potential matches, and such
@@ -520,5 +522,3 @@ class ReconcileGet {
     return _json;
   }
 }
-
-

@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/youtubeanalytics/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterBatchReportOutputs = 0;
 buildBatchReportOutputs() {
@@ -39,14 +74,14 @@ checkBatchReportOutputs(api.BatchReportOutputs o) {
   buildCounterBatchReportOutputs--;
 }
 
-buildUnnamed188() {
+buildUnnamed1459() {
   var o = new core.List<api.BatchReportOutputs>();
   o.add(buildBatchReportOutputs());
   o.add(buildBatchReportOutputs());
   return o;
 }
 
-checkUnnamed188(core.List<api.BatchReportOutputs> o) {
+checkUnnamed1459(core.List<api.BatchReportOutputs> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBatchReportOutputs(o[0]);
   checkBatchReportOutputs(o[1]);
@@ -80,7 +115,7 @@ buildBatchReport() {
   if (buildCounterBatchReport < 3) {
     o.id = "foo";
     o.kind = "foo";
-    o.outputs = buildUnnamed188();
+    o.outputs = buildUnnamed1459();
     o.reportId = "foo";
     o.timeSpan = buildBatchReportTimeSpan();
     o.timeUpdated = core.DateTime.parse("2002-02-27T14:01:02");
@@ -94,7 +129,7 @@ checkBatchReport(api.BatchReport o) {
   if (buildCounterBatchReport < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed188(o.outputs);
+    checkUnnamed1459(o.outputs);
     unittest.expect(o.reportId, unittest.equals('foo'));
     checkBatchReportTimeSpan(o.timeSpan);
     unittest.expect(o.timeUpdated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
@@ -129,14 +164,14 @@ checkBatchReportDefinition(api.BatchReportDefinition o) {
   buildCounterBatchReportDefinition--;
 }
 
-buildUnnamed189() {
+buildUnnamed1460() {
   var o = new core.List<api.BatchReportDefinition>();
   o.add(buildBatchReportDefinition());
   o.add(buildBatchReportDefinition());
   return o;
 }
 
-checkUnnamed189(core.List<api.BatchReportDefinition> o) {
+checkUnnamed1460(core.List<api.BatchReportDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBatchReportDefinition(o[0]);
   checkBatchReportDefinition(o[1]);
@@ -147,7 +182,7 @@ buildBatchReportDefinitionList() {
   var o = new api.BatchReportDefinitionList();
   buildCounterBatchReportDefinitionList++;
   if (buildCounterBatchReportDefinitionList < 3) {
-    o.items = buildUnnamed189();
+    o.items = buildUnnamed1460();
     o.kind = "foo";
   }
   buildCounterBatchReportDefinitionList--;
@@ -157,20 +192,20 @@ buildBatchReportDefinitionList() {
 checkBatchReportDefinitionList(api.BatchReportDefinitionList o) {
   buildCounterBatchReportDefinitionList++;
   if (buildCounterBatchReportDefinitionList < 3) {
-    checkUnnamed189(o.items);
+    checkUnnamed1460(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBatchReportDefinitionList--;
 }
 
-buildUnnamed190() {
+buildUnnamed1461() {
   var o = new core.List<api.BatchReport>();
   o.add(buildBatchReport());
   o.add(buildBatchReport());
   return o;
 }
 
-checkUnnamed190(core.List<api.BatchReport> o) {
+checkUnnamed1461(core.List<api.BatchReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBatchReport(o[0]);
   checkBatchReport(o[1]);
@@ -181,7 +216,7 @@ buildBatchReportList() {
   var o = new api.BatchReportList();
   buildCounterBatchReportList++;
   if (buildCounterBatchReportList < 3) {
-    o.items = buildUnnamed190();
+    o.items = buildUnnamed1461();
     o.kind = "foo";
   }
   buildCounterBatchReportList--;
@@ -191,7 +226,7 @@ buildBatchReportList() {
 checkBatchReportList(api.BatchReportList o) {
   buildCounterBatchReportList++;
   if (buildCounterBatchReportList < 3) {
-    checkUnnamed190(o.items);
+    checkUnnamed1461(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBatchReportList--;
@@ -314,14 +349,14 @@ checkGroupItem(api.GroupItem o) {
   buildCounterGroupItem--;
 }
 
-buildUnnamed191() {
+buildUnnamed1462() {
   var o = new core.List<api.GroupItem>();
   o.add(buildGroupItem());
   o.add(buildGroupItem());
   return o;
 }
 
-checkUnnamed191(core.List<api.GroupItem> o) {
+checkUnnamed1462(core.List<api.GroupItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupItem(o[0]);
   checkGroupItem(o[1]);
@@ -333,7 +368,7 @@ buildGroupItemListResponse() {
   buildCounterGroupItemListResponse++;
   if (buildCounterGroupItemListResponse < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed191();
+    o.items = buildUnnamed1462();
     o.kind = "foo";
   }
   buildCounterGroupItemListResponse--;
@@ -344,20 +379,20 @@ checkGroupItemListResponse(api.GroupItemListResponse o) {
   buildCounterGroupItemListResponse++;
   if (buildCounterGroupItemListResponse < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed191(o.items);
+    checkUnnamed1462(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterGroupItemListResponse--;
 }
 
-buildUnnamed192() {
+buildUnnamed1463() {
   var o = new core.List<api.Group>();
   o.add(buildGroup());
   o.add(buildGroup());
   return o;
 }
 
-checkUnnamed192(core.List<api.Group> o) {
+checkUnnamed1463(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -369,7 +404,7 @@ buildGroupListResponse() {
   buildCounterGroupListResponse++;
   if (buildCounterGroupListResponse < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed192();
+    o.items = buildUnnamed1463();
     o.kind = "foo";
   }
   buildCounterGroupListResponse--;
@@ -380,7 +415,7 @@ checkGroupListResponse(api.GroupListResponse o) {
   buildCounterGroupListResponse++;
   if (buildCounterGroupListResponse < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed192(o.items);
+    checkUnnamed1463(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterGroupListResponse--;
@@ -409,43 +444,43 @@ checkResultTableColumnHeaders(api.ResultTableColumnHeaders o) {
   buildCounterResultTableColumnHeaders--;
 }
 
-buildUnnamed193() {
+buildUnnamed1464() {
   var o = new core.List<api.ResultTableColumnHeaders>();
   o.add(buildResultTableColumnHeaders());
   o.add(buildResultTableColumnHeaders());
   return o;
 }
 
-checkUnnamed193(core.List<api.ResultTableColumnHeaders> o) {
+checkUnnamed1464(core.List<api.ResultTableColumnHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResultTableColumnHeaders(o[0]);
   checkResultTableColumnHeaders(o[1]);
 }
 
-buildUnnamed194() {
+buildUnnamed1465() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed194(core.List<core.Object> o) {
+checkUnnamed1465(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o[1]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed195() {
+buildUnnamed1466() {
   var o = new core.List<core.List<core.Object>>();
-  o.add(buildUnnamed194());
-  o.add(buildUnnamed194());
+  o.add(buildUnnamed1465());
+  o.add(buildUnnamed1465());
   return o;
 }
 
-checkUnnamed195(core.List<core.List<core.Object>> o) {
+checkUnnamed1466(core.List<core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed194(o[0]);
-  checkUnnamed194(o[1]);
+  checkUnnamed1465(o[0]);
+  checkUnnamed1465(o[1]);
 }
 
 core.int buildCounterResultTable = 0;
@@ -453,9 +488,9 @@ buildResultTable() {
   var o = new api.ResultTable();
   buildCounterResultTable++;
   if (buildCounterResultTable < 3) {
-    o.columnHeaders = buildUnnamed193();
+    o.columnHeaders = buildUnnamed1464();
     o.kind = "foo";
-    o.rows = buildUnnamed195();
+    o.rows = buildUnnamed1466();
   }
   buildCounterResultTable--;
   return o;
@@ -464,9 +499,9 @@ buildResultTable() {
 checkResultTable(api.ResultTable o) {
   buildCounterResultTable++;
   if (buildCounterResultTable < 3) {
-    checkUnnamed193(o.columnHeaders);
+    checkUnnamed1464(o.columnHeaders);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed195(o.rows);
+    checkUnnamed1466(o.rows);
   }
   buildCounterResultTable--;
 }
@@ -611,7 +646,7 @@ main() {
   unittest.group("resource-BatchReportDefinitionsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BatchReportDefinitionsResourceApi res = new api.YoutubeAnalyticsApi(mock).batchReportDefinitions;
       var arg_onBehalfOfContentOwner = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -649,7 +684,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBatchReportDefinitionList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_onBehalfOfContentOwner).then(unittest.expectAsync(((api.BatchReportDefinitionList response) {
         checkBatchReportDefinitionList(response);
@@ -662,7 +697,7 @@ main() {
   unittest.group("resource-BatchReportsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BatchReportsResourceApi res = new api.YoutubeAnalyticsApi(mock).batchReports;
       var arg_batchReportDefinitionId = "foo";
       var arg_onBehalfOfContentOwner = "foo";
@@ -702,7 +737,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBatchReportList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_batchReportDefinitionId, arg_onBehalfOfContentOwner).then(unittest.expectAsync(((api.BatchReportList response) {
         checkBatchReportList(response);
@@ -715,7 +750,7 @@ main() {
   unittest.group("resource-GroupItemsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.GroupItemsResourceApi res = new api.YoutubeAnalyticsApi(mock).groupItems;
       var arg_id = "foo";
       var arg_onBehalfOfContentOwner = "foo";
@@ -755,14 +790,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_id, onBehalfOfContentOwner: arg_onBehalfOfContentOwner).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.GroupItemsResourceApi res = new api.YoutubeAnalyticsApi(mock).groupItems;
       var arg_request = buildGroupItem();
       var arg_onBehalfOfContentOwner = "foo";
@@ -804,7 +839,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGroupItem());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, onBehalfOfContentOwner: arg_onBehalfOfContentOwner).then(unittest.expectAsync(((api.GroupItem response) {
         checkGroupItem(response);
@@ -813,7 +848,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.GroupItemsResourceApi res = new api.YoutubeAnalyticsApi(mock).groupItems;
       var arg_groupId = "foo";
       var arg_onBehalfOfContentOwner = "foo";
@@ -853,7 +888,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGroupItemListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_groupId, onBehalfOfContentOwner: arg_onBehalfOfContentOwner).then(unittest.expectAsync(((api.GroupItemListResponse response) {
         checkGroupItemListResponse(response);
@@ -866,7 +901,7 @@ main() {
   unittest.group("resource-GroupsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.GroupsResourceApi res = new api.YoutubeAnalyticsApi(mock).groups;
       var arg_id = "foo";
       var arg_onBehalfOfContentOwner = "foo";
@@ -906,14 +941,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_id, onBehalfOfContentOwner: arg_onBehalfOfContentOwner).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.GroupsResourceApi res = new api.YoutubeAnalyticsApi(mock).groups;
       var arg_request = buildGroup();
       var arg_onBehalfOfContentOwner = "foo";
@@ -955,7 +990,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGroup());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, onBehalfOfContentOwner: arg_onBehalfOfContentOwner).then(unittest.expectAsync(((api.Group response) {
         checkGroup(response);
@@ -964,7 +999,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.GroupsResourceApi res = new api.YoutubeAnalyticsApi(mock).groups;
       var arg_id = "foo";
       var arg_mine = true;
@@ -1006,7 +1041,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGroupListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(id: arg_id, mine: arg_mine, onBehalfOfContentOwner: arg_onBehalfOfContentOwner).then(unittest.expectAsync(((api.GroupListResponse response) {
         checkGroupListResponse(response);
@@ -1015,7 +1050,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.GroupsResourceApi res = new api.YoutubeAnalyticsApi(mock).groups;
       var arg_request = buildGroup();
       var arg_onBehalfOfContentOwner = "foo";
@@ -1057,7 +1092,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGroup());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, onBehalfOfContentOwner: arg_onBehalfOfContentOwner).then(unittest.expectAsync(((api.Group response) {
         checkGroup(response);
@@ -1070,12 +1105,13 @@ main() {
   unittest.group("resource-ReportsResourceApi", () {
     unittest.test("method--query", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ReportsResourceApi res = new api.YoutubeAnalyticsApi(mock).reports;
       var arg_ids = "foo";
       var arg_start_date = "foo";
       var arg_end_date = "foo";
       var arg_metrics = "foo";
+      var arg_currency = "foo";
       var arg_dimensions = "foo";
       var arg_filters = "foo";
       var arg_max_results = 42;
@@ -1113,6 +1149,7 @@ main() {
         unittest.expect(queryMap["start-date"].first, unittest.equals(arg_start_date));
         unittest.expect(queryMap["end-date"].first, unittest.equals(arg_end_date));
         unittest.expect(queryMap["metrics"].first, unittest.equals(arg_metrics));
+        unittest.expect(queryMap["currency"].first, unittest.equals(arg_currency));
         unittest.expect(queryMap["dimensions"].first, unittest.equals(arg_dimensions));
         unittest.expect(queryMap["filters"].first, unittest.equals(arg_filters));
         unittest.expect(core.int.parse(queryMap["max-results"].first), unittest.equals(arg_max_results));
@@ -1124,9 +1161,9 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildResultTable());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.query(arg_ids, arg_start_date, arg_end_date, arg_metrics, dimensions: arg_dimensions, filters: arg_filters, max_results: arg_max_results, sort: arg_sort, start_index: arg_start_index).then(unittest.expectAsync(((api.ResultTable response) {
+      res.query(arg_ids, arg_start_date, arg_end_date, arg_metrics, currency: arg_currency, dimensions: arg_dimensions, filters: arg_filters, max_results: arg_max_results, sort: arg_sort, start_index: arg_start_index).then(unittest.expectAsync(((api.ResultTable response) {
         checkResultTable(response);
       })));
     });

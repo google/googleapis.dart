@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/freebase/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterReconcileCandidateNotable = 0;
 buildReconcileCandidateNotable() {
@@ -64,14 +99,14 @@ checkReconcileCandidate(api.ReconcileCandidate o) {
   buildCounterReconcileCandidate--;
 }
 
-buildUnnamed1045() {
+buildUnnamed1019() {
   var o = new core.List<api.ReconcileCandidate>();
   o.add(buildReconcileCandidate());
   o.add(buildReconcileCandidate());
   return o;
 }
 
-checkUnnamed1045(core.List<api.ReconcileCandidate> o) {
+checkUnnamed1019(core.List<api.ReconcileCandidate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReconcileCandidate(o[0]);
   checkReconcileCandidate(o[1]);
@@ -121,14 +156,14 @@ checkReconcileGetWarning(api.ReconcileGetWarning o) {
   buildCounterReconcileGetWarning--;
 }
 
-buildUnnamed1046() {
+buildUnnamed1020() {
   var o = new core.List<api.ReconcileGetWarning>();
   o.add(buildReconcileGetWarning());
   o.add(buildReconcileGetWarning());
   return o;
 }
 
-checkUnnamed1046(core.List<api.ReconcileGetWarning> o) {
+checkUnnamed1020(core.List<api.ReconcileGetWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReconcileGetWarning(o[0]);
   checkReconcileGetWarning(o[1]);
@@ -139,10 +174,10 @@ buildReconcileGet() {
   var o = new api.ReconcileGet();
   buildCounterReconcileGet++;
   if (buildCounterReconcileGet < 3) {
-    o.candidate = buildUnnamed1045();
+    o.candidate = buildUnnamed1019();
     o.costs = buildReconcileGetCosts();
     o.match = buildReconcileCandidate();
-    o.warning = buildUnnamed1046();
+    o.warning = buildUnnamed1020();
   }
   buildCounterReconcileGet--;
   return o;
@@ -151,139 +186,139 @@ buildReconcileGet() {
 checkReconcileGet(api.ReconcileGet o) {
   buildCounterReconcileGet++;
   if (buildCounterReconcileGet < 3) {
-    checkUnnamed1045(o.candidate);
+    checkUnnamed1019(o.candidate);
     checkReconcileGetCosts(o.costs);
     checkReconcileCandidate(o.match);
-    checkUnnamed1046(o.warning);
+    checkUnnamed1020(o.warning);
   }
   buildCounterReconcileGet--;
 }
 
-buildUnnamed1047() {
+buildUnnamed1021() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1047(core.List<core.String> o) {
+checkUnnamed1021(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1048() {
+buildUnnamed1022() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1048(core.List<core.String> o) {
+checkUnnamed1022(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1049() {
+buildUnnamed1023() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1049(core.List<core.String> o) {
+checkUnnamed1023(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1050() {
+buildUnnamed1024() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1050(core.List<core.String> o) {
+checkUnnamed1024(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1051() {
+buildUnnamed1025() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1051(core.List<core.String> o) {
+checkUnnamed1025(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1052() {
+buildUnnamed1026() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1052(core.List<core.String> o) {
+checkUnnamed1026(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1053() {
+buildUnnamed1027() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1053(core.List<core.String> o) {
+checkUnnamed1027(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1054() {
+buildUnnamed1028() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1054(core.List<core.String> o) {
+checkUnnamed1028(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1055() {
+buildUnnamed1029() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1055(core.List<core.String> o) {
+checkUnnamed1029(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1056() {
+buildUnnamed1030() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1056(core.List<core.String> o) {
+checkUnnamed1030(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -339,14 +374,14 @@ main() {
   unittest.group("resource-FreebaseApi", () {
     unittest.test("method--reconcile", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FreebaseApi res = new api.FreebaseApi(mock);
       var arg_confidence = 42.0;
-      var arg_kind = buildUnnamed1047();
-      var arg_lang = buildUnnamed1048();
+      var arg_kind = buildUnnamed1021();
+      var arg_lang = buildUnnamed1022();
       var arg_limit = 42;
       var arg_name = "foo";
-      var arg_prop = buildUnnamed1049();
+      var arg_prop = buildUnnamed1023();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -387,7 +422,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildReconcileGet());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.reconcile(confidence: arg_confidence, kind: arg_kind, lang: arg_lang, limit: arg_limit, name: arg_name, prop: arg_prop).then(unittest.expectAsync(((api.ReconcileGet response) {
         checkReconcileGet(response);
@@ -398,21 +433,21 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FreebaseApi res = new api.FreebaseApi(mock);
       var arg_asOfTime = "foo";
       var arg_callback = "foo";
       var arg_cursor = 42;
-      var arg_domain = buildUnnamed1050();
+      var arg_domain = buildUnnamed1024();
       var arg_encode = "foo";
       var arg_exact = true;
-      var arg_filter = buildUnnamed1051();
+      var arg_filter = buildUnnamed1025();
       var arg_format = "foo";
       var arg_help = "foo";
       var arg_indent = true;
-      var arg_lang = buildUnnamed1052();
+      var arg_lang = buildUnnamed1026();
       var arg_limit = 42;
-      var arg_mid = buildUnnamed1053();
+      var arg_mid = buildUnnamed1027();
       var arg_mqlOutput = "foo";
       var arg_output = "foo";
       var arg_prefixed = true;
@@ -420,9 +455,9 @@ main() {
       var arg_scoring = "foo";
       var arg_spell = "foo";
       var arg_stemmed = true;
-      var arg_type = buildUnnamed1054();
-      var arg_with_ = buildUnnamed1055();
-      var arg_without = buildUnnamed1056();
+      var arg_type = buildUnnamed1028();
+      var arg_with_ = buildUnnamed1029();
+      var arg_without = buildUnnamed1030();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -480,7 +515,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.search(asOfTime: arg_asOfTime, callback: arg_callback, cursor: arg_cursor, domain: arg_domain, encode: arg_encode, exact: arg_exact, filter: arg_filter, format: arg_format, help: arg_help, indent: arg_indent, lang: arg_lang, limit: arg_limit, mid: arg_mid, mqlOutput: arg_mqlOutput, output: arg_output, prefixed: arg_prefixed, query: arg_query, scoring: arg_scoring, spell: arg_spell, stemmed: arg_stemmed, type: arg_type, with_: arg_with_, without: arg_without).then(unittest.expectAsync((_) {}));
     });

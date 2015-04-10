@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.groupssettings.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client groupssettings/v1';
 
 /** Lets you manage permission levels and related settings of a group. */
 class GroupssettingsApi {
@@ -19,20 +22,19 @@ class GroupssettingsApi {
   static const AppsGroupsSettingsScope = "https://www.googleapis.com/auth/apps.groups.settings";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   GroupsResourceApi get groups => new GroupsResourceApi(_requester);
 
   GroupssettingsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "groups/v1/groups/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class GroupsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  GroupsResourceApi(common_internal.ApiRequester client) : 
+  GroupsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -44,7 +46,7 @@ class GroupsResourceApi {
    *
    * Completes with a [Groups].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -55,7 +57,7 @@ class GroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (groupUniqueId == null) {
@@ -63,7 +65,7 @@ class GroupsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$groupUniqueId');
+    _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -86,7 +88,7 @@ class GroupsResourceApi {
    *
    * Completes with a [Groups].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -97,7 +99,7 @@ class GroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -108,7 +110,7 @@ class GroupsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$groupUniqueId');
+    _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -131,7 +133,7 @@ class GroupsResourceApi {
    *
    * Completes with a [Groups].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -142,7 +144,7 @@ class GroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -153,7 +155,7 @@ class GroupsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$groupUniqueId');
+    _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -470,5 +472,3 @@ class Groups {
     return _json;
   }
 }
-
-

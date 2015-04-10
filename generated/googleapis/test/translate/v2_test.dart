@@ -8,22 +8,57 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/translate/v2.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
 
-buildUnnamed736() {
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
+
+buildUnnamed1387() {
   var o = new core.List<api.DetectionsResource>();
   o.add(buildDetectionsResource());
   o.add(buildDetectionsResource());
   return o;
 }
 
-checkUnnamed736(core.List<api.DetectionsResource> o) {
+checkUnnamed1387(core.List<api.DetectionsResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDetectionsResource(o[0]);
   checkDetectionsResource(o[1]);
@@ -34,7 +69,7 @@ buildDetectionsListResponse() {
   var o = new api.DetectionsListResponse();
   buildCounterDetectionsListResponse++;
   if (buildCounterDetectionsListResponse < 3) {
-    o.detections = buildUnnamed736();
+    o.detections = buildUnnamed1387();
   }
   buildCounterDetectionsListResponse--;
   return o;
@@ -43,7 +78,7 @@ buildDetectionsListResponse() {
 checkDetectionsListResponse(api.DetectionsListResponse o) {
   buildCounterDetectionsListResponse++;
   if (buildCounterDetectionsListResponse < 3) {
-    checkUnnamed736(o.detections);
+    checkUnnamed1387(o.detections);
   }
   buildCounterDetectionsListResponse--;
 }
@@ -84,14 +119,14 @@ checkDetectionsResource(api.DetectionsResource o) {
   checkDetectionsResourceElement(o[1]);
 }
 
-buildUnnamed737() {
+buildUnnamed1388() {
   var o = new core.List<api.LanguagesResource>();
   o.add(buildLanguagesResource());
   o.add(buildLanguagesResource());
   return o;
 }
 
-checkUnnamed737(core.List<api.LanguagesResource> o) {
+checkUnnamed1388(core.List<api.LanguagesResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLanguagesResource(o[0]);
   checkLanguagesResource(o[1]);
@@ -102,7 +137,7 @@ buildLanguagesListResponse() {
   var o = new api.LanguagesListResponse();
   buildCounterLanguagesListResponse++;
   if (buildCounterLanguagesListResponse < 3) {
-    o.languages = buildUnnamed737();
+    o.languages = buildUnnamed1388();
   }
   buildCounterLanguagesListResponse--;
   return o;
@@ -111,7 +146,7 @@ buildLanguagesListResponse() {
 checkLanguagesListResponse(api.LanguagesListResponse o) {
   buildCounterLanguagesListResponse++;
   if (buildCounterLanguagesListResponse < 3) {
-    checkUnnamed737(o.languages);
+    checkUnnamed1388(o.languages);
   }
   buildCounterLanguagesListResponse--;
 }
@@ -137,14 +172,14 @@ checkLanguagesResource(api.LanguagesResource o) {
   buildCounterLanguagesResource--;
 }
 
-buildUnnamed738() {
+buildUnnamed1389() {
   var o = new core.List<api.TranslationsResource>();
   o.add(buildTranslationsResource());
   o.add(buildTranslationsResource());
   return o;
 }
 
-checkUnnamed738(core.List<api.TranslationsResource> o) {
+checkUnnamed1389(core.List<api.TranslationsResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslationsResource(o[0]);
   checkTranslationsResource(o[1]);
@@ -155,7 +190,7 @@ buildTranslationsListResponse() {
   var o = new api.TranslationsListResponse();
   buildCounterTranslationsListResponse++;
   if (buildCounterTranslationsListResponse < 3) {
-    o.translations = buildUnnamed738();
+    o.translations = buildUnnamed1389();
   }
   buildCounterTranslationsListResponse--;
   return o;
@@ -164,7 +199,7 @@ buildTranslationsListResponse() {
 checkTranslationsListResponse(api.TranslationsListResponse o) {
   buildCounterTranslationsListResponse++;
   if (buildCounterTranslationsListResponse < 3) {
-    checkUnnamed738(o.translations);
+    checkUnnamed1389(o.translations);
   }
   buildCounterTranslationsListResponse--;
 }
@@ -190,40 +225,40 @@ checkTranslationsResource(api.TranslationsResource o) {
   buildCounterTranslationsResource--;
 }
 
-buildUnnamed739() {
+buildUnnamed1390() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed739(core.List<core.String> o) {
+checkUnnamed1390(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed740() {
+buildUnnamed1391() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed740(core.List<core.String> o) {
+checkUnnamed1391(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed741() {
+buildUnnamed1392() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed741(core.List<core.String> o) {
+checkUnnamed1392(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -297,9 +332,9 @@ main() {
   unittest.group("resource-DetectionsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.DetectionsResourceApi res = new api.TranslateApi(mock).detections;
-      var arg_q = buildUnnamed739();
+      var arg_q = buildUnnamed1390();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -335,7 +370,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDetectionsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_q).then(unittest.expectAsync(((api.DetectionsListResponse response) {
         checkDetectionsListResponse(response);
@@ -348,7 +383,7 @@ main() {
   unittest.group("resource-LanguagesResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LanguagesResourceApi res = new api.TranslateApi(mock).languages;
       var arg_target = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -386,7 +421,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLanguagesListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(target: arg_target).then(unittest.expectAsync(((api.LanguagesListResponse response) {
         checkLanguagesListResponse(response);
@@ -399,11 +434,11 @@ main() {
   unittest.group("resource-TranslationsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TranslationsResourceApi res = new api.TranslateApi(mock).translations;
-      var arg_q = buildUnnamed740();
+      var arg_q = buildUnnamed1391();
       var arg_target = "foo";
-      var arg_cid = buildUnnamed741();
+      var arg_cid = buildUnnamed1392();
       var arg_format = "foo";
       var arg_source = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -445,7 +480,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTranslationsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_q, arg_target, cid: arg_cid, format: arg_format, source: arg_source).then(unittest.expectAsync(((api.TranslationsListResponse response) {
         checkTranslationsListResponse(response);

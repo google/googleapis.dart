@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.datastore.v1beta2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client datastore/v1beta2';
 
 /** API for accessing Google Cloud Datastore. */
 class DatastoreApi {
@@ -25,20 +28,19 @@ class DatastoreApi {
   static const UserinfoEmailScope = "https://www.googleapis.com/auth/userinfo.email";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   DatasetsResourceApi get datasets => new DatasetsResourceApi(_requester);
 
   DatastoreApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "datastore/v1beta2/datasets/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class DatasetsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DatasetsResourceApi(common_internal.ApiRequester client) : 
+  DatasetsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -53,7 +55,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [AllocateIdsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -64,7 +66,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -75,7 +77,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$datasetId') + '/allocateIds';
+    _url = commons.Escaper.ecapeVariable('$datasetId') + '/allocateIds';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -98,7 +100,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [BeginTransactionResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -109,7 +111,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -120,7 +122,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$datasetId') + '/beginTransaction';
+    _url = commons.Escaper.ecapeVariable('$datasetId') + '/beginTransaction';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -144,7 +146,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [CommitResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -155,7 +157,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -166,7 +168,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$datasetId') + '/commit';
+    _url = commons.Escaper.ecapeVariable('$datasetId') + '/commit';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -189,7 +191,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [LookupResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -200,7 +202,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -211,7 +213,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$datasetId') + '/lookup';
+    _url = commons.Escaper.ecapeVariable('$datasetId') + '/lookup';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -234,7 +236,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [RollbackResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -245,7 +247,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -256,7 +258,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$datasetId') + '/rollback';
+    _url = commons.Escaper.ecapeVariable('$datasetId') + '/rollback';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -279,7 +281,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [RunQueryResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -290,7 +292,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -301,7 +303,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$datasetId') + '/runQuery';
+    _url = commons.Escaper.ecapeVariable('$datasetId') + '/runQuery';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -317,7 +319,6 @@ class DatasetsResourceApi {
 
 
 
-/** Not documented yet. */
 class AllocateIdsRequest {
   /**
    * A list of keys with incomplete key paths to allocate IDs for. No key may be
@@ -344,9 +345,7 @@ class AllocateIdsRequest {
 }
 
 
-/** Not documented yet. */
 class AllocateIdsResponse {
-  /** Not documented yet. */
   ResponseHeader header;
 
   /**
@@ -380,7 +379,6 @@ class AllocateIdsResponse {
 }
 
 
-/** Not documented yet. */
 class BeginTransactionRequest {
   /**
    * The transaction isolation level. Either snapshot or serializable. The
@@ -414,9 +412,7 @@ class BeginTransactionRequest {
 }
 
 
-/** Not documented yet. */
 class BeginTransactionResponse {
-  /** Not documented yet. */
   ResponseHeader header;
 
   /** The transaction identifier (always present). */
@@ -455,9 +451,7 @@ class BeginTransactionResponse {
 }
 
 
-/** Not documented yet. */
 class CommitRequest {
-  /** Not documented yet. */
   core.bool ignoreReadOnly;
 
   /**
@@ -522,9 +516,7 @@ class CommitRequest {
 }
 
 
-/** Not documented yet. */
 class CommitResponse {
-  /** Not documented yet. */
   ResponseHeader header;
 
   /** The result of performing the mutation (if any). */
@@ -617,7 +609,7 @@ class Entity {
       key = new Key.fromJson(_json["key"]);
     }
     if (_json.containsKey("properties")) {
-      properties = common_internal.mapMap(_json["properties"], (item) => new Property.fromJson(item));
+      properties = commons.mapMap(_json["properties"], (item) => new Property.fromJson(item));
     }
   }
 
@@ -627,7 +619,7 @@ class Entity {
       _json["key"] = (key).toJson();
     }
     if (properties != null) {
-      _json["properties"] = common_internal.mapMap(properties, (item) => (item).toJson());
+      _json["properties"] = commons.mapMap(properties, (item) => (item).toJson());
     }
     return _json;
   }
@@ -755,7 +747,6 @@ class GqlQuery {
 
 /** A binding argument for a GQL query. */
 class GqlQueryArg {
-  /** Not documented yet. */
   core.String cursor;
 
   core.List<core.int> get cursorAsBytes {
@@ -772,7 +763,6 @@ class GqlQueryArg {
    */
   core.String name;
 
-  /** Not documented yet. */
   Value value;
 
 
@@ -937,7 +927,6 @@ class KindExpression {
 }
 
 
-/** Not documented yet. */
 class LookupRequest {
   /** Keys of entities to look up from the datastore. */
   core.List<Key> keys;
@@ -970,7 +959,6 @@ class LookupRequest {
 }
 
 
-/** Not documented yet. */
 class LookupResponse {
   /** A list of keys that were not looked up due to resource constraints. */
   core.List<Key> deferred;
@@ -978,7 +966,6 @@ class LookupResponse {
   /** Entities found. */
   core.List<EntityResult> found;
 
-  /** Not documented yet. */
   ResponseHeader header;
 
   /** Entities not found, with only the key populated. */
@@ -1105,7 +1092,6 @@ class Mutation {
 }
 
 
-/** Not documented yet. */
 class MutationResult {
   /** Number of index writes. */
   core.int indexUpdates;
@@ -1697,7 +1683,6 @@ class QueryResultBatch {
 }
 
 
-/** Not documented yet. */
 class ReadOptions {
   /**
    * The read consistency to use. One of default, strong, or eventual. Cannot be
@@ -1747,7 +1732,6 @@ class ReadOptions {
 }
 
 
-/** Not documented yet. */
 class ResponseHeader {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -1774,7 +1758,6 @@ class ResponseHeader {
 }
 
 
-/** Not documented yet. */
 class RollbackRequest {
   /** The transaction identifier, returned by a call to beginTransaction. */
   core.String transaction;
@@ -1806,9 +1789,7 @@ class RollbackRequest {
 }
 
 
-/** Not documented yet. */
 class RollbackResponse {
-  /** Not documented yet. */
   ResponseHeader header;
 
 
@@ -1830,7 +1811,6 @@ class RollbackResponse {
 }
 
 
-/** Not documented yet. */
 class RunQueryRequest {
   /**
    * The GQL query to run. Either this field or field query must be set, but not
@@ -1894,12 +1874,10 @@ class RunQueryRequest {
 }
 
 
-/** Not documented yet. */
 class RunQueryResponse {
   /** A batch of query results (always present). */
   QueryResultBatch batch;
 
-  /** Not documented yet. */
   ResponseHeader header;
 
 
@@ -2074,5 +2052,3 @@ class Value {
     return _json;
   }
 }
-
-

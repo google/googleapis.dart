@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/mapsengine/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterAcquisitionTime = 0;
 buildAcquisitionTime() {
@@ -39,27 +74,27 @@ checkAcquisitionTime(api.AcquisitionTime o) {
   buildCounterAcquisitionTime--;
 }
 
-buildUnnamed92() {
+buildUnnamed1163() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed92(core.List<core.double> o) {
+checkUnnamed1163(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed93() {
+buildUnnamed1164() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed93(core.List<core.String> o) {
+checkUnnamed1164(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -70,7 +105,7 @@ buildAsset() {
   var o = new api.Asset();
   buildCounterAsset++;
   if (buildCounterAsset < 3) {
-    o.bbox = buildUnnamed92();
+    o.bbox = buildUnnamed1163();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.creatorEmail = "foo";
     o.description = "foo";
@@ -81,7 +116,7 @@ buildAsset() {
     o.name = "foo";
     o.projectId = "foo";
     o.resource = "foo";
-    o.tags = buildUnnamed93();
+    o.tags = buildUnnamed1164();
     o.type = "foo";
     o.writersCanEditPermissions = true;
   }
@@ -92,7 +127,7 @@ buildAsset() {
 checkAsset(api.Asset o) {
   buildCounterAsset++;
   if (buildCounterAsset < 3) {
-    checkUnnamed92(o.bbox);
+    checkUnnamed1163(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
@@ -103,21 +138,21 @@ checkAsset(api.Asset o) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
     unittest.expect(o.resource, unittest.equals('foo'));
-    checkUnnamed93(o.tags);
+    checkUnnamed1164(o.tags);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.writersCanEditPermissions, unittest.isTrue);
   }
   buildCounterAsset--;
 }
 
-buildUnnamed94() {
+buildUnnamed1165() {
   var o = new core.List<api.Asset>();
   o.add(buildAsset());
   o.add(buildAsset());
   return o;
 }
 
-checkUnnamed94(core.List<api.Asset> o) {
+checkUnnamed1165(core.List<api.Asset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAsset(o[0]);
   checkAsset(o[1]);
@@ -128,7 +163,7 @@ buildAssetsListResponse() {
   var o = new api.AssetsListResponse();
   buildCounterAssetsListResponse++;
   if (buildCounterAssetsListResponse < 3) {
-    o.assets = buildUnnamed94();
+    o.assets = buildUnnamed1165();
     o.nextPageToken = "foo";
   }
   buildCounterAssetsListResponse--;
@@ -138,7 +173,7 @@ buildAssetsListResponse() {
 checkAssetsListResponse(api.AssetsListResponse o) {
   buildCounterAssetsListResponse++;
   if (buildCounterAssetsListResponse < 3) {
-    checkUnnamed94(o.assets);
+    checkUnnamed1165(o.assets);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterAssetsListResponse--;
@@ -220,14 +255,14 @@ checkDatasources(api.Datasources o) {
   checkDatasource(o[1]);
 }
 
-buildUnnamed95() {
+buildUnnamed1166() {
   var o = new core.List<api.Filter>();
   o.add(buildFilter());
   o.add(buildFilter());
   return o;
 }
 
-checkUnnamed95(core.List<api.Filter> o) {
+checkUnnamed1166(core.List<api.Filter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFilter(o[0]);
   checkFilter(o[1]);
@@ -238,7 +273,7 @@ buildDisplayRule() {
   var o = new api.DisplayRule();
   buildCounterDisplayRule++;
   if (buildCounterDisplayRule < 3) {
-    o.filters = buildUnnamed95();
+    o.filters = buildUnnamed1166();
     o.lineOptions = buildLineStyle();
     o.name = "foo";
     o.pointOptions = buildPointStyle();
@@ -252,7 +287,7 @@ buildDisplayRule() {
 checkDisplayRule(api.DisplayRule o) {
   buildCounterDisplayRule++;
   if (buildCounterDisplayRule < 3) {
-    checkUnnamed95(o.filters);
+    checkUnnamed1166(o.filters);
     checkLineStyle(o.lineOptions);
     unittest.expect(o.name, unittest.equals('foo'));
     checkPointStyle(o.pointOptions);
@@ -304,27 +339,27 @@ checkFeatureInfo(api.FeatureInfo o) {
   buildCounterFeatureInfo--;
 }
 
-buildUnnamed96() {
+buildUnnamed1167() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed96(core.List<core.String> o) {
+checkUnnamed1167(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed97() {
+buildUnnamed1168() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed97(core.List<core.String> o) {
+checkUnnamed1168(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -335,8 +370,8 @@ buildFeaturesBatchDeleteRequest() {
   var o = new api.FeaturesBatchDeleteRequest();
   buildCounterFeaturesBatchDeleteRequest++;
   if (buildCounterFeaturesBatchDeleteRequest < 3) {
-    o.gxIds = buildUnnamed96();
-    o.primaryKeys = buildUnnamed97();
+    o.gxIds = buildUnnamed1167();
+    o.primaryKeys = buildUnnamed1168();
   }
   buildCounterFeaturesBatchDeleteRequest--;
   return o;
@@ -345,20 +380,20 @@ buildFeaturesBatchDeleteRequest() {
 checkFeaturesBatchDeleteRequest(api.FeaturesBatchDeleteRequest o) {
   buildCounterFeaturesBatchDeleteRequest++;
   if (buildCounterFeaturesBatchDeleteRequest < 3) {
-    checkUnnamed96(o.gxIds);
-    checkUnnamed97(o.primaryKeys);
+    checkUnnamed1167(o.gxIds);
+    checkUnnamed1168(o.primaryKeys);
   }
   buildCounterFeaturesBatchDeleteRequest--;
 }
 
-buildUnnamed98() {
+buildUnnamed1169() {
   var o = new core.List<api.Feature>();
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
 }
 
-checkUnnamed98(core.List<api.Feature> o) {
+checkUnnamed1169(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeature(o[0]);
   checkFeature(o[1]);
@@ -369,7 +404,7 @@ buildFeaturesBatchInsertRequest() {
   var o = new api.FeaturesBatchInsertRequest();
   buildCounterFeaturesBatchInsertRequest++;
   if (buildCounterFeaturesBatchInsertRequest < 3) {
-    o.features = buildUnnamed98();
+    o.features = buildUnnamed1169();
     o.normalizeGeometries = true;
   }
   buildCounterFeaturesBatchInsertRequest--;
@@ -379,20 +414,20 @@ buildFeaturesBatchInsertRequest() {
 checkFeaturesBatchInsertRequest(api.FeaturesBatchInsertRequest o) {
   buildCounterFeaturesBatchInsertRequest++;
   if (buildCounterFeaturesBatchInsertRequest < 3) {
-    checkUnnamed98(o.features);
+    checkUnnamed1169(o.features);
     unittest.expect(o.normalizeGeometries, unittest.isTrue);
   }
   buildCounterFeaturesBatchInsertRequest--;
 }
 
-buildUnnamed99() {
+buildUnnamed1170() {
   var o = new core.List<api.Feature>();
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
 }
 
-checkUnnamed99(core.List<api.Feature> o) {
+checkUnnamed1170(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeature(o[0]);
   checkFeature(o[1]);
@@ -403,7 +438,7 @@ buildFeaturesBatchPatchRequest() {
   var o = new api.FeaturesBatchPatchRequest();
   buildCounterFeaturesBatchPatchRequest++;
   if (buildCounterFeaturesBatchPatchRequest < 3) {
-    o.features = buildUnnamed99();
+    o.features = buildUnnamed1170();
     o.normalizeGeometries = true;
   }
   buildCounterFeaturesBatchPatchRequest--;
@@ -413,20 +448,20 @@ buildFeaturesBatchPatchRequest() {
 checkFeaturesBatchPatchRequest(api.FeaturesBatchPatchRequest o) {
   buildCounterFeaturesBatchPatchRequest++;
   if (buildCounterFeaturesBatchPatchRequest < 3) {
-    checkUnnamed99(o.features);
+    checkUnnamed1170(o.features);
     unittest.expect(o.normalizeGeometries, unittest.isTrue);
   }
   buildCounterFeaturesBatchPatchRequest--;
 }
 
-buildUnnamed100() {
+buildUnnamed1171() {
   var o = new core.List<api.Feature>();
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
 }
 
-checkUnnamed100(core.List<api.Feature> o) {
+checkUnnamed1171(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeature(o[0]);
   checkFeature(o[1]);
@@ -438,7 +473,7 @@ buildFeaturesListResponse() {
   buildCounterFeaturesListResponse++;
   if (buildCounterFeaturesListResponse < 3) {
     o.allowedQueriesPerSecond = 42.0;
-    o.features = buildUnnamed100();
+    o.features = buildUnnamed1171();
     o.nextPageToken = "foo";
     o.schema = buildSchema();
     o.type = "foo";
@@ -451,7 +486,7 @@ checkFeaturesListResponse(api.FeaturesListResponse o) {
   buildCounterFeaturesListResponse++;
   if (buildCounterFeaturesListResponse < 3) {
     unittest.expect(o.allowedQueriesPerSecond, unittest.equals(42.0));
-    checkUnnamed100(o.features);
+    checkUnnamed1171(o.features);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     checkSchema(o.schema);
     unittest.expect(o.type, unittest.equals('foo'));
@@ -513,7 +548,7 @@ checkGeoJsonGeometry(api.GeoJsonGeometry o) {
   checkGeoJsonGeometryCollection(api.GeoJsonGeometryCollection o) {
   buildCounterGeoJsonGeometryCollection++;
   if (buildCounterGeoJsonGeometryCollection < 3) {
-    checkUnnamed101(o.geometries);
+    checkUnnamed1172(o.geometries);
   }
   buildCounterGeoJsonGeometryCollection--;
 }
@@ -521,14 +556,14 @@ checkGeoJsonGeometry(api.GeoJsonGeometry o) {
 (o);
 }
 
-buildUnnamed101() {
+buildUnnamed1172() {
   var o = new core.List<api.GeoJsonGeometry>();
   o.add(buildGeoJsonGeometry());
   o.add(buildGeoJsonGeometry());
   return o;
 }
 
-checkUnnamed101(core.List<api.GeoJsonGeometry> o) {
+checkUnnamed1172(core.List<api.GeoJsonGeometry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeoJsonGeometry(o[0]);
   checkGeoJsonGeometry(o[1]);
@@ -539,7 +574,7 @@ buildGeoJsonGeometryCollection() {
   var o = new api.GeoJsonGeometryCollection();
   buildCounterGeoJsonGeometryCollection++;
   if (buildCounterGeoJsonGeometryCollection < 3) {
-    o.geometries = buildUnnamed101();
+    o.geometries = buildUnnamed1172();
   }
   buildCounterGeoJsonGeometryCollection--;
   return o;
@@ -548,19 +583,19 @@ buildGeoJsonGeometryCollection() {
 checkGeoJsonGeometryCollection(api.GeoJsonGeometryCollection o) {
   buildCounterGeoJsonGeometryCollection++;
   if (buildCounterGeoJsonGeometryCollection < 3) {
-    checkUnnamed101(o.geometries);
+    checkUnnamed1172(o.geometries);
   }
   buildCounterGeoJsonGeometryCollection--;
 }
 
-buildUnnamed102() {
+buildUnnamed1173() {
   var o = new core.List<api.GeoJsonPosition>();
   o.add(buildGeoJsonPosition());
   o.add(buildGeoJsonPosition());
   return o;
 }
 
-checkUnnamed102(core.List<api.GeoJsonPosition> o) {
+checkUnnamed1173(core.List<api.GeoJsonPosition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeoJsonPosition(o[0]);
   checkGeoJsonPosition(o[1]);
@@ -571,7 +606,7 @@ buildGeoJsonLineString() {
   var o = new api.GeoJsonLineString();
   buildCounterGeoJsonLineString++;
   if (buildCounterGeoJsonLineString < 3) {
-    o.coordinates = buildUnnamed102();
+    o.coordinates = buildUnnamed1173();
   }
   buildCounterGeoJsonLineString--;
   return o;
@@ -580,35 +615,35 @@ buildGeoJsonLineString() {
 checkGeoJsonLineString(api.GeoJsonLineString o) {
   buildCounterGeoJsonLineString++;
   if (buildCounterGeoJsonLineString < 3) {
-    checkUnnamed102(o.coordinates);
+    checkUnnamed1173(o.coordinates);
   }
   buildCounterGeoJsonLineString--;
 }
 
-buildUnnamed103() {
+buildUnnamed1174() {
   var o = new core.List<api.GeoJsonPosition>();
   o.add(buildGeoJsonPosition());
   o.add(buildGeoJsonPosition());
   return o;
 }
 
-checkUnnamed103(core.List<api.GeoJsonPosition> o) {
+checkUnnamed1174(core.List<api.GeoJsonPosition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeoJsonPosition(o[0]);
   checkGeoJsonPosition(o[1]);
 }
 
-buildUnnamed104() {
+buildUnnamed1175() {
   var o = new core.List<core.List<api.GeoJsonPosition>>();
-  o.add(buildUnnamed103());
-  o.add(buildUnnamed103());
+  o.add(buildUnnamed1174());
+  o.add(buildUnnamed1174());
   return o;
 }
 
-checkUnnamed104(core.List<core.List<api.GeoJsonPosition>> o) {
+checkUnnamed1175(core.List<core.List<api.GeoJsonPosition>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed103(o[0]);
-  checkUnnamed103(o[1]);
+  checkUnnamed1174(o[0]);
+  checkUnnamed1174(o[1]);
 }
 
 core.int buildCounterGeoJsonMultiLineString = 0;
@@ -616,7 +651,7 @@ buildGeoJsonMultiLineString() {
   var o = new api.GeoJsonMultiLineString();
   buildCounterGeoJsonMultiLineString++;
   if (buildCounterGeoJsonMultiLineString < 3) {
-    o.coordinates = buildUnnamed104();
+    o.coordinates = buildUnnamed1175();
   }
   buildCounterGeoJsonMultiLineString--;
   return o;
@@ -625,19 +660,19 @@ buildGeoJsonMultiLineString() {
 checkGeoJsonMultiLineString(api.GeoJsonMultiLineString o) {
   buildCounterGeoJsonMultiLineString++;
   if (buildCounterGeoJsonMultiLineString < 3) {
-    checkUnnamed104(o.coordinates);
+    checkUnnamed1175(o.coordinates);
   }
   buildCounterGeoJsonMultiLineString--;
 }
 
-buildUnnamed105() {
+buildUnnamed1176() {
   var o = new core.List<api.GeoJsonPosition>();
   o.add(buildGeoJsonPosition());
   o.add(buildGeoJsonPosition());
   return o;
 }
 
-checkUnnamed105(core.List<api.GeoJsonPosition> o) {
+checkUnnamed1176(core.List<api.GeoJsonPosition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeoJsonPosition(o[0]);
   checkGeoJsonPosition(o[1]);
@@ -648,7 +683,7 @@ buildGeoJsonMultiPoint() {
   var o = new api.GeoJsonMultiPoint();
   buildCounterGeoJsonMultiPoint++;
   if (buildCounterGeoJsonMultiPoint < 3) {
-    o.coordinates = buildUnnamed105();
+    o.coordinates = buildUnnamed1176();
   }
   buildCounterGeoJsonMultiPoint--;
   return o;
@@ -657,48 +692,48 @@ buildGeoJsonMultiPoint() {
 checkGeoJsonMultiPoint(api.GeoJsonMultiPoint o) {
   buildCounterGeoJsonMultiPoint++;
   if (buildCounterGeoJsonMultiPoint < 3) {
-    checkUnnamed105(o.coordinates);
+    checkUnnamed1176(o.coordinates);
   }
   buildCounterGeoJsonMultiPoint--;
 }
 
-buildUnnamed106() {
+buildUnnamed1177() {
   var o = new core.List<api.GeoJsonPosition>();
   o.add(buildGeoJsonPosition());
   o.add(buildGeoJsonPosition());
   return o;
 }
 
-checkUnnamed106(core.List<api.GeoJsonPosition> o) {
+checkUnnamed1177(core.List<api.GeoJsonPosition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeoJsonPosition(o[0]);
   checkGeoJsonPosition(o[1]);
 }
 
-buildUnnamed107() {
+buildUnnamed1178() {
   var o = new core.List<core.List<api.GeoJsonPosition>>();
-  o.add(buildUnnamed106());
-  o.add(buildUnnamed106());
+  o.add(buildUnnamed1177());
+  o.add(buildUnnamed1177());
   return o;
 }
 
-checkUnnamed107(core.List<core.List<api.GeoJsonPosition>> o) {
+checkUnnamed1178(core.List<core.List<api.GeoJsonPosition>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed106(o[0]);
-  checkUnnamed106(o[1]);
+  checkUnnamed1177(o[0]);
+  checkUnnamed1177(o[1]);
 }
 
-buildUnnamed108() {
+buildUnnamed1179() {
   var o = new core.List<core.List<core.List<api.GeoJsonPosition>>>();
-  o.add(buildUnnamed107());
-  o.add(buildUnnamed107());
+  o.add(buildUnnamed1178());
+  o.add(buildUnnamed1178());
   return o;
 }
 
-checkUnnamed108(core.List<core.List<core.List<api.GeoJsonPosition>>> o) {
+checkUnnamed1179(core.List<core.List<core.List<api.GeoJsonPosition>>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed107(o[0]);
-  checkUnnamed107(o[1]);
+  checkUnnamed1178(o[0]);
+  checkUnnamed1178(o[1]);
 }
 
 core.int buildCounterGeoJsonMultiPolygon = 0;
@@ -706,7 +741,7 @@ buildGeoJsonMultiPolygon() {
   var o = new api.GeoJsonMultiPolygon();
   buildCounterGeoJsonMultiPolygon++;
   if (buildCounterGeoJsonMultiPolygon < 3) {
-    o.coordinates = buildUnnamed108();
+    o.coordinates = buildUnnamed1179();
   }
   buildCounterGeoJsonMultiPolygon--;
   return o;
@@ -715,7 +750,7 @@ buildGeoJsonMultiPolygon() {
 checkGeoJsonMultiPolygon(api.GeoJsonMultiPolygon o) {
   buildCounterGeoJsonMultiPolygon++;
   if (buildCounterGeoJsonMultiPolygon < 3) {
-    checkUnnamed108(o.coordinates);
+    checkUnnamed1179(o.coordinates);
   }
   buildCounterGeoJsonMultiPolygon--;
 }
@@ -739,30 +774,30 @@ checkGeoJsonPoint(api.GeoJsonPoint o) {
   buildCounterGeoJsonPoint--;
 }
 
-buildUnnamed109() {
+buildUnnamed1180() {
   var o = new core.List<api.GeoJsonPosition>();
   o.add(buildGeoJsonPosition());
   o.add(buildGeoJsonPosition());
   return o;
 }
 
-checkUnnamed109(core.List<api.GeoJsonPosition> o) {
+checkUnnamed1180(core.List<api.GeoJsonPosition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeoJsonPosition(o[0]);
   checkGeoJsonPosition(o[1]);
 }
 
-buildUnnamed110() {
+buildUnnamed1181() {
   var o = new core.List<core.List<api.GeoJsonPosition>>();
-  o.add(buildUnnamed109());
-  o.add(buildUnnamed109());
+  o.add(buildUnnamed1180());
+  o.add(buildUnnamed1180());
   return o;
 }
 
-checkUnnamed110(core.List<core.List<api.GeoJsonPosition>> o) {
+checkUnnamed1181(core.List<core.List<api.GeoJsonPosition>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed109(o[0]);
-  checkUnnamed109(o[1]);
+  checkUnnamed1180(o[0]);
+  checkUnnamed1180(o[1]);
 }
 
 core.int buildCounterGeoJsonPolygon = 0;
@@ -770,7 +805,7 @@ buildGeoJsonPolygon() {
   var o = new api.GeoJsonPolygon();
   buildCounterGeoJsonPolygon++;
   if (buildCounterGeoJsonPolygon < 3) {
-    o.coordinates = buildUnnamed110();
+    o.coordinates = buildUnnamed1181();
   }
   buildCounterGeoJsonPolygon--;
   return o;
@@ -779,7 +814,7 @@ buildGeoJsonPolygon() {
 checkGeoJsonPolygon(api.GeoJsonPolygon o) {
   buildCounterGeoJsonPolygon++;
   if (buildCounterGeoJsonPolygon < 3) {
-    checkUnnamed110(o.coordinates);
+    checkUnnamed1181(o.coordinates);
   }
   buildCounterGeoJsonPolygon--;
 }
@@ -858,14 +893,14 @@ checkIconStyle(api.IconStyle o) {
   buildCounterIconStyle--;
 }
 
-buildUnnamed111() {
+buildUnnamed1182() {
   var o = new core.List<api.Icon>();
   o.add(buildIcon());
   o.add(buildIcon());
   return o;
 }
 
-checkUnnamed111(core.List<api.Icon> o) {
+checkUnnamed1182(core.List<api.Icon> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIcon(o[0]);
   checkIcon(o[1]);
@@ -876,7 +911,7 @@ buildIconsListResponse() {
   var o = new api.IconsListResponse();
   buildCounterIconsListResponse++;
   if (buildCounterIconsListResponse < 3) {
-    o.icons = buildUnnamed111();
+    o.icons = buildUnnamed1182();
     o.nextPageToken = "foo";
   }
   buildCounterIconsListResponse--;
@@ -886,7 +921,7 @@ buildIconsListResponse() {
 checkIconsListResponse(api.IconsListResponse o) {
   buildCounterIconsListResponse++;
   if (buildCounterIconsListResponse < 3) {
-    checkUnnamed111(o.icons);
+    checkUnnamed1182(o.icons);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterIconsListResponse--;
@@ -936,14 +971,14 @@ checkLatLngBox(api.LatLngBox o) {
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed112() {
+buildUnnamed1183() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed112(core.List<core.double> o) {
+checkUnnamed1183(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -954,7 +989,7 @@ buildLayer() {
   var o = new api.Layer();
   buildCounterLayer++;
   if (buildCounterLayer < 3) {
-    o.bbox = buildUnnamed112();
+    o.bbox = buildUnnamed1183();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.creatorEmail = "foo";
     o.datasourceType = "foo";
@@ -982,7 +1017,7 @@ buildLayer() {
 checkLayer(api.Layer o) {
   buildCounterLayer++;
   if (buildCounterLayer < 3) {
-    checkUnnamed112(o.bbox);
+    checkUnnamed1183(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.datasourceType, unittest.equals('foo'));
@@ -1006,14 +1041,14 @@ checkLayer(api.Layer o) {
   buildCounterLayer--;
 }
 
-buildUnnamed113() {
+buildUnnamed1184() {
   var o = new core.List<api.Layer>();
   o.add(buildLayer());
   o.add(buildLayer());
   return o;
 }
 
-checkUnnamed113(core.List<api.Layer> o) {
+checkUnnamed1184(core.List<api.Layer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLayer(o[0]);
   checkLayer(o[1]);
@@ -1024,7 +1059,7 @@ buildLayersListResponse() {
   var o = new api.LayersListResponse();
   buildCounterLayersListResponse++;
   if (buildCounterLayersListResponse < 3) {
-    o.layers = buildUnnamed113();
+    o.layers = buildUnnamed1184();
     o.nextPageToken = "foo";
   }
   buildCounterLayersListResponse--;
@@ -1034,20 +1069,20 @@ buildLayersListResponse() {
 checkLayersListResponse(api.LayersListResponse o) {
   buildCounterLayersListResponse++;
   if (buildCounterLayersListResponse < 3) {
-    checkUnnamed113(o.layers);
+    checkUnnamed1184(o.layers);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterLayersListResponse--;
 }
 
-buildUnnamed114() {
+buildUnnamed1185() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed114(core.List<core.double> o) {
+checkUnnamed1185(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -1082,7 +1117,7 @@ buildLineStyle() {
   buildCounterLineStyle++;
   if (buildCounterLineStyle < 3) {
     o.border = buildBorder();
-    o.dash = buildUnnamed114();
+    o.dash = buildUnnamed1185();
     o.label = buildLabelStyle();
     o.stroke = buildLineStyleStroke();
   }
@@ -1094,34 +1129,34 @@ checkLineStyle(api.LineStyle o) {
   buildCounterLineStyle++;
   if (buildCounterLineStyle < 3) {
     checkBorder(o.border);
-    checkUnnamed114(o.dash);
+    checkUnnamed1185(o.dash);
     checkLabelStyle(o.label);
     checkLineStyleStroke(o.stroke);
   }
   buildCounterLineStyle--;
 }
 
-buildUnnamed115() {
+buildUnnamed1186() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed115(core.List<core.double> o) {
+checkUnnamed1186(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed116() {
+buildUnnamed1187() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed116(core.List<core.String> o) {
+checkUnnamed1187(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1132,7 +1167,7 @@ buildMap() {
   var o = new api.Map();
   buildCounterMap++;
   if (buildCounterMap < 3) {
-    o.bbox = buildUnnamed115();
+    o.bbox = buildUnnamed1186();
     o.contents = buildMapContents();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.creatorEmail = "foo";
@@ -1149,7 +1184,7 @@ buildMap() {
     o.publishedAccessList = "foo";
     o.publishingStatus = "foo";
     o.tags = buildTags();
-    o.versions = buildUnnamed116();
+    o.versions = buildUnnamed1187();
     o.writersCanEditPermissions = true;
   }
   buildCounterMap--;
@@ -1159,7 +1194,7 @@ buildMap() {
 checkMap(api.Map o) {
   buildCounterMap++;
   if (buildCounterMap < 3) {
-    checkUnnamed115(o.bbox);
+    checkUnnamed1186(o.bbox);
     checkMapContents(o.contents);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.creatorEmail, unittest.equals('foo'));
@@ -1176,7 +1211,7 @@ checkMap(api.Map o) {
     unittest.expect(o.publishedAccessList, unittest.equals('foo'));
     unittest.expect(o.publishingStatus, unittest.equals('foo'));
     checkTags(o.tags);
-    checkUnnamed116(o.versions);
+    checkUnnamed1187(o.versions);
     unittest.expect(o.writersCanEditPermissions, unittest.isTrue);
   }
   buildCounterMap--;
@@ -1195,27 +1230,27 @@ checkMapContents(api.MapContents o) {
   checkMapItem(o[1]);
 }
 
-buildUnnamed117() {
+buildUnnamed1188() {
   var o = new core.List<api.MapItem>();
   o.add(buildMapItem());
   o.add(buildMapItem());
   return o;
 }
 
-checkUnnamed117(core.List<api.MapItem> o) {
+checkUnnamed1188(core.List<api.MapItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMapItem(o[0]);
   checkMapItem(o[1]);
 }
 
-buildUnnamed118() {
+buildUnnamed1189() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed118(core.List<core.double> o) {
+checkUnnamed1189(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -1226,8 +1261,8 @@ buildMapFolder() {
   var o = new api.MapFolder();
   buildCounterMapFolder++;
   if (buildCounterMapFolder < 3) {
-    o.contents = buildUnnamed117();
-    o.defaultViewport = buildUnnamed118();
+    o.contents = buildUnnamed1188();
+    o.defaultViewport = buildUnnamed1189();
     o.expandable = true;
     o.key = "foo";
     o.name = "foo";
@@ -1240,8 +1275,8 @@ buildMapFolder() {
 checkMapFolder(api.MapFolder o) {
   buildCounterMapFolder++;
   if (buildCounterMapFolder < 3) {
-    checkUnnamed117(o.contents);
-    checkUnnamed118(o.defaultViewport);
+    checkUnnamed1188(o.contents);
+    checkUnnamed1189(o.defaultViewport);
     unittest.expect(o.expandable, unittest.isTrue);
     unittest.expect(o.key, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1258,8 +1293,8 @@ checkMapItem(api.MapItem o) {
   checkMapFolder(api.MapFolder o) {
   buildCounterMapFolder++;
   if (buildCounterMapFolder < 3) {
-    checkUnnamed117(o.contents);
-    checkUnnamed118(o.defaultViewport);
+    checkUnnamed1188(o.contents);
+    checkUnnamed1189(o.defaultViewport);
     unittest.expect(o.expandable, unittest.isTrue);
     unittest.expect(o.key, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1271,14 +1306,14 @@ checkMapItem(api.MapItem o) {
 (o);
 }
 
-buildUnnamed119() {
+buildUnnamed1190() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed119(core.List<core.double> o) {
+checkUnnamed1190(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -1289,7 +1324,7 @@ buildMapKmlLink() {
   var o = new api.MapKmlLink();
   buildCounterMapKmlLink++;
   if (buildCounterMapKmlLink < 3) {
-    o.defaultViewport = buildUnnamed119();
+    o.defaultViewport = buildUnnamed1190();
     o.kmlUrl = "foo";
     o.name = "foo";
     o.visibility = "foo";
@@ -1301,7 +1336,7 @@ buildMapKmlLink() {
 checkMapKmlLink(api.MapKmlLink o) {
   buildCounterMapKmlLink++;
   if (buildCounterMapKmlLink < 3) {
-    checkUnnamed119(o.defaultViewport);
+    checkUnnamed1190(o.defaultViewport);
     unittest.expect(o.kmlUrl, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.visibility, unittest.equals('foo'));
@@ -1309,14 +1344,14 @@ checkMapKmlLink(api.MapKmlLink o) {
   buildCounterMapKmlLink--;
 }
 
-buildUnnamed120() {
+buildUnnamed1191() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed120(core.List<core.double> o) {
+checkUnnamed1191(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -1327,7 +1362,7 @@ buildMapLayer() {
   var o = new api.MapLayer();
   buildCounterMapLayer++;
   if (buildCounterMapLayer < 3) {
-    o.defaultViewport = buildUnnamed120();
+    o.defaultViewport = buildUnnamed1191();
     o.id = "foo";
     o.key = "foo";
     o.name = "foo";
@@ -1340,7 +1375,7 @@ buildMapLayer() {
 checkMapLayer(api.MapLayer o) {
   buildCounterMapLayer++;
   if (buildCounterMapLayer < 3) {
-    checkUnnamed120(o.defaultViewport);
+    checkUnnamed1191(o.defaultViewport);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.key, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1349,14 +1384,14 @@ checkMapLayer(api.MapLayer o) {
   buildCounterMapLayer--;
 }
 
-buildUnnamed121() {
+buildUnnamed1192() {
   var o = new core.List<api.Map>();
   o.add(buildMap());
   o.add(buildMap());
   return o;
 }
 
-checkUnnamed121(core.List<api.Map> o) {
+checkUnnamed1192(core.List<api.Map> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMap(o[0]);
   checkMap(o[1]);
@@ -1367,7 +1402,7 @@ buildMapsListResponse() {
   var o = new api.MapsListResponse();
   buildCounterMapsListResponse++;
   if (buildCounterMapsListResponse < 3) {
-    o.maps = buildUnnamed121();
+    o.maps = buildUnnamed1192();
     o.nextPageToken = "foo";
   }
   buildCounterMapsListResponse--;
@@ -1377,7 +1412,7 @@ buildMapsListResponse() {
 checkMapsListResponse(api.MapsListResponse o) {
   buildCounterMapsListResponse++;
   if (buildCounterMapsListResponse < 3) {
-    checkUnnamed121(o.maps);
+    checkUnnamed1192(o.maps);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterMapsListResponse--;
@@ -1402,14 +1437,14 @@ checkParent(api.Parent o) {
   buildCounterParent--;
 }
 
-buildUnnamed122() {
+buildUnnamed1193() {
   var o = new core.List<api.Parent>();
   o.add(buildParent());
   o.add(buildParent());
   return o;
 }
 
-checkUnnamed122(core.List<api.Parent> o) {
+checkUnnamed1193(core.List<api.Parent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParent(o[0]);
   checkParent(o[1]);
@@ -1421,7 +1456,7 @@ buildParentsListResponse() {
   buildCounterParentsListResponse++;
   if (buildCounterParentsListResponse < 3) {
     o.nextPageToken = "foo";
-    o.parents = buildUnnamed122();
+    o.parents = buildUnnamed1193();
   }
   buildCounterParentsListResponse--;
   return o;
@@ -1431,7 +1466,7 @@ checkParentsListResponse(api.ParentsListResponse o) {
   buildCounterParentsListResponse++;
   if (buildCounterParentsListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed122(o.parents);
+    checkUnnamed1193(o.parents);
   }
   buildCounterParentsListResponse--;
 }
@@ -1461,14 +1496,14 @@ checkPermission(api.Permission o) {
   buildCounterPermission--;
 }
 
-buildUnnamed123() {
+buildUnnamed1194() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed123(core.List<core.String> o) {
+checkUnnamed1194(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1479,7 +1514,7 @@ buildPermissionsBatchDeleteRequest() {
   var o = new api.PermissionsBatchDeleteRequest();
   buildCounterPermissionsBatchDeleteRequest++;
   if (buildCounterPermissionsBatchDeleteRequest < 3) {
-    o.ids = buildUnnamed123();
+    o.ids = buildUnnamed1194();
   }
   buildCounterPermissionsBatchDeleteRequest--;
   return o;
@@ -1488,7 +1523,7 @@ buildPermissionsBatchDeleteRequest() {
 checkPermissionsBatchDeleteRequest(api.PermissionsBatchDeleteRequest o) {
   buildCounterPermissionsBatchDeleteRequest++;
   if (buildCounterPermissionsBatchDeleteRequest < 3) {
-    checkUnnamed123(o.ids);
+    checkUnnamed1194(o.ids);
   }
   buildCounterPermissionsBatchDeleteRequest--;
 }
@@ -1510,14 +1545,14 @@ checkPermissionsBatchDeleteResponse(api.PermissionsBatchDeleteResponse o) {
   buildCounterPermissionsBatchDeleteResponse--;
 }
 
-buildUnnamed124() {
+buildUnnamed1195() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed124(core.List<api.Permission> o) {
+checkUnnamed1195(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
@@ -1528,7 +1563,7 @@ buildPermissionsBatchUpdateRequest() {
   var o = new api.PermissionsBatchUpdateRequest();
   buildCounterPermissionsBatchUpdateRequest++;
   if (buildCounterPermissionsBatchUpdateRequest < 3) {
-    o.permissions = buildUnnamed124();
+    o.permissions = buildUnnamed1195();
   }
   buildCounterPermissionsBatchUpdateRequest--;
   return o;
@@ -1537,7 +1572,7 @@ buildPermissionsBatchUpdateRequest() {
 checkPermissionsBatchUpdateRequest(api.PermissionsBatchUpdateRequest o) {
   buildCounterPermissionsBatchUpdateRequest++;
   if (buildCounterPermissionsBatchUpdateRequest < 3) {
-    checkUnnamed124(o.permissions);
+    checkUnnamed1195(o.permissions);
   }
   buildCounterPermissionsBatchUpdateRequest--;
 }
@@ -1559,14 +1594,14 @@ checkPermissionsBatchUpdateResponse(api.PermissionsBatchUpdateResponse o) {
   buildCounterPermissionsBatchUpdateResponse--;
 }
 
-buildUnnamed125() {
+buildUnnamed1196() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed125(core.List<api.Permission> o) {
+checkUnnamed1196(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
@@ -1577,7 +1612,7 @@ buildPermissionsListResponse() {
   var o = new api.PermissionsListResponse();
   buildCounterPermissionsListResponse++;
   if (buildCounterPermissionsListResponse < 3) {
-    o.permissions = buildUnnamed125();
+    o.permissions = buildUnnamed1196();
   }
   buildCounterPermissionsListResponse--;
   return o;
@@ -1586,7 +1621,7 @@ buildPermissionsListResponse() {
 checkPermissionsListResponse(api.PermissionsListResponse o) {
   buildCounterPermissionsListResponse++;
   if (buildCounterPermissionsListResponse < 3) {
-    checkUnnamed125(o.permissions);
+    checkUnnamed1196(o.permissions);
   }
   buildCounterPermissionsListResponse--;
 }
@@ -1673,14 +1708,14 @@ checkProject(api.Project o) {
   buildCounterProject--;
 }
 
-buildUnnamed126() {
+buildUnnamed1197() {
   var o = new core.List<api.Project>();
   o.add(buildProject());
   o.add(buildProject());
   return o;
 }
 
-checkUnnamed126(core.List<api.Project> o) {
+checkUnnamed1197(core.List<api.Project> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProject(o[0]);
   checkProject(o[1]);
@@ -1691,7 +1726,7 @@ buildProjectsListResponse() {
   var o = new api.ProjectsListResponse();
   buildCounterProjectsListResponse++;
   if (buildCounterProjectsListResponse < 3) {
-    o.projects = buildUnnamed126();
+    o.projects = buildUnnamed1197();
   }
   buildCounterProjectsListResponse--;
   return o;
@@ -1700,7 +1735,7 @@ buildProjectsListResponse() {
 checkProjectsListResponse(api.ProjectsListResponse o) {
   buildCounterProjectsListResponse++;
   if (buildCounterProjectsListResponse < 3) {
-    checkUnnamed126(o.projects);
+    checkUnnamed1197(o.projects);
   }
   buildCounterProjectsListResponse--;
 }
@@ -1749,14 +1784,14 @@ checkPublishedLayer(api.PublishedLayer o) {
   buildCounterPublishedLayer--;
 }
 
-buildUnnamed127() {
+buildUnnamed1198() {
   var o = new core.List<api.PublishedLayer>();
   o.add(buildPublishedLayer());
   o.add(buildPublishedLayer());
   return o;
 }
 
-checkUnnamed127(core.List<api.PublishedLayer> o) {
+checkUnnamed1198(core.List<api.PublishedLayer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPublishedLayer(o[0]);
   checkPublishedLayer(o[1]);
@@ -1767,7 +1802,7 @@ buildPublishedLayersListResponse() {
   var o = new api.PublishedLayersListResponse();
   buildCounterPublishedLayersListResponse++;
   if (buildCounterPublishedLayersListResponse < 3) {
-    o.layers = buildUnnamed127();
+    o.layers = buildUnnamed1198();
     o.nextPageToken = "foo";
   }
   buildCounterPublishedLayersListResponse--;
@@ -1777,7 +1812,7 @@ buildPublishedLayersListResponse() {
 checkPublishedLayersListResponse(api.PublishedLayersListResponse o) {
   buildCounterPublishedLayersListResponse++;
   if (buildCounterPublishedLayersListResponse < 3) {
-    checkUnnamed127(o.layers);
+    checkUnnamed1198(o.layers);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterPublishedLayersListResponse--;
@@ -1812,14 +1847,14 @@ checkPublishedMap(api.PublishedMap o) {
   buildCounterPublishedMap--;
 }
 
-buildUnnamed128() {
+buildUnnamed1199() {
   var o = new core.List<api.PublishedMap>();
   o.add(buildPublishedMap());
   o.add(buildPublishedMap());
   return o;
 }
 
-checkUnnamed128(core.List<api.PublishedMap> o) {
+checkUnnamed1199(core.List<api.PublishedMap> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPublishedMap(o[0]);
   checkPublishedMap(o[1]);
@@ -1830,7 +1865,7 @@ buildPublishedMapsListResponse() {
   var o = new api.PublishedMapsListResponse();
   buildCounterPublishedMapsListResponse++;
   if (buildCounterPublishedMapsListResponse < 3) {
-    o.maps = buildUnnamed128();
+    o.maps = buildUnnamed1199();
     o.nextPageToken = "foo";
   }
   buildCounterPublishedMapsListResponse--;
@@ -1840,33 +1875,33 @@ buildPublishedMapsListResponse() {
 checkPublishedMapsListResponse(api.PublishedMapsListResponse o) {
   buildCounterPublishedMapsListResponse++;
   if (buildCounterPublishedMapsListResponse < 3) {
-    checkUnnamed128(o.maps);
+    checkUnnamed1199(o.maps);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterPublishedMapsListResponse--;
 }
 
-buildUnnamed129() {
+buildUnnamed1200() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed129(core.List<core.double> o) {
+checkUnnamed1200(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed130() {
+buildUnnamed1201() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed130(core.List<api.File> o) {
+checkUnnamed1201(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -1879,13 +1914,13 @@ buildRaster() {
   if (buildCounterRaster < 3) {
     o.acquisitionTime = buildAcquisitionTime();
     o.attribution = "foo";
-    o.bbox = buildUnnamed129();
+    o.bbox = buildUnnamed1200();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.creatorEmail = "foo";
     o.description = "foo";
     o.draftAccessList = "foo";
     o.etag = "foo";
-    o.files = buildUnnamed130();
+    o.files = buildUnnamed1201();
     o.id = "foo";
     o.lastModifiedTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.lastModifierEmail = "foo";
@@ -1906,13 +1941,13 @@ checkRaster(api.Raster o) {
   if (buildCounterRaster < 3) {
     checkAcquisitionTime(o.acquisitionTime);
     unittest.expect(o.attribution, unittest.equals('foo'));
-    checkUnnamed129(o.bbox);
+    checkUnnamed1200(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.draftAccessList, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed130(o.files);
+    checkUnnamed1201(o.files);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.lastModifiedTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.lastModifierEmail, unittest.equals('foo'));
@@ -1927,14 +1962,14 @@ checkRaster(api.Raster o) {
   buildCounterRaster--;
 }
 
-buildUnnamed131() {
+buildUnnamed1202() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed131(core.List<core.double> o) {
+checkUnnamed1202(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -1946,7 +1981,7 @@ buildRasterCollection() {
   buildCounterRasterCollection++;
   if (buildCounterRasterCollection < 3) {
     o.attribution = "foo";
-    o.bbox = buildUnnamed131();
+    o.bbox = buildUnnamed1202();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.creatorEmail = "foo";
     o.description = "foo";
@@ -1971,7 +2006,7 @@ checkRasterCollection(api.RasterCollection o) {
   buildCounterRasterCollection++;
   if (buildCounterRasterCollection < 3) {
     unittest.expect(o.attribution, unittest.equals('foo'));
-    checkUnnamed131(o.bbox);
+    checkUnnamed1202(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
@@ -1991,14 +2026,14 @@ checkRasterCollection(api.RasterCollection o) {
   buildCounterRasterCollection--;
 }
 
-buildUnnamed132() {
+buildUnnamed1203() {
   var o = new core.List<api.RasterCollection>();
   o.add(buildRasterCollection());
   o.add(buildRasterCollection());
   return o;
 }
 
-checkUnnamed132(core.List<api.RasterCollection> o) {
+checkUnnamed1203(core.List<api.RasterCollection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRasterCollection(o[0]);
   checkRasterCollection(o[1]);
@@ -2010,7 +2045,7 @@ buildRasterCollectionsListResponse() {
   buildCounterRasterCollectionsListResponse++;
   if (buildCounterRasterCollectionsListResponse < 3) {
     o.nextPageToken = "foo";
-    o.rasterCollections = buildUnnamed132();
+    o.rasterCollections = buildUnnamed1203();
   }
   buildCounterRasterCollectionsListResponse--;
   return o;
@@ -2020,32 +2055,32 @@ checkRasterCollectionsListResponse(api.RasterCollectionsListResponse o) {
   buildCounterRasterCollectionsListResponse++;
   if (buildCounterRasterCollectionsListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed132(o.rasterCollections);
+    checkUnnamed1203(o.rasterCollections);
   }
   buildCounterRasterCollectionsListResponse--;
 }
 
-buildUnnamed133() {
+buildUnnamed1204() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed133(core.List<core.double> o) {
+checkUnnamed1204(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed134() {
+buildUnnamed1205() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed134(core.List<core.String> o) {
+checkUnnamed1205(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2056,7 +2091,7 @@ buildRasterCollectionsRaster() {
   var o = new api.RasterCollectionsRaster();
   buildCounterRasterCollectionsRaster++;
   if (buildCounterRasterCollectionsRaster < 3) {
-    o.bbox = buildUnnamed133();
+    o.bbox = buildUnnamed1204();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.description = "foo";
     o.id = "foo";
@@ -2064,7 +2099,7 @@ buildRasterCollectionsRaster() {
     o.name = "foo";
     o.projectId = "foo";
     o.rasterType = "foo";
-    o.tags = buildUnnamed134();
+    o.tags = buildUnnamed1205();
   }
   buildCounterRasterCollectionsRaster--;
   return o;
@@ -2073,7 +2108,7 @@ buildRasterCollectionsRaster() {
 checkRasterCollectionsRaster(api.RasterCollectionsRaster o) {
   buildCounterRasterCollectionsRaster++;
   if (buildCounterRasterCollectionsRaster < 3) {
-    checkUnnamed133(o.bbox);
+    checkUnnamed1204(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
@@ -2081,19 +2116,19 @@ checkRasterCollectionsRaster(api.RasterCollectionsRaster o) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
     unittest.expect(o.rasterType, unittest.equals('foo'));
-    checkUnnamed134(o.tags);
+    checkUnnamed1205(o.tags);
   }
   buildCounterRasterCollectionsRaster--;
 }
 
-buildUnnamed135() {
+buildUnnamed1206() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed135(core.List<core.String> o) {
+checkUnnamed1206(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2104,7 +2139,7 @@ buildRasterCollectionsRasterBatchDeleteRequest() {
   var o = new api.RasterCollectionsRasterBatchDeleteRequest();
   buildCounterRasterCollectionsRasterBatchDeleteRequest++;
   if (buildCounterRasterCollectionsRasterBatchDeleteRequest < 3) {
-    o.ids = buildUnnamed135();
+    o.ids = buildUnnamed1206();
   }
   buildCounterRasterCollectionsRasterBatchDeleteRequest--;
   return o;
@@ -2113,7 +2148,7 @@ buildRasterCollectionsRasterBatchDeleteRequest() {
 checkRasterCollectionsRasterBatchDeleteRequest(api.RasterCollectionsRasterBatchDeleteRequest o) {
   buildCounterRasterCollectionsRasterBatchDeleteRequest++;
   if (buildCounterRasterCollectionsRasterBatchDeleteRequest < 3) {
-    checkUnnamed135(o.ids);
+    checkUnnamed1206(o.ids);
   }
   buildCounterRasterCollectionsRasterBatchDeleteRequest--;
 }
@@ -2135,14 +2170,14 @@ checkRasterCollectionsRastersBatchDeleteResponse(api.RasterCollectionsRastersBat
   buildCounterRasterCollectionsRastersBatchDeleteResponse--;
 }
 
-buildUnnamed136() {
+buildUnnamed1207() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed136(core.List<core.String> o) {
+checkUnnamed1207(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2153,7 +2188,7 @@ buildRasterCollectionsRastersBatchInsertRequest() {
   var o = new api.RasterCollectionsRastersBatchInsertRequest();
   buildCounterRasterCollectionsRastersBatchInsertRequest++;
   if (buildCounterRasterCollectionsRastersBatchInsertRequest < 3) {
-    o.ids = buildUnnamed136();
+    o.ids = buildUnnamed1207();
   }
   buildCounterRasterCollectionsRastersBatchInsertRequest--;
   return o;
@@ -2162,7 +2197,7 @@ buildRasterCollectionsRastersBatchInsertRequest() {
 checkRasterCollectionsRastersBatchInsertRequest(api.RasterCollectionsRastersBatchInsertRequest o) {
   buildCounterRasterCollectionsRastersBatchInsertRequest++;
   if (buildCounterRasterCollectionsRastersBatchInsertRequest < 3) {
-    checkUnnamed136(o.ids);
+    checkUnnamed1207(o.ids);
   }
   buildCounterRasterCollectionsRastersBatchInsertRequest--;
 }
@@ -2184,14 +2219,14 @@ checkRasterCollectionsRastersBatchInsertResponse(api.RasterCollectionsRastersBat
   buildCounterRasterCollectionsRastersBatchInsertResponse--;
 }
 
-buildUnnamed137() {
+buildUnnamed1208() {
   var o = new core.List<api.RasterCollectionsRaster>();
   o.add(buildRasterCollectionsRaster());
   o.add(buildRasterCollectionsRaster());
   return o;
 }
 
-checkUnnamed137(core.List<api.RasterCollectionsRaster> o) {
+checkUnnamed1208(core.List<api.RasterCollectionsRaster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRasterCollectionsRaster(o[0]);
   checkRasterCollectionsRaster(o[1]);
@@ -2203,7 +2238,7 @@ buildRasterCollectionsRastersListResponse() {
   buildCounterRasterCollectionsRastersListResponse++;
   if (buildCounterRasterCollectionsRastersListResponse < 3) {
     o.nextPageToken = "foo";
-    o.rasters = buildUnnamed137();
+    o.rasters = buildUnnamed1208();
   }
   buildCounterRasterCollectionsRastersListResponse--;
   return o;
@@ -2213,19 +2248,19 @@ checkRasterCollectionsRastersListResponse(api.RasterCollectionsRastersListRespon
   buildCounterRasterCollectionsRastersListResponse++;
   if (buildCounterRasterCollectionsRastersListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed137(o.rasters);
+    checkUnnamed1208(o.rasters);
   }
   buildCounterRasterCollectionsRastersListResponse--;
 }
 
-buildUnnamed138() {
+buildUnnamed1209() {
   var o = new core.List<api.Raster>();
   o.add(buildRaster());
   o.add(buildRaster());
   return o;
 }
 
-checkUnnamed138(core.List<api.Raster> o) {
+checkUnnamed1209(core.List<api.Raster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRaster(o[0]);
   checkRaster(o[1]);
@@ -2237,7 +2272,7 @@ buildRastersListResponse() {
   buildCounterRastersListResponse++;
   if (buildCounterRastersListResponse < 3) {
     o.nextPageToken = "foo";
-    o.rasters = buildUnnamed138();
+    o.rasters = buildUnnamed1209();
   }
   buildCounterRastersListResponse--;
   return o;
@@ -2247,7 +2282,7 @@ checkRastersListResponse(api.RastersListResponse o) {
   buildCounterRastersListResponse++;
   if (buildCounterRastersListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed138(o.rasters);
+    checkUnnamed1209(o.rasters);
   }
   buildCounterRastersListResponse--;
 }
@@ -2300,14 +2335,14 @@ checkScalingFunction(api.ScalingFunction o) {
   buildCounterScalingFunction--;
 }
 
-buildUnnamed139() {
+buildUnnamed1210() {
   var o = new core.List<api.TableColumn>();
   o.add(buildTableColumn());
   o.add(buildTableColumn());
   return o;
 }
 
-checkUnnamed139(core.List<api.TableColumn> o) {
+checkUnnamed1210(core.List<api.TableColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableColumn(o[0]);
   checkTableColumn(o[1]);
@@ -2318,7 +2353,7 @@ buildSchema() {
   var o = new api.Schema();
   buildCounterSchema++;
   if (buildCounterSchema < 3) {
-    o.columns = buildUnnamed139();
+    o.columns = buildUnnamed1210();
     o.primaryGeometry = "foo";
     o.primaryKey = "foo";
   }
@@ -2329,7 +2364,7 @@ buildSchema() {
 checkSchema(api.Schema o) {
   buildCounterSchema++;
   if (buildCounterSchema < 3) {
-    checkUnnamed139(o.columns);
+    checkUnnamed1210(o.columns);
     unittest.expect(o.primaryGeometry, unittest.equals('foo'));
     unittest.expect(o.primaryKey, unittest.equals('foo'));
   }
@@ -2357,27 +2392,27 @@ checkSizeRange(api.SizeRange o) {
   buildCounterSizeRange--;
 }
 
-buildUnnamed140() {
+buildUnnamed1211() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed140(core.List<core.double> o) {
+checkUnnamed1211(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed141() {
+buildUnnamed1212() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed141(core.List<api.File> o) {
+checkUnnamed1212(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -2388,13 +2423,13 @@ buildTable() {
   var o = new api.Table();
   buildCounterTable++;
   if (buildCounterTable < 3) {
-    o.bbox = buildUnnamed140();
+    o.bbox = buildUnnamed1211();
     o.creationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.creatorEmail = "foo";
     o.description = "foo";
     o.draftAccessList = "foo";
     o.etag = "foo";
-    o.files = buildUnnamed141();
+    o.files = buildUnnamed1212();
     o.id = "foo";
     o.lastModifiedTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.lastModifierEmail = "foo";
@@ -2414,13 +2449,13 @@ buildTable() {
 checkTable(api.Table o) {
   buildCounterTable++;
   if (buildCounterTable < 3) {
-    checkUnnamed140(o.bbox);
+    checkUnnamed1211(o.bbox);
     unittest.expect(o.creationTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.creatorEmail, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.draftAccessList, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed141(o.files);
+    checkUnnamed1212(o.files);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.lastModifiedTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.lastModifierEmail, unittest.equals('foo'));
@@ -2457,14 +2492,14 @@ checkTableColumn(api.TableColumn o) {
   buildCounterTableColumn--;
 }
 
-buildUnnamed142() {
+buildUnnamed1213() {
   var o = new core.List<api.Table>();
   o.add(buildTable());
   o.add(buildTable());
   return o;
 }
 
-checkUnnamed142(core.List<api.Table> o) {
+checkUnnamed1213(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTable(o[0]);
   checkTable(o[1]);
@@ -2476,7 +2511,7 @@ buildTablesListResponse() {
   buildCounterTablesListResponse++;
   if (buildCounterTablesListResponse < 3) {
     o.nextPageToken = "foo";
-    o.tables = buildUnnamed142();
+    o.tables = buildUnnamed1213();
   }
   buildCounterTablesListResponse--;
   return o;
@@ -2486,7 +2521,7 @@ checkTablesListResponse(api.TablesListResponse o) {
   buildCounterTablesListResponse++;
   if (buildCounterTablesListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed142(o.tables);
+    checkUnnamed1213(o.tables);
   }
   buildCounterTablesListResponse--;
 }
@@ -2525,14 +2560,14 @@ checkValueRange(api.ValueRange o) {
   buildCounterValueRange--;
 }
 
-buildUnnamed143() {
+buildUnnamed1214() {
   var o = new core.List<api.DisplayRule>();
   o.add(buildDisplayRule());
   o.add(buildDisplayRule());
   return o;
 }
 
-checkUnnamed143(core.List<api.DisplayRule> o) {
+checkUnnamed1214(core.List<api.DisplayRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDisplayRule(o[0]);
   checkDisplayRule(o[1]);
@@ -2543,7 +2578,7 @@ buildVectorStyle() {
   var o = new api.VectorStyle();
   buildCounterVectorStyle++;
   if (buildCounterVectorStyle < 3) {
-    o.displayRules = buildUnnamed143();
+    o.displayRules = buildUnnamed1214();
     o.featureInfo = buildFeatureInfo();
     o.type = "foo";
   }
@@ -2554,7 +2589,7 @@ buildVectorStyle() {
 checkVectorStyle(api.VectorStyle o) {
   buildCounterVectorStyle++;
   if (buildCounterVectorStyle < 3) {
-    checkUnnamed143(o.displayRules);
+    checkUnnamed1214(o.displayRules);
     checkFeatureInfo(o.featureInfo);
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -3316,7 +3351,7 @@ main() {
   unittest.group("resource-AssetsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AssetsResourceApi res = new api.MapsengineApi(mock).assets;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3356,7 +3391,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAsset());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_id).then(unittest.expectAsync(((api.Asset response) {
         checkAsset(response);
@@ -3365,7 +3400,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AssetsResourceApi res = new api.MapsengineApi(mock).assets;
       var arg_bbox = "foo";
       var arg_createdAfter = core.DateTime.parse("2002-02-27T14:01:02");
@@ -3427,7 +3462,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAssetsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(bbox: arg_bbox, createdAfter: arg_createdAfter, createdBefore: arg_createdBefore, creatorEmail: arg_creatorEmail, maxResults: arg_maxResults, modifiedAfter: arg_modifiedAfter, modifiedBefore: arg_modifiedBefore, pageToken: arg_pageToken, projectId: arg_projectId, role: arg_role, search: arg_search, tags: arg_tags, type: arg_type).then(unittest.expectAsync(((api.AssetsListResponse response) {
         checkAssetsListResponse(response);
@@ -3440,7 +3475,7 @@ main() {
   unittest.group("resource-AssetsParentsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AssetsParentsResourceApi res = new api.MapsengineApi(mock).assets.parents;
       var arg_id = "foo";
       var arg_maxResults = 42;
@@ -3488,7 +3523,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildParentsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_id, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ParentsListResponse response) {
         checkParentsListResponse(response);
@@ -3501,7 +3536,7 @@ main() {
   unittest.group("resource-AssetsPermissionsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AssetsPermissionsResourceApi res = new api.MapsengineApi(mock).assets.permissions;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3545,7 +3580,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_id).then(unittest.expectAsync(((api.PermissionsListResponse response) {
         checkPermissionsListResponse(response);
@@ -3558,7 +3593,7 @@ main() {
   unittest.group("resource-LayersResourceApi", () {
     unittest.test("method--cancelProcessing", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersResourceApi res = new api.MapsengineApi(mock).layers;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3602,7 +3637,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProcessResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.cancelProcessing(arg_id).then(unittest.expectAsync(((api.ProcessResponse response) {
         checkProcessResponse(response);
@@ -3611,7 +3646,7 @@ main() {
 
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersResourceApi res = new api.MapsengineApi(mock).layers;
       var arg_request = buildLayer();
       var arg_process_1 = true;
@@ -3653,7 +3688,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLayer());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, process_1: arg_process_1).then(unittest.expectAsync(((api.Layer response) {
         checkLayer(response);
@@ -3662,7 +3697,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersResourceApi res = new api.MapsengineApi(mock).layers;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3702,14 +3737,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersResourceApi res = new api.MapsengineApi(mock).layers;
       var arg_id = "foo";
       var arg_version = "foo";
@@ -3751,7 +3786,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLayer());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_id, version: arg_version).then(unittest.expectAsync(((api.Layer response) {
         checkLayer(response);
@@ -3760,7 +3795,7 @@ main() {
 
     unittest.test("method--getPublished", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersResourceApi res = new api.MapsengineApi(mock).layers;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3804,7 +3839,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPublishedLayer());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.getPublished(arg_id).then(unittest.expectAsync(((api.PublishedLayer response) {
         checkPublishedLayer(response);
@@ -3813,7 +3848,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersResourceApi res = new api.MapsengineApi(mock).layers;
       var arg_bbox = "foo";
       var arg_createdAfter = core.DateTime.parse("2002-02-27T14:01:02");
@@ -3875,7 +3910,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLayersListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(bbox: arg_bbox, createdAfter: arg_createdAfter, createdBefore: arg_createdBefore, creatorEmail: arg_creatorEmail, maxResults: arg_maxResults, modifiedAfter: arg_modifiedAfter, modifiedBefore: arg_modifiedBefore, pageToken: arg_pageToken, processingStatus: arg_processingStatus, projectId: arg_projectId, role: arg_role, search: arg_search, tags: arg_tags).then(unittest.expectAsync(((api.LayersListResponse response) {
         checkLayersListResponse(response);
@@ -3884,7 +3919,7 @@ main() {
 
     unittest.test("method--listPublished", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersResourceApi res = new api.MapsengineApi(mock).layers;
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
@@ -3926,7 +3961,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPublishedLayersListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listPublished(maxResults: arg_maxResults, pageToken: arg_pageToken, projectId: arg_projectId).then(unittest.expectAsync(((api.PublishedLayersListResponse response) {
         checkPublishedLayersListResponse(response);
@@ -3935,7 +3970,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersResourceApi res = new api.MapsengineApi(mock).layers;
       var arg_request = buildLayer();
       var arg_id = "foo";
@@ -3979,14 +4014,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--process", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersResourceApi res = new api.MapsengineApi(mock).layers;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4030,7 +4065,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProcessResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.process(arg_id).then(unittest.expectAsync(((api.ProcessResponse response) {
         checkProcessResponse(response);
@@ -4039,7 +4074,7 @@ main() {
 
     unittest.test("method--publish", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersResourceApi res = new api.MapsengineApi(mock).layers;
       var arg_id = "foo";
       var arg_force = true;
@@ -4085,7 +4120,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPublishResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.publish(arg_id, force: arg_force).then(unittest.expectAsync(((api.PublishResponse response) {
         checkPublishResponse(response);
@@ -4094,7 +4129,7 @@ main() {
 
     unittest.test("method--unpublish", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersResourceApi res = new api.MapsengineApi(mock).layers;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4138,7 +4173,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPublishResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.unpublish(arg_id).then(unittest.expectAsync(((api.PublishResponse response) {
         checkPublishResponse(response);
@@ -4151,7 +4186,7 @@ main() {
   unittest.group("resource-LayersParentsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersParentsResourceApi res = new api.MapsengineApi(mock).layers.parents;
       var arg_id = "foo";
       var arg_maxResults = 42;
@@ -4199,7 +4234,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildParentsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_id, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ParentsListResponse response) {
         checkParentsListResponse(response);
@@ -4212,7 +4247,7 @@ main() {
   unittest.group("resource-LayersPermissionsResourceApi", () {
     unittest.test("method--batchDelete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersPermissionsResourceApi res = new api.MapsengineApi(mock).layers.permissions;
       var arg_request = buildPermissionsBatchDeleteRequest();
       var arg_id = "foo";
@@ -4260,7 +4295,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsBatchDeleteResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchDelete(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchDeleteResponse response) {
         checkPermissionsBatchDeleteResponse(response);
@@ -4269,7 +4304,7 @@ main() {
 
     unittest.test("method--batchUpdate", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersPermissionsResourceApi res = new api.MapsengineApi(mock).layers.permissions;
       var arg_request = buildPermissionsBatchUpdateRequest();
       var arg_id = "foo";
@@ -4317,7 +4352,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsBatchUpdateResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchUpdate(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchUpdateResponse response) {
         checkPermissionsBatchUpdateResponse(response);
@@ -4326,7 +4361,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LayersPermissionsResourceApi res = new api.MapsengineApi(mock).layers.permissions;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4370,7 +4405,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_id).then(unittest.expectAsync(((api.PermissionsListResponse response) {
         checkPermissionsListResponse(response);
@@ -4383,7 +4418,7 @@ main() {
   unittest.group("resource-MapsResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MapsResourceApi res = new api.MapsengineApi(mock).maps;
       var arg_request = buildMap();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4423,7 +4458,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMap());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request).then(unittest.expectAsync(((api.Map response) {
         checkMap(response);
@@ -4432,7 +4467,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MapsResourceApi res = new api.MapsengineApi(mock).maps;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4472,14 +4507,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MapsResourceApi res = new api.MapsengineApi(mock).maps;
       var arg_id = "foo";
       var arg_version = "foo";
@@ -4521,7 +4556,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMap());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_id, version: arg_version).then(unittest.expectAsync(((api.Map response) {
         checkMap(response);
@@ -4530,7 +4565,7 @@ main() {
 
     unittest.test("method--getPublished", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MapsResourceApi res = new api.MapsengineApi(mock).maps;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4574,7 +4609,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPublishedMap());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.getPublished(arg_id).then(unittest.expectAsync(((api.PublishedMap response) {
         checkPublishedMap(response);
@@ -4583,7 +4618,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MapsResourceApi res = new api.MapsengineApi(mock).maps;
       var arg_bbox = "foo";
       var arg_createdAfter = core.DateTime.parse("2002-02-27T14:01:02");
@@ -4645,7 +4680,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMapsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(bbox: arg_bbox, createdAfter: arg_createdAfter, createdBefore: arg_createdBefore, creatorEmail: arg_creatorEmail, maxResults: arg_maxResults, modifiedAfter: arg_modifiedAfter, modifiedBefore: arg_modifiedBefore, pageToken: arg_pageToken, processingStatus: arg_processingStatus, projectId: arg_projectId, role: arg_role, search: arg_search, tags: arg_tags).then(unittest.expectAsync(((api.MapsListResponse response) {
         checkMapsListResponse(response);
@@ -4654,7 +4689,7 @@ main() {
 
     unittest.test("method--listPublished", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MapsResourceApi res = new api.MapsengineApi(mock).maps;
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
@@ -4696,7 +4731,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPublishedMapsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listPublished(maxResults: arg_maxResults, pageToken: arg_pageToken, projectId: arg_projectId).then(unittest.expectAsync(((api.PublishedMapsListResponse response) {
         checkPublishedMapsListResponse(response);
@@ -4705,7 +4740,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MapsResourceApi res = new api.MapsengineApi(mock).maps;
       var arg_request = buildMap();
       var arg_id = "foo";
@@ -4749,14 +4784,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--publish", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MapsResourceApi res = new api.MapsengineApi(mock).maps;
       var arg_id = "foo";
       var arg_force = true;
@@ -4802,7 +4837,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPublishResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.publish(arg_id, force: arg_force).then(unittest.expectAsync(((api.PublishResponse response) {
         checkPublishResponse(response);
@@ -4811,7 +4846,7 @@ main() {
 
     unittest.test("method--unpublish", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MapsResourceApi res = new api.MapsengineApi(mock).maps;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4855,7 +4890,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPublishResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.unpublish(arg_id).then(unittest.expectAsync(((api.PublishResponse response) {
         checkPublishResponse(response);
@@ -4868,7 +4903,7 @@ main() {
   unittest.group("resource-MapsPermissionsResourceApi", () {
     unittest.test("method--batchDelete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MapsPermissionsResourceApi res = new api.MapsengineApi(mock).maps.permissions;
       var arg_request = buildPermissionsBatchDeleteRequest();
       var arg_id = "foo";
@@ -4916,7 +4951,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsBatchDeleteResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchDelete(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchDeleteResponse response) {
         checkPermissionsBatchDeleteResponse(response);
@@ -4925,7 +4960,7 @@ main() {
 
     unittest.test("method--batchUpdate", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MapsPermissionsResourceApi res = new api.MapsengineApi(mock).maps.permissions;
       var arg_request = buildPermissionsBatchUpdateRequest();
       var arg_id = "foo";
@@ -4973,7 +5008,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsBatchUpdateResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchUpdate(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchUpdateResponse response) {
         checkPermissionsBatchUpdateResponse(response);
@@ -4982,7 +5017,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MapsPermissionsResourceApi res = new api.MapsengineApi(mock).maps.permissions;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -5026,7 +5061,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_id).then(unittest.expectAsync(((api.PermissionsListResponse response) {
         checkPermissionsListResponse(response);
@@ -5039,7 +5074,7 @@ main() {
   unittest.group("resource-ProjectsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.MapsengineApi(mock).projects;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5075,7 +5110,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProjectsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list().then(unittest.expectAsync(((api.ProjectsListResponse response) {
         checkProjectsListResponse(response);
@@ -5090,7 +5125,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ProjectsIconsResourceApi res = new api.MapsengineApi(mock).projects.icons;
       var arg_request = buildIcon();
       var arg_projectId = "foo";
@@ -5138,7 +5173,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildIcon());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, arg_projectId).then(unittest.expectAsync(((api.Icon response) {
         checkIcon(response);
@@ -5149,7 +5184,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ProjectsIconsResourceApi res = new api.MapsengineApi(mock).projects.icons;
       var arg_projectId = "foo";
       var arg_id = "foo";
@@ -5197,7 +5232,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildIcon());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_projectId, arg_id).then(unittest.expectAsync(((api.Icon response) {
         checkIcon(response);
@@ -5206,7 +5241,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ProjectsIconsResourceApi res = new api.MapsengineApi(mock).projects.icons;
       var arg_projectId = "foo";
       var arg_maxResults = 42;
@@ -5254,7 +5289,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildIconsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_projectId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.IconsListResponse response) {
         checkIconsListResponse(response);
@@ -5267,7 +5302,7 @@ main() {
   unittest.group("resource-RasterCollectionsResourceApi", () {
     unittest.test("method--cancelProcessing", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RasterCollectionsResourceApi res = new api.MapsengineApi(mock).rasterCollections;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -5311,7 +5346,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProcessResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.cancelProcessing(arg_id).then(unittest.expectAsync(((api.ProcessResponse response) {
         checkProcessResponse(response);
@@ -5320,7 +5355,7 @@ main() {
 
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RasterCollectionsResourceApi res = new api.MapsengineApi(mock).rasterCollections;
       var arg_request = buildRasterCollection();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -5360,7 +5395,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRasterCollection());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request).then(unittest.expectAsync(((api.RasterCollection response) {
         checkRasterCollection(response);
@@ -5369,7 +5404,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RasterCollectionsResourceApi res = new api.MapsengineApi(mock).rasterCollections;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -5409,14 +5444,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RasterCollectionsResourceApi res = new api.MapsengineApi(mock).rasterCollections;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -5456,7 +5491,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRasterCollection());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_id).then(unittest.expectAsync(((api.RasterCollection response) {
         checkRasterCollection(response);
@@ -5465,7 +5500,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RasterCollectionsResourceApi res = new api.MapsengineApi(mock).rasterCollections;
       var arg_bbox = "foo";
       var arg_createdAfter = core.DateTime.parse("2002-02-27T14:01:02");
@@ -5527,7 +5562,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRasterCollectionsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(bbox: arg_bbox, createdAfter: arg_createdAfter, createdBefore: arg_createdBefore, creatorEmail: arg_creatorEmail, maxResults: arg_maxResults, modifiedAfter: arg_modifiedAfter, modifiedBefore: arg_modifiedBefore, pageToken: arg_pageToken, processingStatus: arg_processingStatus, projectId: arg_projectId, role: arg_role, search: arg_search, tags: arg_tags).then(unittest.expectAsync(((api.RasterCollectionsListResponse response) {
         checkRasterCollectionsListResponse(response);
@@ -5536,7 +5571,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RasterCollectionsResourceApi res = new api.MapsengineApi(mock).rasterCollections;
       var arg_request = buildRasterCollection();
       var arg_id = "foo";
@@ -5580,14 +5615,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--process", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RasterCollectionsResourceApi res = new api.MapsengineApi(mock).rasterCollections;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -5631,7 +5666,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProcessResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.process(arg_id).then(unittest.expectAsync(((api.ProcessResponse response) {
         checkProcessResponse(response);
@@ -5644,7 +5679,7 @@ main() {
   unittest.group("resource-RasterCollectionsParentsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RasterCollectionsParentsResourceApi res = new api.MapsengineApi(mock).rasterCollections.parents;
       var arg_id = "foo";
       var arg_maxResults = 42;
@@ -5692,7 +5727,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildParentsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_id, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ParentsListResponse response) {
         checkParentsListResponse(response);
@@ -5705,7 +5740,7 @@ main() {
   unittest.group("resource-RasterCollectionsPermissionsResourceApi", () {
     unittest.test("method--batchDelete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RasterCollectionsPermissionsResourceApi res = new api.MapsengineApi(mock).rasterCollections.permissions;
       var arg_request = buildPermissionsBatchDeleteRequest();
       var arg_id = "foo";
@@ -5753,7 +5788,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsBatchDeleteResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchDelete(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchDeleteResponse response) {
         checkPermissionsBatchDeleteResponse(response);
@@ -5762,7 +5797,7 @@ main() {
 
     unittest.test("method--batchUpdate", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RasterCollectionsPermissionsResourceApi res = new api.MapsengineApi(mock).rasterCollections.permissions;
       var arg_request = buildPermissionsBatchUpdateRequest();
       var arg_id = "foo";
@@ -5810,7 +5845,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsBatchUpdateResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchUpdate(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchUpdateResponse response) {
         checkPermissionsBatchUpdateResponse(response);
@@ -5819,7 +5854,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RasterCollectionsPermissionsResourceApi res = new api.MapsengineApi(mock).rasterCollections.permissions;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -5863,7 +5898,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_id).then(unittest.expectAsync(((api.PermissionsListResponse response) {
         checkPermissionsListResponse(response);
@@ -5876,7 +5911,7 @@ main() {
   unittest.group("resource-RasterCollectionsRastersResourceApi", () {
     unittest.test("method--batchDelete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RasterCollectionsRastersResourceApi res = new api.MapsengineApi(mock).rasterCollections.rasters;
       var arg_request = buildRasterCollectionsRasterBatchDeleteRequest();
       var arg_id = "foo";
@@ -5924,7 +5959,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRasterCollectionsRastersBatchDeleteResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchDelete(arg_request, arg_id).then(unittest.expectAsync(((api.RasterCollectionsRastersBatchDeleteResponse response) {
         checkRasterCollectionsRastersBatchDeleteResponse(response);
@@ -5933,7 +5968,7 @@ main() {
 
     unittest.test("method--batchInsert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RasterCollectionsRastersResourceApi res = new api.MapsengineApi(mock).rasterCollections.rasters;
       var arg_request = buildRasterCollectionsRastersBatchInsertRequest();
       var arg_id = "foo";
@@ -5981,7 +6016,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRasterCollectionsRastersBatchInsertResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchInsert(arg_request, arg_id).then(unittest.expectAsync(((api.RasterCollectionsRastersBatchInsertResponse response) {
         checkRasterCollectionsRastersBatchInsertResponse(response);
@@ -5990,7 +6025,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RasterCollectionsRastersResourceApi res = new api.MapsengineApi(mock).rasterCollections.rasters;
       var arg_id = "foo";
       var arg_bbox = "foo";
@@ -6056,7 +6091,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRasterCollectionsRastersListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_id, bbox: arg_bbox, createdAfter: arg_createdAfter, createdBefore: arg_createdBefore, creatorEmail: arg_creatorEmail, maxResults: arg_maxResults, modifiedAfter: arg_modifiedAfter, modifiedBefore: arg_modifiedBefore, pageToken: arg_pageToken, role: arg_role, search: arg_search, tags: arg_tags).then(unittest.expectAsync(((api.RasterCollectionsRastersListResponse response) {
         checkRasterCollectionsRastersListResponse(response);
@@ -6069,7 +6104,7 @@ main() {
   unittest.group("resource-RastersResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RastersResourceApi res = new api.MapsengineApi(mock).rasters;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -6109,14 +6144,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RastersResourceApi res = new api.MapsengineApi(mock).rasters;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -6156,7 +6191,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRaster());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_id).then(unittest.expectAsync(((api.Raster response) {
         checkRaster(response);
@@ -6165,7 +6200,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RastersResourceApi res = new api.MapsengineApi(mock).rasters;
       var arg_projectId = "foo";
       var arg_bbox = "foo";
@@ -6227,7 +6262,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRastersListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_projectId, bbox: arg_bbox, createdAfter: arg_createdAfter, createdBefore: arg_createdBefore, creatorEmail: arg_creatorEmail, maxResults: arg_maxResults, modifiedAfter: arg_modifiedAfter, modifiedBefore: arg_modifiedBefore, pageToken: arg_pageToken, processingStatus: arg_processingStatus, role: arg_role, search: arg_search, tags: arg_tags).then(unittest.expectAsync(((api.RastersListResponse response) {
         checkRastersListResponse(response);
@@ -6236,7 +6271,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RastersResourceApi res = new api.MapsengineApi(mock).rasters;
       var arg_request = buildRaster();
       var arg_id = "foo";
@@ -6280,14 +6315,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--process", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RastersResourceApi res = new api.MapsengineApi(mock).rasters;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -6331,7 +6366,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProcessResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.process(arg_id).then(unittest.expectAsync(((api.ProcessResponse response) {
         checkProcessResponse(response);
@@ -6340,7 +6375,7 @@ main() {
 
     unittest.test("method--upload", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RastersResourceApi res = new api.MapsengineApi(mock).rasters;
       var arg_request = buildRaster();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -6380,7 +6415,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRaster());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.upload(arg_request).then(unittest.expectAsync(((api.Raster response) {
         checkRaster(response);
@@ -6395,7 +6430,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RastersFilesResourceApi res = new api.MapsengineApi(mock).rasters.files;
       var arg_id = "foo";
       var arg_filename = "foo";
@@ -6441,7 +6476,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_id, arg_filename).then(unittest.expectAsync((_) {}));
     });
@@ -6452,7 +6487,7 @@ main() {
   unittest.group("resource-RastersParentsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RastersParentsResourceApi res = new api.MapsengineApi(mock).rasters.parents;
       var arg_id = "foo";
       var arg_maxResults = 42;
@@ -6500,7 +6535,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildParentsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_id, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ParentsListResponse response) {
         checkParentsListResponse(response);
@@ -6513,7 +6548,7 @@ main() {
   unittest.group("resource-RastersPermissionsResourceApi", () {
     unittest.test("method--batchDelete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RastersPermissionsResourceApi res = new api.MapsengineApi(mock).rasters.permissions;
       var arg_request = buildPermissionsBatchDeleteRequest();
       var arg_id = "foo";
@@ -6561,7 +6596,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsBatchDeleteResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchDelete(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchDeleteResponse response) {
         checkPermissionsBatchDeleteResponse(response);
@@ -6570,7 +6605,7 @@ main() {
 
     unittest.test("method--batchUpdate", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RastersPermissionsResourceApi res = new api.MapsengineApi(mock).rasters.permissions;
       var arg_request = buildPermissionsBatchUpdateRequest();
       var arg_id = "foo";
@@ -6618,7 +6653,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsBatchUpdateResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchUpdate(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchUpdateResponse response) {
         checkPermissionsBatchUpdateResponse(response);
@@ -6627,7 +6662,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RastersPermissionsResourceApi res = new api.MapsengineApi(mock).rasters.permissions;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -6671,7 +6706,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_id).then(unittest.expectAsync(((api.PermissionsListResponse response) {
         checkPermissionsListResponse(response);
@@ -6684,7 +6719,7 @@ main() {
   unittest.group("resource-TablesResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesResourceApi res = new api.MapsengineApi(mock).tables;
       var arg_request = buildTable();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -6724,7 +6759,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request).then(unittest.expectAsync(((api.Table response) {
         checkTable(response);
@@ -6733,7 +6768,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesResourceApi res = new api.MapsengineApi(mock).tables;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -6773,14 +6808,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesResourceApi res = new api.MapsengineApi(mock).tables;
       var arg_id = "foo";
       var arg_version = "foo";
@@ -6822,7 +6857,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_id, version: arg_version).then(unittest.expectAsync(((api.Table response) {
         checkTable(response);
@@ -6831,7 +6866,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesResourceApi res = new api.MapsengineApi(mock).tables;
       var arg_bbox = "foo";
       var arg_createdAfter = core.DateTime.parse("2002-02-27T14:01:02");
@@ -6893,7 +6928,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTablesListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(bbox: arg_bbox, createdAfter: arg_createdAfter, createdBefore: arg_createdBefore, creatorEmail: arg_creatorEmail, maxResults: arg_maxResults, modifiedAfter: arg_modifiedAfter, modifiedBefore: arg_modifiedBefore, pageToken: arg_pageToken, processingStatus: arg_processingStatus, projectId: arg_projectId, role: arg_role, search: arg_search, tags: arg_tags).then(unittest.expectAsync(((api.TablesListResponse response) {
         checkTablesListResponse(response);
@@ -6902,7 +6937,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesResourceApi res = new api.MapsengineApi(mock).tables;
       var arg_request = buildTable();
       var arg_id = "foo";
@@ -6946,14 +6981,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--process", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesResourceApi res = new api.MapsengineApi(mock).tables;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -6997,7 +7032,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProcessResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.process(arg_id).then(unittest.expectAsync(((api.ProcessResponse response) {
         checkProcessResponse(response);
@@ -7006,7 +7041,7 @@ main() {
 
     unittest.test("method--upload", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesResourceApi res = new api.MapsengineApi(mock).tables;
       var arg_request = buildTable();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -7046,7 +7081,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.upload(arg_request).then(unittest.expectAsync(((api.Table response) {
         checkTable(response);
@@ -7059,7 +7094,7 @@ main() {
   unittest.group("resource-TablesFeaturesResourceApi", () {
     unittest.test("method--batchDelete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesFeaturesResourceApi res = new api.MapsengineApi(mock).tables.features;
       var arg_request = buildFeaturesBatchDeleteRequest();
       var arg_id = "foo";
@@ -7107,14 +7142,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchDelete(arg_request, arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--batchInsert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesFeaturesResourceApi res = new api.MapsengineApi(mock).tables.features;
       var arg_request = buildFeaturesBatchInsertRequest();
       var arg_id = "foo";
@@ -7162,14 +7197,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchInsert(arg_request, arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--batchPatch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesFeaturesResourceApi res = new api.MapsengineApi(mock).tables.features;
       var arg_request = buildFeaturesBatchPatchRequest();
       var arg_id = "foo";
@@ -7217,14 +7252,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchPatch(arg_request, arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesFeaturesResourceApi res = new api.MapsengineApi(mock).tables.features;
       var arg_tableId = "foo";
       var arg_id = "foo";
@@ -7276,7 +7311,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildFeature());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_tableId, arg_id, select: arg_select, version: arg_version).then(unittest.expectAsync(((api.Feature response) {
         checkFeature(response);
@@ -7285,7 +7320,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesFeaturesResourceApi res = new api.MapsengineApi(mock).tables.features;
       var arg_id = "foo";
       var arg_include = "foo";
@@ -7347,7 +7382,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildFeaturesListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_id, include: arg_include, intersects: arg_intersects, limit: arg_limit, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken, select: arg_select, version: arg_version, where: arg_where).then(unittest.expectAsync(((api.FeaturesListResponse response) {
         checkFeaturesListResponse(response);
@@ -7362,7 +7397,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesFilesResourceApi res = new api.MapsengineApi(mock).tables.files;
       var arg_id = "foo";
       var arg_filename = "foo";
@@ -7408,7 +7443,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_id, arg_filename).then(unittest.expectAsync((_) {}));
     });
@@ -7419,7 +7454,7 @@ main() {
   unittest.group("resource-TablesParentsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesParentsResourceApi res = new api.MapsengineApi(mock).tables.parents;
       var arg_id = "foo";
       var arg_maxResults = 42;
@@ -7467,7 +7502,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildParentsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_id, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ParentsListResponse response) {
         checkParentsListResponse(response);
@@ -7480,7 +7515,7 @@ main() {
   unittest.group("resource-TablesPermissionsResourceApi", () {
     unittest.test("method--batchDelete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesPermissionsResourceApi res = new api.MapsengineApi(mock).tables.permissions;
       var arg_request = buildPermissionsBatchDeleteRequest();
       var arg_id = "foo";
@@ -7528,7 +7563,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsBatchDeleteResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchDelete(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchDeleteResponse response) {
         checkPermissionsBatchDeleteResponse(response);
@@ -7537,7 +7572,7 @@ main() {
 
     unittest.test("method--batchUpdate", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesPermissionsResourceApi res = new api.MapsengineApi(mock).tables.permissions;
       var arg_request = buildPermissionsBatchUpdateRequest();
       var arg_id = "foo";
@@ -7585,7 +7620,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsBatchUpdateResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batchUpdate(arg_request, arg_id).then(unittest.expectAsync(((api.PermissionsBatchUpdateResponse response) {
         checkPermissionsBatchUpdateResponse(response);
@@ -7594,7 +7629,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TablesPermissionsResourceApi res = new api.MapsengineApi(mock).tables.permissions;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -7638,7 +7673,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_id).then(unittest.expectAsync(((api.PermissionsListResponse response) {
         checkPermissionsListResponse(response);

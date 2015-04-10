@@ -16,7 +16,7 @@ packages:
   discoveryapis_generator:
     description: discoveryapis_generator
     source: hosted
-    version: "0.6.0"
+    version: "0.7.0"
   http:
     description: http
     source: hosted
@@ -32,7 +32,7 @@ packages:
   source_span:
     description: source_span
     source: hosted
-    version: "1.0.3"
+    version: "1.1.0"
   stack_trace:
     description: stack_trace
     source: hosted

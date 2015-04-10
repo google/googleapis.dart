@@ -5,7 +5,7 @@
     "description": "Lets you analyze the performance of a web page and get tailored suggestions to make that page faster.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/speed/docs/insights/v1/getting_started",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/ZxBeTkfCnEKvhvWii3EWvp3ftvE\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/53c1pDum-m_4xRbboeMr9HDsJSk\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/pagespeed-16.png",
         "x32": "https://www.google.com/images/icons/product/pagespeed-32.png"
@@ -65,7 +65,7 @@
         "pagespeedapi": {
             "methods": {
                 "runpagespeed": {
-                    "description": "Runs Page Speed analysis on the page at the specified URL, and returns a Page Speed score, a list of suggestions to make that page faster, and other information.",
+                    "description": "Runs PageSpeed analysis on the page at the specified URL, and returns a PageSpeed score, a list of suggestions to make that page faster, and other information.",
                     "httpMethod": "GET",
                     "id": "pagespeedonline.pagespeedapi.runpagespeed",
                     "parameterOrder": [
@@ -85,7 +85,7 @@
                             "type": "string"
                         },
                         "rule": {
-                            "description": "A Page Speed rule to run; if none are given, all rules are run",
+                            "description": "A PageSpeed rule to run; if none are given, all rules are run",
                             "location": "query",
                             "pattern": "[a-zA-Z]+",
                             "repeated": true,
@@ -126,14 +126,14 @@
             }
         }
     },
-    "revision": "20150108",
+    "revision": "20150317",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Result": {
             "id": "Result",
             "properties": {
                 "formattedResults": {
-                    "description": "Localized Page Speed results. Contains a ruleResults entry for each Page Speed rule instantiated and run by the server.",
+                    "description": "Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed rule instantiated and run by the server.",
                     "properties": {
                         "locale": {
                             "description": "The locale of the formattedResults, e.g. \"en_US\".",
@@ -257,7 +257,7 @@
                                 },
                                 "type": "object"
                             },
-                            "description": "Dictionary of formatted rule results, with one entry for each Page Speed rule instantiated and run by the server.",
+                            "description": "Dictionary of formatted rule results, with one entry for each PageSpeed rule instantiated and run by the server.",
                             "type": "object"
                         }
                     },
@@ -356,12 +356,12 @@
                     "type": "integer"
                 },
                 "score": {
-                    "description": "The Page Speed Score (0-100), which indicates how much faster a page could be. A high score indicates little room for improvement, while a lower score indicates more room for improvement.",
+                    "description": "The PageSpeed Score (0-100), which indicates how much faster a page could be. A high score indicates little room for improvement, while a lower score indicates more room for improvement.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "screenshot": {
-                    "description": "Base64 encoded screenshot of the page that was analyzed.",
+                    "description": "Base64-encoded screenshot of the page that was analyzed.",
                     "properties": {
                         "data": {
                             "description": "Image data base64 encoded.",
@@ -390,15 +390,15 @@
                     "type": "string"
                 },
                 "version": {
-                    "description": "The version of the Page Speed SDK used to generate these results.",
+                    "description": "The version of PageSpeed used to generate these results.",
                     "properties": {
                         "major": {
-                            "description": "The major version number of the Page Speed SDK used to generate these results.",
+                            "description": "The major version number of PageSpeed used to generate these results.",
                             "format": "int32",
                             "type": "integer"
                         },
                         "minor": {
-                            "description": "The minor version number of the Page Speed SDK used to generate these results.",
+                            "description": "The minor version number of PageSpeed used to generate these results.",
                             "format": "int32",
                             "type": "integer"
                         }

@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/gmail/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterDraft = 0;
 buildDraft() {
@@ -37,66 +72,66 @@ checkDraft(api.Draft o) {
   buildCounterDraft--;
 }
 
-buildUnnamed164() {
+buildUnnamed1128() {
   var o = new core.List<api.HistoryLabelAdded>();
   o.add(buildHistoryLabelAdded());
   o.add(buildHistoryLabelAdded());
   return o;
 }
 
-checkUnnamed164(core.List<api.HistoryLabelAdded> o) {
+checkUnnamed1128(core.List<api.HistoryLabelAdded> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryLabelAdded(o[0]);
   checkHistoryLabelAdded(o[1]);
 }
 
-buildUnnamed165() {
+buildUnnamed1129() {
   var o = new core.List<api.HistoryLabelRemoved>();
   o.add(buildHistoryLabelRemoved());
   o.add(buildHistoryLabelRemoved());
   return o;
 }
 
-checkUnnamed165(core.List<api.HistoryLabelRemoved> o) {
+checkUnnamed1129(core.List<api.HistoryLabelRemoved> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryLabelRemoved(o[0]);
   checkHistoryLabelRemoved(o[1]);
 }
 
-buildUnnamed166() {
+buildUnnamed1130() {
   var o = new core.List<api.Message>();
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
 }
 
-checkUnnamed166(core.List<api.Message> o) {
+checkUnnamed1130(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-buildUnnamed167() {
+buildUnnamed1131() {
   var o = new core.List<api.HistoryMessageAdded>();
   o.add(buildHistoryMessageAdded());
   o.add(buildHistoryMessageAdded());
   return o;
 }
 
-checkUnnamed167(core.List<api.HistoryMessageAdded> o) {
+checkUnnamed1131(core.List<api.HistoryMessageAdded> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryMessageAdded(o[0]);
   checkHistoryMessageAdded(o[1]);
 }
 
-buildUnnamed168() {
+buildUnnamed1132() {
   var o = new core.List<api.HistoryMessageDeleted>();
   o.add(buildHistoryMessageDeleted());
   o.add(buildHistoryMessageDeleted());
   return o;
 }
 
-checkUnnamed168(core.List<api.HistoryMessageDeleted> o) {
+checkUnnamed1132(core.List<api.HistoryMessageDeleted> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryMessageDeleted(o[0]);
   checkHistoryMessageDeleted(o[1]);
@@ -108,11 +143,11 @@ buildHistory() {
   buildCounterHistory++;
   if (buildCounterHistory < 3) {
     o.id = "foo";
-    o.labelsAdded = buildUnnamed164();
-    o.labelsRemoved = buildUnnamed165();
-    o.messages = buildUnnamed166();
-    o.messagesAdded = buildUnnamed167();
-    o.messagesDeleted = buildUnnamed168();
+    o.labelsAdded = buildUnnamed1128();
+    o.labelsRemoved = buildUnnamed1129();
+    o.messages = buildUnnamed1130();
+    o.messagesAdded = buildUnnamed1131();
+    o.messagesDeleted = buildUnnamed1132();
   }
   buildCounterHistory--;
   return o;
@@ -122,23 +157,23 @@ checkHistory(api.History o) {
   buildCounterHistory++;
   if (buildCounterHistory < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed164(o.labelsAdded);
-    checkUnnamed165(o.labelsRemoved);
-    checkUnnamed166(o.messages);
-    checkUnnamed167(o.messagesAdded);
-    checkUnnamed168(o.messagesDeleted);
+    checkUnnamed1128(o.labelsAdded);
+    checkUnnamed1129(o.labelsRemoved);
+    checkUnnamed1130(o.messages);
+    checkUnnamed1131(o.messagesAdded);
+    checkUnnamed1132(o.messagesDeleted);
   }
   buildCounterHistory--;
 }
 
-buildUnnamed169() {
+buildUnnamed1133() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed169(core.List<core.String> o) {
+checkUnnamed1133(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -149,7 +184,7 @@ buildHistoryLabelAdded() {
   var o = new api.HistoryLabelAdded();
   buildCounterHistoryLabelAdded++;
   if (buildCounterHistoryLabelAdded < 3) {
-    o.labelIds = buildUnnamed169();
+    o.labelIds = buildUnnamed1133();
     o.message = buildMessage();
   }
   buildCounterHistoryLabelAdded--;
@@ -159,20 +194,20 @@ buildHistoryLabelAdded() {
 checkHistoryLabelAdded(api.HistoryLabelAdded o) {
   buildCounterHistoryLabelAdded++;
   if (buildCounterHistoryLabelAdded < 3) {
-    checkUnnamed169(o.labelIds);
+    checkUnnamed1133(o.labelIds);
     checkMessage(o.message);
   }
   buildCounterHistoryLabelAdded--;
 }
 
-buildUnnamed170() {
+buildUnnamed1134() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed170(core.List<core.String> o) {
+checkUnnamed1134(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -183,7 +218,7 @@ buildHistoryLabelRemoved() {
   var o = new api.HistoryLabelRemoved();
   buildCounterHistoryLabelRemoved++;
   if (buildCounterHistoryLabelRemoved < 3) {
-    o.labelIds = buildUnnamed170();
+    o.labelIds = buildUnnamed1134();
     o.message = buildMessage();
   }
   buildCounterHistoryLabelRemoved--;
@@ -193,7 +228,7 @@ buildHistoryLabelRemoved() {
 checkHistoryLabelRemoved(api.HistoryLabelRemoved o) {
   buildCounterHistoryLabelRemoved++;
   if (buildCounterHistoryLabelRemoved < 3) {
-    checkUnnamed170(o.labelIds);
+    checkUnnamed1134(o.labelIds);
     checkMessage(o.message);
   }
   buildCounterHistoryLabelRemoved--;
@@ -272,14 +307,14 @@ checkLabel(api.Label o) {
   buildCounterLabel--;
 }
 
-buildUnnamed171() {
+buildUnnamed1135() {
   var o = new core.List<api.Draft>();
   o.add(buildDraft());
   o.add(buildDraft());
   return o;
 }
 
-checkUnnamed171(core.List<api.Draft> o) {
+checkUnnamed1135(core.List<api.Draft> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDraft(o[0]);
   checkDraft(o[1]);
@@ -290,7 +325,7 @@ buildListDraftsResponse() {
   var o = new api.ListDraftsResponse();
   buildCounterListDraftsResponse++;
   if (buildCounterListDraftsResponse < 3) {
-    o.drafts = buildUnnamed171();
+    o.drafts = buildUnnamed1135();
     o.nextPageToken = "foo";
     o.resultSizeEstimate = 42;
   }
@@ -301,21 +336,21 @@ buildListDraftsResponse() {
 checkListDraftsResponse(api.ListDraftsResponse o) {
   buildCounterListDraftsResponse++;
   if (buildCounterListDraftsResponse < 3) {
-    checkUnnamed171(o.drafts);
+    checkUnnamed1135(o.drafts);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.resultSizeEstimate, unittest.equals(42));
   }
   buildCounterListDraftsResponse--;
 }
 
-buildUnnamed172() {
+buildUnnamed1136() {
   var o = new core.List<api.History>();
   o.add(buildHistory());
   o.add(buildHistory());
   return o;
 }
 
-checkUnnamed172(core.List<api.History> o) {
+checkUnnamed1136(core.List<api.History> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistory(o[0]);
   checkHistory(o[1]);
@@ -326,7 +361,7 @@ buildListHistoryResponse() {
   var o = new api.ListHistoryResponse();
   buildCounterListHistoryResponse++;
   if (buildCounterListHistoryResponse < 3) {
-    o.history = buildUnnamed172();
+    o.history = buildUnnamed1136();
     o.historyId = "foo";
     o.nextPageToken = "foo";
   }
@@ -337,21 +372,21 @@ buildListHistoryResponse() {
 checkListHistoryResponse(api.ListHistoryResponse o) {
   buildCounterListHistoryResponse++;
   if (buildCounterListHistoryResponse < 3) {
-    checkUnnamed172(o.history);
+    checkUnnamed1136(o.history);
     unittest.expect(o.historyId, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListHistoryResponse--;
 }
 
-buildUnnamed173() {
+buildUnnamed1137() {
   var o = new core.List<api.Label>();
   o.add(buildLabel());
   o.add(buildLabel());
   return o;
 }
 
-checkUnnamed173(core.List<api.Label> o) {
+checkUnnamed1137(core.List<api.Label> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabel(o[0]);
   checkLabel(o[1]);
@@ -362,7 +397,7 @@ buildListLabelsResponse() {
   var o = new api.ListLabelsResponse();
   buildCounterListLabelsResponse++;
   if (buildCounterListLabelsResponse < 3) {
-    o.labels = buildUnnamed173();
+    o.labels = buildUnnamed1137();
   }
   buildCounterListLabelsResponse--;
   return o;
@@ -371,19 +406,19 @@ buildListLabelsResponse() {
 checkListLabelsResponse(api.ListLabelsResponse o) {
   buildCounterListLabelsResponse++;
   if (buildCounterListLabelsResponse < 3) {
-    checkUnnamed173(o.labels);
+    checkUnnamed1137(o.labels);
   }
   buildCounterListLabelsResponse--;
 }
 
-buildUnnamed174() {
+buildUnnamed1138() {
   var o = new core.List<api.Message>();
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
 }
 
-checkUnnamed174(core.List<api.Message> o) {
+checkUnnamed1138(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
@@ -394,7 +429,7 @@ buildListMessagesResponse() {
   var o = new api.ListMessagesResponse();
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
-    o.messages = buildUnnamed174();
+    o.messages = buildUnnamed1138();
     o.nextPageToken = "foo";
     o.resultSizeEstimate = 42;
   }
@@ -405,21 +440,21 @@ buildListMessagesResponse() {
 checkListMessagesResponse(api.ListMessagesResponse o) {
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
-    checkUnnamed174(o.messages);
+    checkUnnamed1138(o.messages);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.resultSizeEstimate, unittest.equals(42));
   }
   buildCounterListMessagesResponse--;
 }
 
-buildUnnamed175() {
+buildUnnamed1139() {
   var o = new core.List<api.Thread>();
   o.add(buildThread());
   o.add(buildThread());
   return o;
 }
 
-checkUnnamed175(core.List<api.Thread> o) {
+checkUnnamed1139(core.List<api.Thread> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThread(o[0]);
   checkThread(o[1]);
@@ -432,7 +467,7 @@ buildListThreadsResponse() {
   if (buildCounterListThreadsResponse < 3) {
     o.nextPageToken = "foo";
     o.resultSizeEstimate = 42;
-    o.threads = buildUnnamed175();
+    o.threads = buildUnnamed1139();
   }
   buildCounterListThreadsResponse--;
   return o;
@@ -443,19 +478,19 @@ checkListThreadsResponse(api.ListThreadsResponse o) {
   if (buildCounterListThreadsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.resultSizeEstimate, unittest.equals(42));
-    checkUnnamed175(o.threads);
+    checkUnnamed1139(o.threads);
   }
   buildCounterListThreadsResponse--;
 }
 
-buildUnnamed176() {
+buildUnnamed1140() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed176(core.List<core.String> o) {
+checkUnnamed1140(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -468,7 +503,7 @@ buildMessage() {
   if (buildCounterMessage < 3) {
     o.historyId = "foo";
     o.id = "foo";
-    o.labelIds = buildUnnamed176();
+    o.labelIds = buildUnnamed1140();
     o.payload = buildMessagePart();
     o.raw = "foo";
     o.sizeEstimate = 42;
@@ -484,7 +519,7 @@ checkMessage(api.Message o) {
   if (buildCounterMessage < 3) {
     unittest.expect(o.historyId, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed176(o.labelIds);
+    checkUnnamed1140(o.labelIds);
     checkMessagePart(o.payload);
     unittest.expect(o.raw, unittest.equals('foo'));
     unittest.expect(o.sizeEstimate, unittest.equals(42));
@@ -494,27 +529,27 @@ checkMessage(api.Message o) {
   buildCounterMessage--;
 }
 
-buildUnnamed177() {
+buildUnnamed1141() {
   var o = new core.List<api.MessagePartHeader>();
   o.add(buildMessagePartHeader());
   o.add(buildMessagePartHeader());
   return o;
 }
 
-checkUnnamed177(core.List<api.MessagePartHeader> o) {
+checkUnnamed1141(core.List<api.MessagePartHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessagePartHeader(o[0]);
   checkMessagePartHeader(o[1]);
 }
 
-buildUnnamed178() {
+buildUnnamed1142() {
   var o = new core.List<api.MessagePart>();
   o.add(buildMessagePart());
   o.add(buildMessagePart());
   return o;
 }
 
-checkUnnamed178(core.List<api.MessagePart> o) {
+checkUnnamed1142(core.List<api.MessagePart> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessagePart(o[0]);
   checkMessagePart(o[1]);
@@ -527,10 +562,10 @@ buildMessagePart() {
   if (buildCounterMessagePart < 3) {
     o.body = buildMessagePartBody();
     o.filename = "foo";
-    o.headers = buildUnnamed177();
+    o.headers = buildUnnamed1141();
     o.mimeType = "foo";
     o.partId = "foo";
-    o.parts = buildUnnamed178();
+    o.parts = buildUnnamed1142();
   }
   buildCounterMessagePart--;
   return o;
@@ -541,10 +576,10 @@ checkMessagePart(api.MessagePart o) {
   if (buildCounterMessagePart < 3) {
     checkMessagePartBody(o.body);
     unittest.expect(o.filename, unittest.equals('foo'));
-    checkUnnamed177(o.headers);
+    checkUnnamed1141(o.headers);
     unittest.expect(o.mimeType, unittest.equals('foo'));
     unittest.expect(o.partId, unittest.equals('foo'));
-    checkUnnamed178(o.parts);
+    checkUnnamed1142(o.parts);
   }
   buildCounterMessagePart--;
 }
@@ -593,27 +628,27 @@ checkMessagePartHeader(api.MessagePartHeader o) {
   buildCounterMessagePartHeader--;
 }
 
-buildUnnamed179() {
+buildUnnamed1143() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed179(core.List<core.String> o) {
+checkUnnamed1143(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed180() {
+buildUnnamed1144() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed180(core.List<core.String> o) {
+checkUnnamed1144(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -624,8 +659,8 @@ buildModifyMessageRequest() {
   var o = new api.ModifyMessageRequest();
   buildCounterModifyMessageRequest++;
   if (buildCounterModifyMessageRequest < 3) {
-    o.addLabelIds = buildUnnamed179();
-    o.removeLabelIds = buildUnnamed180();
+    o.addLabelIds = buildUnnamed1143();
+    o.removeLabelIds = buildUnnamed1144();
   }
   buildCounterModifyMessageRequest--;
   return o;
@@ -634,33 +669,33 @@ buildModifyMessageRequest() {
 checkModifyMessageRequest(api.ModifyMessageRequest o) {
   buildCounterModifyMessageRequest++;
   if (buildCounterModifyMessageRequest < 3) {
-    checkUnnamed179(o.addLabelIds);
-    checkUnnamed180(o.removeLabelIds);
+    checkUnnamed1143(o.addLabelIds);
+    checkUnnamed1144(o.removeLabelIds);
   }
   buildCounterModifyMessageRequest--;
 }
 
-buildUnnamed181() {
+buildUnnamed1145() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed181(core.List<core.String> o) {
+checkUnnamed1145(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed182() {
+buildUnnamed1146() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed182(core.List<core.String> o) {
+checkUnnamed1146(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -671,8 +706,8 @@ buildModifyThreadRequest() {
   var o = new api.ModifyThreadRequest();
   buildCounterModifyThreadRequest++;
   if (buildCounterModifyThreadRequest < 3) {
-    o.addLabelIds = buildUnnamed181();
-    o.removeLabelIds = buildUnnamed182();
+    o.addLabelIds = buildUnnamed1145();
+    o.removeLabelIds = buildUnnamed1146();
   }
   buildCounterModifyThreadRequest--;
   return o;
@@ -681,8 +716,8 @@ buildModifyThreadRequest() {
 checkModifyThreadRequest(api.ModifyThreadRequest o) {
   buildCounterModifyThreadRequest++;
   if (buildCounterModifyThreadRequest < 3) {
-    checkUnnamed181(o.addLabelIds);
-    checkUnnamed182(o.removeLabelIds);
+    checkUnnamed1145(o.addLabelIds);
+    checkUnnamed1146(o.removeLabelIds);
   }
   buildCounterModifyThreadRequest--;
 }
@@ -712,14 +747,14 @@ checkProfile(api.Profile o) {
   buildCounterProfile--;
 }
 
-buildUnnamed183() {
+buildUnnamed1147() {
   var o = new core.List<api.Message>();
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
 }
 
-checkUnnamed183(core.List<api.Message> o) {
+checkUnnamed1147(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
@@ -732,7 +767,7 @@ buildThread() {
   if (buildCounterThread < 3) {
     o.historyId = "foo";
     o.id = "foo";
-    o.messages = buildUnnamed183();
+    o.messages = buildUnnamed1147();
     o.snippet = "foo";
   }
   buildCounterThread--;
@@ -744,59 +779,59 @@ checkThread(api.Thread o) {
   if (buildCounterThread < 3) {
     unittest.expect(o.historyId, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed183(o.messages);
+    checkUnnamed1147(o.messages);
     unittest.expect(o.snippet, unittest.equals('foo'));
   }
   buildCounterThread--;
 }
 
-buildUnnamed184() {
+buildUnnamed1148() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed184(core.List<core.String> o) {
+checkUnnamed1148(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed185() {
+buildUnnamed1149() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed185(core.List<core.String> o) {
+checkUnnamed1149(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed186() {
+buildUnnamed1150() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed186(core.List<core.String> o) {
+checkUnnamed1150(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed187() {
+buildUnnamed1151() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed187(core.List<core.String> o) {
+checkUnnamed1151(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -987,7 +1022,7 @@ main() {
   unittest.group("resource-UsersResourceApi", () {
     unittest.test("method--getProfile", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.GmailApi(mock).users;
       var arg_userId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1020,7 +1055,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProfile());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.getProfile(arg_userId).then(unittest.expectAsync(((api.Profile response) {
         checkProfile(response);
@@ -1035,7 +1070,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersDraftsResourceApi res = new api.GmailApi(mock).users.drafts;
       var arg_request = buildDraft();
       var arg_userId = "foo";
@@ -1072,7 +1107,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDraft());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, arg_userId).then(unittest.expectAsync(((api.Draft response) {
         checkDraft(response);
@@ -1081,7 +1116,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersDraftsResourceApi res = new api.GmailApi(mock).users.drafts;
       var arg_userId = "foo";
       var arg_id = "foo";
@@ -1115,14 +1150,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_userId, arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersDraftsResourceApi res = new api.GmailApi(mock).users.drafts;
       var arg_userId = "foo";
       var arg_id = "foo";
@@ -1158,7 +1193,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDraft());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_userId, arg_id, format: arg_format).then(unittest.expectAsync(((api.Draft response) {
         checkDraft(response);
@@ -1167,7 +1202,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersDraftsResourceApi res = new api.GmailApi(mock).users.drafts;
       var arg_userId = "foo";
       var arg_maxResults = 42;
@@ -1204,7 +1239,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListDraftsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_userId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListDraftsResponse response) {
         checkListDraftsResponse(response);
@@ -1215,7 +1250,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersDraftsResourceApi res = new api.GmailApi(mock).users.drafts;
       var arg_request = buildDraft();
       var arg_userId = "foo";
@@ -1252,7 +1287,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMessage());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.send(arg_request, arg_userId).then(unittest.expectAsync(((api.Message response) {
         checkMessage(response);
@@ -1263,7 +1298,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersDraftsResourceApi res = new api.GmailApi(mock).users.drafts;
       var arg_request = buildDraft();
       var arg_userId = "foo";
@@ -1301,7 +1336,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDraft());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_userId, arg_id).then(unittest.expectAsync(((api.Draft response) {
         checkDraft(response);
@@ -1314,7 +1349,7 @@ main() {
   unittest.group("resource-UsersHistoryResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersHistoryResourceApi res = new api.GmailApi(mock).users.history;
       var arg_userId = "foo";
       var arg_labelId = "foo";
@@ -1355,7 +1390,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListHistoryResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_userId, labelId: arg_labelId, maxResults: arg_maxResults, pageToken: arg_pageToken, startHistoryId: arg_startHistoryId).then(unittest.expectAsync(((api.ListHistoryResponse response) {
         checkListHistoryResponse(response);
@@ -1368,7 +1403,7 @@ main() {
   unittest.group("resource-UsersLabelsResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersLabelsResourceApi res = new api.GmailApi(mock).users.labels;
       var arg_request = buildLabel();
       var arg_userId = "foo";
@@ -1405,7 +1440,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLabel());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, arg_userId).then(unittest.expectAsync(((api.Label response) {
         checkLabel(response);
@@ -1414,7 +1449,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersLabelsResourceApi res = new api.GmailApi(mock).users.labels;
       var arg_userId = "foo";
       var arg_id = "foo";
@@ -1448,14 +1483,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_userId, arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersLabelsResourceApi res = new api.GmailApi(mock).users.labels;
       var arg_userId = "foo";
       var arg_id = "foo";
@@ -1489,7 +1524,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLabel());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_userId, arg_id).then(unittest.expectAsync(((api.Label response) {
         checkLabel(response);
@@ -1498,7 +1533,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersLabelsResourceApi res = new api.GmailApi(mock).users.labels;
       var arg_userId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1531,7 +1566,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListLabelsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_userId).then(unittest.expectAsync(((api.ListLabelsResponse response) {
         checkListLabelsResponse(response);
@@ -1540,7 +1575,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersLabelsResourceApi res = new api.GmailApi(mock).users.labels;
       var arg_request = buildLabel();
       var arg_userId = "foo";
@@ -1578,7 +1613,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLabel());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_userId, arg_id).then(unittest.expectAsync(((api.Label response) {
         checkLabel(response);
@@ -1587,7 +1622,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersLabelsResourceApi res = new api.GmailApi(mock).users.labels;
       var arg_request = buildLabel();
       var arg_userId = "foo";
@@ -1625,7 +1660,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLabel());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_userId, arg_id).then(unittest.expectAsync(((api.Label response) {
         checkLabel(response);
@@ -1638,7 +1673,7 @@ main() {
   unittest.group("resource-UsersMessagesResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
       var arg_userId = "foo";
       var arg_id = "foo";
@@ -1672,19 +1707,19 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_userId, arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_format = "foo";
-      var arg_metadataHeaders = buildUnnamed184();
+      var arg_metadataHeaders = buildUnnamed1148();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1717,7 +1752,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMessage());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_userId, arg_id, format: arg_format, metadataHeaders: arg_metadataHeaders).then(unittest.expectAsync(((api.Message response) {
         checkMessage(response);
@@ -1728,7 +1763,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
       var arg_request = buildMessage();
       var arg_userId = "foo";
@@ -1773,7 +1808,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMessage());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.import(arg_request, arg_userId, deleted: arg_deleted, internalDateSource: arg_internalDateSource, neverMarkSpam: arg_neverMarkSpam, processForCalendar: arg_processForCalendar).then(unittest.expectAsync(((api.Message response) {
         checkMessage(response);
@@ -1784,10 +1819,11 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
       var arg_request = buildMessage();
       var arg_userId = "foo";
+      var arg_deleted = true;
       var arg_internalDateSource = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var obj = new api.Message.fromJson(json);
@@ -1816,6 +1852,7 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["deleted"].first, unittest.equals("$arg_deleted"));
         unittest.expect(queryMap["internalDateSource"].first, unittest.equals(arg_internalDateSource));
 
 
@@ -1823,20 +1860,20 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMessage());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_userId, internalDateSource: arg_internalDateSource).then(unittest.expectAsync(((api.Message response) {
+      res.insert(arg_request, arg_userId, deleted: arg_deleted, internalDateSource: arg_internalDateSource).then(unittest.expectAsync(((api.Message response) {
         checkMessage(response);
       })));
     });
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
       var arg_userId = "foo";
       var arg_includeSpamTrash = true;
-      var arg_labelIds = buildUnnamed185();
+      var arg_labelIds = buildUnnamed1149();
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
       var arg_q = "foo";
@@ -1875,7 +1912,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListMessagesResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_userId, includeSpamTrash: arg_includeSpamTrash, labelIds: arg_labelIds, maxResults: arg_maxResults, pageToken: arg_pageToken, q: arg_q).then(unittest.expectAsync(((api.ListMessagesResponse response) {
         checkListMessagesResponse(response);
@@ -1884,7 +1921,7 @@ main() {
 
     unittest.test("method--modify", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
       var arg_request = buildModifyMessageRequest();
       var arg_userId = "foo";
@@ -1922,7 +1959,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMessage());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.modify(arg_request, arg_userId, arg_id).then(unittest.expectAsync(((api.Message response) {
         checkMessage(response);
@@ -1933,7 +1970,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
       var arg_request = buildMessage();
       var arg_userId = "foo";
@@ -1970,7 +2007,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMessage());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.send(arg_request, arg_userId).then(unittest.expectAsync(((api.Message response) {
         checkMessage(response);
@@ -1979,7 +2016,7 @@ main() {
 
     unittest.test("method--trash", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
       var arg_userId = "foo";
       var arg_id = "foo";
@@ -2013,7 +2050,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMessage());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.trash(arg_userId, arg_id).then(unittest.expectAsync(((api.Message response) {
         checkMessage(response);
@@ -2022,7 +2059,7 @@ main() {
 
     unittest.test("method--untrash", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
       var arg_userId = "foo";
       var arg_id = "foo";
@@ -2056,7 +2093,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMessage());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.untrash(arg_userId, arg_id).then(unittest.expectAsync(((api.Message response) {
         checkMessage(response);
@@ -2069,7 +2106,7 @@ main() {
   unittest.group("resource-UsersMessagesAttachmentsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersMessagesAttachmentsResourceApi res = new api.GmailApi(mock).users.messages.attachments;
       var arg_userId = "foo";
       var arg_messageId = "foo";
@@ -2104,7 +2141,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMessagePartBody());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_userId, arg_messageId, arg_id).then(unittest.expectAsync(((api.MessagePartBody response) {
         checkMessagePartBody(response);
@@ -2117,7 +2154,7 @@ main() {
   unittest.group("resource-UsersThreadsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
       var arg_userId = "foo";
       var arg_id = "foo";
@@ -2151,19 +2188,19 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_userId, arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_format = "foo";
-      var arg_metadataHeaders = buildUnnamed186();
+      var arg_metadataHeaders = buildUnnamed1150();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2196,7 +2233,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildThread());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_userId, arg_id, format: arg_format, metadataHeaders: arg_metadataHeaders).then(unittest.expectAsync(((api.Thread response) {
         checkThread(response);
@@ -2205,11 +2242,11 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
       var arg_userId = "foo";
       var arg_includeSpamTrash = true;
-      var arg_labelIds = buildUnnamed187();
+      var arg_labelIds = buildUnnamed1151();
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
       var arg_q = "foo";
@@ -2248,7 +2285,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListThreadsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_userId, includeSpamTrash: arg_includeSpamTrash, labelIds: arg_labelIds, maxResults: arg_maxResults, pageToken: arg_pageToken, q: arg_q).then(unittest.expectAsync(((api.ListThreadsResponse response) {
         checkListThreadsResponse(response);
@@ -2257,7 +2294,7 @@ main() {
 
     unittest.test("method--modify", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
       var arg_request = buildModifyThreadRequest();
       var arg_userId = "foo";
@@ -2295,7 +2332,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildThread());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.modify(arg_request, arg_userId, arg_id).then(unittest.expectAsync(((api.Thread response) {
         checkThread(response);
@@ -2304,7 +2341,7 @@ main() {
 
     unittest.test("method--trash", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
       var arg_userId = "foo";
       var arg_id = "foo";
@@ -2338,7 +2375,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildThread());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.trash(arg_userId, arg_id).then(unittest.expectAsync(((api.Thread response) {
         checkThread(response);
@@ -2347,7 +2384,7 @@ main() {
 
     unittest.test("method--untrash", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
       var arg_userId = "foo";
       var arg_id = "foo";
@@ -2381,7 +2418,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildThread());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.untrash(arg_userId, arg_id).then(unittest.expectAsync(((api.Thread response) {
         checkThread(response);

@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.prediction.v1_6;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client prediction/v1.6';
 
 /**
  * Lets you access a cloud hosted machine learning service that makes it easy to
@@ -31,21 +34,20 @@ class PredictionApi {
   static const PredictionScope = "https://www.googleapis.com/auth/prediction";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   HostedmodelsResourceApi get hostedmodels => new HostedmodelsResourceApi(_requester);
   TrainedmodelsResourceApi get trainedmodels => new TrainedmodelsResourceApi(_requester);
 
   PredictionApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "prediction/v1.6/projects/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class HostedmodelsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  HostedmodelsResourceApi(common_internal.ApiRequester client) : 
+  HostedmodelsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -61,7 +63,7 @@ class HostedmodelsResourceApi {
    *
    * Completes with a [Output].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -72,7 +74,7 @@ class HostedmodelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -86,7 +88,7 @@ class HostedmodelsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/hostedmodels/' + common_internal.Escaper.ecapeVariable('$hostedModelName') + '/predict';
+    _url = commons.Escaper.ecapeVariable('$project') + '/hostedmodels/' + commons.Escaper.ecapeVariable('$hostedModelName') + '/predict';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -101,11 +103,10 @@ class HostedmodelsResourceApi {
 }
 
 
-/** Not documented yet. */
 class TrainedmodelsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TrainedmodelsResourceApi(common_internal.ApiRequester client) : 
+  TrainedmodelsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -119,7 +120,7 @@ class TrainedmodelsResourceApi {
    *
    * Completes with a [Analyze].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -130,7 +131,7 @@ class TrainedmodelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -141,7 +142,7 @@ class TrainedmodelsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/trainedmodels/' + common_internal.Escaper.ecapeVariable('$id') + '/analyze';
+    _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels/' + commons.Escaper.ecapeVariable('$id') + '/analyze';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -162,7 +163,7 @@ class TrainedmodelsResourceApi {
    *
    * [id] - The unique name for the predictive model.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -173,7 +174,7 @@ class TrainedmodelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -185,7 +186,7 @@ class TrainedmodelsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/trainedmodels/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -208,7 +209,7 @@ class TrainedmodelsResourceApi {
    *
    * Completes with a [Insert2].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -219,7 +220,7 @@ class TrainedmodelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -230,7 +231,7 @@ class TrainedmodelsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/trainedmodels/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -253,7 +254,7 @@ class TrainedmodelsResourceApi {
    *
    * Completes with a [Insert2].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -264,7 +265,7 @@ class TrainedmodelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -275,7 +276,7 @@ class TrainedmodelsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/trainedmodels';
+    _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -300,7 +301,7 @@ class TrainedmodelsResourceApi {
    *
    * Completes with a [List].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -311,7 +312,7 @@ class TrainedmodelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -325,7 +326,7 @@ class TrainedmodelsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/trainedmodels/list';
+    _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels/list';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -350,7 +351,7 @@ class TrainedmodelsResourceApi {
    *
    * Completes with a [Output].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -361,7 +362,7 @@ class TrainedmodelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -375,7 +376,7 @@ class TrainedmodelsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/trainedmodels/' + common_internal.Escaper.ecapeVariable('$id') + '/predict';
+    _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels/' + commons.Escaper.ecapeVariable('$id') + '/predict';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -400,7 +401,7 @@ class TrainedmodelsResourceApi {
    *
    * Completes with a [Insert2].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -411,7 +412,7 @@ class TrainedmodelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -425,7 +426,7 @@ class TrainedmodelsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/trainedmodels/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -441,7 +442,6 @@ class TrainedmodelsResourceApi {
 
 
 
-/** Not documented yet. */
 class AnalyzeDataDescriptionFeaturesCategoricalValues {
   /** Number of times this feature had this value. */
   core.String count;
@@ -573,7 +573,6 @@ class AnalyzeDataDescriptionFeaturesText {
 }
 
 
-/** Not documented yet. */
 class AnalyzeDataDescriptionFeatures {
   /** Description of the categorical values of this feature. */
   AnalyzeDataDescriptionFeaturesCategorical categorical;
@@ -666,7 +665,6 @@ class AnalyzeDataDescriptionOutputFeatureNumeric {
 }
 
 
-/** Not documented yet. */
 class AnalyzeDataDescriptionOutputFeatureText {
   /** Number of times the output label occurred in the data set. */
   core.String count;
@@ -814,7 +812,6 @@ class AnalyzeModelDescription {
 }
 
 
-/** Not documented yet. */
 class Analyze {
   /** Description of the data the model was trained on. */
   AnalyzeDataDescription dataDescription;
@@ -912,7 +909,6 @@ class InputInput {
 }
 
 
-/** Not documented yet. */
 class Input {
   /** Input to the model for a prediction. */
   InputInput input;
@@ -936,7 +932,6 @@ class Input {
 }
 
 
-/** Not documented yet. */
 class InsertTrainingInstances {
   /**
    * The input features for this instance.
@@ -974,7 +969,6 @@ class InsertTrainingInstances {
 }
 
 
-/** Not documented yet. */
 class Insert {
   /** The unique name for the predictive model. */
   core.String id;
@@ -1146,7 +1140,6 @@ class Insert2ModelInfo {
 }
 
 
-/** Not documented yet. */
 class Insert2 {
   /** Insert time of the model (as a RFC 3339 timestamp). */
   core.DateTime created;
@@ -1263,7 +1256,6 @@ class Insert2 {
 }
 
 
-/** Not documented yet. */
 class List {
   /** List of models. */
   core.List<Insert2> items;
@@ -1314,7 +1306,6 @@ class List {
 }
 
 
-/** Not documented yet. */
 class OutputOutputMulti {
   /** The class label. */
   core.String label;
@@ -1347,7 +1338,6 @@ class OutputOutputMulti {
 }
 
 
-/** Not documented yet. */
 class Output {
   /** The unique name for the predictive model. */
   core.String id;
@@ -1419,7 +1409,6 @@ class Output {
 }
 
 
-/** Not documented yet. */
 class Update {
   /**
    * The input features for this instance.
@@ -1455,5 +1444,3 @@ class Update {
     return _json;
   }
 }
-
-

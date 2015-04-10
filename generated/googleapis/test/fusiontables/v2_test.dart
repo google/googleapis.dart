@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/fusiontables/v2.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterBucket = 0;
 buildBucket() {
@@ -66,14 +101,14 @@ checkColumnBaseColumn(api.ColumnBaseColumn o) {
   buildCounterColumnBaseColumn--;
 }
 
-buildUnnamed598() {
+buildUnnamed1051() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed598(core.List<core.String> o) {
+checkUnnamed1051(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -94,7 +129,7 @@ buildColumn() {
     o.kind = "foo";
     o.name = "foo";
     o.type = "foo";
-    o.validValues = buildUnnamed598();
+    o.validValues = buildUnnamed1051();
     o.validateData = true;
   }
   buildCounterColumn--;
@@ -114,20 +149,20 @@ checkColumn(api.Column o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
-    checkUnnamed598(o.validValues);
+    checkUnnamed1051(o.validValues);
     unittest.expect(o.validateData, unittest.isTrue);
   }
   buildCounterColumn--;
 }
 
-buildUnnamed599() {
+buildUnnamed1052() {
   var o = new core.List<api.Column>();
   o.add(buildColumn());
   o.add(buildColumn());
   return o;
 }
 
-checkUnnamed599(core.List<api.Column> o) {
+checkUnnamed1052(core.List<api.Column> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColumn(o[0]);
   checkColumn(o[1]);
@@ -138,7 +173,7 @@ buildColumnList() {
   var o = new api.ColumnList();
   buildCounterColumnList++;
   if (buildCounterColumnList < 3) {
-    o.items = buildUnnamed599();
+    o.items = buildUnnamed1052();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -150,7 +185,7 @@ buildColumnList() {
 checkColumnList(api.ColumnList o) {
   buildCounterColumnList++;
   if (buildCounterColumnList < 3) {
-    checkUnnamed599(o.items);
+    checkUnnamed1052(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -158,14 +193,14 @@ checkColumnList(api.ColumnList o) {
   buildCounterColumnList--;
 }
 
-buildUnnamed600() {
+buildUnnamed1053() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed600(core.List<core.Object> o) {
+checkUnnamed1053(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o[1]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
@@ -176,7 +211,7 @@ buildGeometry() {
   var o = new api.Geometry();
   buildCounterGeometry++;
   if (buildCounterGeometry < 3) {
-    o.geometries = buildUnnamed600();
+    o.geometries = buildUnnamed1053();
     o.geometry = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
     o.type = "foo";
   }
@@ -187,7 +222,7 @@ buildGeometry() {
 checkGeometry(api.Geometry o) {
   buildCounterGeometry++;
   if (buildCounterGeometry < 3) {
-    checkUnnamed600(o.geometries);
+    checkUnnamed1053(o.geometries);
     var casted3 = (o.geometry) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -215,30 +250,30 @@ checkImport(api.Import o) {
   buildCounterImport--;
 }
 
-buildUnnamed601() {
+buildUnnamed1054() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed601(core.List<core.double> o) {
+checkUnnamed1054(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed602() {
+buildUnnamed1055() {
   var o = new core.List<core.List<core.double>>();
-  o.add(buildUnnamed601());
-  o.add(buildUnnamed601());
+  o.add(buildUnnamed1054());
+  o.add(buildUnnamed1054());
   return o;
 }
 
-checkUnnamed602(core.List<core.List<core.double>> o) {
+checkUnnamed1055(core.List<core.List<core.double>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed601(o[0]);
-  checkUnnamed601(o[1]);
+  checkUnnamed1054(o[0]);
+  checkUnnamed1054(o[1]);
 }
 
 core.int buildCounterLine = 0;
@@ -246,7 +281,7 @@ buildLine() {
   var o = new api.Line();
   buildCounterLine++;
   if (buildCounterLine < 3) {
-    o.coordinates = buildUnnamed602();
+    o.coordinates = buildUnnamed1055();
     o.type = "foo";
   }
   buildCounterLine--;
@@ -256,7 +291,7 @@ buildLine() {
 checkLine(api.Line o) {
   buildCounterLine++;
   if (buildCounterLine < 3) {
-    checkUnnamed602(o.coordinates);
+    checkUnnamed1055(o.coordinates);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterLine--;
@@ -289,14 +324,14 @@ checkLineStyle(api.LineStyle o) {
   buildCounterLineStyle--;
 }
 
-buildUnnamed603() {
+buildUnnamed1056() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed603(core.List<core.double> o) {
+checkUnnamed1056(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -307,7 +342,7 @@ buildPoint() {
   var o = new api.Point();
   buildCounterPoint++;
   if (buildCounterPoint < 3) {
-    o.coordinates = buildUnnamed603();
+    o.coordinates = buildUnnamed1056();
     o.type = "foo";
   }
   buildCounterPoint--;
@@ -317,7 +352,7 @@ buildPoint() {
 checkPoint(api.Point o) {
   buildCounterPoint++;
   if (buildCounterPoint < 3) {
-    checkUnnamed603(o.coordinates);
+    checkUnnamed1056(o.coordinates);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterPoint--;
@@ -344,43 +379,43 @@ checkPointStyle(api.PointStyle o) {
   buildCounterPointStyle--;
 }
 
-buildUnnamed604() {
+buildUnnamed1057() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed604(core.List<core.double> o) {
+checkUnnamed1057(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed605() {
+buildUnnamed1058() {
   var o = new core.List<core.List<core.double>>();
-  o.add(buildUnnamed604());
-  o.add(buildUnnamed604());
+  o.add(buildUnnamed1057());
+  o.add(buildUnnamed1057());
   return o;
 }
 
-checkUnnamed605(core.List<core.List<core.double>> o) {
+checkUnnamed1058(core.List<core.List<core.double>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed604(o[0]);
-  checkUnnamed604(o[1]);
+  checkUnnamed1057(o[0]);
+  checkUnnamed1057(o[1]);
 }
 
-buildUnnamed606() {
+buildUnnamed1059() {
   var o = new core.List<core.List<core.List<core.double>>>();
-  o.add(buildUnnamed605());
-  o.add(buildUnnamed605());
+  o.add(buildUnnamed1058());
+  o.add(buildUnnamed1058());
   return o;
 }
 
-checkUnnamed606(core.List<core.List<core.List<core.double>>> o) {
+checkUnnamed1059(core.List<core.List<core.List<core.double>>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed605(o[0]);
-  checkUnnamed605(o[1]);
+  checkUnnamed1058(o[0]);
+  checkUnnamed1058(o[1]);
 }
 
 core.int buildCounterPolygon = 0;
@@ -388,7 +423,7 @@ buildPolygon() {
   var o = new api.Polygon();
   buildCounterPolygon++;
   if (buildCounterPolygon < 3) {
-    o.coordinates = buildUnnamed606();
+    o.coordinates = buildUnnamed1059();
     o.type = "foo";
   }
   buildCounterPolygon--;
@@ -398,7 +433,7 @@ buildPolygon() {
 checkPolygon(api.Polygon o) {
   buildCounterPolygon++;
   if (buildCounterPolygon < 3) {
-    checkUnnamed606(o.coordinates);
+    checkUnnamed1059(o.coordinates);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterPolygon--;
@@ -437,43 +472,43 @@ checkPolygonStyle(api.PolygonStyle o) {
   buildCounterPolygonStyle--;
 }
 
-buildUnnamed607() {
+buildUnnamed1060() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed607(core.List<core.String> o) {
+checkUnnamed1060(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed608() {
+buildUnnamed1061() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed608(core.List<core.Object> o) {
+checkUnnamed1061(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted4 = (o[0]) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
   var casted5 = (o[1]) as core.Map; unittest.expect(casted5, unittest.hasLength(3)); unittest.expect(casted5["list"], unittest.equals([1, 2, 3])); unittest.expect(casted5["bool"], unittest.equals(true)); unittest.expect(casted5["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed609() {
+buildUnnamed1062() {
   var o = new core.List<core.List<core.Object>>();
-  o.add(buildUnnamed608());
-  o.add(buildUnnamed608());
+  o.add(buildUnnamed1061());
+  o.add(buildUnnamed1061());
   return o;
 }
 
-checkUnnamed609(core.List<core.List<core.Object>> o) {
+checkUnnamed1062(core.List<core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed608(o[0]);
-  checkUnnamed608(o[1]);
+  checkUnnamed1061(o[0]);
+  checkUnnamed1061(o[1]);
 }
 
 core.int buildCounterSqlresponse = 0;
@@ -481,9 +516,9 @@ buildSqlresponse() {
   var o = new api.Sqlresponse();
   buildCounterSqlresponse++;
   if (buildCounterSqlresponse < 3) {
-    o.columns = buildUnnamed607();
+    o.columns = buildUnnamed1060();
     o.kind = "foo";
-    o.rows = buildUnnamed609();
+    o.rows = buildUnnamed1062();
   }
   buildCounterSqlresponse--;
   return o;
@@ -492,21 +527,21 @@ buildSqlresponse() {
 checkSqlresponse(api.Sqlresponse o) {
   buildCounterSqlresponse++;
   if (buildCounterSqlresponse < 3) {
-    checkUnnamed607(o.columns);
+    checkUnnamed1060(o.columns);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed609(o.rows);
+    checkUnnamed1062(o.rows);
   }
   buildCounterSqlresponse--;
 }
 
-buildUnnamed610() {
+buildUnnamed1063() {
   var o = new core.List<api.Bucket>();
   o.add(buildBucket());
   o.add(buildBucket());
   return o;
 }
 
-checkUnnamed610(core.List<api.Bucket> o) {
+checkUnnamed1063(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucket(o[0]);
   checkBucket(o[1]);
@@ -533,14 +568,14 @@ checkStyleFunctionGradientColors(api.StyleFunctionGradientColors o) {
   buildCounterStyleFunctionGradientColors--;
 }
 
-buildUnnamed611() {
+buildUnnamed1064() {
   var o = new core.List<api.StyleFunctionGradientColors>();
   o.add(buildStyleFunctionGradientColors());
   o.add(buildStyleFunctionGradientColors());
   return o;
 }
 
-checkUnnamed611(core.List<api.StyleFunctionGradientColors> o) {
+checkUnnamed1064(core.List<api.StyleFunctionGradientColors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStyleFunctionGradientColors(o[0]);
   checkStyleFunctionGradientColors(o[1]);
@@ -551,7 +586,7 @@ buildStyleFunctionGradient() {
   var o = new api.StyleFunctionGradient();
   buildCounterStyleFunctionGradient++;
   if (buildCounterStyleFunctionGradient < 3) {
-    o.colors = buildUnnamed611();
+    o.colors = buildUnnamed1064();
     o.max = 42.0;
     o.min = 42.0;
   }
@@ -562,7 +597,7 @@ buildStyleFunctionGradient() {
 checkStyleFunctionGradient(api.StyleFunctionGradient o) {
   buildCounterStyleFunctionGradient++;
   if (buildCounterStyleFunctionGradient < 3) {
-    checkUnnamed611(o.colors);
+    checkUnnamed1064(o.colors);
     unittest.expect(o.max, unittest.equals(42.0));
     unittest.expect(o.min, unittest.equals(42.0));
   }
@@ -574,7 +609,7 @@ buildStyleFunction() {
   var o = new api.StyleFunction();
   buildCounterStyleFunction++;
   if (buildCounterStyleFunction < 3) {
-    o.buckets = buildUnnamed610();
+    o.buckets = buildUnnamed1063();
     o.columnName = "foo";
     o.gradient = buildStyleFunctionGradient();
     o.kind = "foo";
@@ -586,7 +621,7 @@ buildStyleFunction() {
 checkStyleFunction(api.StyleFunction o) {
   buildCounterStyleFunction++;
   if (buildCounterStyleFunction < 3) {
-    checkUnnamed610(o.buckets);
+    checkUnnamed1063(o.buckets);
     unittest.expect(o.columnName, unittest.equals('foo'));
     checkStyleFunctionGradient(o.gradient);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -625,14 +660,14 @@ checkStyleSetting(api.StyleSetting o) {
   buildCounterStyleSetting--;
 }
 
-buildUnnamed612() {
+buildUnnamed1065() {
   var o = new core.List<api.StyleSetting>();
   o.add(buildStyleSetting());
   o.add(buildStyleSetting());
   return o;
 }
 
-checkUnnamed612(core.List<api.StyleSetting> o) {
+checkUnnamed1065(core.List<api.StyleSetting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStyleSetting(o[0]);
   checkStyleSetting(o[1]);
@@ -643,7 +678,7 @@ buildStyleSettingList() {
   var o = new api.StyleSettingList();
   buildCounterStyleSettingList++;
   if (buildCounterStyleSettingList < 3) {
-    o.items = buildUnnamed612();
+    o.items = buildUnnamed1065();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -655,7 +690,7 @@ buildStyleSettingList() {
 checkStyleSettingList(api.StyleSettingList o) {
   buildCounterStyleSettingList++;
   if (buildCounterStyleSettingList < 3) {
-    checkUnnamed612(o.items);
+    checkUnnamed1065(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -663,27 +698,27 @@ checkStyleSettingList(api.StyleSettingList o) {
   buildCounterStyleSettingList--;
 }
 
-buildUnnamed613() {
+buildUnnamed1066() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed613(core.List<core.String> o) {
+checkUnnamed1066(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed614() {
+buildUnnamed1067() {
   var o = new core.List<api.Column>();
   o.add(buildColumn());
   o.add(buildColumn());
   return o;
 }
 
-checkUnnamed614(core.List<api.Column> o) {
+checkUnnamed1067(core.List<api.Column> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColumn(o[0]);
   checkColumn(o[1]);
@@ -696,9 +731,9 @@ buildTable() {
   if (buildCounterTable < 3) {
     o.attribution = "foo";
     o.attributionLink = "foo";
-    o.baseTableIds = buildUnnamed613();
+    o.baseTableIds = buildUnnamed1066();
     o.columnPropertiesJsonSchema = "foo";
-    o.columns = buildUnnamed614();
+    o.columns = buildUnnamed1067();
     o.description = "foo";
     o.isExportable = true;
     o.kind = "foo";
@@ -717,9 +752,9 @@ checkTable(api.Table o) {
   if (buildCounterTable < 3) {
     unittest.expect(o.attribution, unittest.equals('foo'));
     unittest.expect(o.attributionLink, unittest.equals('foo'));
-    checkUnnamed613(o.baseTableIds);
+    checkUnnamed1066(o.baseTableIds);
     unittest.expect(o.columnPropertiesJsonSchema, unittest.equals('foo'));
-    checkUnnamed614(o.columns);
+    checkUnnamed1067(o.columns);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.isExportable, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -732,14 +767,14 @@ checkTable(api.Table o) {
   buildCounterTable--;
 }
 
-buildUnnamed615() {
+buildUnnamed1068() {
   var o = new core.List<api.Table>();
   o.add(buildTable());
   o.add(buildTable());
   return o;
 }
 
-checkUnnamed615(core.List<api.Table> o) {
+checkUnnamed1068(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTable(o[0]);
   checkTable(o[1]);
@@ -750,7 +785,7 @@ buildTableList() {
   var o = new api.TableList();
   buildCounterTableList++;
   if (buildCounterTableList < 3) {
-    o.items = buildUnnamed615();
+    o.items = buildUnnamed1068();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -761,7 +796,7 @@ buildTableList() {
 checkTableList(api.TableList o) {
   buildCounterTableList++;
   if (buildCounterTableList < 3) {
-    checkUnnamed615(o.items);
+    checkUnnamed1068(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -795,14 +830,14 @@ checkTask(api.Task o) {
   buildCounterTask--;
 }
 
-buildUnnamed616() {
+buildUnnamed1069() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed616(core.List<api.Task> o) {
+checkUnnamed1069(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -813,7 +848,7 @@ buildTaskList() {
   var o = new api.TaskList();
   buildCounterTaskList++;
   if (buildCounterTaskList < 3) {
-    o.items = buildUnnamed616();
+    o.items = buildUnnamed1069();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -825,7 +860,7 @@ buildTaskList() {
 checkTaskList(api.TaskList o) {
   buildCounterTaskList++;
   if (buildCounterTaskList < 3) {
-    checkUnnamed616(o.items);
+    checkUnnamed1069(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -833,14 +868,14 @@ checkTaskList(api.TaskList o) {
   buildCounterTaskList--;
 }
 
-buildUnnamed617() {
+buildUnnamed1070() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed617(core.List<core.String> o) {
+checkUnnamed1070(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -851,7 +886,7 @@ buildTemplate() {
   var o = new api.Template();
   buildCounterTemplate++;
   if (buildCounterTemplate < 3) {
-    o.automaticColumnNames = buildUnnamed617();
+    o.automaticColumnNames = buildUnnamed1070();
     o.body = "foo";
     o.kind = "foo";
     o.name = "foo";
@@ -865,7 +900,7 @@ buildTemplate() {
 checkTemplate(api.Template o) {
   buildCounterTemplate++;
   if (buildCounterTemplate < 3) {
-    checkUnnamed617(o.automaticColumnNames);
+    checkUnnamed1070(o.automaticColumnNames);
     unittest.expect(o.body, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -875,14 +910,14 @@ checkTemplate(api.Template o) {
   buildCounterTemplate--;
 }
 
-buildUnnamed618() {
+buildUnnamed1071() {
   var o = new core.List<api.Template>();
   o.add(buildTemplate());
   o.add(buildTemplate());
   return o;
 }
 
-checkUnnamed618(core.List<api.Template> o) {
+checkUnnamed1071(core.List<api.Template> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTemplate(o[0]);
   checkTemplate(o[1]);
@@ -893,7 +928,7 @@ buildTemplateList() {
   var o = new api.TemplateList();
   buildCounterTemplateList++;
   if (buildCounterTemplateList < 3) {
-    o.items = buildUnnamed618();
+    o.items = buildUnnamed1071();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -905,7 +940,7 @@ buildTemplateList() {
 checkTemplateList(api.TemplateList o) {
   buildCounterTemplateList++;
   if (buildCounterTemplateList < 3) {
-    checkUnnamed618(o.items);
+    checkUnnamed1071(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -1134,7 +1169,7 @@ main() {
   unittest.group("resource-ColumnResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_tableId = "foo";
       var arg_columnId = "foo";
@@ -1182,14 +1217,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_tableId, arg_columnId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_tableId = "foo";
       var arg_columnId = "foo";
@@ -1237,7 +1272,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildColumn());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_tableId, arg_columnId).then(unittest.expectAsync(((api.Column response) {
         checkColumn(response);
@@ -1246,7 +1281,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_request = buildColumn();
       var arg_tableId = "foo";
@@ -1294,7 +1329,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildColumn());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_tableId).then(unittest.expectAsync(((api.Column response) {
         checkColumn(response);
@@ -1303,7 +1338,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_tableId = "foo";
       var arg_maxResults = 42;
@@ -1351,7 +1386,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildColumnList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ColumnList response) {
         checkColumnList(response);
@@ -1360,7 +1395,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_request = buildColumn();
       var arg_tableId = "foo";
@@ -1412,7 +1447,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildColumn());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_tableId, arg_columnId).then(unittest.expectAsync(((api.Column response) {
         checkColumn(response);
@@ -1421,7 +1456,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_request = buildColumn();
       var arg_tableId = "foo";
@@ -1473,7 +1508,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildColumn());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_tableId, arg_columnId).then(unittest.expectAsync(((api.Column response) {
         checkColumn(response);
@@ -1488,7 +1523,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.QueryResourceApi res = new api.FusiontablesApi(mock).query;
       var arg_sql_1 = "foo";
       var arg_hdrs = true;
@@ -1530,7 +1565,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSqlresponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.sql(arg_sql_1, hdrs: arg_hdrs, typed: arg_typed).then(unittest.expectAsync(((api.Sqlresponse response) {
         checkSqlresponse(response);
@@ -1541,7 +1576,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.QueryResourceApi res = new api.FusiontablesApi(mock).query;
       var arg_sql_1 = "foo";
       var arg_hdrs = true;
@@ -1583,7 +1618,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSqlresponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.sqlGet(arg_sql_1, hdrs: arg_hdrs, typed: arg_typed).then(unittest.expectAsync(((api.Sqlresponse response) {
         checkSqlresponse(response);
@@ -1596,7 +1631,7 @@ main() {
   unittest.group("resource-StyleResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_tableId = "foo";
       var arg_styleId = 42;
@@ -1644,14 +1679,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_tableId, arg_styleId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_tableId = "foo";
       var arg_styleId = 42;
@@ -1699,7 +1734,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStyleSetting());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_tableId, arg_styleId).then(unittest.expectAsync(((api.StyleSetting response) {
         checkStyleSetting(response);
@@ -1708,7 +1743,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_request = buildStyleSetting();
       var arg_tableId = "foo";
@@ -1756,7 +1791,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStyleSetting());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_tableId).then(unittest.expectAsync(((api.StyleSetting response) {
         checkStyleSetting(response);
@@ -1765,7 +1800,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_tableId = "foo";
       var arg_maxResults = 42;
@@ -1813,7 +1848,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStyleSettingList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.StyleSettingList response) {
         checkStyleSettingList(response);
@@ -1822,7 +1857,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_request = buildStyleSetting();
       var arg_tableId = "foo";
@@ -1874,7 +1909,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStyleSetting());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_tableId, arg_styleId).then(unittest.expectAsync(((api.StyleSetting response) {
         checkStyleSetting(response);
@@ -1883,7 +1918,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_request = buildStyleSetting();
       var arg_tableId = "foo";
@@ -1935,7 +1970,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStyleSetting());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_tableId, arg_styleId).then(unittest.expectAsync(((api.StyleSetting response) {
         checkStyleSetting(response);
@@ -1948,7 +1983,7 @@ main() {
   unittest.group("resource-TableResourceApi", () {
     unittest.test("method--copy", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_tableId = "foo";
       var arg_copyPresentation = true;
@@ -1994,7 +2029,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.copy(arg_tableId, copyPresentation: arg_copyPresentation).then(unittest.expectAsync(((api.Table response) {
         checkTable(response);
@@ -2003,7 +2038,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_tableId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2043,14 +2078,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_tableId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_tableId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2090,7 +2125,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_tableId).then(unittest.expectAsync(((api.Table response) {
         checkTable(response);
@@ -2101,7 +2136,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_tableId = "foo";
       var arg_delimiter = "foo";
@@ -2155,7 +2190,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildImport());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.importRows(arg_tableId, delimiter: arg_delimiter, encoding: arg_encoding, endLine: arg_endLine, isStrict: arg_isStrict, startLine: arg_startLine).then(unittest.expectAsync(((api.Import response) {
         checkImport(response);
@@ -2166,7 +2201,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_name = "foo";
       var arg_delimiter = "foo";
@@ -2208,7 +2243,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.importTable(arg_name, delimiter: arg_delimiter, encoding: arg_encoding).then(unittest.expectAsync(((api.Table response) {
         checkTable(response);
@@ -2217,7 +2252,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_request = buildTable();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2257,7 +2292,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request).then(unittest.expectAsync(((api.Table response) {
         checkTable(response);
@@ -2266,7 +2301,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
@@ -2306,7 +2341,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTableList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.TableList response) {
         checkTableList(response);
@@ -2315,7 +2350,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_request = buildTable();
       var arg_tableId = "foo";
@@ -2361,7 +2396,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_tableId, replaceViewDefinition: arg_replaceViewDefinition).then(unittest.expectAsync(((api.Table response) {
         checkTable(response);
@@ -2372,7 +2407,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_tableId = "foo";
       var arg_delimiter = "foo";
@@ -2426,7 +2461,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTask());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.replaceRows(arg_tableId, delimiter: arg_delimiter, encoding: arg_encoding, endLine: arg_endLine, isStrict: arg_isStrict, startLine: arg_startLine).then(unittest.expectAsync(((api.Task response) {
         checkTask(response);
@@ -2435,7 +2470,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_request = buildTable();
       var arg_tableId = "foo";
@@ -2481,7 +2516,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_tableId, replaceViewDefinition: arg_replaceViewDefinition).then(unittest.expectAsync(((api.Table response) {
         checkTable(response);
@@ -2494,7 +2529,7 @@ main() {
   unittest.group("resource-TaskResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TaskResourceApi res = new api.FusiontablesApi(mock).task;
       var arg_tableId = "foo";
       var arg_taskId = "foo";
@@ -2542,14 +2577,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_tableId, arg_taskId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TaskResourceApi res = new api.FusiontablesApi(mock).task;
       var arg_tableId = "foo";
       var arg_taskId = "foo";
@@ -2597,7 +2632,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTask());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_tableId, arg_taskId).then(unittest.expectAsync(((api.Task response) {
         checkTask(response);
@@ -2606,7 +2641,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TaskResourceApi res = new api.FusiontablesApi(mock).task;
       var arg_tableId = "foo";
       var arg_maxResults = 42;
@@ -2656,7 +2691,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTaskList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken, startIndex: arg_startIndex).then(unittest.expectAsync(((api.TaskList response) {
         checkTaskList(response);
@@ -2669,7 +2704,7 @@ main() {
   unittest.group("resource-TemplateResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_tableId = "foo";
       var arg_templateId = 42;
@@ -2717,14 +2752,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_tableId, arg_templateId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_tableId = "foo";
       var arg_templateId = 42;
@@ -2772,7 +2807,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTemplate());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_tableId, arg_templateId).then(unittest.expectAsync(((api.Template response) {
         checkTemplate(response);
@@ -2781,7 +2816,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_request = buildTemplate();
       var arg_tableId = "foo";
@@ -2829,7 +2864,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTemplate());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_tableId).then(unittest.expectAsync(((api.Template response) {
         checkTemplate(response);
@@ -2838,7 +2873,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_tableId = "foo";
       var arg_maxResults = 42;
@@ -2886,7 +2921,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTemplateList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.TemplateList response) {
         checkTemplateList(response);
@@ -2895,7 +2930,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_request = buildTemplate();
       var arg_tableId = "foo";
@@ -2947,7 +2982,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTemplate());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_tableId, arg_templateId).then(unittest.expectAsync(((api.Template response) {
         checkTemplate(response);
@@ -2956,7 +2991,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_request = buildTemplate();
       var arg_tableId = "foo";
@@ -3008,7 +3043,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTemplate());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_tableId, arg_templateId).then(unittest.expectAsync(((api.Template response) {
         checkTemplate(response);

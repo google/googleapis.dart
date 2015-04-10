@@ -8,6 +8,12 @@
                 "https://www.googleapis.com/auth/gmail.compose": {
                     "description": "Manage drafts and send emails"
                 },
+                "https://www.googleapis.com/auth/gmail.insert": {
+                    "description": "Insert mail into your mailbox"
+                },
+                "https://www.googleapis.com/auth/gmail.labels": {
+                    "description": "Manage mailbox labels"
+                },
                 "https://www.googleapis.com/auth/gmail.modify": {
                     "description": "View and modify but not delete your email"
                 },
@@ -23,7 +29,7 @@
     "description": "The Gmail REST API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/gmail/api/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Z8EmGyPlhp7KjhJWnQbLacCZ3G8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/hFGSutIVQj0PQfQgMG3Y44JNJU0\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/googlemail-16.png",
         "x32": "https://www.google.com/images/icons/product/googlemail-32.png"
@@ -461,6 +467,7 @@
                             },
                             "scopes": [
                                 "https://mail.google.com/",
+                                "https://www.googleapis.com/auth/gmail.labels",
                                 "https://www.googleapis.com/auth/gmail.modify"
                             ]
                         },
@@ -490,6 +497,7 @@
                             "path": "{userId}/labels/{id}",
                             "scopes": [
                                 "https://mail.google.com/",
+                                "https://www.googleapis.com/auth/gmail.labels",
                                 "https://www.googleapis.com/auth/gmail.modify"
                             ]
                         },
@@ -522,6 +530,7 @@
                             },
                             "scopes": [
                                 "https://mail.google.com/",
+                                "https://www.googleapis.com/auth/gmail.labels",
                                 "https://www.googleapis.com/auth/gmail.modify",
                                 "https://www.googleapis.com/auth/gmail.readonly"
                             ]
@@ -548,6 +557,7 @@
                             },
                             "scopes": [
                                 "https://mail.google.com/",
+                                "https://www.googleapis.com/auth/gmail.labels",
                                 "https://www.googleapis.com/auth/gmail.modify",
                                 "https://www.googleapis.com/auth/gmail.readonly"
                             ]
@@ -584,6 +594,7 @@
                             },
                             "scopes": [
                                 "https://mail.google.com/",
+                                "https://www.googleapis.com/auth/gmail.labels",
                                 "https://www.googleapis.com/auth/gmail.modify"
                             ]
                         },
@@ -619,6 +630,7 @@
                             },
                             "scopes": [
                                 "https://mail.google.com/",
+                                "https://www.googleapis.com/auth/gmail.labels",
                                 "https://www.googleapis.com/auth/gmail.modify"
                             ]
                         }
@@ -784,6 +796,7 @@
                             },
                             "scopes": [
                                 "https://mail.google.com/",
+                                "https://www.googleapis.com/auth/gmail.insert",
                                 "https://www.googleapis.com/auth/gmail.modify"
                             ],
                             "supportsMediaUpload": true
@@ -812,6 +825,12 @@
                                 "userId"
                             ],
                             "parameters": {
+                                "deleted": {
+                                    "default": "false",
+                                    "description": "Mark the email as permanently deleted (not TRASH) and only visible in Google Apps Vault to a Vault administrator. Only used for Google Apps for Work accounts.",
+                                    "location": "query",
+                                    "type": "boolean"
+                                },
                                 "internalDateSource": {
                                     "default": "receivedTime",
                                     "description": "Source for Gmail's internal date of the message.",
@@ -843,6 +862,7 @@
                             },
                             "scopes": [
                                 "https://mail.google.com/",
+                                "https://www.googleapis.com/auth/gmail.insert",
                                 "https://www.googleapis.com/auth/gmail.modify"
                             ],
                             "supportsMediaUpload": true
@@ -1339,7 +1359,7 @@
             }
         }
     },
-    "revision": "20150218",
+    "revision": "20150303",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Draft": {

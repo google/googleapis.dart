@@ -1,17 +1,22 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.dfareporting.v2_0;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client dfareporting/v2.0';
 
 /** Manage your DoubleClick Campaign Manager ad campaigns and reports. */
 class DfareportingApi {
@@ -25,7 +30,7 @@ class DfareportingApi {
   static const DfatraffickingScope = "https://www.googleapis.com/auth/dfatrafficking";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AccountActiveAdSummariesResourceApi get accountActiveAdSummaries => new AccountActiveAdSummariesResourceApi(_requester);
   AccountPermissionGroupsResourceApi get accountPermissionGroups => new AccountPermissionGroupsResourceApi(_requester);
@@ -77,15 +82,14 @@ class DfareportingApi {
   UserRolesResourceApi get userRoles => new UserRolesResourceApi(_requester);
 
   DfareportingApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "dfareporting/v2.0/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class AccountActiveAdSummariesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountActiveAdSummariesResourceApi(common_internal.ApiRequester client) : 
+  AccountActiveAdSummariesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -99,7 +103,7 @@ class AccountActiveAdSummariesResourceApi {
    *
    * Completes with a [AccountActiveAdSummary].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -110,7 +114,7 @@ class AccountActiveAdSummariesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -121,7 +125,7 @@ class AccountActiveAdSummariesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountActiveAdSummaries/' + common_internal.Escaper.ecapeVariable('$summaryAccountId');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountActiveAdSummaries/' + commons.Escaper.ecapeVariable('$summaryAccountId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -136,11 +140,10 @@ class AccountActiveAdSummariesResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountPermissionGroupsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountPermissionGroupsResourceApi(common_internal.ApiRequester client) : 
+  AccountPermissionGroupsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -154,7 +157,7 @@ class AccountPermissionGroupsResourceApi {
    *
    * Completes with a [AccountPermissionGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -165,7 +168,7 @@ class AccountPermissionGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -176,7 +179,7 @@ class AccountPermissionGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountPermissionGroups/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountPermissionGroups/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -197,7 +200,7 @@ class AccountPermissionGroupsResourceApi {
    *
    * Completes with a [AccountPermissionGroupsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -208,7 +211,7 @@ class AccountPermissionGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -216,7 +219,7 @@ class AccountPermissionGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountPermissionGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountPermissionGroups';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -231,11 +234,10 @@ class AccountPermissionGroupsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountPermissionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountPermissionsResourceApi(common_internal.ApiRequester client) : 
+  AccountPermissionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -249,7 +251,7 @@ class AccountPermissionsResourceApi {
    *
    * Completes with a [AccountPermission].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -260,7 +262,7 @@ class AccountPermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -271,7 +273,7 @@ class AccountPermissionsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountPermissions/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountPermissions/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -292,7 +294,7 @@ class AccountPermissionsResourceApi {
    *
    * Completes with a [AccountPermissionsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -303,7 +305,7 @@ class AccountPermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -311,7 +313,7 @@ class AccountPermissionsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountPermissions';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountPermissions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -326,11 +328,10 @@ class AccountPermissionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountUserProfilesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountUserProfilesResourceApi(common_internal.ApiRequester client) : 
+  AccountUserProfilesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -344,7 +345,7 @@ class AccountUserProfilesResourceApi {
    *
    * Completes with a [AccountUserProfile].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -355,7 +356,7 @@ class AccountUserProfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -366,7 +367,7 @@ class AccountUserProfilesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -395,11 +396,11 @@ class AccountUserProfilesResourceApi {
    *
    * [searchString] - Allows searching for objects by name, ID or email.
    * Wildcards (*) are allowed. For example, "user profile*2015" will return
-   * objects with names like "user profile June 2015", "user profile April 2015"
-   * or simply "user profile 2015". Most of the searches also add wildcards
-   * implicitly at the start and the end of the search string. For example, a
-   * search string of "user profile" will match objects with name "my user
-   * profile", "user profile 2015" or simply "user profile".
+   * objects with names like "user profile June 2015", "user profile April
+   * 2015", or simply "user profile 2015". Most of the searches also add
+   * wildcards implicitly at the start and the end of the search string. For
+   * example, a search string of "user profile" will match objects with name "my
+   * user profile", "user profile 2015", or simply "user profile".
    *
    * [sortField] - Field by which to sort the list.
    * Possible string values are:
@@ -418,7 +419,7 @@ class AccountUserProfilesResourceApi {
    *
    * Completes with a [AccountUserProfilesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -429,7 +430,7 @@ class AccountUserProfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -464,7 +465,7 @@ class AccountUserProfilesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -490,7 +491,7 @@ class AccountUserProfilesResourceApi {
    *
    * Completes with a [AccountUserProfile].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -501,7 +502,7 @@ class AccountUserProfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -516,7 +517,7 @@ class AccountUserProfilesResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -539,7 +540,7 @@ class AccountUserProfilesResourceApi {
    *
    * Completes with a [AccountUserProfile].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -550,7 +551,7 @@ class AccountUserProfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -561,7 +562,7 @@ class AccountUserProfilesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accountUserProfiles';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -576,11 +577,10 @@ class AccountUserProfilesResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountsResourceApi(common_internal.ApiRequester client) : 
+  AccountsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -594,7 +594,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Account].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -605,7 +605,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -616,7 +616,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accounts/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accounts/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -646,10 +646,10 @@ class AccountsResourceApi {
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
    * are allowed. For example, "account*2015" will return objects with names
-   * like "account June 2015", "account April 2015" or simply "account 2015".
+   * like "account June 2015", "account April 2015", or simply "account 2015".
    * Most of the searches also add wildcards implicitly at the start and the end
    * of the search string. For example, a search string of "account" will match
-   * objects with name "my account", "account 2015" or simply "account".
+   * objects with name "my account", "account 2015", or simply "account".
    *
    * [sortField] - Field by which to sort the list.
    * Possible string values are:
@@ -663,7 +663,7 @@ class AccountsResourceApi {
    *
    * Completes with a [AccountsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -674,7 +674,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -703,7 +703,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accounts';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accounts';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -728,7 +728,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Account].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -739,7 +739,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -754,7 +754,7 @@ class AccountsResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accounts';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accounts';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -777,7 +777,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Account].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -788,7 +788,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -799,7 +799,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/accounts';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/accounts';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -814,11 +814,10 @@ class AccountsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AdsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AdsResourceApi(common_internal.ApiRequester client) : 
+  AdsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -832,7 +831,7 @@ class AdsResourceApi {
    *
    * Completes with a [Ad].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -843,7 +842,7 @@ class AdsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -854,7 +853,7 @@ class AdsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/ads/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -877,7 +876,7 @@ class AdsResourceApi {
    *
    * Completes with a [Ad].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -888,7 +887,7 @@ class AdsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -899,7 +898,7 @@ class AdsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/ads';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -993,10 +992,10 @@ class AdsResourceApi {
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
    * are allowed. For example, "ad*2015" will return objects with names like "ad
-   * June 2015", "ad April 2015" or simply "ad 2015". Most of the searches also
+   * June 2015", "ad April 2015", or simply "ad 2015". Most of the searches also
    * add wildcards implicitly at the start and the end of the search string. For
    * example, a search string of "ad" will match objects with name "my ad", "ad
-   * 2015" or simply "ad".
+   * 2015", or simply "ad".
    *
    * [sizeIds] - Select only ads with these size IDs.
    *
@@ -1018,7 +1017,7 @@ class AdsResourceApi {
    *
    * Completes with a [AdsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1029,7 +1028,7 @@ class AdsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -1109,7 +1108,7 @@ class AdsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/ads';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1134,7 +1133,7 @@ class AdsResourceApi {
    *
    * Completes with a [Ad].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1145,7 +1144,7 @@ class AdsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1160,7 +1159,7 @@ class AdsResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/ads';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1183,7 +1182,7 @@ class AdsResourceApi {
    *
    * Completes with a [Ad].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1194,7 +1193,7 @@ class AdsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1205,7 +1204,7 @@ class AdsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/ads';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1220,11 +1219,10 @@ class AdsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AdvertiserGroupsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AdvertiserGroupsResourceApi(common_internal.ApiRequester client) : 
+  AdvertiserGroupsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1236,7 +1234,7 @@ class AdvertiserGroupsResourceApi {
    *
    * [id] - Advertiser group ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1247,7 +1245,7 @@ class AdvertiserGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -1259,7 +1257,7 @@ class AdvertiserGroupsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertiserGroups/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertiserGroups/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1282,7 +1280,7 @@ class AdvertiserGroupsResourceApi {
    *
    * Completes with a [AdvertiserGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1293,7 +1291,7 @@ class AdvertiserGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -1304,7 +1302,7 @@ class AdvertiserGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertiserGroups/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertiserGroups/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1327,7 +1325,7 @@ class AdvertiserGroupsResourceApi {
    *
    * Completes with a [AdvertiserGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1338,7 +1336,7 @@ class AdvertiserGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1349,7 +1347,7 @@ class AdvertiserGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1376,11 +1374,11 @@ class AdvertiserGroupsResourceApi {
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
    * are allowed. For example, "advertiser*2015" will return objects with names
-   * like "advertiser group June 2015", "advertiser group April 2015" or simply
+   * like "advertiser group June 2015", "advertiser group April 2015", or simply
    * "advertiser group 2015". Most of the searches also add wildcards implicitly
    * at the start and the end of the search string. For example, a search string
    * of "advertisergroup" will match objects with name "my advertisergroup",
-   * "advertisergroup 2015" or simply "advertisergroup".
+   * "advertisergroup 2015", or simply "advertisergroup".
    *
    * [sortField] - Field by which to sort the list.
    * Possible string values are:
@@ -1394,7 +1392,7 @@ class AdvertiserGroupsResourceApi {
    *
    * Completes with a [AdvertiserGroupsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1405,7 +1403,7 @@ class AdvertiserGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -1431,7 +1429,7 @@ class AdvertiserGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1456,7 +1454,7 @@ class AdvertiserGroupsResourceApi {
    *
    * Completes with a [AdvertiserGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1467,7 +1465,7 @@ class AdvertiserGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1482,7 +1480,7 @@ class AdvertiserGroupsResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1505,7 +1503,7 @@ class AdvertiserGroupsResourceApi {
    *
    * Completes with a [AdvertiserGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1516,7 +1514,7 @@ class AdvertiserGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1527,7 +1525,7 @@ class AdvertiserGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertiserGroups';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1542,11 +1540,10 @@ class AdvertiserGroupsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AdvertisersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AdvertisersResourceApi(common_internal.ApiRequester client) : 
+  AdvertisersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1560,7 +1557,7 @@ class AdvertisersResourceApi {
    *
    * Completes with a [Advertiser].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1571,7 +1568,7 @@ class AdvertisersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -1582,7 +1579,7 @@ class AdvertisersResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertisers/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertisers/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1605,7 +1602,7 @@ class AdvertisersResourceApi {
    *
    * Completes with a [Advertiser].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1616,7 +1613,7 @@ class AdvertisersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1627,7 +1624,7 @@ class AdvertisersResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertisers';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertisers';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1666,10 +1663,10 @@ class AdvertisersResourceApi {
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
    * are allowed. For example, "advertiser*2015" will return objects with names
-   * like "advertiser June 2015", "advertiser April 2015" or simply "advertiser
+   * like "advertiser June 2015", "advertiser April 2015", or simply "advertiser
    * 2015". Most of the searches also add wildcards implicitly at the start and
    * the end of the search string. For example, a search string of "advertiser"
-   * will match objects with name "my advertiser", "advertiser 2015" or simply
+   * will match objects with name "my advertiser", "advertiser 2015", or simply
    * "advertiser".
    *
    * [sortField] - Field by which to sort the list.
@@ -1691,7 +1688,7 @@ class AdvertisersResourceApi {
    *
    * Completes with a [AdvertisersListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1702,7 +1699,7 @@ class AdvertisersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -1746,7 +1743,7 @@ class AdvertisersResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertisers';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertisers';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1771,7 +1768,7 @@ class AdvertisersResourceApi {
    *
    * Completes with a [Advertiser].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1782,7 +1779,7 @@ class AdvertisersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1797,7 +1794,7 @@ class AdvertisersResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertisers';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertisers';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1820,7 +1817,7 @@ class AdvertisersResourceApi {
    *
    * Completes with a [Advertiser].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1831,7 +1828,7 @@ class AdvertisersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1842,7 +1839,7 @@ class AdvertisersResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/advertisers';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/advertisers';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1857,11 +1854,10 @@ class AdvertisersResourceApi {
 }
 
 
-/** Not documented yet. */
 class BrowsersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  BrowsersResourceApi(common_internal.ApiRequester client) : 
+  BrowsersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1873,7 +1869,7 @@ class BrowsersResourceApi {
    *
    * Completes with a [BrowsersListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1884,7 +1880,7 @@ class BrowsersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -1892,7 +1888,7 @@ class BrowsersResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/browsers';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/browsers';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1907,11 +1903,10 @@ class BrowsersResourceApi {
 }
 
 
-/** Not documented yet. */
 class CampaignCreativeAssociationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CampaignCreativeAssociationsResourceApi(common_internal.ApiRequester client) : 
+  CampaignCreativeAssociationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1929,7 +1924,7 @@ class CampaignCreativeAssociationsResourceApi {
    *
    * Completes with a [CampaignCreativeAssociation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1940,7 +1935,7 @@ class CampaignCreativeAssociationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1954,7 +1949,7 @@ class CampaignCreativeAssociationsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/campaignCreativeAssociations';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/campaignCreativeAssociations';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1986,7 +1981,7 @@ class CampaignCreativeAssociationsResourceApi {
    *
    * Completes with a [CampaignCreativeAssociationsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1997,7 +1992,7 @@ class CampaignCreativeAssociationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -2017,7 +2012,7 @@ class CampaignCreativeAssociationsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/campaignCreativeAssociations';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/campaignCreativeAssociations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2032,11 +2027,10 @@ class CampaignCreativeAssociationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class CampaignsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CampaignsResourceApi(common_internal.ApiRequester client) : 
+  CampaignsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2050,7 +2044,7 @@ class CampaignsResourceApi {
    *
    * Completes with a [Campaign].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2061,7 +2055,7 @@ class CampaignsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -2072,7 +2066,7 @@ class CampaignsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2100,7 +2094,7 @@ class CampaignsResourceApi {
    *
    * Completes with a [Campaign].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2111,7 +2105,7 @@ class CampaignsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2130,7 +2124,7 @@ class CampaignsResourceApi {
     _queryParams["defaultLandingPageUrl"] = [defaultLandingPageUrl];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2173,10 +2167,10 @@ class CampaignsResourceApi {
    *
    * [searchString] - Allows searching for campaigns by name or ID. Wildcards
    * (*) are allowed. For example, "campaign*2015" will return campaigns with
-   * names like "campaign June 2015", "campaign April 2015" or simply "campaign
+   * names like "campaign June 2015", "campaign April 2015", or simply "campaign
    * 2015". Most of the searches also add wildcards implicitly at the start and
    * the end of the search string. For example, a search string of "campaign"
-   * will match campaigns with name "my campaign", "campaign 2015" or simply
+   * will match campaigns with name "my campaign", "campaign 2015", or simply
    * "campaign".
    *
    * [sortField] - Field by which to sort the list.
@@ -2193,7 +2187,7 @@ class CampaignsResourceApi {
    *
    * Completes with a [CampaignsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2204,7 +2198,7 @@ class CampaignsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -2251,7 +2245,7 @@ class CampaignsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2276,7 +2270,7 @@ class CampaignsResourceApi {
    *
    * Completes with a [Campaign].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2287,7 +2281,7 @@ class CampaignsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2302,7 +2296,7 @@ class CampaignsResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -2325,7 +2319,7 @@ class CampaignsResourceApi {
    *
    * Completes with a [Campaign].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2336,7 +2330,7 @@ class CampaignsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2347,7 +2341,7 @@ class CampaignsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2362,11 +2356,10 @@ class CampaignsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ChangeLogsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ChangeLogsResourceApi(common_internal.ApiRequester client) : 
+  ChangeLogsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2380,7 +2373,7 @@ class ChangeLogsResourceApi {
    *
    * Completes with a [ChangeLog].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2391,7 +2384,7 @@ class ChangeLogsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -2402,7 +2395,7 @@ class ChangeLogsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/changeLogs/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/changeLogs/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2508,7 +2501,7 @@ class ChangeLogsResourceApi {
    *
    * Completes with a [ChangeLogsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2519,7 +2512,7 @@ class ChangeLogsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -2557,7 +2550,7 @@ class ChangeLogsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/changeLogs';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/changeLogs';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2572,11 +2565,10 @@ class ChangeLogsResourceApi {
 }
 
 
-/** Not documented yet. */
 class CitiesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CitiesResourceApi(common_internal.ApiRequester client) : 
+  CitiesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2596,7 +2588,7 @@ class CitiesResourceApi {
    *
    * Completes with a [CitiesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2607,7 +2599,7 @@ class CitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -2627,7 +2619,7 @@ class CitiesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/cities';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/cities';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2642,11 +2634,10 @@ class CitiesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ConnectionTypesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ConnectionTypesResourceApi(common_internal.ApiRequester client) : 
+  ConnectionTypesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2658,7 +2649,7 @@ class ConnectionTypesResourceApi {
    *
    * Completes with a [ConnectionTypesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2669,7 +2660,7 @@ class ConnectionTypesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -2677,7 +2668,7 @@ class ConnectionTypesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/connectionTypes';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/connectionTypes';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2692,11 +2683,10 @@ class ConnectionTypesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ContentCategoriesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ContentCategoriesResourceApi(common_internal.ApiRequester client) : 
+  ContentCategoriesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2708,7 +2698,7 @@ class ContentCategoriesResourceApi {
    *
    * [id] - Content category ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2719,7 +2709,7 @@ class ContentCategoriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -2731,7 +2721,7 @@ class ContentCategoriesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/contentCategories/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/contentCategories/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -2754,7 +2744,7 @@ class ContentCategoriesResourceApi {
    *
    * Completes with a [ContentCategory].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2765,7 +2755,7 @@ class ContentCategoriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -2776,7 +2766,7 @@ class ContentCategoriesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/contentCategories/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/contentCategories/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2799,7 +2789,7 @@ class ContentCategoriesResourceApi {
    *
    * Completes with a [ContentCategory].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2810,7 +2800,7 @@ class ContentCategoriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2821,7 +2811,7 @@ class ContentCategoriesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/contentCategories';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/contentCategories';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2848,11 +2838,11 @@ class ContentCategoriesResourceApi {
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
    * are allowed. For example, "contentcategory*2015" will return objects with
-   * names like "contentcategory June 2015", "contentcategory April 2015" or
+   * names like "contentcategory June 2015", "contentcategory April 2015", or
    * simply "contentcategory 2015". Most of the searches also add wildcards
    * implicitly at the start and the end of the search string. For example, a
    * search string of "contentcategory" will match objects with name "my
-   * contentcategory", "contentcategory 2015" or simply "contentcategory".
+   * contentcategory", "contentcategory 2015", or simply "contentcategory".
    *
    * [sortField] - Field by which to sort the list.
    * Possible string values are:
@@ -2866,7 +2856,7 @@ class ContentCategoriesResourceApi {
    *
    * Completes with a [ContentCategoriesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2877,7 +2867,7 @@ class ContentCategoriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -2903,7 +2893,7 @@ class ContentCategoriesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/contentCategories';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/contentCategories';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2928,7 +2918,7 @@ class ContentCategoriesResourceApi {
    *
    * Completes with a [ContentCategory].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2939,7 +2929,7 @@ class ContentCategoriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2954,7 +2944,7 @@ class ContentCategoriesResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/contentCategories';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/contentCategories';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -2977,7 +2967,7 @@ class ContentCategoriesResourceApi {
    *
    * Completes with a [ContentCategory].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2988,7 +2978,7 @@ class ContentCategoriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2999,7 +2989,7 @@ class ContentCategoriesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/contentCategories';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/contentCategories';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -3014,11 +3004,10 @@ class ContentCategoriesResourceApi {
 }
 
 
-/** Not documented yet. */
 class CountriesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CountriesResourceApi(common_internal.ApiRequester client) : 
+  CountriesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3032,7 +3021,7 @@ class CountriesResourceApi {
    *
    * Completes with a [Country].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3043,7 +3032,7 @@ class CountriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -3054,7 +3043,7 @@ class CountriesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/countries/' + common_internal.Escaper.ecapeVariable('$dartId');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/countries/' + commons.Escaper.ecapeVariable('$dartId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3075,7 +3064,7 @@ class CountriesResourceApi {
    *
    * Completes with a [CountriesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3086,7 +3075,7 @@ class CountriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -3094,7 +3083,7 @@ class CountriesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/countries';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/countries';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3109,11 +3098,10 @@ class CountriesResourceApi {
 }
 
 
-/** Not documented yet. */
 class CreativeAssetsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CreativeAssetsResourceApi(common_internal.ApiRequester client) : 
+  CreativeAssetsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3134,18 +3122,18 @@ class CreativeAssetsResourceApi {
    *
    * Completes with a [CreativeAssetMetadata].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<CreativeAssetMetadata> insert(CreativeAssetMetadata request, core.String profileId, core.String advertiserId, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<CreativeAssetMetadata> insert(CreativeAssetMetadata request, core.String profileId, core.String advertiserId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3162,11 +3150,11 @@ class CreativeAssetsResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeAssets/' + common_internal.Escaper.ecapeVariable('$advertiserId') + '/creativeAssets';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/dfareporting/v2.0/userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeAssets/' + common_internal.Escaper.ecapeVariable('$advertiserId') + '/creativeAssets';
+      _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeAssets/' + commons.Escaper.ecapeVariable('$advertiserId') + '/creativeAssets';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/dfareporting/v2.0/userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeAssets/' + commons.Escaper.ecapeVariable('$advertiserId') + '/creativeAssets';
     } else {
-      _url = '/upload/dfareporting/v2.0/userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeAssets/' + common_internal.Escaper.ecapeVariable('$advertiserId') + '/creativeAssets';
+      _url = '/upload/dfareporting/v2.0/userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeAssets/' + commons.Escaper.ecapeVariable('$advertiserId') + '/creativeAssets';
     }
 
 
@@ -3183,11 +3171,10 @@ class CreativeAssetsResourceApi {
 }
 
 
-/** Not documented yet. */
 class CreativeFieldValuesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CreativeFieldValuesResourceApi(common_internal.ApiRequester client) : 
+  CreativeFieldValuesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3201,7 +3188,7 @@ class CreativeFieldValuesResourceApi {
    *
    * [id] - Creative Field Value ID
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3212,7 +3199,7 @@ class CreativeFieldValuesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -3227,7 +3214,7 @@ class CreativeFieldValuesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + commons.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -3252,7 +3239,7 @@ class CreativeFieldValuesResourceApi {
    *
    * Completes with a [CreativeFieldValue].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3263,7 +3250,7 @@ class CreativeFieldValuesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -3277,7 +3264,7 @@ class CreativeFieldValuesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + commons.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3302,7 +3289,7 @@ class CreativeFieldValuesResourceApi {
    *
    * Completes with a [CreativeFieldValue].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3313,7 +3300,7 @@ class CreativeFieldValuesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3327,7 +3314,7 @@ class CreativeFieldValuesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + commons.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3369,7 +3356,7 @@ class CreativeFieldValuesResourceApi {
    *
    * Completes with a [CreativeFieldValuesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3380,7 +3367,7 @@ class CreativeFieldValuesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -3409,7 +3396,7 @@ class CreativeFieldValuesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + commons.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3437,7 +3424,7 @@ class CreativeFieldValuesResourceApi {
    *
    * Completes with a [CreativeFieldValue].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3448,7 +3435,7 @@ class CreativeFieldValuesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3466,7 +3453,7 @@ class CreativeFieldValuesResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + commons.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -3491,7 +3478,7 @@ class CreativeFieldValuesResourceApi {
    *
    * Completes with a [CreativeFieldValue].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3502,7 +3489,7 @@ class CreativeFieldValuesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3516,7 +3503,7 @@ class CreativeFieldValuesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + commons.Escaper.ecapeVariable('$creativeFieldId') + '/creativeFieldValues';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -3531,11 +3518,10 @@ class CreativeFieldValuesResourceApi {
 }
 
 
-/** Not documented yet. */
 class CreativeFieldsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CreativeFieldsResourceApi(common_internal.ApiRequester client) : 
+  CreativeFieldsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3547,7 +3533,7 @@ class CreativeFieldsResourceApi {
    *
    * [id] - Creative Field ID
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3558,7 +3544,7 @@ class CreativeFieldsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -3570,7 +3556,7 @@ class CreativeFieldsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -3593,7 +3579,7 @@ class CreativeFieldsResourceApi {
    *
    * Completes with a [CreativeField].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3604,7 +3590,7 @@ class CreativeFieldsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -3615,7 +3601,7 @@ class CreativeFieldsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3638,7 +3624,7 @@ class CreativeFieldsResourceApi {
    *
    * Completes with a [CreativeField].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3649,7 +3635,7 @@ class CreativeFieldsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3660,7 +3646,7 @@ class CreativeFieldsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3691,10 +3677,10 @@ class CreativeFieldsResourceApi {
    * [searchString] - Allows searching for creative fields by name or ID.
    * Wildcards (*) are allowed. For example, "creativefield*2015" will return
    * creative fields with names like "creativefield June 2015", "creativefield
-   * April 2015" or simply "creativefield 2015". Most of the searches also add
+   * April 2015", or simply "creativefield 2015". Most of the searches also add
    * wild-cards implicitly at the start and the end of the search string. For
    * example, a search string of "creativefield" will match creative fields with
-   * the name "my creativefield", "creativefield 2015" or simply
+   * the name "my creativefield", "creativefield 2015", or simply
    * "creativefield".
    *
    * [sortField] - Field by which to sort the list.
@@ -3709,7 +3695,7 @@ class CreativeFieldsResourceApi {
    *
    * Completes with a [CreativeFieldsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3720,7 +3706,7 @@ class CreativeFieldsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -3749,7 +3735,7 @@ class CreativeFieldsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3774,7 +3760,7 @@ class CreativeFieldsResourceApi {
    *
    * Completes with a [CreativeField].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3785,7 +3771,7 @@ class CreativeFieldsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3800,7 +3786,7 @@ class CreativeFieldsResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -3823,7 +3809,7 @@ class CreativeFieldsResourceApi {
    *
    * Completes with a [CreativeField].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3834,7 +3820,7 @@ class CreativeFieldsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3845,7 +3831,7 @@ class CreativeFieldsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeFields';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeFields';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -3860,11 +3846,10 @@ class CreativeFieldsResourceApi {
 }
 
 
-/** Not documented yet. */
 class CreativeGroupsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CreativeGroupsResourceApi(common_internal.ApiRequester client) : 
+  CreativeGroupsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3878,7 +3863,7 @@ class CreativeGroupsResourceApi {
    *
    * Completes with a [CreativeGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3889,7 +3874,7 @@ class CreativeGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -3900,7 +3885,7 @@ class CreativeGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeGroups/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeGroups/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3923,7 +3908,7 @@ class CreativeGroupsResourceApi {
    *
    * Completes with a [CreativeGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3934,7 +3919,7 @@ class CreativeGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3945,7 +3930,7 @@ class CreativeGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3978,10 +3963,10 @@ class CreativeGroupsResourceApi {
    * [searchString] - Allows searching for creative groups by name or ID.
    * Wildcards (*) are allowed. For example, "creativegroup*2015" will return
    * creative groups with names like "creativegroup June 2015", "creativegroup
-   * April 2015" or simply "creativegroup 2015". Most of the searches also add
+   * April 2015", or simply "creativegroup 2015". Most of the searches also add
    * wild-cards implicitly at the start and the end of the search string. For
    * example, a search string of "creativegroup" will match creative groups with
-   * the name "my creativegroup", "creativegroup 2015" or simply
+   * the name "my creativegroup", "creativegroup 2015", or simply
    * "creativegroup".
    *
    * [sortField] - Field by which to sort the list.
@@ -3996,7 +3981,7 @@ class CreativeGroupsResourceApi {
    *
    * Completes with a [CreativeGroupsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4007,7 +3992,7 @@ class CreativeGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -4039,7 +4024,7 @@ class CreativeGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4064,7 +4049,7 @@ class CreativeGroupsResourceApi {
    *
    * Completes with a [CreativeGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4075,7 +4060,7 @@ class CreativeGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4090,7 +4075,7 @@ class CreativeGroupsResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -4113,7 +4098,7 @@ class CreativeGroupsResourceApi {
    *
    * Completes with a [CreativeGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4124,7 +4109,7 @@ class CreativeGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4135,7 +4120,7 @@ class CreativeGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creativeGroups';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -4150,11 +4135,10 @@ class CreativeGroupsResourceApi {
 }
 
 
-/** Not documented yet. */
 class CreativesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CreativesResourceApi(common_internal.ApiRequester client) : 
+  CreativesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -4168,7 +4152,7 @@ class CreativesResourceApi {
    *
    * Completes with a [Creative].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4179,7 +4163,7 @@ class CreativesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -4190,7 +4174,7 @@ class CreativesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creatives/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creatives/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4213,7 +4197,7 @@ class CreativesResourceApi {
    *
    * Completes with a [Creative].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4224,7 +4208,7 @@ class CreativesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4235,7 +4219,7 @@ class CreativesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creatives';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creatives';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -4279,10 +4263,11 @@ class CreativesResourceApi {
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
    * are allowed. For example, "creative*2015" will return objects with names
-   * like "creative June 2015", "creative April 2015" or simply "creative 2015".
-   * Most of the searches also add wildcards implicitly at the start and the end
-   * of the search string. For example, a search string of "creative" will match
-   * objects with name "my creative", "creative 2015" or simply "creative".
+   * like "creative June 2015", "creative April 2015", or simply "creative
+   * 2015". Most of the searches also add wildcards implicitly at the start and
+   * the end of the search string. For example, a search string of "creative"
+   * will match objects with name "my creative", "creative 2015", or simply
+   * "creative".
    *
    * [sizeIds] - Select only creatives with these size IDs.
    *
@@ -4303,7 +4288,7 @@ class CreativesResourceApi {
    *
    * Completes with a [CreativesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4314,7 +4299,7 @@ class CreativesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -4370,7 +4355,7 @@ class CreativesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creatives';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creatives';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4395,7 +4380,7 @@ class CreativesResourceApi {
    *
    * Completes with a [Creative].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4406,7 +4391,7 @@ class CreativesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4421,7 +4406,7 @@ class CreativesResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creatives';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creatives';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -4444,7 +4429,7 @@ class CreativesResourceApi {
    *
    * Completes with a [Creative].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4455,7 +4440,7 @@ class CreativesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4466,7 +4451,7 @@ class CreativesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/creatives';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/creatives';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -4481,11 +4466,10 @@ class CreativesResourceApi {
 }
 
 
-/** Not documented yet. */
 class DimensionValuesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DimensionValuesResourceApi(common_internal.ApiRequester client) : 
+  DimensionValuesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -4504,7 +4488,7 @@ class DimensionValuesResourceApi {
    *
    * Completes with a [DimensionValueList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4515,7 +4499,7 @@ class DimensionValuesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4532,7 +4516,7 @@ class DimensionValuesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/dimensionvalues/query';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/dimensionvalues/query';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -4547,11 +4531,10 @@ class DimensionValuesResourceApi {
 }
 
 
-/** Not documented yet. */
 class DirectorySiteContactsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DirectorySiteContactsResourceApi(common_internal.ApiRequester client) : 
+  DirectorySiteContactsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -4565,7 +4548,7 @@ class DirectorySiteContactsResourceApi {
    *
    * Completes with a [DirectorySiteContact].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4576,7 +4559,7 @@ class DirectorySiteContactsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -4587,7 +4570,7 @@ class DirectorySiteContactsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/directorySiteContacts/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/directorySiteContacts/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4618,11 +4601,11 @@ class DirectorySiteContactsResourceApi {
    * [searchString] - Allows searching for objects by name, ID or email.
    * Wildcards (*) are allowed. For example, "directory site contact*2015" will
    * return objects with names like "directory site contact June 2015",
-   * "directory site contact April 2015" or simply "directory site contact
+   * "directory site contact April 2015", or simply "directory site contact
    * 2015". Most of the searches also add wildcards implicitly at the start and
    * the end of the search string. For example, a search string of "directory
    * site contact" will match objects with name "my directory site contact",
-   * "directory site contact 2015" or simply "directory site contact".
+   * "directory site contact 2015", or simply "directory site contact".
    *
    * [sortField] - Field by which to sort the list.
    * Possible string values are:
@@ -4636,7 +4619,7 @@ class DirectorySiteContactsResourceApi {
    *
    * Completes with a [DirectorySiteContactsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4647,7 +4630,7 @@ class DirectorySiteContactsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -4676,7 +4659,7 @@ class DirectorySiteContactsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/directorySiteContacts';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/directorySiteContacts';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4691,11 +4674,10 @@ class DirectorySiteContactsResourceApi {
 }
 
 
-/** Not documented yet. */
 class DirectorySitesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DirectorySitesResourceApi(common_internal.ApiRequester client) : 
+  DirectorySitesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -4709,7 +4691,7 @@ class DirectorySitesResourceApi {
    *
    * Completes with a [DirectorySite].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4720,7 +4702,7 @@ class DirectorySitesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -4731,7 +4713,7 @@ class DirectorySitesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/directorySites/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/directorySites/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4776,11 +4758,11 @@ class DirectorySitesResourceApi {
    *
    * [searchString] - Allows searching for objects by name, ID or URL. Wildcards
    * (*) are allowed. For example, "directory site*2015" will return objects
-   * with names like "directory site June 2015", "directory site April 2015" or
+   * with names like "directory site June 2015", "directory site April 2015", or
    * simply "directory site 2015". Most of the searches also add wildcards
    * implicitly at the start and the end of the search string. For example, a
    * search string of "directory site" will match objects with name "my
-   * directory site", "directory site 2015" or simply "directory site".
+   * directory site", "directory site 2015" or simply, "directory site".
    *
    * [sortField] - Field by which to sort the list.
    * Possible string values are:
@@ -4794,7 +4776,7 @@ class DirectorySitesResourceApi {
    *
    * Completes with a [DirectorySitesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4805,7 +4787,7 @@ class DirectorySitesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -4852,7 +4834,7 @@ class DirectorySitesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/directorySites';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/directorySites';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4867,11 +4849,10 @@ class DirectorySitesResourceApi {
 }
 
 
-/** Not documented yet. */
 class EventTagsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  EventTagsResourceApi(common_internal.ApiRequester client) : 
+  EventTagsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -4883,7 +4864,7 @@ class EventTagsResourceApi {
    *
    * [id] - Event tag ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4894,7 +4875,7 @@ class EventTagsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -4906,7 +4887,7 @@ class EventTagsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/eventTags/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/eventTags/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -4929,7 +4910,7 @@ class EventTagsResourceApi {
    *
    * Completes with a [EventTag].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4940,7 +4921,7 @@ class EventTagsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -4951,7 +4932,7 @@ class EventTagsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/eventTags/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/eventTags/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4974,7 +4955,7 @@ class EventTagsResourceApi {
    *
    * Completes with a [EventTag].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4985,7 +4966,7 @@ class EventTagsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4996,7 +4977,7 @@ class EventTagsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/eventTags';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/eventTags';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -5043,10 +5024,11 @@ class EventTagsResourceApi {
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
    * are allowed. For example, "eventtag*2015" will return objects with names
-   * like "eventtag June 2015", "eventtag April 2015" or simply "eventtag 2015".
-   * Most of the searches also add wildcards implicitly at the start and the end
-   * of the search string. For example, a search string of "eventtag" will match
-   * objects with name "my eventtag", "eventtag 2015" or simply "eventtag".
+   * like "eventtag June 2015", "eventtag April 2015", or simply "eventtag
+   * 2015". Most of the searches also add wildcards implicitly at the start and
+   * the end of the search string. For example, a search string of "eventtag"
+   * will match objects with name "my eventtag", "eventtag 2015", or simply
+   * "eventtag".
    *
    * [sortField] - Field by which to sort the list.
    * Possible string values are:
@@ -5060,7 +5042,7 @@ class EventTagsResourceApi {
    *
    * Completes with a [EventTagsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5071,7 +5053,7 @@ class EventTagsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -5109,7 +5091,7 @@ class EventTagsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/eventTags';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/eventTags';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5134,7 +5116,7 @@ class EventTagsResourceApi {
    *
    * Completes with a [EventTag].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5145,7 +5127,7 @@ class EventTagsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -5160,7 +5142,7 @@ class EventTagsResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/eventTags';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/eventTags';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -5183,7 +5165,7 @@ class EventTagsResourceApi {
    *
    * Completes with a [EventTag].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5194,7 +5176,7 @@ class EventTagsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -5205,7 +5187,7 @@ class EventTagsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/eventTags';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/eventTags';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -5220,11 +5202,10 @@ class EventTagsResourceApi {
 }
 
 
-/** Not documented yet. */
 class FilesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  FilesResourceApi(common_internal.ApiRequester client) : 
+  FilesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -5244,20 +5225,20 @@ class FilesResourceApi {
    *
    * - [File] for Metadata downloads (see [downloadOptions]).
    *
-   * - [common.Media] for Media downloads (see [downloadOptions]).
+   * - [commons.Media] for Media downloads (see [downloadOptions]).
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future get(core.String reportId, core.String fileId, {common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future get(core.String reportId, core.String fileId, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (reportId == null) {
@@ -5269,7 +5250,7 @@ class FilesResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = 'reports/' + common_internal.Escaper.ecapeVariable('$reportId') + '/files/' + common_internal.Escaper.ecapeVariable('$fileId');
+    _url = 'reports/' + commons.Escaper.ecapeVariable('$reportId') + '/files/' + commons.Escaper.ecapeVariable('$fileId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5279,7 +5260,7 @@ class FilesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new File.fromJson(data));
     } else {
       return _response;
@@ -5317,7 +5298,7 @@ class FilesResourceApi {
    *
    * Completes with a [FileList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5328,7 +5309,7 @@ class FilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -5351,7 +5332,7 @@ class FilesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/files';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/files';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5366,11 +5347,10 @@ class FilesResourceApi {
 }
 
 
-/** Not documented yet. */
 class FloodlightActivitiesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  FloodlightActivitiesResourceApi(common_internal.ApiRequester client) : 
+  FloodlightActivitiesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -5382,7 +5362,7 @@ class FloodlightActivitiesResourceApi {
    *
    * [id] - Floodlight activity ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5393,7 +5373,7 @@ class FloodlightActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -5405,7 +5385,7 @@ class FloodlightActivitiesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivities/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivities/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -5429,7 +5409,7 @@ class FloodlightActivitiesResourceApi {
    *
    * Completes with a [FloodlightActivitiesGenerateTagResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5440,7 +5420,7 @@ class FloodlightActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -5451,7 +5431,7 @@ class FloodlightActivitiesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivities/generatetag';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivities/generatetag';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -5474,7 +5454,7 @@ class FloodlightActivitiesResourceApi {
    *
    * Completes with a [FloodlightActivity].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5485,7 +5465,7 @@ class FloodlightActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -5496,7 +5476,7 @@ class FloodlightActivitiesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivities/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivities/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5519,7 +5499,7 @@ class FloodlightActivitiesResourceApi {
    *
    * Completes with a [FloodlightActivity].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5530,7 +5510,7 @@ class FloodlightActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -5541,7 +5521,7 @@ class FloodlightActivitiesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -5594,10 +5574,10 @@ class FloodlightActivitiesResourceApi {
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
    * are allowed. For example, "floodlightactivity*2015" will return objects
    * with names like "floodlightactivity June 2015", "floodlightactivity April
-   * 2015" or simply "floodlightactivity 2015". Most of the searches also add
+   * 2015", or simply "floodlightactivity 2015". Most of the searches also add
    * wildcards implicitly at the start and the end of the search string. For
    * example, a search string of "floodlightactivity" will match objects with
-   * name "my floodlightactivity activity", "floodlightactivity 2015" or simply
+   * name "my floodlightactivity activity", "floodlightactivity 2015", or simply
    * "floodlightactivity".
    *
    * [sortField] - Field by which to sort the list.
@@ -5615,7 +5595,7 @@ class FloodlightActivitiesResourceApi {
    *
    * Completes with a [FloodlightActivitiesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5626,7 +5606,7 @@ class FloodlightActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -5673,7 +5653,7 @@ class FloodlightActivitiesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5699,7 +5679,7 @@ class FloodlightActivitiesResourceApi {
    *
    * Completes with a [FloodlightActivity].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5710,7 +5690,7 @@ class FloodlightActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -5725,7 +5705,7 @@ class FloodlightActivitiesResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -5748,7 +5728,7 @@ class FloodlightActivitiesResourceApi {
    *
    * Completes with a [FloodlightActivity].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5759,7 +5739,7 @@ class FloodlightActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -5770,7 +5750,7 @@ class FloodlightActivitiesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivities';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -5785,11 +5765,10 @@ class FloodlightActivitiesResourceApi {
 }
 
 
-/** Not documented yet. */
 class FloodlightActivityGroupsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  FloodlightActivityGroupsResourceApi(common_internal.ApiRequester client) : 
+  FloodlightActivityGroupsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -5801,7 +5780,7 @@ class FloodlightActivityGroupsResourceApi {
    *
    * [id] - Floodlight activity Group ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5812,7 +5791,7 @@ class FloodlightActivityGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -5824,7 +5803,7 @@ class FloodlightActivityGroupsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -5847,7 +5826,7 @@ class FloodlightActivityGroupsResourceApi {
    *
    * Completes with a [FloodlightActivityGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5858,7 +5837,7 @@ class FloodlightActivityGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -5869,7 +5848,7 @@ class FloodlightActivityGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5892,7 +5871,7 @@ class FloodlightActivityGroupsResourceApi {
    *
    * Completes with a [FloodlightActivityGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5903,7 +5882,7 @@ class FloodlightActivityGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -5914,7 +5893,7 @@ class FloodlightActivityGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -5934,16 +5913,16 @@ class FloodlightActivityGroupsResourceApi {
    * [profileId] - User profile ID associated with this request.
    *
    * [advertiserId] - Select only floodlight activity groups with the specified
-   * advertiser ID. Must specify either ids, advertiserId, or
+   * advertiser ID. Must specify either advertiserId or
    * floodlightConfigurationId for a non-empty result.
    *
    * [floodlightConfigurationId] - Select only floodlight activity groups with
-   * the specified floodlight configuration ID. Must specify either ids,
+   * the specified floodlight configuration ID. Must specify either
    * advertiserId, or floodlightConfigurationId for a non-empty result.
    *
    * [ids] - Select only floodlight activity groups with the specified IDs. Must
-   * specify either ids, advertiserId, or floodlightConfigurationId for a
-   * non-empty result.
+   * specify either advertiserId or floodlightConfigurationId for a non-empty
+   * result.
    *
    * [maxResults] - Maximum number of results to return.
    *
@@ -5952,12 +5931,12 @@ class FloodlightActivityGroupsResourceApi {
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
    * are allowed. For example, "floodlightactivitygroup*2015" will return
    * objects with names like "floodlightactivitygroup June 2015",
-   * "floodlightactivitygroup April 2015" or simply "floodlightactivitygroup
+   * "floodlightactivitygroup April 2015", or simply "floodlightactivitygroup
    * 2015". Most of the searches also add wildcards implicitly at the start and
    * the end of the search string. For example, a search string of
    * "floodlightactivitygroup" will match objects with name "my
-   * floodlightactivitygroup activity", "floodlightactivitygroup 2015" or simply
-   * "floodlightactivitygroup".
+   * floodlightactivitygroup activity", "floodlightactivitygroup 2015", or
+   * simply "floodlightactivitygroup".
    *
    * [sortField] - Field by which to sort the list.
    * Possible string values are:
@@ -5977,7 +5956,7 @@ class FloodlightActivityGroupsResourceApi {
    *
    * Completes with a [FloodlightActivityGroupsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5988,7 +5967,7 @@ class FloodlightActivityGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -6023,7 +6002,7 @@ class FloodlightActivityGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6049,7 +6028,7 @@ class FloodlightActivityGroupsResourceApi {
    *
    * Completes with a [FloodlightActivityGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6060,7 +6039,7 @@ class FloodlightActivityGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6075,7 +6054,7 @@ class FloodlightActivityGroupsResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -6098,7 +6077,7 @@ class FloodlightActivityGroupsResourceApi {
    *
    * Completes with a [FloodlightActivityGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6109,7 +6088,7 @@ class FloodlightActivityGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6120,7 +6099,7 @@ class FloodlightActivityGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightActivityGroups';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -6135,11 +6114,10 @@ class FloodlightActivityGroupsResourceApi {
 }
 
 
-/** Not documented yet. */
 class FloodlightConfigurationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  FloodlightConfigurationsResourceApi(common_internal.ApiRequester client) : 
+  FloodlightConfigurationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -6153,7 +6131,7 @@ class FloodlightConfigurationsResourceApi {
    *
    * Completes with a [FloodlightConfiguration].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6164,7 +6142,7 @@ class FloodlightConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -6175,7 +6153,7 @@ class FloodlightConfigurationsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6199,7 +6177,7 @@ class FloodlightConfigurationsResourceApi {
    *
    * Completes with a [FloodlightConfigurationsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6210,7 +6188,7 @@ class FloodlightConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -6221,7 +6199,7 @@ class FloodlightConfigurationsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6247,7 +6225,7 @@ class FloodlightConfigurationsResourceApi {
    *
    * Completes with a [FloodlightConfiguration].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6258,7 +6236,7 @@ class FloodlightConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6273,7 +6251,7 @@ class FloodlightConfigurationsResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -6296,7 +6274,7 @@ class FloodlightConfigurationsResourceApi {
    *
    * Completes with a [FloodlightConfiguration].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6307,7 +6285,7 @@ class FloodlightConfigurationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6318,7 +6296,7 @@ class FloodlightConfigurationsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/floodlightConfigurations';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -6333,11 +6311,10 @@ class FloodlightConfigurationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class LandingPagesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  LandingPagesResourceApi(common_internal.ApiRequester client) : 
+  LandingPagesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -6351,7 +6328,7 @@ class LandingPagesResourceApi {
    *
    * [id] - Landing page ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6362,7 +6339,7 @@ class LandingPagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -6377,7 +6354,7 @@ class LandingPagesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/landingPages/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/landingPages/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -6402,7 +6379,7 @@ class LandingPagesResourceApi {
    *
    * Completes with a [LandingPage].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6413,7 +6390,7 @@ class LandingPagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -6427,7 +6404,7 @@ class LandingPagesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/landingPages/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/landingPages/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6452,7 +6429,7 @@ class LandingPagesResourceApi {
    *
    * Completes with a [LandingPage].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6463,7 +6440,7 @@ class LandingPagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6477,7 +6454,7 @@ class LandingPagesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/landingPages';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/landingPages';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -6500,7 +6477,7 @@ class LandingPagesResourceApi {
    *
    * Completes with a [LandingPagesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6511,7 +6488,7 @@ class LandingPagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -6522,7 +6499,7 @@ class LandingPagesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/landingPages';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/landingPages';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6550,7 +6527,7 @@ class LandingPagesResourceApi {
    *
    * Completes with a [LandingPage].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6561,7 +6538,7 @@ class LandingPagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6579,7 +6556,7 @@ class LandingPagesResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/landingPages';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/landingPages';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -6604,7 +6581,7 @@ class LandingPagesResourceApi {
    *
    * Completes with a [LandingPage].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6615,7 +6592,7 @@ class LandingPagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6629,7 +6606,7 @@ class LandingPagesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/campaigns/' + common_internal.Escaper.ecapeVariable('$campaignId') + '/landingPages';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/campaigns/' + commons.Escaper.ecapeVariable('$campaignId') + '/landingPages';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -6644,11 +6621,10 @@ class LandingPagesResourceApi {
 }
 
 
-/** Not documented yet. */
 class MetrosResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  MetrosResourceApi(common_internal.ApiRequester client) : 
+  MetrosResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -6660,7 +6636,7 @@ class MetrosResourceApi {
    *
    * Completes with a [MetrosListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6671,7 +6647,7 @@ class MetrosResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -6679,7 +6655,7 @@ class MetrosResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/metros';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/metros';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6694,11 +6670,10 @@ class MetrosResourceApi {
 }
 
 
-/** Not documented yet. */
 class MobileCarriersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  MobileCarriersResourceApi(common_internal.ApiRequester client) : 
+  MobileCarriersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -6710,7 +6685,7 @@ class MobileCarriersResourceApi {
    *
    * Completes with a [MobileCarriersListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6721,7 +6696,7 @@ class MobileCarriersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -6729,7 +6704,7 @@ class MobileCarriersResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/mobileCarriers';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/mobileCarriers';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6744,11 +6719,10 @@ class MobileCarriersResourceApi {
 }
 
 
-/** Not documented yet. */
 class OperatingSystemVersionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  OperatingSystemVersionsResourceApi(common_internal.ApiRequester client) : 
+  OperatingSystemVersionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -6760,7 +6734,7 @@ class OperatingSystemVersionsResourceApi {
    *
    * Completes with a [OperatingSystemVersionsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6771,7 +6745,7 @@ class OperatingSystemVersionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -6779,7 +6753,7 @@ class OperatingSystemVersionsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/operatingSystemVersions';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/operatingSystemVersions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6794,11 +6768,10 @@ class OperatingSystemVersionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class OperatingSystemsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  OperatingSystemsResourceApi(common_internal.ApiRequester client) : 
+  OperatingSystemsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -6810,7 +6783,7 @@ class OperatingSystemsResourceApi {
    *
    * Completes with a [OperatingSystemsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6821,7 +6794,7 @@ class OperatingSystemsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -6829,7 +6802,7 @@ class OperatingSystemsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/operatingSystems';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/operatingSystems';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6844,11 +6817,10 @@ class OperatingSystemsResourceApi {
 }
 
 
-/** Not documented yet. */
 class PlacementGroupsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PlacementGroupsResourceApi(common_internal.ApiRequester client) : 
+  PlacementGroupsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -6862,7 +6834,7 @@ class PlacementGroupsResourceApi {
    *
    * Completes with a [PlacementGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6873,7 +6845,7 @@ class PlacementGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -6884,7 +6856,7 @@ class PlacementGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementGroups/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementGroups/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6907,7 +6879,7 @@ class PlacementGroupsResourceApi {
    *
    * Completes with a [PlacementGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6918,7 +6890,7 @@ class PlacementGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6929,7 +6901,7 @@ class PlacementGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementGroups';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -6987,10 +6959,10 @@ class PlacementGroupsResourceApi {
    * [searchString] - Allows searching for placement groups by name or ID.
    * Wildcards (*) are allowed. For example, "placement*2015" will return
    * placement groups with names like "placement group June 2015", "placement
-   * group May 2015" or simply "placements 2015". Most of the searches also add
+   * group May 2015", or simply "placements 2015". Most of the searches also add
    * wildcards implicitly at the start and the end of the search string. For
    * example, a search string of "placementgroup" will match placement groups
-   * with name "my placementgroup", "placementgroup 2015" or simply
+   * with name "my placementgroup", "placementgroup 2015", or simply
    * "placementgroup".
    *
    * [siteIds] - Select only placement groups that are associated with these
@@ -7008,7 +6980,7 @@ class PlacementGroupsResourceApi {
    *
    * Completes with a [PlacementGroupsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7019,7 +6991,7 @@ class PlacementGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -7072,7 +7044,7 @@ class PlacementGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementGroups';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -7097,7 +7069,7 @@ class PlacementGroupsResourceApi {
    *
    * Completes with a [PlacementGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7108,7 +7080,7 @@ class PlacementGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -7123,7 +7095,7 @@ class PlacementGroupsResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementGroups';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -7146,7 +7118,7 @@ class PlacementGroupsResourceApi {
    *
    * Completes with a [PlacementGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7157,7 +7129,7 @@ class PlacementGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -7168,7 +7140,7 @@ class PlacementGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementGroups';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -7183,11 +7155,10 @@ class PlacementGroupsResourceApi {
 }
 
 
-/** Not documented yet. */
 class PlacementStrategiesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PlacementStrategiesResourceApi(common_internal.ApiRequester client) : 
+  PlacementStrategiesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -7199,7 +7170,7 @@ class PlacementStrategiesResourceApi {
    *
    * [id] - Placement strategy ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7210,7 +7181,7 @@ class PlacementStrategiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -7222,7 +7193,7 @@ class PlacementStrategiesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementStrategies/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementStrategies/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -7245,7 +7216,7 @@ class PlacementStrategiesResourceApi {
    *
    * Completes with a [PlacementStrategy].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7256,7 +7227,7 @@ class PlacementStrategiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -7267,7 +7238,7 @@ class PlacementStrategiesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementStrategies/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementStrategies/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -7290,7 +7261,7 @@ class PlacementStrategiesResourceApi {
    *
    * Completes with a [PlacementStrategy].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7301,7 +7272,7 @@ class PlacementStrategiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -7312,7 +7283,7 @@ class PlacementStrategiesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -7339,11 +7310,12 @@ class PlacementStrategiesResourceApi {
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
    * are allowed. For example, "placementstrategy*2015" will return objects with
-   * names like "placementstrategy June 2015", "placementstrategy April 2015" or
-   * simply "placementstrategy 2015". Most of the searches also add wildcards
+   * names like "placementstrategy June 2015", "placementstrategy April 2015",
+   * or simply "placementstrategy 2015". Most of the searches also add wildcards
    * implicitly at the start and the end of the search string. For example, a
    * search string of "placementstrategy" will match objects with name "my
-   * placementstrategy", "placementstrategy 2015" or simply "placementstrategy".
+   * placementstrategy", "placementstrategy 2015", or simply
+   * "placementstrategy".
    *
    * [sortField] - Field by which to sort the list.
    * Possible string values are:
@@ -7357,7 +7329,7 @@ class PlacementStrategiesResourceApi {
    *
    * Completes with a [PlacementStrategiesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7368,7 +7340,7 @@ class PlacementStrategiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -7394,7 +7366,7 @@ class PlacementStrategiesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -7420,7 +7392,7 @@ class PlacementStrategiesResourceApi {
    *
    * Completes with a [PlacementStrategy].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7431,7 +7403,7 @@ class PlacementStrategiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -7446,7 +7418,7 @@ class PlacementStrategiesResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -7469,7 +7441,7 @@ class PlacementStrategiesResourceApi {
    *
    * Completes with a [PlacementStrategy].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7480,7 +7452,7 @@ class PlacementStrategiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -7491,7 +7463,7 @@ class PlacementStrategiesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placementStrategies';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -7506,11 +7478,10 @@ class PlacementStrategiesResourceApi {
 }
 
 
-/** Not documented yet. */
 class PlacementsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PlacementsResourceApi(common_internal.ApiRequester client) : 
+  PlacementsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -7529,7 +7500,7 @@ class PlacementsResourceApi {
    *
    * Completes with a [PlacementsGenerateTagsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7540,7 +7511,7 @@ class PlacementsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -7557,7 +7528,7 @@ class PlacementsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placements/generatetags';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placements/generatetags';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -7580,7 +7551,7 @@ class PlacementsResourceApi {
    *
    * Completes with a [Placement].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7591,7 +7562,7 @@ class PlacementsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -7602,7 +7573,7 @@ class PlacementsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placements/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placements/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -7625,7 +7596,7 @@ class PlacementsResourceApi {
    *
    * Completes with a [Placement].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7636,7 +7607,7 @@ class PlacementsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -7647,7 +7618,7 @@ class PlacementsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placements';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placements';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -7706,11 +7677,11 @@ class PlacementsResourceApi {
    *
    * [searchString] - Allows searching for placements by name or ID. Wildcards
    * (*) are allowed. For example, "placement*2015" will return placements with
-   * names like "placement June 2015", "placement May 2015" or simply
+   * names like "placement June 2015", "placement May 2015", or simply
    * "placements 2015". Most of the searches also add wildcards implicitly at
    * the start and the end of the search string. For example, a search string of
    * "placement" will match placements with name "my placement", "placement
-   * 2015" or simply "placement".
+   * 2015", or simply "placement".
    *
    * [siteIds] - Select only placements that are associated with these sites.
    *
@@ -7728,7 +7699,7 @@ class PlacementsResourceApi {
    *
    * Completes with a [PlacementsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7739,7 +7710,7 @@ class PlacementsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -7801,7 +7772,7 @@ class PlacementsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placements';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placements';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -7826,7 +7797,7 @@ class PlacementsResourceApi {
    *
    * Completes with a [Placement].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7837,7 +7808,7 @@ class PlacementsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -7852,7 +7823,7 @@ class PlacementsResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placements';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placements';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -7875,7 +7846,7 @@ class PlacementsResourceApi {
    *
    * Completes with a [Placement].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7886,7 +7857,7 @@ class PlacementsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -7897,7 +7868,7 @@ class PlacementsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/placements';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/placements';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -7912,11 +7883,10 @@ class PlacementsResourceApi {
 }
 
 
-/** Not documented yet. */
 class PlatformTypesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PlatformTypesResourceApi(common_internal.ApiRequester client) : 
+  PlatformTypesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -7928,7 +7898,7 @@ class PlatformTypesResourceApi {
    *
    * Completes with a [PlatformTypesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7939,7 +7909,7 @@ class PlatformTypesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -7947,7 +7917,7 @@ class PlatformTypesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/platformTypes';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/platformTypes';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -7962,11 +7932,10 @@ class PlatformTypesResourceApi {
 }
 
 
-/** Not documented yet. */
 class PostalCodesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PostalCodesResourceApi(common_internal.ApiRequester client) : 
+  PostalCodesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -7978,7 +7947,7 @@ class PostalCodesResourceApi {
    *
    * Completes with a [PostalCodesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7989,7 +7958,7 @@ class PostalCodesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -7997,7 +7966,7 @@ class PostalCodesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/postalCodes';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/postalCodes';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -8012,11 +7981,10 @@ class PostalCodesResourceApi {
 }
 
 
-/** Not documented yet. */
 class RegionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  RegionsResourceApi(common_internal.ApiRequester client) : 
+  RegionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -8028,7 +7996,7 @@ class RegionsResourceApi {
    *
    * Completes with a [RegionsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8039,7 +8007,7 @@ class RegionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -8047,7 +8015,7 @@ class RegionsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/regions';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/regions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -8062,14 +8030,13 @@ class RegionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ReportsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ReportsCompatibleFieldsResourceApi get compatibleFields => new ReportsCompatibleFieldsResourceApi(_requester);
   ReportsFilesResourceApi get files => new ReportsFilesResourceApi(_requester);
 
-  ReportsResourceApi(common_internal.ApiRequester client) : 
+  ReportsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -8081,7 +8048,7 @@ class ReportsResourceApi {
    *
    * [reportId] - The ID of the report.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8092,7 +8059,7 @@ class ReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -8104,7 +8071,7 @@ class ReportsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/' + common_internal.Escaper.ecapeVariable('$reportId');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -8127,7 +8094,7 @@ class ReportsResourceApi {
    *
    * Completes with a [Report].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8138,7 +8105,7 @@ class ReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -8149,7 +8116,7 @@ class ReportsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/' + common_internal.Escaper.ecapeVariable('$reportId');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -8172,7 +8139,7 @@ class ReportsResourceApi {
    *
    * Completes with a [Report].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8183,7 +8150,7 @@ class ReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -8194,7 +8161,7 @@ class ReportsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -8237,7 +8204,7 @@ class ReportsResourceApi {
    *
    * Completes with a [ReportList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8248,7 +8215,7 @@ class ReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -8271,7 +8238,7 @@ class ReportsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -8296,7 +8263,7 @@ class ReportsResourceApi {
    *
    * Completes with a [Report].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8307,7 +8274,7 @@ class ReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -8321,7 +8288,7 @@ class ReportsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/' + common_internal.Escaper.ecapeVariable('$reportId');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -8346,7 +8313,7 @@ class ReportsResourceApi {
    *
    * Completes with a [File].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8357,7 +8324,7 @@ class ReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -8371,7 +8338,7 @@ class ReportsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/' + common_internal.Escaper.ecapeVariable('$reportId') + '/run';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId') + '/run';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -8396,7 +8363,7 @@ class ReportsResourceApi {
    *
    * Completes with a [Report].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8407,7 +8374,7 @@ class ReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -8421,7 +8388,7 @@ class ReportsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/' + common_internal.Escaper.ecapeVariable('$reportId');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -8436,11 +8403,10 @@ class ReportsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ReportsCompatibleFieldsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ReportsCompatibleFieldsResourceApi(common_internal.ApiRequester client) : 
+  ReportsCompatibleFieldsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -8456,7 +8422,7 @@ class ReportsCompatibleFieldsResourceApi {
    *
    * Completes with a [CompatibleFields].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8467,7 +8433,7 @@ class ReportsCompatibleFieldsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -8478,7 +8444,7 @@ class ReportsCompatibleFieldsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/compatiblefields/query';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/compatiblefields/query';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -8493,11 +8459,10 @@ class ReportsCompatibleFieldsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ReportsFilesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ReportsFilesResourceApi(common_internal.ApiRequester client) : 
+  ReportsFilesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -8519,20 +8484,20 @@ class ReportsFilesResourceApi {
    *
    * - [File] for Metadata downloads (see [downloadOptions]).
    *
-   * - [common.Media] for Media downloads (see [downloadOptions]).
+   * - [commons.Media] for Media downloads (see [downloadOptions]).
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future get(core.String profileId, core.String reportId, core.String fileId, {common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future get(core.String profileId, core.String reportId, core.String fileId, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -8547,7 +8512,7 @@ class ReportsFilesResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/' + common_internal.Escaper.ecapeVariable('$reportId') + '/files/' + common_internal.Escaper.ecapeVariable('$fileId');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId') + '/files/' + commons.Escaper.ecapeVariable('$fileId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -8557,7 +8522,7 @@ class ReportsFilesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new File.fromJson(data));
     } else {
       return _response;
@@ -8590,7 +8555,7 @@ class ReportsFilesResourceApi {
    *
    * Completes with a [FileList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8601,7 +8566,7 @@ class ReportsFilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -8624,7 +8589,7 @@ class ReportsFilesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/reports/' + common_internal.Escaper.ecapeVariable('$reportId') + '/files';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/reports/' + commons.Escaper.ecapeVariable('$reportId') + '/files';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -8639,11 +8604,10 @@ class ReportsFilesResourceApi {
 }
 
 
-/** Not documented yet. */
 class SitesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SitesResourceApi(common_internal.ApiRequester client) : 
+  SitesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -8657,7 +8621,7 @@ class SitesResourceApi {
    *
    * Completes with a [Site].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8668,7 +8632,7 @@ class SitesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -8679,7 +8643,7 @@ class SitesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sites/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sites/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -8702,7 +8666,7 @@ class SitesResourceApi {
    *
    * Completes with a [Site].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8713,7 +8677,7 @@ class SitesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -8724,7 +8688,7 @@ class SitesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sites';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sites';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -8768,10 +8732,10 @@ class SitesResourceApi {
    *
    * [searchString] - Allows searching for objects by name, ID or keyName.
    * Wildcards (*) are allowed. For example, "site*2015" will return objects
-   * with names like "site June 2015", "site April 2015" or simply "site 2015".
+   * with names like "site June 2015", "site April 2015", or simply "site 2015".
    * Most of the searches also add wildcards implicitly at the start and the end
    * of the search string. For example, a search string of "site" will match
-   * objects with name "my site", "site 2015" or simply "site".
+   * objects with name "my site", "site 2015", or simply "site".
    *
    * [sortField] - Field by which to sort the list.
    * Possible string values are:
@@ -8790,7 +8754,7 @@ class SitesResourceApi {
    *
    * Completes with a [SitesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8801,7 +8765,7 @@ class SitesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -8854,7 +8818,7 @@ class SitesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sites';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sites';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -8879,7 +8843,7 @@ class SitesResourceApi {
    *
    * Completes with a [Site].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8890,7 +8854,7 @@ class SitesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -8905,7 +8869,7 @@ class SitesResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sites';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sites';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -8928,7 +8892,7 @@ class SitesResourceApi {
    *
    * Completes with a [Site].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8939,7 +8903,7 @@ class SitesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -8950,7 +8914,7 @@ class SitesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sites';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sites';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -8965,11 +8929,10 @@ class SitesResourceApi {
 }
 
 
-/** Not documented yet. */
 class SizesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SizesResourceApi(common_internal.ApiRequester client) : 
+  SizesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -8983,7 +8946,7 @@ class SizesResourceApi {
    *
    * Completes with a [Size].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -8994,7 +8957,7 @@ class SizesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -9005,7 +8968,7 @@ class SizesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sizes/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sizes/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -9028,7 +8991,7 @@ class SizesResourceApi {
    *
    * Completes with a [Size].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9039,7 +9002,7 @@ class SizesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -9050,7 +9013,7 @@ class SizesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sizes';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sizes';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -9079,7 +9042,7 @@ class SizesResourceApi {
    *
    * Completes with a [SizesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9090,7 +9053,7 @@ class SizesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -9110,7 +9073,7 @@ class SizesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/sizes';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/sizes';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -9125,11 +9088,10 @@ class SizesResourceApi {
 }
 
 
-/** Not documented yet. */
 class SubaccountsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SubaccountsResourceApi(common_internal.ApiRequester client) : 
+  SubaccountsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -9143,7 +9105,7 @@ class SubaccountsResourceApi {
    *
    * Completes with a [Subaccount].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9154,7 +9116,7 @@ class SubaccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -9165,7 +9127,7 @@ class SubaccountsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/subaccounts/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/subaccounts/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -9188,7 +9150,7 @@ class SubaccountsResourceApi {
    *
    * Completes with a [Subaccount].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9199,7 +9161,7 @@ class SubaccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -9210,7 +9172,7 @@ class SubaccountsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/subaccounts';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/subaccounts';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -9237,10 +9199,10 @@ class SubaccountsResourceApi {
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
    * are allowed. For example, "subaccount*2015" will return objects with names
-   * like "subaccount June 2015", "subaccount April 2015" or simply "subaccount
+   * like "subaccount June 2015", "subaccount April 2015", or simply "subaccount
    * 2015". Most of the searches also add wildcards implicitly at the start and
    * the end of the search string. For example, a search string of "subaccount"
-   * will match objects with name "my subaccount", "subaccount 2015" or simply
+   * will match objects with name "my subaccount", "subaccount 2015", or simply
    * "subaccount".
    *
    * [sortField] - Field by which to sort the list.
@@ -9255,7 +9217,7 @@ class SubaccountsResourceApi {
    *
    * Completes with a [SubaccountsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9266,7 +9228,7 @@ class SubaccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -9292,7 +9254,7 @@ class SubaccountsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/subaccounts';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/subaccounts';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -9317,7 +9279,7 @@ class SubaccountsResourceApi {
    *
    * Completes with a [Subaccount].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9328,7 +9290,7 @@ class SubaccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -9343,7 +9305,7 @@ class SubaccountsResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/subaccounts';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/subaccounts';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -9366,7 +9328,7 @@ class SubaccountsResourceApi {
    *
    * Completes with a [Subaccount].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9377,7 +9339,7 @@ class SubaccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -9388,7 +9350,7 @@ class SubaccountsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/subaccounts';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/subaccounts';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -9403,11 +9365,10 @@ class SubaccountsResourceApi {
 }
 
 
-/** Not documented yet. */
 class UserProfilesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UserProfilesResourceApi(common_internal.ApiRequester client) : 
+  UserProfilesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -9419,7 +9380,7 @@ class UserProfilesResourceApi {
    *
    * Completes with a [UserProfile].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9430,7 +9391,7 @@ class UserProfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -9438,7 +9399,7 @@ class UserProfilesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -9457,7 +9418,7 @@ class UserProfilesResourceApi {
    *
    * Completes with a [UserProfileList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9468,7 +9429,7 @@ class UserProfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -9488,11 +9449,10 @@ class UserProfilesResourceApi {
 }
 
 
-/** Not documented yet. */
 class UserRolePermissionGroupsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UserRolePermissionGroupsResourceApi(common_internal.ApiRequester client) : 
+  UserRolePermissionGroupsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -9506,7 +9466,7 @@ class UserRolePermissionGroupsResourceApi {
    *
    * Completes with a [UserRolePermissionGroup].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9517,7 +9477,7 @@ class UserRolePermissionGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -9528,7 +9488,7 @@ class UserRolePermissionGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRolePermissionGroups/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRolePermissionGroups/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -9549,7 +9509,7 @@ class UserRolePermissionGroupsResourceApi {
    *
    * Completes with a [UserRolePermissionGroupsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9560,7 +9520,7 @@ class UserRolePermissionGroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -9568,7 +9528,7 @@ class UserRolePermissionGroupsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRolePermissionGroups';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRolePermissionGroups';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -9583,11 +9543,10 @@ class UserRolePermissionGroupsResourceApi {
 }
 
 
-/** Not documented yet. */
 class UserRolePermissionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UserRolePermissionsResourceApi(common_internal.ApiRequester client) : 
+  UserRolePermissionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -9601,7 +9560,7 @@ class UserRolePermissionsResourceApi {
    *
    * Completes with a [UserRolePermission].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9612,7 +9571,7 @@ class UserRolePermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -9623,7 +9582,7 @@ class UserRolePermissionsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRolePermissions/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRolePermissions/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -9646,7 +9605,7 @@ class UserRolePermissionsResourceApi {
    *
    * Completes with a [UserRolePermissionsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9657,7 +9616,7 @@ class UserRolePermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -9668,7 +9627,7 @@ class UserRolePermissionsResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRolePermissions';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRolePermissions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -9683,11 +9642,10 @@ class UserRolePermissionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class UserRolesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UserRolesResourceApi(common_internal.ApiRequester client) : 
+  UserRolesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -9699,7 +9657,7 @@ class UserRolesResourceApi {
    *
    * [id] - User role ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9710,7 +9668,7 @@ class UserRolesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -9722,7 +9680,7 @@ class UserRolesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRoles/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRoles/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -9745,7 +9703,7 @@ class UserRolesResourceApi {
    *
    * Completes with a [UserRole].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9756,7 +9714,7 @@ class UserRolesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -9767,7 +9725,7 @@ class UserRolesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRoles/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRoles/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -9790,7 +9748,7 @@ class UserRolesResourceApi {
    *
    * Completes with a [UserRole].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9801,7 +9759,7 @@ class UserRolesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -9812,7 +9770,7 @@ class UserRolesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRoles';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRoles';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -9842,10 +9800,11 @@ class UserRolesResourceApi {
    *
    * [searchString] - Allows searching for objects by name or ID. Wildcards (*)
    * are allowed. For example, "userrole*2015" will return objects with names
-   * like "userrole June 2015", "userrole April 2015" or simply "userrole 2015".
-   * Most of the searches also add wildcards implicitly at the start and the end
-   * of the search string. For example, a search string of "userrole" will match
-   * objects with name "my userrole", "userrole 2015" or simply "userrole".
+   * like "userrole June 2015", "userrole April 2015", or simply "userrole
+   * 2015". Most of the searches also add wildcards implicitly at the start and
+   * the end of the search string. For example, a search string of "userrole"
+   * will match objects with name "my userrole", "userrole 2015", or simply
+   * "userrole".
    *
    * [sortField] - Field by which to sort the list.
    * Possible string values are:
@@ -9861,7 +9820,7 @@ class UserRolesResourceApi {
    *
    * Completes with a [UserRolesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9872,7 +9831,7 @@ class UserRolesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (profileId == null) {
@@ -9904,7 +9863,7 @@ class UserRolesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRoles';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRoles';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -9929,7 +9888,7 @@ class UserRolesResourceApi {
    *
    * Completes with a [UserRole].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9940,7 +9899,7 @@ class UserRolesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -9955,7 +9914,7 @@ class UserRolesResourceApi {
     _queryParams["id"] = [id];
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRoles';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRoles';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -9978,7 +9937,7 @@ class UserRolesResourceApi {
    *
    * Completes with a [UserRole].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -9989,7 +9948,7 @@ class UserRolesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -10000,7 +9959,7 @@ class UserRolesResourceApi {
     }
 
 
-    _url = 'userprofiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/userRoles';
+    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/userRoles';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -10499,7 +10458,7 @@ class AccountPermissionGroup {
 
 /** Account Permission Group List Response */
 class AccountPermissionGroupsListResponse {
-  /** Account permission group collection */
+  /** Account permission group collection. */
   core.List<AccountPermissionGroup> accountPermissionGroups;
 
   /**
@@ -10535,7 +10494,7 @@ class AccountPermissionGroupsListResponse {
 
 /** Account Permission List Response */
 class AccountPermissionsListResponse {
-  /** Account permission collection */
+  /** Account permission collection. */
   core.List<AccountPermission> accountPermissions;
 
   /**
@@ -10790,7 +10749,7 @@ class AccountUserProfile {
 
 /** Account User Profile List Response */
 class AccountUserProfilesListResponse {
-  /** Account user profile collection */
+  /** Account user profile collection. */
   core.List<AccountUserProfile> accountUserProfiles;
 
   /**
@@ -10835,7 +10794,7 @@ class AccountUserProfilesListResponse {
 
 /** Account List Response */
 class AccountsListResponse {
-  /** Account collection */
+  /** Account collection. */
   core.List<Account> accounts;
 
   /**
@@ -11369,7 +11328,7 @@ class Ad {
 
 /** Ad List Response */
 class AdsListResponse {
-  /** Ad collection */
+  /** Ad collection. */
   core.List<Ad> ads;
 
   /**
@@ -11655,7 +11614,7 @@ class AdvertiserGroup {
 
 /** Advertiser Group List Response */
 class AdvertiserGroupsListResponse {
-  /** Advertiser group collection */
+  /** Advertiser group collection. */
   core.List<AdvertiserGroup> advertiserGroups;
 
   /**
@@ -11700,7 +11659,7 @@ class AdvertiserGroupsListResponse {
 
 /** Advertiser List Response */
 class AdvertisersListResponse {
-  /** Advertiser collection */
+  /** Advertiser collection. */
   core.List<Advertiser> advertisers;
 
   /**
@@ -11940,7 +11899,7 @@ class Browser {
 
 /** Browser List Response */
 class BrowsersListResponse {
-  /** Browser collection */
+  /** Browser collection. */
   core.List<Browser> browsers;
 
   /**
@@ -12371,7 +12330,7 @@ class CampaignCreativeAssociationsListResponse {
 
 /** Campaign List Response */
 class CampaignsListResponse {
-  /** Campaign collection */
+  /** Campaign collection. */
   core.List<Campaign> campaigns;
 
   /**
@@ -12567,7 +12526,7 @@ class ChangeLog {
 
 /** Change Log List Response */
 class ChangeLogsListResponse {
-  /** Change log collection */
+  /** Change log collection. */
   core.List<ChangeLog> changeLogs;
 
   /**
@@ -12612,7 +12571,7 @@ class ChangeLogsListResponse {
 
 /** City List Response */
 class CitiesListResponse {
-  /** City collection */
+  /** City collection. */
   core.List<City> cities;
 
   /**
@@ -13009,7 +12968,9 @@ class CompatibleFields {
 
 
 /**
- * Contains information about a connection type that can be targeted by ads.
+ * Contains information about an internet connection type that can be targeted
+ * by ads. Clients can use the connection type to target mobile vs. broadband
+ * users.
  */
 class ConnectionType {
   /** ID of this connection type. */
@@ -13057,7 +13018,7 @@ class ConnectionType {
 
 /** Connection Type List Response */
 class ConnectionTypesListResponse {
-  /** Connection Type Collection. */
+  /** Collection of connection types such as broadband and mobile. */
   core.List<ConnectionType> connectionTypes;
 
   /**
@@ -13093,7 +13054,7 @@ class ConnectionTypesListResponse {
 
 /** Content Category List Response */
 class ContentCategoriesListResponse {
-  /** Content category collection */
+  /** Content category collection. */
   core.List<ContentCategory> contentCategories;
 
   /**
@@ -13141,7 +13102,7 @@ class ContentCategoriesListResponse {
  */
 class ContentCategory {
   /**
-   * Account ID of this content category.This is a read-only field that can be
+   * Account ID of this content category. This is a read-only field that can be
    * left blank.
    */
   core.String accountId;
@@ -13212,7 +13173,7 @@ class ContentCategory {
 
 /** Country List Response */
 class CountriesListResponse {
-  /** Country collection */
+  /** Country collection. */
   core.List<Country> countries;
 
   /**
@@ -13513,7 +13474,7 @@ class Creative {
   core.String htmlCode;
 
   /**
-   * Whether HTML code is DCM generated or manually entered. Set to true to
+   * Whether HTML code is DCM-generated or manually entered. Set to true to
    * ignore changes to htmlCode. Applicable to the following creative types:
    * FLASH_INPAGE and HTML5_BANNER.
    */
@@ -14228,7 +14189,7 @@ class CreativeAsset {
   core.bool hideSelectionBoxes;
 
   /**
-   * Wheter the asset is horizontally locked. This is a read-only field.
+   * Whether the asset is horizontally locked. This is a read-only field.
    * Applicable to the following creative types: all RICH_MEDIA.
    */
   core.bool horizontallyLocked;
@@ -15056,7 +15017,7 @@ class CreativeCustomEvent {
   core.String id;
 
   /**
-   * Properties for rich media pop-up windows. This field is used only for exit
+   * Properties for rich media popup windows. This field is used only for exit
    * events.
    */
   PopupWindowProperties popupWindowProperties;
@@ -15332,7 +15293,7 @@ class CreativeFieldValue {
 
 /** Creative Field Value List Response */
 class CreativeFieldValuesListResponse {
-  /** Creative field value collection */
+  /** Creative field value collection. */
   core.List<CreativeFieldValue> creativeFieldValues;
 
   /**
@@ -15377,7 +15338,7 @@ class CreativeFieldValuesListResponse {
 
 /** Creative Field List Response */
 class CreativeFieldsListResponse {
-  /** Creative field collection */
+  /** Creative field collection. */
   core.List<CreativeField> creativeFields;
 
   /**
@@ -15573,7 +15534,7 @@ class CreativeGroupAssignment {
 
 /** Creative Group List Response */
 class CreativeGroupsListResponse {
-  /** Creative group collection */
+  /** Creative group collection. */
   core.List<CreativeGroup> creativeGroups;
 
   /**
@@ -15790,7 +15751,7 @@ class CreativeSettings {
 
 /** Creative List Response */
 class CreativesListResponse {
-  /** Creative collection */
+  /** Creative collection. */
   core.List<Creative> creatives;
 
   /**
@@ -16229,7 +16190,10 @@ class DfpSettings {
   /** Whether this directory site accepts publisher-paid tags. */
   core.bool pubPaidPlacementAccepted;
 
-  /** Whether this directory site is available only via Publisher Portal. */
+  /**
+   * Whether this directory site is available only via DoubleClick Publisher
+   * Portal.
+   */
   core.bool publisherPortalOnly;
 
 
@@ -16969,7 +16933,8 @@ class DirectorySiteSettings {
   core.bool nielsenOcrOptOut;
 
   /**
-   * Whether this directory site has disabled generation of Verification tags.
+   * Whether this directory site has disabled generation of Verification ins
+   * tags.
    */
   core.bool verificationTagOptOut;
 
@@ -17036,7 +17001,7 @@ class DirectorySiteSettings {
 
 /** Directory Site List Response */
 class DirectorySitesListResponse {
-  /** Directory site collection */
+  /** Directory site collection. */
   core.List<DirectorySite> directorySites;
 
   /**
@@ -17342,7 +17307,7 @@ class EventTagOverride {
 
 /** Event Tag List Response */
 class EventTagsListResponse {
-  /** Event tag collection */
+  /** Event tag collection. */
   core.List<EventTag> eventTags;
 
   /**
@@ -17629,7 +17594,7 @@ class FloodlightActivitiesGenerateTagResponse {
 
 /** Floodlight Activity List Response */
 class FloodlightActivitiesListResponse {
-  /** Floodlight activity collection */
+  /** Floodlight activity collection. */
   core.List<FloodlightActivity> floodlightActivities;
 
   /**
@@ -17675,7 +17640,7 @@ class FloodlightActivitiesListResponse {
 /** Contains properties of a Floodlight activity. */
 class FloodlightActivity {
   /**
-   * Account ID of this floodlight activity.This is a read-only field that can
+   * Account ID of this floodlight activity. This is a read-only field that can
    * be left blank.
    */
   core.String accountId;
@@ -17775,8 +17740,8 @@ class FloodlightActivity {
   core.String id;
 
   /**
-   * Dimension value for the ID of this floodlight activity.This is a read-only,
-   * auto-generated field.
+   * Dimension value for the ID of this floodlight activity. This is a
+   * read-only, auto-generated field.
    */
   DimensionValue idDimensionValue;
 
@@ -17814,7 +17779,7 @@ class FloodlightActivity {
   core.bool sslRequired;
 
   /**
-   * Subaccount ID of this floodlight activity.This is a read-only field that
+   * Subaccount ID of this floodlight activity. This is a read-only field that
    * can be left blank.
    */
   core.String subaccountId;
@@ -18091,8 +18056,8 @@ class FloodlightActivityDynamicTag {
 /** Contains properties of a Floodlight activity group. */
 class FloodlightActivityGroup {
   /**
-   * Account ID of this floodlight activity group.This is a read-only field that
-   * can be left blank.
+   * Account ID of this floodlight activity group. This is a read-only field
+   * that can be left blank.
    */
   core.String accountId;
 
@@ -18164,7 +18129,7 @@ class FloodlightActivityGroup {
   core.String tagString;
 
   /**
-   * The type of floodlight activity group. This is a required field that is
+   * Type of the floodlight activity group. This is a required field that is
    * read-only after insertion.
    * Possible string values are:
    * - "COUNTER"
@@ -18259,7 +18224,7 @@ class FloodlightActivityGroup {
 
 /** Floodlight Activity Group List Response */
 class FloodlightActivityGroupsListResponse {
-  /** Floodlight activity group collection */
+  /** Floodlight activity group collection. */
   core.List<FloodlightActivityGroup> floodlightActivityGroups;
 
   /**
@@ -18401,7 +18366,7 @@ class FloodlightConfiguration {
   core.bool analyticsDataSharingEnabled;
 
   /**
-   * Whether the exposure to conversion report is enabled. This report shows
+   * Whether the exposure-to-conversion report is enabled. This report shows
    * detailed pathway information on up to 10 of the most recent ad exposures
    * seen by a user before converting.
    */
@@ -18593,7 +18558,7 @@ class FloodlightConfiguration {
 
 /** Floodlight Configuration List Response */
 class FloodlightConfigurationsListResponse {
-  /** Floodlight configuration collection */
+  /** Floodlight configuration collection. */
   core.List<FloodlightConfiguration> floodlightConfigurations;
 
   /**
@@ -18946,8 +18911,8 @@ class LandingPage {
   core.String kind;
 
   /**
-   * Name of this landing page. This is a required field. Must be less than 256
-   * characters long, and must be unique among landing pages of the same
+   * Name of this landing page. This is a required field. It must be less than
+   * 256 characters long, and must be unique among landing pages of the same
    * campaign.
    */
   core.String name;
@@ -19250,7 +19215,7 @@ class MetrosListResponse {
    */
   core.String kind;
 
-  /** Metro collection */
+  /** Metro collection. */
   core.List<Metro> metros;
 
 
@@ -19349,7 +19314,7 @@ class MobileCarriersListResponse {
    */
   core.String kind;
 
-  /** Mobile carrier collection */
+  /** Mobile carrier collection. */
   core.List<MobileCarrier> mobileCarriers;
 
 
@@ -19588,7 +19553,7 @@ class OperatingSystemVersion {
   core.String majorVersion;
 
   /**
-   * Minor version (number after first dot on the left) of this operating system
+   * Minor version (number after the first dot) of this operating system
    * version.
    */
   core.String minorVersion;
@@ -19656,7 +19621,7 @@ class OperatingSystemVersionsListResponse {
    */
   core.String kind;
 
-  /** Operating system version collection */
+  /** Operating system version collection. */
   core.List<OperatingSystemVersion> operatingSystemVersions;
 
 
@@ -19692,7 +19657,7 @@ class OperatingSystemsListResponse {
    */
   core.String kind;
 
-  /** Operating system collection */
+  /** Operating system collection. */
   core.List<OperatingSystem> operatingSystems;
 
 
@@ -20691,7 +20656,7 @@ class PlacementGroupsListResponse {
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
 
-  /** Placement group collection */
+  /** Placement group collection. */
   core.List<PlacementGroup> placementGroups;
 
 
@@ -20736,7 +20701,7 @@ class PlacementStrategiesListResponse {
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
 
-  /** Placement strategy collection */
+  /** Placement strategy collection. */
   core.List<PlacementStrategy> placementStrategies;
 
 
@@ -20790,7 +20755,7 @@ class PlacementStrategy {
   core.String kind;
 
   /**
-   * Name of this placement strategy. This is a required field. Must be less
+   * Name of this placement strategy. This is a required field. It must be less
    * than 256 characters long and unique among placement strategies of the same
    * account.
    */
@@ -20913,7 +20878,7 @@ class PlacementsListResponse {
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
 
-  /** Placement collection */
+  /** Placement collection. */
   core.List<Placement> placements;
 
 
@@ -21000,7 +20965,7 @@ class PlatformTypesListResponse {
    */
   core.String kind;
 
-  /** Platform type collection */
+  /** Platform type collection. */
   core.List<PlatformType> platformTypes;
 
 
@@ -21197,7 +21162,7 @@ class PostalCodesListResponse {
    */
   core.String kind;
 
-  /** Postal code collection */
+  /** Postal code collection. */
   core.List<PostalCode> postalCodes;
 
 
@@ -21240,7 +21205,7 @@ class PricingSchedule {
   core.bool disregardOverdelivery;
 
   /**
-   * Placement end date. This date must be later than or be the same day as the
+   * Placement end date. This date must be later than, or the same day as, the
    * placement start date, but not later than the campaign end date. If, for
    * example, you set 6/25/2015 as both the start and end dates, the effective
    * placement date is just that day only, 6/25/2015. The hours, minutes, and
@@ -21276,9 +21241,10 @@ class PricingSchedule {
   core.String pricingType;
 
   /**
-   * Placement start date. This date cannot be earlier than the campaign start
-   * date. The hours, minutes, and seconds of the start date should not be set,
-   * as doing so will result in an error. This field is required on insertion.
+   * Placement start date. This date must be later than, or the same day as, the
+   * campaign start date. The hours, minutes, and seconds of the start date
+   * should not be set, as doing so will result in an error. This field is
+   * required on insertion.
    */
   core.DateTime startDate;
 
@@ -21358,7 +21324,7 @@ class PricingSchedule {
 /** Pricing Period */
 class PricingSchedulePricingPeriod {
   /**
-   * Pricing period end date. This date must be later than or be the same day as
+   * Pricing period end date. This date must be later than, or the same day as,
    * the pricing period start date, but not later than the placement end date.
    * The period end date can be the same date as the period start date. If, for
    * example, you set 6/25/2015 as both the start and end dates, the effective
@@ -21375,9 +21341,9 @@ class PricingSchedulePricingPeriod {
   core.String rateOrCostNanos;
 
   /**
-   * Pricing period start date. This date cannot be earlier than the placement
-   * start date. The hours, minutes, and seconds of the start date should not be
-   * set, as doing so will result in an error.
+   * Pricing period start date. This date must be later than, or the same day
+   * as, the placement start date. The hours, minutes, and seconds of the start
+   * date should not be set, as doing so will result in an error.
    */
   core.DateTime startDate;
 
@@ -21716,7 +21682,7 @@ class RegionsListResponse {
    */
   core.String kind;
 
-  /** Region Collection. */
+  /** Region collection. */
   core.List<Region> regions;
 
 
@@ -23361,7 +23327,7 @@ class SizesListResponse {
    */
   core.String kind;
 
-  /** Size collection */
+  /** Size collection. */
   core.List<Size> sizes;
 
 
@@ -23518,7 +23484,7 @@ class SubaccountsListResponse {
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
 
-  /** Subaccount collection */
+  /** Subaccount collection. */
   core.List<Subaccount> subaccounts;
 
 
@@ -23932,8 +23898,8 @@ class UserDefinedVariableConfiguration {
 
   /**
    * User-friendly name for the variable which will appear in reports. This is a
-   * required field, must be less than 65 characters long, and cannot contain
-   * the following characters: """.
+   * required field, must be less than 64 characters long, and cannot contain
+   * the following characters: ""<>".
    */
   core.String reportName;
 
@@ -23942,6 +23908,7 @@ class UserDefinedVariableConfiguration {
    * Possible string values are:
    * - "U1"
    * - "U10"
+   * - "U100"
    * - "U11"
    * - "U12"
    * - "U13"
@@ -23953,13 +23920,92 @@ class UserDefinedVariableConfiguration {
    * - "U19"
    * - "U2"
    * - "U20"
+   * - "U21"
+   * - "U22"
+   * - "U23"
+   * - "U24"
+   * - "U25"
+   * - "U26"
+   * - "U27"
+   * - "U28"
+   * - "U29"
    * - "U3"
+   * - "U30"
+   * - "U31"
+   * - "U32"
+   * - "U33"
+   * - "U34"
+   * - "U35"
+   * - "U36"
+   * - "U37"
+   * - "U38"
+   * - "U39"
    * - "U4"
+   * - "U40"
+   * - "U41"
+   * - "U42"
+   * - "U43"
+   * - "U44"
+   * - "U45"
+   * - "U46"
+   * - "U47"
+   * - "U48"
+   * - "U49"
    * - "U5"
+   * - "U50"
+   * - "U51"
+   * - "U52"
+   * - "U53"
+   * - "U54"
+   * - "U55"
+   * - "U56"
+   * - "U57"
+   * - "U58"
+   * - "U59"
    * - "U6"
+   * - "U60"
+   * - "U61"
+   * - "U62"
+   * - "U63"
+   * - "U64"
+   * - "U65"
+   * - "U66"
+   * - "U67"
+   * - "U68"
+   * - "U69"
    * - "U7"
+   * - "U70"
+   * - "U71"
+   * - "U72"
+   * - "U73"
+   * - "U74"
+   * - "U75"
+   * - "U76"
+   * - "U77"
+   * - "U78"
+   * - "U79"
    * - "U8"
+   * - "U80"
+   * - "U81"
+   * - "U82"
+   * - "U83"
+   * - "U84"
+   * - "U85"
+   * - "U86"
+   * - "U87"
+   * - "U88"
+   * - "U89"
    * - "U9"
+   * - "U90"
+   * - "U91"
+   * - "U92"
+   * - "U93"
+   * - "U94"
+   * - "U95"
+   * - "U96"
+   * - "U97"
+   * - "U98"
+   * - "U99"
    */
   core.String variableType;
 
@@ -24356,7 +24402,7 @@ class UserRolePermissionGroupsListResponse {
    */
   core.String kind;
 
-  /** User role permission group collection */
+  /** User role permission group collection. */
   core.List<UserRolePermissionGroup> userRolePermissionGroups;
 
 
@@ -24392,7 +24438,7 @@ class UserRolePermissionsListResponse {
    */
   core.String kind;
 
-  /** User role permission collection */
+  /** User role permission collection. */
   core.List<UserRolePermission> userRolePermissions;
 
 
@@ -24431,7 +24477,7 @@ class UserRolesListResponse {
   /** Pagination token to be used for the next list operation. */
   core.String nextPageToken;
 
-  /** User role collection */
+  /** User role collection. */
   core.List<UserRole> userRoles;
 
 
@@ -24463,5 +24509,3 @@ class UserRolesListResponse {
     return _json;
   }
 }
-
-

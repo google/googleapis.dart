@@ -8,22 +8,57 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/calendar/v3.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
 
-buildUnnamed978() {
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
+
+buildUnnamed370() {
   var o = new core.List<api.AclRule>();
   o.add(buildAclRule());
   o.add(buildAclRule());
   return o;
 }
 
-checkUnnamed978(core.List<api.AclRule> o) {
+checkUnnamed370(core.List<api.AclRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAclRule(o[0]);
   checkAclRule(o[1]);
@@ -35,7 +70,7 @@ buildAcl() {
   buildCounterAcl++;
   if (buildCounterAcl < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed978();
+    o.items = buildUnnamed370();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.nextSyncToken = "foo";
@@ -48,7 +83,7 @@ checkAcl(api.Acl o) {
   buildCounterAcl++;
   if (buildCounterAcl < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed978(o.items);
+    checkUnnamed370(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.nextSyncToken, unittest.equals('foo'));
@@ -135,14 +170,14 @@ checkCalendar(api.Calendar o) {
   buildCounterCalendar--;
 }
 
-buildUnnamed979() {
+buildUnnamed371() {
   var o = new core.List<api.CalendarListEntry>();
   o.add(buildCalendarListEntry());
   o.add(buildCalendarListEntry());
   return o;
 }
 
-checkUnnamed979(core.List<api.CalendarListEntry> o) {
+checkUnnamed371(core.List<api.CalendarListEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCalendarListEntry(o[0]);
   checkCalendarListEntry(o[1]);
@@ -154,7 +189,7 @@ buildCalendarList() {
   buildCounterCalendarList++;
   if (buildCounterCalendarList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed979();
+    o.items = buildUnnamed371();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.nextSyncToken = "foo";
@@ -167,7 +202,7 @@ checkCalendarList(api.CalendarList o) {
   buildCounterCalendarList++;
   if (buildCounterCalendarList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed979(o.items);
+    checkUnnamed371(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.nextSyncToken, unittest.equals('foo'));
@@ -175,27 +210,27 @@ checkCalendarList(api.CalendarList o) {
   buildCounterCalendarList--;
 }
 
-buildUnnamed980() {
+buildUnnamed372() {
   var o = new core.List<api.EventReminder>();
   o.add(buildEventReminder());
   o.add(buildEventReminder());
   return o;
 }
 
-checkUnnamed980(core.List<api.EventReminder> o) {
+checkUnnamed372(core.List<api.EventReminder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventReminder(o[0]);
   checkEventReminder(o[1]);
 }
 
-buildUnnamed981() {
+buildUnnamed373() {
   var o = new core.List<api.CalendarNotification>();
   o.add(buildCalendarNotification());
   o.add(buildCalendarNotification());
   return o;
 }
 
-checkUnnamed981(core.List<api.CalendarNotification> o) {
+checkUnnamed373(core.List<api.CalendarNotification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCalendarNotification(o[0]);
   checkCalendarNotification(o[1]);
@@ -206,7 +241,7 @@ buildCalendarListEntryNotificationSettings() {
   var o = new api.CalendarListEntryNotificationSettings();
   buildCounterCalendarListEntryNotificationSettings++;
   if (buildCounterCalendarListEntryNotificationSettings < 3) {
-    o.notifications = buildUnnamed981();
+    o.notifications = buildUnnamed373();
   }
   buildCounterCalendarListEntryNotificationSettings--;
   return o;
@@ -215,7 +250,7 @@ buildCalendarListEntryNotificationSettings() {
 checkCalendarListEntryNotificationSettings(api.CalendarListEntryNotificationSettings o) {
   buildCounterCalendarListEntryNotificationSettings++;
   if (buildCounterCalendarListEntryNotificationSettings < 3) {
-    checkUnnamed981(o.notifications);
+    checkUnnamed373(o.notifications);
   }
   buildCounterCalendarListEntryNotificationSettings--;
 }
@@ -228,7 +263,7 @@ buildCalendarListEntry() {
     o.accessRole = "foo";
     o.backgroundColor = "foo";
     o.colorId = "foo";
-    o.defaultReminders = buildUnnamed980();
+    o.defaultReminders = buildUnnamed372();
     o.deleted = true;
     o.description = "foo";
     o.etag = "foo";
@@ -254,7 +289,7 @@ checkCalendarListEntry(api.CalendarListEntry o) {
     unittest.expect(o.accessRole, unittest.equals('foo'));
     unittest.expect(o.backgroundColor, unittest.equals('foo'));
     unittest.expect(o.colorId, unittest.equals('foo'));
-    checkUnnamed980(o.defaultReminders);
+    checkUnnamed372(o.defaultReminders);
     unittest.expect(o.deleted, unittest.isTrue);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
@@ -294,14 +329,14 @@ checkCalendarNotification(api.CalendarNotification o) {
   buildCounterCalendarNotification--;
 }
 
-buildUnnamed982() {
+buildUnnamed374() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed982(core.Map<core.String, core.String> o) {
+checkUnnamed374(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -316,7 +351,7 @@ buildChannel() {
     o.expiration = "foo";
     o.id = "foo";
     o.kind = "foo";
-    o.params = buildUnnamed982();
+    o.params = buildUnnamed374();
     o.payload = true;
     o.resourceId = "foo";
     o.resourceUri = "foo";
@@ -334,7 +369,7 @@ checkChannel(api.Channel o) {
     unittest.expect(o.expiration, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed982(o.params);
+    checkUnnamed374(o.params);
     unittest.expect(o.payload, unittest.isTrue);
     unittest.expect(o.resourceId, unittest.equals('foo'));
     unittest.expect(o.resourceUri, unittest.equals('foo'));
@@ -365,27 +400,27 @@ checkColorDefinition(api.ColorDefinition o) {
   buildCounterColorDefinition--;
 }
 
-buildUnnamed983() {
+buildUnnamed375() {
   var o = new core.Map<core.String, api.ColorDefinition>();
   o["x"] = buildColorDefinition();
   o["y"] = buildColorDefinition();
   return o;
 }
 
-checkUnnamed983(core.Map<core.String, api.ColorDefinition> o) {
+checkUnnamed375(core.Map<core.String, api.ColorDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColorDefinition(o["x"]);
   checkColorDefinition(o["y"]);
 }
 
-buildUnnamed984() {
+buildUnnamed376() {
   var o = new core.Map<core.String, api.ColorDefinition>();
   o["x"] = buildColorDefinition();
   o["y"] = buildColorDefinition();
   return o;
 }
 
-checkUnnamed984(core.Map<core.String, api.ColorDefinition> o) {
+checkUnnamed376(core.Map<core.String, api.ColorDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColorDefinition(o["x"]);
   checkColorDefinition(o["y"]);
@@ -396,8 +431,8 @@ buildColors() {
   var o = new api.Colors();
   buildCounterColors++;
   if (buildCounterColors < 3) {
-    o.calendar = buildUnnamed983();
-    o.event = buildUnnamed984();
+    o.calendar = buildUnnamed375();
+    o.event = buildUnnamed376();
     o.kind = "foo";
     o.updated = core.DateTime.parse("2002-02-27T14:01:02");
   }
@@ -408,8 +443,8 @@ buildColors() {
 checkColors(api.Colors o) {
   buildCounterColors++;
   if (buildCounterColors < 3) {
-    checkUnnamed983(o.calendar);
-    checkUnnamed984(o.event);
+    checkUnnamed375(o.calendar);
+    checkUnnamed376(o.event);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
   }
@@ -437,14 +472,14 @@ checkError(api.Error o) {
   buildCounterError--;
 }
 
-buildUnnamed985() {
+buildUnnamed377() {
   var o = new core.List<api.EventAttendee>();
   o.add(buildEventAttendee());
   o.add(buildEventAttendee());
   return o;
 }
 
-checkUnnamed985(core.List<api.EventAttendee> o) {
+checkUnnamed377(core.List<api.EventAttendee> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventAttendee(o[0]);
   checkEventAttendee(o[1]);
@@ -475,27 +510,27 @@ checkEventCreator(api.EventCreator o) {
   buildCounterEventCreator--;
 }
 
-buildUnnamed986() {
+buildUnnamed378() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed986(core.Map<core.String, core.String> o) {
+checkUnnamed378(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed987() {
+buildUnnamed379() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed987(core.Map<core.String, core.String> o) {
+checkUnnamed379(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -506,8 +541,8 @@ buildEventExtendedProperties() {
   var o = new api.EventExtendedProperties();
   buildCounterEventExtendedProperties++;
   if (buildCounterEventExtendedProperties < 3) {
-    o.private = buildUnnamed986();
-    o.shared = buildUnnamed987();
+    o.private = buildUnnamed378();
+    o.shared = buildUnnamed379();
   }
   buildCounterEventExtendedProperties--;
   return o;
@@ -516,20 +551,20 @@ buildEventExtendedProperties() {
 checkEventExtendedProperties(api.EventExtendedProperties o) {
   buildCounterEventExtendedProperties++;
   if (buildCounterEventExtendedProperties < 3) {
-    checkUnnamed986(o.private);
-    checkUnnamed987(o.shared);
+    checkUnnamed378(o.private);
+    checkUnnamed379(o.shared);
   }
   buildCounterEventExtendedProperties--;
 }
 
-buildUnnamed988() {
+buildUnnamed380() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed988(core.Map<core.String, core.String> o) {
+checkUnnamed380(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -544,7 +579,7 @@ buildEventGadget() {
     o.height = 42;
     o.iconLink = "foo";
     o.link = "foo";
-    o.preferences = buildUnnamed988();
+    o.preferences = buildUnnamed380();
     o.title = "foo";
     o.type = "foo";
     o.width = 42;
@@ -560,7 +595,7 @@ checkEventGadget(api.EventGadget o) {
     unittest.expect(o.height, unittest.equals(42));
     unittest.expect(o.iconLink, unittest.equals('foo'));
     unittest.expect(o.link, unittest.equals('foo'));
-    checkUnnamed988(o.preferences);
+    checkUnnamed380(o.preferences);
     unittest.expect(o.title, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.width, unittest.equals(42));
@@ -593,27 +628,27 @@ checkEventOrganizer(api.EventOrganizer o) {
   buildCounterEventOrganizer--;
 }
 
-buildUnnamed989() {
+buildUnnamed381() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed989(core.List<core.String> o) {
+checkUnnamed381(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed990() {
+buildUnnamed382() {
   var o = new core.List<api.EventReminder>();
   o.add(buildEventReminder());
   o.add(buildEventReminder());
   return o;
 }
 
-checkUnnamed990(core.List<api.EventReminder> o) {
+checkUnnamed382(core.List<api.EventReminder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventReminder(o[0]);
   checkEventReminder(o[1]);
@@ -624,7 +659,7 @@ buildEventReminders() {
   var o = new api.EventReminders();
   buildCounterEventReminders++;
   if (buildCounterEventReminders < 3) {
-    o.overrides = buildUnnamed990();
+    o.overrides = buildUnnamed382();
     o.useDefault = true;
   }
   buildCounterEventReminders--;
@@ -634,7 +669,7 @@ buildEventReminders() {
 checkEventReminders(api.EventReminders o) {
   buildCounterEventReminders++;
   if (buildCounterEventReminders < 3) {
-    checkUnnamed990(o.overrides);
+    checkUnnamed382(o.overrides);
     unittest.expect(o.useDefault, unittest.isTrue);
   }
   buildCounterEventReminders--;
@@ -667,7 +702,7 @@ buildEvent() {
   buildCounterEvent++;
   if (buildCounterEvent < 3) {
     o.anyoneCanAddSelf = true;
-    o.attendees = buildUnnamed985();
+    o.attendees = buildUnnamed377();
     o.attendeesOmitted = true;
     o.colorId = "foo";
     o.created = core.DateTime.parse("2002-02-27T14:01:02");
@@ -691,7 +726,7 @@ buildEvent() {
     o.organizer = buildEventOrganizer();
     o.originalStartTime = buildEventDateTime();
     o.privateCopy = true;
-    o.recurrence = buildUnnamed989();
+    o.recurrence = buildUnnamed381();
     o.recurringEventId = "foo";
     o.reminders = buildEventReminders();
     o.sequence = 42;
@@ -711,7 +746,7 @@ checkEvent(api.Event o) {
   buildCounterEvent++;
   if (buildCounterEvent < 3) {
     unittest.expect(o.anyoneCanAddSelf, unittest.isTrue);
-    checkUnnamed985(o.attendees);
+    checkUnnamed377(o.attendees);
     unittest.expect(o.attendeesOmitted, unittest.isTrue);
     unittest.expect(o.colorId, unittest.equals('foo'));
     unittest.expect(o.created, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
@@ -735,7 +770,7 @@ checkEvent(api.Event o) {
     checkEventOrganizer(o.organizer);
     checkEventDateTime(o.originalStartTime);
     unittest.expect(o.privateCopy, unittest.isTrue);
-    checkUnnamed989(o.recurrence);
+    checkUnnamed381(o.recurrence);
     unittest.expect(o.recurringEventId, unittest.equals('foo'));
     checkEventReminders(o.reminders);
     unittest.expect(o.sequence, unittest.equals(42));
@@ -848,27 +883,27 @@ checkEventReminder(api.EventReminder o) {
   buildCounterEventReminder--;
 }
 
-buildUnnamed991() {
+buildUnnamed383() {
   var o = new core.List<api.EventReminder>();
   o.add(buildEventReminder());
   o.add(buildEventReminder());
   return o;
 }
 
-checkUnnamed991(core.List<api.EventReminder> o) {
+checkUnnamed383(core.List<api.EventReminder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventReminder(o[0]);
   checkEventReminder(o[1]);
 }
 
-buildUnnamed992() {
+buildUnnamed384() {
   var o = new core.List<api.Event>();
   o.add(buildEvent());
   o.add(buildEvent());
   return o;
 }
 
-checkUnnamed992(core.List<api.Event> o) {
+checkUnnamed384(core.List<api.Event> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEvent(o[0]);
   checkEvent(o[1]);
@@ -880,10 +915,10 @@ buildEvents() {
   buildCounterEvents++;
   if (buildCounterEvents < 3) {
     o.accessRole = "foo";
-    o.defaultReminders = buildUnnamed991();
+    o.defaultReminders = buildUnnamed383();
     o.description = "foo";
     o.etag = "foo";
-    o.items = buildUnnamed992();
+    o.items = buildUnnamed384();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.nextSyncToken = "foo";
@@ -899,10 +934,10 @@ checkEvents(api.Events o) {
   buildCounterEvents++;
   if (buildCounterEvents < 3) {
     unittest.expect(o.accessRole, unittest.equals('foo'));
-    checkUnnamed991(o.defaultReminders);
+    checkUnnamed383(o.defaultReminders);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed992(o.items);
+    checkUnnamed384(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.nextSyncToken, unittest.equals('foo'));
@@ -913,27 +948,27 @@ checkEvents(api.Events o) {
   buildCounterEvents--;
 }
 
-buildUnnamed993() {
+buildUnnamed385() {
   var o = new core.List<api.TimePeriod>();
   o.add(buildTimePeriod());
   o.add(buildTimePeriod());
   return o;
 }
 
-checkUnnamed993(core.List<api.TimePeriod> o) {
+checkUnnamed385(core.List<api.TimePeriod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimePeriod(o[0]);
   checkTimePeriod(o[1]);
 }
 
-buildUnnamed994() {
+buildUnnamed386() {
   var o = new core.List<api.Error>();
   o.add(buildError());
   o.add(buildError());
   return o;
 }
 
-checkUnnamed994(core.List<api.Error> o) {
+checkUnnamed386(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkError(o[0]);
   checkError(o[1]);
@@ -944,8 +979,8 @@ buildFreeBusyCalendar() {
   var o = new api.FreeBusyCalendar();
   buildCounterFreeBusyCalendar++;
   if (buildCounterFreeBusyCalendar < 3) {
-    o.busy = buildUnnamed993();
-    o.errors = buildUnnamed994();
+    o.busy = buildUnnamed385();
+    o.errors = buildUnnamed386();
   }
   buildCounterFreeBusyCalendar--;
   return o;
@@ -954,33 +989,33 @@ buildFreeBusyCalendar() {
 checkFreeBusyCalendar(api.FreeBusyCalendar o) {
   buildCounterFreeBusyCalendar++;
   if (buildCounterFreeBusyCalendar < 3) {
-    checkUnnamed993(o.busy);
-    checkUnnamed994(o.errors);
+    checkUnnamed385(o.busy);
+    checkUnnamed386(o.errors);
   }
   buildCounterFreeBusyCalendar--;
 }
 
-buildUnnamed995() {
+buildUnnamed387() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed995(core.List<core.String> o) {
+checkUnnamed387(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed996() {
+buildUnnamed388() {
   var o = new core.List<api.Error>();
   o.add(buildError());
   o.add(buildError());
   return o;
 }
 
-checkUnnamed996(core.List<api.Error> o) {
+checkUnnamed388(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkError(o[0]);
   checkError(o[1]);
@@ -991,8 +1026,8 @@ buildFreeBusyGroup() {
   var o = new api.FreeBusyGroup();
   buildCounterFreeBusyGroup++;
   if (buildCounterFreeBusyGroup < 3) {
-    o.calendars = buildUnnamed995();
-    o.errors = buildUnnamed996();
+    o.calendars = buildUnnamed387();
+    o.errors = buildUnnamed388();
   }
   buildCounterFreeBusyGroup--;
   return o;
@@ -1001,20 +1036,20 @@ buildFreeBusyGroup() {
 checkFreeBusyGroup(api.FreeBusyGroup o) {
   buildCounterFreeBusyGroup++;
   if (buildCounterFreeBusyGroup < 3) {
-    checkUnnamed995(o.calendars);
-    checkUnnamed996(o.errors);
+    checkUnnamed387(o.calendars);
+    checkUnnamed388(o.errors);
   }
   buildCounterFreeBusyGroup--;
 }
 
-buildUnnamed997() {
+buildUnnamed389() {
   var o = new core.List<api.FreeBusyRequestItem>();
   o.add(buildFreeBusyRequestItem());
   o.add(buildFreeBusyRequestItem());
   return o;
 }
 
-checkUnnamed997(core.List<api.FreeBusyRequestItem> o) {
+checkUnnamed389(core.List<api.FreeBusyRequestItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFreeBusyRequestItem(o[0]);
   checkFreeBusyRequestItem(o[1]);
@@ -1027,7 +1062,7 @@ buildFreeBusyRequest() {
   if (buildCounterFreeBusyRequest < 3) {
     o.calendarExpansionMax = 42;
     o.groupExpansionMax = 42;
-    o.items = buildUnnamed997();
+    o.items = buildUnnamed389();
     o.timeMax = core.DateTime.parse("2002-02-27T14:01:02");
     o.timeMin = core.DateTime.parse("2002-02-27T14:01:02");
     o.timeZone = "foo";
@@ -1041,7 +1076,7 @@ checkFreeBusyRequest(api.FreeBusyRequest o) {
   if (buildCounterFreeBusyRequest < 3) {
     unittest.expect(o.calendarExpansionMax, unittest.equals(42));
     unittest.expect(o.groupExpansionMax, unittest.equals(42));
-    checkUnnamed997(o.items);
+    checkUnnamed389(o.items);
     unittest.expect(o.timeMax, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.timeMin, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.timeZone, unittest.equals('foo'));
@@ -1068,27 +1103,27 @@ checkFreeBusyRequestItem(api.FreeBusyRequestItem o) {
   buildCounterFreeBusyRequestItem--;
 }
 
-buildUnnamed998() {
+buildUnnamed390() {
   var o = new core.Map<core.String, api.FreeBusyCalendar>();
   o["x"] = buildFreeBusyCalendar();
   o["y"] = buildFreeBusyCalendar();
   return o;
 }
 
-checkUnnamed998(core.Map<core.String, api.FreeBusyCalendar> o) {
+checkUnnamed390(core.Map<core.String, api.FreeBusyCalendar> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFreeBusyCalendar(o["x"]);
   checkFreeBusyCalendar(o["y"]);
 }
 
-buildUnnamed999() {
+buildUnnamed391() {
   var o = new core.Map<core.String, api.FreeBusyGroup>();
   o["x"] = buildFreeBusyGroup();
   o["y"] = buildFreeBusyGroup();
   return o;
 }
 
-checkUnnamed999(core.Map<core.String, api.FreeBusyGroup> o) {
+checkUnnamed391(core.Map<core.String, api.FreeBusyGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFreeBusyGroup(o["x"]);
   checkFreeBusyGroup(o["y"]);
@@ -1099,8 +1134,8 @@ buildFreeBusyResponse() {
   var o = new api.FreeBusyResponse();
   buildCounterFreeBusyResponse++;
   if (buildCounterFreeBusyResponse < 3) {
-    o.calendars = buildUnnamed998();
-    o.groups = buildUnnamed999();
+    o.calendars = buildUnnamed390();
+    o.groups = buildUnnamed391();
     o.kind = "foo";
     o.timeMax = core.DateTime.parse("2002-02-27T14:01:02");
     o.timeMin = core.DateTime.parse("2002-02-27T14:01:02");
@@ -1112,8 +1147,8 @@ buildFreeBusyResponse() {
 checkFreeBusyResponse(api.FreeBusyResponse o) {
   buildCounterFreeBusyResponse++;
   if (buildCounterFreeBusyResponse < 3) {
-    checkUnnamed998(o.calendars);
-    checkUnnamed999(o.groups);
+    checkUnnamed390(o.calendars);
+    checkUnnamed391(o.groups);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.timeMax, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.timeMin, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
@@ -1146,14 +1181,14 @@ checkSetting(api.Setting o) {
   buildCounterSetting--;
 }
 
-buildUnnamed1000() {
+buildUnnamed392() {
   var o = new core.List<api.Setting>();
   o.add(buildSetting());
   o.add(buildSetting());
   return o;
 }
 
-checkUnnamed1000(core.List<api.Setting> o) {
+checkUnnamed392(core.List<api.Setting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSetting(o[0]);
   checkSetting(o[1]);
@@ -1165,7 +1200,7 @@ buildSettings() {
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed1000();
+    o.items = buildUnnamed392();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.nextSyncToken = "foo";
@@ -1178,7 +1213,7 @@ checkSettings(api.Settings o) {
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1000(o.items);
+    checkUnnamed392(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.nextSyncToken, unittest.equals('foo'));
@@ -1207,53 +1242,53 @@ checkTimePeriod(api.TimePeriod o) {
   buildCounterTimePeriod--;
 }
 
-buildUnnamed1001() {
+buildUnnamed393() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1001(core.List<core.String> o) {
+checkUnnamed393(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1002() {
+buildUnnamed394() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1002(core.List<core.String> o) {
+checkUnnamed394(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1003() {
+buildUnnamed395() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1003(core.List<core.String> o) {
+checkUnnamed395(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1004() {
+buildUnnamed396() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1004(core.List<core.String> o) {
+checkUnnamed396(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1552,7 +1587,7 @@ main() {
   unittest.group("resource-AclResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AclResourceApi res = new api.CalendarApi(mock).acl;
       var arg_calendarId = "foo";
       var arg_ruleId = "foo";
@@ -1600,14 +1635,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_calendarId, arg_ruleId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AclResourceApi res = new api.CalendarApi(mock).acl;
       var arg_calendarId = "foo";
       var arg_ruleId = "foo";
@@ -1655,7 +1690,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAclRule());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_calendarId, arg_ruleId).then(unittest.expectAsync(((api.AclRule response) {
         checkAclRule(response);
@@ -1664,7 +1699,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AclResourceApi res = new api.CalendarApi(mock).acl;
       var arg_request = buildAclRule();
       var arg_calendarId = "foo";
@@ -1712,7 +1747,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAclRule());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_calendarId).then(unittest.expectAsync(((api.AclRule response) {
         checkAclRule(response);
@@ -1721,7 +1756,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AclResourceApi res = new api.CalendarApi(mock).acl;
       var arg_calendarId = "foo";
       var arg_maxResults = 42;
@@ -1773,7 +1808,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAcl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_calendarId, maxResults: arg_maxResults, pageToken: arg_pageToken, showDeleted: arg_showDeleted, syncToken: arg_syncToken).then(unittest.expectAsync(((api.Acl response) {
         checkAcl(response);
@@ -1782,7 +1817,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AclResourceApi res = new api.CalendarApi(mock).acl;
       var arg_request = buildAclRule();
       var arg_calendarId = "foo";
@@ -1834,7 +1869,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAclRule());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_calendarId, arg_ruleId).then(unittest.expectAsync(((api.AclRule response) {
         checkAclRule(response);
@@ -1843,7 +1878,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AclResourceApi res = new api.CalendarApi(mock).acl;
       var arg_request = buildAclRule();
       var arg_calendarId = "foo";
@@ -1895,7 +1930,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAclRule());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_calendarId, arg_ruleId).then(unittest.expectAsync(((api.AclRule response) {
         checkAclRule(response);
@@ -1904,7 +1939,7 @@ main() {
 
     unittest.test("method--watch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AclResourceApi res = new api.CalendarApi(mock).acl;
       var arg_request = buildChannel();
       var arg_calendarId = "foo";
@@ -1960,7 +1995,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChannel());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.watch(arg_request, arg_calendarId, maxResults: arg_maxResults, pageToken: arg_pageToken, showDeleted: arg_showDeleted, syncToken: arg_syncToken).then(unittest.expectAsync(((api.Channel response) {
         checkChannel(response);
@@ -1973,7 +2008,7 @@ main() {
   unittest.group("resource-CalendarListResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CalendarListResourceApi res = new api.CalendarApi(mock).calendarList;
       var arg_calendarId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2013,14 +2048,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_calendarId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CalendarListResourceApi res = new api.CalendarApi(mock).calendarList;
       var arg_calendarId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2060,7 +2095,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCalendarListEntry());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_calendarId).then(unittest.expectAsync(((api.CalendarListEntry response) {
         checkCalendarListEntry(response);
@@ -2069,7 +2104,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CalendarListResourceApi res = new api.CalendarApi(mock).calendarList;
       var arg_request = buildCalendarListEntry();
       var arg_colorRgbFormat = true;
@@ -2111,7 +2146,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCalendarListEntry());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, colorRgbFormat: arg_colorRgbFormat).then(unittest.expectAsync(((api.CalendarListEntry response) {
         checkCalendarListEntry(response);
@@ -2120,7 +2155,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CalendarListResourceApi res = new api.CalendarApi(mock).calendarList;
       var arg_maxResults = 42;
       var arg_minAccessRole = "foo";
@@ -2168,7 +2203,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCalendarList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(maxResults: arg_maxResults, minAccessRole: arg_minAccessRole, pageToken: arg_pageToken, showDeleted: arg_showDeleted, showHidden: arg_showHidden, syncToken: arg_syncToken).then(unittest.expectAsync(((api.CalendarList response) {
         checkCalendarList(response);
@@ -2177,7 +2212,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CalendarListResourceApi res = new api.CalendarApi(mock).calendarList;
       var arg_request = buildCalendarListEntry();
       var arg_calendarId = "foo";
@@ -2223,7 +2258,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCalendarListEntry());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_calendarId, colorRgbFormat: arg_colorRgbFormat).then(unittest.expectAsync(((api.CalendarListEntry response) {
         checkCalendarListEntry(response);
@@ -2232,7 +2267,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CalendarListResourceApi res = new api.CalendarApi(mock).calendarList;
       var arg_request = buildCalendarListEntry();
       var arg_calendarId = "foo";
@@ -2278,7 +2313,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCalendarListEntry());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_calendarId, colorRgbFormat: arg_colorRgbFormat).then(unittest.expectAsync(((api.CalendarListEntry response) {
         checkCalendarListEntry(response);
@@ -2287,7 +2322,7 @@ main() {
 
     unittest.test("method--watch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CalendarListResourceApi res = new api.CalendarApi(mock).calendarList;
       var arg_request = buildChannel();
       var arg_maxResults = 42;
@@ -2339,7 +2374,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChannel());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.watch(arg_request, maxResults: arg_maxResults, minAccessRole: arg_minAccessRole, pageToken: arg_pageToken, showDeleted: arg_showDeleted, showHidden: arg_showHidden, syncToken: arg_syncToken).then(unittest.expectAsync(((api.Channel response) {
         checkChannel(response);
@@ -2352,7 +2387,7 @@ main() {
   unittest.group("resource-CalendarsResourceApi", () {
     unittest.test("method--clear", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CalendarsResourceApi res = new api.CalendarApi(mock).calendars;
       var arg_calendarId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2396,14 +2431,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.clear(arg_calendarId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CalendarsResourceApi res = new api.CalendarApi(mock).calendars;
       var arg_calendarId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2443,14 +2478,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_calendarId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CalendarsResourceApi res = new api.CalendarApi(mock).calendars;
       var arg_calendarId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2490,7 +2525,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCalendar());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_calendarId).then(unittest.expectAsync(((api.Calendar response) {
         checkCalendar(response);
@@ -2499,7 +2534,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CalendarsResourceApi res = new api.CalendarApi(mock).calendars;
       var arg_request = buildCalendar();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2539,7 +2574,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCalendar());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request).then(unittest.expectAsync(((api.Calendar response) {
         checkCalendar(response);
@@ -2548,7 +2583,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CalendarsResourceApi res = new api.CalendarApi(mock).calendars;
       var arg_request = buildCalendar();
       var arg_calendarId = "foo";
@@ -2592,7 +2627,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCalendar());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_calendarId).then(unittest.expectAsync(((api.Calendar response) {
         checkCalendar(response);
@@ -2601,7 +2636,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CalendarsResourceApi res = new api.CalendarApi(mock).calendars;
       var arg_request = buildCalendar();
       var arg_calendarId = "foo";
@@ -2645,7 +2680,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCalendar());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_calendarId).then(unittest.expectAsync(((api.Calendar response) {
         checkCalendar(response);
@@ -2658,7 +2693,7 @@ main() {
   unittest.group("resource-ChannelsResourceApi", () {
     unittest.test("method--stop", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ChannelsResourceApi res = new api.CalendarApi(mock).channels;
       var arg_request = buildChannel();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2698,7 +2733,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.stop(arg_request).then(unittest.expectAsync((_) {}));
     });
@@ -2709,7 +2744,7 @@ main() {
   unittest.group("resource-ColorsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ColorsResourceApi res = new api.CalendarApi(mock).colors;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2745,7 +2780,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildColors());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get().then(unittest.expectAsync(((api.Colors response) {
         checkColors(response);
@@ -2758,7 +2793,7 @@ main() {
   unittest.group("resource-EventsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_calendarId = "foo";
       var arg_eventId = "foo";
@@ -2808,14 +2843,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_calendarId, arg_eventId, sendNotifications: arg_sendNotifications).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_calendarId = "foo";
       var arg_eventId = "foo";
@@ -2869,7 +2904,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEvent());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_calendarId, arg_eventId, alwaysIncludeEmail: arg_alwaysIncludeEmail, maxAttendees: arg_maxAttendees, timeZone: arg_timeZone).then(unittest.expectAsync(((api.Event response) {
         checkEvent(response);
@@ -2878,7 +2913,7 @@ main() {
 
     unittest.test("method--import", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_request = buildEvent();
       var arg_calendarId = "foo";
@@ -2926,7 +2961,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEvent());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.import(arg_request, arg_calendarId).then(unittest.expectAsync(((api.Event response) {
         checkEvent(response);
@@ -2935,7 +2970,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_request = buildEvent();
       var arg_calendarId = "foo";
@@ -2987,7 +3022,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEvent());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_calendarId, maxAttendees: arg_maxAttendees, sendNotifications: arg_sendNotifications).then(unittest.expectAsync(((api.Event response) {
         checkEvent(response);
@@ -2996,7 +3031,7 @@ main() {
 
     unittest.test("method--instances", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_calendarId = "foo";
       var arg_eventId = "foo";
@@ -3066,7 +3101,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEvents());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.instances(arg_calendarId, arg_eventId, alwaysIncludeEmail: arg_alwaysIncludeEmail, maxAttendees: arg_maxAttendees, maxResults: arg_maxResults, originalStart: arg_originalStart, pageToken: arg_pageToken, showDeleted: arg_showDeleted, timeMax: arg_timeMax, timeMin: arg_timeMin, timeZone: arg_timeZone).then(unittest.expectAsync(((api.Events response) {
         checkEvents(response);
@@ -3075,7 +3110,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_calendarId = "foo";
       var arg_alwaysIncludeEmail = true;
@@ -3084,9 +3119,9 @@ main() {
       var arg_maxResults = 42;
       var arg_orderBy = "foo";
       var arg_pageToken = "foo";
-      var arg_privateExtendedProperty = buildUnnamed1001();
+      var arg_privateExtendedProperty = buildUnnamed393();
       var arg_q = "foo";
-      var arg_sharedExtendedProperty = buildUnnamed1002();
+      var arg_sharedExtendedProperty = buildUnnamed394();
       var arg_showDeleted = true;
       var arg_showHiddenInvitations = true;
       var arg_singleEvents = true;
@@ -3153,7 +3188,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEvents());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_calendarId, alwaysIncludeEmail: arg_alwaysIncludeEmail, iCalUID: arg_iCalUID, maxAttendees: arg_maxAttendees, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken, privateExtendedProperty: arg_privateExtendedProperty, q: arg_q, sharedExtendedProperty: arg_sharedExtendedProperty, showDeleted: arg_showDeleted, showHiddenInvitations: arg_showHiddenInvitations, singleEvents: arg_singleEvents, syncToken: arg_syncToken, timeMax: arg_timeMax, timeMin: arg_timeMin, timeZone: arg_timeZone, updatedMin: arg_updatedMin).then(unittest.expectAsync(((api.Events response) {
         checkEvents(response);
@@ -3162,7 +3197,7 @@ main() {
 
     unittest.test("method--move", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_calendarId = "foo";
       var arg_eventId = "foo";
@@ -3218,7 +3253,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEvent());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.move(arg_calendarId, arg_eventId, arg_destination, sendNotifications: arg_sendNotifications).then(unittest.expectAsync(((api.Event response) {
         checkEvent(response);
@@ -3227,7 +3262,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_request = buildEvent();
       var arg_calendarId = "foo";
@@ -3285,7 +3320,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEvent());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_calendarId, arg_eventId, alwaysIncludeEmail: arg_alwaysIncludeEmail, maxAttendees: arg_maxAttendees, sendNotifications: arg_sendNotifications).then(unittest.expectAsync(((api.Event response) {
         checkEvent(response);
@@ -3294,7 +3329,7 @@ main() {
 
     unittest.test("method--quickAdd", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_calendarId = "foo";
       var arg_text = "foo";
@@ -3342,7 +3377,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEvent());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.quickAdd(arg_calendarId, arg_text, sendNotifications: arg_sendNotifications).then(unittest.expectAsync(((api.Event response) {
         checkEvent(response);
@@ -3351,7 +3386,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_request = buildEvent();
       var arg_calendarId = "foo";
@@ -3409,7 +3444,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEvent());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_calendarId, arg_eventId, alwaysIncludeEmail: arg_alwaysIncludeEmail, maxAttendees: arg_maxAttendees, sendNotifications: arg_sendNotifications).then(unittest.expectAsync(((api.Event response) {
         checkEvent(response);
@@ -3418,7 +3453,7 @@ main() {
 
     unittest.test("method--watch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_request = buildChannel();
       var arg_calendarId = "foo";
@@ -3428,9 +3463,9 @@ main() {
       var arg_maxResults = 42;
       var arg_orderBy = "foo";
       var arg_pageToken = "foo";
-      var arg_privateExtendedProperty = buildUnnamed1003();
+      var arg_privateExtendedProperty = buildUnnamed395();
       var arg_q = "foo";
-      var arg_sharedExtendedProperty = buildUnnamed1004();
+      var arg_sharedExtendedProperty = buildUnnamed396();
       var arg_showDeleted = true;
       var arg_showHiddenInvitations = true;
       var arg_singleEvents = true;
@@ -3500,7 +3535,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChannel());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.watch(arg_request, arg_calendarId, alwaysIncludeEmail: arg_alwaysIncludeEmail, iCalUID: arg_iCalUID, maxAttendees: arg_maxAttendees, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken, privateExtendedProperty: arg_privateExtendedProperty, q: arg_q, sharedExtendedProperty: arg_sharedExtendedProperty, showDeleted: arg_showDeleted, showHiddenInvitations: arg_showHiddenInvitations, singleEvents: arg_singleEvents, syncToken: arg_syncToken, timeMax: arg_timeMax, timeMin: arg_timeMin, timeZone: arg_timeZone, updatedMin: arg_updatedMin).then(unittest.expectAsync(((api.Channel response) {
         checkChannel(response);
@@ -3513,7 +3548,7 @@ main() {
   unittest.group("resource-FreebusyResourceApi", () {
     unittest.test("method--query", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FreebusyResourceApi res = new api.CalendarApi(mock).freebusy;
       var arg_request = buildFreeBusyRequest();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3553,7 +3588,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildFreeBusyResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.query(arg_request).then(unittest.expectAsync(((api.FreeBusyResponse response) {
         checkFreeBusyResponse(response);
@@ -3566,7 +3601,7 @@ main() {
   unittest.group("resource-SettingsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SettingsResourceApi res = new api.CalendarApi(mock).settings;
       var arg_setting = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3606,7 +3641,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSetting());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_setting).then(unittest.expectAsync(((api.Setting response) {
         checkSetting(response);
@@ -3615,7 +3650,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SettingsResourceApi res = new api.CalendarApi(mock).settings;
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
@@ -3657,7 +3692,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSettings());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(maxResults: arg_maxResults, pageToken: arg_pageToken, syncToken: arg_syncToken).then(unittest.expectAsync(((api.Settings response) {
         checkSettings(response);
@@ -3666,7 +3701,7 @@ main() {
 
     unittest.test("method--watch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SettingsResourceApi res = new api.CalendarApi(mock).settings;
       var arg_request = buildChannel();
       var arg_maxResults = 42;
@@ -3712,7 +3747,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChannel());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.watch(arg_request, maxResults: arg_maxResults, pageToken: arg_pageToken, syncToken: arg_syncToken).then(unittest.expectAsync(((api.Channel response) {
         checkChannel(response);

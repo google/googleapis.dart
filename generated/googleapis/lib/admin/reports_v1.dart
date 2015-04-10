@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.admin.reports_v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client admin/reports_v1';
 
 /**
  * Allows the administrators of Google Apps customers to fetch reports about the
@@ -25,7 +28,7 @@ class AdminApi {
   static const AdminReportsUsageReadonlyScope = "https://www.googleapis.com/auth/admin.reports.usage.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ActivitiesResourceApi get activities => new ActivitiesResourceApi(_requester);
   ChannelsResourceApi get channels => new ChannelsResourceApi(_requester);
@@ -33,15 +36,14 @@ class AdminApi {
   UserUsageReportResourceApi get userUsageReport => new UserUsageReportResourceApi(_requester);
 
   AdminApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "admin/reports/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class ActivitiesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ActivitiesResourceApi(common_internal.ApiRequester client) : 
+  ActivitiesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -86,7 +88,7 @@ class ActivitiesResourceApi {
    *
    * Completes with a [Activities].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -97,7 +99,7 @@ class ActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userKey == null) {
@@ -132,7 +134,7 @@ class ActivitiesResourceApi {
     }
 
 
-    _url = 'activity/users/' + common_internal.Escaper.ecapeVariable('$userKey') + '/applications/' + common_internal.Escaper.ecapeVariable('$applicationName');
+    _url = 'activity/users/' + commons.Escaper.ecapeVariable('$userKey') + '/applications/' + commons.Escaper.ecapeVariable('$applicationName');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -188,7 +190,7 @@ class ActivitiesResourceApi {
    *
    * Completes with a [Channel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -199,7 +201,7 @@ class ActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -237,7 +239,7 @@ class ActivitiesResourceApi {
     }
 
 
-    _url = 'activity/users/' + common_internal.Escaper.ecapeVariable('$userKey') + '/applications/' + common_internal.Escaper.ecapeVariable('$applicationName') + '/watch';
+    _url = 'activity/users/' + commons.Escaper.ecapeVariable('$userKey') + '/applications/' + commons.Escaper.ecapeVariable('$applicationName') + '/watch';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -252,11 +254,10 @@ class ActivitiesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ChannelsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ChannelsResourceApi(common_internal.ApiRequester client) : 
+  ChannelsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -266,7 +267,7 @@ class ChannelsResourceApi {
    *
    * Request parameters:
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -277,7 +278,7 @@ class ChannelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -301,11 +302,10 @@ class ChannelsResourceApi {
 }
 
 
-/** Not documented yet. */
 class CustomerUsageReportsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CustomerUsageReportsResourceApi(common_internal.ApiRequester client) : 
+  CustomerUsageReportsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -330,7 +330,7 @@ class CustomerUsageReportsResourceApi {
    *
    * Completes with a [UsageReports].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -341,7 +341,7 @@ class CustomerUsageReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (date == null) {
@@ -358,7 +358,7 @@ class CustomerUsageReportsResourceApi {
     }
 
 
-    _url = 'usage/dates/' + common_internal.Escaper.ecapeVariable('$date');
+    _url = 'usage/dates/' + commons.Escaper.ecapeVariable('$date');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -373,11 +373,10 @@ class CustomerUsageReportsResourceApi {
 }
 
 
-/** Not documented yet. */
 class UserUsageReportResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UserUsageReportResourceApi(common_internal.ApiRequester client) : 
+  UserUsageReportResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -412,7 +411,7 @@ class UserUsageReportResourceApi {
    *
    * Completes with a [UsageReports].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -423,7 +422,7 @@ class UserUsageReportResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userKey == null) {
@@ -449,7 +448,7 @@ class UserUsageReportResourceApi {
     }
 
 
-    _url = 'usage/users/' + common_internal.Escaper.ecapeVariable('$userKey') + '/dates/' + common_internal.Escaper.ecapeVariable('$date');
+    _url = 'usage/users/' + commons.Escaper.ecapeVariable('$userKey') + '/dates/' + commons.Escaper.ecapeVariable('$date');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -567,7 +566,6 @@ class ActivityActor {
 }
 
 
-/** Not documented yet. */
 class ActivityEventsParameters {
   /** Boolean value of the parameter. */
   core.bool boolValue;
@@ -636,7 +634,6 @@ class ActivityEventsParameters {
 }
 
 
-/** Not documented yet. */
 class ActivityEvents {
   /** Name of event. */
   core.String name;
@@ -975,7 +972,6 @@ class UsageReportEntity {
 }
 
 
-/** Not documented yet. */
 class UsageReportParameters {
   /** Boolean value of the parameter. */
   core.bool boolValue;
@@ -1109,7 +1105,6 @@ class UsageReport {
 }
 
 
-/** Not documented yet. */
 class UsageReportsWarningsData {
   /**
    * Key associated with a key-value pair to give detailed information on the
@@ -1148,7 +1143,6 @@ class UsageReportsWarningsData {
 }
 
 
-/** Not documented yet. */
 class UsageReportsWarnings {
   /** Machine readable code / warning type. */
   core.String code;
@@ -1248,5 +1242,3 @@ class UsageReports {
     return _json;
   }
 }
-
-

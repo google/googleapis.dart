@@ -1,35 +1,37 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.customsearch.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client customsearch/v1';
 
 /** Lets you search over a website or collection of websites */
 class CustomsearchApi {
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   CseResourceApi get cse => new CseResourceApi(_requester);
 
   CustomsearchApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "customsearch/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class CseResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CseResourceApi(common_internal.ApiRequester client) : 
+  CseResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -198,7 +200,7 @@ class CseResourceApi {
    *
    * Completes with a [Search].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -209,7 +211,7 @@ class CseResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (q == null) {
@@ -327,15 +329,11 @@ class CseResourceApi {
 
 
 
-/** Not documented yet. */
 class ContextFacets {
-  /** Not documented yet. */
   core.String anchor;
 
-  /** Not documented yet. */
   core.String label;
 
-  /** Not documented yet. */
   core.String labelWithOp;
 
 
@@ -369,12 +367,9 @@ class ContextFacets {
 }
 
 
-/** Not documented yet. */
 class Context {
-  /** Not documented yet. */
   core.List<core.List<ContextFacets>> facets;
 
-  /** Not documented yet. */
   core.String title;
 
 
@@ -402,18 +397,13 @@ class Context {
 }
 
 
-/** Not documented yet. */
 class PromotionBodyLines {
-  /** Not documented yet. */
   core.String htmlTitle;
 
-  /** Not documented yet. */
   core.String link;
 
-  /** Not documented yet. */
   core.String title;
 
-  /** Not documented yet. */
   core.String url;
 
 
@@ -453,15 +443,11 @@ class PromotionBodyLines {
 }
 
 
-/** Not documented yet. */
 class PromotionImage {
-  /** Not documented yet. */
   core.int height;
 
-  /** Not documented yet. */
   core.String source;
 
-  /** Not documented yet. */
   core.int width;
 
 
@@ -495,24 +481,17 @@ class PromotionImage {
 }
 
 
-/** Not documented yet. */
 class Promotion {
-  /** Not documented yet. */
   core.List<PromotionBodyLines> bodyLines;
 
-  /** Not documented yet. */
   core.String displayLink;
 
-  /** Not documented yet. */
   core.String htmlTitle;
 
-  /** Not documented yet. */
   PromotionImage image;
 
-  /** Not documented yet. */
   core.String link;
 
-  /** Not documented yet. */
   core.String title;
 
 
@@ -564,117 +543,79 @@ class Promotion {
 }
 
 
-/** Not documented yet. */
 class Query {
-  /** Not documented yet. */
   core.int count;
 
-  /** Not documented yet. */
   core.String cr;
 
-  /** Not documented yet. */
   core.String cref;
 
-  /** Not documented yet. */
   core.String cx;
 
-  /** Not documented yet. */
   core.String dateRestrict;
 
-  /** Not documented yet. */
   core.String disableCnTwTranslation;
 
-  /** Not documented yet. */
   core.String exactTerms;
 
-  /** Not documented yet. */
   core.String excludeTerms;
 
-  /** Not documented yet. */
   core.String fileType;
 
-  /** Not documented yet. */
   core.String filter;
 
-  /** Not documented yet. */
   core.String gl;
 
-  /** Not documented yet. */
   core.String googleHost;
 
-  /** Not documented yet. */
   core.String highRange;
 
-  /** Not documented yet. */
   core.String hl;
 
-  /** Not documented yet. */
   core.String hq;
 
-  /** Not documented yet. */
   core.String imgColorType;
 
-  /** Not documented yet. */
   core.String imgDominantColor;
 
-  /** Not documented yet. */
   core.String imgSize;
 
-  /** Not documented yet. */
   core.String imgType;
 
-  /** Not documented yet. */
   core.String inputEncoding;
 
-  /** Not documented yet. */
   core.String language;
 
-  /** Not documented yet. */
   core.String linkSite;
 
-  /** Not documented yet. */
   core.String lowRange;
 
-  /** Not documented yet. */
   core.String orTerms;
 
-  /** Not documented yet. */
   core.String outputEncoding;
 
-  /** Not documented yet. */
   core.String relatedSite;
 
-  /** Not documented yet. */
   core.String rights;
 
-  /** Not documented yet. */
   core.String safe;
 
-  /** Not documented yet. */
   core.String searchTerms;
 
-  /** Not documented yet. */
   core.String searchType;
 
-  /** Not documented yet. */
   core.String siteSearch;
 
-  /** Not documented yet. */
   core.String siteSearchFilter;
 
-  /** Not documented yet. */
   core.String sort;
 
-  /** Not documented yet. */
   core.int startIndex;
 
-  /** Not documented yet. */
   core.int startPage;
 
-  /** Not documented yet. */
   core.String title;
 
-  /** Not documented yet. */
   core.String totalResults;
 
 
@@ -912,27 +853,19 @@ class Query {
 }
 
 
-/** Not documented yet. */
 class ResultImage {
-  /** Not documented yet. */
   core.int byteSize;
 
-  /** Not documented yet. */
   core.String contextLink;
 
-  /** Not documented yet. */
   core.int height;
 
-  /** Not documented yet. */
   core.int thumbnailHeight;
 
-  /** Not documented yet. */
   core.String thumbnailLink;
 
-  /** Not documented yet. */
   core.int thumbnailWidth;
 
-  /** Not documented yet. */
   core.int width;
 
 
@@ -990,15 +923,11 @@ class ResultImage {
 }
 
 
-/** Not documented yet. */
 class ResultLabels {
-  /** Not documented yet. */
   core.String displayName;
 
-  /** Not documented yet. */
   core.String labelWithOp;
 
-  /** Not documented yet. */
   core.String name;
 
 
@@ -1032,56 +961,41 @@ class ResultLabels {
 }
 
 
-/** Not documented yet. */
 class Result {
-  /** Not documented yet. */
   core.String cacheId;
 
-  /** Not documented yet. */
   core.String displayLink;
 
-  /** Not documented yet. */
   core.String fileFormat;
 
-  /** Not documented yet. */
   core.String formattedUrl;
 
-  /** Not documented yet. */
   core.String htmlFormattedUrl;
 
-  /** Not documented yet. */
   core.String htmlSnippet;
 
-  /** Not documented yet. */
   core.String htmlTitle;
 
-  /** Not documented yet. */
   ResultImage image;
 
-  /** Not documented yet. */
   core.String kind;
 
-  /** Not documented yet. */
   core.List<ResultLabels> labels;
 
-  /** Not documented yet. */
   core.String link;
 
-  /** Not documented yet. */
   core.String mime;
 
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.List<core.Map<core.String, core.Object>>> pagemap;
 
-  /** Not documented yet. */
   core.String snippet;
 
-  /** Not documented yet. */
   core.String title;
 
 
@@ -1187,18 +1101,13 @@ class Result {
 }
 
 
-/** Not documented yet. */
 class SearchSearchInformation {
-  /** Not documented yet. */
   core.String formattedSearchTime;
 
-  /** Not documented yet. */
   core.String formattedTotalResults;
 
-  /** Not documented yet. */
   core.double searchTime;
 
-  /** Not documented yet. */
   core.String totalResults;
 
 
@@ -1238,12 +1147,9 @@ class SearchSearchInformation {
 }
 
 
-/** Not documented yet. */
 class SearchSpelling {
-  /** Not documented yet. */
   core.String correctedQuery;
 
-  /** Not documented yet. */
   core.String htmlCorrectedQuery;
 
 
@@ -1271,12 +1177,9 @@ class SearchSpelling {
 }
 
 
-/** Not documented yet. */
 class SearchUrl {
-  /** Not documented yet. */
   core.String template;
 
-  /** Not documented yet. */
   core.String type;
 
 
@@ -1304,30 +1207,21 @@ class SearchUrl {
 }
 
 
-/** Not documented yet. */
 class Search {
-  /** Not documented yet. */
   Context context;
 
-  /** Not documented yet. */
   core.List<Result> items;
 
-  /** Not documented yet. */
   core.String kind;
 
-  /** Not documented yet. */
   core.List<Promotion> promotions;
 
-  /** Not documented yet. */
   core.Map<core.String, core.List<Query>> queries;
 
-  /** Not documented yet. */
   SearchSearchInformation searchInformation;
 
-  /** Not documented yet. */
   SearchSpelling spelling;
 
-  /** Not documented yet. */
   SearchUrl url;
 
 
@@ -1347,7 +1241,7 @@ class Search {
       promotions = _json["promotions"].map((value) => new Promotion.fromJson(value)).toList();
     }
     if (_json.containsKey("queries")) {
-      queries = common_internal.mapMap(_json["queries"], (item) => item.map((value) => new Query.fromJson(value)).toList());
+      queries = commons.mapMap(_json["queries"], (item) => item.map((value) => new Query.fromJson(value)).toList());
     }
     if (_json.containsKey("searchInformation")) {
       searchInformation = new SearchSearchInformation.fromJson(_json["searchInformation"]);
@@ -1375,7 +1269,7 @@ class Search {
       _json["promotions"] = promotions.map((value) => (value).toJson()).toList();
     }
     if (queries != null) {
-      _json["queries"] = common_internal.mapMap(queries, (item) => item.map((value) => (value).toJson()).toList());
+      _json["queries"] = commons.mapMap(queries, (item) => item.map((value) => (value).toJson()).toList());
     }
     if (searchInformation != null) {
       _json["searchInformation"] = (searchInformation).toJson();
@@ -1389,5 +1283,3 @@ class Search {
     return _json;
   }
 }
-
-

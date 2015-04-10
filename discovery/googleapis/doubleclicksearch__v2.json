@@ -14,7 +14,7 @@
     "description": "Report and modify your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/doubleclick-search/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/cxvPCR_xcZiPo49FRoYXODxx8IM\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Y1wjJXqKq4tUGkkWO6BLXXmKWiI\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -346,7 +346,7 @@
                     ]
                 },
                 "getFile": {
-                    "description": "Downloads a report file.",
+                    "description": "Downloads a report file encoded in UTF-8.",
                     "httpMethod": "GET",
                     "id": "doubleclicksearch.reports.getFile",
                     "parameterOrder": [
@@ -430,7 +430,7 @@
             }
         }
     },
-    "revision": "20141222",
+    "revision": "20150303",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Availability": {
@@ -513,7 +513,7 @@
                     "type": "string"
                 },
                 "attributionModel": {
-                    "description": "Attribution model name.",
+                    "description": "Attribution model name. This field is ignored.",
                     "type": "string"
                 },
                 "campaignId": {
@@ -550,7 +550,7 @@
                     "type": "string"
                 },
                 "countMillis": {
-                    "description": "Conversion count in millis.",
+                    "description": "The number of conversions, formatted in millis (conversions multiplied by 1000). This field is ignored.",
                     "format": "int64",
                     "type": "string"
                 },

@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis_beta/common/common.dart' as common;
-import 'package:googleapis_beta/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis_beta/container/v1beta1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterCluster = 0;
 buildCluster() {
@@ -25,6 +60,7 @@ buildCluster() {
     o.containerIpv4Cidr = "foo";
     o.creationTimestamp = "foo";
     o.description = "foo";
+    o.enableCloudLogging = true;
     o.endpoint = "foo";
     o.masterAuth = buildMasterAuth();
     o.name = "foo";
@@ -49,6 +85,7 @@ checkCluster(api.Cluster o) {
     unittest.expect(o.containerIpv4Cidr, unittest.equals('foo'));
     unittest.expect(o.creationTimestamp, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.enableCloudLogging, unittest.isTrue);
     unittest.expect(o.endpoint, unittest.equals('foo'));
     checkMasterAuth(o.masterAuth);
     unittest.expect(o.name, unittest.equals('foo'));
@@ -84,14 +121,14 @@ checkCreateClusterRequest(api.CreateClusterRequest o) {
   buildCounterCreateClusterRequest--;
 }
 
-buildUnnamed1565() {
+buildUnnamed1486() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed1565(core.List<api.Cluster> o) {
+checkUnnamed1486(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
@@ -102,7 +139,7 @@ buildListAggregatedClustersResponse() {
   var o = new api.ListAggregatedClustersResponse();
   buildCounterListAggregatedClustersResponse++;
   if (buildCounterListAggregatedClustersResponse < 3) {
-    o.clusters = buildUnnamed1565();
+    o.clusters = buildUnnamed1486();
   }
   buildCounterListAggregatedClustersResponse--;
   return o;
@@ -111,19 +148,19 @@ buildListAggregatedClustersResponse() {
 checkListAggregatedClustersResponse(api.ListAggregatedClustersResponse o) {
   buildCounterListAggregatedClustersResponse++;
   if (buildCounterListAggregatedClustersResponse < 3) {
-    checkUnnamed1565(o.clusters);
+    checkUnnamed1486(o.clusters);
   }
   buildCounterListAggregatedClustersResponse--;
 }
 
-buildUnnamed1566() {
+buildUnnamed1487() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1566(core.List<api.Operation> o) {
+checkUnnamed1487(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -134,7 +171,7 @@ buildListAggregatedOperationsResponse() {
   var o = new api.ListAggregatedOperationsResponse();
   buildCounterListAggregatedOperationsResponse++;
   if (buildCounterListAggregatedOperationsResponse < 3) {
-    o.operations = buildUnnamed1566();
+    o.operations = buildUnnamed1487();
   }
   buildCounterListAggregatedOperationsResponse--;
   return o;
@@ -143,19 +180,19 @@ buildListAggregatedOperationsResponse() {
 checkListAggregatedOperationsResponse(api.ListAggregatedOperationsResponse o) {
   buildCounterListAggregatedOperationsResponse++;
   if (buildCounterListAggregatedOperationsResponse < 3) {
-    checkUnnamed1566(o.operations);
+    checkUnnamed1487(o.operations);
   }
   buildCounterListAggregatedOperationsResponse--;
 }
 
-buildUnnamed1567() {
+buildUnnamed1488() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed1567(core.List<api.Cluster> o) {
+checkUnnamed1488(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
@@ -166,7 +203,7 @@ buildListClustersResponse() {
   var o = new api.ListClustersResponse();
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    o.clusters = buildUnnamed1567();
+    o.clusters = buildUnnamed1488();
   }
   buildCounterListClustersResponse--;
   return o;
@@ -175,19 +212,19 @@ buildListClustersResponse() {
 checkListClustersResponse(api.ListClustersResponse o) {
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    checkUnnamed1567(o.clusters);
+    checkUnnamed1488(o.clusters);
   }
   buildCounterListClustersResponse--;
 }
 
-buildUnnamed1568() {
+buildUnnamed1489() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1568(core.List<api.Operation> o) {
+checkUnnamed1489(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -198,7 +235,7 @@ buildListOperationsResponse() {
   var o = new api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.operations = buildUnnamed1568();
+    o.operations = buildUnnamed1489();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -207,7 +244,7 @@ buildListOperationsResponse() {
 checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    checkUnnamed1568(o.operations);
+    checkUnnamed1489(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
@@ -233,14 +270,14 @@ checkMasterAuth(api.MasterAuth o) {
   buildCounterMasterAuth--;
 }
 
-buildUnnamed1569() {
+buildUnnamed1490() {
   var o = new core.List<api.ServiceAccount>();
   o.add(buildServiceAccount());
   o.add(buildServiceAccount());
   return o;
 }
 
-checkUnnamed1569(core.List<api.ServiceAccount> o) {
+checkUnnamed1490(core.List<api.ServiceAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceAccount(o[0]);
   checkServiceAccount(o[1]);
@@ -252,7 +289,7 @@ buildNodeConfig() {
   buildCounterNodeConfig++;
   if (buildCounterNodeConfig < 3) {
     o.machineType = "foo";
-    o.serviceAccounts = buildUnnamed1569();
+    o.serviceAccounts = buildUnnamed1490();
     o.sourceImage = "foo";
   }
   buildCounterNodeConfig--;
@@ -263,7 +300,7 @@ checkNodeConfig(api.NodeConfig o) {
   buildCounterNodeConfig++;
   if (buildCounterNodeConfig < 3) {
     unittest.expect(o.machineType, unittest.equals('foo'));
-    checkUnnamed1569(o.serviceAccounts);
+    checkUnnamed1490(o.serviceAccounts);
     unittest.expect(o.sourceImage, unittest.equals('foo'));
   }
   buildCounterNodeConfig--;
@@ -302,14 +339,14 @@ checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-buildUnnamed1570() {
+buildUnnamed1491() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1570(core.List<core.String> o) {
+checkUnnamed1491(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -321,7 +358,7 @@ buildServiceAccount() {
   buildCounterServiceAccount++;
   if (buildCounterServiceAccount < 3) {
     o.email = "foo";
-    o.scopes = buildUnnamed1570();
+    o.scopes = buildUnnamed1491();
   }
   buildCounterServiceAccount--;
   return o;
@@ -331,7 +368,7 @@ checkServiceAccount(api.ServiceAccount o) {
   buildCounterServiceAccount++;
   if (buildCounterServiceAccount < 3) {
     unittest.expect(o.email, unittest.equals('foo'));
-    checkUnnamed1570(o.scopes);
+    checkUnnamed1491(o.scopes);
   }
   buildCounterServiceAccount--;
 }
@@ -431,7 +468,7 @@ main() {
   unittest.group("resource-ProjectsClustersResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ProjectsClustersResourceApi res = new api.ContainerApi(mock).projects.clusters;
       var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -464,7 +501,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListAggregatedClustersResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_projectId).then(unittest.expectAsync(((api.ListAggregatedClustersResponse response) {
         checkListAggregatedClustersResponse(response);
@@ -477,7 +514,7 @@ main() {
   unittest.group("resource-ProjectsOperationsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ProjectsOperationsResourceApi res = new api.ContainerApi(mock).projects.operations;
       var arg_projectId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -510,7 +547,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListAggregatedOperationsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_projectId).then(unittest.expectAsync(((api.ListAggregatedOperationsResponse response) {
         checkListAggregatedOperationsResponse(response);
@@ -523,7 +560,7 @@ main() {
   unittest.group("resource-ProjectsZonesClustersResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ProjectsZonesClustersResourceApi res = new api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildCreateClusterRequest();
       var arg_projectId = "foo";
@@ -561,7 +598,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, arg_projectId, arg_zoneId).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -570,7 +607,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ProjectsZonesClustersResourceApi res = new api.ContainerApi(mock).projects.zones.clusters;
       var arg_projectId = "foo";
       var arg_zoneId = "foo";
@@ -605,7 +642,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_projectId, arg_zoneId, arg_clusterId).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -614,7 +651,7 @@ main() {
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ProjectsZonesClustersResourceApi res = new api.ContainerApi(mock).projects.zones.clusters;
       var arg_projectId = "foo";
       var arg_zoneId = "foo";
@@ -649,7 +686,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCluster());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_projectId, arg_zoneId, arg_clusterId).then(unittest.expectAsync(((api.Cluster response) {
         checkCluster(response);
@@ -658,7 +695,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ProjectsZonesClustersResourceApi res = new api.ContainerApi(mock).projects.zones.clusters;
       var arg_projectId = "foo";
       var arg_zoneId = "foo";
@@ -692,7 +729,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListClustersResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_projectId, arg_zoneId).then(unittest.expectAsync(((api.ListClustersResponse response) {
         checkListClustersResponse(response);
@@ -705,7 +742,7 @@ main() {
   unittest.group("resource-ProjectsZonesOperationsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ProjectsZonesOperationsResourceApi res = new api.ContainerApi(mock).projects.zones.operations;
       var arg_projectId = "foo";
       var arg_zoneId = "foo";
@@ -740,7 +777,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_projectId, arg_zoneId, arg_operationId).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -749,7 +786,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ProjectsZonesOperationsResourceApi res = new api.ContainerApi(mock).projects.zones.operations;
       var arg_projectId = "foo";
       var arg_zoneId = "foo";
@@ -783,7 +820,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListOperationsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_projectId, arg_zoneId).then(unittest.expectAsync(((api.ListOperationsResponse response) {
         checkListOperationsResponse(response);

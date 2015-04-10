@@ -110,29 +110,11 @@ The Google Cloud DNS API provides services for configuring and serving authorita
 
 Official API documentation: https://developers.google.com/cloud-dns
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Genomics API - genomics v1beta
-
-Provides access to Genomics data.
-
-Official API documentation: https://developers.google.com/genomics/v1beta/reference
-
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Genomics API - genomics v1beta2
 
 Provides access to Genomics data.
 
 Official API documentation: https://developers.google.com/genomics/v1beta2/reference
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Dataflow API - dataflow v1b4
-
-Google Dataflow API.
-
-Official API documentation: 
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Pub/Sub API - pubsub v1beta2
-
-Provides reliable, many-to-many, asynchronous messaging between applications.
-
-Official API documentation: 
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Deployment Manager API - manager v1beta2
 
@@ -164,7 +146,7 @@ The Resource View API allows users to create and manage logical sets of Google C
 
 Official API documentation: https://developers.google.com/compute/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Resource Views API - resourceviews v1beta2
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Instance Groups API - resourceviews v1beta2
 
 The Resource View API allows users to create and manage logical sets of Google Compute Engine instances.
 
@@ -187,4 +169,22 @@ Official API documentation: https://developers.google.com/cloud-sql/docs/admin-a
 Lets you access a Google App Engine Pull Task Queue over REST.
 
 Official API documentation: https://developers.google.com/appengine/docs/python/taskqueue/rest
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Dataflow API - dataflow v1b4
+
+Google Dataflow API.
+
+Official API documentation: 
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Logging API - logging v1beta3
+
+Google Cloud Logging API lets you create logs, ingest log entries, and manage log sinks.
+
+Official API documentation: 
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Pub/Sub API - pubsub v1beta2
+
+Provides reliable, many-to-many, asynchronous messaging between applications.
+
+Official API documentation: 
 

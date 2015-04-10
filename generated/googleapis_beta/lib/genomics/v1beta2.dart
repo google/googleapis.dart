@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.genomics.v1beta2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client genomics/v1beta2';
 
 /** Provides access to Genomics data. */
 class GenomicsApi {
@@ -28,7 +31,7 @@ class GenomicsApi {
   static const GenomicsReadonlyScope = "https://www.googleapis.com/auth/genomics.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AnnotationSetsResourceApi get annotationSets => new AnnotationSetsResourceApi(_requester);
   AnnotationsResourceApi get annotations => new AnnotationsResourceApi(_requester);
@@ -40,19 +43,19 @@ class GenomicsApi {
   ReadsResourceApi get reads => new ReadsResourceApi(_requester);
   ReferencesResourceApi get references => new ReferencesResourceApi(_requester);
   ReferencesetsResourceApi get referencesets => new ReferencesetsResourceApi(_requester);
+  StreamingVariantStoreResourceApi get streamingVariantStore => new StreamingVariantStoreResourceApi(_requester);
   VariantsResourceApi get variants => new VariantsResourceApi(_requester);
   VariantsetsResourceApi get variantsets => new VariantsetsResourceApi(_requester);
 
   GenomicsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "genomics/v1beta2/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class AnnotationSetsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AnnotationSetsResourceApi(common_internal.ApiRequester client) : 
+  AnnotationSetsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -65,7 +68,7 @@ class AnnotationSetsResourceApi {
    *
    * Completes with a [AnnotationSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -76,7 +79,7 @@ class AnnotationSetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -104,7 +107,7 @@ class AnnotationSetsResourceApi {
    *
    * [annotationSetId] - The ID of the annotation set to be deleted.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -115,7 +118,7 @@ class AnnotationSetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (annotationSetId == null) {
@@ -124,7 +127,7 @@ class AnnotationSetsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'annotationSets/' + common_internal.Escaper.ecapeVariable('$annotationSetId');
+    _url = 'annotationSets/' + commons.Escaper.ecapeVariable('$annotationSetId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -146,7 +149,7 @@ class AnnotationSetsResourceApi {
    *
    * Completes with a [AnnotationSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -157,7 +160,7 @@ class AnnotationSetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (annotationSetId == null) {
@@ -165,7 +168,7 @@ class AnnotationSetsResourceApi {
     }
 
 
-    _url = 'annotationSets/' + common_internal.Escaper.ecapeVariable('$annotationSetId');
+    _url = 'annotationSets/' + commons.Escaper.ecapeVariable('$annotationSetId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -191,7 +194,7 @@ class AnnotationSetsResourceApi {
    *
    * Completes with a [AnnotationSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -202,7 +205,7 @@ class AnnotationSetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -213,7 +216,7 @@ class AnnotationSetsResourceApi {
     }
 
 
-    _url = 'annotationSets/' + common_internal.Escaper.ecapeVariable('$annotationSetId');
+    _url = 'annotationSets/' + commons.Escaper.ecapeVariable('$annotationSetId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -226,7 +229,7 @@ class AnnotationSetsResourceApi {
   }
 
   /**
-   * Searches for annotation sets which match the given criteria. Results are
+   * Searches for annotation sets that match the given criteria. Results are
    * returned in a deterministic order. Caller must have READ permission for the
    * queried datasets.
    *
@@ -236,7 +239,7 @@ class AnnotationSetsResourceApi {
    *
    * Completes with a [SearchAnnotationSetsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -247,7 +250,7 @@ class AnnotationSetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -280,7 +283,7 @@ class AnnotationSetsResourceApi {
    *
    * Completes with a [AnnotationSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -291,7 +294,7 @@ class AnnotationSetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -302,7 +305,7 @@ class AnnotationSetsResourceApi {
     }
 
 
-    _url = 'annotationSets/' + common_internal.Escaper.ecapeVariable('$annotationSetId');
+    _url = 'annotationSets/' + commons.Escaper.ecapeVariable('$annotationSetId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -317,11 +320,10 @@ class AnnotationSetsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AnnotationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AnnotationsResourceApi(common_internal.ApiRequester client) : 
+  AnnotationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -343,7 +345,7 @@ class AnnotationsResourceApi {
    *
    * Completes with a [BatchAnnotationsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -354,7 +356,7 @@ class AnnotationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -384,7 +386,7 @@ class AnnotationsResourceApi {
    *
    * Completes with a [Annotation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -395,7 +397,7 @@ class AnnotationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -423,7 +425,7 @@ class AnnotationsResourceApi {
    *
    * [annotationId] - The ID of the annotation set to be deleted.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -434,7 +436,7 @@ class AnnotationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (annotationId == null) {
@@ -443,7 +445,7 @@ class AnnotationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'annotations/' + common_internal.Escaper.ecapeVariable('$annotationId');
+    _url = 'annotations/' + commons.Escaper.ecapeVariable('$annotationId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -465,7 +467,7 @@ class AnnotationsResourceApi {
    *
    * Completes with a [Annotation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -476,7 +478,7 @@ class AnnotationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (annotationId == null) {
@@ -484,7 +486,7 @@ class AnnotationsResourceApi {
     }
 
 
-    _url = 'annotations/' + common_internal.Escaper.ecapeVariable('$annotationId');
+    _url = 'annotations/' + commons.Escaper.ecapeVariable('$annotationId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -510,7 +512,7 @@ class AnnotationsResourceApi {
    *
    * Completes with a [Annotation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -521,7 +523,7 @@ class AnnotationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -532,7 +534,7 @@ class AnnotationsResourceApi {
     }
 
 
-    _url = 'annotations/' + common_internal.Escaper.ecapeVariable('$annotationId');
+    _url = 'annotations/' + commons.Escaper.ecapeVariable('$annotationId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -545,8 +547,8 @@ class AnnotationsResourceApi {
   }
 
   /**
-   * Searches for annotations which match the given criteria. Results are
-   * returned ordered by start position. Annotations which have matching start
+   * Searches for annotations that match the given criteria. Results are
+   * returned ordered by start position. Annotations that have matching start
    * positions are ordered deterministically. Caller must have READ permission
    * for the queried annotation sets.
    *
@@ -556,7 +558,7 @@ class AnnotationsResourceApi {
    *
    * Completes with a [SearchAnnotationsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -567,7 +569,7 @@ class AnnotationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -600,7 +602,7 @@ class AnnotationsResourceApi {
    *
    * Completes with a [Annotation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -611,7 +613,7 @@ class AnnotationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -622,7 +624,7 @@ class AnnotationsResourceApi {
     }
 
 
-    _url = 'annotations/' + common_internal.Escaper.ecapeVariable('$annotationId');
+    _url = 'annotations/' + commons.Escaper.ecapeVariable('$annotationId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -637,11 +639,10 @@ class AnnotationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class CallsetsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CallsetsResourceApi(common_internal.ApiRequester client) : 
+  CallsetsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -653,7 +654,7 @@ class CallsetsResourceApi {
    *
    * Completes with a [CallSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -664,7 +665,7 @@ class CallsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -691,7 +692,7 @@ class CallsetsResourceApi {
    *
    * [callSetId] - The ID of the call set to be deleted.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -702,7 +703,7 @@ class CallsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (callSetId == null) {
@@ -711,7 +712,7 @@ class CallsetsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'callsets/' + common_internal.Escaper.ecapeVariable('$callSetId');
+    _url = 'callsets/' + commons.Escaper.ecapeVariable('$callSetId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -732,7 +733,7 @@ class CallsetsResourceApi {
    *
    * Completes with a [CallSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -743,7 +744,7 @@ class CallsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (callSetId == null) {
@@ -751,7 +752,7 @@ class CallsetsResourceApi {
     }
 
 
-    _url = 'callsets/' + common_internal.Escaper.ecapeVariable('$callSetId');
+    _url = 'callsets/' + commons.Escaper.ecapeVariable('$callSetId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -774,7 +775,7 @@ class CallsetsResourceApi {
    *
    * Completes with a [CallSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -785,7 +786,7 @@ class CallsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -796,7 +797,7 @@ class CallsetsResourceApi {
     }
 
 
-    _url = 'callsets/' + common_internal.Escaper.ecapeVariable('$callSetId');
+    _url = 'callsets/' + commons.Escaper.ecapeVariable('$callSetId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -819,7 +820,7 @@ class CallsetsResourceApi {
    *
    * Completes with a [SearchCallSetsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -830,7 +831,7 @@ class CallsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -861,7 +862,7 @@ class CallsetsResourceApi {
    *
    * Completes with a [CallSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -872,7 +873,7 @@ class CallsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -883,7 +884,7 @@ class CallsetsResourceApi {
     }
 
 
-    _url = 'callsets/' + common_internal.Escaper.ecapeVariable('$callSetId');
+    _url = 'callsets/' + commons.Escaper.ecapeVariable('$callSetId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -898,11 +899,10 @@ class CallsetsResourceApi {
 }
 
 
-/** Not documented yet. */
 class DatasetsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DatasetsResourceApi(common_internal.ApiRequester client) : 
+  DatasetsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -914,7 +914,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [Dataset].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -925,7 +925,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -952,7 +952,7 @@ class DatasetsResourceApi {
    *
    * [datasetId] - The ID of the dataset to be deleted.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -963,7 +963,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (datasetId == null) {
@@ -972,7 +972,7 @@ class DatasetsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'datasets/' + common_internal.Escaper.ecapeVariable('$datasetId');
+    _url = 'datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -993,7 +993,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [Dataset].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1004,7 +1004,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (datasetId == null) {
@@ -1012,7 +1012,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = 'datasets/' + common_internal.Escaper.ecapeVariable('$datasetId');
+    _url = 'datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1025,23 +1025,22 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Lists all datasets.
+   * Lists datasets within a project.
    *
    * Request parameters:
    *
-   * [pageSize] - The maximum number of results returned by this request.
+   * [pageSize] - The maximum number of results returned by this request. If
+   * unspecified, defaults to 50.
    *
    * [pageToken] - The continuation token, which is used to page through large
    * result sets. To get the next page of results, set this parameter to the
    * value of nextPageToken from the previous response.
    *
-   * [projectNumber] - Only return datasets which belong to this Google
-   * Developers Console project. Only accepts project numbers. Returns all
-   * public projects if no project number is specified.
+   * [projectNumber] - The project to list datasets for.
    *
    * Completes with a [ListDatasetsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1052,7 +1051,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (pageSize != null) {
@@ -1089,7 +1088,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [Dataset].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1100,7 +1099,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1111,7 +1110,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = 'datasets/' + common_internal.Escaper.ecapeVariable('$datasetId');
+    _url = 'datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1133,7 +1132,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [Dataset].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1144,7 +1143,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (datasetId == null) {
@@ -1152,7 +1151,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = 'datasets/' + common_internal.Escaper.ecapeVariable('$datasetId') + '/undelete';
+    _url = 'datasets/' + commons.Escaper.ecapeVariable('$datasetId') + '/undelete';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1175,7 +1174,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [Dataset].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1186,7 +1185,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1197,7 +1196,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = 'datasets/' + common_internal.Escaper.ecapeVariable('$datasetId');
+    _url = 'datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1212,22 +1211,20 @@ class DatasetsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ExperimentalResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ExperimentalJobsResourceApi get jobs => new ExperimentalJobsResourceApi(_requester);
 
-  ExperimentalResourceApi(common_internal.ApiRequester client) : 
+  ExperimentalResourceApi(commons.ApiRequester client) : 
       _requester = client;
 }
 
 
-/** Not documented yet. */
 class ExperimentalJobsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ExperimentalJobsResourceApi(common_internal.ApiRequester client) : 
+  ExperimentalJobsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1240,7 +1237,7 @@ class ExperimentalJobsResourceApi {
    *
    * Completes with a [ExperimentalCreateJobResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1251,7 +1248,7 @@ class ExperimentalJobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1274,11 +1271,10 @@ class ExperimentalJobsResourceApi {
 }
 
 
-/** Not documented yet. */
 class JobsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  JobsResourceApi(common_internal.ApiRequester client) : 
+  JobsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1289,7 +1285,7 @@ class JobsResourceApi {
    *
    * [jobId] - Required. The ID of the job.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1300,7 +1296,7 @@ class JobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (jobId == null) {
@@ -1309,7 +1305,7 @@ class JobsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'jobs/' + common_internal.Escaper.ecapeVariable('$jobId') + '/cancel';
+    _url = 'jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/cancel';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1330,7 +1326,7 @@ class JobsResourceApi {
    *
    * Completes with a [Job].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1341,7 +1337,7 @@ class JobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (jobId == null) {
@@ -1349,7 +1345,7 @@ class JobsResourceApi {
     }
 
 
-    _url = 'jobs/' + common_internal.Escaper.ecapeVariable('$jobId');
+    _url = 'jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1370,7 +1366,7 @@ class JobsResourceApi {
    *
    * Completes with a [SearchJobsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1381,7 +1377,7 @@ class JobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1404,13 +1400,12 @@ class JobsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ReadgroupsetsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ReadgroupsetsCoveragebucketsResourceApi get coveragebuckets => new ReadgroupsetsCoveragebucketsResourceApi(_requester);
 
-  ReadgroupsetsResourceApi(common_internal.ApiRequester client) : 
+  ReadgroupsetsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1424,7 +1419,7 @@ class ReadgroupsetsResourceApi {
    *
    * Completes with a [AlignReadGroupSetsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1435,7 +1430,7 @@ class ReadgroupsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1466,7 +1461,7 @@ class ReadgroupsetsResourceApi {
    *
    * Completes with a [CallReadGroupSetsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1477,7 +1472,7 @@ class ReadgroupsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1506,7 +1501,7 @@ class ReadgroupsetsResourceApi {
    * must have WRITE permissions to the dataset associated with this read group
    * set.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1517,7 +1512,7 @@ class ReadgroupsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (readGroupSetId == null) {
@@ -1526,7 +1521,7 @@ class ReadgroupsetsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'readgroupsets/' + common_internal.Escaper.ecapeVariable('$readGroupSetId');
+    _url = 'readgroupsets/' + commons.Escaper.ecapeVariable('$readGroupSetId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1553,7 +1548,7 @@ class ReadgroupsetsResourceApi {
    *
    * Completes with a [ExportReadGroupSetsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1564,7 +1559,7 @@ class ReadgroupsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1593,7 +1588,7 @@ class ReadgroupsetsResourceApi {
    *
    * Completes with a [ReadGroupSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1604,7 +1599,7 @@ class ReadgroupsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (readGroupSetId == null) {
@@ -1612,7 +1607,7 @@ class ReadgroupsetsResourceApi {
     }
 
 
-    _url = 'readgroupsets/' + common_internal.Escaper.ecapeVariable('$readGroupSetId');
+    _url = 'readgroupsets/' + commons.Escaper.ecapeVariable('$readGroupSetId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1638,7 +1633,7 @@ class ReadgroupsetsResourceApi {
    *
    * Completes with a [ImportReadGroupSetsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1649,7 +1644,7 @@ class ReadgroupsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1682,7 +1677,7 @@ class ReadgroupsetsResourceApi {
    *
    * Completes with a [ReadGroupSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1693,7 +1688,7 @@ class ReadgroupsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1704,7 +1699,7 @@ class ReadgroupsetsResourceApi {
     }
 
 
-    _url = 'readgroupsets/' + common_internal.Escaper.ecapeVariable('$readGroupSetId');
+    _url = 'readgroupsets/' + commons.Escaper.ecapeVariable('$readGroupSetId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1727,7 +1722,7 @@ class ReadgroupsetsResourceApi {
    *
    * Completes with a [SearchReadGroupSetsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1738,7 +1733,7 @@ class ReadgroupsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1771,7 +1766,7 @@ class ReadgroupsetsResourceApi {
    *
    * Completes with a [ReadGroupSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1782,7 +1777,7 @@ class ReadgroupsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1793,7 +1788,7 @@ class ReadgroupsetsResourceApi {
     }
 
 
-    _url = 'readgroupsets/' + common_internal.Escaper.ecapeVariable('$readGroupSetId');
+    _url = 'readgroupsets/' + commons.Escaper.ecapeVariable('$readGroupSetId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1808,11 +1803,10 @@ class ReadgroupsetsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ReadgroupsetsCoveragebucketsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ReadgroupsetsCoveragebucketsResourceApi(common_internal.ApiRequester client) : 
+  ReadgroupsetsCoveragebucketsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1856,7 +1850,7 @@ class ReadgroupsetsCoveragebucketsResourceApi {
    *
    * Completes with a [ListCoverageBucketsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1867,7 +1861,7 @@ class ReadgroupsetsCoveragebucketsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (readGroupSetId == null) {
@@ -1893,7 +1887,7 @@ class ReadgroupsetsCoveragebucketsResourceApi {
     }
 
 
-    _url = 'readgroupsets/' + common_internal.Escaper.ecapeVariable('$readGroupSetId') + '/coveragebuckets';
+    _url = 'readgroupsets/' + commons.Escaper.ecapeVariable('$readGroupSetId') + '/coveragebuckets';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1908,11 +1902,10 @@ class ReadgroupsetsCoveragebucketsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ReadsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ReadsResourceApi(common_internal.ApiRequester client) : 
+  ReadsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1938,7 +1931,7 @@ class ReadsResourceApi {
    *
    * Completes with a [SearchReadsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1949,7 +1942,7 @@ class ReadsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1972,13 +1965,12 @@ class ReadsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ReferencesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ReferencesBasesResourceApi get bases => new ReferencesBasesResourceApi(_requester);
 
-  ReferencesResourceApi(common_internal.ApiRequester client) : 
+  ReferencesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1992,7 +1984,7 @@ class ReferencesResourceApi {
    *
    * Completes with a [Reference].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2003,7 +1995,7 @@ class ReferencesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (referenceId == null) {
@@ -2011,7 +2003,7 @@ class ReferencesResourceApi {
     }
 
 
-    _url = 'references/' + common_internal.Escaper.ecapeVariable('$referenceId');
+    _url = 'references/' + commons.Escaper.ecapeVariable('$referenceId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2034,7 +2026,7 @@ class ReferencesResourceApi {
    *
    * Completes with a [SearchReferencesResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2045,7 +2037,7 @@ class ReferencesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2068,11 +2060,10 @@ class ReferencesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ReferencesBasesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ReferencesBasesResourceApi(common_internal.ApiRequester client) : 
+  ReferencesBasesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2098,7 +2089,7 @@ class ReferencesBasesResourceApi {
    *
    * Completes with a [ListBasesResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2109,7 +2100,7 @@ class ReferencesBasesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (referenceId == null) {
@@ -2129,7 +2120,7 @@ class ReferencesBasesResourceApi {
     }
 
 
-    _url = 'references/' + common_internal.Escaper.ecapeVariable('$referenceId') + '/bases';
+    _url = 'references/' + commons.Escaper.ecapeVariable('$referenceId') + '/bases';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2144,11 +2135,10 @@ class ReferencesBasesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ReferencesetsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ReferencesetsResourceApi(common_internal.ApiRequester client) : 
+  ReferencesetsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2162,7 +2152,7 @@ class ReferencesetsResourceApi {
    *
    * Completes with a [ReferenceSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2173,7 +2163,7 @@ class ReferencesetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (referenceSetId == null) {
@@ -2181,7 +2171,7 @@ class ReferencesetsResourceApi {
     }
 
 
-    _url = 'referencesets/' + common_internal.Escaper.ecapeVariable('$referenceSetId');
+    _url = 'referencesets/' + commons.Escaper.ecapeVariable('$referenceSetId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2204,7 +2194,7 @@ class ReferencesetsResourceApi {
    *
    * Completes with a [SearchReferenceSetsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2215,7 +2205,7 @@ class ReferencesetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2238,11 +2228,60 @@ class ReferencesetsResourceApi {
 }
 
 
-/** Not documented yet. */
-class VariantsResourceApi {
-  final common_internal.ApiRequester _requester;
+class StreamingVariantStoreResourceApi {
+  final commons.ApiRequester _requester;
 
-  VariantsResourceApi(common_internal.ApiRequester client) : 
+  StreamingVariantStoreResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns a stream of all the variants matching the search request, ordered
+   * by reference name, position, and ID.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [Variant].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Variant> streamvariants(StreamVariantsRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+
+    _url = 'streamingVariantStore/streamvariants';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Variant.fromJson(data));
+  }
+
+}
+
+
+class VariantsResourceApi {
+  final commons.ApiRequester _requester;
+
+  VariantsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2254,7 +2293,7 @@ class VariantsResourceApi {
    *
    * Completes with a [Variant].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2265,7 +2304,7 @@ class VariantsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2292,7 +2331,7 @@ class VariantsResourceApi {
    *
    * [variantId] - The ID of the variant to be deleted.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2303,7 +2342,7 @@ class VariantsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (variantId == null) {
@@ -2312,7 +2351,7 @@ class VariantsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'variants/' + common_internal.Escaper.ecapeVariable('$variantId');
+    _url = 'variants/' + commons.Escaper.ecapeVariable('$variantId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -2333,7 +2372,7 @@ class VariantsResourceApi {
    *
    * Completes with a [Variant].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2344,7 +2383,7 @@ class VariantsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (variantId == null) {
@@ -2352,7 +2391,7 @@ class VariantsResourceApi {
     }
 
 
-    _url = 'variants/' + common_internal.Escaper.ecapeVariable('$variantId');
+    _url = 'variants/' + commons.Escaper.ecapeVariable('$variantId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2375,7 +2414,7 @@ class VariantsResourceApi {
    *
    * Completes with a [SearchVariantsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2386,7 +2425,7 @@ class VariantsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2418,7 +2457,7 @@ class VariantsResourceApi {
    *
    * Completes with a [Variant].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2429,7 +2468,7 @@ class VariantsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2440,7 +2479,7 @@ class VariantsResourceApi {
     }
 
 
-    _url = 'variants/' + common_internal.Escaper.ecapeVariable('$variantId');
+    _url = 'variants/' + commons.Escaper.ecapeVariable('$variantId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2455,11 +2494,10 @@ class VariantsResourceApi {
 }
 
 
-/** Not documented yet. */
 class VariantsetsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  VariantsetsResourceApi(common_internal.ApiRequester client) : 
+  VariantsetsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2470,7 +2508,7 @@ class VariantsetsResourceApi {
    *
    * [variantSetId] - The ID of the variant set to be deleted.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2481,7 +2519,7 @@ class VariantsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (variantSetId == null) {
@@ -2490,7 +2528,7 @@ class VariantsetsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'variantsets/' + common_internal.Escaper.ecapeVariable('$variantSetId');
+    _url = 'variantsets/' + commons.Escaper.ecapeVariable('$variantSetId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -2515,7 +2553,7 @@ class VariantsetsResourceApi {
    *
    * Completes with a [ExportVariantSetResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2526,7 +2564,7 @@ class VariantsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2537,7 +2575,7 @@ class VariantsetsResourceApi {
     }
 
 
-    _url = 'variantsets/' + common_internal.Escaper.ecapeVariable('$variantSetId') + '/export';
+    _url = 'variantsets/' + commons.Escaper.ecapeVariable('$variantSetId') + '/export';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2558,7 +2596,7 @@ class VariantsetsResourceApi {
    *
    * Completes with a [VariantSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2569,7 +2607,7 @@ class VariantsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (variantSetId == null) {
@@ -2577,7 +2615,7 @@ class VariantsetsResourceApi {
     }
 
 
-    _url = 'variantsets/' + common_internal.Escaper.ecapeVariable('$variantSetId');
+    _url = 'variantsets/' + commons.Escaper.ecapeVariable('$variantSetId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2609,7 +2647,7 @@ class VariantsetsResourceApi {
    *
    * Completes with a [ImportVariantsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2620,7 +2658,7 @@ class VariantsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2631,7 +2669,7 @@ class VariantsetsResourceApi {
     }
 
 
-    _url = 'variantsets/' + common_internal.Escaper.ecapeVariable('$variantSetId') + '/importVariants';
+    _url = 'variantsets/' + commons.Escaper.ecapeVariable('$variantSetId') + '/importVariants';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2659,7 +2697,7 @@ class VariantsetsResourceApi {
    *
    * [variantSetId] - The destination variant set.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2670,7 +2708,7 @@ class VariantsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2682,7 +2720,7 @@ class VariantsetsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'variantsets/' + common_internal.Escaper.ecapeVariable('$variantSetId') + '/mergeVariants';
+    _url = 'variantsets/' + commons.Escaper.ecapeVariable('$variantSetId') + '/mergeVariants';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2706,7 +2744,7 @@ class VariantsetsResourceApi {
    *
    * Completes with a [VariantSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2717,7 +2755,7 @@ class VariantsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2728,7 +2766,7 @@ class VariantsetsResourceApi {
     }
 
 
-    _url = 'variantsets/' + common_internal.Escaper.ecapeVariable('$variantSetId');
+    _url = 'variantsets/' + commons.Escaper.ecapeVariable('$variantSetId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -2751,7 +2789,7 @@ class VariantsetsResourceApi {
    *
    * Completes with a [SearchVariantSetsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2762,7 +2800,7 @@ class VariantsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2794,7 +2832,7 @@ class VariantsetsResourceApi {
    *
    * Completes with a [VariantSet].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2805,7 +2843,7 @@ class VariantsetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2816,7 +2854,7 @@ class VariantsetsResourceApi {
     }
 
 
-    _url = 'variantsets/' + common_internal.Escaper.ecapeVariable('$variantSetId');
+    _url = 'variantsets/' + commons.Escaper.ecapeVariable('$variantSetId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2944,7 +2982,7 @@ class AlignReadGroupSetsResponse {
  * annotation may be one of several canonical types, supplemented by arbitrary
  * info tags. A variant annotation is represented by one or more of these
  * canonical types. An annotation is not inherently associated with a specific
- * sample/individual (though a client could choose to use annotations in this
+ * sample or individual (though a client could choose to use annotations in this
  * way). Example canonical annotation types are 'Gene' and 'Variant'.
  */
 class Annotation {
@@ -2965,9 +3003,9 @@ class Annotation {
 
   /**
    * A transcript value represents the assertion that a particular region of the
-   * reference genome may be transcribed as RNA. An alternate splicing pattern
-   * would be represented as separate transcript object. This field is only set
-   * for annotations of type TRANSCRIPT.
+   * reference genome may be transcribed as RNA. An alternative splicing pattern
+   * would be represented as a separate transcript object. This field is only
+   * set for annotations of type TRANSCRIPT.
    */
   Transcript transcript;
 
@@ -2983,9 +3021,10 @@ class Annotation {
   core.String type;
 
   /**
-   * A variant annotation which describes the effect of a variant on the genome,
-   * the coding sequence, and/or higher level consequences at the organism level
-   * e.g. pathogenicity. This field is only set for annotations of type VARIANT.
+   * A variant annotation, which describes the effect of a variant on the
+   * genome, the coding sequence, and/or higher level consequences at the
+   * organism level e.g. pathogenicity. This field is only set for annotations
+   * of type VARIANT.
    */
   VariantAnnotation variant;
 
@@ -3051,9 +3090,9 @@ class Annotation {
 
 
 /**
- * An annotation set is a logical grouping of annotations which share consistent
- * type information and provenance. An example would be 'all genes from refseq',
- * or 'all variant annotations from ClinVar'.
+ * An annotation set is a logical grouping of annotations that share consistent
+ * type information and provenance. Examples of annotation sets include 'all
+ * genes from refseq', and 'all variant annotations from ClinVar'.
  */
 class AnnotationSet {
   /** The ID of the containing dataset. */
@@ -3069,7 +3108,7 @@ class AnnotationSet {
   core.String name;
 
   /**
-   * The ID of the reference set which defines the coordinate-space for this
+   * The ID of the reference set that defines the coordinate space for this
    * set's annotations.
    */
   core.String referenceSetId;
@@ -3145,7 +3184,6 @@ class AnnotationSet {
 }
 
 
-/** Not documented yet. */
 class BatchAnnotationsResponse {
   /**
    * The resulting per-annotation entries, ordered consistently with the
@@ -3172,7 +3210,6 @@ class BatchAnnotationsResponse {
 }
 
 
-/** Not documented yet. */
 class BatchAnnotationsResponseEntry {
   /** The annotation, if any. */
   Annotation annotation;
@@ -3205,7 +3242,6 @@ class BatchAnnotationsResponseEntry {
 }
 
 
-/** Not documented yet. */
 class BatchAnnotationsResponseEntryStatus {
   /** The HTTP status code for this operation. */
   core.int code;
@@ -3238,7 +3274,6 @@ class BatchAnnotationsResponseEntryStatus {
 }
 
 
-/** Not documented yet. */
 class BatchCreateAnnotationsRequest {
   /**
    * The annotations to be created. At most 4096 can be specified in a single
@@ -3513,7 +3548,7 @@ class CallSet {
 /** A single CIGAR operation. */
 class CigarUnit {
   /**
-   * Not documented yet.
+   *
    * Possible string values are:
    * - "ALIGNMENT_MATCH"
    * - "CLIP_HARD"
@@ -3779,9 +3814,9 @@ class ExperimentalCreateJobResponse {
 /** The read group set export request. */
 class ExportReadGroupSetsRequest {
   /**
-   * A Google Cloud Storage URI where the exported BAM file will be created. The
-   * currently authenticated user must have write access to the new file
-   * location. An error will be returned if the URI already contains data.
+   * A Google Cloud Storage URI for the exported BAM file. The currently
+   * authenticated user must have write access to the new file. An error will be
+   * returned if the URI already contains data.
    */
   core.String exportUri;
 
@@ -3960,7 +3995,6 @@ class ExportVariantSetResponse {
 }
 
 
-/** Not documented yet. */
 class ExternalId {
   /** The id used by the source of this data. */
   core.String id;
@@ -3993,7 +4027,6 @@ class ExternalId {
 }
 
 
-/** Not documented yet. */
 class FastqMetadata {
   /** Optionally specifies the library name for alignment from FASTQ. */
   core.String libraryName;
@@ -4501,7 +4534,6 @@ class LinearAlignment {
 }
 
 
-/** Not documented yet. */
 class ListBasesResponse {
   /**
    * The continuation token, which is used to page through large result sets.
@@ -4550,7 +4582,6 @@ class ListBasesResponse {
 }
 
 
-/** Not documented yet. */
 class ListCoverageBucketsResponse {
   /**
    * The length of each coverage bucket in base pairs. Note that buckets at the
@@ -4643,7 +4674,6 @@ class ListDatasetsResponse {
 }
 
 
-/** Not documented yet. */
 class MergeVariantsRequest {
   /** The variants to be merged with existing variants. */
   core.List<Variant> variants;
@@ -5432,7 +5462,6 @@ class ReadGroup {
 }
 
 
-/** Not documented yet. */
 class ReadGroupExperiment {
   /**
    * The instrument model used as part of this experiment. This maps to
@@ -5493,7 +5522,6 @@ class ReadGroupExperiment {
 }
 
 
-/** Not documented yet. */
 class ReadGroupProgram {
   /** The command line used to run this program. */
   core.String commandLine;
@@ -5796,7 +5824,7 @@ class ReferenceSet {
   /** Public id of this reference set, such as GRCh37. */
   core.String assemblyId;
 
-  /** Optional free text description of this reference set. */
+  /** Free text description of this reference set. */
   core.String description;
 
   /** The Google generated immutable ID of the reference set. */
@@ -5896,7 +5924,6 @@ class ReferenceSet {
 }
 
 
-/** Not documented yet. */
 class SearchAnnotationSetsRequest {
   /**
    * The dataset IDs to search within. Caller must have READ access to these
@@ -5930,7 +5957,7 @@ class SearchAnnotationSetsRequest {
   core.String referenceSetId;
 
   /**
-   * If specified, only annotation sets which have any of these types are
+   * If specified, only annotation sets that have any of these types are
    * returned.
    */
   core.List<core.String> types;
@@ -5984,7 +6011,6 @@ class SearchAnnotationSetsRequest {
 }
 
 
-/** Not documented yet. */
 class SearchAnnotationSetsResponse {
   /** The matching annotation sets. */
   core.List<AnnotationSet> annotationSets;
@@ -6021,7 +6047,6 @@ class SearchAnnotationSetsResponse {
 }
 
 
-/** Not documented yet. */
 class SearchAnnotationsRequest {
   /**
    * The annotation sets to search within. The caller must have READ access to
@@ -6044,7 +6069,7 @@ class SearchAnnotationsRequest {
   core.String pageToken;
 
   /**
-   * If specified, this query matches only annotations which overlap this range.
+   * If specified, this query matches only annotations that overlap this range.
    */
   QueryRange range;
 
@@ -6085,7 +6110,6 @@ class SearchAnnotationsRequest {
 }
 
 
-/** Not documented yet. */
 class SearchAnnotationsResponse {
   /** The matching annotations. */
   core.List<Annotation> annotations;
@@ -6358,7 +6382,7 @@ class SearchReadGroupSetsRequest {
 
   /**
    * Specifies number of results to return in a single page. If unspecified, it
-   * will default to 128. The maximum value is 1024.
+   * will default to 256. The maximum value is 1024.
    */
   core.int pageSize;
 
@@ -6588,7 +6612,6 @@ class SearchReadsResponse {
 }
 
 
-/** Not documented yet. */
 class SearchReferenceSetsRequest {
   /**
    * If present, return references for which the accession matches any of these
@@ -6664,7 +6687,6 @@ class SearchReferenceSetsRequest {
 }
 
 
-/** Not documented yet. */
 class SearchReferenceSetsResponse {
   /**
    * The continuation token, which is used to page through large result sets.
@@ -6701,7 +6723,6 @@ class SearchReferenceSetsResponse {
 }
 
 
-/** Not documented yet. */
 class SearchReferencesRequest {
   /**
    * If present, return references for which the accession matches this string.
@@ -6774,7 +6795,6 @@ class SearchReferencesRequest {
 }
 
 
-/** Not documented yet. */
 class SearchReferencesResponse {
   /**
    * The continuation token, which is used to page through large result sets.
@@ -7051,6 +7071,78 @@ class SearchVariantsResponse {
 }
 
 
+/** The stream variants request. */
+class StreamVariantsRequest {
+  /**
+   * Only return variant calls which belong to call sets with these ids. Leaving
+   * this blank returns all variant calls.
+   */
+  core.List<core.String> callSetIds;
+
+  /**
+   * The end of the window (0-based, exclusive) for which overlapping variants
+   * should be returned.
+   */
+  core.String end;
+
+  /** Required. Only return variants in this reference sequence. */
+  core.String referenceName;
+
+  /**
+   * The beginning of the window (0-based, inclusive) for which overlapping
+   * variants should be returned.
+   */
+  core.String start;
+
+  /**
+   * Exactly one variant set ID must be provided. Only variants from this
+   * variant set will be returned.
+   */
+  core.List<core.String> variantSetIds;
+
+
+  StreamVariantsRequest();
+
+  StreamVariantsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("callSetIds")) {
+      callSetIds = _json["callSetIds"];
+    }
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+    if (_json.containsKey("referenceName")) {
+      referenceName = _json["referenceName"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
+    }
+    if (_json.containsKey("variantSetIds")) {
+      variantSetIds = _json["variantSetIds"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (callSetIds != null) {
+      _json["callSetIds"] = callSetIds;
+    }
+    if (end != null) {
+      _json["end"] = end;
+    }
+    if (referenceName != null) {
+      _json["referenceName"] = referenceName;
+    }
+    if (start != null) {
+      _json["start"] = start;
+    }
+    if (variantSetIds != null) {
+      _json["variantSetIds"] = variantSetIds;
+    }
+    return _json;
+  }
+}
+
+
 /**
  * A transcript represents the assertion that a particular region of the
  * reference genome may be transcribed as RNA.
@@ -7071,16 +7163,13 @@ class Transcript {
   TranscriptCodingSequence codingSequence;
 
   /**
-   * The exons which compose this transcript. Exons are the pieces of the
-   * transcript which are spliced together, may be exported from a cell's
-   * nucleus, and may then be translated to protein. This field should be unset
-   * for genomes where transcript splicing does not occur, for example
-   * prokaryotes.
+   * The exons that compose this transcript. This field should be unset for
+   * genomes where transcript splicing does not occur, for example prokaryotes.
    *
    *
-   * Introns are regions of the transcript which are not included in the spliced
+   * Introns are regions of the transcript that are not included in the spliced
    * RNA product. Though not explicitly modeled here, intron ranges can be
-   * deduced; all regions of this transcript which are not exons are introns.
+   * deduced; all regions of this transcript that are not exons are introns.
    *
    *
    * Exonic sequences do not necessarily code for a translational product (amino
@@ -7128,7 +7217,6 @@ class Transcript {
 }
 
 
-/** Not documented yet. */
 class TranscriptCodingSequence {
   /**
    * The end of the coding sequence on this annotation's reference sequence,
@@ -7169,7 +7257,6 @@ class TranscriptCodingSequence {
 }
 
 
-/** Not documented yet. */
 class TranscriptExon {
   /**
    * The end position of the exon on this annotation's reference sequence,
@@ -7179,7 +7266,7 @@ class TranscriptExon {
   core.String end;
 
   /**
-   * The frame of this exon. Contains a value of 0, 1, or 2 which indicates the
+   * The frame of this exon. Contains a value of 0, 1, or 2, which indicates the
    * offset of the first coding base of the exon within the reading frame of the
    * coding DNA sequence, if any. This field is dependent on the strandedness of
    * this annotation (see Annotation.position.reverseStrand). For forward
@@ -7448,7 +7535,7 @@ class VariantAnnotation {
   core.String geneId;
 
   /**
-   * Google annotation ID of the transcripts affected by this variant. These
+   * Google annotation IDs of the transcripts affected by this variant. These
    * should be provided when the variant is created.
    */
   core.List<core.String> transcriptIds;
@@ -7522,7 +7609,6 @@ class VariantAnnotation {
 }
 
 
-/** Not documented yet. */
 class VariantAnnotationCondition {
   /**
    * The MedGen concept id associated with this gene. Search for these IDs at
@@ -7530,7 +7616,7 @@ class VariantAnnotationCondition {
    */
   core.String conceptId;
 
-  /** The set of external ids for this condition. */
+  /** The set of external IDs for this condition. */
   core.List<ExternalId> externalIds;
 
   /** A set of names for the condition. */
@@ -7633,5 +7719,3 @@ class VariantSet {
     return _json;
   }
 }
-
-

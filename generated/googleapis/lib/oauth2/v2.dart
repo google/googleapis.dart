@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.oauth2.v2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client oauth2/v2';
 
 /** Lets you access OAuth2 protocol related APIs. */
 class Oauth2Api {
@@ -28,21 +31,19 @@ class Oauth2Api {
   static const UserinfoProfileScope = "https://www.googleapis.com/auth/userinfo.profile";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   UserinfoResourceApi get userinfo => new UserinfoResourceApi(_requester);
 
   Oauth2Api(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: ""}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * Completes with a [Jwk].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -53,7 +54,7 @@ class Oauth2Api {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -71,28 +72,28 @@ class Oauth2Api {
   }
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [accessToken] - null
    *
    * [idToken] - null
    *
+   * [tokenHandle] - null
+   *
    * Completes with a [Tokeninfo].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Tokeninfo> tokeninfo({core.String accessToken, core.String idToken}) {
+  async.Future<Tokeninfo> tokeninfo({core.String accessToken, core.String idToken, core.String tokenHandle}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accessToken != null) {
@@ -100,6 +101,9 @@ class Oauth2Api {
     }
     if (idToken != null) {
       _queryParams["id_token"] = [idToken];
+    }
+    if (tokenHandle != null) {
+      _queryParams["token_handle"] = [tokenHandle];
     }
 
 
@@ -118,23 +122,20 @@ class Oauth2Api {
 }
 
 
-/** Not documented yet. */
 class UserinfoResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   UserinfoV2ResourceApi get v2 => new UserinfoV2ResourceApi(_requester);
 
-  UserinfoResourceApi(common_internal.ApiRequester client) : 
+  UserinfoResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * Completes with a [Userinfoplus].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -145,7 +146,7 @@ class UserinfoResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -165,32 +166,28 @@ class UserinfoResourceApi {
 }
 
 
-/** Not documented yet. */
 class UserinfoV2ResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   UserinfoV2MeResourceApi get me => new UserinfoV2MeResourceApi(_requester);
 
-  UserinfoV2ResourceApi(common_internal.ApiRequester client) : 
+  UserinfoV2ResourceApi(commons.ApiRequester client) : 
       _requester = client;
 }
 
 
-/** Not documented yet. */
 class UserinfoV2MeResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UserinfoV2MeResourceApi(common_internal.ApiRequester client) : 
+  UserinfoV2MeResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * Completes with a [Userinfoplus].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -201,7 +198,7 @@ class UserinfoV2MeResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -222,24 +219,17 @@ class UserinfoV2MeResourceApi {
 
 
 
-/** Not documented yet. */
 class JwkKeys {
-  /** Not documented yet. */
   core.String alg;
 
-  /** Not documented yet. */
   core.String e;
 
-  /** Not documented yet. */
   core.String kid;
 
-  /** Not documented yet. */
   core.String kty;
 
-  /** Not documented yet. */
   core.String n;
 
-  /** Not documented yet. */
   core.String use;
 
 
@@ -291,9 +281,7 @@ class JwkKeys {
 }
 
 
-/** Not documented yet. */
 class Jwk {
-  /** Not documented yet. */
   core.List<JwkKeys> keys;
 
 
@@ -315,7 +303,6 @@ class Jwk {
 }
 
 
-/** Not documented yet. */
 class Tokeninfo {
   /** The access type granted with this token. It can be offline or online. */
   core.String accessType;
@@ -341,7 +328,10 @@ class Tokeninfo {
   /** The space separated list of scopes granted to this token. */
   core.String scope;
 
-  /** The Gaia obfuscated user id. */
+  /** The token handle associated with this token. */
+  core.String tokenHandle;
+
+  /** The obfuscated user id. */
   core.String userId;
 
   /**
@@ -372,6 +362,9 @@ class Tokeninfo {
     if (_json.containsKey("scope")) {
       scope = _json["scope"];
     }
+    if (_json.containsKey("token_handle")) {
+      tokenHandle = _json["token_handle"];
+    }
     if (_json.containsKey("user_id")) {
       userId = _json["user_id"];
     }
@@ -400,6 +393,9 @@ class Tokeninfo {
     if (scope != null) {
       _json["scope"] = scope;
     }
+    if (tokenHandle != null) {
+      _json["token_handle"] = tokenHandle;
+    }
     if (userId != null) {
       _json["user_id"] = userId;
     }
@@ -411,7 +407,6 @@ class Tokeninfo {
 }
 
 
-/** Not documented yet. */
 class Userinfoplus {
   /** The user's email address. */
   core.String email;
@@ -428,7 +423,7 @@ class Userinfoplus {
   /** The hosted domain e.g. example.com if the user is Google apps user. */
   core.String hd;
 
-  /** The focus obfuscated gaia id of the user. */
+  /** The obfuscated ID of the user. */
   core.String id;
 
   /** URL of the profile page. */
@@ -526,5 +521,3 @@ class Userinfoplus {
     return _json;
   }
 }
-
-

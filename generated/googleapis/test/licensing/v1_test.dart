@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/licensing/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterLicenseAssignment = 0;
 buildLicenseAssignment() {
@@ -64,14 +99,14 @@ checkLicenseAssignmentInsert(api.LicenseAssignmentInsert o) {
   buildCounterLicenseAssignmentInsert--;
 }
 
-buildUnnamed1234() {
+buildUnnamed1162() {
   var o = new core.List<api.LicenseAssignment>();
   o.add(buildLicenseAssignment());
   o.add(buildLicenseAssignment());
   return o;
 }
 
-checkUnnamed1234(core.List<api.LicenseAssignment> o) {
+checkUnnamed1162(core.List<api.LicenseAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLicenseAssignment(o[0]);
   checkLicenseAssignment(o[1]);
@@ -83,7 +118,7 @@ buildLicenseAssignmentList() {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed1234();
+    o.items = buildUnnamed1162();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -95,7 +130,7 @@ checkLicenseAssignmentList(api.LicenseAssignmentList o) {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1234(o.items);
+    checkUnnamed1162(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -134,7 +169,7 @@ main() {
   unittest.group("resource-LicenseAssignmentsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LicenseAssignmentsResourceApi res = new api.LicensingApi(mock).licenseAssignments;
       var arg_productId = "foo";
       var arg_skuId = "foo";
@@ -169,14 +204,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LicenseAssignmentsResourceApi res = new api.LicensingApi(mock).licenseAssignments;
       var arg_productId = "foo";
       var arg_skuId = "foo";
@@ -211,7 +246,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLicenseAssignment());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
@@ -220,7 +255,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LicenseAssignmentsResourceApi res = new api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignmentInsert();
       var arg_productId = "foo";
@@ -258,7 +293,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLicenseAssignment());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_productId, arg_skuId).then(unittest.expectAsync(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
@@ -267,7 +302,7 @@ main() {
 
     unittest.test("method--listForProduct", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LicenseAssignmentsResourceApi res = new api.LicensingApi(mock).licenseAssignments;
       var arg_productId = "foo";
       var arg_customerId = "foo";
@@ -306,7 +341,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLicenseAssignmentList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listForProduct(arg_productId, arg_customerId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.LicenseAssignmentList response) {
         checkLicenseAssignmentList(response);
@@ -315,7 +350,7 @@ main() {
 
     unittest.test("method--listForProductAndSku", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LicenseAssignmentsResourceApi res = new api.LicensingApi(mock).licenseAssignments;
       var arg_productId = "foo";
       var arg_skuId = "foo";
@@ -355,7 +390,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLicenseAssignmentList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listForProductAndSku(arg_productId, arg_skuId, arg_customerId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.LicenseAssignmentList response) {
         checkLicenseAssignmentList(response);
@@ -364,7 +399,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LicenseAssignmentsResourceApi res = new api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignment();
       var arg_productId = "foo";
@@ -403,7 +438,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLicenseAssignment());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
@@ -412,7 +447,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LicenseAssignmentsResourceApi res = new api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignment();
       var arg_productId = "foo";
@@ -451,7 +486,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLicenseAssignment());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);

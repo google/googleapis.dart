@@ -1,21 +1,26 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.drive.v2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert_1;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert_1;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client drive/v2';
 
 /** The API to interact with Drive. */
 class DriveApi {
-  /** View and manage the files and documents in your Google Drive */
+  /** View and manage the files in your Google Drive */
   static const DriveScope = "https://www.googleapis.com/auth/drive";
 
   /** View and manage its own configuration data in your Google Drive */
@@ -30,17 +35,17 @@ class DriveApi {
    */
   static const DriveFileScope = "https://www.googleapis.com/auth/drive.file";
 
-  /** View metadata for files and documents in your Google Drive */
+  /** View metadata for files in your Google Drive */
   static const DriveMetadataReadonlyScope = "https://www.googleapis.com/auth/drive.metadata.readonly";
 
-  /** View the files and documents in your Google Drive */
+  /** View the files in your Google Drive */
   static const DriveReadonlyScope = "https://www.googleapis.com/auth/drive.readonly";
 
   /** Modify your Google Apps Script scripts' behavior */
   static const DriveScriptsScope = "https://www.googleapis.com/auth/drive.scripts";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AboutResourceApi get about => new AboutResourceApi(_requester);
   AppsResourceApi get apps => new AppsResourceApi(_requester);
@@ -57,15 +62,14 @@ class DriveApi {
   RevisionsResourceApi get revisions => new RevisionsResourceApi(_requester);
 
   DriveApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "drive/v2/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class AboutResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AboutResourceApi(common_internal.ApiRequester client) : 
+  AboutResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -85,7 +89,7 @@ class AboutResourceApi {
    *
    * Completes with a [About].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -96,7 +100,7 @@ class AboutResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (includeSubscribed != null) {
@@ -125,11 +129,10 @@ class AboutResourceApi {
 }
 
 
-/** Not documented yet. */
 class AppsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AppsResourceApi(common_internal.ApiRequester client) : 
+  AppsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -141,7 +144,7 @@ class AppsResourceApi {
    *
    * Completes with a [App].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -152,7 +155,7 @@ class AppsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (appId == null) {
@@ -160,7 +163,7 @@ class AppsResourceApi {
     }
 
 
-    _url = 'apps/' + common_internal.Escaper.ecapeVariable('$appId');
+    _url = 'apps/' + commons.Escaper.ecapeVariable('$appId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -195,7 +198,7 @@ class AppsResourceApi {
    *
    * Completes with a [AppList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -206,7 +209,7 @@ class AppsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (appFilterExtensions != null) {
@@ -235,11 +238,10 @@ class AppsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ChangesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ChangesResourceApi(common_internal.ApiRequester client) : 
+  ChangesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -251,7 +253,7 @@ class ChangesResourceApi {
    *
    * Completes with a [Change].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -262,7 +264,7 @@ class ChangesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (changeId == null) {
@@ -270,7 +272,7 @@ class ChangesResourceApi {
     }
 
 
-    _url = 'changes/' + common_internal.Escaper.ecapeVariable('$changeId');
+    _url = 'changes/' + commons.Escaper.ecapeVariable('$changeId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -302,7 +304,7 @@ class ChangesResourceApi {
    *
    * Completes with a [ChangeList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -313,7 +315,7 @@ class ChangesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (includeDeleted != null) {
@@ -367,7 +369,7 @@ class ChangesResourceApi {
    *
    * Completes with a [Channel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -378,7 +380,7 @@ class ChangesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -416,11 +418,10 @@ class ChangesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ChannelsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ChannelsResourceApi(common_internal.ApiRequester client) : 
+  ChannelsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -430,7 +431,7 @@ class ChannelsResourceApi {
    *
    * Request parameters:
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -441,7 +442,7 @@ class ChannelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -465,11 +466,10 @@ class ChannelsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ChildrenResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ChildrenResourceApi(common_internal.ApiRequester client) : 
+  ChildrenResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -481,7 +481,7 @@ class ChildrenResourceApi {
    *
    * [childId] - The ID of the child.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -492,7 +492,7 @@ class ChildrenResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (folderId == null) {
@@ -504,7 +504,7 @@ class ChildrenResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$folderId') + '/children/' + common_internal.Escaper.ecapeVariable('$childId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$folderId') + '/children/' + commons.Escaper.ecapeVariable('$childId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -527,7 +527,7 @@ class ChildrenResourceApi {
    *
    * Completes with a [ChildReference].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -538,7 +538,7 @@ class ChildrenResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (folderId == null) {
@@ -549,7 +549,7 @@ class ChildrenResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$folderId') + '/children/' + common_internal.Escaper.ecapeVariable('$childId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$folderId') + '/children/' + commons.Escaper.ecapeVariable('$childId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -572,7 +572,7 @@ class ChildrenResourceApi {
    *
    * Completes with a [ChildReference].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -583,7 +583,7 @@ class ChildrenResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -594,7 +594,7 @@ class ChildrenResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$folderId') + '/children';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$folderId') + '/children';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -621,7 +621,7 @@ class ChildrenResourceApi {
    *
    * Completes with a [ChildList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -632,7 +632,7 @@ class ChildrenResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (folderId == null) {
@@ -649,7 +649,7 @@ class ChildrenResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$folderId') + '/children';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$folderId') + '/children';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -664,11 +664,10 @@ class ChildrenResourceApi {
 }
 
 
-/** Not documented yet. */
 class CommentsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CommentsResourceApi(common_internal.ApiRequester client) : 
+  CommentsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -680,7 +679,7 @@ class CommentsResourceApi {
    *
    * [commentId] - The ID of the comment.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -691,7 +690,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -703,7 +702,7 @@ class CommentsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -729,7 +728,7 @@ class CommentsResourceApi {
    *
    * Completes with a [Comment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -740,7 +739,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -754,7 +753,7 @@ class CommentsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -777,7 +776,7 @@ class CommentsResourceApi {
    *
    * Completes with a [Comment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -788,7 +787,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -799,7 +798,7 @@ class CommentsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/comments';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -834,7 +833,7 @@ class CommentsResourceApi {
    *
    * Completes with a [CommentList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -845,7 +844,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -865,7 +864,7 @@ class CommentsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/comments';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -890,7 +889,7 @@ class CommentsResourceApi {
    *
    * Completes with a [Comment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -901,7 +900,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -915,7 +914,7 @@ class CommentsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -940,7 +939,7 @@ class CommentsResourceApi {
    *
    * Completes with a [Comment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -951,7 +950,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -965,7 +964,7 @@ class CommentsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -980,11 +979,10 @@ class CommentsResourceApi {
 }
 
 
-/** Not documented yet. */
 class FilesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  FilesResourceApi(common_internal.ApiRequester client) : 
+  FilesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1020,7 +1018,7 @@ class FilesResourceApi {
    *
    * Completes with a [File].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1031,7 +1029,7 @@ class FilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1063,7 +1061,7 @@ class FilesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/copy';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/copy';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1076,13 +1074,14 @@ class FilesResourceApi {
   }
 
   /**
-   * Permanently deletes a file by ID. Skips the trash.
+   * Permanently deletes a file by ID. Skips the trash. The currently
+   * authenticated user must own the file.
    *
    * Request parameters:
    *
    * [fileId] - The ID of the file to delete.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1093,7 +1092,7 @@ class FilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -1102,7 +1101,7 @@ class FilesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1119,7 +1118,7 @@ class FilesResourceApi {
    *
    * Request parameters:
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1130,7 +1129,7 @@ class FilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -1156,12 +1155,16 @@ class FilesResourceApi {
    * [fileId] - The ID for the file in question.
    *
    * [acknowledgeAbuse] - Whether the user is acknowledging the risk of
-   * downloading known malware or other abusive files.
+   * downloading known malware or other abusive files. Ignored unless alt=media
+   * is specified.
    *
    * [projection] - This parameter is deprecated and has no function.
    * Possible string values are:
    * - "BASIC" : Deprecated
    * - "FULL" : Deprecated
+   *
+   * [revisionId] - Specifies the Revision ID that should be downloaded. Ignored
+   * unless alt=media is specified.
    *
    * [updateViewedDate] - Whether to update the view date after successfully
    * retrieving the file.
@@ -1174,20 +1177,20 @@ class FilesResourceApi {
    *
    * - [File] for Metadata downloads (see [downloadOptions]).
    *
-   * - [common.Media] for Media downloads (see [downloadOptions]).
+   * - [commons.Media] for Media downloads (see [downloadOptions]).
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future get(core.String fileId, {core.bool acknowledgeAbuse, core.String projection, core.bool updateViewedDate, common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future get(core.String fileId, {core.bool acknowledgeAbuse, core.String projection, core.String revisionId, core.bool updateViewedDate, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -1199,13 +1202,16 @@ class FilesResourceApi {
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
+    if (revisionId != null) {
+      _queryParams["revisionId"] = [revisionId];
+    }
     if (updateViewedDate != null) {
       _queryParams["updateViewedDate"] = ["${updateViewedDate}"];
     }
 
     _downloadOptions = downloadOptions;
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1215,7 +1221,7 @@ class FilesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new File.fromJson(data));
     } else {
       return _response;
@@ -1260,18 +1266,18 @@ class FilesResourceApi {
    *
    * Completes with a [File].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<File> insert(File request, {core.bool convert, core.bool ocr, core.String ocrLanguage, core.bool pinned, core.String timedTextLanguage, core.String timedTextTrackName, core.bool useContentAsIndexableText, core.String visibility, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<File> insert(File request, {core.bool convert, core.bool ocr, core.String ocrLanguage, core.bool pinned, core.String timedTextLanguage, core.String timedTextTrackName, core.bool useContentAsIndexableText, core.String visibility, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1307,7 +1313,7 @@ class FilesResourceApi {
 
     if (_uploadMedia == null) {
       _url = 'files';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/drive/v2/files';
     } else {
       _url = '/upload/drive/v2/files';
@@ -1347,7 +1353,7 @@ class FilesResourceApi {
    *
    * Completes with a [FileList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1358,7 +1364,7 @@ class FilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (corpus != null) {
@@ -1433,7 +1439,7 @@ class FilesResourceApi {
    *
    * Completes with a [File].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1444,7 +1450,7 @@ class FilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1491,7 +1497,7 @@ class FilesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1512,7 +1518,7 @@ class FilesResourceApi {
    *
    * Completes with a [File].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1523,7 +1529,7 @@ class FilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -1531,7 +1537,7 @@ class FilesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/touch';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/touch';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1552,7 +1558,7 @@ class FilesResourceApi {
    *
    * Completes with a [File].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1563,7 +1569,7 @@ class FilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -1571,7 +1577,7 @@ class FilesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/trash';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/trash';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1592,7 +1598,7 @@ class FilesResourceApi {
    *
    * Completes with a [File].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1603,7 +1609,7 @@ class FilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -1611,7 +1617,7 @@ class FilesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/untrash';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/untrash';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1671,18 +1677,18 @@ class FilesResourceApi {
    *
    * Completes with a [File].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<File> update(File request, core.String fileId, {core.String addParents, core.bool convert, core.bool newRevision, core.bool ocr, core.String ocrLanguage, core.bool pinned, core.String removeParents, core.bool setModifiedDate, core.String timedTextLanguage, core.String timedTextTrackName, core.bool updateViewedDate, core.bool useContentAsIndexableText, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<File> update(File request, core.String fileId, {core.String addParents, core.bool convert, core.bool newRevision, core.bool ocr, core.String ocrLanguage, core.bool pinned, core.String removeParents, core.bool setModifiedDate, core.String timedTextLanguage, core.String timedTextTrackName, core.bool updateViewedDate, core.bool useContentAsIndexableText, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1732,11 +1738,11 @@ class FilesResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId');
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/drive/v2/files/' + common_internal.Escaper.ecapeVariable('$fileId');
+      _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/drive/v2/files/' + commons.Escaper.ecapeVariable('$fileId');
     } else {
-      _url = '/upload/drive/v2/files/' + common_internal.Escaper.ecapeVariable('$fileId');
+      _url = '/upload/drive/v2/files/' + commons.Escaper.ecapeVariable('$fileId');
     }
 
 
@@ -1760,12 +1766,16 @@ class FilesResourceApi {
    * [fileId] - The ID for the file in question.
    *
    * [acknowledgeAbuse] - Whether the user is acknowledging the risk of
-   * downloading known malware or other abusive files.
+   * downloading known malware or other abusive files. Ignored unless alt=media
+   * is specified.
    *
    * [projection] - This parameter is deprecated and has no function.
    * Possible string values are:
    * - "BASIC" : Deprecated
    * - "FULL" : Deprecated
+   *
+   * [revisionId] - Specifies the Revision ID that should be downloaded. Ignored
+   * unless alt=media is specified.
    *
    * [updateViewedDate] - Whether to update the view date after successfully
    * retrieving the file.
@@ -1778,20 +1788,20 @@ class FilesResourceApi {
    *
    * - [Channel] for Metadata downloads (see [downloadOptions]).
    *
-   * - [common.Media] for Media downloads (see [downloadOptions]).
+   * - [commons.Media] for Media downloads (see [downloadOptions]).
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future watch(Channel request, core.String fileId, {core.bool acknowledgeAbuse, core.String projection, core.bool updateViewedDate, common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future watch(Channel request, core.String fileId, {core.bool acknowledgeAbuse, core.String projection, core.String revisionId, core.bool updateViewedDate, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1806,13 +1816,16 @@ class FilesResourceApi {
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
+    if (revisionId != null) {
+      _queryParams["revisionId"] = [revisionId];
+    }
     if (updateViewedDate != null) {
       _queryParams["updateViewedDate"] = ["${updateViewedDate}"];
     }
 
     _downloadOptions = downloadOptions;
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/watch';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/watch';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1822,7 +1835,7 @@ class FilesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new Channel.fromJson(data));
     } else {
       return _response;
@@ -1832,11 +1845,10 @@ class FilesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ParentsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ParentsResourceApi(common_internal.ApiRequester client) : 
+  ParentsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1848,7 +1860,7 @@ class ParentsResourceApi {
    *
    * [parentId] - The ID of the parent.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1859,7 +1871,7 @@ class ParentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -1871,7 +1883,7 @@ class ParentsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/parents/' + common_internal.Escaper.ecapeVariable('$parentId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/parents/' + commons.Escaper.ecapeVariable('$parentId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1894,7 +1906,7 @@ class ParentsResourceApi {
    *
    * Completes with a [ParentReference].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1905,7 +1917,7 @@ class ParentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -1916,7 +1928,7 @@ class ParentsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/parents/' + common_internal.Escaper.ecapeVariable('$parentId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/parents/' + commons.Escaper.ecapeVariable('$parentId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1939,7 +1951,7 @@ class ParentsResourceApi {
    *
    * Completes with a [ParentReference].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1950,7 +1962,7 @@ class ParentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1961,7 +1973,7 @@ class ParentsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/parents';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/parents';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1982,7 +1994,7 @@ class ParentsResourceApi {
    *
    * Completes with a [ParentList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1993,7 +2005,7 @@ class ParentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -2001,7 +2013,7 @@ class ParentsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/parents';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/parents';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2016,11 +2028,10 @@ class ParentsResourceApi {
 }
 
 
-/** Not documented yet. */
 class PermissionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PermissionsResourceApi(common_internal.ApiRequester client) : 
+  PermissionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2032,7 +2043,7 @@ class PermissionsResourceApi {
    *
    * [permissionId] - The ID for the permission.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2043,7 +2054,7 @@ class PermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -2055,7 +2066,7 @@ class PermissionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/permissions/' + common_internal.Escaper.ecapeVariable('$permissionId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -2078,7 +2089,7 @@ class PermissionsResourceApi {
    *
    * Completes with a [Permission].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2089,7 +2100,7 @@ class PermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -2100,7 +2111,7 @@ class PermissionsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/permissions/' + common_internal.Escaper.ecapeVariable('$permissionId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2121,7 +2132,7 @@ class PermissionsResourceApi {
    *
    * Completes with a [PermissionId].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2132,7 +2143,7 @@ class PermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (email == null) {
@@ -2140,7 +2151,7 @@ class PermissionsResourceApi {
     }
 
 
-    _url = 'permissionIds/' + common_internal.Escaper.ecapeVariable('$email');
+    _url = 'permissionIds/' + commons.Escaper.ecapeVariable('$email');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2169,7 +2180,7 @@ class PermissionsResourceApi {
    *
    * Completes with a [Permission].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2180,7 +2191,7 @@ class PermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2197,7 +2208,7 @@ class PermissionsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/permissions';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2218,7 +2229,7 @@ class PermissionsResourceApi {
    *
    * Completes with a [PermissionList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2229,7 +2240,7 @@ class PermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -2237,7 +2248,7 @@ class PermissionsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/permissions';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2260,12 +2271,13 @@ class PermissionsResourceApi {
    *
    * [permissionId] - The ID for the permission.
    *
-   * [transferOwnership] - Whether changing a role to 'owner' should also
-   * downgrade the current owners to writers.
+   * [transferOwnership] - Whether changing a role to 'owner' downgrades the
+   * current owners to writers. Does nothing if the specified role is not
+   * 'owner'.
    *
    * Completes with a [Permission].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2276,7 +2288,7 @@ class PermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2293,7 +2305,7 @@ class PermissionsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/permissions/' + common_internal.Escaper.ecapeVariable('$permissionId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -2316,12 +2328,13 @@ class PermissionsResourceApi {
    *
    * [permissionId] - The ID for the permission.
    *
-   * [transferOwnership] - Whether changing a role to 'owner' should also
-   * downgrade the current owners to writers.
+   * [transferOwnership] - Whether changing a role to 'owner' downgrades the
+   * current owners to writers. Does nothing if the specified role is not
+   * 'owner'.
    *
    * Completes with a [Permission].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2332,7 +2345,7 @@ class PermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2349,7 +2362,7 @@ class PermissionsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/permissions/' + common_internal.Escaper.ecapeVariable('$permissionId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2364,11 +2377,10 @@ class PermissionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class PropertiesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PropertiesResourceApi(common_internal.ApiRequester client) : 
+  PropertiesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2382,7 +2394,7 @@ class PropertiesResourceApi {
    *
    * [visibility] - The visibility of the property.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2393,7 +2405,7 @@ class PropertiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -2408,7 +2420,7 @@ class PropertiesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/properties/' + common_internal.Escaper.ecapeVariable('$propertyKey');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties/' + commons.Escaper.ecapeVariable('$propertyKey');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -2433,7 +2445,7 @@ class PropertiesResourceApi {
    *
    * Completes with a [Property].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2444,7 +2456,7 @@ class PropertiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -2458,7 +2470,7 @@ class PropertiesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/properties/' + common_internal.Escaper.ecapeVariable('$propertyKey');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties/' + commons.Escaper.ecapeVariable('$propertyKey');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2481,7 +2493,7 @@ class PropertiesResourceApi {
    *
    * Completes with a [Property].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2492,7 +2504,7 @@ class PropertiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2503,7 +2515,7 @@ class PropertiesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/properties';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2524,7 +2536,7 @@ class PropertiesResourceApi {
    *
    * Completes with a [PropertyList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2535,7 +2547,7 @@ class PropertiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -2543,7 +2555,7 @@ class PropertiesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/properties';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2570,7 +2582,7 @@ class PropertiesResourceApi {
    *
    * Completes with a [Property].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2581,7 +2593,7 @@ class PropertiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2598,7 +2610,7 @@ class PropertiesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/properties/' + common_internal.Escaper.ecapeVariable('$propertyKey');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties/' + commons.Escaper.ecapeVariable('$propertyKey');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -2625,7 +2637,7 @@ class PropertiesResourceApi {
    *
    * Completes with a [Property].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2636,7 +2648,7 @@ class PropertiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2653,7 +2665,7 @@ class PropertiesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/properties/' + common_internal.Escaper.ecapeVariable('$propertyKey');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties/' + commons.Escaper.ecapeVariable('$propertyKey');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2668,11 +2680,10 @@ class PropertiesResourceApi {
 }
 
 
-/** Not documented yet. */
 class RealtimeResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  RealtimeResourceApi(common_internal.ApiRequester client) : 
+  RealtimeResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2693,18 +2704,18 @@ class RealtimeResourceApi {
    * Metadata (default) or Media download. Partial Media downloads are possible
    * as well.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future get(core.String fileId, {core.int revision, common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future get(core.String fileId, {core.int revision, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -2716,7 +2727,7 @@ class RealtimeResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/realtime';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/realtime';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2726,7 +2737,7 @@ class RealtimeResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => null);
     } else {
       return _response;
@@ -2753,18 +2764,18 @@ class RealtimeResourceApi {
    * [uploadOptions] - Options for the media upload. Streaming Media without the
    * length being known ahead of time is only supported via resumable uploads.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future update(core.String fileId, {core.String baseRevision, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future update(core.String fileId, {core.String baseRevision, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -2779,11 +2790,11 @@ class RealtimeResourceApi {
     _downloadOptions = null;
 
     if (_uploadMedia == null) {
-      _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/realtime';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/drive/v2/files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/realtime';
+      _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/realtime';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/drive/v2/files/' + commons.Escaper.ecapeVariable('$fileId') + '/realtime';
     } else {
-      _url = '/upload/drive/v2/files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/realtime';
+      _url = '/upload/drive/v2/files/' + commons.Escaper.ecapeVariable('$fileId') + '/realtime';
     }
 
 
@@ -2800,11 +2811,10 @@ class RealtimeResourceApi {
 }
 
 
-/** Not documented yet. */
 class RepliesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  RepliesResourceApi(common_internal.ApiRequester client) : 
+  RepliesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2818,7 +2828,7 @@ class RepliesResourceApi {
    *
    * [replyId] - The ID of the reply.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2829,7 +2839,7 @@ class RepliesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -2844,7 +2854,7 @@ class RepliesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId') + '/replies/' + common_internal.Escaper.ecapeVariable('$replyId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies/' + commons.Escaper.ecapeVariable('$replyId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -2872,7 +2882,7 @@ class RepliesResourceApi {
    *
    * Completes with a [CommentReply].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2883,7 +2893,7 @@ class RepliesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -2900,7 +2910,7 @@ class RepliesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId') + '/replies/' + common_internal.Escaper.ecapeVariable('$replyId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies/' + commons.Escaper.ecapeVariable('$replyId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2925,7 +2935,7 @@ class RepliesResourceApi {
    *
    * Completes with a [CommentReply].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2936,7 +2946,7 @@ class RepliesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2950,7 +2960,7 @@ class RepliesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId') + '/replies';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2984,7 +2994,7 @@ class RepliesResourceApi {
    *
    * Completes with a [CommentReplyList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2995,7 +3005,7 @@ class RepliesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -3015,7 +3025,7 @@ class RepliesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId') + '/replies';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3042,7 +3052,7 @@ class RepliesResourceApi {
    *
    * Completes with a [CommentReply].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3053,7 +3063,7 @@ class RepliesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3070,7 +3080,7 @@ class RepliesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId') + '/replies/' + common_internal.Escaper.ecapeVariable('$replyId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies/' + commons.Escaper.ecapeVariable('$replyId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -3097,7 +3107,7 @@ class RepliesResourceApi {
    *
    * Completes with a [CommentReply].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3108,7 +3118,7 @@ class RepliesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3125,7 +3135,7 @@ class RepliesResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId') + '/replies/' + common_internal.Escaper.ecapeVariable('$replyId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies/' + commons.Escaper.ecapeVariable('$replyId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -3140,11 +3150,10 @@ class RepliesResourceApi {
 }
 
 
-/** Not documented yet. */
 class RevisionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  RevisionsResourceApi(common_internal.ApiRequester client) : 
+  RevisionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3156,7 +3165,7 @@ class RevisionsResourceApi {
    *
    * [revisionId] - The ID of the revision.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3167,7 +3176,7 @@ class RevisionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -3179,7 +3188,7 @@ class RevisionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/revisions/' + common_internal.Escaper.ecapeVariable('$revisionId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions/' + commons.Escaper.ecapeVariable('$revisionId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -3202,7 +3211,7 @@ class RevisionsResourceApi {
    *
    * Completes with a [Revision].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3213,7 +3222,7 @@ class RevisionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -3224,7 +3233,7 @@ class RevisionsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/revisions/' + common_internal.Escaper.ecapeVariable('$revisionId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions/' + commons.Escaper.ecapeVariable('$revisionId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3245,7 +3254,7 @@ class RevisionsResourceApi {
    *
    * Completes with a [RevisionList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3256,7 +3265,7 @@ class RevisionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (fileId == null) {
@@ -3264,7 +3273,7 @@ class RevisionsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/revisions';
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3289,7 +3298,7 @@ class RevisionsResourceApi {
    *
    * Completes with a [Revision].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3300,7 +3309,7 @@ class RevisionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3314,7 +3323,7 @@ class RevisionsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/revisions/' + common_internal.Escaper.ecapeVariable('$revisionId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions/' + commons.Escaper.ecapeVariable('$revisionId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -3339,7 +3348,7 @@ class RevisionsResourceApi {
    *
    * Completes with a [Revision].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3350,7 +3359,7 @@ class RevisionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3364,7 +3373,7 @@ class RevisionsResourceApi {
     }
 
 
-    _url = 'files/' + common_internal.Escaper.ecapeVariable('$fileId') + '/revisions/' + common_internal.Escaper.ecapeVariable('$revisionId');
+    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions/' + commons.Escaper.ecapeVariable('$revisionId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -3380,7 +3389,6 @@ class RevisionsResourceApi {
 
 
 
-/** Not documented yet. */
 class AboutAdditionalRoleInfoRoleSets {
   /** The supported additional roles with the primary role. */
   core.List<core.String> additionalRoles;
@@ -3413,7 +3421,6 @@ class AboutAdditionalRoleInfoRoleSets {
 }
 
 
-/** Not documented yet. */
 class AboutAdditionalRoleInfo {
   /** The supported additional roles per primary role. */
   core.List<AboutAdditionalRoleInfoRoleSets> roleSets;
@@ -3446,7 +3453,6 @@ class AboutAdditionalRoleInfo {
 }
 
 
-/** Not documented yet. */
 class AboutExportFormats {
   /** The content type to convert from. */
   core.String source;
@@ -3479,7 +3485,6 @@ class AboutExportFormats {
 }
 
 
-/** Not documented yet. */
 class AboutFeatures {
   /** The name of the feature. */
   core.String featureName;
@@ -3512,7 +3517,6 @@ class AboutFeatures {
 }
 
 
-/** Not documented yet. */
 class AboutImportFormats {
   /** The imported file's content type to convert from. */
   core.String source;
@@ -3545,7 +3549,6 @@ class AboutImportFormats {
 }
 
 
-/** Not documented yet. */
 class AboutMaxUploadSizes {
   /** The max upload size for this type. */
   core.String size;
@@ -3578,7 +3581,6 @@ class AboutMaxUploadSizes {
 }
 
 
-/** Not documented yet. */
 class AboutQuotaBytesByService {
   /** The storage quota bytes used by the service. */
   core.String bytesUsed;
@@ -3861,7 +3863,6 @@ class About {
 }
 
 
-/** Not documented yet. */
 class AppIcons {
   /**
    * Category of the icon. Allowed values are:
@@ -3959,7 +3960,8 @@ class App {
 
   /**
    * The template url for opening files with this app. The template will contain
-   * {ids} and/or {exportIds} to be replaced by the actual file ids.
+   * {ids} and/or {exportIds} to be replaced by the actual file ids. See  Open
+   * Files  for the full documentation.
    */
   core.String openUrlTemplate;
 
@@ -5345,7 +5347,11 @@ class FileLabels {
   /** Whether this file is starred by the user. */
   core.bool starred;
 
-  /** Whether this file has been trashed. */
+  /**
+   * Whether this file has been trashed. This label applies to all users
+   * accessing the file; however, only owners are allowed to see and untrash
+   * files.
+   */
   core.bool trashed;
 
   /** Whether this file has been viewed by this user. */
@@ -5399,7 +5405,10 @@ class FileLabels {
  * already thumbnailed by Google.
  */
 class FileThumbnail {
-  /** The URL-safe Base64 encoded bytes of the thumbnail image. */
+  /**
+   * The URL-safe Base64 encoded bytes of the thumbnail image. It should conform
+   * to RFC 4648 section 5.
+   */
   core.String image;
 
   core.List<core.int> get imageAsBytes {
@@ -5676,7 +5685,10 @@ class File {
    */
   FileThumbnail thumbnail;
 
-  /** A link to the file's thumbnail. */
+  /**
+   * A short-lived link to the file's thumbnail. Typically lasts on the order of
+   * hours.
+   */
   core.String thumbnailLink;
 
   /** The title of this file. */
@@ -6464,7 +6476,16 @@ class PermissionList {
 }
 
 
-/** A key-value pair that is either public or private to an application. */
+/**
+ * A key-value pair attached to a file that is either public or private to an
+ * application.
+ * The following limits apply to file properties:
+ * - Maximum of 100 properties total per file
+ * - Maximum of 30 private properties per app
+ * - Maximum of 30 public properties
+ * - Maximum of 124 bytes size limit on (key + value) string in UTF-8 encoding
+ * for a single property.
+ */
 class Property {
   /** ETag of the property. */
   core.String etag;
@@ -6936,5 +6957,3 @@ class User {
     return _json;
   }
 }
-
-

@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.webmasters.v3;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client webmasters/v3';
 
 /** Lets you view Google Webmaster Tools data for your verified sites. */
 class WebmastersApi {
@@ -22,7 +25,7 @@ class WebmastersApi {
   static const WebmastersReadonlyScope = "https://www.googleapis.com/auth/webmasters.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   SitemapsResourceApi get sitemaps => new SitemapsResourceApi(_requester);
   SitesResourceApi get sites => new SitesResourceApi(_requester);
@@ -30,15 +33,14 @@ class WebmastersApi {
   UrlcrawlerrorssamplesResourceApi get urlcrawlerrorssamples => new UrlcrawlerrorssamplesResourceApi(_requester);
 
   WebmastersApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "webmasters/v3/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class SitemapsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SitemapsResourceApi(common_internal.ApiRequester client) : 
+  SitemapsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -52,7 +54,7 @@ class SitemapsResourceApi {
    * [feedpath] - The URL of the actual sitemap (for example
    * http://www.example.com/sitemap.xml).
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -63,7 +65,7 @@ class SitemapsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (siteUrl == null) {
@@ -75,7 +77,7 @@ class SitemapsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'sites/' + common_internal.Escaper.ecapeVariable('$siteUrl') + '/sitemaps/' + common_internal.Escaper.ecapeVariable('$feedpath');
+    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/sitemaps/' + commons.Escaper.ecapeVariable('$feedpath');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -100,7 +102,7 @@ class SitemapsResourceApi {
    *
    * Completes with a [WmxSitemap].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -111,7 +113,7 @@ class SitemapsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (siteUrl == null) {
@@ -122,7 +124,7 @@ class SitemapsResourceApi {
     }
 
 
-    _url = 'sites/' + common_internal.Escaper.ecapeVariable('$siteUrl') + '/sitemaps/' + common_internal.Escaper.ecapeVariable('$feedpath');
+    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/sitemaps/' + commons.Escaper.ecapeVariable('$feedpath');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -146,7 +148,7 @@ class SitemapsResourceApi {
    *
    * Completes with a [SitemapsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -157,7 +159,7 @@ class SitemapsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (siteUrl == null) {
@@ -168,7 +170,7 @@ class SitemapsResourceApi {
     }
 
 
-    _url = 'sites/' + common_internal.Escaper.ecapeVariable('$siteUrl') + '/sitemaps';
+    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/sitemaps';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -190,7 +192,7 @@ class SitemapsResourceApi {
    *
    * [feedpath] - The URL of the sitemap to add.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -201,7 +203,7 @@ class SitemapsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (siteUrl == null) {
@@ -213,7 +215,7 @@ class SitemapsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'sites/' + common_internal.Escaper.ecapeVariable('$siteUrl') + '/sitemaps/' + common_internal.Escaper.ecapeVariable('$feedpath');
+    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/sitemaps/' + commons.Escaper.ecapeVariable('$feedpath');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -228,11 +230,10 @@ class SitemapsResourceApi {
 }
 
 
-/** Not documented yet. */
 class SitesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SitesResourceApi(common_internal.ApiRequester client) : 
+  SitesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -242,7 +243,7 @@ class SitesResourceApi {
    *
    * [siteUrl] - The URL of the site to add.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -253,7 +254,7 @@ class SitesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (siteUrl == null) {
@@ -262,7 +263,7 @@ class SitesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'sites/' + common_internal.Escaper.ecapeVariable('$siteUrl');
+    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -282,7 +283,7 @@ class SitesResourceApi {
    * [siteUrl] - The site's URL, including protocol, for example
    * 'http://www.example.com/'
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -293,7 +294,7 @@ class SitesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (siteUrl == null) {
@@ -302,7 +303,7 @@ class SitesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'sites/' + common_internal.Escaper.ecapeVariable('$siteUrl');
+    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -324,7 +325,7 @@ class SitesResourceApi {
    *
    * Completes with a [WmxSite].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -335,7 +336,7 @@ class SitesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (siteUrl == null) {
@@ -343,7 +344,7 @@ class SitesResourceApi {
     }
 
 
-    _url = 'sites/' + common_internal.Escaper.ecapeVariable('$siteUrl');
+    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -362,7 +363,7 @@ class SitesResourceApi {
    *
    * Completes with a [SitesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -373,7 +374,7 @@ class SitesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -393,11 +394,10 @@ class SitesResourceApi {
 }
 
 
-/** Not documented yet. */
 class UrlcrawlerrorscountsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UrlcrawlerrorscountsResourceApi(common_internal.ApiRequester client) : 
+  UrlcrawlerrorscountsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -432,7 +432,7 @@ class UrlcrawlerrorscountsResourceApi {
    *
    * Completes with a [UrlCrawlErrorsCountsQueryResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -443,7 +443,7 @@ class UrlcrawlerrorscountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (siteUrl == null) {
@@ -460,7 +460,7 @@ class UrlcrawlerrorscountsResourceApi {
     }
 
 
-    _url = 'sites/' + common_internal.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsCounts/query';
+    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsCounts/query';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -475,11 +475,10 @@ class UrlcrawlerrorscountsResourceApi {
 }
 
 
-/** Not documented yet. */
 class UrlcrawlerrorssamplesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UrlcrawlerrorssamplesResourceApi(common_internal.ApiRequester client) : 
+  UrlcrawlerrorssamplesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -513,7 +512,7 @@ class UrlcrawlerrorssamplesResourceApi {
    *
    * Completes with a [UrlCrawlErrorsSample].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -524,7 +523,7 @@ class UrlcrawlerrorssamplesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (siteUrl == null) {
@@ -543,7 +542,7 @@ class UrlcrawlerrorssamplesResourceApi {
     _queryParams["platform"] = [platform];
 
 
-    _url = 'sites/' + common_internal.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsSamples/' + common_internal.Escaper.ecapeVariable('$url');
+    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsSamples/' + commons.Escaper.ecapeVariable('$url');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -584,7 +583,7 @@ class UrlcrawlerrorssamplesResourceApi {
    *
    * Completes with a [UrlCrawlErrorsSamplesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -595,7 +594,7 @@ class UrlcrawlerrorssamplesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (siteUrl == null) {
@@ -611,7 +610,7 @@ class UrlcrawlerrorssamplesResourceApi {
     _queryParams["platform"] = [platform];
 
 
-    _url = 'sites/' + common_internal.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsSamples';
+    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsSamples';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -653,7 +652,7 @@ class UrlcrawlerrorssamplesResourceApi {
    * - "smartphoneOnly"
    * - "web"
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -664,7 +663,7 @@ class UrlcrawlerrorssamplesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (siteUrl == null) {
@@ -684,7 +683,7 @@ class UrlcrawlerrorssamplesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'sites/' + common_internal.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsSamples/' + common_internal.Escaper.ecapeVariable('$url');
+    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsSamples/' + commons.Escaper.ecapeVariable('$url');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -856,7 +855,6 @@ class UrlCrawlErrorsCountsQueryResponse {
 }
 
 
-/** Not documented yet. */
 class UrlCrawlErrorsSample {
   /** The time the error was first detected, in RFC 3339 format. */
   core.DateTime firstDetected;
@@ -1006,7 +1004,6 @@ class WmxSite {
 }
 
 
-/** Not documented yet. */
 class WmxSitemap {
   /** The various content types in the sitemap. */
   core.List<WmxSitemapContent> contents;
@@ -1156,5 +1153,3 @@ class WmxSitemapContent {
     return _json;
   }
 }
-
-

@@ -15,7 +15,7 @@
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/O3fRjUE0KKE4hPeemkWoVGSVyAY\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/ucFo1l8fmB-ZOvUDZMuH1NM6pOg\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -482,7 +482,7 @@
                 "apks": {
                     "methods": {
                         "addexternallyhosted": {
-                            "description": "Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a specified URL. This function is only available to enterprises using Google Play for work whose application is configured to restrict distribution to the enterprise domain.",
+                            "description": "Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a specified URL. This function is only available to enterprises using Google Play for Work whose application is configured to restrict distribution to the enterprise domain.",
                             "httpMethod": "POST",
                             "id": "androidpublisher.edits.apks.addexternallyhosted",
                             "parameterOrder": [
@@ -2203,7 +2203,7 @@
             }
         }
     },
-    "revision": "20150128",
+    "revision": "20150323",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Apk": {
@@ -2363,7 +2363,7 @@
             "type": "object"
         },
         "ExternallyHostedApk": {
-            "description": "Defines an APK available for this application that is hosted externally and not uploaded to Google Play. This function is only available to enterprises who are using Android for Work, and whos application is restricted to the enterprise private channel",
+            "description": "Defines an APK available for this application that is hosted externally and not uploaded to Google Play. This function is only available to enterprises who are using Google Play for Work, and whos application is restricted to the enterprise private channel",
             "id": "ExternallyHostedApk",
             "properties": {
                 "applicationLabel": {
@@ -2973,6 +2973,6 @@
         }
     },
     "servicePath": "androidpublisher/v2/applications/",
-    "title": "Google Play Android Developer API",
+    "title": "Google Play Developer API",
     "version": "v2"
 }

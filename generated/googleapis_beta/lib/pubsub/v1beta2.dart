@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.pubsub.v1beta2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client pubsub/v1beta2';
 
 /**
  * Provides reliable, many-to-many, asynchronous messaging between applications.
@@ -24,32 +27,30 @@ class PubsubApi {
   static const PubsubScope = "https://www.googleapis.com/auth/pubsub";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   PubsubApi(http.Client client, {core.String rootUrl: "https://pubsub.googleapis.com/", core.String servicePath: "v1beta2/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class ProjectsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ProjectsSubscriptionsResourceApi get subscriptions => new ProjectsSubscriptionsResourceApi(_requester);
   ProjectsTopicsResourceApi get topics => new ProjectsTopicsResourceApi(_requester);
 
-  ProjectsResourceApi(common_internal.ApiRequester client) : 
+  ProjectsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 }
 
 
-/** Not documented yet. */
 class ProjectsSubscriptionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ProjectsSubscriptionsResourceApi(common_internal.ApiRequester client) : 
+  ProjectsSubscriptionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -67,7 +68,7 @@ class ProjectsSubscriptionsResourceApi {
    *
    * Completes with a [Empty].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -78,7 +79,7 @@ class ProjectsSubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -89,7 +90,7 @@ class ProjectsSubscriptionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariableReserved('$subscription') + ':acknowledge';
+    _url = commons.Escaper.ecapeVariableReserved('$subscription') + ':acknowledge';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -116,7 +117,7 @@ class ProjectsSubscriptionsResourceApi {
    *
    * Completes with a [Subscription].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -127,7 +128,7 @@ class ProjectsSubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -138,7 +139,7 @@ class ProjectsSubscriptionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariableReserved('$name');
+    _url = commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -163,7 +164,7 @@ class ProjectsSubscriptionsResourceApi {
    *
    * Completes with a [Empty].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -174,7 +175,7 @@ class ProjectsSubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (subscription == null) {
@@ -182,7 +183,7 @@ class ProjectsSubscriptionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariableReserved('$subscription');
+    _url = commons.Escaper.ecapeVariableReserved('$subscription');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -203,7 +204,7 @@ class ProjectsSubscriptionsResourceApi {
    *
    * Completes with a [Subscription].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -214,7 +215,7 @@ class ProjectsSubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (subscription == null) {
@@ -222,7 +223,7 @@ class ProjectsSubscriptionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariableReserved('$subscription');
+    _url = commons.Escaper.ecapeVariableReserved('$subscription');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -247,7 +248,7 @@ class ProjectsSubscriptionsResourceApi {
    *
    * Completes with a [ListSubscriptionsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -258,7 +259,7 @@ class ProjectsSubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -272,7 +273,7 @@ class ProjectsSubscriptionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariableReserved('$project') + '/subscriptions';
+    _url = commons.Escaper.ecapeVariableReserved('$project') + '/subscriptions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -298,7 +299,7 @@ class ProjectsSubscriptionsResourceApi {
    *
    * Completes with a [Empty].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -309,7 +310,7 @@ class ProjectsSubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -320,7 +321,7 @@ class ProjectsSubscriptionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariableReserved('$subscription') + ':modifyAckDeadline';
+    _url = commons.Escaper.ecapeVariableReserved('$subscription') + ':modifyAckDeadline';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -347,7 +348,7 @@ class ProjectsSubscriptionsResourceApi {
    *
    * Completes with a [Empty].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -358,7 +359,7 @@ class ProjectsSubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -369,7 +370,7 @@ class ProjectsSubscriptionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariableReserved('$subscription') + ':modifyPushConfig';
+    _url = commons.Escaper.ecapeVariableReserved('$subscription') + ':modifyPushConfig';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -395,7 +396,7 @@ class ProjectsSubscriptionsResourceApi {
    *
    * Completes with a [PullResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -406,7 +407,7 @@ class ProjectsSubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -417,7 +418,7 @@ class ProjectsSubscriptionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariableReserved('$subscription') + ':pull';
+    _url = commons.Escaper.ecapeVariableReserved('$subscription') + ':pull';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -432,13 +433,12 @@ class ProjectsSubscriptionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ProjectsTopicsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ProjectsTopicsSubscriptionsResourceApi get subscriptions => new ProjectsTopicsSubscriptionsResourceApi(_requester);
 
-  ProjectsTopicsResourceApi(common_internal.ApiRequester client) : 
+  ProjectsTopicsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -452,7 +452,7 @@ class ProjectsTopicsResourceApi {
    *
    * Completes with a [Topic].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -463,7 +463,7 @@ class ProjectsTopicsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -474,7 +474,7 @@ class ProjectsTopicsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariableReserved('$name');
+    _url = commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -487,11 +487,10 @@ class ProjectsTopicsResourceApi {
   }
 
   /**
-   * Deletes the topic with the given name. All subscriptions to this topic are
-   * detached from the topic. Returns NOT_FOUND if the topic does not exist.
-   * After a topic is deleted, a new topic may be created with the same name;
-   * this is an entirely new topic with none of the old configuration or
-   * subscriptions.
+   * Deletes the topic with the given name. Returns NOT_FOUND if the topic does
+   * not exist. After a topic is deleted, a new topic may be created with the
+   * same name; this is an entirely new topic with none of the old configuration
+   * or subscriptions. Existing subscriptions to this topic are not deleted.
    *
    * Request parameters:
    *
@@ -499,7 +498,7 @@ class ProjectsTopicsResourceApi {
    *
    * Completes with a [Empty].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -510,7 +509,7 @@ class ProjectsTopicsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (topic == null) {
@@ -518,7 +517,7 @@ class ProjectsTopicsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariableReserved('$topic');
+    _url = commons.Escaper.ecapeVariableReserved('$topic');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -539,7 +538,7 @@ class ProjectsTopicsResourceApi {
    *
    * Completes with a [Topic].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -550,7 +549,7 @@ class ProjectsTopicsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (topic == null) {
@@ -558,7 +557,7 @@ class ProjectsTopicsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariableReserved('$topic');
+    _url = commons.Escaper.ecapeVariableReserved('$topic');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -583,7 +582,7 @@ class ProjectsTopicsResourceApi {
    *
    * Completes with a [ListTopicsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -594,7 +593,7 @@ class ProjectsTopicsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -608,7 +607,7 @@ class ProjectsTopicsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariableReserved('$project') + '/topics';
+    _url = commons.Escaper.ecapeVariableReserved('$project') + '/topics';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -632,7 +631,7 @@ class ProjectsTopicsResourceApi {
    *
    * Completes with a [PublishResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -643,7 +642,7 @@ class ProjectsTopicsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -654,7 +653,7 @@ class ProjectsTopicsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariableReserved('$topic') + ':publish';
+    _url = commons.Escaper.ecapeVariableReserved('$topic') + ':publish';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -669,11 +668,10 @@ class ProjectsTopicsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ProjectsTopicsSubscriptionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ProjectsTopicsSubscriptionsResourceApi(common_internal.ApiRequester client) : 
+  ProjectsTopicsSubscriptionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -689,7 +687,7 @@ class ProjectsTopicsSubscriptionsResourceApi {
    *
    * Completes with a [ListTopicSubscriptionsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -700,7 +698,7 @@ class ProjectsTopicsSubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (topic == null) {
@@ -714,7 +712,7 @@ class ProjectsTopicsSubscriptionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariableReserved('$topic') + '/subscriptions';
+    _url = commons.Escaper.ecapeVariableReserved('$topic') + '/subscriptions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -730,9 +728,7 @@ class ProjectsTopicsSubscriptionsResourceApi {
 
 
 
-/** Not documented yet. */
 class AcknowledgeRequest {
-  /** Not documented yet. */
   core.List<core.String> ackIds;
 
 
@@ -754,7 +750,6 @@ class AcknowledgeRequest {
 }
 
 
-/** Not documented yet. */
 class Empty {
 
   Empty();
@@ -769,12 +764,9 @@ class Empty {
 }
 
 
-/** Not documented yet. */
 class ListSubscriptionsResponse {
-  /** Not documented yet. */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.List<Subscription> subscriptions;
 
 
@@ -802,12 +794,9 @@ class ListSubscriptionsResponse {
 }
 
 
-/** Not documented yet. */
 class ListTopicSubscriptionsResponse {
-  /** Not documented yet. */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.List<core.String> subscriptions;
 
 
@@ -835,12 +824,9 @@ class ListTopicSubscriptionsResponse {
 }
 
 
-/** Not documented yet. */
 class ListTopicsResponse {
-  /** Not documented yet. */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.List<Topic> topics;
 
 
@@ -868,12 +854,9 @@ class ListTopicsResponse {
 }
 
 
-/** Not documented yet. */
 class ModifyAckDeadlineRequest {
-  /** Not documented yet. */
   core.int ackDeadlineSeconds;
 
-  /** Not documented yet. */
   core.String ackId;
 
 
@@ -901,9 +884,7 @@ class ModifyAckDeadlineRequest {
 }
 
 
-/** Not documented yet. */
 class ModifyPushConfigRequest {
-  /** Not documented yet. */
   PushConfig pushConfig;
 
 
@@ -925,9 +906,7 @@ class ModifyPushConfigRequest {
 }
 
 
-/** Not documented yet. */
 class PublishRequest {
-  /** Not documented yet. */
   core.List<PubsubMessage> messages;
 
 
@@ -949,9 +928,7 @@ class PublishRequest {
 }
 
 
-/** Not documented yet. */
 class PublishResponse {
-  /** Not documented yet. */
   core.List<core.String> messageIds;
 
 
@@ -973,12 +950,9 @@ class PublishResponse {
 }
 
 
-/** Not documented yet. */
 class PubsubMessage {
-  /** Not documented yet. */
   core.Map<core.String, core.String> attributes;
 
-  /** Not documented yet. */
   core.String data;
 
   core.List<core.int> get dataAsBytes {
@@ -989,7 +963,6 @@ class PubsubMessage {
     data = crypto.CryptoUtils.bytesToBase64(_bytes, urlSafe: true);
   }
 
-  /** Not documented yet. */
   core.String messageId;
 
 
@@ -1023,12 +996,9 @@ class PubsubMessage {
 }
 
 
-/** Not documented yet. */
 class PullRequest {
-  /** Not documented yet. */
   core.int maxMessages;
 
-  /** Not documented yet. */
   core.bool returnImmediately;
 
 
@@ -1056,9 +1026,7 @@ class PullRequest {
 }
 
 
-/** Not documented yet. */
 class PullResponse {
-  /** Not documented yet. */
   core.List<ReceivedMessage> receivedMessages;
 
 
@@ -1080,12 +1048,9 @@ class PullResponse {
 }
 
 
-/** Not documented yet. */
 class PushConfig {
-  /** Not documented yet. */
   core.Map<core.String, core.String> attributes;
 
-  /** Not documented yet. */
   core.String pushEndpoint;
 
 
@@ -1113,12 +1078,9 @@ class PushConfig {
 }
 
 
-/** Not documented yet. */
 class ReceivedMessage {
-  /** Not documented yet. */
   core.String ackId;
 
-  /** Not documented yet. */
   PubsubMessage message;
 
 
@@ -1146,18 +1108,13 @@ class ReceivedMessage {
 }
 
 
-/** Not documented yet. */
 class Subscription {
-  /** Not documented yet. */
   core.int ackDeadlineSeconds;
 
-  /** Not documented yet. */
   core.String name;
 
-  /** Not documented yet. */
   PushConfig pushConfig;
 
-  /** Not documented yet. */
   core.String topic;
 
 
@@ -1197,9 +1154,7 @@ class Subscription {
 }
 
 
-/** Not documented yet. */
 class Topic {
-  /** Not documented yet. */
   core.String name;
 
 
@@ -1219,5 +1174,3 @@ class Topic {
     return _json;
   }
 }
-
-

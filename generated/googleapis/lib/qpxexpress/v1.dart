@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.qpxExpress.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client qpxExpress/v1';
 
 /**
  * Lets you find the least expensive flights between an origin and a
@@ -19,20 +22,19 @@ export '../common/common.dart' show DetailedApiRequestError;
  */
 class QpxExpressApi {
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   TripsResourceApi get trips => new TripsResourceApi(_requester);
 
   QpxExpressApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "qpxExpress/v1/trips/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class TripsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TripsResourceApi(common_internal.ApiRequester client) : 
+  TripsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -44,7 +46,7 @@ class TripsResourceApi {
    *
    * Completes with a [TripsSearchResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -55,7 +57,7 @@ class TripsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -447,7 +449,6 @@ class Data {
  * character alphanumeric code used to identify a fare.)
  */
 class FareInfo {
-  /** Not documented yet. */
   core.String basisCode;
 
   /**
@@ -541,7 +542,6 @@ class FareInfo {
  * change of aircraft between legs.
  */
 class FlightInfo {
-  /** Not documented yet. */
   core.String carrier;
 
   /** The flight number. */
@@ -1899,5 +1899,3 @@ class TripsSearchResponse {
     return _json;
   }
 }
-
-

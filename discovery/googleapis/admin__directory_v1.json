@@ -69,7 +69,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/kiEe27ASVaXFaTazonTUuT5jr1o\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/FINMPppbAsSW7hhRV2k9bEsVkrk\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1291,7 +1291,7 @@
                             "type": "string"
                         },
                         "orgUnitPath": {
-                            "description": "Full path of the organization unit",
+                            "description": "Full path of the organization unit or its Id",
                             "location": "path",
                             "repeated": true,
                             "required": true,
@@ -1319,7 +1319,7 @@
                             "type": "string"
                         },
                         "orgUnitPath": {
-                            "description": "Full path of the organization unit",
+                            "description": "Full path of the organization unit or its Id",
                             "location": "path",
                             "repeated": true,
                             "required": true,
@@ -1377,7 +1377,7 @@
                         },
                         "orgUnitPath": {
                             "default": "",
-                            "description": "the URL-encoded organization unit",
+                            "description": "the URL-encoded organization unit's path or its Id",
                             "location": "query",
                             "type": "string"
                         },
@@ -1420,7 +1420,7 @@
                             "type": "string"
                         },
                         "orgUnitPath": {
-                            "description": "Full path of the organization unit",
+                            "description": "Full path of the organization unit or its Id",
                             "location": "path",
                             "repeated": true,
                             "required": true,
@@ -1454,7 +1454,7 @@
                             "type": "string"
                         },
                         "orgUnitPath": {
-                            "description": "Full path of the organization unit",
+                            "description": "Full path of the organization unit or its Id",
                             "location": "path",
                             "repeated": true,
                             "required": true,
@@ -2511,7 +2511,7 @@
             }
         }
     },
-    "revision": "20150123",
+    "revision": "20150309",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {
@@ -3287,16 +3287,19 @@
                     "description": "Name of OrgUnit",
                     "type": "string"
                 },
+                "orgUnitId": {
+                    "description": "Id of OrgUnit",
+                    "type": "string"
+                },
                 "orgUnitPath": {
                     "description": "Path of OrgUnit",
                     "type": "string"
                 },
+                "parentOrgUnitId": {
+                    "description": "Id of parent OrgUnit",
+                    "type": "string"
+                },
                 "parentOrgUnitPath": {
-                    "annotations": {
-                        "required": [
-                            "directory.orgunits.insert"
-                        ]
-                    },
                     "description": "Path of parent OrgUnit",
                     "type": "string"
                 }

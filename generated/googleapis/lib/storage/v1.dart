@@ -1,17 +1,22 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.storage.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client storage/v1';
 
 /** Lets you store and retrieve potentially-large, immutable data objects. */
 class StorageApi {
@@ -28,7 +33,7 @@ class StorageApi {
   static const DevstorageReadWriteScope = "https://www.googleapis.com/auth/devstorage.read_write";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   BucketAccessControlsResourceApi get bucketAccessControls => new BucketAccessControlsResourceApi(_requester);
   BucketsResourceApi get buckets => new BucketsResourceApi(_requester);
@@ -38,15 +43,14 @@ class StorageApi {
   ObjectsResourceApi get objects => new ObjectsResourceApi(_requester);
 
   StorageApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "storage/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class BucketAccessControlsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  BucketAccessControlsResourceApi(common_internal.ApiRequester client) : 
+  BucketAccessControlsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -61,7 +65,7 @@ class BucketAccessControlsResourceApi {
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -72,7 +76,7 @@ class BucketAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bucket == null) {
@@ -84,7 +88,7 @@ class BucketAccessControlsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/acl/' + common_internal.Escaper.ecapeVariable('$entity');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl/' + commons.Escaper.ecapeVariable('$entity');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -109,7 +113,7 @@ class BucketAccessControlsResourceApi {
    *
    * Completes with a [BucketAccessControl].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -120,7 +124,7 @@ class BucketAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bucket == null) {
@@ -131,7 +135,7 @@ class BucketAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/acl/' + common_internal.Escaper.ecapeVariable('$entity');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl/' + commons.Escaper.ecapeVariable('$entity');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -154,7 +158,7 @@ class BucketAccessControlsResourceApi {
    *
    * Completes with a [BucketAccessControl].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -165,7 +169,7 @@ class BucketAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -176,7 +180,7 @@ class BucketAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/acl';
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -197,7 +201,7 @@ class BucketAccessControlsResourceApi {
    *
    * Completes with a [BucketAccessControls].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -208,7 +212,7 @@ class BucketAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bucket == null) {
@@ -216,7 +220,7 @@ class BucketAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/acl';
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -244,7 +248,7 @@ class BucketAccessControlsResourceApi {
    *
    * Completes with a [BucketAccessControl].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -255,7 +259,7 @@ class BucketAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -269,7 +273,7 @@ class BucketAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/acl/' + common_internal.Escaper.ecapeVariable('$entity');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl/' + commons.Escaper.ecapeVariable('$entity');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -296,7 +300,7 @@ class BucketAccessControlsResourceApi {
    *
    * Completes with a [BucketAccessControl].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -307,7 +311,7 @@ class BucketAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -321,7 +325,7 @@ class BucketAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/acl/' + common_internal.Escaper.ecapeVariable('$entity');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl/' + commons.Escaper.ecapeVariable('$entity');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -336,11 +340,10 @@ class BucketAccessControlsResourceApi {
 }
 
 
-/** Not documented yet. */
 class BucketsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  BucketsResourceApi(common_internal.ApiRequester client) : 
+  BucketsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -356,7 +359,7 @@ class BucketsResourceApi {
    * [ifMetagenerationNotMatch] - If set, only deletes the bucket if its
    * metageneration does not match this value.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -367,7 +370,7 @@ class BucketsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bucket == null) {
@@ -382,7 +385,7 @@ class BucketsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -416,7 +419,7 @@ class BucketsResourceApi {
    *
    * Completes with a [Bucket].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -427,7 +430,7 @@ class BucketsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bucket == null) {
@@ -444,7 +447,7 @@ class BucketsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -501,7 +504,7 @@ class BucketsResourceApi {
    *
    * Completes with a [Bucket].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -512,7 +515,7 @@ class BucketsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -566,7 +569,7 @@ class BucketsResourceApi {
    *
    * Completes with a [Buckets].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -577,7 +580,7 @@ class BucketsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -661,7 +664,7 @@ class BucketsResourceApi {
    *
    * Completes with a [Bucket].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -672,7 +675,7 @@ class BucketsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -698,7 +701,7 @@ class BucketsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -761,7 +764,7 @@ class BucketsResourceApi {
    *
    * Completes with a [Bucket].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -772,7 +775,7 @@ class BucketsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -798,7 +801,7 @@ class BucketsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -813,11 +816,10 @@ class BucketsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ChannelsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ChannelsResourceApi(common_internal.ApiRequester client) : 
+  ChannelsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -827,7 +829,7 @@ class ChannelsResourceApi {
    *
    * Request parameters:
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -838,7 +840,7 @@ class ChannelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -862,11 +864,10 @@ class ChannelsResourceApi {
 }
 
 
-/** Not documented yet. */
 class DefaultObjectAccessControlsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DefaultObjectAccessControlsResourceApi(common_internal.ApiRequester client) : 
+  DefaultObjectAccessControlsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -881,7 +882,7 @@ class DefaultObjectAccessControlsResourceApi {
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -892,7 +893,7 @@ class DefaultObjectAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bucket == null) {
@@ -904,7 +905,7 @@ class DefaultObjectAccessControlsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl/' + common_internal.Escaper.ecapeVariable('$entity');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl/' + commons.Escaper.ecapeVariable('$entity');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -930,7 +931,7 @@ class DefaultObjectAccessControlsResourceApi {
    *
    * Completes with a [ObjectAccessControl].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -941,7 +942,7 @@ class DefaultObjectAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bucket == null) {
@@ -952,7 +953,7 @@ class DefaultObjectAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl/' + common_internal.Escaper.ecapeVariable('$entity');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl/' + commons.Escaper.ecapeVariable('$entity');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -975,7 +976,7 @@ class DefaultObjectAccessControlsResourceApi {
    *
    * Completes with a [ObjectAccessControl].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -986,7 +987,7 @@ class DefaultObjectAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -997,7 +998,7 @@ class DefaultObjectAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl';
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1024,7 +1025,7 @@ class DefaultObjectAccessControlsResourceApi {
    *
    * Completes with a [ObjectAccessControls].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1035,7 +1036,7 @@ class DefaultObjectAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bucket == null) {
@@ -1049,7 +1050,7 @@ class DefaultObjectAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl';
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1077,7 +1078,7 @@ class DefaultObjectAccessControlsResourceApi {
    *
    * Completes with a [ObjectAccessControl].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1088,7 +1089,7 @@ class DefaultObjectAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1102,7 +1103,7 @@ class DefaultObjectAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl/' + common_internal.Escaper.ecapeVariable('$entity');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl/' + commons.Escaper.ecapeVariable('$entity');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1129,7 +1130,7 @@ class DefaultObjectAccessControlsResourceApi {
    *
    * Completes with a [ObjectAccessControl].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1140,7 +1141,7 @@ class DefaultObjectAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1154,7 +1155,7 @@ class DefaultObjectAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl/' + common_internal.Escaper.ecapeVariable('$entity');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl/' + commons.Escaper.ecapeVariable('$entity');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1169,11 +1170,10 @@ class DefaultObjectAccessControlsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ObjectAccessControlsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ObjectAccessControlsResourceApi(common_internal.ApiRequester client) : 
+  ObjectAccessControlsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1193,7 +1193,7 @@ class ObjectAccessControlsResourceApi {
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1204,7 +1204,7 @@ class ObjectAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bucket == null) {
@@ -1222,7 +1222,7 @@ class ObjectAccessControlsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o/' + common_internal.Escaper.ecapeVariable('$object') + '/acl/' + common_internal.Escaper.ecapeVariable('$entity');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/acl/' + commons.Escaper.ecapeVariable('$entity');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1252,7 +1252,7 @@ class ObjectAccessControlsResourceApi {
    *
    * Completes with a [ObjectAccessControl].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1263,7 +1263,7 @@ class ObjectAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bucket == null) {
@@ -1280,7 +1280,7 @@ class ObjectAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o/' + common_internal.Escaper.ecapeVariable('$object') + '/acl/' + common_internal.Escaper.ecapeVariable('$entity');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/acl/' + commons.Escaper.ecapeVariable('$entity');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1308,7 +1308,7 @@ class ObjectAccessControlsResourceApi {
    *
    * Completes with a [ObjectAccessControl].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1319,7 +1319,7 @@ class ObjectAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1336,7 +1336,7 @@ class ObjectAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o/' + common_internal.Escaper.ecapeVariable('$object') + '/acl';
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/acl';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1362,7 +1362,7 @@ class ObjectAccessControlsResourceApi {
    *
    * Completes with a [ObjectAccessControls].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1373,7 +1373,7 @@ class ObjectAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bucket == null) {
@@ -1387,7 +1387,7 @@ class ObjectAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o/' + common_internal.Escaper.ecapeVariable('$object') + '/acl';
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/acl';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1420,7 +1420,7 @@ class ObjectAccessControlsResourceApi {
    *
    * Completes with a [ObjectAccessControl].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1431,7 +1431,7 @@ class ObjectAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1451,7 +1451,7 @@ class ObjectAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o/' + common_internal.Escaper.ecapeVariable('$object') + '/acl/' + common_internal.Escaper.ecapeVariable('$entity');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/acl/' + commons.Escaper.ecapeVariable('$entity');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1483,7 +1483,7 @@ class ObjectAccessControlsResourceApi {
    *
    * Completes with a [ObjectAccessControl].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1494,7 +1494,7 @@ class ObjectAccessControlsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1514,7 +1514,7 @@ class ObjectAccessControlsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o/' + common_internal.Escaper.ecapeVariable('$object') + '/acl/' + common_internal.Escaper.ecapeVariable('$entity');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/acl/' + commons.Escaper.ecapeVariable('$entity');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1529,11 +1529,10 @@ class ObjectAccessControlsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ObjectsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ObjectsResourceApi(common_internal.ApiRequester client) : 
+  ObjectsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1563,6 +1562,18 @@ class ObjectsResourceApi {
    * - "publicRead" : Object owner gets OWNER access, and allUsers get READER
    * access.
    *
+   * [encryptionAlgorithm] - Specifies the encryption algorithm that was used to
+   * encrypt the object, if any. Only 'AES256' is supported currently.
+   * Algorithm, key, and key hash must be supplied together.
+   *
+   * [encryptionKey] - Provides a base64-encoded 256-bit key that was used to
+   * encrypt the object, if any. Algorithm, key, and key hash must be supplied
+   * together.
+   *
+   * [encryptionKeyHash] - Provides the digest of the key for error-checking
+   * transmission. A digest is in the format of '='. Algorithm, key, and key
+   * hash must be supplied together.
+   *
    * [ifGenerationMatch] - Makes the operation conditional on whether the
    * object's current generation matches the given value.
    *
@@ -1577,20 +1588,20 @@ class ObjectsResourceApi {
    *
    * - [Object] for Metadata downloads (see [downloadOptions]).
    *
-   * - [common.Media] for Media downloads (see [downloadOptions]).
+   * - [commons.Media] for Media downloads (see [downloadOptions]).
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future compose(ComposeRequest request, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String ifGenerationMatch, core.String ifMetagenerationMatch, common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future compose(ComposeRequest request, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String encryptionAlgorithm, core.String encryptionKey, core.String encryptionKeyHash, core.String ifGenerationMatch, core.String ifMetagenerationMatch, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1605,6 +1616,15 @@ class ObjectsResourceApi {
     if (destinationPredefinedAcl != null) {
       _queryParams["destinationPredefinedAcl"] = [destinationPredefinedAcl];
     }
+    if (encryptionAlgorithm != null) {
+      _queryParams["encryptionAlgorithm"] = [encryptionAlgorithm];
+    }
+    if (encryptionKey != null) {
+      _queryParams["encryptionKey"] = [encryptionKey];
+    }
+    if (encryptionKeyHash != null) {
+      _queryParams["encryptionKeyHash"] = [encryptionKeyHash];
+    }
     if (ifGenerationMatch != null) {
       _queryParams["ifGenerationMatch"] = [ifGenerationMatch];
     }
@@ -1614,7 +1634,7 @@ class ObjectsResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$destinationBucket') + '/o/' + common_internal.Escaper.ecapeVariable('$destinationObject') + '/compose';
+    _url = 'b/' + commons.Escaper.ecapeVariable('$destinationBucket') + '/o/' + commons.Escaper.ecapeVariable('$destinationObject') + '/compose';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1624,7 +1644,7 @@ class ObjectsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new Object.fromJson(data));
     } else {
       return _response;
@@ -1663,6 +1683,18 @@ class ObjectsResourceApi {
    * members get access according to their roles.
    * - "publicRead" : Object owner gets OWNER access, and allUsers get READER
    * access.
+   *
+   * [encryptionAlgorithm] - Specifies the encryption algorithm that was used to
+   * encrypt the object, if any. Only 'AES256' is supported currently.
+   * Algorithm, key, and key hash must be supplied together.
+   *
+   * [encryptionKey] - Provides a base64-encoded 256-bit key that was used to
+   * encrypt the object, if any. Algorithm, key, and key hash must be supplied
+   * together.
+   *
+   * [encryptionKeyHash] - Provides the digest of the key for error-checking
+   * transmission. A digest is in the format of '='. Algorithm, key, and key
+   * hash must be supplied together.
    *
    * [ifGenerationMatch] - Makes the operation conditional on whether the
    * destination object's current generation matches the given value.
@@ -1706,20 +1738,20 @@ class ObjectsResourceApi {
    *
    * - [Object] for Metadata downloads (see [downloadOptions]).
    *
-   * - [common.Media] for Media downloads (see [downloadOptions]).
+   * - [commons.Media] for Media downloads (see [downloadOptions]).
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future copy(Object request, core.String sourceBucket, core.String sourceObject, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String ifSourceGenerationMatch, core.String ifSourceGenerationNotMatch, core.String ifSourceMetagenerationMatch, core.String ifSourceMetagenerationNotMatch, core.String projection, core.String sourceGeneration, common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future copy(Object request, core.String sourceBucket, core.String sourceObject, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String encryptionAlgorithm, core.String encryptionKey, core.String encryptionKeyHash, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String ifSourceGenerationMatch, core.String ifSourceGenerationNotMatch, core.String ifSourceMetagenerationMatch, core.String ifSourceMetagenerationNotMatch, core.String projection, core.String sourceGeneration, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1739,6 +1771,15 @@ class ObjectsResourceApi {
     }
     if (destinationPredefinedAcl != null) {
       _queryParams["destinationPredefinedAcl"] = [destinationPredefinedAcl];
+    }
+    if (encryptionAlgorithm != null) {
+      _queryParams["encryptionAlgorithm"] = [encryptionAlgorithm];
+    }
+    if (encryptionKey != null) {
+      _queryParams["encryptionKey"] = [encryptionKey];
+    }
+    if (encryptionKeyHash != null) {
+      _queryParams["encryptionKeyHash"] = [encryptionKeyHash];
     }
     if (ifGenerationMatch != null) {
       _queryParams["ifGenerationMatch"] = [ifGenerationMatch];
@@ -1773,7 +1814,7 @@ class ObjectsResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$sourceBucket') + '/o/' + common_internal.Escaper.ecapeVariable('$sourceObject') + '/copyTo/b/' + common_internal.Escaper.ecapeVariable('$destinationBucket') + '/o/' + common_internal.Escaper.ecapeVariable('$destinationObject');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$sourceBucket') + '/o/' + commons.Escaper.ecapeVariable('$sourceObject') + '/copyTo/b/' + commons.Escaper.ecapeVariable('$destinationBucket') + '/o/' + commons.Escaper.ecapeVariable('$destinationObject');
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1783,7 +1824,7 @@ class ObjectsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new Object.fromJson(data));
     } else {
       return _response;
@@ -1815,7 +1856,7 @@ class ObjectsResourceApi {
    * [ifMetagenerationNotMatch] - Makes the operation conditional on whether the
    * object's current metageneration does not match the given value.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1826,7 +1867,7 @@ class ObjectsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bucket == null) {
@@ -1853,7 +1894,7 @@ class ObjectsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o/' + common_internal.Escaper.ecapeVariable('$object');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1873,6 +1914,17 @@ class ObjectsResourceApi {
    * [bucket] - Name of the bucket in which the object resides.
    *
    * [object] - Name of the object.
+   *
+   * [encryptionAlgorithm] - Specifies the encryption algorithm that would be
+   * used to decrypt the object. Only 'AES256' is supported currently.
+   * Algorithm, key, and key hash must be supplied together.
+   *
+   * [encryptionKey] - Provides a base64-encoded 256-bit key to decrypt the
+   * object. Algorithm, key, and key hash must be supplied together.
+   *
+   * [encryptionKeyHash] - Provides the digest of the key for error-checking
+   * transmission. A digest is in the format of '='. Algorithm, key, and key
+   * hash must be supplied together.
    *
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
@@ -1902,20 +1954,20 @@ class ObjectsResourceApi {
    *
    * - [Object] for Metadata downloads (see [downloadOptions]).
    *
-   * - [common.Media] for Media downloads (see [downloadOptions]).
+   * - [commons.Media] for Media downloads (see [downloadOptions]).
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future get(core.String bucket, core.String object, {core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String projection, common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future get(core.String bucket, core.String object, {core.String encryptionAlgorithm, core.String encryptionKey, core.String encryptionKeyHash, core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String projection, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bucket == null) {
@@ -1923,6 +1975,15 @@ class ObjectsResourceApi {
     }
     if (object == null) {
       throw new core.ArgumentError("Parameter object is required.");
+    }
+    if (encryptionAlgorithm != null) {
+      _queryParams["encryptionAlgorithm"] = [encryptionAlgorithm];
+    }
+    if (encryptionKey != null) {
+      _queryParams["encryptionKey"] = [encryptionKey];
+    }
+    if (encryptionKeyHash != null) {
+      _queryParams["encryptionKeyHash"] = [encryptionKeyHash];
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
@@ -1945,7 +2006,7 @@ class ObjectsResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o/' + common_internal.Escaper.ecapeVariable('$object');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1955,7 +2016,7 @@ class ObjectsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new Object.fromJson(data));
     } else {
       return _response;
@@ -1977,6 +2038,17 @@ class ObjectsResourceApi {
    * contentEncoding metadata property. This can be useful when uploading an
    * object with uploadType=media to indicate the encoding of the content being
    * uploaded.
+   *
+   * [encryptionAlgorithm] - Specifies the encryption algorithm that would be
+   * used to encrypt the object. Only 'AES256' is supported currently.
+   * Algorithm, key, and key hash must be supplied together.
+   *
+   * [encryptionKey] - Provides a base64-encoded 256-bit key to encrypt the
+   * object. Algorithm, key, and key hash must be supplied together.
+   *
+   * [encryptionKeyHash] - Provides the digest of the key for error-checking
+   * transmission. A digest is in the format of '='. Algorithm, key, and key
+   * hash must be supplied together.
    *
    * [ifGenerationMatch] - Makes the operation conditional on whether the
    * object's current generation matches the given value.
@@ -2026,20 +2098,20 @@ class ObjectsResourceApi {
    *
    * - [Object] for Metadata downloads (see [downloadOptions]).
    *
-   * - [common.Media] for Media downloads (see [downloadOptions]).
+   * - [commons.Media] for Media downloads (see [downloadOptions]).
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future insert(Object request, core.String bucket, {core.String contentEncoding, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String name, core.String predefinedAcl, core.String projection, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia, common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future insert(Object request, core.String bucket, {core.String contentEncoding, core.String encryptionAlgorithm, core.String encryptionKey, core.String encryptionKeyHash, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String name, core.String predefinedAcl, core.String projection, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2050,6 +2122,15 @@ class ObjectsResourceApi {
     }
     if (contentEncoding != null) {
       _queryParams["contentEncoding"] = [contentEncoding];
+    }
+    if (encryptionAlgorithm != null) {
+      _queryParams["encryptionAlgorithm"] = [encryptionAlgorithm];
+    }
+    if (encryptionKey != null) {
+      _queryParams["encryptionKey"] = [encryptionKey];
+    }
+    if (encryptionKeyHash != null) {
+      _queryParams["encryptionKeyHash"] = [encryptionKeyHash];
     }
     if (ifGenerationMatch != null) {
       _queryParams["ifGenerationMatch"] = [ifGenerationMatch];
@@ -2078,11 +2159,11 @@ class ObjectsResourceApi {
     _downloadOptions = downloadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/storage/v1/b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o';
+      _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/storage/v1/b/' + commons.Escaper.ecapeVariable('$bucket') + '/o';
     } else {
-      _url = '/upload/storage/v1/b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o';
+      _url = '/upload/storage/v1/b/' + commons.Escaper.ecapeVariable('$bucket') + '/o';
     }
 
 
@@ -2094,7 +2175,7 @@ class ObjectsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new Object.fromJson(data));
     } else {
       return _response;
@@ -2132,7 +2213,7 @@ class ObjectsResourceApi {
    *
    * Completes with a [Objects].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2143,7 +2224,7 @@ class ObjectsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bucket == null) {
@@ -2169,7 +2250,7 @@ class ObjectsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o';
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2191,6 +2272,19 @@ class ObjectsResourceApi {
    * [bucket] - Name of the bucket in which the object resides.
    *
    * [object] - Name of the object.
+   *
+   * [encryptionAlgorithm] - For downloading encrypted objects, specifies the
+   * encryption algorithm that would be used to decrypt the object. Only
+   * 'AES256' is supported currently. Algorithm, key, and key hash must be
+   * supplied together.
+   *
+   * [encryptionKey] - For downloading encrypted objects, provides a
+   * base64-encoded 256-bit key to decrypt the object. Algorithm, key, and key
+   * hash must be supplied together.
+   *
+   * [encryptionKeyHash] - For downloading encrypted objects, provides the
+   * digest of the key for error-checking transmission. A digest is in the
+   * format of '='. Algorithm, key, and key hash must be supplied together.
    *
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
@@ -2228,18 +2322,18 @@ class ObjectsResourceApi {
    *
    * Completes with a [Object].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Object> patch(Object request, core.String bucket, core.String object, {core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String projection}) {
+  async.Future<Object> patch(Object request, core.String bucket, core.String object, {core.String encryptionAlgorithm, core.String encryptionKey, core.String encryptionKeyHash, core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String projection}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2250,6 +2344,15 @@ class ObjectsResourceApi {
     }
     if (object == null) {
       throw new core.ArgumentError("Parameter object is required.");
+    }
+    if (encryptionAlgorithm != null) {
+      _queryParams["encryptionAlgorithm"] = [encryptionAlgorithm];
+    }
+    if (encryptionKey != null) {
+      _queryParams["encryptionKey"] = [encryptionKey];
+    }
+    if (encryptionKeyHash != null) {
+      _queryParams["encryptionKeyHash"] = [encryptionKeyHash];
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
@@ -2274,7 +2377,7 @@ class ObjectsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o/' + common_internal.Escaper.ecapeVariable('$object');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -2296,6 +2399,19 @@ class ObjectsResourceApi {
    * [bucket] - Name of the bucket in which the object resides.
    *
    * [object] - Name of the object.
+   *
+   * [encryptionAlgorithm] - For downloading encrypted objects, specifies the
+   * encryption algorithm that would be used to decrypt the object. Only
+   * 'AES256' is supported currently. Algorithm, key, and key hash must be
+   * supplied together.
+   *
+   * [encryptionKey] - For downloading encrypted objects, provides a
+   * base64-encoded 256-bit key to decrypt the object. Algorithm, key, and key
+   * hash must be supplied together.
+   *
+   * [encryptionKeyHash] - For downloading encrypted objects, provides the
+   * digest of the key for error-checking transmission. A digest is in the
+   * format of '='. Algorithm, key, and key hash must be supplied together.
    *
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
@@ -2339,20 +2455,20 @@ class ObjectsResourceApi {
    *
    * - [Object] for Metadata downloads (see [downloadOptions]).
    *
-   * - [common.Media] for Media downloads (see [downloadOptions]).
+   * - [commons.Media] for Media downloads (see [downloadOptions]).
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future update(Object request, core.String bucket, core.String object, {core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String projection, common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future update(Object request, core.String bucket, core.String object, {core.String encryptionAlgorithm, core.String encryptionKey, core.String encryptionKeyHash, core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String projection, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2363,6 +2479,15 @@ class ObjectsResourceApi {
     }
     if (object == null) {
       throw new core.ArgumentError("Parameter object is required.");
+    }
+    if (encryptionAlgorithm != null) {
+      _queryParams["encryptionAlgorithm"] = [encryptionAlgorithm];
+    }
+    if (encryptionKey != null) {
+      _queryParams["encryptionKey"] = [encryptionKey];
+    }
+    if (encryptionKeyHash != null) {
+      _queryParams["encryptionKeyHash"] = [encryptionKeyHash];
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
@@ -2388,7 +2513,7 @@ class ObjectsResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o/' + common_internal.Escaper.ecapeVariable('$object');
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2398,7 +2523,7 @@ class ObjectsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new Object.fromJson(data));
     } else {
       return _response;
@@ -2438,7 +2563,7 @@ class ObjectsResourceApi {
    *
    * Completes with a [Channel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2449,7 +2574,7 @@ class ObjectsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2478,7 +2603,7 @@ class ObjectsResourceApi {
     }
 
 
-    _url = 'b/' + common_internal.Escaper.ecapeVariable('$bucket') + '/o/watch';
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/watch';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2494,7 +2619,6 @@ class ObjectsResourceApi {
 
 
 
-/** Not documented yet. */
 class BucketCors {
   /**
    * The value, in seconds, to return in the  Access-Control-Max-Age header used
@@ -2647,7 +2771,6 @@ class BucketLifecycleRuleCondition {
 }
 
 
-/** Not documented yet. */
 class BucketLifecycleRule {
   /** The action to take. */
   BucketLifecycleRuleAction action;
@@ -2901,9 +3024,9 @@ class Bucket {
 
   /**
    * The bucket's storage class. This defines how objects in the bucket are
-   * stored and determines the SLA and the cost of storage. Typical values are
-   * STANDARD and DURABLE_REDUCED_AVAILABILITY. Defaults to STANDARD. See the
-   * developer's guide for the authoritative list.
+   * stored and determines the SLA and the cost of storage. Values include
+   * STANDARD, NEARLINE and DURABLE_REDUCED_AVAILABILITY. Defaults to STANDARD.
+   * For more information, see storage classes.
    */
   core.String storageClass;
 
@@ -3431,7 +3554,6 @@ class ComposeRequestSourceObjectsObjectPreconditions {
 }
 
 
-/** Not documented yet. */
 class ComposeRequestSourceObjects {
   /** The generation of this object to use as the source. */
   core.String generation;
@@ -4086,5 +4208,3 @@ class Objects {
     return _json;
   }
 }
-
-

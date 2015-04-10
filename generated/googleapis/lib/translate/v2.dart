@@ -1,37 +1,39 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.translate.v2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client translate/v2';
 
 /** Lets you translate text from one language to another */
 class TranslateApi {
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   DetectionsResourceApi get detections => new DetectionsResourceApi(_requester);
   LanguagesResourceApi get languages => new LanguagesResourceApi(_requester);
   TranslationsResourceApi get translations => new TranslationsResourceApi(_requester);
 
   TranslateApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "language/translate/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class DetectionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DetectionsResourceApi(common_internal.ApiRequester client) : 
+  DetectionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -43,7 +45,7 @@ class DetectionsResourceApi {
    *
    * Completes with a [DetectionsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -54,7 +56,7 @@ class DetectionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (q == null || q.isEmpty) {
@@ -78,11 +80,10 @@ class DetectionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class LanguagesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  LanguagesResourceApi(common_internal.ApiRequester client) : 
+  LanguagesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -95,7 +96,7 @@ class LanguagesResourceApi {
    *
    * Completes with a [LanguagesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -106,7 +107,7 @@ class LanguagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (target != null) {
@@ -129,11 +130,10 @@ class LanguagesResourceApi {
 }
 
 
-/** Not documented yet. */
 class TranslationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TranslationsResourceApi(common_internal.ApiRequester client) : 
+  TranslationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -156,7 +156,7 @@ class TranslationsResourceApi {
    *
    * Completes with a [TranslationsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -167,7 +167,7 @@ class TranslationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (q == null || q.isEmpty) {
@@ -205,7 +205,6 @@ class TranslationsResourceApi {
 
 
 
-/** Not documented yet. */
 class DetectionsListResponse {
   /** A detections contains detection results of several text */
   core.List<DetectionsResource> detections;
@@ -229,7 +228,6 @@ class DetectionsListResponse {
 }
 
 
-/** Not documented yet. */
 class DetectionsResourceElement {
   /** The confidence of the detection resul of this language. */
   core.double confidence;
@@ -302,7 +300,6 @@ class DetectionsResource
 }
 
 
-/** Not documented yet. */
 class LanguagesListResponse {
   /**
    * List of source/target languages supported by the translation API. If target
@@ -331,7 +328,6 @@ class LanguagesListResponse {
 }
 
 
-/** Not documented yet. */
 class LanguagesResource {
   /** The language code. */
   core.String language;
@@ -364,7 +360,6 @@ class LanguagesResource {
 }
 
 
-/** Not documented yet. */
 class TranslationsListResponse {
   /** Translations contains list of translation results of given text */
   core.List<TranslationsResource> translations;
@@ -388,7 +383,6 @@ class TranslationsListResponse {
 }
 
 
-/** Not documented yet. */
 class TranslationsResource {
   /** Detected source language if source parameter is unspecified. */
   core.String detectedSourceLanguage;
@@ -419,5 +413,3 @@ class TranslationsResource {
     return _json;
   }
 }
-
-

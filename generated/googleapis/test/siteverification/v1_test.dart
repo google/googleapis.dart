@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/siteverification/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterSiteVerificationWebResourceGettokenRequestSite = 0;
 buildSiteVerificationWebResourceGettokenRequestSite() {
@@ -79,14 +114,14 @@ checkSiteVerificationWebResourceGettokenResponse(api.SiteVerificationWebResource
   buildCounterSiteVerificationWebResourceGettokenResponse--;
 }
 
-buildUnnamed162() {
+buildUnnamed1327() {
   var o = new core.List<api.SiteVerificationWebResourceResource>();
   o.add(buildSiteVerificationWebResourceResource());
   o.add(buildSiteVerificationWebResourceResource());
   return o;
 }
 
-checkUnnamed162(core.List<api.SiteVerificationWebResourceResource> o) {
+checkUnnamed1327(core.List<api.SiteVerificationWebResourceResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteVerificationWebResourceResource(o[0]);
   checkSiteVerificationWebResourceResource(o[1]);
@@ -97,7 +132,7 @@ buildSiteVerificationWebResourceListResponse() {
   var o = new api.SiteVerificationWebResourceListResponse();
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    o.items = buildUnnamed162();
+    o.items = buildUnnamed1327();
   }
   buildCounterSiteVerificationWebResourceListResponse--;
   return o;
@@ -106,19 +141,19 @@ buildSiteVerificationWebResourceListResponse() {
 checkSiteVerificationWebResourceListResponse(api.SiteVerificationWebResourceListResponse o) {
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    checkUnnamed162(o.items);
+    checkUnnamed1327(o.items);
   }
   buildCounterSiteVerificationWebResourceListResponse--;
 }
 
-buildUnnamed163() {
+buildUnnamed1328() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed163(core.List<core.String> o) {
+checkUnnamed1328(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -151,7 +186,7 @@ buildSiteVerificationWebResourceResource() {
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     o.id = "foo";
-    o.owners = buildUnnamed163();
+    o.owners = buildUnnamed1328();
     o.site = buildSiteVerificationWebResourceResourceSite();
   }
   buildCounterSiteVerificationWebResourceResource--;
@@ -162,7 +197,7 @@ checkSiteVerificationWebResourceResource(api.SiteVerificationWebResourceResource
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed163(o.owners);
+    checkUnnamed1328(o.owners);
     checkSiteVerificationWebResourceResourceSite(o.site);
   }
   buildCounterSiteVerificationWebResourceResource--;
@@ -227,7 +262,7 @@ main() {
   unittest.group("resource-WebResourceResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.WebResourceResourceApi res = new api.SiteVerificationApi(mock).webResource;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -267,14 +302,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_id).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.WebResourceResourceApi res = new api.SiteVerificationApi(mock).webResource;
       var arg_id = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -314,7 +349,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSiteVerificationWebResourceResource());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_id).then(unittest.expectAsync(((api.SiteVerificationWebResourceResource response) {
         checkSiteVerificationWebResourceResource(response);
@@ -323,7 +358,7 @@ main() {
 
     unittest.test("method--getToken", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.WebResourceResourceApi res = new api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceGettokenRequest();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -363,7 +398,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSiteVerificationWebResourceGettokenResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.getToken(arg_request).then(unittest.expectAsync(((api.SiteVerificationWebResourceGettokenResponse response) {
         checkSiteVerificationWebResourceGettokenResponse(response);
@@ -372,7 +407,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.WebResourceResourceApi res = new api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
       var arg_verificationMethod = "foo";
@@ -414,7 +449,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSiteVerificationWebResourceResource());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_verificationMethod).then(unittest.expectAsync(((api.SiteVerificationWebResourceResource response) {
         checkSiteVerificationWebResourceResource(response);
@@ -423,7 +458,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.WebResourceResourceApi res = new api.SiteVerificationApi(mock).webResource;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -459,7 +494,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSiteVerificationWebResourceListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list().then(unittest.expectAsync(((api.SiteVerificationWebResourceListResponse response) {
         checkSiteVerificationWebResourceListResponse(response);
@@ -468,7 +503,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.WebResourceResourceApi res = new api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
       var arg_id = "foo";
@@ -512,7 +547,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSiteVerificationWebResourceResource());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_id).then(unittest.expectAsync(((api.SiteVerificationWebResourceResource response) {
         checkSiteVerificationWebResourceResource(response);
@@ -521,7 +556,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.WebResourceResourceApi res = new api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
       var arg_id = "foo";
@@ -565,7 +600,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSiteVerificationWebResourceResource());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_id).then(unittest.expectAsync(((api.SiteVerificationWebResourceResource response) {
         checkSiteVerificationWebResourceResource(response);

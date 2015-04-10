@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.replicapoolupdater.v1beta1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client replicapoolupdater/v1beta1';
 
 /**
  * The Google Compute Engine Instance Group Updater API provides services for
@@ -28,21 +31,20 @@ class ReplicapoolupdaterApi {
   static const ReplicapoolReadonlyScope = "https://www.googleapis.com/auth/replicapool.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   RollingUpdatesResourceApi get rollingUpdates => new RollingUpdatesResourceApi(_requester);
   ZoneOperationsResourceApi get zoneOperations => new ZoneOperationsResourceApi(_requester);
 
   ReplicapoolupdaterApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "replicapoolupdater/v1beta1/projects/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class RollingUpdatesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  RollingUpdatesResourceApi(common_internal.ApiRequester client) : 
+  RollingUpdatesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -61,7 +63,7 @@ class RollingUpdatesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -72,7 +74,7 @@ class RollingUpdatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -86,7 +88,7 @@ class RollingUpdatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + common_internal.Escaper.ecapeVariable('$rollingUpdate') + '/cancel';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + commons.Escaper.ecapeVariable('$rollingUpdate') + '/cancel';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -113,7 +115,7 @@ class RollingUpdatesResourceApi {
    *
    * Completes with a [RollingUpdate].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -124,7 +126,7 @@ class RollingUpdatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -138,7 +140,7 @@ class RollingUpdatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + common_internal.Escaper.ecapeVariable('$rollingUpdate');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + commons.Escaper.ecapeVariable('$rollingUpdate');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -165,7 +167,7 @@ class RollingUpdatesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -176,7 +178,7 @@ class RollingUpdatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -190,7 +192,7 @@ class RollingUpdatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/rollingUpdates';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -228,7 +230,7 @@ class RollingUpdatesResourceApi {
    *
    * Completes with a [RollingUpdateList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -239,7 +241,7 @@ class RollingUpdatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -262,7 +264,7 @@ class RollingUpdatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/rollingUpdates';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -298,7 +300,7 @@ class RollingUpdatesResourceApi {
    *
    * Completes with a [InstanceUpdateList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -309,7 +311,7 @@ class RollingUpdatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -332,7 +334,7 @@ class RollingUpdatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + common_internal.Escaper.ecapeVariable('$rollingUpdate') + '/instanceUpdates';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + commons.Escaper.ecapeVariable('$rollingUpdate') + '/instanceUpdates';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -360,7 +362,7 @@ class RollingUpdatesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -371,7 +373,7 @@ class RollingUpdatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -385,7 +387,7 @@ class RollingUpdatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + common_internal.Escaper.ecapeVariable('$rollingUpdate') + '/pause';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + commons.Escaper.ecapeVariable('$rollingUpdate') + '/pause';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -413,7 +415,7 @@ class RollingUpdatesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -424,7 +426,7 @@ class RollingUpdatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -438,7 +440,7 @@ class RollingUpdatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + common_internal.Escaper.ecapeVariable('$rollingUpdate') + '/resume';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + commons.Escaper.ecapeVariable('$rollingUpdate') + '/resume';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -466,7 +468,7 @@ class RollingUpdatesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -477,7 +479,7 @@ class RollingUpdatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -491,7 +493,7 @@ class RollingUpdatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + common_internal.Escaper.ecapeVariable('$rollingUpdate') + '/rollback';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/rollingUpdates/' + commons.Escaper.ecapeVariable('$rollingUpdate') + '/rollback';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -506,11 +508,10 @@ class RollingUpdatesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ZoneOperationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ZoneOperationsResourceApi(common_internal.ApiRequester client) : 
+  ZoneOperationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -528,7 +529,7 @@ class ZoneOperationsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -539,7 +540,7 @@ class ZoneOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -553,7 +554,7 @@ class ZoneOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/operations/' + common_internal.Escaper.ecapeVariable('$operation');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -569,7 +570,6 @@ class ZoneOperationsResourceApi {
 
 
 
-/** Not documented yet. */
 class InstanceUpdateErrorErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
@@ -746,7 +746,6 @@ class InstanceUpdateList {
 }
 
 
-/** Not documented yet. */
 class OperationErrorErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
@@ -821,7 +820,6 @@ class OperationError {
 }
 
 
-/** Not documented yet. */
 class OperationWarningsData {
   /** [Output Only] Metadata key for this warning. */
   core.String key;
@@ -854,7 +852,6 @@ class OperationWarningsData {
 }
 
 
-/** Not documented yet. */
 class OperationWarnings {
   /** [Output only] The warning type identifier for this warning. */
   core.String code;
@@ -898,13 +895,11 @@ class OperationWarnings {
 
 /** An operation resource, used to manage asynchronous API requests. */
 class Operation {
-  /** Not documented yet. */
   core.String clientOperationId;
 
   /** [Output Only] Creation timestamp in RFC3339 text format (output only). */
   core.String creationTimestamp;
 
-  /** Not documented yet. */
   core.String endTime;
 
   /**
@@ -913,10 +908,8 @@ class Operation {
    */
   OperationError error;
 
-  /** Not documented yet. */
   core.String httpErrorMessage;
 
-  /** Not documented yet. */
   core.int httpErrorStatusCode;
 
   /**
@@ -939,10 +932,8 @@ class Operation {
   /** [Output Only] Name of the resource (output only). */
   core.String name;
 
-  /** Not documented yet. */
   core.String operationType;
 
-  /** Not documented yet. */
   core.int progress;
 
   /**
@@ -982,10 +973,8 @@ class Operation {
    */
   core.String targetLink;
 
-  /** Not documented yet. */
   core.String user;
 
-  /** Not documented yet. */
   core.List<OperationWarnings> warnings;
 
   /**
@@ -1138,7 +1127,6 @@ class Operation {
 }
 
 
-/** Not documented yet. */
 class RollingUpdateErrorErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
@@ -1210,42 +1198,12 @@ class RollingUpdateError {
 }
 
 
-/** Parameters of a canary phase. If absent, canary will NOT be performed. */
-class RollingUpdatePolicyCanary {
-  /**
-   * Number of instances updated as a part of canary phase. If absent, the
-   * default number of instances will be used.
-   */
-  core.int numInstances;
-
-
-  RollingUpdatePolicyCanary();
-
-  RollingUpdatePolicyCanary.fromJson(core.Map _json) {
-    if (_json.containsKey("numInstances")) {
-      numInstances = _json["numInstances"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (numInstances != null) {
-      _json["numInstances"] = numInstances;
-    }
-    return _json;
-  }
-}
-
-
 /** Parameters of the update process. */
 class RollingUpdatePolicy {
   /**
    * Number of instances updated before the update gets automatically paused.
    */
   core.int autoPauseAfterInstances;
-
-  /** Parameters of a canary phase. If absent, canary will NOT be performed. */
-  RollingUpdatePolicyCanary canary;
 
   /**
    * Maximum amount of time we will wait after finishing all steps until we
@@ -1294,9 +1252,6 @@ class RollingUpdatePolicy {
     if (_json.containsKey("autoPauseAfterInstances")) {
       autoPauseAfterInstances = _json["autoPauseAfterInstances"];
     }
-    if (_json.containsKey("canary")) {
-      canary = new RollingUpdatePolicyCanary.fromJson(_json["canary"]);
-    }
     if (_json.containsKey("instanceStartupTimeoutSec")) {
       instanceStartupTimeoutSec = _json["instanceStartupTimeoutSec"];
     }
@@ -1318,9 +1273,6 @@ class RollingUpdatePolicy {
     var _json = new core.Map();
     if (autoPauseAfterInstances != null) {
       _json["autoPauseAfterInstances"] = autoPauseAfterInstances;
-    }
-    if (canary != null) {
-      _json["canary"] = (canary).toJson();
     }
     if (instanceStartupTimeoutSec != null) {
       _json["instanceStartupTimeoutSec"] = instanceStartupTimeoutSec;
@@ -1352,7 +1304,7 @@ class RollingUpdate {
    * This can be RECREATE which will recreate each instance and is only
    * available for managed instance groups. It can also be REBOOT which performs
    * a soft reboot for each instance and is only available for regular
-   * (non-managed) instance groups.
+   * (non-managed) instance groups and explicit lists of instances.
    */
   core.String actionType;
 
@@ -1375,18 +1327,24 @@ class RollingUpdate {
 
   /**
    * Fully-qualified URL of an instance group being updated. Exactly one of
-   * instanceGroupManager and instanceGroup must be set.
+   * instanceGroupManager, instanceGroup and instance list must be set.
    */
   core.String instanceGroup;
 
   /**
    * Fully-qualified URL of an instance group manager being updated. Exactly one
-   * of instanceGroupManager and instanceGroup must be set.
+   * of instanceGroupManager, instanceGroup and instance list must be set.
    */
   core.String instanceGroupManager;
 
   /** Fully-qualified URL of an instance template to apply. */
   core.String instanceTemplate;
+
+  /**
+   * List of fully-qualified URLs of instances to be updated. Exactly one of
+   * instanceGroupManager, instanceGroup and instance list must be set.
+   */
+  core.List<core.String> instances;
 
   /** [Output Only] Type of the resource. */
   core.String kind;
@@ -1459,6 +1417,9 @@ class RollingUpdate {
     if (_json.containsKey("instanceTemplate")) {
       instanceTemplate = _json["instanceTemplate"];
     }
+    if (_json.containsKey("instances")) {
+      instances = _json["instances"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -1507,6 +1468,9 @@ class RollingUpdate {
     }
     if (instanceTemplate != null) {
       _json["instanceTemplate"] = instanceTemplate;
+    }
+    if (instances != null) {
+      _json["instances"] = instances;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1583,5 +1547,3 @@ class RollingUpdateList {
     return _json;
   }
 }
-
-

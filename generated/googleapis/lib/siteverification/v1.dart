@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.siteVerification.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client siteVerification/v1';
 
 /**
  * Lets you programatically verify ownership of websites or domains with Google.
@@ -24,20 +27,19 @@ class SiteVerificationApi {
   static const SiteverificationVerifyOnlyScope = "https://www.googleapis.com/auth/siteverification.verify_only";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   WebResourceResourceApi get webResource => new WebResourceResourceApi(_requester);
 
   SiteVerificationApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "siteVerification/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class WebResourceResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  WebResourceResourceApi(common_internal.ApiRequester client) : 
+  WebResourceResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -47,7 +49,7 @@ class WebResourceResourceApi {
    *
    * [id] - The id of a verified site or domain.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -58,7 +60,7 @@ class WebResourceResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -67,7 +69,7 @@ class WebResourceResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'webResource/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -88,7 +90,7 @@ class WebResourceResourceApi {
    *
    * Completes with a [SiteVerificationWebResourceResource].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -99,7 +101,7 @@ class WebResourceResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -107,7 +109,7 @@ class WebResourceResourceApi {
     }
 
 
-    _url = 'webResource/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -128,7 +130,7 @@ class WebResourceResourceApi {
    *
    * Completes with a [SiteVerificationWebResourceGettokenResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -139,7 +141,7 @@ class WebResourceResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -170,7 +172,7 @@ class WebResourceResourceApi {
    *
    * Completes with a [SiteVerificationWebResourceResource].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -181,7 +183,7 @@ class WebResourceResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -212,7 +214,7 @@ class WebResourceResourceApi {
    *
    * Completes with a [SiteVerificationWebResourceListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -223,7 +225,7 @@ class WebResourceResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -252,7 +254,7 @@ class WebResourceResourceApi {
    *
    * Completes with a [SiteVerificationWebResourceResource].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -263,7 +265,7 @@ class WebResourceResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -274,7 +276,7 @@ class WebResourceResourceApi {
     }
 
 
-    _url = 'webResource/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -297,7 +299,7 @@ class WebResourceResourceApi {
    *
    * Completes with a [SiteVerificationWebResourceResource].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -308,7 +310,7 @@ class WebResourceResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -319,7 +321,7 @@ class WebResourceResourceApi {
     }
 
 
-    _url = 'webResource/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -374,7 +376,6 @@ class SiteVerificationWebResourceGettokenRequestSite {
 }
 
 
-/** Not documented yet. */
 class SiteVerificationWebResourceGettokenRequest {
   /** The site for which a verification token will be generated. */
   SiteVerificationWebResourceGettokenRequestSite site;
@@ -410,7 +411,6 @@ class SiteVerificationWebResourceGettokenRequest {
 }
 
 
-/** Not documented yet. */
 class SiteVerificationWebResourceGettokenResponse {
   /**
    * The verification method to use in conjunction with this token. For FILE,
@@ -452,7 +452,6 @@ class SiteVerificationWebResourceGettokenResponse {
 }
 
 
-/** Not documented yet. */
 class SiteVerificationWebResourceListResponse {
   /** The list of sites that are owned by the authenticated user. */
   core.List<SiteVerificationWebResourceResource> items;
@@ -512,7 +511,6 @@ class SiteVerificationWebResourceResourceSite {
 }
 
 
-/** Not documented yet. */
 class SiteVerificationWebResourceResource {
   /**
    * The string used to identify this site. This value should be used in the
@@ -555,5 +553,3 @@ class SiteVerificationWebResourceResource {
     return _json;
   }
 }
-
-

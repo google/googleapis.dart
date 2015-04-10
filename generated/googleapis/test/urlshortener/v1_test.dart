@@ -8,61 +8,96 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/urlshortener/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
 
-buildUnnamed742() {
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
+
+buildUnnamed1393() {
   var o = new core.List<api.StringCount>();
   o.add(buildStringCount());
   o.add(buildStringCount());
   return o;
 }
 
-checkUnnamed742(core.List<api.StringCount> o) {
+checkUnnamed1393(core.List<api.StringCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStringCount(o[0]);
   checkStringCount(o[1]);
 }
 
-buildUnnamed743() {
+buildUnnamed1394() {
   var o = new core.List<api.StringCount>();
   o.add(buildStringCount());
   o.add(buildStringCount());
   return o;
 }
 
-checkUnnamed743(core.List<api.StringCount> o) {
+checkUnnamed1394(core.List<api.StringCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStringCount(o[0]);
   checkStringCount(o[1]);
 }
 
-buildUnnamed744() {
+buildUnnamed1395() {
   var o = new core.List<api.StringCount>();
   o.add(buildStringCount());
   o.add(buildStringCount());
   return o;
 }
 
-checkUnnamed744(core.List<api.StringCount> o) {
+checkUnnamed1395(core.List<api.StringCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStringCount(o[0]);
   checkStringCount(o[1]);
 }
 
-buildUnnamed745() {
+buildUnnamed1396() {
   var o = new core.List<api.StringCount>();
   o.add(buildStringCount());
   o.add(buildStringCount());
   return o;
 }
 
-checkUnnamed745(core.List<api.StringCount> o) {
+checkUnnamed1396(core.List<api.StringCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStringCount(o[0]);
   checkStringCount(o[1]);
@@ -73,11 +108,11 @@ buildAnalyticsSnapshot() {
   var o = new api.AnalyticsSnapshot();
   buildCounterAnalyticsSnapshot++;
   if (buildCounterAnalyticsSnapshot < 3) {
-    o.browsers = buildUnnamed742();
-    o.countries = buildUnnamed743();
+    o.browsers = buildUnnamed1393();
+    o.countries = buildUnnamed1394();
     o.longUrlClicks = "foo";
-    o.platforms = buildUnnamed744();
-    o.referrers = buildUnnamed745();
+    o.platforms = buildUnnamed1395();
+    o.referrers = buildUnnamed1396();
     o.shortUrlClicks = "foo";
   }
   buildCounterAnalyticsSnapshot--;
@@ -87,11 +122,11 @@ buildAnalyticsSnapshot() {
 checkAnalyticsSnapshot(api.AnalyticsSnapshot o) {
   buildCounterAnalyticsSnapshot++;
   if (buildCounterAnalyticsSnapshot < 3) {
-    checkUnnamed742(o.browsers);
-    checkUnnamed743(o.countries);
+    checkUnnamed1393(o.browsers);
+    checkUnnamed1394(o.countries);
     unittest.expect(o.longUrlClicks, unittest.equals('foo'));
-    checkUnnamed744(o.platforms);
-    checkUnnamed745(o.referrers);
+    checkUnnamed1395(o.platforms);
+    checkUnnamed1396(o.referrers);
     unittest.expect(o.shortUrlClicks, unittest.equals('foo'));
   }
   buildCounterAnalyticsSnapshot--;
@@ -174,14 +209,14 @@ checkUrl(api.Url o) {
   buildCounterUrl--;
 }
 
-buildUnnamed746() {
+buildUnnamed1397() {
   var o = new core.List<api.Url>();
   o.add(buildUrl());
   o.add(buildUrl());
   return o;
 }
 
-checkUnnamed746(core.List<api.Url> o) {
+checkUnnamed1397(core.List<api.Url> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrl(o[0]);
   checkUrl(o[1]);
@@ -192,7 +227,7 @@ buildUrlHistory() {
   var o = new api.UrlHistory();
   buildCounterUrlHistory++;
   if (buildCounterUrlHistory < 3) {
-    o.items = buildUnnamed746();
+    o.items = buildUnnamed1397();
     o.itemsPerPage = 42;
     o.kind = "foo";
     o.nextPageToken = "foo";
@@ -205,7 +240,7 @@ buildUrlHistory() {
 checkUrlHistory(api.UrlHistory o) {
   buildCounterUrlHistory++;
   if (buildCounterUrlHistory < 3) {
-    checkUnnamed746(o.items);
+    checkUnnamed1397(o.items);
     unittest.expect(o.itemsPerPage, unittest.equals(42));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -264,7 +299,7 @@ main() {
   unittest.group("resource-UrlResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UrlResourceApi res = new api.UrlshortenerApi(mock).url;
       var arg_shortUrl = "foo";
       var arg_projection = "foo";
@@ -304,7 +339,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUrl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_shortUrl, projection: arg_projection).then(unittest.expectAsync(((api.Url response) {
         checkUrl(response);
@@ -313,7 +348,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UrlResourceApi res = new api.UrlshortenerApi(mock).url;
       var arg_request = buildUrl();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -353,7 +388,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUrl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request).then(unittest.expectAsync(((api.Url response) {
         checkUrl(response);
@@ -362,7 +397,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UrlResourceApi res = new api.UrlshortenerApi(mock).url;
       var arg_projection = "foo";
       var arg_start_token = "foo";
@@ -402,7 +437,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUrlHistory());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(projection: arg_projection, start_token: arg_start_token).then(unittest.expectAsync(((api.UrlHistory response) {
         checkUrlHistory(response);

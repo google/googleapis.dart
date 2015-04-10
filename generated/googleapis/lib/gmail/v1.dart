@@ -1,17 +1,22 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.gmail.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client gmail/v1';
 
 /** The Gmail REST API. */
 class GmailApi {
@@ -21,6 +26,12 @@ class GmailApi {
   /** Manage drafts and send emails */
   static const GmailComposeScope = "https://www.googleapis.com/auth/gmail.compose";
 
+  /** Insert mail into your mailbox */
+  static const GmailInsertScope = "https://www.googleapis.com/auth/gmail.insert";
+
+  /** Manage mailbox labels */
+  static const GmailLabelsScope = "https://www.googleapis.com/auth/gmail.labels";
+
   /** View and modify but not delete your email */
   static const GmailModifyScope = "https://www.googleapis.com/auth/gmail.modify";
 
@@ -28,18 +39,17 @@ class GmailApi {
   static const GmailReadonlyScope = "https://www.googleapis.com/auth/gmail.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   UsersResourceApi get users => new UsersResourceApi(_requester);
 
   GmailApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "gmail/v1/users/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class UsersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   UsersDraftsResourceApi get drafts => new UsersDraftsResourceApi(_requester);
   UsersHistoryResourceApi get history => new UsersHistoryResourceApi(_requester);
@@ -47,7 +57,7 @@ class UsersResourceApi {
   UsersMessagesResourceApi get messages => new UsersMessagesResourceApi(_requester);
   UsersThreadsResourceApi get threads => new UsersThreadsResourceApi(_requester);
 
-  UsersResourceApi(common_internal.ApiRequester client) : 
+  UsersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -60,7 +70,7 @@ class UsersResourceApi {
    *
    * Completes with a [Profile].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -71,7 +81,7 @@ class UsersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -79,7 +89,7 @@ class UsersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/profile';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/profile';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -94,11 +104,10 @@ class UsersResourceApi {
 }
 
 
-/** Not documented yet. */
 class UsersDraftsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UsersDraftsResourceApi(common_internal.ApiRequester client) : 
+  UsersDraftsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -118,18 +127,18 @@ class UsersDraftsResourceApi {
    *
    * Completes with a [Draft].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Draft> create(Draft request, core.String userId, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Draft> create(Draft request, core.String userId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -143,11 +152,11 @@ class UsersDraftsResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = common_internal.Escaper.ecapeVariable('$userId') + '/drafts';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/gmail/v1/users/' + common_internal.Escaper.ecapeVariable('$userId') + '/drafts';
+      _url = commons.Escaper.ecapeVariable('$userId') + '/drafts';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/drafts';
     } else {
-      _url = '/upload/gmail/v1/users/' + common_internal.Escaper.ecapeVariable('$userId') + '/drafts';
+      _url = '/upload/gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/drafts';
     }
 
 
@@ -172,7 +181,7 @@ class UsersDraftsResourceApi {
    *
    * [id] - The ID of the draft to delete.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -183,7 +192,7 @@ class UsersDraftsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -195,7 +204,7 @@ class UsersDraftsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/drafts/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/drafts/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -226,7 +235,7 @@ class UsersDraftsResourceApi {
    *
    * Completes with a [Draft].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -237,7 +246,7 @@ class UsersDraftsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -251,7 +260,7 @@ class UsersDraftsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/drafts/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/drafts/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -278,7 +287,7 @@ class UsersDraftsResourceApi {
    *
    * Completes with a [ListDraftsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -289,7 +298,7 @@ class UsersDraftsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -303,7 +312,7 @@ class UsersDraftsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/drafts';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/drafts';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -333,18 +342,18 @@ class UsersDraftsResourceApi {
    *
    * Completes with a [Message].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Message> send(Draft request, core.String userId, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Message> send(Draft request, core.String userId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -358,11 +367,11 @@ class UsersDraftsResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = common_internal.Escaper.ecapeVariable('$userId') + '/drafts/send';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/gmail/v1/users/' + common_internal.Escaper.ecapeVariable('$userId') + '/drafts/send';
+      _url = commons.Escaper.ecapeVariable('$userId') + '/drafts/send';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/drafts/send';
     } else {
-      _url = '/upload/gmail/v1/users/' + common_internal.Escaper.ecapeVariable('$userId') + '/drafts/send';
+      _url = '/upload/gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/drafts/send';
     }
 
 
@@ -395,18 +404,18 @@ class UsersDraftsResourceApi {
    *
    * Completes with a [Draft].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Draft> update(Draft request, core.String userId, core.String id, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Draft> update(Draft request, core.String userId, core.String id, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -423,11 +432,11 @@ class UsersDraftsResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = common_internal.Escaper.ecapeVariable('$userId') + '/drafts/' + common_internal.Escaper.ecapeVariable('$id');
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/gmail/v1/users/' + common_internal.Escaper.ecapeVariable('$userId') + '/drafts/' + common_internal.Escaper.ecapeVariable('$id');
+      _url = commons.Escaper.ecapeVariable('$userId') + '/drafts/' + commons.Escaper.ecapeVariable('$id');
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/drafts/' + commons.Escaper.ecapeVariable('$id');
     } else {
-      _url = '/upload/gmail/v1/users/' + common_internal.Escaper.ecapeVariable('$userId') + '/drafts/' + common_internal.Escaper.ecapeVariable('$id');
+      _url = '/upload/gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/drafts/' + commons.Escaper.ecapeVariable('$id');
     }
 
 
@@ -444,11 +453,10 @@ class UsersDraftsResourceApi {
 }
 
 
-/** Not documented yet. */
 class UsersHistoryResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UsersHistoryResourceApi(common_internal.ApiRequester client) : 
+  UsersHistoryResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -480,7 +488,7 @@ class UsersHistoryResourceApi {
    *
    * Completes with a [ListHistoryResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -491,7 +499,7 @@ class UsersHistoryResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -511,7 +519,7 @@ class UsersHistoryResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/history';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/history';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -526,11 +534,10 @@ class UsersHistoryResourceApi {
 }
 
 
-/** Not documented yet. */
 class UsersLabelsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UsersLabelsResourceApi(common_internal.ApiRequester client) : 
+  UsersLabelsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -545,7 +552,7 @@ class UsersLabelsResourceApi {
    *
    * Completes with a [Label].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -556,7 +563,7 @@ class UsersLabelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -567,7 +574,7 @@ class UsersLabelsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/labels';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/labels';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -590,7 +597,7 @@ class UsersLabelsResourceApi {
    *
    * [id] - The ID of the label to delete.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -601,7 +608,7 @@ class UsersLabelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -613,7 +620,7 @@ class UsersLabelsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/labels/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/labels/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -637,7 +644,7 @@ class UsersLabelsResourceApi {
    *
    * Completes with a [Label].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -648,7 +655,7 @@ class UsersLabelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -659,7 +666,7 @@ class UsersLabelsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/labels/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/labels/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -681,7 +688,7 @@ class UsersLabelsResourceApi {
    *
    * Completes with a [ListLabelsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -692,7 +699,7 @@ class UsersLabelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -700,7 +707,7 @@ class UsersLabelsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/labels';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/labels';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -726,7 +733,7 @@ class UsersLabelsResourceApi {
    *
    * Completes with a [Label].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -737,7 +744,7 @@ class UsersLabelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -751,7 +758,7 @@ class UsersLabelsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/labels/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/labels/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -777,7 +784,7 @@ class UsersLabelsResourceApi {
    *
    * Completes with a [Label].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -788,7 +795,7 @@ class UsersLabelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -802,7 +809,7 @@ class UsersLabelsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/labels/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/labels/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -817,13 +824,12 @@ class UsersLabelsResourceApi {
 }
 
 
-/** Not documented yet. */
 class UsersMessagesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   UsersMessagesAttachmentsResourceApi get attachments => new UsersMessagesAttachmentsResourceApi(_requester);
 
-  UsersMessagesResourceApi(common_internal.ApiRequester client) : 
+  UsersMessagesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -837,7 +843,7 @@ class UsersMessagesResourceApi {
    *
    * [id] - The ID of the message to delete.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -848,7 +854,7 @@ class UsersMessagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -860,7 +866,7 @@ class UsersMessagesResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/messages/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/messages/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -894,7 +900,7 @@ class UsersMessagesResourceApi {
    *
    * Completes with a [Message].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -905,7 +911,7 @@ class UsersMessagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -922,7 +928,7 @@ class UsersMessagesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/messages/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/messages/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -968,18 +974,18 @@ class UsersMessagesResourceApi {
    *
    * Completes with a [Message].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Message> import(Message request, core.String userId, {core.bool deleted, core.String internalDateSource, core.bool neverMarkSpam, core.bool processForCalendar, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Message> import(Message request, core.String userId, {core.bool deleted, core.String internalDateSource, core.bool neverMarkSpam, core.bool processForCalendar, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1005,11 +1011,11 @@ class UsersMessagesResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = common_internal.Escaper.ecapeVariable('$userId') + '/messages/import';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/gmail/v1/users/' + common_internal.Escaper.ecapeVariable('$userId') + '/messages/import';
+      _url = commons.Escaper.ecapeVariable('$userId') + '/messages/import';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/messages/import';
     } else {
-      _url = '/upload/gmail/v1/users/' + common_internal.Escaper.ecapeVariable('$userId') + '/messages/import';
+      _url = '/upload/gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/messages/import';
     }
 
 
@@ -1035,6 +1041,10 @@ class UsersMessagesResourceApi {
    * [userId] - The user's email address. The special value me can be used to
    * indicate the authenticated user.
    *
+   * [deleted] - Mark the email as permanently deleted (not TRASH) and only
+   * visible in Google Apps Vault to a Vault administrator. Only used for Google
+   * Apps for Work accounts.
+   *
    * [internalDateSource] - Source for Gmail's internal date of the message.
    * Possible string values are:
    * - "dateHeader"
@@ -1047,18 +1057,18 @@ class UsersMessagesResourceApi {
    *
    * Completes with a [Message].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Message> insert(Message request, core.String userId, {core.String internalDateSource, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Message> insert(Message request, core.String userId, {core.bool deleted, core.String internalDateSource, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1066,6 +1076,9 @@ class UsersMessagesResourceApi {
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (deleted != null) {
+      _queryParams["deleted"] = ["${deleted}"];
     }
     if (internalDateSource != null) {
       _queryParams["internalDateSource"] = [internalDateSource];
@@ -1075,11 +1088,11 @@ class UsersMessagesResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = common_internal.Escaper.ecapeVariable('$userId') + '/messages';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/gmail/v1/users/' + common_internal.Escaper.ecapeVariable('$userId') + '/messages';
+      _url = commons.Escaper.ecapeVariable('$userId') + '/messages';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/messages';
     } else {
-      _url = '/upload/gmail/v1/users/' + common_internal.Escaper.ecapeVariable('$userId') + '/messages';
+      _url = '/upload/gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/messages';
     }
 
 
@@ -1117,7 +1130,7 @@ class UsersMessagesResourceApi {
    *
    * Completes with a [ListMessagesResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1128,7 +1141,7 @@ class UsersMessagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -1151,7 +1164,7 @@ class UsersMessagesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/messages';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/messages';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1177,7 +1190,7 @@ class UsersMessagesResourceApi {
    *
    * Completes with a [Message].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1188,7 +1201,7 @@ class UsersMessagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1202,7 +1215,7 @@ class UsersMessagesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/messages/' + common_internal.Escaper.ecapeVariable('$id') + '/modify';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/messages/' + commons.Escaper.ecapeVariable('$id') + '/modify';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1232,18 +1245,18 @@ class UsersMessagesResourceApi {
    *
    * Completes with a [Message].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Message> send(Message request, core.String userId, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Message> send(Message request, core.String userId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1257,11 +1270,11 @@ class UsersMessagesResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = common_internal.Escaper.ecapeVariable('$userId') + '/messages/send';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/gmail/v1/users/' + common_internal.Escaper.ecapeVariable('$userId') + '/messages/send';
+      _url = commons.Escaper.ecapeVariable('$userId') + '/messages/send';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/messages/send';
     } else {
-      _url = '/upload/gmail/v1/users/' + common_internal.Escaper.ecapeVariable('$userId') + '/messages/send';
+      _url = '/upload/gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/messages/send';
     }
 
 
@@ -1287,7 +1300,7 @@ class UsersMessagesResourceApi {
    *
    * Completes with a [Message].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1298,7 +1311,7 @@ class UsersMessagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -1309,7 +1322,7 @@ class UsersMessagesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/messages/' + common_internal.Escaper.ecapeVariable('$id') + '/trash';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/messages/' + commons.Escaper.ecapeVariable('$id') + '/trash';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1333,7 +1346,7 @@ class UsersMessagesResourceApi {
    *
    * Completes with a [Message].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1344,7 +1357,7 @@ class UsersMessagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -1355,7 +1368,7 @@ class UsersMessagesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/messages/' + common_internal.Escaper.ecapeVariable('$id') + '/untrash';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/messages/' + commons.Escaper.ecapeVariable('$id') + '/untrash';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1370,11 +1383,10 @@ class UsersMessagesResourceApi {
 }
 
 
-/** Not documented yet. */
 class UsersMessagesAttachmentsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UsersMessagesAttachmentsResourceApi(common_internal.ApiRequester client) : 
+  UsersMessagesAttachmentsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1391,7 +1403,7 @@ class UsersMessagesAttachmentsResourceApi {
    *
    * Completes with a [MessagePartBody].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1402,7 +1414,7 @@ class UsersMessagesAttachmentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -1416,7 +1428,7 @@ class UsersMessagesAttachmentsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/messages/' + common_internal.Escaper.ecapeVariable('$messageId') + '/attachments/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/messages/' + commons.Escaper.ecapeVariable('$messageId') + '/attachments/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1431,11 +1443,10 @@ class UsersMessagesAttachmentsResourceApi {
 }
 
 
-/** Not documented yet. */
 class UsersThreadsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UsersThreadsResourceApi(common_internal.ApiRequester client) : 
+  UsersThreadsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1449,7 +1460,7 @@ class UsersThreadsResourceApi {
    *
    * [id] - ID of the Thread to delete.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1460,7 +1471,7 @@ class UsersThreadsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -1472,7 +1483,7 @@ class UsersThreadsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/threads/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/threads/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1505,7 +1516,7 @@ class UsersThreadsResourceApi {
    *
    * Completes with a [Thread].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1516,7 +1527,7 @@ class UsersThreadsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -1533,7 +1544,7 @@ class UsersThreadsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/threads/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/threads/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1569,7 +1580,7 @@ class UsersThreadsResourceApi {
    *
    * Completes with a [ListThreadsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1580,7 +1591,7 @@ class UsersThreadsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -1603,7 +1614,7 @@ class UsersThreadsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/threads';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/threads';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1630,7 +1641,7 @@ class UsersThreadsResourceApi {
    *
    * Completes with a [Thread].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1641,7 +1652,7 @@ class UsersThreadsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1655,7 +1666,7 @@ class UsersThreadsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/threads/' + common_internal.Escaper.ecapeVariable('$id') + '/modify';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/threads/' + commons.Escaper.ecapeVariable('$id') + '/modify';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1679,7 +1690,7 @@ class UsersThreadsResourceApi {
    *
    * Completes with a [Thread].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1690,7 +1701,7 @@ class UsersThreadsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -1701,7 +1712,7 @@ class UsersThreadsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/threads/' + common_internal.Escaper.ecapeVariable('$id') + '/trash';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/threads/' + commons.Escaper.ecapeVariable('$id') + '/trash';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1725,7 +1736,7 @@ class UsersThreadsResourceApi {
    *
    * Completes with a [Thread].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1736,7 +1747,7 @@ class UsersThreadsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -1747,7 +1758,7 @@ class UsersThreadsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/threads/' + common_internal.Escaper.ecapeVariable('$id') + '/untrash';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/threads/' + commons.Escaper.ecapeVariable('$id') + '/untrash';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1874,12 +1885,10 @@ class History {
 }
 
 
-/** Not documented yet. */
 class HistoryLabelAdded {
   /** Label IDs added to the message. */
   core.List<core.String> labelIds;
 
-  /** Not documented yet. */
   Message message;
 
 
@@ -1907,12 +1916,10 @@ class HistoryLabelAdded {
 }
 
 
-/** Not documented yet. */
 class HistoryLabelRemoved {
   /** Label IDs removed from the message. */
   core.List<core.String> labelIds;
 
-  /** Not documented yet. */
   Message message;
 
 
@@ -1940,9 +1947,7 @@ class HistoryLabelRemoved {
 }
 
 
-/** Not documented yet. */
 class HistoryMessageAdded {
-  /** Not documented yet. */
   Message message;
 
 
@@ -1964,9 +1969,7 @@ class HistoryMessageAdded {
 }
 
 
-/** Not documented yet. */
 class HistoryMessageDeleted {
-  /** Not documented yet. */
   Message message;
 
 
@@ -2109,7 +2112,6 @@ class Label {
 }
 
 
-/** Not documented yet. */
 class ListDraftsResponse {
   /** List of drafts. */
   core.List<Draft> drafts;
@@ -2151,7 +2153,6 @@ class ListDraftsResponse {
 }
 
 
-/** Not documented yet. */
 class ListHistoryResponse {
   /**
    * List of history records. Any messages contained in the response will
@@ -2196,7 +2197,6 @@ class ListHistoryResponse {
 }
 
 
-/** Not documented yet. */
 class ListLabelsResponse {
   /** List of labels. */
   core.List<Label> labels;
@@ -2220,7 +2220,6 @@ class ListLabelsResponse {
 }
 
 
-/** Not documented yet. */
 class ListMessagesResponse {
   /** List of messages. */
   core.List<Message> messages;
@@ -2262,7 +2261,6 @@ class ListMessagesResponse {
 }
 
 
-/** Not documented yet. */
 class ListThreadsResponse {
   /** Page token to retrieve the next page of results in the list. */
   core.String nextPageToken;
@@ -2554,7 +2552,6 @@ class MessagePartBody {
 }
 
 
-/** Not documented yet. */
 class MessagePartHeader {
   /** The name of the header before the : separator. For example, To. */
   core.String name;
@@ -2590,7 +2587,6 @@ class MessagePartHeader {
 }
 
 
-/** Not documented yet. */
 class ModifyMessageRequest {
   /** A list of IDs of labels to add to this message. */
   core.List<core.String> addLabelIds;
@@ -2623,7 +2619,6 @@ class ModifyMessageRequest {
 }
 
 
-/** Not documented yet. */
 class ModifyThreadRequest {
   /** A list of IDs of labels to add to this thread. */
   core.List<core.String> addLabelIds;
@@ -2756,5 +2751,3 @@ class Thread {
     return _json;
   }
 }
-
-

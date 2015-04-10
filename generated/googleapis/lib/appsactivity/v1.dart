@@ -1,47 +1,49 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.appsactivity.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client appsactivity/v1';
 
 /** Provides a historical view of activity. */
 class AppsactivityApi {
   /** View the activity history of your Google Apps */
   static const ActivityScope = "https://www.googleapis.com/auth/activity";
 
-  /** View and manage the files and documents in your Google Drive */
+  /** View and manage the files in your Google Drive */
   static const DriveScope = "https://www.googleapis.com/auth/drive";
 
-  /** View metadata for files and documents in your Google Drive */
+  /** View metadata for files in your Google Drive */
   static const DriveMetadataReadonlyScope = "https://www.googleapis.com/auth/drive.metadata.readonly";
 
-  /** View the files and documents in your Google Drive */
+  /** View the files in your Google Drive */
   static const DriveReadonlyScope = "https://www.googleapis.com/auth/drive.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ActivitiesResourceApi get activities => new ActivitiesResourceApi(_requester);
 
   AppsactivityApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "appsactivity/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class ActivitiesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ActivitiesResourceApi(common_internal.ApiRequester client) : 
+  ActivitiesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -79,7 +81,7 @@ class ActivitiesResourceApi {
    *
    * Completes with a [ListActivitiesResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -90,7 +92,7 @@ class ActivitiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (drive_ancestorId != null) {
@@ -676,5 +678,3 @@ class User {
     return _json;
   }
 }
-
-

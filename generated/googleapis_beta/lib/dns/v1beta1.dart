@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.dns.v1beta1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client dns/v1beta1';
 
 /**
  * The Google Cloud DNS API provides services for configuring and serving
@@ -28,7 +31,7 @@ class DnsApi {
   static const NdevClouddnsReadwriteScope = "https://www.googleapis.com/auth/ndev.clouddns.readwrite";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ChangesResourceApi get changes => new ChangesResourceApi(_requester);
   ManagedZonesResourceApi get managedZones => new ManagedZonesResourceApi(_requester);
@@ -36,15 +39,14 @@ class DnsApi {
   ResourceRecordSetsResourceApi get resourceRecordSets => new ResourceRecordSetsResourceApi(_requester);
 
   DnsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "dns/v1beta1/projects/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class ChangesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ChangesResourceApi(common_internal.ApiRequester client) : 
+  ChangesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -61,7 +63,7 @@ class ChangesResourceApi {
    *
    * Completes with a [Change].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -72,7 +74,7 @@ class ChangesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -86,7 +88,7 @@ class ChangesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/managedZones/' + common_internal.Escaper.ecapeVariable('$managedZone') + '/changes';
+    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/changes';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -113,7 +115,7 @@ class ChangesResourceApi {
    *
    * Completes with a [Change].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -124,7 +126,7 @@ class ChangesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -138,7 +140,7 @@ class ChangesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/managedZones/' + common_internal.Escaper.ecapeVariable('$managedZone') + '/changes/' + common_internal.Escaper.ecapeVariable('$changeId');
+    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/changes/' + commons.Escaper.ecapeVariable('$changeId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -174,7 +176,7 @@ class ChangesResourceApi {
    *
    * Completes with a [ChangesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -185,7 +187,7 @@ class ChangesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -208,7 +210,7 @@ class ChangesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/managedZones/' + common_internal.Escaper.ecapeVariable('$managedZone') + '/changes';
+    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/changes';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -223,11 +225,10 @@ class ChangesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagedZonesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagedZonesResourceApi(common_internal.ApiRequester client) : 
+  ManagedZonesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -241,7 +242,7 @@ class ManagedZonesResourceApi {
    *
    * Completes with a [ManagedZone].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -252,7 +253,7 @@ class ManagedZonesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -263,7 +264,7 @@ class ManagedZonesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/managedZones';
+    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -285,7 +286,7 @@ class ManagedZonesResourceApi {
    * [managedZone] - Identifies the managed zone addressed by this request. Can
    * be the managed zone name or id.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -296,7 +297,7 @@ class ManagedZonesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -308,7 +309,7 @@ class ManagedZonesResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/managedZones/' + common_internal.Escaper.ecapeVariable('$managedZone');
+    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -332,7 +333,7 @@ class ManagedZonesResourceApi {
    *
    * Completes with a [ManagedZone].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -343,7 +344,7 @@ class ManagedZonesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -354,7 +355,7 @@ class ManagedZonesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/managedZones/' + common_internal.Escaper.ecapeVariable('$managedZone');
+    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -381,7 +382,7 @@ class ManagedZonesResourceApi {
    *
    * Completes with a [ManagedZonesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -392,7 +393,7 @@ class ManagedZonesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -406,7 +407,7 @@ class ManagedZonesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/managedZones';
+    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -421,11 +422,10 @@ class ManagedZonesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ProjectsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ProjectsResourceApi(common_internal.ApiRequester client) : 
+  ProjectsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -437,7 +437,7 @@ class ProjectsResourceApi {
    *
    * Completes with a [Project].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -448,7 +448,7 @@ class ProjectsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -456,7 +456,7 @@ class ProjectsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project');
+    _url = commons.Escaper.ecapeVariable('$project');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -471,11 +471,10 @@ class ProjectsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ResourceRecordSetsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ResourceRecordSetsResourceApi(common_internal.ApiRequester client) : 
+  ResourceRecordSetsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -502,7 +501,7 @@ class ResourceRecordSetsResourceApi {
    *
    * Completes with a [ResourceRecordSetsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -513,7 +512,7 @@ class ResourceRecordSetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -536,7 +535,7 @@ class ResourceRecordSetsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/managedZones/' + common_internal.Escaper.ecapeVariable('$managedZone') + '/rrsets';
+    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/rrsets';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -701,8 +700,8 @@ class ManagedZone {
   core.String creationTime;
 
   /**
-   * A string to associate with this resource for the user's convenience. Has no
-   * effect on the managed zone's function.
+   * A mutable string of at most 1024 characters associated with this resource
+   * for the user's convenience. Has no effect on the managed zone's function.
    */
   core.String description;
 
@@ -801,7 +800,6 @@ class ManagedZone {
 }
 
 
-/** Not documented yet. */
 class ManagedZonesListResponse {
   /** Type of resource. */
   core.String kind;
@@ -1069,7 +1067,6 @@ class ResourceRecordSet {
 }
 
 
-/** Not documented yet. */
 class ResourceRecordSetsListResponse {
   /** Type of resource. */
   core.String kind;
@@ -1120,5 +1117,3 @@ class ResourceRecordSetsListResponse {
     return _json;
   }
 }
-
-

@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.tagmanager.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client tagmanager/v1';
 
 /** API for accessing Tag Manager accounts and containers. */
 class TagmanagerApi {
@@ -37,23 +40,22 @@ class TagmanagerApi {
   static const TagmanagerReadonlyScope = "https://www.googleapis.com/auth/tagmanager.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
 
   TagmanagerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "tagmanager/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class AccountsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AccountsContainersResourceApi get containers => new AccountsContainersResourceApi(_requester);
   AccountsPermissionsResourceApi get permissions => new AccountsPermissionsResourceApi(_requester);
 
-  AccountsResourceApi(common_internal.ApiRequester client) : 
+  AccountsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -65,7 +67,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Account].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -76,7 +78,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -84,7 +86,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -103,7 +105,7 @@ class AccountsResourceApi {
    *
    * Completes with a [ListAccountsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -114,7 +116,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -145,7 +147,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Account].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -156,7 +158,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -170,7 +172,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -185,9 +187,8 @@ class AccountsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountsContainersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AccountsContainersMacrosResourceApi get macros => new AccountsContainersMacrosResourceApi(_requester);
   AccountsContainersRulesResourceApi get rules => new AccountsContainersRulesResourceApi(_requester);
@@ -196,7 +197,7 @@ class AccountsContainersResourceApi {
   AccountsContainersVariablesResourceApi get variables => new AccountsContainersVariablesResourceApi(_requester);
   AccountsContainersVersionsResourceApi get versions => new AccountsContainersVersionsResourceApi(_requester);
 
-  AccountsContainersResourceApi(common_internal.ApiRequester client) : 
+  AccountsContainersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -210,7 +211,7 @@ class AccountsContainersResourceApi {
    *
    * Completes with a [Container].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -221,7 +222,7 @@ class AccountsContainersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -232,7 +233,7 @@ class AccountsContainersResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -253,7 +254,7 @@ class AccountsContainersResourceApi {
    *
    * [containerId] - The GTM Container ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -264,7 +265,7 @@ class AccountsContainersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -276,7 +277,7 @@ class AccountsContainersResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -299,7 +300,7 @@ class AccountsContainersResourceApi {
    *
    * Completes with a [Container].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -310,7 +311,7 @@ class AccountsContainersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -321,7 +322,7 @@ class AccountsContainersResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -342,7 +343,7 @@ class AccountsContainersResourceApi {
    *
    * Completes with a [ListContainersResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -353,7 +354,7 @@ class AccountsContainersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -361,7 +362,7 @@ class AccountsContainersResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -389,7 +390,7 @@ class AccountsContainersResourceApi {
    *
    * Completes with a [Container].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -400,7 +401,7 @@ class AccountsContainersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -417,7 +418,7 @@ class AccountsContainersResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -432,11 +433,10 @@ class AccountsContainersResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountsContainersMacrosResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountsContainersMacrosResourceApi(common_internal.ApiRequester client) : 
+  AccountsContainersMacrosResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -452,7 +452,7 @@ class AccountsContainersMacrosResourceApi {
    *
    * Completes with a [Macro].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -463,7 +463,7 @@ class AccountsContainersMacrosResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -477,7 +477,7 @@ class AccountsContainersMacrosResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/macros';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/macros';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -500,7 +500,7 @@ class AccountsContainersMacrosResourceApi {
    *
    * [macroId] - The GTM Macro ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -511,7 +511,7 @@ class AccountsContainersMacrosResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -526,7 +526,7 @@ class AccountsContainersMacrosResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/macros/' + common_internal.Escaper.ecapeVariable('$macroId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/macros/' + commons.Escaper.ecapeVariable('$macroId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -551,7 +551,7 @@ class AccountsContainersMacrosResourceApi {
    *
    * Completes with a [Macro].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -562,7 +562,7 @@ class AccountsContainersMacrosResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -576,7 +576,7 @@ class AccountsContainersMacrosResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/macros/' + common_internal.Escaper.ecapeVariable('$macroId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/macros/' + commons.Escaper.ecapeVariable('$macroId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -599,7 +599,7 @@ class AccountsContainersMacrosResourceApi {
    *
    * Completes with a [ListMacrosResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -610,7 +610,7 @@ class AccountsContainersMacrosResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -621,7 +621,7 @@ class AccountsContainersMacrosResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/macros';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/macros';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -651,7 +651,7 @@ class AccountsContainersMacrosResourceApi {
    *
    * Completes with a [Macro].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -662,7 +662,7 @@ class AccountsContainersMacrosResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -682,7 +682,7 @@ class AccountsContainersMacrosResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/macros/' + common_internal.Escaper.ecapeVariable('$macroId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/macros/' + commons.Escaper.ecapeVariable('$macroId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -697,11 +697,10 @@ class AccountsContainersMacrosResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountsContainersRulesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountsContainersRulesResourceApi(common_internal.ApiRequester client) : 
+  AccountsContainersRulesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -717,7 +716,7 @@ class AccountsContainersRulesResourceApi {
    *
    * Completes with a [Rule].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -728,7 +727,7 @@ class AccountsContainersRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -742,7 +741,7 @@ class AccountsContainersRulesResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/rules';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/rules';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -765,7 +764,7 @@ class AccountsContainersRulesResourceApi {
    *
    * [ruleId] - The GTM Rule ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -776,7 +775,7 @@ class AccountsContainersRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -791,7 +790,7 @@ class AccountsContainersRulesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/rules/' + common_internal.Escaper.ecapeVariable('$ruleId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/rules/' + commons.Escaper.ecapeVariable('$ruleId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -816,7 +815,7 @@ class AccountsContainersRulesResourceApi {
    *
    * Completes with a [Rule].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -827,7 +826,7 @@ class AccountsContainersRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -841,7 +840,7 @@ class AccountsContainersRulesResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/rules/' + common_internal.Escaper.ecapeVariable('$ruleId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/rules/' + commons.Escaper.ecapeVariable('$ruleId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -864,7 +863,7 @@ class AccountsContainersRulesResourceApi {
    *
    * Completes with a [ListRulesResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -875,7 +874,7 @@ class AccountsContainersRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -886,7 +885,7 @@ class AccountsContainersRulesResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/rules';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/rules';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -916,7 +915,7 @@ class AccountsContainersRulesResourceApi {
    *
    * Completes with a [Rule].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -927,7 +926,7 @@ class AccountsContainersRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -947,7 +946,7 @@ class AccountsContainersRulesResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/rules/' + common_internal.Escaper.ecapeVariable('$ruleId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/rules/' + commons.Escaper.ecapeVariable('$ruleId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -962,11 +961,10 @@ class AccountsContainersRulesResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountsContainersTagsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountsContainersTagsResourceApi(common_internal.ApiRequester client) : 
+  AccountsContainersTagsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -982,7 +980,7 @@ class AccountsContainersTagsResourceApi {
    *
    * Completes with a [Tag].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -993,7 +991,7 @@ class AccountsContainersTagsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1007,7 +1005,7 @@ class AccountsContainersTagsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/tags';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/tags';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1030,7 +1028,7 @@ class AccountsContainersTagsResourceApi {
    *
    * [tagId] - The GTM Tag ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1041,7 +1039,7 @@ class AccountsContainersTagsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1056,7 +1054,7 @@ class AccountsContainersTagsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/tags/' + common_internal.Escaper.ecapeVariable('$tagId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/tags/' + commons.Escaper.ecapeVariable('$tagId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1081,7 +1079,7 @@ class AccountsContainersTagsResourceApi {
    *
    * Completes with a [Tag].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1092,7 +1090,7 @@ class AccountsContainersTagsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1106,7 +1104,7 @@ class AccountsContainersTagsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/tags/' + common_internal.Escaper.ecapeVariable('$tagId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/tags/' + commons.Escaper.ecapeVariable('$tagId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1129,7 +1127,7 @@ class AccountsContainersTagsResourceApi {
    *
    * Completes with a [ListTagsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1140,7 +1138,7 @@ class AccountsContainersTagsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1151,7 +1149,7 @@ class AccountsContainersTagsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/tags';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/tags';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1181,7 +1179,7 @@ class AccountsContainersTagsResourceApi {
    *
    * Completes with a [Tag].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1192,7 +1190,7 @@ class AccountsContainersTagsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1212,7 +1210,7 @@ class AccountsContainersTagsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/tags/' + common_internal.Escaper.ecapeVariable('$tagId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/tags/' + commons.Escaper.ecapeVariable('$tagId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1227,11 +1225,10 @@ class AccountsContainersTagsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountsContainersTriggersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountsContainersTriggersResourceApi(common_internal.ApiRequester client) : 
+  AccountsContainersTriggersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1247,7 +1244,7 @@ class AccountsContainersTriggersResourceApi {
    *
    * Completes with a [Trigger].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1258,7 +1255,7 @@ class AccountsContainersTriggersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1272,7 +1269,7 @@ class AccountsContainersTriggersResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/triggers';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/triggers';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1295,7 +1292,7 @@ class AccountsContainersTriggersResourceApi {
    *
    * [triggerId] - The GTM Trigger ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1306,7 +1303,7 @@ class AccountsContainersTriggersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1321,7 +1318,7 @@ class AccountsContainersTriggersResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/triggers/' + common_internal.Escaper.ecapeVariable('$triggerId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/triggers/' + commons.Escaper.ecapeVariable('$triggerId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1346,7 +1343,7 @@ class AccountsContainersTriggersResourceApi {
    *
    * Completes with a [Trigger].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1357,7 +1354,7 @@ class AccountsContainersTriggersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1371,7 +1368,7 @@ class AccountsContainersTriggersResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/triggers/' + common_internal.Escaper.ecapeVariable('$triggerId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/triggers/' + commons.Escaper.ecapeVariable('$triggerId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1394,7 +1391,7 @@ class AccountsContainersTriggersResourceApi {
    *
    * Completes with a [ListTriggersResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1405,7 +1402,7 @@ class AccountsContainersTriggersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1416,7 +1413,7 @@ class AccountsContainersTriggersResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/triggers';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/triggers';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1446,7 +1443,7 @@ class AccountsContainersTriggersResourceApi {
    *
    * Completes with a [Trigger].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1457,7 +1454,7 @@ class AccountsContainersTriggersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1477,7 +1474,7 @@ class AccountsContainersTriggersResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/triggers/' + common_internal.Escaper.ecapeVariable('$triggerId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/triggers/' + commons.Escaper.ecapeVariable('$triggerId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1492,11 +1489,10 @@ class AccountsContainersTriggersResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountsContainersVariablesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountsContainersVariablesResourceApi(common_internal.ApiRequester client) : 
+  AccountsContainersVariablesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1512,7 +1508,7 @@ class AccountsContainersVariablesResourceApi {
    *
    * Completes with a [Variable].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1523,7 +1519,7 @@ class AccountsContainersVariablesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1537,7 +1533,7 @@ class AccountsContainersVariablesResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/variables';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/variables';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1560,7 +1556,7 @@ class AccountsContainersVariablesResourceApi {
    *
    * [variableId] - The GTM Variable ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1571,7 +1567,7 @@ class AccountsContainersVariablesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1586,7 +1582,7 @@ class AccountsContainersVariablesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/variables/' + common_internal.Escaper.ecapeVariable('$variableId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/variables/' + commons.Escaper.ecapeVariable('$variableId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1611,7 +1607,7 @@ class AccountsContainersVariablesResourceApi {
    *
    * Completes with a [Variable].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1622,7 +1618,7 @@ class AccountsContainersVariablesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1636,7 +1632,7 @@ class AccountsContainersVariablesResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/variables/' + common_internal.Escaper.ecapeVariable('$variableId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/variables/' + commons.Escaper.ecapeVariable('$variableId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1659,7 +1655,7 @@ class AccountsContainersVariablesResourceApi {
    *
    * Completes with a [ListVariablesResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1670,7 +1666,7 @@ class AccountsContainersVariablesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1681,7 +1677,7 @@ class AccountsContainersVariablesResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/variables';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/variables';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1711,7 +1707,7 @@ class AccountsContainersVariablesResourceApi {
    *
    * Completes with a [Variable].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1722,7 +1718,7 @@ class AccountsContainersVariablesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1742,7 +1738,7 @@ class AccountsContainersVariablesResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/variables/' + common_internal.Escaper.ecapeVariable('$variableId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/variables/' + commons.Escaper.ecapeVariable('$variableId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1757,11 +1753,10 @@ class AccountsContainersVariablesResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountsContainersVersionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountsContainersVersionsResourceApi(common_internal.ApiRequester client) : 
+  AccountsContainersVersionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1777,7 +1772,7 @@ class AccountsContainersVersionsResourceApi {
    *
    * Completes with a [CreateContainerVersionResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1788,7 +1783,7 @@ class AccountsContainersVersionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1802,7 +1797,7 @@ class AccountsContainersVersionsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/versions';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1825,7 +1820,7 @@ class AccountsContainersVersionsResourceApi {
    *
    * [containerVersionId] - The GTM Container Version ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1836,7 +1831,7 @@ class AccountsContainersVersionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1851,7 +1846,7 @@ class AccountsContainersVersionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/versions/' + common_internal.Escaper.ecapeVariable('$containerVersionId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions/' + commons.Escaper.ecapeVariable('$containerVersionId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1877,7 +1872,7 @@ class AccountsContainersVersionsResourceApi {
    *
    * Completes with a [ContainerVersion].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1888,7 +1883,7 @@ class AccountsContainersVersionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1902,7 +1897,7 @@ class AccountsContainersVersionsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/versions/' + common_internal.Escaper.ecapeVariable('$containerVersionId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions/' + commons.Escaper.ecapeVariable('$containerVersionId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1927,7 +1922,7 @@ class AccountsContainersVersionsResourceApi {
    *
    * Completes with a [ListContainerVersionsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1938,7 +1933,7 @@ class AccountsContainersVersionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1952,7 +1947,7 @@ class AccountsContainersVersionsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/versions';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1980,7 +1975,7 @@ class AccountsContainersVersionsResourceApi {
    *
    * Completes with a [PublishContainerVersionResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1991,7 +1986,7 @@ class AccountsContainersVersionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -2008,7 +2003,7 @@ class AccountsContainersVersionsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/versions/' + common_internal.Escaper.ecapeVariable('$containerVersionId') + '/publish';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions/' + commons.Escaper.ecapeVariable('$containerVersionId') + '/publish';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2036,7 +2031,7 @@ class AccountsContainersVersionsResourceApi {
    *
    * Completes with a [ContainerVersion].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2047,7 +2042,7 @@ class AccountsContainersVersionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -2061,7 +2056,7 @@ class AccountsContainersVersionsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/versions/' + common_internal.Escaper.ecapeVariable('$containerVersionId') + '/restore';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions/' + commons.Escaper.ecapeVariable('$containerVersionId') + '/restore';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2086,7 +2081,7 @@ class AccountsContainersVersionsResourceApi {
    *
    * Completes with a [ContainerVersion].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2097,7 +2092,7 @@ class AccountsContainersVersionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -2111,7 +2106,7 @@ class AccountsContainersVersionsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/versions/' + common_internal.Escaper.ecapeVariable('$containerVersionId') + '/undelete';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions/' + commons.Escaper.ecapeVariable('$containerVersionId') + '/undelete';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2141,7 +2136,7 @@ class AccountsContainersVersionsResourceApi {
    *
    * Completes with a [ContainerVersion].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2152,7 +2147,7 @@ class AccountsContainersVersionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2172,7 +2167,7 @@ class AccountsContainersVersionsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/containers/' + common_internal.Escaper.ecapeVariable('$containerId') + '/versions/' + common_internal.Escaper.ecapeVariable('$containerVersionId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/containers/' + commons.Escaper.ecapeVariable('$containerId') + '/versions/' + commons.Escaper.ecapeVariable('$containerVersionId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2187,11 +2182,10 @@ class AccountsContainersVersionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountsPermissionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountsPermissionsResourceApi(common_internal.ApiRequester client) : 
+  AccountsPermissionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2205,7 +2199,7 @@ class AccountsPermissionsResourceApi {
    *
    * Completes with a [UserAccess].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2216,7 +2210,7 @@ class AccountsPermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2227,7 +2221,7 @@ class AccountsPermissionsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/permissions';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/permissions';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2249,7 +2243,7 @@ class AccountsPermissionsResourceApi {
    *
    * [permissionId] - The GTM User ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2260,7 +2254,7 @@ class AccountsPermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -2272,7 +2266,7 @@ class AccountsPermissionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/permissions/' + common_internal.Escaper.ecapeVariable('$permissionId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -2295,7 +2289,7 @@ class AccountsPermissionsResourceApi {
    *
    * Completes with a [UserAccess].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2306,7 +2300,7 @@ class AccountsPermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -2317,7 +2311,7 @@ class AccountsPermissionsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/permissions/' + common_internal.Escaper.ecapeVariable('$permissionId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2340,7 +2334,7 @@ class AccountsPermissionsResourceApi {
    *
    * Completes with a [ListAccountUsersResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2351,7 +2345,7 @@ class AccountsPermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -2359,7 +2353,7 @@ class AccountsPermissionsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/permissions';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/permissions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2384,7 +2378,7 @@ class AccountsPermissionsResourceApi {
    *
    * Completes with a [UserAccess].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2395,7 +2389,7 @@ class AccountsPermissionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2409,7 +2403,7 @@ class AccountsPermissionsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/permissions/' + common_internal.Escaper.ecapeVariable('$permissionId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -4207,5 +4201,3 @@ class Variable {
     return _json;
   }
 }
-
-

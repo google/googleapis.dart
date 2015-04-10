@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.resourceviews.v1beta1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client resourceviews/v1beta1';
 
 /**
  * The Resource View API allows users to create and manage logical sets of
@@ -40,21 +43,20 @@ class ResourceviewsApi {
   static const NdevCloudmanReadonlyScope = "https://www.googleapis.com/auth/ndev.cloudman.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   RegionViewsResourceApi get regionViews => new RegionViewsResourceApi(_requester);
   ZoneViewsResourceApi get zoneViews => new ZoneViewsResourceApi(_requester);
 
   ResourceviewsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "resourceviews/v1beta1/projects/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class RegionViewsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  RegionViewsResourceApi(common_internal.ApiRequester client) : 
+  RegionViewsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -70,7 +72,7 @@ class RegionViewsResourceApi {
    *
    * [resourceViewName] - The name of the resource view.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -81,7 +83,7 @@ class RegionViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -99,7 +101,7 @@ class RegionViewsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$projectName') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/resourceViews/' + common_internal.Escaper.ecapeVariable('$resourceViewName') + '/addResources';
+    _url = commons.Escaper.ecapeVariable('$projectName') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceViewName') + '/addResources';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -122,7 +124,7 @@ class RegionViewsResourceApi {
    *
    * [resourceViewName] - The name of the resource view.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -133,7 +135,7 @@ class RegionViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectName == null) {
@@ -148,7 +150,7 @@ class RegionViewsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$projectName') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/resourceViews/' + common_internal.Escaper.ecapeVariable('$resourceViewName');
+    _url = commons.Escaper.ecapeVariable('$projectName') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceViewName');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -173,7 +175,7 @@ class RegionViewsResourceApi {
    *
    * Completes with a [ResourceView].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -184,7 +186,7 @@ class RegionViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectName == null) {
@@ -198,7 +200,7 @@ class RegionViewsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectName') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/resourceViews/' + common_internal.Escaper.ecapeVariable('$resourceViewName');
+    _url = commons.Escaper.ecapeVariable('$projectName') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceViewName');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -223,7 +225,7 @@ class RegionViewsResourceApi {
    *
    * Completes with a [RegionViewsInsertResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -234,7 +236,7 @@ class RegionViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -248,7 +250,7 @@ class RegionViewsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectName') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/resourceViews';
+    _url = commons.Escaper.ecapeVariable('$projectName') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/resourceViews';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -279,7 +281,7 @@ class RegionViewsResourceApi {
    *
    * Completes with a [RegionViewsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -290,7 +292,7 @@ class RegionViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectName == null) {
@@ -307,7 +309,7 @@ class RegionViewsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectName') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/resourceViews';
+    _url = commons.Escaper.ecapeVariable('$projectName') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/resourceViews';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -340,7 +342,7 @@ class RegionViewsResourceApi {
    *
    * Completes with a [RegionViewsListResourcesResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -351,7 +353,7 @@ class RegionViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectName == null) {
@@ -371,7 +373,7 @@ class RegionViewsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectName') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/resourceViews/' + common_internal.Escaper.ecapeVariable('$resourceViewName') + '/resources';
+    _url = commons.Escaper.ecapeVariable('$projectName') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceViewName') + '/resources';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -396,7 +398,7 @@ class RegionViewsResourceApi {
    *
    * [resourceViewName] - The name of the resource view.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -407,7 +409,7 @@ class RegionViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -425,7 +427,7 @@ class RegionViewsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$projectName') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/resourceViews/' + common_internal.Escaper.ecapeVariable('$resourceViewName') + '/removeResources';
+    _url = commons.Escaper.ecapeVariable('$projectName') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceViewName') + '/removeResources';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -440,11 +442,10 @@ class RegionViewsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ZoneViewsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ZoneViewsResourceApi(common_internal.ApiRequester client) : 
+  ZoneViewsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -460,7 +461,7 @@ class ZoneViewsResourceApi {
    *
    * [resourceViewName] - The name of the resource view.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -471,7 +472,7 @@ class ZoneViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -489,7 +490,7 @@ class ZoneViewsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$projectName') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/resourceViews/' + common_internal.Escaper.ecapeVariable('$resourceViewName') + '/addResources';
+    _url = commons.Escaper.ecapeVariable('$projectName') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceViewName') + '/addResources';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -512,7 +513,7 @@ class ZoneViewsResourceApi {
    *
    * [resourceViewName] - The name of the resource view.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -523,7 +524,7 @@ class ZoneViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectName == null) {
@@ -538,7 +539,7 @@ class ZoneViewsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$projectName') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/resourceViews/' + common_internal.Escaper.ecapeVariable('$resourceViewName');
+    _url = commons.Escaper.ecapeVariable('$projectName') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceViewName');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -563,7 +564,7 @@ class ZoneViewsResourceApi {
    *
    * Completes with a [ResourceView].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -574,7 +575,7 @@ class ZoneViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectName == null) {
@@ -588,7 +589,7 @@ class ZoneViewsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectName') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/resourceViews/' + common_internal.Escaper.ecapeVariable('$resourceViewName');
+    _url = commons.Escaper.ecapeVariable('$projectName') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceViewName');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -613,7 +614,7 @@ class ZoneViewsResourceApi {
    *
    * Completes with a [ZoneViewsInsertResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -624,7 +625,7 @@ class ZoneViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -638,7 +639,7 @@ class ZoneViewsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectName') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/resourceViews';
+    _url = commons.Escaper.ecapeVariable('$projectName') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -669,7 +670,7 @@ class ZoneViewsResourceApi {
    *
    * Completes with a [ZoneViewsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -680,7 +681,7 @@ class ZoneViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectName == null) {
@@ -697,7 +698,7 @@ class ZoneViewsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectName') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/resourceViews';
+    _url = commons.Escaper.ecapeVariable('$projectName') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -730,7 +731,7 @@ class ZoneViewsResourceApi {
    *
    * Completes with a [ZoneViewsListResourcesResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -741,7 +742,7 @@ class ZoneViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectName == null) {
@@ -761,7 +762,7 @@ class ZoneViewsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectName') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/resourceViews/' + common_internal.Escaper.ecapeVariable('$resourceViewName') + '/resources';
+    _url = commons.Escaper.ecapeVariable('$projectName') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceViewName') + '/resources';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -786,7 +787,7 @@ class ZoneViewsResourceApi {
    *
    * [resourceViewName] - The name of the resource view.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -797,7 +798,7 @@ class ZoneViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -815,7 +816,7 @@ class ZoneViewsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$projectName') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/resourceViews/' + common_internal.Escaper.ecapeVariable('$resourceViewName') + '/removeResources';
+    _url = commons.Escaper.ecapeVariable('$projectName') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/resourceViews/' + commons.Escaper.ecapeVariable('$resourceViewName') + '/removeResources';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1243,5 +1244,3 @@ class ZoneViewsRemoveResourcesRequest {
     return _json;
   }
 }
-
-

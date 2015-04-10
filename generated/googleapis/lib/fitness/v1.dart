@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.fitness.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client fitness/v1';
 
 /** Google Fit API */
 class FitnessApi {
@@ -34,34 +37,32 @@ class FitnessApi {
   static const FitnessLocationWriteScope = "https://www.googleapis.com/auth/fitness.location.write";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   UsersResourceApi get users => new UsersResourceApi(_requester);
 
   FitnessApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "fitness/v1/users/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class UsersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   UsersDataSourcesResourceApi get dataSources => new UsersDataSourcesResourceApi(_requester);
   UsersSessionsResourceApi get sessions => new UsersSessionsResourceApi(_requester);
 
-  UsersResourceApi(common_internal.ApiRequester client) : 
+  UsersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 }
 
 
-/** Not documented yet. */
 class UsersDataSourcesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   UsersDataSourcesDatasetsResourceApi get datasets => new UsersDataSourcesDatasetsResourceApi(_requester);
 
-  UsersDataSourcesResourceApi(common_internal.ApiRequester client) : 
+  UsersDataSourcesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -83,7 +84,7 @@ class UsersDataSourcesResourceApi {
    *
    * Completes with a [DataSource].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -94,7 +95,7 @@ class UsersDataSourcesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -105,7 +106,7 @@ class UsersDataSourcesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/dataSources';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -129,7 +130,7 @@ class UsersDataSourcesResourceApi {
    *
    * Completes with a [DataSource].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -140,7 +141,7 @@ class UsersDataSourcesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -151,7 +152,7 @@ class UsersDataSourcesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/dataSources/' + common_internal.Escaper.ecapeVariable('$dataSourceId');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -179,7 +180,7 @@ class UsersDataSourcesResourceApi {
    *
    * Completes with a [ListDataSourcesResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -190,7 +191,7 @@ class UsersDataSourcesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -201,7 +202,7 @@ class UsersDataSourcesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/dataSources';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -233,7 +234,7 @@ class UsersDataSourcesResourceApi {
    *
    * Completes with a [DataSource].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -244,7 +245,7 @@ class UsersDataSourcesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -258,7 +259,7 @@ class UsersDataSourcesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/dataSources/' + common_internal.Escaper.ecapeVariable('$dataSourceId');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -289,7 +290,7 @@ class UsersDataSourcesResourceApi {
    *
    * Completes with a [DataSource].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -300,7 +301,7 @@ class UsersDataSourcesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -314,7 +315,7 @@ class UsersDataSourcesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/dataSources/' + common_internal.Escaper.ecapeVariable('$dataSourceId');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -329,11 +330,10 @@ class UsersDataSourcesResourceApi {
 }
 
 
-/** Not documented yet. */
 class UsersDataSourcesDatasetsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UsersDataSourcesDatasetsResourceApi(common_internal.ApiRequester client) : 
+  UsersDataSourcesDatasetsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -363,7 +363,7 @@ class UsersDataSourcesDatasetsResourceApi {
    *
    * [modifiedTimeMillis] - When the operation was performed on the client.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -374,7 +374,7 @@ class UsersDataSourcesDatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -395,7 +395,7 @@ class UsersDataSourcesDatasetsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/dataSources/' + common_internal.Escaper.ecapeVariable('$dataSourceId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -439,7 +439,7 @@ class UsersDataSourcesDatasetsResourceApi {
    *
    * Completes with a [Dataset].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -450,7 +450,7 @@ class UsersDataSourcesDatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -470,7 +470,7 @@ class UsersDataSourcesDatasetsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/dataSources/' + common_internal.Escaper.ecapeVariable('$dataSourceId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -509,7 +509,7 @@ class UsersDataSourcesDatasetsResourceApi {
    *
    * Completes with a [Dataset].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -520,7 +520,7 @@ class UsersDataSourcesDatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -540,7 +540,7 @@ class UsersDataSourcesDatasetsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/dataSources/' + common_internal.Escaper.ecapeVariable('$dataSourceId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -555,11 +555,10 @@ class UsersDataSourcesDatasetsResourceApi {
 }
 
 
-/** Not documented yet. */
 class UsersSessionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UsersSessionsResourceApi(common_internal.ApiRequester client) : 
+  UsersSessionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -575,7 +574,7 @@ class UsersSessionsResourceApi {
    * [currentTimeMillis] - The client's current time in milliseconds since
    * epoch.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -586,7 +585,7 @@ class UsersSessionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -601,7 +600,7 @@ class UsersSessionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/sessions/' + common_internal.Escaper.ecapeVariable('$sessionId');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/sessions/' + commons.Escaper.ecapeVariable('$sessionId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -637,7 +636,7 @@ class UsersSessionsResourceApi {
    *
    * Completes with a [ListSessionsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -648,7 +647,7 @@ class UsersSessionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -668,7 +667,7 @@ class UsersSessionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/sessions';
+    _url = commons.Escaper.ecapeVariable('$userId') + '/sessions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -697,7 +696,7 @@ class UsersSessionsResourceApi {
    *
    * Completes with a [Session].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -708,7 +707,7 @@ class UsersSessionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -725,7 +724,7 @@ class UsersSessionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$userId') + '/sessions/' + common_internal.Escaper.ecapeVariable('$sessionId');
+    _url = commons.Escaper.ecapeVariable('$userId') + '/sessions/' + commons.Escaper.ecapeVariable('$sessionId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1138,7 +1137,6 @@ class DataTypeField {
    */
   core.String name;
 
-  /** Not documented yet. */
   core.bool optional;
 
 
@@ -1344,7 +1342,6 @@ class Device {
 }
 
 
-/** Not documented yet. */
 class ListDataSourcesResponse {
   /** A previously created data source. */
   core.List<DataSource> dataSource;
@@ -1368,7 +1365,6 @@ class ListDataSourcesResponse {
 }
 
 
-/** Not documented yet. */
 class ListSessionsResponse {
   /**
    * If includeDeleted is set to true in the request, this list will contain
@@ -1550,5 +1546,3 @@ class Value {
     return _json;
   }
 }
-
-

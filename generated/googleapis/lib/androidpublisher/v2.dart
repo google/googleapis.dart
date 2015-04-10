@@ -1,17 +1,22 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.androidpublisher.v2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client androidpublisher/v2';
 
 /** Lets Android application developers access their Google Play accounts. */
 class AndroidpublisherApi {
@@ -19,20 +24,19 @@ class AndroidpublisherApi {
   static const AndroidpublisherScope = "https://www.googleapis.com/auth/androidpublisher";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   EditsResourceApi get edits => new EditsResourceApi(_requester);
   InappproductsResourceApi get inappproducts => new InappproductsResourceApi(_requester);
   PurchasesResourceApi get purchases => new PurchasesResourceApi(_requester);
 
   AndroidpublisherApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "androidpublisher/v2/applications/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class EditsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   EditsApklistingsResourceApi get apklistings => new EditsApklistingsResourceApi(_requester);
   EditsApksResourceApi get apks => new EditsApksResourceApi(_requester);
@@ -43,7 +47,7 @@ class EditsResourceApi {
   EditsTestersResourceApi get testers => new EditsTestersResourceApi(_requester);
   EditsTracksResourceApi get tracks => new EditsTracksResourceApi(_requester);
 
-  EditsResourceApi(common_internal.ApiRequester client) : 
+  EditsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -58,7 +62,7 @@ class EditsResourceApi {
    *
    * Completes with a [AppEdit].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -69,7 +73,7 @@ class EditsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -80,7 +84,7 @@ class EditsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + ':commit';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + ':commit';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -104,7 +108,7 @@ class EditsResourceApi {
    *
    * [editId] - Unique identifier for this edit.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -115,7 +119,7 @@ class EditsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -127,7 +131,7 @@ class EditsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -152,7 +156,7 @@ class EditsResourceApi {
    *
    * Completes with a [AppEdit].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -163,7 +167,7 @@ class EditsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -174,7 +178,7 @@ class EditsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -198,7 +202,7 @@ class EditsResourceApi {
    *
    * Completes with a [AppEdit].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -209,7 +213,7 @@ class EditsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -220,7 +224,7 @@ class EditsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -245,7 +249,7 @@ class EditsResourceApi {
    *
    * Completes with a [AppEdit].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -256,7 +260,7 @@ class EditsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -267,7 +271,7 @@ class EditsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + ':validate';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + ':validate';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -282,11 +286,10 @@ class EditsResourceApi {
 }
 
 
-/** Not documented yet. */
 class EditsApklistingsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  EditsApklistingsResourceApi(common_internal.ApiRequester client) : 
+  EditsApklistingsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -307,7 +310,7 @@ class EditsApklistingsResourceApi {
    * localized listing to read or modify. For example, to select Austrian
    * German, pass "de-AT".
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -318,7 +321,7 @@ class EditsApklistingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -336,7 +339,7 @@ class EditsApklistingsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks/' + common_internal.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + common_internal.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + commons.Escaper.ecapeVariable('$language');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -361,7 +364,7 @@ class EditsApklistingsResourceApi {
    * [apkVersionCode] - The APK version code whose APK-specific listings should
    * be read or modified.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -372,7 +375,7 @@ class EditsApklistingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -387,7 +390,7 @@ class EditsApklistingsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks/' + common_internal.Escaper.ecapeVariable('$apkVersionCode') + '/listings';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings';
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -419,7 +422,7 @@ class EditsApklistingsResourceApi {
    *
    * Completes with a [ApkListing].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -430,7 +433,7 @@ class EditsApklistingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -447,7 +450,7 @@ class EditsApklistingsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks/' + common_internal.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + common_internal.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + commons.Escaper.ecapeVariable('$language');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -474,7 +477,7 @@ class EditsApklistingsResourceApi {
    *
    * Completes with a [ApkListingsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -485,7 +488,7 @@ class EditsApklistingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -499,7 +502,7 @@ class EditsApklistingsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks/' + common_internal.Escaper.ecapeVariable('$apkVersionCode') + '/listings';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -533,7 +536,7 @@ class EditsApklistingsResourceApi {
    *
    * Completes with a [ApkListing].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -544,7 +547,7 @@ class EditsApklistingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -564,7 +567,7 @@ class EditsApklistingsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks/' + common_internal.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + common_internal.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + commons.Escaper.ecapeVariable('$language');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -598,7 +601,7 @@ class EditsApklistingsResourceApi {
    *
    * Completes with a [ApkListing].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -609,7 +612,7 @@ class EditsApklistingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -629,7 +632,7 @@ class EditsApklistingsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks/' + common_internal.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + common_internal.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + commons.Escaper.ecapeVariable('$language');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -644,17 +647,16 @@ class EditsApklistingsResourceApi {
 }
 
 
-/** Not documented yet. */
 class EditsApksResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  EditsApksResourceApi(common_internal.ApiRequester client) : 
+  EditsApksResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
    * Creates a new APK without uploading the APK itself to Google Play, instead
    * hosting the APK at a specified URL. This function is only available to
-   * enterprises using Google Play for work whose application is configured to
+   * enterprises using Google Play for Work whose application is configured to
    * restrict distribution to the enterprise domain.
    *
    * [request] - The metadata request object.
@@ -668,7 +670,7 @@ class EditsApksResourceApi {
    *
    * Completes with a [ApksAddExternallyHostedResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -679,7 +681,7 @@ class EditsApksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -693,7 +695,7 @@ class EditsApksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks/externallyHosted';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/externallyHosted';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -706,8 +708,6 @@ class EditsApksResourceApi {
   }
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [packageName] - Unique identifier for the Android app that is being
@@ -717,7 +717,7 @@ class EditsApksResourceApi {
    *
    * Completes with a [ApksListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -728,7 +728,7 @@ class EditsApksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -739,7 +739,7 @@ class EditsApksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -752,8 +752,6 @@ class EditsApksResourceApi {
   }
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [packageName] - Unique identifier for the Android app that is being
@@ -768,18 +766,18 @@ class EditsApksResourceApi {
    *
    * Completes with a [Apk].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Apk> upload(core.String packageName, core.String editId, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Apk> upload(core.String packageName, core.String editId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -793,11 +791,11 @@ class EditsApksResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/androidpublisher/v2/applications/' + common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks';
+      _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks';
     } else {
-      _url = '/upload/androidpublisher/v2/applications/' + common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks';
+      _url = '/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks';
     }
 
 
@@ -814,11 +812,10 @@ class EditsApksResourceApi {
 }
 
 
-/** Not documented yet. */
 class EditsDetailsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  EditsDetailsResourceApi(common_internal.ApiRequester client) : 
+  EditsDetailsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -834,7 +831,7 @@ class EditsDetailsResourceApi {
    *
    * Completes with a [AppDetails].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -845,7 +842,7 @@ class EditsDetailsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -856,7 +853,7 @@ class EditsDetailsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/details';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/details';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -882,7 +879,7 @@ class EditsDetailsResourceApi {
    *
    * Completes with a [AppDetails].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -893,7 +890,7 @@ class EditsDetailsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -907,7 +904,7 @@ class EditsDetailsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/details';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/details';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -933,7 +930,7 @@ class EditsDetailsResourceApi {
    *
    * Completes with a [AppDetails].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -944,7 +941,7 @@ class EditsDetailsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -958,7 +955,7 @@ class EditsDetailsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/details';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/details';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -973,11 +970,10 @@ class EditsDetailsResourceApi {
 }
 
 
-/** Not documented yet. */
 class EditsExpansionfilesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  EditsExpansionfilesResourceApi(common_internal.ApiRequester client) : 
+  EditsExpansionfilesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1000,7 +996,7 @@ class EditsExpansionfilesResourceApi {
    *
    * Completes with a [ExpansionFile].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1011,7 +1007,7 @@ class EditsExpansionfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -1028,7 +1024,7 @@ class EditsExpansionfilesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks/' + common_internal.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + common_internal.Escaper.ecapeVariable('$expansionFileType');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1064,7 +1060,7 @@ class EditsExpansionfilesResourceApi {
    *
    * Completes with a [ExpansionFile].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1075,7 +1071,7 @@ class EditsExpansionfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1095,7 +1091,7 @@ class EditsExpansionfilesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks/' + common_internal.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + common_internal.Escaper.ecapeVariable('$expansionFileType');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1130,7 +1126,7 @@ class EditsExpansionfilesResourceApi {
    *
    * Completes with a [ExpansionFile].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1141,7 +1137,7 @@ class EditsExpansionfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1161,7 +1157,7 @@ class EditsExpansionfilesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks/' + common_internal.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + common_internal.Escaper.ecapeVariable('$expansionFileType');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1198,18 +1194,18 @@ class EditsExpansionfilesResourceApi {
    *
    * Completes with a [ExpansionFilesUploadResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<ExpansionFilesUploadResponse> upload(core.String packageName, core.String editId, core.int apkVersionCode, core.String expansionFileType, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<ExpansionFilesUploadResponse> upload(core.String packageName, core.String editId, core.int apkVersionCode, core.String expansionFileType, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -1229,11 +1225,11 @@ class EditsExpansionfilesResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks/' + common_internal.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + common_internal.Escaper.ecapeVariable('$expansionFileType');
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/androidpublisher/v2/applications/' + common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks/' + common_internal.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + common_internal.Escaper.ecapeVariable('$expansionFileType');
+      _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
     } else {
-      _url = '/upload/androidpublisher/v2/applications/' + common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/apks/' + common_internal.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + common_internal.Escaper.ecapeVariable('$expansionFileType');
+      _url = '/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
     }
 
 
@@ -1250,11 +1246,10 @@ class EditsExpansionfilesResourceApi {
 }
 
 
-/** Not documented yet. */
 class EditsImagesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  EditsImagesResourceApi(common_internal.ApiRequester client) : 
+  EditsImagesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1285,7 +1280,7 @@ class EditsImagesResourceApi {
    * [imageId] - Unique identifier an image within the set of images attached to
    * this edit.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1296,7 +1291,7 @@ class EditsImagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -1317,7 +1312,7 @@ class EditsImagesResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/listings/' + common_internal.Escaper.ecapeVariable('$language') + '/' + common_internal.Escaper.ecapeVariable('$imageType') + '/' + common_internal.Escaper.ecapeVariable('$imageId');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language') + '/' + commons.Escaper.ecapeVariable('$imageType') + '/' + commons.Escaper.ecapeVariable('$imageId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1356,7 +1351,7 @@ class EditsImagesResourceApi {
    *
    * Completes with a [ImagesDeleteAllResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1367,7 +1362,7 @@ class EditsImagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -1384,7 +1379,7 @@ class EditsImagesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/listings/' + common_internal.Escaper.ecapeVariable('$language') + '/' + common_internal.Escaper.ecapeVariable('$imageType');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language') + '/' + commons.Escaper.ecapeVariable('$imageType');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1423,7 +1418,7 @@ class EditsImagesResourceApi {
    *
    * Completes with a [ImagesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1434,7 +1429,7 @@ class EditsImagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -1451,7 +1446,7 @@ class EditsImagesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/listings/' + common_internal.Escaper.ecapeVariable('$language') + '/' + common_internal.Escaper.ecapeVariable('$imageType');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language') + '/' + commons.Escaper.ecapeVariable('$imageType');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1496,18 +1491,18 @@ class EditsImagesResourceApi {
    *
    * Completes with a [ImagesUploadResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<ImagesUploadResponse> upload(core.String packageName, core.String editId, core.String language, core.String imageType, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<ImagesUploadResponse> upload(core.String packageName, core.String editId, core.String language, core.String imageType, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -1527,11 +1522,11 @@ class EditsImagesResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/listings/' + common_internal.Escaper.ecapeVariable('$language') + '/' + common_internal.Escaper.ecapeVariable('$imageType');
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/androidpublisher/v2/applications/' + common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/listings/' + common_internal.Escaper.ecapeVariable('$language') + '/' + common_internal.Escaper.ecapeVariable('$imageType');
+      _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language') + '/' + commons.Escaper.ecapeVariable('$imageType');
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language') + '/' + commons.Escaper.ecapeVariable('$imageType');
     } else {
-      _url = '/upload/androidpublisher/v2/applications/' + common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/listings/' + common_internal.Escaper.ecapeVariable('$language') + '/' + common_internal.Escaper.ecapeVariable('$imageType');
+      _url = '/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language') + '/' + commons.Escaper.ecapeVariable('$imageType');
     }
 
 
@@ -1548,11 +1543,10 @@ class EditsImagesResourceApi {
 }
 
 
-/** Not documented yet. */
 class EditsListingsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  EditsListingsResourceApi(common_internal.ApiRequester client) : 
+  EditsListingsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1569,7 +1563,7 @@ class EditsListingsResourceApi {
    * listing to read or modify. For example, to select Austrian German, pass
    * "de-AT".
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1580,7 +1574,7 @@ class EditsListingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -1595,7 +1589,7 @@ class EditsListingsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/listings/' + common_internal.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1617,7 +1611,7 @@ class EditsListingsResourceApi {
    *
    * [editId] - Unique identifier for this edit.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1628,7 +1622,7 @@ class EditsListingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -1640,7 +1634,7 @@ class EditsListingsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/listings';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings';
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1668,7 +1662,7 @@ class EditsListingsResourceApi {
    *
    * Completes with a [Listing].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1679,7 +1673,7 @@ class EditsListingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -1693,7 +1687,7 @@ class EditsListingsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/listings/' + common_internal.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1717,7 +1711,7 @@ class EditsListingsResourceApi {
    *
    * Completes with a [ListingsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1728,7 +1722,7 @@ class EditsListingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -1739,7 +1733,7 @@ class EditsListingsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/listings';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1770,7 +1764,7 @@ class EditsListingsResourceApi {
    *
    * Completes with a [Listing].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1781,7 +1775,7 @@ class EditsListingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1798,7 +1792,7 @@ class EditsListingsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/listings/' + common_internal.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1828,7 +1822,7 @@ class EditsListingsResourceApi {
    *
    * Completes with a [Listing].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1839,7 +1833,7 @@ class EditsListingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1856,7 +1850,7 @@ class EditsListingsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/listings/' + common_internal.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1871,16 +1865,13 @@ class EditsListingsResourceApi {
 }
 
 
-/** Not documented yet. */
 class EditsTestersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  EditsTestersResourceApi(common_internal.ApiRequester client) : 
+  EditsTestersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [packageName] - Unique identifier for the Android app that is being
@@ -1897,7 +1888,7 @@ class EditsTestersResourceApi {
    *
    * Completes with a [Testers].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1908,7 +1899,7 @@ class EditsTestersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -1922,7 +1913,7 @@ class EditsTestersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/testers/' + common_internal.Escaper.ecapeVariable('$track');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/testers/' + commons.Escaper.ecapeVariable('$track');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1935,8 +1926,6 @@ class EditsTestersResourceApi {
   }
 
   /**
-   * Not documented yet.
-   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -1955,7 +1944,7 @@ class EditsTestersResourceApi {
    *
    * Completes with a [Testers].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1966,7 +1955,7 @@ class EditsTestersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1983,7 +1972,7 @@ class EditsTestersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/testers/' + common_internal.Escaper.ecapeVariable('$track');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/testers/' + commons.Escaper.ecapeVariable('$track');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1996,8 +1985,6 @@ class EditsTestersResourceApi {
   }
 
   /**
-   * Not documented yet.
-   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -2016,7 +2003,7 @@ class EditsTestersResourceApi {
    *
    * Completes with a [Testers].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2027,7 +2014,7 @@ class EditsTestersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2044,7 +2031,7 @@ class EditsTestersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/testers/' + common_internal.Escaper.ecapeVariable('$track');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/testers/' + commons.Escaper.ecapeVariable('$track');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2059,11 +2046,10 @@ class EditsTestersResourceApi {
 }
 
 
-/** Not documented yet. */
 class EditsTracksResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  EditsTracksResourceApi(common_internal.ApiRequester client) : 
+  EditsTracksResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2086,7 +2072,7 @@ class EditsTracksResourceApi {
    *
    * Completes with a [Track].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2097,7 +2083,7 @@ class EditsTracksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -2111,7 +2097,7 @@ class EditsTracksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/tracks/' + common_internal.Escaper.ecapeVariable('$track');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/tracks/' + commons.Escaper.ecapeVariable('$track');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2135,7 +2121,7 @@ class EditsTracksResourceApi {
    *
    * Completes with a [TracksListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2146,7 +2132,7 @@ class EditsTracksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -2157,7 +2143,7 @@ class EditsTracksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/tracks';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/tracks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2192,7 +2178,7 @@ class EditsTracksResourceApi {
    *
    * Completes with a [Track].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2203,7 +2189,7 @@ class EditsTracksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2220,7 +2206,7 @@ class EditsTracksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/tracks/' + common_internal.Escaper.ecapeVariable('$track');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/tracks/' + commons.Escaper.ecapeVariable('$track');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -2255,7 +2241,7 @@ class EditsTracksResourceApi {
    *
    * Completes with a [Track].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2266,7 +2252,7 @@ class EditsTracksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2283,7 +2269,7 @@ class EditsTracksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/edits/' + common_internal.Escaper.ecapeVariable('$editId') + '/tracks/' + common_internal.Escaper.ecapeVariable('$track');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/tracks/' + commons.Escaper.ecapeVariable('$track');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2298,23 +2284,20 @@ class EditsTracksResourceApi {
 }
 
 
-/** Not documented yet. */
 class InappproductsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  InappproductsResourceApi(common_internal.ApiRequester client) : 
+  InappproductsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Not documented yet.
-   *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * Completes with a [InappproductsBatchResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2325,7 +2308,7 @@ class InappproductsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2355,7 +2338,7 @@ class InappproductsResourceApi {
    *
    * [sku] - Unique identifier for the in-app product.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2366,7 +2349,7 @@ class InappproductsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -2378,7 +2361,7 @@ class InappproductsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + common_internal.Escaper.ecapeVariable('$sku');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + commons.Escaper.ecapeVariable('$sku');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -2401,7 +2384,7 @@ class InappproductsResourceApi {
    *
    * Completes with a [InAppProduct].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2412,7 +2395,7 @@ class InappproductsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -2423,7 +2406,7 @@ class InappproductsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + common_internal.Escaper.ecapeVariable('$sku');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + commons.Escaper.ecapeVariable('$sku');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2452,7 +2435,7 @@ class InappproductsResourceApi {
    *
    * Completes with a [InAppProduct].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2463,7 +2446,7 @@ class InappproductsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2477,7 +2460,7 @@ class InappproductsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/inappproducts';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2506,7 +2489,7 @@ class InappproductsResourceApi {
    *
    * Completes with a [InappproductsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2517,7 +2500,7 @@ class InappproductsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -2534,7 +2517,7 @@ class InappproductsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/inappproducts';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2566,7 +2549,7 @@ class InappproductsResourceApi {
    *
    * Completes with a [InAppProduct].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2577,7 +2560,7 @@ class InappproductsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2594,7 +2577,7 @@ class InappproductsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + common_internal.Escaper.ecapeVariable('$sku');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + commons.Escaper.ecapeVariable('$sku');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -2625,7 +2608,7 @@ class InappproductsResourceApi {
    *
    * Completes with a [InAppProduct].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2636,7 +2619,7 @@ class InappproductsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2653,7 +2636,7 @@ class InappproductsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + common_internal.Escaper.ecapeVariable('$sku');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + commons.Escaper.ecapeVariable('$sku');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2668,23 +2651,21 @@ class InappproductsResourceApi {
 }
 
 
-/** Not documented yet. */
 class PurchasesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   PurchasesProductsResourceApi get products => new PurchasesProductsResourceApi(_requester);
   PurchasesSubscriptionsResourceApi get subscriptions => new PurchasesSubscriptionsResourceApi(_requester);
 
-  PurchasesResourceApi(common_internal.ApiRequester client) : 
+  PurchasesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 }
 
 
-/** Not documented yet. */
 class PurchasesProductsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PurchasesProductsResourceApi(common_internal.ApiRequester client) : 
+  PurchasesProductsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2702,7 +2683,7 @@ class PurchasesProductsResourceApi {
    *
    * Completes with a [ProductPurchase].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2713,7 +2694,7 @@ class PurchasesProductsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -2727,7 +2708,7 @@ class PurchasesProductsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/purchases/products/' + common_internal.Escaper.ecapeVariable('$productId') + '/tokens/' + common_internal.Escaper.ecapeVariable('$token');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/products/' + commons.Escaper.ecapeVariable('$productId') + '/tokens/' + commons.Escaper.ecapeVariable('$token');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2742,11 +2723,10 @@ class PurchasesProductsResourceApi {
 }
 
 
-/** Not documented yet. */
 class PurchasesSubscriptionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PurchasesSubscriptionsResourceApi(common_internal.ApiRequester client) : 
+  PurchasesSubscriptionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2764,7 +2744,7 @@ class PurchasesSubscriptionsResourceApi {
    * [token] - The token provided to the user's device when the subscription was
    * purchased.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2775,7 +2755,7 @@ class PurchasesSubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -2790,7 +2770,7 @@ class PurchasesSubscriptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + common_internal.Escaper.ecapeVariable('$token') + ':cancel';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + commons.Escaper.ecapeVariable('$token') + ':cancel';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2821,7 +2801,7 @@ class PurchasesSubscriptionsResourceApi {
    *
    * Completes with a [SubscriptionPurchasesDeferResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2832,7 +2812,7 @@ class PurchasesSubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2849,7 +2829,7 @@ class PurchasesSubscriptionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + common_internal.Escaper.ecapeVariable('$token') + ':defer';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + commons.Escaper.ecapeVariable('$token') + ':defer';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2878,7 +2858,7 @@ class PurchasesSubscriptionsResourceApi {
    *
    * Completes with a [SubscriptionPurchase].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2889,7 +2869,7 @@ class PurchasesSubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -2903,7 +2883,7 @@ class PurchasesSubscriptionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + common_internal.Escaper.ecapeVariable('$token');
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + commons.Escaper.ecapeVariable('$token');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2930,7 +2910,7 @@ class PurchasesSubscriptionsResourceApi {
    * [token] - The token provided to the user's device when the subscription was
    * purchased.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2941,7 +2921,7 @@ class PurchasesSubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -2956,7 +2936,7 @@ class PurchasesSubscriptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + common_internal.Escaper.ecapeVariable('$token') + ':refund';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + commons.Escaper.ecapeVariable('$token') + ':refund';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2983,7 +2963,7 @@ class PurchasesSubscriptionsResourceApi {
    * [token] - The token provided to the user's device when the subscription was
    * purchased.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2994,7 +2974,7 @@ class PurchasesSubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (packageName == null) {
@@ -3009,7 +2989,7 @@ class PurchasesSubscriptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + common_internal.Escaper.ecapeVariable('$token') + ':revoke';
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + commons.Escaper.ecapeVariable('$token') + ':revoke';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3025,7 +3005,6 @@ class PurchasesSubscriptionsResourceApi {
 
 
 
-/** Not documented yet. */
 class Apk {
   /** Information about the binary payload of this APK. */
   ApkBinary binary;
@@ -3085,7 +3064,6 @@ class ApkBinary {
 }
 
 
-/** Not documented yet. */
 class ApkListing {
   /** The language code, in BCP 47 format (eg "en-US"). */
   core.String language;
@@ -3118,7 +3096,6 @@ class ApkListing {
 }
 
 
-/** Not documented yet. */
 class ApkListingsListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -3126,7 +3103,6 @@ class ApkListingsListResponse {
    */
   core.String kind;
 
-  /** Not documented yet. */
   core.List<ApkListing> listings;
 
 
@@ -3154,7 +3130,6 @@ class ApkListingsListResponse {
 }
 
 
-/** Not documented yet. */
 class ApksAddExternallyHostedRequest {
   /** The definition of the externally-hosted APK and where it is located. */
   ExternallyHostedApk externallyHostedApk;
@@ -3178,7 +3153,6 @@ class ApksAddExternallyHostedRequest {
 }
 
 
-/** Not documented yet. */
 class ApksAddExternallyHostedResponse {
   /** The definition of the externally-hosted APK and where it is located. */
   ExternallyHostedApk externallyHostedApk;
@@ -3202,9 +3176,7 @@ class ApksAddExternallyHostedResponse {
 }
 
 
-/** Not documented yet. */
 class ApksListResponse {
-  /** Not documented yet. */
   core.List<Apk> apks;
 
   /**
@@ -3238,7 +3210,6 @@ class ApksListResponse {
 }
 
 
-/** Not documented yet. */
 class AppDetails {
   /** The user-visible support email for this app. */
   core.String contactEmail;
@@ -3328,7 +3299,6 @@ class AppEdit {
 }
 
 
-/** Not documented yet. */
 class ExpansionFile {
   /**
    * If set this field indicates that this APK has an Expansion File uploaded to
@@ -3368,9 +3338,7 @@ class ExpansionFile {
 }
 
 
-/** Not documented yet. */
 class ExpansionFilesUploadResponse {
-  /** Not documented yet. */
   ExpansionFile expansionFile;
 
 
@@ -3395,7 +3363,7 @@ class ExpansionFilesUploadResponse {
 /**
  * Defines an APK available for this application that is hosted externally and
  * not uploaded to Google Play. This function is only available to enterprises
- * who are using Android for Work, and whos application is restricted to the
+ * who are using Google Play for Work, and whos application is restricted to the
  * enterprise private channel
  */
 class ExternallyHostedApk {
@@ -3590,7 +3558,6 @@ class ExternallyHostedApkUsesPermission {
 }
 
 
-/** Not documented yet. */
 class Image {
   /** A unique id representing this image. */
   core.String id;
@@ -3632,9 +3599,7 @@ class Image {
 }
 
 
-/** Not documented yet. */
 class ImagesDeleteAllResponse {
-  /** Not documented yet. */
   core.List<Image> deleted;
 
 
@@ -3656,9 +3621,7 @@ class ImagesDeleteAllResponse {
 }
 
 
-/** Not documented yet. */
 class ImagesListResponse {
-  /** Not documented yet. */
   core.List<Image> images;
 
 
@@ -3680,9 +3643,7 @@ class ImagesListResponse {
 }
 
 
-/** Not documented yet. */
 class ImagesUploadResponse {
-  /** Not documented yet. */
   Image image;
 
 
@@ -3704,7 +3665,6 @@ class ImagesUploadResponse {
 }
 
 
-/** Not documented yet. */
 class InAppProduct {
   /**
    * The default language of the localized data, as defined by BCP 47. e.g.
@@ -3742,7 +3702,6 @@ class InAppProduct {
   /** The stock-keeping-unit (SKU) of the product, unique within an app. */
   core.String sku;
 
-  /** Not documented yet. */
   core.String status;
 
   /**
@@ -3769,13 +3728,13 @@ class InAppProduct {
       defaultPrice = new Price.fromJson(_json["defaultPrice"]);
     }
     if (_json.containsKey("listings")) {
-      listings = common_internal.mapMap(_json["listings"], (item) => new InAppProductListing.fromJson(item));
+      listings = commons.mapMap(_json["listings"], (item) => new InAppProductListing.fromJson(item));
     }
     if (_json.containsKey("packageName")) {
       packageName = _json["packageName"];
     }
     if (_json.containsKey("prices")) {
-      prices = common_internal.mapMap(_json["prices"], (item) => new Price.fromJson(item));
+      prices = commons.mapMap(_json["prices"], (item) => new Price.fromJson(item));
     }
     if (_json.containsKey("purchaseType")) {
       purchaseType = _json["purchaseType"];
@@ -3806,13 +3765,13 @@ class InAppProduct {
       _json["defaultPrice"] = (defaultPrice).toJson();
     }
     if (listings != null) {
-      _json["listings"] = common_internal.mapMap(listings, (item) => (item).toJson());
+      _json["listings"] = commons.mapMap(listings, (item) => (item).toJson());
     }
     if (packageName != null) {
       _json["packageName"] = packageName;
     }
     if (prices != null) {
-      _json["prices"] = common_internal.mapMap(prices, (item) => (item).toJson());
+      _json["prices"] = commons.mapMap(prices, (item) => (item).toJson());
     }
     if (purchaseType != null) {
       _json["purchaseType"] = purchaseType;
@@ -3837,12 +3796,9 @@ class InAppProduct {
 }
 
 
-/** Not documented yet. */
 class InAppProductListing {
-  /** Not documented yet. */
   core.String description;
 
-  /** Not documented yet. */
   core.String title;
 
 
@@ -3870,9 +3826,7 @@ class InAppProductListing {
 }
 
 
-/** Not documented yet. */
 class InappproductsBatchRequest {
-  /** Not documented yet. */
   core.List<InappproductsBatchRequestEntry> entrys;
 
 
@@ -3894,18 +3848,13 @@ class InappproductsBatchRequest {
 }
 
 
-/** Not documented yet. */
 class InappproductsBatchRequestEntry {
-  /** Not documented yet. */
   core.int batchId;
 
-  /** Not documented yet. */
   InappproductsInsertRequest inappproductsinsertrequest;
 
-  /** Not documented yet. */
   InappproductsUpdateRequest inappproductsupdaterequest;
 
-  /** Not documented yet. */
   core.String methodName;
 
 
@@ -3945,9 +3894,7 @@ class InappproductsBatchRequestEntry {
 }
 
 
-/** Not documented yet. */
 class InappproductsBatchResponse {
-  /** Not documented yet. */
   core.List<InappproductsBatchResponseEntry> entrys;
 
   /**
@@ -3981,15 +3928,11 @@ class InappproductsBatchResponse {
 }
 
 
-/** Not documented yet. */
 class InappproductsBatchResponseEntry {
-  /** Not documented yet. */
   core.int batchId;
 
-  /** Not documented yet. */
   InappproductsInsertResponse inappproductsinsertresponse;
 
-  /** Not documented yet. */
   InappproductsUpdateResponse inappproductsupdateresponse;
 
 
@@ -4023,9 +3966,7 @@ class InappproductsBatchResponseEntry {
 }
 
 
-/** Not documented yet. */
 class InappproductsInsertRequest {
-  /** Not documented yet. */
   InAppProduct inappproduct;
 
 
@@ -4047,9 +3988,7 @@ class InappproductsInsertRequest {
 }
 
 
-/** Not documented yet. */
 class InappproductsInsertResponse {
-  /** Not documented yet. */
   InAppProduct inappproduct;
 
 
@@ -4071,9 +4010,7 @@ class InappproductsInsertResponse {
 }
 
 
-/** Not documented yet. */
 class InappproductsListResponse {
-  /** Not documented yet. */
   core.List<InAppProduct> inappproduct;
 
   /**
@@ -4082,10 +4019,8 @@ class InappproductsListResponse {
    */
   core.String kind;
 
-  /** Not documented yet. */
   PageInfo pageInfo;
 
-  /** Not documented yet. */
   TokenPagination tokenPagination;
 
 
@@ -4125,9 +4060,7 @@ class InappproductsListResponse {
 }
 
 
-/** Not documented yet. */
 class InappproductsUpdateRequest {
-  /** Not documented yet. */
   InAppProduct inappproduct;
 
 
@@ -4149,9 +4082,7 @@ class InappproductsUpdateRequest {
 }
 
 
-/** Not documented yet. */
 class InappproductsUpdateResponse {
-  /** Not documented yet. */
   InAppProduct inappproduct;
 
 
@@ -4173,7 +4104,6 @@ class InappproductsUpdateResponse {
 }
 
 
-/** Not documented yet. */
 class Listing {
   /**
    * Full description of the app; this may be up to 4000 characters in length.
@@ -4238,7 +4168,6 @@ class Listing {
 }
 
 
-/** Not documented yet. */
 class ListingsListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -4246,7 +4175,6 @@ class ListingsListResponse {
    */
   core.String kind;
 
-  /** Not documented yet. */
   core.List<Listing> listings;
 
 
@@ -4274,7 +4202,6 @@ class ListingsListResponse {
 }
 
 
-/** Not documented yet. */
 class MonthDay {
   /**
    * Day of a month, value in [1, 31] range. Valid range depends on the
@@ -4310,15 +4237,11 @@ class MonthDay {
 }
 
 
-/** Not documented yet. */
 class PageInfo {
-  /** Not documented yet. */
   core.int resultPerPage;
 
-  /** Not documented yet. */
   core.int startIndex;
 
-  /** Not documented yet. */
   core.int totalResults;
 
 
@@ -4352,7 +4275,6 @@ class PageInfo {
 }
 
 
-/** Not documented yet. */
 class Price {
   /** 3 letter Currency code, as defined by ISO 4217. */
   core.String currency;
@@ -4467,7 +4389,6 @@ class ProductPurchase {
 }
 
 
-/** Not documented yet. */
 class Season {
   /** Inclusive end date of the recurrence period. */
   MonthDay end;
@@ -4608,7 +4529,6 @@ class SubscriptionPurchase {
 }
 
 
-/** Not documented yet. */
 class SubscriptionPurchasesDeferRequest {
   /**
    * The information about the new desired expiry time for the subscription.
@@ -4634,7 +4554,6 @@ class SubscriptionPurchasesDeferRequest {
 }
 
 
-/** Not documented yet. */
 class SubscriptionPurchasesDeferResponse {
   /**
    * The new expiry time for the subscription in milliseconds since the Epoch.
@@ -4660,12 +4579,9 @@ class SubscriptionPurchasesDeferResponse {
 }
 
 
-/** Not documented yet. */
 class Testers {
-  /** Not documented yet. */
   core.List<core.String> googleGroups;
 
-  /** Not documented yet. */
   core.List<core.String> googlePlusCommunities;
 
 
@@ -4693,12 +4609,9 @@ class Testers {
 }
 
 
-/** Not documented yet. */
 class TokenPagination {
-  /** Not documented yet. */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.String previousPageToken;
 
 
@@ -4726,15 +4639,11 @@ class TokenPagination {
 }
 
 
-/** Not documented yet. */
 class Track {
-  /** Not documented yet. */
   core.String track;
 
-  /** Not documented yet. */
   core.double userFraction;
 
-  /** Not documented yet. */
   core.List<core.int> versionCodes;
 
 
@@ -4768,7 +4677,6 @@ class Track {
 }
 
 
-/** Not documented yet. */
 class TracksListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -4776,7 +4684,6 @@ class TracksListResponse {
    */
   core.String kind;
 
-  /** Not documented yet. */
   core.List<Track> tracks;
 
 
@@ -4802,5 +4709,3 @@ class TracksListResponse {
     return _json;
   }
 }
-
-

@@ -17,7 +17,7 @@
     "description": "Provides reliable, many-to-many, asynchronous messaging between applications.",
     "discoveryVersion": "v1",
     "documentationLink": "",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/lQI8FHp12NFK29a25qmlTN4Bqeo\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/k747AQVNKzUoa08QT-Z1GxOMZC0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -317,7 +317,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Deletes the topic with the given name. All subscriptions to this topic are detached from the topic. Returns NOT_FOUND if the topic does not exist. After a topic is deleted, a new topic may be created with the same name; this is an entirely new topic with none of the old configuration or subscriptions.",
+                            "description": "Deletes the topic with the given name. Returns NOT_FOUND if the topic does not exist. After a topic is deleted, a new topic may be created with the same name; this is an entirely new topic with none of the old configuration or subscriptions. Existing subscriptions to this topic are not deleted.",
                             "httpMethod": "DELETE",
                             "id": "pubsub.projects.topics.delete",
                             "parameterOrder": [
@@ -463,7 +463,7 @@
             }
         }
     },
-    "revision": "20150213",
+    "revision": "20150326",
     "rootUrl": "https://pubsub.googleapis.com/",
     "schemas": {
         "AcknowledgeRequest": {

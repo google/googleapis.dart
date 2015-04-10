@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.content.v2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client content/v2';
 
 /**
  * Manage product items, inventory, and Merchant Center accounts for Google
@@ -22,7 +25,7 @@ class ContentApi {
   static const ContentScope = "https://www.googleapis.com/auth/content";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
   AccountshippingResourceApi get accountshipping => new AccountshippingResourceApi(_requester);
@@ -35,16 +38,50 @@ class ContentApi {
   ProductstatusesResourceApi get productstatuses => new ProductstatusesResourceApi(_requester);
 
   ContentApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "content/v2/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class AccountsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountsResourceApi(common_internal.ApiRequester client) : 
+  AccountsResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Returns information about the authenticated user.
+   *
+   * Request parameters:
+   *
+   * Completes with a [AccountsAuthInfoResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<AccountsAuthInfoResponse> authinfo() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+
+
+    _url = 'accounts/authinfo';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountsAuthInfoResponse.fromJson(data));
+  }
 
   /**
    * Retrieves, inserts, updates, and deletes multiple Merchant Center
@@ -56,7 +93,7 @@ class AccountsResourceApi {
    *
    * Completes with a [AccountsCustomBatchResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -67,7 +104,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -96,7 +133,7 @@ class AccountsResourceApi {
    *
    * [accountId] - The ID of the account.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -107,7 +144,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -119,7 +156,7 @@ class AccountsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accounts/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -142,7 +179,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Account].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -153,7 +190,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -164,7 +201,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accounts/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -187,7 +224,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Account].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -198,7 +235,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -209,7 +246,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accounts';
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -235,7 +272,7 @@ class AccountsResourceApi {
    *
    * Completes with a [AccountsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -246,7 +283,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -260,7 +297,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accounts';
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -285,7 +322,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Account].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -296,7 +333,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -310,7 +347,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accounts/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -335,7 +372,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Account].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -346,7 +383,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -360,7 +397,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accounts/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -375,11 +412,10 @@ class AccountsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountshippingResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountshippingResourceApi(common_internal.ApiRequester client) : 
+  AccountshippingResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -392,7 +428,7 @@ class AccountshippingResourceApi {
    *
    * Completes with a [AccountshippingCustomBatchResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -403,7 +439,7 @@ class AccountshippingResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -435,7 +471,7 @@ class AccountshippingResourceApi {
    *
    * Completes with a [AccountShipping].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -446,7 +482,7 @@ class AccountshippingResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -457,7 +493,7 @@ class AccountshippingResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accountshipping/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accountshipping/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -484,7 +520,7 @@ class AccountshippingResourceApi {
    *
    * Completes with a [AccountshippingListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -495,7 +531,7 @@ class AccountshippingResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -509,7 +545,7 @@ class AccountshippingResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accountshipping';
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accountshipping';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -536,7 +572,7 @@ class AccountshippingResourceApi {
    *
    * Completes with a [AccountShipping].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -547,7 +583,7 @@ class AccountshippingResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -561,7 +597,7 @@ class AccountshippingResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accountshipping/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accountshipping/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -587,7 +623,7 @@ class AccountshippingResourceApi {
    *
    * Completes with a [AccountShipping].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -598,7 +634,7 @@ class AccountshippingResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -612,7 +648,7 @@ class AccountshippingResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accountshipping/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accountshipping/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -627,23 +663,20 @@ class AccountshippingResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountstatusesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountstatusesResourceApi(common_internal.ApiRequester client) : 
+  AccountstatusesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Not documented yet.
-   *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * Completes with a [AccountstatusesCustomBatchResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -654,7 +687,7 @@ class AccountstatusesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -685,7 +718,7 @@ class AccountstatusesResourceApi {
    *
    * Completes with a [AccountStatus].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -696,7 +729,7 @@ class AccountstatusesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -707,7 +740,7 @@ class AccountstatusesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accountstatuses/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accountstatuses/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -733,7 +766,7 @@ class AccountstatusesResourceApi {
    *
    * Completes with a [AccountstatusesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -744,7 +777,7 @@ class AccountstatusesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -758,7 +791,7 @@ class AccountstatusesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accountstatuses';
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accountstatuses';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -773,11 +806,10 @@ class AccountstatusesResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccounttaxResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccounttaxResourceApi(common_internal.ApiRequester client) : 
+  AccounttaxResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -790,7 +822,7 @@ class AccounttaxResourceApi {
    *
    * Completes with a [AccounttaxCustomBatchResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -801,7 +833,7 @@ class AccounttaxResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -833,7 +865,7 @@ class AccounttaxResourceApi {
    *
    * Completes with a [AccountTax].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -844,7 +876,7 @@ class AccounttaxResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -855,7 +887,7 @@ class AccounttaxResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accounttax/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounttax/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -881,7 +913,7 @@ class AccounttaxResourceApi {
    *
    * Completes with a [AccounttaxListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -892,7 +924,7 @@ class AccounttaxResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -906,7 +938,7 @@ class AccounttaxResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accounttax';
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounttax';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -933,7 +965,7 @@ class AccounttaxResourceApi {
    *
    * Completes with a [AccountTax].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -944,7 +976,7 @@ class AccounttaxResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -958,7 +990,7 @@ class AccounttaxResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accounttax/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounttax/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -984,7 +1016,7 @@ class AccounttaxResourceApi {
    *
    * Completes with a [AccountTax].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -995,7 +1027,7 @@ class AccounttaxResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1009,7 +1041,7 @@ class AccounttaxResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/accounttax/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounttax/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1024,23 +1056,20 @@ class AccounttaxResourceApi {
 }
 
 
-/** Not documented yet. */
 class DatafeedsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DatafeedsResourceApi(common_internal.ApiRequester client) : 
+  DatafeedsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Not documented yet.
-   *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * Completes with a [DatafeedsCustomBatchResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1051,7 +1080,7 @@ class DatafeedsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1080,7 +1109,7 @@ class DatafeedsResourceApi {
    *
    * [datafeedId] - null
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1091,7 +1120,7 @@ class DatafeedsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -1103,7 +1132,7 @@ class DatafeedsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/datafeeds/' + common_internal.Escaper.ecapeVariable('$datafeedId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds/' + commons.Escaper.ecapeVariable('$datafeedId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1126,7 +1155,7 @@ class DatafeedsResourceApi {
    *
    * Completes with a [Datafeed].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1137,7 +1166,7 @@ class DatafeedsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -1148,7 +1177,7 @@ class DatafeedsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/datafeeds/' + common_internal.Escaper.ecapeVariable('$datafeedId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds/' + commons.Escaper.ecapeVariable('$datafeedId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1171,7 +1200,7 @@ class DatafeedsResourceApi {
    *
    * Completes with a [Datafeed].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1182,7 +1211,7 @@ class DatafeedsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1193,7 +1222,7 @@ class DatafeedsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/datafeeds';
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1219,7 +1248,7 @@ class DatafeedsResourceApi {
    *
    * Completes with a [DatafeedsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1230,7 +1259,7 @@ class DatafeedsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -1244,7 +1273,7 @@ class DatafeedsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/datafeeds';
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1270,7 +1299,7 @@ class DatafeedsResourceApi {
    *
    * Completes with a [Datafeed].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1281,7 +1310,7 @@ class DatafeedsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1295,7 +1324,7 @@ class DatafeedsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/datafeeds/' + common_internal.Escaper.ecapeVariable('$datafeedId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds/' + commons.Escaper.ecapeVariable('$datafeedId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1320,7 +1349,7 @@ class DatafeedsResourceApi {
    *
    * Completes with a [Datafeed].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1331,7 +1360,7 @@ class DatafeedsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1345,7 +1374,7 @@ class DatafeedsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/datafeeds/' + common_internal.Escaper.ecapeVariable('$datafeedId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds/' + commons.Escaper.ecapeVariable('$datafeedId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1360,23 +1389,20 @@ class DatafeedsResourceApi {
 }
 
 
-/** Not documented yet. */
 class DatafeedstatusesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DatafeedstatusesResourceApi(common_internal.ApiRequester client) : 
+  DatafeedstatusesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Not documented yet.
-   *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * Completes with a [DatafeedstatusesCustomBatchResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1387,7 +1413,7 @@ class DatafeedstatusesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1418,7 +1444,7 @@ class DatafeedstatusesResourceApi {
    *
    * Completes with a [DatafeedStatus].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1429,7 +1455,7 @@ class DatafeedstatusesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -1440,7 +1466,7 @@ class DatafeedstatusesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/datafeedstatuses/' + common_internal.Escaper.ecapeVariable('$datafeedId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeedstatuses/' + commons.Escaper.ecapeVariable('$datafeedId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1466,7 +1492,7 @@ class DatafeedstatusesResourceApi {
    *
    * Completes with a [DatafeedstatusesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1477,7 +1503,7 @@ class DatafeedstatusesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -1491,7 +1517,7 @@ class DatafeedstatusesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/datafeedstatuses';
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeedstatuses';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1506,11 +1532,10 @@ class DatafeedstatusesResourceApi {
 }
 
 
-/** Not documented yet. */
 class InventoryResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  InventoryResourceApi(common_internal.ApiRequester client) : 
+  InventoryResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1523,7 +1548,7 @@ class InventoryResourceApi {
    *
    * Completes with a [InventoryCustomBatchResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1534,7 +1559,7 @@ class InventoryResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1573,7 +1598,7 @@ class InventoryResourceApi {
    *
    * Completes with a [InventorySetResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1584,7 +1609,7 @@ class InventoryResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1601,7 +1626,7 @@ class InventoryResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/inventory/' + common_internal.Escaper.ecapeVariable('$storeCode') + '/products/' + common_internal.Escaper.ecapeVariable('$productId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/inventory/' + commons.Escaper.ecapeVariable('$storeCode') + '/products/' + commons.Escaper.ecapeVariable('$productId');
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1616,11 +1641,10 @@ class InventoryResourceApi {
 }
 
 
-/** Not documented yet. */
 class ProductsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ProductsResourceApi(common_internal.ApiRequester client) : 
+  ProductsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1634,7 +1658,7 @@ class ProductsResourceApi {
    *
    * Completes with a [ProductsCustomBatchResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1645,7 +1669,7 @@ class ProductsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1679,7 +1703,7 @@ class ProductsResourceApi {
    *
    * [dryRun] - Flag to run the request in dry-run mode.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1690,7 +1714,7 @@ class ProductsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -1705,7 +1729,7 @@ class ProductsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/products/' + common_internal.Escaper.ecapeVariable('$productId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/products/' + commons.Escaper.ecapeVariable('$productId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1728,7 +1752,7 @@ class ProductsResourceApi {
    *
    * Completes with a [Product].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1739,7 +1763,7 @@ class ProductsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -1750,7 +1774,7 @@ class ProductsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/products/' + common_internal.Escaper.ecapeVariable('$productId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/products/' + commons.Escaper.ecapeVariable('$productId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1775,7 +1799,7 @@ class ProductsResourceApi {
    *
    * Completes with a [Product].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1786,7 +1810,7 @@ class ProductsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1800,7 +1824,7 @@ class ProductsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/products';
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/products';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1826,7 +1850,7 @@ class ProductsResourceApi {
    *
    * Completes with a [ProductsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1837,7 +1861,7 @@ class ProductsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -1851,7 +1875,7 @@ class ProductsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/products';
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/products';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1866,11 +1890,10 @@ class ProductsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ProductstatusesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ProductstatusesResourceApi(common_internal.ApiRequester client) : 
+  ProductstatusesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1882,7 +1905,7 @@ class ProductstatusesResourceApi {
    *
    * Completes with a [ProductstatusesCustomBatchResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1893,7 +1916,7 @@ class ProductstatusesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1924,7 +1947,7 @@ class ProductstatusesResourceApi {
    *
    * Completes with a [ProductStatus].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1935,7 +1958,7 @@ class ProductstatusesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -1946,7 +1969,7 @@ class ProductstatusesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/productstatuses/' + common_internal.Escaper.ecapeVariable('$productId');
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/productstatuses/' + commons.Escaper.ecapeVariable('$productId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1972,7 +1995,7 @@ class ProductstatusesResourceApi {
    *
    * Completes with a [ProductstatusesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1983,7 +2006,7 @@ class ProductstatusesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (merchantId == null) {
@@ -1997,7 +2020,7 @@ class ProductstatusesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$merchantId') + '/productstatuses';
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/productstatuses';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2117,7 +2140,6 @@ class Account {
 }
 
 
-/** Not documented yet. */
 class AccountAdwordsLink {
   /** Customer ID of the AdWords account. */
   core.String adwordsId;
@@ -2147,6 +2169,41 @@ class AccountAdwordsLink {
     }
     if (status != null) {
       _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+
+class AccountIdentifier {
+  /**
+   * The aggregator ID, set for aggregators and subaccounts (in that case, it
+   * represents the aggregator of the subaccount).
+   */
+  core.String aggregatorId;
+
+  /** The merchant account ID, set for individual accounts and subaccounts. */
+  core.String merchantId;
+
+
+  AccountIdentifier();
+
+  AccountIdentifier.fromJson(core.Map _json) {
+    if (_json.containsKey("aggregatorId")) {
+      aggregatorId = _json["aggregatorId"];
+    }
+    if (_json.containsKey("merchantId")) {
+      merchantId = _json["merchantId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (aggregatorId != null) {
+      _json["aggregatorId"] = aggregatorId;
+    }
+    if (merchantId != null) {
+      _json["merchantId"] = merchantId;
     }
     return _json;
   }
@@ -2312,7 +2369,6 @@ class AccountShippingCarrierRate {
 }
 
 
-/** Not documented yet. */
 class AccountShippingCondition {
   /**
    * Delivery location in terms of a location group name. A location group with
@@ -2569,7 +2625,6 @@ class AccountShippingRateTable {
 }
 
 
-/** Not documented yet. */
 class AccountShippingRateTableCell {
   /**
    * Conditions for which the cell is valid. All cells in a table must use the
@@ -2843,7 +2898,6 @@ class AccountStatus {
 }
 
 
-/** Not documented yet. */
 class AccountStatusDataQualityIssue {
   /** Country for which this issue is reported. */
   core.String country;
@@ -3110,7 +3164,6 @@ class AccountTaxTaxRule {
 }
 
 
-/** Not documented yet. */
 class AccountUser {
   /** Whether user is an admin. */
   core.bool admin;
@@ -3143,7 +3196,47 @@ class AccountUser {
 }
 
 
-/** Not documented yet. */
+class AccountsAuthInfoResponse {
+  /**
+   * The account identifiers corresponding to the authenticated user.
+   * - For an individual account: only the merchant ID is defined
+   * - For an aggregator: only the aggregator ID is defined
+   * - For a subaccount of an MCA: both the merchant ID and the aggregator ID
+   * are defined.
+   */
+  core.List<AccountIdentifier> accountIdentifiers;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "content#accountsAuthInfoResponse".
+   */
+  core.String kind;
+
+
+  AccountsAuthInfoResponse();
+
+  AccountsAuthInfoResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("accountIdentifiers")) {
+      accountIdentifiers = _json["accountIdentifiers"].map((value) => new AccountIdentifier.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accountIdentifiers != null) {
+      _json["accountIdentifiers"] = accountIdentifiers.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+
 class AccountsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<AccountsCustomBatchRequestEntry> entries;
@@ -3187,7 +3280,6 @@ class AccountsCustomBatchRequestEntry {
   /** The ID of the managing account. */
   core.String merchantId;
 
-  /** Not documented yet. */
   core.String method;
 
 
@@ -3233,7 +3325,6 @@ class AccountsCustomBatchRequestEntry {
 }
 
 
-/** Not documented yet. */
 class AccountsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<AccountsCustomBatchResponseEntry> entries;
@@ -3326,7 +3417,6 @@ class AccountsCustomBatchResponseEntry {
 }
 
 
-/** Not documented yet. */
 class AccountsListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -3337,7 +3427,6 @@ class AccountsListResponse {
   /** The token for the retrieval of the next page of accounts. */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.List<Account> resources;
 
 
@@ -3371,7 +3460,6 @@ class AccountsListResponse {
 }
 
 
-/** Not documented yet. */
 class AccountshippingCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<AccountshippingCustomBatchRequestEntry> entries;
@@ -3414,7 +3502,6 @@ class AccountshippingCustomBatchRequestEntry {
   /** The ID of the managing account. */
   core.String merchantId;
 
-  /** Not documented yet. */
   core.String method;
 
 
@@ -3460,7 +3547,6 @@ class AccountshippingCustomBatchRequestEntry {
 }
 
 
-/** Not documented yet. */
 class AccountshippingCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<AccountshippingCustomBatchResponseEntry> entries;
@@ -3550,7 +3636,6 @@ class AccountshippingCustomBatchResponseEntry {
 }
 
 
-/** Not documented yet. */
 class AccountshippingListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -3563,7 +3648,6 @@ class AccountshippingListResponse {
    */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.List<AccountShipping> resources;
 
 
@@ -3597,7 +3681,6 @@ class AccountshippingListResponse {
 }
 
 
-/** Not documented yet. */
 class AccountstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<AccountstatusesCustomBatchRequestEntry> entries;
@@ -3672,7 +3755,6 @@ class AccountstatusesCustomBatchRequestEntry {
 }
 
 
-/** Not documented yet. */
 class AccountstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<AccountstatusesCustomBatchResponseEntry> entries;
@@ -3753,7 +3835,6 @@ class AccountstatusesCustomBatchResponseEntry {
 }
 
 
-/** Not documented yet. */
 class AccountstatusesListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -3764,7 +3845,6 @@ class AccountstatusesListResponse {
   /** The token for the retrieval of the next page of account statuses. */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.List<AccountStatus> resources;
 
 
@@ -3798,7 +3878,6 @@ class AccountstatusesListResponse {
 }
 
 
-/** Not documented yet. */
 class AccounttaxCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<AccounttaxCustomBatchRequestEntry> entries;
@@ -3838,7 +3917,6 @@ class AccounttaxCustomBatchRequestEntry {
   /** The ID of the managing account. */
   core.String merchantId;
 
-  /** Not documented yet. */
   core.String method;
 
 
@@ -3884,7 +3962,6 @@ class AccounttaxCustomBatchRequestEntry {
 }
 
 
-/** Not documented yet. */
 class AccounttaxCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<AccounttaxCustomBatchResponseEntry> entries;
@@ -3974,7 +4051,6 @@ class AccounttaxCustomBatchResponseEntry {
 }
 
 
-/** Not documented yet. */
 class AccounttaxListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -3985,7 +4061,6 @@ class AccounttaxListResponse {
   /** The token for the retrieval of the next page of account tax settings. */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.List<AccountTax> resources;
 
 
@@ -4235,7 +4310,6 @@ class DatafeedFetchSchedule {
 }
 
 
-/** Not documented yet. */
 class DatafeedFormat {
   /**
    * Delimiter for the separation of values in a delimiter-separated values
@@ -4464,7 +4538,6 @@ class DatafeedStatusExample {
 }
 
 
-/** Not documented yet. */
 class DatafeedsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<DatafeedsCustomBatchRequestEntry> entries;
@@ -4502,7 +4575,6 @@ class DatafeedsCustomBatchRequestEntry {
   /** The ID of the managing account. */
   core.String merchantId;
 
-  /** Not documented yet. */
   core.String method;
 
 
@@ -4548,7 +4620,6 @@ class DatafeedsCustomBatchRequestEntry {
 }
 
 
-/** Not documented yet. */
 class DatafeedsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<DatafeedsCustomBatchResponseEntry> entries;
@@ -4628,7 +4699,6 @@ class DatafeedsCustomBatchResponseEntry {
 }
 
 
-/** Not documented yet. */
 class DatafeedsListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -4639,7 +4709,6 @@ class DatafeedsListResponse {
   /** The token for the retrieval of the next page of datafeeds. */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.List<Datafeed> resources;
 
 
@@ -4673,7 +4742,6 @@ class DatafeedsListResponse {
 }
 
 
-/** Not documented yet. */
 class DatafeedstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<DatafeedstatusesCustomBatchRequestEntry> entries;
@@ -4708,7 +4776,6 @@ class DatafeedstatusesCustomBatchRequestEntry {
   /** The ID of the managing account. */
   core.String merchantId;
 
-  /** Not documented yet. */
   core.String method;
 
 
@@ -4748,7 +4815,6 @@ class DatafeedstatusesCustomBatchRequestEntry {
 }
 
 
-/** Not documented yet. */
 class DatafeedstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<DatafeedstatusesCustomBatchResponseEntry> entries;
@@ -4829,7 +4895,6 @@ class DatafeedstatusesCustomBatchResponseEntry {
 }
 
 
-/** Not documented yet. */
 class DatafeedstatusesListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -4840,7 +4905,6 @@ class DatafeedstatusesListResponse {
   /** The token for the retrieval of the next page of datafeed statuses. */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.List<DatafeedStatus> resources;
 
 
@@ -4958,7 +5022,6 @@ class Errors {
 }
 
 
-/** Not documented yet. */
 class Inventory {
   /** The availability of the product. */
   core.String availability;
@@ -5039,7 +5102,6 @@ class Inventory {
 }
 
 
-/** Not documented yet. */
 class InventoryCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<InventoryCustomBatchRequestEntry> entries;
@@ -5126,7 +5188,6 @@ class InventoryCustomBatchRequestEntry {
 }
 
 
-/** Not documented yet. */
 class InventoryCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<InventoryCustomBatchResponseEntry> entries;
@@ -5207,7 +5268,6 @@ class InventoryCustomBatchResponseEntry {
 }
 
 
-/** Not documented yet. */
 class InventorySetRequest {
   /** The availability of the product. */
   core.String availability;
@@ -5276,7 +5336,6 @@ class InventorySetRequest {
 }
 
 
-/** Not documented yet. */
 class InventorySetResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -5303,7 +5362,6 @@ class InventorySetResponse {
 }
 
 
-/** Not documented yet. */
 class LoyaltyPoints {
   /**
    * Name of loyalty points program. It is recommended to limit the name to 12
@@ -5352,7 +5410,6 @@ class LoyaltyPoints {
 }
 
 
-/** Not documented yet. */
 class Price {
   /** The currency of the price. */
   core.String currency;
@@ -5410,6 +5467,9 @@ class Product {
 
   /** Target age group of the item. */
   core.String ageGroup;
+
+  /** Specifies the intended aspects for the product. */
+  core.List<ProductAspect> aspects;
 
   /** Availability status of the item. */
   core.String availability;
@@ -5654,6 +5714,9 @@ class Product {
     if (_json.containsKey("ageGroup")) {
       ageGroup = _json["ageGroup"];
     }
+    if (_json.containsKey("aspects")) {
+      aspects = _json["aspects"].map((value) => new ProductAspect.fromJson(value)).toList();
+    }
     if (_json.containsKey("availability")) {
       availability = _json["availability"];
     }
@@ -5862,6 +5925,9 @@ class Product {
     if (ageGroup != null) {
       _json["ageGroup"] = ageGroup;
     }
+    if (aspects != null) {
+      _json["aspects"] = aspects.map((value) => (value).toJson()).toList();
+    }
     if (availability != null) {
       _json["availability"] = availability;
     }
@@ -6053,7 +6119,47 @@ class Product {
 }
 
 
-/** Not documented yet. */
+class ProductAspect {
+  /** The name of the aspect. */
+  core.String aspectName;
+
+  /** The name of the destination. Leave out to apply to all destinations. */
+  core.String destinationName;
+
+  /** Whether the aspect is required, excluded or should be validated. */
+  core.String intention;
+
+
+  ProductAspect();
+
+  ProductAspect.fromJson(core.Map _json) {
+    if (_json.containsKey("aspectName")) {
+      aspectName = _json["aspectName"];
+    }
+    if (_json.containsKey("destinationName")) {
+      destinationName = _json["destinationName"];
+    }
+    if (_json.containsKey("intention")) {
+      intention = _json["intention"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (aspectName != null) {
+      _json["aspectName"] = aspectName;
+    }
+    if (destinationName != null) {
+      _json["destinationName"] = destinationName;
+    }
+    if (intention != null) {
+      _json["intention"] = intention;
+    }
+    return _json;
+  }
+}
+
+
 class ProductCustomAttribute {
   /**
    * The name of the attribute. Underscores will be replaced by spaces upon
@@ -6110,7 +6216,6 @@ class ProductCustomAttribute {
 }
 
 
-/** Not documented yet. */
 class ProductCustomGroup {
   /** The sub-attributes. */
   core.List<ProductCustomAttribute> attributes;
@@ -6146,7 +6251,6 @@ class ProductCustomGroup {
 }
 
 
-/** Not documented yet. */
 class ProductDestination {
   /** The name of the destination. */
   core.String destinationName;
@@ -6179,7 +6283,6 @@ class ProductDestination {
 }
 
 
-/** Not documented yet. */
 class ProductInstallment {
   /** The amount the buyer has to pay per month. */
   Price amount;
@@ -6212,7 +6315,6 @@ class ProductInstallment {
 }
 
 
-/** Not documented yet. */
 class ProductShipping {
   /**
    * The two-letter ISO 3166 country code for the country to which an item will
@@ -6305,7 +6407,6 @@ class ProductShipping {
 }
 
 
-/** Not documented yet. */
 class ProductShippingDimension {
   /**
    * The unit of value.
@@ -6347,7 +6448,6 @@ class ProductShippingDimension {
 }
 
 
-/** Not documented yet. */
 class ProductShippingWeight {
   /** The unit of value. */
   core.String unit;
@@ -6484,7 +6584,6 @@ class ProductStatus {
 }
 
 
-/** Not documented yet. */
 class ProductStatusDataQualityIssue {
   /** A more detailed error string. */
   core.String detail;
@@ -6571,7 +6670,6 @@ class ProductStatusDataQualityIssue {
 }
 
 
-/** Not documented yet. */
 class ProductStatusDestinationStatus {
   /** The destination's approval status. */
   core.String approvalStatus;
@@ -6616,7 +6714,6 @@ class ProductStatusDestinationStatus {
 }
 
 
-/** Not documented yet. */
 class ProductTax {
   /**
    * The country within which the item is taxed, specified with a two-letter ISO
@@ -6696,7 +6793,6 @@ class ProductTax {
 }
 
 
-/** Not documented yet. */
 class ProductUnitPricingBaseMeasure {
   /** The unit of the denominator. */
   core.String unit;
@@ -6729,7 +6825,6 @@ class ProductUnitPricingBaseMeasure {
 }
 
 
-/** Not documented yet. */
 class ProductUnitPricingMeasure {
   /** The unit of the measure. */
   core.String unit;
@@ -6762,7 +6857,6 @@ class ProductUnitPricingMeasure {
 }
 
 
-/** Not documented yet. */
 class ProductsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<ProductsCustomBatchRequestEntry> entries;
@@ -6794,7 +6888,6 @@ class ProductsCustomBatchRequestEntry {
   /** The ID of the managing account. */
   core.String merchantId;
 
-  /** Not documented yet. */
   core.String method;
 
   /** The product to insert. Only required if the method is insert. */
@@ -6849,7 +6942,6 @@ class ProductsCustomBatchRequestEntry {
 }
 
 
-/** Not documented yet. */
 class ProductsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<ProductsCustomBatchResponseEntry> entries;
@@ -6942,7 +7034,6 @@ class ProductsCustomBatchResponseEntry {
 }
 
 
-/** Not documented yet. */
 class ProductsListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -6953,7 +7044,6 @@ class ProductsListResponse {
   /** The token for the retrieval of the next page of products. */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.List<Product> resources;
 
 
@@ -6987,7 +7077,6 @@ class ProductsListResponse {
 }
 
 
-/** Not documented yet. */
 class ProductstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<ProductstatusesCustomBatchRequestEntry> entries;
@@ -7019,7 +7108,6 @@ class ProductstatusesCustomBatchRequestEntry {
   /** The ID of the managing account. */
   core.String merchantId;
 
-  /** Not documented yet. */
   core.String method;
 
   /** The ID of the product whose status to get. */
@@ -7062,7 +7150,6 @@ class ProductstatusesCustomBatchRequestEntry {
 }
 
 
-/** Not documented yet. */
 class ProductstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   core.List<ProductstatusesCustomBatchResponseEntry> entries;
@@ -7154,7 +7241,6 @@ class ProductstatusesCustomBatchResponseEntry {
 }
 
 
-/** Not documented yet. */
 class ProductstatusesListResponse {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -7165,7 +7251,6 @@ class ProductstatusesListResponse {
   /** The token for the retrieval of the next page of products statuses. */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.List<ProductStatus> resources;
 
 
@@ -7199,7 +7284,6 @@ class ProductstatusesListResponse {
 }
 
 
-/** Not documented yet. */
 class Weight {
   /** The weight unit. */
   core.String unit;
@@ -7230,5 +7314,3 @@ class Weight {
     return _json;
   }
 }
-
-

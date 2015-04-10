@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/coordinate/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterCustomField = 0;
 buildCustomField() {
@@ -39,14 +74,14 @@ checkCustomField(api.CustomField o) {
   buildCounterCustomField--;
 }
 
-buildUnnamed747() {
+buildUnnamed619() {
   var o = new core.List<api.EnumItemDef>();
   o.add(buildEnumItemDef());
   o.add(buildEnumItemDef());
   return o;
 }
 
-checkUnnamed747(core.List<api.EnumItemDef> o) {
+checkUnnamed619(core.List<api.EnumItemDef> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnumItemDef(o[0]);
   checkEnumItemDef(o[1]);
@@ -58,7 +93,7 @@ buildCustomFieldDef() {
   buildCounterCustomFieldDef++;
   if (buildCounterCustomFieldDef < 3) {
     o.enabled = true;
-    o.enumitems = buildUnnamed747();
+    o.enumitems = buildUnnamed619();
     o.id = "foo";
     o.kind = "foo";
     o.name = "foo";
@@ -73,7 +108,7 @@ checkCustomFieldDef(api.CustomFieldDef o) {
   buildCounterCustomFieldDef++;
   if (buildCounterCustomFieldDef < 3) {
     unittest.expect(o.enabled, unittest.isTrue);
-    checkUnnamed747(o.enumitems);
+    checkUnnamed619(o.enumitems);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -83,14 +118,14 @@ checkCustomFieldDef(api.CustomFieldDef o) {
   buildCounterCustomFieldDef--;
 }
 
-buildUnnamed748() {
+buildUnnamed620() {
   var o = new core.List<api.CustomFieldDef>();
   o.add(buildCustomFieldDef());
   o.add(buildCustomFieldDef());
   return o;
 }
 
-checkUnnamed748(core.List<api.CustomFieldDef> o) {
+checkUnnamed620(core.List<api.CustomFieldDef> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomFieldDef(o[0]);
   checkCustomFieldDef(o[1]);
@@ -101,7 +136,7 @@ buildCustomFieldDefListResponse() {
   var o = new api.CustomFieldDefListResponse();
   buildCounterCustomFieldDefListResponse++;
   if (buildCounterCustomFieldDefListResponse < 3) {
-    o.items = buildUnnamed748();
+    o.items = buildUnnamed620();
     o.kind = "foo";
   }
   buildCounterCustomFieldDefListResponse--;
@@ -111,20 +146,20 @@ buildCustomFieldDefListResponse() {
 checkCustomFieldDefListResponse(api.CustomFieldDefListResponse o) {
   buildCounterCustomFieldDefListResponse++;
   if (buildCounterCustomFieldDefListResponse < 3) {
-    checkUnnamed748(o.items);
+    checkUnnamed620(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterCustomFieldDefListResponse--;
 }
 
-buildUnnamed749() {
+buildUnnamed621() {
   var o = new core.List<api.CustomField>();
   o.add(buildCustomField());
   o.add(buildCustomField());
   return o;
 }
 
-checkUnnamed749(core.List<api.CustomField> o) {
+checkUnnamed621(core.List<api.CustomField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomField(o[0]);
   checkCustomField(o[1]);
@@ -135,7 +170,7 @@ buildCustomFields() {
   var o = new api.CustomFields();
   buildCounterCustomFields++;
   if (buildCounterCustomFields < 3) {
-    o.customField = buildUnnamed749();
+    o.customField = buildUnnamed621();
     o.kind = "foo";
   }
   buildCounterCustomFields--;
@@ -145,7 +180,7 @@ buildCustomFields() {
 checkCustomFields(api.CustomFields o) {
   buildCounterCustomFields++;
   if (buildCounterCustomFields < 3) {
-    checkUnnamed749(o.customField);
+    checkUnnamed621(o.customField);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterCustomFields--;
@@ -174,14 +209,14 @@ checkEnumItemDef(api.EnumItemDef o) {
   buildCounterEnumItemDef--;
 }
 
-buildUnnamed750() {
+buildUnnamed622() {
   var o = new core.List<api.JobChange>();
   o.add(buildJobChange());
   o.add(buildJobChange());
   return o;
 }
 
-checkUnnamed750(core.List<api.JobChange> o) {
+checkUnnamed622(core.List<api.JobChange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJobChange(o[0]);
   checkJobChange(o[1]);
@@ -193,7 +228,7 @@ buildJob() {
   buildCounterJob++;
   if (buildCounterJob < 3) {
     o.id = "foo";
-    o.jobChange = buildUnnamed750();
+    o.jobChange = buildUnnamed622();
     o.kind = "foo";
     o.state = buildJobState();
   }
@@ -205,7 +240,7 @@ checkJob(api.Job o) {
   buildCounterJob++;
   if (buildCounterJob < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed750(o.jobChange);
+    checkUnnamed622(o.jobChange);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkJobState(o.state);
   }
@@ -235,14 +270,14 @@ checkJobChange(api.JobChange o) {
   buildCounterJobChange--;
 }
 
-buildUnnamed751() {
+buildUnnamed623() {
   var o = new core.List<api.Job>();
   o.add(buildJob());
   o.add(buildJob());
   return o;
 }
 
-checkUnnamed751(core.List<api.Job> o) {
+checkUnnamed623(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0]);
   checkJob(o[1]);
@@ -253,7 +288,7 @@ buildJobListResponse() {
   var o = new api.JobListResponse();
   buildCounterJobListResponse++;
   if (buildCounterJobListResponse < 3) {
-    o.items = buildUnnamed751();
+    o.items = buildUnnamed623();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -264,21 +299,21 @@ buildJobListResponse() {
 checkJobListResponse(api.JobListResponse o) {
   buildCounterJobListResponse++;
   if (buildCounterJobListResponse < 3) {
-    checkUnnamed751(o.items);
+    checkUnnamed623(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterJobListResponse--;
 }
 
-buildUnnamed752() {
+buildUnnamed624() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed752(core.List<core.String> o) {
+checkUnnamed624(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -295,7 +330,7 @@ buildJobState() {
     o.customerPhoneNumber = "foo";
     o.kind = "foo";
     o.location = buildLocation();
-    o.note = buildUnnamed752();
+    o.note = buildUnnamed624();
     o.progress = "foo";
     o.title = "foo";
   }
@@ -312,21 +347,21 @@ checkJobState(api.JobState o) {
     unittest.expect(o.customerPhoneNumber, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     checkLocation(o.location);
-    checkUnnamed752(o.note);
+    checkUnnamed624(o.note);
     unittest.expect(o.progress, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterJobState--;
 }
 
-buildUnnamed753() {
+buildUnnamed625() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed753(core.List<core.String> o) {
+checkUnnamed625(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -337,7 +372,7 @@ buildLocation() {
   var o = new api.Location();
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    o.addressLine = buildUnnamed753();
+    o.addressLine = buildUnnamed625();
     o.kind = "foo";
     o.lat = 42.0;
     o.lng = 42.0;
@@ -349,7 +384,7 @@ buildLocation() {
 checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    checkUnnamed753(o.addressLine);
+    checkUnnamed625(o.addressLine);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.lat, unittest.equals(42.0));
     unittest.expect(o.lng, unittest.equals(42.0));
@@ -357,14 +392,14 @@ checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
-buildUnnamed754() {
+buildUnnamed626() {
   var o = new core.List<api.LocationRecord>();
   o.add(buildLocationRecord());
   o.add(buildLocationRecord());
   return o;
 }
 
-checkUnnamed754(core.List<api.LocationRecord> o) {
+checkUnnamed626(core.List<api.LocationRecord> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocationRecord(o[0]);
   checkLocationRecord(o[1]);
@@ -375,7 +410,7 @@ buildLocationListResponse() {
   var o = new api.LocationListResponse();
   buildCounterLocationListResponse++;
   if (buildCounterLocationListResponse < 3) {
-    o.items = buildUnnamed754();
+    o.items = buildUnnamed626();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.tokenPagination = buildTokenPagination();
@@ -387,7 +422,7 @@ buildLocationListResponse() {
 checkLocationListResponse(api.LocationListResponse o) {
   buildCounterLocationListResponse++;
   if (buildCounterLocationListResponse < 3) {
-    checkUnnamed754(o.items);
+    checkUnnamed626(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     checkTokenPagination(o.tokenPagination);
@@ -472,14 +507,14 @@ checkTeam(api.Team o) {
   buildCounterTeam--;
 }
 
-buildUnnamed755() {
+buildUnnamed627() {
   var o = new core.List<api.Team>();
   o.add(buildTeam());
   o.add(buildTeam());
   return o;
 }
 
-checkUnnamed755(core.List<api.Team> o) {
+checkUnnamed627(core.List<api.Team> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTeam(o[0]);
   checkTeam(o[1]);
@@ -490,7 +525,7 @@ buildTeamListResponse() {
   var o = new api.TeamListResponse();
   buildCounterTeamListResponse++;
   if (buildCounterTeamListResponse < 3) {
-    o.items = buildUnnamed755();
+    o.items = buildUnnamed627();
     o.kind = "foo";
   }
   buildCounterTeamListResponse--;
@@ -500,7 +535,7 @@ buildTeamListResponse() {
 checkTeamListResponse(api.TeamListResponse o) {
   buildCounterTeamListResponse++;
   if (buildCounterTeamListResponse < 3) {
-    checkUnnamed755(o.items);
+    checkUnnamed627(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterTeamListResponse--;
@@ -550,14 +585,14 @@ checkWorker(api.Worker o) {
   buildCounterWorker--;
 }
 
-buildUnnamed756() {
+buildUnnamed628() {
   var o = new core.List<api.Worker>();
   o.add(buildWorker());
   o.add(buildWorker());
   return o;
 }
 
-checkUnnamed756(core.List<api.Worker> o) {
+checkUnnamed628(core.List<api.Worker> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWorker(o[0]);
   checkWorker(o[1]);
@@ -568,7 +603,7 @@ buildWorkerListResponse() {
   var o = new api.WorkerListResponse();
   buildCounterWorkerListResponse++;
   if (buildCounterWorkerListResponse < 3) {
-    o.items = buildUnnamed756();
+    o.items = buildUnnamed628();
     o.kind = "foo";
   }
   buildCounterWorkerListResponse--;
@@ -578,46 +613,46 @@ buildWorkerListResponse() {
 checkWorkerListResponse(api.WorkerListResponse o) {
   buildCounterWorkerListResponse++;
   if (buildCounterWorkerListResponse < 3) {
-    checkUnnamed756(o.items);
+    checkUnnamed628(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterWorkerListResponse--;
 }
 
-buildUnnamed757() {
+buildUnnamed629() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed757(core.List<core.String> o) {
+checkUnnamed629(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed758() {
+buildUnnamed630() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed758(core.List<core.String> o) {
+checkUnnamed630(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed759() {
+buildUnnamed631() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed759(core.List<core.String> o) {
+checkUnnamed631(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -790,7 +825,7 @@ main() {
   unittest.group("resource-CustomFieldDefResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CustomFieldDefResourceApi res = new api.CoordinateApi(mock).customFieldDef;
       var arg_teamId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -834,7 +869,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCustomFieldDefListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_teamId).then(unittest.expectAsync(((api.CustomFieldDefListResponse response) {
         checkCustomFieldDefListResponse(response);
@@ -847,7 +882,7 @@ main() {
   unittest.group("resource-JobsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.JobsResourceApi res = new api.CoordinateApi(mock).jobs;
       var arg_teamId = "foo";
       var arg_jobId = "foo";
@@ -895,7 +930,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildJob());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_teamId, arg_jobId).then(unittest.expectAsync(((api.Job response) {
         checkJob(response);
@@ -904,7 +939,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.JobsResourceApi res = new api.CoordinateApi(mock).jobs;
       var arg_request = buildJob();
       var arg_teamId = "foo";
@@ -913,7 +948,7 @@ main() {
       var arg_lng = 42.0;
       var arg_title = "foo";
       var arg_assignee = "foo";
-      var arg_customField = buildUnnamed757();
+      var arg_customField = buildUnnamed629();
       var arg_customerName = "foo";
       var arg_customerPhoneNumber = "foo";
       var arg_note = "foo";
@@ -970,7 +1005,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildJob());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_teamId, arg_address, arg_lat, arg_lng, arg_title, assignee: arg_assignee, customField: arg_customField, customerName: arg_customerName, customerPhoneNumber: arg_customerPhoneNumber, note: arg_note).then(unittest.expectAsync(((api.Job response) {
         checkJob(response);
@@ -979,7 +1014,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.JobsResourceApi res = new api.CoordinateApi(mock).jobs;
       var arg_teamId = "foo";
       var arg_maxResults = 42;
@@ -1029,7 +1064,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildJobListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_teamId, maxResults: arg_maxResults, minModifiedTimestampMs: arg_minModifiedTimestampMs, pageToken: arg_pageToken).then(unittest.expectAsync(((api.JobListResponse response) {
         checkJobListResponse(response);
@@ -1038,14 +1073,14 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.JobsResourceApi res = new api.CoordinateApi(mock).jobs;
       var arg_request = buildJob();
       var arg_teamId = "foo";
       var arg_jobId = "foo";
       var arg_address = "foo";
       var arg_assignee = "foo";
-      var arg_customField = buildUnnamed758();
+      var arg_customField = buildUnnamed630();
       var arg_customerName = "foo";
       var arg_customerPhoneNumber = "foo";
       var arg_lat = 42.0;
@@ -1110,7 +1145,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildJob());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_teamId, arg_jobId, address: arg_address, assignee: arg_assignee, customField: arg_customField, customerName: arg_customerName, customerPhoneNumber: arg_customerPhoneNumber, lat: arg_lat, lng: arg_lng, note: arg_note, progress: arg_progress, title: arg_title).then(unittest.expectAsync(((api.Job response) {
         checkJob(response);
@@ -1119,14 +1154,14 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.JobsResourceApi res = new api.CoordinateApi(mock).jobs;
       var arg_request = buildJob();
       var arg_teamId = "foo";
       var arg_jobId = "foo";
       var arg_address = "foo";
       var arg_assignee = "foo";
-      var arg_customField = buildUnnamed759();
+      var arg_customField = buildUnnamed631();
       var arg_customerName = "foo";
       var arg_customerPhoneNumber = "foo";
       var arg_lat = 42.0;
@@ -1191,7 +1226,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildJob());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_teamId, arg_jobId, address: arg_address, assignee: arg_assignee, customField: arg_customField, customerName: arg_customerName, customerPhoneNumber: arg_customerPhoneNumber, lat: arg_lat, lng: arg_lng, note: arg_note, progress: arg_progress, title: arg_title).then(unittest.expectAsync(((api.Job response) {
         checkJob(response);
@@ -1204,7 +1239,7 @@ main() {
   unittest.group("resource-LocationResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LocationResourceApi res = new api.CoordinateApi(mock).location;
       var arg_teamId = "foo";
       var arg_workerEmail = "foo";
@@ -1262,7 +1297,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLocationListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_teamId, arg_workerEmail, arg_startTimestampMs, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.LocationListResponse response) {
         checkLocationListResponse(response);
@@ -1275,7 +1310,7 @@ main() {
   unittest.group("resource-ScheduleResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ScheduleResourceApi res = new api.CoordinateApi(mock).schedule;
       var arg_teamId = "foo";
       var arg_jobId = "foo";
@@ -1327,7 +1362,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSchedule());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_teamId, arg_jobId).then(unittest.expectAsync(((api.Schedule response) {
         checkSchedule(response);
@@ -1336,7 +1371,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ScheduleResourceApi res = new api.CoordinateApi(mock).schedule;
       var arg_request = buildSchedule();
       var arg_teamId = "foo";
@@ -1400,7 +1435,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSchedule());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_teamId, arg_jobId, allDay: arg_allDay, duration: arg_duration, endTime: arg_endTime, startTime: arg_startTime).then(unittest.expectAsync(((api.Schedule response) {
         checkSchedule(response);
@@ -1409,7 +1444,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ScheduleResourceApi res = new api.CoordinateApi(mock).schedule;
       var arg_request = buildSchedule();
       var arg_teamId = "foo";
@@ -1473,7 +1508,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSchedule());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_teamId, arg_jobId, allDay: arg_allDay, duration: arg_duration, endTime: arg_endTime, startTime: arg_startTime).then(unittest.expectAsync(((api.Schedule response) {
         checkSchedule(response);
@@ -1486,7 +1521,7 @@ main() {
   unittest.group("resource-TeamResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TeamResourceApi res = new api.CoordinateApi(mock).team;
       var arg_admin = true;
       var arg_dispatcher = true;
@@ -1528,7 +1563,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTeamListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(admin: arg_admin, dispatcher: arg_dispatcher, worker: arg_worker).then(unittest.expectAsync(((api.TeamListResponse response) {
         checkTeamListResponse(response);
@@ -1541,7 +1576,7 @@ main() {
   unittest.group("resource-WorkerResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.WorkerResourceApi res = new api.CoordinateApi(mock).worker;
       var arg_teamId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1585,7 +1620,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildWorkerListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_teamId).then(unittest.expectAsync(((api.WorkerListResponse response) {
         checkWorkerListResponse(response);

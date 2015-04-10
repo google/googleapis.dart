@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/appstate/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterGetResponse = 0;
 buildGetResponse() {
@@ -41,14 +76,14 @@ checkGetResponse(api.GetResponse o) {
   buildCounterGetResponse--;
 }
 
-buildUnnamed1382() {
+buildUnnamed284() {
   var o = new core.List<api.GetResponse>();
   o.add(buildGetResponse());
   o.add(buildGetResponse());
   return o;
 }
 
-checkUnnamed1382(core.List<api.GetResponse> o) {
+checkUnnamed284(core.List<api.GetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGetResponse(o[0]);
   checkGetResponse(o[1]);
@@ -59,7 +94,7 @@ buildListResponse() {
   var o = new api.ListResponse();
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    o.items = buildUnnamed1382();
+    o.items = buildUnnamed284();
     o.kind = "foo";
     o.maximumKeyCount = 42;
   }
@@ -70,7 +105,7 @@ buildListResponse() {
 checkListResponse(api.ListResponse o) {
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    checkUnnamed1382(o.items);
+    checkUnnamed284(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.maximumKeyCount, unittest.equals(42));
   }
@@ -162,7 +197,7 @@ main() {
   unittest.group("resource-StatesResourceApi", () {
     unittest.test("method--clear", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.StatesResourceApi res = new api.AppstateApi(mock).states;
       var arg_stateKey = 42;
       var arg_currentDataVersion = "foo";
@@ -208,7 +243,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildWriteResult());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.clear(arg_stateKey, currentDataVersion: arg_currentDataVersion).then(unittest.expectAsync(((api.WriteResult response) {
         checkWriteResult(response);
@@ -217,7 +252,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.StatesResourceApi res = new api.AppstateApi(mock).states;
       var arg_stateKey = 42;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -257,14 +292,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_stateKey).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.StatesResourceApi res = new api.AppstateApi(mock).states;
       var arg_stateKey = 42;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -304,7 +339,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGetResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_stateKey).then(unittest.expectAsync(((api.GetResponse response) {
         checkGetResponse(response);
@@ -313,7 +348,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.StatesResourceApi res = new api.AppstateApi(mock).states;
       var arg_includeData = true;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -351,7 +386,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(includeData: arg_includeData).then(unittest.expectAsync(((api.ListResponse response) {
         checkListResponse(response);
@@ -360,7 +395,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.StatesResourceApi res = new api.AppstateApi(mock).states;
       var arg_request = buildUpdateRequest();
       var arg_stateKey = 42;
@@ -406,7 +441,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildWriteResult());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_stateKey, currentStateVersion: arg_currentStateVersion).then(unittest.expectAsync(((api.WriteResult response) {
         checkWriteResult(response);

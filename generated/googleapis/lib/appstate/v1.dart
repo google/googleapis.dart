@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.appstate.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client appstate/v1';
 
 /** The Google App State API. */
 class AppstateApi {
@@ -19,20 +22,19 @@ class AppstateApi {
   static const AppstateScope = "https://www.googleapis.com/auth/appstate";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   StatesResourceApi get states => new StatesResourceApi(_requester);
 
   AppstateApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "appstate/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class StatesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  StatesResourceApi(common_internal.ApiRequester client) : 
+  StatesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -50,7 +52,7 @@ class StatesResourceApi {
    *
    * Completes with a [WriteResult].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -61,7 +63,7 @@ class StatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (stateKey == null) {
@@ -72,7 +74,7 @@ class StatesResourceApi {
     }
 
 
-    _url = 'states/' + common_internal.Escaper.ecapeVariable('$stateKey') + '/clear';
+    _url = 'states/' + commons.Escaper.ecapeVariable('$stateKey') + '/clear';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -96,7 +98,7 @@ class StatesResourceApi {
    * [stateKey] - The key for the data to be retrieved.
    * Value must be between "0" and "3".
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -107,7 +109,7 @@ class StatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (stateKey == null) {
@@ -116,7 +118,7 @@ class StatesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'states/' + common_internal.Escaper.ecapeVariable('$stateKey');
+    _url = 'states/' + commons.Escaper.ecapeVariable('$stateKey');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -139,7 +141,7 @@ class StatesResourceApi {
    *
    * Completes with a [GetResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -150,7 +152,7 @@ class StatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (stateKey == null) {
@@ -158,7 +160,7 @@ class StatesResourceApi {
     }
 
 
-    _url = 'states/' + common_internal.Escaper.ecapeVariable('$stateKey');
+    _url = 'states/' + commons.Escaper.ecapeVariable('$stateKey');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -180,7 +182,7 @@ class StatesResourceApi {
    *
    * Completes with a [ListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -191,7 +193,7 @@ class StatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (includeData != null) {
@@ -231,7 +233,7 @@ class StatesResourceApi {
    *
    * Completes with a [WriteResult].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -242,7 +244,7 @@ class StatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -256,7 +258,7 @@ class StatesResourceApi {
     }
 
 
-    _url = 'states/' + common_internal.Escaper.ecapeVariable('$stateKey');
+    _url = 'states/' + commons.Escaper.ecapeVariable('$stateKey');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -450,5 +452,3 @@ class WriteResult {
     return _json;
   }
 }
-
-

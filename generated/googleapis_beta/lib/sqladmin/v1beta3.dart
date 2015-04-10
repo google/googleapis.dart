@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.sqladmin.v1beta3;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client sqladmin/v1beta3';
 
 /** API for Cloud SQL database instance management. */
 class SqladminApi {
@@ -22,7 +25,7 @@ class SqladminApi {
   static const SqlserviceAdminScope = "https://www.googleapis.com/auth/sqlservice.admin";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   BackupRunsResourceApi get backupRuns => new BackupRunsResourceApi(_requester);
   FlagsResourceApi get flags => new FlagsResourceApi(_requester);
@@ -32,15 +35,14 @@ class SqladminApi {
   TiersResourceApi get tiers => new TiersResourceApi(_requester);
 
   SqladminApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "sql/v1beta3/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class BackupRunsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  BackupRunsResourceApi(common_internal.ApiRequester client) : 
+  BackupRunsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -62,7 +64,7 @@ class BackupRunsResourceApi {
    *
    * Completes with a [BackupRun].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -73,7 +75,7 @@ class BackupRunsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -91,7 +93,7 @@ class BackupRunsResourceApi {
     _queryParams["dueTime"] = [dueTime];
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/backupRuns/' + common_internal.Escaper.ecapeVariable('$backupConfiguration');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/backupRuns/' + commons.Escaper.ecapeVariable('$backupConfiguration');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -122,7 +124,7 @@ class BackupRunsResourceApi {
    *
    * Completes with a [BackupRunsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -133,7 +135,7 @@ class BackupRunsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -154,7 +156,7 @@ class BackupRunsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/backupRuns';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/backupRuns';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -169,11 +171,10 @@ class BackupRunsResourceApi {
 }
 
 
-/** Not documented yet. */
 class FlagsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  FlagsResourceApi(common_internal.ApiRequester client) : 
+  FlagsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -183,7 +184,7 @@ class FlagsResourceApi {
    *
    * Completes with a [FlagsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -194,7 +195,7 @@ class FlagsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -214,11 +215,10 @@ class FlagsResourceApi {
 }
 
 
-/** Not documented yet. */
 class InstancesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  InstancesResourceApi(common_internal.ApiRequester client) : 
+  InstancesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -233,7 +233,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstancesCloneResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -244,7 +244,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -255,7 +255,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/clone';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/clone';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -279,7 +279,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstancesDeleteResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -290,7 +290,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -301,7 +301,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -328,7 +328,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstancesExportResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -339,7 +339,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -353,7 +353,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/export';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/export';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -376,7 +376,7 @@ class InstancesResourceApi {
    *
    * Completes with a [DatabaseInstance].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -387,7 +387,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -398,7 +398,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -424,7 +424,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstancesImportResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -435,7 +435,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -449,7 +449,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/import';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/import';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -473,7 +473,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstancesInsertResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -484,7 +484,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -495,7 +495,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -523,7 +523,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstancesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -534,7 +534,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -548,7 +548,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -574,7 +574,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstancesUpdateResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -585,7 +585,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -599,7 +599,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -622,7 +622,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstancesPromoteReplicaResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -633,7 +633,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -644,7 +644,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/promoteReplica';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/promoteReplica';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -668,7 +668,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstancesResetSslConfigResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -679,7 +679,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -690,7 +690,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/resetSslConfig';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/resetSslConfig';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -714,7 +714,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstancesRestartResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -725,7 +725,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -736,7 +736,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/restart';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/restart';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -766,7 +766,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstancesRestoreBackupResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -777,7 +777,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -796,7 +796,7 @@ class InstancesResourceApi {
     _queryParams["dueTime"] = [dueTime];
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/restoreBackup';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/restoreBackup';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -821,7 +821,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstancesSetRootPasswordResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -832,7 +832,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -846,7 +846,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/setRootPassword';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setRootPassword';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -871,7 +871,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstancesUpdateResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -882,7 +882,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -896,7 +896,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -911,11 +911,10 @@ class InstancesResourceApi {
 }
 
 
-/** Not documented yet. */
 class OperationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  OperationsResourceApi(common_internal.ApiRequester client) : 
+  OperationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -932,7 +931,7 @@ class OperationsResourceApi {
    *
    * Completes with a [InstanceOperation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -943,7 +942,7 @@ class OperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -957,7 +956,7 @@ class OperationsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/operations/' + common_internal.Escaper.ecapeVariable('$operation');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -985,7 +984,7 @@ class OperationsResourceApi {
    *
    * Completes with a [OperationsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -996,7 +995,7 @@ class OperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1013,7 +1012,7 @@ class OperationsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/operations';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/operations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1028,11 +1027,10 @@ class OperationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class SslCertsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SslCertsResourceApi(common_internal.ApiRequester client) : 
+  SslCertsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1049,7 +1047,7 @@ class SslCertsResourceApi {
    *
    * Completes with a [SslCertsDeleteResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1060,7 +1058,7 @@ class SslCertsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1074,7 +1072,7 @@ class SslCertsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/sslCerts/' + common_internal.Escaper.ecapeVariable('$sha1Fingerprint');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/sslCerts/' + commons.Escaper.ecapeVariable('$sha1Fingerprint');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1099,7 +1097,7 @@ class SslCertsResourceApi {
    *
    * Completes with a [SslCert].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1110,7 +1108,7 @@ class SslCertsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1124,7 +1122,7 @@ class SslCertsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/sslCerts/' + common_internal.Escaper.ecapeVariable('$sha1Fingerprint');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/sslCerts/' + commons.Escaper.ecapeVariable('$sha1Fingerprint');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1151,7 +1149,7 @@ class SslCertsResourceApi {
    *
    * Completes with a [SslCertsInsertResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1162,7 +1160,7 @@ class SslCertsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1176,7 +1174,7 @@ class SslCertsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/sslCerts';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/sslCerts';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1200,7 +1198,7 @@ class SslCertsResourceApi {
    *
    * Completes with a [SslCertsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1211,7 +1209,7 @@ class SslCertsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1222,7 +1220,7 @@ class SslCertsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/sslCerts';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/sslCerts';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1237,11 +1235,10 @@ class SslCertsResourceApi {
 }
 
 
-/** Not documented yet. */
 class TiersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TiersResourceApi(common_internal.ApiRequester client) : 
+  TiersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1253,7 +1250,7 @@ class TiersResourceApi {
    *
    * Completes with a [TiersListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1264,7 +1261,7 @@ class TiersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1272,7 +1269,7 @@ class TiersResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/tiers';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/tiers';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1617,24 +1614,14 @@ class DatabaseFlags {
   /**
    * The name of the flag. These flags are passed at instance startup, so
    * include both MySQL server options and MySQL system variables. Flags should
-   * be specified with underscores, not hyphens. Refer to the official MySQL
-   * documentation on server options and system variables for descriptions of
-   * what these flags do. Acceptable values are:  character_set_server utf8 or
-   * utf8mb4 event_scheduler on or off (Note: The event scheduler will only work
-   * reliably if the instance activationPolicy is set to ALWAYS) general_log on
-   * or off group_concat_max_len 4..17179869184 innodb_flush_log_at_trx_commit
-   * 0..2 innodb_lock_wait_timeout 1..1073741824 log_bin_trust_function_creators
-   * on or off log_output Can be either TABLE or NONE, FILE is not supported
-   * log_queries_not_using_indexes on or off long_query_time 0..30000000
-   * lower_case_table_names 0..2 max_allowed_packet 16384..1073741824 read_only
-   * on or off skip_show_database on or off slow_query_log on or off. If set to
-   * on, you must also set the log_output flag to TABLE to receive logs.
-   * wait_timeout 1..31536000
+   * be specified with underscores, not hyphens. For more information, see
+   * Configuring MySQL Flags in the Google Cloud SQL documentation, as well as
+   * the official MySQL documentation for server options and system variables.
    */
   core.String name;
 
   /**
-   * The value of the flag. Booleans should be set using 1 for true, and 0 for
+   * The value of the flag. Booleans should be set to on for true and off for
    * false. This field must be omitted if the flag doesn't take a value.
    */
   core.String value;
@@ -3569,5 +3556,3 @@ class TiersListResponse {
     return _json;
   }
 }
-
-

@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.replicapool.v1beta2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client replicapool/v1beta2';
 
 /**
  * The Google Compute Engine Instance Group Manager API provides groups of
@@ -28,21 +31,20 @@ class ReplicapoolApi {
   static const ComputeReadonlyScope = "https://www.googleapis.com/auth/compute.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   InstanceGroupManagersResourceApi get instanceGroupManagers => new InstanceGroupManagersResourceApi(_requester);
   ZoneOperationsResourceApi get zoneOperations => new ZoneOperationsResourceApi(_requester);
 
   ReplicapoolApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "replicapool/v1beta2/projects/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class InstanceGroupManagersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  InstanceGroupManagersResourceApi(common_internal.ApiRequester client) : 
+  InstanceGroupManagersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -66,7 +68,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -77,7 +79,7 @@ class InstanceGroupManagersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -94,7 +96,7 @@ class InstanceGroupManagersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + common_internal.Escaper.ecapeVariable('$instanceGroupManager') + '/abandonInstances';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/abandonInstances';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -126,7 +128,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -137,7 +139,7 @@ class InstanceGroupManagersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -151,7 +153,7 @@ class InstanceGroupManagersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + common_internal.Escaper.ecapeVariable('$instanceGroupManager');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -164,10 +166,10 @@ class InstanceGroupManagersResourceApi {
   }
 
   /**
-   * Deletes the specified instances. The instances are removed from the
-   * instance group and any target pools of which they are a member, then
-   * deleted. The targetSize of the instance group manager is reduced by the
-   * number of instances deleted.
+   * Deletes the specified instances. The instances are deleted, then removed
+   * from the instance group and any target pools of which they were a member.
+   * The targetSize of the instance group manager is reduced by the number of
+   * instances deleted.
    *
    * [request] - The metadata request object.
    *
@@ -185,7 +187,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -196,7 +198,7 @@ class InstanceGroupManagersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -213,7 +215,7 @@ class InstanceGroupManagersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + common_internal.Escaper.ecapeVariable('$instanceGroupManager') + '/deleteInstances';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/deleteInstances';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -242,7 +244,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Completes with a [InstanceGroupManager].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -253,7 +255,7 @@ class InstanceGroupManagersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -267,7 +269,7 @@ class InstanceGroupManagersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + common_internal.Escaper.ecapeVariable('$instanceGroupManager');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -298,7 +300,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -309,7 +311,7 @@ class InstanceGroupManagersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -327,7 +329,7 @@ class InstanceGroupManagersResourceApi {
     _queryParams["size"] = ["${size}"];
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -363,7 +365,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Completes with a [InstanceGroupManagerList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -374,7 +376,7 @@ class InstanceGroupManagersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -394,7 +396,7 @@ class InstanceGroupManagersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -426,7 +428,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -437,7 +439,7 @@ class InstanceGroupManagersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -454,7 +456,7 @@ class InstanceGroupManagersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + common_internal.Escaper.ecapeVariable('$instanceGroupManager') + '/recreateInstances';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/recreateInstances';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -488,7 +490,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -499,7 +501,7 @@ class InstanceGroupManagersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -517,7 +519,7 @@ class InstanceGroupManagersResourceApi {
     _queryParams["size"] = ["${size}"];
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + common_internal.Escaper.ecapeVariable('$instanceGroupManager') + '/resize';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/resize';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -549,7 +551,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -560,7 +562,7 @@ class InstanceGroupManagersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -577,7 +579,7 @@ class InstanceGroupManagersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + common_internal.Escaper.ecapeVariable('$instanceGroupManager') + '/setInstanceTemplate';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/setInstanceTemplate';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -609,7 +611,7 @@ class InstanceGroupManagersResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -620,7 +622,7 @@ class InstanceGroupManagersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -637,7 +639,7 @@ class InstanceGroupManagersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + common_internal.Escaper.ecapeVariable('$instanceGroupManager') + '/setTargetPools';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/setTargetPools';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -652,11 +654,10 @@ class InstanceGroupManagersResourceApi {
 }
 
 
-/** Not documented yet. */
 class ZoneOperationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ZoneOperationsResourceApi(common_internal.ApiRequester client) : 
+  ZoneOperationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -676,7 +677,7 @@ class ZoneOperationsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -687,7 +688,7 @@ class ZoneOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -701,7 +702,7 @@ class ZoneOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/operations/' + common_internal.Escaper.ecapeVariable('$operation');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -737,7 +738,7 @@ class ZoneOperationsResourceApi {
    *
    * Completes with a [OperationList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -748,7 +749,7 @@ class ZoneOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -768,7 +769,7 @@ class ZoneOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/operations';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -961,7 +962,6 @@ class InstanceGroupManager {
 }
 
 
-/** Not documented yet. */
 class InstanceGroupManagerList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
@@ -1023,7 +1023,6 @@ class InstanceGroupManagerList {
 }
 
 
-/** Not documented yet. */
 class InstanceGroupManagersAbandonInstancesRequest {
   /**
    * The names of one or more instances to abandon. For example:
@@ -1050,7 +1049,6 @@ class InstanceGroupManagersAbandonInstancesRequest {
 }
 
 
-/** Not documented yet. */
 class InstanceGroupManagersDeleteInstancesRequest {
   /**
    * Names of instances to delete.
@@ -1078,7 +1076,6 @@ class InstanceGroupManagersDeleteInstancesRequest {
 }
 
 
-/** Not documented yet. */
 class InstanceGroupManagersRecreateInstancesRequest {
   /**
    * The names of one or more instances to recreate. For example:
@@ -1105,7 +1102,6 @@ class InstanceGroupManagersRecreateInstancesRequest {
 }
 
 
-/** Not documented yet. */
 class InstanceGroupManagersSetInstanceTemplateRequest {
   /**
    * The full URL to an Instance Template from which all new instances will be
@@ -1132,7 +1128,6 @@ class InstanceGroupManagersSetInstanceTemplateRequest {
 }
 
 
-/** Not documented yet. */
 class InstanceGroupManagersSetTargetPoolsRequest {
   /**
    * The current fingerprint of the Instance Group Manager resource. If this
@@ -1181,7 +1176,6 @@ class InstanceGroupManagersSetTargetPoolsRequest {
 }
 
 
-/** Not documented yet. */
 class OperationErrorErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
@@ -1256,7 +1250,6 @@ class OperationError {
 }
 
 
-/** Not documented yet. */
 class OperationWarningsData {
   /** [Output Only] Metadata key for this warning. */
   core.String key;
@@ -1289,7 +1282,6 @@ class OperationWarningsData {
 }
 
 
-/** Not documented yet. */
 class OperationWarnings {
   /**
    * [Output only] The warning type identifier for this warning.
@@ -1305,6 +1297,7 @@ class OperationWarnings {
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
    */
   core.String code;
@@ -1613,7 +1606,6 @@ class Operation {
 }
 
 
-/** Not documented yet. */
 class OperationList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
@@ -1673,5 +1665,3 @@ class OperationList {
     return _json;
   }
 }
-
-

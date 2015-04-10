@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.container.v1beta1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client container/v1beta1';
 
 /**
  * The Google Container Engine API is used for building and managing container
@@ -22,33 +25,31 @@ class ContainerApi {
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   ContainerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "container/v1beta1/projects/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class ProjectsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ProjectsClustersResourceApi get clusters => new ProjectsClustersResourceApi(_requester);
   ProjectsOperationsResourceApi get operations => new ProjectsOperationsResourceApi(_requester);
   ProjectsZonesResourceApi get zones => new ProjectsZonesResourceApi(_requester);
 
-  ProjectsResourceApi(common_internal.ApiRequester client) : 
+  ProjectsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 }
 
 
-/** Not documented yet. */
 class ProjectsClustersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ProjectsClustersResourceApi(common_internal.ApiRequester client) : 
+  ProjectsClustersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -60,7 +61,7 @@ class ProjectsClustersResourceApi {
    *
    * Completes with a [ListAggregatedClustersResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -71,7 +72,7 @@ class ProjectsClustersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -79,7 +80,7 @@ class ProjectsClustersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/clusters';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/clusters';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -94,11 +95,10 @@ class ProjectsClustersResourceApi {
 }
 
 
-/** Not documented yet. */
 class ProjectsOperationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ProjectsOperationsResourceApi(common_internal.ApiRequester client) : 
+  ProjectsOperationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -110,7 +110,7 @@ class ProjectsOperationsResourceApi {
    *
    * Completes with a [ListAggregatedOperationsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -121,7 +121,7 @@ class ProjectsOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -129,7 +129,7 @@ class ProjectsOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/operations';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/operations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -144,23 +144,21 @@ class ProjectsOperationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ProjectsZonesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ProjectsZonesClustersResourceApi get clusters => new ProjectsZonesClustersResourceApi(_requester);
   ProjectsZonesOperationsResourceApi get operations => new ProjectsZonesOperationsResourceApi(_requester);
 
-  ProjectsZonesResourceApi(common_internal.ApiRequester client) : 
+  ProjectsZonesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 }
 
 
-/** Not documented yet. */
 class ProjectsZonesClustersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ProjectsZonesClustersResourceApi(common_internal.ApiRequester client) : 
+  ProjectsZonesClustersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -188,7 +186,7 @@ class ProjectsZonesClustersResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -199,7 +197,7 @@ class ProjectsZonesClustersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -213,7 +211,7 @@ class ProjectsZonesClustersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/zones/' + common_internal.Escaper.ecapeVariable('$zoneId') + '/clusters';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/clusters';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -242,7 +240,7 @@ class ProjectsZonesClustersResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -253,7 +251,7 @@ class ProjectsZonesClustersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -267,7 +265,7 @@ class ProjectsZonesClustersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/zones/' + common_internal.Escaper.ecapeVariable('$zoneId') + '/clusters/' + common_internal.Escaper.ecapeVariable('$clusterId');
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -293,7 +291,7 @@ class ProjectsZonesClustersResourceApi {
    *
    * Completes with a [Cluster].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -304,7 +302,7 @@ class ProjectsZonesClustersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -318,7 +316,7 @@ class ProjectsZonesClustersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/zones/' + common_internal.Escaper.ecapeVariable('$zoneId') + '/clusters/' + common_internal.Escaper.ecapeVariable('$clusterId');
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -342,7 +340,7 @@ class ProjectsZonesClustersResourceApi {
    *
    * Completes with a [ListClustersResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -353,7 +351,7 @@ class ProjectsZonesClustersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -364,7 +362,7 @@ class ProjectsZonesClustersResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/zones/' + common_internal.Escaper.ecapeVariable('$zoneId') + '/clusters';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/clusters';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -379,11 +377,10 @@ class ProjectsZonesClustersResourceApi {
 }
 
 
-/** Not documented yet. */
 class ProjectsZonesOperationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ProjectsZonesOperationsResourceApi(common_internal.ApiRequester client) : 
+  ProjectsZonesOperationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -401,7 +398,7 @@ class ProjectsZonesOperationsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -412,7 +409,7 @@ class ProjectsZonesOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -426,7 +423,7 @@ class ProjectsZonesOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/zones/' + common_internal.Escaper.ecapeVariable('$zoneId') + '/operations/' + common_internal.Escaper.ecapeVariable('$operationId');
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/operations/' + commons.Escaper.ecapeVariable('$operationId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -450,7 +447,7 @@ class ProjectsZonesOperationsResourceApi {
    *
    * Completes with a [ListOperationsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -461,7 +458,7 @@ class ProjectsZonesOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -472,7 +469,7 @@ class ProjectsZonesOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/zones/' + common_internal.Escaper.ecapeVariable('$zoneId') + '/operations';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/operations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -488,7 +485,6 @@ class ProjectsZonesOperationsResourceApi {
 
 
 
-/** Not documented yet. */
 class Cluster {
   /**
    * The API version of the Kubernetes master and kubelets running in this
@@ -513,6 +509,13 @@ class Cluster {
 
   /** An optional description of this cluster. */
   core.String description;
+
+  /**
+   * Whether logs from the cluster should be made available via the Google Cloud
+   * Logging service. This includes both logs from your applications running in
+   * the cluster as well as logs from the Kubernetes components themselves.
+   */
+  core.bool enableCloudLogging;
 
   /**
    * [Output only] The IP address of this cluster's Kubernetes master. The
@@ -614,6 +617,9 @@ class Cluster {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("enableCloudLogging")) {
+      enableCloudLogging = _json["enableCloudLogging"];
+    }
     if (_json.containsKey("endpoint")) {
       endpoint = _json["endpoint"];
     }
@@ -666,6 +672,9 @@ class Cluster {
     if (description != null) {
       _json["description"] = description;
     }
+    if (enableCloudLogging != null) {
+      _json["enableCloudLogging"] = enableCloudLogging;
+    }
     if (endpoint != null) {
       _json["endpoint"] = endpoint;
     }
@@ -707,7 +716,6 @@ class Cluster {
 }
 
 
-/** Not documented yet. */
 class CreateClusterRequest {
   /** A cluster resource. */
   Cluster cluster;
@@ -731,7 +739,6 @@ class CreateClusterRequest {
 }
 
 
-/** Not documented yet. */
 class ListAggregatedClustersResponse {
   /** A list of clusters in the project, across all zones. */
   core.List<Cluster> clusters;
@@ -755,7 +762,6 @@ class ListAggregatedClustersResponse {
 }
 
 
-/** Not documented yet. */
 class ListAggregatedOperationsResponse {
   /** A list of operations in the project, across all zones. */
   core.List<Operation> operations;
@@ -779,7 +785,6 @@ class ListAggregatedOperationsResponse {
 }
 
 
-/** Not documented yet. */
 class ListClustersResponse {
   /** A list of clusters in the project in the specified zone. */
   core.List<Cluster> clusters;
@@ -803,7 +808,6 @@ class ListClustersResponse {
 }
 
 
-/** Not documented yet. */
 class ListOperationsResponse {
   /** A list of operations in the project in the specified zone. */
   core.List<Operation> operations;
@@ -827,7 +831,6 @@ class ListOperationsResponse {
 }
 
 
-/** Not documented yet. */
 class MasterAuth {
   /** The password to use when accessing the Kubernetes master endpoint. */
   core.String password;
@@ -860,7 +863,6 @@ class MasterAuth {
 }
 
 
-/** Not documented yet. */
 class NodeConfig {
   /**
    * The name of a Google Compute Engine machine type (e.g. n1-standard-1).
@@ -1059,5 +1061,3 @@ class ServiceAccount {
     return _json;
   }
 }
-
-

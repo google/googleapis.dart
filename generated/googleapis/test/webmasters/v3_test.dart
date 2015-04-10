@@ -8,22 +8,57 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/webmasters/v3.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
 
-buildUnnamed667() {
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
+
+buildUnnamed1402() {
   var o = new core.List<api.WmxSitemap>();
   o.add(buildWmxSitemap());
   o.add(buildWmxSitemap());
   return o;
 }
 
-checkUnnamed667(core.List<api.WmxSitemap> o) {
+checkUnnamed1402(core.List<api.WmxSitemap> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSitemap(o[0]);
   checkWmxSitemap(o[1]);
@@ -34,7 +69,7 @@ buildSitemapsListResponse() {
   var o = new api.SitemapsListResponse();
   buildCounterSitemapsListResponse++;
   if (buildCounterSitemapsListResponse < 3) {
-    o.sitemap = buildUnnamed667();
+    o.sitemap = buildUnnamed1402();
   }
   buildCounterSitemapsListResponse--;
   return o;
@@ -43,19 +78,19 @@ buildSitemapsListResponse() {
 checkSitemapsListResponse(api.SitemapsListResponse o) {
   buildCounterSitemapsListResponse++;
   if (buildCounterSitemapsListResponse < 3) {
-    checkUnnamed667(o.sitemap);
+    checkUnnamed1402(o.sitemap);
   }
   buildCounterSitemapsListResponse--;
 }
 
-buildUnnamed668() {
+buildUnnamed1403() {
   var o = new core.List<api.WmxSite>();
   o.add(buildWmxSite());
   o.add(buildWmxSite());
   return o;
 }
 
-checkUnnamed668(core.List<api.WmxSite> o) {
+checkUnnamed1403(core.List<api.WmxSite> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSite(o[0]);
   checkWmxSite(o[1]);
@@ -66,7 +101,7 @@ buildSitesListResponse() {
   var o = new api.SitesListResponse();
   buildCounterSitesListResponse++;
   if (buildCounterSitesListResponse < 3) {
-    o.siteEntry = buildUnnamed668();
+    o.siteEntry = buildUnnamed1403();
   }
   buildCounterSitesListResponse--;
   return o;
@@ -75,7 +110,7 @@ buildSitesListResponse() {
 checkSitesListResponse(api.SitesListResponse o) {
   buildCounterSitesListResponse++;
   if (buildCounterSitesListResponse < 3) {
-    checkUnnamed668(o.siteEntry);
+    checkUnnamed1403(o.siteEntry);
   }
   buildCounterSitesListResponse--;
 }
@@ -101,14 +136,14 @@ checkUrlCrawlErrorCount(api.UrlCrawlErrorCount o) {
   buildCounterUrlCrawlErrorCount--;
 }
 
-buildUnnamed669() {
+buildUnnamed1404() {
   var o = new core.List<api.UrlCrawlErrorCount>();
   o.add(buildUrlCrawlErrorCount());
   o.add(buildUrlCrawlErrorCount());
   return o;
 }
 
-checkUnnamed669(core.List<api.UrlCrawlErrorCount> o) {
+checkUnnamed1404(core.List<api.UrlCrawlErrorCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorCount(o[0]);
   checkUrlCrawlErrorCount(o[1]);
@@ -120,7 +155,7 @@ buildUrlCrawlErrorCountsPerType() {
   buildCounterUrlCrawlErrorCountsPerType++;
   if (buildCounterUrlCrawlErrorCountsPerType < 3) {
     o.category = "foo";
-    o.entries = buildUnnamed669();
+    o.entries = buildUnnamed1404();
     o.platform = "foo";
   }
   buildCounterUrlCrawlErrorCountsPerType--;
@@ -131,20 +166,20 @@ checkUrlCrawlErrorCountsPerType(api.UrlCrawlErrorCountsPerType o) {
   buildCounterUrlCrawlErrorCountsPerType++;
   if (buildCounterUrlCrawlErrorCountsPerType < 3) {
     unittest.expect(o.category, unittest.equals('foo'));
-    checkUnnamed669(o.entries);
+    checkUnnamed1404(o.entries);
     unittest.expect(o.platform, unittest.equals('foo'));
   }
   buildCounterUrlCrawlErrorCountsPerType--;
 }
 
-buildUnnamed670() {
+buildUnnamed1405() {
   var o = new core.List<api.UrlCrawlErrorCountsPerType>();
   o.add(buildUrlCrawlErrorCountsPerType());
   o.add(buildUrlCrawlErrorCountsPerType());
   return o;
 }
 
-checkUnnamed670(core.List<api.UrlCrawlErrorCountsPerType> o) {
+checkUnnamed1405(core.List<api.UrlCrawlErrorCountsPerType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorCountsPerType(o[0]);
   checkUrlCrawlErrorCountsPerType(o[1]);
@@ -155,7 +190,7 @@ buildUrlCrawlErrorsCountsQueryResponse() {
   var o = new api.UrlCrawlErrorsCountsQueryResponse();
   buildCounterUrlCrawlErrorsCountsQueryResponse++;
   if (buildCounterUrlCrawlErrorsCountsQueryResponse < 3) {
-    o.countPerTypes = buildUnnamed670();
+    o.countPerTypes = buildUnnamed1405();
   }
   buildCounterUrlCrawlErrorsCountsQueryResponse--;
   return o;
@@ -164,7 +199,7 @@ buildUrlCrawlErrorsCountsQueryResponse() {
 checkUrlCrawlErrorsCountsQueryResponse(api.UrlCrawlErrorsCountsQueryResponse o) {
   buildCounterUrlCrawlErrorsCountsQueryResponse++;
   if (buildCounterUrlCrawlErrorsCountsQueryResponse < 3) {
-    checkUnnamed670(o.countPerTypes);
+    checkUnnamed1405(o.countPerTypes);
   }
   buildCounterUrlCrawlErrorsCountsQueryResponse--;
 }
@@ -196,14 +231,14 @@ checkUrlCrawlErrorsSample(api.UrlCrawlErrorsSample o) {
   buildCounterUrlCrawlErrorsSample--;
 }
 
-buildUnnamed671() {
+buildUnnamed1406() {
   var o = new core.List<api.UrlCrawlErrorsSample>();
   o.add(buildUrlCrawlErrorsSample());
   o.add(buildUrlCrawlErrorsSample());
   return o;
 }
 
-checkUnnamed671(core.List<api.UrlCrawlErrorsSample> o) {
+checkUnnamed1406(core.List<api.UrlCrawlErrorsSample> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorsSample(o[0]);
   checkUrlCrawlErrorsSample(o[1]);
@@ -214,7 +249,7 @@ buildUrlCrawlErrorsSamplesListResponse() {
   var o = new api.UrlCrawlErrorsSamplesListResponse();
   buildCounterUrlCrawlErrorsSamplesListResponse++;
   if (buildCounterUrlCrawlErrorsSamplesListResponse < 3) {
-    o.urlCrawlErrorSample = buildUnnamed671();
+    o.urlCrawlErrorSample = buildUnnamed1406();
   }
   buildCounterUrlCrawlErrorsSamplesListResponse--;
   return o;
@@ -223,32 +258,32 @@ buildUrlCrawlErrorsSamplesListResponse() {
 checkUrlCrawlErrorsSamplesListResponse(api.UrlCrawlErrorsSamplesListResponse o) {
   buildCounterUrlCrawlErrorsSamplesListResponse++;
   if (buildCounterUrlCrawlErrorsSamplesListResponse < 3) {
-    checkUnnamed671(o.urlCrawlErrorSample);
+    checkUnnamed1406(o.urlCrawlErrorSample);
   }
   buildCounterUrlCrawlErrorsSamplesListResponse--;
 }
 
-buildUnnamed672() {
+buildUnnamed1407() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed672(core.List<core.String> o) {
+checkUnnamed1407(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed673() {
+buildUnnamed1408() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed673(core.List<core.String> o) {
+checkUnnamed1408(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -259,8 +294,8 @@ buildUrlSampleDetails() {
   var o = new api.UrlSampleDetails();
   buildCounterUrlSampleDetails++;
   if (buildCounterUrlSampleDetails < 3) {
-    o.containingSitemaps = buildUnnamed672();
-    o.linkedFromUrls = buildUnnamed673();
+    o.containingSitemaps = buildUnnamed1407();
+    o.linkedFromUrls = buildUnnamed1408();
   }
   buildCounterUrlSampleDetails--;
   return o;
@@ -269,8 +304,8 @@ buildUrlSampleDetails() {
 checkUrlSampleDetails(api.UrlSampleDetails o) {
   buildCounterUrlSampleDetails++;
   if (buildCounterUrlSampleDetails < 3) {
-    checkUnnamed672(o.containingSitemaps);
-    checkUnnamed673(o.linkedFromUrls);
+    checkUnnamed1407(o.containingSitemaps);
+    checkUnnamed1408(o.linkedFromUrls);
   }
   buildCounterUrlSampleDetails--;
 }
@@ -296,14 +331,14 @@ checkWmxSite(api.WmxSite o) {
   buildCounterWmxSite--;
 }
 
-buildUnnamed674() {
+buildUnnamed1409() {
   var o = new core.List<api.WmxSitemapContent>();
   o.add(buildWmxSitemapContent());
   o.add(buildWmxSitemapContent());
   return o;
 }
 
-checkUnnamed674(core.List<api.WmxSitemapContent> o) {
+checkUnnamed1409(core.List<api.WmxSitemapContent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSitemapContent(o[0]);
   checkWmxSitemapContent(o[1]);
@@ -314,7 +349,7 @@ buildWmxSitemap() {
   var o = new api.WmxSitemap();
   buildCounterWmxSitemap++;
   if (buildCounterWmxSitemap < 3) {
-    o.contents = buildUnnamed674();
+    o.contents = buildUnnamed1409();
     o.errors = "foo";
     o.isPending = true;
     o.isSitemapsIndex = true;
@@ -331,7 +366,7 @@ buildWmxSitemap() {
 checkWmxSitemap(api.WmxSitemap o) {
   buildCounterWmxSitemap++;
   if (buildCounterWmxSitemap < 3) {
-    checkUnnamed674(o.contents);
+    checkUnnamed1409(o.contents);
     unittest.expect(o.errors, unittest.equals('foo'));
     unittest.expect(o.isPending, unittest.isTrue);
     unittest.expect(o.isSitemapsIndex, unittest.isTrue);
@@ -471,7 +506,7 @@ main() {
   unittest.group("resource-SitemapsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SitemapsResourceApi res = new api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = "foo";
       var arg_feedpath = "foo";
@@ -519,14 +554,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_siteUrl, arg_feedpath).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SitemapsResourceApi res = new api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = "foo";
       var arg_feedpath = "foo";
@@ -574,7 +609,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildWmxSitemap());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_siteUrl, arg_feedpath).then(unittest.expectAsync(((api.WmxSitemap response) {
         checkWmxSitemap(response);
@@ -583,7 +618,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SitemapsResourceApi res = new api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = "foo";
       var arg_sitemapIndex = "foo";
@@ -629,7 +664,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSitemapsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_siteUrl, sitemapIndex: arg_sitemapIndex).then(unittest.expectAsync(((api.SitemapsListResponse response) {
         checkSitemapsListResponse(response);
@@ -638,7 +673,7 @@ main() {
 
     unittest.test("method--submit", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SitemapsResourceApi res = new api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = "foo";
       var arg_feedpath = "foo";
@@ -686,7 +721,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.submit(arg_siteUrl, arg_feedpath).then(unittest.expectAsync((_) {}));
     });
@@ -697,7 +732,7 @@ main() {
   unittest.group("resource-SitesResourceApi", () {
     unittest.test("method--add", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SitesResourceApi res = new api.WebmastersApi(mock).sites;
       var arg_siteUrl = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -737,14 +772,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.add(arg_siteUrl).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SitesResourceApi res = new api.WebmastersApi(mock).sites;
       var arg_siteUrl = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -784,14 +819,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_siteUrl).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SitesResourceApi res = new api.WebmastersApi(mock).sites;
       var arg_siteUrl = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -831,7 +866,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildWmxSite());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_siteUrl).then(unittest.expectAsync(((api.WmxSite response) {
         checkWmxSite(response);
@@ -840,7 +875,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SitesResourceApi res = new api.WebmastersApi(mock).sites;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -876,7 +911,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSitesListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list().then(unittest.expectAsync(((api.SitesListResponse response) {
         checkSitesListResponse(response);
@@ -889,7 +924,7 @@ main() {
   unittest.group("resource-UrlcrawlerrorscountsResourceApi", () {
     unittest.test("method--query", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UrlcrawlerrorscountsResourceApi res = new api.WebmastersApi(mock).urlcrawlerrorscounts;
       var arg_siteUrl = "foo";
       var arg_category = "foo";
@@ -939,7 +974,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUrlCrawlErrorsCountsQueryResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.query(arg_siteUrl, category: arg_category, latestCountsOnly: arg_latestCountsOnly, platform: arg_platform).then(unittest.expectAsync(((api.UrlCrawlErrorsCountsQueryResponse response) {
         checkUrlCrawlErrorsCountsQueryResponse(response);
@@ -952,7 +987,7 @@ main() {
   unittest.group("resource-UrlcrawlerrorssamplesResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UrlcrawlerrorssamplesResourceApi res = new api.WebmastersApi(mock).urlcrawlerrorssamples;
       var arg_siteUrl = "foo";
       var arg_url = "foo";
@@ -1004,7 +1039,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUrlCrawlErrorsSample());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_siteUrl, arg_url, arg_category, arg_platform).then(unittest.expectAsync(((api.UrlCrawlErrorsSample response) {
         checkUrlCrawlErrorsSample(response);
@@ -1013,7 +1048,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UrlcrawlerrorssamplesResourceApi res = new api.WebmastersApi(mock).urlcrawlerrorssamples;
       var arg_siteUrl = "foo";
       var arg_category = "foo";
@@ -1061,7 +1096,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUrlCrawlErrorsSamplesListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_siteUrl, arg_category, arg_platform).then(unittest.expectAsync(((api.UrlCrawlErrorsSamplesListResponse response) {
         checkUrlCrawlErrorsSamplesListResponse(response);
@@ -1070,7 +1105,7 @@ main() {
 
     unittest.test("method--markAsFixed", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UrlcrawlerrorssamplesResourceApi res = new api.WebmastersApi(mock).urlcrawlerrorssamples;
       var arg_siteUrl = "foo";
       var arg_url = "foo";
@@ -1122,7 +1157,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.markAsFixed(arg_siteUrl, arg_url, arg_category, arg_platform).then(unittest.expectAsync((_) {}));
     });

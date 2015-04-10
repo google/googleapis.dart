@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/androidpublisher/v2.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterApk = 0;
 buildApk() {
@@ -77,14 +112,14 @@ checkApkListing(api.ApkListing o) {
   buildCounterApkListing--;
 }
 
-buildUnnamed1393() {
+buildUnnamed258() {
   var o = new core.List<api.ApkListing>();
   o.add(buildApkListing());
   o.add(buildApkListing());
   return o;
 }
 
-checkUnnamed1393(core.List<api.ApkListing> o) {
+checkUnnamed258(core.List<api.ApkListing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApkListing(o[0]);
   checkApkListing(o[1]);
@@ -96,7 +131,7 @@ buildApkListingsListResponse() {
   buildCounterApkListingsListResponse++;
   if (buildCounterApkListingsListResponse < 3) {
     o.kind = "foo";
-    o.listings = buildUnnamed1393();
+    o.listings = buildUnnamed258();
   }
   buildCounterApkListingsListResponse--;
   return o;
@@ -106,7 +141,7 @@ checkApkListingsListResponse(api.ApkListingsListResponse o) {
   buildCounterApkListingsListResponse++;
   if (buildCounterApkListingsListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1393(o.listings);
+    checkUnnamed258(o.listings);
   }
   buildCounterApkListingsListResponse--;
 }
@@ -149,14 +184,14 @@ checkApksAddExternallyHostedResponse(api.ApksAddExternallyHostedResponse o) {
   buildCounterApksAddExternallyHostedResponse--;
 }
 
-buildUnnamed1394() {
+buildUnnamed259() {
   var o = new core.List<api.Apk>();
   o.add(buildApk());
   o.add(buildApk());
   return o;
 }
 
-checkUnnamed1394(core.List<api.Apk> o) {
+checkUnnamed259(core.List<api.Apk> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApk(o[0]);
   checkApk(o[1]);
@@ -167,7 +202,7 @@ buildApksListResponse() {
   var o = new api.ApksListResponse();
   buildCounterApksListResponse++;
   if (buildCounterApksListResponse < 3) {
-    o.apks = buildUnnamed1394();
+    o.apks = buildUnnamed259();
     o.kind = "foo";
   }
   buildCounterApksListResponse--;
@@ -177,7 +212,7 @@ buildApksListResponse() {
 checkApksListResponse(api.ApksListResponse o) {
   buildCounterApksListResponse++;
   if (buildCounterApksListResponse < 3) {
-    checkUnnamed1394(o.apks);
+    checkUnnamed259(o.apks);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterApksListResponse--;
@@ -269,53 +304,53 @@ checkExpansionFilesUploadResponse(api.ExpansionFilesUploadResponse o) {
   buildCounterExpansionFilesUploadResponse--;
 }
 
-buildUnnamed1395() {
+buildUnnamed260() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1395(core.List<core.String> o) {
+checkUnnamed260(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1396() {
+buildUnnamed261() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1396(core.List<core.String> o) {
+checkUnnamed261(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1397() {
+buildUnnamed262() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1397(core.List<core.String> o) {
+checkUnnamed262(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1398() {
+buildUnnamed263() {
   var o = new core.List<api.ExternallyHostedApkUsesPermission>();
   o.add(buildExternallyHostedApkUsesPermission());
   o.add(buildExternallyHostedApkUsesPermission());
   return o;
 }
 
-checkUnnamed1398(core.List<api.ExternallyHostedApkUsesPermission> o) {
+checkUnnamed263(core.List<api.ExternallyHostedApkUsesPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExternallyHostedApkUsesPermission(o[0]);
   checkExternallyHostedApkUsesPermission(o[1]);
@@ -327,7 +362,7 @@ buildExternallyHostedApk() {
   buildCounterExternallyHostedApk++;
   if (buildCounterExternallyHostedApk < 3) {
     o.applicationLabel = "foo";
-    o.certificateBase64s = buildUnnamed1395();
+    o.certificateBase64s = buildUnnamed260();
     o.externallyHostedUrl = "foo";
     o.fileSha1Base64 = "foo";
     o.fileSha256Base64 = "foo";
@@ -335,10 +370,10 @@ buildExternallyHostedApk() {
     o.iconBase64 = "foo";
     o.maximumSdk = 42;
     o.minimumSdk = 42;
-    o.nativeCodes = buildUnnamed1396();
+    o.nativeCodes = buildUnnamed261();
     o.packageName = "foo";
-    o.usesFeatures = buildUnnamed1397();
-    o.usesPermissions = buildUnnamed1398();
+    o.usesFeatures = buildUnnamed262();
+    o.usesPermissions = buildUnnamed263();
     o.versionCode = 42;
     o.versionName = "foo";
   }
@@ -350,7 +385,7 @@ checkExternallyHostedApk(api.ExternallyHostedApk o) {
   buildCounterExternallyHostedApk++;
   if (buildCounterExternallyHostedApk < 3) {
     unittest.expect(o.applicationLabel, unittest.equals('foo'));
-    checkUnnamed1395(o.certificateBase64s);
+    checkUnnamed260(o.certificateBase64s);
     unittest.expect(o.externallyHostedUrl, unittest.equals('foo'));
     unittest.expect(o.fileSha1Base64, unittest.equals('foo'));
     unittest.expect(o.fileSha256Base64, unittest.equals('foo'));
@@ -358,10 +393,10 @@ checkExternallyHostedApk(api.ExternallyHostedApk o) {
     unittest.expect(o.iconBase64, unittest.equals('foo'));
     unittest.expect(o.maximumSdk, unittest.equals(42));
     unittest.expect(o.minimumSdk, unittest.equals(42));
-    checkUnnamed1396(o.nativeCodes);
+    checkUnnamed261(o.nativeCodes);
     unittest.expect(o.packageName, unittest.equals('foo'));
-    checkUnnamed1397(o.usesFeatures);
-    checkUnnamed1398(o.usesPermissions);
+    checkUnnamed262(o.usesFeatures);
+    checkUnnamed263(o.usesPermissions);
     unittest.expect(o.versionCode, unittest.equals(42));
     unittest.expect(o.versionName, unittest.equals('foo'));
   }
@@ -412,14 +447,14 @@ checkImage(api.Image o) {
   buildCounterImage--;
 }
 
-buildUnnamed1399() {
+buildUnnamed264() {
   var o = new core.List<api.Image>();
   o.add(buildImage());
   o.add(buildImage());
   return o;
 }
 
-checkUnnamed1399(core.List<api.Image> o) {
+checkUnnamed264(core.List<api.Image> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImage(o[0]);
   checkImage(o[1]);
@@ -430,7 +465,7 @@ buildImagesDeleteAllResponse() {
   var o = new api.ImagesDeleteAllResponse();
   buildCounterImagesDeleteAllResponse++;
   if (buildCounterImagesDeleteAllResponse < 3) {
-    o.deleted = buildUnnamed1399();
+    o.deleted = buildUnnamed264();
   }
   buildCounterImagesDeleteAllResponse--;
   return o;
@@ -439,19 +474,19 @@ buildImagesDeleteAllResponse() {
 checkImagesDeleteAllResponse(api.ImagesDeleteAllResponse o) {
   buildCounterImagesDeleteAllResponse++;
   if (buildCounterImagesDeleteAllResponse < 3) {
-    checkUnnamed1399(o.deleted);
+    checkUnnamed264(o.deleted);
   }
   buildCounterImagesDeleteAllResponse--;
 }
 
-buildUnnamed1400() {
+buildUnnamed265() {
   var o = new core.List<api.Image>();
   o.add(buildImage());
   o.add(buildImage());
   return o;
 }
 
-checkUnnamed1400(core.List<api.Image> o) {
+checkUnnamed265(core.List<api.Image> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImage(o[0]);
   checkImage(o[1]);
@@ -462,7 +497,7 @@ buildImagesListResponse() {
   var o = new api.ImagesListResponse();
   buildCounterImagesListResponse++;
   if (buildCounterImagesListResponse < 3) {
-    o.images = buildUnnamed1400();
+    o.images = buildUnnamed265();
   }
   buildCounterImagesListResponse--;
   return o;
@@ -471,7 +506,7 @@ buildImagesListResponse() {
 checkImagesListResponse(api.ImagesListResponse o) {
   buildCounterImagesListResponse++;
   if (buildCounterImagesListResponse < 3) {
-    checkUnnamed1400(o.images);
+    checkUnnamed265(o.images);
   }
   buildCounterImagesListResponse--;
 }
@@ -495,27 +530,27 @@ checkImagesUploadResponse(api.ImagesUploadResponse o) {
   buildCounterImagesUploadResponse--;
 }
 
-buildUnnamed1401() {
+buildUnnamed266() {
   var o = new core.Map<core.String, api.InAppProductListing>();
   o["x"] = buildInAppProductListing();
   o["y"] = buildInAppProductListing();
   return o;
 }
 
-checkUnnamed1401(core.Map<core.String, api.InAppProductListing> o) {
+checkUnnamed266(core.Map<core.String, api.InAppProductListing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInAppProductListing(o["x"]);
   checkInAppProductListing(o["y"]);
 }
 
-buildUnnamed1402() {
+buildUnnamed267() {
   var o = new core.Map<core.String, api.Price>();
   o["x"] = buildPrice();
   o["y"] = buildPrice();
   return o;
 }
 
-checkUnnamed1402(core.Map<core.String, api.Price> o) {
+checkUnnamed267(core.Map<core.String, api.Price> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPrice(o["x"]);
   checkPrice(o["y"]);
@@ -528,9 +563,9 @@ buildInAppProduct() {
   if (buildCounterInAppProduct < 3) {
     o.defaultLanguage = "foo";
     o.defaultPrice = buildPrice();
-    o.listings = buildUnnamed1401();
+    o.listings = buildUnnamed266();
     o.packageName = "foo";
-    o.prices = buildUnnamed1402();
+    o.prices = buildUnnamed267();
     o.purchaseType = "foo";
     o.season = buildSeason();
     o.sku = "foo";
@@ -547,9 +582,9 @@ checkInAppProduct(api.InAppProduct o) {
   if (buildCounterInAppProduct < 3) {
     unittest.expect(o.defaultLanguage, unittest.equals('foo'));
     checkPrice(o.defaultPrice);
-    checkUnnamed1401(o.listings);
+    checkUnnamed266(o.listings);
     unittest.expect(o.packageName, unittest.equals('foo'));
-    checkUnnamed1402(o.prices);
+    checkUnnamed267(o.prices);
     unittest.expect(o.purchaseType, unittest.equals('foo'));
     checkSeason(o.season);
     unittest.expect(o.sku, unittest.equals('foo'));
@@ -581,14 +616,14 @@ checkInAppProductListing(api.InAppProductListing o) {
   buildCounterInAppProductListing--;
 }
 
-buildUnnamed1403() {
+buildUnnamed268() {
   var o = new core.List<api.InappproductsBatchRequestEntry>();
   o.add(buildInappproductsBatchRequestEntry());
   o.add(buildInappproductsBatchRequestEntry());
   return o;
 }
 
-checkUnnamed1403(core.List<api.InappproductsBatchRequestEntry> o) {
+checkUnnamed268(core.List<api.InappproductsBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInappproductsBatchRequestEntry(o[0]);
   checkInappproductsBatchRequestEntry(o[1]);
@@ -599,7 +634,7 @@ buildInappproductsBatchRequest() {
   var o = new api.InappproductsBatchRequest();
   buildCounterInappproductsBatchRequest++;
   if (buildCounterInappproductsBatchRequest < 3) {
-    o.entrys = buildUnnamed1403();
+    o.entrys = buildUnnamed268();
   }
   buildCounterInappproductsBatchRequest--;
   return o;
@@ -608,7 +643,7 @@ buildInappproductsBatchRequest() {
 checkInappproductsBatchRequest(api.InappproductsBatchRequest o) {
   buildCounterInappproductsBatchRequest++;
   if (buildCounterInappproductsBatchRequest < 3) {
-    checkUnnamed1403(o.entrys);
+    checkUnnamed268(o.entrys);
   }
   buildCounterInappproductsBatchRequest--;
 }
@@ -638,14 +673,14 @@ checkInappproductsBatchRequestEntry(api.InappproductsBatchRequestEntry o) {
   buildCounterInappproductsBatchRequestEntry--;
 }
 
-buildUnnamed1404() {
+buildUnnamed269() {
   var o = new core.List<api.InappproductsBatchResponseEntry>();
   o.add(buildInappproductsBatchResponseEntry());
   o.add(buildInappproductsBatchResponseEntry());
   return o;
 }
 
-checkUnnamed1404(core.List<api.InappproductsBatchResponseEntry> o) {
+checkUnnamed269(core.List<api.InappproductsBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInappproductsBatchResponseEntry(o[0]);
   checkInappproductsBatchResponseEntry(o[1]);
@@ -656,7 +691,7 @@ buildInappproductsBatchResponse() {
   var o = new api.InappproductsBatchResponse();
   buildCounterInappproductsBatchResponse++;
   if (buildCounterInappproductsBatchResponse < 3) {
-    o.entrys = buildUnnamed1404();
+    o.entrys = buildUnnamed269();
     o.kind = "foo";
   }
   buildCounterInappproductsBatchResponse--;
@@ -666,7 +701,7 @@ buildInappproductsBatchResponse() {
 checkInappproductsBatchResponse(api.InappproductsBatchResponse o) {
   buildCounterInappproductsBatchResponse++;
   if (buildCounterInappproductsBatchResponse < 3) {
-    checkUnnamed1404(o.entrys);
+    checkUnnamed269(o.entrys);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterInappproductsBatchResponse--;
@@ -733,14 +768,14 @@ checkInappproductsInsertResponse(api.InappproductsInsertResponse o) {
   buildCounterInappproductsInsertResponse--;
 }
 
-buildUnnamed1405() {
+buildUnnamed270() {
   var o = new core.List<api.InAppProduct>();
   o.add(buildInAppProduct());
   o.add(buildInAppProduct());
   return o;
 }
 
-checkUnnamed1405(core.List<api.InAppProduct> o) {
+checkUnnamed270(core.List<api.InAppProduct> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInAppProduct(o[0]);
   checkInAppProduct(o[1]);
@@ -751,7 +786,7 @@ buildInappproductsListResponse() {
   var o = new api.InappproductsListResponse();
   buildCounterInappproductsListResponse++;
   if (buildCounterInappproductsListResponse < 3) {
-    o.inappproduct = buildUnnamed1405();
+    o.inappproduct = buildUnnamed270();
     o.kind = "foo";
     o.pageInfo = buildPageInfo();
     o.tokenPagination = buildTokenPagination();
@@ -763,7 +798,7 @@ buildInappproductsListResponse() {
 checkInappproductsListResponse(api.InappproductsListResponse o) {
   buildCounterInappproductsListResponse++;
   if (buildCounterInappproductsListResponse < 3) {
-    checkUnnamed1405(o.inappproduct);
+    checkUnnamed270(o.inappproduct);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkPageInfo(o.pageInfo);
     checkTokenPagination(o.tokenPagination);
@@ -836,14 +871,14 @@ checkListing(api.Listing o) {
   buildCounterListing--;
 }
 
-buildUnnamed1406() {
+buildUnnamed271() {
   var o = new core.List<api.Listing>();
   o.add(buildListing());
   o.add(buildListing());
   return o;
 }
 
-checkUnnamed1406(core.List<api.Listing> o) {
+checkUnnamed271(core.List<api.Listing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkListing(o[0]);
   checkListing(o[1]);
@@ -855,7 +890,7 @@ buildListingsListResponse() {
   buildCounterListingsListResponse++;
   if (buildCounterListingsListResponse < 3) {
     o.kind = "foo";
-    o.listings = buildUnnamed1406();
+    o.listings = buildUnnamed271();
   }
   buildCounterListingsListResponse--;
   return o;
@@ -865,7 +900,7 @@ checkListingsListResponse(api.ListingsListResponse o) {
   buildCounterListingsListResponse++;
   if (buildCounterListingsListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1406(o.listings);
+    checkUnnamed271(o.listings);
   }
   buildCounterListingsListResponse--;
 }
@@ -1067,27 +1102,27 @@ checkSubscriptionPurchasesDeferResponse(api.SubscriptionPurchasesDeferResponse o
   buildCounterSubscriptionPurchasesDeferResponse--;
 }
 
-buildUnnamed1407() {
+buildUnnamed272() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1407(core.List<core.String> o) {
+checkUnnamed272(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1408() {
+buildUnnamed273() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1408(core.List<core.String> o) {
+checkUnnamed273(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1098,8 +1133,8 @@ buildTesters() {
   var o = new api.Testers();
   buildCounterTesters++;
   if (buildCounterTesters < 3) {
-    o.googleGroups = buildUnnamed1407();
-    o.googlePlusCommunities = buildUnnamed1408();
+    o.googleGroups = buildUnnamed272();
+    o.googlePlusCommunities = buildUnnamed273();
   }
   buildCounterTesters--;
   return o;
@@ -1108,8 +1143,8 @@ buildTesters() {
 checkTesters(api.Testers o) {
   buildCounterTesters++;
   if (buildCounterTesters < 3) {
-    checkUnnamed1407(o.googleGroups);
-    checkUnnamed1408(o.googlePlusCommunities);
+    checkUnnamed272(o.googleGroups);
+    checkUnnamed273(o.googlePlusCommunities);
   }
   buildCounterTesters--;
 }
@@ -1135,14 +1170,14 @@ checkTokenPagination(api.TokenPagination o) {
   buildCounterTokenPagination--;
 }
 
-buildUnnamed1409() {
+buildUnnamed274() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed1409(core.List<core.int> o) {
+checkUnnamed274(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -1155,7 +1190,7 @@ buildTrack() {
   if (buildCounterTrack < 3) {
     o.track = "foo";
     o.userFraction = 42.0;
-    o.versionCodes = buildUnnamed1409();
+    o.versionCodes = buildUnnamed274();
   }
   buildCounterTrack--;
   return o;
@@ -1166,19 +1201,19 @@ checkTrack(api.Track o) {
   if (buildCounterTrack < 3) {
     unittest.expect(o.track, unittest.equals('foo'));
     unittest.expect(o.userFraction, unittest.equals(42.0));
-    checkUnnamed1409(o.versionCodes);
+    checkUnnamed274(o.versionCodes);
   }
   buildCounterTrack--;
 }
 
-buildUnnamed1410() {
+buildUnnamed275() {
   var o = new core.List<api.Track>();
   o.add(buildTrack());
   o.add(buildTrack());
   return o;
 }
 
-checkUnnamed1410(core.List<api.Track> o) {
+checkUnnamed275(core.List<api.Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrack(o[0]);
   checkTrack(o[1]);
@@ -1190,7 +1225,7 @@ buildTracksListResponse() {
   buildCounterTracksListResponse++;
   if (buildCounterTracksListResponse < 3) {
     o.kind = "foo";
-    o.tracks = buildUnnamed1410();
+    o.tracks = buildUnnamed275();
   }
   buildCounterTracksListResponse--;
   return o;
@@ -1200,7 +1235,7 @@ checkTracksListResponse(api.TracksListResponse o) {
   buildCounterTracksListResponse++;
   if (buildCounterTracksListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1410(o.tracks);
+    checkUnnamed275(o.tracks);
   }
   buildCounterTracksListResponse--;
 }
@@ -1597,7 +1632,7 @@ main() {
   unittest.group("resource-EditsResourceApi", () {
     unittest.test("method--commit", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsResourceApi res = new api.AndroidpublisherApi(mock).edits;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -1631,7 +1666,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppEdit());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.commit(arg_packageName, arg_editId).then(unittest.expectAsync(((api.AppEdit response) {
         checkAppEdit(response);
@@ -1640,7 +1675,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsResourceApi res = new api.AndroidpublisherApi(mock).edits;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -1674,14 +1709,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_packageName, arg_editId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsResourceApi res = new api.AndroidpublisherApi(mock).edits;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -1715,7 +1750,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppEdit());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_packageName, arg_editId).then(unittest.expectAsync(((api.AppEdit response) {
         checkAppEdit(response);
@@ -1724,7 +1759,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsResourceApi res = new api.AndroidpublisherApi(mock).edits;
       var arg_request = buildAppEdit();
       var arg_packageName = "foo";
@@ -1761,7 +1796,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppEdit());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_packageName).then(unittest.expectAsync(((api.AppEdit response) {
         checkAppEdit(response);
@@ -1770,7 +1805,7 @@ main() {
 
     unittest.test("method--validate", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsResourceApi res = new api.AndroidpublisherApi(mock).edits;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -1804,7 +1839,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppEdit());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.validate(arg_packageName, arg_editId).then(unittest.expectAsync(((api.AppEdit response) {
         checkAppEdit(response);
@@ -1817,7 +1852,7 @@ main() {
   unittest.group("resource-EditsApklistingsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsApklistingsResourceApi res = new api.AndroidpublisherApi(mock).edits.apklistings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -1853,14 +1888,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_packageName, arg_editId, arg_apkVersionCode, arg_language).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--deleteall", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsApklistingsResourceApi res = new api.AndroidpublisherApi(mock).edits.apklistings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -1895,14 +1930,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.deleteall(arg_packageName, arg_editId, arg_apkVersionCode).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsApklistingsResourceApi res = new api.AndroidpublisherApi(mock).edits.apklistings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -1938,7 +1973,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApkListing());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_packageName, arg_editId, arg_apkVersionCode, arg_language).then(unittest.expectAsync(((api.ApkListing response) {
         checkApkListing(response);
@@ -1947,7 +1982,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsApklistingsResourceApi res = new api.AndroidpublisherApi(mock).edits.apklistings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -1982,7 +2017,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApkListingsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_packageName, arg_editId, arg_apkVersionCode).then(unittest.expectAsync(((api.ApkListingsListResponse response) {
         checkApkListingsListResponse(response);
@@ -1991,7 +2026,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsApklistingsResourceApi res = new api.AndroidpublisherApi(mock).edits.apklistings;
       var arg_request = buildApkListing();
       var arg_packageName = "foo";
@@ -2031,7 +2066,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApkListing());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_packageName, arg_editId, arg_apkVersionCode, arg_language).then(unittest.expectAsync(((api.ApkListing response) {
         checkApkListing(response);
@@ -2040,7 +2075,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsApklistingsResourceApi res = new api.AndroidpublisherApi(mock).edits.apklistings;
       var arg_request = buildApkListing();
       var arg_packageName = "foo";
@@ -2080,7 +2115,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApkListing());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_packageName, arg_editId, arg_apkVersionCode, arg_language).then(unittest.expectAsync(((api.ApkListing response) {
         checkApkListing(response);
@@ -2093,7 +2128,7 @@ main() {
   unittest.group("resource-EditsApksResourceApi", () {
     unittest.test("method--addexternallyhosted", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsApksResourceApi res = new api.AndroidpublisherApi(mock).edits.apks;
       var arg_request = buildApksAddExternallyHostedRequest();
       var arg_packageName = "foo";
@@ -2131,7 +2166,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApksAddExternallyHostedResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.addexternallyhosted(arg_request, arg_packageName, arg_editId).then(unittest.expectAsync(((api.ApksAddExternallyHostedResponse response) {
         checkApksAddExternallyHostedResponse(response);
@@ -2140,7 +2175,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsApksResourceApi res = new api.AndroidpublisherApi(mock).edits.apks;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2174,7 +2209,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApksListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_packageName, arg_editId).then(unittest.expectAsync(((api.ApksListResponse response) {
         checkApksListResponse(response);
@@ -2185,7 +2220,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsApksResourceApi res = new api.AndroidpublisherApi(mock).edits.apks;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2219,7 +2254,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApk());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.upload(arg_packageName, arg_editId).then(unittest.expectAsync(((api.Apk response) {
         checkApk(response);
@@ -2232,7 +2267,7 @@ main() {
   unittest.group("resource-EditsDetailsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsDetailsResourceApi res = new api.AndroidpublisherApi(mock).edits.details;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2266,7 +2301,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppDetails());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_packageName, arg_editId).then(unittest.expectAsync(((api.AppDetails response) {
         checkAppDetails(response);
@@ -2275,7 +2310,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsDetailsResourceApi res = new api.AndroidpublisherApi(mock).edits.details;
       var arg_request = buildAppDetails();
       var arg_packageName = "foo";
@@ -2313,7 +2348,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppDetails());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_packageName, arg_editId).then(unittest.expectAsync(((api.AppDetails response) {
         checkAppDetails(response);
@@ -2322,7 +2357,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsDetailsResourceApi res = new api.AndroidpublisherApi(mock).edits.details;
       var arg_request = buildAppDetails();
       var arg_packageName = "foo";
@@ -2360,7 +2395,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppDetails());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_packageName, arg_editId).then(unittest.expectAsync(((api.AppDetails response) {
         checkAppDetails(response);
@@ -2373,7 +2408,7 @@ main() {
   unittest.group("resource-EditsExpansionfilesResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsExpansionfilesResourceApi res = new api.AndroidpublisherApi(mock).edits.expansionfiles;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2409,7 +2444,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildExpansionFile());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_packageName, arg_editId, arg_apkVersionCode, arg_expansionFileType).then(unittest.expectAsync(((api.ExpansionFile response) {
         checkExpansionFile(response);
@@ -2418,7 +2453,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsExpansionfilesResourceApi res = new api.AndroidpublisherApi(mock).edits.expansionfiles;
       var arg_request = buildExpansionFile();
       var arg_packageName = "foo";
@@ -2458,7 +2493,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildExpansionFile());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_packageName, arg_editId, arg_apkVersionCode, arg_expansionFileType).then(unittest.expectAsync(((api.ExpansionFile response) {
         checkExpansionFile(response);
@@ -2467,7 +2502,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsExpansionfilesResourceApi res = new api.AndroidpublisherApi(mock).edits.expansionfiles;
       var arg_request = buildExpansionFile();
       var arg_packageName = "foo";
@@ -2507,7 +2542,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildExpansionFile());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_packageName, arg_editId, arg_apkVersionCode, arg_expansionFileType).then(unittest.expectAsync(((api.ExpansionFile response) {
         checkExpansionFile(response);
@@ -2518,7 +2553,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsExpansionfilesResourceApi res = new api.AndroidpublisherApi(mock).edits.expansionfiles;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2554,7 +2589,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildExpansionFilesUploadResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.upload(arg_packageName, arg_editId, arg_apkVersionCode, arg_expansionFileType).then(unittest.expectAsync(((api.ExpansionFilesUploadResponse response) {
         checkExpansionFilesUploadResponse(response);
@@ -2567,7 +2602,7 @@ main() {
   unittest.group("resource-EditsImagesResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsImagesResourceApi res = new api.AndroidpublisherApi(mock).edits.images;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2604,14 +2639,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_packageName, arg_editId, arg_language, arg_imageType, arg_imageId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--deleteall", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsImagesResourceApi res = new api.AndroidpublisherApi(mock).edits.images;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2647,7 +2682,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildImagesDeleteAllResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.deleteall(arg_packageName, arg_editId, arg_language, arg_imageType).then(unittest.expectAsync(((api.ImagesDeleteAllResponse response) {
         checkImagesDeleteAllResponse(response);
@@ -2656,7 +2691,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsImagesResourceApi res = new api.AndroidpublisherApi(mock).edits.images;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2692,7 +2727,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildImagesListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_packageName, arg_editId, arg_language, arg_imageType).then(unittest.expectAsync(((api.ImagesListResponse response) {
         checkImagesListResponse(response);
@@ -2703,7 +2738,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsImagesResourceApi res = new api.AndroidpublisherApi(mock).edits.images;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2739,7 +2774,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildImagesUploadResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.upload(arg_packageName, arg_editId, arg_language, arg_imageType).then(unittest.expectAsync(((api.ImagesUploadResponse response) {
         checkImagesUploadResponse(response);
@@ -2752,7 +2787,7 @@ main() {
   unittest.group("resource-EditsListingsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsListingsResourceApi res = new api.AndroidpublisherApi(mock).edits.listings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2787,14 +2822,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_packageName, arg_editId, arg_language).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--deleteall", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsListingsResourceApi res = new api.AndroidpublisherApi(mock).edits.listings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2828,14 +2863,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.deleteall(arg_packageName, arg_editId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsListingsResourceApi res = new api.AndroidpublisherApi(mock).edits.listings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2870,7 +2905,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListing());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_packageName, arg_editId, arg_language).then(unittest.expectAsync(((api.Listing response) {
         checkListing(response);
@@ -2879,7 +2914,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsListingsResourceApi res = new api.AndroidpublisherApi(mock).edits.listings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2913,7 +2948,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListingsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_packageName, arg_editId).then(unittest.expectAsync(((api.ListingsListResponse response) {
         checkListingsListResponse(response);
@@ -2922,7 +2957,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsListingsResourceApi res = new api.AndroidpublisherApi(mock).edits.listings;
       var arg_request = buildListing();
       var arg_packageName = "foo";
@@ -2961,7 +2996,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListing());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_packageName, arg_editId, arg_language).then(unittest.expectAsync(((api.Listing response) {
         checkListing(response);
@@ -2970,7 +3005,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsListingsResourceApi res = new api.AndroidpublisherApi(mock).edits.listings;
       var arg_request = buildListing();
       var arg_packageName = "foo";
@@ -3009,7 +3044,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListing());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_packageName, arg_editId, arg_language).then(unittest.expectAsync(((api.Listing response) {
         checkListing(response);
@@ -3022,7 +3057,7 @@ main() {
   unittest.group("resource-EditsTestersResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsTestersResourceApi res = new api.AndroidpublisherApi(mock).edits.testers;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -3057,7 +3092,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTesters());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_packageName, arg_editId, arg_track).then(unittest.expectAsync(((api.Testers response) {
         checkTesters(response);
@@ -3066,7 +3101,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsTestersResourceApi res = new api.AndroidpublisherApi(mock).edits.testers;
       var arg_request = buildTesters();
       var arg_packageName = "foo";
@@ -3105,7 +3140,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTesters());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_packageName, arg_editId, arg_track).then(unittest.expectAsync(((api.Testers response) {
         checkTesters(response);
@@ -3114,7 +3149,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsTestersResourceApi res = new api.AndroidpublisherApi(mock).edits.testers;
       var arg_request = buildTesters();
       var arg_packageName = "foo";
@@ -3153,7 +3188,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTesters());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_packageName, arg_editId, arg_track).then(unittest.expectAsync(((api.Testers response) {
         checkTesters(response);
@@ -3166,7 +3201,7 @@ main() {
   unittest.group("resource-EditsTracksResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsTracksResourceApi res = new api.AndroidpublisherApi(mock).edits.tracks;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -3201,7 +3236,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTrack());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_packageName, arg_editId, arg_track).then(unittest.expectAsync(((api.Track response) {
         checkTrack(response);
@@ -3210,7 +3245,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsTracksResourceApi res = new api.AndroidpublisherApi(mock).edits.tracks;
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -3244,7 +3279,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTracksListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_packageName, arg_editId).then(unittest.expectAsync(((api.TracksListResponse response) {
         checkTracksListResponse(response);
@@ -3253,7 +3288,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsTracksResourceApi res = new api.AndroidpublisherApi(mock).edits.tracks;
       var arg_request = buildTrack();
       var arg_packageName = "foo";
@@ -3292,7 +3327,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTrack());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_packageName, arg_editId, arg_track).then(unittest.expectAsync(((api.Track response) {
         checkTrack(response);
@@ -3301,7 +3336,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EditsTracksResourceApi res = new api.AndroidpublisherApi(mock).edits.tracks;
       var arg_request = buildTrack();
       var arg_packageName = "foo";
@@ -3340,7 +3375,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTrack());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_packageName, arg_editId, arg_track).then(unittest.expectAsync(((api.Track response) {
         checkTrack(response);
@@ -3353,7 +3388,7 @@ main() {
   unittest.group("resource-InappproductsResourceApi", () {
     unittest.test("method--batch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InappproductsResourceApi res = new api.AndroidpublisherApi(mock).inappproducts;
       var arg_request = buildInappproductsBatchRequest();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3393,7 +3428,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInappproductsBatchResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.batch(arg_request).then(unittest.expectAsync(((api.InappproductsBatchResponse response) {
         checkInappproductsBatchResponse(response);
@@ -3402,7 +3437,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InappproductsResourceApi res = new api.AndroidpublisherApi(mock).inappproducts;
       var arg_packageName = "foo";
       var arg_sku = "foo";
@@ -3436,14 +3471,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_packageName, arg_sku).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InappproductsResourceApi res = new api.AndroidpublisherApi(mock).inappproducts;
       var arg_packageName = "foo";
       var arg_sku = "foo";
@@ -3477,7 +3512,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInAppProduct());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_packageName, arg_sku).then(unittest.expectAsync(((api.InAppProduct response) {
         checkInAppProduct(response);
@@ -3486,7 +3521,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InappproductsResourceApi res = new api.AndroidpublisherApi(mock).inappproducts;
       var arg_request = buildInAppProduct();
       var arg_packageName = "foo";
@@ -3525,7 +3560,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInAppProduct());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_packageName, autoConvertMissingPrices: arg_autoConvertMissingPrices).then(unittest.expectAsync(((api.InAppProduct response) {
         checkInAppProduct(response);
@@ -3534,7 +3569,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InappproductsResourceApi res = new api.AndroidpublisherApi(mock).inappproducts;
       var arg_packageName = "foo";
       var arg_maxResults = 42;
@@ -3573,7 +3608,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInappproductsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_packageName, maxResults: arg_maxResults, startIndex: arg_startIndex, token: arg_token).then(unittest.expectAsync(((api.InappproductsListResponse response) {
         checkInappproductsListResponse(response);
@@ -3582,7 +3617,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InappproductsResourceApi res = new api.AndroidpublisherApi(mock).inappproducts;
       var arg_request = buildInAppProduct();
       var arg_packageName = "foo";
@@ -3622,7 +3657,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInAppProduct());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_packageName, arg_sku, autoConvertMissingPrices: arg_autoConvertMissingPrices).then(unittest.expectAsync(((api.InAppProduct response) {
         checkInAppProduct(response);
@@ -3631,7 +3666,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InappproductsResourceApi res = new api.AndroidpublisherApi(mock).inappproducts;
       var arg_request = buildInAppProduct();
       var arg_packageName = "foo";
@@ -3671,7 +3706,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInAppProduct());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_packageName, arg_sku, autoConvertMissingPrices: arg_autoConvertMissingPrices).then(unittest.expectAsync(((api.InAppProduct response) {
         checkInAppProduct(response);
@@ -3684,7 +3719,7 @@ main() {
   unittest.group("resource-PurchasesProductsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PurchasesProductsResourceApi res = new api.AndroidpublisherApi(mock).purchases.products;
       var arg_packageName = "foo";
       var arg_productId = "foo";
@@ -3719,7 +3754,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProductPurchase());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_packageName, arg_productId, arg_token).then(unittest.expectAsync(((api.ProductPurchase response) {
         checkProductPurchase(response);
@@ -3732,7 +3767,7 @@ main() {
   unittest.group("resource-PurchasesSubscriptionsResourceApi", () {
     unittest.test("method--cancel", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PurchasesSubscriptionsResourceApi res = new api.AndroidpublisherApi(mock).purchases.subscriptions;
       var arg_packageName = "foo";
       var arg_subscriptionId = "foo";
@@ -3767,14 +3802,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.cancel(arg_packageName, arg_subscriptionId, arg_token).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--defer", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PurchasesSubscriptionsResourceApi res = new api.AndroidpublisherApi(mock).purchases.subscriptions;
       var arg_request = buildSubscriptionPurchasesDeferRequest();
       var arg_packageName = "foo";
@@ -3813,7 +3848,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSubscriptionPurchasesDeferResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.defer(arg_request, arg_packageName, arg_subscriptionId, arg_token).then(unittest.expectAsync(((api.SubscriptionPurchasesDeferResponse response) {
         checkSubscriptionPurchasesDeferResponse(response);
@@ -3822,7 +3857,7 @@ main() {
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PurchasesSubscriptionsResourceApi res = new api.AndroidpublisherApi(mock).purchases.subscriptions;
       var arg_packageName = "foo";
       var arg_subscriptionId = "foo";
@@ -3857,7 +3892,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSubscriptionPurchase());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_packageName, arg_subscriptionId, arg_token).then(unittest.expectAsync(((api.SubscriptionPurchase response) {
         checkSubscriptionPurchase(response);
@@ -3866,7 +3901,7 @@ main() {
 
     unittest.test("method--refund", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PurchasesSubscriptionsResourceApi res = new api.AndroidpublisherApi(mock).purchases.subscriptions;
       var arg_packageName = "foo";
       var arg_subscriptionId = "foo";
@@ -3901,14 +3936,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.refund(arg_packageName, arg_subscriptionId, arg_token).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--revoke", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PurchasesSubscriptionsResourceApi res = new api.AndroidpublisherApi(mock).purchases.subscriptions;
       var arg_packageName = "foo";
       var arg_subscriptionId = "foo";
@@ -3943,7 +3978,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.revoke(arg_packageName, arg_subscriptionId, arg_token).then(unittest.expectAsync((_) {}));
     });

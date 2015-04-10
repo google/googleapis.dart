@@ -15,7 +15,7 @@
     "description": "API for accessing Google Cloud and API monitoring data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/monitoring/v2beta2/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/W-CYad3sVi3av-L2zzzQukVGZ3g\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/3DSYNWNR337DSanxbXP8iK4KQaY\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -190,7 +190,7 @@
                     ],
                     "parameters": {
                         "aggregator": {
-                            "description": "The aggregation function that will reduce the data points in each window to a single point. This parameter is only valid for non-cumulative metric types.",
+                            "description": "The aggregation function that will reduce the data points in each window to a single point. This parameter is only valid for non-cumulative metrics with a value type of INT64 or DOUBLE.",
                             "enum": [
                                 "max",
                                 "mean",
@@ -315,7 +315,7 @@
                     ],
                     "parameters": {
                         "aggregator": {
-                            "description": "The aggregation function that will reduce the data points in each window to a single point. This parameter is only valid for non-cumulative metric types.",
+                            "description": "The aggregation function that will reduce the data points in each window to a single point. This parameter is only valid for non-cumulative metrics with a value type of INT64 or DOUBLE.",
                             "enum": [
                                 "max",
                                 "mean",
@@ -402,7 +402,7 @@
             }
         }
     },
-    "revision": "20150109",
+    "revision": "20150303",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "DeleteMetricDescriptorResponse": {

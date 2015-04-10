@@ -17,7 +17,7 @@
     "description": "Lets you manipulate events and other calendar data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/tTkPf1BQbU-MQtp3APXYoz4vX6M\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/0tpC9BbaQPK_TZmlZK5cHsIr_JY\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/calendar-16.png",
         "x32": "http://www.google.com/images/icons/product/calendar-32.png"
@@ -583,7 +583,7 @@
         "calendars": {
             "methods": {
                 "clear": {
-                    "description": "Clears a primary calendar. This operation deletes all data associated with the primary calendar of an account and cannot be undone.",
+                    "description": "Clears a primary calendar. This operation deletes all events associated with the primary calendar of an account.",
                     "httpMethod": "POST",
                     "id": "calendar.calendars.clear",
                     "parameterOrder": [
@@ -603,7 +603,7 @@
                     ]
                 },
                 "delete": {
-                    "description": "Deletes a secondary calendar.",
+                    "description": "Deletes a secondary calendar. Use calendars.clear for clearing all events on primary calendars.",
                     "httpMethod": "DELETE",
                     "id": "calendar.calendars.delete",
                     "parameterOrder": [
@@ -1535,7 +1535,7 @@
             }
         }
     },
-    "revision": "20150123",
+    "revision": "20150303",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {

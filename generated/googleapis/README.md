@@ -122,7 +122,11 @@ View and manage your Google Analytics data
 
 Official API documentation: https://developers.google.com/analytics/
 
-#### ![Logo](https://www.google.com/images/icons/product/android-16.png) Google Play Android Developer API - androidpublisher v2
+#### ![Logo](https://www.google.com/images/icons/product/android-16.png) Google Play MDM API - androidenterprise v1
+
+Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android for Work users.
+
+#### ![Logo](https://www.google.com/images/icons/product/android-16.png) Google Play Developer API - androidpublisher v2
 
 Lets Android application developers access their Google Play accounts.
 
@@ -163,18 +167,6 @@ Official API documentation: https://developers.google.com/books/docs/v1/getting_
 Lets you manipulate events and other calendar data.
 
 Official API documentation: https://developers.google.com/google-apps/calendar/firstapp
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Civic Information API - civicinfo us_v1
-
-An API for accessing civic information.
-
-Official API documentation: https://developers.google.com/civic-information
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Civic Information API - civicinfo v1
-
-An API for accessing civic information.
-
-Official API documentation: https://developers.google.com/civic-information
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Civic Information API - civicinfo v2
 
@@ -342,7 +334,7 @@ Official API documentation: https://developers.google.com/speed/docs/insights/v1
 
 Lets you analyze the performance of a web page and get tailored suggestions to make that page faster.
 
-Official API documentation: https://developers.google.com/speed/docs/insights/v1/getting_started
+Official API documentation: https://developers.google.com/speed/docs/insights/v2/getting-started
 
 #### ![Logo](http://www.google.com/images/icons/product/gplus-16.png) Google+ API - plus v1
 
@@ -433,4 +425,10 @@ Official API documentation: https://developers.google.com/youtube/v3
 Retrieve your YouTube Analytics reports.
 
 Official API documentation: http://developers.google.com/youtube/analytics/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Search API - cloudsearch v1
+
+The Google Cloud Search API defines an application interface to index documents that contain structured data and to search those indexes. It supports full text search.
+
+Official API documentation: 
 

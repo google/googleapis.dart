@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.compute.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client compute/v1';
 
 /** API for the Google Compute Engine service. */
 class ComputeApi {
@@ -34,7 +37,7 @@ class ComputeApi {
   static const DevstorageReadWriteScope = "https://www.googleapis.com/auth/devstorage.read_write";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AddressesResourceApi get addresses => new AddressesResourceApi(_requester);
   BackendServicesResourceApi get backendServices => new BackendServicesResourceApi(_requester);
@@ -60,20 +63,21 @@ class ComputeApi {
   TargetHttpProxiesResourceApi get targetHttpProxies => new TargetHttpProxiesResourceApi(_requester);
   TargetInstancesResourceApi get targetInstances => new TargetInstancesResourceApi(_requester);
   TargetPoolsResourceApi get targetPools => new TargetPoolsResourceApi(_requester);
+  TargetVpnGatewaysResourceApi get targetVpnGateways => new TargetVpnGatewaysResourceApi(_requester);
   UrlMapsResourceApi get urlMaps => new UrlMapsResourceApi(_requester);
+  VpnTunnelsResourceApi get vpnTunnels => new VpnTunnelsResourceApi(_requester);
   ZoneOperationsResourceApi get zoneOperations => new ZoneOperationsResourceApi(_requester);
   ZonesResourceApi get zones => new ZonesResourceApi(_requester);
 
   ComputeApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "compute/v1/projects/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class AddressesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AddressesResourceApi(common_internal.ApiRequester client) : 
+  AddressesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -81,7 +85,7 @@ class AddressesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -96,7 +100,7 @@ class AddressesResourceApi {
    *
    * Completes with a [AddressAggregatedList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -107,7 +111,7 @@ class AddressesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -124,7 +128,7 @@ class AddressesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/aggregated/addresses';
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/addresses';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -141,11 +145,11 @@ class AddressesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - Name of the region scoping this request.
+   * [region] - The name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [address] - Name of the address resource to delete.
@@ -153,7 +157,7 @@ class AddressesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -164,7 +168,7 @@ class AddressesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -178,7 +182,7 @@ class AddressesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/addresses/' + common_internal.Escaper.ecapeVariable('$address');
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/addresses/' + commons.Escaper.ecapeVariable('$address');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -195,11 +199,11 @@ class AddressesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - Name of the region scoping this request.
+   * [region] - The name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [address] - Name of the address resource to return.
@@ -207,7 +211,7 @@ class AddressesResourceApi {
    *
    * Completes with a [Address].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -218,7 +222,7 @@ class AddressesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -232,7 +236,7 @@ class AddressesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/addresses/' + common_internal.Escaper.ecapeVariable('$address');
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/addresses/' + commons.Escaper.ecapeVariable('$address');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -252,16 +256,16 @@ class AddressesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - Name of the region scoping this request.
+   * [region] - The name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -272,7 +276,7 @@ class AddressesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -286,7 +290,7 @@ class AddressesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/addresses';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/addresses';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -304,11 +308,11 @@ class AddressesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [region] - Name of the region scoping this request.
+   * [region] - The name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Optional. Filter expression for filtering listed resources.
@@ -322,7 +326,7 @@ class AddressesResourceApi {
    *
    * Completes with a [AddressList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -333,7 +337,7 @@ class AddressesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -353,7 +357,7 @@ class AddressesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/addresses';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/addresses';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -368,11 +372,10 @@ class AddressesResourceApi {
 }
 
 
-/** Not documented yet. */
 class BackendServicesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  BackendServicesResourceApi(common_internal.ApiRequester client) : 
+  BackendServicesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -389,7 +392,7 @@ class BackendServicesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -400,7 +403,7 @@ class BackendServicesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -411,7 +414,7 @@ class BackendServicesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/backendServices/' + common_internal.Escaper.ecapeVariable('$backendService');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -437,7 +440,7 @@ class BackendServicesResourceApi {
    *
    * Completes with a [BackendService].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -448,7 +451,7 @@ class BackendServicesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -459,7 +462,7 @@ class BackendServicesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/backendServices/' + common_internal.Escaper.ecapeVariable('$backendService');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -488,7 +491,7 @@ class BackendServicesResourceApi {
    *
    * Completes with a [BackendServiceGroupHealth].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -499,7 +502,7 @@ class BackendServicesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -513,7 +516,7 @@ class BackendServicesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/backendServices/' + common_internal.Escaper.ecapeVariable('$backendService') + '/getHealth';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices/' + commons.Escaper.ecapeVariable('$backendService') + '/getHealth';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -539,7 +542,7 @@ class BackendServicesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -550,7 +553,7 @@ class BackendServicesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -561,7 +564,7 @@ class BackendServicesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/backendServices';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -594,7 +597,7 @@ class BackendServicesResourceApi {
    *
    * Completes with a [BackendServiceList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -605,7 +608,7 @@ class BackendServicesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -622,7 +625,7 @@ class BackendServicesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/backendServices';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -651,7 +654,7 @@ class BackendServicesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -662,7 +665,7 @@ class BackendServicesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -676,7 +679,7 @@ class BackendServicesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/backendServices/' + common_internal.Escaper.ecapeVariable('$backendService');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -704,7 +707,7 @@ class BackendServicesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -715,7 +718,7 @@ class BackendServicesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -729,7 +732,7 @@ class BackendServicesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/backendServices/' + common_internal.Escaper.ecapeVariable('$backendService');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -744,11 +747,10 @@ class BackendServicesResourceApi {
 }
 
 
-/** Not documented yet. */
 class DiskTypesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DiskTypesResourceApi(common_internal.ApiRequester client) : 
+  DiskTypesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -756,7 +758,7 @@ class DiskTypesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -771,7 +773,7 @@ class DiskTypesResourceApi {
    *
    * Completes with a [DiskTypeAggregatedList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -782,7 +784,7 @@ class DiskTypesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -799,7 +801,7 @@ class DiskTypesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/aggregated/diskTypes';
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/diskTypes';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -816,11 +818,11 @@ class DiskTypesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [diskType] - Name of the disk type resource to return.
@@ -828,7 +830,7 @@ class DiskTypesResourceApi {
    *
    * Completes with a [DiskType].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -839,7 +841,7 @@ class DiskTypesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -853,7 +855,7 @@ class DiskTypesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/diskTypes/' + common_internal.Escaper.ecapeVariable('$diskType');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/diskTypes/' + commons.Escaper.ecapeVariable('$diskType');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -871,11 +873,11 @@ class DiskTypesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Optional. Filter expression for filtering listed resources.
@@ -889,7 +891,7 @@ class DiskTypesResourceApi {
    *
    * Completes with a [DiskTypeList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -900,7 +902,7 @@ class DiskTypesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -920,7 +922,7 @@ class DiskTypesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/diskTypes';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/diskTypes';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -935,11 +937,10 @@ class DiskTypesResourceApi {
 }
 
 
-/** Not documented yet. */
 class DisksResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DisksResourceApi(common_internal.ApiRequester client) : 
+  DisksResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -947,7 +948,7 @@ class DisksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -962,7 +963,7 @@ class DisksResourceApi {
    *
    * Completes with a [DiskAggregatedList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -973,7 +974,7 @@ class DisksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -990,7 +991,7 @@ class DisksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/aggregated/disks';
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/disks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1003,25 +1004,25 @@ class DisksResourceApi {
   }
 
   /**
-   * Not documented yet.
+   * Creates a snapshot of this disk.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [disk] - Name of the persistent disk resource to snapshot.
+   * [disk] - Name of the persistent disk to snapshot.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1032,7 +1033,7 @@ class DisksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1049,7 +1050,7 @@ class DisksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/disks/' + common_internal.Escaper.ecapeVariable('$disk') + '/createSnapshot';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks/' + commons.Escaper.ecapeVariable('$disk') + '/createSnapshot';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1062,23 +1063,23 @@ class DisksResourceApi {
   }
 
   /**
-   * Deletes the specified persistent disk resource.
+   * Deletes the specified persistent disk.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [disk] - Name of the persistent disk resource to delete.
+   * [disk] - Name of the persistent disk to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1089,7 +1090,7 @@ class DisksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1103,7 +1104,7 @@ class DisksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/disks/' + common_internal.Escaper.ecapeVariable('$disk');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks/' + commons.Escaper.ecapeVariable('$disk');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1116,23 +1117,23 @@ class DisksResourceApi {
   }
 
   /**
-   * Returns the specified persistent disk resource.
+   * Returns a specified persistent disk.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [disk] - Name of the persistent disk resource to return.
+   * [disk] - Name of the persistent disk to return.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Disk].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1143,7 +1144,7 @@ class DisksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1157,7 +1158,7 @@ class DisksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/disks/' + common_internal.Escaper.ecapeVariable('$disk');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks/' + commons.Escaper.ecapeVariable('$disk');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1170,25 +1171,25 @@ class DisksResourceApi {
   }
 
   /**
-   * Creates a persistent disk resource in the specified project using the data
-   * included in the request.
+   * Creates a persistent disk in the specified project using the data included
+   * in the request.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [sourceImage] - Optional. Source image to restore onto a disk.
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1199,7 +1200,7 @@ class DisksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1216,7 +1217,7 @@ class DisksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/disks';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1229,16 +1230,15 @@ class DisksResourceApi {
   }
 
   /**
-   * Retrieves the list of persistent disk resources contained within the
-   * specified zone.
+   * Retrieves the list of persistent disks contained within the specified zone.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Optional. Filter expression for filtering listed resources.
@@ -1252,7 +1252,7 @@ class DisksResourceApi {
    *
    * Completes with a [DiskList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1263,7 +1263,7 @@ class DisksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1283,7 +1283,7 @@ class DisksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/disks';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1298,11 +1298,10 @@ class DisksResourceApi {
 }
 
 
-/** Not documented yet. */
 class FirewallsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  FirewallsResourceApi(common_internal.ApiRequester client) : 
+  FirewallsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1310,7 +1309,7 @@ class FirewallsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -1319,7 +1318,7 @@ class FirewallsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1330,7 +1329,7 @@ class FirewallsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1341,7 +1340,7 @@ class FirewallsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/firewalls/' + common_internal.Escaper.ecapeVariable('$firewall');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls/' + commons.Escaper.ecapeVariable('$firewall');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1358,7 +1357,7 @@ class FirewallsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -1367,7 +1366,7 @@ class FirewallsResourceApi {
    *
    * Completes with a [Firewall].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1378,7 +1377,7 @@ class FirewallsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1389,7 +1388,7 @@ class FirewallsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/firewalls/' + common_internal.Escaper.ecapeVariable('$firewall');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls/' + commons.Escaper.ecapeVariable('$firewall');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1409,13 +1408,13 @@ class FirewallsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1426,7 +1425,7 @@ class FirewallsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1437,7 +1436,7 @@ class FirewallsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/firewalls';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1455,7 +1454,7 @@ class FirewallsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -1470,7 +1469,7 @@ class FirewallsResourceApi {
    *
    * Completes with a [FirewallList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1481,7 +1480,7 @@ class FirewallsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1498,7 +1497,7 @@ class FirewallsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/firewalls';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1518,7 +1517,7 @@ class FirewallsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -1527,7 +1526,7 @@ class FirewallsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1538,7 +1537,7 @@ class FirewallsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1552,7 +1551,7 @@ class FirewallsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/firewalls/' + common_internal.Escaper.ecapeVariable('$firewall');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls/' + commons.Escaper.ecapeVariable('$firewall');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1572,7 +1571,7 @@ class FirewallsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -1581,7 +1580,7 @@ class FirewallsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1592,7 +1591,7 @@ class FirewallsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1606,7 +1605,7 @@ class FirewallsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/firewalls/' + common_internal.Escaper.ecapeVariable('$firewall');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls/' + commons.Escaper.ecapeVariable('$firewall');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1621,11 +1620,10 @@ class FirewallsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ForwardingRulesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ForwardingRulesResourceApi(common_internal.ApiRequester client) : 
+  ForwardingRulesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1648,7 +1646,7 @@ class ForwardingRulesResourceApi {
    *
    * Completes with a [ForwardingRuleAggregatedList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1659,7 +1657,7 @@ class ForwardingRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1676,7 +1674,7 @@ class ForwardingRulesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/aggregated/forwardingRules';
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/forwardingRules';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1705,7 +1703,7 @@ class ForwardingRulesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1716,7 +1714,7 @@ class ForwardingRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1730,7 +1728,7 @@ class ForwardingRulesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/forwardingRules/' + common_internal.Escaper.ecapeVariable('$forwardingRule');
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1759,7 +1757,7 @@ class ForwardingRulesResourceApi {
    *
    * Completes with a [ForwardingRule].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1770,7 +1768,7 @@ class ForwardingRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1784,7 +1782,7 @@ class ForwardingRulesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/forwardingRules/' + common_internal.Escaper.ecapeVariable('$forwardingRule');
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1813,7 +1811,7 @@ class ForwardingRulesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1824,7 +1822,7 @@ class ForwardingRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1838,7 +1836,7 @@ class ForwardingRulesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/forwardingRules';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/forwardingRules';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1874,7 +1872,7 @@ class ForwardingRulesResourceApi {
    *
    * Completes with a [ForwardingRuleList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1885,7 +1883,7 @@ class ForwardingRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -1905,7 +1903,7 @@ class ForwardingRulesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/forwardingRules';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/forwardingRules';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1937,7 +1935,7 @@ class ForwardingRulesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1948,7 +1946,7 @@ class ForwardingRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1965,7 +1963,7 @@ class ForwardingRulesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/forwardingRules/' + common_internal.Escaper.ecapeVariable('$forwardingRule') + '/setTarget';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule') + '/setTarget';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1980,11 +1978,10 @@ class ForwardingRulesResourceApi {
 }
 
 
-/** Not documented yet. */
 class GlobalAddressesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  GlobalAddressesResourceApi(common_internal.ApiRequester client) : 
+  GlobalAddressesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1992,7 +1989,7 @@ class GlobalAddressesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -2001,7 +1998,7 @@ class GlobalAddressesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2012,7 +2009,7 @@ class GlobalAddressesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -2023,7 +2020,7 @@ class GlobalAddressesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/addresses/' + common_internal.Escaper.ecapeVariable('$address');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses/' + commons.Escaper.ecapeVariable('$address');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -2040,7 +2037,7 @@ class GlobalAddressesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -2049,7 +2046,7 @@ class GlobalAddressesResourceApi {
    *
    * Completes with a [Address].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2060,7 +2057,7 @@ class GlobalAddressesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -2071,7 +2068,7 @@ class GlobalAddressesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/addresses/' + common_internal.Escaper.ecapeVariable('$address');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses/' + commons.Escaper.ecapeVariable('$address');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2091,13 +2088,13 @@ class GlobalAddressesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2108,7 +2105,7 @@ class GlobalAddressesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2119,7 +2116,7 @@ class GlobalAddressesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/addresses';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2136,7 +2133,7 @@ class GlobalAddressesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -2151,7 +2148,7 @@ class GlobalAddressesResourceApi {
    *
    * Completes with a [AddressList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2162,7 +2159,7 @@ class GlobalAddressesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -2179,7 +2176,7 @@ class GlobalAddressesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/addresses';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2194,11 +2191,10 @@ class GlobalAddressesResourceApi {
 }
 
 
-/** Not documented yet. */
 class GlobalForwardingRulesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  GlobalForwardingRulesResourceApi(common_internal.ApiRequester client) : 
+  GlobalForwardingRulesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2215,7 +2211,7 @@ class GlobalForwardingRulesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2226,7 +2222,7 @@ class GlobalForwardingRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -2237,7 +2233,7 @@ class GlobalForwardingRulesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/forwardingRules/' + common_internal.Escaper.ecapeVariable('$forwardingRule');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -2263,7 +2259,7 @@ class GlobalForwardingRulesResourceApi {
    *
    * Completes with a [ForwardingRule].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2274,7 +2270,7 @@ class GlobalForwardingRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -2285,7 +2281,7 @@ class GlobalForwardingRulesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/forwardingRules/' + common_internal.Escaper.ecapeVariable('$forwardingRule');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2311,7 +2307,7 @@ class GlobalForwardingRulesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2322,7 +2318,7 @@ class GlobalForwardingRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2333,7 +2329,7 @@ class GlobalForwardingRulesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/forwardingRules';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2366,7 +2362,7 @@ class GlobalForwardingRulesResourceApi {
    *
    * Completes with a [ForwardingRuleList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2377,7 +2373,7 @@ class GlobalForwardingRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -2394,7 +2390,7 @@ class GlobalForwardingRulesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/forwardingRules';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2423,7 +2419,7 @@ class GlobalForwardingRulesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2434,7 +2430,7 @@ class GlobalForwardingRulesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2448,7 +2444,7 @@ class GlobalForwardingRulesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/forwardingRules/' + common_internal.Escaper.ecapeVariable('$forwardingRule') + '/setTarget';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule') + '/setTarget';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2463,11 +2459,10 @@ class GlobalForwardingRulesResourceApi {
 }
 
 
-/** Not documented yet. */
 class GlobalOperationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  GlobalOperationsResourceApi(common_internal.ApiRequester client) : 
+  GlobalOperationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2475,7 +2470,7 @@ class GlobalOperationsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -2490,7 +2485,7 @@ class GlobalOperationsResourceApi {
    *
    * Completes with a [OperationAggregatedList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2501,7 +2496,7 @@ class GlobalOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -2518,7 +2513,7 @@ class GlobalOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/aggregated/operations';
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/operations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2535,14 +2530,14 @@ class GlobalOperationsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [operation] - Name of the operation resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2553,7 +2548,7 @@ class GlobalOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -2565,7 +2560,7 @@ class GlobalOperationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/operations/' + common_internal.Escaper.ecapeVariable('$operation');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/operations/' + commons.Escaper.ecapeVariable('$operation');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -2582,7 +2577,7 @@ class GlobalOperationsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -2591,7 +2586,7 @@ class GlobalOperationsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2602,7 +2597,7 @@ class GlobalOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -2613,7 +2608,7 @@ class GlobalOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/operations/' + common_internal.Escaper.ecapeVariable('$operation');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/operations/' + commons.Escaper.ecapeVariable('$operation');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2631,7 +2626,7 @@ class GlobalOperationsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -2646,7 +2641,7 @@ class GlobalOperationsResourceApi {
    *
    * Completes with a [OperationList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2657,7 +2652,7 @@ class GlobalOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -2674,7 +2669,7 @@ class GlobalOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/operations';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/operations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2689,11 +2684,10 @@ class GlobalOperationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class HttpHealthChecksResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  HttpHealthChecksResourceApi(common_internal.ApiRequester client) : 
+  HttpHealthChecksResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2710,7 +2704,7 @@ class HttpHealthChecksResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2721,7 +2715,7 @@ class HttpHealthChecksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -2732,7 +2726,7 @@ class HttpHealthChecksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + common_internal.Escaper.ecapeVariable('$httpHealthCheck');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + commons.Escaper.ecapeVariable('$httpHealthCheck');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -2758,7 +2752,7 @@ class HttpHealthChecksResourceApi {
    *
    * Completes with a [HttpHealthCheck].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2769,7 +2763,7 @@ class HttpHealthChecksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -2780,7 +2774,7 @@ class HttpHealthChecksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + common_internal.Escaper.ecapeVariable('$httpHealthCheck');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + commons.Escaper.ecapeVariable('$httpHealthCheck');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2806,7 +2800,7 @@ class HttpHealthChecksResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2817,7 +2811,7 @@ class HttpHealthChecksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2828,7 +2822,7 @@ class HttpHealthChecksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2861,7 +2855,7 @@ class HttpHealthChecksResourceApi {
    *
    * Completes with a [HttpHealthCheckList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2872,7 +2866,7 @@ class HttpHealthChecksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -2889,7 +2883,7 @@ class HttpHealthChecksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2918,7 +2912,7 @@ class HttpHealthChecksResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2929,7 +2923,7 @@ class HttpHealthChecksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2943,7 +2937,7 @@ class HttpHealthChecksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + common_internal.Escaper.ecapeVariable('$httpHealthCheck');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + commons.Escaper.ecapeVariable('$httpHealthCheck');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -2972,7 +2966,7 @@ class HttpHealthChecksResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2983,7 +2977,7 @@ class HttpHealthChecksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2997,7 +2991,7 @@ class HttpHealthChecksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + common_internal.Escaper.ecapeVariable('$httpHealthCheck');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + commons.Escaper.ecapeVariable('$httpHealthCheck');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -3012,11 +3006,10 @@ class HttpHealthChecksResourceApi {
 }
 
 
-/** Not documented yet. */
 class ImagesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ImagesResourceApi(common_internal.ApiRequester client) : 
+  ImagesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3024,7 +3017,7 @@ class ImagesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3033,7 +3026,7 @@ class ImagesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3044,7 +3037,7 @@ class ImagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -3055,7 +3048,7 @@ class ImagesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/images/' + common_internal.Escaper.ecapeVariable('$image');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/images/' + commons.Escaper.ecapeVariable('$image');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -3068,14 +3061,15 @@ class ImagesResourceApi {
   }
 
   /**
-   * Sets the deprecation status of an image. If no message body is given,
-   * clears the deprecation status instead.
+   * Sets the deprecation status of an image.
+   *
+   * If an empty request body is given, clears the deprecation status instead.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3084,7 +3078,7 @@ class ImagesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3095,7 +3089,7 @@ class ImagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3109,7 +3103,7 @@ class ImagesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/images/' + common_internal.Escaper.ecapeVariable('$image') + '/deprecate';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/images/' + commons.Escaper.ecapeVariable('$image') + '/deprecate';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3126,7 +3120,7 @@ class ImagesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3135,7 +3129,7 @@ class ImagesResourceApi {
    *
    * Completes with a [Image].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3146,7 +3140,7 @@ class ImagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -3157,7 +3151,7 @@ class ImagesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/images/' + common_internal.Escaper.ecapeVariable('$image');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/images/' + commons.Escaper.ecapeVariable('$image');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3177,13 +3171,13 @@ class ImagesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3194,7 +3188,7 @@ class ImagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3205,7 +3199,7 @@ class ImagesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/images';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/images';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3222,7 +3216,7 @@ class ImagesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3237,7 +3231,7 @@ class ImagesResourceApi {
    *
    * Completes with a [ImageList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3248,7 +3242,7 @@ class ImagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -3265,7 +3259,7 @@ class ImagesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/images';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/images';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3280,11 +3274,10 @@ class ImagesResourceApi {
 }
 
 
-/** Not documented yet. */
 class InstanceTemplatesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  InstanceTemplatesResourceApi(common_internal.ApiRequester client) : 
+  InstanceTemplatesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3301,7 +3294,7 @@ class InstanceTemplatesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3312,7 +3305,7 @@ class InstanceTemplatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -3323,7 +3316,7 @@ class InstanceTemplatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/instanceTemplates/' + common_internal.Escaper.ecapeVariable('$instanceTemplate');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/instanceTemplates/' + commons.Escaper.ecapeVariable('$instanceTemplate');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -3349,7 +3342,7 @@ class InstanceTemplatesResourceApi {
    *
    * Completes with a [InstanceTemplate].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3360,7 +3353,7 @@ class InstanceTemplatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -3371,7 +3364,7 @@ class InstanceTemplatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/instanceTemplates/' + common_internal.Escaper.ecapeVariable('$instanceTemplate');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/instanceTemplates/' + commons.Escaper.ecapeVariable('$instanceTemplate');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3397,7 +3390,7 @@ class InstanceTemplatesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3408,7 +3401,7 @@ class InstanceTemplatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3419,7 +3412,7 @@ class InstanceTemplatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/instanceTemplates';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/instanceTemplates';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3452,7 +3445,7 @@ class InstanceTemplatesResourceApi {
    *
    * Completes with a [InstanceTemplateList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3463,7 +3456,7 @@ class InstanceTemplatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -3480,7 +3473,7 @@ class InstanceTemplatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/instanceTemplates';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/instanceTemplates';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3495,11 +3488,10 @@ class InstanceTemplatesResourceApi {
 }
 
 
-/** Not documented yet. */
 class InstancesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  InstancesResourceApi(common_internal.ApiRequester client) : 
+  InstancesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3509,21 +3501,22 @@ class InstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Project name.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [instance] - Instance name.
+   * [instance] - The instance name for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [networkInterface] - Network interface name.
+   * [networkInterface] - The name of the network interface to add to this
+   * instance.
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3534,7 +3527,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3555,7 +3548,7 @@ class InstancesResourceApi {
     _queryParams["networkInterface"] = [networkInterface];
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/addAccessConfig';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/addAccessConfig';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3568,11 +3561,9 @@ class InstancesResourceApi {
   }
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -3587,7 +3578,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstanceAggregatedList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3598,7 +3589,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -3615,7 +3606,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/aggregated/instances';
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/instances';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3628,17 +3619,17 @@ class InstancesResourceApi {
   }
 
   /**
-   * Attaches a disk resource to an instance.
+   * Attaches a Disk resource to an instance.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - Project name.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [instance] - Instance name.
@@ -3646,7 +3637,7 @@ class InstancesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3657,7 +3648,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3674,7 +3665,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/attachDisk';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/attachDisk';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3687,15 +3678,16 @@ class InstancesResourceApi {
   }
 
   /**
-   * Deletes the specified instance resource.
+   * Deletes the specified Instance resource. For more information, see Shutting
+   * down an instance.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [instance] - Name of the instance resource to delete.
@@ -3703,7 +3695,7 @@ class InstancesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3714,7 +3706,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -3728,7 +3720,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -3745,23 +3737,23 @@ class InstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Project name.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [instance] - Instance name.
+   * [instance] - The instance name for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [accessConfig] - Access config name.
+   * [accessConfig] - The name of the access config to delete.
    *
-   * [networkInterface] - Network interface name.
+   * [networkInterface] - The name of the network interface.
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3772,7 +3764,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -3794,7 +3786,7 @@ class InstancesResourceApi {
     _queryParams["networkInterface"] = [networkInterface];
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/deleteAccessConfig';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/deleteAccessConfig';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3811,11 +3803,11 @@ class InstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Project name.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [instance] - Instance name.
@@ -3826,7 +3818,7 @@ class InstancesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3837,7 +3829,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -3855,7 +3847,7 @@ class InstancesResourceApi {
     _queryParams["deviceName"] = [deviceName];
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/detachDisk';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/detachDisk';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3872,11 +3864,11 @@ class InstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the The name of the zone for this request..
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [instance] - Name of the instance resource to return.
@@ -3884,7 +3876,7 @@ class InstancesResourceApi {
    *
    * Completes with a [Instance].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3895,7 +3887,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -3909,7 +3901,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3926,11 +3918,11 @@ class InstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [instance] - Name of the instance scoping this request.
@@ -3938,7 +3930,7 @@ class InstancesResourceApi {
    *
    * Completes with a [SerialPortOutput].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3949,7 +3941,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -3963,7 +3955,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/serialPort';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/serialPort';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3983,16 +3975,16 @@ class InstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4003,7 +3995,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4017,7 +4009,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -4035,11 +4027,11 @@ class InstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Optional. Filter expression for filtering listed resources.
@@ -4053,7 +4045,7 @@ class InstancesResourceApi {
    *
    * Completes with a [InstanceList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4064,7 +4056,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -4084,7 +4076,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4101,11 +4093,11 @@ class InstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [instance] - Name of the instance scoping this request.
@@ -4113,7 +4105,7 @@ class InstancesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4124,7 +4116,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -4138,7 +4130,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/reset';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/reset';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -4151,29 +4143,29 @@ class InstancesResourceApi {
   }
 
   /**
-   * Sets the auto-delete flag for a disk attached to an instance
+   * Sets the auto-delete flag for a disk attached to an instance.
    *
    * Request parameters:
    *
-   * [project] - Project name.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [instance] - Instance name.
+   * [instance] - The instance name.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [autoDelete] - Whether to auto-delete the disk when the instance is
    * deleted.
    *
-   * [deviceName] - Disk device name to modify.
+   * [deviceName] - The device name of the disk to modify.
    * Value must have pattern "\w[\w.-]{0,254}".
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4184,7 +4176,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -4206,7 +4198,7 @@ class InstancesResourceApi {
     _queryParams["deviceName"] = [deviceName];
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/setDiskAutoDelete';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setDiskAutoDelete';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -4226,11 +4218,11 @@ class InstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [instance] - Name of the instance scoping this request.
@@ -4238,7 +4230,7 @@ class InstancesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4249,7 +4241,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4266,7 +4258,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/setMetadata';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setMetadata';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -4285,11 +4277,11 @@ class InstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Project name.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [instance] - Instance name.
@@ -4297,7 +4289,7 @@ class InstancesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4308,7 +4300,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4325,7 +4317,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/setScheduling';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setScheduling';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -4344,11 +4336,11 @@ class InstancesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [instance] - Name of the instance scoping this request.
@@ -4356,7 +4348,7 @@ class InstancesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4367,7 +4359,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4384,7 +4376,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/setTags';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setTags';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -4397,15 +4389,16 @@ class InstancesResourceApi {
   }
 
   /**
-   * Starts an instance
+   * This method starts an instance that was stopped using the using the
+   * instances().stop method. For more information, see Restart an instance.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [instance] - Name of the instance resource to start.
@@ -4413,7 +4406,7 @@ class InstancesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4424,7 +4417,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -4438,7 +4431,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/start';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/start';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -4451,15 +4444,20 @@ class InstancesResourceApi {
   }
 
   /**
-   * Stops an instance
+   * This method stops a running instance, shutting it down cleanly, and allows
+   * you to restart the instance at a later time. Stopped instances do not incur
+   * per-minute, virtual machine usage charges while they are stopped, but any
+   * resources that the virtual machine is using, such as persistent disks and
+   * static IP addresses,will continue to be charged until they are deleted. For
+   * more information, see Stopping an instance.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [instance] - Name of the instance resource to start.
@@ -4467,7 +4465,7 @@ class InstancesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4478,7 +4476,7 @@ class InstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -4492,7 +4490,7 @@ class InstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/instances/' + common_internal.Escaper.ecapeVariable('$instance') + '/stop';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/stop';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -4507,11 +4505,10 @@ class InstancesResourceApi {
 }
 
 
-/** Not documented yet. */
 class LicensesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  LicensesResourceApi(common_internal.ApiRequester client) : 
+  LicensesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -4519,7 +4516,7 @@ class LicensesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4528,7 +4525,7 @@ class LicensesResourceApi {
    *
    * Completes with a [License].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4539,7 +4536,7 @@ class LicensesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -4550,7 +4547,7 @@ class LicensesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/licenses/' + common_internal.Escaper.ecapeVariable('$license');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/licenses/' + commons.Escaper.ecapeVariable('$license');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4565,11 +4562,10 @@ class LicensesResourceApi {
 }
 
 
-/** Not documented yet. */
 class MachineTypesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  MachineTypesResourceApi(common_internal.ApiRequester client) : 
+  MachineTypesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -4592,7 +4588,7 @@ class MachineTypesResourceApi {
    *
    * Completes with a [MachineTypeAggregatedList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4603,7 +4599,7 @@ class MachineTypesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -4620,7 +4616,7 @@ class MachineTypesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/aggregated/machineTypes';
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/machineTypes';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4641,7 +4637,7 @@ class MachineTypesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [machineType] - Name of the machine type resource to return.
@@ -4649,7 +4645,7 @@ class MachineTypesResourceApi {
    *
    * Completes with a [MachineType].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4660,7 +4656,7 @@ class MachineTypesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -4674,7 +4670,7 @@ class MachineTypesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/machineTypes/' + common_internal.Escaper.ecapeVariable('$machineType');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/machineTypes/' + commons.Escaper.ecapeVariable('$machineType');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4696,7 +4692,7 @@ class MachineTypesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [zone] - Name of the zone scoping this request.
+   * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * [filter] - Optional. Filter expression for filtering listed resources.
@@ -4710,7 +4706,7 @@ class MachineTypesResourceApi {
    *
    * Completes with a [MachineTypeList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4721,7 +4717,7 @@ class MachineTypesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -4741,7 +4737,7 @@ class MachineTypesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/machineTypes';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/machineTypes';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4756,11 +4752,10 @@ class MachineTypesResourceApi {
 }
 
 
-/** Not documented yet. */
 class NetworksResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  NetworksResourceApi(common_internal.ApiRequester client) : 
+  NetworksResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -4768,7 +4763,7 @@ class NetworksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4777,7 +4772,7 @@ class NetworksResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4788,7 +4783,7 @@ class NetworksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -4799,7 +4794,7 @@ class NetworksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/networks/' + common_internal.Escaper.ecapeVariable('$network');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/networks/' + commons.Escaper.ecapeVariable('$network');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -4816,7 +4811,7 @@ class NetworksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4825,7 +4820,7 @@ class NetworksResourceApi {
    *
    * Completes with a [Network].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4836,7 +4831,7 @@ class NetworksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -4847,7 +4842,7 @@ class NetworksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/networks/' + common_internal.Escaper.ecapeVariable('$network');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/networks/' + commons.Escaper.ecapeVariable('$network');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4867,13 +4862,13 @@ class NetworksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4884,7 +4879,7 @@ class NetworksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4895,7 +4890,7 @@ class NetworksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/networks';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/networks';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -4912,7 +4907,7 @@ class NetworksResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -4927,7 +4922,7 @@ class NetworksResourceApi {
    *
    * Completes with a [NetworkList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4938,7 +4933,7 @@ class NetworksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -4955,7 +4950,7 @@ class NetworksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/networks';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/networks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4970,11 +4965,10 @@ class NetworksResourceApi {
 }
 
 
-/** Not documented yet. */
 class ProjectsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ProjectsResourceApi(common_internal.ApiRequester client) : 
+  ProjectsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -4982,13 +4976,13 @@ class ProjectsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project resource to retrieve.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Project].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4999,7 +4993,7 @@ class ProjectsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -5007,7 +5001,7 @@ class ProjectsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project');
+    _url = commons.Escaper.ecapeVariable('$project');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5020,31 +5014,30 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Sets metadata common to all instances within the specified project using
-   * the data included in the request.
+   * Moves a persistent disk from one zone to another.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Operation> setCommonInstanceMetadata(Metadata request, core.String project) {
+  async.Future<Operation> moveDisk(DiskMoveRequest request, core.String project) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -5055,7 +5048,7 @@ class ProjectsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/setCommonInstanceMetadata';
+    _url = commons.Escaper.ecapeVariable('$project') + '/moveDisk';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -5068,30 +5061,31 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Sets usage export location
+   * Moves an instance and its attached persistent disks from one zone to
+   * another.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Operation> setUsageExportBucket(UsageExportLocation request, core.String project) {
+  async.Future<Operation> moveInstance(InstanceMoveRequest request, core.String project) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -5102,7 +5096,104 @@ class ProjectsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/setUsageExportBucket';
+    _url = commons.Escaper.ecapeVariable('$project') + '/moveInstance';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Sets metadata common to all instances within the specified project using
+   * the data included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Operation> setCommonInstanceMetadata(Metadata request, core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/setCommonInstanceMetadata';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Enables the usage export feature and sets the usage export bucket where
+   * reports are stored. If you provide an empty request body using this method,
+   * the usage export feature will be disabled.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Operation> setUsageExportBucket(UsageExportLocation request, core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/setUsageExportBucket';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -5117,11 +5208,10 @@ class ProjectsResourceApi {
 }
 
 
-/** Not documented yet. */
 class RegionOperationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  RegionOperationsResourceApi(common_internal.ApiRequester client) : 
+  RegionOperationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -5129,7 +5219,7 @@ class RegionOperationsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5139,7 +5229,7 @@ class RegionOperationsResourceApi {
    * [operation] - Name of the operation resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5150,7 +5240,7 @@ class RegionOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -5165,7 +5255,7 @@ class RegionOperationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/operations/' + common_internal.Escaper.ecapeVariable('$operation');
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -5182,7 +5272,7 @@ class RegionOperationsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5194,7 +5284,7 @@ class RegionOperationsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5205,7 +5295,7 @@ class RegionOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -5219,7 +5309,7 @@ class RegionOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/operations/' + common_internal.Escaper.ecapeVariable('$operation');
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5237,7 +5327,7 @@ class RegionOperationsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5255,7 +5345,7 @@ class RegionOperationsResourceApi {
    *
    * Completes with a [OperationList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5266,7 +5356,7 @@ class RegionOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -5286,7 +5376,7 @@ class RegionOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/operations';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/operations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5301,11 +5391,10 @@ class RegionOperationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class RegionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  RegionsResourceApi(common_internal.ApiRequester client) : 
+  RegionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -5313,7 +5402,7 @@ class RegionsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5322,7 +5411,7 @@ class RegionsResourceApi {
    *
    * Completes with a [Region].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5333,7 +5422,7 @@ class RegionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -5344,7 +5433,7 @@ class RegionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region');
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5361,7 +5450,7 @@ class RegionsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -5376,7 +5465,7 @@ class RegionsResourceApi {
    *
    * Completes with a [RegionList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5387,7 +5476,7 @@ class RegionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -5404,7 +5493,7 @@ class RegionsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5419,11 +5508,10 @@ class RegionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class RoutesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  RoutesResourceApi(common_internal.ApiRequester client) : 
+  RoutesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -5440,7 +5528,7 @@ class RoutesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5451,7 +5539,7 @@ class RoutesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -5462,7 +5550,7 @@ class RoutesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/routes/' + common_internal.Escaper.ecapeVariable('$route');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/routes/' + commons.Escaper.ecapeVariable('$route');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -5488,7 +5576,7 @@ class RoutesResourceApi {
    *
    * Completes with a [Route].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5499,7 +5587,7 @@ class RoutesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -5510,7 +5598,7 @@ class RoutesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/routes/' + common_internal.Escaper.ecapeVariable('$route');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/routes/' + commons.Escaper.ecapeVariable('$route');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5536,7 +5624,7 @@ class RoutesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5547,7 +5635,7 @@ class RoutesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -5558,7 +5646,7 @@ class RoutesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/routes';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/routes';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -5590,7 +5678,7 @@ class RoutesResourceApi {
    *
    * Completes with a [RouteList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5601,7 +5689,7 @@ class RoutesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -5618,7 +5706,7 @@ class RoutesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/routes';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/routes';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5633,11 +5721,10 @@ class RoutesResourceApi {
 }
 
 
-/** Not documented yet. */
 class SnapshotsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SnapshotsResourceApi(common_internal.ApiRequester client) : 
+  SnapshotsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -5654,7 +5741,7 @@ class SnapshotsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5665,7 +5752,7 @@ class SnapshotsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -5676,7 +5763,7 @@ class SnapshotsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/snapshots/' + common_internal.Escaper.ecapeVariable('$snapshot');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/snapshots/' + commons.Escaper.ecapeVariable('$snapshot');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -5702,7 +5789,7 @@ class SnapshotsResourceApi {
    *
    * Completes with a [Snapshot].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5713,7 +5800,7 @@ class SnapshotsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -5724,7 +5811,7 @@ class SnapshotsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/snapshots/' + common_internal.Escaper.ecapeVariable('$snapshot');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/snapshots/' + commons.Escaper.ecapeVariable('$snapshot');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5757,7 +5844,7 @@ class SnapshotsResourceApi {
    *
    * Completes with a [SnapshotList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5768,7 +5855,7 @@ class SnapshotsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -5785,7 +5872,7 @@ class SnapshotsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/snapshots';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/snapshots';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5800,11 +5887,10 @@ class SnapshotsResourceApi {
 }
 
 
-/** Not documented yet. */
 class TargetHttpProxiesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TargetHttpProxiesResourceApi(common_internal.ApiRequester client) : 
+  TargetHttpProxiesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -5821,7 +5907,7 @@ class TargetHttpProxiesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5832,7 +5918,7 @@ class TargetHttpProxiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -5843,7 +5929,7 @@ class TargetHttpProxiesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies/' + common_internal.Escaper.ecapeVariable('$targetHttpProxy');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies/' + commons.Escaper.ecapeVariable('$targetHttpProxy');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -5869,7 +5955,7 @@ class TargetHttpProxiesResourceApi {
    *
    * Completes with a [TargetHttpProxy].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5880,7 +5966,7 @@ class TargetHttpProxiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -5891,7 +5977,7 @@ class TargetHttpProxiesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies/' + common_internal.Escaper.ecapeVariable('$targetHttpProxy');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies/' + commons.Escaper.ecapeVariable('$targetHttpProxy');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5917,7 +6003,7 @@ class TargetHttpProxiesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5928,7 +6014,7 @@ class TargetHttpProxiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -5939,7 +6025,7 @@ class TargetHttpProxiesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -5972,7 +6058,7 @@ class TargetHttpProxiesResourceApi {
    *
    * Completes with a [TargetHttpProxyList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5983,7 +6069,7 @@ class TargetHttpProxiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -6000,7 +6086,7 @@ class TargetHttpProxiesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6029,7 +6115,7 @@ class TargetHttpProxiesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6040,7 +6126,7 @@ class TargetHttpProxiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6054,7 +6140,7 @@ class TargetHttpProxiesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/targetHttpProxies/' + common_internal.Escaper.ecapeVariable('$targetHttpProxy') + '/setUrlMap';
+    _url = commons.Escaper.ecapeVariable('$project') + '/targetHttpProxies/' + commons.Escaper.ecapeVariable('$targetHttpProxy') + '/setUrlMap';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -6069,11 +6155,10 @@ class TargetHttpProxiesResourceApi {
 }
 
 
-/** Not documented yet. */
 class TargetInstancesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TargetInstancesResourceApi(common_internal.ApiRequester client) : 
+  TargetInstancesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -6096,7 +6181,7 @@ class TargetInstancesResourceApi {
    *
    * Completes with a [TargetInstanceAggregatedList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6107,7 +6192,7 @@ class TargetInstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -6124,7 +6209,7 @@ class TargetInstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/aggregated/targetInstances';
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/targetInstances';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6153,7 +6238,7 @@ class TargetInstancesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6164,7 +6249,7 @@ class TargetInstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -6178,7 +6263,7 @@ class TargetInstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/targetInstances/' + common_internal.Escaper.ecapeVariable('$targetInstance');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/targetInstances/' + commons.Escaper.ecapeVariable('$targetInstance');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -6207,7 +6292,7 @@ class TargetInstancesResourceApi {
    *
    * Completes with a [TargetInstance].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6218,7 +6303,7 @@ class TargetInstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -6232,7 +6317,7 @@ class TargetInstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/targetInstances/' + common_internal.Escaper.ecapeVariable('$targetInstance');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/targetInstances/' + commons.Escaper.ecapeVariable('$targetInstance');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6261,7 +6346,7 @@ class TargetInstancesResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6272,7 +6357,7 @@ class TargetInstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6286,7 +6371,7 @@ class TargetInstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/targetInstances';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/targetInstances';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -6322,7 +6407,7 @@ class TargetInstancesResourceApi {
    *
    * Completes with a [TargetInstanceList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6333,7 +6418,7 @@ class TargetInstancesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -6353,7 +6438,7 @@ class TargetInstancesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/targetInstances';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/targetInstances';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6368,11 +6453,10 @@ class TargetInstancesResourceApi {
 }
 
 
-/** Not documented yet. */
 class TargetPoolsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TargetPoolsResourceApi(common_internal.ApiRequester client) : 
+  TargetPoolsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -6395,7 +6479,7 @@ class TargetPoolsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6406,7 +6490,7 @@ class TargetPoolsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6423,7 +6507,7 @@ class TargetPoolsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/targetPools/' + common_internal.Escaper.ecapeVariable('$targetPool') + '/addHealthCheck';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/addHealthCheck';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -6455,7 +6539,7 @@ class TargetPoolsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6466,7 +6550,7 @@ class TargetPoolsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6483,7 +6567,7 @@ class TargetPoolsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/targetPools/' + common_internal.Escaper.ecapeVariable('$targetPool') + '/addInstance';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/addInstance';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -6515,7 +6599,7 @@ class TargetPoolsResourceApi {
    *
    * Completes with a [TargetPoolAggregatedList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6526,7 +6610,7 @@ class TargetPoolsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -6543,7 +6627,7 @@ class TargetPoolsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/aggregated/targetPools';
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/targetPools';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6572,7 +6656,7 @@ class TargetPoolsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6583,7 +6667,7 @@ class TargetPoolsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -6597,7 +6681,7 @@ class TargetPoolsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/targetPools/' + common_internal.Escaper.ecapeVariable('$targetPool');
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -6626,7 +6710,7 @@ class TargetPoolsResourceApi {
    *
    * Completes with a [TargetPool].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6637,7 +6721,7 @@ class TargetPoolsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -6651,7 +6735,7 @@ class TargetPoolsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/targetPools/' + common_internal.Escaper.ecapeVariable('$targetPool');
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6684,7 +6768,7 @@ class TargetPoolsResourceApi {
    *
    * Completes with a [TargetPoolInstanceHealth].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6695,7 +6779,7 @@ class TargetPoolsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6712,7 +6796,7 @@ class TargetPoolsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/targetPools/' + common_internal.Escaper.ecapeVariable('$targetPool') + '/getHealth';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/getHealth';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -6741,7 +6825,7 @@ class TargetPoolsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6752,7 +6836,7 @@ class TargetPoolsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6766,7 +6850,7 @@ class TargetPoolsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/targetPools';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -6802,7 +6886,7 @@ class TargetPoolsResourceApi {
    *
    * Completes with a [TargetPoolList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6813,7 +6897,7 @@ class TargetPoolsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -6833,7 +6917,7 @@ class TargetPoolsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/targetPools';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -6865,7 +6949,7 @@ class TargetPoolsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6876,7 +6960,7 @@ class TargetPoolsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6893,7 +6977,7 @@ class TargetPoolsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/targetPools/' + common_internal.Escaper.ecapeVariable('$targetPool') + '/removeHealthCheck';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/removeHealthCheck';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -6925,7 +7009,7 @@ class TargetPoolsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6936,7 +7020,7 @@ class TargetPoolsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -6953,7 +7037,7 @@ class TargetPoolsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/targetPools/' + common_internal.Escaper.ecapeVariable('$targetPool') + '/removeInstance';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/removeInstance';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -6987,7 +7071,7 @@ class TargetPoolsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -6998,7 +7082,7 @@ class TargetPoolsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -7018,7 +7102,7 @@ class TargetPoolsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/targetPools/' + common_internal.Escaper.ecapeVariable('$targetPool') + '/setBackup';
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/setBackup';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -7033,11 +7117,308 @@ class TargetPoolsResourceApi {
 }
 
 
-/** Not documented yet. */
-class UrlMapsResourceApi {
-  final common_internal.ApiRequester _requester;
+class TargetVpnGatewaysResourceApi {
+  final commons.ApiRequester _requester;
 
-  UrlMapsResourceApi(common_internal.ApiRequester client) : 
+  TargetVpnGatewaysResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves the list of target VPN gateways grouped by scope.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Optional. Filter expression for filtering listed resources.
+   *
+   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
+   * value is 500 and default value is 500.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Optional. Tag returned by a previous list request truncated
+   * by maxResults. Used to continue a previous list request.
+   *
+   * Completes with a [TargetVpnGatewayAggregatedList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<TargetVpnGatewayAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/targetVpnGateways';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TargetVpnGatewayAggregatedList.fromJson(data));
+  }
+
+  /**
+   * Deletes the specified TargetVpnGateway resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - The name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [targetVpnGateway] - Name of the TargetVpnGateway resource to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String region, core.String targetVpnGateway) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (targetVpnGateway == null) {
+      throw new core.ArgumentError("Parameter targetVpnGateway is required.");
+    }
+
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetVpnGateways/' + commons.Escaper.ecapeVariable('$targetVpnGateway');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified TargetVpnGateway resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - The name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [targetVpnGateway] - Name of the TargetVpnGateway resource to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [TargetVpnGateway].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<TargetVpnGateway> get(core.String project, core.String region, core.String targetVpnGateway) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (targetVpnGateway == null) {
+      throw new core.ArgumentError("Parameter targetVpnGateway is required.");
+    }
+
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetVpnGateways/' + commons.Escaper.ecapeVariable('$targetVpnGateway');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TargetVpnGateway.fromJson(data));
+  }
+
+  /**
+   * Creates a TargetVpnGateway resource in the specified project and region
+   * using the data included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - The name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Operation> insert(TargetVpnGateway request, core.String project, core.String region) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetVpnGateways';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of TargetVpnGateway resources available to the specified
+   * project and region.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - The name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [filter] - Optional. Filter expression for filtering listed resources.
+   *
+   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
+   * value is 500 and default value is 500.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Optional. Tag returned by a previous list request truncated
+   * by maxResults. Used to continue a previous list request.
+   *
+   * Completes with a [TargetVpnGatewayList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<TargetVpnGatewayList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetVpnGateways';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TargetVpnGatewayList.fromJson(data));
+  }
+
+}
+
+
+class UrlMapsResourceApi {
+  final commons.ApiRequester _requester;
+
+  UrlMapsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -7054,7 +7435,7 @@ class UrlMapsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7065,7 +7446,7 @@ class UrlMapsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -7076,7 +7457,7 @@ class UrlMapsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + common_internal.Escaper.ecapeVariable('$urlMap');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -7102,7 +7483,7 @@ class UrlMapsResourceApi {
    *
    * Completes with a [UrlMap].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7113,7 +7494,7 @@ class UrlMapsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -7124,7 +7505,7 @@ class UrlMapsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + common_internal.Escaper.ecapeVariable('$urlMap');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -7150,7 +7531,7 @@ class UrlMapsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7161,7 +7542,7 @@ class UrlMapsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -7172,7 +7553,7 @@ class UrlMapsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/urlMaps';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -7204,7 +7585,7 @@ class UrlMapsResourceApi {
    *
    * Completes with a [UrlMapList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7215,7 +7596,7 @@ class UrlMapsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -7232,7 +7613,7 @@ class UrlMapsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/urlMaps';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -7261,7 +7642,7 @@ class UrlMapsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7272,7 +7653,7 @@ class UrlMapsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -7286,7 +7667,7 @@ class UrlMapsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + common_internal.Escaper.ecapeVariable('$urlMap');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -7314,7 +7695,7 @@ class UrlMapsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7325,7 +7706,7 @@ class UrlMapsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -7339,7 +7720,7 @@ class UrlMapsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + common_internal.Escaper.ecapeVariable('$urlMap');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -7369,7 +7750,7 @@ class UrlMapsResourceApi {
    *
    * Completes with a [UrlMapsValidateResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7380,7 +7761,7 @@ class UrlMapsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -7394,7 +7775,7 @@ class UrlMapsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + common_internal.Escaper.ecapeVariable('$urlMap') + '/validate';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap') + '/validate';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -7409,11 +7790,308 @@ class UrlMapsResourceApi {
 }
 
 
-/** Not documented yet. */
-class ZoneOperationsResourceApi {
-  final common_internal.ApiRequester _requester;
+class VpnTunnelsResourceApi {
+  final commons.ApiRequester _requester;
 
-  ZoneOperationsResourceApi(common_internal.ApiRequester client) : 
+  VpnTunnelsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves the list of VPN tunnels grouped by scope.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Optional. Filter expression for filtering listed resources.
+   *
+   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
+   * value is 500 and default value is 500.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Optional. Tag returned by a previous list request truncated
+   * by maxResults. Used to continue a previous list request.
+   *
+   * Completes with a [VpnTunnelAggregatedList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<VpnTunnelAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/vpnTunnels';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new VpnTunnelAggregatedList.fromJson(data));
+  }
+
+  /**
+   * Deletes the specified VpnTunnel resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - The name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [vpnTunnel] - Name of the VpnTunnel resource to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String region, core.String vpnTunnel) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (vpnTunnel == null) {
+      throw new core.ArgumentError("Parameter vpnTunnel is required.");
+    }
+
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/vpnTunnels/' + commons.Escaper.ecapeVariable('$vpnTunnel');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified VpnTunnel resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - The name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [vpnTunnel] - Name of the VpnTunnel resource to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [VpnTunnel].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<VpnTunnel> get(core.String project, core.String region, core.String vpnTunnel) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (vpnTunnel == null) {
+      throw new core.ArgumentError("Parameter vpnTunnel is required.");
+    }
+
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/vpnTunnels/' + commons.Escaper.ecapeVariable('$vpnTunnel');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new VpnTunnel.fromJson(data));
+  }
+
+  /**
+   * Creates a VpnTunnel resource in the specified project and region using the
+   * data included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - The name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Operation> insert(VpnTunnel request, core.String project, core.String region) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/vpnTunnels';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of VpnTunnel resources contained in the specified
+   * project and region.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - The name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [filter] - Optional. Filter expression for filtering listed resources.
+   *
+   * [maxResults] - Optional. Maximum count of results to be returned. Maximum
+   * value is 500 and default value is 500.
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - Optional. Tag returned by a previous list request truncated
+   * by maxResults. Used to continue a previous list request.
+   *
+   * Completes with a [VpnTunnelList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<VpnTunnelList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/vpnTunnels';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new VpnTunnelList.fromJson(data));
+  }
+
+}
+
+
+class ZoneOperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ZoneOperationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -7421,7 +8099,7 @@ class ZoneOperationsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -7431,7 +8109,7 @@ class ZoneOperationsResourceApi {
    * [operation] - Name of the operation resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7442,7 +8120,7 @@ class ZoneOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -7457,7 +8135,7 @@ class ZoneOperationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/operations/' + common_internal.Escaper.ecapeVariable('$operation');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -7474,7 +8152,7 @@ class ZoneOperationsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -7486,7 +8164,7 @@ class ZoneOperationsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7497,7 +8175,7 @@ class ZoneOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -7511,7 +8189,7 @@ class ZoneOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/operations/' + common_internal.Escaper.ecapeVariable('$operation');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -7529,7 +8207,7 @@ class ZoneOperationsResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -7547,7 +8225,7 @@ class ZoneOperationsResourceApi {
    *
    * Completes with a [OperationList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7558,7 +8236,7 @@ class ZoneOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -7578,7 +8256,7 @@ class ZoneOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/operations';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -7593,11 +8271,10 @@ class ZoneOperationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ZonesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ZonesResourceApi(common_internal.ApiRequester client) : 
+  ZonesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -7605,7 +8282,7 @@ class ZonesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -7614,7 +8291,7 @@ class ZonesResourceApi {
    *
    * Completes with a [Zone].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7625,7 +8302,7 @@ class ZonesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -7636,7 +8313,7 @@ class ZonesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -7653,7 +8330,7 @@ class ZonesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Name of the project scoping this request.
+   * [project] - Project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
@@ -7668,7 +8345,7 @@ class ZonesResourceApi {
    *
    * Completes with a [ZoneList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -7679,7 +8356,7 @@ class ZonesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -7696,7 +8373,7 @@ class ZonesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -7714,7 +8391,10 @@ class ZonesResourceApi {
 
 /** An access configuration attached to an instance's network interface. */
 class AccessConfig {
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#accessConfig for access
+   * configs.
+   */
   core.String kind;
 
   /** Name of this access configuration. */
@@ -7722,14 +8402,15 @@ class AccessConfig {
 
   /**
    * An external IP address associated with this instance. Specify an unused
-   * static IP address available to the project. If not specified, the external
-   * IP will be drawn from a shared ephemeral pool.
+   * static external IP address available to the project or leave this field
+   * undefined to use an IP from a shared ephemeral IP address pool. If you
+   * specify a static external IP address, it must live in the same region as
+   * the zone of the instance.
    */
   core.String natIP;
 
   /**
-   * Type of configuration. Must be set to "ONE_TO_ONE_NAT". This configures
-   * port-for-port NAT to the internet.
+   * The type of configuration. The default and only option is ONE_TO_ONE_NAT.
    * Possible string values are:
    * - "ONE_TO_ONE_NAT"
    */
@@ -7774,10 +8455,10 @@ class AccessConfig {
 
 /** A reserved address resource. */
 class Address {
-  /** The IP address represented by this resource. */
+  /** The static external IP address represented by this resource. */
   core.String address;
 
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
 
   /**
@@ -7787,37 +8468,47 @@ class Address {
   core.String description;
 
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#address for addresses.
+   */
   core.String kind;
 
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
 
   /**
-   * URL of the region where the regional address resides (output only). This
+   * [Output Only] URL of the region where the regional address resides. This
    * field is not applicable to global addresses.
    */
   core.String region;
 
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
 
   /**
-   * The status of the address (output only).
+   * [Output Only] The status of the address, which can be either IN_USE or
+   * RESERVED. An address that is RESERVED is currently reserved and available
+   * to use. An IN_USE address is currently being used by another resource and
+   * is not available.
    * Possible string values are:
    * - "IN_USE"
    * - "RESERVED"
    */
   core.String status;
 
-  /** The resources that are using this address resource. */
+  /** [Output Only] The URLs of the resources that are using this address. */
   core.List<core.String> users;
 
 
@@ -7893,23 +8584,25 @@ class Address {
 }
 
 
-/** Not documented yet. */
 class AddressAggregatedList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A map of scoped address lists. */
+  /** [Output Only] A map of scoped address lists. */
   core.Map<core.String, AddressesScopedList> items;
 
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#addressAggregatedList for
+   * aggregated lists of addresses.
+   */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
 
@@ -7920,7 +8613,7 @@ class AddressAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = common_internal.mapMap(_json["items"], (item) => new AddressesScopedList.fromJson(item));
+      items = commons.mapMap(_json["items"], (item) => new AddressesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -7939,7 +8632,7 @@ class AddressAggregatedList {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = common_internal.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -7958,20 +8651,23 @@ class AddressAggregatedList {
 /** Contains a list of address resources. */
 class AddressList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A list of Address resources. */
+  /** [Output Only] A list of Address resources. */
   core.List<Address> items;
 
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#addressList for lists of
+   * addresses.
+   */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
 
 
@@ -8017,12 +8713,11 @@ class AddressList {
 }
 
 
-/** Not documented yet. */
 class AddressesScopedListWarningData {
-  /** A key for the warning data. */
+  /** [Output Only] A key for the warning data. */
   core.String key;
 
-  /** A warning data value corresponding to the key. */
+  /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
 
 
@@ -8051,12 +8746,12 @@ class AddressesScopedListWarningData {
 
 
 /**
- * Informational warning which replaces the list of addresses when the list is
- * empty.
+ * [Output Only] Informational warning which replaces the list of addresses when
+ * the list is empty.
  */
 class AddressesScopedListWarning {
   /**
-   * The warning type identifier for this warning.
+   * [Output Only] The warning type identifier for this warning.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -8069,14 +8764,15 @@ class AddressesScopedListWarning {
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
    */
   core.String code;
 
-  /** Metadata for this warning in 'key: value' format. */
+  /** [Output Only] Metadata for this warning in key: value format. */
   core.List<AddressesScopedListWarningData> data;
 
-  /** Optional human-readable details for this warning. */
+  /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
 
 
@@ -8110,14 +8806,13 @@ class AddressesScopedListWarning {
 }
 
 
-/** Not documented yet. */
 class AddressesScopedList {
-  /** List of addresses contained in this scope. */
+  /** [Output Only] List of addresses contained in this scope. */
   core.List<Address> addresses;
 
   /**
-   * Informational warning which replaces the list of addresses when the list is
-   * empty.
+   * [Output Only] Informational warning which replaces the list of addresses
+   * when the list is empty.
    */
   AddressesScopedListWarning warning;
 
@@ -8149,63 +8844,82 @@ class AddressesScopedList {
 /** An instance-attached disk resource. */
 class AttachedDisk {
   /**
-   * Whether the disk will be auto-deleted when the instance is deleted (but not
-   * when the disk is detached from the instance).
+   * Specifies whether the disk will be auto-deleted when the instance is
+   * deleted (but not when the disk is detached from the instance).
    */
   core.bool autoDelete;
 
   /**
-   * Indicates that this is a boot disk. VM will use the first partition of the
-   * disk for its root filesystem.
+   * Indicates that this is a boot disk. The virtual machine will use the first
+   * partition of the disk for its root filesystem.
    */
   core.bool boot;
 
   /**
-   * Persistent disk only; must be unique within the instance when specified.
-   * This represents a unique device name that is reflected into the /dev/ tree
-   * of a Linux operating system running within the instance. If not specified,
-   * a default will be chosen by the system.
+   * Specifies a unique device name of your choice that is reflected into the
+   * /dev/ tree of a Linux operating system running within the instance. This
+   * name can be used to reference the device for mounting, resizing, and so on,
+   * from within the instance.
+   *
+   * If not specified, the server chooses a default device name to apply to this
+   * disk, in the form persistent-disks-x, where x is a number assigned by
+   * Google Compute Engine. This field is only applicable for persistent disks.
    */
   core.String deviceName;
 
   /**
-   * A zero-based index to assign to this disk, where 0 is reserved for the boot
-   * disk. If not specified, the server will choose an appropriate value (output
-   * only).
+   * Assigns a zero-based index to this disk, where 0 is reserved for the boot
+   * disk. For example, if you have many disks attached to an instance, each
+   * disk would have a unique index number. If not specified, the server will
+   * choose an appropriate value.
    */
   core.int index;
 
-  /** Initialization parameters. */
+  /**
+   * [Input Only] Specifies the parameters for a new disk that will be created
+   * alongside the new instance. Use initialization parameters to create boot
+   * disks or local SSDs attached to the new instance.
+   *
+   * This property is mutually exclusive with the source property; you can only
+   * define one or the other, but not both.
+   */
   AttachedDiskInitializeParams initializeParams;
 
   /**
-   * Not documented yet.
+   *
    * Possible string values are:
    * - "NVME"
    * - "SCSI"
    */
   core.String interface;
 
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#attachedDisk for
+   * attached disks.
+   */
   core.String kind;
 
-  /** Public visible licenses. */
+  /** [Output Only] Any valid publicly visible licenses. */
   core.List<core.String> licenses;
 
   /**
-   * The mode in which to attach this disk, either "READ_WRITE" or "READ_ONLY".
+   * The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If
+   * not specified, the default is to attach the disk in READ_WRITE mode.
    * Possible string values are:
    * - "READ_ONLY"
    * - "READ_WRITE"
    */
   core.String mode;
 
-  /** Persistent disk only; the URL of the persistent disk resource. */
+  /**
+   * Specifies a valid partial or full URL to an existing Persistent Disk
+   * resource. This field is only applicable for persistent disks.
+   */
   core.String source;
 
   /**
-   * Type of the disk, either "SCRATCH" or "PERSISTENT". Note that persistent
-   * disks must be created before you can specify them here.
+   * Specifies the type of the disk, either SCRATCH or PERSISTENT. If not
+   * specified, the default is PERSISTENT.
    * Possible string values are:
    * - "PERSISTENT"
    * - "SCRATCH"
@@ -8292,25 +9006,55 @@ class AttachedDisk {
 
 
 /**
- * Initialization parameters for the new disk (input-only). Can only be
- * specified on the boot disk or local SSDs. Mutually exclusive with 'source'.
+ * [Input Only] Specifies the parameters for a new disk that will be created
+ * alongside the new instance. Use initialization parameters to create boot
+ * disks or local SSDs attached to the new instance.
+ *
+ * This property is mutually exclusive with the source property; you can only
+ * define one or the other, but not both.
  */
 class AttachedDiskInitializeParams {
   /**
-   * Name of the disk (when not provided defaults to the name of the instance).
+   * Specifies the disk name. If not specified, the default is to use the name
+   * of the instance.
    */
   core.String diskName;
 
-  /** Size of the disk in base-2 GB. */
+  /** Specifies the size of the disk in base-2 GB. */
   core.String diskSizeGb;
 
   /**
-   * URL of the disk type resource describing which disk type to use to create
-   * the disk; provided by the client when the disk is created.
+   * Specifies the disk type to use to create the instance. If not specified,
+   * the default is pd-standard, specified using the full URL. For example:
+   *
+   * https://www.googleapis.com/compute/v1/projects/project/zones/zone/diskTypes/pd-standard
+   *
+   * Other values include pd-ssd and local-ssd. If you define this field, you
+   * can provide either the full or partial URL. For example, the following are
+   * valid values:
+   * -
+   * https://www.googleapis.com/compute/v1/projects/project/zones/zone/diskTypes/diskType
+   * - projects/project/zones/zone/diskTypes/diskType
+   * - zones/zone/diskTypes/diskType
    */
   core.String diskType;
 
-  /** The source image used to create this disk. */
+  /**
+   * A source image used to create the disk. You can provide a private (custom)
+   * image, and Compute Engine will use the corresponding image from your
+   * project. For example:
+   *
+   * global/images/my-private-image
+   *
+   * Or you can provide an image from a publicly-available project. For example,
+   * to use a Debian image from the debian-cloud project, make sure to include
+   * the project in the URL:
+   *
+   * projects/debian-cloud/global/images/debian-7-wheezy-vYYYYMMDD
+   *
+   * where vYYYYMMDD is the image version. The fully-qualified URL will also
+   * work in both cases.
+   */
   core.String sourceImage;
 
 
@@ -8525,7 +9269,7 @@ class BackendService {
   core.String portName;
 
   /**
-   * Not documented yet.
+   *
    * Possible string values are:
    * - "HTTP"
    */
@@ -8631,9 +9375,7 @@ class BackendService {
 }
 
 
-/** Not documented yet. */
 class BackendServiceGroupHealth {
-  /** Not documented yet. */
   core.List<HealthStatus> healthStatus;
 
   /** Type of resource. */
@@ -8747,17 +9489,18 @@ class DeprecationStatus {
   core.String obsolete;
 
   /**
-   * A URL of the suggested replacement for the deprecated resource. The
-   * deprecated resource and its replacement must be resources of the same kind.
+   * The URL of the suggested replacement for a deprecated resource. The
+   * suggested replacement resource must be the same kind of resource as the
+   * deprecated resource.
    */
   core.String replacement;
 
   /**
-   * The deprecation state. Can be "DEPRECATED", "OBSOLETE", or "DELETED".
-   * Operations which create a new resource using a "DEPRECATED" resource will
-   * return successfully, but with a warning indicating the deprecated resource
-   * and recommending its replacement. New uses of "OBSOLETE" or "DELETED"
-   * resources will result in an error.
+   * The deprecation state of this resource. This can be DEPRECATED, OBSOLETE,
+   * or DELETED. Operations which create a new resource using a DEPRECATED
+   * resource will return successfully, but with a warning indicating the
+   * deprecated resource and recommending its replacement. Operations which use
+   * OBSOLETE or DELETED resources will be rejected and result in an error.
    * Possible string values are:
    * - "DELETED"
    * - "DEPRECATED"
@@ -8808,9 +9551,9 @@ class DeprecationStatus {
 }
 
 
-/** A persistent disk resource. */
+/** A Disk resource. */
 class Disk {
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
 
   /**
@@ -8820,57 +9563,98 @@ class Disk {
   core.String description;
 
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** Type of the resource. */
+  /** [Output Only] Type of the resource. Always compute#disk for disks. */
   core.String kind;
 
-  /** Public visible licenses. */
+  /** Any applicable publicly visible licenses. */
   core.List<core.String> licenses;
 
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
 
   /** Internal use only. */
   core.String options;
 
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server-defined fully-qualified URL for this resource. */
   core.String selfLink;
 
   /**
-   * Size of the persistent disk, specified in GB. This parameter is optional
-   * when creating a disk from a disk image or a snapshot, otherwise it is
-   * required.
+   * Size of the persistent disk, specified in GB. You can specify this field
+   * when creating a persistent disk using the sourceImage or sourceSnapshot
+   * parameter, or specify it alone to create an empty persistent disk.
+   *
+   * If you specify this field along with sourceImage or sourceSnapshot, the
+   * value of sizeGb must not be less than the size of the sourceImage or the
+   * size of the snapshot.
    */
   core.String sizeGb;
 
-  /** The source image used to create this disk. */
+  /**
+   * The source image used to create this disk. If the source image is deleted
+   * from the system, this field will not be set, even if an image with the same
+   * name has been re-created.
+   *
+   * When creating a disk, you can provide a private (custom) image using the
+   * following input, and Compute Engine will use the corresponding image from
+   * your project. For example:
+   *
+   * global/images/my-private-image
+   *
+   * Or you can provide an image from a publicly-available project. For example,
+   * to use a Debian image from the debian-cloud project, make sure to include
+   * the project in the URL:
+   *
+   * projects/debian-cloud/global/images/debian-7-wheezy-vYYYYMMDD
+   *
+   * where vYYYYMMDD is the image version. The fully-qualified URL will also
+   * work in both cases.
+   */
   core.String sourceImage;
 
   /**
-   * The 'id' value of the image used to create this disk. This value may be
-   * used to determine whether the disk was created from the current or a
-   * previous instance of a given image.
+   * The ID value of the image used to create this disk. This value identifies
+   * the exact image that was used to create this persistent disk. For example,
+   * if you created the persistent disk from an image that was later deleted and
+   * recreated under the same name, the source image ID would identify the exact
+   * version of the image that was used.
    */
   core.String sourceImageId;
 
-  /** The source snapshot used to create this disk. */
+  /**
+   * The source snapshot used to create this disk. You can provide this as a
+   * partial or full URL to the resource. For example, the following are valid
+   * values:
+   * -
+   * https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot
+   * - projects/project/global/snapshots/snapshot
+   * - global/snapshots/snapshot
+   */
   core.String sourceSnapshot;
 
   /**
-   * The 'id' value of the snapshot used to create this disk. This value may be
-   * used to determine whether the disk was created from the current or a
-   * previous instance of a given disk snapshot.
+   * [Output Only] The unique ID of the snapshot used to create this disk. This
+   * value identifies the exact snapshot that was used to create this persistent
+   * disk. For example, if you created the persistent disk from a snapshot that
+   * was later deleted and recreated under the same name, the source snapshot ID
+   * would identify the exact version of the snapshot that was used.
    */
   core.String sourceSnapshotId;
 
   /**
-   * The status of disk creation (output only).
+   * [Output Only] The status of disk creation. Applicable statuses includes:
+   * CREATING, FAILED, READY, RESTORING.
    * Possible string values are:
    * - "CREATING"
    * - "FAILED"
@@ -8885,7 +9669,7 @@ class Disk {
    */
   core.String type;
 
-  /** URL of the zone where the disk resides (output only). */
+  /** [Output Only] URL of the zone where the disk resides. */
   core.String zone;
 
 
@@ -8997,23 +9781,25 @@ class Disk {
 }
 
 
-/** Not documented yet. */
 class DiskAggregatedList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A map of scoped disk lists. */
+  /** [Output Only] A map of scoped disk lists. */
   core.Map<core.String, DisksScopedList> items;
 
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#diskAggregatedList for
+   * aggregated lists of persistent disks.
+   */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
 
@@ -9024,7 +9810,7 @@ class DiskAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = common_internal.mapMap(_json["items"], (item) => new DisksScopedList.fromJson(item));
+      items = commons.mapMap(_json["items"], (item) => new DisksScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -9043,7 +9829,7 @@ class DiskAggregatedList {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = common_internal.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -9059,23 +9845,25 @@ class DiskAggregatedList {
 }
 
 
-/** Contains a list of persistent disk resources. */
+/** A list of Disk resources. */
 class DiskList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A list of Disk resources. */
+  /** [Output Only] A list of persistent disks. */
   core.List<Disk> items;
 
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#diskList for lists of disks.
+   */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
 
@@ -9121,40 +9909,88 @@ class DiskList {
 }
 
 
+class DiskMoveRequest {
+  /**
+   * The URL of the destination zone to move the disk to. This can be a full or
+   * partial URL. For example, the following are all valid URLs to a zone:
+   * - https://www.googleapis.com/compute/v1/projects/project/zones/zone
+   * - projects/project/zones/zone
+   * - zones/zone
+   */
+  core.String destinationZone;
+
+  /**
+   * The URL of the target disk to move. This can be a full or partial URL. For
+   * example, the following are all valid URLs to a disk:
+   * -
+   * https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+   * - projects/project/zones/zone/disks/disk
+   * - zones/zone/disks/disk
+   */
+  core.String targetDisk;
+
+
+  DiskMoveRequest();
+
+  DiskMoveRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("destinationZone")) {
+      destinationZone = _json["destinationZone"];
+    }
+    if (_json.containsKey("targetDisk")) {
+      targetDisk = _json["targetDisk"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (destinationZone != null) {
+      _json["destinationZone"] = destinationZone;
+    }
+    if (targetDisk != null) {
+      _json["targetDisk"] = targetDisk;
+    }
+    return _json;
+  }
+}
+
+
 /** A disk type resource. */
 class DiskType {
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
 
-  /** Server defined default disk size in gb (output only). */
+  /** [Output Only] Server defined default disk size in GB. */
   core.String defaultDiskSizeGb;
 
-  /** The deprecation status associated with this disk type. */
+  /** [Output Only] The deprecation status associated with this disk type. */
   DeprecationStatus deprecated;
 
-  /** An optional textual description of the resource. */
+  /** [Output Only] An optional textual description of the resource. */
   core.String description;
 
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#diskType for disk types.
+   */
   core.String kind;
 
-  /** Name of the resource. */
+  /** [Output Only] Name of the resource. */
   core.String name;
 
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
 
   /**
-   * An optional textual descroption of the valid disk size, e.g., "10GB-10TB".
+   * [Output Only] An optional textual description of the valid disk size, such
+   * as "10GB-10TB".
    */
   core.String validDiskSize;
 
-  /** Url of the zone where the disk type resides (output only). */
+  /** [Output Only] URL of the zone where the disk type resides. */
   core.String zone;
 
 
@@ -9230,23 +10066,22 @@ class DiskType {
 }
 
 
-/** Not documented yet. */
 class DiskTypeAggregatedList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A map of scoped disk type lists. */
+  /** [Output Only] A map of scoped disk type lists. */
   core.Map<core.String, DiskTypesScopedList> items;
 
-  /** Type of resource. */
+  /** [Output Only] Type of resource. Always compute#diskTypeAggregatedList. */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
 
@@ -9257,7 +10092,7 @@ class DiskTypeAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = common_internal.mapMap(_json["items"], (item) => new DiskTypesScopedList.fromJson(item));
+      items = commons.mapMap(_json["items"], (item) => new DiskTypesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -9276,7 +10111,7 @@ class DiskTypeAggregatedList {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = common_internal.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -9295,20 +10130,22 @@ class DiskTypeAggregatedList {
 /** Contains a list of disk type resources. */
 class DiskTypeList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A list of DiskType resources. */
+  /** [Output Only] A list of Disk Type resources. */
   core.List<DiskType> items;
 
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#diskTypeList for disk types.
+   */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
 
@@ -9354,12 +10191,11 @@ class DiskTypeList {
 }
 
 
-/** Not documented yet. */
 class DiskTypesScopedListWarningData {
-  /** A key for the warning data. */
+  /** [Output Only] A key for the warning data. */
   core.String key;
 
-  /** A warning data value corresponding to the key. */
+  /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
 
 
@@ -9388,12 +10224,12 @@ class DiskTypesScopedListWarningData {
 
 
 /**
- * Informational warning which replaces the list of disk types when the list is
- * empty.
+ * [Output Only] Informational warning which replaces the list of disk types
+ * when the list is empty.
  */
 class DiskTypesScopedListWarning {
   /**
-   * The warning type identifier for this warning.
+   * [Output Only] The warning type identifier for this warning.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -9406,14 +10242,15 @@ class DiskTypesScopedListWarning {
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
    */
   core.String code;
 
-  /** Metadata for this warning in 'key: value' format. */
+  /** [Output Only] Metadata for this warning in key: value format. */
   core.List<DiskTypesScopedListWarningData> data;
 
-  /** Optional human-readable details for this warning. */
+  /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
 
 
@@ -9447,14 +10284,13 @@ class DiskTypesScopedListWarning {
 }
 
 
-/** Not documented yet. */
 class DiskTypesScopedList {
-  /** List of disk types contained in this scope. */
+  /** [Output Only] List of disk types contained in this scope. */
   core.List<DiskType> diskTypes;
 
   /**
-   * Informational warning which replaces the list of disk types when the list
-   * is empty.
+   * [Output Only] Informational warning which replaces the list of disk types
+   * when the list is empty.
    */
   DiskTypesScopedListWarning warning;
 
@@ -9483,12 +10319,11 @@ class DiskTypesScopedList {
 }
 
 
-/** Not documented yet. */
 class DisksScopedListWarningData {
-  /** A key for the warning data. */
+  /** [Output Only] A key for the warning data. */
   core.String key;
 
-  /** A warning data value corresponding to the key. */
+  /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
 
 
@@ -9517,12 +10352,12 @@ class DisksScopedListWarningData {
 
 
 /**
- * Informational warning which replaces the list of disks when the list is
- * empty.
+ * [Output Only] Informational warning which replaces the list of disks when the
+ * list is empty.
  */
 class DisksScopedListWarning {
   /**
-   * The warning type identifier for this warning.
+   * [Output Only] The warning type identifier for this warning.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -9535,14 +10370,15 @@ class DisksScopedListWarning {
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
    */
   core.String code;
 
-  /** Metadata for this warning in 'key: value' format. */
+  /** [Output Only] Metadata for this warning in key: value format. */
   core.List<DisksScopedListWarningData> data;
 
-  /** Optional human-readable details for this warning. */
+  /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
 
 
@@ -9576,14 +10412,13 @@ class DisksScopedListWarning {
 }
 
 
-/** Not documented yet. */
 class DisksScopedList {
-  /** List of disks contained in this scope. */
+  /** [Output Only] List of disks contained in this scope. */
   core.List<Disk> disks;
 
   /**
-   * Informational warning which replaces the list of disks when the list is
-   * empty.
+   * [Output Only] Informational warning which replaces the list of disks when
+   * the list is empty.
    */
   DisksScopedListWarning warning;
 
@@ -9612,22 +10447,21 @@ class DisksScopedList {
 }
 
 
-/** Not documented yet. */
 class FirewallAllowed {
   /**
-   * Required; this is the IP protocol that is allowed for this rule. This can
-   * either be one of the following well known protocol strings ["tcp", "udp",
-   * "icmp", "esp", "ah", "sctp"], or the IP protocol number.
+   * The IP protocol that is allowed for this rule. The protocol type is
+   * required when creating a firewall. This value can either be one of the
+   * following well known protocol strings (tcp, udp, icmp, esp, ah, sctp), or
+   * the IP protocol number.
    */
   core.String IPProtocol;
 
   /**
-   * An optional list of ports which are allowed. It is an error to specify this
-   * for any protocol that isn't UDP or TCP. Each entry must be either an
-   * integer or a range. If not specified, connections through any port are
-   * allowed.
+   * An optional list of ports which are allowed. This field is only applicable
+   * for UDP or TCP protocol. Each entry must be either an integer or a range.
+   * If not specified, connections through any port are allowed
    *
-   * Example inputs include: ["22"], ["80","443"] and ["12345-12349"].
+   * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
    */
   core.List<core.String> ports;
 
@@ -9656,7 +10490,7 @@ class FirewallAllowed {
 }
 
 
-/** A firewall resource. */
+/** A Firewall resource. */
 class Firewall {
   /**
    * The list of rules specified by this firewall. Each rule specifies a
@@ -9664,7 +10498,7 @@ class Firewall {
    */
   core.List<FirewallAllowed> allowed;
 
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339text format. */
   core.String creationTimestamp;
 
   /**
@@ -9674,46 +10508,67 @@ class Firewall {
   core.String description;
 
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** Type of the resource. */
+  /**
+   * [Output Ony] Type of the resource. Always compute#firewall for firewall
+   * rules.
+   */
   core.String kind;
 
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
 
   /**
-   * URL of the network to which this firewall is applied; provided by the
-   * client when the firewall is created.
+   * URL of the network resource for this firewall rule. This field is required
+   * for creating an instance but optional when creating a firewall rule. If not
+   * specified when creating a firewall rule, the default network is used:
+   * global/networks/default
+   * If you choose to specify this property, you can specify the network as a
+   * full or partial URL. For example, the following are all valid URLs:
+   * -
+   * https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network
+   * - projects/myproject/global/networks/my-network
+   * - global/networks/default
    */
   core.String network;
 
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
 
   /**
-   * A list of IP address blocks expressed in CIDR format which this rule
-   * applies to. One or both of sourceRanges and sourceTags may be set; an
-   * inbound connection is allowed if either the range or the tag of the source
-   * matches.
+   * The IP address blocks that this rule applies to, expressed in CIDR format.
+   * One or both of sourceRanges and sourceTags may be set.
+   *
+   * If both properties are set, an inbound connection is allowed if the range
+   * or the tag of the source matches the sourceRanges OR matches the sourceTags
+   * property; the connection does not need to match both properties.
    */
   core.List<core.String> sourceRanges;
 
   /**
    * A list of instance tags which this rule applies to. One or both of
-   * sourceRanges and sourceTags may be set; an inbound connection is allowed if
-   * either the range or the tag of the source matches.
+   * sourceRanges and sourceTags may be set.
+   *
+   * If both properties are set, an inbound connection is allowed if the range
+   * or the tag of the source matches the sourceRanges OR matches the sourceTags
+   * property; the connection does not need to match both properties.
    */
   core.List<core.String> sourceTags;
 
   /**
    * A list of instance tags indicating sets of instances located on network
-   * which may make network connections as specified in allowed. If no
+   * which may make network connections as specified in allowed[]. If no
    * targetTags are specified, the firewall rule applies to all instances on the
    * specified network.
    */
@@ -9798,23 +10653,26 @@ class Firewall {
 }
 
 
-/** Contains a list of firewall resources. */
+/** Contains a list of Firewall resources. */
 class FirewallList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A list of Firewall resources. */
+  /** [Output Only] A list of Firewall resources. */
   core.List<Firewall> items;
 
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#firewallList for lists of
+   * firewalls.
+   */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
 
@@ -10015,7 +10873,6 @@ class ForwardingRule {
 }
 
 
-/** Not documented yet. */
 class ForwardingRuleAggregatedList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
@@ -10042,7 +10899,7 @@ class ForwardingRuleAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = common_internal.mapMap(_json["items"], (item) => new ForwardingRulesScopedList.fromJson(item));
+      items = commons.mapMap(_json["items"], (item) => new ForwardingRulesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -10061,7 +10918,7 @@ class ForwardingRuleAggregatedList {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = common_internal.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -10139,12 +10996,11 @@ class ForwardingRuleList {
 }
 
 
-/** Not documented yet. */
 class ForwardingRulesScopedListWarningData {
-  /** A key for the warning data. */
+  /** [Output Only] A key for the warning data. */
   core.String key;
 
-  /** A warning data value corresponding to the key. */
+  /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
 
 
@@ -10178,7 +11034,7 @@ class ForwardingRulesScopedListWarningData {
  */
 class ForwardingRulesScopedListWarning {
   /**
-   * The warning type identifier for this warning.
+   * [Output Only] The warning type identifier for this warning.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -10191,14 +11047,15 @@ class ForwardingRulesScopedListWarning {
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
    */
   core.String code;
 
-  /** Metadata for this warning in 'key: value' format. */
+  /** [Output Only] Metadata for this warning in key: value format. */
   core.List<ForwardingRulesScopedListWarningData> data;
 
-  /** Optional human-readable details for this warning. */
+  /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
 
 
@@ -10232,7 +11089,6 @@ class ForwardingRulesScopedListWarning {
 }
 
 
-/** Not documented yet. */
 class ForwardingRulesScopedList {
   /** List of forwarding rules contained in this scope. */
   core.List<ForwardingRule> forwardingRules;
@@ -10268,9 +11124,7 @@ class ForwardingRulesScopedList {
 }
 
 
-/** Not documented yet. */
 class HealthCheckReference {
-  /** Not documented yet. */
   core.String healthCheck;
 
 
@@ -10292,7 +11146,6 @@ class HealthCheckReference {
 }
 
 
-/** Not documented yet. */
 class HealthStatus {
   /**
    * Health state of the instance.
@@ -10353,7 +11206,6 @@ class HealthStatus {
  * select the BackendService.
  */
 class HostRule {
-  /** Not documented yet. */
   core.String description;
 
   /**
@@ -10628,12 +11480,12 @@ class HttpHealthCheckList {
 }
 
 
-/** The raw disk image parameters. */
+/** The parameters of the raw disk image. */
 class ImageRawDisk {
   /**
-   * The format used to encode and transmit the block device. Should be TAR.
-   * This is just a container and transmission format and not a runtime format.
-   * Provided by the client when the disk image is created.
+   * The format used to encode and transmit the block device, which should be
+   * TAR. This is just a container and transmission format and not a runtime
+   * format. Provided by the client when the disk image is created.
    * Possible string values are:
    * - "TAR"
    */
@@ -10646,8 +11498,8 @@ class ImageRawDisk {
   core.String sha1Checksum;
 
   /**
-   * The full Google Cloud Storage URL where the disk image is stored; provided
-   * by the client when the disk image is created.
+   * The full Google Cloud Storage URL where the disk image is stored. You must
+   * provide either this property or the sourceDisk property but not both.
    */
   core.String source;
 
@@ -10682,14 +11534,14 @@ class ImageRawDisk {
 }
 
 
-/** A disk image resource. */
+/** An Image resource. */
 class Image {
   /**
    * Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
    */
   core.String archiveSizeBytes;
 
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
 
   /** The deprecation status associated with this image. */
@@ -10701,56 +11553,69 @@ class Image {
    */
   core.String description;
 
-  /** Size of the image when restored onto a disk (in GiB). */
+  /** Size of the image when restored onto a persistent disk (in GB). */
   core.String diskSizeGb;
 
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** Type of the resource. */
+  /** [Output Only] Type of the resource. Always compute#image for images. */
   core.String kind;
 
-  /** Public visible licenses. */
+  /** Any applicable publicly visible licenses. */
   core.List<core.String> licenses;
 
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
 
-  /** The raw disk image parameters. */
+  /** The parameters of the raw disk image. */
   ImageRawDisk rawDisk;
 
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
 
-  /** The source disk used to create this image. */
+  /**
+   * URL of the The source disk used to create this image. This can be a full or
+   * valid partial URL. You must provide either this property or the
+   * rawDisk.source property but not both to create an image. For example, the
+   * following are valid values:
+   * -
+   * https://www.googleapis.com/compute/v1/projects/project/zones/zone/disk/disk
+   * - projects/project/zones/zone/disk/disk
+   * - zones/zone/disks/disk
+   */
   core.String sourceDisk;
 
   /**
-   * The 'id' value of the disk used to create this image. This value may be
-   * used to determine whether the image was taken from the current or a
-   * previous instance of a given disk name.
+   * The ID value of the disk used to create this image. This value may be used
+   * to determine whether the image was taken from the current or a previous
+   * instance of a given disk name.
    */
   core.String sourceDiskId;
 
   /**
-   * Must be "RAW"; provided by the client when the disk image is created.
+   * The type of the image used to create this disk. The default and only value
+   * is RAW
    * Possible string values are:
    * - "RAW"
    */
   core.String sourceType;
 
   /**
-   * Status of the image (output only). It will be one of the following READY -
-   * after image has been successfully created and is ready for use FAILED - if
-   * creating the image fails for some reason PENDING - the image creation is in
-   * progress An image can be used to create other resources suck as instances
-   * only after the image has been successfully created and the status is set to
-   * READY.
+   * [Output Only] The status of the image. An image can be used to create other
+   * resources, such as instances, only after the image has been successfully
+   * created and the status is set to READY. Possible values are FAILED,
+   * PENDING, or READY.
    * Possible string values are:
    * - "FAILED"
    * - "PENDING"
@@ -10861,7 +11726,7 @@ class Image {
 }
 
 
-/** Contains a list of disk image resources. */
+/** Contains a list of Image resources. */
 class ImageList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
@@ -10923,18 +11788,20 @@ class ImageList {
 }
 
 
-/** An instance resource. */
+/** An Instance resource. */
 class Instance {
   /**
-   * Allows this instance to send packets with source IP addresses other than
-   * its own and receive packets with destination IP addresses other than its
-   * own. If this instance will be used as an IP gateway or it will be set as
-   * the next-hop in a Route resource, say true. If unsure, leave this set to
-   * false.
+   * Allows this instance to send and receive packets with non-matching
+   * destination or source IPs. This is required if you plan to use this
+   * instance to forward routes. For more information, see Enabling IP
+   * Forwarding.
    */
   core.bool canIpForward;
 
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] The CPU platform used by this instance. */
+  core.String cpuPlatform;
+
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
 
   /**
@@ -10950,56 +11817,66 @@ class Instance {
   core.List<AttachedDisk> disks;
 
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#instance for instances.
+   */
   core.String kind;
 
   /**
-   * URL of the machine type resource describing which machine type to use to
-   * host the instance; provided by the client when the instance is created.
+   * Full or partial URL of the machine type resource to use for this instance.
+   * This is provided by the client when the instance is created. For example,
+   * the following is a valid partial url:
+   *
+   * zones/zone/machineTypes/machine-type
    */
   core.String machineType;
 
   /**
-   * Metadata key/value pairs assigned to this instance. Consists of custom
-   * metadata or predefined keys; see Instance documentation for more
-   * information.
+   * The metadata key/value pairs assigned to this instance. This includes
+   * custom metadata and predefined keys.
    */
   Metadata metadata;
 
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
 
   /**
-   * Array of configurations for this interface. This specifies how this
+   * An array of configurations for this interface. This specifies how this
    * interface is configured to interact with other network services, such as
-   * connecting to the internet. Currently, ONE_TO_ONE_NAT is the only access
-   * config supported. If there are no accessConfigs specified, then this
-   * instance will have no external internet access.
+   * connecting to the internet.
    */
   core.List<NetworkInterface> networkInterfaces;
 
   /** Scheduling options for this instance. */
   Scheduling scheduling;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
   /**
-   * A list of service accounts each with specified scopes, for which access
-   * tokens are to be made available to the instance through metadata queries.
+   * A list of service accounts, with their specified scopes, authorized for
+   * this instance. Service accounts generate access tokens that can be accessed
+   * through the metadata server and used to authenticate applications on the
+   * instance. See Authenticating from Google Compute Engine for more
+   * information.
    */
   core.List<ServiceAccount> serviceAccounts;
 
   /**
-   * Instance status. One of the following values: "PROVISIONING", "STAGING",
-   * "RUNNING", "STOPPING", "STOPPED", "TERMINATED" (output only).
+   * [Output Only] The status of the instance. One of the following values:
+   * PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, TERMINATED.
    * Possible string values are:
    * - "PROVISIONING"
    * - "RUNNING"
@@ -11010,18 +11887,18 @@ class Instance {
    */
   core.String status;
 
-  /** An optional, human-readable explanation of the status (output only). */
+  /** [Output Only] An optional, human-readable explanation of the status. */
   core.String statusMessage;
 
   /**
-   * A list of tags to be applied to this instance. Used to identify valid
-   * sources or targets for network firewalls. Provided by the client on
-   * instance creation. The tags can be later modified by the setTags method.
-   * Each tag within the list must comply with RFC1035.
+   * A list of tags to appy to this instance. Tags are used to identify valid
+   * sources or targets for network firewalls and are specified by the client
+   * during instance creation. The tags can be later modified by the setTags
+   * method. Each tag within the list must comply with RFC1035.
    */
   Tags tags;
 
-  /** URL of the zone where the instance resides (output only). */
+  /** [Output Only] URL of the zone where the instance resides. */
   core.String zone;
 
 
@@ -11030,6 +11907,9 @@ class Instance {
   Instance.fromJson(core.Map _json) {
     if (_json.containsKey("canIpForward")) {
       canIpForward = _json["canIpForward"];
+    }
+    if (_json.containsKey("cpuPlatform")) {
+      cpuPlatform = _json["cpuPlatform"];
     }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
@@ -11086,6 +11966,9 @@ class Instance {
     if (canIpForward != null) {
       _json["canIpForward"] = canIpForward;
     }
+    if (cpuPlatform != null) {
+      _json["cpuPlatform"] = cpuPlatform;
+    }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -11139,23 +12022,25 @@ class Instance {
 }
 
 
-/** Not documented yet. */
 class InstanceAggregatedList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A map of scoped instance lists. */
+  /** [Output Only] A map of scoped instance lists. */
   core.Map<core.String, InstancesScopedList> items;
 
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#instanceAggregatedList for
+   * aggregated lists of Instance resources.
+   */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
 
@@ -11166,7 +12051,7 @@ class InstanceAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = common_internal.mapMap(_json["items"], (item) => new InstancesScopedList.fromJson(item));
+      items = commons.mapMap(_json["items"], (item) => new InstancesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -11185,7 +12070,7 @@ class InstanceAggregatedList {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = common_internal.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -11204,20 +12089,23 @@ class InstanceAggregatedList {
 /** Contains a list of instance resources. */
 class InstanceList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A list of Instance resources. */
+  /** [Output Only] A list of Instance resources. */
   core.List<Instance> items;
 
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#instanceList for lists of
+   * Instance resources.
+   */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
 
@@ -11263,7 +12151,51 @@ class InstanceList {
 }
 
 
-/** Not documented yet. */
+class InstanceMoveRequest {
+  /**
+   * The URL of the destination zone to move the instance to. This can be a full
+   * or partial URL. For example, the following are all valid URLs to a zone:
+   * - https://www.googleapis.com/compute/v1/projects/project/zones/zone
+   * - projects/project/zones/zone
+   * - zones/zone
+   */
+  core.String destinationZone;
+
+  /**
+   * The URL of the target instance to move. This can be a full or partial URL.
+   * For example, the following are all valid URLs to an instance:
+   * -
+   * https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
+   * - projects/project/zones/zone/instances/instance
+   * - zones/zone/instances/instance
+   */
+  core.String targetInstance;
+
+
+  InstanceMoveRequest();
+
+  InstanceMoveRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("destinationZone")) {
+      destinationZone = _json["destinationZone"];
+    }
+    if (_json.containsKey("targetInstance")) {
+      targetInstance = _json["targetInstance"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (destinationZone != null) {
+      _json["destinationZone"] = destinationZone;
+    }
+    if (targetInstance != null) {
+      _json["targetInstance"] = targetInstance;
+    }
+    return _json;
+  }
+}
+
+
 class InstanceProperties {
   /**
    * Allows instances created based on this template to send packets with source
@@ -11395,9 +12327,7 @@ class InstanceProperties {
 }
 
 
-/** Not documented yet. */
 class InstanceReference {
-  /** Not documented yet. */
   core.String instance;
 
 
@@ -11568,12 +12498,11 @@ class InstanceTemplateList {
 }
 
 
-/** Not documented yet. */
 class InstancesScopedListWarningData {
-  /** A key for the warning data. */
+  /** [Output Only] A key for the warning data. */
   core.String key;
 
-  /** A warning data value corresponding to the key. */
+  /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
 
 
@@ -11602,12 +12531,12 @@ class InstancesScopedListWarningData {
 
 
 /**
- * Informational warning which replaces the list of instances when the list is
- * empty.
+ * [Output Only] Informational warning which replaces the list of instances when
+ * the list is empty.
  */
 class InstancesScopedListWarning {
   /**
-   * The warning type identifier for this warning.
+   * [Output Only] The warning type identifier for this warning.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -11620,14 +12549,15 @@ class InstancesScopedListWarning {
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
    */
   core.String code;
 
-  /** Metadata for this warning in 'key: value' format. */
+  /** [Output Only] Metadata for this warning in key: value format. */
   core.List<InstancesScopedListWarningData> data;
 
-  /** Optional human-readable details for this warning. */
+  /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
 
 
@@ -11661,14 +12591,13 @@ class InstancesScopedListWarning {
 }
 
 
-/** Not documented yet. */
 class InstancesScopedList {
-  /** List of instances contained in this scope. */
+  /** [Output Only] List of instances contained in this scope. */
   core.List<Instance> instances;
 
   /**
-   * Informational warning which replaces the list of instances when the list is
-   * empty.
+   * [Output Only] Informational warning which replaces the list of instances
+   * when the list is empty.
    */
   InstancesScopedListWarning warning;
 
@@ -11705,16 +12634,16 @@ class License {
    */
   core.bool chargesUseFee;
 
-  /** Type of resource. */
+  /** [Output Only] Type of resource. Always compute#license for licenses. */
   core.String kind;
 
   /**
-   * Name of the resource; provided by the client when the resource is created.
-   * The name must be 1-63 characters long, and comply with RFC1035.
+   * Name of the resource. The name must be 1-63 characters long, and comply
+   * with RCF1035.
    */
   core.String name;
 
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
 
 
@@ -11754,7 +12683,6 @@ class License {
 }
 
 
-/** Not documented yet. */
 class MachineTypeScratchDisks {
   /** Size of the scratch disk, defined in GB. */
   core.int diskGb;
@@ -11778,18 +12706,20 @@ class MachineTypeScratchDisks {
 }
 
 
-/** A machine type resource. */
+/** A Machine Type resource. */
 class MachineType {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
 
-  /** The deprecation status associated with this machine type. */
+  /**
+   * [Output Only] The deprecation status associated with this machine type.
+   */
   DeprecationStatus deprecated;
 
-  /** An optional textual description of the resource. */
+  /** [Output Only] An optional textual description of the resource. */
   core.String description;
 
-  /** Count of CPUs exposed to the instance. */
+  /** [Output Only] The tumber of CPUs exposed to the instance. */
   core.int guestCpus;
 
   /**
@@ -11797,25 +12727,31 @@ class MachineType {
    */
   core.String id;
 
-  /** Space allotted for the image, defined in GB. */
+  /**
+   * [Deprecated] This property is deprecated and will never be populated with
+   * any relevant values.
+   */
   core.int imageSpaceGb;
 
   /** Type of the resource. */
   core.String kind;
 
-  /** Maximum persistent disks allowed. */
+  /** [Output Only] Maximum persistent disks allowed. */
   core.int maximumPersistentDisks;
 
-  /** Maximum total persistent disks size (GB) allowed. */
+  /** [Output Only] Maximum total persistent disks size (GB) allowed. */
   core.String maximumPersistentDisksSizeGb;
 
-  /** Physical memory assigned to the instance, defined in MB. */
+  /**
+   * [Output Only] The amount of physical memory available to the instance,
+   * defined in MB.
+   */
   core.int memoryMb;
 
-  /** Name of the resource. */
+  /** [Output Only] Name of the resource. */
   core.String name;
 
-  /** List of extended scratch disks assigned to the instance. */
+  /** [Output Only] List of extended scratch disks assigned to the instance. */
   core.List<MachineTypeScratchDisks> scratchDisks;
 
   /** [Output Only] Server defined URL for the resource. */
@@ -11924,23 +12860,25 @@ class MachineType {
 }
 
 
-/** Not documented yet. */
 class MachineTypeAggregatedList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A map of scoped machine type lists. */
+  /** [Output Only] A map of scoped machine type lists. */
   core.Map<core.String, MachineTypesScopedList> items;
 
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#machineTypeAggregatedList
+   * for aggregated lists of machine types.
+   */
   core.String kind;
 
   /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
 
@@ -11951,7 +12889,7 @@ class MachineTypeAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = common_internal.mapMap(_json["items"], (item) => new MachineTypesScopedList.fromJson(item));
+      items = commons.mapMap(_json["items"], (item) => new MachineTypesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -11970,7 +12908,7 @@ class MachineTypeAggregatedList {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = common_internal.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -11986,23 +12924,26 @@ class MachineTypeAggregatedList {
 }
 
 
-/** Contains a list of machine type resources. */
+/** Contains a list of Machine Type resources. */
 class MachineTypeList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A list of MachineType resources. */
+  /** [Output Only] A list of Machine Type resources. */
   core.List<MachineType> items;
 
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#machineTypeList for lists of
+   * machine types.
+   */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
 
@@ -12048,12 +12989,11 @@ class MachineTypeList {
 }
 
 
-/** Not documented yet. */
 class MachineTypesScopedListWarningData {
-  /** A key for the warning data. */
+  /** [Output Only] A key for the warning data. */
   core.String key;
 
-  /** A warning data value corresponding to the key. */
+  /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
 
 
@@ -12082,11 +13022,12 @@ class MachineTypesScopedListWarningData {
 
 
 /**
- * An informational warning that appears when the machine types list is empty.
+ * [Output Only] An informational warning that appears when the machine types
+ * list is empty.
  */
 class MachineTypesScopedListWarning {
   /**
-   * The warning type identifier for this warning.
+   * [Output Only] The warning type identifier for this warning.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -12099,14 +13040,15 @@ class MachineTypesScopedListWarning {
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
    */
   core.String code;
 
-  /** Metadata for this warning in 'key: value' format. */
+  /** [Output Only] Metadata for this warning in key: value format. */
   core.List<MachineTypesScopedListWarningData> data;
 
-  /** Optional human-readable details for this warning. */
+  /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
 
 
@@ -12140,13 +13082,13 @@ class MachineTypesScopedListWarning {
 }
 
 
-/** Not documented yet. */
 class MachineTypesScopedList {
-  /** List of machine types contained in this scope. */
+  /** [Output Only] List of machine types contained in this scope. */
   core.List<MachineType> machineTypes;
 
   /**
-   * An informational warning that appears when the machine types list is empty.
+   * [Output Only] An informational warning that appears when the machine types
+   * list is empty.
    */
   MachineTypesScopedListWarning warning;
 
@@ -12175,7 +13117,6 @@ class MachineTypesScopedList {
 }
 
 
-/** Not documented yet. */
 class MetadataItems {
   /**
    * Key for the metadata entry. Keys must conform to the following regexp:
@@ -12221,9 +13162,11 @@ class MetadataItems {
 /** A metadata key/value entry. */
 class Metadata {
   /**
-   * Fingerprint of this resource. A hash of the metadata's contents. This field
-   * is used for optimistic locking. An up-to-date metadata fingerprint must be
-   * provided in order to modify metadata.
+   * Specifies a fingerprint for this request, which is essentially a hash of
+   * the metadata's contents and used for optimistic locking. The fingerprint is
+   * initially generated by Compute Engine and changes after every request to
+   * modify or update metadata. You must always provide an up-to-date
+   * fingerprint hash in order to update or change metadata.
    */
   core.String fingerprint;
 
@@ -12241,7 +13184,9 @@ class Metadata {
    */
   core.List<MetadataItems> items;
 
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#metadata for metadata.
+   */
   core.String kind;
 
 
@@ -12278,13 +13223,13 @@ class Metadata {
 /** A network resource. */
 class Network {
   /**
-   * Required; The range of internal addresses that are legal on this network.
-   * This range is a CIDR specification, for example: 192.168.0.0/16. Provided
-   * by the client when the network is created.
+   * The range of internal addresses that are legal on this network. This range
+   * is a CIDR specification, for example: 192.168.0.0/16. Provided by the
+   * client when the network is created.
    */
   core.String IPv4Range;
 
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
 
   /**
@@ -12294,28 +13239,34 @@ class Network {
   core.String description;
 
   /**
-   * An optional address that is used for default routing to other networks.
-   * This must be within the range specified by IPv4Range, and is typically the
-   * first usable address in that range. If not specified, the default value is
-   * the first usable address in IPv4Range.
+   * A gateway address for default routing to other networks. This value is read
+   * only and is selected by the Google Compute Engine, typically as the first
+   * usable address in the IPv4Range.
    */
   core.String gatewayIPv4;
 
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#network for networks.
+   */
   core.String kind;
 
   /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
    */
   core.String name;
 
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
 
 
@@ -12382,26 +13333,38 @@ class Network {
 /** A network interface resource attached to an instance. */
 class NetworkInterface {
   /**
-   * Array of configurations for this interface. This specifies how this
-   * interface is configured to interact with other network services, such as
-   * connecting to the internet. Currently, ONE_TO_ONE_NAT is the only access
-   * config supported. If there are no accessConfigs specified, then this
-   * instance will have no external internet access.
+   * An array of configurations for this interface. Currently,
+   * <codeONE_TO_ONE_NAT is the only access config supported. If there are no
+   * accessConfigs specified, then this instance will have no external internet
+   * access.
    */
   core.List<AccessConfig> accessConfigs;
 
   /**
-   * Name of the network interface, determined by the server; for network
-   * devices, these are e.g. eth0, eth1, etc. (output only).
+   * [Output Only] The name of the network interface, generated by the server.
+   * For network devices, these are eth0, eth1, etc.
    */
   core.String name;
 
-  /** URL of the network resource attached to this interface. */
+  /**
+   * URL of the network resource for this instance. This is required for
+   * creating an instance but optional when creating a firewall rule. If not
+   * specified when creating a firewall rule, the default network is used:
+   *
+   * global/networks/default
+   *
+   * If you specify this property, you can specify the network as a full or
+   * partial URL. For example, the following are all valid URLs:
+   * -
+   * https://www.googleapis.com/compute/v1/projects/project/global/networks/network
+   * - projects/project/global/networks/network
+   * - global/networks/default
+   */
   core.String network;
 
   /**
-   * An optional IPV4 internal network address assigned to the instance for this
-   * network interface (output only).
+   * [Output Only] An optional IPV4 internal network address assigned to the
+   * instance for this network interface.
    */
   core.String networkIP;
 
@@ -12442,23 +13405,26 @@ class NetworkInterface {
 }
 
 
-/** Contains a list of network resources. */
+/** Contains a list of Network resources. */
 class NetworkList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A list of Network resources. */
+  /** [Output Only] A list of Network resources. */
   core.List<Network> items;
 
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#networkList for lists of
+   * networks.
+   */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource . */
   core.String selfLink;
 
 
@@ -12504,7 +13470,6 @@ class NetworkList {
 }
 
 
-/** Not documented yet. */
 class OperationErrorErrors {
   /** [Output Only] The error type identifier for this error. */
   core.String code;
@@ -12550,8 +13515,8 @@ class OperationErrorErrors {
 
 
 /**
- * [Output Only] If errors occurred during processing of this operation, this
- * field will be populated.
+ * [Output Only] If errors are generated during processing of the operation,
+ * this field will be populated.
  */
 class OperationError {
   /**
@@ -12579,12 +13544,11 @@ class OperationError {
 }
 
 
-/** Not documented yet. */
 class OperationWarningsData {
-  /** A key for the warning data. */
+  /** [Output Only] A key for the warning data. */
   core.String key;
 
-  /** A warning data value corresponding to the key. */
+  /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
 
 
@@ -12612,10 +13576,9 @@ class OperationWarningsData {
 }
 
 
-/** Not documented yet. */
 class OperationWarnings {
   /**
-   * The warning type identifier for this warning.
+   * [Output Only] The warning type identifier for this warning.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -12628,14 +13591,15 @@ class OperationWarnings {
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
    */
   core.String code;
 
-  /** Metadata for this warning in 'key: value' format. */
+  /** [Output Only] Metadata for this warning in key: value format. */
   core.List<OperationWarningsData> data;
 
-  /** Optional human-readable details for this warning. */
+  /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
 
 
@@ -12671,25 +13635,38 @@ class OperationWarnings {
 
 /** An operation resource, used to manage asynchronous API requests. */
 class Operation {
-  /** Not documented yet. */
+  /**
+   * [Output Only] An optional identifier specified by the client when the
+   * mutation was initiated. Must be unique for all operation resources in the
+   * project
+   */
   core.String clientOperationId;
 
-  /** [Output Only] Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
 
-  /** Not documented yet. */
+  /**
+   * [Output Only] The time that this operation was completed. This is in
+   * RFC3339 text format.
+   */
   core.String endTime;
 
   /**
-   * [Output Only] If errors occurred during processing of this operation, this
-   * field will be populated.
+   * [Output Only] If errors are generated during processing of the operation,
+   * this field will be populated.
    */
   OperationError error;
 
-  /** Not documented yet. */
+  /**
+   * [Output Only] If the operation fails, this field contains the HTTP error
+   * message that was returned, such as NOT FOUND.
+   */
   core.String httpErrorMessage;
 
-  /** Not documented yet. */
+  /**
+   * [Output Only] If the operation fails, this field contains the HTTP error
+   * message that was returned, such as 404.
+   */
   core.int httpErrorStatusCode;
 
   /**
@@ -12698,28 +13675,37 @@ class Operation {
   core.String id;
 
   /**
-   * [Output Only] The time that this operation was requested. This is in RFC
-   * 3339 format.
+   * [Output Only] The time that this operation was requested. This is in
+   * RFC3339 text format.
    */
   core.String insertTime;
 
   /**
-   * [Output Only] Type of the resource. Always kind#operation for Operation
+   * [Output Only] Type of the resource. Always compute#Operation for Operation
    * resources.
    */
   core.String kind;
 
-  /** [Output Only] Name of the resource (output only). */
+  /** [Output Only] Name of the resource. */
   core.String name;
 
-  /** Not documented yet. */
+  /**
+   * [Output Only] Type of the operation, such as insert, update, and delete.
+   */
   core.String operationType;
 
-  /** Not documented yet. */
+  /**
+   * [Output Only] An optional progress indicator that ranges from 0 to 100.
+   * There is no requirement that this be linear or support any granularity of
+   * operations. This should not be used to guess at when the operation will be
+   * complete. This number should be monotonically increasing as the operation
+   * progresses.
+   */
   core.int progress;
 
   /**
-   * [Output Only] URL of the region where the operation resides (output only).
+   * [Output Only] URL of the region where the operation resides. Only
+   * applicable for regional resources.
    */
   core.String region;
 
@@ -12728,13 +13714,13 @@ class Operation {
 
   /**
    * [Output Only] The time that this operation was started by the server. This
-   * is in RFC 3339 format.
+   * is in RFC3339 text format.
    */
   core.String startTime;
 
   /**
    * [Output Only] Status of the operation. Can be one of the following:
-   * "PENDING", "RUNNING", or "DONE".
+   * PENDING, RUNNING, or DONE.
    * Possible string values are:
    * - "DONE"
    * - "PENDING"
@@ -12749,25 +13735,27 @@ class Operation {
   core.String statusMessage;
 
   /**
-   * [Output Only] Unique target id which identifies a particular incarnation of
+   * [Output Only] Unique target ID which identifies a particular incarnation of
    * the target.
    */
   core.String targetId;
 
-  /**
-   * [Output Only] URL of the resource the operation is mutating (output only).
-   */
+  /** [Output Only] URL of the resource the operation is mutating. */
   core.String targetLink;
 
-  /** Not documented yet. */
+  /**
+   * [Output Only] User who requested the operation, for example:
+   * user@example.com.
+   */
   core.String user;
 
-  /** Not documented yet. */
+  /**
+   * [Output Only] If warning messages are generated during processing of the
+   * operation, this field will be populated.
+   */
   core.List<OperationWarnings> warnings;
 
-  /**
-   * [Output Only] URL of the zone where the operation resides (output only).
-   */
+  /** [Output Only] URL of the zone where the operation resides. */
   core.String zone;
 
 
@@ -12915,7 +13903,6 @@ class Operation {
 }
 
 
-/** Not documented yet. */
 class OperationAggregatedList {
   /**
    * [Output Only] Unique identifier for the resource; defined by the server.
@@ -12925,7 +13912,10 @@ class OperationAggregatedList {
   /** [Output Only] A map of scoped operation lists. */
   core.Map<core.String, OperationsScopedList> items;
 
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#operationAggregatedList for
+   * aggregated lists of operations.
+   */
   core.String kind;
 
   /** [Output Only] A token used to continue a truncated list request. */
@@ -12942,7 +13932,7 @@ class OperationAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = common_internal.mapMap(_json["items"], (item) => new OperationsScopedList.fromJson(item));
+      items = commons.mapMap(_json["items"], (item) => new OperationsScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -12961,7 +13951,7 @@ class OperationAggregatedList {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = common_internal.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -12987,7 +13977,10 @@ class OperationList {
   /** [Output Only] The operation resources. */
   core.List<Operation> items;
 
-  /** Type of resource. Always compute#operations for Operations resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#operations for Operations
+   * resource.
+   */
   core.String kind;
 
   /** [Output Only] A token used to continue a truncate. */
@@ -13039,12 +14032,11 @@ class OperationList {
 }
 
 
-/** Not documented yet. */
 class OperationsScopedListWarningData {
-  /** A key for the warning data. */
+  /** [Output Only] A key for the warning data. */
   core.String key;
 
-  /** A warning data value corresponding to the key. */
+  /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
 
 
@@ -13078,7 +14070,7 @@ class OperationsScopedListWarningData {
  */
 class OperationsScopedListWarning {
   /**
-   * The warning type identifier for this warning.
+   * [Output Only] The warning type identifier for this warning.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -13091,14 +14083,15 @@ class OperationsScopedListWarning {
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
    */
   core.String code;
 
-  /** Metadata for this warning in 'key: value' format. */
+  /** [Output Only] Metadata for this warning in key: value format. */
   core.List<OperationsScopedListWarningData> data;
 
-  /** Optional human-readable details for this warning. */
+  /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
 
 
@@ -13132,7 +14125,6 @@ class OperationsScopedListWarning {
 }
 
 
-/** Not documented yet. */
 class OperationsScopedList {
   /** [Output Only] List of operations contained in this scope. */
   core.List<Operation> operations;
@@ -13180,7 +14172,6 @@ class PathMatcher {
    */
   core.String defaultService;
 
-  /** Not documented yet. */
   core.String description;
 
   /** The name to which this PathMatcher is referred by the HostRule. */
@@ -13268,37 +14259,39 @@ class PathRule {
 
 
 /**
- * A project resource. Projects can be created only in the APIs Console. Unless
- * marked otherwise, values can only be modified in the console.
+ * A Project resource. Projects can only be created in the Google Developers
+ * Console. Unless marked otherwise, values can only be modified in the console.
  */
 class Project {
   /**
    * Metadata key/value pairs available to all instances contained in this
-   * project.
+   * project. See Custom metadata for more information.
    */
   Metadata commonInstanceMetadata;
 
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
 
   /** An optional textual description of the resource. */
   core.String description;
 
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#project for projects.
+   */
   core.String kind;
 
   /** Name of the resource. */
   core.String name;
 
-  /** Quotas assigned to this project. */
+  /** [Output Only] Quotas assigned to this project. */
   core.List<Quota> quotas;
 
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
 
   /**
@@ -13375,29 +14368,23 @@ class Project {
 
 /** A quotas entry. */
 class Quota {
-  /** Quota limit for this metric. */
+  /** [Output Only] Quota limit for this metric. */
   core.double limit;
 
   /**
-   * Name of the quota metric.
+   * [Output Only] Name of the quota metric.
    * Possible string values are:
    * - "BACKEND_SERVICES"
    * - "CPUS"
-   * - "DISKS"
    * - "DISKS_TOTAL_GB"
-   * - "EPHEMERAL_ADDRESSES"
    * - "FIREWALLS"
    * - "FORWARDING_RULES"
    * - "HEALTH_CHECKS"
    * - "IMAGES"
-   * - "IMAGES_TOTAL_GB"
    * - "INSTANCES"
    * - "IN_USE_ADDRESSES"
-   * - "KERNELS"
-   * - "KERNELS_TOTAL_GB"
    * - "LOCAL_SSD_TOTAL_GB"
    * - "NETWORKS"
-   * - "OPERATIONS"
    * - "ROUTES"
    * - "SNAPSHOTS"
    * - "SSD_TOTAL_GB"
@@ -13409,7 +14396,7 @@ class Quota {
    */
   core.String metric;
 
-  /** Current usage of this metric. */
+  /** [Output Only] Current usage of this metric. */
   core.double usage;
 
 
@@ -13445,41 +14432,44 @@ class Quota {
 
 /** Region resource. */
 class Region {
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
 
-  /** The deprecation status associated with this region. */
+  /** [Output Only] The deprecation status associated with this region. */
   DeprecationStatus deprecated;
 
-  /** Textual description of the resource. */
+  /** [Output Only] Textual description of the resource. */
   core.String description;
 
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server .
    */
   core.String id;
 
-  /** Type of the resource. */
+  /** [Output Only] Type of the resource. Always compute#region for regions. */
   core.String kind;
 
-  /** Name of the resource. */
+  /** [Output Only] Name of the resource. */
   core.String name;
 
-  /** Quotas assigned to this region. */
+  /** [Output Only] Quotas assigned to this region. */
   core.List<Quota> quotas;
 
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
 
   /**
-   * Status of the region, "UP" or "DOWN".
+   * [Output Only] Status of the region, either UP or DOWN.
    * Possible string values are:
    * - "DOWN"
    * - "UP"
    */
   core.String status;
 
-  /** A list of zones homed in this region, in the form of resource URLs. */
+  /**
+   * [Output Only] A list of zones available in this region, in the form of
+   * resource URLs.
+   */
   core.List<core.String> zones;
 
 
@@ -13558,20 +14548,23 @@ class Region {
 /** Contains a list of region resources. */
 class RegionList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A list of Region resources. */
+  /** [Output Only] A list of Region resources. */
   core.List<Region> items;
 
-  /** Type of resource. */
+  /**
+   * [Output Only] Type of resource. Always compute#regionList for lists of
+   * regions.
+   */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Server defined URL for this resource (output only). */
+  /** [Output Only] Server defined URL for this resource. */
   core.String selfLink;
 
 
@@ -13617,7 +14610,6 @@ class RegionList {
 }
 
 
-/** Not documented yet. */
 class ResourceGroupReference {
   /**
    * A URI referencing one of the resource views listed in the backend service.
@@ -13643,12 +14635,11 @@ class ResourceGroupReference {
 }
 
 
-/** Not documented yet. */
 class RouteWarningsData {
-  /** A key for the warning data. */
+  /** [Output Only] A key for the warning data. */
   core.String key;
 
-  /** A warning data value corresponding to the key. */
+  /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
 
 
@@ -13676,10 +14667,9 @@ class RouteWarningsData {
 }
 
 
-/** Not documented yet. */
 class RouteWarnings {
   /**
-   * The warning type identifier for this warning.
+   * [Output Only] The warning type identifier for this warning.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -13692,14 +14682,15 @@ class RouteWarnings {
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
    */
   core.String code;
 
-  /** Metadata for this warning in 'key: value' format. */
+  /** [Output Only] Metadata for this warning in key: value format. */
   core.List<RouteWarningsData> data;
 
-  /** Optional human-readable details for this warning. */
+  /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
 
 
@@ -13794,6 +14785,9 @@ class Route {
   /** The URL of the local network if it should handle matching packets. */
   core.String nextHopNetwork;
 
+  /** The URL to a VpnTunnel that should handle matching packets. */
+  core.String nextHopVpnTunnel;
+
   /**
    * Breaks ties between Routes of equal specificity. Routes with smaller values
    * win when tied with routes with larger values.
@@ -13849,6 +14843,9 @@ class Route {
     if (_json.containsKey("nextHopNetwork")) {
       nextHopNetwork = _json["nextHopNetwork"];
     }
+    if (_json.containsKey("nextHopVpnTunnel")) {
+      nextHopVpnTunnel = _json["nextHopVpnTunnel"];
+    }
     if (_json.containsKey("priority")) {
       priority = _json["priority"];
     }
@@ -13897,6 +14894,9 @@ class Route {
     }
     if (nextHopNetwork != null) {
       _json["nextHopNetwork"] = nextHopNetwork;
+    }
+    if (nextHopVpnTunnel != null) {
+      _json["nextHopVpnTunnel"] = nextHopVpnTunnel;
     }
     if (priority != null) {
       _json["priority"] = priority;
@@ -13977,17 +14977,17 @@ class RouteList {
 }
 
 
-/** Scheduling options for an Instance. */
+/** Sets the scheduling options for an Instance. */
 class Scheduling {
   /**
-   * Whether the Instance should be automatically restarted whenever it is
-   * terminated by Compute Engine (not terminated by user).
+   * Specifies whether the instance should be automatically restarted if it is
+   * terminated by Compute Engine (not terminated by a user).
    */
   core.bool automaticRestart;
 
   /**
-   * How the instance should behave when the host machine undergoes maintenance
-   * that may temporarily impact instance performance.
+   * Defines the maintenance behavior for this instance. The default behavior is
+   * MIGRATE. For more information, see Setting maintenance behavior.
    * Possible string values are:
    * - "MIGRATE"
    * - "TERMINATE"
@@ -14019,15 +15019,18 @@ class Scheduling {
 }
 
 
-/** An instance serial console output. */
+/** An instance's serial console output. */
 class SerialPortOutput {
-  /** The contents of the console output. */
+  /** [Output Only] The contents of the console output. */
   core.String contents;
 
-  /** Type of the resource. */
+  /**
+   * [Output Only] Type of the resource. Always compute#serialPortOutput for
+   * serial port output.
+   */
   core.String kind;
 
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
 
 
@@ -14320,9 +15323,13 @@ class SnapshotList {
 /** A set of instance tags. */
 class Tags {
   /**
-   * Fingerprint of this resource. A hash of the tags stored in this object.
-   * This field is used optimistic locking. An up-to-date tags fingerprint must
-   * be provided in order to modify tags.
+   * Specifies a fingerprint for this request, which is essentially a hash of
+   * the metadata's contents and used for optimistic locking. The fingerprint is
+   * initially generated by Compute Engine and changes after every request to
+   * modify or update metadata. You must always provide an up-to-date
+   * fingerprint hash in order to update or change metadata.
+   *
+   * To see the latest fingerprint, make get() request to the instance.
    */
   core.String fingerprint;
 
@@ -14628,7 +15635,6 @@ class TargetInstance {
 }
 
 
-/** Not documented yet. */
 class TargetInstanceAggregatedList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
@@ -14655,7 +15661,7 @@ class TargetInstanceAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = common_internal.mapMap(_json["items"], (item) => new TargetInstancesScopedList.fromJson(item));
+      items = commons.mapMap(_json["items"], (item) => new TargetInstancesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -14674,7 +15680,7 @@ class TargetInstanceAggregatedList {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = common_internal.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -14752,12 +15758,11 @@ class TargetInstanceList {
 }
 
 
-/** Not documented yet. */
 class TargetInstancesScopedListWarningData {
-  /** A key for the warning data. */
+  /** [Output Only] A key for the warning data. */
   core.String key;
 
-  /** A warning data value corresponding to the key. */
+  /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
 
 
@@ -14791,7 +15796,7 @@ class TargetInstancesScopedListWarningData {
  */
 class TargetInstancesScopedListWarning {
   /**
-   * The warning type identifier for this warning.
+   * [Output Only] The warning type identifier for this warning.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -14804,14 +15809,15 @@ class TargetInstancesScopedListWarning {
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
    */
   core.String code;
 
-  /** Metadata for this warning in 'key: value' format. */
+  /** [Output Only] Metadata for this warning in key: value format. */
   core.List<TargetInstancesScopedListWarningData> data;
 
-  /** Optional human-readable details for this warning. */
+  /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
 
 
@@ -14845,7 +15851,6 @@ class TargetInstancesScopedListWarning {
 }
 
 
-/** Not documented yet. */
 class TargetInstancesScopedList {
   /** List of target instances contained in this scope. */
   core.List<TargetInstance> targetInstances;
@@ -15061,7 +16066,6 @@ class TargetPool {
 }
 
 
-/** Not documented yet. */
 class TargetPoolAggregatedList {
   /**
    * Unique identifier for the resource; defined by the server (output only).
@@ -15088,7 +16092,7 @@ class TargetPoolAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = common_internal.mapMap(_json["items"], (item) => new TargetPoolsScopedList.fromJson(item));
+      items = commons.mapMap(_json["items"], (item) => new TargetPoolsScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -15107,7 +16111,7 @@ class TargetPoolAggregatedList {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = common_internal.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -15123,9 +16127,7 @@ class TargetPoolAggregatedList {
 }
 
 
-/** Not documented yet. */
 class TargetPoolInstanceHealth {
-  /** Not documented yet. */
   core.List<HealthStatus> healthStatus;
 
   /** Type of resource. */
@@ -15218,7 +16220,6 @@ class TargetPoolList {
 }
 
 
-/** Not documented yet. */
 class TargetPoolsAddHealthCheckRequest {
   /** Health check URLs to be added to targetPool. */
   core.List<HealthCheckReference> healthChecks;
@@ -15242,7 +16243,6 @@ class TargetPoolsAddHealthCheckRequest {
 }
 
 
-/** Not documented yet. */
 class TargetPoolsAddInstanceRequest {
   /** URLs of the instances to be added to targetPool. */
   core.List<InstanceReference> instances;
@@ -15266,7 +16266,6 @@ class TargetPoolsAddInstanceRequest {
 }
 
 
-/** Not documented yet. */
 class TargetPoolsRemoveHealthCheckRequest {
   /** Health check URLs to be removed from targetPool. */
   core.List<HealthCheckReference> healthChecks;
@@ -15290,7 +16289,6 @@ class TargetPoolsRemoveHealthCheckRequest {
 }
 
 
-/** Not documented yet. */
 class TargetPoolsRemoveInstanceRequest {
   /** URLs of the instances to be removed from targetPool. */
   core.List<InstanceReference> instances;
@@ -15314,12 +16312,11 @@ class TargetPoolsRemoveInstanceRequest {
 }
 
 
-/** Not documented yet. */
 class TargetPoolsScopedListWarningData {
-  /** A key for the warning data. */
+  /** [Output Only] A key for the warning data. */
   core.String key;
 
-  /** A warning data value corresponding to the key. */
+  /** [Output Only] A warning data value corresponding to the key. */
   core.String value;
 
 
@@ -15353,7 +16350,7 @@ class TargetPoolsScopedListWarningData {
  */
 class TargetPoolsScopedListWarning {
   /**
-   * The warning type identifier for this warning.
+   * [Output Only] The warning type identifier for this warning.
    * Possible string values are:
    * - "DEPRECATED_RESOURCE_USED"
    * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
@@ -15366,14 +16363,15 @@ class TargetPoolsScopedListWarning {
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
    * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
    */
   core.String code;
 
-  /** Metadata for this warning in 'key: value' format. */
+  /** [Output Only] Metadata for this warning in key: value format. */
   core.List<TargetPoolsScopedListWarningData> data;
 
-  /** Optional human-readable details for this warning. */
+  /** [Output Only] Optional human-readable details for this warning. */
   core.String message;
 
 
@@ -15407,7 +16405,6 @@ class TargetPoolsScopedListWarning {
 }
 
 
-/** Not documented yet. */
 class TargetPoolsScopedList {
   /** List of target pools contained in this scope. */
   core.List<TargetPool> targetPools;
@@ -15443,9 +16440,7 @@ class TargetPoolsScopedList {
 }
 
 
-/** Not documented yet. */
 class TargetReference {
-  /** Not documented yet. */
   core.String target;
 
 
@@ -15467,18 +16462,411 @@ class TargetReference {
 }
 
 
-/** Not documented yet. */
+class TargetVpnGateway {
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  core.String creationTimestamp;
+
+  /**
+   * An optional textual description of the resource. Provided by the client
+   * when the resource is created.
+   */
+  core.String description;
+
+  /**
+   * [Output Only] A list of URLs to the ForwardingRule resources.
+   * ForwardingRules are created using compute.forwardingRules.insert and
+   * associated to a VPN gateway.
+   */
+  core.List<core.String> forwardingRules;
+
+  /**
+   * [Output Only] Unique identifier for the resource. Defined by the server.
+   */
+  core.String id;
+
+  /**
+   * [Output Only] Type of resource. Always compute#targetVpnGateway for target
+   * VPN gateways.
+   */
+  core.String kind;
+
+  /**
+   * Name of the resource. Provided by the client when the resource is created.
+   * The name must be 1-63 characters long and comply with RFC1035.
+   */
+  core.String name;
+
+  /**
+   * URL of the network to which this VPN gateway is attached. Provided by the
+   * client when the VPN gateway is created.
+   */
+  core.String network;
+
+  /** [Output Only] URL of the region where the target VPN gateway resides. */
+  core.String region;
+
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+
+  /**
+   * [Output Only] The status of the VPN gateway.
+   * Possible string values are:
+   * - "CREATING"
+   * - "DELETING"
+   * - "FAILED"
+   * - "READY"
+   */
+  core.String status;
+
+  /**
+   * [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created
+   * using compute.vpntunnels.insert and associated to a VPN gateway.
+   */
+  core.List<core.String> tunnels;
+
+
+  TargetVpnGateway();
+
+  TargetVpnGateway.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("forwardingRules")) {
+      forwardingRules = _json["forwardingRules"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("tunnels")) {
+      tunnels = _json["tunnels"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (forwardingRules != null) {
+      _json["forwardingRules"] = forwardingRules;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (network != null) {
+      _json["network"] = network;
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (tunnels != null) {
+      _json["tunnels"] = tunnels;
+    }
+    return _json;
+  }
+}
+
+
+class TargetVpnGatewayAggregatedList {
+  /**
+   * [Output Only] Unique identifier for the resource. Defined by the server.
+   */
+  core.String id;
+
+  /** A map of scoped target vpn gateway lists. */
+  core.Map<core.String, TargetVpnGatewaysScopedList> items;
+
+  /**
+   * [Output Only] Type of resource. Always compute#targetVpnGateway for target
+   * VPN gateways.
+   */
+  core.String kind;
+
+  /** [Output Only] A token used to continue a truncated list request. */
+  core.String nextPageToken;
+
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+
+
+  TargetVpnGatewayAggregatedList();
+
+  TargetVpnGatewayAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap(_json["items"], (item) => new TargetVpnGatewaysScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+
+/** Contains a list of TargetVpnGateway resources. */
+class TargetVpnGatewayList {
+  /**
+   * [Output Only] Unique identifier for the resource. Defined by the server.
+   */
+  core.String id;
+
+  /** [Output Only] A list of TargetVpnGateway resources. */
+  core.List<TargetVpnGateway> items;
+
+  /**
+   * [Output Only] Type of resource. Always compute#targetVpnGateway for target
+   * VPN gateways.
+   */
+  core.String kind;
+
+  /** [Output Only] A token used to continue a truncated list request. */
+  core.String nextPageToken;
+
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+
+
+  TargetVpnGatewayList();
+
+  TargetVpnGatewayList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new TargetVpnGateway.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+
+class TargetVpnGatewaysScopedListWarningData {
+  /** [Output Only] A key for the warning data. */
+  core.String key;
+
+  /** [Output Only] A warning data value corresponding to the key. */
+  core.String value;
+
+
+  TargetVpnGatewaysScopedListWarningData();
+
+  TargetVpnGatewaysScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * [Output Only] Informational warning which replaces the list of addresses when
+ * the list is empty.
+ */
+class TargetVpnGatewaysScopedListWarning {
+  /**
+   * [Output Only] The warning type identifier for this warning.
+   * Possible string values are:
+   * - "DEPRECATED_RESOURCE_USED"
+   * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "INJECTED_KERNELS_DEPRECATED"
+   * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+   * - "NEXT_HOP_CANNOT_IP_FORWARD"
+   * - "NEXT_HOP_INSTANCE_NOT_FOUND"
+   * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+   * - "NEXT_HOP_NOT_RUNNING"
+   * - "NO_RESULTS_ON_PAGE"
+   * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+   * - "UNREACHABLE"
+   */
+  core.String code;
+
+  /** [Output Only] Metadata for this warning in key: value format. */
+  core.List<TargetVpnGatewaysScopedListWarningData> data;
+
+  /** [Output Only] Optional human-readable details for this warning. */
+  core.String message;
+
+
+  TargetVpnGatewaysScopedListWarning();
+
+  TargetVpnGatewaysScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"].map((value) => new TargetVpnGatewaysScopedListWarningData.fromJson(value)).toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+
+class TargetVpnGatewaysScopedList {
+  /** [Output Only] List of target vpn gateways contained in this scope. */
+  core.List<TargetVpnGateway> targetVpnGateways;
+
+  /**
+   * [Output Only] Informational warning which replaces the list of addresses
+   * when the list is empty.
+   */
+  TargetVpnGatewaysScopedListWarning warning;
+
+
+  TargetVpnGatewaysScopedList();
+
+  TargetVpnGatewaysScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("targetVpnGateways")) {
+      targetVpnGateways = _json["targetVpnGateways"].map((value) => new TargetVpnGateway.fromJson(value)).toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new TargetVpnGatewaysScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (targetVpnGateways != null) {
+      _json["targetVpnGateways"] = targetVpnGateways.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+
 class TestFailure {
-  /** Not documented yet. */
   core.String actualService;
 
-  /** Not documented yet. */
   core.String expectedService;
 
-  /** Not documented yet. */
   core.String host;
 
-  /** Not documented yet. */
   core.String path;
 
 
@@ -15722,9 +17110,7 @@ class UrlMapList {
 }
 
 
-/** Not documented yet. */
 class UrlMapReference {
-  /** Not documented yet. */
   core.String urlMap;
 
 
@@ -15799,7 +17185,6 @@ class UrlMapTest {
 
 /** Message representing the validation result for a UrlMap. */
 class UrlMapValidationResult {
-  /** Not documented yet. */
   core.List<core.String> loadErrors;
 
   /**
@@ -15808,7 +17193,6 @@ class UrlMapValidationResult {
    */
   core.bool loadSucceeded;
 
-  /** Not documented yet. */
   core.List<TestFailure> testFailures;
 
   /**
@@ -15854,7 +17238,6 @@ class UrlMapValidationResult {
 }
 
 
-/** Not documented yet. */
 class UrlMapsValidateRequest {
   /** Content of the UrlMap to be validated. */
   UrlMap resource;
@@ -15878,9 +17261,7 @@ class UrlMapsValidateRequest {
 }
 
 
-/** Not documented yet. */
 class UrlMapsValidateResponse {
-  /** Not documented yet. */
   UrlMapValidationResult result;
 
 
@@ -15910,17 +17291,17 @@ class UsageExportLocation {
   /**
    * The name of an existing bucket in Cloud Storage where the usage report
    * object is stored. The Google Service Account is granted write access to
-   * this bucket. This is simply the bucket name, with no "gs://" or
-   * "https://storage.googleapis.com/" in front of it.
+   * this bucket. This is just the bucket name, with no gs:// or
+   * https://storage.googleapis.com/ in front of it.
    */
   core.String bucketName;
 
   /**
    * An optional prefix for the name of the usage report object stored in
-   * bucket_name. If not supplied, defaults to "usage_". The report is stored as
-   * a CSV file named _gce_.csv. where  is the day of the usage according to
-   * Pacific Time. The prefix should conform to Cloud Storage object naming
-   * conventions.
+   * bucketName. If not supplied, defaults to usage. The report is stored as a
+   * CSV file named report_name_prefix_gce_YYYYMMDD.csv where YYYYMMDD is the
+   * day of the usage according to Pacific Time. If you supply a prefix, it
+   * should conform to Cloud Storage object naming conventions.
    */
   core.String reportNamePrefix;
 
@@ -15949,18 +17330,460 @@ class UsageExportLocation {
 }
 
 
-/** Not documented yet. */
-class ZoneMaintenanceWindows {
-  /** Begin time of the maintenance window, in RFC 3339 format. */
-  core.String beginTime;
+class VpnTunnel {
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  core.String creationTimestamp;
 
-  /** Textual description of the maintenance window. */
+  /**
+   * An optional textual description of the resource. Provided by the client
+   * when the resource is created.
+   */
   core.String description;
 
-  /** End time of the maintenance window, in RFC 3339 format. */
+  /** [Output Only] Detailed status message for the VPN tunnel. */
+  core.String detailedStatus;
+
+  /**
+   * [Output Only] Unique identifier for the resource. Defined by the server.
+   */
+  core.String id;
+
+  /**
+   * IKE networks to use when establishing the VPN tunnel with peer VPN gateway.
+   * The value should be a CIDR formatted string, for example: 192.168.0.0/16.
+   * The ranges should be disjoint.
+   */
+  core.List<core.String> ikeNetworks;
+
+  /**
+   * IKE protocol version to use when establishing the VPN tunnel with peer VPN
+   * gateway. Acceptable IKE versions are 1 or 2. Default version is 2.
+   */
+  core.int ikeVersion;
+
+  /**
+   * [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
+   */
+  core.String kind;
+
+  /**
+   * Name of the resource. Provided by the client when the resource is created.
+   * The name must be 1-63 characters long and comply with RFC1035.
+   */
+  core.String name;
+
+  /** IP address of the peer VPN gateway. */
+  core.String peerIp;
+
+  /** [Output Only] URL of the region where the VPN tunnel resides. */
+  core.String region;
+
+  /** [Output Only] Server defined URL for the resource. */
+  core.String selfLink;
+
+  /**
+   * Shared secret used to set the secure session between the GCE VPN gateway
+   * and the peer VPN gateway.
+   */
+  core.String sharedSecret;
+
+  /** Hash of the shared secret. */
+  core.String sharedSecretHash;
+
+  /**
+   * [Output Only] The status of the VPN tunnel.
+   * Possible string values are:
+   * - "AUTHORIZATION_ERROR"
+   * - "DEPROVISIONING"
+   * - "ESTABLISHED"
+   * - "FAILED"
+   * - "FIRST_HANDSHAKE"
+   * - "NEGOTIATION_FAILURE"
+   * - "NETWORK_ERROR"
+   * - "PROVISIONING"
+   * - "WAITING_FOR_FULL_CONFIG"
+   */
+  core.String status;
+
+  /**
+   * URL of the VPN gateway to which this VPN tunnel is associated. Provided by
+   * the client when the VPN tunnel is created.
+   */
+  core.String targetVpnGateway;
+
+
+  VpnTunnel();
+
+  VpnTunnel.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("detailedStatus")) {
+      detailedStatus = _json["detailedStatus"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("ikeNetworks")) {
+      ikeNetworks = _json["ikeNetworks"];
+    }
+    if (_json.containsKey("ikeVersion")) {
+      ikeVersion = _json["ikeVersion"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("peerIp")) {
+      peerIp = _json["peerIp"];
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("sharedSecret")) {
+      sharedSecret = _json["sharedSecret"];
+    }
+    if (_json.containsKey("sharedSecretHash")) {
+      sharedSecretHash = _json["sharedSecretHash"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("targetVpnGateway")) {
+      targetVpnGateway = _json["targetVpnGateway"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (detailedStatus != null) {
+      _json["detailedStatus"] = detailedStatus;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (ikeNetworks != null) {
+      _json["ikeNetworks"] = ikeNetworks;
+    }
+    if (ikeVersion != null) {
+      _json["ikeVersion"] = ikeVersion;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (peerIp != null) {
+      _json["peerIp"] = peerIp;
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (sharedSecret != null) {
+      _json["sharedSecret"] = sharedSecret;
+    }
+    if (sharedSecretHash != null) {
+      _json["sharedSecretHash"] = sharedSecretHash;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (targetVpnGateway != null) {
+      _json["targetVpnGateway"] = targetVpnGateway;
+    }
+    return _json;
+  }
+}
+
+
+class VpnTunnelAggregatedList {
+  /**
+   * [Output Only] Unique identifier for the resource; defined by the server.
+   */
+  core.String id;
+
+  /** [Output Only] A map of scoped vpn tunnel lists. */
+  core.Map<core.String, VpnTunnelsScopedList> items;
+
+  /**
+   * [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
+   */
+  core.String kind;
+
+  /** [Output Only] A token used to continue a truncated list request. */
+  core.String nextPageToken;
+
+  /** [Output Only] Server defined URL for this resource. */
+  core.String selfLink;
+
+
+  VpnTunnelAggregatedList();
+
+  VpnTunnelAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap(_json["items"], (item) => new VpnTunnelsScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+
+/** Contains a list of VpnTunnel resources. */
+class VpnTunnelList {
+  /**
+   * [Output Only] Unique identifier for the resource; defined by the server.
+   */
+  core.String id;
+
+  /** [Output Only] A list of VpnTunnel resources. */
+  core.List<VpnTunnel> items;
+
+  /**
+   * [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
+   */
+  core.String kind;
+
+  /** [Output Only] A token used to continue a truncated list request. */
+  core.String nextPageToken;
+
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+
+
+  VpnTunnelList();
+
+  VpnTunnelList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new VpnTunnel.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+
+class VpnTunnelsScopedListWarningData {
+  /** [Output Only] A key for the warning data. */
+  core.String key;
+
+  /** [Output Only] A warning data value corresponding to the key. */
+  core.String value;
+
+
+  VpnTunnelsScopedListWarningData();
+
+  VpnTunnelsScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * Informational warning which replaces the list of addresses when the list is
+ * empty.
+ */
+class VpnTunnelsScopedListWarning {
+  /**
+   * [Output Only] The warning type identifier for this warning.
+   * Possible string values are:
+   * - "DEPRECATED_RESOURCE_USED"
+   * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "INJECTED_KERNELS_DEPRECATED"
+   * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+   * - "NEXT_HOP_CANNOT_IP_FORWARD"
+   * - "NEXT_HOP_INSTANCE_NOT_FOUND"
+   * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+   * - "NEXT_HOP_NOT_RUNNING"
+   * - "NO_RESULTS_ON_PAGE"
+   * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+   * - "UNREACHABLE"
+   */
+  core.String code;
+
+  /** [Output Only] Metadata for this warning in key: value format. */
+  core.List<VpnTunnelsScopedListWarningData> data;
+
+  /** [Output Only] Optional human-readable details for this warning. */
+  core.String message;
+
+
+  VpnTunnelsScopedListWarning();
+
+  VpnTunnelsScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"].map((value) => new VpnTunnelsScopedListWarningData.fromJson(value)).toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+
+class VpnTunnelsScopedList {
+  /** List of vpn tunnels contained in this scope. */
+  core.List<VpnTunnel> vpnTunnels;
+
+  /**
+   * Informational warning which replaces the list of addresses when the list is
+   * empty.
+   */
+  VpnTunnelsScopedListWarning warning;
+
+
+  VpnTunnelsScopedList();
+
+  VpnTunnelsScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("vpnTunnels")) {
+      vpnTunnels = _json["vpnTunnels"].map((value) => new VpnTunnel.fromJson(value)).toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new VpnTunnelsScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (vpnTunnels != null) {
+      _json["vpnTunnels"] = vpnTunnels.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+
+class ZoneMaintenanceWindows {
+  /**
+   * [Output Only] Starting time of the maintenance window, in RFC3339 format.
+   */
+  core.String beginTime;
+
+  /** [Output Only] Textual description of the maintenance window. */
+  core.String description;
+
+  /**
+   * [Output Only] Ending time of the maintenance window, in RFC3339 format.
+   */
   core.String endTime;
 
-  /** Name of the maintenance window. */
+  /** [Output Only] Name of the maintenance window. */
   core.String name;
 
 
@@ -16000,43 +17823,43 @@ class ZoneMaintenanceWindows {
 }
 
 
-/** A zone resource. */
+/** A Zone resource. */
 class Zone {
-  /** Creation timestamp in RFC3339 text format (output only). */
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
 
-  /** The deprecation status associated with this zone. */
+  /** [Output Only] The deprecation status associated with this zone. */
   DeprecationStatus deprecated;
 
-  /** Textual description of the resource. */
+  /** [Output Only] Textual description of the resource. */
   core.String description;
 
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** Type of the resource. */
+  /** [Output Only] Type of the resource. Always kind#zone for zones. */
   core.String kind;
 
   /**
-   * Scheduled maintenance windows for the zone. When the zone is in a
-   * maintenance window, all resources which reside in the zone will be
-   * unavailable.
+   * [Output Only] Any scheduled maintenance windows for this zone. When the
+   * zone is in a maintenance window, all resources which reside in the zone
+   * will be unavailable. For more information, see Maintenance Windows
    */
   core.List<ZoneMaintenanceWindows> maintenanceWindows;
 
-  /** Name of the resource. */
+  /** [Output Only] Name of the resource. */
   core.String name;
 
-  /** Full URL reference to the region which hosts the zone (output only). */
+  /** [Output Only] Full URL reference to the region which hosts the zone. */
   core.String region;
 
-  /** Server defined URL for the resource (output only). */
+  /** [Output Only] Server defined URL for the resource. */
   core.String selfLink;
 
   /**
-   * Status of the zone. "UP" or "DOWN".
+   * [Output Only] Status of the zone, either UP or DOWN.
    * Possible string values are:
    * - "DOWN"
    * - "UP"
@@ -16119,17 +17942,17 @@ class Zone {
 /** Contains a list of zone resources. */
 class ZoneList {
   /**
-   * Unique identifier for the resource; defined by the server (output only).
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
-  /** A list of Zone resources. */
+  /** [Output Only] A list of Zone resources. */
   core.List<Zone> items;
 
   /** Type of resource. */
   core.String kind;
 
-  /** A token used to continue a truncated list request (output only). */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
 
   /** Server defined URL for this resource (output only). */
@@ -16176,5 +17999,3 @@ class ZoneList {
     return _json;
   }
 }
-
-

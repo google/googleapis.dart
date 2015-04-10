@@ -1,37 +1,39 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.civicinfo.v2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client civicinfo/v2';
 
 /** An API for accessing civic information. */
 class CivicinfoApi {
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   DivisionsResourceApi get divisions => new DivisionsResourceApi(_requester);
   ElectionsResourceApi get elections => new ElectionsResourceApi(_requester);
   RepresentativesResourceApi get representatives => new RepresentativesResourceApi(_requester);
 
   CivicinfoApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "civicinfo/v2/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class DivisionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DivisionsResourceApi(common_internal.ApiRequester client) : 
+  DivisionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -47,7 +49,7 @@ class DivisionsResourceApi {
    *
    * Completes with a [DivisionSearchResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -58,7 +60,7 @@ class DivisionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (query != null) {
@@ -81,11 +83,10 @@ class DivisionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ElectionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ElectionsResourceApi(common_internal.ApiRequester client) : 
+  ElectionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -95,7 +96,7 @@ class ElectionsResourceApi {
    *
    * Completes with a [ElectionsQueryResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -106,7 +107,7 @@ class ElectionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -140,7 +141,7 @@ class ElectionsResourceApi {
    *
    * Completes with a [VoterInfoResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -151,7 +152,7 @@ class ElectionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (address == null) {
@@ -181,11 +182,10 @@ class ElectionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class RepresentativesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  RepresentativesResourceApi(common_internal.ApiRequester client) : 
+  RepresentativesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -211,7 +211,7 @@ class RepresentativesResourceApi {
    *
    * Completes with a [RepresentativeInfoResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -222,7 +222,7 @@ class RepresentativesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (address != null) {
@@ -274,7 +274,7 @@ class RepresentativesResourceApi {
    *
    * Completes with a [RepresentativeInfoData].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -285,7 +285,7 @@ class RepresentativesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (ocdId == null) {
@@ -302,7 +302,7 @@ class RepresentativesResourceApi {
     }
 
 
-    _url = 'representatives/' + common_internal.Escaper.ecapeVariable('$ocdId');
+    _url = 'representatives/' + commons.Escaper.ecapeVariable('$ocdId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -879,7 +879,6 @@ class DivisionSearchResponse {
    */
   core.String kind;
 
-  /** Not documented yet. */
   core.List<DivisionSearchResult> results;
 
 
@@ -1498,7 +1497,6 @@ class PollingLocation {
 }
 
 
-/** Not documented yet. */
 class RepresentativeInfoData {
   /** Political geographic divisions that contain the requested address. */
   core.Map<core.String, GeographicDivision> divisions;
@@ -1520,7 +1518,7 @@ class RepresentativeInfoData {
 
   RepresentativeInfoData.fromJson(core.Map _json) {
     if (_json.containsKey("divisions")) {
-      divisions = common_internal.mapMap(_json["divisions"], (item) => new GeographicDivision.fromJson(item));
+      divisions = commons.mapMap(_json["divisions"], (item) => new GeographicDivision.fromJson(item));
     }
     if (_json.containsKey("offices")) {
       offices = _json["offices"].map((value) => new Office.fromJson(value)).toList();
@@ -1533,7 +1531,7 @@ class RepresentativeInfoData {
   core.Map toJson() {
     var _json = new core.Map();
     if (divisions != null) {
-      _json["divisions"] = common_internal.mapMap(divisions, (item) => (item).toJson());
+      _json["divisions"] = commons.mapMap(divisions, (item) => (item).toJson());
     }
     if (offices != null) {
       _json["offices"] = offices.map((value) => (value).toJson()).toList();
@@ -1577,7 +1575,7 @@ class RepresentativeInfoResponse {
 
   RepresentativeInfoResponse.fromJson(core.Map _json) {
     if (_json.containsKey("divisions")) {
-      divisions = common_internal.mapMap(_json["divisions"], (item) => new GeographicDivision.fromJson(item));
+      divisions = commons.mapMap(_json["divisions"], (item) => new GeographicDivision.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1596,7 +1594,7 @@ class RepresentativeInfoResponse {
   core.Map toJson() {
     var _json = new core.Map();
     if (divisions != null) {
-      _json["divisions"] = common_internal.mapMap(divisions, (item) => (item).toJson());
+      _json["divisions"] = commons.mapMap(divisions, (item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1769,7 +1767,6 @@ class VoterInfoResponse {
   /** Locations where the voter is eligible to vote on election day. */
   core.List<PollingLocation> pollingLocations;
 
-  /** Not documented yet. */
   core.String precinctId;
 
   /**
@@ -1849,5 +1846,3 @@ class VoterInfoResponse {
     return _json;
   }
 }
-
-

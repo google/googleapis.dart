@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.6.1
+    version: 0.7.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -16,16 +16,16 @@ packages:
     - adsense:v1.4  # https://developers.google.com/adsense/management/
     - adsensehost:v4.1  # https://developers.google.com/adsense/host/
     - analytics:v3  # https://developers.google.com/analytics/
+    - androidenterprise:v1 # https://developers.google.com/api-client-library/java/apis/androidenterprise/v1
     - androidpublisher:v2  # https://developers.google.com/android-publisher/
     - appsactivity:v1  # https://developers.google.com/google-apps/activity/
     - appstate:v1  # https://developers.google.com/games/services/web/api/states
     - bigquery:v2  # https://developers.google.com/bigquery/
     - blogger:v3  # https://developers.google.com/blogger/
     - books:v1  # https://developers.google.com/books/
-    - civicinfo:us_v1  # https://developers.google.com/civic-information/
-    - civicinfo:v1  # https://developers.google.com/civic-information/
     - civicinfo:v2  # https://developers.google.com/civic-information/
     - calendar:v3  # https://developers.google.com/google-apps/calendar/
+    - cloudsearch:v1 # https://cloud.google.com/appengine/docs/python/search/
     - compute:v1  # https://developers.google.com/compute/
     - content:v2  # https://developers.google.com/shopping-content/
     - coordinate:v1  # https://google-developers.appspot.com/coordinate/
@@ -70,7 +70,7 @@ packages:
     - youtubeAnalytics:v1  # https://developers.google.com/youtube/analytics/
 
 - googleapis_beta:
-    version: 0.10.0
+    version: 0.11.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -85,8 +85,8 @@ packages:
     - datastore:v1beta2  # https://developers.google.com/datastore/
     - deploymentmanager:v2beta1  # https://cloud.google.com/deployment-manager/
     - dns:v1beta1  # https://developers.google.com/cloud-dns/
-    - genomics:v1beta  # https://developers.google.com/genomics/
     - genomics:v1beta2  # https://developers.google.com/genomics/
+    - logging:v1beta3 # https://cloud.google.com/appengine/articles/logging
     - manager:v1beta2  # https://developers.google.com/deployment-manager/
     - pubsub:v1beta1  # https://developers.google.com/pubsub/ (Limited Preview)
     - pubsub:v1beta2  # https://developers.google.com/pubsub/ (Limited Preview)

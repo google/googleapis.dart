@@ -1,17 +1,22 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.doubleclicksearch.v2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client doubleclicksearch/v2';
 
 /**
  * Report and modify your advertising data in DoubleClick Search (for example,
@@ -22,22 +27,21 @@ class DoubleclicksearchApi {
   static const DoubleclicksearchScope = "https://www.googleapis.com/auth/doubleclicksearch";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ConversionResourceApi get conversion => new ConversionResourceApi(_requester);
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
   SavedColumnsResourceApi get savedColumns => new SavedColumnsResourceApi(_requester);
 
   DoubleclicksearchApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "doubleclicksearch/v2/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class ConversionResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ConversionResourceApi(common_internal.ApiRequester client) : 
+  ConversionResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -74,7 +78,7 @@ class ConversionResourceApi {
    *
    * Completes with a [ConversionList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -85,7 +89,7 @@ class ConversionResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (agencyId == null) {
@@ -127,7 +131,7 @@ class ConversionResourceApi {
     }
 
 
-    _url = 'agency/' + common_internal.Escaper.ecapeVariable('$agencyId') + '/advertiser/' + common_internal.Escaper.ecapeVariable('$advertiserId') + '/engine/' + common_internal.Escaper.ecapeVariable('$engineAccountId') + '/conversion';
+    _url = 'agency/' + commons.Escaper.ecapeVariable('$agencyId') + '/advertiser/' + commons.Escaper.ecapeVariable('$advertiserId') + '/engine/' + commons.Escaper.ecapeVariable('$engineAccountId') + '/conversion';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -148,7 +152,7 @@ class ConversionResourceApi {
    *
    * Completes with a [ConversionList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -159,7 +163,7 @@ class ConversionResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -208,7 +212,7 @@ class ConversionResourceApi {
    *
    * Completes with a [ConversionList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -219,7 +223,7 @@ class ConversionResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -276,7 +280,7 @@ class ConversionResourceApi {
    *
    * Completes with a [ConversionList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -287,7 +291,7 @@ class ConversionResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -317,7 +321,7 @@ class ConversionResourceApi {
    *
    * Completes with a [UpdateAvailabilityResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -328,7 +332,7 @@ class ConversionResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -351,11 +355,10 @@ class ConversionResourceApi {
 }
 
 
-/** Not documented yet. */
 class ReportsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ReportsResourceApi(common_internal.ApiRequester client) : 
+  ReportsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -367,7 +370,7 @@ class ReportsResourceApi {
    *
    * Completes with a [Report].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -378,7 +381,7 @@ class ReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request_1 != null) {
@@ -407,7 +410,7 @@ class ReportsResourceApi {
    *
    * Completes with a [Report].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -418,7 +421,7 @@ class ReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (reportId == null) {
@@ -426,7 +429,7 @@ class ReportsResourceApi {
     }
 
 
-    _url = 'reports/' + common_internal.Escaper.ecapeVariable('$reportId');
+    _url = 'reports/' + commons.Escaper.ecapeVariable('$reportId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -439,7 +442,7 @@ class ReportsResourceApi {
   }
 
   /**
-   * Downloads a report file.
+   * Downloads a report file encoded in UTF-8.
    *
    * Request parameters:
    *
@@ -451,18 +454,18 @@ class ReportsResourceApi {
    * Metadata (default) or Media download. Partial Media downloads are possible
    * as well.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future getFile(core.String reportId, core.int reportFragment, {common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future getFile(core.String reportId, core.int reportFragment, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (reportId == null) {
@@ -474,7 +477,7 @@ class ReportsResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = 'reports/' + common_internal.Escaper.ecapeVariable('$reportId') + '/files/' + common_internal.Escaper.ecapeVariable('$reportFragment');
+    _url = 'reports/' + commons.Escaper.ecapeVariable('$reportId') + '/files/' + commons.Escaper.ecapeVariable('$reportFragment');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -484,7 +487,7 @@ class ReportsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => null);
     } else {
       return _response;
@@ -500,7 +503,7 @@ class ReportsResourceApi {
    *
    * Completes with a [Report].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -511,7 +514,7 @@ class ReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request_1 != null) {
@@ -534,11 +537,10 @@ class ReportsResourceApi {
 }
 
 
-/** Not documented yet. */
 class SavedColumnsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SavedColumnsResourceApi(common_internal.ApiRequester client) : 
+  SavedColumnsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -552,7 +554,7 @@ class SavedColumnsResourceApi {
    *
    * Completes with a [SavedColumnList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -563,7 +565,7 @@ class SavedColumnsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (agencyId == null) {
@@ -574,7 +576,7 @@ class SavedColumnsResourceApi {
     }
 
 
-    _url = 'agency/' + common_internal.Escaper.ecapeVariable('$agencyId') + '/advertiser/' + common_internal.Escaper.ecapeVariable('$advertiserId') + '/savedcolumns';
+    _url = 'agency/' + commons.Escaper.ecapeVariable('$agencyId') + '/advertiser/' + commons.Escaper.ecapeVariable('$advertiserId') + '/savedcolumns';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -684,7 +686,7 @@ class Conversion {
   /** DS agency ID. */
   core.String agencyId;
 
-  /** Attribution model name. */
+  /** Attribution model name. This field is ignored. */
   core.String attributionModel;
 
   /** DS campaign ID. */
@@ -704,7 +706,10 @@ class Conversion {
   /** The time at which the conversion took place, in epoch millis UTC. */
   core.String conversionTimestamp;
 
-  /** Conversion count in millis. */
+  /**
+   * The number of conversions, formatted in millis (conversions multiplied by
+   * 1000). This field is ignored.
+   */
   core.String countMillis;
 
   /** DS criterion (keyword) ID. */
@@ -1035,7 +1040,6 @@ class CustomMetric {
 }
 
 
-/** Not documented yet. */
 class ReportFiles {
   /** The size of this report file in bytes. */
   core.String byteCount;
@@ -1322,7 +1326,6 @@ class ReportApiColumnSpec {
 }
 
 
-/** Not documented yet. */
 class ReportRequestFilters {
   /**
    * Column to perform the filter on. This can be a DoubleClick Search column or
@@ -1375,7 +1378,6 @@ class ReportRequestFilters {
 }
 
 
-/** Not documented yet. */
 class ReportRequestOrderBy {
   /**
    * Column to perform the sort on. This can be a DoubleClick Search-defined
@@ -1918,5 +1920,3 @@ class UpdateAvailabilityResponse {
     return _json;
   }
 }
-
-

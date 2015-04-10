@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.manager.v1beta2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client manager/v1beta2';
 
 /**
  * The Deployment Manager API allows users to declaratively configure, deploy
@@ -43,26 +46,23 @@ class ManagerApi {
   static const NdevCloudmanReadonlyScope = "https://www.googleapis.com/auth/ndev.cloudman.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   DeploymentsResourceApi get deployments => new DeploymentsResourceApi(_requester);
   TemplatesResourceApi get templates => new TemplatesResourceApi(_requester);
 
   ManagerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "manager/v1beta2/projects/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class DeploymentsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DeploymentsResourceApi(common_internal.ApiRequester client) : 
+  DeploymentsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [projectId] - null
@@ -71,7 +71,7 @@ class DeploymentsResourceApi {
    *
    * [deploymentName] - null
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -82,7 +82,7 @@ class DeploymentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -97,7 +97,7 @@ class DeploymentsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/deployments/' + common_internal.Escaper.ecapeVariable('$deploymentName');
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/deployments/' + commons.Escaper.ecapeVariable('$deploymentName');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -110,8 +110,6 @@ class DeploymentsResourceApi {
   }
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [projectId] - null
@@ -122,7 +120,7 @@ class DeploymentsResourceApi {
    *
    * Completes with a [Deployment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -133,7 +131,7 @@ class DeploymentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -147,7 +145,7 @@ class DeploymentsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/deployments/' + common_internal.Escaper.ecapeVariable('$deploymentName');
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/deployments/' + commons.Escaper.ecapeVariable('$deploymentName');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -160,8 +158,6 @@ class DeploymentsResourceApi {
   }
 
   /**
-   * Not documented yet.
-   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -172,7 +168,7 @@ class DeploymentsResourceApi {
    *
    * Completes with a [Deployment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -183,7 +179,7 @@ class DeploymentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -197,7 +193,7 @@ class DeploymentsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/deployments';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/deployments';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -210,8 +206,6 @@ class DeploymentsResourceApi {
   }
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [projectId] - null
@@ -228,7 +222,7 @@ class DeploymentsResourceApi {
    *
    * Completes with a [DeploymentsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -239,7 +233,7 @@ class DeploymentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -256,7 +250,7 @@ class DeploymentsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/regions/' + common_internal.Escaper.ecapeVariable('$region') + '/deployments';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/deployments';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -271,23 +265,20 @@ class DeploymentsResourceApi {
 }
 
 
-/** Not documented yet. */
 class TemplatesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TemplatesResourceApi(common_internal.ApiRequester client) : 
+  TemplatesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [projectId] - null
    *
    * [templateName] - null
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -298,7 +289,7 @@ class TemplatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -310,7 +301,7 @@ class TemplatesResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/templates/' + common_internal.Escaper.ecapeVariable('$templateName');
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/templates/' + commons.Escaper.ecapeVariable('$templateName');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -323,8 +314,6 @@ class TemplatesResourceApi {
   }
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [projectId] - null
@@ -333,7 +322,7 @@ class TemplatesResourceApi {
    *
    * Completes with a [Template].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -344,7 +333,7 @@ class TemplatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -355,7 +344,7 @@ class TemplatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/templates/' + common_internal.Escaper.ecapeVariable('$templateName');
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/templates/' + commons.Escaper.ecapeVariable('$templateName');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -368,8 +357,6 @@ class TemplatesResourceApi {
   }
 
   /**
-   * Not documented yet.
-   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -378,7 +365,7 @@ class TemplatesResourceApi {
    *
    * Completes with a [Template].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -389,7 +376,7 @@ class TemplatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -400,7 +387,7 @@ class TemplatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/templates';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/templates';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -413,8 +400,6 @@ class TemplatesResourceApi {
   }
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [projectId] - null
@@ -429,7 +414,7 @@ class TemplatesResourceApi {
    *
    * Completes with a [TemplatesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -440,7 +425,7 @@ class TemplatesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -454,7 +439,7 @@ class TemplatesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/templates';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/templates';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -590,24 +575,17 @@ class AllowedRule {
 }
 
 
-/** Not documented yet. */
 class AutoscalingModule {
-  /** Not documented yet. */
   core.int coolDownPeriodSec;
 
-  /** Not documented yet. */
   core.String description;
 
-  /** Not documented yet. */
   core.int maxNumReplicas;
 
-  /** Not documented yet. */
   core.int minNumReplicas;
 
-  /** Not documented yet. */
   core.String signalType;
 
-  /** Not documented yet. */
   core.String targetModule;
 
   /** target_utilization should be in range [0,1]. */
@@ -668,7 +646,6 @@ class AutoscalingModule {
 }
 
 
-/** Not documented yet. */
 class AutoscalingModuleStatus {
   /** [Output Only] The URL of the corresponding Autoscaling configuration. */
   core.String autoscalingConfigUrl;
@@ -774,7 +751,7 @@ class Deployment {
       description = _json["description"];
     }
     if (_json.containsKey("modules")) {
-      modules = common_internal.mapMap(_json["modules"], (item) => new ModuleStatus.fromJson(item));
+      modules = commons.mapMap(_json["modules"], (item) => new ModuleStatus.fromJson(item));
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -799,7 +776,7 @@ class Deployment {
       _json["description"] = description;
     }
     if (modules != null) {
-      _json["modules"] = common_internal.mapMap(modules, (item) => (item).toJson());
+      _json["modules"] = commons.mapMap(modules, (item) => (item).toJson());
     }
     if (name != null) {
       _json["name"] = name;
@@ -818,12 +795,9 @@ class Deployment {
 }
 
 
-/** Not documented yet. */
 class DeploymentsListResponse {
-  /** Not documented yet. */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.List<Deployment> resources;
 
 
@@ -1041,7 +1015,6 @@ class FirewallModule {
 }
 
 
-/** Not documented yet. */
 class FirewallModuleStatus {
   /** [Output Only] The URL of the corresponding Firewall resource. */
   core.String firewallUrl;
@@ -1065,30 +1038,21 @@ class FirewallModuleStatus {
 }
 
 
-/** Not documented yet. */
 class HealthCheckModule {
-  /** Not documented yet. */
   core.int checkIntervalSec;
 
-  /** Not documented yet. */
   core.String description;
 
-  /** Not documented yet. */
   core.int healthyThreshold;
 
-  /** Not documented yet. */
   core.String host;
 
-  /** Not documented yet. */
   core.String path;
 
-  /** Not documented yet. */
   core.int port;
 
-  /** Not documented yet. */
   core.int timeoutSec;
 
-  /** Not documented yet. */
   core.int unhealthyThreshold;
 
 
@@ -1152,7 +1116,6 @@ class HealthCheckModule {
 }
 
 
-/** Not documented yet. */
 class HealthCheckModuleStatus {
   /** [Output Only] The HealthCheck URL. */
   core.String healthCheckUrl;
@@ -1176,27 +1139,19 @@ class HealthCheckModuleStatus {
 }
 
 
-/** Not documented yet. */
 class LbModule {
-  /** Not documented yet. */
   core.String description;
 
-  /** Not documented yet. */
   core.List<core.String> healthChecks;
 
-  /** Not documented yet. */
   core.String ipAddress;
 
-  /** Not documented yet. */
   core.String ipProtocol;
 
-  /** Not documented yet. */
   core.String portRange;
 
-  /** Not documented yet. */
   core.String sessionAffinity;
 
-  /** Not documented yet. */
   core.List<core.String> targetModules;
 
 
@@ -1254,7 +1209,6 @@ class LbModule {
 }
 
 
-/** Not documented yet. */
 class LbModuleStatus {
   /** [Output Only] The URL of the corresponding ForwardingRule in GCE. */
   core.String forwardingRuleUrl;
@@ -1364,22 +1318,16 @@ class MetadataItem {
  * possibly replicated task.
  */
 class Module {
-  /** Not documented yet. */
   AutoscalingModule autoscalingModule;
 
-  /** Not documented yet. */
   FirewallModule firewallModule;
 
-  /** Not documented yet. */
   HealthCheckModule healthCheckModule;
 
-  /** Not documented yet. */
   LbModule lbModule;
 
-  /** Not documented yet. */
   NetworkModule networkModule;
 
-  /** Not documented yet. */
   ReplicaPoolModule replicaPoolModule;
 
   /**
@@ -1599,7 +1547,6 @@ class NetworkInterface {
 }
 
 
-/** Not documented yet. */
 class NetworkModule {
   /**
    * Required; The range of internal addresses that are legal on this network.
@@ -1649,7 +1596,6 @@ class NetworkModule {
 }
 
 
-/** Not documented yet. */
 class NetworkModuleStatus {
   /** [Output Only] The URL of the corresponding Network resource. */
   core.String networkUrl;
@@ -1814,7 +1760,6 @@ class ParamOverride {
 }
 
 
-/** Not documented yet. */
 class ReplicaPoolModule {
   /** A list of environment variables. */
   core.Map<core.String, EnvVariable> envVariables;
@@ -1839,7 +1784,7 @@ class ReplicaPoolModule {
 
   ReplicaPoolModule.fromJson(core.Map _json) {
     if (_json.containsKey("envVariables")) {
-      envVariables = common_internal.mapMap(_json["envVariables"], (item) => new EnvVariable.fromJson(item));
+      envVariables = commons.mapMap(_json["envVariables"], (item) => new EnvVariable.fromJson(item));
     }
     if (_json.containsKey("healthChecks")) {
       healthChecks = _json["healthChecks"];
@@ -1858,7 +1803,7 @@ class ReplicaPoolModule {
   core.Map toJson() {
     var _json = new core.Map();
     if (envVariables != null) {
-      _json["envVariables"] = common_internal.mapMap(envVariables, (item) => (item).toJson());
+      _json["envVariables"] = commons.mapMap(envVariables, (item) => (item).toJson());
     }
     if (healthChecks != null) {
       _json["healthChecks"] = healthChecks;
@@ -1877,7 +1822,6 @@ class ReplicaPoolModule {
 }
 
 
-/** Not documented yet. */
 class ReplicaPoolModuleStatus {
   /** [Output Only] The URL of the associated ReplicaPool resource. */
   core.String replicaPoolUrl;
@@ -1995,7 +1939,6 @@ class ReplicaPoolParamsV1Beta1 {
    */
   core.List<NetworkInterface> networkInterfaces;
 
-  /** Not documented yet. */
   core.String onHostMaintenance;
 
   /** A list of Service Accounts to enable for this instance. */
@@ -2200,13 +2143,13 @@ class Template {
 
   Template.fromJson(core.Map _json) {
     if (_json.containsKey("actions")) {
-      actions = common_internal.mapMap(_json["actions"], (item) => new Action.fromJson(item));
+      actions = commons.mapMap(_json["actions"], (item) => new Action.fromJson(item));
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
     if (_json.containsKey("modules")) {
-      modules = common_internal.mapMap(_json["modules"], (item) => new Module.fromJson(item));
+      modules = commons.mapMap(_json["modules"], (item) => new Module.fromJson(item));
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -2216,13 +2159,13 @@ class Template {
   core.Map toJson() {
     var _json = new core.Map();
     if (actions != null) {
-      _json["actions"] = common_internal.mapMap(actions, (item) => (item).toJson());
+      _json["actions"] = commons.mapMap(actions, (item) => (item).toJson());
     }
     if (description != null) {
       _json["description"] = description;
     }
     if (modules != null) {
-      _json["modules"] = common_internal.mapMap(modules, (item) => (item).toJson());
+      _json["modules"] = commons.mapMap(modules, (item) => (item).toJson());
     }
     if (name != null) {
       _json["name"] = name;
@@ -2232,12 +2175,9 @@ class Template {
 }
 
 
-/** Not documented yet. */
 class TemplatesListResponse {
-  /** Not documented yet. */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.List<Template> resources;
 
 
@@ -2263,5 +2203,3 @@ class TemplatesListResponse {
     return _json;
   }
 }
-
-

@@ -1,17 +1,22 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.mirror.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection_1;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection_1;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client mirror/v1';
 
 /** API for interacting with Glass users via the timeline. */
 class MirrorApi {
@@ -22,7 +27,7 @@ class MirrorApi {
   static const GlassTimelineScope = "https://www.googleapis.com/auth/glass.timeline";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
   ContactsResourceApi get contacts => new ContactsResourceApi(_requester);
@@ -32,15 +37,14 @@ class MirrorApi {
   TimelineResourceApi get timeline => new TimelineResourceApi(_requester);
 
   MirrorApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "mirror/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class AccountsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountsResourceApi(common_internal.ApiRequester client) : 
+  AccountsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -59,7 +63,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Account].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -70,7 +74,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -87,7 +91,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$userToken') + '/' + common_internal.Escaper.ecapeVariable('$accountType') + '/' + common_internal.Escaper.ecapeVariable('$accountName');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$userToken') + '/' + commons.Escaper.ecapeVariable('$accountType') + '/' + commons.Escaper.ecapeVariable('$accountName');
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -102,11 +106,10 @@ class AccountsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ContactsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ContactsResourceApi(common_internal.ApiRequester client) : 
+  ContactsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -116,7 +119,7 @@ class ContactsResourceApi {
    *
    * [id] - The ID of the contact.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -127,7 +130,7 @@ class ContactsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -136,7 +139,7 @@ class ContactsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'contacts/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'contacts/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -157,7 +160,7 @@ class ContactsResourceApi {
    *
    * Completes with a [Contact].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -168,7 +171,7 @@ class ContactsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -176,7 +179,7 @@ class ContactsResourceApi {
     }
 
 
-    _url = 'contacts/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'contacts/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -197,7 +200,7 @@ class ContactsResourceApi {
    *
    * Completes with a [Contact].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -208,7 +211,7 @@ class ContactsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -235,7 +238,7 @@ class ContactsResourceApi {
    *
    * Completes with a [ContactsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -246,7 +249,7 @@ class ContactsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -274,7 +277,7 @@ class ContactsResourceApi {
    *
    * Completes with a [Contact].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -285,7 +288,7 @@ class ContactsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -296,7 +299,7 @@ class ContactsResourceApi {
     }
 
 
-    _url = 'contacts/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'contacts/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -319,7 +322,7 @@ class ContactsResourceApi {
    *
    * Completes with a [Contact].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -330,7 +333,7 @@ class ContactsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -341,7 +344,7 @@ class ContactsResourceApi {
     }
 
 
-    _url = 'contacts/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'contacts/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -356,11 +359,10 @@ class ContactsResourceApi {
 }
 
 
-/** Not documented yet. */
 class LocationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  LocationsResourceApi(common_internal.ApiRequester client) : 
+  LocationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -372,7 +374,7 @@ class LocationsResourceApi {
    *
    * Completes with a [Location].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -383,7 +385,7 @@ class LocationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -391,7 +393,7 @@ class LocationsResourceApi {
     }
 
 
-    _url = 'locations/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'locations/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -410,7 +412,7 @@ class LocationsResourceApi {
    *
    * Completes with a [LocationsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -421,7 +423,7 @@ class LocationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -441,11 +443,10 @@ class LocationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class SettingsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SettingsResourceApi(common_internal.ApiRequester client) : 
+  SettingsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -461,7 +462,7 @@ class SettingsResourceApi {
    *
    * Completes with a [Setting].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -472,7 +473,7 @@ class SettingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -480,7 +481,7 @@ class SettingsResourceApi {
     }
 
 
-    _url = 'settings/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'settings/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -495,11 +496,10 @@ class SettingsResourceApi {
 }
 
 
-/** Not documented yet. */
 class SubscriptionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SubscriptionsResourceApi(common_internal.ApiRequester client) : 
+  SubscriptionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -509,7 +509,7 @@ class SubscriptionsResourceApi {
    *
    * [id] - The ID of the subscription.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -520,7 +520,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -529,7 +529,7 @@ class SubscriptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'subscriptions/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'subscriptions/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -550,7 +550,7 @@ class SubscriptionsResourceApi {
    *
    * Completes with a [Subscription].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -561,7 +561,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -588,7 +588,7 @@ class SubscriptionsResourceApi {
    *
    * Completes with a [SubscriptionsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -599,7 +599,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -627,7 +627,7 @@ class SubscriptionsResourceApi {
    *
    * Completes with a [Subscription].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -638,7 +638,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -649,7 +649,7 @@ class SubscriptionsResourceApi {
     }
 
 
-    _url = 'subscriptions/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'subscriptions/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -664,13 +664,12 @@ class SubscriptionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class TimelineResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   TimelineAttachmentsResourceApi get attachments => new TimelineAttachmentsResourceApi(_requester);
 
-  TimelineResourceApi(common_internal.ApiRequester client) : 
+  TimelineResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -680,7 +679,7 @@ class TimelineResourceApi {
    *
    * [id] - The ID of the timeline item.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -691,7 +690,7 @@ class TimelineResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -700,7 +699,7 @@ class TimelineResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'timeline/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'timeline/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -721,7 +720,7 @@ class TimelineResourceApi {
    *
    * Completes with a [TimelineItem].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -732,7 +731,7 @@ class TimelineResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -740,7 +739,7 @@ class TimelineResourceApi {
     }
 
 
-    _url = 'timeline/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'timeline/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -766,18 +765,18 @@ class TimelineResourceApi {
    *
    * Completes with a [TimelineItem].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<TimelineItem> insert(TimelineItem request, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<TimelineItem> insert(TimelineItem request, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -789,7 +788,7 @@ class TimelineResourceApi {
 
     if (_uploadMedia == null) {
       _url = 'timeline';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/mirror/v1/timeline';
     } else {
       _url = '/upload/mirror/v1/timeline';
@@ -836,7 +835,7 @@ class TimelineResourceApi {
    *
    * Completes with a [TimelineListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -847,7 +846,7 @@ class TimelineResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (bundleId != null) {
@@ -896,7 +895,7 @@ class TimelineResourceApi {
    *
    * Completes with a [TimelineItem].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -907,7 +906,7 @@ class TimelineResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -918,7 +917,7 @@ class TimelineResourceApi {
     }
 
 
-    _url = 'timeline/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'timeline/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -946,18 +945,18 @@ class TimelineResourceApi {
    *
    * Completes with a [TimelineItem].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<TimelineItem> update(TimelineItem request, core.String id, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<TimelineItem> update(TimelineItem request, core.String id, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -971,11 +970,11 @@ class TimelineResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'timeline/' + common_internal.Escaper.ecapeVariable('$id');
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/mirror/v1/timeline/' + common_internal.Escaper.ecapeVariable('$id');
+      _url = 'timeline/' + commons.Escaper.ecapeVariable('$id');
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/mirror/v1/timeline/' + commons.Escaper.ecapeVariable('$id');
     } else {
-      _url = '/upload/mirror/v1/timeline/' + common_internal.Escaper.ecapeVariable('$id');
+      _url = '/upload/mirror/v1/timeline/' + commons.Escaper.ecapeVariable('$id');
     }
 
 
@@ -992,11 +991,10 @@ class TimelineResourceApi {
 }
 
 
-/** Not documented yet. */
 class TimelineAttachmentsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TimelineAttachmentsResourceApi(common_internal.ApiRequester client) : 
+  TimelineAttachmentsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1008,7 +1006,7 @@ class TimelineAttachmentsResourceApi {
    *
    * [attachmentId] - The ID of the attachment.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1019,7 +1017,7 @@ class TimelineAttachmentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (itemId == null) {
@@ -1031,7 +1029,7 @@ class TimelineAttachmentsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'timeline/' + common_internal.Escaper.ecapeVariable('$itemId') + '/attachments/' + common_internal.Escaper.ecapeVariable('$attachmentId');
+    _url = 'timeline/' + commons.Escaper.ecapeVariable('$itemId') + '/attachments/' + commons.Escaper.ecapeVariable('$attachmentId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1060,20 +1058,20 @@ class TimelineAttachmentsResourceApi {
    *
    * - [Attachment] for Metadata downloads (see [downloadOptions]).
    *
-   * - [common.Media] for Media downloads (see [downloadOptions]).
+   * - [commons.Media] for Media downloads (see [downloadOptions]).
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future get(core.String itemId, core.String attachmentId, {common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future get(core.String itemId, core.String attachmentId, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (itemId == null) {
@@ -1085,7 +1083,7 @@ class TimelineAttachmentsResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = 'timeline/' + common_internal.Escaper.ecapeVariable('$itemId') + '/attachments/' + common_internal.Escaper.ecapeVariable('$attachmentId');
+    _url = 'timeline/' + commons.Escaper.ecapeVariable('$itemId') + '/attachments/' + commons.Escaper.ecapeVariable('$attachmentId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1095,7 +1093,7 @@ class TimelineAttachmentsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new Attachment.fromJson(data));
     } else {
       return _response;
@@ -1116,18 +1114,18 @@ class TimelineAttachmentsResourceApi {
    *
    * Completes with a [Attachment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Attachment> insert(core.String itemId, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Attachment> insert(core.String itemId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (itemId == null) {
@@ -1138,11 +1136,11 @@ class TimelineAttachmentsResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'timeline/' + common_internal.Escaper.ecapeVariable('$itemId') + '/attachments';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/mirror/v1/timeline/' + common_internal.Escaper.ecapeVariable('$itemId') + '/attachments';
+      _url = 'timeline/' + commons.Escaper.ecapeVariable('$itemId') + '/attachments';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/mirror/v1/timeline/' + commons.Escaper.ecapeVariable('$itemId') + '/attachments';
     } else {
-      _url = '/upload/mirror/v1/timeline/' + common_internal.Escaper.ecapeVariable('$itemId') + '/attachments';
+      _url = '/upload/mirror/v1/timeline/' + commons.Escaper.ecapeVariable('$itemId') + '/attachments';
     }
 
 
@@ -1165,7 +1163,7 @@ class TimelineAttachmentsResourceApi {
    *
    * Completes with a [AttachmentsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1176,7 +1174,7 @@ class TimelineAttachmentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (itemId == null) {
@@ -1184,7 +1182,7 @@ class TimelineAttachmentsResourceApi {
     }
 
 
-    _url = 'timeline/' + common_internal.Escaper.ecapeVariable('$itemId') + '/attachments';
+    _url = 'timeline/' + commons.Escaper.ecapeVariable('$itemId') + '/attachments';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1202,16 +1200,12 @@ class TimelineAttachmentsResourceApi {
 
 /** Represents an account passed into the Account Manager on Glass. */
 class Account {
-  /** Not documented yet. */
   core.List<AuthToken> authTokens;
 
-  /** Not documented yet. */
   core.List<core.String> features;
 
-  /** Not documented yet. */
   core.String password;
 
-  /** Not documented yet. */
   core.List<UserData> userData;
 
 
@@ -1345,12 +1339,9 @@ class AttachmentsListResponse {
 }
 
 
-/** Not documented yet. */
 class AuthToken {
-  /** Not documented yet. */
   core.String authToken;
 
-  /** Not documented yet. */
   core.String type;
 
 
@@ -2696,12 +2687,9 @@ class UserAction {
 }
 
 
-/** Not documented yet. */
 class UserData {
-  /** Not documented yet. */
   core.String key;
 
-  /** Not documented yet. */
   core.String value;
 
 
@@ -2727,5 +2715,3 @@ class UserData {
     return _json;
   }
 }
-
-

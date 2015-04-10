@@ -20,7 +20,7 @@
     "description": "The Google Compute Engine Instance Group Manager API provides groups of homogenous Compute Engine Instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/instance-groups/manager/v1beta2",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/o8KVD2TZK8SqQA452IHtm6GW-J8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/GOQCR1ua2wlqdDdPhDp_nZFzTYw\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -168,7 +168,7 @@
                     ]
                 },
                 "deleteInstances": {
-                    "description": "Deletes the specified instances. The instances are removed from the instance group and any target pools of which they are a member, then deleted. The targetSize of the instance group manager is reduced by the number of instances deleted.",
+                    "description": "Deletes the specified instances. The instances are deleted, then removed from the instance group and any target pools of which they were a member. The targetSize of the instance group manager is reduced by the number of instances deleted.",
                     "httpMethod": "POST",
                     "id": "replicapool.instanceGroupManagers.deleteInstances",
                     "parameterOrder": [
@@ -633,7 +633,7 @@
             }
         }
     },
-    "revision": "20141002",
+    "revision": "20150223",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InstanceGroupManager": {
@@ -940,9 +940,11 @@
                                     "NO_RESULTS_ON_PAGE",
                                     "REQUIRED_TOS_AGREEMENT",
                                     "RESOURCE_NOT_DELETED",
+                                    "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
                                     "UNREACHABLE"
                                 ],
                                 "enumDescriptions": [
+                                    "",
                                     "",
                                     "",
                                     "",

@@ -8,22 +8,57 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/plusdomains/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
 
-buildUnnamed951() {
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
+
+buildUnnamed1272() {
   var o = new core.List<api.PlusDomainsAclentryResource>();
   o.add(buildPlusDomainsAclentryResource());
   o.add(buildPlusDomainsAclentryResource());
   return o;
 }
 
-checkUnnamed951(core.List<api.PlusDomainsAclentryResource> o) {
+checkUnnamed1272(core.List<api.PlusDomainsAclentryResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlusDomainsAclentryResource(o[0]);
   checkPlusDomainsAclentryResource(o[1]);
@@ -36,7 +71,7 @@ buildAcl() {
   if (buildCounterAcl < 3) {
     o.description = "foo";
     o.domainRestricted = true;
-    o.items = buildUnnamed951();
+    o.items = buildUnnamed1272();
     o.kind = "foo";
   }
   buildCounterAcl--;
@@ -48,7 +83,7 @@ checkAcl(api.Acl o) {
   if (buildCounterAcl < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.domainRestricted, unittest.isTrue);
-    checkUnnamed951(o.items);
+    checkUnnamed1272(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAcl--;
@@ -255,14 +290,14 @@ checkActivityObjectAttachmentsPreviewThumbnails(api.ActivityObjectAttachmentsPre
   buildCounterActivityObjectAttachmentsPreviewThumbnails--;
 }
 
-buildUnnamed952() {
+buildUnnamed1273() {
   var o = new core.List<api.ActivityObjectAttachmentsPreviewThumbnails>();
   o.add(buildActivityObjectAttachmentsPreviewThumbnails());
   o.add(buildActivityObjectAttachmentsPreviewThumbnails());
   return o;
 }
 
-checkUnnamed952(core.List<api.ActivityObjectAttachmentsPreviewThumbnails> o) {
+checkUnnamed1273(core.List<api.ActivityObjectAttachmentsPreviewThumbnails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityObjectAttachmentsPreviewThumbnails(o[0]);
   checkActivityObjectAttachmentsPreviewThumbnails(o[1]);
@@ -316,14 +351,14 @@ checkActivityObjectAttachmentsThumbnails(api.ActivityObjectAttachmentsThumbnails
   buildCounterActivityObjectAttachmentsThumbnails--;
 }
 
-buildUnnamed953() {
+buildUnnamed1274() {
   var o = new core.List<api.ActivityObjectAttachmentsThumbnails>();
   o.add(buildActivityObjectAttachmentsThumbnails());
   o.add(buildActivityObjectAttachmentsThumbnails());
   return o;
 }
 
-checkUnnamed953(core.List<api.ActivityObjectAttachmentsThumbnails> o) {
+checkUnnamed1274(core.List<api.ActivityObjectAttachmentsThumbnails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityObjectAttachmentsThumbnails(o[0]);
   checkActivityObjectAttachmentsThumbnails(o[1]);
@@ -341,8 +376,8 @@ buildActivityObjectAttachments() {
     o.id = "foo";
     o.image = buildActivityObjectAttachmentsImage();
     o.objectType = "foo";
-    o.previewThumbnails = buildUnnamed952();
-    o.thumbnails = buildUnnamed953();
+    o.previewThumbnails = buildUnnamed1273();
+    o.thumbnails = buildUnnamed1274();
     o.url = "foo";
   }
   buildCounterActivityObjectAttachments--;
@@ -359,21 +394,21 @@ checkActivityObjectAttachments(api.ActivityObjectAttachments o) {
     unittest.expect(o.id, unittest.equals('foo'));
     checkActivityObjectAttachmentsImage(o.image);
     unittest.expect(o.objectType, unittest.equals('foo'));
-    checkUnnamed952(o.previewThumbnails);
-    checkUnnamed953(o.thumbnails);
+    checkUnnamed1273(o.previewThumbnails);
+    checkUnnamed1274(o.thumbnails);
     unittest.expect(o.url, unittest.equals('foo'));
   }
   buildCounterActivityObjectAttachments--;
 }
 
-buildUnnamed954() {
+buildUnnamed1275() {
   var o = new core.List<api.ActivityObjectAttachments>();
   o.add(buildActivityObjectAttachments());
   o.add(buildActivityObjectAttachments());
   return o;
 }
 
-checkUnnamed954(core.List<api.ActivityObjectAttachments> o) {
+checkUnnamed1275(core.List<api.ActivityObjectAttachments> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityObjectAttachments(o[0]);
   checkActivityObjectAttachments(o[1]);
@@ -475,7 +510,7 @@ buildActivityObject() {
   buildCounterActivityObject++;
   if (buildCounterActivityObject < 3) {
     o.actor = buildActivityObjectActor();
-    o.attachments = buildUnnamed954();
+    o.attachments = buildUnnamed1275();
     o.content = "foo";
     o.id = "foo";
     o.objectType = "foo";
@@ -494,7 +529,7 @@ checkActivityObject(api.ActivityObject o) {
   buildCounterActivityObject++;
   if (buildCounterActivityObject < 3) {
     checkActivityObjectActor(o.actor);
-    checkUnnamed954(o.attachments);
+    checkUnnamed1275(o.attachments);
     unittest.expect(o.content, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.objectType, unittest.equals('foo'));
@@ -584,14 +619,14 @@ checkActivity(api.Activity o) {
   buildCounterActivity--;
 }
 
-buildUnnamed955() {
+buildUnnamed1276() {
   var o = new core.List<api.Activity>();
   o.add(buildActivity());
   o.add(buildActivity());
   return o;
 }
 
-checkUnnamed955(core.List<api.Activity> o) {
+checkUnnamed1276(core.List<api.Activity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivity(o[0]);
   checkActivity(o[1]);
@@ -604,7 +639,7 @@ buildActivityFeed() {
   if (buildCounterActivityFeed < 3) {
     o.etag = "foo";
     o.id = "foo";
-    o.items = buildUnnamed955();
+    o.items = buildUnnamed1276();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -621,7 +656,7 @@ checkActivityFeed(api.ActivityFeed o) {
   if (buildCounterActivityFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed955(o.items);
+    checkUnnamed1276(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -659,14 +694,14 @@ checkAudience(api.Audience o) {
   buildCounterAudience--;
 }
 
-buildUnnamed956() {
+buildUnnamed1277() {
   var o = new core.List<api.Audience>();
   o.add(buildAudience());
   o.add(buildAudience());
   return o;
 }
 
-checkUnnamed956(core.List<api.Audience> o) {
+checkUnnamed1277(core.List<api.Audience> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAudience(o[0]);
   checkAudience(o[1]);
@@ -678,7 +713,7 @@ buildAudiencesFeed() {
   buildCounterAudiencesFeed++;
   if (buildCounterAudiencesFeed < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed956();
+    o.items = buildUnnamed1277();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -691,7 +726,7 @@ checkAudiencesFeed(api.AudiencesFeed o) {
   buildCounterAudiencesFeed++;
   if (buildCounterAudiencesFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed956(o.items);
+    checkUnnamed1277(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -749,14 +784,14 @@ checkCircle(api.Circle o) {
   buildCounterCircle--;
 }
 
-buildUnnamed957() {
+buildUnnamed1278() {
   var o = new core.List<api.Circle>();
   o.add(buildCircle());
   o.add(buildCircle());
   return o;
 }
 
-checkUnnamed957(core.List<api.Circle> o) {
+checkUnnamed1278(core.List<api.Circle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCircle(o[0]);
   checkCircle(o[1]);
@@ -768,7 +803,7 @@ buildCircleFeed() {
   buildCounterCircleFeed++;
   if (buildCounterCircleFeed < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed957();
+    o.items = buildUnnamed1278();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -784,7 +819,7 @@ checkCircleFeed(api.CircleFeed o) {
   buildCounterCircleFeed++;
   if (buildCounterCircleFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed957(o.items);
+    checkUnnamed1278(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -860,14 +895,14 @@ checkCommentInReplyTo(api.CommentInReplyTo o) {
   buildCounterCommentInReplyTo--;
 }
 
-buildUnnamed958() {
+buildUnnamed1279() {
   var o = new core.List<api.CommentInReplyTo>();
   o.add(buildCommentInReplyTo());
   o.add(buildCommentInReplyTo());
   return o;
 }
 
-checkUnnamed958(core.List<api.CommentInReplyTo> o) {
+checkUnnamed1279(core.List<api.CommentInReplyTo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCommentInReplyTo(o[0]);
   checkCommentInReplyTo(o[1]);
@@ -923,7 +958,7 @@ buildComment() {
     o.actor = buildCommentActor();
     o.etag = "foo";
     o.id = "foo";
-    o.inReplyTo = buildUnnamed958();
+    o.inReplyTo = buildUnnamed1279();
     o.kind = "foo";
     o.object = buildCommentObject();
     o.plusoners = buildCommentPlusoners();
@@ -942,7 +977,7 @@ checkComment(api.Comment o) {
     checkCommentActor(o.actor);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed958(o.inReplyTo);
+    checkUnnamed1279(o.inReplyTo);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkCommentObject(o.object);
     checkCommentPlusoners(o.plusoners);
@@ -954,14 +989,14 @@ checkComment(api.Comment o) {
   buildCounterComment--;
 }
 
-buildUnnamed959() {
+buildUnnamed1280() {
   var o = new core.List<api.Comment>();
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-checkUnnamed959(core.List<api.Comment> o) {
+checkUnnamed1280(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -974,7 +1009,7 @@ buildCommentFeed() {
   if (buildCounterCommentFeed < 3) {
     o.etag = "foo";
     o.id = "foo";
-    o.items = buildUnnamed959();
+    o.items = buildUnnamed1280();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -990,7 +1025,7 @@ checkCommentFeed(api.CommentFeed o) {
   if (buildCounterCommentFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed959(o.items);
+    checkUnnamed1280(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -1063,14 +1098,14 @@ checkMediaExif(api.MediaExif o) {
   buildCounterMediaExif--;
 }
 
-buildUnnamed960() {
+buildUnnamed1281() {
   var o = new core.List<api.Videostream>();
   o.add(buildVideostream());
   o.add(buildVideostream());
   return o;
 }
 
-checkUnnamed960(core.List<api.Videostream> o) {
+checkUnnamed1281(core.List<api.Videostream> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVideostream(o[0]);
   checkVideostream(o[1]);
@@ -1092,7 +1127,7 @@ buildMedia() {
     o.mediaUrl = "foo";
     o.published = core.DateTime.parse("2002-02-27T14:01:02");
     o.sizeBytes = "foo";
-    o.streams = buildUnnamed960();
+    o.streams = buildUnnamed1281();
     o.summary = "foo";
     o.updated = core.DateTime.parse("2002-02-27T14:01:02");
     o.url = "foo";
@@ -1118,7 +1153,7 @@ checkMedia(api.Media o) {
     unittest.expect(o.mediaUrl, unittest.equals('foo'));
     unittest.expect(o.published, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.sizeBytes, unittest.equals('foo'));
-    checkUnnamed960(o.streams);
+    checkUnnamed1281(o.streams);
     unittest.expect(o.summary, unittest.equals('foo'));
     unittest.expect(o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.url, unittest.equals('foo'));
@@ -1129,14 +1164,14 @@ checkMedia(api.Media o) {
   buildCounterMedia--;
 }
 
-buildUnnamed961() {
+buildUnnamed1282() {
   var o = new core.List<api.Person>();
   o.add(buildPerson());
   o.add(buildPerson());
   return o;
 }
 
-checkUnnamed961(core.List<api.Person> o) {
+checkUnnamed1282(core.List<api.Person> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPerson(o[0]);
   checkPerson(o[1]);
@@ -1148,7 +1183,7 @@ buildPeopleFeed() {
   buildCounterPeopleFeed++;
   if (buildCounterPeopleFeed < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed961();
+    o.items = buildUnnamed1282();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -1163,7 +1198,7 @@ checkPeopleFeed(api.PeopleFeed o) {
   buildCounterPeopleFeed++;
   if (buildCounterPeopleFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed961(o.items);
+    checkUnnamed1282(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -1261,14 +1296,14 @@ checkPersonEmails(api.PersonEmails o) {
   buildCounterPersonEmails--;
 }
 
-buildUnnamed962() {
+buildUnnamed1283() {
   var o = new core.List<api.PersonEmails>();
   o.add(buildPersonEmails());
   o.add(buildPersonEmails());
   return o;
 }
 
-checkUnnamed962(core.List<api.PersonEmails> o) {
+checkUnnamed1283(core.List<api.PersonEmails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonEmails(o[0]);
   checkPersonEmails(o[1]);
@@ -1359,14 +1394,14 @@ checkPersonOrganizations(api.PersonOrganizations o) {
   buildCounterPersonOrganizations--;
 }
 
-buildUnnamed963() {
+buildUnnamed1284() {
   var o = new core.List<api.PersonOrganizations>();
   o.add(buildPersonOrganizations());
   o.add(buildPersonOrganizations());
   return o;
 }
 
-checkUnnamed963(core.List<api.PersonOrganizations> o) {
+checkUnnamed1284(core.List<api.PersonOrganizations> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonOrganizations(o[0]);
   checkPersonOrganizations(o[1]);
@@ -1393,14 +1428,14 @@ checkPersonPlacesLived(api.PersonPlacesLived o) {
   buildCounterPersonPlacesLived--;
 }
 
-buildUnnamed964() {
+buildUnnamed1285() {
   var o = new core.List<api.PersonPlacesLived>();
   o.add(buildPersonPlacesLived());
   o.add(buildPersonPlacesLived());
   return o;
 }
 
-checkUnnamed964(core.List<api.PersonPlacesLived> o) {
+checkUnnamed1285(core.List<api.PersonPlacesLived> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonPlacesLived(o[0]);
   checkPersonPlacesLived(o[1]);
@@ -1429,14 +1464,14 @@ checkPersonUrls(api.PersonUrls o) {
   buildCounterPersonUrls--;
 }
 
-buildUnnamed965() {
+buildUnnamed1286() {
   var o = new core.List<api.PersonUrls>();
   o.add(buildPersonUrls());
   o.add(buildPersonUrls());
   return o;
 }
 
-checkUnnamed965(core.List<api.PersonUrls> o) {
+checkUnnamed1286(core.List<api.PersonUrls> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonUrls(o[0]);
   checkPersonUrls(o[1]);
@@ -1455,7 +1490,7 @@ buildPerson() {
     o.currentLocation = "foo";
     o.displayName = "foo";
     o.domain = "foo";
-    o.emails = buildUnnamed962();
+    o.emails = buildUnnamed1283();
     o.etag = "foo";
     o.gender = "foo";
     o.id = "foo";
@@ -1466,14 +1501,14 @@ buildPerson() {
     o.nickname = "foo";
     o.objectType = "foo";
     o.occupation = "foo";
-    o.organizations = buildUnnamed963();
-    o.placesLived = buildUnnamed964();
+    o.organizations = buildUnnamed1284();
+    o.placesLived = buildUnnamed1285();
     o.plusOneCount = 42;
     o.relationshipStatus = "foo";
     o.skills = "foo";
     o.tagline = "foo";
     o.url = "foo";
-    o.urls = buildUnnamed965();
+    o.urls = buildUnnamed1286();
     o.verified = true;
   }
   buildCounterPerson--;
@@ -1491,7 +1526,7 @@ checkPerson(api.Person o) {
     unittest.expect(o.currentLocation, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.domain, unittest.equals('foo'));
-    checkUnnamed962(o.emails);
+    checkUnnamed1283(o.emails);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.gender, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
@@ -1502,14 +1537,14 @@ checkPerson(api.Person o) {
     unittest.expect(o.nickname, unittest.equals('foo'));
     unittest.expect(o.objectType, unittest.equals('foo'));
     unittest.expect(o.occupation, unittest.equals('foo'));
-    checkUnnamed963(o.organizations);
-    checkUnnamed964(o.placesLived);
+    checkUnnamed1284(o.organizations);
+    checkUnnamed1285(o.placesLived);
     unittest.expect(o.plusOneCount, unittest.equals(42));
     unittest.expect(o.relationshipStatus, unittest.equals('foo'));
     unittest.expect(o.skills, unittest.equals('foo'));
     unittest.expect(o.tagline, unittest.equals('foo'));
     unittest.expect(o.url, unittest.equals('foo'));
-    checkUnnamed965(o.urls);
+    checkUnnamed1286(o.urls);
     unittest.expect(o.verified, unittest.isTrue);
   }
   buildCounterPerson--;
@@ -1630,53 +1665,53 @@ checkVideostream(api.Videostream o) {
   buildCounterVideostream--;
 }
 
-buildUnnamed966() {
+buildUnnamed1287() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed966(core.List<core.String> o) {
+checkUnnamed1287(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed967() {
+buildUnnamed1288() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed967(core.List<core.String> o) {
+checkUnnamed1288(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed968() {
+buildUnnamed1289() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed968(core.List<core.String> o) {
+checkUnnamed1289(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed969() {
+buildUnnamed1290() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed969(core.List<core.String> o) {
+checkUnnamed1290(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2164,7 +2199,7 @@ main() {
   unittest.group("resource-ActivitiesResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ActivitiesResourceApi res = new api.PlusDomainsApi(mock).activities;
       var arg_activityId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2204,7 +2239,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildActivity());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_activityId).then(unittest.expectAsync(((api.Activity response) {
         checkActivity(response);
@@ -2213,7 +2248,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ActivitiesResourceApi res = new api.PlusDomainsApi(mock).activities;
       var arg_request = buildActivity();
       var arg_userId = "foo";
@@ -2263,7 +2298,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildActivity());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_userId, preview: arg_preview).then(unittest.expectAsync(((api.Activity response) {
         checkActivity(response);
@@ -2272,7 +2307,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ActivitiesResourceApi res = new api.PlusDomainsApi(mock).activities;
       var arg_userId = "foo";
       var arg_collection = "foo";
@@ -2324,7 +2359,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildActivityFeed());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_userId, arg_collection, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ActivityFeed response) {
         checkActivityFeed(response);
@@ -2337,7 +2372,7 @@ main() {
   unittest.group("resource-AudiencesResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AudiencesResourceApi res = new api.PlusDomainsApi(mock).audiences;
       var arg_userId = "foo";
       var arg_maxResults = 42;
@@ -2385,7 +2420,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAudiencesFeed());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_userId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.AudiencesFeed response) {
         checkAudiencesFeed(response);
@@ -2398,11 +2433,11 @@ main() {
   unittest.group("resource-CirclesResourceApi", () {
     unittest.test("method--addPeople", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CirclesResourceApi res = new api.PlusDomainsApi(mock).circles;
       var arg_circleId = "foo";
-      var arg_email = buildUnnamed966();
-      var arg_userId = buildUnnamed967();
+      var arg_email = buildUnnamed1287();
+      var arg_userId = buildUnnamed1288();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2446,7 +2481,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCircle());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.addPeople(arg_circleId, email: arg_email, userId: arg_userId).then(unittest.expectAsync(((api.Circle response) {
         checkCircle(response);
@@ -2455,7 +2490,7 @@ main() {
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CirclesResourceApi res = new api.PlusDomainsApi(mock).circles;
       var arg_circleId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2495,7 +2530,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCircle());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_circleId).then(unittest.expectAsync(((api.Circle response) {
         checkCircle(response);
@@ -2504,7 +2539,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CirclesResourceApi res = new api.PlusDomainsApi(mock).circles;
       var arg_request = buildCircle();
       var arg_userId = "foo";
@@ -2552,7 +2587,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCircle());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_userId).then(unittest.expectAsync(((api.Circle response) {
         checkCircle(response);
@@ -2561,7 +2596,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CirclesResourceApi res = new api.PlusDomainsApi(mock).circles;
       var arg_userId = "foo";
       var arg_maxResults = 42;
@@ -2609,7 +2644,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCircleFeed());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_userId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.CircleFeed response) {
         checkCircleFeed(response);
@@ -2618,7 +2653,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CirclesResourceApi res = new api.PlusDomainsApi(mock).circles;
       var arg_request = buildCircle();
       var arg_circleId = "foo";
@@ -2662,7 +2697,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCircle());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_circleId).then(unittest.expectAsync(((api.Circle response) {
         checkCircle(response);
@@ -2671,7 +2706,7 @@ main() {
 
     unittest.test("method--remove", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CirclesResourceApi res = new api.PlusDomainsApi(mock).circles;
       var arg_circleId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2711,18 +2746,18 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.remove(arg_circleId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--removePeople", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CirclesResourceApi res = new api.PlusDomainsApi(mock).circles;
       var arg_circleId = "foo";
-      var arg_email = buildUnnamed968();
-      var arg_userId = buildUnnamed969();
+      var arg_email = buildUnnamed1289();
+      var arg_userId = buildUnnamed1290();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2766,14 +2801,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.removePeople(arg_circleId, email: arg_email, userId: arg_userId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CirclesResourceApi res = new api.PlusDomainsApi(mock).circles;
       var arg_request = buildCircle();
       var arg_circleId = "foo";
@@ -2817,7 +2852,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCircle());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_circleId).then(unittest.expectAsync(((api.Circle response) {
         checkCircle(response);
@@ -2830,7 +2865,7 @@ main() {
   unittest.group("resource-CommentsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.PlusDomainsApi(mock).comments;
       var arg_commentId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2870,7 +2905,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildComment());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_commentId).then(unittest.expectAsync(((api.Comment response) {
         checkComment(response);
@@ -2879,7 +2914,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.PlusDomainsApi(mock).comments;
       var arg_request = buildComment();
       var arg_activityId = "foo";
@@ -2927,7 +2962,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildComment());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_activityId).then(unittest.expectAsync(((api.Comment response) {
         checkComment(response);
@@ -2936,7 +2971,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.PlusDomainsApi(mock).comments;
       var arg_activityId = "foo";
       var arg_maxResults = 42;
@@ -2986,7 +3021,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCommentFeed());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_activityId, maxResults: arg_maxResults, pageToken: arg_pageToken, sortOrder: arg_sortOrder).then(unittest.expectAsync(((api.CommentFeed response) {
         checkCommentFeed(response);
@@ -3001,7 +3036,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MediaResourceApi res = new api.PlusDomainsApi(mock).media;
       var arg_request = buildMedia();
       var arg_userId = "foo";
@@ -3053,7 +3088,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMedia());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_userId, arg_collection).then(unittest.expectAsync(((api.Media response) {
         checkMedia(response);
@@ -3066,7 +3101,7 @@ main() {
   unittest.group("resource-PeopleResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PeopleResourceApi res = new api.PlusDomainsApi(mock).people;
       var arg_userId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3106,7 +3141,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPerson());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_userId).then(unittest.expectAsync(((api.Person response) {
         checkPerson(response);
@@ -3115,7 +3150,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PeopleResourceApi res = new api.PlusDomainsApi(mock).people;
       var arg_userId = "foo";
       var arg_collection = "foo";
@@ -3169,7 +3204,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPeopleFeed());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_userId, arg_collection, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken).then(unittest.expectAsync(((api.PeopleFeed response) {
         checkPeopleFeed(response);
@@ -3178,7 +3213,7 @@ main() {
 
     unittest.test("method--listByActivity", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PeopleResourceApi res = new api.PlusDomainsApi(mock).people;
       var arg_activityId = "foo";
       var arg_collection = "foo";
@@ -3230,7 +3265,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPeopleFeed());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listByActivity(arg_activityId, arg_collection, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.PeopleFeed response) {
         checkPeopleFeed(response);
@@ -3239,7 +3274,7 @@ main() {
 
     unittest.test("method--listByCircle", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PeopleResourceApi res = new api.PlusDomainsApi(mock).people;
       var arg_circleId = "foo";
       var arg_maxResults = 42;
@@ -3287,7 +3322,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPeopleFeed());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listByCircle(arg_circleId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.PeopleFeed response) {
         checkPeopleFeed(response);

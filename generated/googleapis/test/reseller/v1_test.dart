@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/reseller/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterAddress = 0;
 buildAddress() {
@@ -286,14 +321,14 @@ checkSubscription(api.Subscription o) {
   buildCounterSubscription--;
 }
 
-buildUnnamed1332() {
+buildUnnamed1326() {
   var o = new core.List<api.Subscription>();
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-checkUnnamed1332(core.List<api.Subscription> o) {
+checkUnnamed1326(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -306,7 +341,7 @@ buildSubscriptions() {
   if (buildCounterSubscriptions < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.subscriptions = buildUnnamed1332();
+    o.subscriptions = buildUnnamed1326();
   }
   buildCounterSubscriptions--;
   return o;
@@ -317,7 +352,7 @@ checkSubscriptions(api.Subscriptions o) {
   if (buildCounterSubscriptions < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1332(o.subscriptions);
+    checkUnnamed1326(o.subscriptions);
   }
   buildCounterSubscriptions--;
 }
@@ -426,7 +461,7 @@ main() {
   unittest.group("resource-CustomersResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CustomersResourceApi res = new api.ResellerApi(mock).customers;
       var arg_customerId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -466,7 +501,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCustomer());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_customerId).then(unittest.expectAsync(((api.Customer response) {
         checkCustomer(response);
@@ -475,7 +510,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CustomersResourceApi res = new api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
       var arg_customerAuthToken = "foo";
@@ -517,7 +552,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCustomer());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, customerAuthToken: arg_customerAuthToken).then(unittest.expectAsync(((api.Customer response) {
         checkCustomer(response);
@@ -526,7 +561,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CustomersResourceApi res = new api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
       var arg_customerId = "foo";
@@ -570,7 +605,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCustomer());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_customerId).then(unittest.expectAsync(((api.Customer response) {
         checkCustomer(response);
@@ -579,7 +614,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CustomersResourceApi res = new api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
       var arg_customerId = "foo";
@@ -623,7 +658,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCustomer());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_customerId).then(unittest.expectAsync(((api.Customer response) {
         checkCustomer(response);
@@ -636,7 +671,7 @@ main() {
   unittest.group("resource-SubscriptionsResourceApi", () {
     unittest.test("method--activate", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.ResellerApi(mock).subscriptions;
       var arg_customerId = "foo";
       var arg_subscriptionId = "foo";
@@ -688,7 +723,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSubscription());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.activate(arg_customerId, arg_subscriptionId).then(unittest.expectAsync(((api.Subscription response) {
         checkSubscription(response);
@@ -697,7 +732,7 @@ main() {
 
     unittest.test("method--changePlan", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.ResellerApi(mock).subscriptions;
       var arg_request = buildChangePlanRequest();
       var arg_customerId = "foo";
@@ -753,7 +788,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSubscription());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.changePlan(arg_request, arg_customerId, arg_subscriptionId).then(unittest.expectAsync(((api.Subscription response) {
         checkSubscription(response);
@@ -762,7 +797,7 @@ main() {
 
     unittest.test("method--changeRenewalSettings", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.ResellerApi(mock).subscriptions;
       var arg_request = buildRenewalSettings();
       var arg_customerId = "foo";
@@ -818,7 +853,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSubscription());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.changeRenewalSettings(arg_request, arg_customerId, arg_subscriptionId).then(unittest.expectAsync(((api.Subscription response) {
         checkSubscription(response);
@@ -827,7 +862,7 @@ main() {
 
     unittest.test("method--changeSeats", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.ResellerApi(mock).subscriptions;
       var arg_request = buildSeats();
       var arg_customerId = "foo";
@@ -883,7 +918,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSubscription());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.changeSeats(arg_request, arg_customerId, arg_subscriptionId).then(unittest.expectAsync(((api.Subscription response) {
         checkSubscription(response);
@@ -892,7 +927,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.ResellerApi(mock).subscriptions;
       var arg_customerId = "foo";
       var arg_subscriptionId = "foo";
@@ -942,14 +977,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_customerId, arg_subscriptionId, arg_deletionType).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.ResellerApi(mock).subscriptions;
       var arg_customerId = "foo";
       var arg_subscriptionId = "foo";
@@ -997,7 +1032,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSubscription());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_customerId, arg_subscriptionId).then(unittest.expectAsync(((api.Subscription response) {
         checkSubscription(response);
@@ -1006,7 +1041,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.ResellerApi(mock).subscriptions;
       var arg_request = buildSubscription();
       var arg_customerId = "foo";
@@ -1056,7 +1091,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSubscription());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_customerId, customerAuthToken: arg_customerAuthToken).then(unittest.expectAsync(((api.Subscription response) {
         checkSubscription(response);
@@ -1065,7 +1100,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.ResellerApi(mock).subscriptions;
       var arg_customerAuthToken = "foo";
       var arg_customerId = "foo";
@@ -1111,7 +1146,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSubscriptions());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(customerAuthToken: arg_customerAuthToken, customerId: arg_customerId, customerNamePrefix: arg_customerNamePrefix, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.Subscriptions response) {
         checkSubscriptions(response);
@@ -1120,7 +1155,7 @@ main() {
 
     unittest.test("method--startPaidService", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.ResellerApi(mock).subscriptions;
       var arg_customerId = "foo";
       var arg_subscriptionId = "foo";
@@ -1172,7 +1207,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSubscription());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.startPaidService(arg_customerId, arg_subscriptionId).then(unittest.expectAsync(((api.Subscription response) {
         checkSubscription(response);
@@ -1181,7 +1216,7 @@ main() {
 
     unittest.test("method--suspend", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.ResellerApi(mock).subscriptions;
       var arg_customerId = "foo";
       var arg_subscriptionId = "foo";
@@ -1233,7 +1268,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSubscription());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.suspend(arg_customerId, arg_subscriptionId).then(unittest.expectAsync(((api.Subscription response) {
         checkSubscription(response);

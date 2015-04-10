@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.reseller.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client reseller/v1';
 
 /** Lets you create and manage your customers and their subscriptions. */
 class ResellerApi {
@@ -22,21 +25,20 @@ class ResellerApi {
   static const AppsOrderReadonlyScope = "https://www.googleapis.com/auth/apps.order.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   CustomersResourceApi get customers => new CustomersResourceApi(_requester);
   SubscriptionsResourceApi get subscriptions => new SubscriptionsResourceApi(_requester);
 
   ResellerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "apps/reseller/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class CustomersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CustomersResourceApi(common_internal.ApiRequester client) : 
+  CustomersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -48,7 +50,7 @@ class CustomersResourceApi {
    *
    * Completes with a [Customer].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -59,7 +61,7 @@ class CustomersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (customerId == null) {
@@ -67,7 +69,7 @@ class CustomersResourceApi {
     }
 
 
-    _url = 'customers/' + common_internal.Escaper.ecapeVariable('$customerId');
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -92,7 +94,7 @@ class CustomersResourceApi {
    *
    * Completes with a [Customer].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -103,7 +105,7 @@ class CustomersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -138,7 +140,7 @@ class CustomersResourceApi {
    *
    * Completes with a [Customer].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -149,7 +151,7 @@ class CustomersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -160,7 +162,7 @@ class CustomersResourceApi {
     }
 
 
-    _url = 'customers/' + common_internal.Escaper.ecapeVariable('$customerId');
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -183,7 +185,7 @@ class CustomersResourceApi {
    *
    * Completes with a [Customer].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -194,7 +196,7 @@ class CustomersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -205,7 +207,7 @@ class CustomersResourceApi {
     }
 
 
-    _url = 'customers/' + common_internal.Escaper.ecapeVariable('$customerId');
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -220,11 +222,10 @@ class CustomersResourceApi {
 }
 
 
-/** Not documented yet. */
 class SubscriptionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SubscriptionsResourceApi(common_internal.ApiRequester client) : 
+  SubscriptionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -238,7 +239,7 @@ class SubscriptionsResourceApi {
    *
    * Completes with a [Subscription].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -249,7 +250,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (customerId == null) {
@@ -260,7 +261,7 @@ class SubscriptionsResourceApi {
     }
 
 
-    _url = 'customers/' + common_internal.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/activate';
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/activate';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -285,7 +286,7 @@ class SubscriptionsResourceApi {
    *
    * Completes with a [Subscription].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -296,7 +297,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -310,7 +311,7 @@ class SubscriptionsResourceApi {
     }
 
 
-    _url = 'customers/' + common_internal.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/changePlan';
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/changePlan';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -335,7 +336,7 @@ class SubscriptionsResourceApi {
    *
    * Completes with a [Subscription].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -346,7 +347,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -360,7 +361,7 @@ class SubscriptionsResourceApi {
     }
 
 
-    _url = 'customers/' + common_internal.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/changeRenewalSettings';
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/changeRenewalSettings';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -385,7 +386,7 @@ class SubscriptionsResourceApi {
    *
    * Completes with a [Subscription].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -396,7 +397,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -410,7 +411,7 @@ class SubscriptionsResourceApi {
     }
 
 
-    _url = 'customers/' + common_internal.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/changeSeats';
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/changeSeats';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -440,7 +441,7 @@ class SubscriptionsResourceApi {
    * - "suspend" : Suspends the subscriptions for 4 days before cancelling it
    * - "transfer_to_direct" : Transfers a subscription directly to Google
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -451,7 +452,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (customerId == null) {
@@ -467,7 +468,7 @@ class SubscriptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customers/' + common_internal.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId');
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -490,7 +491,7 @@ class SubscriptionsResourceApi {
    *
    * Completes with a [Subscription].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -501,7 +502,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (customerId == null) {
@@ -512,7 +513,7 @@ class SubscriptionsResourceApi {
     }
 
 
-    _url = 'customers/' + common_internal.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId');
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -539,7 +540,7 @@ class SubscriptionsResourceApi {
    *
    * Completes with a [Subscription].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -550,7 +551,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -564,7 +565,7 @@ class SubscriptionsResourceApi {
     }
 
 
-    _url = 'customers/' + common_internal.Escaper.ecapeVariable('$customerId') + '/subscriptions';
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -598,7 +599,7 @@ class SubscriptionsResourceApi {
    *
    * Completes with a [Subscriptions].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -609,7 +610,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (customerAuthToken != null) {
@@ -652,7 +653,7 @@ class SubscriptionsResourceApi {
    *
    * Completes with a [Subscription].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -663,7 +664,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (customerId == null) {
@@ -674,7 +675,7 @@ class SubscriptionsResourceApi {
     }
 
 
-    _url = 'customers/' + common_internal.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/startPaidService';
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/startPaidService';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -697,7 +698,7 @@ class SubscriptionsResourceApi {
    *
    * Completes with a [Subscription].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -708,7 +709,7 @@ class SubscriptionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (customerId == null) {
@@ -719,7 +720,7 @@ class SubscriptionsResourceApi {
     }
 
 
-    _url = 'customers/' + common_internal.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + common_internal.Escaper.ecapeVariable('$subscriptionId') + '/suspend';
+    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId') + '/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/suspend';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1151,7 +1152,6 @@ class SubscriptionPlan {
 
 /** Transfer related information for the subscription. */
 class SubscriptionTransferInfo {
-  /** Not documented yet. */
   core.int minimumTransferableSeats;
 
   /** Time when transfer token or intent to transfer will expire. */
@@ -1399,5 +1399,3 @@ class Subscriptions {
     return _json;
   }
 }
-
-

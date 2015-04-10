@@ -14,7 +14,7 @@
     "description": "Lets you search for books and manage your Google Books library.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/kNB4QIeM_hYb1gDtvlVUUPro4uQ\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/7vCHfrhi9Lj_cY5xxg_5Db6xPtw\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/ebooks-16.png",
         "x32": "https://www.google.com/images/icons/product/ebooks-32.png"
@@ -947,34 +947,6 @@
                                 "https://www.googleapis.com/auth/books"
                             ]
                         },
-                        "get": {
-                            "description": "Gets an annotation by its ID.",
-                            "httpMethod": "GET",
-                            "id": "books.mylibrary.annotations.get",
-                            "parameterOrder": [
-                                "annotationId"
-                            ],
-                            "parameters": {
-                                "annotationId": {
-                                    "description": "The ID for the annotation to retrieve.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "source": {
-                                    "description": "String to identify the originator of this request.",
-                                    "location": "query",
-                                    "type": "string"
-                                }
-                            },
-                            "path": "mylibrary/annotations/{annotationId}",
-                            "response": {
-                                "$ref": "Annotation"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/books"
-                            ]
-                        },
                         "insert": {
                             "description": "Inserts a new annotation.",
                             "httpMethod": "POST",
@@ -1035,12 +1007,6 @@
                                     "maximum": "40",
                                     "minimum": "0",
                                     "type": "integer"
-                                },
-                                "pageIds": {
-                                    "description": "The page ID(s) for the volume that is being queried.",
-                                    "location": "query",
-                                    "repeated": true,
-                                    "type": "string"
                                 },
                                 "pageToken": {
                                     "description": "The value of the nextToken from the previous page.",
@@ -2219,7 +2185,7 @@
             }
         }
     },
-    "revision": "20150115",
+    "revision": "20150309",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {

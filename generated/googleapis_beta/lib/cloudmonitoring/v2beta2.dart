@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.cloudmonitoring.v2beta2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client cloudmonitoring/v2beta2';
 
 /** API for accessing Google Cloud and API monitoring data. */
 class CloudmonitoringApi {
@@ -22,22 +25,21 @@ class CloudmonitoringApi {
   static const MonitoringScope = "https://www.googleapis.com/auth/monitoring";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   MetricDescriptorsResourceApi get metricDescriptors => new MetricDescriptorsResourceApi(_requester);
   TimeseriesResourceApi get timeseries => new TimeseriesResourceApi(_requester);
   TimeseriesDescriptorsResourceApi get timeseriesDescriptors => new TimeseriesDescriptorsResourceApi(_requester);
 
   CloudmonitoringApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "cloudmonitoring/v2beta2/projects/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class MetricDescriptorsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  MetricDescriptorsResourceApi(common_internal.ApiRequester client) : 
+  MetricDescriptorsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -52,7 +54,7 @@ class MetricDescriptorsResourceApi {
    *
    * Completes with a [MetricDescriptor].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -63,7 +65,7 @@ class MetricDescriptorsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -74,7 +76,7 @@ class MetricDescriptorsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/metricDescriptors';
+    _url = commons.Escaper.ecapeVariable('$project') + '/metricDescriptors';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -97,7 +99,7 @@ class MetricDescriptorsResourceApi {
    *
    * Completes with a [DeleteMetricDescriptorResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -108,7 +110,7 @@ class MetricDescriptorsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -119,7 +121,7 @@ class MetricDescriptorsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/metricDescriptors/' + common_internal.Escaper.ecapeVariable('$metric');
+    _url = commons.Escaper.ecapeVariable('$project') + '/metricDescriptors/' + commons.Escaper.ecapeVariable('$metric');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -161,7 +163,7 @@ class MetricDescriptorsResourceApi {
    *
    * Completes with a [ListMetricDescriptorsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -172,7 +174,7 @@ class MetricDescriptorsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -192,7 +194,7 @@ class MetricDescriptorsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/metricDescriptors';
+    _url = commons.Escaper.ecapeVariable('$project') + '/metricDescriptors';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -207,11 +209,10 @@ class MetricDescriptorsResourceApi {
 }
 
 
-/** Not documented yet. */
 class TimeseriesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TimeseriesResourceApi(common_internal.ApiRequester client) : 
+  TimeseriesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -237,7 +238,7 @@ class TimeseriesResourceApi {
    *
    * [aggregator] - The aggregation function that will reduce the data points in
    * each window to a single point. This parameter is only valid for
-   * non-cumulative metric types.
+   * non-cumulative metrics with a value type of INT64 or DOUBLE.
    * Possible string values are:
    * - "max"
    * - "mean"
@@ -293,7 +294,7 @@ class TimeseriesResourceApi {
    *
    * Completes with a [ListTimeseriesResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -304,7 +305,7 @@ class TimeseriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -343,7 +344,7 @@ class TimeseriesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/timeseries/' + common_internal.Escaper.ecapeVariable('$metric');
+    _url = commons.Escaper.ecapeVariable('$project') + '/timeseries/' + commons.Escaper.ecapeVariable('$metric');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -373,7 +374,7 @@ class TimeseriesResourceApi {
    *
    * Completes with a [WriteTimeseriesResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -384,7 +385,7 @@ class TimeseriesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -395,7 +396,7 @@ class TimeseriesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/timeseries:write';
+    _url = commons.Escaper.ecapeVariable('$project') + '/timeseries:write';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -410,11 +411,10 @@ class TimeseriesResourceApi {
 }
 
 
-/** Not documented yet. */
 class TimeseriesDescriptorsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TimeseriesDescriptorsResourceApi(common_internal.ApiRequester client) : 
+  TimeseriesDescriptorsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -440,7 +440,7 @@ class TimeseriesDescriptorsResourceApi {
    *
    * [aggregator] - The aggregation function that will reduce the data points in
    * each window to a single point. This parameter is only valid for
-   * non-cumulative metric types.
+   * non-cumulative metrics with a value type of INT64 or DOUBLE.
    * Possible string values are:
    * - "max"
    * - "mean"
@@ -496,7 +496,7 @@ class TimeseriesDescriptorsResourceApi {
    *
    * Completes with a [ListTimeseriesDescriptorsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -507,7 +507,7 @@ class TimeseriesDescriptorsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -546,7 +546,7 @@ class TimeseriesDescriptorsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/timeseriesDescriptors/' + common_internal.Escaper.ecapeVariable('$metric');
+    _url = commons.Escaper.ecapeVariable('$project') + '/timeseriesDescriptors/' + commons.Escaper.ecapeVariable('$metric');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1360,7 +1360,6 @@ class TimeseriesDescriptor {
 }
 
 
-/** Not documented yet. */
 class TimeseriesDescriptorLabel {
   /** The label's name. */
   core.String key;
@@ -1492,5 +1491,3 @@ class WriteTimeseriesResponse {
     return _json;
   }
 }
-
-

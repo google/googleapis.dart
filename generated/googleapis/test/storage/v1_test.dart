@@ -8,61 +8,96 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/storage/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
 
-buildUnnamed790() {
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
+
+buildUnnamed1329() {
   var o = new core.List<api.BucketAccessControl>();
   o.add(buildBucketAccessControl());
   o.add(buildBucketAccessControl());
   return o;
 }
 
-checkUnnamed790(core.List<api.BucketAccessControl> o) {
+checkUnnamed1329(core.List<api.BucketAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketAccessControl(o[0]);
   checkBucketAccessControl(o[1]);
 }
 
-buildUnnamed791() {
+buildUnnamed1330() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed791(core.List<core.String> o) {
+checkUnnamed1330(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed792() {
+buildUnnamed1331() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed792(core.List<core.String> o) {
+checkUnnamed1331(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed793() {
+buildUnnamed1332() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed793(core.List<core.String> o) {
+checkUnnamed1332(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -74,9 +109,9 @@ buildBucketCors() {
   buildCounterBucketCors++;
   if (buildCounterBucketCors < 3) {
     o.maxAgeSeconds = 42;
-    o.method = buildUnnamed791();
-    o.origin = buildUnnamed792();
-    o.responseHeader = buildUnnamed793();
+    o.method = buildUnnamed1330();
+    o.origin = buildUnnamed1331();
+    o.responseHeader = buildUnnamed1332();
   }
   buildCounterBucketCors--;
   return o;
@@ -86,34 +121,34 @@ checkBucketCors(api.BucketCors o) {
   buildCounterBucketCors++;
   if (buildCounterBucketCors < 3) {
     unittest.expect(o.maxAgeSeconds, unittest.equals(42));
-    checkUnnamed791(o.method);
-    checkUnnamed792(o.origin);
-    checkUnnamed793(o.responseHeader);
+    checkUnnamed1330(o.method);
+    checkUnnamed1331(o.origin);
+    checkUnnamed1332(o.responseHeader);
   }
   buildCounterBucketCors--;
 }
 
-buildUnnamed794() {
+buildUnnamed1333() {
   var o = new core.List<api.BucketCors>();
   o.add(buildBucketCors());
   o.add(buildBucketCors());
   return o;
 }
 
-checkUnnamed794(core.List<api.BucketCors> o) {
+checkUnnamed1333(core.List<api.BucketCors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketCors(o[0]);
   checkBucketCors(o[1]);
 }
 
-buildUnnamed795() {
+buildUnnamed1334() {
   var o = new core.List<api.ObjectAccessControl>();
   o.add(buildObjectAccessControl());
   o.add(buildObjectAccessControl());
   return o;
 }
 
-checkUnnamed795(core.List<api.ObjectAccessControl> o) {
+checkUnnamed1334(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0]);
   checkObjectAccessControl(o[1]);
@@ -184,14 +219,14 @@ checkBucketLifecycleRule(api.BucketLifecycleRule o) {
   buildCounterBucketLifecycleRule--;
 }
 
-buildUnnamed796() {
+buildUnnamed1335() {
   var o = new core.List<api.BucketLifecycleRule>();
   o.add(buildBucketLifecycleRule());
   o.add(buildBucketLifecycleRule());
   return o;
 }
 
-checkUnnamed796(core.List<api.BucketLifecycleRule> o) {
+checkUnnamed1335(core.List<api.BucketLifecycleRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketLifecycleRule(o[0]);
   checkBucketLifecycleRule(o[1]);
@@ -202,7 +237,7 @@ buildBucketLifecycle() {
   var o = new api.BucketLifecycle();
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    o.rule = buildUnnamed796();
+    o.rule = buildUnnamed1335();
   }
   buildCounterBucketLifecycle--;
   return o;
@@ -211,7 +246,7 @@ buildBucketLifecycle() {
 checkBucketLifecycle(api.BucketLifecycle o) {
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    checkUnnamed796(o.rule);
+    checkUnnamed1335(o.rule);
   }
   buildCounterBucketLifecycle--;
 }
@@ -303,9 +338,9 @@ buildBucket() {
   var o = new api.Bucket();
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
-    o.acl = buildUnnamed790();
-    o.cors = buildUnnamed794();
-    o.defaultObjectAcl = buildUnnamed795();
+    o.acl = buildUnnamed1329();
+    o.cors = buildUnnamed1333();
+    o.defaultObjectAcl = buildUnnamed1334();
     o.etag = "foo";
     o.id = "foo";
     o.kind = "foo";
@@ -329,9 +364,9 @@ buildBucket() {
 checkBucket(api.Bucket o) {
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
-    checkUnnamed790(o.acl);
-    checkUnnamed794(o.cors);
-    checkUnnamed795(o.defaultObjectAcl);
+    checkUnnamed1329(o.acl);
+    checkUnnamed1333(o.cors);
+    checkUnnamed1334(o.defaultObjectAcl);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -411,14 +446,14 @@ checkBucketAccessControl(api.BucketAccessControl o) {
   buildCounterBucketAccessControl--;
 }
 
-buildUnnamed797() {
+buildUnnamed1336() {
   var o = new core.List<api.BucketAccessControl>();
   o.add(buildBucketAccessControl());
   o.add(buildBucketAccessControl());
   return o;
 }
 
-checkUnnamed797(core.List<api.BucketAccessControl> o) {
+checkUnnamed1336(core.List<api.BucketAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketAccessControl(o[0]);
   checkBucketAccessControl(o[1]);
@@ -429,7 +464,7 @@ buildBucketAccessControls() {
   var o = new api.BucketAccessControls();
   buildCounterBucketAccessControls++;
   if (buildCounterBucketAccessControls < 3) {
-    o.items = buildUnnamed797();
+    o.items = buildUnnamed1336();
     o.kind = "foo";
   }
   buildCounterBucketAccessControls--;
@@ -439,20 +474,20 @@ buildBucketAccessControls() {
 checkBucketAccessControls(api.BucketAccessControls o) {
   buildCounterBucketAccessControls++;
   if (buildCounterBucketAccessControls < 3) {
-    checkUnnamed797(o.items);
+    checkUnnamed1336(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBucketAccessControls--;
 }
 
-buildUnnamed798() {
+buildUnnamed1337() {
   var o = new core.List<api.Bucket>();
   o.add(buildBucket());
   o.add(buildBucket());
   return o;
 }
 
-checkUnnamed798(core.List<api.Bucket> o) {
+checkUnnamed1337(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucket(o[0]);
   checkBucket(o[1]);
@@ -463,7 +498,7 @@ buildBuckets() {
   var o = new api.Buckets();
   buildCounterBuckets++;
   if (buildCounterBuckets < 3) {
-    o.items = buildUnnamed798();
+    o.items = buildUnnamed1337();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -474,21 +509,21 @@ buildBuckets() {
 checkBuckets(api.Buckets o) {
   buildCounterBuckets++;
   if (buildCounterBuckets < 3) {
-    checkUnnamed798(o.items);
+    checkUnnamed1337(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterBuckets--;
 }
 
-buildUnnamed799() {
+buildUnnamed1338() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed799(core.Map<core.String, core.String> o) {
+checkUnnamed1338(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -503,7 +538,7 @@ buildChannel() {
     o.expiration = "foo";
     o.id = "foo";
     o.kind = "foo";
-    o.params = buildUnnamed799();
+    o.params = buildUnnamed1338();
     o.payload = true;
     o.resourceId = "foo";
     o.resourceUri = "foo";
@@ -521,7 +556,7 @@ checkChannel(api.Channel o) {
     unittest.expect(o.expiration, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed799(o.params);
+    checkUnnamed1338(o.params);
     unittest.expect(o.payload, unittest.isTrue);
     unittest.expect(o.resourceId, unittest.equals('foo'));
     unittest.expect(o.resourceUri, unittest.equals('foo'));
@@ -573,14 +608,14 @@ checkComposeRequestSourceObjects(api.ComposeRequestSourceObjects o) {
   buildCounterComposeRequestSourceObjects--;
 }
 
-buildUnnamed800() {
+buildUnnamed1339() {
   var o = new core.List<api.ComposeRequestSourceObjects>();
   o.add(buildComposeRequestSourceObjects());
   o.add(buildComposeRequestSourceObjects());
   return o;
 }
 
-checkUnnamed800(core.List<api.ComposeRequestSourceObjects> o) {
+checkUnnamed1339(core.List<api.ComposeRequestSourceObjects> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComposeRequestSourceObjects(o[0]);
   checkComposeRequestSourceObjects(o[1]);
@@ -593,7 +628,7 @@ buildComposeRequest() {
   if (buildCounterComposeRequest < 3) {
     o.destination = buildObject();
     o.kind = "foo";
-    o.sourceObjects = buildUnnamed800();
+    o.sourceObjects = buildUnnamed1339();
   }
   buildCounterComposeRequest--;
   return o;
@@ -604,32 +639,32 @@ checkComposeRequest(api.ComposeRequest o) {
   if (buildCounterComposeRequest < 3) {
     checkObject(o.destination);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed800(o.sourceObjects);
+    checkUnnamed1339(o.sourceObjects);
   }
   buildCounterComposeRequest--;
 }
 
-buildUnnamed801() {
+buildUnnamed1340() {
   var o = new core.List<api.ObjectAccessControl>();
   o.add(buildObjectAccessControl());
   o.add(buildObjectAccessControl());
   return o;
 }
 
-checkUnnamed801(core.List<api.ObjectAccessControl> o) {
+checkUnnamed1340(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0]);
   checkObjectAccessControl(o[1]);
 }
 
-buildUnnamed802() {
+buildUnnamed1341() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed802(core.Map<core.String, core.String> o) {
+checkUnnamed1341(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -661,7 +696,7 @@ buildObject() {
   var o = new api.Object();
   buildCounterObject++;
   if (buildCounterObject < 3) {
-    o.acl = buildUnnamed801();
+    o.acl = buildUnnamed1340();
     o.bucket = "foo";
     o.cacheControl = "foo";
     o.componentCount = 42;
@@ -676,7 +711,7 @@ buildObject() {
     o.kind = "foo";
     o.md5Hash = "foo";
     o.mediaLink = "foo";
-    o.metadata = buildUnnamed802();
+    o.metadata = buildUnnamed1341();
     o.metageneration = "foo";
     o.name = "foo";
     o.owner = buildObjectOwner();
@@ -693,7 +728,7 @@ buildObject() {
 checkObject(api.Object o) {
   buildCounterObject++;
   if (buildCounterObject < 3) {
-    checkUnnamed801(o.acl);
+    checkUnnamed1340(o.acl);
     unittest.expect(o.bucket, unittest.equals('foo'));
     unittest.expect(o.cacheControl, unittest.equals('foo'));
     unittest.expect(o.componentCount, unittest.equals(42));
@@ -708,7 +743,7 @@ checkObject(api.Object o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.md5Hash, unittest.equals('foo'));
     unittest.expect(o.mediaLink, unittest.equals('foo'));
-    checkUnnamed802(o.metadata);
+    checkUnnamed1341(o.metadata);
     unittest.expect(o.metageneration, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     checkObjectOwner(o.owner);
@@ -785,14 +820,14 @@ checkObjectAccessControl(api.ObjectAccessControl o) {
   buildCounterObjectAccessControl--;
 }
 
-buildUnnamed803() {
+buildUnnamed1342() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed803(core.List<core.Object> o) {
+checkUnnamed1342(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o[1]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
@@ -803,7 +838,7 @@ buildObjectAccessControls() {
   var o = new api.ObjectAccessControls();
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    o.items = buildUnnamed803();
+    o.items = buildUnnamed1342();
     o.kind = "foo";
   }
   buildCounterObjectAccessControls--;
@@ -813,33 +848,33 @@ buildObjectAccessControls() {
 checkObjectAccessControls(api.ObjectAccessControls o) {
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    checkUnnamed803(o.items);
+    checkUnnamed1342(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterObjectAccessControls--;
 }
 
-buildUnnamed804() {
+buildUnnamed1343() {
   var o = new core.List<api.Object>();
   o.add(buildObject());
   o.add(buildObject());
   return o;
 }
 
-checkUnnamed804(core.List<api.Object> o) {
+checkUnnamed1343(core.List<api.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObject(o[0]);
   checkObject(o[1]);
 }
 
-buildUnnamed805() {
+buildUnnamed1344() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed805(core.List<core.String> o) {
+checkUnnamed1344(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -850,10 +885,10 @@ buildObjects() {
   var o = new api.Objects();
   buildCounterObjects++;
   if (buildCounterObjects < 3) {
-    o.items = buildUnnamed804();
+    o.items = buildUnnamed1343();
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.prefixes = buildUnnamed805();
+    o.prefixes = buildUnnamed1344();
   }
   buildCounterObjects--;
   return o;
@@ -862,10 +897,10 @@ buildObjects() {
 checkObjects(api.Objects o) {
   buildCounterObjects++;
   if (buildCounterObjects < 3) {
-    checkUnnamed804(o.items);
+    checkUnnamed1343(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed805(o.prefixes);
+    checkUnnamed1344(o.prefixes);
   }
   buildCounterObjects--;
 }
@@ -1091,7 +1126,7 @@ main() {
   unittest.group("resource-BucketAccessControlsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BucketAccessControlsResourceApi res = new api.StorageApi(mock).bucketAccessControls;
       var arg_bucket = "foo";
       var arg_entity = "foo";
@@ -1139,14 +1174,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_bucket, arg_entity).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BucketAccessControlsResourceApi res = new api.StorageApi(mock).bucketAccessControls;
       var arg_bucket = "foo";
       var arg_entity = "foo";
@@ -1194,7 +1229,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBucketAccessControl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_bucket, arg_entity).then(unittest.expectAsync(((api.BucketAccessControl response) {
         checkBucketAccessControl(response);
@@ -1203,7 +1238,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BucketAccessControlsResourceApi res = new api.StorageApi(mock).bucketAccessControls;
       var arg_request = buildBucketAccessControl();
       var arg_bucket = "foo";
@@ -1251,7 +1286,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBucketAccessControl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_bucket).then(unittest.expectAsync(((api.BucketAccessControl response) {
         checkBucketAccessControl(response);
@@ -1260,7 +1295,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BucketAccessControlsResourceApi res = new api.StorageApi(mock).bucketAccessControls;
       var arg_bucket = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1304,7 +1339,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBucketAccessControls());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_bucket).then(unittest.expectAsync(((api.BucketAccessControls response) {
         checkBucketAccessControls(response);
@@ -1313,7 +1348,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BucketAccessControlsResourceApi res = new api.StorageApi(mock).bucketAccessControls;
       var arg_request = buildBucketAccessControl();
       var arg_bucket = "foo";
@@ -1365,7 +1400,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBucketAccessControl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_bucket, arg_entity).then(unittest.expectAsync(((api.BucketAccessControl response) {
         checkBucketAccessControl(response);
@@ -1374,7 +1409,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BucketAccessControlsResourceApi res = new api.StorageApi(mock).bucketAccessControls;
       var arg_request = buildBucketAccessControl();
       var arg_bucket = "foo";
@@ -1426,7 +1461,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBucketAccessControl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_bucket, arg_entity).then(unittest.expectAsync(((api.BucketAccessControl response) {
         checkBucketAccessControl(response);
@@ -1439,7 +1474,7 @@ main() {
   unittest.group("resource-BucketsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BucketsResourceApi res = new api.StorageApi(mock).buckets;
       var arg_bucket = "foo";
       var arg_ifMetagenerationMatch = "foo";
@@ -1483,14 +1518,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_bucket, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BucketsResourceApi res = new api.StorageApi(mock).buckets;
       var arg_bucket = "foo";
       var arg_ifMetagenerationMatch = "foo";
@@ -1536,7 +1571,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBucket());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_bucket, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, projection: arg_projection).then(unittest.expectAsync(((api.Bucket response) {
         checkBucket(response);
@@ -1545,7 +1580,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BucketsResourceApi res = new api.StorageApi(mock).buckets;
       var arg_request = buildBucket();
       var arg_project = "foo";
@@ -1593,7 +1628,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBucket());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_project, predefinedAcl: arg_predefinedAcl, predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl, projection: arg_projection).then(unittest.expectAsync(((api.Bucket response) {
         checkBucket(response);
@@ -1602,7 +1637,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BucketsResourceApi res = new api.StorageApi(mock).buckets;
       var arg_project = "foo";
       var arg_maxResults = 42;
@@ -1648,7 +1683,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBuckets());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_project, maxResults: arg_maxResults, pageToken: arg_pageToken, prefix: arg_prefix, projection: arg_projection).then(unittest.expectAsync(((api.Buckets response) {
         checkBuckets(response);
@@ -1657,7 +1692,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BucketsResourceApi res = new api.StorageApi(mock).buckets;
       var arg_request = buildBucket();
       var arg_bucket = "foo";
@@ -1711,7 +1746,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBucket());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_bucket, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, predefinedAcl: arg_predefinedAcl, predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl, projection: arg_projection).then(unittest.expectAsync(((api.Bucket response) {
         checkBucket(response);
@@ -1720,7 +1755,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BucketsResourceApi res = new api.StorageApi(mock).buckets;
       var arg_request = buildBucket();
       var arg_bucket = "foo";
@@ -1774,7 +1809,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBucket());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_bucket, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, predefinedAcl: arg_predefinedAcl, predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl, projection: arg_projection).then(unittest.expectAsync(((api.Bucket response) {
         checkBucket(response);
@@ -1787,7 +1822,7 @@ main() {
   unittest.group("resource-ChannelsResourceApi", () {
     unittest.test("method--stop", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ChannelsResourceApi res = new api.StorageApi(mock).channels;
       var arg_request = buildChannel();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1827,7 +1862,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.stop(arg_request).then(unittest.expectAsync((_) {}));
     });
@@ -1838,7 +1873,7 @@ main() {
   unittest.group("resource-DefaultObjectAccessControlsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.DefaultObjectAccessControlsResourceApi res = new api.StorageApi(mock).defaultObjectAccessControls;
       var arg_bucket = "foo";
       var arg_entity = "foo";
@@ -1886,14 +1921,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_bucket, arg_entity).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.DefaultObjectAccessControlsResourceApi res = new api.StorageApi(mock).defaultObjectAccessControls;
       var arg_bucket = "foo";
       var arg_entity = "foo";
@@ -1941,7 +1976,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObjectAccessControl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_bucket, arg_entity).then(unittest.expectAsync(((api.ObjectAccessControl response) {
         checkObjectAccessControl(response);
@@ -1950,7 +1985,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.DefaultObjectAccessControlsResourceApi res = new api.StorageApi(mock).defaultObjectAccessControls;
       var arg_request = buildObjectAccessControl();
       var arg_bucket = "foo";
@@ -1998,7 +2033,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObjectAccessControl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_bucket).then(unittest.expectAsync(((api.ObjectAccessControl response) {
         checkObjectAccessControl(response);
@@ -2007,7 +2042,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.DefaultObjectAccessControlsResourceApi res = new api.StorageApi(mock).defaultObjectAccessControls;
       var arg_bucket = "foo";
       var arg_ifMetagenerationMatch = "foo";
@@ -2055,7 +2090,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObjectAccessControls());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_bucket, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch).then(unittest.expectAsync(((api.ObjectAccessControls response) {
         checkObjectAccessControls(response);
@@ -2064,7 +2099,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.DefaultObjectAccessControlsResourceApi res = new api.StorageApi(mock).defaultObjectAccessControls;
       var arg_request = buildObjectAccessControl();
       var arg_bucket = "foo";
@@ -2116,7 +2151,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObjectAccessControl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_bucket, arg_entity).then(unittest.expectAsync(((api.ObjectAccessControl response) {
         checkObjectAccessControl(response);
@@ -2125,7 +2160,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.DefaultObjectAccessControlsResourceApi res = new api.StorageApi(mock).defaultObjectAccessControls;
       var arg_request = buildObjectAccessControl();
       var arg_bucket = "foo";
@@ -2177,7 +2212,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObjectAccessControl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_bucket, arg_entity).then(unittest.expectAsync(((api.ObjectAccessControl response) {
         checkObjectAccessControl(response);
@@ -2190,7 +2225,7 @@ main() {
   unittest.group("resource-ObjectAccessControlsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectAccessControlsResourceApi res = new api.StorageApi(mock).objectAccessControls;
       var arg_bucket = "foo";
       var arg_object = "foo";
@@ -2248,14 +2283,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_bucket, arg_object, arg_entity, generation: arg_generation).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectAccessControlsResourceApi res = new api.StorageApi(mock).objectAccessControls;
       var arg_bucket = "foo";
       var arg_object = "foo";
@@ -2313,7 +2348,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObjectAccessControl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_bucket, arg_object, arg_entity, generation: arg_generation).then(unittest.expectAsync(((api.ObjectAccessControl response) {
         checkObjectAccessControl(response);
@@ -2322,7 +2357,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectAccessControlsResourceApi res = new api.StorageApi(mock).objectAccessControls;
       var arg_request = buildObjectAccessControl();
       var arg_bucket = "foo";
@@ -2380,7 +2415,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObjectAccessControl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_bucket, arg_object, generation: arg_generation).then(unittest.expectAsync(((api.ObjectAccessControl response) {
         checkObjectAccessControl(response);
@@ -2389,7 +2424,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectAccessControlsResourceApi res = new api.StorageApi(mock).objectAccessControls;
       var arg_bucket = "foo";
       var arg_object = "foo";
@@ -2443,7 +2478,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObjectAccessControls());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_bucket, arg_object, generation: arg_generation).then(unittest.expectAsync(((api.ObjectAccessControls response) {
         checkObjectAccessControls(response);
@@ -2452,7 +2487,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectAccessControlsResourceApi res = new api.StorageApi(mock).objectAccessControls;
       var arg_request = buildObjectAccessControl();
       var arg_bucket = "foo";
@@ -2514,7 +2549,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObjectAccessControl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_bucket, arg_object, arg_entity, generation: arg_generation).then(unittest.expectAsync(((api.ObjectAccessControl response) {
         checkObjectAccessControl(response);
@@ -2523,7 +2558,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectAccessControlsResourceApi res = new api.StorageApi(mock).objectAccessControls;
       var arg_request = buildObjectAccessControl();
       var arg_bucket = "foo";
@@ -2585,7 +2620,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObjectAccessControl());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_bucket, arg_object, arg_entity, generation: arg_generation).then(unittest.expectAsync(((api.ObjectAccessControl response) {
         checkObjectAccessControl(response);
@@ -2600,12 +2635,15 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectsResourceApi res = new api.StorageApi(mock).objects;
       var arg_request = buildComposeRequest();
       var arg_destinationBucket = "foo";
       var arg_destinationObject = "foo";
       var arg_destinationPredefinedAcl = "foo";
+      var arg_encryptionAlgorithm = "foo";
+      var arg_encryptionKey = "foo";
+      var arg_encryptionKeyHash = "foo";
       var arg_ifGenerationMatch = "foo";
       var arg_ifMetagenerationMatch = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2654,6 +2692,9 @@ main() {
           }
         }
         unittest.expect(queryMap["destinationPredefinedAcl"].first, unittest.equals(arg_destinationPredefinedAcl));
+        unittest.expect(queryMap["encryptionAlgorithm"].first, unittest.equals(arg_encryptionAlgorithm));
+        unittest.expect(queryMap["encryptionKey"].first, unittest.equals(arg_encryptionKey));
+        unittest.expect(queryMap["encryptionKeyHash"].first, unittest.equals(arg_encryptionKeyHash));
         unittest.expect(queryMap["ifGenerationMatch"].first, unittest.equals(arg_ifGenerationMatch));
         unittest.expect(queryMap["ifMetagenerationMatch"].first, unittest.equals(arg_ifMetagenerationMatch));
 
@@ -2662,9 +2703,9 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObject());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.compose(arg_request, arg_destinationBucket, arg_destinationObject, destinationPredefinedAcl: arg_destinationPredefinedAcl, ifGenerationMatch: arg_ifGenerationMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch).then(unittest.expectAsync(((api.Object response) {
+      res.compose(arg_request, arg_destinationBucket, arg_destinationObject, destinationPredefinedAcl: arg_destinationPredefinedAcl, encryptionAlgorithm: arg_encryptionAlgorithm, encryptionKey: arg_encryptionKey, encryptionKeyHash: arg_encryptionKeyHash, ifGenerationMatch: arg_ifGenerationMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch).then(unittest.expectAsync(((api.Object response) {
         checkObject(response);
       })));
     });
@@ -2673,7 +2714,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectsResourceApi res = new api.StorageApi(mock).objects;
       var arg_request = buildObject();
       var arg_sourceBucket = "foo";
@@ -2681,6 +2722,9 @@ main() {
       var arg_destinationBucket = "foo";
       var arg_destinationObject = "foo";
       var arg_destinationPredefinedAcl = "foo";
+      var arg_encryptionAlgorithm = "foo";
+      var arg_encryptionKey = "foo";
+      var arg_encryptionKeyHash = "foo";
       var arg_ifGenerationMatch = "foo";
       var arg_ifGenerationNotMatch = "foo";
       var arg_ifMetagenerationMatch = "foo";
@@ -2747,6 +2791,9 @@ main() {
           }
         }
         unittest.expect(queryMap["destinationPredefinedAcl"].first, unittest.equals(arg_destinationPredefinedAcl));
+        unittest.expect(queryMap["encryptionAlgorithm"].first, unittest.equals(arg_encryptionAlgorithm));
+        unittest.expect(queryMap["encryptionKey"].first, unittest.equals(arg_encryptionKey));
+        unittest.expect(queryMap["encryptionKeyHash"].first, unittest.equals(arg_encryptionKeyHash));
         unittest.expect(queryMap["ifGenerationMatch"].first, unittest.equals(arg_ifGenerationMatch));
         unittest.expect(queryMap["ifGenerationNotMatch"].first, unittest.equals(arg_ifGenerationNotMatch));
         unittest.expect(queryMap["ifMetagenerationMatch"].first, unittest.equals(arg_ifMetagenerationMatch));
@@ -2763,16 +2810,16 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObject());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.copy(arg_request, arg_sourceBucket, arg_sourceObject, arg_destinationBucket, arg_destinationObject, destinationPredefinedAcl: arg_destinationPredefinedAcl, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, ifSourceGenerationMatch: arg_ifSourceGenerationMatch, ifSourceGenerationNotMatch: arg_ifSourceGenerationNotMatch, ifSourceMetagenerationMatch: arg_ifSourceMetagenerationMatch, ifSourceMetagenerationNotMatch: arg_ifSourceMetagenerationNotMatch, projection: arg_projection, sourceGeneration: arg_sourceGeneration).then(unittest.expectAsync(((api.Object response) {
+      res.copy(arg_request, arg_sourceBucket, arg_sourceObject, arg_destinationBucket, arg_destinationObject, destinationPredefinedAcl: arg_destinationPredefinedAcl, encryptionAlgorithm: arg_encryptionAlgorithm, encryptionKey: arg_encryptionKey, encryptionKeyHash: arg_encryptionKeyHash, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, ifSourceGenerationMatch: arg_ifSourceGenerationMatch, ifSourceGenerationNotMatch: arg_ifSourceGenerationNotMatch, ifSourceMetagenerationMatch: arg_ifSourceMetagenerationMatch, ifSourceMetagenerationNotMatch: arg_ifSourceMetagenerationNotMatch, projection: arg_projection, sourceGeneration: arg_sourceGeneration).then(unittest.expectAsync(((api.Object response) {
         checkObject(response);
       })));
     });
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectsResourceApi res = new api.StorageApi(mock).objects;
       var arg_bucket = "foo";
       var arg_object = "foo";
@@ -2830,7 +2877,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_bucket, arg_object, generation: arg_generation, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch).then(unittest.expectAsync((_) {}));
     });
@@ -2839,10 +2886,13 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectsResourceApi res = new api.StorageApi(mock).objects;
       var arg_bucket = "foo";
       var arg_object = "foo";
+      var arg_encryptionAlgorithm = "foo";
+      var arg_encryptionKey = "foo";
+      var arg_encryptionKeyHash = "foo";
       var arg_generation = "foo";
       var arg_ifGenerationMatch = "foo";
       var arg_ifGenerationNotMatch = "foo";
@@ -2887,6 +2937,9 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["encryptionAlgorithm"].first, unittest.equals(arg_encryptionAlgorithm));
+        unittest.expect(queryMap["encryptionKey"].first, unittest.equals(arg_encryptionKey));
+        unittest.expect(queryMap["encryptionKeyHash"].first, unittest.equals(arg_encryptionKeyHash));
         unittest.expect(queryMap["generation"].first, unittest.equals(arg_generation));
         unittest.expect(queryMap["ifGenerationMatch"].first, unittest.equals(arg_ifGenerationMatch));
         unittest.expect(queryMap["ifGenerationNotMatch"].first, unittest.equals(arg_ifGenerationNotMatch));
@@ -2899,9 +2952,9 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObject());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_bucket, arg_object, generation: arg_generation, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, projection: arg_projection).then(unittest.expectAsync(((api.Object response) {
+      res.get(arg_bucket, arg_object, encryptionAlgorithm: arg_encryptionAlgorithm, encryptionKey: arg_encryptionKey, encryptionKeyHash: arg_encryptionKeyHash, generation: arg_generation, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, projection: arg_projection).then(unittest.expectAsync(((api.Object response) {
         checkObject(response);
       })));
     });
@@ -2910,11 +2963,14 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectsResourceApi res = new api.StorageApi(mock).objects;
       var arg_request = buildObject();
       var arg_bucket = "foo";
       var arg_contentEncoding = "foo";
+      var arg_encryptionAlgorithm = "foo";
+      var arg_encryptionKey = "foo";
+      var arg_encryptionKeyHash = "foo";
       var arg_ifGenerationMatch = "foo";
       var arg_ifGenerationNotMatch = "foo";
       var arg_ifMetagenerationMatch = "foo";
@@ -2961,6 +3017,9 @@ main() {
           }
         }
         unittest.expect(queryMap["contentEncoding"].first, unittest.equals(arg_contentEncoding));
+        unittest.expect(queryMap["encryptionAlgorithm"].first, unittest.equals(arg_encryptionAlgorithm));
+        unittest.expect(queryMap["encryptionKey"].first, unittest.equals(arg_encryptionKey));
+        unittest.expect(queryMap["encryptionKeyHash"].first, unittest.equals(arg_encryptionKeyHash));
         unittest.expect(queryMap["ifGenerationMatch"].first, unittest.equals(arg_ifGenerationMatch));
         unittest.expect(queryMap["ifGenerationNotMatch"].first, unittest.equals(arg_ifGenerationNotMatch));
         unittest.expect(queryMap["ifMetagenerationMatch"].first, unittest.equals(arg_ifMetagenerationMatch));
@@ -2974,16 +3033,16 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObject());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_bucket, contentEncoding: arg_contentEncoding, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, name: arg_name, predefinedAcl: arg_predefinedAcl, projection: arg_projection).then(unittest.expectAsync(((api.Object response) {
+      res.insert(arg_request, arg_bucket, contentEncoding: arg_contentEncoding, encryptionAlgorithm: arg_encryptionAlgorithm, encryptionKey: arg_encryptionKey, encryptionKeyHash: arg_encryptionKeyHash, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, name: arg_name, predefinedAcl: arg_predefinedAcl, projection: arg_projection).then(unittest.expectAsync(((api.Object response) {
         checkObject(response);
       })));
     });
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectsResourceApi res = new api.StorageApi(mock).objects;
       var arg_bucket = "foo";
       var arg_delimiter = "foo";
@@ -3039,7 +3098,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObjects());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_bucket, delimiter: arg_delimiter, maxResults: arg_maxResults, pageToken: arg_pageToken, prefix: arg_prefix, projection: arg_projection, versions: arg_versions).then(unittest.expectAsync(((api.Objects response) {
         checkObjects(response);
@@ -3048,11 +3107,14 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectsResourceApi res = new api.StorageApi(mock).objects;
       var arg_request = buildObject();
       var arg_bucket = "foo";
       var arg_object = "foo";
+      var arg_encryptionAlgorithm = "foo";
+      var arg_encryptionKey = "foo";
+      var arg_encryptionKeyHash = "foo";
       var arg_generation = "foo";
       var arg_ifGenerationMatch = "foo";
       var arg_ifGenerationNotMatch = "foo";
@@ -3101,6 +3163,9 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["encryptionAlgorithm"].first, unittest.equals(arg_encryptionAlgorithm));
+        unittest.expect(queryMap["encryptionKey"].first, unittest.equals(arg_encryptionKey));
+        unittest.expect(queryMap["encryptionKeyHash"].first, unittest.equals(arg_encryptionKeyHash));
         unittest.expect(queryMap["generation"].first, unittest.equals(arg_generation));
         unittest.expect(queryMap["ifGenerationMatch"].first, unittest.equals(arg_ifGenerationMatch));
         unittest.expect(queryMap["ifGenerationNotMatch"].first, unittest.equals(arg_ifGenerationNotMatch));
@@ -3114,9 +3179,9 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObject());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_bucket, arg_object, generation: arg_generation, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, predefinedAcl: arg_predefinedAcl, projection: arg_projection).then(unittest.expectAsync(((api.Object response) {
+      res.patch(arg_request, arg_bucket, arg_object, encryptionAlgorithm: arg_encryptionAlgorithm, encryptionKey: arg_encryptionKey, encryptionKeyHash: arg_encryptionKeyHash, generation: arg_generation, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, predefinedAcl: arg_predefinedAcl, projection: arg_projection).then(unittest.expectAsync(((api.Object response) {
         checkObject(response);
       })));
     });
@@ -3125,11 +3190,14 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectsResourceApi res = new api.StorageApi(mock).objects;
       var arg_request = buildObject();
       var arg_bucket = "foo";
       var arg_object = "foo";
+      var arg_encryptionAlgorithm = "foo";
+      var arg_encryptionKey = "foo";
+      var arg_encryptionKeyHash = "foo";
       var arg_generation = "foo";
       var arg_ifGenerationMatch = "foo";
       var arg_ifGenerationNotMatch = "foo";
@@ -3178,6 +3246,9 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["encryptionAlgorithm"].first, unittest.equals(arg_encryptionAlgorithm));
+        unittest.expect(queryMap["encryptionKey"].first, unittest.equals(arg_encryptionKey));
+        unittest.expect(queryMap["encryptionKeyHash"].first, unittest.equals(arg_encryptionKeyHash));
         unittest.expect(queryMap["generation"].first, unittest.equals(arg_generation));
         unittest.expect(queryMap["ifGenerationMatch"].first, unittest.equals(arg_ifGenerationMatch));
         unittest.expect(queryMap["ifGenerationNotMatch"].first, unittest.equals(arg_ifGenerationNotMatch));
@@ -3191,16 +3262,16 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildObject());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_bucket, arg_object, generation: arg_generation, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, predefinedAcl: arg_predefinedAcl, projection: arg_projection).then(unittest.expectAsync(((api.Object response) {
+      res.update(arg_request, arg_bucket, arg_object, encryptionAlgorithm: arg_encryptionAlgorithm, encryptionKey: arg_encryptionKey, encryptionKeyHash: arg_encryptionKeyHash, generation: arg_generation, ifGenerationMatch: arg_ifGenerationMatch, ifGenerationNotMatch: arg_ifGenerationNotMatch, ifMetagenerationMatch: arg_ifMetagenerationMatch, ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch, predefinedAcl: arg_predefinedAcl, projection: arg_projection).then(unittest.expectAsync(((api.Object response) {
         checkObject(response);
       })));
     });
 
     unittest.test("method--watchAll", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ObjectsResourceApi res = new api.StorageApi(mock).objects;
       var arg_request = buildChannel();
       var arg_bucket = "foo";
@@ -3260,7 +3331,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChannel());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.watchAll(arg_request, arg_bucket, delimiter: arg_delimiter, maxResults: arg_maxResults, pageToken: arg_pageToken, prefix: arg_prefix, projection: arg_projection, versions: arg_versions).then(unittest.expectAsync(((api.Channel response) {
         checkChannel(response);

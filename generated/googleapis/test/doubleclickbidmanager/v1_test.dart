@@ -8,22 +8,57 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/doubleclickbidmanager/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
 
-buildUnnamed1016() {
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
+
+buildUnnamed952() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1016(core.List<core.String> o) {
+checkUnnamed952(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -34,7 +69,7 @@ buildDownloadLineItemsRequest() {
   var o = new api.DownloadLineItemsRequest();
   buildCounterDownloadLineItemsRequest++;
   if (buildCounterDownloadLineItemsRequest < 3) {
-    o.filterIds = buildUnnamed1016();
+    o.filterIds = buildUnnamed952();
     o.filterType = "foo";
     o.format = "foo";
   }
@@ -45,7 +80,7 @@ buildDownloadLineItemsRequest() {
 checkDownloadLineItemsRequest(api.DownloadLineItemsRequest o) {
   buildCounterDownloadLineItemsRequest++;
   if (buildCounterDownloadLineItemsRequest < 3) {
-    checkUnnamed1016(o.filterIds);
+    checkUnnamed952(o.filterIds);
     unittest.expect(o.filterType, unittest.equals('foo'));
     unittest.expect(o.format, unittest.equals('foo'));
   }
@@ -92,14 +127,14 @@ checkFilterPair(api.FilterPair o) {
   buildCounterFilterPair--;
 }
 
-buildUnnamed1017() {
+buildUnnamed953() {
   var o = new core.List<api.Query>();
   o.add(buildQuery());
   o.add(buildQuery());
   return o;
 }
 
-checkUnnamed1017(core.List<api.Query> o) {
+checkUnnamed953(core.List<api.Query> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQuery(o[0]);
   checkQuery(o[1]);
@@ -111,7 +146,7 @@ buildListQueriesResponse() {
   buildCounterListQueriesResponse++;
   if (buildCounterListQueriesResponse < 3) {
     o.kind = "foo";
-    o.queries = buildUnnamed1017();
+    o.queries = buildUnnamed953();
   }
   buildCounterListQueriesResponse--;
   return o;
@@ -121,19 +156,19 @@ checkListQueriesResponse(api.ListQueriesResponse o) {
   buildCounterListQueriesResponse++;
   if (buildCounterListQueriesResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1017(o.queries);
+    checkUnnamed953(o.queries);
   }
   buildCounterListQueriesResponse--;
 }
 
-buildUnnamed1018() {
+buildUnnamed954() {
   var o = new core.List<api.Report>();
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-checkUnnamed1018(core.List<api.Report> o) {
+checkUnnamed954(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -145,7 +180,7 @@ buildListReportsResponse() {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     o.kind = "foo";
-    o.reports = buildUnnamed1018();
+    o.reports = buildUnnamed954();
   }
   buildCounterListReportsResponse--;
   return o;
@@ -155,45 +190,45 @@ checkListReportsResponse(api.ListReportsResponse o) {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1018(o.reports);
+    checkUnnamed954(o.reports);
   }
   buildCounterListReportsResponse--;
 }
 
-buildUnnamed1019() {
+buildUnnamed955() {
   var o = new core.List<api.FilterPair>();
   o.add(buildFilterPair());
   o.add(buildFilterPair());
   return o;
 }
 
-checkUnnamed1019(core.List<api.FilterPair> o) {
+checkUnnamed955(core.List<api.FilterPair> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFilterPair(o[0]);
   checkFilterPair(o[1]);
 }
 
-buildUnnamed1020() {
+buildUnnamed956() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1020(core.List<core.String> o) {
+checkUnnamed956(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1021() {
+buildUnnamed957() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1021(core.List<core.String> o) {
+checkUnnamed957(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -204,10 +239,10 @@ buildParameters() {
   var o = new api.Parameters();
   buildCounterParameters++;
   if (buildCounterParameters < 3) {
-    o.filters = buildUnnamed1019();
-    o.groupBys = buildUnnamed1020();
+    o.filters = buildUnnamed955();
+    o.groupBys = buildUnnamed956();
     o.includeInviteData = true;
-    o.metrics = buildUnnamed1021();
+    o.metrics = buildUnnamed957();
     o.type = "foo";
   }
   buildCounterParameters--;
@@ -217,10 +252,10 @@ buildParameters() {
 checkParameters(api.Parameters o) {
   buildCounterParameters++;
   if (buildCounterParameters < 3) {
-    checkUnnamed1019(o.filters);
-    checkUnnamed1020(o.groupBys);
+    checkUnnamed955(o.filters);
+    checkUnnamed956(o.groupBys);
     unittest.expect(o.includeInviteData, unittest.isTrue);
-    checkUnnamed1021(o.metrics);
+    checkUnnamed957(o.metrics);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterParameters--;
@@ -259,14 +294,14 @@ checkQuery(api.Query o) {
   buildCounterQuery--;
 }
 
-buildUnnamed1022() {
+buildUnnamed958() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1022(core.List<core.String> o) {
+checkUnnamed958(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -286,7 +321,7 @@ buildQueryMetadata() {
     o.reportCount = 42;
     o.running = true;
     o.sendNotification = true;
-    o.shareEmailAddress = buildUnnamed1022();
+    o.shareEmailAddress = buildUnnamed958();
     o.title = "foo";
   }
   buildCounterQueryMetadata--;
@@ -305,7 +340,7 @@ checkQueryMetadata(api.QueryMetadata o) {
     unittest.expect(o.reportCount, unittest.equals(42));
     unittest.expect(o.running, unittest.isTrue);
     unittest.expect(o.sendNotification, unittest.isTrue);
-    checkUnnamed1022(o.shareEmailAddress);
+    checkUnnamed958(o.shareEmailAddress);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterQueryMetadata--;
@@ -449,14 +484,14 @@ checkReportStatus(api.ReportStatus o) {
   buildCounterReportStatus--;
 }
 
-buildUnnamed1023() {
+buildUnnamed959() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1023(core.List<core.String> o) {
+checkUnnamed959(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -470,7 +505,7 @@ buildRowStatus() {
     o.changed = true;
     o.entityId = "foo";
     o.entityName = "foo";
-    o.errors = buildUnnamed1023();
+    o.errors = buildUnnamed959();
     o.persisted = true;
     o.rowNumber = 42;
   }
@@ -484,7 +519,7 @@ checkRowStatus(api.RowStatus o) {
     unittest.expect(o.changed, unittest.isTrue);
     unittest.expect(o.entityId, unittest.equals('foo'));
     unittest.expect(o.entityName, unittest.equals('foo'));
-    checkUnnamed1023(o.errors);
+    checkUnnamed959(o.errors);
     unittest.expect(o.persisted, unittest.isTrue);
     unittest.expect(o.rowNumber, unittest.equals(42));
   }
@@ -558,27 +593,27 @@ checkUploadLineItemsResponse(api.UploadLineItemsResponse o) {
   buildCounterUploadLineItemsResponse--;
 }
 
-buildUnnamed1024() {
+buildUnnamed960() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1024(core.List<core.String> o) {
+checkUnnamed960(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1025() {
+buildUnnamed961() {
   var o = new core.List<api.RowStatus>();
   o.add(buildRowStatus());
   o.add(buildRowStatus());
   return o;
 }
 
-checkUnnamed1025(core.List<api.RowStatus> o) {
+checkUnnamed961(core.List<api.RowStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRowStatus(o[0]);
   checkRowStatus(o[1]);
@@ -589,8 +624,8 @@ buildUploadStatus() {
   var o = new api.UploadStatus();
   buildCounterUploadStatus++;
   if (buildCounterUploadStatus < 3) {
-    o.errors = buildUnnamed1024();
-    o.rowStatus = buildUnnamed1025();
+    o.errors = buildUnnamed960();
+    o.rowStatus = buildUnnamed961();
   }
   buildCounterUploadStatus--;
   return o;
@@ -599,8 +634,8 @@ buildUploadStatus() {
 checkUploadStatus(api.UploadStatus o) {
   buildCounterUploadStatus++;
   if (buildCounterUploadStatus < 3) {
-    checkUnnamed1024(o.errors);
-    checkUnnamed1025(o.rowStatus);
+    checkUnnamed960(o.errors);
+    checkUnnamed961(o.rowStatus);
   }
   buildCounterUploadStatus--;
 }
@@ -781,7 +816,7 @@ main() {
   unittest.group("resource-LineitemsResourceApi", () {
     unittest.test("method--downloadlineitems", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LineitemsResourceApi res = new api.DoubleclickbidmanagerApi(mock).lineitems;
       var arg_request = buildDownloadLineItemsRequest();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -821,7 +856,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDownloadLineItemsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.downloadlineitems(arg_request).then(unittest.expectAsync(((api.DownloadLineItemsResponse response) {
         checkDownloadLineItemsResponse(response);
@@ -830,7 +865,7 @@ main() {
 
     unittest.test("method--uploadlineitems", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LineitemsResourceApi res = new api.DoubleclickbidmanagerApi(mock).lineitems;
       var arg_request = buildUploadLineItemsRequest();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -870,7 +905,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUploadLineItemsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.uploadlineitems(arg_request).then(unittest.expectAsync(((api.UploadLineItemsResponse response) {
         checkUploadLineItemsResponse(response);
@@ -883,7 +918,7 @@ main() {
   unittest.group("resource-QueriesResourceApi", () {
     unittest.test("method--createquery", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.QueriesResourceApi res = new api.DoubleclickbidmanagerApi(mock).queries;
       var arg_request = buildQuery();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -923,7 +958,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildQuery());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.createquery(arg_request).then(unittest.expectAsync(((api.Query response) {
         checkQuery(response);
@@ -932,7 +967,7 @@ main() {
 
     unittest.test("method--deletequery", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.QueriesResourceApi res = new api.DoubleclickbidmanagerApi(mock).queries;
       var arg_queryId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -972,14 +1007,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.deletequery(arg_queryId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--getquery", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.QueriesResourceApi res = new api.DoubleclickbidmanagerApi(mock).queries;
       var arg_queryId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1019,7 +1054,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildQuery());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.getquery(arg_queryId).then(unittest.expectAsync(((api.Query response) {
         checkQuery(response);
@@ -1028,7 +1063,7 @@ main() {
 
     unittest.test("method--listqueries", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.QueriesResourceApi res = new api.DoubleclickbidmanagerApi(mock).queries;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1064,7 +1099,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListQueriesResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listqueries().then(unittest.expectAsync(((api.ListQueriesResponse response) {
         checkListQueriesResponse(response);
@@ -1073,7 +1108,7 @@ main() {
 
     unittest.test("method--runquery", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.QueriesResourceApi res = new api.DoubleclickbidmanagerApi(mock).queries;
       var arg_request = buildRunQueryRequest();
       var arg_queryId = "foo";
@@ -1117,7 +1152,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.runquery(arg_request, arg_queryId).then(unittest.expectAsync((_) {}));
     });
@@ -1128,7 +1163,7 @@ main() {
   unittest.group("resource-ReportsResourceApi", () {
     unittest.test("method--listreports", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ReportsResourceApi res = new api.DoubleclickbidmanagerApi(mock).reports;
       var arg_queryId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1172,7 +1207,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListReportsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listreports(arg_queryId).then(unittest.expectAsync(((api.ListReportsResponse response) {
         checkListReportsResponse(response);

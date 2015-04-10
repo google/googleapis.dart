@@ -1,3 +1,14 @@
+## 0.11.0
+
+* [apis] container:v1beta1: schema changes
+* [apis] dataflow:v1beta3: schema changes
+* [apis] genomics:v1beta2: method and schema changes
+* [apis] replicapool:v1beta2: schema changes
+* [apis] sqladmin:1beta4: schema changes
+* [apis-breaking] replicapoolupdater:v1beta1: schema changes
+* [apis-new] logging:v1beta3
+* [apis-removed] genomics:v1beta
+
 ## 0.10.0
 
 * [apis-breaking] dataflow:v1b4: Removal of schemas

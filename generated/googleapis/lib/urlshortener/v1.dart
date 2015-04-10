@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.urlshortener.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client urlshortener/v1';
 
 /** Lets you create, inspect, and manage goo.gl short URLs */
 class UrlshortenerApi {
@@ -19,20 +22,19 @@ class UrlshortenerApi {
   static const UrlshortenerScope = "https://www.googleapis.com/auth/urlshortener";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   UrlResourceApi get url => new UrlResourceApi(_requester);
 
   UrlshortenerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "urlshortener/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class UrlResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UrlResourceApi(common_internal.ApiRequester client) : 
+  UrlResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -50,7 +52,7 @@ class UrlResourceApi {
    *
    * Completes with a [Url].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -61,7 +63,7 @@ class UrlResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (shortUrl == null) {
@@ -94,7 +96,7 @@ class UrlResourceApi {
    *
    * Completes with a [Url].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -105,7 +107,7 @@ class UrlResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -139,7 +141,7 @@ class UrlResourceApi {
    *
    * Completes with a [UrlHistory].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -150,7 +152,7 @@ class UrlResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projection != null) {
@@ -177,7 +179,6 @@ class UrlResourceApi {
 
 
 
-/** Not documented yet. */
 class AnalyticsSnapshot {
   /**
    * Top browsers, e.g. "Chrome"; sorted by (descending) click counts. Only
@@ -258,7 +259,6 @@ class AnalyticsSnapshot {
 }
 
 
-/** Not documented yet. */
 class AnalyticsSummary {
   /** Click analytics over all time. */
   AnalyticsSnapshot allTime;
@@ -318,7 +318,6 @@ class AnalyticsSummary {
 }
 
 
-/** Not documented yet. */
 class StringCount {
   /**
    * Number of clicks for this top entry, e.g. for this particular country or
@@ -354,7 +353,6 @@ class StringCount {
 }
 
 
-/** Not documented yet. */
 class Url {
   /**
    * A summary of the click analytics for the short and long URL. Might not be
@@ -436,7 +434,6 @@ class Url {
 }
 
 
-/** Not documented yet. */
 class UrlHistory {
   /** A list of URL resources. */
   core.List<Url> items;
@@ -499,5 +496,3 @@ class UrlHistory {
     return _json;
   }
 }
-
-

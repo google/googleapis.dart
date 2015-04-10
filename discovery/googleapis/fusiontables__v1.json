@@ -17,7 +17,7 @@
     "description": "API for working with Fusion Tables data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/fusiontables",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/SYuz2YU3ZsxTEiZdfXCeGmNn9r0\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/_HDQvvrmU1Cf0bBIzjf-H39NJ10\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1127,7 +1127,7 @@
             }
         }
     },
-    "revision": "20141113",
+    "revision": "20150226",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {
@@ -1241,7 +1241,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "Token used to access the next page of this result. No token is displayed if there are no more tokens left.",
+                    "description": "Token used to access the next page of this result. No token is displayed if there are no more pages left.",
                     "type": "string"
                 },
                 "totalItems": {
@@ -1590,7 +1590,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "Token used to access the next page of this result. No token is displayed if there are no more styles left.",
+                    "description": "Token used to access the next page of this result. No token is displayed if there are no more pages left.",
                     "type": "string"
                 },
                 "totalItems": {
@@ -1690,19 +1690,19 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "Token used to access the next page of this result. No token is displayed if there are no more tokens left.",
+                    "description": "Token used to access the next page of this result. No token is displayed if there are no more pages left.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "Task": {
-            "description": "Specifies the id, name and type of a task in a table.",
+            "description": "Specifies the identifier, name, and type of a task in a table.",
             "id": "Task",
             "properties": {
                 "kind": {
                     "default": "fusiontables#task",
-                    "description": "Type name: a template for an individual task.",
+                    "description": "Type of the resource. This is always \"fusiontables#task\".",
                     "type": "string"
                 },
                 "progress": {
@@ -1710,7 +1710,7 @@
                     "type": "string"
                 },
                 "started": {
-                    "description": "False while the table is busy with some other task.",
+                    "description": "false while the table is busy with some other task. true if this background task is currently running.",
                     "type": "boolean"
                 },
                 "taskId": {
@@ -1719,13 +1719,14 @@
                     "type": "string"
                 },
                 "type": {
+                    "description": "Type of background task. One of  DELETE_ROWS Deletes one or more rows from the table. ADD_ROWS \"Adds one or more rows to a table. Includes importing data into a new table and importing more rows into an existing table. ADD_COLUMN Adds a new column to the table. CHANGE_TYPE Changes the type of a column.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "TaskList": {
-            "description": "Represents a list of tasks in a table.",
+            "description": "Represents a list of tasks for a table.",
             "id": "TaskList",
             "properties": {
                 "items": {
@@ -1737,11 +1738,11 @@
                 },
                 "kind": {
                     "default": "fusiontables#taskList",
-                    "description": "Type name: a list of all tasks.",
+                    "description": "Type of the resource. This is always \"fusiontables#taskList\".",
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "Token used to access the next page of this result. No token is displayed if there are no more tokens left.",
+                    "description": "Token used to access the next page of this result. No token is displayed if there are no more pages left.",
                     "type": "string"
                 },
                 "totalItems": {
@@ -1805,7 +1806,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "Token used to access the next page of this result. No token is displayed if there are no more tokens left.",
+                    "description": "Token used to access the next page of this result. No token is displayed if there are no more pages left.",
                     "type": "string"
                 },
                 "totalItems": {

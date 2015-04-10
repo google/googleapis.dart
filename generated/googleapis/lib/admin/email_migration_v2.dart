@@ -1,17 +1,22 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.admin.email_migration_v2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client admin/email_migration_v2';
 
 /** Email Migration API lets you migrate emails of users to Google backends. */
 class AdminApi {
@@ -19,20 +24,19 @@ class AdminApi {
   static const EmailMigrationScope = "https://www.googleapis.com/auth/email.migration";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   MailResourceApi get mail => new MailResourceApi(_requester);
 
   AdminApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "email/v2/users/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class MailResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  MailResourceApi(common_internal.ApiRequester client) : 
+  MailResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -49,18 +53,18 @@ class MailResourceApi {
    * [uploadOptions] - Options for the media upload. Streaming Media without the
    * length being known ahead of time is only supported via resumable uploads.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future insert(MailItem request, core.String userKey, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future insert(MailItem request, core.String userKey, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -75,11 +79,11 @@ class MailResourceApi {
     _downloadOptions = null;
 
     if (_uploadMedia == null) {
-      _url = common_internal.Escaper.ecapeVariable('$userKey') + '/mail';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/email/v2/users/' + common_internal.Escaper.ecapeVariable('$userKey') + '/mail';
+      _url = commons.Escaper.ecapeVariable('$userKey') + '/mail';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/email/v2/users/' + commons.Escaper.ecapeVariable('$userKey') + '/mail';
     } else {
-      _url = '/upload/email/v2/users/' + common_internal.Escaper.ecapeVariable('$userKey') + '/mail';
+      _url = '/upload/email/v2/users/' + commons.Escaper.ecapeVariable('$userKey') + '/mail';
     }
 
 
@@ -191,5 +195,3 @@ class MailItem {
     return _json;
   }
 }
-
-

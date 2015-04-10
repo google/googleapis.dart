@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/games/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterAchievementDefinition = 0;
 buildAchievementDefinition() {
@@ -59,14 +94,14 @@ checkAchievementDefinition(api.AchievementDefinition o) {
   buildCounterAchievementDefinition--;
 }
 
-buildUnnamed20() {
+buildUnnamed1072() {
   var o = new core.List<api.AchievementDefinition>();
   o.add(buildAchievementDefinition());
   o.add(buildAchievementDefinition());
   return o;
 }
 
-checkUnnamed20(core.List<api.AchievementDefinition> o) {
+checkUnnamed1072(core.List<api.AchievementDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementDefinition(o[0]);
   checkAchievementDefinition(o[1]);
@@ -77,7 +112,7 @@ buildAchievementDefinitionsListResponse() {
   var o = new api.AchievementDefinitionsListResponse();
   buildCounterAchievementDefinitionsListResponse++;
   if (buildCounterAchievementDefinitionsListResponse < 3) {
-    o.items = buildUnnamed20();
+    o.items = buildUnnamed1072();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -88,7 +123,7 @@ buildAchievementDefinitionsListResponse() {
 checkAchievementDefinitionsListResponse(api.AchievementDefinitionsListResponse o) {
   buildCounterAchievementDefinitionsListResponse++;
   if (buildCounterAchievementDefinitionsListResponse < 3) {
-    checkUnnamed20(o.items);
+    checkUnnamed1072(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -183,14 +218,14 @@ checkAchievementUnlockResponse(api.AchievementUnlockResponse o) {
   buildCounterAchievementUnlockResponse--;
 }
 
-buildUnnamed21() {
+buildUnnamed1073() {
   var o = new core.List<api.AchievementUpdateRequest>();
   o.add(buildAchievementUpdateRequest());
   o.add(buildAchievementUpdateRequest());
   return o;
 }
 
-checkUnnamed21(core.List<api.AchievementUpdateRequest> o) {
+checkUnnamed1073(core.List<api.AchievementUpdateRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementUpdateRequest(o[0]);
   checkAchievementUpdateRequest(o[1]);
@@ -202,7 +237,7 @@ buildAchievementUpdateMultipleRequest() {
   buildCounterAchievementUpdateMultipleRequest++;
   if (buildCounterAchievementUpdateMultipleRequest < 3) {
     o.kind = "foo";
-    o.updates = buildUnnamed21();
+    o.updates = buildUnnamed1073();
   }
   buildCounterAchievementUpdateMultipleRequest--;
   return o;
@@ -212,19 +247,19 @@ checkAchievementUpdateMultipleRequest(api.AchievementUpdateMultipleRequest o) {
   buildCounterAchievementUpdateMultipleRequest++;
   if (buildCounterAchievementUpdateMultipleRequest < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed21(o.updates);
+    checkUnnamed1073(o.updates);
   }
   buildCounterAchievementUpdateMultipleRequest--;
 }
 
-buildUnnamed22() {
+buildUnnamed1074() {
   var o = new core.List<api.AchievementUpdateResponse>();
   o.add(buildAchievementUpdateResponse());
   o.add(buildAchievementUpdateResponse());
   return o;
 }
 
-checkUnnamed22(core.List<api.AchievementUpdateResponse> o) {
+checkUnnamed1074(core.List<api.AchievementUpdateResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementUpdateResponse(o[0]);
   checkAchievementUpdateResponse(o[1]);
@@ -236,7 +271,7 @@ buildAchievementUpdateMultipleResponse() {
   buildCounterAchievementUpdateMultipleResponse++;
   if (buildCounterAchievementUpdateMultipleResponse < 3) {
     o.kind = "foo";
-    o.updatedAchievements = buildUnnamed22();
+    o.updatedAchievements = buildUnnamed1074();
   }
   buildCounterAchievementUpdateMultipleResponse--;
   return o;
@@ -246,7 +281,7 @@ checkAchievementUpdateMultipleResponse(api.AchievementUpdateMultipleResponse o) 
   buildCounterAchievementUpdateMultipleResponse++;
   if (buildCounterAchievementUpdateMultipleResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed22(o.updatedAchievements);
+    checkUnnamed1074(o.updatedAchievements);
   }
   buildCounterAchievementUpdateMultipleResponse--;
 }
@@ -357,40 +392,40 @@ checkAnonymousPlayer(api.AnonymousPlayer o) {
   buildCounterAnonymousPlayer--;
 }
 
-buildUnnamed23() {
+buildUnnamed1075() {
   var o = new core.List<api.ImageAsset>();
   o.add(buildImageAsset());
   o.add(buildImageAsset());
   return o;
 }
 
-checkUnnamed23(core.List<api.ImageAsset> o) {
+checkUnnamed1075(core.List<api.ImageAsset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImageAsset(o[0]);
   checkImageAsset(o[1]);
 }
 
-buildUnnamed24() {
+buildUnnamed1076() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed24(core.List<core.String> o) {
+checkUnnamed1076(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed25() {
+buildUnnamed1077() {
   var o = new core.List<api.Instance>();
   o.add(buildInstance());
   o.add(buildInstance());
   return o;
 }
 
-checkUnnamed25(core.List<api.Instance> o) {
+checkUnnamed1077(core.List<api.Instance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstance(o[0]);
   checkInstance(o[1]);
@@ -402,13 +437,13 @@ buildApplication() {
   buildCounterApplication++;
   if (buildCounterApplication < 3) {
     o.achievementCount = 42;
-    o.assets = buildUnnamed23();
+    o.assets = buildUnnamed1075();
     o.author = "foo";
     o.category = buildApplicationCategory();
     o.description = "foo";
-    o.enabledFeatures = buildUnnamed24();
+    o.enabledFeatures = buildUnnamed1076();
     o.id = "foo";
-    o.instances = buildUnnamed25();
+    o.instances = buildUnnamed1077();
     o.kind = "foo";
     o.lastUpdatedTimestamp = "foo";
     o.leaderboardCount = 42;
@@ -423,13 +458,13 @@ checkApplication(api.Application o) {
   buildCounterApplication++;
   if (buildCounterApplication < 3) {
     unittest.expect(o.achievementCount, unittest.equals(42));
-    checkUnnamed23(o.assets);
+    checkUnnamed1075(o.assets);
     unittest.expect(o.author, unittest.equals('foo'));
     checkApplicationCategory(o.category);
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed24(o.enabledFeatures);
+    checkUnnamed1076(o.enabledFeatures);
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed25(o.instances);
+    checkUnnamed1077(o.instances);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.lastUpdatedTimestamp, unittest.equals('foo'));
     unittest.expect(o.leaderboardCount, unittest.equals(42));
@@ -485,14 +520,14 @@ checkCategory(api.Category o) {
   buildCounterCategory--;
 }
 
-buildUnnamed26() {
+buildUnnamed1078() {
   var o = new core.List<api.Category>();
   o.add(buildCategory());
   o.add(buildCategory());
   return o;
 }
 
-checkUnnamed26(core.List<api.Category> o) {
+checkUnnamed1078(core.List<api.Category> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCategory(o[0]);
   checkCategory(o[1]);
@@ -503,7 +538,7 @@ buildCategoryListResponse() {
   var o = new api.CategoryListResponse();
   buildCounterCategoryListResponse++;
   if (buildCounterCategoryListResponse < 3) {
-    o.items = buildUnnamed26();
+    o.items = buildUnnamed1078();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -514,7 +549,7 @@ buildCategoryListResponse() {
 checkCategoryListResponse(api.CategoryListResponse o) {
   buildCounterCategoryListResponse++;
   if (buildCounterCategoryListResponse < 3) {
-    checkUnnamed26(o.items);
+    checkUnnamed1078(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -565,14 +600,14 @@ checkEventChild(api.EventChild o) {
   buildCounterEventChild--;
 }
 
-buildUnnamed27() {
+buildUnnamed1079() {
   var o = new core.List<api.EventChild>();
   o.add(buildEventChild());
   o.add(buildEventChild());
   return o;
 }
 
-checkUnnamed27(core.List<api.EventChild> o) {
+checkUnnamed1079(core.List<api.EventChild> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventChild(o[0]);
   checkEventChild(o[1]);
@@ -583,7 +618,7 @@ buildEventDefinition() {
   var o = new api.EventDefinition();
   buildCounterEventDefinition++;
   if (buildCounterEventDefinition < 3) {
-    o.childEvents = buildUnnamed27();
+    o.childEvents = buildUnnamed1079();
     o.description = "foo";
     o.displayName = "foo";
     o.id = "foo";
@@ -599,7 +634,7 @@ buildEventDefinition() {
 checkEventDefinition(api.EventDefinition o) {
   buildCounterEventDefinition++;
   if (buildCounterEventDefinition < 3) {
-    checkUnnamed27(o.childEvents);
+    checkUnnamed1079(o.childEvents);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
@@ -611,14 +646,14 @@ checkEventDefinition(api.EventDefinition o) {
   buildCounterEventDefinition--;
 }
 
-buildUnnamed28() {
+buildUnnamed1080() {
   var o = new core.List<api.EventDefinition>();
   o.add(buildEventDefinition());
   o.add(buildEventDefinition());
   return o;
 }
 
-checkUnnamed28(core.List<api.EventDefinition> o) {
+checkUnnamed1080(core.List<api.EventDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventDefinition(o[0]);
   checkEventDefinition(o[1]);
@@ -629,7 +664,7 @@ buildEventDefinitionListResponse() {
   var o = new api.EventDefinitionListResponse();
   buildCounterEventDefinitionListResponse++;
   if (buildCounterEventDefinitionListResponse < 3) {
-    o.items = buildUnnamed28();
+    o.items = buildUnnamed1080();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -640,7 +675,7 @@ buildEventDefinitionListResponse() {
 checkEventDefinitionListResponse(api.EventDefinitionListResponse o) {
   buildCounterEventDefinitionListResponse++;
   if (buildCounterEventDefinitionListResponse < 3) {
-    checkUnnamed28(o.items);
+    checkUnnamed1080(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -670,14 +705,14 @@ checkEventPeriodRange(api.EventPeriodRange o) {
   buildCounterEventPeriodRange--;
 }
 
-buildUnnamed29() {
+buildUnnamed1081() {
   var o = new core.List<api.EventUpdateRequest>();
   o.add(buildEventUpdateRequest());
   o.add(buildEventUpdateRequest());
   return o;
 }
 
-checkUnnamed29(core.List<api.EventUpdateRequest> o) {
+checkUnnamed1081(core.List<api.EventUpdateRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventUpdateRequest(o[0]);
   checkEventUpdateRequest(o[1]);
@@ -690,7 +725,7 @@ buildEventPeriodUpdate() {
   if (buildCounterEventPeriodUpdate < 3) {
     o.kind = "foo";
     o.timePeriod = buildEventPeriodRange();
-    o.updates = buildUnnamed29();
+    o.updates = buildUnnamed1081();
   }
   buildCounterEventPeriodUpdate--;
   return o;
@@ -701,7 +736,7 @@ checkEventPeriodUpdate(api.EventPeriodUpdate o) {
   if (buildCounterEventPeriodUpdate < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     checkEventPeriodRange(o.timePeriod);
-    checkUnnamed29(o.updates);
+    checkUnnamed1081(o.updates);
   }
   buildCounterEventPeriodUpdate--;
 }
@@ -729,14 +764,14 @@ checkEventRecordFailure(api.EventRecordFailure o) {
   buildCounterEventRecordFailure--;
 }
 
-buildUnnamed30() {
+buildUnnamed1082() {
   var o = new core.List<api.EventPeriodUpdate>();
   o.add(buildEventPeriodUpdate());
   o.add(buildEventPeriodUpdate());
   return o;
 }
 
-checkUnnamed30(core.List<api.EventPeriodUpdate> o) {
+checkUnnamed1082(core.List<api.EventPeriodUpdate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventPeriodUpdate(o[0]);
   checkEventPeriodUpdate(o[1]);
@@ -750,7 +785,7 @@ buildEventRecordRequest() {
     o.currentTimeMillis = "foo";
     o.kind = "foo";
     o.requestId = "foo";
-    o.timePeriods = buildUnnamed30();
+    o.timePeriods = buildUnnamed1082();
   }
   buildCounterEventRecordRequest--;
   return o;
@@ -762,7 +797,7 @@ checkEventRecordRequest(api.EventRecordRequest o) {
     unittest.expect(o.currentTimeMillis, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.requestId, unittest.equals('foo'));
-    checkUnnamed30(o.timePeriods);
+    checkUnnamed1082(o.timePeriods);
   }
   buildCounterEventRecordRequest--;
 }
@@ -790,40 +825,40 @@ checkEventUpdateRequest(api.EventUpdateRequest o) {
   buildCounterEventUpdateRequest--;
 }
 
-buildUnnamed31() {
+buildUnnamed1083() {
   var o = new core.List<api.EventBatchRecordFailure>();
   o.add(buildEventBatchRecordFailure());
   o.add(buildEventBatchRecordFailure());
   return o;
 }
 
-checkUnnamed31(core.List<api.EventBatchRecordFailure> o) {
+checkUnnamed1083(core.List<api.EventBatchRecordFailure> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventBatchRecordFailure(o[0]);
   checkEventBatchRecordFailure(o[1]);
 }
 
-buildUnnamed32() {
+buildUnnamed1084() {
   var o = new core.List<api.EventRecordFailure>();
   o.add(buildEventRecordFailure());
   o.add(buildEventRecordFailure());
   return o;
 }
 
-checkUnnamed32(core.List<api.EventRecordFailure> o) {
+checkUnnamed1084(core.List<api.EventRecordFailure> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventRecordFailure(o[0]);
   checkEventRecordFailure(o[1]);
 }
 
-buildUnnamed33() {
+buildUnnamed1085() {
   var o = new core.List<api.PlayerEvent>();
   o.add(buildPlayerEvent());
   o.add(buildPlayerEvent());
   return o;
 }
 
-checkUnnamed33(core.List<api.PlayerEvent> o) {
+checkUnnamed1085(core.List<api.PlayerEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerEvent(o[0]);
   checkPlayerEvent(o[1]);
@@ -834,10 +869,10 @@ buildEventUpdateResponse() {
   var o = new api.EventUpdateResponse();
   buildCounterEventUpdateResponse++;
   if (buildCounterEventUpdateResponse < 3) {
-    o.batchFailures = buildUnnamed31();
-    o.eventFailures = buildUnnamed32();
+    o.batchFailures = buildUnnamed1083();
+    o.eventFailures = buildUnnamed1084();
     o.kind = "foo";
-    o.playerEvents = buildUnnamed33();
+    o.playerEvents = buildUnnamed1085();
   }
   buildCounterEventUpdateResponse--;
   return o;
@@ -846,10 +881,10 @@ buildEventUpdateResponse() {
 checkEventUpdateResponse(api.EventUpdateResponse o) {
   buildCounterEventUpdateResponse++;
   if (buildCounterEventUpdateResponse < 3) {
-    checkUnnamed31(o.batchFailures);
-    checkUnnamed32(o.eventFailures);
+    checkUnnamed1083(o.batchFailures);
+    checkUnnamed1084(o.eventFailures);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed33(o.playerEvents);
+    checkUnnamed1085(o.playerEvents);
   }
   buildCounterEventUpdateResponse--;
 }
@@ -1103,14 +1138,14 @@ checkLeaderboardEntry(api.LeaderboardEntry o) {
   buildCounterLeaderboardEntry--;
 }
 
-buildUnnamed34() {
+buildUnnamed1086() {
   var o = new core.List<api.Leaderboard>();
   o.add(buildLeaderboard());
   o.add(buildLeaderboard());
   return o;
 }
 
-checkUnnamed34(core.List<api.Leaderboard> o) {
+checkUnnamed1086(core.List<api.Leaderboard> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLeaderboard(o[0]);
   checkLeaderboard(o[1]);
@@ -1121,7 +1156,7 @@ buildLeaderboardListResponse() {
   var o = new api.LeaderboardListResponse();
   buildCounterLeaderboardListResponse++;
   if (buildCounterLeaderboardListResponse < 3) {
-    o.items = buildUnnamed34();
+    o.items = buildUnnamed1086();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -1132,7 +1167,7 @@ buildLeaderboardListResponse() {
 checkLeaderboardListResponse(api.LeaderboardListResponse o) {
   buildCounterLeaderboardListResponse++;
   if (buildCounterLeaderboardListResponse < 3) {
-    checkUnnamed34(o.items);
+    checkUnnamed1086(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -1166,14 +1201,14 @@ checkLeaderboardScoreRank(api.LeaderboardScoreRank o) {
   buildCounterLeaderboardScoreRank--;
 }
 
-buildUnnamed35() {
+buildUnnamed1087() {
   var o = new core.List<api.LeaderboardEntry>();
   o.add(buildLeaderboardEntry());
   o.add(buildLeaderboardEntry());
   return o;
 }
 
-checkUnnamed35(core.List<api.LeaderboardEntry> o) {
+checkUnnamed1087(core.List<api.LeaderboardEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLeaderboardEntry(o[0]);
   checkLeaderboardEntry(o[1]);
@@ -1184,7 +1219,7 @@ buildLeaderboardScores() {
   var o = new api.LeaderboardScores();
   buildCounterLeaderboardScores++;
   if (buildCounterLeaderboardScores < 3) {
-    o.items = buildUnnamed35();
+    o.items = buildUnnamed1087();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.numScores = "foo";
@@ -1198,7 +1233,7 @@ buildLeaderboardScores() {
 checkLeaderboardScores(api.LeaderboardScores o) {
   buildCounterLeaderboardScores++;
   if (buildCounterLeaderboardScores < 3) {
-    checkUnnamed35(o.items);
+    checkUnnamed1087(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.numScores, unittest.equals('foo'));
@@ -1208,14 +1243,14 @@ checkLeaderboardScores(api.LeaderboardScores o) {
   buildCounterLeaderboardScores--;
 }
 
-buildUnnamed36() {
+buildUnnamed1088() {
   var o = new core.List<api.PlayerLevel>();
   o.add(buildPlayerLevel());
   o.add(buildPlayerLevel());
   return o;
 }
 
-checkUnnamed36(core.List<api.PlayerLevel> o) {
+checkUnnamed1088(core.List<api.PlayerLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerLevel(o[0]);
   checkPlayerLevel(o[1]);
@@ -1228,7 +1263,7 @@ buildMetagameConfig() {
   if (buildCounterMetagameConfig < 3) {
     o.currentVersion = 42;
     o.kind = "foo";
-    o.playerLevels = buildUnnamed36();
+    o.playerLevels = buildUnnamed1088();
   }
   buildCounterMetagameConfig--;
   return o;
@@ -1239,7 +1274,7 @@ checkMetagameConfig(api.MetagameConfig o) {
   if (buildCounterMetagameConfig < 3) {
     unittest.expect(o.currentVersion, unittest.equals(42));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed36(o.playerLevels);
+    checkUnnamed1088(o.playerLevels);
   }
   buildCounterMetagameConfig--;
 }
@@ -1468,14 +1503,14 @@ checkPlayerAchievement(api.PlayerAchievement o) {
   buildCounterPlayerAchievement--;
 }
 
-buildUnnamed37() {
+buildUnnamed1089() {
   var o = new core.List<api.PlayerAchievement>();
   o.add(buildPlayerAchievement());
   o.add(buildPlayerAchievement());
   return o;
 }
 
-checkUnnamed37(core.List<api.PlayerAchievement> o) {
+checkUnnamed1089(core.List<api.PlayerAchievement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerAchievement(o[0]);
   checkPlayerAchievement(o[1]);
@@ -1486,7 +1521,7 @@ buildPlayerAchievementListResponse() {
   var o = new api.PlayerAchievementListResponse();
   buildCounterPlayerAchievementListResponse++;
   if (buildCounterPlayerAchievementListResponse < 3) {
-    o.items = buildUnnamed37();
+    o.items = buildUnnamed1089();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -1497,7 +1532,7 @@ buildPlayerAchievementListResponse() {
 checkPlayerAchievementListResponse(api.PlayerAchievementListResponse o) {
   buildCounterPlayerAchievementListResponse++;
   if (buildCounterPlayerAchievementListResponse < 3) {
-    checkUnnamed37(o.items);
+    checkUnnamed1089(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -1531,14 +1566,14 @@ checkPlayerEvent(api.PlayerEvent o) {
   buildCounterPlayerEvent--;
 }
 
-buildUnnamed38() {
+buildUnnamed1090() {
   var o = new core.List<api.PlayerEvent>();
   o.add(buildPlayerEvent());
   o.add(buildPlayerEvent());
   return o;
 }
 
-checkUnnamed38(core.List<api.PlayerEvent> o) {
+checkUnnamed1090(core.List<api.PlayerEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerEvent(o[0]);
   checkPlayerEvent(o[1]);
@@ -1549,7 +1584,7 @@ buildPlayerEventListResponse() {
   var o = new api.PlayerEventListResponse();
   buildCounterPlayerEventListResponse++;
   if (buildCounterPlayerEventListResponse < 3) {
-    o.items = buildUnnamed38();
+    o.items = buildUnnamed1090();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -1560,7 +1595,7 @@ buildPlayerEventListResponse() {
 checkPlayerEventListResponse(api.PlayerEventListResponse o) {
   buildCounterPlayerEventListResponse++;
   if (buildCounterPlayerEventListResponse < 3) {
-    checkUnnamed38(o.items);
+    checkUnnamed1090(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -1629,14 +1664,14 @@ checkPlayerLeaderboardScore(api.PlayerLeaderboardScore o) {
   buildCounterPlayerLeaderboardScore--;
 }
 
-buildUnnamed39() {
+buildUnnamed1091() {
   var o = new core.List<api.PlayerLeaderboardScore>();
   o.add(buildPlayerLeaderboardScore());
   o.add(buildPlayerLeaderboardScore());
   return o;
 }
 
-checkUnnamed39(core.List<api.PlayerLeaderboardScore> o) {
+checkUnnamed1091(core.List<api.PlayerLeaderboardScore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerLeaderboardScore(o[0]);
   checkPlayerLeaderboardScore(o[1]);
@@ -1647,7 +1682,7 @@ buildPlayerLeaderboardScoreListResponse() {
   var o = new api.PlayerLeaderboardScoreListResponse();
   buildCounterPlayerLeaderboardScoreListResponse++;
   if (buildCounterPlayerLeaderboardScoreListResponse < 3) {
-    o.items = buildUnnamed39();
+    o.items = buildUnnamed1091();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.player = buildPlayer();
@@ -1659,7 +1694,7 @@ buildPlayerLeaderboardScoreListResponse() {
 checkPlayerLeaderboardScoreListResponse(api.PlayerLeaderboardScoreListResponse o) {
   buildCounterPlayerLeaderboardScoreListResponse++;
   if (buildCounterPlayerLeaderboardScoreListResponse < 3) {
-    checkUnnamed39(o.items);
+    checkUnnamed1091(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     checkPlayer(o.player);
@@ -1692,14 +1727,14 @@ checkPlayerLevel(api.PlayerLevel o) {
   buildCounterPlayerLevel--;
 }
 
-buildUnnamed40() {
+buildUnnamed1092() {
   var o = new core.List<api.Player>();
   o.add(buildPlayer());
   o.add(buildPlayer());
   return o;
 }
 
-checkUnnamed40(core.List<api.Player> o) {
+checkUnnamed1092(core.List<api.Player> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayer(o[0]);
   checkPlayer(o[1]);
@@ -1710,7 +1745,7 @@ buildPlayerListResponse() {
   var o = new api.PlayerListResponse();
   buildCounterPlayerListResponse++;
   if (buildCounterPlayerListResponse < 3) {
-    o.items = buildUnnamed40();
+    o.items = buildUnnamed1092();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -1721,7 +1756,7 @@ buildPlayerListResponse() {
 checkPlayerListResponse(api.PlayerListResponse o) {
   buildCounterPlayerListResponse++;
   if (buildCounterPlayerListResponse < 3) {
-    checkUnnamed40(o.items);
+    checkUnnamed1092(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -1755,14 +1790,14 @@ checkPlayerScore(api.PlayerScore o) {
   buildCounterPlayerScore--;
 }
 
-buildUnnamed41() {
+buildUnnamed1093() {
   var o = new core.List<api.PlayerScoreResponse>();
   o.add(buildPlayerScoreResponse());
   o.add(buildPlayerScoreResponse());
   return o;
 }
 
-checkUnnamed41(core.List<api.PlayerScoreResponse> o) {
+checkUnnamed1093(core.List<api.PlayerScoreResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerScoreResponse(o[0]);
   checkPlayerScoreResponse(o[1]);
@@ -1774,7 +1809,7 @@ buildPlayerScoreListResponse() {
   buildCounterPlayerScoreListResponse++;
   if (buildCounterPlayerScoreListResponse < 3) {
     o.kind = "foo";
-    o.submittedScores = buildUnnamed41();
+    o.submittedScores = buildUnnamed1093();
   }
   buildCounterPlayerScoreListResponse--;
   return o;
@@ -1784,32 +1819,32 @@ checkPlayerScoreListResponse(api.PlayerScoreListResponse o) {
   buildCounterPlayerScoreListResponse++;
   if (buildCounterPlayerScoreListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed41(o.submittedScores);
+    checkUnnamed1093(o.submittedScores);
   }
   buildCounterPlayerScoreListResponse--;
 }
 
-buildUnnamed42() {
+buildUnnamed1094() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed42(core.List<core.String> o) {
+checkUnnamed1094(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed43() {
+buildUnnamed1095() {
   var o = new core.List<api.PlayerScore>();
   o.add(buildPlayerScore());
   o.add(buildPlayerScore());
   return o;
 }
 
-checkUnnamed43(core.List<api.PlayerScore> o) {
+checkUnnamed1095(core.List<api.PlayerScore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerScore(o[0]);
   checkPlayerScore(o[1]);
@@ -1820,12 +1855,12 @@ buildPlayerScoreResponse() {
   var o = new api.PlayerScoreResponse();
   buildCounterPlayerScoreResponse++;
   if (buildCounterPlayerScoreResponse < 3) {
-    o.beatenScoreTimeSpans = buildUnnamed42();
+    o.beatenScoreTimeSpans = buildUnnamed1094();
     o.formattedScore = "foo";
     o.kind = "foo";
     o.leaderboardId = "foo";
     o.scoreTag = "foo";
-    o.unbeatenScores = buildUnnamed43();
+    o.unbeatenScores = buildUnnamed1095();
   }
   buildCounterPlayerScoreResponse--;
   return o;
@@ -1834,24 +1869,24 @@ buildPlayerScoreResponse() {
 checkPlayerScoreResponse(api.PlayerScoreResponse o) {
   buildCounterPlayerScoreResponse++;
   if (buildCounterPlayerScoreResponse < 3) {
-    checkUnnamed42(o.beatenScoreTimeSpans);
+    checkUnnamed1094(o.beatenScoreTimeSpans);
     unittest.expect(o.formattedScore, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.leaderboardId, unittest.equals('foo'));
     unittest.expect(o.scoreTag, unittest.equals('foo'));
-    checkUnnamed43(o.unbeatenScores);
+    checkUnnamed1095(o.unbeatenScores);
   }
   buildCounterPlayerScoreResponse--;
 }
 
-buildUnnamed44() {
+buildUnnamed1096() {
   var o = new core.List<api.ScoreSubmission>();
   o.add(buildScoreSubmission());
   o.add(buildScoreSubmission());
   return o;
 }
 
-checkUnnamed44(core.List<api.ScoreSubmission> o) {
+checkUnnamed1096(core.List<api.ScoreSubmission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkScoreSubmission(o[0]);
   checkScoreSubmission(o[1]);
@@ -1863,7 +1898,7 @@ buildPlayerScoreSubmissionList() {
   buildCounterPlayerScoreSubmissionList++;
   if (buildCounterPlayerScoreSubmissionList < 3) {
     o.kind = "foo";
-    o.scores = buildUnnamed44();
+    o.scores = buildUnnamed1096();
   }
   buildCounterPlayerScoreSubmissionList--;
   return o;
@@ -1873,7 +1908,7 @@ checkPlayerScoreSubmissionList(api.PlayerScoreSubmissionList o) {
   buildCounterPlayerScoreSubmissionList++;
   if (buildCounterPlayerScoreSubmissionList < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed44(o.scores);
+    checkUnnamed1096(o.scores);
   }
   buildCounterPlayerScoreSubmissionList--;
 }
@@ -1945,14 +1980,14 @@ checkPushTokenId(api.PushTokenId o) {
   buildCounterPushTokenId--;
 }
 
-buildUnnamed45() {
+buildUnnamed1097() {
   var o = new core.List<api.QuestMilestone>();
   o.add(buildQuestMilestone());
   o.add(buildQuestMilestone());
   return o;
 }
 
-checkUnnamed45(core.List<api.QuestMilestone> o) {
+checkUnnamed1097(core.List<api.QuestMilestone> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQuestMilestone(o[0]);
   checkQuestMilestone(o[1]);
@@ -1974,7 +2009,7 @@ buildQuest() {
     o.isDefaultIconUrl = true;
     o.kind = "foo";
     o.lastUpdatedTimestampMillis = "foo";
-    o.milestones = buildUnnamed45();
+    o.milestones = buildUnnamed1097();
     o.name = "foo";
     o.notifyTimestampMillis = "foo";
     o.startTimestampMillis = "foo";
@@ -1998,7 +2033,7 @@ checkQuest(api.Quest o) {
     unittest.expect(o.isDefaultIconUrl, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.lastUpdatedTimestampMillis, unittest.equals('foo'));
-    checkUnnamed45(o.milestones);
+    checkUnnamed1097(o.milestones);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notifyTimestampMillis, unittest.equals('foo'));
     unittest.expect(o.startTimestampMillis, unittest.equals('foo'));
@@ -2057,14 +2092,14 @@ checkQuestCriterion(api.QuestCriterion o) {
   buildCounterQuestCriterion--;
 }
 
-buildUnnamed46() {
+buildUnnamed1098() {
   var o = new core.List<api.Quest>();
   o.add(buildQuest());
   o.add(buildQuest());
   return o;
 }
 
-checkUnnamed46(core.List<api.Quest> o) {
+checkUnnamed1098(core.List<api.Quest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQuest(o[0]);
   checkQuest(o[1]);
@@ -2075,7 +2110,7 @@ buildQuestListResponse() {
   var o = new api.QuestListResponse();
   buildCounterQuestListResponse++;
   if (buildCounterQuestListResponse < 3) {
-    o.items = buildUnnamed46();
+    o.items = buildUnnamed1098();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -2086,21 +2121,21 @@ buildQuestListResponse() {
 checkQuestListResponse(api.QuestListResponse o) {
   buildCounterQuestListResponse++;
   if (buildCounterQuestListResponse < 3) {
-    checkUnnamed46(o.items);
+    checkUnnamed1098(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterQuestListResponse--;
 }
 
-buildUnnamed47() {
+buildUnnamed1099() {
   var o = new core.List<api.QuestCriterion>();
   o.add(buildQuestCriterion());
   o.add(buildQuestCriterion());
   return o;
 }
 
-checkUnnamed47(core.List<api.QuestCriterion> o) {
+checkUnnamed1099(core.List<api.QuestCriterion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQuestCriterion(o[0]);
   checkQuestCriterion(o[1]);
@@ -2112,7 +2147,7 @@ buildQuestMilestone() {
   buildCounterQuestMilestone++;
   if (buildCounterQuestMilestone < 3) {
     o.completionRewardData = "foo";
-    o.criteria = buildUnnamed47();
+    o.criteria = buildUnnamed1099();
     o.id = "foo";
     o.kind = "foo";
     o.state = "foo";
@@ -2125,7 +2160,7 @@ checkQuestMilestone(api.QuestMilestone o) {
   buildCounterQuestMilestone++;
   if (buildCounterQuestMilestone < 3) {
     unittest.expect(o.completionRewardData, unittest.equals('foo'));
-    checkUnnamed47(o.criteria);
+    checkUnnamed1099(o.criteria);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
@@ -2156,14 +2191,14 @@ checkRevisionCheckResponse(api.RevisionCheckResponse o) {
   buildCounterRevisionCheckResponse--;
 }
 
-buildUnnamed48() {
+buildUnnamed1100() {
   var o = new core.List<api.RoomParticipant>();
   o.add(buildRoomParticipant());
   o.add(buildRoomParticipant());
   return o;
 }
 
-checkUnnamed48(core.List<api.RoomParticipant> o) {
+checkUnnamed1100(core.List<api.RoomParticipant> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRoomParticipant(o[0]);
   checkRoomParticipant(o[1]);
@@ -2182,7 +2217,7 @@ buildRoom() {
     o.inviterId = "foo";
     o.kind = "foo";
     o.lastUpdateDetails = buildRoomModification();
-    o.participants = buildUnnamed48();
+    o.participants = buildUnnamed1100();
     o.roomId = "foo";
     o.roomStatusVersion = 42;
     o.status = "foo";
@@ -2203,7 +2238,7 @@ checkRoom(api.Room o) {
     unittest.expect(o.inviterId, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     checkRoomModification(o.lastUpdateDetails);
-    checkUnnamed48(o.participants);
+    checkUnnamed1100(o.participants);
     unittest.expect(o.roomId, unittest.equals('foo'));
     unittest.expect(o.roomStatusVersion, unittest.equals(42));
     unittest.expect(o.status, unittest.equals('foo'));
@@ -2279,27 +2314,27 @@ checkRoomClientAddress(api.RoomClientAddress o) {
   buildCounterRoomClientAddress--;
 }
 
-buildUnnamed49() {
+buildUnnamed1101() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed49(core.List<core.String> o) {
+checkUnnamed1101(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed50() {
+buildUnnamed1102() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed50(core.List<core.String> o) {
+checkUnnamed1102(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2311,9 +2346,9 @@ buildRoomCreateRequest() {
   buildCounterRoomCreateRequest++;
   if (buildCounterRoomCreateRequest < 3) {
     o.autoMatchingCriteria = buildRoomAutoMatchingCriteria();
-    o.capabilities = buildUnnamed49();
+    o.capabilities = buildUnnamed1101();
     o.clientAddress = buildRoomClientAddress();
-    o.invitedPlayerIds = buildUnnamed50();
+    o.invitedPlayerIds = buildUnnamed1102();
     o.kind = "foo";
     o.networkDiagnostics = buildNetworkDiagnostics();
     o.requestId = "foo";
@@ -2327,9 +2362,9 @@ checkRoomCreateRequest(api.RoomCreateRequest o) {
   buildCounterRoomCreateRequest++;
   if (buildCounterRoomCreateRequest < 3) {
     checkRoomAutoMatchingCriteria(o.autoMatchingCriteria);
-    checkUnnamed49(o.capabilities);
+    checkUnnamed1101(o.capabilities);
     checkRoomClientAddress(o.clientAddress);
-    checkUnnamed50(o.invitedPlayerIds);
+    checkUnnamed1102(o.invitedPlayerIds);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkNetworkDiagnostics(o.networkDiagnostics);
     unittest.expect(o.requestId, unittest.equals('foo'));
@@ -2338,14 +2373,14 @@ checkRoomCreateRequest(api.RoomCreateRequest o) {
   buildCounterRoomCreateRequest--;
 }
 
-buildUnnamed51() {
+buildUnnamed1103() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed51(core.List<core.String> o) {
+checkUnnamed1103(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2356,7 +2391,7 @@ buildRoomJoinRequest() {
   var o = new api.RoomJoinRequest();
   buildCounterRoomJoinRequest++;
   if (buildCounterRoomJoinRequest < 3) {
-    o.capabilities = buildUnnamed51();
+    o.capabilities = buildUnnamed1103();
     o.clientAddress = buildRoomClientAddress();
     o.kind = "foo";
     o.networkDiagnostics = buildNetworkDiagnostics();
@@ -2368,7 +2403,7 @@ buildRoomJoinRequest() {
 checkRoomJoinRequest(api.RoomJoinRequest o) {
   buildCounterRoomJoinRequest++;
   if (buildCounterRoomJoinRequest < 3) {
-    checkUnnamed51(o.capabilities);
+    checkUnnamed1103(o.capabilities);
     checkRoomClientAddress(o.clientAddress);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkNetworkDiagnostics(o.networkDiagnostics);
@@ -2376,14 +2411,14 @@ checkRoomJoinRequest(api.RoomJoinRequest o) {
   buildCounterRoomJoinRequest--;
 }
 
-buildUnnamed52() {
+buildUnnamed1104() {
   var o = new core.List<api.PeerSessionDiagnostics>();
   o.add(buildPeerSessionDiagnostics());
   o.add(buildPeerSessionDiagnostics());
   return o;
 }
 
-checkUnnamed52(core.List<api.PeerSessionDiagnostics> o) {
+checkUnnamed1104(core.List<api.PeerSessionDiagnostics> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPeerSessionDiagnostics(o[0]);
   checkPeerSessionDiagnostics(o[1]);
@@ -2400,7 +2435,7 @@ buildRoomLeaveDiagnostics() {
     o.kind = "foo";
     o.networkOperatorCode = "foo";
     o.networkOperatorName = "foo";
-    o.peerSession = buildUnnamed52();
+    o.peerSession = buildUnnamed1104();
     o.socketsUsed = true;
   }
   buildCounterRoomLeaveDiagnostics--;
@@ -2416,7 +2451,7 @@ checkRoomLeaveDiagnostics(api.RoomLeaveDiagnostics o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.networkOperatorCode, unittest.equals('foo'));
     unittest.expect(o.networkOperatorName, unittest.equals('foo'));
-    checkUnnamed52(o.peerSession);
+    checkUnnamed1104(o.peerSession);
     unittest.expect(o.socketsUsed, unittest.isTrue);
   }
   buildCounterRoomLeaveDiagnostics--;
@@ -2445,14 +2480,14 @@ checkRoomLeaveRequest(api.RoomLeaveRequest o) {
   buildCounterRoomLeaveRequest--;
 }
 
-buildUnnamed53() {
+buildUnnamed1105() {
   var o = new core.List<api.Room>();
   o.add(buildRoom());
   o.add(buildRoom());
   return o;
 }
 
-checkUnnamed53(core.List<api.Room> o) {
+checkUnnamed1105(core.List<api.Room> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRoom(o[0]);
   checkRoom(o[1]);
@@ -2463,7 +2498,7 @@ buildRoomList() {
   var o = new api.RoomList();
   buildCounterRoomList++;
   if (buildCounterRoomList < 3) {
-    o.items = buildUnnamed53();
+    o.items = buildUnnamed1105();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -2474,7 +2509,7 @@ buildRoomList() {
 checkRoomList(api.RoomList o) {
   buildCounterRoomList++;
   if (buildCounterRoomList < 3) {
-    checkUnnamed53(o.items);
+    checkUnnamed1105(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -2535,14 +2570,14 @@ checkRoomP2PStatus(api.RoomP2PStatus o) {
   buildCounterRoomP2PStatus--;
 }
 
-buildUnnamed54() {
+buildUnnamed1106() {
   var o = new core.List<api.RoomP2PStatus>();
   o.add(buildRoomP2PStatus());
   o.add(buildRoomP2PStatus());
   return o;
 }
 
-checkUnnamed54(core.List<api.RoomP2PStatus> o) {
+checkUnnamed1106(core.List<api.RoomP2PStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRoomP2PStatus(o[0]);
   checkRoomP2PStatus(o[1]);
@@ -2554,7 +2589,7 @@ buildRoomP2PStatuses() {
   buildCounterRoomP2PStatuses++;
   if (buildCounterRoomP2PStatuses < 3) {
     o.kind = "foo";
-    o.updates = buildUnnamed54();
+    o.updates = buildUnnamed1106();
   }
   buildCounterRoomP2PStatuses--;
   return o;
@@ -2564,19 +2599,19 @@ checkRoomP2PStatuses(api.RoomP2PStatuses o) {
   buildCounterRoomP2PStatuses++;
   if (buildCounterRoomP2PStatuses < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed54(o.updates);
+    checkUnnamed1106(o.updates);
   }
   buildCounterRoomP2PStatuses--;
 }
 
-buildUnnamed55() {
+buildUnnamed1107() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed55(core.List<core.String> o) {
+checkUnnamed1107(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2589,7 +2624,7 @@ buildRoomParticipant() {
   if (buildCounterRoomParticipant < 3) {
     o.autoMatched = true;
     o.autoMatchedPlayer = buildAnonymousPlayer();
-    o.capabilities = buildUnnamed55();
+    o.capabilities = buildUnnamed1107();
     o.clientAddress = buildRoomClientAddress();
     o.connected = true;
     o.id = "foo";
@@ -2607,7 +2642,7 @@ checkRoomParticipant(api.RoomParticipant o) {
   if (buildCounterRoomParticipant < 3) {
     unittest.expect(o.autoMatched, unittest.isTrue);
     checkAnonymousPlayer(o.autoMatchedPlayer);
-    checkUnnamed55(o.capabilities);
+    checkUnnamed1107(o.capabilities);
     checkRoomClientAddress(o.clientAddress);
     unittest.expect(o.connected, unittest.isTrue);
     unittest.expect(o.id, unittest.equals('foo'));
@@ -2619,14 +2654,14 @@ checkRoomParticipant(api.RoomParticipant o) {
   buildCounterRoomParticipant--;
 }
 
-buildUnnamed56() {
+buildUnnamed1108() {
   var o = new core.List<api.RoomParticipant>();
   o.add(buildRoomParticipant());
   o.add(buildRoomParticipant());
   return o;
 }
 
-checkUnnamed56(core.List<api.RoomParticipant> o) {
+checkUnnamed1108(core.List<api.RoomParticipant> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRoomParticipant(o[0]);
   checkRoomParticipant(o[1]);
@@ -2639,7 +2674,7 @@ buildRoomStatus() {
   if (buildCounterRoomStatus < 3) {
     o.autoMatchingStatus = buildRoomAutoMatchStatus();
     o.kind = "foo";
-    o.participants = buildUnnamed56();
+    o.participants = buildUnnamed1108();
     o.roomId = "foo";
     o.status = "foo";
     o.statusVersion = 42;
@@ -2653,7 +2688,7 @@ checkRoomStatus(api.RoomStatus o) {
   if (buildCounterRoomStatus < 3) {
     checkRoomAutoMatchStatus(o.autoMatchingStatus);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed56(o.participants);
+    checkUnnamed1108(o.participants);
     unittest.expect(o.roomId, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.statusVersion, unittest.equals(42));
@@ -2754,14 +2789,14 @@ checkSnapshotImage(api.SnapshotImage o) {
   buildCounterSnapshotImage--;
 }
 
-buildUnnamed57() {
+buildUnnamed1109() {
   var o = new core.List<api.Snapshot>();
   o.add(buildSnapshot());
   o.add(buildSnapshot());
   return o;
 }
 
-checkUnnamed57(core.List<api.Snapshot> o) {
+checkUnnamed1109(core.List<api.Snapshot> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSnapshot(o[0]);
   checkSnapshot(o[1]);
@@ -2772,7 +2807,7 @@ buildSnapshotListResponse() {
   var o = new api.SnapshotListResponse();
   buildCounterSnapshotListResponse++;
   if (buildCounterSnapshotListResponse < 3) {
-    o.items = buildUnnamed57();
+    o.items = buildUnnamed1109();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -2783,7 +2818,7 @@ buildSnapshotListResponse() {
 checkSnapshotListResponse(api.SnapshotListResponse o) {
   buildCounterSnapshotListResponse++;
   if (buildCounterSnapshotListResponse < 3) {
-    checkUnnamed57(o.items);
+    checkUnnamed1109(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -2815,27 +2850,27 @@ checkTurnBasedAutoMatchingCriteria(api.TurnBasedAutoMatchingCriteria o) {
   buildCounterTurnBasedAutoMatchingCriteria--;
 }
 
-buildUnnamed58() {
+buildUnnamed1110() {
   var o = new core.List<api.TurnBasedMatchParticipant>();
   o.add(buildTurnBasedMatchParticipant());
   o.add(buildTurnBasedMatchParticipant());
   return o;
 }
 
-checkUnnamed58(core.List<api.TurnBasedMatchParticipant> o) {
+checkUnnamed1110(core.List<api.TurnBasedMatchParticipant> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTurnBasedMatchParticipant(o[0]);
   checkTurnBasedMatchParticipant(o[1]);
 }
 
-buildUnnamed59() {
+buildUnnamed1111() {
   var o = new core.List<api.ParticipantResult>();
   o.add(buildParticipantResult());
   o.add(buildParticipantResult());
   return o;
 }
 
-checkUnnamed59(core.List<api.ParticipantResult> o) {
+checkUnnamed1111(core.List<api.ParticipantResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParticipantResult(o[0]);
   checkParticipantResult(o[1]);
@@ -2857,11 +2892,11 @@ buildTurnBasedMatch() {
     o.matchId = "foo";
     o.matchNumber = 42;
     o.matchVersion = 42;
-    o.participants = buildUnnamed58();
+    o.participants = buildUnnamed1110();
     o.pendingParticipantId = "foo";
     o.previousMatchData = buildTurnBasedMatchData();
     o.rematchId = "foo";
-    o.results = buildUnnamed59();
+    o.results = buildUnnamed1111();
     o.status = "foo";
     o.userMatchStatus = "foo";
     o.variant = 42;
@@ -2885,11 +2920,11 @@ checkTurnBasedMatch(api.TurnBasedMatch o) {
     unittest.expect(o.matchId, unittest.equals('foo'));
     unittest.expect(o.matchNumber, unittest.equals(42));
     unittest.expect(o.matchVersion, unittest.equals(42));
-    checkUnnamed58(o.participants);
+    checkUnnamed1110(o.participants);
     unittest.expect(o.pendingParticipantId, unittest.equals('foo'));
     checkTurnBasedMatchData(o.previousMatchData);
     unittest.expect(o.rematchId, unittest.equals('foo'));
-    checkUnnamed59(o.results);
+    checkUnnamed1111(o.results);
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.userMatchStatus, unittest.equals('foo'));
     unittest.expect(o.variant, unittest.equals(42));
@@ -2898,14 +2933,14 @@ checkTurnBasedMatch(api.TurnBasedMatch o) {
   buildCounterTurnBasedMatch--;
 }
 
-buildUnnamed60() {
+buildUnnamed1112() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed60(core.List<core.String> o) {
+checkUnnamed1112(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2917,7 +2952,7 @@ buildTurnBasedMatchCreateRequest() {
   buildCounterTurnBasedMatchCreateRequest++;
   if (buildCounterTurnBasedMatchCreateRequest < 3) {
     o.autoMatchingCriteria = buildTurnBasedAutoMatchingCriteria();
-    o.invitedPlayerIds = buildUnnamed60();
+    o.invitedPlayerIds = buildUnnamed1112();
     o.kind = "foo";
     o.requestId = "foo";
     o.variant = 42;
@@ -2930,7 +2965,7 @@ checkTurnBasedMatchCreateRequest(api.TurnBasedMatchCreateRequest o) {
   buildCounterTurnBasedMatchCreateRequest++;
   if (buildCounterTurnBasedMatchCreateRequest < 3) {
     checkTurnBasedAutoMatchingCriteria(o.autoMatchingCriteria);
-    checkUnnamed60(o.invitedPlayerIds);
+    checkUnnamed1112(o.invitedPlayerIds);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.requestId, unittest.equals('foo'));
     unittest.expect(o.variant, unittest.equals(42));
@@ -2982,14 +3017,14 @@ checkTurnBasedMatchDataRequest(api.TurnBasedMatchDataRequest o) {
   buildCounterTurnBasedMatchDataRequest--;
 }
 
-buildUnnamed61() {
+buildUnnamed1113() {
   var o = new core.List<api.TurnBasedMatch>();
   o.add(buildTurnBasedMatch());
   o.add(buildTurnBasedMatch());
   return o;
 }
 
-checkUnnamed61(core.List<api.TurnBasedMatch> o) {
+checkUnnamed1113(core.List<api.TurnBasedMatch> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTurnBasedMatch(o[0]);
   checkTurnBasedMatch(o[1]);
@@ -3000,7 +3035,7 @@ buildTurnBasedMatchList() {
   var o = new api.TurnBasedMatchList();
   buildCounterTurnBasedMatchList++;
   if (buildCounterTurnBasedMatchList < 3) {
-    o.items = buildUnnamed61();
+    o.items = buildUnnamed1113();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -3011,7 +3046,7 @@ buildTurnBasedMatchList() {
 checkTurnBasedMatchList(api.TurnBasedMatchList o) {
   buildCounterTurnBasedMatchList++;
   if (buildCounterTurnBasedMatchList < 3) {
-    checkUnnamed61(o.items);
+    checkUnnamed1113(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -3093,14 +3128,14 @@ checkTurnBasedMatchRematch(api.TurnBasedMatchRematch o) {
   buildCounterTurnBasedMatchRematch--;
 }
 
-buildUnnamed62() {
+buildUnnamed1114() {
   var o = new core.List<api.ParticipantResult>();
   o.add(buildParticipantResult());
   o.add(buildParticipantResult());
   return o;
 }
 
-checkUnnamed62(core.List<api.ParticipantResult> o) {
+checkUnnamed1114(core.List<api.ParticipantResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParticipantResult(o[0]);
   checkParticipantResult(o[1]);
@@ -3114,7 +3149,7 @@ buildTurnBasedMatchResults() {
     o.data = buildTurnBasedMatchDataRequest();
     o.kind = "foo";
     o.matchVersion = 42;
-    o.results = buildUnnamed62();
+    o.results = buildUnnamed1114();
   }
   buildCounterTurnBasedMatchResults--;
   return o;
@@ -3126,19 +3161,19 @@ checkTurnBasedMatchResults(api.TurnBasedMatchResults o) {
     checkTurnBasedMatchDataRequest(o.data);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.matchVersion, unittest.equals(42));
-    checkUnnamed62(o.results);
+    checkUnnamed1114(o.results);
   }
   buildCounterTurnBasedMatchResults--;
 }
 
-buildUnnamed63() {
+buildUnnamed1115() {
   var o = new core.List<api.TurnBasedMatch>();
   o.add(buildTurnBasedMatch());
   o.add(buildTurnBasedMatch());
   return o;
 }
 
-checkUnnamed63(core.List<api.TurnBasedMatch> o) {
+checkUnnamed1115(core.List<api.TurnBasedMatch> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTurnBasedMatch(o[0]);
   checkTurnBasedMatch(o[1]);
@@ -3149,7 +3184,7 @@ buildTurnBasedMatchSync() {
   var o = new api.TurnBasedMatchSync();
   buildCounterTurnBasedMatchSync++;
   if (buildCounterTurnBasedMatchSync < 3) {
-    o.items = buildUnnamed63();
+    o.items = buildUnnamed1115();
     o.kind = "foo";
     o.moreAvailable = true;
     o.nextPageToken = "foo";
@@ -3161,7 +3196,7 @@ buildTurnBasedMatchSync() {
 checkTurnBasedMatchSync(api.TurnBasedMatchSync o) {
   buildCounterTurnBasedMatchSync++;
   if (buildCounterTurnBasedMatchSync < 3) {
-    checkUnnamed63(o.items);
+    checkUnnamed1115(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.moreAvailable, unittest.isTrue);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -3169,14 +3204,14 @@ checkTurnBasedMatchSync(api.TurnBasedMatchSync o) {
   buildCounterTurnBasedMatchSync--;
 }
 
-buildUnnamed64() {
+buildUnnamed1116() {
   var o = new core.List<api.ParticipantResult>();
   o.add(buildParticipantResult());
   o.add(buildParticipantResult());
   return o;
 }
 
-checkUnnamed64(core.List<api.ParticipantResult> o) {
+checkUnnamed1116(core.List<api.ParticipantResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParticipantResult(o[0]);
   checkParticipantResult(o[1]);
@@ -3191,7 +3226,7 @@ buildTurnBasedMatchTurn() {
     o.kind = "foo";
     o.matchVersion = 42;
     o.pendingParticipantId = "foo";
-    o.results = buildUnnamed64();
+    o.results = buildUnnamed1116();
   }
   buildCounterTurnBasedMatchTurn--;
   return o;
@@ -3204,7 +3239,7 @@ checkTurnBasedMatchTurn(api.TurnBasedMatchTurn o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.matchVersion, unittest.equals(42));
     unittest.expect(o.pendingParticipantId, unittest.equals('foo'));
-    checkUnnamed64(o.results);
+    checkUnnamed1116(o.results);
   }
   buildCounterTurnBasedMatchTurn--;
 }
@@ -4096,7 +4131,7 @@ main() {
   unittest.group("resource-AchievementDefinitionsResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AchievementDefinitionsResourceApi res = new api.GamesApi(mock).achievementDefinitions;
       var arg_language = "foo";
       var arg_maxResults = 42;
@@ -4138,7 +4173,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAchievementDefinitionsListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(language: arg_language, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.AchievementDefinitionsListResponse response) {
         checkAchievementDefinitionsListResponse(response);
@@ -4151,7 +4186,7 @@ main() {
   unittest.group("resource-AchievementsResourceApi", () {
     unittest.test("method--increment", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AchievementsResourceApi res = new api.GamesApi(mock).achievements;
       var arg_achievementId = "foo";
       var arg_stepsToIncrement = 42;
@@ -4199,7 +4234,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAchievementIncrementResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.increment(arg_achievementId, arg_stepsToIncrement, requestId: arg_requestId).then(unittest.expectAsync(((api.AchievementIncrementResponse response) {
         checkAchievementIncrementResponse(response);
@@ -4208,7 +4243,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AchievementsResourceApi res = new api.GamesApi(mock).achievements;
       var arg_playerId = "foo";
       var arg_language = "foo";
@@ -4260,7 +4295,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPlayerAchievementListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_playerId, language: arg_language, maxResults: arg_maxResults, pageToken: arg_pageToken, state: arg_state).then(unittest.expectAsync(((api.PlayerAchievementListResponse response) {
         checkPlayerAchievementListResponse(response);
@@ -4269,7 +4304,7 @@ main() {
 
     unittest.test("method--reveal", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AchievementsResourceApi res = new api.GamesApi(mock).achievements;
       var arg_achievementId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4313,7 +4348,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAchievementRevealResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.reveal(arg_achievementId).then(unittest.expectAsync(((api.AchievementRevealResponse response) {
         checkAchievementRevealResponse(response);
@@ -4322,7 +4357,7 @@ main() {
 
     unittest.test("method--setStepsAtLeast", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AchievementsResourceApi res = new api.GamesApi(mock).achievements;
       var arg_achievementId = "foo";
       var arg_steps = 42;
@@ -4368,7 +4403,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAchievementSetStepsAtLeastResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.setStepsAtLeast(arg_achievementId, arg_steps).then(unittest.expectAsync(((api.AchievementSetStepsAtLeastResponse response) {
         checkAchievementSetStepsAtLeastResponse(response);
@@ -4377,7 +4412,7 @@ main() {
 
     unittest.test("method--unlock", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AchievementsResourceApi res = new api.GamesApi(mock).achievements;
       var arg_achievementId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4421,7 +4456,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAchievementUnlockResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.unlock(arg_achievementId).then(unittest.expectAsync(((api.AchievementUnlockResponse response) {
         checkAchievementUnlockResponse(response);
@@ -4430,7 +4465,7 @@ main() {
 
     unittest.test("method--updateMultiple", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AchievementsResourceApi res = new api.GamesApi(mock).achievements;
       var arg_request = buildAchievementUpdateMultipleRequest();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4470,7 +4505,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAchievementUpdateMultipleResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.updateMultiple(arg_request).then(unittest.expectAsync(((api.AchievementUpdateMultipleResponse response) {
         checkAchievementUpdateMultipleResponse(response);
@@ -4483,7 +4518,7 @@ main() {
   unittest.group("resource-ApplicationsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ApplicationsResourceApi res = new api.GamesApi(mock).applications;
       var arg_applicationId = "foo";
       var arg_language = "foo";
@@ -4527,7 +4562,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApplication());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_applicationId, language: arg_language, platformType: arg_platformType).then(unittest.expectAsync(((api.Application response) {
         checkApplication(response);
@@ -4536,7 +4571,7 @@ main() {
 
     unittest.test("method--played", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ApplicationsResourceApi res = new api.GamesApi(mock).applications;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4572,7 +4607,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.played().then(unittest.expectAsync((_) {}));
     });
@@ -4583,7 +4618,7 @@ main() {
   unittest.group("resource-EventsResourceApi", () {
     unittest.test("method--listByPlayer", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.GamesApi(mock).events;
       var arg_language = "foo";
       var arg_maxResults = 42;
@@ -4625,7 +4660,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPlayerEventListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listByPlayer(language: arg_language, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.PlayerEventListResponse response) {
         checkPlayerEventListResponse(response);
@@ -4634,7 +4669,7 @@ main() {
 
     unittest.test("method--listDefinitions", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.GamesApi(mock).events;
       var arg_language = "foo";
       var arg_maxResults = 42;
@@ -4676,7 +4711,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEventDefinitionListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listDefinitions(language: arg_language, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.EventDefinitionListResponse response) {
         checkEventDefinitionListResponse(response);
@@ -4685,7 +4720,7 @@ main() {
 
     unittest.test("method--record", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.GamesApi(mock).events;
       var arg_request = buildEventRecordRequest();
       var arg_language = "foo";
@@ -4727,7 +4762,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEventUpdateResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.record(arg_request, language: arg_language).then(unittest.expectAsync(((api.EventUpdateResponse response) {
         checkEventUpdateResponse(response);
@@ -4740,7 +4775,7 @@ main() {
   unittest.group("resource-LeaderboardsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LeaderboardsResourceApi res = new api.GamesApi(mock).leaderboards;
       var arg_leaderboardId = "foo";
       var arg_language = "foo";
@@ -4782,7 +4817,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLeaderboard());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_leaderboardId, language: arg_language).then(unittest.expectAsync(((api.Leaderboard response) {
         checkLeaderboard(response);
@@ -4791,7 +4826,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.LeaderboardsResourceApi res = new api.GamesApi(mock).leaderboards;
       var arg_language = "foo";
       var arg_maxResults = 42;
@@ -4833,7 +4868,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLeaderboardListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(language: arg_language, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.LeaderboardListResponse response) {
         checkLeaderboardListResponse(response);
@@ -4846,7 +4881,7 @@ main() {
   unittest.group("resource-MetagameResourceApi", () {
     unittest.test("method--getMetagameConfig", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MetagameResourceApi res = new api.GamesApi(mock).metagame;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4882,7 +4917,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMetagameConfig());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.getMetagameConfig().then(unittest.expectAsync(((api.MetagameConfig response) {
         checkMetagameConfig(response);
@@ -4891,7 +4926,7 @@ main() {
 
     unittest.test("method--listCategoriesByPlayer", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.MetagameResourceApi res = new api.GamesApi(mock).metagame;
       var arg_playerId = "foo";
       var arg_collection = "foo";
@@ -4945,7 +4980,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCategoryListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listCategoriesByPlayer(arg_playerId, arg_collection, language: arg_language, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.CategoryListResponse response) {
         checkCategoryListResponse(response);
@@ -4958,7 +4993,7 @@ main() {
   unittest.group("resource-PlayersResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PlayersResourceApi res = new api.GamesApi(mock).players;
       var arg_playerId = "foo";
       var arg_language = "foo";
@@ -5000,7 +5035,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPlayer());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_playerId, language: arg_language).then(unittest.expectAsync(((api.Player response) {
         checkPlayer(response);
@@ -5009,7 +5044,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PlayersResourceApi res = new api.GamesApi(mock).players;
       var arg_collection = "foo";
       var arg_language = "foo";
@@ -5055,7 +5090,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPlayerListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_collection, language: arg_language, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.PlayerListResponse response) {
         checkPlayerListResponse(response);
@@ -5068,7 +5103,7 @@ main() {
   unittest.group("resource-PushtokensResourceApi", () {
     unittest.test("method--remove", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PushtokensResourceApi res = new api.GamesApi(mock).pushtokens;
       var arg_request = buildPushTokenId();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -5108,14 +5143,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.remove(arg_request).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PushtokensResourceApi res = new api.GamesApi(mock).pushtokens;
       var arg_request = buildPushToken();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -5155,7 +5190,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request).then(unittest.expectAsync((_) {}));
     });
@@ -5166,7 +5201,7 @@ main() {
   unittest.group("resource-QuestMilestonesResourceApi", () {
     unittest.test("method--claim", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.QuestMilestonesResourceApi res = new api.GamesApi(mock).questMilestones;
       var arg_questId = "foo";
       var arg_milestoneId = "foo";
@@ -5220,7 +5255,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.claim(arg_questId, arg_milestoneId, arg_requestId).then(unittest.expectAsync((_) {}));
     });
@@ -5231,7 +5266,7 @@ main() {
   unittest.group("resource-QuestsResourceApi", () {
     unittest.test("method--accept", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.QuestsResourceApi res = new api.GamesApi(mock).quests;
       var arg_questId = "foo";
       var arg_language = "foo";
@@ -5277,7 +5312,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildQuest());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.accept(arg_questId, language: arg_language).then(unittest.expectAsync(((api.Quest response) {
         checkQuest(response);
@@ -5286,7 +5321,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.QuestsResourceApi res = new api.GamesApi(mock).quests;
       var arg_playerId = "foo";
       var arg_language = "foo";
@@ -5336,7 +5371,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildQuestListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_playerId, language: arg_language, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.QuestListResponse response) {
         checkQuestListResponse(response);
@@ -5349,7 +5384,7 @@ main() {
   unittest.group("resource-RevisionsResourceApi", () {
     unittest.test("method--check", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RevisionsResourceApi res = new api.GamesApi(mock).revisions;
       var arg_clientRevision = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -5387,7 +5422,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRevisionCheckResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.check(arg_clientRevision).then(unittest.expectAsync(((api.RevisionCheckResponse response) {
         checkRevisionCheckResponse(response);
@@ -5400,7 +5435,7 @@ main() {
   unittest.group("resource-RoomsResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RoomsResourceApi res = new api.GamesApi(mock).rooms;
       var arg_request = buildRoomCreateRequest();
       var arg_language = "foo";
@@ -5442,7 +5477,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRoom());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, language: arg_language).then(unittest.expectAsync(((api.Room response) {
         checkRoom(response);
@@ -5451,7 +5486,7 @@ main() {
 
     unittest.test("method--decline", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RoomsResourceApi res = new api.GamesApi(mock).rooms;
       var arg_roomId = "foo";
       var arg_language = "foo";
@@ -5497,7 +5532,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRoom());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.decline(arg_roomId, language: arg_language).then(unittest.expectAsync(((api.Room response) {
         checkRoom(response);
@@ -5506,7 +5541,7 @@ main() {
 
     unittest.test("method--dismiss", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RoomsResourceApi res = new api.GamesApi(mock).rooms;
       var arg_roomId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -5550,14 +5585,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.dismiss(arg_roomId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RoomsResourceApi res = new api.GamesApi(mock).rooms;
       var arg_roomId = "foo";
       var arg_language = "foo";
@@ -5599,7 +5634,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRoom());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_roomId, language: arg_language).then(unittest.expectAsync(((api.Room response) {
         checkRoom(response);
@@ -5608,7 +5643,7 @@ main() {
 
     unittest.test("method--join", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RoomsResourceApi res = new api.GamesApi(mock).rooms;
       var arg_request = buildRoomJoinRequest();
       var arg_roomId = "foo";
@@ -5658,7 +5693,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRoom());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.join(arg_request, arg_roomId, language: arg_language).then(unittest.expectAsync(((api.Room response) {
         checkRoom(response);
@@ -5667,7 +5702,7 @@ main() {
 
     unittest.test("method--leave", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RoomsResourceApi res = new api.GamesApi(mock).rooms;
       var arg_request = buildRoomLeaveRequest();
       var arg_roomId = "foo";
@@ -5717,7 +5752,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRoom());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.leave(arg_request, arg_roomId, language: arg_language).then(unittest.expectAsync(((api.Room response) {
         checkRoom(response);
@@ -5726,7 +5761,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RoomsResourceApi res = new api.GamesApi(mock).rooms;
       var arg_language = "foo";
       var arg_maxResults = 42;
@@ -5768,7 +5803,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRoomList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(language: arg_language, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.RoomList response) {
         checkRoomList(response);
@@ -5777,7 +5812,7 @@ main() {
 
     unittest.test("method--reportStatus", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RoomsResourceApi res = new api.GamesApi(mock).rooms;
       var arg_request = buildRoomP2PStatuses();
       var arg_roomId = "foo";
@@ -5827,7 +5862,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRoomStatus());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.reportStatus(arg_request, arg_roomId, language: arg_language).then(unittest.expectAsync(((api.RoomStatus response) {
         checkRoomStatus(response);
@@ -5840,7 +5875,7 @@ main() {
   unittest.group("resource-ScoresResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesApi(mock).scores;
       var arg_playerId = "foo";
       var arg_leaderboardId = "foo";
@@ -5904,7 +5939,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPlayerLeaderboardScoreListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_playerId, arg_leaderboardId, arg_timeSpan, includeRankType: arg_includeRankType, language: arg_language, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.PlayerLeaderboardScoreListResponse response) {
         checkPlayerLeaderboardScoreListResponse(response);
@@ -5913,7 +5948,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesApi(mock).scores;
       var arg_leaderboardId = "foo";
       var arg_collection = "foo";
@@ -5969,7 +6004,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLeaderboardScores());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_leaderboardId, arg_collection, arg_timeSpan, language: arg_language, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.LeaderboardScores response) {
         checkLeaderboardScores(response);
@@ -5978,7 +6013,7 @@ main() {
 
     unittest.test("method--listWindow", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesApi(mock).scores;
       var arg_leaderboardId = "foo";
       var arg_collection = "foo";
@@ -6038,7 +6073,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLeaderboardScores());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listWindow(arg_leaderboardId, arg_collection, arg_timeSpan, language: arg_language, maxResults: arg_maxResults, pageToken: arg_pageToken, resultsAbove: arg_resultsAbove, returnTopIfAbsent: arg_returnTopIfAbsent).then(unittest.expectAsync(((api.LeaderboardScores response) {
         checkLeaderboardScores(response);
@@ -6047,7 +6082,7 @@ main() {
 
     unittest.test("method--submit", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesApi(mock).scores;
       var arg_leaderboardId = "foo";
       var arg_score = "foo";
@@ -6097,7 +6132,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPlayerScoreResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.submit(arg_leaderboardId, arg_score, language: arg_language, scoreTag: arg_scoreTag).then(unittest.expectAsync(((api.PlayerScoreResponse response) {
         checkPlayerScoreResponse(response);
@@ -6106,7 +6141,7 @@ main() {
 
     unittest.test("method--submitMultiple", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesApi(mock).scores;
       var arg_request = buildPlayerScoreSubmissionList();
       var arg_language = "foo";
@@ -6148,7 +6183,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPlayerScoreListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.submitMultiple(arg_request, language: arg_language).then(unittest.expectAsync(((api.PlayerScoreListResponse response) {
         checkPlayerScoreListResponse(response);
@@ -6161,7 +6196,7 @@ main() {
   unittest.group("resource-SnapshotsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SnapshotsResourceApi res = new api.GamesApi(mock).snapshots;
       var arg_snapshotId = "foo";
       var arg_language = "foo";
@@ -6203,7 +6238,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSnapshot());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_snapshotId, language: arg_language).then(unittest.expectAsync(((api.Snapshot response) {
         checkSnapshot(response);
@@ -6212,7 +6247,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SnapshotsResourceApi res = new api.GamesApi(mock).snapshots;
       var arg_playerId = "foo";
       var arg_language = "foo";
@@ -6262,7 +6297,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSnapshotListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_playerId, language: arg_language, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.SnapshotListResponse response) {
         checkSnapshotListResponse(response);
@@ -6275,7 +6310,7 @@ main() {
   unittest.group("resource-TurnBasedMatchesResourceApi", () {
     unittest.test("method--cancel", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesApi(mock).turnBasedMatches;
       var arg_matchId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -6319,14 +6354,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.cancel(arg_matchId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesApi(mock).turnBasedMatches;
       var arg_request = buildTurnBasedMatchCreateRequest();
       var arg_language = "foo";
@@ -6368,7 +6403,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTurnBasedMatch());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, language: arg_language).then(unittest.expectAsync(((api.TurnBasedMatch response) {
         checkTurnBasedMatch(response);
@@ -6377,7 +6412,7 @@ main() {
 
     unittest.test("method--decline", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesApi(mock).turnBasedMatches;
       var arg_matchId = "foo";
       var arg_language = "foo";
@@ -6423,7 +6458,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTurnBasedMatch());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.decline(arg_matchId, language: arg_language).then(unittest.expectAsync(((api.TurnBasedMatch response) {
         checkTurnBasedMatch(response);
@@ -6432,7 +6467,7 @@ main() {
 
     unittest.test("method--dismiss", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesApi(mock).turnBasedMatches;
       var arg_matchId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -6476,14 +6511,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.dismiss(arg_matchId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--finish", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesApi(mock).turnBasedMatches;
       var arg_request = buildTurnBasedMatchResults();
       var arg_matchId = "foo";
@@ -6533,7 +6568,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTurnBasedMatch());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.finish(arg_request, arg_matchId, language: arg_language).then(unittest.expectAsync(((api.TurnBasedMatch response) {
         checkTurnBasedMatch(response);
@@ -6542,7 +6577,7 @@ main() {
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesApi(mock).turnBasedMatches;
       var arg_matchId = "foo";
       var arg_includeMatchData = true;
@@ -6586,7 +6621,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTurnBasedMatch());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_matchId, includeMatchData: arg_includeMatchData, language: arg_language).then(unittest.expectAsync(((api.TurnBasedMatch response) {
         checkTurnBasedMatch(response);
@@ -6595,7 +6630,7 @@ main() {
 
     unittest.test("method--join", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesApi(mock).turnBasedMatches;
       var arg_matchId = "foo";
       var arg_language = "foo";
@@ -6641,7 +6676,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTurnBasedMatch());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.join(arg_matchId, language: arg_language).then(unittest.expectAsync(((api.TurnBasedMatch response) {
         checkTurnBasedMatch(response);
@@ -6650,7 +6685,7 @@ main() {
 
     unittest.test("method--leave", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesApi(mock).turnBasedMatches;
       var arg_matchId = "foo";
       var arg_language = "foo";
@@ -6696,7 +6731,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTurnBasedMatch());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.leave(arg_matchId, language: arg_language).then(unittest.expectAsync(((api.TurnBasedMatch response) {
         checkTurnBasedMatch(response);
@@ -6705,7 +6740,7 @@ main() {
 
     unittest.test("method--leaveTurn", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesApi(mock).turnBasedMatches;
       var arg_matchId = "foo";
       var arg_matchVersion = 42;
@@ -6755,7 +6790,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTurnBasedMatch());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.leaveTurn(arg_matchId, arg_matchVersion, language: arg_language, pendingParticipantId: arg_pendingParticipantId).then(unittest.expectAsync(((api.TurnBasedMatch response) {
         checkTurnBasedMatch(response);
@@ -6764,7 +6799,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesApi(mock).turnBasedMatches;
       var arg_includeMatchData = true;
       var arg_language = "foo";
@@ -6810,7 +6845,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTurnBasedMatchList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(includeMatchData: arg_includeMatchData, language: arg_language, maxCompletedMatches: arg_maxCompletedMatches, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.TurnBasedMatchList response) {
         checkTurnBasedMatchList(response);
@@ -6819,7 +6854,7 @@ main() {
 
     unittest.test("method--rematch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesApi(mock).turnBasedMatches;
       var arg_matchId = "foo";
       var arg_language = "foo";
@@ -6867,7 +6902,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTurnBasedMatchRematch());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.rematch(arg_matchId, language: arg_language, requestId: arg_requestId).then(unittest.expectAsync(((api.TurnBasedMatchRematch response) {
         checkTurnBasedMatchRematch(response);
@@ -6876,7 +6911,7 @@ main() {
 
     unittest.test("method--sync", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesApi(mock).turnBasedMatches;
       var arg_includeMatchData = true;
       var arg_language = "foo";
@@ -6922,7 +6957,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTurnBasedMatchSync());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.sync(includeMatchData: arg_includeMatchData, language: arg_language, maxCompletedMatches: arg_maxCompletedMatches, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.TurnBasedMatchSync response) {
         checkTurnBasedMatchSync(response);
@@ -6931,7 +6966,7 @@ main() {
 
     unittest.test("method--takeTurn", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesApi(mock).turnBasedMatches;
       var arg_request = buildTurnBasedMatchTurn();
       var arg_matchId = "foo";
@@ -6981,7 +7016,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTurnBasedMatch());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.takeTurn(arg_request, arg_matchId, language: arg_language).then(unittest.expectAsync(((api.TurnBasedMatch response) {
         checkTurnBasedMatch(response);

@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis_beta/common/common.dart' as common;
-import 'package:googleapis_beta/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis_beta/replicapoolupdater/v1beta1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterInstanceUpdateErrorErrors = 0;
 buildInstanceUpdateErrorErrors() {
@@ -39,14 +74,14 @@ checkInstanceUpdateErrorErrors(api.InstanceUpdateErrorErrors o) {
   buildCounterInstanceUpdateErrorErrors--;
 }
 
-buildUnnamed1612() {
+buildUnnamed1744() {
   var o = new core.List<api.InstanceUpdateErrorErrors>();
   o.add(buildInstanceUpdateErrorErrors());
   o.add(buildInstanceUpdateErrorErrors());
   return o;
 }
 
-checkUnnamed1612(core.List<api.InstanceUpdateErrorErrors> o) {
+checkUnnamed1744(core.List<api.InstanceUpdateErrorErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstanceUpdateErrorErrors(o[0]);
   checkInstanceUpdateErrorErrors(o[1]);
@@ -57,7 +92,7 @@ buildInstanceUpdateError() {
   var o = new api.InstanceUpdateError();
   buildCounterInstanceUpdateError++;
   if (buildCounterInstanceUpdateError < 3) {
-    o.errors = buildUnnamed1612();
+    o.errors = buildUnnamed1744();
   }
   buildCounterInstanceUpdateError--;
   return o;
@@ -66,7 +101,7 @@ buildInstanceUpdateError() {
 checkInstanceUpdateError(api.InstanceUpdateError o) {
   buildCounterInstanceUpdateError++;
   if (buildCounterInstanceUpdateError < 3) {
-    checkUnnamed1612(o.errors);
+    checkUnnamed1744(o.errors);
   }
   buildCounterInstanceUpdateError--;
 }
@@ -94,14 +129,14 @@ checkInstanceUpdate(api.InstanceUpdate o) {
   buildCounterInstanceUpdate--;
 }
 
-buildUnnamed1613() {
+buildUnnamed1745() {
   var o = new core.List<api.InstanceUpdate>();
   o.add(buildInstanceUpdate());
   o.add(buildInstanceUpdate());
   return o;
 }
 
-checkUnnamed1613(core.List<api.InstanceUpdate> o) {
+checkUnnamed1745(core.List<api.InstanceUpdate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstanceUpdate(o[0]);
   checkInstanceUpdate(o[1]);
@@ -112,7 +147,7 @@ buildInstanceUpdateList() {
   var o = new api.InstanceUpdateList();
   buildCounterInstanceUpdateList++;
   if (buildCounterInstanceUpdateList < 3) {
-    o.items = buildUnnamed1613();
+    o.items = buildUnnamed1745();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -124,7 +159,7 @@ buildInstanceUpdateList() {
 checkInstanceUpdateList(api.InstanceUpdateList o) {
   buildCounterInstanceUpdateList++;
   if (buildCounterInstanceUpdateList < 3) {
-    checkUnnamed1613(o.items);
+    checkUnnamed1745(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -155,14 +190,14 @@ checkOperationErrorErrors(api.OperationErrorErrors o) {
   buildCounterOperationErrorErrors--;
 }
 
-buildUnnamed1614() {
+buildUnnamed1746() {
   var o = new core.List<api.OperationErrorErrors>();
   o.add(buildOperationErrorErrors());
   o.add(buildOperationErrorErrors());
   return o;
 }
 
-checkUnnamed1614(core.List<api.OperationErrorErrors> o) {
+checkUnnamed1746(core.List<api.OperationErrorErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationErrorErrors(o[0]);
   checkOperationErrorErrors(o[1]);
@@ -173,7 +208,7 @@ buildOperationError() {
   var o = new api.OperationError();
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    o.errors = buildUnnamed1614();
+    o.errors = buildUnnamed1746();
   }
   buildCounterOperationError--;
   return o;
@@ -182,7 +217,7 @@ buildOperationError() {
 checkOperationError(api.OperationError o) {
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    checkUnnamed1614(o.errors);
+    checkUnnamed1746(o.errors);
   }
   buildCounterOperationError--;
 }
@@ -208,14 +243,14 @@ checkOperationWarningsData(api.OperationWarningsData o) {
   buildCounterOperationWarningsData--;
 }
 
-buildUnnamed1615() {
+buildUnnamed1747() {
   var o = new core.List<api.OperationWarningsData>();
   o.add(buildOperationWarningsData());
   o.add(buildOperationWarningsData());
   return o;
 }
 
-checkUnnamed1615(core.List<api.OperationWarningsData> o) {
+checkUnnamed1747(core.List<api.OperationWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationWarningsData(o[0]);
   checkOperationWarningsData(o[1]);
@@ -227,7 +262,7 @@ buildOperationWarnings() {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
     o.code = "foo";
-    o.data = buildUnnamed1615();
+    o.data = buildUnnamed1747();
     o.message = "foo";
   }
   buildCounterOperationWarnings--;
@@ -238,20 +273,20 @@ checkOperationWarnings(api.OperationWarnings o) {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
-    checkUnnamed1615(o.data);
+    checkUnnamed1747(o.data);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterOperationWarnings--;
 }
 
-buildUnnamed1616() {
+buildUnnamed1748() {
   var o = new core.List<api.OperationWarnings>();
   o.add(buildOperationWarnings());
   o.add(buildOperationWarnings());
   return o;
 }
 
-checkUnnamed1616(core.List<api.OperationWarnings> o) {
+checkUnnamed1748(core.List<api.OperationWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationWarnings(o[0]);
   checkOperationWarnings(o[1]);
@@ -282,7 +317,7 @@ buildOperation() {
     o.targetId = "foo";
     o.targetLink = "foo";
     o.user = "foo";
-    o.warnings = buildUnnamed1616();
+    o.warnings = buildUnnamed1748();
     o.zone = "foo";
   }
   buildCounterOperation--;
@@ -312,7 +347,7 @@ checkOperation(api.Operation o) {
     unittest.expect(o.targetId, unittest.equals('foo'));
     unittest.expect(o.targetLink, unittest.equals('foo'));
     unittest.expect(o.user, unittest.equals('foo'));
-    checkUnnamed1616(o.warnings);
+    checkUnnamed1748(o.warnings);
     unittest.expect(o.zone, unittest.equals('foo'));
   }
   buildCounterOperation--;
@@ -341,14 +376,14 @@ checkRollingUpdateErrorErrors(api.RollingUpdateErrorErrors o) {
   buildCounterRollingUpdateErrorErrors--;
 }
 
-buildUnnamed1617() {
+buildUnnamed1749() {
   var o = new core.List<api.RollingUpdateErrorErrors>();
   o.add(buildRollingUpdateErrorErrors());
   o.add(buildRollingUpdateErrorErrors());
   return o;
 }
 
-checkUnnamed1617(core.List<api.RollingUpdateErrorErrors> o) {
+checkUnnamed1749(core.List<api.RollingUpdateErrorErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRollingUpdateErrorErrors(o[0]);
   checkRollingUpdateErrorErrors(o[1]);
@@ -359,7 +394,7 @@ buildRollingUpdateError() {
   var o = new api.RollingUpdateError();
   buildCounterRollingUpdateError++;
   if (buildCounterRollingUpdateError < 3) {
-    o.errors = buildUnnamed1617();
+    o.errors = buildUnnamed1749();
   }
   buildCounterRollingUpdateError--;
   return o;
@@ -368,28 +403,22 @@ buildRollingUpdateError() {
 checkRollingUpdateError(api.RollingUpdateError o) {
   buildCounterRollingUpdateError++;
   if (buildCounterRollingUpdateError < 3) {
-    checkUnnamed1617(o.errors);
+    checkUnnamed1749(o.errors);
   }
   buildCounterRollingUpdateError--;
 }
 
-core.int buildCounterRollingUpdatePolicyCanary = 0;
-buildRollingUpdatePolicyCanary() {
-  var o = new api.RollingUpdatePolicyCanary();
-  buildCounterRollingUpdatePolicyCanary++;
-  if (buildCounterRollingUpdatePolicyCanary < 3) {
-    o.numInstances = 42;
-  }
-  buildCounterRollingUpdatePolicyCanary--;
+buildUnnamed1750() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
   return o;
 }
 
-checkRollingUpdatePolicyCanary(api.RollingUpdatePolicyCanary o) {
-  buildCounterRollingUpdatePolicyCanary++;
-  if (buildCounterRollingUpdatePolicyCanary < 3) {
-    unittest.expect(o.numInstances, unittest.equals(42));
-  }
-  buildCounterRollingUpdatePolicyCanary--;
+checkUnnamed1750(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterRollingUpdatePolicy = 0;
@@ -398,7 +427,6 @@ buildRollingUpdatePolicy() {
   buildCounterRollingUpdatePolicy++;
   if (buildCounterRollingUpdatePolicy < 3) {
     o.autoPauseAfterInstances = 42;
-    o.canary = buildRollingUpdatePolicyCanary();
     o.instanceStartupTimeoutSec = 42;
     o.maxNumConcurrentInstances = 42;
     o.maxNumFailedInstances = 42;
@@ -413,7 +441,6 @@ checkRollingUpdatePolicy(api.RollingUpdatePolicy o) {
   buildCounterRollingUpdatePolicy++;
   if (buildCounterRollingUpdatePolicy < 3) {
     unittest.expect(o.autoPauseAfterInstances, unittest.equals(42));
-    checkRollingUpdatePolicyCanary(o.canary);
     unittest.expect(o.instanceStartupTimeoutSec, unittest.equals(42));
     unittest.expect(o.maxNumConcurrentInstances, unittest.equals(42));
     unittest.expect(o.maxNumFailedInstances, unittest.equals(42));
@@ -436,6 +463,7 @@ buildRollingUpdate() {
     o.instanceGroup = "foo";
     o.instanceGroupManager = "foo";
     o.instanceTemplate = "foo";
+    o.instances = buildUnnamed1750();
     o.kind = "foo";
     o.policy = buildRollingUpdatePolicy();
     o.progress = 42;
@@ -459,6 +487,7 @@ checkRollingUpdate(api.RollingUpdate o) {
     unittest.expect(o.instanceGroup, unittest.equals('foo'));
     unittest.expect(o.instanceGroupManager, unittest.equals('foo'));
     unittest.expect(o.instanceTemplate, unittest.equals('foo'));
+    checkUnnamed1750(o.instances);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkRollingUpdatePolicy(o.policy);
     unittest.expect(o.progress, unittest.equals(42));
@@ -470,14 +499,14 @@ checkRollingUpdate(api.RollingUpdate o) {
   buildCounterRollingUpdate--;
 }
 
-buildUnnamed1618() {
+buildUnnamed1751() {
   var o = new core.List<api.RollingUpdate>();
   o.add(buildRollingUpdate());
   o.add(buildRollingUpdate());
   return o;
 }
 
-checkUnnamed1618(core.List<api.RollingUpdate> o) {
+checkUnnamed1751(core.List<api.RollingUpdate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRollingUpdate(o[0]);
   checkRollingUpdate(o[1]);
@@ -488,7 +517,7 @@ buildRollingUpdateList() {
   var o = new api.RollingUpdateList();
   buildCounterRollingUpdateList++;
   if (buildCounterRollingUpdateList < 3) {
-    o.items = buildUnnamed1618();
+    o.items = buildUnnamed1751();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -500,7 +529,7 @@ buildRollingUpdateList() {
 checkRollingUpdateList(api.RollingUpdateList o) {
   buildCounterRollingUpdateList++;
   if (buildCounterRollingUpdateList < 3) {
-    checkUnnamed1618(o.items);
+    checkUnnamed1751(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -609,15 +638,6 @@ main() {
   });
 
 
-  unittest.group("obj-schema-RollingUpdatePolicyCanary", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildRollingUpdatePolicyCanary();
-      var od = new api.RollingUpdatePolicyCanary.fromJson(o.toJson());
-      checkRollingUpdatePolicyCanary(od);
-    });
-  });
-
-
   unittest.group("obj-schema-RollingUpdatePolicy", () {
     unittest.test("to-json--from-json", () {
       var o = buildRollingUpdatePolicy();
@@ -648,7 +668,7 @@ main() {
   unittest.group("resource-RollingUpdatesResourceApi", () {
     unittest.test("method--cancel", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -683,7 +703,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.cancel(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -692,7 +712,7 @@ main() {
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -727,7 +747,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRollingUpdate());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync(((api.RollingUpdate response) {
         checkRollingUpdate(response);
@@ -736,7 +756,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
       var arg_request = buildRollingUpdate();
       var arg_project = "foo";
@@ -774,7 +794,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_project, arg_zone).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -783,7 +803,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -825,7 +845,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRollingUpdateList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_project, arg_zone, filter: arg_filter, instanceGroupManager: arg_instanceGroupManager, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.RollingUpdateList response) {
         checkRollingUpdateList(response);
@@ -834,7 +854,7 @@ main() {
 
     unittest.test("method--listInstanceUpdates", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -875,7 +895,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInstanceUpdateList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listInstanceUpdates(arg_project, arg_zone, arg_rollingUpdate, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.InstanceUpdateList response) {
         checkInstanceUpdateList(response);
@@ -884,7 +904,7 @@ main() {
 
     unittest.test("method--pause", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -919,7 +939,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.pause(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -928,7 +948,7 @@ main() {
 
     unittest.test("method--resume", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -963,7 +983,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.resume(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -972,7 +992,7 @@ main() {
 
     unittest.test("method--rollback", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RollingUpdatesResourceApi res = new api.ReplicapoolupdaterApi(mock).rollingUpdates;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -1007,7 +1027,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.rollback(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -1020,7 +1040,7 @@ main() {
   unittest.group("resource-ZoneOperationsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ZoneOperationsResourceApi res = new api.ReplicapoolupdaterApi(mock).zoneOperations;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -1055,7 +1075,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_project, arg_zone, arg_operation).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);

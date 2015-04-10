@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/fitness/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterApplication = 0;
 buildApplication() {
@@ -41,14 +76,14 @@ checkApplication(api.Application o) {
   buildCounterApplication--;
 }
 
-buildUnnamed1227() {
+buildUnnamed1012() {
   var o = new core.List<api.Value>();
   o.add(buildValue());
   o.add(buildValue());
   return o;
 }
 
-checkUnnamed1227(core.List<api.Value> o) {
+checkUnnamed1012(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValue(o[0]);
   checkValue(o[1]);
@@ -66,7 +101,7 @@ buildDataPoint() {
     o.originDataSourceId = "foo";
     o.rawTimestampNanos = "foo";
     o.startTimeNanos = "foo";
-    o.value = buildUnnamed1227();
+    o.value = buildUnnamed1012();
   }
   buildCounterDataPoint--;
   return o;
@@ -82,7 +117,7 @@ checkDataPoint(api.DataPoint o) {
     unittest.expect(o.originDataSourceId, unittest.equals('foo'));
     unittest.expect(o.rawTimestampNanos, unittest.equals('foo'));
     unittest.expect(o.startTimeNanos, unittest.equals('foo'));
-    checkUnnamed1227(o.value);
+    checkUnnamed1012(o.value);
   }
   buildCounterDataPoint--;
 }
@@ -118,14 +153,14 @@ checkDataSource(api.DataSource o) {
   buildCounterDataSource--;
 }
 
-buildUnnamed1228() {
+buildUnnamed1013() {
   var o = new core.List<api.DataTypeField>();
   o.add(buildDataTypeField());
   o.add(buildDataTypeField());
   return o;
 }
 
-checkUnnamed1228(core.List<api.DataTypeField> o) {
+checkUnnamed1013(core.List<api.DataTypeField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataTypeField(o[0]);
   checkDataTypeField(o[1]);
@@ -136,7 +171,7 @@ buildDataType() {
   var o = new api.DataType();
   buildCounterDataType++;
   if (buildCounterDataType < 3) {
-    o.field = buildUnnamed1228();
+    o.field = buildUnnamed1013();
     o.name = "foo";
   }
   buildCounterDataType--;
@@ -146,7 +181,7 @@ buildDataType() {
 checkDataType(api.DataType o) {
   buildCounterDataType++;
   if (buildCounterDataType < 3) {
-    checkUnnamed1228(o.field);
+    checkUnnamed1013(o.field);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterDataType--;
@@ -175,14 +210,14 @@ checkDataTypeField(api.DataTypeField o) {
   buildCounterDataTypeField--;
 }
 
-buildUnnamed1229() {
+buildUnnamed1014() {
   var o = new core.List<api.DataPoint>();
   o.add(buildDataPoint());
   o.add(buildDataPoint());
   return o;
 }
 
-checkUnnamed1229(core.List<api.DataPoint> o) {
+checkUnnamed1014(core.List<api.DataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataPoint(o[0]);
   checkDataPoint(o[1]);
@@ -197,7 +232,7 @@ buildDataset() {
     o.maxEndTimeNs = "foo";
     o.minStartTimeNs = "foo";
     o.nextPageToken = "foo";
-    o.point = buildUnnamed1229();
+    o.point = buildUnnamed1014();
   }
   buildCounterDataset--;
   return o;
@@ -210,7 +245,7 @@ checkDataset(api.Dataset o) {
     unittest.expect(o.maxEndTimeNs, unittest.equals('foo'));
     unittest.expect(o.minStartTimeNs, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1229(o.point);
+    checkUnnamed1014(o.point);
   }
   buildCounterDataset--;
 }
@@ -242,14 +277,14 @@ checkDevice(api.Device o) {
   buildCounterDevice--;
 }
 
-buildUnnamed1230() {
+buildUnnamed1015() {
   var o = new core.List<api.DataSource>();
   o.add(buildDataSource());
   o.add(buildDataSource());
   return o;
 }
 
-checkUnnamed1230(core.List<api.DataSource> o) {
+checkUnnamed1015(core.List<api.DataSource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataSource(o[0]);
   checkDataSource(o[1]);
@@ -260,7 +295,7 @@ buildListDataSourcesResponse() {
   var o = new api.ListDataSourcesResponse();
   buildCounterListDataSourcesResponse++;
   if (buildCounterListDataSourcesResponse < 3) {
-    o.dataSource = buildUnnamed1230();
+    o.dataSource = buildUnnamed1015();
   }
   buildCounterListDataSourcesResponse--;
   return o;
@@ -269,32 +304,32 @@ buildListDataSourcesResponse() {
 checkListDataSourcesResponse(api.ListDataSourcesResponse o) {
   buildCounterListDataSourcesResponse++;
   if (buildCounterListDataSourcesResponse < 3) {
-    checkUnnamed1230(o.dataSource);
+    checkUnnamed1015(o.dataSource);
   }
   buildCounterListDataSourcesResponse--;
 }
 
-buildUnnamed1231() {
+buildUnnamed1016() {
   var o = new core.List<api.Session>();
   o.add(buildSession());
   o.add(buildSession());
   return o;
 }
 
-checkUnnamed1231(core.List<api.Session> o) {
+checkUnnamed1016(core.List<api.Session> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSession(o[0]);
   checkSession(o[1]);
 }
 
-buildUnnamed1232() {
+buildUnnamed1017() {
   var o = new core.List<api.Session>();
   o.add(buildSession());
   o.add(buildSession());
   return o;
 }
 
-checkUnnamed1232(core.List<api.Session> o) {
+checkUnnamed1017(core.List<api.Session> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSession(o[0]);
   checkSession(o[1]);
@@ -305,9 +340,9 @@ buildListSessionsResponse() {
   var o = new api.ListSessionsResponse();
   buildCounterListSessionsResponse++;
   if (buildCounterListSessionsResponse < 3) {
-    o.deletedSession = buildUnnamed1231();
+    o.deletedSession = buildUnnamed1016();
     o.nextPageToken = "foo";
-    o.session = buildUnnamed1232();
+    o.session = buildUnnamed1017();
   }
   buildCounterListSessionsResponse--;
   return o;
@@ -316,9 +351,9 @@ buildListSessionsResponse() {
 checkListSessionsResponse(api.ListSessionsResponse o) {
   buildCounterListSessionsResponse++;
   if (buildCounterListSessionsResponse < 3) {
-    checkUnnamed1231(o.deletedSession);
+    checkUnnamed1016(o.deletedSession);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1232(o.session);
+    checkUnnamed1017(o.session);
   }
   buildCounterListSessionsResponse--;
 }
@@ -377,14 +412,14 @@ checkValue(api.Value o) {
   buildCounterValue--;
 }
 
-buildUnnamed1233() {
+buildUnnamed1018() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1233(core.List<core.String> o) {
+checkUnnamed1018(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -494,7 +529,7 @@ main() {
   unittest.group("resource-UsersDataSourcesResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersDataSourcesResourceApi res = new api.FitnessApi(mock).users.dataSources;
       var arg_request = buildDataSource();
       var arg_userId = "foo";
@@ -531,7 +566,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDataSource());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, arg_userId).then(unittest.expectAsync(((api.DataSource response) {
         checkDataSource(response);
@@ -540,7 +575,7 @@ main() {
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersDataSourcesResourceApi res = new api.FitnessApi(mock).users.dataSources;
       var arg_userId = "foo";
       var arg_dataSourceId = "foo";
@@ -574,7 +609,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDataSource());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_userId, arg_dataSourceId).then(unittest.expectAsync(((api.DataSource response) {
         checkDataSource(response);
@@ -583,10 +618,10 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersDataSourcesResourceApi res = new api.FitnessApi(mock).users.dataSources;
       var arg_userId = "foo";
-      var arg_dataTypeName = buildUnnamed1233();
+      var arg_dataTypeName = buildUnnamed1018();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -618,7 +653,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListDataSourcesResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_userId, dataTypeName: arg_dataTypeName).then(unittest.expectAsync(((api.ListDataSourcesResponse response) {
         checkListDataSourcesResponse(response);
@@ -627,7 +662,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersDataSourcesResourceApi res = new api.FitnessApi(mock).users.dataSources;
       var arg_request = buildDataSource();
       var arg_userId = "foo";
@@ -665,7 +700,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDataSource());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_userId, arg_dataSourceId).then(unittest.expectAsync(((api.DataSource response) {
         checkDataSource(response);
@@ -674,7 +709,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersDataSourcesResourceApi res = new api.FitnessApi(mock).users.dataSources;
       var arg_request = buildDataSource();
       var arg_userId = "foo";
@@ -712,7 +747,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDataSource());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_userId, arg_dataSourceId).then(unittest.expectAsync(((api.DataSource response) {
         checkDataSource(response);
@@ -725,7 +760,7 @@ main() {
   unittest.group("resource-UsersDataSourcesDatasetsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersDataSourcesDatasetsResourceApi res = new api.FitnessApi(mock).users.dataSources.datasets;
       var arg_userId = "foo";
       var arg_dataSourceId = "foo";
@@ -764,14 +799,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_userId, arg_dataSourceId, arg_datasetId, currentTimeMillis: arg_currentTimeMillis, modifiedTimeMillis: arg_modifiedTimeMillis).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersDataSourcesDatasetsResourceApi res = new api.FitnessApi(mock).users.dataSources.datasets;
       var arg_userId = "foo";
       var arg_dataSourceId = "foo";
@@ -810,7 +845,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDataset());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_userId, arg_dataSourceId, arg_datasetId, limit: arg_limit, pageToken: arg_pageToken).then(unittest.expectAsync(((api.Dataset response) {
         checkDataset(response);
@@ -819,7 +854,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersDataSourcesDatasetsResourceApi res = new api.FitnessApi(mock).users.dataSources.datasets;
       var arg_request = buildDataset();
       var arg_userId = "foo";
@@ -860,7 +895,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDataset());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_userId, arg_dataSourceId, arg_datasetId, currentTimeMillis: arg_currentTimeMillis).then(unittest.expectAsync(((api.Dataset response) {
         checkDataset(response);
@@ -873,7 +908,7 @@ main() {
   unittest.group("resource-UsersSessionsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersSessionsResourceApi res = new api.FitnessApi(mock).users.sessions;
       var arg_userId = "foo";
       var arg_sessionId = "foo";
@@ -909,14 +944,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_userId, arg_sessionId, currentTimeMillis: arg_currentTimeMillis).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersSessionsResourceApi res = new api.FitnessApi(mock).users.sessions;
       var arg_userId = "foo";
       var arg_endTime = "foo";
@@ -957,7 +992,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListSessionsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_userId, endTime: arg_endTime, includeDeleted: arg_includeDeleted, pageToken: arg_pageToken, startTime: arg_startTime).then(unittest.expectAsync(((api.ListSessionsResponse response) {
         checkListSessionsResponse(response);
@@ -966,7 +1001,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersSessionsResourceApi res = new api.FitnessApi(mock).users.sessions;
       var arg_request = buildSession();
       var arg_userId = "foo";
@@ -1006,7 +1041,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSession());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_userId, arg_sessionId, currentTimeMillis: arg_currentTimeMillis).then(unittest.expectAsync(((api.Session response) {
         checkSession(response);

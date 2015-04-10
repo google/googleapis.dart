@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.youtubeAnalytics.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client youtubeAnalytics/v1';
 
 /** Retrieve your YouTube Analytics reports. */
 class YoutubeAnalyticsApi {
@@ -31,7 +34,7 @@ class YoutubeAnalyticsApi {
   static const YtAnalyticsReadonlyScope = "https://www.googleapis.com/auth/yt-analytics.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   BatchReportDefinitionsResourceApi get batchReportDefinitions => new BatchReportDefinitionsResourceApi(_requester);
   BatchReportsResourceApi get batchReports => new BatchReportsResourceApi(_requester);
@@ -40,15 +43,14 @@ class YoutubeAnalyticsApi {
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
 
   YoutubeAnalyticsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "youtube/analytics/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class BatchReportDefinitionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  BatchReportDefinitionsResourceApi(common_internal.ApiRequester client) : 
+  BatchReportDefinitionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -61,7 +63,7 @@ class BatchReportDefinitionsResourceApi {
    *
    * Completes with a [BatchReportDefinitionList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -72,7 +74,7 @@ class BatchReportDefinitionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (onBehalfOfContentOwner == null) {
@@ -96,11 +98,10 @@ class BatchReportDefinitionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class BatchReportsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  BatchReportsResourceApi(common_internal.ApiRequester client) : 
+  BatchReportsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -117,7 +118,7 @@ class BatchReportsResourceApi {
    *
    * Completes with a [BatchReportList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -128,7 +129,7 @@ class BatchReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (batchReportDefinitionId == null) {
@@ -156,11 +157,10 @@ class BatchReportsResourceApi {
 }
 
 
-/** Not documented yet. */
 class GroupItemsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  GroupItemsResourceApi(common_internal.ApiRequester client) : 
+  GroupItemsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -184,7 +184,7 @@ class GroupItemsResourceApi {
    * account that the user authenticates with must be linked to the specified
    * YouTube content owner.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -195,7 +195,7 @@ class GroupItemsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -242,7 +242,7 @@ class GroupItemsResourceApi {
    *
    * Completes with a [GroupItem].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -253,7 +253,7 @@ class GroupItemsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -299,7 +299,7 @@ class GroupItemsResourceApi {
    *
    * Completes with a [GroupItemListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -310,7 +310,7 @@ class GroupItemsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (groupId == null) {
@@ -337,11 +337,10 @@ class GroupItemsResourceApi {
 }
 
 
-/** Not documented yet. */
 class GroupsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  GroupsResourceApi(common_internal.ApiRequester client) : 
+  GroupsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -365,7 +364,7 @@ class GroupsResourceApi {
    * account that the user authenticates with must be linked to the specified
    * YouTube content owner.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -376,7 +375,7 @@ class GroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -423,7 +422,7 @@ class GroupsResourceApi {
    *
    * Completes with a [Group].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -434,7 +433,7 @@ class GroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -486,7 +485,7 @@ class GroupsResourceApi {
    *
    * Completes with a [GroupListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -497,7 +496,7 @@ class GroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id != null) {
@@ -545,7 +544,7 @@ class GroupsResourceApi {
    *
    * Completes with a [Group].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -556,7 +555,7 @@ class GroupsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -582,11 +581,10 @@ class GroupsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ReportsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ReportsResourceApi(common_internal.ApiRequester client) : 
+  ReportsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -618,6 +616,12 @@ class ReportsResourceApi {
    * and see the Metrics document for definitions of those metrics.
    * Value must have pattern "[0-9a-zA-Z,]+".
    *
+   * [currency] - The currency to which financial metrics should be converted.
+   * The default is US Dollar (USD). If the result contains no financial
+   * metrics, this flag will be ignored. Responds with an error if the specified
+   * currency is not recognized.
+   * Value must have pattern "[A-Z]{3}".
+   *
    * [dimensions] - A comma-separated list of YouTube Analytics dimensions, such
    * as views or ageGroup,gender. See the Available Reports document for a list
    * of the reports that you can retrieve and the dimensions used for those
@@ -647,18 +651,18 @@ class ReportsResourceApi {
    *
    * Completes with a [ResultTable].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<ResultTable> query(core.String ids, core.String start_date, core.String end_date, core.String metrics, {core.String dimensions, core.String filters, core.int max_results, core.String sort, core.int start_index}) {
+  async.Future<ResultTable> query(core.String ids, core.String start_date, core.String end_date, core.String metrics, {core.String currency, core.String dimensions, core.String filters, core.int max_results, core.String sort, core.int start_index}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (ids == null) {
@@ -677,6 +681,9 @@ class ReportsResourceApi {
       throw new core.ArgumentError("Parameter metrics is required.");
     }
     _queryParams["metrics"] = [metrics];
+    if (currency != null) {
+      _queryParams["currency"] = [currency];
+    }
     if (dimensions != null) {
       _queryParams["dimensions"] = [dimensions];
     }
@@ -710,7 +717,6 @@ class ReportsResourceApi {
 
 
 
-/** Not documented yet. */
 class BatchReportOutputs {
   /**
    * Cloud storage URL to download this report. This URL is valid for 30
@@ -1017,12 +1023,9 @@ class BatchReportList {
 }
 
 
-/** Not documented yet. */
 class GroupContentDetails {
-  /** Not documented yet. */
   core.String itemCount;
 
-  /** Not documented yet. */
   core.String itemType;
 
 
@@ -1050,12 +1053,9 @@ class GroupContentDetails {
 }
 
 
-/** Not documented yet. */
 class GroupSnippet {
-  /** Not documented yet. */
   core.DateTime publishedAt;
 
-  /** Not documented yet. */
   core.String title;
 
 
@@ -1083,21 +1083,15 @@ class GroupSnippet {
 }
 
 
-/** Not documented yet. */
 class Group {
-  /** Not documented yet. */
   GroupContentDetails contentDetails;
 
-  /** Not documented yet. */
   core.String etag;
 
-  /** Not documented yet. */
   core.String id;
 
-  /** Not documented yet. */
   core.String kind;
 
-  /** Not documented yet. */
   GroupSnippet snippet;
 
 
@@ -1143,12 +1137,9 @@ class Group {
 }
 
 
-/** Not documented yet. */
 class GroupItemResource {
-  /** Not documented yet. */
   core.String id;
 
-  /** Not documented yet. */
   core.String kind;
 
 
@@ -1176,21 +1167,15 @@ class GroupItemResource {
 }
 
 
-/** Not documented yet. */
 class GroupItem {
-  /** Not documented yet. */
   core.String etag;
 
-  /** Not documented yet. */
   core.String groupId;
 
-  /** Not documented yet. */
   core.String id;
 
-  /** Not documented yet. */
   core.String kind;
 
-  /** Not documented yet. */
   GroupItemResource resource;
 
 
@@ -1241,13 +1226,10 @@ class GroupItem {
  * youtubeAnalytics.groupApi.list request.
  */
 class GroupItemListResponse {
-  /** Not documented yet. */
   core.String etag;
 
-  /** Not documented yet. */
   core.List<GroupItem> items;
 
-  /** Not documented yet. */
   core.String kind;
 
 
@@ -1286,13 +1268,10 @@ class GroupItemListResponse {
  * youtubeAnalytics.groupApi.list request.
  */
 class GroupListResponse {
-  /** Not documented yet. */
   core.String etag;
 
-  /** Not documented yet. */
   core.List<Group> items;
 
-  /** Not documented yet. */
   core.String kind;
 
 
@@ -1326,7 +1305,6 @@ class GroupListResponse {
 }
 
 
-/** Not documented yet. */
 class ResultTableColumnHeaders {
   /** The type of the column (DIMENSION or METRIC). */
   core.String columnType;
@@ -1437,5 +1415,3 @@ class ResultTable {
     return _json;
   }
 }
-
-

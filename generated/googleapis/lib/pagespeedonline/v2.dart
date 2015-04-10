@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.pagespeedonline.v2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client pagespeedonline/v2';
 
 /**
  * Lets you analyze the performance of a web page and get tailored suggestions
@@ -19,20 +22,19 @@ export '../common/common.dart' show DetailedApiRequestError;
  */
 class PagespeedonlineApi {
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   PagespeedapiResourceApi get pagespeedapi => new PagespeedapiResourceApi(_requester);
 
   PagespeedonlineApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "pagespeedonline/v2/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class PagespeedapiResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PagespeedapiResourceApi(common_internal.ApiRequester client) : 
+  PagespeedapiResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -64,7 +66,7 @@ class PagespeedapiResourceApi {
    *
    * Completes with a [Result].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -75,7 +77,7 @@ class PagespeedapiResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (url == null) {
@@ -115,7 +117,6 @@ class PagespeedapiResourceApi {
 
 
 
-/** Not documented yet. */
 class PagespeedApiFormatStringV2ArgsRects {
   /** The height of the rect. */
   core.int height;
@@ -166,7 +167,6 @@ class PagespeedApiFormatStringV2ArgsRects {
 }
 
 
-/** Not documented yet. */
 class PagespeedApiFormatStringV2ArgsSecondaryRects {
   /** The height of the rect. */
   core.int height;
@@ -217,7 +217,6 @@ class PagespeedApiFormatStringV2ArgsSecondaryRects {
 }
 
 
-/** Not documented yet. */
 class PagespeedApiFormatStringV2Args {
   /** The placeholder key for this arg, as a string. */
   core.String key;
@@ -288,7 +287,6 @@ class PagespeedApiFormatStringV2Args {
 }
 
 
-/** Not documented yet. */
 class PagespeedApiFormatStringV2 {
   /** List of arguments for the format string. */
   core.List<PagespeedApiFormatStringV2Args> args;
@@ -380,7 +378,6 @@ class PagespeedApiImageV2PageRect {
 }
 
 
-/** Not documented yet. */
 class PagespeedApiImageV2 {
   /** Image data base64 encoded. */
   core.String data;
@@ -460,7 +457,6 @@ class PagespeedApiImageV2 {
 }
 
 
-/** Not documented yet. */
 class ResultFormattedResultsRuleResultsValueUrlBlocksUrls {
   /**
    * List of entries that provide additional details about a single URL.
@@ -499,7 +495,6 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrls {
 }
 
 
-/** Not documented yet. */
 class ResultFormattedResultsRuleResultsValueUrlBlocks {
   /** Heading to be displayed with the list of URLs. */
   PagespeedApiFormatStringV2 header;
@@ -638,7 +633,7 @@ class ResultFormattedResults {
       locale = _json["locale"];
     }
     if (_json.containsKey("ruleResults")) {
-      ruleResults = common_internal.mapMap(_json["ruleResults"], (item) => new ResultFormattedResultsRuleResultsValue.fromJson(item));
+      ruleResults = commons.mapMap(_json["ruleResults"], (item) => new ResultFormattedResultsRuleResultsValue.fromJson(item));
     }
   }
 
@@ -648,7 +643,7 @@ class ResultFormattedResults {
       _json["locale"] = locale;
     }
     if (ruleResults != null) {
-      _json["ruleResults"] = common_internal.mapMap(ruleResults, (item) => (item).toJson());
+      _json["ruleResults"] = commons.mapMap(ruleResults, (item) => (item).toJson());
     }
     return _json;
   }
@@ -858,7 +853,6 @@ class ResultVersion {
 }
 
 
-/** Not documented yet. */
 class Result {
   /**
    * Localized PageSpeed results. Contains a ruleResults entry for each
@@ -928,7 +922,7 @@ class Result {
       responseCode = _json["responseCode"];
     }
     if (_json.containsKey("ruleGroups")) {
-      ruleGroups = common_internal.mapMap(_json["ruleGroups"], (item) => new ResultRuleGroupsValue.fromJson(item));
+      ruleGroups = commons.mapMap(_json["ruleGroups"], (item) => new ResultRuleGroupsValue.fromJson(item));
     }
     if (_json.containsKey("screenshot")) {
       screenshot = new PagespeedApiImageV2.fromJson(_json["screenshot"]);
@@ -962,7 +956,7 @@ class Result {
       _json["responseCode"] = responseCode;
     }
     if (ruleGroups != null) {
-      _json["ruleGroups"] = common_internal.mapMap(ruleGroups, (item) => (item).toJson());
+      _json["ruleGroups"] = commons.mapMap(ruleGroups, (item) => (item).toJson());
     }
     if (screenshot != null) {
       _json["screenshot"] = (screenshot).toJson();
@@ -976,5 +970,3 @@ class Result {
     return _json;
   }
 }
-
-

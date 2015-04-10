@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.tasks.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client tasks/v1';
 
 /** Lets you manage your tasks and task lists. */
 class TasksApi {
@@ -22,21 +25,20 @@ class TasksApi {
   static const TasksReadonlyScope = "https://www.googleapis.com/auth/tasks.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   TasklistsResourceApi get tasklists => new TasklistsResourceApi(_requester);
   TasksResourceApi get tasks => new TasksResourceApi(_requester);
 
   TasksApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "tasks/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class TasklistsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TasklistsResourceApi(common_internal.ApiRequester client) : 
+  TasklistsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -46,7 +48,7 @@ class TasklistsResourceApi {
    *
    * [tasklist] - Task list identifier.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -57,7 +59,7 @@ class TasklistsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tasklist == null) {
@@ -66,7 +68,7 @@ class TasklistsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'users/@me/lists/' + common_internal.Escaper.ecapeVariable('$tasklist');
+    _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -87,7 +89,7 @@ class TasklistsResourceApi {
    *
    * Completes with a [TaskList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -98,7 +100,7 @@ class TasklistsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tasklist == null) {
@@ -106,7 +108,7 @@ class TasklistsResourceApi {
     }
 
 
-    _url = 'users/@me/lists/' + common_internal.Escaper.ecapeVariable('$tasklist');
+    _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -127,7 +129,7 @@ class TasklistsResourceApi {
    *
    * Completes with a [TaskList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -138,7 +140,7 @@ class TasklistsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -170,7 +172,7 @@ class TasklistsResourceApi {
    *
    * Completes with a [TaskLists].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -181,7 +183,7 @@ class TasklistsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (maxResults != null) {
@@ -216,7 +218,7 @@ class TasklistsResourceApi {
    *
    * Completes with a [TaskList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -227,7 +229,7 @@ class TasklistsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -238,7 +240,7 @@ class TasklistsResourceApi {
     }
 
 
-    _url = 'users/@me/lists/' + common_internal.Escaper.ecapeVariable('$tasklist');
+    _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -261,7 +263,7 @@ class TasklistsResourceApi {
    *
    * Completes with a [TaskList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -272,7 +274,7 @@ class TasklistsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -283,7 +285,7 @@ class TasklistsResourceApi {
     }
 
 
-    _url = 'users/@me/lists/' + common_internal.Escaper.ecapeVariable('$tasklist');
+    _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -298,11 +300,10 @@ class TasklistsResourceApi {
 }
 
 
-/** Not documented yet. */
 class TasksResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TasksResourceApi(common_internal.ApiRequester client) : 
+  TasksResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -314,7 +315,7 @@ class TasksResourceApi {
    *
    * [tasklist] - Task list identifier.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -325,7 +326,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tasklist == null) {
@@ -334,7 +335,7 @@ class TasksResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'lists/' + common_internal.Escaper.ecapeVariable('$tasklist') + '/clear';
+    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/clear';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -355,7 +356,7 @@ class TasksResourceApi {
    *
    * [task] - Task identifier.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -366,7 +367,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tasklist == null) {
@@ -378,7 +379,7 @@ class TasksResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'lists/' + common_internal.Escaper.ecapeVariable('$tasklist') + '/tasks/' + common_internal.Escaper.ecapeVariable('$task');
+    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -401,7 +402,7 @@ class TasksResourceApi {
    *
    * Completes with a [Task].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -412,7 +413,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tasklist == null) {
@@ -423,7 +424,7 @@ class TasksResourceApi {
     }
 
 
-    _url = 'lists/' + common_internal.Escaper.ecapeVariable('$tasklist') + '/tasks/' + common_internal.Escaper.ecapeVariable('$task');
+    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -452,7 +453,7 @@ class TasksResourceApi {
    *
    * Completes with a [Task].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -463,7 +464,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -480,7 +481,7 @@ class TasksResourceApi {
     }
 
 
-    _url = 'lists/' + common_internal.Escaper.ecapeVariable('$tasklist') + '/tasks';
+    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -533,7 +534,7 @@ class TasksResourceApi {
    *
    * Completes with a [Tasks].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -544,7 +545,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tasklist == null) {
@@ -582,7 +583,7 @@ class TasksResourceApi {
     }
 
 
-    _url = 'lists/' + common_internal.Escaper.ecapeVariable('$tasklist') + '/tasks';
+    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -613,7 +614,7 @@ class TasksResourceApi {
    *
    * Completes with a [Task].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -624,7 +625,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tasklist == null) {
@@ -641,7 +642,7 @@ class TasksResourceApi {
     }
 
 
-    _url = 'lists/' + common_internal.Escaper.ecapeVariable('$tasklist') + '/tasks/' + common_internal.Escaper.ecapeVariable('$task') + '/move';
+    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks/' + commons.Escaper.ecapeVariable('$task') + '/move';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -666,7 +667,7 @@ class TasksResourceApi {
    *
    * Completes with a [Task].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -677,7 +678,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -691,7 +692,7 @@ class TasksResourceApi {
     }
 
 
-    _url = 'lists/' + common_internal.Escaper.ecapeVariable('$tasklist') + '/tasks/' + common_internal.Escaper.ecapeVariable('$task');
+    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -716,7 +717,7 @@ class TasksResourceApi {
    *
    * Completes with a [Task].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -727,7 +728,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -741,7 +742,7 @@ class TasksResourceApi {
     }
 
 
-    _url = 'lists/' + common_internal.Escaper.ecapeVariable('$tasklist') + '/tasks/' + common_internal.Escaper.ecapeVariable('$task');
+    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -757,7 +758,6 @@ class TasksResourceApi {
 
 
 
-/** Not documented yet. */
 class TaskLinks {
   /** The description. In HTML speak: Everything between <a> and </a>. */
   core.String description;
@@ -799,7 +799,6 @@ class TaskLinks {
 }
 
 
-/** Not documented yet. */
 class Task {
   /**
    * Completion date of the task (as a RFC 3339 timestamp). This field is
@@ -971,7 +970,6 @@ class Task {
 }
 
 
-/** Not documented yet. */
 class TaskList {
   /** ETag of the resource. */
   core.String etag;
@@ -1043,7 +1041,6 @@ class TaskList {
 }
 
 
-/** Not documented yet. */
 class TaskLists {
   /** ETag of the resource. */
   core.String etag;
@@ -1094,7 +1091,6 @@ class TaskLists {
 }
 
 
-/** Not documented yet. */
 class Tasks {
   /** ETag of the resource. */
   core.String etag;
@@ -1143,5 +1139,3 @@ class Tasks {
     return _json;
   }
 }
-
-

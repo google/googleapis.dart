@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.books.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common_1;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client books/v1';
 
 /** Lets you search for books and manage your Google Books library. */
 class BooksApi {
@@ -19,7 +22,7 @@ class BooksApi {
   static const BooksScope = "https://www.googleapis.com/auth/books";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   BookshelvesResourceApi get bookshelves => new BookshelvesResourceApi(_requester);
   CloudloadingResourceApi get cloudloading => new CloudloadingResourceApi(_requester);
@@ -32,17 +35,16 @@ class BooksApi {
   VolumesResourceApi get volumes => new VolumesResourceApi(_requester);
 
   BooksApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "books/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class BookshelvesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   BookshelvesVolumesResourceApi get volumes => new BookshelvesVolumesResourceApi(_requester);
 
-  BookshelvesResourceApi(common_internal.ApiRequester client) : 
+  BookshelvesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -58,7 +60,7 @@ class BookshelvesResourceApi {
    *
    * Completes with a [Bookshelf].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -69,7 +71,7 @@ class BookshelvesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -83,7 +85,7 @@ class BookshelvesResourceApi {
     }
 
 
-    _url = 'users/' + common_internal.Escaper.ecapeVariable('$userId') + '/bookshelves/' + common_internal.Escaper.ecapeVariable('$shelf');
+    _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/bookshelves/' + commons.Escaper.ecapeVariable('$shelf');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -106,7 +108,7 @@ class BookshelvesResourceApi {
    *
    * Completes with a [Bookshelves].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -117,7 +119,7 @@ class BookshelvesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -128,7 +130,7 @@ class BookshelvesResourceApi {
     }
 
 
-    _url = 'users/' + common_internal.Escaper.ecapeVariable('$userId') + '/bookshelves';
+    _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/bookshelves';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -143,11 +145,10 @@ class BookshelvesResourceApi {
 }
 
 
-/** Not documented yet. */
 class BookshelvesVolumesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  BookshelvesVolumesResourceApi(common_internal.ApiRequester client) : 
+  BookshelvesVolumesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -169,7 +170,7 @@ class BookshelvesVolumesResourceApi {
    *
    * Completes with a [Volumes].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -180,7 +181,7 @@ class BookshelvesVolumesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -203,7 +204,7 @@ class BookshelvesVolumesResourceApi {
     }
 
 
-    _url = 'users/' + common_internal.Escaper.ecapeVariable('$userId') + '/bookshelves/' + common_internal.Escaper.ecapeVariable('$shelf') + '/volumes';
+    _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/bookshelves/' + commons.Escaper.ecapeVariable('$shelf') + '/volumes';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -218,16 +219,13 @@ class BookshelvesVolumesResourceApi {
 }
 
 
-/** Not documented yet. */
 class CloudloadingResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CloudloadingResourceApi(common_internal.ApiRequester client) : 
+  CloudloadingResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [driveDocumentId] - A drive document id. The upload_client_token must not
@@ -243,7 +241,7 @@ class CloudloadingResourceApi {
    *
    * Completes with a [BooksCloudloadingResource].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -254,7 +252,7 @@ class CloudloadingResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (driveDocumentId != null) {
@@ -290,7 +288,7 @@ class CloudloadingResourceApi {
    *
    * [volumeId] - The id of the book to be removed.
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -301,7 +299,7 @@ class CloudloadingResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (volumeId == null) {
@@ -324,15 +322,13 @@ class CloudloadingResourceApi {
   }
 
   /**
-   * Not documented yet.
-   *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * Completes with a [BooksCloudloadingResource].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -343,7 +339,7 @@ class CloudloadingResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -366,11 +362,10 @@ class CloudloadingResourceApi {
 }
 
 
-/** Not documented yet. */
 class DictionaryResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DictionaryResourceApi(common_internal.ApiRequester client) : 
+  DictionaryResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -382,7 +377,7 @@ class DictionaryResourceApi {
    *
    * Completes with a [Metadata].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -393,7 +388,7 @@ class DictionaryResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (cpksver == null) {
@@ -417,14 +412,13 @@ class DictionaryResourceApi {
 }
 
 
-/** Not documented yet. */
 class LayersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   LayersAnnotationDataResourceApi get annotationData => new LayersAnnotationDataResourceApi(_requester);
   LayersVolumeAnnotationsResourceApi get volumeAnnotations => new LayersVolumeAnnotationsResourceApi(_requester);
 
-  LayersResourceApi(common_internal.ApiRequester client) : 
+  LayersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -442,7 +436,7 @@ class LayersResourceApi {
    *
    * Completes with a [Layersummary].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -453,7 +447,7 @@ class LayersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (volumeId == null) {
@@ -470,7 +464,7 @@ class LayersResourceApi {
     }
 
 
-    _url = 'volumes/' + common_internal.Escaper.ecapeVariable('$volumeId') + '/layersummary/' + common_internal.Escaper.ecapeVariable('$summaryId');
+    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layersummary/' + commons.Escaper.ecapeVariable('$summaryId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -500,7 +494,7 @@ class LayersResourceApi {
    *
    * Completes with a [Layersummaries].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -511,7 +505,7 @@ class LayersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (volumeId == null) {
@@ -531,7 +525,7 @@ class LayersResourceApi {
     }
 
 
-    _url = 'volumes/' + common_internal.Escaper.ecapeVariable('$volumeId') + '/layersummary';
+    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layersummary';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -546,11 +540,10 @@ class LayersResourceApi {
 }
 
 
-/** Not documented yet. */
 class LayersAnnotationDataResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  LayersAnnotationDataResourceApi(common_internal.ApiRequester client) : 
+  LayersAnnotationDataResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -585,7 +578,7 @@ class LayersAnnotationDataResourceApi {
    *
    * Completes with a [Annotationdata].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -596,7 +589,7 @@ class LayersAnnotationDataResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (volumeId == null) {
@@ -632,7 +625,7 @@ class LayersAnnotationDataResourceApi {
     }
 
 
-    _url = 'volumes/' + common_internal.Escaper.ecapeVariable('$volumeId') + '/layers/' + common_internal.Escaper.ecapeVariable('$layerId') + '/data/' + common_internal.Escaper.ecapeVariable('$annotationDataId');
+    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layers/' + commons.Escaper.ecapeVariable('$layerId') + '/data/' + commons.Escaper.ecapeVariable('$annotationDataId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -684,7 +677,7 @@ class LayersAnnotationDataResourceApi {
    *
    * Completes with a [Annotationsdata].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -695,7 +688,7 @@ class LayersAnnotationDataResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (volumeId == null) {
@@ -740,7 +733,7 @@ class LayersAnnotationDataResourceApi {
     }
 
 
-    _url = 'volumes/' + common_internal.Escaper.ecapeVariable('$volumeId') + '/layers/' + common_internal.Escaper.ecapeVariable('$layerId') + '/data';
+    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layers/' + commons.Escaper.ecapeVariable('$layerId') + '/data';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -755,11 +748,10 @@ class LayersAnnotationDataResourceApi {
 }
 
 
-/** Not documented yet. */
 class LayersVolumeAnnotationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  LayersVolumeAnnotationsResourceApi(common_internal.ApiRequester client) : 
+  LayersVolumeAnnotationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -780,7 +772,7 @@ class LayersVolumeAnnotationsResourceApi {
    *
    * Completes with a [Volumeannotation].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -791,7 +783,7 @@ class LayersVolumeAnnotationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (volumeId == null) {
@@ -811,7 +803,7 @@ class LayersVolumeAnnotationsResourceApi {
     }
 
 
-    _url = 'volumes/' + common_internal.Escaper.ecapeVariable('$volumeId') + '/layers/' + common_internal.Escaper.ecapeVariable('$layerId') + '/annotations/' + common_internal.Escaper.ecapeVariable('$annotationId');
+    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layers/' + commons.Escaper.ecapeVariable('$layerId') + '/annotations/' + commons.Escaper.ecapeVariable('$annotationId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -866,7 +858,7 @@ class LayersVolumeAnnotationsResourceApi {
    *
    * Completes with a [Volumeannotations].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -877,7 +869,7 @@ class LayersVolumeAnnotationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (volumeId == null) {
@@ -928,7 +920,7 @@ class LayersVolumeAnnotationsResourceApi {
     }
 
 
-    _url = 'volumes/' + common_internal.Escaper.ecapeVariable('$volumeId') + '/layers/' + common_internal.Escaper.ecapeVariable('$layerId');
+    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layers/' + commons.Escaper.ecapeVariable('$layerId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -943,11 +935,10 @@ class LayersVolumeAnnotationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class MyconfigResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  MyconfigResourceApi(common_internal.ApiRequester client) : 
+  MyconfigResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -957,7 +948,7 @@ class MyconfigResourceApi {
    *
    * Completes with a [Usersettings].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -968,7 +959,7 @@ class MyconfigResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -1001,7 +992,7 @@ class MyconfigResourceApi {
    *
    * Completes with a [DownloadAccesses].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1012,7 +1003,7 @@ class MyconfigResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (volumeIds == null || volumeIds.isEmpty) {
@@ -1068,7 +1059,7 @@ class MyconfigResourceApi {
    *
    * Completes with a [RequestAccess].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1079,7 +1070,7 @@ class MyconfigResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (source == null) {
@@ -1141,7 +1132,7 @@ class MyconfigResourceApi {
    *
    * Completes with a [Volumes].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1152,7 +1143,7 @@ class MyconfigResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (source == null) {
@@ -1203,7 +1194,7 @@ class MyconfigResourceApi {
    *
    * Completes with a [Usersettings].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1214,7 +1205,7 @@ class MyconfigResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1237,24 +1228,22 @@ class MyconfigResourceApi {
 }
 
 
-/** Not documented yet. */
 class MylibraryResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   MylibraryAnnotationsResourceApi get annotations => new MylibraryAnnotationsResourceApi(_requester);
   MylibraryBookshelvesResourceApi get bookshelves => new MylibraryBookshelvesResourceApi(_requester);
   MylibraryReadingpositionsResourceApi get readingpositions => new MylibraryReadingpositionsResourceApi(_requester);
 
-  MylibraryResourceApi(common_internal.ApiRequester client) : 
+  MylibraryResourceApi(commons.ApiRequester client) : 
       _requester = client;
 }
 
 
-/** Not documented yet. */
 class MylibraryAnnotationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  MylibraryAnnotationsResourceApi(common_internal.ApiRequester client) : 
+  MylibraryAnnotationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1266,7 +1255,7 @@ class MylibraryAnnotationsResourceApi {
    *
    * [source] - String to identify the originator of this request.
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1277,7 +1266,7 @@ class MylibraryAnnotationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (annotationId == null) {
@@ -1289,7 +1278,7 @@ class MylibraryAnnotationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'mylibrary/annotations/' + common_internal.Escaper.ecapeVariable('$annotationId');
+    _url = 'mylibrary/annotations/' + commons.Escaper.ecapeVariable('$annotationId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1299,51 +1288,6 @@ class MylibraryAnnotationsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
-  }
-
-  /**
-   * Gets an annotation by its ID.
-   *
-   * Request parameters:
-   *
-   * [annotationId] - The ID for the annotation to retrieve.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [Annotation].
-   *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
-   */
-  async.Future<Annotation> get(core.String annotationId, {core.String source}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (annotationId == null) {
-      throw new core.ArgumentError("Parameter annotationId is required.");
-    }
-    if (source != null) {
-      _queryParams["source"] = [source];
-    }
-
-
-    _url = 'mylibrary/annotations/' + common_internal.Escaper.ecapeVariable('$annotationId');
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Annotation.fromJson(data));
   }
 
   /**
@@ -1362,7 +1306,7 @@ class MylibraryAnnotationsResourceApi {
    *
    * Completes with a [Annotation].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1373,7 +1317,7 @@ class MylibraryAnnotationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1416,8 +1360,6 @@ class MylibraryAnnotationsResourceApi {
    * [maxResults] - Maximum number of results to return
    * Value must be between "0" and "40".
    *
-   * [pageIds] - The page ID(s) for the volume that is being queried.
-   *
    * [pageToken] - The value of the nextToken from the previous page.
    *
    * [showDeleted] - Set to true to return deleted annotations. updatedMin must
@@ -1435,18 +1377,18 @@ class MylibraryAnnotationsResourceApi {
    *
    * Completes with a [Annotations].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Annotations> list({core.String contentVersion, core.String layerId, core.List<core.String> layerIds, core.int maxResults, core.List<core.String> pageIds, core.String pageToken, core.bool showDeleted, core.String source, core.String updatedMax, core.String updatedMin, core.String volumeId}) {
+  async.Future<Annotations> list({core.String contentVersion, core.String layerId, core.List<core.String> layerIds, core.int maxResults, core.String pageToken, core.bool showDeleted, core.String source, core.String updatedMax, core.String updatedMin, core.String volumeId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (contentVersion != null) {
@@ -1460,9 +1402,6 @@ class MylibraryAnnotationsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageIds != null) {
-      _queryParams["pageIds"] = pageIds;
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1507,7 +1446,7 @@ class MylibraryAnnotationsResourceApi {
    *
    * Completes with a [AnnotationsSummary].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1518,7 +1457,7 @@ class MylibraryAnnotationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (layerIds == null || layerIds.isEmpty) {
@@ -1556,7 +1495,7 @@ class MylibraryAnnotationsResourceApi {
    *
    * Completes with a [Annotation].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1567,7 +1506,7 @@ class MylibraryAnnotationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1581,7 +1520,7 @@ class MylibraryAnnotationsResourceApi {
     }
 
 
-    _url = 'mylibrary/annotations/' + common_internal.Escaper.ecapeVariable('$annotationId');
+    _url = 'mylibrary/annotations/' + commons.Escaper.ecapeVariable('$annotationId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1596,13 +1535,12 @@ class MylibraryAnnotationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class MylibraryBookshelvesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   MylibraryBookshelvesVolumesResourceApi get volumes => new MylibraryBookshelvesVolumesResourceApi(_requester);
 
-  MylibraryBookshelvesResourceApi(common_internal.ApiRequester client) : 
+  MylibraryBookshelvesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1622,7 +1560,7 @@ class MylibraryBookshelvesResourceApi {
    *
    * [source] - String to identify the originator of this request.
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1633,7 +1571,7 @@ class MylibraryBookshelvesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (shelf == null) {
@@ -1652,7 +1590,7 @@ class MylibraryBookshelvesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'mylibrary/bookshelves/' + common_internal.Escaper.ecapeVariable('$shelf') + '/addVolume';
+    _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf') + '/addVolume';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1673,7 +1611,7 @@ class MylibraryBookshelvesResourceApi {
    *
    * [source] - String to identify the originator of this request.
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1684,7 +1622,7 @@ class MylibraryBookshelvesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (shelf == null) {
@@ -1696,7 +1634,7 @@ class MylibraryBookshelvesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'mylibrary/bookshelves/' + common_internal.Escaper.ecapeVariable('$shelf') + '/clearVolumes';
+    _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf') + '/clearVolumes';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1720,7 +1658,7 @@ class MylibraryBookshelvesResourceApi {
    *
    * Completes with a [Bookshelf].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1731,7 +1669,7 @@ class MylibraryBookshelvesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (shelf == null) {
@@ -1742,7 +1680,7 @@ class MylibraryBookshelvesResourceApi {
     }
 
 
-    _url = 'mylibrary/bookshelves/' + common_internal.Escaper.ecapeVariable('$shelf');
+    _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1763,7 +1701,7 @@ class MylibraryBookshelvesResourceApi {
    *
    * Completes with a [Bookshelves].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1774,7 +1712,7 @@ class MylibraryBookshelvesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (source != null) {
@@ -1809,7 +1747,7 @@ class MylibraryBookshelvesResourceApi {
    *
    * [source] - String to identify the originator of this request.
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1820,7 +1758,7 @@ class MylibraryBookshelvesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (shelf == null) {
@@ -1840,7 +1778,7 @@ class MylibraryBookshelvesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'mylibrary/bookshelves/' + common_internal.Escaper.ecapeVariable('$shelf') + '/moveVolume';
+    _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf') + '/moveVolume';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1867,7 +1805,7 @@ class MylibraryBookshelvesResourceApi {
    *
    * [source] - String to identify the originator of this request.
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1878,7 +1816,7 @@ class MylibraryBookshelvesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (shelf == null) {
@@ -1897,7 +1835,7 @@ class MylibraryBookshelvesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'mylibrary/bookshelves/' + common_internal.Escaper.ecapeVariable('$shelf') + '/removeVolume';
+    _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf') + '/removeVolume';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1912,11 +1850,10 @@ class MylibraryBookshelvesResourceApi {
 }
 
 
-/** Not documented yet. */
 class MylibraryBookshelvesVolumesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  MylibraryBookshelvesVolumesResourceApi(common_internal.ApiRequester client) : 
+  MylibraryBookshelvesVolumesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1945,7 +1882,7 @@ class MylibraryBookshelvesVolumesResourceApi {
    *
    * Completes with a [Volumes].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1956,7 +1893,7 @@ class MylibraryBookshelvesVolumesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (shelf == null) {
@@ -1985,7 +1922,7 @@ class MylibraryBookshelvesVolumesResourceApi {
     }
 
 
-    _url = 'mylibrary/bookshelves/' + common_internal.Escaper.ecapeVariable('$shelf') + '/volumes';
+    _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf') + '/volumes';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2000,11 +1937,10 @@ class MylibraryBookshelvesVolumesResourceApi {
 }
 
 
-/** Not documented yet. */
 class MylibraryReadingpositionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  MylibraryReadingpositionsResourceApi(common_internal.ApiRequester client) : 
+  MylibraryReadingpositionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2021,7 +1957,7 @@ class MylibraryReadingpositionsResourceApi {
    *
    * Completes with a [ReadingPosition].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2032,7 +1968,7 @@ class MylibraryReadingpositionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (volumeId == null) {
@@ -2046,7 +1982,7 @@ class MylibraryReadingpositionsResourceApi {
     }
 
 
-    _url = 'mylibrary/readingpositions/' + common_internal.Escaper.ecapeVariable('$volumeId');
+    _url = 'mylibrary/readingpositions/' + commons.Escaper.ecapeVariable('$volumeId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2086,7 +2022,7 @@ class MylibraryReadingpositionsResourceApi {
    *
    * [source] - String to identify the originator of this request.
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2097,7 +2033,7 @@ class MylibraryReadingpositionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (volumeId == null) {
@@ -2126,7 +2062,7 @@ class MylibraryReadingpositionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'mylibrary/readingpositions/' + common_internal.Escaper.ecapeVariable('$volumeId') + '/setPosition';
+    _url = 'mylibrary/readingpositions/' + commons.Escaper.ecapeVariable('$volumeId') + '/setPosition';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2141,11 +2077,10 @@ class MylibraryReadingpositionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class OnboardingResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  OnboardingResourceApi(common_internal.ApiRequester client) : 
+  OnboardingResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2158,7 +2093,7 @@ class OnboardingResourceApi {
    *
    * Completes with a [Category].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2169,7 +2104,7 @@ class OnboardingResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (locale != null) {
@@ -2206,7 +2141,7 @@ class OnboardingResourceApi {
    *
    * Completes with a [Volume2].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2217,7 +2152,7 @@ class OnboardingResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (categoryId != null) {
@@ -2249,16 +2184,13 @@ class OnboardingResourceApi {
 }
 
 
-/** Not documented yet. */
 class PromoofferResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PromoofferResourceApi(common_internal.ApiRequester client) : 
+  PromoofferResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [androidId] - device android_id
@@ -2277,7 +2209,7 @@ class PromoofferResourceApi {
    *
    * [volumeId] - Volume id to exercise the offer
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2288,7 +2220,7 @@ class PromoofferResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (androidId != null) {
@@ -2331,8 +2263,6 @@ class PromoofferResourceApi {
   }
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [androidId] - device android_id
@@ -2349,7 +2279,7 @@ class PromoofferResourceApi {
    *
    * [serial] - device serial
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2360,7 +2290,7 @@ class PromoofferResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (androidId != null) {
@@ -2418,7 +2348,7 @@ class PromoofferResourceApi {
    *
    * Completes with a [Offers].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2429,7 +2359,7 @@ class PromoofferResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (androidId != null) {
@@ -2467,16 +2397,15 @@ class PromoofferResourceApi {
 }
 
 
-/** Not documented yet. */
 class VolumesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   VolumesAssociatedResourceApi get associated => new VolumesAssociatedResourceApi(_requester);
   VolumesMybooksResourceApi get mybooks => new VolumesMybooksResourceApi(_requester);
   VolumesRecommendedResourceApi get recommended => new VolumesRecommendedResourceApi(_requester);
   VolumesUseruploadedResourceApi get useruploaded => new VolumesUseruploadedResourceApi(_requester);
 
-  VolumesResourceApi(common_internal.ApiRequester client) : 
+  VolumesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2501,7 +2430,7 @@ class VolumesResourceApi {
    *
    * Completes with a [Volume].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2512,7 +2441,7 @@ class VolumesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (volumeId == null) {
@@ -2535,7 +2464,7 @@ class VolumesResourceApi {
     }
 
 
-    _url = 'volumes/' + common_internal.Escaper.ecapeVariable('$volumeId');
+    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2603,7 +2532,7 @@ class VolumesResourceApi {
    *
    * Completes with a [Volumes].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2614,7 +2543,7 @@ class VolumesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (q == null) {
@@ -2674,11 +2603,10 @@ class VolumesResourceApi {
 }
 
 
-/** Not documented yet. */
 class VolumesAssociatedResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  VolumesAssociatedResourceApi(common_internal.ApiRequester client) : 
+  VolumesAssociatedResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2701,7 +2629,7 @@ class VolumesAssociatedResourceApi {
    *
    * Completes with a [Volumes].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2712,7 +2640,7 @@ class VolumesAssociatedResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (volumeId == null) {
@@ -2729,7 +2657,7 @@ class VolumesAssociatedResourceApi {
     }
 
 
-    _url = 'volumes/' + common_internal.Escaper.ecapeVariable('$volumeId') + '/associated';
+    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/associated';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2744,11 +2672,10 @@ class VolumesAssociatedResourceApi {
 }
 
 
-/** Not documented yet. */
 class VolumesMybooksResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  VolumesMybooksResourceApi(common_internal.ApiRequester client) : 
+  VolumesMybooksResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2774,7 +2701,7 @@ class VolumesMybooksResourceApi {
    *
    * Completes with a [Volumes].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2785,7 +2712,7 @@ class VolumesMybooksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (acquireMethod != null) {
@@ -2823,11 +2750,10 @@ class VolumesMybooksResourceApi {
 }
 
 
-/** Not documented yet. */
 class VolumesRecommendedResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  VolumesRecommendedResourceApi(common_internal.ApiRequester client) : 
+  VolumesRecommendedResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2842,7 +2768,7 @@ class VolumesRecommendedResourceApi {
    *
    * Completes with a [Volumes].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2853,7 +2779,7 @@ class VolumesRecommendedResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (locale != null) {
@@ -2895,7 +2821,7 @@ class VolumesRecommendedResourceApi {
    *
    * Completes with a [BooksVolumesRecommendedRateResponse].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2906,7 +2832,7 @@ class VolumesRecommendedResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (rating == null) {
@@ -2940,11 +2866,10 @@ class VolumesRecommendedResourceApi {
 }
 
 
-/** Not documented yet. */
 class VolumesUseruploadedResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  VolumesUseruploadedResourceApi(common_internal.ApiRequester client) : 
+  VolumesUseruploadedResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2970,7 +2895,7 @@ class VolumesUseruploadedResourceApi {
    *
    * Completes with a [Volumes].
    *
-   * Completes with a [common_1.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2981,7 +2906,7 @@ class VolumesUseruploadedResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common_1.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (locale != null) {
@@ -3140,7 +3065,6 @@ class AnnotationCurrentVersionRanges {
 }
 
 
-/** Not documented yet. */
 class AnnotationLayerSummary {
   /**
    * Maximum allowed characters on this layer, especially for the "copy" layer.
@@ -3190,7 +3114,6 @@ class AnnotationLayerSummary {
 }
 
 
-/** Not documented yet. */
 class Annotation {
   /**
    * Anchor text after excerpt. For requests, if the user bookmarked a screen
@@ -3231,7 +3154,6 @@ class Annotation {
   /** The layer this annotation is for. */
   core.String layerId;
 
-  /** Not documented yet. */
   AnnotationLayerSummary layerSummary;
 
   /** Pages that this annotation spans. */
@@ -3364,13 +3286,12 @@ class Annotation {
 }
 
 
-/** Not documented yet. */
 class Annotationdata {
   /** The type of annotation this data is for. */
   core.String annotationType;
 
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3476,7 +3397,6 @@ class Annotationdata {
 }
 
 
-/** Not documented yet. */
 class Annotations {
   /** A list of annotations. */
   core.List<Annotation> items;
@@ -3533,21 +3453,15 @@ class Annotations {
 }
 
 
-/** Not documented yet. */
 class AnnotationsSummaryLayers {
-  /** Not documented yet. */
   core.int allowedCharacterCount;
 
-  /** Not documented yet. */
   core.String layerId;
 
-  /** Not documented yet. */
   core.String limitType;
 
-  /** Not documented yet. */
   core.int remainingCharacterCount;
 
-  /** Not documented yet. */
   core.DateTime updated;
 
 
@@ -3593,12 +3507,9 @@ class AnnotationsSummaryLayers {
 }
 
 
-/** Not documented yet. */
 class AnnotationsSummary {
-  /** Not documented yet. */
   core.String kind;
 
-  /** Not documented yet. */
   core.List<AnnotationsSummaryLayers> layers;
 
 
@@ -3626,7 +3537,6 @@ class AnnotationsSummary {
 }
 
 
-/** Not documented yet. */
 class Annotationsdata {
   /** A list of Annotation Data. */
   core.List<Annotationdata> items;
@@ -3680,7 +3590,6 @@ class Annotationsdata {
 }
 
 
-/** Not documented yet. */
 class BooksAnnotationsRange {
   /** The offset from the ending position. */
   core.String endOffset;
@@ -3731,18 +3640,13 @@ class BooksAnnotationsRange {
 }
 
 
-/** Not documented yet. */
 class BooksCloudloadingResource {
-  /** Not documented yet. */
   core.String author;
 
-  /** Not documented yet. */
   core.String processingState;
 
-  /** Not documented yet. */
   core.String title;
 
-  /** Not documented yet. */
   core.String volumeId;
 
 
@@ -3782,9 +3686,7 @@ class BooksCloudloadingResource {
 }
 
 
-/** Not documented yet. */
 class BooksVolumesRecommendedRateResponse {
-  /** Not documented yet. */
   core.String consistencyToken;
 
 
@@ -3806,7 +3708,6 @@ class BooksVolumesRecommendedRateResponse {
 }
 
 
-/** Not documented yet. */
 class Bookshelf {
   /** Whether this bookshelf is PUBLIC or PRIVATE. */
   core.String access;
@@ -3920,7 +3821,6 @@ class Bookshelf {
 }
 
 
-/** Not documented yet. */
 class Bookshelves {
   /** A list of bookshelves. */
   core.List<Bookshelf> items;
@@ -3953,15 +3853,11 @@ class Bookshelves {
 }
 
 
-/** Not documented yet. */
 class CategoryItems {
-  /** Not documented yet. */
   core.String badgeUrl;
 
-  /** Not documented yet. */
   core.String categoryId;
 
-  /** Not documented yet. */
   core.String name;
 
 
@@ -3995,7 +3891,6 @@ class CategoryItems {
 }
 
 
-/** Not documented yet. */
 class Category {
   /** A list of onboarding categories. */
   core.List<CategoryItems> items;
@@ -4028,7 +3923,6 @@ class Category {
 }
 
 
-/** Not documented yet. */
 class ConcurrentAccessRestriction {
   /** Whether access is granted for this (user, device, volume). */
   core.bool deviceAllowed;
@@ -4147,7 +4041,6 @@ class ConcurrentAccessRestriction {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataCommon {
   /**
    * The display title and localized canonical name to use when searching for
@@ -4176,10 +4069,8 @@ class DictlayerdataCommon {
 
 /** The source, url and attribution for this dictionary data. */
 class DictlayerdataDictSource {
-  /** Not documented yet. */
   core.String attribution;
 
-  /** Not documented yet. */
   core.String url;
 
 
@@ -4207,12 +4098,9 @@ class DictlayerdataDictSource {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataDictWordsDerivativesSource {
-  /** Not documented yet. */
   core.String attribution;
 
-  /** Not documented yet. */
   core.String url;
 
 
@@ -4240,12 +4128,9 @@ class DictlayerdataDictWordsDerivativesSource {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataDictWordsDerivatives {
-  /** Not documented yet. */
   DictlayerdataDictWordsDerivativesSource source;
 
-  /** Not documented yet. */
   core.String text;
 
 
@@ -4273,12 +4158,9 @@ class DictlayerdataDictWordsDerivatives {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataDictWordsExamplesSource {
-  /** Not documented yet. */
   core.String attribution;
 
-  /** Not documented yet. */
   core.String url;
 
 
@@ -4306,12 +4188,9 @@ class DictlayerdataDictWordsExamplesSource {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataDictWordsExamples {
-  /** Not documented yet. */
   DictlayerdataDictWordsExamplesSource source;
 
-  /** Not documented yet. */
   core.String text;
 
 
@@ -4339,12 +4218,9 @@ class DictlayerdataDictWordsExamples {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataDictWordsSensesConjugations {
-  /** Not documented yet. */
   core.String type;
 
-  /** Not documented yet. */
   core.String value;
 
 
@@ -4372,12 +4248,9 @@ class DictlayerdataDictWordsSensesConjugations {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
-  /** Not documented yet. */
   core.String attribution;
 
-  /** Not documented yet. */
   core.String url;
 
 
@@ -4405,12 +4278,9 @@ class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataDictWordsSensesDefinitionsExamples {
-  /** Not documented yet. */
   DictlayerdataDictWordsSensesDefinitionsExamplesSource source;
 
-  /** Not documented yet. */
   core.String text;
 
 
@@ -4438,12 +4308,9 @@ class DictlayerdataDictWordsSensesDefinitionsExamples {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataDictWordsSensesDefinitions {
-  /** Not documented yet. */
   core.String definition;
 
-  /** Not documented yet. */
   core.List<DictlayerdataDictWordsSensesDefinitionsExamples> examples;
 
 
@@ -4471,12 +4338,9 @@ class DictlayerdataDictWordsSensesDefinitions {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataDictWordsSensesSource {
-  /** Not documented yet. */
   core.String attribution;
 
-  /** Not documented yet. */
   core.String url;
 
 
@@ -4504,12 +4368,9 @@ class DictlayerdataDictWordsSensesSource {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataDictWordsSensesSynonymsSource {
-  /** Not documented yet. */
   core.String attribution;
 
-  /** Not documented yet. */
   core.String url;
 
 
@@ -4537,12 +4398,9 @@ class DictlayerdataDictWordsSensesSynonymsSource {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataDictWordsSensesSynonyms {
-  /** Not documented yet. */
   DictlayerdataDictWordsSensesSynonymsSource source;
 
-  /** Not documented yet. */
   core.String text;
 
 
@@ -4570,30 +4428,21 @@ class DictlayerdataDictWordsSensesSynonyms {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataDictWordsSenses {
-  /** Not documented yet. */
   core.List<DictlayerdataDictWordsSensesConjugations> conjugations;
 
-  /** Not documented yet. */
   core.List<DictlayerdataDictWordsSensesDefinitions> definitions;
 
-  /** Not documented yet. */
   core.String partOfSpeech;
 
-  /** Not documented yet. */
   core.String pronunciation;
 
-  /** Not documented yet. */
   core.String pronunciationUrl;
 
-  /** Not documented yet. */
   DictlayerdataDictWordsSensesSource source;
 
-  /** Not documented yet. */
   core.String syllabification;
 
-  /** Not documented yet. */
   core.List<DictlayerdataDictWordsSensesSynonyms> synonyms;
 
 
@@ -4662,10 +4511,8 @@ class DictlayerdataDictWordsSenses {
  * "go" (verb).
  */
 class DictlayerdataDictWordsSource {
-  /** Not documented yet. */
   core.String attribution;
 
-  /** Not documented yet. */
   core.String url;
 
 
@@ -4693,15 +4540,11 @@ class DictlayerdataDictWordsSource {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataDictWords {
-  /** Not documented yet. */
   core.List<DictlayerdataDictWordsDerivatives> derivatives;
 
-  /** Not documented yet. */
   core.List<DictlayerdataDictWordsExamples> examples;
 
-  /** Not documented yet. */
   core.List<DictlayerdataDictWordsSenses> senses;
 
   /**
@@ -4747,12 +4590,10 @@ class DictlayerdataDictWords {
 }
 
 
-/** Not documented yet. */
 class DictlayerdataDict {
   /** The source, url and attribution for this dictionary data. */
   DictlayerdataDictSource source;
 
-  /** Not documented yet. */
   core.List<DictlayerdataDictWords> words;
 
 
@@ -4780,15 +4621,11 @@ class DictlayerdataDict {
 }
 
 
-/** Not documented yet. */
 class Dictlayerdata {
-  /** Not documented yet. */
   DictlayerdataCommon common;
 
-  /** Not documented yet. */
   DictlayerdataDict dict;
 
-  /** Not documented yet. */
   core.String kind;
 
 
@@ -4822,7 +4659,6 @@ class Dictlayerdata {
 }
 
 
-/** Not documented yet. */
 class DownloadAccessRestriction {
   /**
    * If restricted, whether access is granted for this (user, device, volume).
@@ -4962,7 +4798,6 @@ class DownloadAccessRestriction {
 }
 
 
-/** Not documented yet. */
 class DownloadAccesses {
   /** A list of download access responses. */
   core.List<DownloadAccessRestriction> downloadAccessList;
@@ -4995,7 +4830,6 @@ class DownloadAccesses {
 }
 
 
-/** Not documented yet. */
 class GeolayerdataCommon {
   /** The language of the information url and description. */
   core.String lang;
@@ -5058,12 +4892,9 @@ class GeolayerdataCommon {
 }
 
 
-/** Not documented yet. */
 class GeolayerdataGeoBoundary {
-  /** Not documented yet. */
   core.int latitude;
 
-  /** Not documented yet. */
   core.int longitude;
 
 
@@ -5091,12 +4922,9 @@ class GeolayerdataGeoBoundary {
 }
 
 
-/** Not documented yet. */
 class GeolayerdataGeoViewportHi {
-  /** Not documented yet. */
   core.double latitude;
 
-  /** Not documented yet. */
   core.double longitude;
 
 
@@ -5124,12 +4952,9 @@ class GeolayerdataGeoViewportHi {
 }
 
 
-/** Not documented yet. */
 class GeolayerdataGeoViewportLo {
-  /** Not documented yet. */
   core.double latitude;
 
-  /** Not documented yet. */
   core.double longitude;
 
 
@@ -5162,10 +4987,8 @@ class GeolayerdataGeoViewportLo {
  * rectangle.
  */
 class GeolayerdataGeoViewport {
-  /** Not documented yet. */
   GeolayerdataGeoViewportHi hi;
 
-  /** Not documented yet. */
   GeolayerdataGeoViewportLo lo;
 
 
@@ -5193,7 +5016,6 @@ class GeolayerdataGeoViewport {
 }
 
 
-/** Not documented yet. */
 class GeolayerdataGeo {
   /**
    * The boundary of the location as a set of loops containing pairs of
@@ -5296,15 +5118,11 @@ class GeolayerdataGeo {
 }
 
 
-/** Not documented yet. */
 class Geolayerdata {
-  /** Not documented yet. */
   GeolayerdataCommon common;
 
-  /** Not documented yet. */
   GeolayerdataGeo geo;
 
-  /** Not documented yet. */
   core.String kind;
 
 
@@ -5338,7 +5156,6 @@ class Geolayerdata {
 }
 
 
-/** Not documented yet. */
 class Layersummaries {
   /** A list of layer summary items. */
   core.List<Layersummary> items;
@@ -5380,7 +5197,6 @@ class Layersummaries {
 }
 
 
-/** Not documented yet. */
 class Layersummary {
   /** The number of annotations for this layer. */
   core.int annotationCount;
@@ -5519,21 +5335,15 @@ class Layersummary {
 }
 
 
-/** Not documented yet. */
 class MetadataItems {
-  /** Not documented yet. */
   core.String downloadUrl;
 
-  /** Not documented yet. */
   core.String encryptedKey;
 
-  /** Not documented yet. */
   core.String language;
 
-  /** Not documented yet. */
   core.String size;
 
-  /** Not documented yet. */
   core.String version;
 
 
@@ -5579,7 +5389,6 @@ class MetadataItems {
 }
 
 
-/** Not documented yet. */
 class Metadata {
   /** A list of offline dictionary metadata. */
   core.List<MetadataItems> items;
@@ -5612,24 +5421,17 @@ class Metadata {
 }
 
 
-/** Not documented yet. */
 class OffersItemsItems {
-  /** Not documented yet. */
   core.String author;
 
-  /** Not documented yet. */
   core.String canonicalVolumeLink;
 
-  /** Not documented yet. */
   core.String coverUrl;
 
-  /** Not documented yet. */
   core.String description;
 
-  /** Not documented yet. */
   core.String title;
 
-  /** Not documented yet. */
   core.String volumeId;
 
 
@@ -5681,18 +5483,13 @@ class OffersItemsItems {
 }
 
 
-/** Not documented yet. */
 class OffersItems {
-  /** Not documented yet. */
   core.String artUrl;
 
-  /** Not documented yet. */
   core.String gservicesKey;
 
-  /** Not documented yet. */
   core.String id;
 
-  /** Not documented yet. */
   core.List<OffersItemsItems> items;
 
 
@@ -5732,7 +5529,6 @@ class OffersItems {
 }
 
 
-/** Not documented yet. */
 class Offers {
   /** A list of offers. */
   core.List<OffersItems> items;
@@ -5765,7 +5561,6 @@ class Offers {
 }
 
 
-/** Not documented yet. */
 class ReadingPosition {
   /** Position in an EPUB as a CFI. */
   core.String epubCfiPosition;
@@ -5846,7 +5641,6 @@ class ReadingPosition {
 }
 
 
-/** Not documented yet. */
 class RequestAccess {
   /** A concurrent access response. */
   ConcurrentAccessRestriction concurrentAccess;
@@ -5957,7 +5751,6 @@ class ReviewSource {
 }
 
 
-/** Not documented yet. */
 class Review {
   /** Author of this review. */
   ReviewAuthor author;
@@ -6073,10 +5866,8 @@ class Review {
 
 /** User settings in sub-objects, each for different purposes. */
 class UsersettingsNotesExport {
-  /** Not documented yet. */
   core.String folderName;
 
-  /** Not documented yet. */
   core.bool isEnabled;
 
 
@@ -6104,7 +5895,6 @@ class UsersettingsNotesExport {
 }
 
 
-/** Not documented yet. */
 class Usersettings {
   /** Resource type. */
   core.String kind;
@@ -6405,7 +6195,6 @@ class VolumeAccessInfo {
 }
 
 
-/** Not documented yet. */
 class VolumeLayerInfoLayers {
   /** The layer id of this layer (e.g. "geo"). */
   core.String layerId;
@@ -6527,10 +6316,8 @@ class VolumeSaleInfoListPrice {
 
 /** Offer list (=undiscounted) price in Micros. */
 class VolumeSaleInfoOffersListPrice {
-  /** Not documented yet. */
   core.double amountInMicros;
 
-  /** Not documented yet. */
   core.String currencyCode;
 
 
@@ -6560,10 +6347,8 @@ class VolumeSaleInfoOffersListPrice {
 
 /** The rental duration (for rental offers only). */
 class VolumeSaleInfoOffersRentalDuration {
-  /** Not documented yet. */
   core.double count;
 
-  /** Not documented yet. */
   core.String unit;
 
 
@@ -6593,10 +6378,8 @@ class VolumeSaleInfoOffersRentalDuration {
 
 /** Offer retail (=discounted) price in Micros */
 class VolumeSaleInfoOffersRetailPrice {
-  /** Not documented yet. */
   core.double amountInMicros;
 
-  /** Not documented yet. */
   core.String currencyCode;
 
 
@@ -6624,7 +6407,6 @@ class VolumeSaleInfoOffersRetailPrice {
 }
 
 
-/** Not documented yet. */
 class VolumeSaleInfoOffers {
   /** The finsky offer type (e.g., PURCHASE=0 RENTAL=3) */
   core.int finskyOfferType;
@@ -6846,16 +6628,12 @@ class VolumeSearchInfo {
 
 /** Copy/Paste accounting information. */
 class VolumeUserInfoCopy {
-  /** Not documented yet. */
   core.int allowedCharacterCount;
 
-  /** Not documented yet. */
   core.String limitType;
 
-  /** Not documented yet. */
   core.int remainingCharacterCount;
 
-  /** Not documented yet. */
   core.DateTime updated;
 
 
@@ -6897,10 +6675,8 @@ class VolumeUserInfoCopy {
 
 /** Period during this book is/was a valid rental. */
 class VolumeUserInfoRentalPeriod {
-  /** Not documented yet. */
   core.String endUtcSec;
 
-  /** Not documented yet. */
   core.String startUtcSec;
 
 
@@ -6928,9 +6704,7 @@ class VolumeUserInfoRentalPeriod {
 }
 
 
-/** Not documented yet. */
 class VolumeUserInfoUserUploadedVolumeInfo {
-  /** Not documented yet. */
   core.String processingState;
 
 
@@ -7000,7 +6774,6 @@ class VolumeUserInfo {
    */
   core.DateTime updated;
 
-  /** Not documented yet. */
   VolumeUserInfoUserUploadedVolumeInfo userUploadedVolumeInfo;
 
 
@@ -7206,7 +6979,6 @@ class VolumeVolumeInfoImageLinks {
 }
 
 
-/** Not documented yet. */
 class VolumeVolumeInfoIndustryIdentifiers {
   /** Industry specific volume identifier. */
   core.String identifier;
@@ -7490,7 +7262,6 @@ class VolumeVolumeInfo {
 }
 
 
-/** Not documented yet. */
 class Volume {
   /**
    * Any information about a volume related to reading or obtaining that volume
@@ -7621,7 +7392,6 @@ class Volume {
 }
 
 
-/** Not documented yet. */
 class Volume2 {
   /** A list of volumes. */
   core.List<Volume> items;
@@ -7629,7 +7399,6 @@ class Volume2 {
   /** Resource type. */
   core.String kind;
 
-  /** Not documented yet. */
   core.String nextPageToken;
 
 
@@ -7714,7 +7483,6 @@ class VolumeannotationContentRanges {
 }
 
 
-/** Not documented yet. */
 class Volumeannotation {
   /** The annotation data id for this volume annotation. */
   core.String annotationDataId;
@@ -7858,7 +7626,6 @@ class Volumeannotation {
 }
 
 
-/** Not documented yet. */
 class Volumeannotations {
   /** A list of volume annotations. */
   core.List<Volumeannotation> items;
@@ -7926,7 +7693,6 @@ class Volumeannotations {
 }
 
 
-/** Not documented yet. */
 class Volumes {
   /** A list of volumes. */
   core.List<Volume> items;
@@ -7969,5 +7735,3 @@ class Volumes {
     return _json;
   }
 }
-
-

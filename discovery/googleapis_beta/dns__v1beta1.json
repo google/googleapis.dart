@@ -20,7 +20,7 @@
     "description": "The Google Cloud DNS API provides services for configuring and serving authoritative DNS records.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-dns",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/_vgNPwHi8lDV9NY2AVX5qWWTYFo\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/wU8NjG2rANeT6LROBN3mCaSHZ_8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -428,7 +428,7 @@
             }
         }
     },
-    "revision": "20141121",
+    "revision": "20150114",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Change": {
@@ -501,7 +501,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "A string to associate with this resource for the user's convenience. Has no effect on the managed zone's function.",
+                    "description": "A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.",
                     "type": "string"
                 },
                 "dnsName": {

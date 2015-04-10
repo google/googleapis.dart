@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.dataflow.v1beta3;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client dataflow/v1beta3';
 
 /** Google Dataflow API. */
 class DataflowApi {
@@ -22,45 +25,42 @@ class DataflowApi {
   static const UserinfoEmailScope = "https://www.googleapis.com/auth/userinfo.email";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   V1b3ResourceApi get v1b3 => new V1b3ResourceApi(_requester);
 
   DataflowApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "dataflow/v1b3/projects/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class V1b3ResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   V1b3ProjectsResourceApi get projects => new V1b3ProjectsResourceApi(_requester);
 
-  V1b3ResourceApi(common_internal.ApiRequester client) : 
+  V1b3ResourceApi(commons.ApiRequester client) : 
       _requester = client;
 }
 
 
-/** Not documented yet. */
 class V1b3ProjectsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   V1b3ProjectsJobsResourceApi get jobs => new V1b3ProjectsJobsResourceApi(_requester);
 
-  V1b3ProjectsResourceApi(common_internal.ApiRequester client) : 
+  V1b3ProjectsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 }
 
 
-/** Not documented yet. */
 class V1b3ProjectsJobsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   V1b3ProjectsJobsMessagesResourceApi get messages => new V1b3ProjectsJobsMessagesResourceApi(_requester);
   V1b3ProjectsJobsWorkItemsResourceApi get workItems => new V1b3ProjectsJobsWorkItemsResourceApi(_requester);
 
-  V1b3ProjectsJobsResourceApi(common_internal.ApiRequester client) : 
+  V1b3ProjectsJobsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -80,7 +80,7 @@ class V1b3ProjectsJobsResourceApi {
    *
    * Completes with a [Job].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -91,7 +91,7 @@ class V1b3ProjectsJobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -105,7 +105,7 @@ class V1b3ProjectsJobsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/jobs';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/jobs';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -134,7 +134,7 @@ class V1b3ProjectsJobsResourceApi {
    *
    * Completes with a [Job].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -145,7 +145,7 @@ class V1b3ProjectsJobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -159,7 +159,7 @@ class V1b3ProjectsJobsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId');
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -184,7 +184,7 @@ class V1b3ProjectsJobsResourceApi {
    *
    * Completes with a [JobMetrics].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -195,7 +195,7 @@ class V1b3ProjectsJobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -209,7 +209,7 @@ class V1b3ProjectsJobsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId') + '/metrics';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/metrics';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -240,7 +240,7 @@ class V1b3ProjectsJobsResourceApi {
    *
    * Completes with a [ListJobsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -251,7 +251,7 @@ class V1b3ProjectsJobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -268,7 +268,7 @@ class V1b3ProjectsJobsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/jobs';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/jobs';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -294,7 +294,7 @@ class V1b3ProjectsJobsResourceApi {
    *
    * Completes with a [Job].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -305,7 +305,7 @@ class V1b3ProjectsJobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -319,7 +319,7 @@ class V1b3ProjectsJobsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId');
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -344,7 +344,7 @@ class V1b3ProjectsJobsResourceApi {
    *
    * Completes with a [Job].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -355,7 +355,7 @@ class V1b3ProjectsJobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -369,7 +369,7 @@ class V1b3ProjectsJobsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId');
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -384,11 +384,10 @@ class V1b3ProjectsJobsResourceApi {
 }
 
 
-/** Not documented yet. */
 class V1b3ProjectsJobsMessagesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  V1b3ProjectsJobsMessagesResourceApi(common_internal.ApiRequester client) : 
+  V1b3ProjectsJobsMessagesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -418,7 +417,7 @@ class V1b3ProjectsJobsMessagesResourceApi {
    *
    * Completes with a [ListJobMessagesResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -429,7 +428,7 @@ class V1b3ProjectsJobsMessagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -455,7 +454,7 @@ class V1b3ProjectsJobsMessagesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId') + '/messages';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/messages';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -470,11 +469,10 @@ class V1b3ProjectsJobsMessagesResourceApi {
 }
 
 
-/** Not documented yet. */
 class V1b3ProjectsJobsWorkItemsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  V1b3ProjectsJobsWorkItemsResourceApi(common_internal.ApiRequester client) : 
+  V1b3ProjectsJobsWorkItemsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -490,7 +488,7 @@ class V1b3ProjectsJobsWorkItemsResourceApi {
    *
    * Completes with a [LeaseWorkItemResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -501,7 +499,7 @@ class V1b3ProjectsJobsWorkItemsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -515,7 +513,7 @@ class V1b3ProjectsJobsWorkItemsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId') + '/workItems:lease';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/workItems:lease';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -540,7 +538,7 @@ class V1b3ProjectsJobsWorkItemsResourceApi {
    *
    * Completes with a [ReportWorkItemStatusResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -551,7 +549,7 @@ class V1b3ProjectsJobsWorkItemsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -565,7 +563,7 @@ class V1b3ProjectsJobsWorkItemsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$projectId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId') + '/workItems:reportStatus';
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/workItems:reportStatus';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -581,15 +579,11 @@ class V1b3ProjectsJobsWorkItemsResourceApi {
 
 
 
-/** Not documented yet. */
 class ApproximateProgress {
-  /** Not documented yet. */
   core.double percentComplete;
 
-  /** Not documented yet. */
   Position position;
 
-  /** Not documented yet. */
   core.String remainingTime;
 
 
@@ -623,10 +617,9 @@ class ApproximateProgress {
 }
 
 
-/** Not documented yet. */
 class AutoscalingSettings {
   /**
-   * Not documented yet.
+   *
    * Possible string values are:
    * - "AUTOSCALING_ALGORITHM_BASIC"
    * - "AUTOSCALING_ALGORITHM_NONE"
@@ -634,7 +627,6 @@ class AutoscalingSettings {
    */
   core.String algorithm;
 
-  /** Not documented yet. */
   core.int maxNumWorkers;
 
 
@@ -662,18 +654,13 @@ class AutoscalingSettings {
 }
 
 
-/** Not documented yet. */
 class ComputationTopology {
-  /** Not documented yet. */
   core.String computationId;
 
-  /** Not documented yet. */
   core.List<StreamLocation> inputs;
 
-  /** Not documented yet. */
   core.List<KeyRangeLocation> keyRanges;
 
-  /** Not documented yet. */
   core.List<StreamLocation> outputs;
 
 
@@ -713,12 +700,9 @@ class ComputationTopology {
 }
 
 
-/** Not documented yet. */
 class DataDiskAssignment {
-  /** Not documented yet. */
   core.List<core.String> dataDisks;
 
-  /** Not documented yet. */
   core.String vmInstance;
 
 
@@ -746,15 +730,49 @@ class DataDiskAssignment {
 }
 
 
-/** Not documented yet. */
+class DerivedSource {
+  /**
+   *
+   * Possible string values are:
+   * - "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT"
+   * - "SOURCE_DERIVATION_MODE_INDEPENDENT"
+   * - "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT"
+   * - "SOURCE_DERIVATION_MODE_UNKNOWN"
+   */
+  core.String derivationMode;
+
+  Source source;
+
+
+  DerivedSource();
+
+  DerivedSource.fromJson(core.Map _json) {
+    if (_json.containsKey("derivationMode")) {
+      derivationMode = _json["derivationMode"];
+    }
+    if (_json.containsKey("source")) {
+      source = new Source.fromJson(_json["source"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (derivationMode != null) {
+      _json["derivationMode"] = derivationMode;
+    }
+    if (source != null) {
+      _json["source"] = (source).toJson();
+    }
+    return _json;
+  }
+}
+
+
 class Disk {
-  /** Not documented yet. */
   core.String diskType;
 
-  /** Not documented yet. */
   core.String mountPoint;
 
-  /** Not documented yet. */
   core.int sizeGb;
 
 
@@ -788,30 +806,55 @@ class Disk {
 }
 
 
-/** Not documented yet. */
+class DynamicSourceSplit {
+  DerivedSource primary;
+
+  DerivedSource residual;
+
+
+  DynamicSourceSplit();
+
+  DynamicSourceSplit.fromJson(core.Map _json) {
+    if (_json.containsKey("primary")) {
+      primary = new DerivedSource.fromJson(_json["primary"]);
+    }
+    if (_json.containsKey("residual")) {
+      residual = new DerivedSource.fromJson(_json["residual"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (primary != null) {
+      _json["primary"] = (primary).toJson();
+    }
+    if (residual != null) {
+      _json["residual"] = (residual).toJson();
+    }
+    return _json;
+  }
+}
+
+
 class Environment {
-  /** Not documented yet. */
   core.String clusterManagerApiService;
 
-  /** Not documented yet. */
   core.String dataset;
 
-  /** Not documented yet. */
   core.List<core.String> experiments;
 
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> sdkPipelineOptions;
 
-  /** Not documented yet. */
   core.String tempStoragePrefix;
 
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -819,14 +862,13 @@ class Environment {
   core.Map<core.String, core.Object> userAgent;
 
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> version;
 
-  /** Not documented yet. */
   core.List<WorkerPool> workerPools;
 
 
@@ -890,9 +932,7 @@ class Environment {
 }
 
 
-/** Not documented yet. */
 class FlattenInstruction {
-  /** Not documented yet. */
   core.List<InstructionInput> inputs;
 
 
@@ -914,12 +954,9 @@ class FlattenInstruction {
 }
 
 
-/** Not documented yet. */
 class InstructionInput {
-  /** Not documented yet. */
   core.int outputNum;
 
-  /** Not documented yet. */
   core.int producerInstructionIndex;
 
 
@@ -947,17 +984,15 @@ class InstructionInput {
 }
 
 
-/** Not documented yet. */
 class InstructionOutput {
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> codec;
 
-  /** Not documented yet. */
   core.String name;
 
 
@@ -985,13 +1020,11 @@ class InstructionOutput {
 }
 
 
-/** Not documented yet. */
 class Job {
-  /** Not documented yet. */
   core.String createTime;
 
   /**
-   * Not documented yet.
+   *
    * Possible string values are:
    * - "JOB_STATE_CANCELLED"
    * - "JOB_STATE_DONE"
@@ -1002,26 +1035,20 @@ class Job {
    */
   core.String currentState;
 
-  /** Not documented yet. */
   core.String currentStateTime;
 
-  /** Not documented yet. */
   Environment environment;
 
-  /** Not documented yet. */
   JobExecutionInfo executionInfo;
 
-  /** Not documented yet. */
   core.String id;
 
-  /** Not documented yet. */
   core.String name;
 
-  /** Not documented yet. */
   core.String projectId;
 
   /**
-   * Not documented yet.
+   *
    * Possible string values are:
    * - "JOB_STATE_CANCELLED"
    * - "JOB_STATE_DONE"
@@ -1032,11 +1059,10 @@ class Job {
    */
   core.String requestedState;
 
-  /** Not documented yet. */
   core.List<Step> steps;
 
   /**
-   * Not documented yet.
+   *
    * Possible string values are:
    * - "JOB_TYPE_BATCH"
    * - "JOB_TYPE_STREAMING"
@@ -1123,9 +1149,7 @@ class Job {
 }
 
 
-/** Not documented yet. */
 class JobExecutionInfo {
-  /** Not documented yet. */
   core.Map<core.String, JobExecutionStageInfo> stages;
 
 
@@ -1133,23 +1157,21 @@ class JobExecutionInfo {
 
   JobExecutionInfo.fromJson(core.Map _json) {
     if (_json.containsKey("stages")) {
-      stages = common_internal.mapMap(_json["stages"], (item) => new JobExecutionStageInfo.fromJson(item));
+      stages = commons.mapMap(_json["stages"], (item) => new JobExecutionStageInfo.fromJson(item));
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (stages != null) {
-      _json["stages"] = common_internal.mapMap(stages, (item) => (item).toJson());
+      _json["stages"] = commons.mapMap(stages, (item) => (item).toJson());
     }
     return _json;
   }
 }
 
 
-/** Not documented yet. */
 class JobExecutionStageInfo {
-  /** Not documented yet. */
   core.List<core.String> stepName;
 
 
@@ -1171,13 +1193,11 @@ class JobExecutionStageInfo {
 }
 
 
-/** Not documented yet. */
 class JobMessage {
-  /** Not documented yet. */
   core.String id;
 
   /**
-   * Not documented yet.
+   *
    * Possible string values are:
    * - "JOB_MESSAGE_DEBUG"
    * - "JOB_MESSAGE_DETAILED"
@@ -1187,10 +1207,8 @@ class JobMessage {
    */
   core.String messageImportance;
 
-  /** Not documented yet. */
   core.String messageText;
 
-  /** Not documented yet. */
   core.String time;
 
 
@@ -1230,12 +1248,9 @@ class JobMessage {
 }
 
 
-/** Not documented yet. */
 class JobMetrics {
-  /** Not documented yet. */
   core.String metricTime;
 
-  /** Not documented yet. */
   core.List<MetricUpdate> metrics;
 
 
@@ -1263,21 +1278,53 @@ class JobMetrics {
 }
 
 
-/** Not documented yet. */
-class KeyRangeLocation {
-  /** Not documented yet. */
+class KeyRangeDataDiskAssignment {
   core.String dataDisk;
 
-  /** Not documented yet. */
-  core.String deliveryEndpoint;
-
-  /** Not documented yet. */
   core.String end;
 
-  /** Not documented yet. */
+  core.String start;
+
+
+  KeyRangeDataDiskAssignment();
+
+  KeyRangeDataDiskAssignment.fromJson(core.Map _json) {
+    if (_json.containsKey("dataDisk")) {
+      dataDisk = _json["dataDisk"];
+    }
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dataDisk != null) {
+      _json["dataDisk"] = dataDisk;
+    }
+    if (end != null) {
+      _json["end"] = end;
+    }
+    if (start != null) {
+      _json["start"] = start;
+    }
+    return _json;
+  }
+}
+
+
+class KeyRangeLocation {
+  core.String dataDisk;
+
+  core.String deliveryEndpoint;
+
+  core.String end;
+
   core.String persistentDirectory;
 
-  /** Not documented yet. */
   core.String start;
 
 
@@ -1323,21 +1370,15 @@ class KeyRangeLocation {
 }
 
 
-/** Not documented yet. */
 class LeaseWorkItemRequest {
-  /** Not documented yet. */
   core.String currentWorkerTime;
 
-  /** Not documented yet. */
   core.String requestedLeaseDuration;
 
-  /** Not documented yet. */
   core.List<core.String> workItemTypes;
 
-  /** Not documented yet. */
   core.List<core.String> workerCapabilities;
 
-  /** Not documented yet. */
   core.String workerId;
 
 
@@ -1383,9 +1424,7 @@ class LeaseWorkItemRequest {
 }
 
 
-/** Not documented yet. */
 class LeaseWorkItemResponse {
-  /** Not documented yet. */
   core.List<WorkItem> workItems;
 
 
@@ -1407,12 +1446,9 @@ class LeaseWorkItemResponse {
 }
 
 
-/** Not documented yet. */
 class ListJobMessagesResponse {
-  /** Not documented yet. */
   core.List<JobMessage> jobMessages;
 
-  /** Not documented yet. */
   core.String nextPageToken;
 
 
@@ -1440,12 +1476,9 @@ class ListJobMessagesResponse {
 }
 
 
-/** Not documented yet. */
 class ListJobsResponse {
-  /** Not documented yet. */
   core.List<Job> jobs;
 
-  /** Not documented yet. */
   core.String nextPageToken;
 
 
@@ -1473,15 +1506,11 @@ class ListJobsResponse {
 }
 
 
-/** Not documented yet. */
 class MapTask {
-  /** Not documented yet. */
   core.List<ParallelInstruction> instructions;
 
-  /** Not documented yet. */
   core.String stageName;
 
-  /** Not documented yet. */
   core.String systemName;
 
 
@@ -1515,15 +1544,11 @@ class MapTask {
 }
 
 
-/** Not documented yet. */
 class MetricStructuredName {
-  /** Not documented yet. */
   core.Map<core.String, core.String> context;
 
-  /** Not documented yet. */
   core.String name;
 
-  /** Not documented yet. */
   core.String origin;
 
 
@@ -1557,33 +1582,23 @@ class MetricStructuredName {
 }
 
 
-/** Not documented yet. */
 class MetricUpdate {
-  /** Not documented yet. */
   core.bool cumulative;
 
-  /** Not documented yet. */
   core.Object internal;
 
-  /** Not documented yet. */
   core.String kind;
 
-  /** Not documented yet. */
   core.Object meanCount;
 
-  /** Not documented yet. */
   core.Object meanSum;
 
-  /** Not documented yet. */
   MetricStructuredName name;
 
-  /** Not documented yet. */
   core.Object scalar;
 
-  /** Not documented yet. */
   core.Object set;
 
-  /** Not documented yet. */
   core.String updateTime;
 
 
@@ -1653,9 +1668,29 @@ class MetricUpdate {
 }
 
 
-/** Not documented yet. */
+class MountedDataDisk {
+  core.String dataDisk;
+
+
+  MountedDataDisk();
+
+  MountedDataDisk.fromJson(core.Map _json) {
+    if (_json.containsKey("dataDisk")) {
+      dataDisk = _json["dataDisk"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dataDisk != null) {
+      _json["dataDisk"] = dataDisk;
+    }
+    return _json;
+  }
+}
+
+
 class MultiOutputInfo {
-  /** Not documented yet. */
   core.String tag;
 
 
@@ -1677,12 +1712,9 @@ class MultiOutputInfo {
 }
 
 
-/** Not documented yet. */
 class Package {
-  /** Not documented yet. */
   core.String location;
 
-  /** Not documented yet. */
   core.String name;
 
 
@@ -1710,22 +1742,17 @@ class Package {
 }
 
 
-/** Not documented yet. */
 class ParDoInstruction {
-  /** Not documented yet. */
   InstructionInput input;
 
-  /** Not documented yet. */
   core.List<MultiOutputInfo> multiOutputInfos;
 
-  /** Not documented yet. */
   core.int numOutputs;
 
-  /** Not documented yet. */
   core.List<SideInputInfo> sideInputs;
 
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1775,30 +1802,21 @@ class ParDoInstruction {
 }
 
 
-/** Not documented yet. */
 class ParallelInstruction {
-  /** Not documented yet. */
   FlattenInstruction flatten;
 
-  /** Not documented yet. */
   core.String name;
 
-  /** Not documented yet. */
   core.List<InstructionOutput> outputs;
 
-  /** Not documented yet. */
   ParDoInstruction parDo;
 
-  /** Not documented yet. */
   PartialGroupByKeyInstruction partialGroupByKey;
 
-  /** Not documented yet. */
   ReadInstruction read;
 
-  /** Not documented yet. */
   core.String systemName;
 
-  /** Not documented yet. */
   WriteInstruction write;
 
 
@@ -1862,18 +1880,24 @@ class ParallelInstruction {
 }
 
 
-/** Not documented yet. */
 class PartialGroupByKeyInstruction {
-  /** Not documented yet. */
   InstructionInput input;
 
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> inputElementCodec;
+
+  /**
+   *
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Map<core.String, core.Object> valueCombiningFn;
 
 
   PartialGroupByKeyInstruction();
@@ -1885,6 +1909,9 @@ class PartialGroupByKeyInstruction {
     if (_json.containsKey("inputElementCodec")) {
       inputElementCodec = _json["inputElementCodec"];
     }
+    if (_json.containsKey("valueCombiningFn")) {
+      valueCombiningFn = _json["valueCombiningFn"];
+    }
   }
 
   core.Map toJson() {
@@ -1895,26 +1922,23 @@ class PartialGroupByKeyInstruction {
     if (inputElementCodec != null) {
       _json["inputElementCodec"] = inputElementCodec;
     }
+    if (valueCombiningFn != null) {
+      _json["valueCombiningFn"] = valueCombiningFn;
+    }
     return _json;
   }
 }
 
 
-/** Not documented yet. */
 class Position {
-  /** Not documented yet. */
   core.String byteOffset;
 
-  /** Not documented yet. */
   core.bool end;
 
-  /** Not documented yet. */
   core.String key;
 
-  /** Not documented yet. */
   core.String recordIndex;
 
-  /** Not documented yet. */
   core.String shufflePosition;
 
 
@@ -1960,22 +1984,18 @@ class Position {
 }
 
 
-/** Not documented yet. */
 class PubsubLocation {
-  /** Not documented yet. */
   core.bool dropLateData;
 
-  /** Not documented yet. */
   core.String idLabel;
 
-  /** Not documented yet. */
   core.String subscription;
 
-  /** Not documented yet. */
   core.String timestampLabel;
 
-  /** Not documented yet. */
   core.String topic;
+
+  core.String trackingSubscription;
 
 
   PubsubLocation();
@@ -1996,6 +2016,9 @@ class PubsubLocation {
     if (_json.containsKey("topic")) {
       topic = _json["topic"];
     }
+    if (_json.containsKey("trackingSubscription")) {
+      trackingSubscription = _json["trackingSubscription"];
+    }
   }
 
   core.Map toJson() {
@@ -2015,14 +2038,15 @@ class PubsubLocation {
     if (topic != null) {
       _json["topic"] = topic;
     }
+    if (trackingSubscription != null) {
+      _json["trackingSubscription"] = trackingSubscription;
+    }
     return _json;
   }
 }
 
 
-/** Not documented yet. */
 class ReadInstruction {
-  /** Not documented yet. */
   Source source;
 
 
@@ -2044,15 +2068,11 @@ class ReadInstruction {
 }
 
 
-/** Not documented yet. */
 class ReportWorkItemStatusRequest {
-  /** Not documented yet. */
   core.String currentWorkerTime;
 
-  /** Not documented yet. */
   core.List<WorkItemStatus> workItemStatuses;
 
-  /** Not documented yet. */
   core.String workerId;
 
 
@@ -2086,9 +2106,7 @@ class ReportWorkItemStatusRequest {
 }
 
 
-/** Not documented yet. */
 class ReportWorkItemStatusResponse {
-  /** Not documented yet. */
   core.List<WorkItemServiceState> workItemServiceStates;
 
 
@@ -2110,25 +2128,19 @@ class ReportWorkItemStatusResponse {
 }
 
 
-/** Not documented yet. */
 class SeqMapTask {
-  /** Not documented yet. */
   core.List<SideInputInfo> inputs;
 
-  /** Not documented yet. */
   core.String name;
 
-  /** Not documented yet. */
   core.List<SeqMapTaskOutputInfo> outputInfos;
 
-  /** Not documented yet. */
   core.String stageName;
 
-  /** Not documented yet. */
   core.String systemName;
 
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2184,12 +2196,9 @@ class SeqMapTask {
 }
 
 
-/** Not documented yet. */
 class SeqMapTaskOutputInfo {
-  /** Not documented yet. */
   Sink sink;
 
-  /** Not documented yet. */
   core.String tag;
 
 
@@ -2217,12 +2226,9 @@ class SeqMapTaskOutputInfo {
 }
 
 
-/** Not documented yet. */
 class ShellTask {
-  /** Not documented yet. */
   core.String command;
 
-  /** Not documented yet. */
   core.int exitCode;
 
 
@@ -2250,20 +2256,17 @@ class ShellTask {
 }
 
 
-/** Not documented yet. */
 class SideInputInfo {
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> kind;
 
-  /** Not documented yet. */
   core.List<Source> sources;
 
-  /** Not documented yet. */
   core.String tag;
 
 
@@ -2297,10 +2300,9 @@ class SideInputInfo {
 }
 
 
-/** Not documented yet. */
 class Sink {
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2308,7 +2310,7 @@ class Sink {
   core.Map<core.String, core.Object> codec;
 
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2340,10 +2342,9 @@ class Sink {
 }
 
 
-/** Not documented yet. */
 class Source {
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2351,21 +2352,19 @@ class Source {
   core.List<core.Map<core.String, core.Object>> baseSpecs;
 
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> codec;
 
-  /** Not documented yet. */
   core.bool doesNotNeedSplitting;
 
-  /** Not documented yet. */
   SourceMetadata metadata;
 
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2415,13 +2414,14 @@ class Source {
 }
 
 
-/** Not documented yet. */
 class SourceFork {
-  /** Not documented yet. */
   SourceSplitShard primary;
 
-  /** Not documented yet. */
+  DerivedSource primarySource;
+
   SourceSplitShard residual;
+
+  DerivedSource residualSource;
 
 
   SourceFork();
@@ -2430,8 +2430,14 @@ class SourceFork {
     if (_json.containsKey("primary")) {
       primary = new SourceSplitShard.fromJson(_json["primary"]);
     }
+    if (_json.containsKey("primarySource")) {
+      primarySource = new DerivedSource.fromJson(_json["primarySource"]);
+    }
     if (_json.containsKey("residual")) {
       residual = new SourceSplitShard.fromJson(_json["residual"]);
+    }
+    if (_json.containsKey("residualSource")) {
+      residualSource = new DerivedSource.fromJson(_json["residualSource"]);
     }
   }
 
@@ -2440,17 +2446,21 @@ class SourceFork {
     if (primary != null) {
       _json["primary"] = (primary).toJson();
     }
+    if (primarySource != null) {
+      _json["primarySource"] = (primarySource).toJson();
+    }
     if (residual != null) {
       _json["residual"] = (residual).toJson();
+    }
+    if (residualSource != null) {
+      _json["residualSource"] = (residualSource).toJson();
     }
     return _json;
   }
 }
 
 
-/** Not documented yet. */
 class SourceGetMetadataRequest {
-  /** Not documented yet. */
   Source source;
 
 
@@ -2472,9 +2482,7 @@ class SourceGetMetadataRequest {
 }
 
 
-/** Not documented yet. */
 class SourceGetMetadataResponse {
-  /** Not documented yet. */
   SourceMetadata metadata;
 
 
@@ -2496,15 +2504,11 @@ class SourceGetMetadataResponse {
 }
 
 
-/** Not documented yet. */
 class SourceMetadata {
-  /** Not documented yet. */
   core.String estimatedSizeBytes;
 
-  /** Not documented yet. */
   core.bool infinite;
 
-  /** Not documented yet. */
   core.bool producesSortedKeys;
 
 
@@ -2538,12 +2542,9 @@ class SourceMetadata {
 }
 
 
-/** Not documented yet. */
 class SourceOperationRequest {
-  /** Not documented yet. */
   SourceGetMetadataRequest getMetadata;
 
-  /** Not documented yet. */
   SourceSplitRequest split;
 
 
@@ -2571,12 +2572,9 @@ class SourceOperationRequest {
 }
 
 
-/** Not documented yet. */
 class SourceOperationResponse {
-  /** Not documented yet. */
   SourceGetMetadataResponse getMetadata;
 
-  /** Not documented yet. */
   SourceSplitResponse split;
 
 
@@ -2604,15 +2602,18 @@ class SourceOperationResponse {
 }
 
 
-/** Not documented yet. */
 class SourceSplitOptions {
-  /** Not documented yet. */
+  core.String desiredBundleSizeBytes;
+
   core.String desiredShardSizeBytes;
 
 
   SourceSplitOptions();
 
   SourceSplitOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("desiredBundleSizeBytes")) {
+      desiredBundleSizeBytes = _json["desiredBundleSizeBytes"];
+    }
     if (_json.containsKey("desiredShardSizeBytes")) {
       desiredShardSizeBytes = _json["desiredShardSizeBytes"];
     }
@@ -2620,6 +2621,9 @@ class SourceSplitOptions {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (desiredBundleSizeBytes != null) {
+      _json["desiredBundleSizeBytes"] = desiredBundleSizeBytes;
+    }
     if (desiredShardSizeBytes != null) {
       _json["desiredShardSizeBytes"] = desiredShardSizeBytes;
     }
@@ -2628,12 +2632,9 @@ class SourceSplitOptions {
 }
 
 
-/** Not documented yet. */
 class SourceSplitRequest {
-  /** Not documented yet. */
   SourceSplitOptions options;
 
-  /** Not documented yet. */
   Source source;
 
 
@@ -2661,10 +2662,11 @@ class SourceSplitRequest {
 }
 
 
-/** Not documented yet. */
 class SourceSplitResponse {
+  core.List<DerivedSource> bundles;
+
   /**
-   * Not documented yet.
+   *
    * Possible string values are:
    * - "SOURCE_SPLIT_OUTCOME_SPLITTING_HAPPENED"
    * - "SOURCE_SPLIT_OUTCOME_UNKNOWN"
@@ -2672,13 +2674,15 @@ class SourceSplitResponse {
    */
   core.String outcome;
 
-  /** Not documented yet. */
   core.List<SourceSplitShard> shards;
 
 
   SourceSplitResponse();
 
   SourceSplitResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("bundles")) {
+      bundles = _json["bundles"].map((value) => new DerivedSource.fromJson(value)).toList();
+    }
     if (_json.containsKey("outcome")) {
       outcome = _json["outcome"];
     }
@@ -2689,6 +2693,9 @@ class SourceSplitResponse {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (bundles != null) {
+      _json["bundles"] = bundles.map((value) => (value).toJson()).toList();
+    }
     if (outcome != null) {
       _json["outcome"] = outcome;
     }
@@ -2700,10 +2707,9 @@ class SourceSplitResponse {
 }
 
 
-/** Not documented yet. */
 class SourceSplitShard {
   /**
-   * Not documented yet.
+   *
    * Possible string values are:
    * - "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT"
    * - "SOURCE_DERIVATION_MODE_INDEPENDENT"
@@ -2712,7 +2718,6 @@ class SourceSplitShard {
    */
   core.String derivationMode;
 
-  /** Not documented yet. */
   Source source;
 
 
@@ -2740,20 +2745,17 @@ class SourceSplitShard {
 }
 
 
-/** Not documented yet. */
 class Status {
-  /** Not documented yet. */
   core.int code;
 
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.Map<core.String, core.Object>> details;
 
-  /** Not documented yet. */
   core.String message;
 
 
@@ -2787,16 +2789,13 @@ class Status {
 }
 
 
-/** Not documented yet. */
 class Step {
-  /** Not documented yet. */
   core.String kind;
 
-  /** Not documented yet. */
   core.String name;
 
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2834,12 +2833,11 @@ class Step {
 }
 
 
-/** Not documented yet. */
 class StreamLocation {
-  /** Not documented yet. */
   PubsubLocation pubsubLocation;
 
-  /** Not documented yet. */
+  StreamingSideInputLocation sideInputLocation;
+
   StreamingStageLocation streamingStageLocation;
 
 
@@ -2848,6 +2846,9 @@ class StreamLocation {
   StreamLocation.fromJson(core.Map _json) {
     if (_json.containsKey("pubsubLocation")) {
       pubsubLocation = new PubsubLocation.fromJson(_json["pubsubLocation"]);
+    }
+    if (_json.containsKey("sideInputLocation")) {
+      sideInputLocation = new StreamingSideInputLocation.fromJson(_json["sideInputLocation"]);
     }
     if (_json.containsKey("streamingStageLocation")) {
       streamingStageLocation = new StreamingStageLocation.fromJson(_json["streamingStageLocation"]);
@@ -2859,6 +2860,9 @@ class StreamLocation {
     if (pubsubLocation != null) {
       _json["pubsubLocation"] = (pubsubLocation).toJson();
     }
+    if (sideInputLocation != null) {
+      _json["sideInputLocation"] = (sideInputLocation).toJson();
+    }
     if (streamingStageLocation != null) {
       _json["streamingStageLocation"] = (streamingStageLocation).toJson();
     }
@@ -2867,15 +2871,86 @@ class StreamLocation {
 }
 
 
-/** Not documented yet. */
+class StreamingComputationRanges {
+  core.String computationId;
+
+  core.List<KeyRangeDataDiskAssignment> rangeAssignments;
+
+
+  StreamingComputationRanges();
+
+  StreamingComputationRanges.fromJson(core.Map _json) {
+    if (_json.containsKey("computationId")) {
+      computationId = _json["computationId"];
+    }
+    if (_json.containsKey("rangeAssignments")) {
+      rangeAssignments = _json["rangeAssignments"].map((value) => new KeyRangeDataDiskAssignment.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (computationId != null) {
+      _json["computationId"] = computationId;
+    }
+    if (rangeAssignments != null) {
+      _json["rangeAssignments"] = rangeAssignments.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+class StreamingComputationTask {
+  core.List<StreamingComputationRanges> computationRanges;
+
+  core.List<MountedDataDisk> dataDisks;
+
+  /**
+   *
+   * Possible string values are:
+   * - "STREAMING_COMPUTATION_TASK_START"
+   * - "STREAMING_COMPUTATION_TASK_STOP"
+   * - "STREAMING_COMPUTATION_TASK_UNKNOWN"
+   */
+  core.String taskType;
+
+
+  StreamingComputationTask();
+
+  StreamingComputationTask.fromJson(core.Map _json) {
+    if (_json.containsKey("computationRanges")) {
+      computationRanges = _json["computationRanges"].map((value) => new StreamingComputationRanges.fromJson(value)).toList();
+    }
+    if (_json.containsKey("dataDisks")) {
+      dataDisks = _json["dataDisks"].map((value) => new MountedDataDisk.fromJson(value)).toList();
+    }
+    if (_json.containsKey("taskType")) {
+      taskType = _json["taskType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (computationRanges != null) {
+      _json["computationRanges"] = computationRanges.map((value) => (value).toJson()).toList();
+    }
+    if (dataDisks != null) {
+      _json["dataDisks"] = dataDisks.map((value) => (value).toJson()).toList();
+    }
+    if (taskType != null) {
+      _json["taskType"] = taskType;
+    }
+    return _json;
+  }
+}
+
+
 class StreamingSetupTask {
-  /** Not documented yet. */
   core.int receiveWorkPort;
 
-  /** Not documented yet. */
   TopologyConfig streamingComputationTopology;
 
-  /** Not documented yet. */
   core.int workerHarnessPort;
 
 
@@ -2909,9 +2984,29 @@ class StreamingSetupTask {
 }
 
 
-/** Not documented yet. */
+class StreamingSideInputLocation {
+  core.String tag;
+
+
+  StreamingSideInputLocation();
+
+  StreamingSideInputLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("tag")) {
+      tag = _json["tag"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (tag != null) {
+      _json["tag"] = tag;
+    }
+    return _json;
+  }
+}
+
+
 class StreamingStageLocation {
-  /** Not documented yet. */
   core.String streamId;
 
 
@@ -2933,63 +3028,43 @@ class StreamingStageLocation {
 }
 
 
-/** Not documented yet. */
 class TaskRunnerSettings {
-  /** Not documented yet. */
   core.bool alsologtostderr;
 
-  /** Not documented yet. */
   core.String baseTaskDir;
 
-  /** Not documented yet. */
   core.String baseUrl;
 
-  /** Not documented yet. */
   core.String commandlinesFileName;
 
-  /** Not documented yet. */
   core.bool continueOnException;
 
-  /** Not documented yet. */
   core.String dataflowApiVersion;
 
-  /** Not documented yet. */
   core.String harnessCommand;
 
-  /** Not documented yet. */
   core.String languageHint;
 
-  /** Not documented yet. */
   core.String logDir;
 
-  /** Not documented yet. */
   core.bool logToSerialconsole;
 
-  /** Not documented yet. */
   core.String logUploadLocation;
 
-  /** Not documented yet. */
   core.List<core.String> oauthScopes;
 
-  /** Not documented yet. */
   WorkerSettings parallelWorkerSettings;
 
-  /** Not documented yet. */
   core.String streamingWorkerMainClass;
 
-  /** Not documented yet. */
   core.String taskGroup;
 
-  /** Not documented yet. */
   core.String taskUser;
 
-  /** Not documented yet. */
   core.String tempStoragePrefix;
 
-  /** Not documented yet. */
   core.String vmId;
 
-  /** Not documented yet. */
   core.String workflowFileName;
 
 
@@ -3119,12 +3194,9 @@ class TaskRunnerSettings {
 }
 
 
-/** Not documented yet. */
 class TopologyConfig {
-  /** Not documented yet. */
   core.List<ComputationTopology> computations;
 
-  /** Not documented yet. */
   core.List<DataDiskAssignment> dataDiskAssignments;
 
 
@@ -3152,42 +3224,33 @@ class TopologyConfig {
 }
 
 
-/** Not documented yet. */
 class WorkItem {
-  /** Not documented yet. */
   core.String configuration;
 
-  /** Not documented yet. */
   core.String id;
 
-  /** Not documented yet. */
+  core.String initialReportIndex;
+
   core.String jobId;
 
-  /** Not documented yet. */
   core.String leaseExpireTime;
 
-  /** Not documented yet. */
   MapTask mapTask;
 
-  /** Not documented yet. */
   core.List<Package> packages;
 
-  /** Not documented yet. */
   core.String projectId;
 
-  /** Not documented yet. */
   core.String reportStatusInterval;
 
-  /** Not documented yet. */
   SeqMapTask seqMapTask;
 
-  /** Not documented yet. */
   ShellTask shellTask;
 
-  /** Not documented yet. */
   SourceOperationRequest sourceOperationTask;
 
-  /** Not documented yet. */
+  StreamingComputationTask streamingComputationTask;
+
   StreamingSetupTask streamingSetupTask;
 
 
@@ -3199,6 +3262,9 @@ class WorkItem {
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
+    }
+    if (_json.containsKey("initialReportIndex")) {
+      initialReportIndex = _json["initialReportIndex"];
     }
     if (_json.containsKey("jobId")) {
       jobId = _json["jobId"];
@@ -3227,6 +3293,9 @@ class WorkItem {
     if (_json.containsKey("sourceOperationTask")) {
       sourceOperationTask = new SourceOperationRequest.fromJson(_json["sourceOperationTask"]);
     }
+    if (_json.containsKey("streamingComputationTask")) {
+      streamingComputationTask = new StreamingComputationTask.fromJson(_json["streamingComputationTask"]);
+    }
     if (_json.containsKey("streamingSetupTask")) {
       streamingSetupTask = new StreamingSetupTask.fromJson(_json["streamingSetupTask"]);
     }
@@ -3239,6 +3308,9 @@ class WorkItem {
     }
     if (id != null) {
       _json["id"] = id;
+    }
+    if (initialReportIndex != null) {
+      _json["initialReportIndex"] = initialReportIndex;
     }
     if (jobId != null) {
       _json["jobId"] = jobId;
@@ -3267,6 +3339,9 @@ class WorkItem {
     if (sourceOperationTask != null) {
       _json["sourceOperationTask"] = (sourceOperationTask).toJson();
     }
+    if (streamingComputationTask != null) {
+      _json["streamingComputationTask"] = (streamingComputationTask).toJson();
+    }
     if (streamingSetupTask != null) {
       _json["streamingSetupTask"] = (streamingSetupTask).toJson();
     }
@@ -3275,26 +3350,23 @@ class WorkItem {
 }
 
 
-/** Not documented yet. */
 class WorkItemServiceState {
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> harnessData;
 
-  /** Not documented yet. */
   core.String leaseExpireTime;
 
-  /** Not documented yet. */
+  core.String nextReportIndex;
+
   core.String reportStatusInterval;
 
-  /** Not documented yet. */
   ApproximateProgress suggestedStopPoint;
 
-  /** Not documented yet. */
   Position suggestedStopPosition;
 
 
@@ -3306,6 +3378,9 @@ class WorkItemServiceState {
     }
     if (_json.containsKey("leaseExpireTime")) {
       leaseExpireTime = _json["leaseExpireTime"];
+    }
+    if (_json.containsKey("nextReportIndex")) {
+      nextReportIndex = _json["nextReportIndex"];
     }
     if (_json.containsKey("reportStatusInterval")) {
       reportStatusInterval = _json["reportStatusInterval"];
@@ -3326,6 +3401,9 @@ class WorkItemServiceState {
     if (leaseExpireTime != null) {
       _json["leaseExpireTime"] = leaseExpireTime;
     }
+    if (nextReportIndex != null) {
+      _json["nextReportIndex"] = nextReportIndex;
+    }
     if (reportStatusInterval != null) {
       _json["reportStatusInterval"] = reportStatusInterval;
     }
@@ -3340,36 +3418,27 @@ class WorkItemServiceState {
 }
 
 
-/** Not documented yet. */
 class WorkItemStatus {
-  /** Not documented yet. */
   core.bool completed;
 
-  /** Not documented yet. */
+  DynamicSourceSplit dynamicSourceSplit;
+
   core.List<Status> errors;
 
-  /** Not documented yet. */
   core.List<MetricUpdate> metricUpdates;
 
-  /** Not documented yet. */
   ApproximateProgress progress;
 
-  /** Not documented yet. */
   core.String reportIndex;
 
-  /** Not documented yet. */
   core.String requestedLeaseDuration;
 
-  /** Not documented yet. */
   SourceFork sourceFork;
 
-  /** Not documented yet. */
   SourceOperationResponse sourceOperationResponse;
 
-  /** Not documented yet. */
   Position stopPosition;
 
-  /** Not documented yet. */
   core.String workItemId;
 
 
@@ -3378,6 +3447,9 @@ class WorkItemStatus {
   WorkItemStatus.fromJson(core.Map _json) {
     if (_json.containsKey("completed")) {
       completed = _json["completed"];
+    }
+    if (_json.containsKey("dynamicSourceSplit")) {
+      dynamicSourceSplit = new DynamicSourceSplit.fromJson(_json["dynamicSourceSplit"]);
     }
     if (_json.containsKey("errors")) {
       errors = _json["errors"].map((value) => new Status.fromJson(value)).toList();
@@ -3413,6 +3485,9 @@ class WorkItemStatus {
     if (completed != null) {
       _json["completed"] = completed;
     }
+    if (dynamicSourceSplit != null) {
+      _json["dynamicSourceSplit"] = (dynamicSourceSplit).toJson();
+    }
     if (errors != null) {
       _json["errors"] = errors.map((value) => (value).toJson()).toList();
     }
@@ -3445,16 +3520,13 @@ class WorkItemStatus {
 }
 
 
-/** Not documented yet. */
 class WorkerPool {
-  /** Not documented yet. */
   AutoscalingSettings autoscalingSettings;
 
-  /** Not documented yet. */
   core.List<Disk> dataDisks;
 
   /**
-   * Not documented yet.
+   *
    * Possible string values are:
    * - "DEFAULT_PACKAGE_SET_JAVA"
    * - "DEFAULT_PACKAGE_SET_NONE"
@@ -3463,35 +3535,34 @@ class WorkerPool {
    */
   core.String defaultPackageSet;
 
-  /** Not documented yet. */
   core.int diskSizeGb;
 
-  /** Not documented yet. */
   core.String diskSourceImage;
 
-  /** Not documented yet. */
   core.String kind;
 
-  /** Not documented yet. */
   core.String machineType;
 
-  /** Not documented yet. */
   core.Map<core.String, core.String> metadata;
 
-  /** Not documented yet. */
   core.int numWorkers;
 
-  /** Not documented yet. */
   core.String onHostMaintenance;
 
-  /** Not documented yet. */
   core.List<Package> packages;
 
-  /** Not documented yet. */
+  /**
+   *
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Map<core.String, core.Object> poolArgs;
+
   TaskRunnerSettings taskrunnerSettings;
 
   /**
-   * Not documented yet.
+   *
    * Possible string values are:
    * - "TEARDOWN_ALWAYS"
    * - "TEARDOWN_NEVER"
@@ -3500,7 +3571,6 @@ class WorkerPool {
    */
   core.String teardownPolicy;
 
-  /** Not documented yet. */
   core.String zone;
 
 
@@ -3539,6 +3609,9 @@ class WorkerPool {
     }
     if (_json.containsKey("packages")) {
       packages = _json["packages"].map((value) => new Package.fromJson(value)).toList();
+    }
+    if (_json.containsKey("poolArgs")) {
+      poolArgs = _json["poolArgs"];
     }
     if (_json.containsKey("taskrunnerSettings")) {
       taskrunnerSettings = new TaskRunnerSettings.fromJson(_json["taskrunnerSettings"]);
@@ -3586,6 +3659,9 @@ class WorkerPool {
     if (packages != null) {
       _json["packages"] = packages.map((value) => (value).toJson()).toList();
     }
+    if (poolArgs != null) {
+      _json["poolArgs"] = poolArgs;
+    }
     if (taskrunnerSettings != null) {
       _json["taskrunnerSettings"] = (taskrunnerSettings).toJson();
     }
@@ -3600,24 +3676,17 @@ class WorkerPool {
 }
 
 
-/** Not documented yet. */
 class WorkerSettings {
-  /** Not documented yet. */
   core.String baseUrl;
 
-  /** Not documented yet. */
   core.bool reportingEnabled;
 
-  /** Not documented yet. */
   core.String servicePath;
 
-  /** Not documented yet. */
   core.String shuffleServicePath;
 
-  /** Not documented yet. */
   core.String tempStoragePrefix;
 
-  /** Not documented yet. */
   core.String workerId;
 
 
@@ -3669,12 +3738,9 @@ class WorkerSettings {
 }
 
 
-/** Not documented yet. */
 class WriteInstruction {
-  /** Not documented yet. */
   InstructionInput input;
 
-  /** Not documented yet. */
   Sink sink;
 
 
@@ -3700,5 +3766,3 @@ class WriteInstruction {
     return _json;
   }
 }
-
-

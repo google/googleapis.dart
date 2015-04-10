@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.discovery.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client discovery/v1';
 
 /**
  * Lets you discover information about other Google APIs, such as what APIs are
@@ -19,20 +22,19 @@ export '../common/common.dart' show DetailedApiRequestError;
  */
 class DiscoveryApi {
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ApisResourceApi get apis => new ApisResourceApi(_requester);
 
   DiscoveryApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "discovery/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class ApisResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ApisResourceApi(common_internal.ApiRequester client) : 
+  ApisResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -46,7 +48,7 @@ class ApisResourceApi {
    *
    * Completes with a [RestDescription].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -57,7 +59,7 @@ class ApisResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (api == null) {
@@ -68,7 +70,7 @@ class ApisResourceApi {
     }
 
 
-    _url = 'apis/' + common_internal.Escaper.ecapeVariable('$api') + '/' + common_internal.Escaper.ecapeVariable('$version') + '/rest';
+    _url = 'apis/' + commons.Escaper.ecapeVariable('$api') + '/' + commons.Escaper.ecapeVariable('$version') + '/rest';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -91,7 +93,7 @@ class ApisResourceApi {
    *
    * Completes with a [DirectoryList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -102,7 +104,7 @@ class ApisResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (name != null) {
@@ -162,7 +164,6 @@ class DirectoryListItemsIcons {
 }
 
 
-/** Not documented yet. */
 class DirectoryListItems {
   /** The description of this API. */
   core.String description;
@@ -285,7 +286,6 @@ class DirectoryListItems {
 }
 
 
-/** Not documented yet. */
 class DirectoryList {
   /** Indicate the version of the Discovery API used to generate this doc. */
   core.String discoveryVersion;
@@ -351,12 +351,9 @@ class JsonSchemaAnnotations {
 }
 
 
-/** Not documented yet. */
 class JsonSchemaVariantMap {
-  /** Not documented yet. */
   core.String P_ref;
 
-  /** Not documented yet. */
   core.String typeValue;
 
 
@@ -421,7 +418,6 @@ class JsonSchemaVariant {
 }
 
 
-/** Not documented yet. */
 class JsonSchema {
   /**
    * A reference to another schema. The value of this property is the "id" of
@@ -566,7 +562,7 @@ class JsonSchema {
       pattern = _json["pattern"];
     }
     if (_json.containsKey("properties")) {
-      properties = common_internal.mapMap(_json["properties"], (item) => new JsonSchema.fromJson(item));
+      properties = commons.mapMap(_json["properties"], (item) => new JsonSchema.fromJson(item));
     }
     if (_json.containsKey("readOnly")) {
       readOnly = _json["readOnly"];
@@ -630,7 +626,7 @@ class JsonSchema {
       _json["pattern"] = pattern;
     }
     if (properties != null) {
-      _json["properties"] = common_internal.mapMap(properties, (item) => (item).toJson());
+      _json["properties"] = commons.mapMap(properties, (item) => (item).toJson());
     }
     if (readOnly != null) {
       _json["readOnly"] = readOnly;
@@ -686,14 +682,14 @@ class RestDescriptionAuthOauth2 {
 
   RestDescriptionAuthOauth2.fromJson(core.Map _json) {
     if (_json.containsKey("scopes")) {
-      scopes = common_internal.mapMap(_json["scopes"], (item) => new RestDescriptionAuthOauth2ScopesValue.fromJson(item));
+      scopes = commons.mapMap(_json["scopes"], (item) => new RestDescriptionAuthOauth2ScopesValue.fromJson(item));
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (scopes != null) {
-      _json["scopes"] = common_internal.mapMap(scopes, (item) => (item).toJson());
+      _json["scopes"] = commons.mapMap(scopes, (item) => (item).toJson());
     }
     return _json;
   }
@@ -757,7 +753,6 @@ class RestDescriptionIcons {
 }
 
 
-/** Not documented yet. */
 class RestDescription {
   /** Authentication information. */
   RestDescriptionAuth auth;
@@ -897,7 +892,7 @@ class RestDescription {
       labels = _json["labels"];
     }
     if (_json.containsKey("methods")) {
-      methods = common_internal.mapMap(_json["methods"], (item) => new RestMethod.fromJson(item));
+      methods = commons.mapMap(_json["methods"], (item) => new RestMethod.fromJson(item));
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -912,13 +907,13 @@ class RestDescription {
       packagePath = _json["packagePath"];
     }
     if (_json.containsKey("parameters")) {
-      parameters = common_internal.mapMap(_json["parameters"], (item) => new JsonSchema.fromJson(item));
+      parameters = commons.mapMap(_json["parameters"], (item) => new JsonSchema.fromJson(item));
     }
     if (_json.containsKey("protocol")) {
       protocol = _json["protocol"];
     }
     if (_json.containsKey("resources")) {
-      resources = common_internal.mapMap(_json["resources"], (item) => new RestResource.fromJson(item));
+      resources = commons.mapMap(_json["resources"], (item) => new RestResource.fromJson(item));
     }
     if (_json.containsKey("revision")) {
       revision = _json["revision"];
@@ -927,7 +922,7 @@ class RestDescription {
       rootUrl = _json["rootUrl"];
     }
     if (_json.containsKey("schemas")) {
-      schemas = common_internal.mapMap(_json["schemas"], (item) => new JsonSchema.fromJson(item));
+      schemas = commons.mapMap(_json["schemas"], (item) => new JsonSchema.fromJson(item));
     }
     if (_json.containsKey("servicePath")) {
       servicePath = _json["servicePath"];
@@ -985,7 +980,7 @@ class RestDescription {
       _json["labels"] = labels;
     }
     if (methods != null) {
-      _json["methods"] = common_internal.mapMap(methods, (item) => (item).toJson());
+      _json["methods"] = commons.mapMap(methods, (item) => (item).toJson());
     }
     if (name != null) {
       _json["name"] = name;
@@ -1000,13 +995,13 @@ class RestDescription {
       _json["packagePath"] = packagePath;
     }
     if (parameters != null) {
-      _json["parameters"] = common_internal.mapMap(parameters, (item) => (item).toJson());
+      _json["parameters"] = commons.mapMap(parameters, (item) => (item).toJson());
     }
     if (protocol != null) {
       _json["protocol"] = protocol;
     }
     if (resources != null) {
-      _json["resources"] = common_internal.mapMap(resources, (item) => (item).toJson());
+      _json["resources"] = commons.mapMap(resources, (item) => (item).toJson());
     }
     if (revision != null) {
       _json["revision"] = revision;
@@ -1015,7 +1010,7 @@ class RestDescription {
       _json["rootUrl"] = rootUrl;
     }
     if (schemas != null) {
-      _json["schemas"] = common_internal.mapMap(schemas, (item) => (item).toJson());
+      _json["schemas"] = commons.mapMap(schemas, (item) => (item).toJson());
     }
     if (servicePath != null) {
       _json["servicePath"] = servicePath;
@@ -1235,7 +1230,6 @@ class RestMethodResponse {
 }
 
 
-/** Not documented yet. */
 class RestMethod {
   /** Description of this method. */
   core.String description;
@@ -1292,6 +1286,12 @@ class RestMethod {
   /** Whether this method supports subscriptions. */
   core.bool supportsSubscription;
 
+  /**
+   * Indicates that downloads from this method should use the download service
+   * URL (i.e. "/download"). Only applies if the method supports media download.
+   */
+  core.bool useMediaDownloadService;
+
 
   RestMethod();
 
@@ -1315,7 +1315,7 @@ class RestMethod {
       parameterOrder = _json["parameterOrder"];
     }
     if (_json.containsKey("parameters")) {
-      parameters = common_internal.mapMap(_json["parameters"], (item) => new JsonSchema.fromJson(item));
+      parameters = commons.mapMap(_json["parameters"], (item) => new JsonSchema.fromJson(item));
     }
     if (_json.containsKey("path")) {
       path = _json["path"];
@@ -1337,6 +1337,9 @@ class RestMethod {
     }
     if (_json.containsKey("supportsSubscription")) {
       supportsSubscription = _json["supportsSubscription"];
+    }
+    if (_json.containsKey("useMediaDownloadService")) {
+      useMediaDownloadService = _json["useMediaDownloadService"];
     }
   }
 
@@ -1361,7 +1364,7 @@ class RestMethod {
       _json["parameterOrder"] = parameterOrder;
     }
     if (parameters != null) {
-      _json["parameters"] = common_internal.mapMap(parameters, (item) => (item).toJson());
+      _json["parameters"] = commons.mapMap(parameters, (item) => (item).toJson());
     }
     if (path != null) {
       _json["path"] = path;
@@ -1384,12 +1387,14 @@ class RestMethod {
     if (supportsSubscription != null) {
       _json["supportsSubscription"] = supportsSubscription;
     }
+    if (useMediaDownloadService != null) {
+      _json["useMediaDownloadService"] = useMediaDownloadService;
+    }
     return _json;
   }
 }
 
 
-/** Not documented yet. */
 class RestResource {
   /** Methods on this resource. */
   core.Map<core.String, RestMethod> methods;
@@ -1402,23 +1407,21 @@ class RestResource {
 
   RestResource.fromJson(core.Map _json) {
     if (_json.containsKey("methods")) {
-      methods = common_internal.mapMap(_json["methods"], (item) => new RestMethod.fromJson(item));
+      methods = commons.mapMap(_json["methods"], (item) => new RestMethod.fromJson(item));
     }
     if (_json.containsKey("resources")) {
-      resources = common_internal.mapMap(_json["resources"], (item) => new RestResource.fromJson(item));
+      resources = commons.mapMap(_json["resources"], (item) => new RestResource.fromJson(item));
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (methods != null) {
-      _json["methods"] = common_internal.mapMap(methods, (item) => (item).toJson());
+      _json["methods"] = commons.mapMap(methods, (item) => (item).toJson());
     }
     if (resources != null) {
-      _json["resources"] = common_internal.mapMap(resources, (item) => (item).toJson());
+      _json["resources"] = commons.mapMap(resources, (item) => (item).toJson());
     }
     return _json;
   }
 }
-
-

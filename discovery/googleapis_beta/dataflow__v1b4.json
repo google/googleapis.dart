@@ -5,7 +5,7 @@
     "description": "Google Dataflow API.",
     "discoveryVersion": "v1",
     "documentationLink": "",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/lhQSJsYq1ZwPMYE4vAqCyW2R5E0\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/P_vr2FB2gO6U8edv6zuM317lno4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -61,7 +61,7 @@
         }
     },
     "protocol": "rest",
-    "revision": "20150130",
+    "revision": "20150401",
     "rootUrl": "https://dataflow.googleapis.com/",
     "servicePath": "",
     "title": "Google Dataflow API",

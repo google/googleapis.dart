@@ -23,7 +23,7 @@
     "description": "Lets you access OAuth2 protocol related APIs.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/accounts/docs/OAuth2",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/x7FThRC1OZmHwbkYbDOWKsWuUA8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/I-Kz7nVLqL3C3aFzaPv8bMiNptU\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -48,6 +48,10 @@
                     "type": "string"
                 },
                 "id_token": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "token_handle": {
                     "location": "query",
                     "type": "string"
                 }
@@ -151,7 +155,7 @@
             }
         }
     },
-    "revision": "20150120",
+    "revision": "20150319",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Jwk": {
@@ -217,8 +221,12 @@
                     "description": "The space separated list of scopes granted to this token.",
                     "type": "string"
                 },
+                "token_handle": {
+                    "description": "The token handle associated with this token.",
+                    "type": "string"
+                },
                 "user_id": {
-                    "description": "The Gaia obfuscated user id.",
+                    "description": "The obfuscated user id.",
                     "type": "string"
                 },
                 "verified_email": {
@@ -252,7 +260,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "The focus obfuscated gaia id of the user.",
+                    "description": "The obfuscated ID of the user.",
                     "type": "string"
                 },
                 "link": {

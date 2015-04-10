@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/tagmanager/v1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterAccount = 0;
 buildAccount() {
@@ -41,14 +76,14 @@ checkAccount(api.Account o) {
   buildCounterAccount--;
 }
 
-buildUnnamed1087() {
+buildUnnamed1345() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1087(core.List<core.String> o) {
+checkUnnamed1345(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -59,7 +94,7 @@ buildAccountAccess() {
   var o = new api.AccountAccess();
   buildCounterAccountAccess++;
   if (buildCounterAccountAccess < 3) {
-    o.permission = buildUnnamed1087();
+    o.permission = buildUnnamed1345();
   }
   buildCounterAccountAccess--;
   return o;
@@ -68,19 +103,19 @@ buildAccountAccess() {
 checkAccountAccess(api.AccountAccess o) {
   buildCounterAccountAccess++;
   if (buildCounterAccountAccess < 3) {
-    checkUnnamed1087(o.permission);
+    checkUnnamed1345(o.permission);
   }
   buildCounterAccountAccess--;
 }
 
-buildUnnamed1088() {
+buildUnnamed1346() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed1088(core.List<api.Parameter> o) {
+checkUnnamed1346(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -91,7 +126,7 @@ buildCondition() {
   var o = new api.Condition();
   buildCounterCondition++;
   if (buildCounterCondition < 3) {
-    o.parameter = buildUnnamed1088();
+    o.parameter = buildUnnamed1346();
     o.type = "foo";
   }
   buildCounterCondition--;
@@ -101,46 +136,46 @@ buildCondition() {
 checkCondition(api.Condition o) {
   buildCounterCondition++;
   if (buildCounterCondition < 3) {
-    checkUnnamed1088(o.parameter);
+    checkUnnamed1346(o.parameter);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterCondition--;
 }
 
-buildUnnamed1089() {
+buildUnnamed1347() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1089(core.List<core.String> o) {
+checkUnnamed1347(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1090() {
+buildUnnamed1348() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1090(core.List<core.String> o) {
+checkUnnamed1348(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1091() {
+buildUnnamed1349() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1091(core.List<core.String> o) {
+checkUnnamed1349(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -153,15 +188,15 @@ buildContainer() {
   if (buildCounterContainer < 3) {
     o.accountId = "foo";
     o.containerId = "foo";
-    o.domainName = buildUnnamed1089();
-    o.enabledBuiltInVariable = buildUnnamed1090();
+    o.domainName = buildUnnamed1347();
+    o.enabledBuiltInVariable = buildUnnamed1348();
     o.fingerprint = "foo";
     o.name = "foo";
     o.notes = "foo";
     o.publicId = "foo";
     o.timeZoneCountryId = "foo";
     o.timeZoneId = "foo";
-    o.usageContext = buildUnnamed1091();
+    o.usageContext = buildUnnamed1349();
   }
   buildCounterContainer--;
   return o;
@@ -172,27 +207,27 @@ checkContainer(api.Container o) {
   if (buildCounterContainer < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     unittest.expect(o.containerId, unittest.equals('foo'));
-    checkUnnamed1089(o.domainName);
-    checkUnnamed1090(o.enabledBuiltInVariable);
+    checkUnnamed1347(o.domainName);
+    checkUnnamed1348(o.enabledBuiltInVariable);
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
     unittest.expect(o.publicId, unittest.equals('foo'));
     unittest.expect(o.timeZoneCountryId, unittest.equals('foo'));
     unittest.expect(o.timeZoneId, unittest.equals('foo'));
-    checkUnnamed1091(o.usageContext);
+    checkUnnamed1349(o.usageContext);
   }
   buildCounterContainer--;
 }
 
-buildUnnamed1092() {
+buildUnnamed1350() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1092(core.List<core.String> o) {
+checkUnnamed1350(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -204,7 +239,7 @@ buildContainerAccess() {
   buildCounterContainerAccess++;
   if (buildCounterContainerAccess < 3) {
     o.containerId = "foo";
-    o.permission = buildUnnamed1092();
+    o.permission = buildUnnamed1350();
   }
   buildCounterContainerAccess--;
   return o;
@@ -214,71 +249,71 @@ checkContainerAccess(api.ContainerAccess o) {
   buildCounterContainerAccess++;
   if (buildCounterContainerAccess < 3) {
     unittest.expect(o.containerId, unittest.equals('foo'));
-    checkUnnamed1092(o.permission);
+    checkUnnamed1350(o.permission);
   }
   buildCounterContainerAccess--;
 }
 
-buildUnnamed1093() {
+buildUnnamed1351() {
   var o = new core.List<api.Macro>();
   o.add(buildMacro());
   o.add(buildMacro());
   return o;
 }
 
-checkUnnamed1093(core.List<api.Macro> o) {
+checkUnnamed1351(core.List<api.Macro> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMacro(o[0]);
   checkMacro(o[1]);
 }
 
-buildUnnamed1094() {
+buildUnnamed1352() {
   var o = new core.List<api.Rule>();
   o.add(buildRule());
   o.add(buildRule());
   return o;
 }
 
-checkUnnamed1094(core.List<api.Rule> o) {
+checkUnnamed1352(core.List<api.Rule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRule(o[0]);
   checkRule(o[1]);
 }
 
-buildUnnamed1095() {
+buildUnnamed1353() {
   var o = new core.List<api.Tag>();
   o.add(buildTag());
   o.add(buildTag());
   return o;
 }
 
-checkUnnamed1095(core.List<api.Tag> o) {
+checkUnnamed1353(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
 }
 
-buildUnnamed1096() {
+buildUnnamed1354() {
   var o = new core.List<api.Trigger>();
   o.add(buildTrigger());
   o.add(buildTrigger());
   return o;
 }
 
-checkUnnamed1096(core.List<api.Trigger> o) {
+checkUnnamed1354(core.List<api.Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrigger(o[0]);
   checkTrigger(o[1]);
 }
 
-buildUnnamed1097() {
+buildUnnamed1355() {
   var o = new core.List<api.Variable>();
   o.add(buildVariable());
   o.add(buildVariable());
   return o;
 }
 
-checkUnnamed1097(core.List<api.Variable> o) {
+checkUnnamed1355(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
@@ -295,13 +330,13 @@ buildContainerVersion() {
     o.containerVersionId = "foo";
     o.deleted = true;
     o.fingerprint = "foo";
-    o.macro = buildUnnamed1093();
+    o.macro = buildUnnamed1351();
     o.name = "foo";
     o.notes = "foo";
-    o.rule = buildUnnamed1094();
-    o.tag = buildUnnamed1095();
-    o.trigger = buildUnnamed1096();
-    o.variable = buildUnnamed1097();
+    o.rule = buildUnnamed1352();
+    o.tag = buildUnnamed1353();
+    o.trigger = buildUnnamed1354();
+    o.variable = buildUnnamed1355();
   }
   buildCounterContainerVersion--;
   return o;
@@ -316,13 +351,13 @@ checkContainerVersion(api.ContainerVersion o) {
     unittest.expect(o.containerVersionId, unittest.equals('foo'));
     unittest.expect(o.deleted, unittest.isTrue);
     unittest.expect(o.fingerprint, unittest.equals('foo'));
-    checkUnnamed1093(o.macro);
+    checkUnnamed1351(o.macro);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
-    checkUnnamed1094(o.rule);
-    checkUnnamed1095(o.tag);
-    checkUnnamed1096(o.trigger);
-    checkUnnamed1097(o.variable);
+    checkUnnamed1352(o.rule);
+    checkUnnamed1353(o.tag);
+    checkUnnamed1354(o.trigger);
+    checkUnnamed1355(o.variable);
   }
   buildCounterContainerVersion--;
 }
@@ -408,14 +443,14 @@ checkCreateContainerVersionResponse(api.CreateContainerVersionResponse o) {
   buildCounterCreateContainerVersionResponse--;
 }
 
-buildUnnamed1098() {
+buildUnnamed1356() {
   var o = new core.List<api.UserAccess>();
   o.add(buildUserAccess());
   o.add(buildUserAccess());
   return o;
 }
 
-checkUnnamed1098(core.List<api.UserAccess> o) {
+checkUnnamed1356(core.List<api.UserAccess> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserAccess(o[0]);
   checkUserAccess(o[1]);
@@ -426,7 +461,7 @@ buildListAccountUsersResponse() {
   var o = new api.ListAccountUsersResponse();
   buildCounterListAccountUsersResponse++;
   if (buildCounterListAccountUsersResponse < 3) {
-    o.userAccess = buildUnnamed1098();
+    o.userAccess = buildUnnamed1356();
   }
   buildCounterListAccountUsersResponse--;
   return o;
@@ -435,19 +470,19 @@ buildListAccountUsersResponse() {
 checkListAccountUsersResponse(api.ListAccountUsersResponse o) {
   buildCounterListAccountUsersResponse++;
   if (buildCounterListAccountUsersResponse < 3) {
-    checkUnnamed1098(o.userAccess);
+    checkUnnamed1356(o.userAccess);
   }
   buildCounterListAccountUsersResponse--;
 }
 
-buildUnnamed1099() {
+buildUnnamed1357() {
   var o = new core.List<api.Account>();
   o.add(buildAccount());
   o.add(buildAccount());
   return o;
 }
 
-checkUnnamed1099(core.List<api.Account> o) {
+checkUnnamed1357(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccount(o[0]);
   checkAccount(o[1]);
@@ -458,7 +493,7 @@ buildListAccountsResponse() {
   var o = new api.ListAccountsResponse();
   buildCounterListAccountsResponse++;
   if (buildCounterListAccountsResponse < 3) {
-    o.accounts = buildUnnamed1099();
+    o.accounts = buildUnnamed1357();
   }
   buildCounterListAccountsResponse--;
   return o;
@@ -467,32 +502,32 @@ buildListAccountsResponse() {
 checkListAccountsResponse(api.ListAccountsResponse o) {
   buildCounterListAccountsResponse++;
   if (buildCounterListAccountsResponse < 3) {
-    checkUnnamed1099(o.accounts);
+    checkUnnamed1357(o.accounts);
   }
   buildCounterListAccountsResponse--;
 }
 
-buildUnnamed1100() {
+buildUnnamed1358() {
   var o = new core.List<api.ContainerVersion>();
   o.add(buildContainerVersion());
   o.add(buildContainerVersion());
   return o;
 }
 
-checkUnnamed1100(core.List<api.ContainerVersion> o) {
+checkUnnamed1358(core.List<api.ContainerVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainerVersion(o[0]);
   checkContainerVersion(o[1]);
 }
 
-buildUnnamed1101() {
+buildUnnamed1359() {
   var o = new core.List<api.ContainerVersionHeader>();
   o.add(buildContainerVersionHeader());
   o.add(buildContainerVersionHeader());
   return o;
 }
 
-checkUnnamed1101(core.List<api.ContainerVersionHeader> o) {
+checkUnnamed1359(core.List<api.ContainerVersionHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainerVersionHeader(o[0]);
   checkContainerVersionHeader(o[1]);
@@ -503,8 +538,8 @@ buildListContainerVersionsResponse() {
   var o = new api.ListContainerVersionsResponse();
   buildCounterListContainerVersionsResponse++;
   if (buildCounterListContainerVersionsResponse < 3) {
-    o.containerVersion = buildUnnamed1100();
-    o.containerVersionHeader = buildUnnamed1101();
+    o.containerVersion = buildUnnamed1358();
+    o.containerVersionHeader = buildUnnamed1359();
   }
   buildCounterListContainerVersionsResponse--;
   return o;
@@ -513,20 +548,20 @@ buildListContainerVersionsResponse() {
 checkListContainerVersionsResponse(api.ListContainerVersionsResponse o) {
   buildCounterListContainerVersionsResponse++;
   if (buildCounterListContainerVersionsResponse < 3) {
-    checkUnnamed1100(o.containerVersion);
-    checkUnnamed1101(o.containerVersionHeader);
+    checkUnnamed1358(o.containerVersion);
+    checkUnnamed1359(o.containerVersionHeader);
   }
   buildCounterListContainerVersionsResponse--;
 }
 
-buildUnnamed1102() {
+buildUnnamed1360() {
   var o = new core.List<api.Container>();
   o.add(buildContainer());
   o.add(buildContainer());
   return o;
 }
 
-checkUnnamed1102(core.List<api.Container> o) {
+checkUnnamed1360(core.List<api.Container> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainer(o[0]);
   checkContainer(o[1]);
@@ -537,7 +572,7 @@ buildListContainersResponse() {
   var o = new api.ListContainersResponse();
   buildCounterListContainersResponse++;
   if (buildCounterListContainersResponse < 3) {
-    o.containers = buildUnnamed1102();
+    o.containers = buildUnnamed1360();
   }
   buildCounterListContainersResponse--;
   return o;
@@ -546,19 +581,19 @@ buildListContainersResponse() {
 checkListContainersResponse(api.ListContainersResponse o) {
   buildCounterListContainersResponse++;
   if (buildCounterListContainersResponse < 3) {
-    checkUnnamed1102(o.containers);
+    checkUnnamed1360(o.containers);
   }
   buildCounterListContainersResponse--;
 }
 
-buildUnnamed1103() {
+buildUnnamed1361() {
   var o = new core.List<api.Macro>();
   o.add(buildMacro());
   o.add(buildMacro());
   return o;
 }
 
-checkUnnamed1103(core.List<api.Macro> o) {
+checkUnnamed1361(core.List<api.Macro> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMacro(o[0]);
   checkMacro(o[1]);
@@ -569,7 +604,7 @@ buildListMacrosResponse() {
   var o = new api.ListMacrosResponse();
   buildCounterListMacrosResponse++;
   if (buildCounterListMacrosResponse < 3) {
-    o.macros = buildUnnamed1103();
+    o.macros = buildUnnamed1361();
   }
   buildCounterListMacrosResponse--;
   return o;
@@ -578,19 +613,19 @@ buildListMacrosResponse() {
 checkListMacrosResponse(api.ListMacrosResponse o) {
   buildCounterListMacrosResponse++;
   if (buildCounterListMacrosResponse < 3) {
-    checkUnnamed1103(o.macros);
+    checkUnnamed1361(o.macros);
   }
   buildCounterListMacrosResponse--;
 }
 
-buildUnnamed1104() {
+buildUnnamed1362() {
   var o = new core.List<api.Rule>();
   o.add(buildRule());
   o.add(buildRule());
   return o;
 }
 
-checkUnnamed1104(core.List<api.Rule> o) {
+checkUnnamed1362(core.List<api.Rule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRule(o[0]);
   checkRule(o[1]);
@@ -601,7 +636,7 @@ buildListRulesResponse() {
   var o = new api.ListRulesResponse();
   buildCounterListRulesResponse++;
   if (buildCounterListRulesResponse < 3) {
-    o.rules = buildUnnamed1104();
+    o.rules = buildUnnamed1362();
   }
   buildCounterListRulesResponse--;
   return o;
@@ -610,19 +645,19 @@ buildListRulesResponse() {
 checkListRulesResponse(api.ListRulesResponse o) {
   buildCounterListRulesResponse++;
   if (buildCounterListRulesResponse < 3) {
-    checkUnnamed1104(o.rules);
+    checkUnnamed1362(o.rules);
   }
   buildCounterListRulesResponse--;
 }
 
-buildUnnamed1105() {
+buildUnnamed1363() {
   var o = new core.List<api.Tag>();
   o.add(buildTag());
   o.add(buildTag());
   return o;
 }
 
-checkUnnamed1105(core.List<api.Tag> o) {
+checkUnnamed1363(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
@@ -633,7 +668,7 @@ buildListTagsResponse() {
   var o = new api.ListTagsResponse();
   buildCounterListTagsResponse++;
   if (buildCounterListTagsResponse < 3) {
-    o.tags = buildUnnamed1105();
+    o.tags = buildUnnamed1363();
   }
   buildCounterListTagsResponse--;
   return o;
@@ -642,19 +677,19 @@ buildListTagsResponse() {
 checkListTagsResponse(api.ListTagsResponse o) {
   buildCounterListTagsResponse++;
   if (buildCounterListTagsResponse < 3) {
-    checkUnnamed1105(o.tags);
+    checkUnnamed1363(o.tags);
   }
   buildCounterListTagsResponse--;
 }
 
-buildUnnamed1106() {
+buildUnnamed1364() {
   var o = new core.List<api.Trigger>();
   o.add(buildTrigger());
   o.add(buildTrigger());
   return o;
 }
 
-checkUnnamed1106(core.List<api.Trigger> o) {
+checkUnnamed1364(core.List<api.Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrigger(o[0]);
   checkTrigger(o[1]);
@@ -665,7 +700,7 @@ buildListTriggersResponse() {
   var o = new api.ListTriggersResponse();
   buildCounterListTriggersResponse++;
   if (buildCounterListTriggersResponse < 3) {
-    o.triggers = buildUnnamed1106();
+    o.triggers = buildUnnamed1364();
   }
   buildCounterListTriggersResponse--;
   return o;
@@ -674,19 +709,19 @@ buildListTriggersResponse() {
 checkListTriggersResponse(api.ListTriggersResponse o) {
   buildCounterListTriggersResponse++;
   if (buildCounterListTriggersResponse < 3) {
-    checkUnnamed1106(o.triggers);
+    checkUnnamed1364(o.triggers);
   }
   buildCounterListTriggersResponse--;
 }
 
-buildUnnamed1107() {
+buildUnnamed1365() {
   var o = new core.List<api.Variable>();
   o.add(buildVariable());
   o.add(buildVariable());
   return o;
 }
 
-checkUnnamed1107(core.List<api.Variable> o) {
+checkUnnamed1365(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
@@ -697,7 +732,7 @@ buildListVariablesResponse() {
   var o = new api.ListVariablesResponse();
   buildCounterListVariablesResponse++;
   if (buildCounterListVariablesResponse < 3) {
-    o.variables = buildUnnamed1107();
+    o.variables = buildUnnamed1365();
   }
   buildCounterListVariablesResponse--;
   return o;
@@ -706,45 +741,45 @@ buildListVariablesResponse() {
 checkListVariablesResponse(api.ListVariablesResponse o) {
   buildCounterListVariablesResponse++;
   if (buildCounterListVariablesResponse < 3) {
-    checkUnnamed1107(o.variables);
+    checkUnnamed1365(o.variables);
   }
   buildCounterListVariablesResponse--;
 }
 
-buildUnnamed1108() {
+buildUnnamed1366() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1108(core.List<core.String> o) {
+checkUnnamed1366(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1109() {
+buildUnnamed1367() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1109(core.List<core.String> o) {
+checkUnnamed1367(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1110() {
+buildUnnamed1368() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed1110(core.List<api.Parameter> o) {
+checkUnnamed1368(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -757,13 +792,13 @@ buildMacro() {
   if (buildCounterMacro < 3) {
     o.accountId = "foo";
     o.containerId = "foo";
-    o.disablingRuleId = buildUnnamed1108();
-    o.enablingRuleId = buildUnnamed1109();
+    o.disablingRuleId = buildUnnamed1366();
+    o.enablingRuleId = buildUnnamed1367();
     o.fingerprint = "foo";
     o.macroId = "foo";
     o.name = "foo";
     o.notes = "foo";
-    o.parameter = buildUnnamed1110();
+    o.parameter = buildUnnamed1368();
     o.scheduleEndMs = "foo";
     o.scheduleStartMs = "foo";
     o.type = "foo";
@@ -777,13 +812,13 @@ checkMacro(api.Macro o) {
   if (buildCounterMacro < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     unittest.expect(o.containerId, unittest.equals('foo'));
-    checkUnnamed1108(o.disablingRuleId);
-    checkUnnamed1109(o.enablingRuleId);
+    checkUnnamed1366(o.disablingRuleId);
+    checkUnnamed1367(o.enablingRuleId);
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     unittest.expect(o.macroId, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
-    checkUnnamed1110(o.parameter);
+    checkUnnamed1368(o.parameter);
     unittest.expect(o.scheduleEndMs, unittest.equals('foo'));
     unittest.expect(o.scheduleStartMs, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
@@ -791,27 +826,27 @@ checkMacro(api.Macro o) {
   buildCounterMacro--;
 }
 
-buildUnnamed1111() {
+buildUnnamed1369() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed1111(core.List<api.Parameter> o) {
+checkUnnamed1369(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
 }
 
-buildUnnamed1112() {
+buildUnnamed1370() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed1112(core.List<api.Parameter> o) {
+checkUnnamed1370(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -823,8 +858,8 @@ buildParameter() {
   buildCounterParameter++;
   if (buildCounterParameter < 3) {
     o.key = "foo";
-    o.list = buildUnnamed1111();
-    o.map = buildUnnamed1112();
+    o.list = buildUnnamed1369();
+    o.map = buildUnnamed1370();
     o.type = "foo";
     o.value = "foo";
   }
@@ -836,8 +871,8 @@ checkParameter(api.Parameter o) {
   buildCounterParameter++;
   if (buildCounterParameter < 3) {
     unittest.expect(o.key, unittest.equals('foo'));
-    checkUnnamed1111(o.list);
-    checkUnnamed1112(o.map);
+    checkUnnamed1369(o.list);
+    checkUnnamed1370(o.map);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
   }
@@ -865,14 +900,14 @@ checkPublishContainerVersionResponse(api.PublishContainerVersionResponse o) {
   buildCounterPublishContainerVersionResponse--;
 }
 
-buildUnnamed1113() {
+buildUnnamed1371() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed1113(core.List<api.Condition> o) {
+checkUnnamed1371(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
@@ -884,7 +919,7 @@ buildRule() {
   buildCounterRule++;
   if (buildCounterRule < 3) {
     o.accountId = "foo";
-    o.condition = buildUnnamed1113();
+    o.condition = buildUnnamed1371();
     o.containerId = "foo";
     o.fingerprint = "foo";
     o.name = "foo";
@@ -899,7 +934,7 @@ checkRule(api.Rule o) {
   buildCounterRule++;
   if (buildCounterRule < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkUnnamed1113(o.condition);
+    checkUnnamed1371(o.condition);
     unittest.expect(o.containerId, unittest.equals('foo'));
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -909,66 +944,66 @@ checkRule(api.Rule o) {
   buildCounterRule--;
 }
 
-buildUnnamed1114() {
+buildUnnamed1372() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1114(core.List<core.String> o) {
+checkUnnamed1372(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1115() {
+buildUnnamed1373() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1115(core.List<core.String> o) {
+checkUnnamed1373(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1116() {
+buildUnnamed1374() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1116(core.List<core.String> o) {
+checkUnnamed1374(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1117() {
+buildUnnamed1375() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1117(core.List<core.String> o) {
+checkUnnamed1375(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1118() {
+buildUnnamed1376() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed1118(core.List<api.Parameter> o) {
+checkUnnamed1376(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -980,16 +1015,16 @@ buildTag() {
   buildCounterTag++;
   if (buildCounterTag < 3) {
     o.accountId = "foo";
-    o.blockingRuleId = buildUnnamed1114();
-    o.blockingTriggerId = buildUnnamed1115();
+    o.blockingRuleId = buildUnnamed1372();
+    o.blockingTriggerId = buildUnnamed1373();
     o.containerId = "foo";
     o.fingerprint = "foo";
-    o.firingRuleId = buildUnnamed1116();
-    o.firingTriggerId = buildUnnamed1117();
+    o.firingRuleId = buildUnnamed1374();
+    o.firingTriggerId = buildUnnamed1375();
     o.liveOnly = true;
     o.name = "foo";
     o.notes = "foo";
-    o.parameter = buildUnnamed1118();
+    o.parameter = buildUnnamed1376();
     o.priority = buildParameter();
     o.scheduleEndMs = "foo";
     o.scheduleStartMs = "foo";
@@ -1004,16 +1039,16 @@ checkTag(api.Tag o) {
   buildCounterTag++;
   if (buildCounterTag < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkUnnamed1114(o.blockingRuleId);
-    checkUnnamed1115(o.blockingTriggerId);
+    checkUnnamed1372(o.blockingRuleId);
+    checkUnnamed1373(o.blockingTriggerId);
     unittest.expect(o.containerId, unittest.equals('foo'));
     unittest.expect(o.fingerprint, unittest.equals('foo'));
-    checkUnnamed1116(o.firingRuleId);
-    checkUnnamed1117(o.firingTriggerId);
+    checkUnnamed1374(o.firingRuleId);
+    checkUnnamed1375(o.firingTriggerId);
     unittest.expect(o.liveOnly, unittest.isTrue);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
-    checkUnnamed1118(o.parameter);
+    checkUnnamed1376(o.parameter);
     checkParameter(o.priority);
     unittest.expect(o.scheduleEndMs, unittest.equals('foo'));
     unittest.expect(o.scheduleStartMs, unittest.equals('foo'));
@@ -1023,40 +1058,40 @@ checkTag(api.Tag o) {
   buildCounterTag--;
 }
 
-buildUnnamed1119() {
+buildUnnamed1377() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed1119(core.List<api.Condition> o) {
+checkUnnamed1377(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-buildUnnamed1120() {
+buildUnnamed1378() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed1120(core.List<api.Condition> o) {
+checkUnnamed1378(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-buildUnnamed1121() {
+buildUnnamed1379() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed1121(core.List<api.Condition> o) {
+checkUnnamed1379(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
@@ -1068,13 +1103,13 @@ buildTrigger() {
   buildCounterTrigger++;
   if (buildCounterTrigger < 3) {
     o.accountId = "foo";
-    o.autoEventFilter = buildUnnamed1119();
+    o.autoEventFilter = buildUnnamed1377();
     o.checkValidation = buildParameter();
     o.containerId = "foo";
-    o.customEventFilter = buildUnnamed1120();
+    o.customEventFilter = buildUnnamed1378();
     o.enableAllVideos = buildParameter();
     o.eventName = buildParameter();
-    o.filter = buildUnnamed1121();
+    o.filter = buildUnnamed1379();
     o.fingerprint = "foo";
     o.interval = buildParameter();
     o.limit = buildParameter();
@@ -1094,13 +1129,13 @@ checkTrigger(api.Trigger o) {
   buildCounterTrigger++;
   if (buildCounterTrigger < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkUnnamed1119(o.autoEventFilter);
+    checkUnnamed1377(o.autoEventFilter);
     checkParameter(o.checkValidation);
     unittest.expect(o.containerId, unittest.equals('foo'));
-    checkUnnamed1120(o.customEventFilter);
+    checkUnnamed1378(o.customEventFilter);
     checkParameter(o.enableAllVideos);
     checkParameter(o.eventName);
-    checkUnnamed1121(o.filter);
+    checkUnnamed1379(o.filter);
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     checkParameter(o.interval);
     checkParameter(o.limit);
@@ -1115,14 +1150,14 @@ checkTrigger(api.Trigger o) {
   buildCounterTrigger--;
 }
 
-buildUnnamed1122() {
+buildUnnamed1380() {
   var o = new core.List<api.ContainerAccess>();
   o.add(buildContainerAccess());
   o.add(buildContainerAccess());
   return o;
 }
 
-checkUnnamed1122(core.List<api.ContainerAccess> o) {
+checkUnnamed1380(core.List<api.ContainerAccess> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainerAccess(o[0]);
   checkContainerAccess(o[1]);
@@ -1135,7 +1170,7 @@ buildUserAccess() {
   if (buildCounterUserAccess < 3) {
     o.accountAccess = buildAccountAccess();
     o.accountId = "foo";
-    o.containerAccess = buildUnnamed1122();
+    o.containerAccess = buildUnnamed1380();
     o.emailAddress = "foo";
     o.permissionId = "foo";
   }
@@ -1148,47 +1183,47 @@ checkUserAccess(api.UserAccess o) {
   if (buildCounterUserAccess < 3) {
     checkAccountAccess(o.accountAccess);
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkUnnamed1122(o.containerAccess);
+    checkUnnamed1380(o.containerAccess);
     unittest.expect(o.emailAddress, unittest.equals('foo'));
     unittest.expect(o.permissionId, unittest.equals('foo'));
   }
   buildCounterUserAccess--;
 }
 
-buildUnnamed1123() {
+buildUnnamed1381() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1123(core.List<core.String> o) {
+checkUnnamed1381(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1124() {
+buildUnnamed1382() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1124(core.List<core.String> o) {
+checkUnnamed1382(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1125() {
+buildUnnamed1383() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed1125(core.List<api.Parameter> o) {
+checkUnnamed1383(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -1201,12 +1236,12 @@ buildVariable() {
   if (buildCounterVariable < 3) {
     o.accountId = "foo";
     o.containerId = "foo";
-    o.disablingTriggerId = buildUnnamed1123();
-    o.enablingTriggerId = buildUnnamed1124();
+    o.disablingTriggerId = buildUnnamed1381();
+    o.enablingTriggerId = buildUnnamed1382();
     o.fingerprint = "foo";
     o.name = "foo";
     o.notes = "foo";
-    o.parameter = buildUnnamed1125();
+    o.parameter = buildUnnamed1383();
     o.scheduleEndMs = "foo";
     o.scheduleStartMs = "foo";
     o.type = "foo";
@@ -1221,12 +1256,12 @@ checkVariable(api.Variable o) {
   if (buildCounterVariable < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     unittest.expect(o.containerId, unittest.equals('foo'));
-    checkUnnamed1123(o.disablingTriggerId);
-    checkUnnamed1124(o.enablingTriggerId);
+    checkUnnamed1381(o.disablingTriggerId);
+    checkUnnamed1382(o.enablingTriggerId);
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
-    checkUnnamed1125(o.parameter);
+    checkUnnamed1383(o.parameter);
     unittest.expect(o.scheduleEndMs, unittest.equals('foo'));
     unittest.expect(o.scheduleStartMs, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
@@ -1474,7 +1509,7 @@ main() {
   unittest.group("resource-AccountsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsResourceApi res = new api.TagmanagerApi(mock).accounts;
       var arg_accountId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1514,7 +1549,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAccount());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_accountId).then(unittest.expectAsync(((api.Account response) {
         checkAccount(response);
@@ -1523,7 +1558,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsResourceApi res = new api.TagmanagerApi(mock).accounts;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1559,7 +1594,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListAccountsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list().then(unittest.expectAsync(((api.ListAccountsResponse response) {
         checkListAccountsResponse(response);
@@ -1568,7 +1603,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsResourceApi res = new api.TagmanagerApi(mock).accounts;
       var arg_request = buildAccount();
       var arg_accountId = "foo";
@@ -1614,7 +1649,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAccount());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_accountId, fingerprint: arg_fingerprint).then(unittest.expectAsync(((api.Account response) {
         checkAccount(response);
@@ -1627,7 +1662,7 @@ main() {
   unittest.group("resource-AccountsContainersResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersResourceApi res = new api.TagmanagerApi(mock).accounts.containers;
       var arg_request = buildContainer();
       var arg_accountId = "foo";
@@ -1675,7 +1710,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildContainer());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, arg_accountId).then(unittest.expectAsync(((api.Container response) {
         checkContainer(response);
@@ -1684,7 +1719,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersResourceApi res = new api.TagmanagerApi(mock).accounts.containers;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -1732,14 +1767,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_accountId, arg_containerId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersResourceApi res = new api.TagmanagerApi(mock).accounts.containers;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -1787,7 +1822,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildContainer());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_accountId, arg_containerId).then(unittest.expectAsync(((api.Container response) {
         checkContainer(response);
@@ -1796,7 +1831,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersResourceApi res = new api.TagmanagerApi(mock).accounts.containers;
       var arg_accountId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1840,7 +1875,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListContainersResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId).then(unittest.expectAsync(((api.ListContainersResponse response) {
         checkListContainersResponse(response);
@@ -1849,7 +1884,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersResourceApi res = new api.TagmanagerApi(mock).accounts.containers;
       var arg_request = buildContainer();
       var arg_accountId = "foo";
@@ -1903,7 +1938,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildContainer());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_accountId, arg_containerId, fingerprint: arg_fingerprint).then(unittest.expectAsync(((api.Container response) {
         checkContainer(response);
@@ -1916,7 +1951,7 @@ main() {
   unittest.group("resource-AccountsContainersMacrosResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersMacrosResourceApi res = new api.TagmanagerApi(mock).accounts.containers.macros;
       var arg_request = buildMacro();
       var arg_accountId = "foo";
@@ -1972,7 +2007,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMacro());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, arg_accountId, arg_containerId).then(unittest.expectAsync(((api.Macro response) {
         checkMacro(response);
@@ -1981,7 +2016,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersMacrosResourceApi res = new api.TagmanagerApi(mock).accounts.containers.macros;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -2037,14 +2072,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_accountId, arg_containerId, arg_macroId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersMacrosResourceApi res = new api.TagmanagerApi(mock).accounts.containers.macros;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -2100,7 +2135,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMacro());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_accountId, arg_containerId, arg_macroId).then(unittest.expectAsync(((api.Macro response) {
         checkMacro(response);
@@ -2109,7 +2144,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersMacrosResourceApi res = new api.TagmanagerApi(mock).accounts.containers.macros;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -2161,7 +2196,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListMacrosResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, arg_containerId).then(unittest.expectAsync(((api.ListMacrosResponse response) {
         checkListMacrosResponse(response);
@@ -2170,7 +2205,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersMacrosResourceApi res = new api.TagmanagerApi(mock).accounts.containers.macros;
       var arg_request = buildMacro();
       var arg_accountId = "foo";
@@ -2232,7 +2267,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMacro());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_accountId, arg_containerId, arg_macroId, fingerprint: arg_fingerprint).then(unittest.expectAsync(((api.Macro response) {
         checkMacro(response);
@@ -2245,7 +2280,7 @@ main() {
   unittest.group("resource-AccountsContainersRulesResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersRulesResourceApi res = new api.TagmanagerApi(mock).accounts.containers.rules;
       var arg_request = buildRule();
       var arg_accountId = "foo";
@@ -2301,7 +2336,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRule());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, arg_accountId, arg_containerId).then(unittest.expectAsync(((api.Rule response) {
         checkRule(response);
@@ -2310,7 +2345,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersRulesResourceApi res = new api.TagmanagerApi(mock).accounts.containers.rules;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -2366,14 +2401,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_accountId, arg_containerId, arg_ruleId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersRulesResourceApi res = new api.TagmanagerApi(mock).accounts.containers.rules;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -2429,7 +2464,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRule());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_accountId, arg_containerId, arg_ruleId).then(unittest.expectAsync(((api.Rule response) {
         checkRule(response);
@@ -2438,7 +2473,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersRulesResourceApi res = new api.TagmanagerApi(mock).accounts.containers.rules;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -2490,7 +2525,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListRulesResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, arg_containerId).then(unittest.expectAsync(((api.ListRulesResponse response) {
         checkListRulesResponse(response);
@@ -2499,7 +2534,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersRulesResourceApi res = new api.TagmanagerApi(mock).accounts.containers.rules;
       var arg_request = buildRule();
       var arg_accountId = "foo";
@@ -2561,7 +2596,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRule());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_accountId, arg_containerId, arg_ruleId, fingerprint: arg_fingerprint).then(unittest.expectAsync(((api.Rule response) {
         checkRule(response);
@@ -2574,7 +2609,7 @@ main() {
   unittest.group("resource-AccountsContainersTagsResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersTagsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.tags;
       var arg_request = buildTag();
       var arg_accountId = "foo";
@@ -2630,7 +2665,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTag());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, arg_accountId, arg_containerId).then(unittest.expectAsync(((api.Tag response) {
         checkTag(response);
@@ -2639,7 +2674,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersTagsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.tags;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -2695,14 +2730,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_accountId, arg_containerId, arg_tagId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersTagsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.tags;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -2758,7 +2793,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTag());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_accountId, arg_containerId, arg_tagId).then(unittest.expectAsync(((api.Tag response) {
         checkTag(response);
@@ -2767,7 +2802,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersTagsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.tags;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -2819,7 +2854,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListTagsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, arg_containerId).then(unittest.expectAsync(((api.ListTagsResponse response) {
         checkListTagsResponse(response);
@@ -2828,7 +2863,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersTagsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.tags;
       var arg_request = buildTag();
       var arg_accountId = "foo";
@@ -2890,7 +2925,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTag());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_accountId, arg_containerId, arg_tagId, fingerprint: arg_fingerprint).then(unittest.expectAsync(((api.Tag response) {
         checkTag(response);
@@ -2903,7 +2938,7 @@ main() {
   unittest.group("resource-AccountsContainersTriggersResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersTriggersResourceApi res = new api.TagmanagerApi(mock).accounts.containers.triggers;
       var arg_request = buildTrigger();
       var arg_accountId = "foo";
@@ -2959,7 +2994,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTrigger());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, arg_accountId, arg_containerId).then(unittest.expectAsync(((api.Trigger response) {
         checkTrigger(response);
@@ -2968,7 +3003,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersTriggersResourceApi res = new api.TagmanagerApi(mock).accounts.containers.triggers;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -3024,14 +3059,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_accountId, arg_containerId, arg_triggerId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersTriggersResourceApi res = new api.TagmanagerApi(mock).accounts.containers.triggers;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -3087,7 +3122,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTrigger());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_accountId, arg_containerId, arg_triggerId).then(unittest.expectAsync(((api.Trigger response) {
         checkTrigger(response);
@@ -3096,7 +3131,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersTriggersResourceApi res = new api.TagmanagerApi(mock).accounts.containers.triggers;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -3148,7 +3183,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListTriggersResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, arg_containerId).then(unittest.expectAsync(((api.ListTriggersResponse response) {
         checkListTriggersResponse(response);
@@ -3157,7 +3192,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersTriggersResourceApi res = new api.TagmanagerApi(mock).accounts.containers.triggers;
       var arg_request = buildTrigger();
       var arg_accountId = "foo";
@@ -3219,7 +3254,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTrigger());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_accountId, arg_containerId, arg_triggerId, fingerprint: arg_fingerprint).then(unittest.expectAsync(((api.Trigger response) {
         checkTrigger(response);
@@ -3232,7 +3267,7 @@ main() {
   unittest.group("resource-AccountsContainersVariablesResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersVariablesResourceApi res = new api.TagmanagerApi(mock).accounts.containers.variables;
       var arg_request = buildVariable();
       var arg_accountId = "foo";
@@ -3288,7 +3323,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildVariable());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, arg_accountId, arg_containerId).then(unittest.expectAsync(((api.Variable response) {
         checkVariable(response);
@@ -3297,7 +3332,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersVariablesResourceApi res = new api.TagmanagerApi(mock).accounts.containers.variables;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -3353,14 +3388,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_accountId, arg_containerId, arg_variableId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersVariablesResourceApi res = new api.TagmanagerApi(mock).accounts.containers.variables;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -3416,7 +3451,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildVariable());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_accountId, arg_containerId, arg_variableId).then(unittest.expectAsync(((api.Variable response) {
         checkVariable(response);
@@ -3425,7 +3460,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersVariablesResourceApi res = new api.TagmanagerApi(mock).accounts.containers.variables;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -3477,7 +3512,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListVariablesResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, arg_containerId).then(unittest.expectAsync(((api.ListVariablesResponse response) {
         checkListVariablesResponse(response);
@@ -3486,7 +3521,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersVariablesResourceApi res = new api.TagmanagerApi(mock).accounts.containers.variables;
       var arg_request = buildVariable();
       var arg_accountId = "foo";
@@ -3548,7 +3583,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildVariable());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_accountId, arg_containerId, arg_variableId, fingerprint: arg_fingerprint).then(unittest.expectAsync(((api.Variable response) {
         checkVariable(response);
@@ -3561,7 +3596,7 @@ main() {
   unittest.group("resource-AccountsContainersVersionsResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersVersionsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_request = buildCreateContainerVersionRequestVersionOptions();
       var arg_accountId = "foo";
@@ -3617,7 +3652,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCreateContainerVersionResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, arg_accountId, arg_containerId).then(unittest.expectAsync(((api.CreateContainerVersionResponse response) {
         checkCreateContainerVersionResponse(response);
@@ -3626,7 +3661,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersVersionsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -3682,14 +3717,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_accountId, arg_containerId, arg_containerVersionId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersVersionsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -3745,7 +3780,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildContainerVersion());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_accountId, arg_containerId, arg_containerVersionId).then(unittest.expectAsync(((api.ContainerVersion response) {
         checkContainerVersion(response);
@@ -3754,7 +3789,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersVersionsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -3808,7 +3843,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListContainerVersionsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId, arg_containerId, headers: arg_headers).then(unittest.expectAsync(((api.ListContainerVersionsResponse response) {
         checkListContainerVersionsResponse(response);
@@ -3817,7 +3852,7 @@ main() {
 
     unittest.test("method--publish", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersVersionsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -3879,7 +3914,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPublishContainerVersionResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.publish(arg_accountId, arg_containerId, arg_containerVersionId, fingerprint: arg_fingerprint).then(unittest.expectAsync(((api.PublishContainerVersionResponse response) {
         checkPublishContainerVersionResponse(response);
@@ -3888,7 +3923,7 @@ main() {
 
     unittest.test("method--restore", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersVersionsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -3948,7 +3983,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildContainerVersion());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.restore(arg_accountId, arg_containerId, arg_containerVersionId).then(unittest.expectAsync(((api.ContainerVersion response) {
         checkContainerVersion(response);
@@ -3957,7 +3992,7 @@ main() {
 
     unittest.test("method--undelete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersVersionsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_accountId = "foo";
       var arg_containerId = "foo";
@@ -4017,7 +4052,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildContainerVersion());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.undelete(arg_accountId, arg_containerId, arg_containerVersionId).then(unittest.expectAsync(((api.ContainerVersion response) {
         checkContainerVersion(response);
@@ -4026,7 +4061,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsContainersVersionsResourceApi res = new api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_request = buildContainerVersion();
       var arg_accountId = "foo";
@@ -4088,7 +4123,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildContainerVersion());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_accountId, arg_containerId, arg_containerVersionId, fingerprint: arg_fingerprint).then(unittest.expectAsync(((api.ContainerVersion response) {
         checkContainerVersion(response);
@@ -4101,7 +4136,7 @@ main() {
   unittest.group("resource-AccountsPermissionsResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsPermissionsResourceApi res = new api.TagmanagerApi(mock).accounts.permissions;
       var arg_request = buildUserAccess();
       var arg_accountId = "foo";
@@ -4149,7 +4184,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUserAccess());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request, arg_accountId).then(unittest.expectAsync(((api.UserAccess response) {
         checkUserAccess(response);
@@ -4158,7 +4193,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsPermissionsResourceApi res = new api.TagmanagerApi(mock).accounts.permissions;
       var arg_accountId = "foo";
       var arg_permissionId = "foo";
@@ -4206,14 +4241,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_accountId, arg_permissionId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsPermissionsResourceApi res = new api.TagmanagerApi(mock).accounts.permissions;
       var arg_accountId = "foo";
       var arg_permissionId = "foo";
@@ -4261,7 +4296,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUserAccess());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_accountId, arg_permissionId).then(unittest.expectAsync(((api.UserAccess response) {
         checkUserAccess(response);
@@ -4270,7 +4305,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsPermissionsResourceApi res = new api.TagmanagerApi(mock).accounts.permissions;
       var arg_accountId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4314,7 +4349,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListAccountUsersResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_accountId).then(unittest.expectAsync(((api.ListAccountUsersResponse response) {
         checkListAccountUsersResponse(response);
@@ -4323,7 +4358,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AccountsPermissionsResourceApi res = new api.TagmanagerApi(mock).accounts.permissions;
       var arg_request = buildUserAccess();
       var arg_accountId = "foo";
@@ -4375,7 +4410,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUserAccess());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_accountId, arg_permissionId).then(unittest.expectAsync(((api.UserAccess response) {
         checkUserAccess(response);

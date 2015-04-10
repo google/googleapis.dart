@@ -20,7 +20,7 @@
     "description": "The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/deployment-manager/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/ruh8vDKnI53dg6K4wnCZiPZpScI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/3SdBuBlKXFafgHZPjx-jN_ADZpg\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -83,7 +83,7 @@
         "deployments": {
             "methods": {
                 "delete": {
-                    "description": "Deletes a deployment and all of the resources in the deployment.",
+                    "description": "! Deletes a deployment and all of the resources in the deployment.",
                     "httpMethod": "DELETE",
                     "id": "deploymentmanager.deployments.delete",
                     "parameterOrder": [
@@ -92,14 +92,14 @@
                     ],
                     "parameters": {
                         "deployment": {
-                            "description": "The name of the deployment for this request.",
+                            "description": "! The name of the deployment for this request.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
                             "type": "string"
                         },
                         "project": {
-                            "description": "The project ID for this request.",
+                            "description": "! The project ID for this request.",
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
@@ -116,7 +116,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Gets information about a specific deployment.",
+                    "description": "! Gets information about a specific deployment.",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.deployments.get",
                     "parameterOrder": [
@@ -125,14 +125,14 @@
                     ],
                     "parameters": {
                         "deployment": {
-                            "description": "The name of the deployment for this request.",
+                            "description": "! The name of the deployment for this request.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
                             "type": "string"
                         },
                         "project": {
-                            "description": "The project ID for this request.",
+                            "description": "! The project ID for this request.",
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
@@ -150,7 +150,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Creates a deployment and all of the resources described by the deployment manifest.",
+                    "description": "! Creates a deployment and all of the resources described by the ! deployment manifest.",
                     "httpMethod": "POST",
                     "id": "deploymentmanager.deployments.insert",
                     "parameterOrder": [
@@ -158,7 +158,7 @@
                     ],
                     "parameters": {
                         "project": {
-                            "description": "The project ID for this request.",
+                            "description": "! The project ID for this request.",
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
@@ -178,7 +178,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists all deployments for a given project.",
+                    "description": "! Lists all deployments for a given project.",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.deployments.list",
                     "parameterOrder": [
@@ -187,7 +187,7 @@
                     "parameters": {
                         "maxResults": {
                             "default": "50",
-                            "description": "Maximum count of results to be returned. Acceptable values are 0 to 100, inclusive. (Default: 50)",
+                            "description": "! Maximum count of results to be returned. ! Acceptable values are 0 to 100, inclusive. (Default: 50)",
                             "format": "int32",
                             "location": "query",
                             "maximum": "100",
@@ -195,12 +195,12 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Specifies a nextPageToken returned by a previous list request. This token can be used to request the next page of results from a previous list request.",
+                            "description": "! Specifies a nextPageToken returned by a previous list request. This ! token can be used to request the next page of results from a previous ! list request.",
                             "location": "query",
                             "type": "string"
                         },
                         "project": {
-                            "description": "The project ID for this request.",
+                            "description": "! The project ID for this request.",
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
@@ -222,7 +222,7 @@
         "manifests": {
             "methods": {
                 "get": {
-                    "description": "Gets information about a specific manifest.",
+                    "description": "! Gets information about a specific manifest.",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.manifests.get",
                     "parameterOrder": [
@@ -232,21 +232,21 @@
                     ],
                     "parameters": {
                         "deployment": {
-                            "description": "The name of the deployment for this request.",
+                            "description": "! The name of the deployment for this request.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
                             "type": "string"
                         },
                         "manifest": {
-                            "description": "The name of the manifest for this request.",
+                            "description": "! The name of the manifest for this request.",
                             "location": "path",
                             "pattern": "[-a-z0-9]{1,61}",
                             "required": true,
                             "type": "string"
                         },
                         "project": {
-                            "description": "The project ID for this request.",
+                            "description": "! The project ID for this request.",
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
@@ -264,7 +264,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists all manifests for a given deployment.",
+                    "description": "! Lists all manifests for a given deployment.",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.manifests.list",
                     "parameterOrder": [
@@ -273,7 +273,7 @@
                     ],
                     "parameters": {
                         "deployment": {
-                            "description": "The name of the deployment for this request.",
+                            "description": "! The name of the deployment for this request.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
@@ -281,7 +281,7 @@
                         },
                         "maxResults": {
                             "default": "50",
-                            "description": "Maximum count of results to be returned. Acceptable values are 0 to 100, inclusive. (Default: 50)",
+                            "description": "! Maximum count of results to be returned. ! Acceptable values are 0 to 100, inclusive. (Default: 50)",
                             "format": "int32",
                             "location": "query",
                             "maximum": "100",
@@ -289,12 +289,12 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Specifies a nextPageToken returned by a previous list request. This token can be used to request the next page of results from a previous list request.",
+                            "description": "! Specifies a nextPageToken returned by a previous list request. This ! token can be used to request the next page of results from a previous ! list request.",
                             "location": "query",
                             "type": "string"
                         },
                         "project": {
-                            "description": "The project ID for this request.",
+                            "description": "! The project ID for this request.",
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
@@ -316,7 +316,7 @@
         "operations": {
             "methods": {
                 "get": {
-                    "description": "Gets information about a specific Operation.",
+                    "description": "! Gets information about a specific Operation.",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.operations.get",
                     "parameterOrder": [
@@ -325,13 +325,13 @@
                     ],
                     "parameters": {
                         "operation": {
-                            "description": "The name of the operation for this request.",
+                            "description": "! The name of the operation for this request.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "project": {
-                            "description": "The project ID for this request.",
+                            "description": "! The project ID for this request.",
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
@@ -349,7 +349,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists all Operations for a project.",
+                    "description": "! Lists all Operations for a project.",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.operations.list",
                     "parameterOrder": [
@@ -358,7 +358,7 @@
                     "parameters": {
                         "maxResults": {
                             "default": "50",
-                            "description": "Maximum count of results to be returned. Acceptable values are 0 to 100, inclusive. (Default: 50)",
+                            "description": "! Maximum count of results to be returned. ! Acceptable values are 0 to 100, inclusive. (Default: 50)",
                             "format": "int32",
                             "location": "query",
                             "maximum": "100",
@@ -366,12 +366,12 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Specifies a nextPageToken returned by a previous list request. This token can be used to request the next page of results from a previous list request.",
+                            "description": "! Specifies a nextPageToken returned by a previous list request. This ! token can be used to request the next page of results from a previous ! list request.",
                             "location": "query",
                             "type": "string"
                         },
                         "project": {
-                            "description": "The project ID for this request.",
+                            "description": "! The project ID for this request.",
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
@@ -393,7 +393,7 @@
         "resources": {
             "methods": {
                 "get": {
-                    "description": "Gets information about a single resource.",
+                    "description": "! Gets information about a single resource.",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.resources.get",
                     "parameterOrder": [
@@ -403,21 +403,21 @@
                     ],
                     "parameters": {
                         "deployment": {
-                            "description": "The name of the deployment for this request.",
+                            "description": "! The name of the deployment for this request.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
                             "type": "string"
                         },
                         "project": {
-                            "description": "The project ID for this request.",
+                            "description": "! The project ID for this request.",
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
                             "type": "string"
                         },
                         "resource": {
-                            "description": "The name of the resource for this request.",
+                            "description": "! The name of the resource for this request.",
                             "location": "path",
                             "pattern": "[-a-z0-9]{1,61}",
                             "required": true,
@@ -435,7 +435,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists all resources in a given deployment.",
+                    "description": "! Lists all resources in a given deployment.",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.resources.list",
                     "parameterOrder": [
@@ -444,7 +444,7 @@
                     ],
                     "parameters": {
                         "deployment": {
-                            "description": "The name of the deployment for this request.",
+                            "description": "! The name of the deployment for this request.",
                             "location": "path",
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
@@ -452,7 +452,7 @@
                         },
                         "maxResults": {
                             "default": "50",
-                            "description": "Maximum count of results to be returned. Acceptable values are 0 to 100, inclusive. (Default: 50)",
+                            "description": "! Maximum count of results to be returned. ! Acceptable values are 0 to 100, inclusive. (Default: 50)",
                             "format": "int32",
                             "location": "query",
                             "maximum": "100",
@@ -460,12 +460,12 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Specifies a nextPageToken returned by a previous list request. This token can be used to request the next page of results from a previous list request.",
+                            "description": "! Specifies a nextPageToken returned by a previous list request. This ! token can be used to request the next page of results from a previous ! list request.",
                             "location": "query",
                             "type": "string"
                         },
                         "project": {
-                            "description": "The project ID for this request.",
+                            "description": "! The project ID for this request.",
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
@@ -487,7 +487,7 @@
         "types": {
             "methods": {
                 "list": {
-                    "description": "Lists all Types for Deployment Manager.",
+                    "description": "! Lists all Types for Deployment Manager.",
                     "httpMethod": "GET",
                     "id": "deploymentmanager.types.list",
                     "parameterOrder": [
@@ -496,7 +496,7 @@
                     "parameters": {
                         "maxResults": {
                             "default": "50",
-                            "description": "Maximum count of results to be returned. Acceptable values are 0 to 100, inclusive. (Default: 50)",
+                            "description": "! Maximum count of results to be returned. ! Acceptable values are 0 to 100, inclusive. (Default: 50)",
                             "format": "int32",
                             "location": "query",
                             "maximum": "100",
@@ -504,12 +504,12 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Specifies a nextPageToken returned by a previous list request. This token can be used to request the next page of results from a previous list request.",
+                            "description": "! Specifies a nextPageToken returned by a previous list request. This ! token can be used to request the next page of results from a previous ! list request.",
                             "location": "query",
                             "type": "string"
                         },
                         "project": {
-                            "description": "The project ID for this request.",
+                            "description": "! The project ID for this request.",
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                             "required": true,
@@ -529,14 +529,15 @@
             }
         }
     },
-    "revision": "20150210",
+    "revision": "20150303",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Deployment": {
+            "description": "Next available tag: 8",
             "id": "Deployment",
             "properties": {
                 "description": {
-                    "description": "An optional user-provided description of the deployment.",
+                    "description": "! An optional user-provided description of the deployment.",
                     "type": "string"
                 },
                 "id": {
@@ -545,47 +546,48 @@
                     "type": "string"
                 },
                 "manifest": {
-                    "description": "[Output Only] URL of the manifest representing the full configuration of this deployment.",
+                    "description": "! [Output Only] URL of the manifest representing the full configuration ! of this deployment.",
                     "type": "string"
                 },
                 "name": {
-                    "description": "The name of the deployment, which must be unique within the project.",
+                    "description": "! The name of the deployment, which must be unique within the project.",
                     "type": "string"
                 },
                 "targetConfig": {
-                    "description": "[Input Only] The YAML configuration to use in processing this deployment.\n\nWhen you create a deployment, the server creates a new manifest with the given YAML configuration and sets the `manifest` property to the URL of the manifest resource.",
+                    "description": "! [Input Only] The YAML configuration to use in processing this deployment. ! ! When you create a deployment, the server creates a new manifest with the ! given YAML configuration and sets the `manifest` property to the URL of ! the manifest resource.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "DeploymentsListResponse": {
-            "description": "A response containing a partial list of deployments and a page token used to build the next request if the request has been truncated.",
+            "description": "! A response containing a partial list of deployments and a page token used ! to build the next request if the request has been truncated. Next available tag: 4",
             "id": "DeploymentsListResponse",
             "properties": {
                 "deployments": {
-                    "description": "The deployments contained in this response.",
+                    "description": "! The deployments contained in this response.",
                     "items": {
                         "$ref": "Deployment"
                     },
                     "type": "array"
                 },
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request.",
+                    "description": "! A token used to continue a truncated list request.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "Manifest": {
+            "description": "Next available tag: 10",
             "id": "Manifest",
             "properties": {
                 "config": {
-                    "description": "The YAML configuration for this manifest.",
+                    "description": "v2beta1: YAML with config - described above v2beta2: YAML + templates. ! The YAML configuration for this manifest.",
                     "type": "string"
                 },
                 "evaluatedConfig": {
-                    "description": "[Output Only] The fully-expanded configuration file, including any templates and references.",
+                    "description": "! [Output Only] The fully-expanded configuration file, including any ! templates and references.",
                     "type": "string"
                 },
                 "id": {
@@ -594,7 +596,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "[Output Only] The name of the manifest.",
+                    "description": "! [Output Only] The name of the manifest.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -605,52 +607,52 @@
             "type": "object"
         },
         "ManifestsListResponse": {
-            "description": "A response containing a partial list of manifests and a page token used to build the next request if the request has been truncated.",
+            "description": "! A response containing a partial list of manifests and a page token used ! to build the next request if the request has been truncated. Next available tag: 4",
             "id": "ManifestsListResponse",
             "properties": {
                 "manifests": {
-                    "description": "Manifests contained in this list response.",
+                    "description": "! Manifests contained in this list response.",
                     "items": {
                         "$ref": "Manifest"
                     },
                     "type": "array"
                 },
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request.",
+                    "description": "! A token used to continue a truncated list request.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "Operation": {
-            "description": "An operation resource, used to manage asynchronous API requests.",
+            "description": "! An operation resource, used to manage asynchronous API requests. Next available tag: 24",
             "id": "Operation",
             "properties": {
                 "creationTimestamp": {
-                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
+                    "description": "! [Output Only] Creation timestamp in RFC3339 text format.",
                     "type": "string"
                 },
                 "endTime": {
-                    "description": "[Output Only] The time that this operation was completed. This is in RFC3339 format.",
+                    "description": "! [Output Only] The time that this operation was completed. This is in ! RFC3339 format.",
                     "type": "string"
                 },
                 "error": {
-                    "description": "[Output Only] If errors occurred during processing of this operation, this field will be populated.",
+                    "description": "! [Output Only] If errors occurred during processing of this operation, ! this field will be populated.",
                     "properties": {
                         "errors": {
-                            "description": "The array of errors encountered while processing this operation.",
+                            "description": "! The array of errors encountered while processing this operation.",
                             "items": {
                                 "properties": {
                                     "code": {
-                                        "description": "The error type identifier for this error.",
+                                        "description": "! The error type identifier for this error.",
                                         "type": "string"
                                     },
                                     "location": {
-                                        "description": "Indicates the field in the request which caused the error. This property is optional.",
+                                        "description": "! Indicates the field in the request which caused the error. ! This property is optional.",
                                         "type": "string"
                                     },
                                     "message": {
-                                        "description": "An optional, human-readable error message.",
+                                        "description": "! An optional, human-readable error message.",
                                         "type": "string"
                                     }
                                 },
@@ -662,33 +664,33 @@
                     "type": "object"
                 },
                 "httpErrorMessage": {
-                    "description": "[Output Only] If operation fails, the HTTP error message returned, e.g. NOT FOUND.",
+                    "description": "! [Output Only] If operation fails, the HTTP error message returned, ! e.g. NOT FOUND.",
                     "type": "string"
                 },
                 "httpErrorStatusCode": {
-                    "description": "[Output Only] If operation fails, the HTTP error status code returned, e.g. 404.",
+                    "description": "! [Output Only] If operation fails, the HTTP error status code returned, ! e.g. 404.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "id": {
-                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+                    "description": "! [Output Only] Unique identifier for the resource; defined by the server.",
                     "format": "uint64",
                     "type": "string"
                 },
                 "insertTime": {
-                    "description": "[Output Only] The time that this operation was requested. This is in RFC 3339 format.",
+                    "description": "! [Output Only] The time that this operation was requested. ! This is in RFC 3339 format.",
                     "type": "string"
                 },
                 "name": {
-                    "description": "[Output Only] Name of the operation.",
+                    "description": "! [Output Only] Name of the operation.",
                     "type": "string"
                 },
                 "operationType": {
-                    "description": "[Output Only] Type of the operation. Examples include \"insert\", or \"delete\"",
+                    "description": "! [Output Only] Type of the operation. Examples include \"insert\", or ! \"delete\"",
                     "type": "string"
                 },
                 "progress": {
-                    "description": "[Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess at when the operation will be complete. This number should be monotonically increasing as the operation progresses.",
+                    "description": "! [Output Only] An optional progress indicator that ranges from 0 to 100. ! There is no requirement that this be linear or support any granularity ! of operations. This should not be used to guess at when the operation will ! be complete. This number should be monotonically increasing as the ! operation progresses.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -697,48 +699,48 @@
                     "type": "string"
                 },
                 "startTime": {
-                    "description": "[Output Only] The time that this operation was started by the server. This is in RFC 3339 format.",
+                    "description": "! [Output Only] The time that this operation was started by the server. ! This is in RFC 3339 format.",
                     "type": "string"
                 },
                 "status": {
-                    "description": "[Output Only] Status of the operation. Can be one of the following: \"PENDING\", \"RUNNING\", or \"DONE\".",
+                    "description": "! [Output Only] Status of the operation. Can be one of the following: ! \"PENDING\", \"RUNNING\", or \"DONE\".",
                     "type": "string"
                 },
                 "statusMessage": {
-                    "description": "[Output Only] An optional textual description of the current status of the operation.",
+                    "description": "! [Output Only] An optional textual description of the current status of ! the operation.",
                     "type": "string"
                 },
                 "targetId": {
-                    "description": "[Output Only] Unique target id which identifies a particular incarnation of the target.",
+                    "description": "! [Output Only] Unique target id which identifies a particular ! incarnation of the target.",
                     "format": "uint64",
                     "type": "string"
                 },
                 "targetLink": {
-                    "description": "[Output Only] URL of the resource the operation is mutating.",
+                    "description": "! [Output Only] URL of the resource the operation is mutating.",
                     "type": "string"
                 },
                 "user": {
-                    "description": "[Output Only] User who requested the operation, for example \"user@example.com\"",
+                    "description": "! [Output Only] User who requested the operation, for example ! \"user@example.com\"",
                     "type": "string"
                 },
                 "warnings": {
-                    "description": "[Output Only] If warning messages generated during processing of this operation, this field will be populated.",
+                    "description": "! [Output Only] If warning messages generated during processing of this ! operation, this field will be populated.",
                     "items": {
                         "properties": {
                             "code": {
-                                "description": "The warning type identifier for this warning.",
+                                "description": "! The warning type identifier for this warning.",
                                 "type": "any"
                             },
                             "data": {
-                                "description": "Metadata for this warning in 'key: value' format.",
+                                "description": "! Metadata for this warning in 'key: value' format.",
                                 "items": {
                                     "properties": {
                                         "key": {
-                                            "description": "A key for the warning data.",
+                                            "description": "! A key for the warning data.",
                                             "type": "string"
                                         },
                                         "value": {
-                                            "description": "A warning data value corresponding to the key.",
+                                            "description": "! A warning data value corresponding to the key.",
                                             "type": "string"
                                         }
                                     },
@@ -747,7 +749,7 @@
                                 "type": "array"
                             },
                             "message": {
-                                "description": "Optional human-readable details for this warning.",
+                                "description": "! Optional human-readable details for this warning.",
                                 "type": "string"
                             }
                         },
@@ -759,15 +761,15 @@
             "type": "object"
         },
         "OperationsListResponse": {
-            "description": "A response containing a partial list of operations and a page token used to build the next request if the request has been truncated.",
+            "description": "! A response containing a partial list of operations and a page token used ! to build the next request if the request has been truncated. Next available tag: 4",
             "id": "OperationsListResponse",
             "properties": {
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request.",
+                    "description": "! A token used to continue a truncated list request.",
                     "type": "string"
                 },
                 "operations": {
-                    "description": "Operations contained in this list response.",
+                    "description": "! Operations contained in this list response.",
                     "items": {
                         "$ref": "Operation"
                     },
@@ -777,10 +779,11 @@
             "type": "object"
         },
         "Resource": {
+            "description": "Next available tag: 12",
             "id": "Resource",
             "properties": {
                 "errors": {
-                    "description": "[Output Only] A list of any errors that occurred during deployment.",
+                    "description": "! [Output Only] A list of any errors that occurred during deployment.",
                     "items": {
                         "type": "string"
                     },
@@ -792,42 +795,42 @@
                     "type": "string"
                 },
                 "intent": {
-                    "description": "[Output Only] The intended state of the resource.",
+                    "description": "! [Output Only] The intended state of the resource.",
                     "type": "string"
                 },
                 "manifest": {
-                    "description": "[Output Only] URL of the manifest representing the current configuration of this resource.",
+                    "description": "! [Output Only] URL of the manifest representing the current configuration ! of this resource.",
                     "type": "string"
                 },
                 "name": {
-                    "description": "[Output Only] The name of the resource as it appears in the YAML config.",
+                    "description": "! [Output Only] The name of the resource as it appears in the YAML config.",
                     "type": "string"
                 },
                 "state": {
-                    "description": "[Output Only] The state of the resource.",
+                    "description": "! [Output Only] The state of the resource.",
                     "type": "string"
                 },
                 "type": {
-                    "description": "[Output Only] The type of the resource, for example ?compute.v1.instance?, or ?replicaPools.v1beta2.instanceGroupManager?",
+                    "description": "! [Output Only] The type of the resource, for example ! ?compute.v1.instance?, or ?replicaPools.v1beta2.instanceGroupManager?",
                     "type": "string"
                 },
                 "url": {
-                    "description": "[Output Only] The URL of the actual resource.",
+                    "description": "! [Output Only] The URL of the actual resource.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "ResourcesListResponse": {
-            "description": "A response containing a partial list of resources and a page token used to build the next request if the request has been truncated.",
+            "description": "! A response containing a partial list of resources and a page token used ! to build the next request if the request has been truncated. Next available tag: 4",
             "id": "ResourcesListResponse",
             "properties": {
                 "nextPageToken": {
-                    "description": "A token used to continue a truncated list request.",
+                    "description": "! A token used to continue a truncated list request.",
                     "type": "string"
                 },
                 "resources": {
-                    "description": "Resources contained in this list response.",
+                    "description": "! Resources contained in this list response.",
                     "items": {
                         "$ref": "Resource"
                     },
@@ -837,22 +840,22 @@
             "type": "object"
         },
         "Type": {
-            "description": "A type supported by Deployment Manager.",
+            "description": "! A type supported by Deployment Manager. Next available tag: 4",
             "id": "Type",
             "properties": {
                 "name": {
-                    "description": "Name of the type.",
+                    "description": "! Name of the type.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "TypesListResponse": {
-            "description": "A response that returns all Types supported by Deployment Manager",
+            "description": "! A response that returns all Types supported by Deployment Manager Next available tag: 3",
             "id": "TypesListResponse",
             "properties": {
                 "types": {
-                    "description": "Types supported by Deployment Manager",
+                    "description": "! Types supported by Deployment Manager",
                     "items": {
                         "$ref": "Type"
                     },

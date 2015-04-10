@@ -8,22 +8,57 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis_beta/common/common.dart' as common;
-import 'package:googleapis_beta/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis_beta/pubsub/v1beta1.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
 
-buildUnnamed1769() {
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
+
+buildUnnamed1718() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1769(core.List<core.String> o) {
+checkUnnamed1718(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -34,7 +69,7 @@ buildAcknowledgeRequest() {
   var o = new api.AcknowledgeRequest();
   buildCounterAcknowledgeRequest++;
   if (buildCounterAcknowledgeRequest < 3) {
-    o.ackId = buildUnnamed1769();
+    o.ackId = buildUnnamed1718();
     o.subscription = "foo";
   }
   buildCounterAcknowledgeRequest--;
@@ -44,7 +79,7 @@ buildAcknowledgeRequest() {
 checkAcknowledgeRequest(api.AcknowledgeRequest o) {
   buildCounterAcknowledgeRequest++;
   if (buildCounterAcknowledgeRequest < 3) {
-    checkUnnamed1769(o.ackId);
+    checkUnnamed1718(o.ackId);
     unittest.expect(o.subscription, unittest.equals('foo'));
   }
   buildCounterAcknowledgeRequest--;
@@ -73,14 +108,14 @@ checkLabel(api.Label o) {
   buildCounterLabel--;
 }
 
-buildUnnamed1770() {
+buildUnnamed1719() {
   var o = new core.List<api.Subscription>();
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-checkUnnamed1770(core.List<api.Subscription> o) {
+checkUnnamed1719(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -92,7 +127,7 @@ buildListSubscriptionsResponse() {
   buildCounterListSubscriptionsResponse++;
   if (buildCounterListSubscriptionsResponse < 3) {
     o.nextPageToken = "foo";
-    o.subscription = buildUnnamed1770();
+    o.subscription = buildUnnamed1719();
   }
   buildCounterListSubscriptionsResponse--;
   return o;
@@ -102,19 +137,19 @@ checkListSubscriptionsResponse(api.ListSubscriptionsResponse o) {
   buildCounterListSubscriptionsResponse++;
   if (buildCounterListSubscriptionsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1770(o.subscription);
+    checkUnnamed1719(o.subscription);
   }
   buildCounterListSubscriptionsResponse--;
 }
 
-buildUnnamed1771() {
+buildUnnamed1720() {
   var o = new core.List<api.Topic>();
   o.add(buildTopic());
   o.add(buildTopic());
   return o;
 }
 
-checkUnnamed1771(core.List<api.Topic> o) {
+checkUnnamed1720(core.List<api.Topic> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTopic(o[0]);
   checkTopic(o[1]);
@@ -126,7 +161,7 @@ buildListTopicsResponse() {
   buildCounterListTopicsResponse++;
   if (buildCounterListTopicsResponse < 3) {
     o.nextPageToken = "foo";
-    o.topic = buildUnnamed1771();
+    o.topic = buildUnnamed1720();
   }
   buildCounterListTopicsResponse--;
   return o;
@@ -136,7 +171,7 @@ checkListTopicsResponse(api.ListTopicsResponse o) {
   buildCounterListTopicsResponse++;
   if (buildCounterListTopicsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1771(o.topic);
+    checkUnnamed1720(o.topic);
   }
   buildCounterListTopicsResponse--;
 }
@@ -185,14 +220,14 @@ checkModifyPushConfigRequest(api.ModifyPushConfigRequest o) {
   buildCounterModifyPushConfigRequest--;
 }
 
-buildUnnamed1772() {
+buildUnnamed1721() {
   var o = new core.List<api.PubsubMessage>();
   o.add(buildPubsubMessage());
   o.add(buildPubsubMessage());
   return o;
 }
 
-checkUnnamed1772(core.List<api.PubsubMessage> o) {
+checkUnnamed1721(core.List<api.PubsubMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPubsubMessage(o[0]);
   checkPubsubMessage(o[1]);
@@ -203,7 +238,7 @@ buildPublishBatchRequest() {
   var o = new api.PublishBatchRequest();
   buildCounterPublishBatchRequest++;
   if (buildCounterPublishBatchRequest < 3) {
-    o.messages = buildUnnamed1772();
+    o.messages = buildUnnamed1721();
     o.topic = "foo";
   }
   buildCounterPublishBatchRequest--;
@@ -213,20 +248,20 @@ buildPublishBatchRequest() {
 checkPublishBatchRequest(api.PublishBatchRequest o) {
   buildCounterPublishBatchRequest++;
   if (buildCounterPublishBatchRequest < 3) {
-    checkUnnamed1772(o.messages);
+    checkUnnamed1721(o.messages);
     unittest.expect(o.topic, unittest.equals('foo'));
   }
   buildCounterPublishBatchRequest--;
 }
 
-buildUnnamed1773() {
+buildUnnamed1722() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1773(core.List<core.String> o) {
+checkUnnamed1722(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -237,7 +272,7 @@ buildPublishBatchResponse() {
   var o = new api.PublishBatchResponse();
   buildCounterPublishBatchResponse++;
   if (buildCounterPublishBatchResponse < 3) {
-    o.messageIds = buildUnnamed1773();
+    o.messageIds = buildUnnamed1722();
   }
   buildCounterPublishBatchResponse--;
   return o;
@@ -246,7 +281,7 @@ buildPublishBatchResponse() {
 checkPublishBatchResponse(api.PublishBatchResponse o) {
   buildCounterPublishBatchResponse++;
   if (buildCounterPublishBatchResponse < 3) {
-    checkUnnamed1773(o.messageIds);
+    checkUnnamed1722(o.messageIds);
   }
   buildCounterPublishBatchResponse--;
 }
@@ -297,14 +332,14 @@ checkPubsubEvent(api.PubsubEvent o) {
   buildCounterPubsubEvent--;
 }
 
-buildUnnamed1774() {
+buildUnnamed1723() {
   var o = new core.List<api.Label>();
   o.add(buildLabel());
   o.add(buildLabel());
   return o;
 }
 
-checkUnnamed1774(core.List<api.Label> o) {
+checkUnnamed1723(core.List<api.Label> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabel(o[0]);
   checkLabel(o[1]);
@@ -316,7 +351,7 @@ buildPubsubMessage() {
   buildCounterPubsubMessage++;
   if (buildCounterPubsubMessage < 3) {
     o.data = "foo";
-    o.label = buildUnnamed1774();
+    o.label = buildUnnamed1723();
     o.messageId = "foo";
   }
   buildCounterPubsubMessage--;
@@ -327,7 +362,7 @@ checkPubsubMessage(api.PubsubMessage o) {
   buildCounterPubsubMessage++;
   if (buildCounterPubsubMessage < 3) {
     unittest.expect(o.data, unittest.equals('foo'));
-    checkUnnamed1774(o.label);
+    checkUnnamed1723(o.label);
     unittest.expect(o.messageId, unittest.equals('foo'));
   }
   buildCounterPubsubMessage--;
@@ -356,14 +391,14 @@ checkPullBatchRequest(api.PullBatchRequest o) {
   buildCounterPullBatchRequest--;
 }
 
-buildUnnamed1775() {
+buildUnnamed1724() {
   var o = new core.List<api.PullResponse>();
   o.add(buildPullResponse());
   o.add(buildPullResponse());
   return o;
 }
 
-checkUnnamed1775(core.List<api.PullResponse> o) {
+checkUnnamed1724(core.List<api.PullResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPullResponse(o[0]);
   checkPullResponse(o[1]);
@@ -374,7 +409,7 @@ buildPullBatchResponse() {
   var o = new api.PullBatchResponse();
   buildCounterPullBatchResponse++;
   if (buildCounterPullBatchResponse < 3) {
-    o.pullResponses = buildUnnamed1775();
+    o.pullResponses = buildUnnamed1724();
   }
   buildCounterPullBatchResponse--;
   return o;
@@ -383,7 +418,7 @@ buildPullBatchResponse() {
 checkPullBatchResponse(api.PullBatchResponse o) {
   buildCounterPullBatchResponse++;
   if (buildCounterPullBatchResponse < 3) {
-    checkUnnamed1775(o.pullResponses);
+    checkUnnamed1724(o.pullResponses);
   }
   buildCounterPullBatchResponse--;
 }
@@ -660,7 +695,7 @@ main() {
   unittest.group("resource-SubscriptionsResourceApi", () {
     unittest.test("method--acknowledge", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.PubsubApi(mock).subscriptions;
       var arg_request = buildAcknowledgeRequest();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -700,14 +735,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.acknowledge(arg_request).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.PubsubApi(mock).subscriptions;
       var arg_request = buildSubscription();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -747,7 +782,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSubscription());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request).then(unittest.expectAsync(((api.Subscription response) {
         checkSubscription(response);
@@ -756,7 +791,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.PubsubApi(mock).subscriptions;
       var arg_subscription = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -794,14 +829,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_subscription).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.PubsubApi(mock).subscriptions;
       var arg_subscription = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -839,7 +874,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSubscription());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_subscription).then(unittest.expectAsync(((api.Subscription response) {
         checkSubscription(response);
@@ -848,7 +883,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.PubsubApi(mock).subscriptions;
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
@@ -890,7 +925,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListSubscriptionsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(maxResults: arg_maxResults, pageToken: arg_pageToken, query: arg_query).then(unittest.expectAsync(((api.ListSubscriptionsResponse response) {
         checkListSubscriptionsResponse(response);
@@ -899,7 +934,7 @@ main() {
 
     unittest.test("method--modifyAckDeadline", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.PubsubApi(mock).subscriptions;
       var arg_request = buildModifyAckDeadlineRequest();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -939,14 +974,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.modifyAckDeadline(arg_request).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--modifyPushConfig", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.PubsubApi(mock).subscriptions;
       var arg_request = buildModifyPushConfigRequest();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -986,14 +1021,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.modifyPushConfig(arg_request).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--pull", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.PubsubApi(mock).subscriptions;
       var arg_request = buildPullRequest();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1033,7 +1068,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPullResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.pull(arg_request).then(unittest.expectAsync(((api.PullResponse response) {
         checkPullResponse(response);
@@ -1042,7 +1077,7 @@ main() {
 
     unittest.test("method--pullBatch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.PubsubApi(mock).subscriptions;
       var arg_request = buildPullBatchRequest();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1082,7 +1117,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPullBatchResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.pullBatch(arg_request).then(unittest.expectAsync(((api.PullBatchResponse response) {
         checkPullBatchResponse(response);
@@ -1095,7 +1130,7 @@ main() {
   unittest.group("resource-TopicsResourceApi", () {
     unittest.test("method--create", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TopicsResourceApi res = new api.PubsubApi(mock).topics;
       var arg_request = buildTopic();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1135,7 +1170,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTopic());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.create(arg_request).then(unittest.expectAsync(((api.Topic response) {
         checkTopic(response);
@@ -1144,7 +1179,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TopicsResourceApi res = new api.PubsubApi(mock).topics;
       var arg_topic = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1182,14 +1217,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_topic).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TopicsResourceApi res = new api.PubsubApi(mock).topics;
       var arg_topic = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1227,7 +1262,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTopic());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_topic).then(unittest.expectAsync(((api.Topic response) {
         checkTopic(response);
@@ -1236,7 +1271,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TopicsResourceApi res = new api.PubsubApi(mock).topics;
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
@@ -1278,7 +1313,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListTopicsResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(maxResults: arg_maxResults, pageToken: arg_pageToken, query: arg_query).then(unittest.expectAsync(((api.ListTopicsResponse response) {
         checkListTopicsResponse(response);
@@ -1287,7 +1322,7 @@ main() {
 
     unittest.test("method--publish", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TopicsResourceApi res = new api.PubsubApi(mock).topics;
       var arg_request = buildPublishRequest();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1327,14 +1362,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.publish(arg_request).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--publishBatch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.TopicsResourceApi res = new api.PubsubApi(mock).topics;
       var arg_request = buildPublishBatchRequest();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -1374,7 +1409,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPublishBatchResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.publishBatch(arg_request).then(unittest.expectAsync(((api.PublishBatchResponse response) {
         checkPublishBatchResponse(response);

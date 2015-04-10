@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.calendar.v3;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client calendar/v3';
 
 /** Lets you manipulate events and other calendar data. */
 class CalendarApi {
@@ -22,7 +25,7 @@ class CalendarApi {
   static const CalendarReadonlyScope = "https://www.googleapis.com/auth/calendar.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AclResourceApi get acl => new AclResourceApi(_requester);
   CalendarListResourceApi get calendarList => new CalendarListResourceApi(_requester);
@@ -34,15 +37,14 @@ class CalendarApi {
   SettingsResourceApi get settings => new SettingsResourceApi(_requester);
 
   CalendarApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "calendar/v3/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class AclResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AclResourceApi(common_internal.ApiRequester client) : 
+  AclResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -54,7 +56,7 @@ class AclResourceApi {
    *
    * [ruleId] - ACL rule identifier.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -65,7 +67,7 @@ class AclResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (calendarId == null) {
@@ -77,7 +79,7 @@ class AclResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/acl/' + common_internal.Escaper.ecapeVariable('$ruleId');
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl/' + commons.Escaper.ecapeVariable('$ruleId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -100,7 +102,7 @@ class AclResourceApi {
    *
    * Completes with a [AclRule].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -111,7 +113,7 @@ class AclResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (calendarId == null) {
@@ -122,7 +124,7 @@ class AclResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/acl/' + common_internal.Escaper.ecapeVariable('$ruleId');
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl/' + commons.Escaper.ecapeVariable('$ruleId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -145,7 +147,7 @@ class AclResourceApi {
    *
    * Completes with a [AclRule].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -156,7 +158,7 @@ class AclResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -167,7 +169,7 @@ class AclResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/acl';
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -209,7 +211,7 @@ class AclResourceApi {
    *
    * Completes with a [Acl].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -220,7 +222,7 @@ class AclResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (calendarId == null) {
@@ -240,7 +242,7 @@ class AclResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/acl';
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -265,7 +267,7 @@ class AclResourceApi {
    *
    * Completes with a [AclRule].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -276,7 +278,7 @@ class AclResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -290,7 +292,7 @@ class AclResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/acl/' + common_internal.Escaper.ecapeVariable('$ruleId');
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl/' + commons.Escaper.ecapeVariable('$ruleId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -315,7 +317,7 @@ class AclResourceApi {
    *
    * Completes with a [AclRule].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -326,7 +328,7 @@ class AclResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -340,7 +342,7 @@ class AclResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/acl/' + common_internal.Escaper.ecapeVariable('$ruleId');
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl/' + commons.Escaper.ecapeVariable('$ruleId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -384,7 +386,7 @@ class AclResourceApi {
    *
    * Completes with a [Channel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -395,7 +397,7 @@ class AclResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -418,7 +420,7 @@ class AclResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/acl/watch';
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl/watch';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -433,11 +435,10 @@ class AclResourceApi {
 }
 
 
-/** Not documented yet. */
 class CalendarListResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CalendarListResourceApi(common_internal.ApiRequester client) : 
+  CalendarListResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -447,7 +448,7 @@ class CalendarListResourceApi {
    *
    * [calendarId] - Calendar identifier.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -458,7 +459,7 @@ class CalendarListResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (calendarId == null) {
@@ -467,7 +468,7 @@ class CalendarListResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'users/me/calendarList/' + common_internal.Escaper.ecapeVariable('$calendarId');
+    _url = 'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -488,7 +489,7 @@ class CalendarListResourceApi {
    *
    * Completes with a [CalendarListEntry].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -499,7 +500,7 @@ class CalendarListResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (calendarId == null) {
@@ -507,7 +508,7 @@ class CalendarListResourceApi {
     }
 
 
-    _url = 'users/me/calendarList/' + common_internal.Escaper.ecapeVariable('$calendarId');
+    _url = 'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -533,7 +534,7 @@ class CalendarListResourceApi {
    *
    * Completes with a [CalendarListEntry].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -544,7 +545,7 @@ class CalendarListResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -609,7 +610,7 @@ class CalendarListResourceApi {
    *
    * Completes with a [CalendarList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -620,7 +621,7 @@ class CalendarListResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (maxResults != null) {
@@ -672,7 +673,7 @@ class CalendarListResourceApi {
    *
    * Completes with a [CalendarListEntry].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -683,7 +684,7 @@ class CalendarListResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -697,7 +698,7 @@ class CalendarListResourceApi {
     }
 
 
-    _url = 'users/me/calendarList/' + common_internal.Escaper.ecapeVariable('$calendarId');
+    _url = 'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -725,7 +726,7 @@ class CalendarListResourceApi {
    *
    * Completes with a [CalendarListEntry].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -736,7 +737,7 @@ class CalendarListResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -750,7 +751,7 @@ class CalendarListResourceApi {
     }
 
 
-    _url = 'users/me/calendarList/' + common_internal.Escaper.ecapeVariable('$calendarId');
+    _url = 'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -806,7 +807,7 @@ class CalendarListResourceApi {
    *
    * Completes with a [Channel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -817,7 +818,7 @@ class CalendarListResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -858,22 +859,21 @@ class CalendarListResourceApi {
 }
 
 
-/** Not documented yet. */
 class CalendarsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CalendarsResourceApi(common_internal.ApiRequester client) : 
+  CalendarsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Clears a primary calendar. This operation deletes all data associated with
-   * the primary calendar of an account and cannot be undone.
+   * Clears a primary calendar. This operation deletes all events associated
+   * with the primary calendar of an account.
    *
    * Request parameters:
    *
    * [calendarId] - Calendar identifier.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -884,7 +884,7 @@ class CalendarsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (calendarId == null) {
@@ -893,7 +893,7 @@ class CalendarsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/clear';
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/clear';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -906,13 +906,14 @@ class CalendarsResourceApi {
   }
 
   /**
-   * Deletes a secondary calendar.
+   * Deletes a secondary calendar. Use calendars.clear for clearing all events
+   * on primary calendars.
    *
    * Request parameters:
    *
    * [calendarId] - Calendar identifier.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -923,7 +924,7 @@ class CalendarsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (calendarId == null) {
@@ -932,7 +933,7 @@ class CalendarsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId');
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -953,7 +954,7 @@ class CalendarsResourceApi {
    *
    * Completes with a [Calendar].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -964,7 +965,7 @@ class CalendarsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (calendarId == null) {
@@ -972,7 +973,7 @@ class CalendarsResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId');
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -993,7 +994,7 @@ class CalendarsResourceApi {
    *
    * Completes with a [Calendar].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1004,7 +1005,7 @@ class CalendarsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1035,7 +1036,7 @@ class CalendarsResourceApi {
    *
    * Completes with a [Calendar].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1046,7 +1047,7 @@ class CalendarsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1057,7 +1058,7 @@ class CalendarsResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId');
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1080,7 +1081,7 @@ class CalendarsResourceApi {
    *
    * Completes with a [Calendar].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1091,7 +1092,7 @@ class CalendarsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1102,7 +1103,7 @@ class CalendarsResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId');
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1117,11 +1118,10 @@ class CalendarsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ChannelsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ChannelsResourceApi(common_internal.ApiRequester client) : 
+  ChannelsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1131,7 +1131,7 @@ class ChannelsResourceApi {
    *
    * Request parameters:
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1142,7 +1142,7 @@ class ChannelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1166,11 +1166,10 @@ class ChannelsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ColorsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ColorsResourceApi(common_internal.ApiRequester client) : 
+  ColorsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1180,7 +1179,7 @@ class ColorsResourceApi {
    *
    * Completes with a [Colors].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1191,7 +1190,7 @@ class ColorsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -1211,11 +1210,10 @@ class ColorsResourceApi {
 }
 
 
-/** Not documented yet. */
 class EventsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  EventsResourceApi(common_internal.ApiRequester client) : 
+  EventsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1230,7 +1228,7 @@ class EventsResourceApi {
    * [sendNotifications] - Whether to send notifications about the deletion of
    * the event. Optional. The default is False.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1241,7 +1239,7 @@ class EventsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (calendarId == null) {
@@ -1256,7 +1254,7 @@ class EventsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/events/' + common_internal.Escaper.ecapeVariable('$eventId');
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1293,7 +1291,7 @@ class EventsResourceApi {
    *
    * Completes with a [Event].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1304,7 +1302,7 @@ class EventsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (calendarId == null) {
@@ -1324,7 +1322,7 @@ class EventsResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/events/' + common_internal.Escaper.ecapeVariable('$eventId');
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1348,7 +1346,7 @@ class EventsResourceApi {
    *
    * Completes with a [Event].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1359,7 +1357,7 @@ class EventsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1370,7 +1368,7 @@ class EventsResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/events/import';
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/import';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1400,7 +1398,7 @@ class EventsResourceApi {
    *
    * Completes with a [Event].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1411,7 +1409,7 @@ class EventsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1428,7 +1426,7 @@ class EventsResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/events';
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1484,7 +1482,7 @@ class EventsResourceApi {
    *
    * Completes with a [Events].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1495,7 +1493,7 @@ class EventsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (calendarId == null) {
@@ -1533,7 +1531,7 @@ class EventsResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/events/' + common_internal.Escaper.ecapeVariable('$eventId') + '/instances';
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId') + '/instances';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1644,7 +1642,7 @@ class EventsResourceApi {
    *
    * Completes with a [Events].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1655,7 +1653,7 @@ class EventsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (calendarId == null) {
@@ -1714,7 +1712,7 @@ class EventsResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/events';
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1744,7 +1742,7 @@ class EventsResourceApi {
    *
    * Completes with a [Event].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1755,7 +1753,7 @@ class EventsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (calendarId == null) {
@@ -1773,7 +1771,7 @@ class EventsResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/events/' + common_internal.Escaper.ecapeVariable('$eventId') + '/move';
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId') + '/move';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1813,7 +1811,7 @@ class EventsResourceApi {
    *
    * Completes with a [Event].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1824,7 +1822,7 @@ class EventsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1847,7 +1845,7 @@ class EventsResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/events/' + common_internal.Escaper.ecapeVariable('$eventId');
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1873,7 +1871,7 @@ class EventsResourceApi {
    *
    * Completes with a [Event].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1884,7 +1882,7 @@ class EventsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (calendarId == null) {
@@ -1899,7 +1897,7 @@ class EventsResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/events/quickAdd';
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/quickAdd';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1939,7 +1937,7 @@ class EventsResourceApi {
    *
    * Completes with a [Event].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1950,7 +1948,7 @@ class EventsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1973,7 +1971,7 @@ class EventsResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/events/' + common_internal.Escaper.ecapeVariable('$eventId');
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2086,7 +2084,7 @@ class EventsResourceApi {
    *
    * Completes with a [Channel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2097,7 +2095,7 @@ class EventsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2159,7 +2157,7 @@ class EventsResourceApi {
     }
 
 
-    _url = 'calendars/' + common_internal.Escaper.ecapeVariable('$calendarId') + '/events/watch';
+    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/watch';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2174,11 +2172,10 @@ class EventsResourceApi {
 }
 
 
-/** Not documented yet. */
 class FreebusyResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  FreebusyResourceApi(common_internal.ApiRequester client) : 
+  FreebusyResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2190,7 +2187,7 @@ class FreebusyResourceApi {
    *
    * Completes with a [FreeBusyResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2201,7 +2198,7 @@ class FreebusyResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2224,11 +2221,10 @@ class FreebusyResourceApi {
 }
 
 
-/** Not documented yet. */
 class SettingsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SettingsResourceApi(common_internal.ApiRequester client) : 
+  SettingsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2240,7 +2236,7 @@ class SettingsResourceApi {
    *
    * Completes with a [Setting].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2251,7 +2247,7 @@ class SettingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (setting == null) {
@@ -2259,7 +2255,7 @@ class SettingsResourceApi {
     }
 
 
-    _url = 'users/me/settings/' + common_internal.Escaper.ecapeVariable('$setting');
+    _url = 'users/me/settings/' + commons.Escaper.ecapeVariable('$setting');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2293,7 +2289,7 @@ class SettingsResourceApi {
    *
    * Completes with a [Settings].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2304,7 +2300,7 @@ class SettingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (maxResults != null) {
@@ -2354,7 +2350,7 @@ class SettingsResourceApi {
    *
    * Completes with a [Channel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2365,7 +2361,7 @@ class SettingsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2398,7 +2394,6 @@ class SettingsResourceApi {
 
 
 
-/** Not documented yet. */
 class Acl {
   /** ETag of the collection. */
   core.String etag;
@@ -2508,7 +2503,6 @@ class AclRuleScope {
 }
 
 
-/** Not documented yet. */
 class AclRule {
   /** ETag of the resource. */
   core.String etag;
@@ -2579,7 +2573,6 @@ class AclRule {
 }
 
 
-/** Not documented yet. */
 class Calendar {
   /** Description of the calendar. Optional. */
   core.String description;
@@ -2660,7 +2653,6 @@ class Calendar {
 }
 
 
-/** Not documented yet. */
 class CalendarList {
   /** ETag of the collection. */
   core.String etag;
@@ -2753,7 +2745,6 @@ class CalendarListEntryNotificationSettings {
 }
 
 
-/** Not documented yet. */
 class CalendarListEntry {
   /**
    * The effective access role that the authenticated user has on the calendar.
@@ -2973,7 +2964,6 @@ class CalendarListEntry {
 }
 
 
-/** Not documented yet. */
 class CalendarNotification {
   /**
    * The method used to deliver the notification. Possible values are:
@@ -3020,7 +3010,6 @@ class CalendarNotification {
 }
 
 
-/** Not documented yet. */
 class Channel {
   /** The address where notifications are delivered for this channel. */
   core.String address;
@@ -3137,7 +3126,6 @@ class Channel {
 }
 
 
-/** Not documented yet. */
 class ColorDefinition {
   /** The background color associated with this color definition. */
   core.String background;
@@ -3173,7 +3161,6 @@ class ColorDefinition {
 }
 
 
-/** Not documented yet. */
 class Colors {
   /**
    * Palette of calendar colors, mapping from the color ID to its definition. A
@@ -3203,10 +3190,10 @@ class Colors {
 
   Colors.fromJson(core.Map _json) {
     if (_json.containsKey("calendar")) {
-      calendar = common_internal.mapMap(_json["calendar"], (item) => new ColorDefinition.fromJson(item));
+      calendar = commons.mapMap(_json["calendar"], (item) => new ColorDefinition.fromJson(item));
     }
     if (_json.containsKey("event")) {
-      event = common_internal.mapMap(_json["event"], (item) => new ColorDefinition.fromJson(item));
+      event = commons.mapMap(_json["event"], (item) => new ColorDefinition.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3219,10 +3206,10 @@ class Colors {
   core.Map toJson() {
     var _json = new core.Map();
     if (calendar != null) {
-      _json["calendar"] = common_internal.mapMap(calendar, (item) => (item).toJson());
+      _json["calendar"] = commons.mapMap(calendar, (item) => (item).toJson());
     }
     if (event != null) {
-      _json["event"] = common_internal.mapMap(event, (item) => (item).toJson());
+      _json["event"] = commons.mapMap(event, (item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3235,7 +3222,6 @@ class Colors {
 }
 
 
-/** Not documented yet. */
 class Error {
   /** Domain, or broad category, of the error. */
   core.String domain;
@@ -3601,7 +3587,6 @@ class EventSource {
 }
 
 
-/** Not documented yet. */
 class Event {
   /**
    * Whether anyone can invite themselves to the event. Optional. The default is
@@ -4035,7 +4020,6 @@ class Event {
 }
 
 
-/** Not documented yet. */
 class EventAttachment {
 
   EventAttachment();
@@ -4050,7 +4034,6 @@ class EventAttachment {
 }
 
 
-/** Not documented yet. */
 class EventAttendee {
   /** Number of additional guests. Optional. The default is 0. */
   core.int additionalGuests;
@@ -4170,7 +4153,6 @@ class EventAttendee {
 }
 
 
-/** Not documented yet. */
 class EventDateTime {
   /** The date, in the format "yyyy-mm-dd", if this is an all-day event. */
   core.DateTime date;
@@ -4222,7 +4204,6 @@ class EventDateTime {
 }
 
 
-/** Not documented yet. */
 class EventReminder {
   /**
    * The method used by this reminder. Possible values are:
@@ -4263,7 +4244,6 @@ class EventReminder {
 }
 
 
-/** Not documented yet. */
 class Events {
   /**
    * The user's access role for this calendar. Read-only. Possible values are:
@@ -4403,7 +4383,6 @@ class Events {
 }
 
 
-/** Not documented yet. */
 class FreeBusyCalendar {
   /**
    * List of time ranges during which this calendar should be regarded as busy.
@@ -4438,7 +4417,6 @@ class FreeBusyCalendar {
 }
 
 
-/** Not documented yet. */
 class FreeBusyGroup {
   /** List of calendars' identifiers within a group. */
   core.List<core.String> calendars;
@@ -4471,7 +4449,6 @@ class FreeBusyGroup {
 }
 
 
-/** Not documented yet. */
 class FreeBusyRequest {
   /**
    * Maximal number of calendars for which FreeBusy information is to be
@@ -4547,7 +4524,6 @@ class FreeBusyRequest {
 }
 
 
-/** Not documented yet. */
 class FreeBusyRequestItem {
   /** The identifier of a calendar or a group. */
   core.String id;
@@ -4571,7 +4547,6 @@ class FreeBusyRequestItem {
 }
 
 
-/** Not documented yet. */
 class FreeBusyResponse {
   /** List of free/busy information for calendars. */
   core.Map<core.String, FreeBusyCalendar> calendars;
@@ -4593,10 +4568,10 @@ class FreeBusyResponse {
 
   FreeBusyResponse.fromJson(core.Map _json) {
     if (_json.containsKey("calendars")) {
-      calendars = common_internal.mapMap(_json["calendars"], (item) => new FreeBusyCalendar.fromJson(item));
+      calendars = commons.mapMap(_json["calendars"], (item) => new FreeBusyCalendar.fromJson(item));
     }
     if (_json.containsKey("groups")) {
-      groups = common_internal.mapMap(_json["groups"], (item) => new FreeBusyGroup.fromJson(item));
+      groups = commons.mapMap(_json["groups"], (item) => new FreeBusyGroup.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4612,10 +4587,10 @@ class FreeBusyResponse {
   core.Map toJson() {
     var _json = new core.Map();
     if (calendars != null) {
-      _json["calendars"] = common_internal.mapMap(calendars, (item) => (item).toJson());
+      _json["calendars"] = commons.mapMap(calendars, (item) => (item).toJson());
     }
     if (groups != null) {
-      _json["groups"] = common_internal.mapMap(groups, (item) => (item).toJson());
+      _json["groups"] = commons.mapMap(groups, (item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4631,7 +4606,6 @@ class FreeBusyResponse {
 }
 
 
-/** Not documented yet. */
 class Setting {
   /** ETag of the resource. */
   core.String etag;
@@ -4685,7 +4659,6 @@ class Setting {
 }
 
 
-/** Not documented yet. */
 class Settings {
   /** Etag of the collection. */
   core.String etag;
@@ -4752,7 +4725,6 @@ class Settings {
 }
 
 
-/** Not documented yet. */
 class TimePeriod {
   /** The (exclusive) end of the time period. */
   core.DateTime end;
@@ -4783,5 +4755,3 @@ class TimePeriod {
     return _json;
   }
 }
-
-

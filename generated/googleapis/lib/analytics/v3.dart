@@ -1,17 +1,22 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.analytics.v3;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client analytics/v3';
 
 /** View and manage your Google Analytics data */
 class AnalyticsApi {
@@ -37,7 +42,7 @@ class AnalyticsApi {
   static const AnalyticsReadonlyScope = "https://www.googleapis.com/auth/analytics.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   DataResourceApi get data => new DataResourceApi(_requester);
   ManagementResourceApi get management => new ManagementResourceApi(_requester);
@@ -45,28 +50,26 @@ class AnalyticsApi {
   ProvisioningResourceApi get provisioning => new ProvisioningResourceApi(_requester);
 
   AnalyticsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "analytics/v3/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class DataResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   DataGaResourceApi get ga => new DataGaResourceApi(_requester);
   DataMcfResourceApi get mcf => new DataMcfResourceApi(_requester);
   DataRealtimeResourceApi get realtime => new DataRealtimeResourceApi(_requester);
 
-  DataResourceApi(common_internal.ApiRequester client) : 
+  DataResourceApi(commons.ApiRequester client) : 
       _requester = client;
 }
 
 
-/** Not documented yet. */
 class DataGaResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DataGaResourceApi(common_internal.ApiRequester client) : 
+  DataGaResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -129,7 +132,7 @@ class DataGaResourceApi {
    *
    * Completes with a [GaData].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -140,7 +143,7 @@ class DataGaResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (ids == null) {
@@ -200,11 +203,10 @@ class DataGaResourceApi {
 }
 
 
-/** Not documented yet. */
 class DataMcfResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DataMcfResourceApi(common_internal.ApiRequester client) : 
+  DataMcfResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -260,7 +262,7 @@ class DataMcfResourceApi {
    *
    * Completes with a [McfData].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -271,7 +273,7 @@ class DataMcfResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (ids == null) {
@@ -325,11 +327,10 @@ class DataMcfResourceApi {
 }
 
 
-/** Not documented yet. */
 class DataRealtimeResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DataRealtimeResourceApi(common_internal.ApiRequester client) : 
+  DataRealtimeResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -361,7 +362,7 @@ class DataRealtimeResourceApi {
    *
    * Completes with a [RealtimeData].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -372,7 +373,7 @@ class DataRealtimeResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (ids == null) {
@@ -412,9 +413,8 @@ class DataRealtimeResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ManagementAccountSummariesResourceApi get accountSummaries => new ManagementAccountSummariesResourceApi(_requester);
   ManagementAccountUserLinksResourceApi get accountUserLinks => new ManagementAccountUserLinksResourceApi(_requester);
@@ -422,7 +422,6 @@ class ManagementResourceApi {
   ManagementCustomDataSourcesResourceApi get customDataSources => new ManagementCustomDataSourcesResourceApi(_requester);
   ManagementCustomDimensionsResourceApi get customDimensions => new ManagementCustomDimensionsResourceApi(_requester);
   ManagementCustomMetricsResourceApi get customMetrics => new ManagementCustomMetricsResourceApi(_requester);
-  ManagementDailyUploadsResourceApi get dailyUploads => new ManagementDailyUploadsResourceApi(_requester);
   ManagementExperimentsResourceApi get experiments => new ManagementExperimentsResourceApi(_requester);
   ManagementFiltersResourceApi get filters => new ManagementFiltersResourceApi(_requester);
   ManagementGoalsResourceApi get goals => new ManagementGoalsResourceApi(_requester);
@@ -436,16 +435,15 @@ class ManagementResourceApi {
   ManagementWebpropertiesResourceApi get webproperties => new ManagementWebpropertiesResourceApi(_requester);
   ManagementWebpropertyUserLinksResourceApi get webpropertyUserLinks => new ManagementWebpropertyUserLinksResourceApi(_requester);
 
-  ManagementResourceApi(common_internal.ApiRequester client) : 
+  ManagementResourceApi(commons.ApiRequester client) : 
       _requester = client;
 }
 
 
-/** Not documented yet. */
 class ManagementAccountSummariesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementAccountSummariesResourceApi(common_internal.ApiRequester client) : 
+  ManagementAccountSummariesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -462,7 +460,7 @@ class ManagementAccountSummariesResourceApi {
    *
    * Completes with a [AccountSummaries].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -473,7 +471,7 @@ class ManagementAccountSummariesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (max_results != null) {
@@ -499,11 +497,10 @@ class ManagementAccountSummariesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementAccountUserLinksResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementAccountUserLinksResourceApi(common_internal.ApiRequester client) : 
+  ManagementAccountUserLinksResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -515,7 +512,7 @@ class ManagementAccountUserLinksResourceApi {
    *
    * [linkId] - Link ID to delete the user link for.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -526,7 +523,7 @@ class ManagementAccountUserLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -538,7 +535,7 @@ class ManagementAccountUserLinksResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/entityUserLinks/' + common_internal.Escaper.ecapeVariable('$linkId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/entityUserLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -561,7 +558,7 @@ class ManagementAccountUserLinksResourceApi {
    *
    * Completes with a [EntityUserLink].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -572,7 +569,7 @@ class ManagementAccountUserLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -583,7 +580,7 @@ class ManagementAccountUserLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/entityUserLinks';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/entityUserLinks';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -611,7 +608,7 @@ class ManagementAccountUserLinksResourceApi {
    *
    * Completes with a [EntityUserLinks].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -622,7 +619,7 @@ class ManagementAccountUserLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -636,7 +633,7 @@ class ManagementAccountUserLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/entityUserLinks';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/entityUserLinks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -661,7 +658,7 @@ class ManagementAccountUserLinksResourceApi {
    *
    * Completes with a [EntityUserLink].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -672,7 +669,7 @@ class ManagementAccountUserLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -686,7 +683,7 @@ class ManagementAccountUserLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/entityUserLinks/' + common_internal.Escaper.ecapeVariable('$linkId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/entityUserLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -701,11 +698,10 @@ class ManagementAccountUserLinksResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementAccountsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementAccountsResourceApi(common_internal.ApiRequester client) : 
+  ManagementAccountsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -720,7 +716,7 @@ class ManagementAccountsResourceApi {
    *
    * Completes with a [Accounts].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -731,7 +727,7 @@ class ManagementAccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (max_results != null) {
@@ -757,11 +753,10 @@ class ManagementAccountsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementCustomDataSourcesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementCustomDataSourcesResourceApi(common_internal.ApiRequester client) : 
+  ManagementCustomDataSourcesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -784,7 +779,7 @@ class ManagementCustomDataSourcesResourceApi {
    *
    * Completes with a [CustomDataSources].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -795,7 +790,7 @@ class ManagementCustomDataSourcesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -812,7 +807,7 @@ class ManagementCustomDataSourcesResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -827,11 +822,10 @@ class ManagementCustomDataSourcesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementCustomDimensionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementCustomDimensionsResourceApi(common_internal.ApiRequester client) : 
+  ManagementCustomDimensionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -847,7 +841,7 @@ class ManagementCustomDimensionsResourceApi {
    *
    * Completes with a [CustomDimension].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -858,7 +852,7 @@ class ManagementCustomDimensionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -872,7 +866,7 @@ class ManagementCustomDimensionsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions/' + common_internal.Escaper.ecapeVariable('$customDimensionId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions/' + commons.Escaper.ecapeVariable('$customDimensionId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -897,7 +891,7 @@ class ManagementCustomDimensionsResourceApi {
    *
    * Completes with a [CustomDimension].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -908,7 +902,7 @@ class ManagementCustomDimensionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -922,7 +916,7 @@ class ManagementCustomDimensionsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -951,7 +945,7 @@ class ManagementCustomDimensionsResourceApi {
    *
    * Completes with a [CustomDimensions].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -962,7 +956,7 @@ class ManagementCustomDimensionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -979,7 +973,7 @@ class ManagementCustomDimensionsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1011,7 +1005,7 @@ class ManagementCustomDimensionsResourceApi {
    *
    * Completes with a [CustomDimension].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1022,7 +1016,7 @@ class ManagementCustomDimensionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1042,7 +1036,7 @@ class ManagementCustomDimensionsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions/' + common_internal.Escaper.ecapeVariable('$customDimensionId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions/' + commons.Escaper.ecapeVariable('$customDimensionId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1074,7 +1068,7 @@ class ManagementCustomDimensionsResourceApi {
    *
    * Completes with a [CustomDimension].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1085,7 +1079,7 @@ class ManagementCustomDimensionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1105,7 +1099,7 @@ class ManagementCustomDimensionsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions/' + common_internal.Escaper.ecapeVariable('$customDimensionId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDimensions/' + commons.Escaper.ecapeVariable('$customDimensionId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1120,11 +1114,10 @@ class ManagementCustomDimensionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementCustomMetricsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementCustomMetricsResourceApi(common_internal.ApiRequester client) : 
+  ManagementCustomMetricsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1140,7 +1133,7 @@ class ManagementCustomMetricsResourceApi {
    *
    * Completes with a [CustomMetric].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1151,7 +1144,7 @@ class ManagementCustomMetricsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1165,7 +1158,7 @@ class ManagementCustomMetricsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics/' + common_internal.Escaper.ecapeVariable('$customMetricId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics/' + commons.Escaper.ecapeVariable('$customMetricId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1190,7 +1183,7 @@ class ManagementCustomMetricsResourceApi {
    *
    * Completes with a [CustomMetric].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1201,7 +1194,7 @@ class ManagementCustomMetricsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1215,7 +1208,7 @@ class ManagementCustomMetricsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1244,7 +1237,7 @@ class ManagementCustomMetricsResourceApi {
    *
    * Completes with a [CustomMetrics].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1255,7 +1248,7 @@ class ManagementCustomMetricsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1272,7 +1265,7 @@ class ManagementCustomMetricsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1303,7 +1296,7 @@ class ManagementCustomMetricsResourceApi {
    *
    * Completes with a [CustomMetric].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1314,7 +1307,7 @@ class ManagementCustomMetricsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1334,7 +1327,7 @@ class ManagementCustomMetricsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics/' + common_internal.Escaper.ecapeVariable('$customMetricId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics/' + commons.Escaper.ecapeVariable('$customMetricId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1365,7 +1358,7 @@ class ManagementCustomMetricsResourceApi {
    *
    * Completes with a [CustomMetric].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1376,7 +1369,7 @@ class ManagementCustomMetricsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1396,7 +1389,7 @@ class ManagementCustomMetricsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics/' + common_internal.Escaper.ecapeVariable('$customMetricId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customMetrics/' + commons.Escaper.ecapeVariable('$customMetricId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1411,263 +1404,10 @@ class ManagementCustomMetricsResourceApi {
 }
 
 
-/** Not documented yet. */
-class ManagementDailyUploadsResourceApi {
-  final common_internal.ApiRequester _requester;
-
-  ManagementDailyUploadsResourceApi(common_internal.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Delete uploaded data for the given date.
-   *
-   * Request parameters:
-   *
-   * [accountId] - Account Id associated with daily upload delete.
-   * Value must have pattern "[0-9]+".
-   *
-   * [webPropertyId] - Web property Id associated with daily upload delete.
-   * Value must have pattern "UA-[0-9]+-[0-9]+".
-   *
-   * [customDataSourceId] - Custom data source Id associated with daily upload
-   * delete.
-   *
-   * [date] - Date for which data is to be deleted. Date should be formatted as
-   * YYYY-MM-DD.
-   * Value must have pattern "[0-9]{4}-[0-9]{2}-[0-9]{2}".
-   *
-   * [type] - Type of data for this delete.
-   * Possible string values are:
-   * - "cost" : Value for specifying cost data upload.
-   *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
-   */
-  async.Future delete(core.String accountId, core.String webPropertyId, core.String customDataSourceId, core.String date, core.String type) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (webPropertyId == null) {
-      throw new core.ArgumentError("Parameter webPropertyId is required.");
-    }
-    if (customDataSourceId == null) {
-      throw new core.ArgumentError("Parameter customDataSourceId is required.");
-    }
-    if (date == null) {
-      throw new core.ArgumentError("Parameter date is required.");
-    }
-    if (type == null) {
-      throw new core.ArgumentError("Parameter type is required.");
-    }
-    _queryParams["type"] = [type];
-
-    _downloadOptions = null;
-
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + common_internal.Escaper.ecapeVariable('$customDataSourceId') + '/dailyUploads/' + common_internal.Escaper.ecapeVariable('$date');
-
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /**
-   * List daily uploads to which the user has access.
-   *
-   * Request parameters:
-   *
-   * [accountId] - Account Id for the daily uploads to retrieve.
-   * Value must have pattern "\d+".
-   *
-   * [webPropertyId] - Web property Id for the daily uploads to retrieve.
-   * Value must have pattern "UA-(\d+)-(\d+)".
-   *
-   * [customDataSourceId] - Custom data source Id for daily uploads to retrieve.
-   * Value must have pattern ".{22}".
-   *
-   * [start_date] - Start date of the form YYYY-MM-DD.
-   * Value must have pattern "[0-9]{4}-[0-9]{2}-[0-9]{2}".
-   *
-   * [end_date] - End date of the form YYYY-MM-DD.
-   * Value must have pattern "[0-9]{4}-[0-9]{2}-[0-9]{2}".
-   *
-   * [max_results] - The maximum number of custom data sources to include in
-   * this response.
-   *
-   * [start_index] - A 1-based index of the first daily upload to retrieve. Use
-   * this parameter as a pagination mechanism along with the max-results
-   * parameter.
-   *
-   * Completes with a [DailyUploads].
-   *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
-   */
-  async.Future<DailyUploads> list(core.String accountId, core.String webPropertyId, core.String customDataSourceId, core.String start_date, core.String end_date, {core.int max_results, core.int start_index}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (webPropertyId == null) {
-      throw new core.ArgumentError("Parameter webPropertyId is required.");
-    }
-    if (customDataSourceId == null) {
-      throw new core.ArgumentError("Parameter customDataSourceId is required.");
-    }
-    if (start_date == null) {
-      throw new core.ArgumentError("Parameter start_date is required.");
-    }
-    _queryParams["start-date"] = [start_date];
-    if (end_date == null) {
-      throw new core.ArgumentError("Parameter end_date is required.");
-    }
-    _queryParams["end-date"] = [end_date];
-    if (max_results != null) {
-      _queryParams["max-results"] = ["${max_results}"];
-    }
-    if (start_index != null) {
-      _queryParams["start-index"] = ["${start_index}"];
-    }
-
-
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + common_internal.Escaper.ecapeVariable('$customDataSourceId') + '/dailyUploads';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new DailyUploads.fromJson(data));
-  }
-
-  /**
-   * Update/Overwrite data for a custom data source.
-   *
-   * Request parameters:
-   *
-   * [accountId] - Account Id associated with daily upload.
-   * Value must have pattern "\d+".
-   *
-   * [webPropertyId] - Web property Id associated with daily upload.
-   * Value must have pattern "UA-\d+-\d+".
-   *
-   * [customDataSourceId] - Custom data source Id to which the data being
-   * uploaded belongs.
-   *
-   * [date] - Date for which data is uploaded. Date should be formatted as
-   * YYYY-MM-DD.
-   * Value must have pattern "[0-9]{4}-[0-9]{2}-[0-9]{2}".
-   *
-   * [appendNumber] - Append number for this upload indexed from 1.
-   * Value must be between "1" and "20".
-   *
-   * [type] - Type of data for this upload.
-   * Possible string values are:
-   * - "cost" : Value for specifying cost data upload.
-   *
-   * [reset] - Reset/Overwrite all previous appends for this date and start over
-   * with this file as the first upload.
-   *
-   * [uploadMedia] - The media to upload.
-   *
-   * [uploadOptions] - Options for the media upload. Streaming Media without the
-   * length being known ahead of time is only supported via resumable uploads.
-   *
-   * Completes with a [DailyUploadAppend].
-   *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
-   */
-  async.Future<DailyUploadAppend> upload(core.String accountId, core.String webPropertyId, core.String customDataSourceId, core.String date, core.int appendNumber, core.String type, {core.bool reset, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (webPropertyId == null) {
-      throw new core.ArgumentError("Parameter webPropertyId is required.");
-    }
-    if (customDataSourceId == null) {
-      throw new core.ArgumentError("Parameter customDataSourceId is required.");
-    }
-    if (date == null) {
-      throw new core.ArgumentError("Parameter date is required.");
-    }
-    if (appendNumber == null) {
-      throw new core.ArgumentError("Parameter appendNumber is required.");
-    }
-    _queryParams["appendNumber"] = ["${appendNumber}"];
-    if (type == null) {
-      throw new core.ArgumentError("Parameter type is required.");
-    }
-    _queryParams["type"] = [type];
-    if (reset != null) {
-      _queryParams["reset"] = ["${reset}"];
-    }
-
-    _uploadMedia =  uploadMedia;
-    _uploadOptions =  uploadOptions;
-
-    if (_uploadMedia == null) {
-      _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + common_internal.Escaper.ecapeVariable('$customDataSourceId') + '/dailyUploads/' + common_internal.Escaper.ecapeVariable('$date') + '/uploads';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/analytics/v3/management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + common_internal.Escaper.ecapeVariable('$customDataSourceId') + '/dailyUploads/' + common_internal.Escaper.ecapeVariable('$date') + '/uploads';
-    } else {
-      _url = '/upload/analytics/v3/management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + common_internal.Escaper.ecapeVariable('$customDataSourceId') + '/dailyUploads/' + common_internal.Escaper.ecapeVariable('$date') + '/uploads';
-    }
-
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new DailyUploadAppend.fromJson(data));
-  }
-
-}
-
-
-/** Not documented yet. */
 class ManagementExperimentsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementExperimentsResourceApi(common_internal.ApiRequester client) : 
+  ManagementExperimentsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1683,7 +1423,7 @@ class ManagementExperimentsResourceApi {
    *
    * [experimentId] - ID of the experiment to delete
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1694,7 +1434,7 @@ class ManagementExperimentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1712,7 +1452,7 @@ class ManagementExperimentsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/experiments/' + common_internal.Escaper.ecapeVariable('$experimentId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/experiments/' + commons.Escaper.ecapeVariable('$experimentId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1739,7 +1479,7 @@ class ManagementExperimentsResourceApi {
    *
    * Completes with a [Experiment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1750,7 +1490,7 @@ class ManagementExperimentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1767,7 +1507,7 @@ class ManagementExperimentsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/experiments/' + common_internal.Escaper.ecapeVariable('$experimentId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/experiments/' + commons.Escaper.ecapeVariable('$experimentId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1794,7 +1534,7 @@ class ManagementExperimentsResourceApi {
    *
    * Completes with a [Experiment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1805,7 +1545,7 @@ class ManagementExperimentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1822,7 +1562,7 @@ class ManagementExperimentsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/experiments';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/experiments';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1856,7 +1596,7 @@ class ManagementExperimentsResourceApi {
    *
    * Completes with a [Experiments].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1867,7 +1607,7 @@ class ManagementExperimentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -1887,7 +1627,7 @@ class ManagementExperimentsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/experiments';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/experiments';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1916,7 +1656,7 @@ class ManagementExperimentsResourceApi {
    *
    * Completes with a [Experiment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1927,7 +1667,7 @@ class ManagementExperimentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1947,7 +1687,7 @@ class ManagementExperimentsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/experiments/' + common_internal.Escaper.ecapeVariable('$experimentId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/experiments/' + commons.Escaper.ecapeVariable('$experimentId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1976,7 +1716,7 @@ class ManagementExperimentsResourceApi {
    *
    * Completes with a [Experiment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1987,7 +1727,7 @@ class ManagementExperimentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2007,7 +1747,7 @@ class ManagementExperimentsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/experiments/' + common_internal.Escaper.ecapeVariable('$experimentId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/experiments/' + commons.Escaper.ecapeVariable('$experimentId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2022,11 +1762,10 @@ class ManagementExperimentsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementFiltersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementFiltersResourceApi(common_internal.ApiRequester client) : 
+  ManagementFiltersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2040,7 +1779,7 @@ class ManagementFiltersResourceApi {
    *
    * Completes with a [Filter].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2051,7 +1790,7 @@ class ManagementFiltersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -2062,7 +1801,7 @@ class ManagementFiltersResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/filters/' + common_internal.Escaper.ecapeVariable('$filterId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filters/' + commons.Escaper.ecapeVariable('$filterId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -2085,7 +1824,7 @@ class ManagementFiltersResourceApi {
    *
    * Completes with a [Filter].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2096,7 +1835,7 @@ class ManagementFiltersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -2107,7 +1846,7 @@ class ManagementFiltersResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/filters/' + common_internal.Escaper.ecapeVariable('$filterId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filters/' + commons.Escaper.ecapeVariable('$filterId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2130,7 +1869,7 @@ class ManagementFiltersResourceApi {
    *
    * Completes with a [Filter].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2141,7 +1880,7 @@ class ManagementFiltersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2152,7 +1891,7 @@ class ManagementFiltersResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/filters';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filters';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2179,7 +1918,7 @@ class ManagementFiltersResourceApi {
    *
    * Completes with a [Filters].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2190,7 +1929,7 @@ class ManagementFiltersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -2204,7 +1943,7 @@ class ManagementFiltersResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/filters';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filters';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2229,7 +1968,7 @@ class ManagementFiltersResourceApi {
    *
    * Completes with a [Filter].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2240,7 +1979,7 @@ class ManagementFiltersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2254,7 +1993,7 @@ class ManagementFiltersResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/filters/' + common_internal.Escaper.ecapeVariable('$filterId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filters/' + commons.Escaper.ecapeVariable('$filterId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -2279,7 +2018,7 @@ class ManagementFiltersResourceApi {
    *
    * Completes with a [Filter].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2290,7 +2029,7 @@ class ManagementFiltersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2304,7 +2043,7 @@ class ManagementFiltersResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/filters/' + common_internal.Escaper.ecapeVariable('$filterId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filters/' + commons.Escaper.ecapeVariable('$filterId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2319,11 +2058,10 @@ class ManagementFiltersResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementGoalsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementGoalsResourceApi(common_internal.ApiRequester client) : 
+  ManagementGoalsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2341,7 +2079,7 @@ class ManagementGoalsResourceApi {
    *
    * Completes with a [Goal].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2352,7 +2090,7 @@ class ManagementGoalsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -2369,7 +2107,7 @@ class ManagementGoalsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/goals/' + common_internal.Escaper.ecapeVariable('$goalId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/goals/' + commons.Escaper.ecapeVariable('$goalId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2396,7 +2134,7 @@ class ManagementGoalsResourceApi {
    *
    * Completes with a [Goal].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2407,7 +2145,7 @@ class ManagementGoalsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2424,7 +2162,7 @@ class ManagementGoalsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/goals';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/goals';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2460,7 +2198,7 @@ class ManagementGoalsResourceApi {
    *
    * Completes with a [Goals].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2471,7 +2209,7 @@ class ManagementGoalsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -2491,7 +2229,7 @@ class ManagementGoalsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/goals';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/goals';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2520,7 +2258,7 @@ class ManagementGoalsResourceApi {
    *
    * Completes with a [Goal].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2531,7 +2269,7 @@ class ManagementGoalsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2551,7 +2289,7 @@ class ManagementGoalsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/goals/' + common_internal.Escaper.ecapeVariable('$goalId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/goals/' + commons.Escaper.ecapeVariable('$goalId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -2580,7 +2318,7 @@ class ManagementGoalsResourceApi {
    *
    * Completes with a [Goal].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2591,7 +2329,7 @@ class ManagementGoalsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2611,7 +2349,7 @@ class ManagementGoalsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/goals/' + common_internal.Escaper.ecapeVariable('$goalId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/goals/' + commons.Escaper.ecapeVariable('$goalId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2626,11 +2364,10 @@ class ManagementGoalsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementProfileFilterLinksResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementProfileFilterLinksResourceApi(common_internal.ApiRequester client) : 
+  ManagementProfileFilterLinksResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2650,7 +2387,7 @@ class ManagementProfileFilterLinksResourceApi {
    * [linkId] - ID of the profile filter link to delete.
    * Value must have pattern "\d+:\d+".
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2661,7 +2398,7 @@ class ManagementProfileFilterLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -2679,7 +2416,7 @@ class ManagementProfileFilterLinksResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks/' + common_internal.Escaper.ecapeVariable('$linkId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -2710,7 +2447,7 @@ class ManagementProfileFilterLinksResourceApi {
    *
    * Completes with a [ProfileFilterLink].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2721,7 +2458,7 @@ class ManagementProfileFilterLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -2738,7 +2475,7 @@ class ManagementProfileFilterLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks/' + common_internal.Escaper.ecapeVariable('$linkId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2768,7 +2505,7 @@ class ManagementProfileFilterLinksResourceApi {
    *
    * Completes with a [ProfileFilterLink].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2779,7 +2516,7 @@ class ManagementProfileFilterLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2796,7 +2533,7 @@ class ManagementProfileFilterLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2832,7 +2569,7 @@ class ManagementProfileFilterLinksResourceApi {
    *
    * Completes with a [ProfileFilterLinks].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2843,7 +2580,7 @@ class ManagementProfileFilterLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -2863,7 +2600,7 @@ class ManagementProfileFilterLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2897,7 +2634,7 @@ class ManagementProfileFilterLinksResourceApi {
    *
    * Completes with a [ProfileFilterLink].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2908,7 +2645,7 @@ class ManagementProfileFilterLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2928,7 +2665,7 @@ class ManagementProfileFilterLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks/' + common_internal.Escaper.ecapeVariable('$linkId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -2961,7 +2698,7 @@ class ManagementProfileFilterLinksResourceApi {
    *
    * Completes with a [ProfileFilterLink].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2972,7 +2709,7 @@ class ManagementProfileFilterLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2992,7 +2729,7 @@ class ManagementProfileFilterLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks/' + common_internal.Escaper.ecapeVariable('$linkId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/profileFilterLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -3007,11 +2744,10 @@ class ManagementProfileFilterLinksResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementProfileUserLinksResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementProfileUserLinksResourceApi(common_internal.ApiRequester client) : 
+  ManagementProfileUserLinksResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3027,7 +2763,7 @@ class ManagementProfileUserLinksResourceApi {
    *
    * [linkId] - Link ID to delete the user link for.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3038,7 +2774,7 @@ class ManagementProfileUserLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -3056,7 +2792,7 @@ class ManagementProfileUserLinksResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/entityUserLinks/' + common_internal.Escaper.ecapeVariable('$linkId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/entityUserLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -3083,7 +2819,7 @@ class ManagementProfileUserLinksResourceApi {
    *
    * Completes with a [EntityUserLink].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3094,7 +2830,7 @@ class ManagementProfileUserLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3111,7 +2847,7 @@ class ManagementProfileUserLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/entityUserLinks';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/entityUserLinks';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3147,7 +2883,7 @@ class ManagementProfileUserLinksResourceApi {
    *
    * Completes with a [EntityUserLinks].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3158,7 +2894,7 @@ class ManagementProfileUserLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -3178,7 +2914,7 @@ class ManagementProfileUserLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/entityUserLinks';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/entityUserLinks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3207,7 +2943,7 @@ class ManagementProfileUserLinksResourceApi {
    *
    * Completes with a [EntityUserLink].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3218,7 +2954,7 @@ class ManagementProfileUserLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3238,7 +2974,7 @@ class ManagementProfileUserLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/entityUserLinks/' + common_internal.Escaper.ecapeVariable('$linkId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/entityUserLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -3253,11 +2989,10 @@ class ManagementProfileUserLinksResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementProfilesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementProfilesResourceApi(common_internal.ApiRequester client) : 
+  ManagementProfilesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3271,7 +3006,7 @@ class ManagementProfilesResourceApi {
    *
    * [profileId] - ID of the view (profile) to be deleted.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3282,7 +3017,7 @@ class ManagementProfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -3297,7 +3032,7 @@ class ManagementProfilesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -3325,7 +3060,7 @@ class ManagementProfilesResourceApi {
    *
    * Completes with a [Profile].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3336,7 +3071,7 @@ class ManagementProfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -3350,7 +3085,7 @@ class ManagementProfilesResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3375,7 +3110,7 @@ class ManagementProfilesResourceApi {
    *
    * Completes with a [Profile].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3386,7 +3121,7 @@ class ManagementProfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3400,7 +3135,7 @@ class ManagementProfilesResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3433,7 +3168,7 @@ class ManagementProfilesResourceApi {
    *
    * Completes with a [Profiles].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3444,7 +3179,7 @@ class ManagementProfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -3461,7 +3196,7 @@ class ManagementProfilesResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3488,7 +3223,7 @@ class ManagementProfilesResourceApi {
    *
    * Completes with a [Profile].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3499,7 +3234,7 @@ class ManagementProfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3516,7 +3251,7 @@ class ManagementProfilesResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -3543,7 +3278,7 @@ class ManagementProfilesResourceApi {
    *
    * Completes with a [Profile].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3554,7 +3289,7 @@ class ManagementProfilesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3571,7 +3306,7 @@ class ManagementProfilesResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -3586,11 +3321,10 @@ class ManagementProfilesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementSegmentsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementSegmentsResourceApi(common_internal.ApiRequester client) : 
+  ManagementSegmentsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3605,7 +3339,7 @@ class ManagementSegmentsResourceApi {
    *
    * Completes with a [Segments].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3616,7 +3350,7 @@ class ManagementSegmentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (max_results != null) {
@@ -3642,11 +3376,10 @@ class ManagementSegmentsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementUnsampledReportsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementUnsampledReportsResourceApi(common_internal.ApiRequester client) : 
+  ManagementUnsampledReportsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3664,7 +3397,7 @@ class ManagementUnsampledReportsResourceApi {
    *
    * Completes with a [UnsampledReport].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3675,7 +3408,7 @@ class ManagementUnsampledReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -3692,7 +3425,7 @@ class ManagementUnsampledReportsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/unsampledReports/' + common_internal.Escaper.ecapeVariable('$unsampledReportId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/unsampledReports/' + commons.Escaper.ecapeVariable('$unsampledReportId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3719,7 +3452,7 @@ class ManagementUnsampledReportsResourceApi {
    *
    * Completes with a [UnsampledReport].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3730,7 +3463,7 @@ class ManagementUnsampledReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3747,7 +3480,7 @@ class ManagementUnsampledReportsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/unsampledReports';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/unsampledReports';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3782,7 +3515,7 @@ class ManagementUnsampledReportsResourceApi {
    *
    * Completes with a [UnsampledReports].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3793,7 +3526,7 @@ class ManagementUnsampledReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -3813,7 +3546,7 @@ class ManagementUnsampledReportsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + common_internal.Escaper.ecapeVariable('$profileId') + '/unsampledReports';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/profiles/' + commons.Escaper.ecapeVariable('$profileId') + '/unsampledReports';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3828,11 +3561,10 @@ class ManagementUnsampledReportsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementUploadsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementUploadsResourceApi(common_internal.ApiRequester client) : 
+  ManagementUploadsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -3851,7 +3583,7 @@ class ManagementUploadsResourceApi {
    * [customDataSourceId] - Custom data source Id for the uploads to be deleted.
    * Value must have pattern ".{22}".
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3862,7 +3594,7 @@ class ManagementUploadsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -3880,7 +3612,7 @@ class ManagementUploadsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + common_internal.Escaper.ecapeVariable('$customDataSourceId') + '/deleteUploadData';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + commons.Escaper.ecapeVariable('$customDataSourceId') + '/deleteUploadData';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3911,7 +3643,7 @@ class ManagementUploadsResourceApi {
    *
    * Completes with a [Upload].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3922,7 +3654,7 @@ class ManagementUploadsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -3939,7 +3671,7 @@ class ManagementUploadsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + common_internal.Escaper.ecapeVariable('$customDataSourceId') + '/uploads/' + common_internal.Escaper.ecapeVariable('$uploadId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + commons.Escaper.ecapeVariable('$customDataSourceId') + '/uploads/' + commons.Escaper.ecapeVariable('$uploadId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -3972,7 +3704,7 @@ class ManagementUploadsResourceApi {
    *
    * Completes with a [Uploads].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -3983,7 +3715,7 @@ class ManagementUploadsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -4003,7 +3735,7 @@ class ManagementUploadsResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + common_internal.Escaper.ecapeVariable('$customDataSourceId') + '/uploads';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + commons.Escaper.ecapeVariable('$customDataSourceId') + '/uploads';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4013,58 +3745,6 @@ class ManagementUploadsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Uploads.fromJson(data));
-  }
-
-  /**
-   * Migrate custom data source and data imports to latest version.
-   *
-   * Request parameters:
-   *
-   * [accountId] - Account Id for migration.
-   * Value must have pattern "\d+".
-   *
-   * [webPropertyId] - Web property Id for migration.
-   * Value must have pattern "UA-(\d+)-(\d+)".
-   *
-   * [customDataSourceId] - Custom data source Id for migration.
-   * Value must have pattern ".{22}".
-   *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
-   */
-  async.Future migrateDataImport(core.String accountId, core.String webPropertyId, core.String customDataSourceId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (webPropertyId == null) {
-      throw new core.ArgumentError("Parameter webPropertyId is required.");
-    }
-    if (customDataSourceId == null) {
-      throw new core.ArgumentError("Parameter customDataSourceId is required.");
-    }
-
-    _downloadOptions = null;
-
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + common_internal.Escaper.ecapeVariable('$customDataSourceId') + '/migrateDataImport';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
   }
 
   /**
@@ -4088,18 +3768,18 @@ class ManagementUploadsResourceApi {
    *
    * Completes with a [Upload].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Upload> uploadData(core.String accountId, core.String webPropertyId, core.String customDataSourceId, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Upload> uploadData(core.String accountId, core.String webPropertyId, core.String customDataSourceId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -4116,11 +3796,11 @@ class ManagementUploadsResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + common_internal.Escaper.ecapeVariable('$customDataSourceId') + '/uploads';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/analytics/v3/management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + common_internal.Escaper.ecapeVariable('$customDataSourceId') + '/uploads';
+      _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + commons.Escaper.ecapeVariable('$customDataSourceId') + '/uploads';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/analytics/v3/management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + commons.Escaper.ecapeVariable('$customDataSourceId') + '/uploads';
     } else {
-      _url = '/upload/analytics/v3/management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + common_internal.Escaper.ecapeVariable('$customDataSourceId') + '/uploads';
+      _url = '/upload/analytics/v3/management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/customDataSources/' + commons.Escaper.ecapeVariable('$customDataSourceId') + '/uploads';
     }
 
 
@@ -4137,11 +3817,10 @@ class ManagementUploadsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementWebPropertyAdWordsLinksResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementWebPropertyAdWordsLinksResourceApi(common_internal.ApiRequester client) : 
+  ManagementWebPropertyAdWordsLinksResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -4155,7 +3834,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
    *
    * [webPropertyAdWordsLinkId] - Web property AdWords link ID.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4166,7 +3845,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -4181,7 +3860,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks/' + common_internal.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks/' + commons.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -4206,7 +3885,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
    *
    * Completes with a [EntityAdWordsLink].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4217,7 +3896,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -4231,7 +3910,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks/' + common_internal.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks/' + commons.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4256,7 +3935,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
    *
    * Completes with a [EntityAdWordsLink].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4267,7 +3946,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4281,7 +3960,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -4312,7 +3991,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
    *
    * Completes with a [EntityAdWordsLinks].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4323,7 +4002,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -4340,7 +4019,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4368,7 +4047,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
    *
    * Completes with a [EntityAdWordsLink].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4379,7 +4058,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4396,7 +4075,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks/' + common_internal.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks/' + commons.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -4423,7 +4102,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
    *
    * Completes with a [EntityAdWordsLink].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4434,7 +4113,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4451,7 +4130,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks/' + common_internal.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityAdWordsLinks/' + commons.Escaper.ecapeVariable('$webPropertyAdWordsLinkId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -4466,11 +4145,10 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementWebpropertiesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementWebpropertiesResourceApi(common_internal.ApiRequester client) : 
+  ManagementWebpropertiesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -4486,7 +4164,7 @@ class ManagementWebpropertiesResourceApi {
    *
    * Completes with a [Webproperty].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4497,7 +4175,7 @@ class ManagementWebpropertiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -4508,7 +4186,7 @@ class ManagementWebpropertiesResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4533,7 +4211,7 @@ class ManagementWebpropertiesResourceApi {
    *
    * Completes with a [Webproperty].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4544,7 +4222,7 @@ class ManagementWebpropertiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4555,7 +4233,7 @@ class ManagementWebpropertiesResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -4584,7 +4262,7 @@ class ManagementWebpropertiesResourceApi {
    *
    * Completes with a [Webproperties].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4595,7 +4273,7 @@ class ManagementWebpropertiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -4609,7 +4287,7 @@ class ManagementWebpropertiesResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4634,7 +4312,7 @@ class ManagementWebpropertiesResourceApi {
    *
    * Completes with a [Webproperty].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4645,7 +4323,7 @@ class ManagementWebpropertiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4659,7 +4337,7 @@ class ManagementWebpropertiesResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -4684,7 +4362,7 @@ class ManagementWebpropertiesResourceApi {
    *
    * Completes with a [Webproperty].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4695,7 +4373,7 @@ class ManagementWebpropertiesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4709,7 +4387,7 @@ class ManagementWebpropertiesResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -4724,11 +4402,10 @@ class ManagementWebpropertiesResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManagementWebpropertyUserLinksResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManagementWebpropertyUserLinksResourceApi(common_internal.ApiRequester client) : 
+  ManagementWebpropertyUserLinksResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -4742,7 +4419,7 @@ class ManagementWebpropertyUserLinksResourceApi {
    *
    * [linkId] - Link ID to delete the user link for.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4753,7 +4430,7 @@ class ManagementWebpropertyUserLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -4768,7 +4445,7 @@ class ManagementWebpropertyUserLinksResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/entityUserLinks/' + common_internal.Escaper.ecapeVariable('$linkId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityUserLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -4793,7 +4470,7 @@ class ManagementWebpropertyUserLinksResourceApi {
    *
    * Completes with a [EntityUserLink].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4804,7 +4481,7 @@ class ManagementWebpropertyUserLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4818,7 +4495,7 @@ class ManagementWebpropertyUserLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/entityUserLinks';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityUserLinks';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -4850,7 +4527,7 @@ class ManagementWebpropertyUserLinksResourceApi {
    *
    * Completes with a [EntityUserLinks].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4861,7 +4538,7 @@ class ManagementWebpropertyUserLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -4878,7 +4555,7 @@ class ManagementWebpropertyUserLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/entityUserLinks';
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityUserLinks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -4905,7 +4582,7 @@ class ManagementWebpropertyUserLinksResourceApi {
    *
    * Completes with a [EntityUserLink].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4916,7 +4593,7 @@ class ManagementWebpropertyUserLinksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -4933,7 +4610,7 @@ class ManagementWebpropertyUserLinksResourceApi {
     }
 
 
-    _url = 'management/accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/webproperties/' + common_internal.Escaper.ecapeVariable('$webPropertyId') + '/entityUserLinks/' + common_internal.Escaper.ecapeVariable('$linkId');
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/entityUserLinks/' + commons.Escaper.ecapeVariable('$linkId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -4948,22 +4625,20 @@ class ManagementWebpropertyUserLinksResourceApi {
 }
 
 
-/** Not documented yet. */
 class MetadataResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   MetadataColumnsResourceApi get columns => new MetadataColumnsResourceApi(_requester);
 
-  MetadataResourceApi(common_internal.ApiRequester client) : 
+  MetadataResourceApi(commons.ApiRequester client) : 
       _requester = client;
 }
 
 
-/** Not documented yet. */
 class MetadataColumnsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  MetadataColumnsResourceApi(common_internal.ApiRequester client) : 
+  MetadataColumnsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -4977,7 +4652,7 @@ class MetadataColumnsResourceApi {
    *
    * Completes with a [Columns].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -4988,7 +4663,7 @@ class MetadataColumnsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (reportType == null) {
@@ -4996,7 +4671,7 @@ class MetadataColumnsResourceApi {
     }
 
 
-    _url = 'metadata/' + common_internal.Escaper.ecapeVariable('$reportType') + '/columns';
+    _url = 'metadata/' + commons.Escaper.ecapeVariable('$reportType') + '/columns';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -5011,11 +4686,10 @@ class MetadataColumnsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ProvisioningResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ProvisioningResourceApi(common_internal.ApiRequester client) : 
+  ProvisioningResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -5027,7 +4701,7 @@ class ProvisioningResourceApi {
    *
    * Completes with a [AccountTicket].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -5038,7 +4712,7 @@ class ProvisioningResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -5775,7 +5449,6 @@ class Columns {
 }
 
 
-/** Not documented yet. */
 class CustomDataSourceChildLink {
   /**
    * Link to the list of daily uploads for this custom data source. Link to the
@@ -5852,7 +5525,6 @@ class CustomDataSource {
   /** Account ID to which this custom data source belongs. */
   core.String accountId;
 
-  /** Not documented yet. */
   CustomDataSourceChildLink childLink;
 
   /** Time this custom data source was created. */
@@ -5864,7 +5536,6 @@ class CustomDataSource {
   /** Custom data source ID. */
   core.String id;
 
-  /** Not documented yet. */
   core.String importBehavior;
 
   /** Resource type for Analytics custom data source. */
@@ -5891,7 +5562,6 @@ class CustomDataSource {
   /** Time this custom data source was last modified. */
   core.DateTime updated;
 
-  /** Not documented yet. */
   core.String uploadType;
 
   /**
@@ -6666,380 +6336,8 @@ class CustomMetrics {
 }
 
 
-/**
- * Parent link for a daily upload. Points to the custom data source to which
- * this daily upload belongs.
- */
-class DailyUploadParentLink {
-  /** Link to the custom data source to which this daily upload belongs. */
-  core.String href;
-
-  /** Value is "analytics#customDataSource". */
-  core.String type;
-
-
-  DailyUploadParentLink();
-
-  DailyUploadParentLink.fromJson(core.Map _json) {
-    if (_json.containsKey("href")) {
-      href = _json["href"];
-    }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (href != null) {
-      _json["href"] = href;
-    }
-    if (type != null) {
-      _json["type"] = type;
-    }
-    return _json;
-  }
-}
-
-
-/** Not documented yet. */
-class DailyUploadRecentChanges {
-  /** The type of change: APPEND, RESET, or DELETE. */
-  core.String change;
-
-  /** The time when the change occurred. */
-  core.DateTime time;
-
-
-  DailyUploadRecentChanges();
-
-  DailyUploadRecentChanges.fromJson(core.Map _json) {
-    if (_json.containsKey("change")) {
-      change = _json["change"];
-    }
-    if (_json.containsKey("time")) {
-      time = core.DateTime.parse(_json["time"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (change != null) {
-      _json["change"] = change;
-    }
-    if (time != null) {
-      _json["time"] = (time).toIso8601String();
-    }
-    return _json;
-  }
-}
-
-
-/** Metadata for daily upload entity. */
-class DailyUpload {
-  /** Account ID to which this daily upload belongs. */
-  core.String accountId;
-
-  /** Number of appends for this date. */
-  core.int appendCount;
-
-  /** Time this daily upload was created. */
-  core.DateTime createdTime;
-
-  /** Custom data source ID to which this daily upload belongs. */
-  core.String customDataSourceId;
-
-  /** Date associated with daily upload. */
-  core.String date;
-
-  /** Resource type for Analytics daily upload. */
-  core.String kind;
-
-  /** Time this daily upload was last modified. */
-  core.DateTime modifiedTime;
-
-  /**
-   * Parent link for a daily upload. Points to the custom data source to which
-   * this daily upload belongs.
-   */
-  DailyUploadParentLink parentLink;
-
-  /** Change log for last 10 changes in chronological order. */
-  core.List<DailyUploadRecentChanges> recentChanges;
-
-  /** Link for this daily upload. */
-  core.String selfLink;
-
-  /**
-   * Web property ID of the form UA-XXXXX-YY to which this daily upload belongs.
-   */
-  core.String webPropertyId;
-
-
-  DailyUpload();
-
-  DailyUpload.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
-    }
-    if (_json.containsKey("appendCount")) {
-      appendCount = _json["appendCount"];
-    }
-    if (_json.containsKey("createdTime")) {
-      createdTime = core.DateTime.parse(_json["createdTime"]);
-    }
-    if (_json.containsKey("customDataSourceId")) {
-      customDataSourceId = _json["customDataSourceId"];
-    }
-    if (_json.containsKey("date")) {
-      date = _json["date"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("modifiedTime")) {
-      modifiedTime = core.DateTime.parse(_json["modifiedTime"]);
-    }
-    if (_json.containsKey("parentLink")) {
-      parentLink = new DailyUploadParentLink.fromJson(_json["parentLink"]);
-    }
-    if (_json.containsKey("recentChanges")) {
-      recentChanges = _json["recentChanges"].map((value) => new DailyUploadRecentChanges.fromJson(value)).toList();
-    }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
-    }
-    if (_json.containsKey("webPropertyId")) {
-      webPropertyId = _json["webPropertyId"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (accountId != null) {
-      _json["accountId"] = accountId;
-    }
-    if (appendCount != null) {
-      _json["appendCount"] = appendCount;
-    }
-    if (createdTime != null) {
-      _json["createdTime"] = (createdTime).toIso8601String();
-    }
-    if (customDataSourceId != null) {
-      _json["customDataSourceId"] = customDataSourceId;
-    }
-    if (date != null) {
-      _json["date"] = date;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (modifiedTime != null) {
-      _json["modifiedTime"] = (modifiedTime).toIso8601String();
-    }
-    if (parentLink != null) {
-      _json["parentLink"] = (parentLink).toJson();
-    }
-    if (recentChanges != null) {
-      _json["recentChanges"] = recentChanges.map((value) => (value).toJson()).toList();
-    }
-    if (selfLink != null) {
-      _json["selfLink"] = selfLink;
-    }
-    if (webPropertyId != null) {
-      _json["webPropertyId"] = webPropertyId;
-    }
-    return _json;
-  }
-}
-
-
-/** Metadata returned for a successful append operation. */
-class DailyUploadAppend {
-  /** Account Id to which this daily upload append belongs. */
-  core.String accountId;
-
-  /** Append number. */
-  core.int appendNumber;
-
-  /** Custom data source Id to which this daily upload append belongs. */
-  core.String customDataSourceId;
-
-  /** Date associated with daily upload append. */
-  core.String date;
-
-  /** Resource type for Analytics daily upload append. */
-  core.String kind;
-
-  /** Not documented yet. */
-  core.String nextAppendLink;
-
-  /**
-   * Web property Id of the form UA-XXXXX-YY to which this daily upload append
-   * belongs.
-   */
-  core.String webPropertyId;
-
-
-  DailyUploadAppend();
-
-  DailyUploadAppend.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
-    }
-    if (_json.containsKey("appendNumber")) {
-      appendNumber = _json["appendNumber"];
-    }
-    if (_json.containsKey("customDataSourceId")) {
-      customDataSourceId = _json["customDataSourceId"];
-    }
-    if (_json.containsKey("date")) {
-      date = _json["date"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("nextAppendLink")) {
-      nextAppendLink = _json["nextAppendLink"];
-    }
-    if (_json.containsKey("webPropertyId")) {
-      webPropertyId = _json["webPropertyId"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (accountId != null) {
-      _json["accountId"] = accountId;
-    }
-    if (appendNumber != null) {
-      _json["appendNumber"] = appendNumber;
-    }
-    if (customDataSourceId != null) {
-      _json["customDataSourceId"] = customDataSourceId;
-    }
-    if (date != null) {
-      _json["date"] = date;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (nextAppendLink != null) {
-      _json["nextAppendLink"] = nextAppendLink;
-    }
-    if (webPropertyId != null) {
-      _json["webPropertyId"] = webPropertyId;
-    }
-    return _json;
-  }
-}
-
-
-/**
- * A daily upload collection lists Analytics daily uploads to which the user has
- * access. Each resource in the collection corresponds to a single Analytics
- * daily upload.
- */
-class DailyUploads {
-  /** A collection of daily uploads. */
-  core.List<DailyUpload> items;
-
-  /**
-   * The maximum number of resources the response can contain, regardless of the
-   * actual number of resources returned. Its value ranges from 1 to 1000 with a
-   * value of 1000 by default, or otherwise specified by the max-results query
-   * parameter.
-   */
-  core.int itemsPerPage;
-
-  /** Collection type. Value is analytics#dailyUploads. */
-  core.String kind;
-
-  /** Link to next page for this daily upload collection. */
-  core.String nextLink;
-
-  /** Link to previous page for this daily upload collection. */
-  core.String previousLink;
-
-  /**
-   * The starting index of the resources, which is 1 by default or otherwise
-   * specified by the start-index query parameter.
-   */
-  core.int startIndex;
-
-  /**
-   * The total number of results for the query, regardless of the number of
-   * results in the response.
-   */
-  core.int totalResults;
-
-  /** Email ID of the authenticated user */
-  core.String username;
-
-
-  DailyUploads();
-
-  DailyUploads.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new DailyUpload.fromJson(value)).toList();
-    }
-    if (_json.containsKey("itemsPerPage")) {
-      itemsPerPage = _json["itemsPerPage"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("nextLink")) {
-      nextLink = _json["nextLink"];
-    }
-    if (_json.containsKey("previousLink")) {
-      previousLink = _json["previousLink"];
-    }
-    if (_json.containsKey("startIndex")) {
-      startIndex = _json["startIndex"];
-    }
-    if (_json.containsKey("totalResults")) {
-      totalResults = _json["totalResults"];
-    }
-    if (_json.containsKey("username")) {
-      username = _json["username"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    if (itemsPerPage != null) {
-      _json["itemsPerPage"] = itemsPerPage;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (nextLink != null) {
-      _json["nextLink"] = nextLink;
-    }
-    if (previousLink != null) {
-      _json["previousLink"] = previousLink;
-    }
-    if (startIndex != null) {
-      _json["startIndex"] = startIndex;
-    }
-    if (totalResults != null) {
-      _json["totalResults"] = totalResults;
-    }
-    if (username != null) {
-      _json["username"] = username;
-    }
-    return _json;
-  }
-}
-
-
 /** Web property being linked. */
 class EntityAdWordsLinkEntity {
-  /** Not documented yet. */
   WebPropertyRef webPropertyRef;
 
 
@@ -7529,7 +6827,6 @@ class ExperimentParentLink {
 }
 
 
-/** Not documented yet. */
 class ExperimentVariations {
   /**
    * The name of the variation. This field is required when creating an
@@ -8782,7 +8079,6 @@ class Filters {
 }
 
 
-/** Not documented yet. */
 class GaDataColumnHeaders {
   /** Column Type. Either DIMENSION or METRIC. */
   core.String columnType;
@@ -8828,15 +8124,11 @@ class GaDataColumnHeaders {
 }
 
 
-/** Not documented yet. */
 class GaDataDataTableCols {
-  /** Not documented yet. */
   core.String id;
 
-  /** Not documented yet. */
   core.String label;
 
-  /** Not documented yet. */
   core.String type;
 
 
@@ -8870,9 +8162,7 @@ class GaDataDataTableCols {
 }
 
 
-/** Not documented yet. */
 class GaDataDataTableRowsC {
-  /** Not documented yet. */
   core.String v;
 
 
@@ -8894,9 +8184,7 @@ class GaDataDataTableRowsC {
 }
 
 
-/** Not documented yet. */
 class GaDataDataTableRows {
-  /** Not documented yet. */
   core.List<GaDataDataTableRowsC> c;
 
 
@@ -8918,12 +8206,9 @@ class GaDataDataTableRows {
 }
 
 
-/** Not documented yet. */
 class GaDataDataTable {
-  /** Not documented yet. */
   core.List<GaDataDataTableCols> cols;
 
-  /** Not documented yet. */
   core.List<GaDataDataTableRows> rows;
 
 
@@ -9148,7 +8433,6 @@ class GaData {
   /** Determines if Analytics data contains samples. */
   core.bool containsSampledData;
 
-  /** Not documented yet. */
   GaDataDataTable dataTable;
 
   /** Unique ID for this data response. */
@@ -9318,7 +8602,6 @@ class GaData {
 }
 
 
-/** Not documented yet. */
 class GoalEventDetailsEventConditions {
   /**
    * Type of comparison. Possible values are LESS_THAN, GREATER_THAN or EQUAL.
@@ -9457,7 +8740,6 @@ class GoalParentLink {
 }
 
 
-/** Not documented yet. */
 class GoalUrlDestinationDetailsSteps {
   /** Step name. */
   core.String name;
@@ -9920,7 +9202,6 @@ class Goals {
 }
 
 
-/** Not documented yet. */
 class McfDataColumnHeaders {
   /** Column Type. Either DIMENSION or METRIC. */
   core.String columnType;
@@ -10151,7 +9432,6 @@ class McfDataQuery {
 }
 
 
-/** Not documented yet. */
 class McfDataRowsConversionPathValue {
   /**
    * Type of an interaction on conversion path. Such as CLICK, IMPRESSION etc.
@@ -11181,7 +10461,6 @@ class Profiles {
 }
 
 
-/** Not documented yet. */
 class RealtimeDataColumnHeaders {
   /** Column Type. Either DIMENSION or METRIC. */
   core.String columnType;
@@ -12205,7 +11484,6 @@ class UserRef {
   /** User ID. */
   core.String id;
 
-  /** Not documented yet. */
   core.String kind;
 
 
@@ -12754,5 +12032,3 @@ class Webproperty {
     return _json;
   }
 }
-
-

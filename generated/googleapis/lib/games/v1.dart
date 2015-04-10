@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.games.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection_1;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection_1;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client games/v1';
 
 /** The API for Google Play Game Services. */
 class GamesApi {
@@ -28,7 +31,7 @@ class GamesApi {
   static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AchievementDefinitionsResourceApi get achievementDefinitions => new AchievementDefinitionsResourceApi(_requester);
   AchievementsResourceApi get achievements => new AchievementsResourceApi(_requester);
@@ -47,15 +50,14 @@ class GamesApi {
   TurnBasedMatchesResourceApi get turnBasedMatches => new TurnBasedMatchesResourceApi(_requester);
 
   GamesApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "games/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class AchievementDefinitionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AchievementDefinitionsResourceApi(common_internal.ApiRequester client) : 
+  AchievementDefinitionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -75,7 +77,7 @@ class AchievementDefinitionsResourceApi {
    *
    * Completes with a [AchievementDefinitionsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -86,7 +88,7 @@ class AchievementDefinitionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (language != null) {
@@ -115,11 +117,10 @@ class AchievementDefinitionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AchievementsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AchievementsResourceApi(common_internal.ApiRequester client) : 
+  AchievementsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -138,7 +139,7 @@ class AchievementsResourceApi {
    *
    * Completes with a [AchievementIncrementResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -149,7 +150,7 @@ class AchievementsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (achievementId == null) {
@@ -164,7 +165,7 @@ class AchievementsResourceApi {
     }
 
 
-    _url = 'achievements/' + common_internal.Escaper.ecapeVariable('$achievementId') + '/increment';
+    _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId') + '/increment';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -205,7 +206,7 @@ class AchievementsResourceApi {
    *
    * Completes with a [PlayerAchievementListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -216,7 +217,7 @@ class AchievementsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (playerId == null) {
@@ -236,7 +237,7 @@ class AchievementsResourceApi {
     }
 
 
-    _url = 'players/' + common_internal.Escaper.ecapeVariable('$playerId') + '/achievements';
+    _url = 'players/' + commons.Escaper.ecapeVariable('$playerId') + '/achievements';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -258,7 +259,7 @@ class AchievementsResourceApi {
    *
    * Completes with a [AchievementRevealResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -269,7 +270,7 @@ class AchievementsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (achievementId == null) {
@@ -277,7 +278,7 @@ class AchievementsResourceApi {
     }
 
 
-    _url = 'achievements/' + common_internal.Escaper.ecapeVariable('$achievementId') + '/reveal';
+    _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId') + '/reveal';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -303,7 +304,7 @@ class AchievementsResourceApi {
    *
    * Completes with a [AchievementSetStepsAtLeastResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -314,7 +315,7 @@ class AchievementsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (achievementId == null) {
@@ -326,7 +327,7 @@ class AchievementsResourceApi {
     _queryParams["steps"] = ["${steps}"];
 
 
-    _url = 'achievements/' + common_internal.Escaper.ecapeVariable('$achievementId') + '/setStepsAtLeast';
+    _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId') + '/setStepsAtLeast';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -347,7 +348,7 @@ class AchievementsResourceApi {
    *
    * Completes with a [AchievementUnlockResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -358,7 +359,7 @@ class AchievementsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (achievementId == null) {
@@ -366,7 +367,7 @@ class AchievementsResourceApi {
     }
 
 
-    _url = 'achievements/' + common_internal.Escaper.ecapeVariable('$achievementId') + '/unlock';
+    _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId') + '/unlock';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -387,7 +388,7 @@ class AchievementsResourceApi {
    *
    * Completes with a [AchievementUpdateMultipleResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -398,7 +399,7 @@ class AchievementsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -421,11 +422,10 @@ class AchievementsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ApplicationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ApplicationsResourceApi(common_internal.ApiRequester client) : 
+  ApplicationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -450,7 +450,7 @@ class ApplicationsResourceApi {
    *
    * Completes with a [Application].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -461,7 +461,7 @@ class ApplicationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (applicationId == null) {
@@ -475,7 +475,7 @@ class ApplicationsResourceApi {
     }
 
 
-    _url = 'applications/' + common_internal.Escaper.ecapeVariable('$applicationId');
+    _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -493,7 +493,7 @@ class ApplicationsResourceApi {
    *
    * Request parameters:
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -504,7 +504,7 @@ class ApplicationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -525,11 +525,10 @@ class ApplicationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class EventsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  EventsResourceApi(common_internal.ApiRequester client) : 
+  EventsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -550,7 +549,7 @@ class EventsResourceApi {
    *
    * Completes with a [PlayerEventListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -561,7 +560,7 @@ class EventsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (language != null) {
@@ -604,7 +603,7 @@ class EventsResourceApi {
    *
    * Completes with a [EventDefinitionListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -615,7 +614,7 @@ class EventsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (language != null) {
@@ -654,7 +653,7 @@ class EventsResourceApi {
    *
    * Completes with a [EventUpdateResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -665,7 +664,7 @@ class EventsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -691,11 +690,10 @@ class EventsResourceApi {
 }
 
 
-/** Not documented yet. */
 class LeaderboardsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  LeaderboardsResourceApi(common_internal.ApiRequester client) : 
+  LeaderboardsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -710,7 +708,7 @@ class LeaderboardsResourceApi {
    *
    * Completes with a [Leaderboard].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -721,7 +719,7 @@ class LeaderboardsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (leaderboardId == null) {
@@ -732,7 +730,7 @@ class LeaderboardsResourceApi {
     }
 
 
-    _url = 'leaderboards/' + common_internal.Escaper.ecapeVariable('$leaderboardId');
+    _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -761,7 +759,7 @@ class LeaderboardsResourceApi {
    *
    * Completes with a [LeaderboardListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -772,7 +770,7 @@ class LeaderboardsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (language != null) {
@@ -801,11 +799,10 @@ class LeaderboardsResourceApi {
 }
 
 
-/** Not documented yet. */
 class MetagameResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  MetagameResourceApi(common_internal.ApiRequester client) : 
+  MetagameResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -815,7 +812,7 @@ class MetagameResourceApi {
    *
    * Completes with a [MetagameConfig].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -826,7 +823,7 @@ class MetagameResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -869,7 +866,7 @@ class MetagameResourceApi {
    *
    * Completes with a [CategoryListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -880,7 +877,7 @@ class MetagameResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (playerId == null) {
@@ -900,7 +897,7 @@ class MetagameResourceApi {
     }
 
 
-    _url = 'players/' + common_internal.Escaper.ecapeVariable('$playerId') + '/categories/' + common_internal.Escaper.ecapeVariable('$collection');
+    _url = 'players/' + commons.Escaper.ecapeVariable('$playerId') + '/categories/' + commons.Escaper.ecapeVariable('$collection');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -915,11 +912,10 @@ class MetagameResourceApi {
 }
 
 
-/** Not documented yet. */
 class PlayersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PlayersResourceApi(common_internal.ApiRequester client) : 
+  PlayersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -936,7 +932,7 @@ class PlayersResourceApi {
    *
    * Completes with a [Player].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -947,7 +943,7 @@ class PlayersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (playerId == null) {
@@ -958,7 +954,7 @@ class PlayersResourceApi {
     }
 
 
-    _url = 'players/' + common_internal.Escaper.ecapeVariable('$playerId');
+    _url = 'players/' + commons.Escaper.ecapeVariable('$playerId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -995,7 +991,7 @@ class PlayersResourceApi {
    *
    * Completes with a [PlayerListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1006,7 +1002,7 @@ class PlayersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (collection == null) {
@@ -1023,7 +1019,7 @@ class PlayersResourceApi {
     }
 
 
-    _url = 'players/me/players/' + common_internal.Escaper.ecapeVariable('$collection');
+    _url = 'players/me/players/' + commons.Escaper.ecapeVariable('$collection');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1038,11 +1034,10 @@ class PlayersResourceApi {
 }
 
 
-/** Not documented yet. */
 class PushtokensResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PushtokensResourceApi(common_internal.ApiRequester client) : 
+  PushtokensResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1053,7 +1048,7 @@ class PushtokensResourceApi {
    *
    * Request parameters:
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1064,7 +1059,7 @@ class PushtokensResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1092,7 +1087,7 @@ class PushtokensResourceApi {
    *
    * Request parameters:
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1103,7 +1098,7 @@ class PushtokensResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1127,11 +1122,10 @@ class PushtokensResourceApi {
 }
 
 
-/** Not documented yet. */
 class QuestMilestonesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  QuestMilestonesResourceApi(common_internal.ApiRequester client) : 
+  QuestMilestonesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1148,7 +1142,7 @@ class QuestMilestonesResourceApi {
    * [requestId] - A numeric ID to ensure that the request is handled correctly
    * across retries. Your client application must generate this ID randomly.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1159,7 +1153,7 @@ class QuestMilestonesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (questId == null) {
@@ -1175,7 +1169,7 @@ class QuestMilestonesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'quests/' + common_internal.Escaper.ecapeVariable('$questId') + '/milestones/' + common_internal.Escaper.ecapeVariable('$milestoneId') + '/claim';
+    _url = 'quests/' + commons.Escaper.ecapeVariable('$questId') + '/milestones/' + commons.Escaper.ecapeVariable('$milestoneId') + '/claim';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1190,11 +1184,10 @@ class QuestMilestonesResourceApi {
 }
 
 
-/** Not documented yet. */
 class QuestsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  QuestsResourceApi(common_internal.ApiRequester client) : 
+  QuestsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1209,7 +1202,7 @@ class QuestsResourceApi {
    *
    * Completes with a [Quest].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1220,7 +1213,7 @@ class QuestsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (questId == null) {
@@ -1231,7 +1224,7 @@ class QuestsResourceApi {
     }
 
 
-    _url = 'quests/' + common_internal.Escaper.ecapeVariable('$questId') + '/accept';
+    _url = 'quests/' + commons.Escaper.ecapeVariable('$questId') + '/accept';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1265,7 +1258,7 @@ class QuestsResourceApi {
    *
    * Completes with a [QuestListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1276,7 +1269,7 @@ class QuestsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (playerId == null) {
@@ -1293,7 +1286,7 @@ class QuestsResourceApi {
     }
 
 
-    _url = 'players/' + common_internal.Escaper.ecapeVariable('$playerId') + '/quests';
+    _url = 'players/' + commons.Escaper.ecapeVariable('$playerId') + '/quests';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1308,11 +1301,10 @@ class QuestsResourceApi {
 }
 
 
-/** Not documented yet. */
 class RevisionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  RevisionsResourceApi(common_internal.ApiRequester client) : 
+  RevisionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1330,7 +1322,7 @@ class RevisionsResourceApi {
    *
    * Completes with a [RevisionCheckResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1341,7 +1333,7 @@ class RevisionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (clientRevision == null) {
@@ -1365,11 +1357,10 @@ class RevisionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class RoomsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  RoomsResourceApi(common_internal.ApiRequester client) : 
+  RoomsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1385,7 +1376,7 @@ class RoomsResourceApi {
    *
    * Completes with a [Room].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1396,7 +1387,7 @@ class RoomsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1432,7 +1423,7 @@ class RoomsResourceApi {
    *
    * Completes with a [Room].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1443,7 +1434,7 @@ class RoomsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (roomId == null) {
@@ -1454,7 +1445,7 @@ class RoomsResourceApi {
     }
 
 
-    _url = 'rooms/' + common_internal.Escaper.ecapeVariable('$roomId') + '/decline';
+    _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/decline';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1474,7 +1465,7 @@ class RoomsResourceApi {
    *
    * [roomId] - The ID of the room.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1485,7 +1476,7 @@ class RoomsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (roomId == null) {
@@ -1494,7 +1485,7 @@ class RoomsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'rooms/' + common_internal.Escaper.ecapeVariable('$roomId') + '/dismiss';
+    _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/dismiss';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1518,7 +1509,7 @@ class RoomsResourceApi {
    *
    * Completes with a [Room].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1529,7 +1520,7 @@ class RoomsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (roomId == null) {
@@ -1540,7 +1531,7 @@ class RoomsResourceApi {
     }
 
 
-    _url = 'rooms/' + common_internal.Escaper.ecapeVariable('$roomId');
+    _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1567,7 +1558,7 @@ class RoomsResourceApi {
    *
    * Completes with a [Room].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1578,7 +1569,7 @@ class RoomsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1592,7 +1583,7 @@ class RoomsResourceApi {
     }
 
 
-    _url = 'rooms/' + common_internal.Escaper.ecapeVariable('$roomId') + '/join';
+    _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/join';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1619,7 +1610,7 @@ class RoomsResourceApi {
    *
    * Completes with a [Room].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1630,7 +1621,7 @@ class RoomsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1644,7 +1635,7 @@ class RoomsResourceApi {
     }
 
 
-    _url = 'rooms/' + common_internal.Escaper.ecapeVariable('$roomId') + '/leave';
+    _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/leave';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1673,7 +1664,7 @@ class RoomsResourceApi {
    *
    * Completes with a [RoomList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1684,7 +1675,7 @@ class RoomsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (language != null) {
@@ -1726,7 +1717,7 @@ class RoomsResourceApi {
    *
    * Completes with a [RoomStatus].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1737,7 +1728,7 @@ class RoomsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1751,7 +1742,7 @@ class RoomsResourceApi {
     }
 
 
-    _url = 'rooms/' + common_internal.Escaper.ecapeVariable('$roomId') + '/reportstatus';
+    _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/reportstatus';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1766,11 +1757,10 @@ class RoomsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ScoresResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ScoresResourceApi(common_internal.ApiRequester client) : 
+  ScoresResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1816,7 +1806,7 @@ class ScoresResourceApi {
    *
    * Completes with a [PlayerLeaderboardScoreListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1827,7 +1817,7 @@ class ScoresResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (playerId == null) {
@@ -1853,7 +1843,7 @@ class ScoresResourceApi {
     }
 
 
-    _url = 'players/' + common_internal.Escaper.ecapeVariable('$playerId') + '/leaderboards/' + common_internal.Escaper.ecapeVariable('$leaderboardId') + '/scores/' + common_internal.Escaper.ecapeVariable('$timeSpan');
+    _url = 'players/' + commons.Escaper.ecapeVariable('$playerId') + '/leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId') + '/scores/' + commons.Escaper.ecapeVariable('$timeSpan');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1895,7 +1885,7 @@ class ScoresResourceApi {
    *
    * Completes with a [LeaderboardScores].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1906,7 +1896,7 @@ class ScoresResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (leaderboardId == null) {
@@ -1930,7 +1920,7 @@ class ScoresResourceApi {
     }
 
 
-    _url = 'leaderboards/' + common_internal.Escaper.ecapeVariable('$leaderboardId') + '/scores/' + common_internal.Escaper.ecapeVariable('$collection');
+    _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId') + '/scores/' + commons.Escaper.ecapeVariable('$collection');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1980,7 +1970,7 @@ class ScoresResourceApi {
    *
    * Completes with a [LeaderboardScores].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1991,7 +1981,7 @@ class ScoresResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (leaderboardId == null) {
@@ -2021,7 +2011,7 @@ class ScoresResourceApi {
     }
 
 
-    _url = 'leaderboards/' + common_internal.Escaper.ecapeVariable('$leaderboardId') + '/window/' + common_internal.Escaper.ecapeVariable('$collection');
+    _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId') + '/window/' + commons.Escaper.ecapeVariable('$collection');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2057,7 +2047,7 @@ class ScoresResourceApi {
    *
    * Completes with a [PlayerScoreResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2068,7 +2058,7 @@ class ScoresResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (leaderboardId == null) {
@@ -2086,7 +2076,7 @@ class ScoresResourceApi {
     }
 
 
-    _url = 'leaderboards/' + common_internal.Escaper.ecapeVariable('$leaderboardId') + '/scores';
+    _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId') + '/scores';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2110,7 +2100,7 @@ class ScoresResourceApi {
    *
    * Completes with a [PlayerScoreListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2121,7 +2111,7 @@ class ScoresResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2147,11 +2137,10 @@ class ScoresResourceApi {
 }
 
 
-/** Not documented yet. */
 class SnapshotsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  SnapshotsResourceApi(common_internal.ApiRequester client) : 
+  SnapshotsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2166,7 +2155,7 @@ class SnapshotsResourceApi {
    *
    * Completes with a [Snapshot].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2177,7 +2166,7 @@ class SnapshotsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (snapshotId == null) {
@@ -2188,7 +2177,7 @@ class SnapshotsResourceApi {
     }
 
 
-    _url = 'snapshots/' + common_internal.Escaper.ecapeVariable('$snapshotId');
+    _url = 'snapshots/' + commons.Escaper.ecapeVariable('$snapshotId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2221,7 +2210,7 @@ class SnapshotsResourceApi {
    *
    * Completes with a [SnapshotListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2232,7 +2221,7 @@ class SnapshotsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (playerId == null) {
@@ -2249,7 +2238,7 @@ class SnapshotsResourceApi {
     }
 
 
-    _url = 'players/' + common_internal.Escaper.ecapeVariable('$playerId') + '/snapshots';
+    _url = 'players/' + commons.Escaper.ecapeVariable('$playerId') + '/snapshots';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2264,11 +2253,10 @@ class SnapshotsResourceApi {
 }
 
 
-/** Not documented yet. */
 class TurnBasedMatchesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TurnBasedMatchesResourceApi(common_internal.ApiRequester client) : 
+  TurnBasedMatchesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2278,7 +2266,7 @@ class TurnBasedMatchesResourceApi {
    *
    * [matchId] - The ID of the match.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2289,7 +2277,7 @@ class TurnBasedMatchesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (matchId == null) {
@@ -2298,7 +2286,7 @@ class TurnBasedMatchesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'turnbasedmatches/' + common_internal.Escaper.ecapeVariable('$matchId') + '/cancel';
+    _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/cancel';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2322,7 +2310,7 @@ class TurnBasedMatchesResourceApi {
    *
    * Completes with a [TurnBasedMatch].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2333,7 +2321,7 @@ class TurnBasedMatchesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2368,7 +2356,7 @@ class TurnBasedMatchesResourceApi {
    *
    * Completes with a [TurnBasedMatch].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2379,7 +2367,7 @@ class TurnBasedMatchesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (matchId == null) {
@@ -2390,7 +2378,7 @@ class TurnBasedMatchesResourceApi {
     }
 
 
-    _url = 'turnbasedmatches/' + common_internal.Escaper.ecapeVariable('$matchId') + '/decline';
+    _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/decline';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2410,7 +2398,7 @@ class TurnBasedMatchesResourceApi {
    *
    * [matchId] - The ID of the match.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2421,7 +2409,7 @@ class TurnBasedMatchesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (matchId == null) {
@@ -2430,7 +2418,7 @@ class TurnBasedMatchesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'turnbasedmatches/' + common_internal.Escaper.ecapeVariable('$matchId') + '/dismiss';
+    _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/dismiss';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2458,7 +2446,7 @@ class TurnBasedMatchesResourceApi {
    *
    * Completes with a [TurnBasedMatch].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2469,7 +2457,7 @@ class TurnBasedMatchesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2483,7 +2471,7 @@ class TurnBasedMatchesResourceApi {
     }
 
 
-    _url = 'turnbasedmatches/' + common_internal.Escaper.ecapeVariable('$matchId') + '/finish';
+    _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/finish';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2509,7 +2497,7 @@ class TurnBasedMatchesResourceApi {
    *
    * Completes with a [TurnBasedMatch].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2520,7 +2508,7 @@ class TurnBasedMatchesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (matchId == null) {
@@ -2534,7 +2522,7 @@ class TurnBasedMatchesResourceApi {
     }
 
 
-    _url = 'turnbasedmatches/' + common_internal.Escaper.ecapeVariable('$matchId');
+    _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2558,7 +2546,7 @@ class TurnBasedMatchesResourceApi {
    *
    * Completes with a [TurnBasedMatch].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2569,7 +2557,7 @@ class TurnBasedMatchesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (matchId == null) {
@@ -2580,7 +2568,7 @@ class TurnBasedMatchesResourceApi {
     }
 
 
-    _url = 'turnbasedmatches/' + common_internal.Escaper.ecapeVariable('$matchId') + '/join';
+    _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/join';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2605,7 +2593,7 @@ class TurnBasedMatchesResourceApi {
    *
    * Completes with a [TurnBasedMatch].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2616,7 +2604,7 @@ class TurnBasedMatchesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (matchId == null) {
@@ -2627,7 +2615,7 @@ class TurnBasedMatchesResourceApi {
     }
 
 
-    _url = 'turnbasedmatches/' + common_internal.Escaper.ecapeVariable('$matchId') + '/leave';
+    _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/leave';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2659,7 +2647,7 @@ class TurnBasedMatchesResourceApi {
    *
    * Completes with a [TurnBasedMatch].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2670,7 +2658,7 @@ class TurnBasedMatchesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (matchId == null) {
@@ -2688,7 +2676,7 @@ class TurnBasedMatchesResourceApi {
     }
 
 
-    _url = 'turnbasedmatches/' + common_internal.Escaper.ecapeVariable('$matchId') + '/leaveTurn';
+    _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/leaveTurn';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2728,7 +2716,7 @@ class TurnBasedMatchesResourceApi {
    *
    * Completes with a [TurnBasedMatchList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2739,7 +2727,7 @@ class TurnBasedMatchesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (includeMatchData != null) {
@@ -2790,7 +2778,7 @@ class TurnBasedMatchesResourceApi {
    *
    * Completes with a [TurnBasedMatchRematch].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2801,7 +2789,7 @@ class TurnBasedMatchesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (matchId == null) {
@@ -2815,7 +2803,7 @@ class TurnBasedMatchesResourceApi {
     }
 
 
-    _url = 'turnbasedmatches/' + common_internal.Escaper.ecapeVariable('$matchId') + '/rematch';
+    _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/rematch';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2858,7 +2846,7 @@ class TurnBasedMatchesResourceApi {
    *
    * Completes with a [TurnBasedMatchSync].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2869,7 +2857,7 @@ class TurnBasedMatchesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (includeMatchData != null) {
@@ -2915,7 +2903,7 @@ class TurnBasedMatchesResourceApi {
    *
    * Completes with a [TurnBasedMatch].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2926,7 +2914,7 @@ class TurnBasedMatchesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2940,7 +2928,7 @@ class TurnBasedMatchesResourceApi {
     }
 
 
-    _url = 'turnbasedmatches/' + common_internal.Escaper.ecapeVariable('$matchId') + '/turn';
+    _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId') + '/turn';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -9676,5 +9664,3 @@ class TurnBasedMatchTurn {
     return _json;
   }
 }
-
-

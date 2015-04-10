@@ -1,35 +1,37 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.identitytoolkit.v3;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client identitytoolkit/v3';
 
 /** Help the third party sites to implement federated login. */
 class IdentitytoolkitApi {
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   RelyingpartyResourceApi get relyingparty => new RelyingpartyResourceApi(_requester);
 
   IdentitytoolkitApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "identitytoolkit/v3/relyingparty/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class RelyingpartyResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  RelyingpartyResourceApi(common_internal.ApiRequester client) : 
+  RelyingpartyResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -41,7 +43,7 @@ class RelyingpartyResourceApi {
    *
    * Completes with a [CreateAuthUriResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -52,7 +54,7 @@ class RelyingpartyResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -81,7 +83,7 @@ class RelyingpartyResourceApi {
    *
    * Completes with a [DeleteAccountResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -92,7 +94,7 @@ class RelyingpartyResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -121,7 +123,7 @@ class RelyingpartyResourceApi {
    *
    * Completes with a [DownloadAccountResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -132,7 +134,7 @@ class RelyingpartyResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -161,7 +163,7 @@ class RelyingpartyResourceApi {
    *
    * Completes with a [GetAccountInfoResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -172,7 +174,7 @@ class RelyingpartyResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -201,7 +203,7 @@ class RelyingpartyResourceApi {
    *
    * Completes with a [GetOobConfirmationCodeResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -212,7 +214,7 @@ class RelyingpartyResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -239,7 +241,7 @@ class RelyingpartyResourceApi {
    *
    * Completes with a [IdentitytoolkitRelyingpartyGetPublicKeysResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -250,7 +252,7 @@ class RelyingpartyResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -276,7 +278,7 @@ class RelyingpartyResourceApi {
    *
    * Completes with a [ResetPasswordResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -287,7 +289,7 @@ class RelyingpartyResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -316,7 +318,7 @@ class RelyingpartyResourceApi {
    *
    * Completes with a [SetAccountInfoResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -327,7 +329,7 @@ class RelyingpartyResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -356,7 +358,7 @@ class RelyingpartyResourceApi {
    *
    * Completes with a [UploadAccountResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -367,7 +369,7 @@ class RelyingpartyResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -396,7 +398,7 @@ class RelyingpartyResourceApi {
    *
    * Completes with a [VerifyAssertionResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -407,7 +409,7 @@ class RelyingpartyResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -436,7 +438,7 @@ class RelyingpartyResourceApi {
    *
    * Completes with a [VerifyPasswordResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -447,7 +449,7 @@ class RelyingpartyResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1404,7 +1406,6 @@ class ResetPasswordResponse {
 }
 
 
-/** Not documented yet. */
 class SetAccountInfoResponseProviderUserInfo {
   /** The user's display name at the IDP. */
   core.String displayName;
@@ -1510,7 +1511,6 @@ class SetAccountInfoResponse {
 }
 
 
-/** Not documented yet. */
 class UploadAccountResponseError {
   /** The index of the malformed account, starting from 0. */
   core.int index;
@@ -1576,7 +1576,6 @@ class UploadAccountResponse {
 }
 
 
-/** Not documented yet. */
 class UserInfoProviderUserInfo {
   /** The user's display name at the IDP. */
   core.String displayName;
@@ -2122,5 +2121,3 @@ class VerifyPasswordResponse {
     return _json;
   }
 }
-
-

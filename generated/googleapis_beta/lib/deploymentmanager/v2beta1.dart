@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.deploymentmanager.v2beta1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client deploymentmanager/v2beta1';
 
 /**
  * The Deployment Manager API allows users to declaratively configure, deploy
@@ -34,7 +37,7 @@ class DeploymentmanagerApi {
   static const NdevCloudmanReadonlyScope = "https://www.googleapis.com/auth/ndev.cloudman.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   DeploymentsResourceApi get deployments => new DeploymentsResourceApi(_requester);
   ManifestsResourceApi get manifests => new ManifestsResourceApi(_requester);
@@ -43,32 +46,31 @@ class DeploymentmanagerApi {
   TypesResourceApi get types => new TypesResourceApi(_requester);
 
   DeploymentmanagerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "deploymentmanager/v2beta1/projects/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class DeploymentsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DeploymentsResourceApi(common_internal.ApiRequester client) : 
+  DeploymentsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Deletes a deployment and all of the resources in the deployment.
+   * ! Deletes a deployment and all of the resources in the deployment.
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - ! The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [deployment] - The name of the deployment for this request.
+   * [deployment] - ! The name of the deployment for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -79,7 +81,7 @@ class DeploymentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -90,7 +92,7 @@ class DeploymentsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/deployments/' + common_internal.Escaper.ecapeVariable('$deployment');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$deployment');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -103,20 +105,20 @@ class DeploymentsResourceApi {
   }
 
   /**
-   * Gets information about a specific deployment.
+   * ! Gets information about a specific deployment.
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - ! The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [deployment] - The name of the deployment for this request.
+   * [deployment] - ! The name of the deployment for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Deployment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -127,7 +129,7 @@ class DeploymentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -138,7 +140,7 @@ class DeploymentsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/deployments/' + common_internal.Escaper.ecapeVariable('$deployment');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$deployment');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -151,20 +153,20 @@ class DeploymentsResourceApi {
   }
 
   /**
-   * Creates a deployment and all of the resources described by the deployment
-   * manifest.
+   * ! Creates a deployment and all of the resources described by the !
+   * deployment manifest.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - ! The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -175,7 +177,7 @@ class DeploymentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -186,7 +188,7 @@ class DeploymentsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/deployments';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -199,25 +201,25 @@ class DeploymentsResourceApi {
   }
 
   /**
-   * Lists all deployments for a given project.
+   * ! Lists all deployments for a given project.
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - ! The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [maxResults] - Maximum count of results to be returned. Acceptable values
-   * are 0 to 100, inclusive. (Default: 50)
+   * [maxResults] - ! Maximum count of results to be returned. ! Acceptable
+   * values are 0 to 100, inclusive. (Default: 50)
    * Value must be between "0" and "100".
    *
-   * [pageToken] - Specifies a nextPageToken returned by a previous list
-   * request. This token can be used to request the next page of results from a
-   * previous list request.
+   * [pageToken] - ! Specifies a nextPageToken returned by a previous list
+   * request. This ! token can be used to request the next page of results from
+   * a previous ! list request.
    *
    * Completes with a [DeploymentsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -228,7 +230,7 @@ class DeploymentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -242,7 +244,7 @@ class DeploymentsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/deployments';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -257,31 +259,30 @@ class DeploymentsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ManifestsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ManifestsResourceApi(common_internal.ApiRequester client) : 
+  ManifestsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Gets information about a specific manifest.
+   * ! Gets information about a specific manifest.
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - ! The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [deployment] - The name of the deployment for this request.
+   * [deployment] - ! The name of the deployment for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [manifest] - The name of the manifest for this request.
+   * [manifest] - ! The name of the manifest for this request.
    * Value must have pattern "[-a-z0-9]{1,61}".
    *
    * Completes with a [Manifest].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -292,7 +293,7 @@ class ManifestsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -306,7 +307,7 @@ class ManifestsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/deployments/' + common_internal.Escaper.ecapeVariable('$deployment') + '/manifests/' + common_internal.Escaper.ecapeVariable('$manifest');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$deployment') + '/manifests/' + commons.Escaper.ecapeVariable('$manifest');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -319,28 +320,28 @@ class ManifestsResourceApi {
   }
 
   /**
-   * Lists all manifests for a given deployment.
+   * ! Lists all manifests for a given deployment.
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - ! The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [deployment] - The name of the deployment for this request.
+   * [deployment] - ! The name of the deployment for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [maxResults] - Maximum count of results to be returned. Acceptable values
-   * are 0 to 100, inclusive. (Default: 50)
+   * [maxResults] - ! Maximum count of results to be returned. ! Acceptable
+   * values are 0 to 100, inclusive. (Default: 50)
    * Value must be between "0" and "100".
    *
-   * [pageToken] - Specifies a nextPageToken returned by a previous list
-   * request. This token can be used to request the next page of results from a
-   * previous list request.
+   * [pageToken] - ! Specifies a nextPageToken returned by a previous list
+   * request. This ! token can be used to request the next page of results from
+   * a previous ! list request.
    *
    * Completes with a [ManifestsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -351,7 +352,7 @@ class ManifestsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -368,7 +369,7 @@ class ManifestsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/deployments/' + common_internal.Escaper.ecapeVariable('$deployment') + '/manifests';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$deployment') + '/manifests';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -383,27 +384,26 @@ class ManifestsResourceApi {
 }
 
 
-/** Not documented yet. */
 class OperationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  OperationsResourceApi(common_internal.ApiRequester client) : 
+  OperationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Gets information about a specific Operation.
+   * ! Gets information about a specific Operation.
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - ! The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [operation] - The name of the operation for this request.
+   * [operation] - ! The name of the operation for this request.
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -414,7 +414,7 @@ class OperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -425,7 +425,7 @@ class OperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/operations/' + common_internal.Escaper.ecapeVariable('$operation');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/operations/' + commons.Escaper.ecapeVariable('$operation');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -438,25 +438,25 @@ class OperationsResourceApi {
   }
 
   /**
-   * Lists all Operations for a project.
+   * ! Lists all Operations for a project.
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - ! The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [maxResults] - Maximum count of results to be returned. Acceptable values
-   * are 0 to 100, inclusive. (Default: 50)
+   * [maxResults] - ! Maximum count of results to be returned. ! Acceptable
+   * values are 0 to 100, inclusive. (Default: 50)
    * Value must be between "0" and "100".
    *
-   * [pageToken] - Specifies a nextPageToken returned by a previous list
-   * request. This token can be used to request the next page of results from a
-   * previous list request.
+   * [pageToken] - ! Specifies a nextPageToken returned by a previous list
+   * request. This ! token can be used to request the next page of results from
+   * a previous ! list request.
    *
    * Completes with a [OperationsListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -467,7 +467,7 @@ class OperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -481,7 +481,7 @@ class OperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/operations';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/operations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -496,31 +496,30 @@ class OperationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ResourcesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ResourcesResourceApi(common_internal.ApiRequester client) : 
+  ResourcesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Gets information about a single resource.
+   * ! Gets information about a single resource.
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - ! The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [deployment] - The name of the deployment for this request.
+   * [deployment] - ! The name of the deployment for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [resource] - The name of the resource for this request.
+   * [resource] - ! The name of the resource for this request.
    * Value must have pattern "[-a-z0-9]{1,61}".
    *
    * Completes with a [Resource].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -531,7 +530,7 @@ class ResourcesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -545,7 +544,7 @@ class ResourcesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/deployments/' + common_internal.Escaper.ecapeVariable('$deployment') + '/resources/' + common_internal.Escaper.ecapeVariable('$resource');
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$deployment') + '/resources/' + commons.Escaper.ecapeVariable('$resource');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -558,28 +557,28 @@ class ResourcesResourceApi {
   }
 
   /**
-   * Lists all resources in a given deployment.
+   * ! Lists all resources in a given deployment.
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - ! The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [deployment] - The name of the deployment for this request.
+   * [deployment] - ! The name of the deployment for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [maxResults] - Maximum count of results to be returned. Acceptable values
-   * are 0 to 100, inclusive. (Default: 50)
+   * [maxResults] - ! Maximum count of results to be returned. ! Acceptable
+   * values are 0 to 100, inclusive. (Default: 50)
    * Value must be between "0" and "100".
    *
-   * [pageToken] - Specifies a nextPageToken returned by a previous list
-   * request. This token can be used to request the next page of results from a
-   * previous list request.
+   * [pageToken] - ! Specifies a nextPageToken returned by a previous list
+   * request. This ! token can be used to request the next page of results from
+   * a previous ! list request.
    *
    * Completes with a [ResourcesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -590,7 +589,7 @@ class ResourcesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -607,7 +606,7 @@ class ResourcesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/deployments/' + common_internal.Escaper.ecapeVariable('$deployment') + '/resources';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$deployment') + '/resources';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -622,33 +621,32 @@ class ResourcesResourceApi {
 }
 
 
-/** Not documented yet. */
 class TypesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TypesResourceApi(common_internal.ApiRequester client) : 
+  TypesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Lists all Types for Deployment Manager.
+   * ! Lists all Types for Deployment Manager.
    *
    * Request parameters:
    *
-   * [project] - The project ID for this request.
+   * [project] - ! The project ID for this request.
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [maxResults] - Maximum count of results to be returned. Acceptable values
-   * are 0 to 100, inclusive. (Default: 50)
+   * [maxResults] - ! Maximum count of results to be returned. ! Acceptable
+   * values are 0 to 100, inclusive. (Default: 50)
    * Value must be between "0" and "100".
    *
-   * [pageToken] - Specifies a nextPageToken returned by a previous list
-   * request. This token can be used to request the next page of results from a
-   * previous list request.
+   * [pageToken] - ! Specifies a nextPageToken returned by a previous list
+   * request. This ! token can be used to request the next page of results from
+   * a previous ! list request.
    *
    * Completes with a [TypesListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -659,7 +657,7 @@ class TypesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -673,7 +671,7 @@ class TypesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/global/types';
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/types';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -689,9 +687,9 @@ class TypesResourceApi {
 
 
 
-/** Not documented yet. */
+/** Next available tag: 8 */
 class Deployment {
-  /** An optional user-provided description of the deployment. */
+  /** ! An optional user-provided description of the deployment. */
   core.String description;
 
   /**
@@ -700,20 +698,19 @@ class Deployment {
   core.String id;
 
   /**
-   * [Output Only] URL of the manifest representing the full configuration of
-   * this deployment.
+   * ! [Output Only] URL of the manifest representing the full configuration !
+   * of this deployment.
    */
   core.String manifest;
 
-  /** The name of the deployment, which must be unique within the project. */
+  /** ! The name of the deployment, which must be unique within the project. */
   core.String name;
 
   /**
-   * [Input Only] The YAML configuration to use in processing this deployment.
-   *
-   * When you create a deployment, the server creates a new manifest with the
-   * given YAML configuration and sets the `manifest` property to the URL of the
-   * manifest resource.
+   * ! [Input Only] The YAML configuration to use in processing this deployment.
+   * ! ! When you create a deployment, the server creates a new manifest with
+   * the ! given YAML configuration and sets the `manifest` property to the URL
+   * of ! the manifest resource.
    */
   core.String targetConfig;
 
@@ -761,14 +758,15 @@ class Deployment {
 
 
 /**
- * A response containing a partial list of deployments and a page token used to
- * build the next request if the request has been truncated.
+ * ! A response containing a partial list of deployments and a page token used !
+ * to build the next request if the request has been truncated. Next available
+ * tag: 4
  */
 class DeploymentsListResponse {
-  /** The deployments contained in this response. */
+  /** ! The deployments contained in this response. */
   core.List<Deployment> deployments;
 
-  /** A token used to continue a truncated list request. */
+  /** ! A token used to continue a truncated list request. */
   core.String nextPageToken;
 
 
@@ -796,13 +794,16 @@ class DeploymentsListResponse {
 }
 
 
-/** Not documented yet. */
+/** Next available tag: 10 */
 class Manifest {
-  /** The YAML configuration for this manifest. */
+  /**
+   * v2beta1: YAML with config - described above v2beta2: YAML + templates. !
+   * The YAML configuration for this manifest.
+   */
   core.String config;
 
   /**
-   * [Output Only] The fully-expanded configuration file, including any
+   * ! [Output Only] The fully-expanded configuration file, including any !
    * templates and references.
    */
   core.String evaluatedConfig;
@@ -812,7 +813,7 @@ class Manifest {
    */
   core.String id;
 
-  /** [Output Only] The name of the manifest. */
+  /** ! [Output Only] The name of the manifest. */
   core.String name;
 
   /** [Output Only] Self link for the manifest. */
@@ -862,14 +863,15 @@ class Manifest {
 
 
 /**
- * A response containing a partial list of manifests and a page token used to
- * build the next request if the request has been truncated.
+ * ! A response containing a partial list of manifests and a page token used !
+ * to build the next request if the request has been truncated. Next available
+ * tag: 4
  */
 class ManifestsListResponse {
-  /** Manifests contained in this list response. */
+  /** ! Manifests contained in this list response. */
   core.List<Manifest> manifests;
 
-  /** A token used to continue a truncated list request. */
+  /** ! A token used to continue a truncated list request. */
   core.String nextPageToken;
 
 
@@ -897,18 +899,17 @@ class ManifestsListResponse {
 }
 
 
-/** Not documented yet. */
 class OperationErrorErrors {
-  /** The error type identifier for this error. */
+  /** ! The error type identifier for this error. */
   core.String code;
 
   /**
-   * Indicates the field in the request which caused the error. This property is
-   * optional.
+   * ! Indicates the field in the request which caused the error. ! This
+   * property is optional.
    */
   core.String location;
 
-  /** An optional, human-readable error message. */
+  /** ! An optional, human-readable error message. */
   core.String message;
 
 
@@ -943,11 +944,11 @@ class OperationErrorErrors {
 
 
 /**
- * [Output Only] If errors occurred during processing of this operation, this
- * field will be populated.
+ * ! [Output Only] If errors occurred during processing of this operation, !
+ * this field will be populated.
  */
 class OperationError {
-  /** The array of errors encountered while processing this operation. */
+  /** ! The array of errors encountered while processing this operation. */
   core.List<OperationErrorErrors> errors;
 
 
@@ -969,12 +970,11 @@ class OperationError {
 }
 
 
-/** Not documented yet. */
 class OperationWarningsData {
-  /** A key for the warning data. */
+  /** ! A key for the warning data. */
   core.String key;
 
-  /** A warning data value corresponding to the key. */
+  /** ! A warning data value corresponding to the key. */
   core.String value;
 
 
@@ -1002,20 +1002,19 @@ class OperationWarningsData {
 }
 
 
-/** Not documented yet. */
 class OperationWarnings {
   /**
-   * The warning type identifier for this warning.
+   * ! The warning type identifier for this warning.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object code;
 
-  /** Metadata for this warning in 'key: value' format. */
+  /** ! Metadata for this warning in 'key: value' format. */
   core.List<OperationWarningsData> data;
 
-  /** Optional human-readable details for this warning. */
+  /** ! Optional human-readable details for this warning. */
   core.String message;
 
 
@@ -1049,60 +1048,64 @@ class OperationWarnings {
 }
 
 
-/** An operation resource, used to manage asynchronous API requests. */
+/**
+ * ! An operation resource, used to manage asynchronous API requests. Next
+ * available tag: 24
+ */
 class Operation {
-  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  /** ! [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
 
   /**
-   * [Output Only] The time that this operation was completed. This is in
+   * ! [Output Only] The time that this operation was completed. This is in !
    * RFC3339 format.
    */
   core.String endTime;
 
   /**
-   * [Output Only] If errors occurred during processing of this operation, this
-   * field will be populated.
+   * ! [Output Only] If errors occurred during processing of this operation, !
+   * this field will be populated.
    */
   OperationError error;
 
   /**
-   * [Output Only] If operation fails, the HTTP error message returned, e.g. NOT
-   * FOUND.
+   * ! [Output Only] If operation fails, the HTTP error message returned, ! e.g.
+   * NOT FOUND.
    */
   core.String httpErrorMessage;
 
   /**
-   * [Output Only] If operation fails, the HTTP error status code returned, e.g.
-   * 404.
+   * ! [Output Only] If operation fails, the HTTP error status code returned, !
+   * e.g. 404.
    */
   core.int httpErrorStatusCode;
 
   /**
-   * [Output Only] Unique identifier for the resource; defined by the server.
+   * ! [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
 
   /**
-   * [Output Only] The time that this operation was requested. This is in RFC
-   * 3339 format.
+   * ! [Output Only] The time that this operation was requested. ! This is in
+   * RFC 3339 format.
    */
   core.String insertTime;
 
-  /** [Output Only] Name of the operation. */
+  /** ! [Output Only] Name of the operation. */
   core.String name;
 
   /**
-   * [Output Only] Type of the operation. Examples include "insert", or "delete"
+   * ! [Output Only] Type of the operation. Examples include "insert", or !
+   * "delete"
    */
   core.String operationType;
 
   /**
-   * [Output Only] An optional progress indicator that ranges from 0 to 100.
-   * There is no requirement that this be linear or support any granularity of
-   * operations. This should not be used to guess at when the operation will be
-   * complete. This number should be monotonically increasing as the operation
-   * progresses.
+   * ! [Output Only] An optional progress indicator that ranges from 0 to 100. !
+   * There is no requirement that this be linear or support any granularity ! of
+   * operations. This should not be used to guess at when the operation will !
+   * be complete. This number should be monotonically increasing as the !
+   * operation progresses.
    */
   core.int progress;
 
@@ -1110,40 +1113,40 @@ class Operation {
   core.String selfLink;
 
   /**
-   * [Output Only] The time that this operation was started by the server. This
-   * is in RFC 3339 format.
+   * ! [Output Only] The time that this operation was started by the server. !
+   * This is in RFC 3339 format.
    */
   core.String startTime;
 
   /**
-   * [Output Only] Status of the operation. Can be one of the following:
+   * ! [Output Only] Status of the operation. Can be one of the following: !
    * "PENDING", "RUNNING", or "DONE".
    */
   core.String status;
 
   /**
-   * [Output Only] An optional textual description of the current status of the
-   * operation.
+   * ! [Output Only] An optional textual description of the current status of !
+   * the operation.
    */
   core.String statusMessage;
 
   /**
-   * [Output Only] Unique target id which identifies a particular incarnation of
-   * the target.
+   * ! [Output Only] Unique target id which identifies a particular !
+   * incarnation of the target.
    */
   core.String targetId;
 
-  /** [Output Only] URL of the resource the operation is mutating. */
+  /** ! [Output Only] URL of the resource the operation is mutating. */
   core.String targetLink;
 
   /**
-   * [Output Only] User who requested the operation, for example
+   * ! [Output Only] User who requested the operation, for example !
    * "user@example.com"
    */
   core.String user;
 
   /**
-   * [Output Only] If warning messages generated during processing of this
+   * ! [Output Only] If warning messages generated during processing of this !
    * operation, this field will be populated.
    */
   core.List<OperationWarnings> warnings;
@@ -1270,14 +1273,15 @@ class Operation {
 
 
 /**
- * A response containing a partial list of operations and a page token used to
- * build the next request if the request has been truncated.
+ * ! A response containing a partial list of operations and a page token used !
+ * to build the next request if the request has been truncated. Next available
+ * tag: 4
  */
 class OperationsListResponse {
-  /** A token used to continue a truncated list request. */
+  /** ! A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Operations contained in this list response. */
+  /** ! Operations contained in this list response. */
   core.List<Operation> operations;
 
 
@@ -1305,9 +1309,9 @@ class OperationsListResponse {
 }
 
 
-/** Not documented yet. */
+/** Next available tag: 12 */
 class Resource {
-  /** [Output Only] A list of any errors that occurred during deployment. */
+  /** ! [Output Only] A list of any errors that occurred during deployment. */
   core.List<core.String> errors;
 
   /**
@@ -1315,30 +1319,30 @@ class Resource {
    */
   core.String id;
 
-  /** [Output Only] The intended state of the resource. */
+  /** ! [Output Only] The intended state of the resource. */
   core.String intent;
 
   /**
-   * [Output Only] URL of the manifest representing the current configuration of
-   * this resource.
+   * ! [Output Only] URL of the manifest representing the current configuration
+   * ! of this resource.
    */
   core.String manifest;
 
   /**
-   * [Output Only] The name of the resource as it appears in the YAML config.
+   * ! [Output Only] The name of the resource as it appears in the YAML config.
    */
   core.String name;
 
-  /** [Output Only] The state of the resource. */
+  /** ! [Output Only] The state of the resource. */
   core.String state;
 
   /**
-   * [Output Only] The type of the resource, for example ?compute.v1.instance?,
-   * or ?replicaPools.v1beta2.instanceGroupManager?
+   * ! [Output Only] The type of the resource, for example !
+   * ?compute.v1.instance?, or ?replicaPools.v1beta2.instanceGroupManager?
    */
   core.String type;
 
-  /** [Output Only] The URL of the actual resource. */
+  /** ! [Output Only] The URL of the actual resource. */
   core.String url;
 
 
@@ -1403,14 +1407,15 @@ class Resource {
 
 
 /**
- * A response containing a partial list of resources and a page token used to
- * build the next request if the request has been truncated.
+ * ! A response containing a partial list of resources and a page token used !
+ * to build the next request if the request has been truncated. Next available
+ * tag: 4
  */
 class ResourcesListResponse {
-  /** A token used to continue a truncated list request. */
+  /** ! A token used to continue a truncated list request. */
   core.String nextPageToken;
 
-  /** Resources contained in this list response. */
+  /** ! Resources contained in this list response. */
   core.List<Resource> resources;
 
 
@@ -1438,9 +1443,9 @@ class ResourcesListResponse {
 }
 
 
-/** A type supported by Deployment Manager. */
+/** ! A type supported by Deployment Manager. Next available tag: 4 */
 class Type {
-  /** Name of the type. */
+  /** ! Name of the type. */
   core.String name;
 
 
@@ -1462,9 +1467,12 @@ class Type {
 }
 
 
-/** A response that returns all Types supported by Deployment Manager */
+/**
+ * ! A response that returns all Types supported by Deployment Manager Next
+ * available tag: 3
+ */
 class TypesListResponse {
-  /** Types supported by Deployment Manager */
+  /** ! Types supported by Deployment Manager */
   core.List<Type> types;
 
 
@@ -1484,5 +1492,3 @@ class TypesListResponse {
     return _json;
   }
 }
-
-

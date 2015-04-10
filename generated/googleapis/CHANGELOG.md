@@ -1,3 +1,26 @@
+## 0.7.0
+
+* [apis-breaking] analytics:v3 removed dailyUploads API
+* [apis-breaking] books:v1: removed method
+* [apis-breaking] compute:v1: removed some Quota enum values, new methods and
+  schemas
+* [apis-new] androidenterprise:v1
+* [apis-new] cloudsearch:v1
+* [apis-removed] civicinfo:us_v1
+* [apis-removed] civicinfo:v1
+* [apis] admindirectory:v1: schema changes
+* [apis] bigquery:v2: schema changes
+* [apis] content:v2: method and schema changes
+* [apis] discovery:v1: schema changes
+* [apis] doubleclickbidmanager:v1 schema changes
+* [apis] dfareporting:v2.0 schema changes
+* [apis] drive:v2 method changes
+* [apis] oauth2:v2 method and schema changes
+* [apis] storage:v1 method changes
+* [apis] youtubeanalytics:v1 method changes
+* [apis] youtube:v2: method and schema changes
+
+
 ## 0.6.1
 
 * [apis] bigquery:v2: schema changes

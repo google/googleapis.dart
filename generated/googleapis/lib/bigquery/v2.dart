@@ -1,17 +1,22 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.bigquery.v2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client bigquery/v2';
 
 /** A data platform for customers to create, manage, share and query data. */
 class BigqueryApi {
@@ -34,7 +39,7 @@ class BigqueryApi {
   static const DevstorageReadWriteScope = "https://www.googleapis.com/auth/devstorage.read_write";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   DatasetsResourceApi get datasets => new DatasetsResourceApi(_requester);
   JobsResourceApi get jobs => new JobsResourceApi(_requester);
@@ -43,15 +48,14 @@ class BigqueryApi {
   TablesResourceApi get tables => new TablesResourceApi(_requester);
 
   BigqueryApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "bigquery/v2/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class DatasetsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DatasetsResourceApi(common_internal.ApiRequester client) : 
+  DatasetsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -69,7 +73,7 @@ class DatasetsResourceApi {
    * [deleteContents] - If True, delete all the tables in the dataset. If False
    * and the dataset contains tables, the request will fail. Default is False
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -80,7 +84,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -95,7 +99,7 @@ class DatasetsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -118,7 +122,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [Dataset].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -129,7 +133,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -140,7 +144,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -163,7 +167,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [Dataset].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -174,7 +178,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -185,7 +189,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/datasets';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -215,7 +219,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [DatasetList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -226,7 +230,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -243,7 +247,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/datasets';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -271,7 +275,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [Dataset].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -282,7 +286,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -296,7 +300,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -323,7 +327,7 @@ class DatasetsResourceApi {
    *
    * Completes with a [Dataset].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -334,7 +338,7 @@ class DatasetsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -348,7 +352,7 @@ class DatasetsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -363,11 +367,10 @@ class DatasetsResourceApi {
 }
 
 
-/** Not documented yet. */
 class JobsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  JobsResourceApi(common_internal.ApiRequester client) : 
+  JobsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -381,7 +384,7 @@ class JobsResourceApi {
    *
    * Completes with a [Job].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -392,7 +395,7 @@ class JobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -403,7 +406,7 @@ class JobsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/jobs/' + common_internal.Escaper.ecapeVariable('$jobId');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -437,7 +440,7 @@ class JobsResourceApi {
    *
    * Completes with a [GetQueryResultsResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -448,7 +451,7 @@ class JobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -471,7 +474,7 @@ class JobsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/queries/' + common_internal.Escaper.ecapeVariable('$jobId');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/queries/' + commons.Escaper.ecapeVariable('$jobId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -499,18 +502,18 @@ class JobsResourceApi {
    *
    * Completes with a [Job].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Job> insert(Job request, core.String projectId, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Job> insert(Job request, core.String projectId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -524,11 +527,11 @@ class JobsResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/jobs';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/bigquery/v2/projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/jobs';
+      _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/bigquery/v2/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
     } else {
-      _url = '/upload/bigquery/v2/projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/jobs';
+      _url = '/upload/bigquery/v2/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
     }
 
 
@@ -568,7 +571,7 @@ class JobsResourceApi {
    *
    * Completes with a [JobList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -579,7 +582,7 @@ class JobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -602,7 +605,7 @@ class JobsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/jobs';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -626,7 +629,7 @@ class JobsResourceApi {
    *
    * Completes with a [QueryResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -637,7 +640,7 @@ class JobsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -648,7 +651,7 @@ class JobsResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/queries';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/queries';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -663,11 +666,10 @@ class JobsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ProjectsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ProjectsResourceApi(common_internal.ApiRequester client) : 
+  ProjectsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -682,7 +684,7 @@ class ProjectsResourceApi {
    *
    * Completes with a [ProjectList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -693,7 +695,7 @@ class ProjectsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (maxResults != null) {
@@ -719,11 +721,10 @@ class ProjectsResourceApi {
 }
 
 
-/** Not documented yet. */
 class TabledataResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TabledataResourceApi(common_internal.ApiRequester client) : 
+  TabledataResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -742,7 +743,7 @@ class TabledataResourceApi {
    *
    * Completes with a [TableDataInsertAllResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -753,7 +754,7 @@ class TabledataResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -770,7 +771,7 @@ class TabledataResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId') + '/tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/insertAll';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId') + '/tables/' + commons.Escaper.ecapeVariable('$tableId') + '/insertAll';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -802,7 +803,7 @@ class TabledataResourceApi {
    *
    * Completes with a [TableDataList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -813,7 +814,7 @@ class TabledataResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -836,7 +837,7 @@ class TabledataResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId') + '/tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/data';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId') + '/tables/' + commons.Escaper.ecapeVariable('$tableId') + '/data';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -851,11 +852,10 @@ class TabledataResourceApi {
 }
 
 
-/** Not documented yet. */
 class TablesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TablesResourceApi(common_internal.ApiRequester client) : 
+  TablesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -870,7 +870,7 @@ class TablesResourceApi {
    *
    * [tableId] - Table ID of the table to delete
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -881,7 +881,7 @@ class TablesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -896,7 +896,7 @@ class TablesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId') + '/tables/' + common_internal.Escaper.ecapeVariable('$tableId');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId') + '/tables/' + commons.Escaper.ecapeVariable('$tableId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -923,7 +923,7 @@ class TablesResourceApi {
    *
    * Completes with a [Table].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -934,7 +934,7 @@ class TablesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -948,7 +948,7 @@ class TablesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId') + '/tables/' + common_internal.Escaper.ecapeVariable('$tableId');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId') + '/tables/' + commons.Escaper.ecapeVariable('$tableId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -973,7 +973,7 @@ class TablesResourceApi {
    *
    * Completes with a [Table].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -984,7 +984,7 @@ class TablesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -998,7 +998,7 @@ class TablesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId') + '/tables';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId') + '/tables';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1026,7 +1026,7 @@ class TablesResourceApi {
    *
    * Completes with a [TableList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1037,7 +1037,7 @@ class TablesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (projectId == null) {
@@ -1054,7 +1054,7 @@ class TablesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId') + '/tables';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId') + '/tables';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1084,7 +1084,7 @@ class TablesResourceApi {
    *
    * Completes with a [Table].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1095,7 +1095,7 @@ class TablesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1112,7 +1112,7 @@ class TablesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId') + '/tables/' + common_internal.Escaper.ecapeVariable('$tableId');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId') + '/tables/' + commons.Escaper.ecapeVariable('$tableId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1141,7 +1141,7 @@ class TablesResourceApi {
    *
    * Completes with a [Table].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1152,7 +1152,7 @@ class TablesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1169,7 +1169,7 @@ class TablesResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$projectId') + '/datasets/' + common_internal.Escaper.ecapeVariable('$datasetId') + '/tables/' + common_internal.Escaper.ecapeVariable('$tableId');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId') + '/tables/' + commons.Escaper.ecapeVariable('$tableId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1185,7 +1185,106 @@ class TablesResourceApi {
 
 
 
-/** Not documented yet. */
+class CsvOptions {
+  /**
+   * [Optional] Indicates if BigQuery should accept rows that are missing
+   * trailing optional columns. If true, BigQuery treats missing trailing
+   * columns as null values. If false, records with missing trailing columns are
+   * treated as bad records, and if there are too many bad records, an invalid
+   * error is returned in the job result. The default value is false.
+   */
+  core.bool allowJaggedRows;
+
+  /**
+   * [Optional] Indicates if BigQuery should allow quoted data sections that
+   * contain newline characters in a CSV file. The default value is false.
+   */
+  core.bool allowQuotedNewlines;
+
+  /**
+   * [Optional] The character encoding of the data. The supported values are
+   * UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data
+   * after the raw, binary data has been split using the values of the quote and
+   * fieldDelimiter properties.
+   */
+  core.String encoding;
+
+  /**
+   * [Optional] The separator for fields in a CSV file. BigQuery converts the
+   * string to ISO-8859-1 encoding, and then uses the first byte of the encoded
+   * string to split the data in its raw, binary state. BigQuery also supports
+   * the escape sequence "\t" to specify a tab separator. The default value is a
+   * comma (',').
+   */
+  core.String fieldDelimiter;
+
+  /**
+   * [Optional] The value that is used to quote data sections in a CSV file.
+   * BigQuery converts the string to ISO-8859-1 encoding, and then uses the
+   * first byte of the encoded string to split the data in its raw, binary
+   * state. The default value is a double-quote ('"'). If your data does not
+   * contain quoted sections, set the property value to an empty string. If your
+   * data contains quoted newline characters, you must also set the
+   * allowQuotedNewlines property to true.
+   */
+  core.String quote;
+
+  /**
+   * [Optional] The number of rows at the top of a CSV file that BigQuery will
+   * skip when reading the data. The default value is 0. This property is useful
+   * if you have header rows in the file that should be skipped.
+   */
+  core.int skipLeadingRows;
+
+
+  CsvOptions();
+
+  CsvOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("allowJaggedRows")) {
+      allowJaggedRows = _json["allowJaggedRows"];
+    }
+    if (_json.containsKey("allowQuotedNewlines")) {
+      allowQuotedNewlines = _json["allowQuotedNewlines"];
+    }
+    if (_json.containsKey("encoding")) {
+      encoding = _json["encoding"];
+    }
+    if (_json.containsKey("fieldDelimiter")) {
+      fieldDelimiter = _json["fieldDelimiter"];
+    }
+    if (_json.containsKey("quote")) {
+      quote = _json["quote"];
+    }
+    if (_json.containsKey("skipLeadingRows")) {
+      skipLeadingRows = _json["skipLeadingRows"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (allowJaggedRows != null) {
+      _json["allowJaggedRows"] = allowJaggedRows;
+    }
+    if (allowQuotedNewlines != null) {
+      _json["allowQuotedNewlines"] = allowQuotedNewlines;
+    }
+    if (encoding != null) {
+      _json["encoding"] = encoding;
+    }
+    if (fieldDelimiter != null) {
+      _json["fieldDelimiter"] = fieldDelimiter;
+    }
+    if (quote != null) {
+      _json["quote"] = quote;
+    }
+    if (skipLeadingRows != null) {
+      _json["skipLeadingRows"] = skipLeadingRows;
+    }
+    return _json;
+  }
+}
+
+
 class DatasetAccess {
   /**
    * [Pick one] A domain to grant access to. Any users signed in with the domain
@@ -1275,7 +1374,6 @@ class DatasetAccess {
 }
 
 
-/** Not documented yet. */
 class Dataset {
   /**
    * [Optional] An array of objects that define dataset access for one or more
@@ -1297,6 +1395,20 @@ class Dataset {
 
   /** [Required] A reference that identifies the dataset. */
   DatasetReference datasetReference;
+
+  /**
+   * [Experimental] The default lifetime of all tables in the dataset, in
+   * milliseconds. The minimum value is 3600000 milliseconds (one hour). Once
+   * this property is set, all newly-created tables in the dataset will have an
+   * expirationTime property set to the creation time plus the value in this
+   * property, and changing the value will only affect new tables, not existing
+   * ones. When the expirationTime for a given table is reached, that table will
+   * be deleted automatically. If a table's expirationTime is modified or
+   * removed before the table expires, or if you provide an explicit
+   * expirationTime when creating a table, that value takes precedence over the
+   * default expiration time indicated by this property.
+   */
+  core.String defaultTableExpirationMs;
 
   /** [Optional] A user-friendly description of the dataset. */
   core.String description;
@@ -1343,6 +1455,9 @@ class Dataset {
     if (_json.containsKey("datasetReference")) {
       datasetReference = new DatasetReference.fromJson(_json["datasetReference"]);
     }
+    if (_json.containsKey("defaultTableExpirationMs")) {
+      defaultTableExpirationMs = _json["defaultTableExpirationMs"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -1377,6 +1492,9 @@ class Dataset {
     if (datasetReference != null) {
       _json["datasetReference"] = (datasetReference).toJson();
     }
+    if (defaultTableExpirationMs != null) {
+      _json["defaultTableExpirationMs"] = defaultTableExpirationMs;
+    }
     if (description != null) {
       _json["description"] = description;
     }
@@ -1403,7 +1521,6 @@ class Dataset {
 }
 
 
-/** Not documented yet. */
 class DatasetListDatasets {
   /**
    * The dataset reference. Use this property to access specific parts of the
@@ -1460,7 +1577,6 @@ class DatasetListDatasets {
 }
 
 
-/** Not documented yet. */
 class DatasetList {
   /**
    * An array of the dataset resources in the project. Each resource contains
@@ -1525,7 +1641,6 @@ class DatasetList {
 }
 
 
-/** Not documented yet. */
 class DatasetReference {
   /**
    * [Required] A unique ID for this dataset, without the project name. The ID
@@ -1562,7 +1677,6 @@ class DatasetReference {
 }
 
 
-/** Not documented yet. */
 class ErrorProto {
   /**
    * Debugging information. This property is internal to Google and should not
@@ -1616,7 +1730,107 @@ class ErrorProto {
 }
 
 
-/** Not documented yet. */
+class ExternalDataConfiguration {
+  /**
+   * [Optional] The compression type of the data source. Possible values include
+   * GZIP and NONE. The default value is NONE.
+   */
+  core.String compression;
+
+  /** Additional properties to set if sourceFormat is set to CSV. */
+  CsvOptions csvOptions;
+
+  /**
+   * [Optional] Indicates if BigQuery should allow extra values that are not
+   * represented in the table schema. If true, the extra values are ignored. If
+   * false, records with extra columns are treated as bad records, and if there
+   * are too many bad records, an invalid error is returned in the job result.
+   * The default value is false. The sourceFormat property determines what
+   * BigQuery treats as an extra value: CSV: Trailing columns
+   */
+  core.bool ignoreUnknownValues;
+
+  /**
+   * [Optional] The maximum number of bad records that BigQuery can ignore when
+   * reading data. If the number of bad records exceeds this value, an invalid
+   * error is returned in the job result. The default value is 0, which requires
+   * that all records are valid.
+   */
+  core.int maxBadRecords;
+
+  /** [Required] The schema for the data. */
+  TableSchema schema;
+
+  /**
+   * [Optional] The data format. External data sources must be in CSV format.
+   * The default value is CSV.
+   */
+  core.String sourceFormat;
+
+  /**
+   * [Required] The fully-qualified URIs that point to your data in Google Cloud
+   * Storage. Each URI can contain one '*' wildcard character and it must come
+   * after the 'bucket' name. CSV limits related to load jobs apply to external
+   * data sources, plus an additional limit of 10 GB maximum size across all
+   * URIs.
+   */
+  core.List<core.String> sourceUris;
+
+
+  ExternalDataConfiguration();
+
+  ExternalDataConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("compression")) {
+      compression = _json["compression"];
+    }
+    if (_json.containsKey("csvOptions")) {
+      csvOptions = new CsvOptions.fromJson(_json["csvOptions"]);
+    }
+    if (_json.containsKey("ignoreUnknownValues")) {
+      ignoreUnknownValues = _json["ignoreUnknownValues"];
+    }
+    if (_json.containsKey("maxBadRecords")) {
+      maxBadRecords = _json["maxBadRecords"];
+    }
+    if (_json.containsKey("schema")) {
+      schema = new TableSchema.fromJson(_json["schema"]);
+    }
+    if (_json.containsKey("sourceFormat")) {
+      sourceFormat = _json["sourceFormat"];
+    }
+    if (_json.containsKey("sourceUris")) {
+      sourceUris = _json["sourceUris"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (compression != null) {
+      _json["compression"] = compression;
+    }
+    if (csvOptions != null) {
+      _json["csvOptions"] = (csvOptions).toJson();
+    }
+    if (ignoreUnknownValues != null) {
+      _json["ignoreUnknownValues"] = ignoreUnknownValues;
+    }
+    if (maxBadRecords != null) {
+      _json["maxBadRecords"] = maxBadRecords;
+    }
+    if (schema != null) {
+      _json["schema"] = (schema).toJson();
+    }
+    if (sourceFormat != null) {
+      _json["sourceFormat"] = sourceFormat;
+    }
+    if (sourceUris != null) {
+      _json["sourceUris"] = sourceUris;
+    }
+    return _json;
+  }
+}
+
+
 class GetQueryResultsResponse {
   /** Whether the query result was fetched from the query cache. */
   core.bool cacheHit;
@@ -1743,7 +1957,6 @@ class GetQueryResultsResponse {
 }
 
 
-/** Not documented yet. */
 class Job {
   /** [Required] Describes the job configuration. */
   JobConfiguration configuration;
@@ -1845,7 +2058,6 @@ class Job {
 }
 
 
-/** Not documented yet. */
 class JobConfiguration {
   /** [Pick one] Copies a table. */
   JobConfigurationTableCopy copy;
@@ -1919,7 +2131,6 @@ class JobConfiguration {
 }
 
 
-/** Not documented yet. */
 class JobConfigurationExtract {
   /**
    * [Optional] The compression type to use for exported files. Possible values
@@ -2017,7 +2228,6 @@ class JobConfigurationExtract {
 }
 
 
-/** Not documented yet. */
 class JobConfigurationLink {
   /**
    * [Optional] Specifies whether the job is allowed to create new tables. The
@@ -2085,12 +2295,13 @@ class JobConfigurationLink {
 }
 
 
-/** Not documented yet. */
 class JobConfigurationLoad {
   /**
    * [Optional] Accept rows that are missing trailing optional columns. The
-   * missing values are treated as nulls. Default is false which treats short
-   * rows as errors. Only applicable to CSV, ignored for other formats.
+   * missing values are treated as nulls. If false, records with missing
+   * trailing columns are treated as bad records, and if there are too many bad
+   * records, an invalid error is returned in the job result. The default value
+   * is false. Only applicable to CSV, ignored for other formats.
    */
   core.bool allowJaggedRows;
 
@@ -2131,18 +2342,21 @@ class JobConfigurationLoad {
   core.String fieldDelimiter;
 
   /**
-   * [Optional] Accept rows that contain values that do not match the schema.
-   * The unknown values are ignored. Default is false which treats unknown
-   * values as errors. For CSV this ignores extra values at the end of a line.
-   * For JSON this ignores named values that do not match any column name.
+   * [Optional] Indicates if BigQuery should allow extra values that are not
+   * represented in the table schema. If true, the extra values are ignored. If
+   * false, records with extra columns are treated as bad records, and if there
+   * are too many bad records, an invalid error is returned in the job result.
+   * The default value is false. The sourceFormat property determines what
+   * BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values
+   * that don't match any column names
    */
   core.bool ignoreUnknownValues;
 
   /**
    * [Optional] The maximum number of bad records that BigQuery can ignore when
    * running the job. If the number of bad records exceeds this value, an
-   * 'invalid' error is returned in the job result and the job fails. The
-   * default value is 0, which requires that all records are valid.
+   * invalid error is returned in the job result. The default value is 0, which
+   * requires that all records are valid.
    */
   core.int maxBadRecords;
 
@@ -2200,8 +2414,8 @@ class JobConfigurationLoad {
 
   /**
    * [Required] The fully-qualified URIs that point to your data in Google Cloud
-   * Storage. Wildcard names are only supported when they appear at the end of
-   * the URI.
+   * Storage. Each URI can contain one '*' wildcard character and it must come
+   * after the 'bucket' name.
    */
   core.List<core.String> sourceUris;
 
@@ -2333,7 +2547,6 @@ class JobConfigurationLoad {
 }
 
 
-/** Not documented yet. */
 class JobConfigurationQuery {
   /**
    * If true, allows the query to produce arbitrarily large result tables at a
@@ -2381,6 +2594,14 @@ class JobConfigurationQuery {
 
   /** [Required] BigQuery SQL query to execute. */
   core.String query;
+
+  /**
+   * [Experimental] If querying an external data source outside of BigQuery,
+   * describes the data format, location and other properties of the data
+   * source. By defining these properties, the data source can then be queried
+   * as if it were a standard BigQuery table.
+   */
+  core.Map<core.String, ExternalDataConfiguration> tableDefinitions;
 
   /**
    * [Optional] Whether to look for the result in the query cache. The query
@@ -2431,6 +2652,9 @@ class JobConfigurationQuery {
     if (_json.containsKey("query")) {
       query = _json["query"];
     }
+    if (_json.containsKey("tableDefinitions")) {
+      tableDefinitions = commons.mapMap(_json["tableDefinitions"], (item) => new ExternalDataConfiguration.fromJson(item));
+    }
     if (_json.containsKey("useQueryCache")) {
       useQueryCache = _json["useQueryCache"];
     }
@@ -2465,6 +2689,9 @@ class JobConfigurationQuery {
     if (query != null) {
       _json["query"] = query;
     }
+    if (tableDefinitions != null) {
+      _json["tableDefinitions"] = commons.mapMap(tableDefinitions, (item) => (item).toJson());
+    }
     if (useQueryCache != null) {
       _json["useQueryCache"] = useQueryCache;
     }
@@ -2476,7 +2703,6 @@ class JobConfigurationQuery {
 }
 
 
-/** Not documented yet. */
 class JobConfigurationTableCopy {
   /**
    * [Optional] Specifies whether the job is allowed to create new tables. The
@@ -2553,7 +2779,6 @@ class JobConfigurationTableCopy {
 }
 
 
-/** Not documented yet. */
 class JobListJobs {
   /** [Full-projection-only] Specifies the job configuration. */
   JobConfiguration configuration;
@@ -2655,7 +2880,6 @@ class JobListJobs {
 }
 
 
-/** Not documented yet. */
 class JobList {
   /** A hash of this page of results. */
   core.String etag;
@@ -2715,7 +2939,6 @@ class JobList {
 }
 
 
-/** Not documented yet. */
 class JobReference {
   /**
    * [Required] The ID of the job. The ID must contain only letters (a-z, A-Z),
@@ -2752,7 +2975,6 @@ class JobReference {
 }
 
 
-/** Not documented yet. */
 class JobStatistics {
   /**
    * [Output-only] Creation time of this job, in milliseconds since the epoch.
@@ -2843,7 +3065,6 @@ class JobStatistics {
 }
 
 
-/** Not documented yet. */
 class JobStatistics2 {
   /**
    * [Output-only] Whether the query result was fetched from the query cache.
@@ -2878,7 +3099,6 @@ class JobStatistics2 {
 }
 
 
-/** Not documented yet. */
 class JobStatistics3 {
   /** [Output-only] Number of bytes of source data in a joad job. */
   core.String inputFileBytes;
@@ -2935,7 +3155,6 @@ class JobStatistics3 {
 }
 
 
-/** Not documented yet. */
 class JobStatistics4 {
   /**
    * [Experimental] Number of files per destination URI or URI pattern specified
@@ -2963,7 +3182,6 @@ class JobStatistics4 {
 }
 
 
-/** Not documented yet. */
 class JobStatus {
   /**
    * [Output-only] Final error result of the job. If present, indicates that the
@@ -3050,7 +3268,6 @@ class JsonObject
 }
 
 
-/** Not documented yet. */
 class ProjectListProjects {
   /** A descriptive name for this project. */
   core.String friendlyName;
@@ -3110,7 +3327,6 @@ class ProjectListProjects {
 }
 
 
-/** Not documented yet. */
 class ProjectList {
   /** A hash of the page of results */
   core.String etag;
@@ -3170,7 +3386,6 @@ class ProjectList {
 }
 
 
-/** Not documented yet. */
 class ProjectReference {
   /**
    * [Required] ID of the project. Can be either the numeric ID or the assigned
@@ -3197,7 +3412,6 @@ class ProjectReference {
 }
 
 
-/** Not documented yet. */
 class QueryRequest {
   /**
    * [Optional] Specifies the default datasetId and projectId to assume for any
@@ -3314,7 +3528,6 @@ class QueryRequest {
 }
 
 
-/** Not documented yet. */
 class QueryResponse {
   /** Whether the query result was fetched from the query cache. */
   core.bool cacheHit;
@@ -3434,7 +3647,6 @@ class QueryResponse {
 }
 
 
-/** Not documented yet. */
 class Table {
   /**
    * [Output-only] The time when this table was created, in milliseconds since
@@ -3611,7 +3823,7 @@ class Table {
  */
 class TableCell {
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3637,7 +3849,6 @@ class TableCell {
 }
 
 
-/** Not documented yet. */
 class TableDataInsertAllRequestRows {
   /**
    * [Optional] A unique ID for each row. BigQuery uses this property to detect
@@ -3676,40 +3887,64 @@ class TableDataInsertAllRequestRows {
 }
 
 
-/** Not documented yet. */
 class TableDataInsertAllRequest {
+  /**
+   * [Optional] Accept rows that contain values that do not match the schema.
+   * The unknown values are ignored. Default is false, which treats unknown
+   * values as errors.
+   */
+  core.bool ignoreUnknownValues;
+
   /** The resource type of the response. */
   core.String kind;
 
   /** The rows to insert. */
   core.List<TableDataInsertAllRequestRows> rows;
 
+  /**
+   * [Optional] Insert all valid rows of a request, even if invalid rows exist.
+   * The default value is false, which causes the entire request to fail if any
+   * invalid rows exist.
+   */
+  core.bool skipInvalidRows;
+
 
   TableDataInsertAllRequest();
 
   TableDataInsertAllRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("ignoreUnknownValues")) {
+      ignoreUnknownValues = _json["ignoreUnknownValues"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("rows")) {
       rows = _json["rows"].map((value) => new TableDataInsertAllRequestRows.fromJson(value)).toList();
     }
+    if (_json.containsKey("skipInvalidRows")) {
+      skipInvalidRows = _json["skipInvalidRows"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (ignoreUnknownValues != null) {
+      _json["ignoreUnknownValues"] = ignoreUnknownValues;
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (rows != null) {
       _json["rows"] = rows.map((value) => (value).toJson()).toList();
     }
+    if (skipInvalidRows != null) {
+      _json["skipInvalidRows"] = skipInvalidRows;
+    }
     return _json;
   }
 }
 
 
-/** Not documented yet. */
 class TableDataInsertAllResponseInsertErrors {
   /** Error information for the row indicated by the index property. */
   core.List<ErrorProto> errors;
@@ -3742,7 +3977,6 @@ class TableDataInsertAllResponseInsertErrors {
 }
 
 
-/** Not documented yet. */
 class TableDataInsertAllResponse {
   /** An array of errors for rows that were not inserted. */
   core.List<TableDataInsertAllResponseInsertErrors> insertErrors;
@@ -3775,7 +4009,6 @@ class TableDataInsertAllResponse {
 }
 
 
-/** Not documented yet. */
 class TableDataList {
   /** A hash of this page of results. */
   core.String etag;
@@ -3839,7 +4072,6 @@ class TableDataList {
 }
 
 
-/** Not documented yet. */
 class TableFieldSchema {
   /**
    * [Optional] The field description. The maximum length is 16K characters.
@@ -3915,7 +4147,6 @@ class TableFieldSchema {
 }
 
 
-/** Not documented yet. */
 class TableListTables {
   /** The user-friendly name for this table. */
   core.String friendlyName;
@@ -3975,7 +4206,6 @@ class TableListTables {
 }
 
 
-/** Not documented yet. */
 class TableList {
   /** A hash of this page of results. */
   core.String etag;
@@ -4035,7 +4265,6 @@ class TableList {
 }
 
 
-/** Not documented yet. */
 class TableReference {
   /** [Required] The ID of the dataset containing this table. */
   core.String datasetId;
@@ -4085,7 +4314,6 @@ class TableReference {
  * Represents a single row in the result set, consisting of one or more fields.
  */
 class TableRow {
-  /** Not documented yet. */
   core.List<TableCell> f;
 
 
@@ -4107,7 +4335,6 @@ class TableRow {
 }
 
 
-/** Not documented yet. */
 class TableSchema {
   /** Describes the fields in a table. */
   core.List<TableFieldSchema> fields;
@@ -4131,7 +4358,6 @@ class TableSchema {
 }
 
 
-/** Not documented yet. */
 class ViewDefinition {
   /** [Required] A query that BigQuery executes when the view is referenced. */
   core.String query;
@@ -4153,5 +4379,3 @@ class ViewDefinition {
     return _json;
   }
 }
-
-

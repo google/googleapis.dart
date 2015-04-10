@@ -8,22 +8,57 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis_beta/common/common.dart' as common;
-import 'package:googleapis_beta/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis_beta/replicapool/v1beta2.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
 
-buildUnnamed1706() {
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
+
+buildUnnamed1734() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1706(core.List<core.String> o) {
+checkUnnamed1734(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -45,7 +80,7 @@ buildInstanceGroupManager() {
     o.kind = "foo";
     o.name = "foo";
     o.selfLink = "foo";
-    o.targetPools = buildUnnamed1706();
+    o.targetPools = buildUnnamed1734();
     o.targetSize = 42;
   }
   buildCounterInstanceGroupManager--;
@@ -66,20 +101,20 @@ checkInstanceGroupManager(api.InstanceGroupManager o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
-    checkUnnamed1706(o.targetPools);
+    checkUnnamed1734(o.targetPools);
     unittest.expect(o.targetSize, unittest.equals(42));
   }
   buildCounterInstanceGroupManager--;
 }
 
-buildUnnamed1707() {
+buildUnnamed1735() {
   var o = new core.List<api.InstanceGroupManager>();
   o.add(buildInstanceGroupManager());
   o.add(buildInstanceGroupManager());
   return o;
 }
 
-checkUnnamed1707(core.List<api.InstanceGroupManager> o) {
+checkUnnamed1735(core.List<api.InstanceGroupManager> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstanceGroupManager(o[0]);
   checkInstanceGroupManager(o[1]);
@@ -91,7 +126,7 @@ buildInstanceGroupManagerList() {
   buildCounterInstanceGroupManagerList++;
   if (buildCounterInstanceGroupManagerList < 3) {
     o.id = "foo";
-    o.items = buildUnnamed1707();
+    o.items = buildUnnamed1735();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -104,7 +139,7 @@ checkInstanceGroupManagerList(api.InstanceGroupManagerList o) {
   buildCounterInstanceGroupManagerList++;
   if (buildCounterInstanceGroupManagerList < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed1707(o.items);
+    checkUnnamed1735(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -112,14 +147,14 @@ checkInstanceGroupManagerList(api.InstanceGroupManagerList o) {
   buildCounterInstanceGroupManagerList--;
 }
 
-buildUnnamed1708() {
+buildUnnamed1736() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1708(core.List<core.String> o) {
+checkUnnamed1736(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -130,7 +165,7 @@ buildInstanceGroupManagersAbandonInstancesRequest() {
   var o = new api.InstanceGroupManagersAbandonInstancesRequest();
   buildCounterInstanceGroupManagersAbandonInstancesRequest++;
   if (buildCounterInstanceGroupManagersAbandonInstancesRequest < 3) {
-    o.instances = buildUnnamed1708();
+    o.instances = buildUnnamed1736();
   }
   buildCounterInstanceGroupManagersAbandonInstancesRequest--;
   return o;
@@ -139,19 +174,19 @@ buildInstanceGroupManagersAbandonInstancesRequest() {
 checkInstanceGroupManagersAbandonInstancesRequest(api.InstanceGroupManagersAbandonInstancesRequest o) {
   buildCounterInstanceGroupManagersAbandonInstancesRequest++;
   if (buildCounterInstanceGroupManagersAbandonInstancesRequest < 3) {
-    checkUnnamed1708(o.instances);
+    checkUnnamed1736(o.instances);
   }
   buildCounterInstanceGroupManagersAbandonInstancesRequest--;
 }
 
-buildUnnamed1709() {
+buildUnnamed1737() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1709(core.List<core.String> o) {
+checkUnnamed1737(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -162,7 +197,7 @@ buildInstanceGroupManagersDeleteInstancesRequest() {
   var o = new api.InstanceGroupManagersDeleteInstancesRequest();
   buildCounterInstanceGroupManagersDeleteInstancesRequest++;
   if (buildCounterInstanceGroupManagersDeleteInstancesRequest < 3) {
-    o.instances = buildUnnamed1709();
+    o.instances = buildUnnamed1737();
   }
   buildCounterInstanceGroupManagersDeleteInstancesRequest--;
   return o;
@@ -171,19 +206,19 @@ buildInstanceGroupManagersDeleteInstancesRequest() {
 checkInstanceGroupManagersDeleteInstancesRequest(api.InstanceGroupManagersDeleteInstancesRequest o) {
   buildCounterInstanceGroupManagersDeleteInstancesRequest++;
   if (buildCounterInstanceGroupManagersDeleteInstancesRequest < 3) {
-    checkUnnamed1709(o.instances);
+    checkUnnamed1737(o.instances);
   }
   buildCounterInstanceGroupManagersDeleteInstancesRequest--;
 }
 
-buildUnnamed1710() {
+buildUnnamed1738() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1710(core.List<core.String> o) {
+checkUnnamed1738(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -194,7 +229,7 @@ buildInstanceGroupManagersRecreateInstancesRequest() {
   var o = new api.InstanceGroupManagersRecreateInstancesRequest();
   buildCounterInstanceGroupManagersRecreateInstancesRequest++;
   if (buildCounterInstanceGroupManagersRecreateInstancesRequest < 3) {
-    o.instances = buildUnnamed1710();
+    o.instances = buildUnnamed1738();
   }
   buildCounterInstanceGroupManagersRecreateInstancesRequest--;
   return o;
@@ -203,7 +238,7 @@ buildInstanceGroupManagersRecreateInstancesRequest() {
 checkInstanceGroupManagersRecreateInstancesRequest(api.InstanceGroupManagersRecreateInstancesRequest o) {
   buildCounterInstanceGroupManagersRecreateInstancesRequest++;
   if (buildCounterInstanceGroupManagersRecreateInstancesRequest < 3) {
-    checkUnnamed1710(o.instances);
+    checkUnnamed1738(o.instances);
   }
   buildCounterInstanceGroupManagersRecreateInstancesRequest--;
 }
@@ -227,14 +262,14 @@ checkInstanceGroupManagersSetInstanceTemplateRequest(api.InstanceGroupManagersSe
   buildCounterInstanceGroupManagersSetInstanceTemplateRequest--;
 }
 
-buildUnnamed1711() {
+buildUnnamed1739() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1711(core.List<core.String> o) {
+checkUnnamed1739(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -246,7 +281,7 @@ buildInstanceGroupManagersSetTargetPoolsRequest() {
   buildCounterInstanceGroupManagersSetTargetPoolsRequest++;
   if (buildCounterInstanceGroupManagersSetTargetPoolsRequest < 3) {
     o.fingerprint = "foo";
-    o.targetPools = buildUnnamed1711();
+    o.targetPools = buildUnnamed1739();
   }
   buildCounterInstanceGroupManagersSetTargetPoolsRequest--;
   return o;
@@ -256,7 +291,7 @@ checkInstanceGroupManagersSetTargetPoolsRequest(api.InstanceGroupManagersSetTarg
   buildCounterInstanceGroupManagersSetTargetPoolsRequest++;
   if (buildCounterInstanceGroupManagersSetTargetPoolsRequest < 3) {
     unittest.expect(o.fingerprint, unittest.equals('foo'));
-    checkUnnamed1711(o.targetPools);
+    checkUnnamed1739(o.targetPools);
   }
   buildCounterInstanceGroupManagersSetTargetPoolsRequest--;
 }
@@ -284,14 +319,14 @@ checkOperationErrorErrors(api.OperationErrorErrors o) {
   buildCounterOperationErrorErrors--;
 }
 
-buildUnnamed1712() {
+buildUnnamed1740() {
   var o = new core.List<api.OperationErrorErrors>();
   o.add(buildOperationErrorErrors());
   o.add(buildOperationErrorErrors());
   return o;
 }
 
-checkUnnamed1712(core.List<api.OperationErrorErrors> o) {
+checkUnnamed1740(core.List<api.OperationErrorErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationErrorErrors(o[0]);
   checkOperationErrorErrors(o[1]);
@@ -302,7 +337,7 @@ buildOperationError() {
   var o = new api.OperationError();
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    o.errors = buildUnnamed1712();
+    o.errors = buildUnnamed1740();
   }
   buildCounterOperationError--;
   return o;
@@ -311,7 +346,7 @@ buildOperationError() {
 checkOperationError(api.OperationError o) {
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    checkUnnamed1712(o.errors);
+    checkUnnamed1740(o.errors);
   }
   buildCounterOperationError--;
 }
@@ -337,14 +372,14 @@ checkOperationWarningsData(api.OperationWarningsData o) {
   buildCounterOperationWarningsData--;
 }
 
-buildUnnamed1713() {
+buildUnnamed1741() {
   var o = new core.List<api.OperationWarningsData>();
   o.add(buildOperationWarningsData());
   o.add(buildOperationWarningsData());
   return o;
 }
 
-checkUnnamed1713(core.List<api.OperationWarningsData> o) {
+checkUnnamed1741(core.List<api.OperationWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationWarningsData(o[0]);
   checkOperationWarningsData(o[1]);
@@ -356,7 +391,7 @@ buildOperationWarnings() {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
     o.code = "foo";
-    o.data = buildUnnamed1713();
+    o.data = buildUnnamed1741();
     o.message = "foo";
   }
   buildCounterOperationWarnings--;
@@ -367,20 +402,20 @@ checkOperationWarnings(api.OperationWarnings o) {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
-    checkUnnamed1713(o.data);
+    checkUnnamed1741(o.data);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterOperationWarnings--;
 }
 
-buildUnnamed1714() {
+buildUnnamed1742() {
   var o = new core.List<api.OperationWarnings>();
   o.add(buildOperationWarnings());
   o.add(buildOperationWarnings());
   return o;
 }
 
-checkUnnamed1714(core.List<api.OperationWarnings> o) {
+checkUnnamed1742(core.List<api.OperationWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationWarnings(o[0]);
   checkOperationWarnings(o[1]);
@@ -411,7 +446,7 @@ buildOperation() {
     o.targetId = "foo";
     o.targetLink = "foo";
     o.user = "foo";
-    o.warnings = buildUnnamed1714();
+    o.warnings = buildUnnamed1742();
     o.zone = "foo";
   }
   buildCounterOperation--;
@@ -441,20 +476,20 @@ checkOperation(api.Operation o) {
     unittest.expect(o.targetId, unittest.equals('foo'));
     unittest.expect(o.targetLink, unittest.equals('foo'));
     unittest.expect(o.user, unittest.equals('foo'));
-    checkUnnamed1714(o.warnings);
+    checkUnnamed1742(o.warnings);
     unittest.expect(o.zone, unittest.equals('foo'));
   }
   buildCounterOperation--;
 }
 
-buildUnnamed1715() {
+buildUnnamed1743() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1715(core.List<api.Operation> o) {
+checkUnnamed1743(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -466,7 +501,7 @@ buildOperationList() {
   buildCounterOperationList++;
   if (buildCounterOperationList < 3) {
     o.id = "foo";
-    o.items = buildUnnamed1715();
+    o.items = buildUnnamed1743();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -479,7 +514,7 @@ checkOperationList(api.OperationList o) {
   buildCounterOperationList++;
   if (buildCounterOperationList < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed1715(o.items);
+    checkUnnamed1743(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -609,7 +644,7 @@ main() {
   unittest.group("resource-InstanceGroupManagersResourceApi", () {
     unittest.test("method--abandonInstances", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InstanceGroupManagersResourceApi res = new api.ReplicapoolApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersAbandonInstancesRequest();
       var arg_project = "foo";
@@ -648,7 +683,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.abandonInstances(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -657,7 +692,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InstanceGroupManagersResourceApi res = new api.ReplicapoolApi(mock).instanceGroupManagers;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -692,7 +727,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -701,7 +736,7 @@ main() {
 
     unittest.test("method--deleteInstances", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InstanceGroupManagersResourceApi res = new api.ReplicapoolApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersDeleteInstancesRequest();
       var arg_project = "foo";
@@ -740,7 +775,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.deleteInstances(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -749,7 +784,7 @@ main() {
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InstanceGroupManagersResourceApi res = new api.ReplicapoolApi(mock).instanceGroupManagers;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -784,7 +819,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInstanceGroupManager());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.InstanceGroupManager response) {
         checkInstanceGroupManager(response);
@@ -793,7 +828,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InstanceGroupManagersResourceApi res = new api.ReplicapoolApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManager();
       var arg_project = "foo";
@@ -833,7 +868,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_project, arg_zone, arg_size).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -842,7 +877,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InstanceGroupManagersResourceApi res = new api.ReplicapoolApi(mock).instanceGroupManagers;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -882,7 +917,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInstanceGroupManagerList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_project, arg_zone, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.InstanceGroupManagerList response) {
         checkInstanceGroupManagerList(response);
@@ -891,7 +926,7 @@ main() {
 
     unittest.test("method--recreateInstances", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InstanceGroupManagersResourceApi res = new api.ReplicapoolApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersRecreateInstancesRequest();
       var arg_project = "foo";
@@ -930,7 +965,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.recreateInstances(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -939,7 +974,7 @@ main() {
 
     unittest.test("method--resize", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InstanceGroupManagersResourceApi res = new api.ReplicapoolApi(mock).instanceGroupManagers;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -976,7 +1011,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.resize(arg_project, arg_zone, arg_instanceGroupManager, arg_size).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -985,7 +1020,7 @@ main() {
 
     unittest.test("method--setInstanceTemplate", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InstanceGroupManagersResourceApi res = new api.ReplicapoolApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersSetInstanceTemplateRequest();
       var arg_project = "foo";
@@ -1024,7 +1059,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.setInstanceTemplate(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -1033,7 +1068,7 @@ main() {
 
     unittest.test("method--setTargetPools", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.InstanceGroupManagersResourceApi res = new api.ReplicapoolApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersSetTargetPoolsRequest();
       var arg_project = "foo";
@@ -1072,7 +1107,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.setTargetPools(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -1085,7 +1120,7 @@ main() {
   unittest.group("resource-ZoneOperationsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ZoneOperationsResourceApi res = new api.ReplicapoolApi(mock).zoneOperations;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -1120,7 +1155,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_project, arg_zone, arg_operation).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -1129,7 +1164,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ZoneOperationsResourceApi res = new api.ReplicapoolApi(mock).zoneOperations;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -1169,7 +1204,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperationList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_project, arg_zone, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.OperationList response) {
         checkOperationList(response);

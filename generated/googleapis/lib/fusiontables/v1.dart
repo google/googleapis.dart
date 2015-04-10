@@ -1,17 +1,22 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.fusiontables.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client fusiontables/v1';
 
 /** API for working with Fusion Tables data. */
 class FusiontablesApi {
@@ -22,7 +27,7 @@ class FusiontablesApi {
   static const FusiontablesReadonlyScope = "https://www.googleapis.com/auth/fusiontables.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   ColumnResourceApi get column => new ColumnResourceApi(_requester);
   QueryResourceApi get query => new QueryResourceApi(_requester);
@@ -32,15 +37,14 @@ class FusiontablesApi {
   TemplateResourceApi get template => new TemplateResourceApi(_requester);
 
   FusiontablesApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "fusiontables/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class ColumnResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ColumnResourceApi(common_internal.ApiRequester client) : 
+  ColumnResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -52,7 +56,7 @@ class ColumnResourceApi {
    *
    * [columnId] - Name or identifier for the column being deleted.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -63,7 +67,7 @@ class ColumnResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -75,7 +79,7 @@ class ColumnResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/columns/' + common_internal.Escaper.ecapeVariable('$columnId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/columns/' + commons.Escaper.ecapeVariable('$columnId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -98,7 +102,7 @@ class ColumnResourceApi {
    *
    * Completes with a [Column].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -109,7 +113,7 @@ class ColumnResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -120,7 +124,7 @@ class ColumnResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/columns/' + common_internal.Escaper.ecapeVariable('$columnId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/columns/' + commons.Escaper.ecapeVariable('$columnId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -143,7 +147,7 @@ class ColumnResourceApi {
    *
    * Completes with a [Column].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -154,7 +158,7 @@ class ColumnResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -165,7 +169,7 @@ class ColumnResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/columns';
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/columns';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -191,7 +195,7 @@ class ColumnResourceApi {
    *
    * Completes with a [ColumnList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -202,7 +206,7 @@ class ColumnResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -216,7 +220,7 @@ class ColumnResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/columns';
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/columns';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -242,7 +246,7 @@ class ColumnResourceApi {
    *
    * Completes with a [Column].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -253,7 +257,7 @@ class ColumnResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -267,7 +271,7 @@ class ColumnResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/columns/' + common_internal.Escaper.ecapeVariable('$columnId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/columns/' + commons.Escaper.ecapeVariable('$columnId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -292,7 +296,7 @@ class ColumnResourceApi {
    *
    * Completes with a [Column].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -303,7 +307,7 @@ class ColumnResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -317,7 +321,7 @@ class ColumnResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/columns/' + common_internal.Escaper.ecapeVariable('$columnId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/columns/' + commons.Escaper.ecapeVariable('$columnId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -332,11 +336,10 @@ class ColumnResourceApi {
 }
 
 
-/** Not documented yet. */
 class QueryResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  QueryResourceApi(common_internal.ApiRequester client) : 
+  QueryResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -361,20 +364,20 @@ class QueryResourceApi {
    *
    * - [Sqlresponse] for Metadata downloads (see [downloadOptions]).
    *
-   * - [common.Media] for Media downloads (see [downloadOptions]).
+   * - [commons.Media] for Media downloads (see [downloadOptions]).
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future sql(core.String sql_1, {core.bool hdrs, core.bool typed, common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future sql(core.String sql_1, {core.bool hdrs, core.bool typed, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (sql_1 == null) {
@@ -400,7 +403,7 @@ class QueryResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new Sqlresponse.fromJson(data));
     } else {
       return _response;
@@ -428,20 +431,20 @@ class QueryResourceApi {
    *
    * - [Sqlresponse] for Metadata downloads (see [downloadOptions]).
    *
-   * - [common.Media] for Media downloads (see [downloadOptions]).
+   * - [commons.Media] for Media downloads (see [downloadOptions]).
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future sqlGet(core.String sql_1, {core.bool hdrs, core.bool typed, common.DownloadOptions downloadOptions: common.DownloadOptions.Metadata}) {
+  async.Future sqlGet(core.String sql_1, {core.bool hdrs, core.bool typed, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (sql_1 == null) {
@@ -467,7 +470,7 @@ class QueryResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
-        _downloadOptions == common.DownloadOptions.Metadata) {
+        _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new Sqlresponse.fromJson(data));
     } else {
       return _response;
@@ -477,11 +480,10 @@ class QueryResourceApi {
 }
 
 
-/** Not documented yet. */
 class StyleResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  StyleResourceApi(common_internal.ApiRequester client) : 
+  StyleResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -493,7 +495,7 @@ class StyleResourceApi {
    *
    * [styleId] - Identifier (within a table) for the style being deleted
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -504,7 +506,7 @@ class StyleResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -516,7 +518,7 @@ class StyleResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/styles/' + common_internal.Escaper.ecapeVariable('$styleId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/styles/' + commons.Escaper.ecapeVariable('$styleId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -539,7 +541,7 @@ class StyleResourceApi {
    *
    * Completes with a [StyleSetting].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -550,7 +552,7 @@ class StyleResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -561,7 +563,7 @@ class StyleResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/styles/' + common_internal.Escaper.ecapeVariable('$styleId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/styles/' + commons.Escaper.ecapeVariable('$styleId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -584,7 +586,7 @@ class StyleResourceApi {
    *
    * Completes with a [StyleSetting].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -595,7 +597,7 @@ class StyleResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -606,7 +608,7 @@ class StyleResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/styles';
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/styles';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -632,7 +634,7 @@ class StyleResourceApi {
    *
    * Completes with a [StyleSettingList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -643,7 +645,7 @@ class StyleResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -657,7 +659,7 @@ class StyleResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/styles';
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/styles';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -682,7 +684,7 @@ class StyleResourceApi {
    *
    * Completes with a [StyleSetting].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -693,7 +695,7 @@ class StyleResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -707,7 +709,7 @@ class StyleResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/styles/' + common_internal.Escaper.ecapeVariable('$styleId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/styles/' + commons.Escaper.ecapeVariable('$styleId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -732,7 +734,7 @@ class StyleResourceApi {
    *
    * Completes with a [StyleSetting].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -743,7 +745,7 @@ class StyleResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -757,7 +759,7 @@ class StyleResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/styles/' + common_internal.Escaper.ecapeVariable('$styleId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/styles/' + commons.Escaper.ecapeVariable('$styleId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -772,11 +774,10 @@ class StyleResourceApi {
 }
 
 
-/** Not documented yet. */
 class TableResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TableResourceApi(common_internal.ApiRequester client) : 
+  TableResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -791,7 +792,7 @@ class TableResourceApi {
    *
    * Completes with a [Table].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -802,7 +803,7 @@ class TableResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -813,7 +814,7 @@ class TableResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/copy';
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/copy';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -832,7 +833,7 @@ class TableResourceApi {
    *
    * [tableId] - ID of the table that is being deleted.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -843,7 +844,7 @@ class TableResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -852,7 +853,7 @@ class TableResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -873,7 +874,7 @@ class TableResourceApi {
    *
    * Completes with a [Table].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -884,7 +885,7 @@ class TableResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -892,7 +893,7 @@ class TableResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -940,18 +941,18 @@ class TableResourceApi {
    *
    * Completes with a [Import].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Import> importRows(core.String tableId, {core.String delimiter, core.String encoding, core.int endLine, core.bool isStrict, core.int startLine, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Import> importRows(core.String tableId, {core.String delimiter, core.String encoding, core.int endLine, core.bool isStrict, core.int startLine, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -977,11 +978,11 @@ class TableResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/import';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/fusiontables/v1/tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/import';
+      _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/import';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/fusiontables/v1/tables/' + commons.Escaper.ecapeVariable('$tableId') + '/import';
     } else {
-      _url = '/upload/fusiontables/v1/tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/import';
+      _url = '/upload/fusiontables/v1/tables/' + commons.Escaper.ecapeVariable('$tableId') + '/import';
     }
 
 
@@ -1015,18 +1016,18 @@ class TableResourceApi {
    *
    * Completes with a [Table].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Table> importTable(core.String name, {core.String delimiter, core.String encoding, common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Table> importTable(core.String name, {core.String delimiter, core.String encoding, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (name == null) {
@@ -1045,7 +1046,7 @@ class TableResourceApi {
 
     if (_uploadMedia == null) {
       _url = 'tables/import';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/fusiontables/v1/tables/import';
     } else {
       _url = '/upload/fusiontables/v1/tables/import';
@@ -1071,7 +1072,7 @@ class TableResourceApi {
    *
    * Completes with a [Table].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1082,7 +1083,7 @@ class TableResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1114,7 +1115,7 @@ class TableResourceApi {
    *
    * Completes with a [TableList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1125,7 +1126,7 @@ class TableResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (maxResults != null) {
@@ -1165,7 +1166,7 @@ class TableResourceApi {
    *
    * Completes with a [Table].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1176,7 +1177,7 @@ class TableResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1190,7 +1191,7 @@ class TableResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1218,7 +1219,7 @@ class TableResourceApi {
    *
    * Completes with a [Table].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1229,7 +1230,7 @@ class TableResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1243,7 +1244,7 @@ class TableResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1258,11 +1259,10 @@ class TableResourceApi {
 }
 
 
-/** Not documented yet. */
 class TaskResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TaskResourceApi(common_internal.ApiRequester client) : 
+  TaskResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1274,7 +1274,7 @@ class TaskResourceApi {
    *
    * [taskId] - null
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1285,7 +1285,7 @@ class TaskResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -1297,7 +1297,7 @@ class TaskResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/tasks/' + common_internal.Escaper.ecapeVariable('$taskId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/tasks/' + commons.Escaper.ecapeVariable('$taskId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1320,7 +1320,7 @@ class TaskResourceApi {
    *
    * Completes with a [Task].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1331,7 +1331,7 @@ class TaskResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -1342,7 +1342,7 @@ class TaskResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/tasks/' + common_internal.Escaper.ecapeVariable('$taskId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/tasks/' + commons.Escaper.ecapeVariable('$taskId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1369,7 +1369,7 @@ class TaskResourceApi {
    *
    * Completes with a [TaskList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1380,7 +1380,7 @@ class TaskResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -1397,7 +1397,7 @@ class TaskResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/tasks';
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/tasks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1412,11 +1412,10 @@ class TaskResourceApi {
 }
 
 
-/** Not documented yet. */
 class TemplateResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TemplateResourceApi(common_internal.ApiRequester client) : 
+  TemplateResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1428,7 +1427,7 @@ class TemplateResourceApi {
    *
    * [templateId] - Identifier for the template which is being deleted
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1439,7 +1438,7 @@ class TemplateResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -1451,7 +1450,7 @@ class TemplateResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/templates/' + common_internal.Escaper.ecapeVariable('$templateId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/templates/' + commons.Escaper.ecapeVariable('$templateId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1474,7 +1473,7 @@ class TemplateResourceApi {
    *
    * Completes with a [Template].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1485,7 +1484,7 @@ class TemplateResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -1496,7 +1495,7 @@ class TemplateResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/templates/' + common_internal.Escaper.ecapeVariable('$templateId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/templates/' + commons.Escaper.ecapeVariable('$templateId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1519,7 +1518,7 @@ class TemplateResourceApi {
    *
    * Completes with a [Template].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1530,7 +1529,7 @@ class TemplateResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1541,7 +1540,7 @@ class TemplateResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/templates';
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/templates';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1568,7 +1567,7 @@ class TemplateResourceApi {
    *
    * Completes with a [TemplateList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1579,7 +1578,7 @@ class TemplateResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (tableId == null) {
@@ -1593,7 +1592,7 @@ class TemplateResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/templates';
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/templates';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1618,7 +1617,7 @@ class TemplateResourceApi {
    *
    * Completes with a [Template].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1629,7 +1628,7 @@ class TemplateResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1643,7 +1642,7 @@ class TemplateResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/templates/' + common_internal.Escaper.ecapeVariable('$templateId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/templates/' + commons.Escaper.ecapeVariable('$templateId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1668,7 +1667,7 @@ class TemplateResourceApi {
    *
    * Completes with a [Template].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1679,7 +1678,7 @@ class TemplateResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1693,7 +1692,7 @@ class TemplateResourceApi {
     }
 
 
-    _url = 'tables/' + common_internal.Escaper.ecapeVariable('$tableId') + '/templates/' + common_internal.Escaper.ecapeVariable('$templateId');
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/templates/' + commons.Escaper.ecapeVariable('$templateId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1922,7 +1921,7 @@ class ColumnList {
 
   /**
    * Token used to access the next page of this result. No token is displayed if
-   * there are no more tokens left.
+   * there are no more pages left.
    */
   core.String nextPageToken;
 
@@ -1977,7 +1976,7 @@ class Geometry {
   core.List<core.Object> geometries;
 
   /**
-   * Not documented yet.
+   *
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2399,7 +2398,6 @@ class Sqlresponse {
 }
 
 
-/** Not documented yet. */
 class StyleFunctionGradientColors {
   /** Color in #RRGGBB format. */
   core.String color;
@@ -2643,7 +2641,7 @@ class StyleSettingList {
 
   /**
    * Token used to access the next page of this result. No token is displayed if
-   * there are no more styles left.
+   * there are no more pages left.
    */
   core.String nextPageToken;
 
@@ -2807,7 +2805,7 @@ class TableList {
 
   /**
    * Token used to access the next page of this result. No token is displayed if
-   * there are no more tokens left.
+   * there are no more pages left.
    */
   core.String nextPageToken;
 
@@ -2842,21 +2840,30 @@ class TableList {
 }
 
 
-/** Specifies the id, name and type of a task in a table. */
+/** Specifies the identifier, name, and type of a task in a table. */
 class Task {
-  /** Type name: a template for an individual task. */
+  /** Type of the resource. This is always "fusiontables#task". */
   core.String kind;
 
   /** An indication of task progress. */
   core.String progress;
 
-  /** False while the table is busy with some other task. */
+  /**
+   * false while the table is busy with some other task. true if this background
+   * task is currently running.
+   */
   core.bool started;
 
   /** Identifier for the task. */
   core.String taskId;
 
-  /** Not documented yet. */
+  /**
+   * Type of background task. One of  DELETE_ROWS Deletes one or more rows from
+   * the table. ADD_ROWS "Adds one or more rows to a table. Includes importing
+   * data into a new table and importing more rows into an existing table.
+   * ADD_COLUMN Adds a new column to the table. CHANGE_TYPE Changes the type of
+   * a column.
+   */
   core.String type;
 
 
@@ -2902,17 +2909,17 @@ class Task {
 }
 
 
-/** Represents a list of tasks in a table. */
+/** Represents a list of tasks for a table. */
 class TaskList {
   /** List of all requested tasks. */
   core.List<Task> items;
 
-  /** Type name: a list of all tasks. */
+  /** Type of the resource. This is always "fusiontables#taskList". */
   core.String kind;
 
   /**
    * Token used to access the next page of this result. No token is displayed if
-   * there are no more tokens left.
+   * there are no more pages left.
    */
   core.String nextPageToken;
 
@@ -3049,7 +3056,7 @@ class TemplateList {
 
   /**
    * Token used to access the next page of this result. No token is displayed if
-   * there are no more tokens left.
+   * there are no more pages left.
    */
   core.String nextPageToken;
 
@@ -3091,5 +3098,3 @@ class TemplateList {
     return _json;
   }
 }
-
-

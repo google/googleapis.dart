@@ -1,35 +1,37 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.webfonts.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client webfonts/v1';
 
 /** The Google Fonts Developer API. */
 class WebfontsApi {
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   WebfontsResourceApi get webfonts => new WebfontsResourceApi(_requester);
 
   WebfontsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "webfonts/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class WebfontsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  WebfontsResourceApi(common_internal.ApiRequester client) : 
+  WebfontsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -48,7 +50,7 @@ class WebfontsResourceApi {
    *
    * Completes with a [WebfontList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -59,7 +61,7 @@ class WebfontsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (sort != null) {
@@ -83,7 +85,6 @@ class WebfontsResourceApi {
 
 
 
-/** Not documented yet. */
 class Webfont {
   /** The category of the font. */
   core.String category;
@@ -175,7 +176,6 @@ class Webfont {
 }
 
 
-/** Not documented yet. */
 class WebfontList {
   /** The list of fonts currently served by the Google Fonts API. */
   core.List<Webfont> items;
@@ -208,5 +208,3 @@ class WebfontList {
     return _json;
   }
 }
-
-

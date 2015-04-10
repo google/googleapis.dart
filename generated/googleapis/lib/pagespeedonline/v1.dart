@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.pagespeedonline.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client pagespeedonline/v1';
 
 /**
  * Lets you analyze the performance of a web page and get tailored suggestions
@@ -19,25 +22,24 @@ export '../common/common.dart' show DetailedApiRequestError;
  */
 class PagespeedonlineApi {
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   PagespeedapiResourceApi get pagespeedapi => new PagespeedapiResourceApi(_requester);
 
   PagespeedonlineApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "pagespeedonline/v1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class PagespeedapiResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PagespeedapiResourceApi(common_internal.ApiRequester client) : 
+  PagespeedapiResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Runs Page Speed analysis on the page at the specified URL, and returns a
-   * Page Speed score, a list of suggestions to make that page faster, and other
+   * Runs PageSpeed analysis on the page at the specified URL, and returns a
+   * PageSpeed score, a list of suggestions to make that page faster, and other
    * information.
    *
    * Request parameters:
@@ -51,7 +53,7 @@ class PagespeedapiResourceApi {
    * [locale] - The locale used to localize formatted results
    * Value must have pattern "[a-zA-Z]+(_[a-zA-Z]+)?".
    *
-   * [rule] - A Page Speed rule to run; if none are given, all rules are run
+   * [rule] - A PageSpeed rule to run; if none are given, all rules are run
    * Value must have pattern "[a-zA-Z]+".
    *
    * [screenshot] - Indicates if binary data containing a screenshot should be
@@ -64,7 +66,7 @@ class PagespeedapiResourceApi {
    *
    * Completes with a [Result].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -75,7 +77,7 @@ class PagespeedapiResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (url == null) {
@@ -115,7 +117,6 @@ class PagespeedapiResourceApi {
 
 
 
-/** Not documented yet. */
 class ResultFormattedResultsRuleResultsValueUrlBlocksHeaderArgs {
   /**
    * Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, or
@@ -188,7 +189,6 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksHeader {
 }
 
 
-/** Not documented yet. */
 class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetailsArgs {
   /**
    * Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, or
@@ -224,7 +224,6 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetailsArgs {
 }
 
 
-/** Not documented yet. */
 class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails {
   /** List of arguments for the format string. */
   core.List<ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetailsArgs> args;
@@ -261,7 +260,6 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails {
 }
 
 
-/** Not documented yet. */
 class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResultArgs {
   /**
    * Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, or
@@ -336,7 +334,6 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResult {
 }
 
 
-/** Not documented yet. */
 class ResultFormattedResultsRuleResultsValueUrlBlocksUrls {
   /**
    * List of entries that provide additional details about a single URL.
@@ -375,7 +372,6 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrls {
 }
 
 
-/** Not documented yet. */
 class ResultFormattedResultsRuleResultsValueUrlBlocks {
   /** Heading to be displayed with the list of URLs. */
   ResultFormattedResultsRuleResultsValueUrlBlocksHeader header;
@@ -468,15 +464,15 @@ class ResultFormattedResultsRuleResultsValue {
 
 
 /**
- * Localized Page Speed results. Contains a ruleResults entry for each Page
- * Speed rule instantiated and run by the server.
+ * Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed
+ * rule instantiated and run by the server.
  */
 class ResultFormattedResults {
   /** The locale of the formattedResults, e.g. "en_US". */
   core.String locale;
 
   /**
-   * Dictionary of formatted rule results, with one entry for each Page Speed
+   * Dictionary of formatted rule results, with one entry for each PageSpeed
    * rule instantiated and run by the server.
    */
   core.Map<core.String, ResultFormattedResultsRuleResultsValue> ruleResults;
@@ -489,7 +485,7 @@ class ResultFormattedResults {
       locale = _json["locale"];
     }
     if (_json.containsKey("ruleResults")) {
-      ruleResults = common_internal.mapMap(_json["ruleResults"], (item) => new ResultFormattedResultsRuleResultsValue.fromJson(item));
+      ruleResults = commons.mapMap(_json["ruleResults"], (item) => new ResultFormattedResultsRuleResultsValue.fromJson(item));
     }
   }
 
@@ -499,7 +495,7 @@ class ResultFormattedResults {
       _json["locale"] = locale;
     }
     if (ruleResults != null) {
-      _json["ruleResults"] = common_internal.mapMap(ruleResults, (item) => (item).toJson());
+      _json["ruleResults"] = commons.mapMap(ruleResults, (item) => (item).toJson());
     }
     return _json;
   }
@@ -647,7 +643,7 @@ class ResultPageStats {
 }
 
 
-/** Base64 encoded screenshot of the page that was analyzed. */
+/** Base64-encoded screenshot of the page that was analyzed. */
 class ResultScreenshot {
   /** Image data base64 encoded. */
   core.String data;
@@ -706,18 +702,12 @@ class ResultScreenshot {
 }
 
 
-/** The version of the Page Speed SDK used to generate these results. */
+/** The version of PageSpeed used to generate these results. */
 class ResultVersion {
-  /**
-   * The major version number of the Page Speed SDK used to generate these
-   * results.
-   */
+  /** The major version number of PageSpeed used to generate these results. */
   core.int major;
 
-  /**
-   * The minor version number of the Page Speed SDK used to generate these
-   * results.
-   */
+  /** The minor version number of PageSpeed used to generate these results. */
   core.int minor;
 
 
@@ -745,11 +735,10 @@ class ResultVersion {
 }
 
 
-/** Not documented yet. */
 class Result {
   /**
-   * Localized Page Speed results. Contains a ruleResults entry for each Page
-   * Speed rule instantiated and run by the server.
+   * Localized PageSpeed results. Contains a ruleResults entry for each
+   * PageSpeed rule instantiated and run by the server.
    */
   ResultFormattedResults formattedResults;
 
@@ -781,19 +770,19 @@ class Result {
   core.int responseCode;
 
   /**
-   * The Page Speed Score (0-100), which indicates how much faster a page could
+   * The PageSpeed Score (0-100), which indicates how much faster a page could
    * be. A high score indicates little room for improvement, while a lower score
    * indicates more room for improvement.
    */
   core.int score;
 
-  /** Base64 encoded screenshot of the page that was analyzed. */
+  /** Base64-encoded screenshot of the page that was analyzed. */
   ResultScreenshot screenshot;
 
   /** Title of the page, as displayed in the browser's title bar. */
   core.String title;
 
-  /** The version of the Page Speed SDK used to generate these results. */
+  /** The version of PageSpeed used to generate these results. */
   ResultVersion version;
 
 
@@ -867,5 +856,3 @@ class Result {
     return _json;
   }
 }
-
-

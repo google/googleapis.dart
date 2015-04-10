@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.blogger.v3;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client blogger/v3';
 
 /** API for access to the data within Blogger. */
 class BloggerApi {
@@ -22,7 +25,7 @@ class BloggerApi {
   static const BloggerReadonlyScope = "https://www.googleapis.com/auth/blogger.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   BlogUserInfosResourceApi get blogUserInfos => new BlogUserInfosResourceApi(_requester);
   BlogsResourceApi get blogs => new BlogsResourceApi(_requester);
@@ -34,15 +37,14 @@ class BloggerApi {
   UsersResourceApi get users => new UsersResourceApi(_requester);
 
   BloggerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "blogger/v3/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class BlogUserInfosResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  BlogUserInfosResourceApi(common_internal.ApiRequester client) : 
+  BlogUserInfosResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -59,7 +61,7 @@ class BlogUserInfosResourceApi {
    *
    * Completes with a [BlogUserInfo].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -70,7 +72,7 @@ class BlogUserInfosResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -84,7 +86,7 @@ class BlogUserInfosResourceApi {
     }
 
 
-    _url = 'users/' + common_internal.Escaper.ecapeVariable('$userId') + '/blogs/' + common_internal.Escaper.ecapeVariable('$blogId');
+    _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs/' + commons.Escaper.ecapeVariable('$blogId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -99,11 +101,10 @@ class BlogUserInfosResourceApi {
 }
 
 
-/** Not documented yet. */
 class BlogsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  BlogsResourceApi(common_internal.ApiRequester client) : 
+  BlogsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -124,7 +125,7 @@ class BlogsResourceApi {
    *
    * Completes with a [Blog].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -135,7 +136,7 @@ class BlogsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -149,7 +150,7 @@ class BlogsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId');
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -177,7 +178,7 @@ class BlogsResourceApi {
    *
    * Completes with a [Blog].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -188,7 +189,7 @@ class BlogsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (url == null) {
@@ -239,7 +240,7 @@ class BlogsResourceApi {
    *
    * Completes with a [BlogList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -250,7 +251,7 @@ class BlogsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -270,7 +271,7 @@ class BlogsResourceApi {
     }
 
 
-    _url = 'users/' + common_internal.Escaper.ecapeVariable('$userId') + '/blogs';
+    _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -285,11 +286,10 @@ class BlogsResourceApi {
 }
 
 
-/** Not documented yet. */
 class CommentsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CommentsResourceApi(common_internal.ApiRequester client) : 
+  CommentsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -305,7 +305,7 @@ class CommentsResourceApi {
    *
    * Completes with a [Comment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -316,7 +316,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -330,7 +330,7 @@ class CommentsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/' + common_internal.Escaper.ecapeVariable('$postId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId') + '/approve';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/approve';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -353,7 +353,7 @@ class CommentsResourceApi {
    *
    * [commentId] - The ID of the comment to delete.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -364,7 +364,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -379,7 +379,7 @@ class CommentsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/' + common_internal.Escaper.ecapeVariable('$postId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId');
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -413,7 +413,7 @@ class CommentsResourceApi {
    *
    * Completes with a [Comment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -424,7 +424,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -441,7 +441,7 @@ class CommentsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/' + common_internal.Escaper.ecapeVariable('$postId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId');
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -485,7 +485,7 @@ class CommentsResourceApi {
    *
    * Completes with a [CommentList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -496,7 +496,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -528,7 +528,7 @@ class CommentsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/' + common_internal.Escaper.ecapeVariable('$postId') + '/comments';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/comments';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -563,7 +563,7 @@ class CommentsResourceApi {
    *
    * Completes with a [CommentList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -574,7 +574,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -600,7 +600,7 @@ class CommentsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/comments';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/comments';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -625,7 +625,7 @@ class CommentsResourceApi {
    *
    * Completes with a [Comment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -636,7 +636,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -650,7 +650,7 @@ class CommentsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/' + common_internal.Escaper.ecapeVariable('$postId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId') + '/spam';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/spam';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -675,7 +675,7 @@ class CommentsResourceApi {
    *
    * Completes with a [Comment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -686,7 +686,7 @@ class CommentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -700,7 +700,7 @@ class CommentsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/' + common_internal.Escaper.ecapeVariable('$postId') + '/comments/' + common_internal.Escaper.ecapeVariable('$commentId') + '/removecontent';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/removecontent';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -715,11 +715,10 @@ class CommentsResourceApi {
 }
 
 
-/** Not documented yet. */
 class PageViewsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PageViewsResourceApi(common_internal.ApiRequester client) : 
+  PageViewsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -733,7 +732,7 @@ class PageViewsResourceApi {
    *
    * Completes with a [Pageviews].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -744,7 +743,7 @@ class PageViewsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -755,7 +754,7 @@ class PageViewsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/pageviews';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pageviews';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -770,11 +769,10 @@ class PageViewsResourceApi {
 }
 
 
-/** Not documented yet. */
 class PagesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PagesResourceApi(common_internal.ApiRequester client) : 
+  PagesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -786,7 +784,7 @@ class PagesResourceApi {
    *
    * [pageId] - The ID of the Page.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -797,7 +795,7 @@ class PagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -809,7 +807,7 @@ class PagesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/pages/' + common_internal.Escaper.ecapeVariable('$pageId');
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages/' + commons.Escaper.ecapeVariable('$pageId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -838,7 +836,7 @@ class PagesResourceApi {
    *
    * Completes with a [Page].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -849,7 +847,7 @@ class PagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -863,7 +861,7 @@ class PagesResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/pages/' + common_internal.Escaper.ecapeVariable('$pageId');
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages/' + commons.Escaper.ecapeVariable('$pageId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -888,7 +886,7 @@ class PagesResourceApi {
    *
    * Completes with a [Page].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -899,7 +897,7 @@ class PagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -913,7 +911,7 @@ class PagesResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/pages';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -949,7 +947,7 @@ class PagesResourceApi {
    *
    * Completes with a [PageList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -960,7 +958,7 @@ class PagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -983,7 +981,7 @@ class PagesResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/pages';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1014,7 +1012,7 @@ class PagesResourceApi {
    *
    * Completes with a [Page].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1025,7 +1023,7 @@ class PagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1045,7 +1043,7 @@ class PagesResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/pages/' + common_internal.Escaper.ecapeVariable('$pageId');
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages/' + commons.Escaper.ecapeVariable('$pageId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1068,7 +1066,7 @@ class PagesResourceApi {
    *
    * Completes with a [Page].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1079,7 +1077,7 @@ class PagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -1090,7 +1088,7 @@ class PagesResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/pages/' + common_internal.Escaper.ecapeVariable('$pageId') + '/publish';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages/' + commons.Escaper.ecapeVariable('$pageId') + '/publish';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1113,7 +1111,7 @@ class PagesResourceApi {
    *
    * Completes with a [Page].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1124,7 +1122,7 @@ class PagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -1135,7 +1133,7 @@ class PagesResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/pages/' + common_internal.Escaper.ecapeVariable('$pageId') + '/revert';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages/' + commons.Escaper.ecapeVariable('$pageId') + '/revert';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1166,7 +1164,7 @@ class PagesResourceApi {
    *
    * Completes with a [Page].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1177,7 +1175,7 @@ class PagesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1197,7 +1195,7 @@ class PagesResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/pages/' + common_internal.Escaper.ecapeVariable('$pageId');
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages/' + commons.Escaper.ecapeVariable('$pageId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1212,11 +1210,10 @@ class PagesResourceApi {
 }
 
 
-/** Not documented yet. */
 class PostUserInfosResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PostUserInfosResourceApi(common_internal.ApiRequester client) : 
+  PostUserInfosResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1237,7 +1234,7 @@ class PostUserInfosResourceApi {
    *
    * Completes with a [PostUserInfo].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1248,7 +1245,7 @@ class PostUserInfosResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -1265,7 +1262,7 @@ class PostUserInfosResourceApi {
     }
 
 
-    _url = 'users/' + common_internal.Escaper.ecapeVariable('$userId') + '/blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/' + common_internal.Escaper.ecapeVariable('$postId');
+    _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1320,7 +1317,7 @@ class PostUserInfosResourceApi {
    *
    * Completes with a [PostUserInfosList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1331,7 +1328,7 @@ class PostUserInfosResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -1369,7 +1366,7 @@ class PostUserInfosResourceApi {
     }
 
 
-    _url = 'users/' + common_internal.Escaper.ecapeVariable('$userId') + '/blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts';
+    _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1384,11 +1381,10 @@ class PostUserInfosResourceApi {
 }
 
 
-/** Not documented yet. */
 class PostsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PostsResourceApi(common_internal.ApiRequester client) : 
+  PostsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1400,7 +1396,7 @@ class PostsResourceApi {
    *
    * [postId] - The ID of the Post.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1411,7 +1407,7 @@ class PostsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -1423,7 +1419,7 @@ class PostsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/' + common_internal.Escaper.ecapeVariable('$postId');
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1462,7 +1458,7 @@ class PostsResourceApi {
    *
    * Completes with a [Post].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1473,7 +1469,7 @@ class PostsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -1496,7 +1492,7 @@ class PostsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/' + common_internal.Escaper.ecapeVariable('$postId');
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1528,7 +1524,7 @@ class PostsResourceApi {
    *
    * Completes with a [Post].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1539,7 +1535,7 @@ class PostsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -1557,7 +1553,7 @@ class PostsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/bypath';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/bypath';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1588,7 +1584,7 @@ class PostsResourceApi {
    *
    * Completes with a [Post].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1599,7 +1595,7 @@ class PostsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1619,7 +1615,7 @@ class PostsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1672,7 +1668,7 @@ class PostsResourceApi {
    *
    * Completes with a [PostList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1683,7 +1679,7 @@ class PostsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -1721,7 +1717,7 @@ class PostsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1761,7 +1757,7 @@ class PostsResourceApi {
    *
    * Completes with a [Post].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1772,7 +1768,7 @@ class PostsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1801,7 +1797,7 @@ class PostsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/' + common_internal.Escaper.ecapeVariable('$postId');
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1830,7 +1826,7 @@ class PostsResourceApi {
    *
    * Completes with a [Post].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1841,7 +1837,7 @@ class PostsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -1855,7 +1851,7 @@ class PostsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/' + common_internal.Escaper.ecapeVariable('$postId') + '/publish';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/publish';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1878,7 +1874,7 @@ class PostsResourceApi {
    *
    * Completes with a [Post].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1889,7 +1885,7 @@ class PostsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -1900,7 +1896,7 @@ class PostsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/' + common_internal.Escaper.ecapeVariable('$postId') + '/revert';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId') + '/revert';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1932,7 +1928,7 @@ class PostsResourceApi {
    *
    * Completes with a [PostList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1943,7 +1939,7 @@ class PostsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (blogId == null) {
@@ -1961,7 +1957,7 @@ class PostsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/search';
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/search';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2001,7 +1997,7 @@ class PostsResourceApi {
    *
    * Completes with a [Post].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2012,7 +2008,7 @@ class PostsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -2041,7 +2037,7 @@ class PostsResourceApi {
     }
 
 
-    _url = 'blogs/' + common_internal.Escaper.ecapeVariable('$blogId') + '/posts/' + common_internal.Escaper.ecapeVariable('$postId');
+    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/' + commons.Escaper.ecapeVariable('$postId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -2056,11 +2052,10 @@ class PostsResourceApi {
 }
 
 
-/** Not documented yet. */
 class UsersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UsersResourceApi(common_internal.ApiRequester client) : 
+  UsersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -2072,7 +2067,7 @@ class UsersResourceApi {
    *
    * Completes with a [User].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -2083,7 +2078,7 @@ class UsersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (userId == null) {
@@ -2091,7 +2086,7 @@ class UsersResourceApi {
     }
 
 
-    _url = 'users/' + common_internal.Escaper.ecapeVariable('$userId');
+    _url = 'users/' + commons.Escaper.ecapeVariable('$userId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -2224,7 +2219,6 @@ class BlogPosts {
 }
 
 
-/** Not documented yet. */
 class Blog {
   /** The JSON custom meta-data for the Blog */
   core.String customMetaData;
@@ -2356,7 +2350,6 @@ class Blog {
 }
 
 
-/** Not documented yet. */
 class BlogList {
   /** Admin level list of blog per-user information */
   core.List<BlogUserInfo> blogUserInfos;
@@ -2398,7 +2391,6 @@ class BlogList {
 }
 
 
-/** Not documented yet. */
 class BlogPerUserInfo {
   /** ID of the Blog resource */
   core.String blogId;
@@ -2470,7 +2462,6 @@ class BlogPerUserInfo {
 }
 
 
-/** Not documented yet. */
 class BlogUserInfo {
   /** The Blog resource. */
   Blog blog;
@@ -2659,7 +2650,6 @@ class CommentPost {
 }
 
 
-/** Not documented yet. */
 class Comment {
   /** The author of this Comment. */
   CommentAuthor author;
@@ -2773,7 +2763,6 @@ class Comment {
 }
 
 
-/** Not documented yet. */
 class CommentList {
   /** The List of Comments for a Post. */
   core.List<Comment> items;
@@ -2923,7 +2912,6 @@ class PageBlog {
 }
 
 
-/** Not documented yet. */
 class Page {
   /** The author of this Page. */
   PageAuthor author;
@@ -3049,7 +3037,6 @@ class Page {
 }
 
 
-/** Not documented yet. */
 class PageList {
   /** The list of Pages for a Blog. */
   core.List<Page> items;
@@ -3091,7 +3078,6 @@ class PageList {
 }
 
 
-/** Not documented yet. */
 class PageviewsCounts {
   /** Count of page views for the given time range */
   core.String count;
@@ -3124,7 +3110,6 @@ class PageviewsCounts {
 }
 
 
-/** Not documented yet. */
 class Pageviews {
   /** Blog Id */
   core.String blogId;
@@ -3265,9 +3250,7 @@ class PostBlog {
 }
 
 
-/** Not documented yet. */
 class PostImages {
-  /** Not documented yet. */
   core.String url;
 
 
@@ -3382,7 +3365,6 @@ class PostReplies {
 }
 
 
-/** Not documented yet. */
 class Post {
   /** The author of this Post. */
   PostAuthor author;
@@ -3568,7 +3550,6 @@ class Post {
 }
 
 
-/** Not documented yet. */
 class PostList {
   /** The list of Posts for this Blog. */
   core.List<Post> items;
@@ -3610,7 +3591,6 @@ class PostList {
 }
 
 
-/** Not documented yet. */
 class PostPerUserInfo {
   /** ID of the Blog that the post resource belongs to. */
   core.String blogId;
@@ -3670,7 +3650,6 @@ class PostPerUserInfo {
 }
 
 
-/** Not documented yet. */
 class PostUserInfo {
   /** The kind of this entity. Always blogger#postUserInfo */
   core.String kind;
@@ -3712,7 +3691,6 @@ class PostUserInfo {
 }
 
 
-/** Not documented yet. */
 class PostUserInfosList {
   /** The list of Posts with User information for the post, for this Blog. */
   core.List<PostUserInfo> items;
@@ -3820,7 +3798,6 @@ class UserLocale {
 }
 
 
-/** Not documented yet. */
 class User {
   /** Profile summary information. */
   core.String about;
@@ -3916,5 +3893,3 @@ class User {
     return _json;
   }
 }
-
-

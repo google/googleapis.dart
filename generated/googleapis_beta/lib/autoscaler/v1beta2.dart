@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.autoscaler.v1beta2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client autoscaler/v1beta2';
 
 /**
  * The Google Compute Engine Autoscaler API provides autoscaling for groups of
@@ -25,22 +28,21 @@ class AutoscalerApi {
   static const ComputeReadonlyScope = "https://www.googleapis.com/auth/compute.readonly";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AutoscalersResourceApi get autoscalers => new AutoscalersResourceApi(_requester);
   ZoneOperationsResourceApi get zoneOperations => new ZoneOperationsResourceApi(_requester);
   ZonesResourceApi get zones => new ZonesResourceApi(_requester);
 
   AutoscalerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "autoscaler/v1beta2/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class AutoscalersResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AutoscalersResourceApi(common_internal.ApiRequester client) : 
+  AutoscalersResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -56,7 +58,7 @@ class AutoscalersResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -67,7 +69,7 @@ class AutoscalersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -81,7 +83,7 @@ class AutoscalersResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/autoscalers/' + common_internal.Escaper.ecapeVariable('$autoscaler');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers/' + commons.Escaper.ecapeVariable('$autoscaler');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -106,7 +108,7 @@ class AutoscalersResourceApi {
    *
    * Completes with a [Autoscaler].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -117,7 +119,7 @@ class AutoscalersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -131,7 +133,7 @@ class AutoscalersResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/autoscalers/' + common_internal.Escaper.ecapeVariable('$autoscaler');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers/' + commons.Escaper.ecapeVariable('$autoscaler');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -156,7 +158,7 @@ class AutoscalersResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -167,7 +169,7 @@ class AutoscalersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -181,7 +183,7 @@ class AutoscalersResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/autoscalers';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -211,7 +213,7 @@ class AutoscalersResourceApi {
    *
    * Completes with a [AutoscalerListResponse].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -222,7 +224,7 @@ class AutoscalersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -242,7 +244,7 @@ class AutoscalersResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/autoscalers';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -270,7 +272,7 @@ class AutoscalersResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -281,7 +283,7 @@ class AutoscalersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -298,7 +300,7 @@ class AutoscalersResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/autoscalers/' + common_internal.Escaper.ecapeVariable('$autoscaler');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers/' + commons.Escaper.ecapeVariable('$autoscaler');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -325,7 +327,7 @@ class AutoscalersResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -336,7 +338,7 @@ class AutoscalersResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -353,7 +355,7 @@ class AutoscalersResourceApi {
     }
 
 
-    _url = 'projects/' + common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/autoscalers/' + common_internal.Escaper.ecapeVariable('$autoscaler');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers/' + commons.Escaper.ecapeVariable('$autoscaler');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -368,11 +370,10 @@ class AutoscalersResourceApi {
 }
 
 
-/** Not documented yet. */
 class ZoneOperationsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ZoneOperationsResourceApi(common_internal.ApiRequester client) : 
+  ZoneOperationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -390,7 +391,7 @@ class ZoneOperationsResourceApi {
    * [operation] - null
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -401,7 +402,7 @@ class ZoneOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -416,7 +417,7 @@ class ZoneOperationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/operations/' + common_internal.Escaper.ecapeVariable('$operation');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -445,7 +446,7 @@ class ZoneOperationsResourceApi {
    *
    * Completes with a [Operation].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -456,7 +457,7 @@ class ZoneOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -470,7 +471,7 @@ class ZoneOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/operations/' + common_internal.Escaper.ecapeVariable('$operation');
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -504,7 +505,7 @@ class ZoneOperationsResourceApi {
    *
    * Completes with a [OperationList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -515,7 +516,7 @@ class ZoneOperationsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -535,7 +536,7 @@ class ZoneOperationsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones/' + common_internal.Escaper.ecapeVariable('$zone') + '/operations';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -550,16 +551,13 @@ class ZoneOperationsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ZonesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ZonesResourceApi(common_internal.ApiRequester client) : 
+  ZonesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [project] - null
@@ -575,7 +573,7 @@ class ZonesResourceApi {
    *
    * Completes with a [ZoneList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -586,7 +584,7 @@ class ZonesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -603,7 +601,7 @@ class ZonesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/zones';
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -714,7 +712,6 @@ class Autoscaler {
 }
 
 
-/** Not documented yet. */
 class AutoscalerListResponse {
   /** Autoscaler resources. */
   core.List<Autoscaler> items;
@@ -945,21 +942,15 @@ class AutoscalingPolicyLoadBalancingUtilization {
 }
 
 
-/** Not documented yet. */
 class DeprecationStatus {
-  /** Not documented yet. */
   core.String deleted;
 
-  /** Not documented yet. */
   core.String deprecated;
 
-  /** Not documented yet. */
   core.String obsolete;
 
-  /** Not documented yet. */
   core.String replacement;
 
-  /** Not documented yet. */
   core.String state;
 
 
@@ -1005,15 +996,11 @@ class DeprecationStatus {
 }
 
 
-/** Not documented yet. */
 class OperationErrorErrors {
-  /** Not documented yet. */
   core.String code;
 
-  /** Not documented yet. */
   core.String location;
 
-  /** Not documented yet. */
   core.String message;
 
 
@@ -1047,9 +1034,7 @@ class OperationErrorErrors {
 }
 
 
-/** Not documented yet. */
 class OperationError {
-  /** Not documented yet. */
   core.List<OperationErrorErrors> errors;
 
 
@@ -1071,12 +1056,9 @@ class OperationError {
 }
 
 
-/** Not documented yet. */
 class OperationWarningsData {
-  /** Not documented yet. */
   core.String key;
 
-  /** Not documented yet. */
   core.String value;
 
 
@@ -1104,15 +1086,11 @@ class OperationWarningsData {
 }
 
 
-/** Not documented yet. */
 class OperationWarnings {
-  /** Not documented yet. */
   core.String code;
 
-  /** Not documented yet. */
   core.List<OperationWarningsData> data;
 
-  /** Not documented yet. */
   core.String message;
 
 
@@ -1146,30 +1124,21 @@ class OperationWarnings {
 }
 
 
-/** Not documented yet. */
 class Operation {
-  /** Not documented yet. */
   core.String clientOperationId;
 
-  /** Not documented yet. */
   core.String creationTimestamp;
 
-  /** Not documented yet. */
   core.String endTime;
 
-  /** Not documented yet. */
   OperationError error;
 
-  /** Not documented yet. */
   core.String httpErrorMessage;
 
-  /** Not documented yet. */
   core.int httpErrorStatusCode;
 
-  /** Not documented yet. */
   core.String id;
 
-  /** Not documented yet. */
   core.String insertTime;
 
   /**
@@ -1178,43 +1147,30 @@ class Operation {
    */
   core.String kind;
 
-  /** Not documented yet. */
   core.String name;
 
-  /** Not documented yet. */
   core.String operationType;
 
-  /** Not documented yet. */
   core.int progress;
 
-  /** Not documented yet. */
   core.String region;
 
-  /** Not documented yet. */
   core.String selfLink;
 
-  /** Not documented yet. */
   core.String startTime;
 
-  /** Not documented yet. */
   core.String status;
 
-  /** Not documented yet. */
   core.String statusMessage;
 
-  /** Not documented yet. */
   core.String targetId;
 
-  /** Not documented yet. */
   core.String targetLink;
 
-  /** Not documented yet. */
   core.String user;
 
-  /** Not documented yet. */
   core.List<OperationWarnings> warnings;
 
-  /** Not documented yet. */
   core.String zone;
 
 
@@ -1362,21 +1318,16 @@ class Operation {
 }
 
 
-/** Not documented yet. */
 class OperationList {
-  /** Not documented yet. */
   core.String id;
 
-  /** Not documented yet. */
   core.List<Operation> items;
 
   /** Type of resource. Always compute#operations for Operations resource. */
   core.String kind;
 
-  /** Not documented yet. */
   core.String nextPageToken;
 
-  /** Not documented yet. */
   core.String selfLink;
 
 
@@ -1422,18 +1373,13 @@ class OperationList {
 }
 
 
-/** Not documented yet. */
 class ZoneMaintenanceWindows {
-  /** Not documented yet. */
   core.String beginTime;
 
-  /** Not documented yet. */
   core.String description;
 
-  /** Not documented yet. */
   core.String endTime;
 
-  /** Not documented yet. */
   core.String name;
 
 
@@ -1473,36 +1419,27 @@ class ZoneMaintenanceWindows {
 }
 
 
-/** Not documented yet. */
 class Zone {
-  /** Not documented yet. */
   core.String creationTimestamp;
 
-  /** Not documented yet. */
   DeprecationStatus deprecated;
 
-  /** Not documented yet. */
   core.String description;
 
-  /** Not documented yet. */
   core.String id;
 
   /** Type of the resource. */
   core.String kind;
 
-  /** Not documented yet. */
   core.List<ZoneMaintenanceWindows> maintenanceWindows;
 
-  /** Not documented yet. */
   core.String name;
 
-  /** Not documented yet. */
   core.String region;
 
   /** Server defined URL for the resource (output only). */
   core.String selfLink;
 
-  /** Not documented yet. */
   core.String status;
 
 
@@ -1578,18 +1515,14 @@ class Zone {
 }
 
 
-/** Not documented yet. */
 class ZoneList {
-  /** Not documented yet. */
   core.String id;
 
-  /** Not documented yet. */
   core.List<Zone> items;
 
   /** Type of resource. */
   core.String kind;
 
-  /** Not documented yet. */
   core.String nextPageToken;
 
   /** Server defined URL for this resource (output only). */
@@ -1636,5 +1569,3 @@ class ZoneList {
     return _json;
   }
 }
-
-

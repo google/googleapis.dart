@@ -8,22 +8,57 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/drive/v2.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
 
-buildUnnamed687() {
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
+
+buildUnnamed974() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed687(core.List<core.String> o) {
+checkUnnamed974(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -34,7 +69,7 @@ buildAboutAdditionalRoleInfoRoleSets() {
   var o = new api.AboutAdditionalRoleInfoRoleSets();
   buildCounterAboutAdditionalRoleInfoRoleSets++;
   if (buildCounterAboutAdditionalRoleInfoRoleSets < 3) {
-    o.additionalRoles = buildUnnamed687();
+    o.additionalRoles = buildUnnamed974();
     o.primaryRole = "foo";
   }
   buildCounterAboutAdditionalRoleInfoRoleSets--;
@@ -44,20 +79,20 @@ buildAboutAdditionalRoleInfoRoleSets() {
 checkAboutAdditionalRoleInfoRoleSets(api.AboutAdditionalRoleInfoRoleSets o) {
   buildCounterAboutAdditionalRoleInfoRoleSets++;
   if (buildCounterAboutAdditionalRoleInfoRoleSets < 3) {
-    checkUnnamed687(o.additionalRoles);
+    checkUnnamed974(o.additionalRoles);
     unittest.expect(o.primaryRole, unittest.equals('foo'));
   }
   buildCounterAboutAdditionalRoleInfoRoleSets--;
 }
 
-buildUnnamed688() {
+buildUnnamed975() {
   var o = new core.List<api.AboutAdditionalRoleInfoRoleSets>();
   o.add(buildAboutAdditionalRoleInfoRoleSets());
   o.add(buildAboutAdditionalRoleInfoRoleSets());
   return o;
 }
 
-checkUnnamed688(core.List<api.AboutAdditionalRoleInfoRoleSets> o) {
+checkUnnamed975(core.List<api.AboutAdditionalRoleInfoRoleSets> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutAdditionalRoleInfoRoleSets(o[0]);
   checkAboutAdditionalRoleInfoRoleSets(o[1]);
@@ -68,7 +103,7 @@ buildAboutAdditionalRoleInfo() {
   var o = new api.AboutAdditionalRoleInfo();
   buildCounterAboutAdditionalRoleInfo++;
   if (buildCounterAboutAdditionalRoleInfo < 3) {
-    o.roleSets = buildUnnamed688();
+    o.roleSets = buildUnnamed975();
     o.type = "foo";
   }
   buildCounterAboutAdditionalRoleInfo--;
@@ -78,33 +113,33 @@ buildAboutAdditionalRoleInfo() {
 checkAboutAdditionalRoleInfo(api.AboutAdditionalRoleInfo o) {
   buildCounterAboutAdditionalRoleInfo++;
   if (buildCounterAboutAdditionalRoleInfo < 3) {
-    checkUnnamed688(o.roleSets);
+    checkUnnamed975(o.roleSets);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterAboutAdditionalRoleInfo--;
 }
 
-buildUnnamed689() {
+buildUnnamed976() {
   var o = new core.List<api.AboutAdditionalRoleInfo>();
   o.add(buildAboutAdditionalRoleInfo());
   o.add(buildAboutAdditionalRoleInfo());
   return o;
 }
 
-checkUnnamed689(core.List<api.AboutAdditionalRoleInfo> o) {
+checkUnnamed976(core.List<api.AboutAdditionalRoleInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutAdditionalRoleInfo(o[0]);
   checkAboutAdditionalRoleInfo(o[1]);
 }
 
-buildUnnamed690() {
+buildUnnamed977() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed690(core.List<core.String> o) {
+checkUnnamed977(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -116,7 +151,7 @@ buildAboutExportFormats() {
   buildCounterAboutExportFormats++;
   if (buildCounterAboutExportFormats < 3) {
     o.source = "foo";
-    o.targets = buildUnnamed690();
+    o.targets = buildUnnamed977();
   }
   buildCounterAboutExportFormats--;
   return o;
@@ -126,19 +161,19 @@ checkAboutExportFormats(api.AboutExportFormats o) {
   buildCounterAboutExportFormats++;
   if (buildCounterAboutExportFormats < 3) {
     unittest.expect(o.source, unittest.equals('foo'));
-    checkUnnamed690(o.targets);
+    checkUnnamed977(o.targets);
   }
   buildCounterAboutExportFormats--;
 }
 
-buildUnnamed691() {
+buildUnnamed978() {
   var o = new core.List<api.AboutExportFormats>();
   o.add(buildAboutExportFormats());
   o.add(buildAboutExportFormats());
   return o;
 }
 
-checkUnnamed691(core.List<api.AboutExportFormats> o) {
+checkUnnamed978(core.List<api.AboutExportFormats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutExportFormats(o[0]);
   checkAboutExportFormats(o[1]);
@@ -165,40 +200,40 @@ checkAboutFeatures(api.AboutFeatures o) {
   buildCounterAboutFeatures--;
 }
 
-buildUnnamed692() {
+buildUnnamed979() {
   var o = new core.List<api.AboutFeatures>();
   o.add(buildAboutFeatures());
   o.add(buildAboutFeatures());
   return o;
 }
 
-checkUnnamed692(core.List<api.AboutFeatures> o) {
+checkUnnamed979(core.List<api.AboutFeatures> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutFeatures(o[0]);
   checkAboutFeatures(o[1]);
 }
 
-buildUnnamed693() {
+buildUnnamed980() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed693(core.List<core.String> o) {
+checkUnnamed980(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed694() {
+buildUnnamed981() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed694(core.List<core.String> o) {
+checkUnnamed981(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -210,7 +245,7 @@ buildAboutImportFormats() {
   buildCounterAboutImportFormats++;
   if (buildCounterAboutImportFormats < 3) {
     o.source = "foo";
-    o.targets = buildUnnamed694();
+    o.targets = buildUnnamed981();
   }
   buildCounterAboutImportFormats--;
   return o;
@@ -220,19 +255,19 @@ checkAboutImportFormats(api.AboutImportFormats o) {
   buildCounterAboutImportFormats++;
   if (buildCounterAboutImportFormats < 3) {
     unittest.expect(o.source, unittest.equals('foo'));
-    checkUnnamed694(o.targets);
+    checkUnnamed981(o.targets);
   }
   buildCounterAboutImportFormats--;
 }
 
-buildUnnamed695() {
+buildUnnamed982() {
   var o = new core.List<api.AboutImportFormats>();
   o.add(buildAboutImportFormats());
   o.add(buildAboutImportFormats());
   return o;
 }
 
-checkUnnamed695(core.List<api.AboutImportFormats> o) {
+checkUnnamed982(core.List<api.AboutImportFormats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutImportFormats(o[0]);
   checkAboutImportFormats(o[1]);
@@ -259,14 +294,14 @@ checkAboutMaxUploadSizes(api.AboutMaxUploadSizes o) {
   buildCounterAboutMaxUploadSizes--;
 }
 
-buildUnnamed696() {
+buildUnnamed983() {
   var o = new core.List<api.AboutMaxUploadSizes>();
   o.add(buildAboutMaxUploadSizes());
   o.add(buildAboutMaxUploadSizes());
   return o;
 }
 
-checkUnnamed696(core.List<api.AboutMaxUploadSizes> o) {
+checkUnnamed983(core.List<api.AboutMaxUploadSizes> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutMaxUploadSizes(o[0]);
   checkAboutMaxUploadSizes(o[1]);
@@ -293,14 +328,14 @@ checkAboutQuotaBytesByService(api.AboutQuotaBytesByService o) {
   buildCounterAboutQuotaBytesByService--;
 }
 
-buildUnnamed697() {
+buildUnnamed984() {
   var o = new core.List<api.AboutQuotaBytesByService>();
   o.add(buildAboutQuotaBytesByService());
   o.add(buildAboutQuotaBytesByService());
   return o;
 }
 
-checkUnnamed697(core.List<api.AboutQuotaBytesByService> o) {
+checkUnnamed984(core.List<api.AboutQuotaBytesByService> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutQuotaBytesByService(o[0]);
   checkAboutQuotaBytesByService(o[1]);
@@ -311,21 +346,21 @@ buildAbout() {
   var o = new api.About();
   buildCounterAbout++;
   if (buildCounterAbout < 3) {
-    o.additionalRoleInfo = buildUnnamed689();
+    o.additionalRoleInfo = buildUnnamed976();
     o.domainSharingPolicy = "foo";
     o.etag = "foo";
-    o.exportFormats = buildUnnamed691();
-    o.features = buildUnnamed692();
-    o.folderColorPalette = buildUnnamed693();
-    o.importFormats = buildUnnamed695();
+    o.exportFormats = buildUnnamed978();
+    o.features = buildUnnamed979();
+    o.folderColorPalette = buildUnnamed980();
+    o.importFormats = buildUnnamed982();
     o.isCurrentAppInstalled = true;
     o.kind = "foo";
     o.languageCode = "foo";
     o.largestChangeId = "foo";
-    o.maxUploadSizes = buildUnnamed696();
+    o.maxUploadSizes = buildUnnamed983();
     o.name = "foo";
     o.permissionId = "foo";
-    o.quotaBytesByService = buildUnnamed697();
+    o.quotaBytesByService = buildUnnamed984();
     o.quotaBytesTotal = "foo";
     o.quotaBytesUsed = "foo";
     o.quotaBytesUsedAggregate = "foo";
@@ -343,21 +378,21 @@ buildAbout() {
 checkAbout(api.About o) {
   buildCounterAbout++;
   if (buildCounterAbout < 3) {
-    checkUnnamed689(o.additionalRoleInfo);
+    checkUnnamed976(o.additionalRoleInfo);
     unittest.expect(o.domainSharingPolicy, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed691(o.exportFormats);
-    checkUnnamed692(o.features);
-    checkUnnamed693(o.folderColorPalette);
-    checkUnnamed695(o.importFormats);
+    checkUnnamed978(o.exportFormats);
+    checkUnnamed979(o.features);
+    checkUnnamed980(o.folderColorPalette);
+    checkUnnamed982(o.importFormats);
     unittest.expect(o.isCurrentAppInstalled, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.languageCode, unittest.equals('foo'));
     unittest.expect(o.largestChangeId, unittest.equals('foo'));
-    checkUnnamed696(o.maxUploadSizes);
+    checkUnnamed983(o.maxUploadSizes);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.permissionId, unittest.equals('foo'));
-    checkUnnamed697(o.quotaBytesByService);
+    checkUnnamed984(o.quotaBytesByService);
     unittest.expect(o.quotaBytesTotal, unittest.equals('foo'));
     unittest.expect(o.quotaBytesUsed, unittest.equals('foo'));
     unittest.expect(o.quotaBytesUsedAggregate, unittest.equals('foo'));
@@ -394,66 +429,66 @@ checkAppIcons(api.AppIcons o) {
   buildCounterAppIcons--;
 }
 
-buildUnnamed698() {
+buildUnnamed985() {
   var o = new core.List<api.AppIcons>();
   o.add(buildAppIcons());
   o.add(buildAppIcons());
   return o;
 }
 
-checkUnnamed698(core.List<api.AppIcons> o) {
+checkUnnamed985(core.List<api.AppIcons> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppIcons(o[0]);
   checkAppIcons(o[1]);
 }
 
-buildUnnamed699() {
+buildUnnamed986() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed699(core.List<core.String> o) {
+checkUnnamed986(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed700() {
+buildUnnamed987() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed700(core.List<core.String> o) {
+checkUnnamed987(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed701() {
+buildUnnamed988() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed701(core.List<core.String> o) {
+checkUnnamed988(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed702() {
+buildUnnamed989() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed702(core.List<core.String> o) {
+checkUnnamed989(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -468,7 +503,7 @@ buildApp() {
     o.createInFolderTemplate = "foo";
     o.createUrl = "foo";
     o.hasDriveWideScope = true;
-    o.icons = buildUnnamed698();
+    o.icons = buildUnnamed985();
     o.id = "foo";
     o.installed = true;
     o.kind = "foo";
@@ -476,12 +511,12 @@ buildApp() {
     o.name = "foo";
     o.objectType = "foo";
     o.openUrlTemplate = "foo";
-    o.primaryFileExtensions = buildUnnamed699();
-    o.primaryMimeTypes = buildUnnamed700();
+    o.primaryFileExtensions = buildUnnamed986();
+    o.primaryMimeTypes = buildUnnamed987();
     o.productId = "foo";
     o.productUrl = "foo";
-    o.secondaryFileExtensions = buildUnnamed701();
-    o.secondaryMimeTypes = buildUnnamed702();
+    o.secondaryFileExtensions = buildUnnamed988();
+    o.secondaryMimeTypes = buildUnnamed989();
     o.shortDescription = "foo";
     o.supportsCreate = true;
     o.supportsImport = true;
@@ -500,7 +535,7 @@ checkApp(api.App o) {
     unittest.expect(o.createInFolderTemplate, unittest.equals('foo'));
     unittest.expect(o.createUrl, unittest.equals('foo'));
     unittest.expect(o.hasDriveWideScope, unittest.isTrue);
-    checkUnnamed698(o.icons);
+    checkUnnamed985(o.icons);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.installed, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -508,12 +543,12 @@ checkApp(api.App o) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.objectType, unittest.equals('foo'));
     unittest.expect(o.openUrlTemplate, unittest.equals('foo'));
-    checkUnnamed699(o.primaryFileExtensions);
-    checkUnnamed700(o.primaryMimeTypes);
+    checkUnnamed986(o.primaryFileExtensions);
+    checkUnnamed987(o.primaryMimeTypes);
     unittest.expect(o.productId, unittest.equals('foo'));
     unittest.expect(o.productUrl, unittest.equals('foo'));
-    checkUnnamed701(o.secondaryFileExtensions);
-    checkUnnamed702(o.secondaryMimeTypes);
+    checkUnnamed988(o.secondaryFileExtensions);
+    checkUnnamed989(o.secondaryMimeTypes);
     unittest.expect(o.shortDescription, unittest.equals('foo'));
     unittest.expect(o.supportsCreate, unittest.isTrue);
     unittest.expect(o.supportsImport, unittest.isTrue);
@@ -524,27 +559,27 @@ checkApp(api.App o) {
   buildCounterApp--;
 }
 
-buildUnnamed703() {
+buildUnnamed990() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed703(core.List<core.String> o) {
+checkUnnamed990(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed704() {
+buildUnnamed991() {
   var o = new core.List<api.App>();
   o.add(buildApp());
   o.add(buildApp());
   return o;
 }
 
-checkUnnamed704(core.List<api.App> o) {
+checkUnnamed991(core.List<api.App> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApp(o[0]);
   checkApp(o[1]);
@@ -555,9 +590,9 @@ buildAppList() {
   var o = new api.AppList();
   buildCounterAppList++;
   if (buildCounterAppList < 3) {
-    o.defaultAppIds = buildUnnamed703();
+    o.defaultAppIds = buildUnnamed990();
     o.etag = "foo";
-    o.items = buildUnnamed704();
+    o.items = buildUnnamed991();
     o.kind = "foo";
     o.selfLink = "foo";
   }
@@ -568,9 +603,9 @@ buildAppList() {
 checkAppList(api.AppList o) {
   buildCounterAppList++;
   if (buildCounterAppList < 3) {
-    checkUnnamed703(o.defaultAppIds);
+    checkUnnamed990(o.defaultAppIds);
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed704(o.items);
+    checkUnnamed991(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
@@ -608,14 +643,14 @@ checkChange(api.Change o) {
   buildCounterChange--;
 }
 
-buildUnnamed705() {
+buildUnnamed992() {
   var o = new core.List<api.Change>();
   o.add(buildChange());
   o.add(buildChange());
   return o;
 }
 
-checkUnnamed705(core.List<api.Change> o) {
+checkUnnamed992(core.List<api.Change> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChange(o[0]);
   checkChange(o[1]);
@@ -627,7 +662,7 @@ buildChangeList() {
   buildCounterChangeList++;
   if (buildCounterChangeList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed705();
+    o.items = buildUnnamed992();
     o.kind = "foo";
     o.largestChangeId = "foo";
     o.nextLink = "foo";
@@ -642,7 +677,7 @@ checkChangeList(api.ChangeList o) {
   buildCounterChangeList++;
   if (buildCounterChangeList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed705(o.items);
+    checkUnnamed992(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.largestChangeId, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
@@ -652,14 +687,14 @@ checkChangeList(api.ChangeList o) {
   buildCounterChangeList--;
 }
 
-buildUnnamed706() {
+buildUnnamed993() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed706(core.Map<core.String, core.String> o) {
+checkUnnamed993(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -674,7 +709,7 @@ buildChannel() {
     o.expiration = "foo";
     o.id = "foo";
     o.kind = "foo";
-    o.params = buildUnnamed706();
+    o.params = buildUnnamed993();
     o.payload = true;
     o.resourceId = "foo";
     o.resourceUri = "foo";
@@ -692,7 +727,7 @@ checkChannel(api.Channel o) {
     unittest.expect(o.expiration, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed706(o.params);
+    checkUnnamed993(o.params);
     unittest.expect(o.payload, unittest.isTrue);
     unittest.expect(o.resourceId, unittest.equals('foo'));
     unittest.expect(o.resourceUri, unittest.equals('foo'));
@@ -702,14 +737,14 @@ checkChannel(api.Channel o) {
   buildCounterChannel--;
 }
 
-buildUnnamed707() {
+buildUnnamed994() {
   var o = new core.List<api.ChildReference>();
   o.add(buildChildReference());
   o.add(buildChildReference());
   return o;
 }
 
-checkUnnamed707(core.List<api.ChildReference> o) {
+checkUnnamed994(core.List<api.ChildReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChildReference(o[0]);
   checkChildReference(o[1]);
@@ -721,7 +756,7 @@ buildChildList() {
   buildCounterChildList++;
   if (buildCounterChildList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed707();
+    o.items = buildUnnamed994();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -735,7 +770,7 @@ checkChildList(api.ChildList o) {
   buildCounterChildList++;
   if (buildCounterChildList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed707(o.items);
+    checkUnnamed994(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -790,14 +825,14 @@ checkCommentContext(api.CommentContext o) {
   buildCounterCommentContext--;
 }
 
-buildUnnamed708() {
+buildUnnamed995() {
   var o = new core.List<api.CommentReply>();
   o.add(buildCommentReply());
   o.add(buildCommentReply());
   return o;
 }
 
-checkUnnamed708(core.List<api.CommentReply> o) {
+checkUnnamed995(core.List<api.CommentReply> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCommentReply(o[0]);
   checkCommentReply(o[1]);
@@ -820,7 +855,7 @@ buildComment() {
     o.htmlContent = "foo";
     o.kind = "foo";
     o.modifiedDate = core.DateTime.parse("2002-02-27T14:01:02");
-    o.replies = buildUnnamed708();
+    o.replies = buildUnnamed995();
     o.selfLink = "foo";
     o.status = "foo";
   }
@@ -843,21 +878,21 @@ checkComment(api.Comment o) {
     unittest.expect(o.htmlContent, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.modifiedDate, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUnnamed708(o.replies);
+    checkUnnamed995(o.replies);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
   }
   buildCounterComment--;
 }
 
-buildUnnamed709() {
+buildUnnamed996() {
   var o = new core.List<api.Comment>();
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-checkUnnamed709(core.List<api.Comment> o) {
+checkUnnamed996(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -868,7 +903,7 @@ buildCommentList() {
   var o = new api.CommentList();
   buildCounterCommentList++;
   if (buildCounterCommentList < 3) {
-    o.items = buildUnnamed709();
+    o.items = buildUnnamed996();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -881,7 +916,7 @@ buildCommentList() {
 checkCommentList(api.CommentList o) {
   buildCounterCommentList++;
   if (buildCounterCommentList < 3) {
-    checkUnnamed709(o.items);
+    checkUnnamed996(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -925,14 +960,14 @@ checkCommentReply(api.CommentReply o) {
   buildCounterCommentReply--;
 }
 
-buildUnnamed710() {
+buildUnnamed997() {
   var o = new core.List<api.CommentReply>();
   o.add(buildCommentReply());
   o.add(buildCommentReply());
   return o;
 }
 
-checkUnnamed710(core.List<api.CommentReply> o) {
+checkUnnamed997(core.List<api.CommentReply> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCommentReply(o[0]);
   checkCommentReply(o[1]);
@@ -943,7 +978,7 @@ buildCommentReplyList() {
   var o = new api.CommentReplyList();
   buildCounterCommentReplyList++;
   if (buildCounterCommentReplyList < 3) {
-    o.items = buildUnnamed710();
+    o.items = buildUnnamed997();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -956,7 +991,7 @@ buildCommentReplyList() {
 checkCommentReplyList(api.CommentReplyList o) {
   buildCounterCommentReplyList++;
   if (buildCounterCommentReplyList < 3) {
-    checkUnnamed710(o.items);
+    checkUnnamed997(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -965,14 +1000,14 @@ checkCommentReplyList(api.CommentReplyList o) {
   buildCounterCommentReplyList--;
 }
 
-buildUnnamed711() {
+buildUnnamed998() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed711(core.Map<core.String, core.String> o) {
+checkUnnamed998(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1106,79 +1141,79 @@ checkFileLabels(api.FileLabels o) {
   buildCounterFileLabels--;
 }
 
-buildUnnamed712() {
+buildUnnamed999() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed712(core.Map<core.String, core.String> o) {
+checkUnnamed999(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed713() {
+buildUnnamed1000() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed713(core.List<core.String> o) {
+checkUnnamed1000(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed714() {
+buildUnnamed1001() {
   var o = new core.List<api.User>();
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-checkUnnamed714(core.List<api.User> o) {
+checkUnnamed1001(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
 }
 
-buildUnnamed715() {
+buildUnnamed1002() {
   var o = new core.List<api.ParentReference>();
   o.add(buildParentReference());
   o.add(buildParentReference());
   return o;
 }
 
-checkUnnamed715(core.List<api.ParentReference> o) {
+checkUnnamed1002(core.List<api.ParentReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParentReference(o[0]);
   checkParentReference(o[1]);
 }
 
-buildUnnamed716() {
+buildUnnamed1003() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed716(core.List<api.Permission> o) {
+checkUnnamed1003(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
 }
 
-buildUnnamed717() {
+buildUnnamed1004() {
   var o = new core.List<api.Property>();
   o.add(buildProperty());
   o.add(buildProperty());
   return o;
 }
 
-checkUnnamed717(core.List<api.Property> o) {
+checkUnnamed1004(core.List<api.Property> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProperty(o[0]);
   checkProperty(o[1]);
@@ -1244,7 +1279,7 @@ buildFile() {
     o.embedLink = "foo";
     o.etag = "foo";
     o.explicitlyTrashed = true;
-    o.exportLinks = buildUnnamed711();
+    o.exportLinks = buildUnnamed998();
     o.fileExtension = "foo";
     o.fileSize = "foo";
     o.folderColorRgb = "foo";
@@ -1263,13 +1298,13 @@ buildFile() {
     o.mimeType = "foo";
     o.modifiedByMeDate = core.DateTime.parse("2002-02-27T14:01:02");
     o.modifiedDate = core.DateTime.parse("2002-02-27T14:01:02");
-    o.openWithLinks = buildUnnamed712();
+    o.openWithLinks = buildUnnamed999();
     o.originalFilename = "foo";
-    o.ownerNames = buildUnnamed713();
-    o.owners = buildUnnamed714();
-    o.parents = buildUnnamed715();
-    o.permissions = buildUnnamed716();
-    o.properties = buildUnnamed717();
+    o.ownerNames = buildUnnamed1000();
+    o.owners = buildUnnamed1001();
+    o.parents = buildUnnamed1002();
+    o.permissions = buildUnnamed1003();
+    o.properties = buildUnnamed1004();
     o.quotaBytesUsed = "foo";
     o.selfLink = "foo";
     o.shared = true;
@@ -1303,7 +1338,7 @@ checkFile(api.File o) {
     unittest.expect(o.embedLink, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.explicitlyTrashed, unittest.isTrue);
-    checkUnnamed711(o.exportLinks);
+    checkUnnamed998(o.exportLinks);
     unittest.expect(o.fileExtension, unittest.equals('foo'));
     unittest.expect(o.fileSize, unittest.equals('foo'));
     unittest.expect(o.folderColorRgb, unittest.equals('foo'));
@@ -1322,13 +1357,13 @@ checkFile(api.File o) {
     unittest.expect(o.mimeType, unittest.equals('foo'));
     unittest.expect(o.modifiedByMeDate, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.modifiedDate, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUnnamed712(o.openWithLinks);
+    checkUnnamed999(o.openWithLinks);
     unittest.expect(o.originalFilename, unittest.equals('foo'));
-    checkUnnamed713(o.ownerNames);
-    checkUnnamed714(o.owners);
-    checkUnnamed715(o.parents);
-    checkUnnamed716(o.permissions);
-    checkUnnamed717(o.properties);
+    checkUnnamed1000(o.ownerNames);
+    checkUnnamed1001(o.owners);
+    checkUnnamed1002(o.parents);
+    checkUnnamed1003(o.permissions);
+    checkUnnamed1004(o.properties);
     unittest.expect(o.quotaBytesUsed, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.shared, unittest.isTrue);
@@ -1347,14 +1382,14 @@ checkFile(api.File o) {
   buildCounterFile--;
 }
 
-buildUnnamed718() {
+buildUnnamed1005() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed718(core.List<api.File> o) {
+checkUnnamed1005(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -1366,7 +1401,7 @@ buildFileList() {
   buildCounterFileList++;
   if (buildCounterFileList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed718();
+    o.items = buildUnnamed1005();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -1380,7 +1415,7 @@ checkFileList(api.FileList o) {
   buildCounterFileList++;
   if (buildCounterFileList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed718(o.items);
+    checkUnnamed1005(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -1389,14 +1424,14 @@ checkFileList(api.FileList o) {
   buildCounterFileList--;
 }
 
-buildUnnamed719() {
+buildUnnamed1006() {
   var o = new core.List<api.ParentReference>();
   o.add(buildParentReference());
   o.add(buildParentReference());
   return o;
 }
 
-checkUnnamed719(core.List<api.ParentReference> o) {
+checkUnnamed1006(core.List<api.ParentReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParentReference(o[0]);
   checkParentReference(o[1]);
@@ -1408,7 +1443,7 @@ buildParentList() {
   buildCounterParentList++;
   if (buildCounterParentList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed719();
+    o.items = buildUnnamed1006();
     o.kind = "foo";
     o.selfLink = "foo";
   }
@@ -1420,7 +1455,7 @@ checkParentList(api.ParentList o) {
   buildCounterParentList++;
   if (buildCounterParentList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed719(o.items);
+    checkUnnamed1006(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
@@ -1454,14 +1489,14 @@ checkParentReference(api.ParentReference o) {
   buildCounterParentReference--;
 }
 
-buildUnnamed720() {
+buildUnnamed1007() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed720(core.List<core.String> o) {
+checkUnnamed1007(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1472,7 +1507,7 @@ buildPermission() {
   var o = new api.Permission();
   buildCounterPermission++;
   if (buildCounterPermission < 3) {
-    o.additionalRoles = buildUnnamed720();
+    o.additionalRoles = buildUnnamed1007();
     o.authKey = "foo";
     o.domain = "foo";
     o.emailAddress = "foo";
@@ -1494,7 +1529,7 @@ buildPermission() {
 checkPermission(api.Permission o) {
   buildCounterPermission++;
   if (buildCounterPermission < 3) {
-    checkUnnamed720(o.additionalRoles);
+    checkUnnamed1007(o.additionalRoles);
     unittest.expect(o.authKey, unittest.equals('foo'));
     unittest.expect(o.domain, unittest.equals('foo'));
     unittest.expect(o.emailAddress, unittest.equals('foo'));
@@ -1533,14 +1568,14 @@ checkPermissionId(api.PermissionId o) {
   buildCounterPermissionId--;
 }
 
-buildUnnamed721() {
+buildUnnamed1008() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed721(core.List<api.Permission> o) {
+checkUnnamed1008(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
@@ -1552,7 +1587,7 @@ buildPermissionList() {
   buildCounterPermissionList++;
   if (buildCounterPermissionList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed721();
+    o.items = buildUnnamed1008();
     o.kind = "foo";
     o.selfLink = "foo";
   }
@@ -1564,7 +1599,7 @@ checkPermissionList(api.PermissionList o) {
   buildCounterPermissionList++;
   if (buildCounterPermissionList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed721(o.items);
+    checkUnnamed1008(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
@@ -1600,14 +1635,14 @@ checkProperty(api.Property o) {
   buildCounterProperty--;
 }
 
-buildUnnamed722() {
+buildUnnamed1009() {
   var o = new core.List<api.Property>();
   o.add(buildProperty());
   o.add(buildProperty());
   return o;
 }
 
-checkUnnamed722(core.List<api.Property> o) {
+checkUnnamed1009(core.List<api.Property> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProperty(o[0]);
   checkProperty(o[1]);
@@ -1619,7 +1654,7 @@ buildPropertyList() {
   buildCounterPropertyList++;
   if (buildCounterPropertyList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed722();
+    o.items = buildUnnamed1009();
     o.kind = "foo";
     o.selfLink = "foo";
   }
@@ -1631,21 +1666,21 @@ checkPropertyList(api.PropertyList o) {
   buildCounterPropertyList++;
   if (buildCounterPropertyList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed722(o.items);
+    checkUnnamed1009(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
   buildCounterPropertyList--;
 }
 
-buildUnnamed723() {
+buildUnnamed1010() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed723(core.Map<core.String, core.String> o) {
+checkUnnamed1010(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1658,7 +1693,7 @@ buildRevision() {
   if (buildCounterRevision < 3) {
     o.downloadUrl = "foo";
     o.etag = "foo";
-    o.exportLinks = buildUnnamed723();
+    o.exportLinks = buildUnnamed1010();
     o.fileSize = "foo";
     o.id = "foo";
     o.kind = "foo";
@@ -1684,7 +1719,7 @@ checkRevision(api.Revision o) {
   if (buildCounterRevision < 3) {
     unittest.expect(o.downloadUrl, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed723(o.exportLinks);
+    checkUnnamed1010(o.exportLinks);
     unittest.expect(o.fileSize, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -1704,14 +1739,14 @@ checkRevision(api.Revision o) {
   buildCounterRevision--;
 }
 
-buildUnnamed724() {
+buildUnnamed1011() {
   var o = new core.List<api.Revision>();
   o.add(buildRevision());
   o.add(buildRevision());
   return o;
 }
 
-checkUnnamed724(core.List<api.Revision> o) {
+checkUnnamed1011(core.List<api.Revision> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRevision(o[0]);
   checkRevision(o[1]);
@@ -1723,7 +1758,7 @@ buildRevisionList() {
   buildCounterRevisionList++;
   if (buildCounterRevisionList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed724();
+    o.items = buildUnnamed1011();
     o.kind = "foo";
     o.selfLink = "foo";
   }
@@ -1735,7 +1770,7 @@ checkRevisionList(api.RevisionList o) {
   buildCounterRevisionList++;
   if (buildCounterRevisionList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed724(o.items);
+    checkUnnamed1011(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
@@ -2155,7 +2190,7 @@ main() {
   unittest.group("resource-AboutResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AboutResourceApi res = new api.DriveApi(mock).about;
       var arg_includeSubscribed = true;
       var arg_maxChangeIdCount = "foo";
@@ -2197,7 +2232,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAbout());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(includeSubscribed: arg_includeSubscribed, maxChangeIdCount: arg_maxChangeIdCount, startChangeId: arg_startChangeId).then(unittest.expectAsync(((api.About response) {
         checkAbout(response);
@@ -2210,7 +2245,7 @@ main() {
   unittest.group("resource-AppsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AppsResourceApi res = new api.DriveApi(mock).apps;
       var arg_appId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2250,7 +2285,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApp());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_appId).then(unittest.expectAsync(((api.App response) {
         checkApp(response);
@@ -2259,7 +2294,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AppsResourceApi res = new api.DriveApi(mock).apps;
       var arg_appFilterExtensions = "foo";
       var arg_appFilterMimeTypes = "foo";
@@ -2301,7 +2336,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(appFilterExtensions: arg_appFilterExtensions, appFilterMimeTypes: arg_appFilterMimeTypes, languageCode: arg_languageCode).then(unittest.expectAsync(((api.AppList response) {
         checkAppList(response);
@@ -2314,7 +2349,7 @@ main() {
   unittest.group("resource-ChangesResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ChangesResourceApi res = new api.DriveApi(mock).changes;
       var arg_changeId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2354,7 +2389,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChange());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_changeId).then(unittest.expectAsync(((api.Change response) {
         checkChange(response);
@@ -2363,7 +2398,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ChangesResourceApi res = new api.DriveApi(mock).changes;
       var arg_includeDeleted = true;
       var arg_includeSubscribed = true;
@@ -2409,7 +2444,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChangeList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(includeDeleted: arg_includeDeleted, includeSubscribed: arg_includeSubscribed, maxResults: arg_maxResults, pageToken: arg_pageToken, startChangeId: arg_startChangeId).then(unittest.expectAsync(((api.ChangeList response) {
         checkChangeList(response);
@@ -2418,7 +2453,7 @@ main() {
 
     unittest.test("method--watch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ChangesResourceApi res = new api.DriveApi(mock).changes;
       var arg_request = buildChannel();
       var arg_includeDeleted = true;
@@ -2468,7 +2503,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChannel());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.watch(arg_request, includeDeleted: arg_includeDeleted, includeSubscribed: arg_includeSubscribed, maxResults: arg_maxResults, pageToken: arg_pageToken, startChangeId: arg_startChangeId).then(unittest.expectAsync(((api.Channel response) {
         checkChannel(response);
@@ -2481,7 +2516,7 @@ main() {
   unittest.group("resource-ChannelsResourceApi", () {
     unittest.test("method--stop", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ChannelsResourceApi res = new api.DriveApi(mock).channels;
       var arg_request = buildChannel();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -2521,7 +2556,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.stop(arg_request).then(unittest.expectAsync((_) {}));
     });
@@ -2532,7 +2567,7 @@ main() {
   unittest.group("resource-ChildrenResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ChildrenResourceApi res = new api.DriveApi(mock).children;
       var arg_folderId = "foo";
       var arg_childId = "foo";
@@ -2580,14 +2615,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_folderId, arg_childId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ChildrenResourceApi res = new api.DriveApi(mock).children;
       var arg_folderId = "foo";
       var arg_childId = "foo";
@@ -2635,7 +2670,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChildReference());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_folderId, arg_childId).then(unittest.expectAsync(((api.ChildReference response) {
         checkChildReference(response);
@@ -2644,7 +2679,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ChildrenResourceApi res = new api.DriveApi(mock).children;
       var arg_request = buildChildReference();
       var arg_folderId = "foo";
@@ -2692,7 +2727,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChildReference());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_folderId).then(unittest.expectAsync(((api.ChildReference response) {
         checkChildReference(response);
@@ -2701,7 +2736,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ChildrenResourceApi res = new api.DriveApi(mock).children;
       var arg_folderId = "foo";
       var arg_maxResults = 42;
@@ -2751,7 +2786,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChildList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_folderId, maxResults: arg_maxResults, pageToken: arg_pageToken, q: arg_q).then(unittest.expectAsync(((api.ChildList response) {
         checkChildList(response);
@@ -2764,7 +2799,7 @@ main() {
   unittest.group("resource-CommentsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.DriveApi(mock).comments;
       var arg_fileId = "foo";
       var arg_commentId = "foo";
@@ -2812,14 +2847,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_fileId, arg_commentId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.DriveApi(mock).comments;
       var arg_fileId = "foo";
       var arg_commentId = "foo";
@@ -2869,7 +2904,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildComment());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_fileId, arg_commentId, includeDeleted: arg_includeDeleted).then(unittest.expectAsync(((api.Comment response) {
         checkComment(response);
@@ -2878,7 +2913,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.DriveApi(mock).comments;
       var arg_request = buildComment();
       var arg_fileId = "foo";
@@ -2926,7 +2961,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildComment());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_fileId).then(unittest.expectAsync(((api.Comment response) {
         checkComment(response);
@@ -2935,7 +2970,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.DriveApi(mock).comments;
       var arg_fileId = "foo";
       var arg_includeDeleted = true;
@@ -2987,7 +3022,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCommentList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_fileId, includeDeleted: arg_includeDeleted, maxResults: arg_maxResults, pageToken: arg_pageToken, updatedMin: arg_updatedMin).then(unittest.expectAsync(((api.CommentList response) {
         checkCommentList(response);
@@ -2996,7 +3031,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.DriveApi(mock).comments;
       var arg_request = buildComment();
       var arg_fileId = "foo";
@@ -3048,7 +3083,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildComment());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_fileId, arg_commentId).then(unittest.expectAsync(((api.Comment response) {
         checkComment(response);
@@ -3057,7 +3092,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.DriveApi(mock).comments;
       var arg_request = buildComment();
       var arg_fileId = "foo";
@@ -3109,7 +3144,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildComment());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_fileId, arg_commentId).then(unittest.expectAsync(((api.Comment response) {
         checkComment(response);
@@ -3122,7 +3157,7 @@ main() {
   unittest.group("resource-FilesResourceApi", () {
     unittest.test("method--copy", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       var arg_request = buildFile();
       var arg_fileId = "foo";
@@ -3184,7 +3219,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildFile());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.copy(arg_request, arg_fileId, convert: arg_convert, ocr: arg_ocr, ocrLanguage: arg_ocrLanguage, pinned: arg_pinned, timedTextLanguage: arg_timedTextLanguage, timedTextTrackName: arg_timedTextTrackName, visibility: arg_visibility).then(unittest.expectAsync(((api.File response) {
         checkFile(response);
@@ -3193,7 +3228,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       var arg_fileId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3233,14 +3268,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_fileId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--emptyTrash", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3276,7 +3311,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.emptyTrash().then(unittest.expectAsync((_) {}));
     });
@@ -3285,11 +3320,12 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       var arg_fileId = "foo";
       var arg_acknowledgeAbuse = true;
       var arg_projection = "foo";
+      var arg_revisionId = "foo";
       var arg_updateViewedDate = true;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3324,6 +3360,7 @@ main() {
         }
         unittest.expect(queryMap["acknowledgeAbuse"].first, unittest.equals("$arg_acknowledgeAbuse"));
         unittest.expect(queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["revisionId"].first, unittest.equals(arg_revisionId));
         unittest.expect(queryMap["updateViewedDate"].first, unittest.equals("$arg_updateViewedDate"));
 
 
@@ -3331,9 +3368,9 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildFile());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_fileId, acknowledgeAbuse: arg_acknowledgeAbuse, projection: arg_projection, updateViewedDate: arg_updateViewedDate).then(unittest.expectAsync(((api.File response) {
+      res.get(arg_fileId, acknowledgeAbuse: arg_acknowledgeAbuse, projection: arg_projection, revisionId: arg_revisionId, updateViewedDate: arg_updateViewedDate).then(unittest.expectAsync(((api.File response) {
         checkFile(response);
       })));
     });
@@ -3342,7 +3379,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       var arg_request = buildFile();
       var arg_convert = true;
@@ -3398,7 +3435,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildFile());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, convert: arg_convert, ocr: arg_ocr, ocrLanguage: arg_ocrLanguage, pinned: arg_pinned, timedTextLanguage: arg_timedTextLanguage, timedTextTrackName: arg_timedTextTrackName, useContentAsIndexableText: arg_useContentAsIndexableText, visibility: arg_visibility).then(unittest.expectAsync(((api.File response) {
         checkFile(response);
@@ -3407,7 +3444,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       var arg_corpus = "foo";
       var arg_maxResults = 42;
@@ -3453,7 +3490,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildFileList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(corpus: arg_corpus, maxResults: arg_maxResults, pageToken: arg_pageToken, projection: arg_projection, q: arg_q).then(unittest.expectAsync(((api.FileList response) {
         checkFileList(response);
@@ -3462,7 +3499,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       var arg_request = buildFile();
       var arg_fileId = "foo";
@@ -3530,7 +3567,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildFile());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_fileId, addParents: arg_addParents, convert: arg_convert, newRevision: arg_newRevision, ocr: arg_ocr, ocrLanguage: arg_ocrLanguage, pinned: arg_pinned, removeParents: arg_removeParents, setModifiedDate: arg_setModifiedDate, timedTextLanguage: arg_timedTextLanguage, timedTextTrackName: arg_timedTextTrackName, updateViewedDate: arg_updateViewedDate, useContentAsIndexableText: arg_useContentAsIndexableText).then(unittest.expectAsync(((api.File response) {
         checkFile(response);
@@ -3539,7 +3576,7 @@ main() {
 
     unittest.test("method--touch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       var arg_fileId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3583,7 +3620,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildFile());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.touch(arg_fileId).then(unittest.expectAsync(((api.File response) {
         checkFile(response);
@@ -3592,7 +3629,7 @@ main() {
 
     unittest.test("method--trash", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       var arg_fileId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3636,7 +3673,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildFile());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.trash(arg_fileId).then(unittest.expectAsync(((api.File response) {
         checkFile(response);
@@ -3645,7 +3682,7 @@ main() {
 
     unittest.test("method--untrash", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       var arg_fileId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3689,7 +3726,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildFile());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.untrash(arg_fileId).then(unittest.expectAsync(((api.File response) {
         checkFile(response);
@@ -3700,7 +3737,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       var arg_request = buildFile();
       var arg_fileId = "foo";
@@ -3768,7 +3805,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildFile());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_fileId, addParents: arg_addParents, convert: arg_convert, newRevision: arg_newRevision, ocr: arg_ocr, ocrLanguage: arg_ocrLanguage, pinned: arg_pinned, removeParents: arg_removeParents, setModifiedDate: arg_setModifiedDate, timedTextLanguage: arg_timedTextLanguage, timedTextTrackName: arg_timedTextTrackName, updateViewedDate: arg_updateViewedDate, useContentAsIndexableText: arg_useContentAsIndexableText).then(unittest.expectAsync(((api.File response) {
         checkFile(response);
@@ -3779,12 +3816,13 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       var arg_request = buildChannel();
       var arg_fileId = "foo";
       var arg_acknowledgeAbuse = true;
       var arg_projection = "foo";
+      var arg_revisionId = "foo";
       var arg_updateViewedDate = true;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var obj = new api.Channel.fromJson(json);
@@ -3826,6 +3864,7 @@ main() {
         }
         unittest.expect(queryMap["acknowledgeAbuse"].first, unittest.equals("$arg_acknowledgeAbuse"));
         unittest.expect(queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["revisionId"].first, unittest.equals(arg_revisionId));
         unittest.expect(queryMap["updateViewedDate"].first, unittest.equals("$arg_updateViewedDate"));
 
 
@@ -3833,9 +3872,9 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChannel());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.watch(arg_request, arg_fileId, acknowledgeAbuse: arg_acknowledgeAbuse, projection: arg_projection, updateViewedDate: arg_updateViewedDate).then(unittest.expectAsync(((api.Channel response) {
+      res.watch(arg_request, arg_fileId, acknowledgeAbuse: arg_acknowledgeAbuse, projection: arg_projection, revisionId: arg_revisionId, updateViewedDate: arg_updateViewedDate).then(unittest.expectAsync(((api.Channel response) {
         checkChannel(response);
       })));
     });
@@ -3846,7 +3885,7 @@ main() {
   unittest.group("resource-ParentsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ParentsResourceApi res = new api.DriveApi(mock).parents;
       var arg_fileId = "foo";
       var arg_parentId = "foo";
@@ -3894,14 +3933,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_fileId, arg_parentId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ParentsResourceApi res = new api.DriveApi(mock).parents;
       var arg_fileId = "foo";
       var arg_parentId = "foo";
@@ -3949,7 +3988,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildParentReference());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_fileId, arg_parentId).then(unittest.expectAsync(((api.ParentReference response) {
         checkParentReference(response);
@@ -3958,7 +3997,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ParentsResourceApi res = new api.DriveApi(mock).parents;
       var arg_request = buildParentReference();
       var arg_fileId = "foo";
@@ -4006,7 +4045,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildParentReference());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_fileId).then(unittest.expectAsync(((api.ParentReference response) {
         checkParentReference(response);
@@ -4015,7 +4054,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ParentsResourceApi res = new api.DriveApi(mock).parents;
       var arg_fileId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4059,7 +4098,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildParentList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_fileId).then(unittest.expectAsync(((api.ParentList response) {
         checkParentList(response);
@@ -4072,7 +4111,7 @@ main() {
   unittest.group("resource-PermissionsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PermissionsResourceApi res = new api.DriveApi(mock).permissions;
       var arg_fileId = "foo";
       var arg_permissionId = "foo";
@@ -4120,14 +4159,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_fileId, arg_permissionId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PermissionsResourceApi res = new api.DriveApi(mock).permissions;
       var arg_fileId = "foo";
       var arg_permissionId = "foo";
@@ -4175,7 +4214,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermission());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_fileId, arg_permissionId).then(unittest.expectAsync(((api.Permission response) {
         checkPermission(response);
@@ -4184,7 +4223,7 @@ main() {
 
     unittest.test("method--getIdForEmail", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PermissionsResourceApi res = new api.DriveApi(mock).permissions;
       var arg_email = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4224,7 +4263,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionId());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.getIdForEmail(arg_email).then(unittest.expectAsync(((api.PermissionId response) {
         checkPermissionId(response);
@@ -4233,7 +4272,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PermissionsResourceApi res = new api.DriveApi(mock).permissions;
       var arg_request = buildPermission();
       var arg_fileId = "foo";
@@ -4285,7 +4324,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermission());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_fileId, emailMessage: arg_emailMessage, sendNotificationEmails: arg_sendNotificationEmails).then(unittest.expectAsync(((api.Permission response) {
         checkPermission(response);
@@ -4294,7 +4333,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PermissionsResourceApi res = new api.DriveApi(mock).permissions;
       var arg_fileId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4338,7 +4377,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermissionList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_fileId).then(unittest.expectAsync(((api.PermissionList response) {
         checkPermissionList(response);
@@ -4347,7 +4386,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PermissionsResourceApi res = new api.DriveApi(mock).permissions;
       var arg_request = buildPermission();
       var arg_fileId = "foo";
@@ -4401,7 +4440,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermission());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_fileId, arg_permissionId, transferOwnership: arg_transferOwnership).then(unittest.expectAsync(((api.Permission response) {
         checkPermission(response);
@@ -4410,7 +4449,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PermissionsResourceApi res = new api.DriveApi(mock).permissions;
       var arg_request = buildPermission();
       var arg_fileId = "foo";
@@ -4464,7 +4503,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermission());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_fileId, arg_permissionId, transferOwnership: arg_transferOwnership).then(unittest.expectAsync(((api.Permission response) {
         checkPermission(response);
@@ -4477,7 +4516,7 @@ main() {
   unittest.group("resource-PropertiesResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PropertiesResourceApi res = new api.DriveApi(mock).properties;
       var arg_fileId = "foo";
       var arg_propertyKey = "foo";
@@ -4527,14 +4566,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_fileId, arg_propertyKey, visibility: arg_visibility).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PropertiesResourceApi res = new api.DriveApi(mock).properties;
       var arg_fileId = "foo";
       var arg_propertyKey = "foo";
@@ -4584,7 +4623,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProperty());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_fileId, arg_propertyKey, visibility: arg_visibility).then(unittest.expectAsync(((api.Property response) {
         checkProperty(response);
@@ -4593,7 +4632,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PropertiesResourceApi res = new api.DriveApi(mock).properties;
       var arg_request = buildProperty();
       var arg_fileId = "foo";
@@ -4641,7 +4680,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProperty());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_fileId).then(unittest.expectAsync(((api.Property response) {
         checkProperty(response);
@@ -4650,7 +4689,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PropertiesResourceApi res = new api.DriveApi(mock).properties;
       var arg_fileId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -4694,7 +4733,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPropertyList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_fileId).then(unittest.expectAsync(((api.PropertyList response) {
         checkPropertyList(response);
@@ -4703,7 +4742,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PropertiesResourceApi res = new api.DriveApi(mock).properties;
       var arg_request = buildProperty();
       var arg_fileId = "foo";
@@ -4757,7 +4796,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProperty());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_fileId, arg_propertyKey, visibility: arg_visibility).then(unittest.expectAsync(((api.Property response) {
         checkProperty(response);
@@ -4766,7 +4805,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PropertiesResourceApi res = new api.DriveApi(mock).properties;
       var arg_request = buildProperty();
       var arg_fileId = "foo";
@@ -4820,7 +4859,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProperty());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_fileId, arg_propertyKey, visibility: arg_visibility).then(unittest.expectAsync(((api.Property response) {
         checkProperty(response);
@@ -4835,7 +4874,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RealtimeResourceApi res = new api.DriveApi(mock).realtime;
       var arg_fileId = "foo";
       var arg_revision = 42;
@@ -4881,7 +4920,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_fileId, revision: arg_revision).then(unittest.expectAsync((_) {}));
     });
@@ -4890,7 +4929,7 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RealtimeResourceApi res = new api.DriveApi(mock).realtime;
       var arg_fileId = "foo";
       var arg_baseRevision = "foo";
@@ -4936,7 +4975,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_fileId, baseRevision: arg_baseRevision).then(unittest.expectAsync((_) {}));
     });
@@ -4947,7 +4986,7 @@ main() {
   unittest.group("resource-RepliesResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RepliesResourceApi res = new api.DriveApi(mock).replies;
       var arg_fileId = "foo";
       var arg_commentId = "foo";
@@ -5003,14 +5042,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_fileId, arg_commentId, arg_replyId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RepliesResourceApi res = new api.DriveApi(mock).replies;
       var arg_fileId = "foo";
       var arg_commentId = "foo";
@@ -5068,7 +5107,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCommentReply());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_fileId, arg_commentId, arg_replyId, includeDeleted: arg_includeDeleted).then(unittest.expectAsync(((api.CommentReply response) {
         checkCommentReply(response);
@@ -5077,7 +5116,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RepliesResourceApi res = new api.DriveApi(mock).replies;
       var arg_request = buildCommentReply();
       var arg_fileId = "foo";
@@ -5133,7 +5172,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCommentReply());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_fileId, arg_commentId).then(unittest.expectAsync(((api.CommentReply response) {
         checkCommentReply(response);
@@ -5142,7 +5181,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RepliesResourceApi res = new api.DriveApi(mock).replies;
       var arg_fileId = "foo";
       var arg_commentId = "foo";
@@ -5200,7 +5239,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCommentReplyList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_fileId, arg_commentId, includeDeleted: arg_includeDeleted, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.CommentReplyList response) {
         checkCommentReplyList(response);
@@ -5209,7 +5248,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RepliesResourceApi res = new api.DriveApi(mock).replies;
       var arg_request = buildCommentReply();
       var arg_fileId = "foo";
@@ -5269,7 +5308,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCommentReply());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_fileId, arg_commentId, arg_replyId).then(unittest.expectAsync(((api.CommentReply response) {
         checkCommentReply(response);
@@ -5278,7 +5317,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RepliesResourceApi res = new api.DriveApi(mock).replies;
       var arg_request = buildCommentReply();
       var arg_fileId = "foo";
@@ -5338,7 +5377,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCommentReply());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_fileId, arg_commentId, arg_replyId).then(unittest.expectAsync(((api.CommentReply response) {
         checkCommentReply(response);
@@ -5351,7 +5390,7 @@ main() {
   unittest.group("resource-RevisionsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RevisionsResourceApi res = new api.DriveApi(mock).revisions;
       var arg_fileId = "foo";
       var arg_revisionId = "foo";
@@ -5399,14 +5438,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_fileId, arg_revisionId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RevisionsResourceApi res = new api.DriveApi(mock).revisions;
       var arg_fileId = "foo";
       var arg_revisionId = "foo";
@@ -5454,7 +5493,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRevision());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_fileId, arg_revisionId).then(unittest.expectAsync(((api.Revision response) {
         checkRevision(response);
@@ -5463,7 +5502,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RevisionsResourceApi res = new api.DriveApi(mock).revisions;
       var arg_fileId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -5507,7 +5546,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRevisionList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_fileId).then(unittest.expectAsync(((api.RevisionList response) {
         checkRevisionList(response);
@@ -5516,7 +5555,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RevisionsResourceApi res = new api.DriveApi(mock).revisions;
       var arg_request = buildRevision();
       var arg_fileId = "foo";
@@ -5568,7 +5607,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRevision());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_fileId, arg_revisionId).then(unittest.expectAsync(((api.Revision response) {
         checkRevision(response);
@@ -5577,7 +5616,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.RevisionsResourceApi res = new api.DriveApi(mock).revisions;
       var arg_request = buildRevision();
       var arg_fileId = "foo";
@@ -5629,7 +5668,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRevision());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_fileId, arg_revisionId).then(unittest.expectAsync(((api.Revision response) {
         checkRevision(response);

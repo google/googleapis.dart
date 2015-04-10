@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.adsensehost.v4_1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client adsensehost/v4.1';
 
 /**
  * Gives AdSense Hosts access to report generation, ad code generation, and
@@ -22,7 +25,7 @@ class AdsensehostApi {
   static const AdsensehostScope = "https://www.googleapis.com/auth/adsensehost";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
   AdclientsResourceApi get adclients => new AdclientsResourceApi(_requester);
@@ -32,19 +35,18 @@ class AdsensehostApi {
   UrlchannelsResourceApi get urlchannels => new UrlchannelsResourceApi(_requester);
 
   AdsensehostApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "adsensehost/v4.1/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class AccountsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AccountsAdclientsResourceApi get adclients => new AccountsAdclientsResourceApi(_requester);
   AccountsAdunitsResourceApi get adunits => new AccountsAdunitsResourceApi(_requester);
   AccountsReportsResourceApi get reports => new AccountsReportsResourceApi(_requester);
 
-  AccountsResourceApi(common_internal.ApiRequester client) : 
+  AccountsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -56,7 +58,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Account].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -67,7 +69,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -75,7 +77,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -96,7 +98,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Accounts].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -107,7 +109,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (filterAdClientId == null || filterAdClientId.isEmpty) {
@@ -131,11 +133,10 @@ class AccountsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountsAdclientsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountsAdclientsResourceApi(common_internal.ApiRequester client) : 
+  AccountsAdclientsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -150,7 +151,7 @@ class AccountsAdclientsResourceApi {
    *
    * Completes with a [AdClient].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -161,7 +162,7 @@ class AccountsAdclientsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -172,7 +173,7 @@ class AccountsAdclientsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/adclients/' + common_internal.Escaper.ecapeVariable('$adClientId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/adclients/' + commons.Escaper.ecapeVariable('$adClientId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -201,7 +202,7 @@ class AccountsAdclientsResourceApi {
    *
    * Completes with a [AdClients].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -212,7 +213,7 @@ class AccountsAdclientsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -226,7 +227,7 @@ class AccountsAdclientsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/adclients';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/adclients';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -241,11 +242,10 @@ class AccountsAdclientsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountsAdunitsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountsAdunitsResourceApi(common_internal.ApiRequester client) : 
+  AccountsAdunitsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -261,7 +261,7 @@ class AccountsAdunitsResourceApi {
    *
    * Completes with a [AdUnit].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -272,7 +272,7 @@ class AccountsAdunitsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -286,7 +286,7 @@ class AccountsAdunitsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/adunits/' + common_internal.Escaper.ecapeVariable('$adUnitId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/adunits/' + commons.Escaper.ecapeVariable('$adUnitId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -311,7 +311,7 @@ class AccountsAdunitsResourceApi {
    *
    * Completes with a [AdUnit].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -322,7 +322,7 @@ class AccountsAdunitsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -336,7 +336,7 @@ class AccountsAdunitsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/adunits/' + common_internal.Escaper.ecapeVariable('$adUnitId');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/adunits/' + commons.Escaper.ecapeVariable('$adUnitId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -364,7 +364,7 @@ class AccountsAdunitsResourceApi {
    *
    * Completes with a [AdCode].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -375,7 +375,7 @@ class AccountsAdunitsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -392,7 +392,7 @@ class AccountsAdunitsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/adunits/' + common_internal.Escaper.ecapeVariable('$adUnitId') + '/adcode';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/adunits/' + commons.Escaper.ecapeVariable('$adUnitId') + '/adcode';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -417,7 +417,7 @@ class AccountsAdunitsResourceApi {
    *
    * Completes with a [AdUnit].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -428,7 +428,7 @@ class AccountsAdunitsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -442,7 +442,7 @@ class AccountsAdunitsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/adunits';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/adunits';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -475,7 +475,7 @@ class AccountsAdunitsResourceApi {
    *
    * Completes with a [AdUnits].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -486,7 +486,7 @@ class AccountsAdunitsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -506,7 +506,7 @@ class AccountsAdunitsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/adunits';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/adunits';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -534,7 +534,7 @@ class AccountsAdunitsResourceApi {
    *
    * Completes with a [AdUnit].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -545,7 +545,7 @@ class AccountsAdunitsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -563,7 +563,7 @@ class AccountsAdunitsResourceApi {
     _queryParams["adUnitId"] = [adUnitId];
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/adunits';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/adunits';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -588,7 +588,7 @@ class AccountsAdunitsResourceApi {
    *
    * Completes with a [AdUnit].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -599,7 +599,7 @@ class AccountsAdunitsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -613,7 +613,7 @@ class AccountsAdunitsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/adunits';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/adunits';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -628,11 +628,10 @@ class AccountsAdunitsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AccountsReportsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountsReportsResourceApi(common_internal.ApiRequester client) : 
+  AccountsReportsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -680,7 +679,7 @@ class AccountsReportsResourceApi {
    *
    * Completes with a [Report].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -691,7 +690,7 @@ class AccountsReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -728,7 +727,7 @@ class AccountsReportsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$accountId') + '/reports';
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/reports';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -743,11 +742,10 @@ class AccountsReportsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AdclientsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AdclientsResourceApi(common_internal.ApiRequester client) : 
+  AdclientsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -759,7 +757,7 @@ class AdclientsResourceApi {
    *
    * Completes with a [AdClient].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -770,7 +768,7 @@ class AdclientsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (adClientId == null) {
@@ -778,7 +776,7 @@ class AdclientsResourceApi {
     }
 
 
-    _url = 'adclients/' + common_internal.Escaper.ecapeVariable('$adClientId');
+    _url = 'adclients/' + commons.Escaper.ecapeVariable('$adClientId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -805,7 +803,7 @@ class AdclientsResourceApi {
    *
    * Completes with a [AdClients].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -816,7 +814,7 @@ class AdclientsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (maxResults != null) {
@@ -842,11 +840,10 @@ class AdclientsResourceApi {
 }
 
 
-/** Not documented yet. */
 class AssociationsessionsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AssociationsessionsResourceApi(common_internal.ApiRequester client) : 
+  AssociationsessionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -865,7 +862,7 @@ class AssociationsessionsResourceApi {
    *
    * Completes with a [AssociationSession].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -876,7 +873,7 @@ class AssociationsessionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (productCode == null || productCode.isEmpty) {
@@ -917,7 +914,7 @@ class AssociationsessionsResourceApi {
    *
    * Completes with a [AssociationSession].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -928,7 +925,7 @@ class AssociationsessionsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (token == null) {
@@ -952,11 +949,10 @@ class AssociationsessionsResourceApi {
 }
 
 
-/** Not documented yet. */
 class CustomchannelsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CustomchannelsResourceApi(common_internal.ApiRequester client) : 
+  CustomchannelsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -970,7 +966,7 @@ class CustomchannelsResourceApi {
    *
    * Completes with a [CustomChannel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -981,7 +977,7 @@ class CustomchannelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (adClientId == null) {
@@ -992,7 +988,7 @@ class CustomchannelsResourceApi {
     }
 
 
-    _url = 'adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/customchannels/' + common_internal.Escaper.ecapeVariable('$customChannelId');
+    _url = 'adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/customchannels/' + commons.Escaper.ecapeVariable('$customChannelId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1015,7 +1011,7 @@ class CustomchannelsResourceApi {
    *
    * Completes with a [CustomChannel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1026,7 +1022,7 @@ class CustomchannelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (adClientId == null) {
@@ -1037,7 +1033,7 @@ class CustomchannelsResourceApi {
     }
 
 
-    _url = 'adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/customchannels/' + common_internal.Escaper.ecapeVariable('$customChannelId');
+    _url = 'adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/customchannels/' + commons.Escaper.ecapeVariable('$customChannelId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1060,7 +1056,7 @@ class CustomchannelsResourceApi {
    *
    * Completes with a [CustomChannel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1071,7 +1067,7 @@ class CustomchannelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1082,7 +1078,7 @@ class CustomchannelsResourceApi {
     }
 
 
-    _url = 'adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/customchannels';
+    _url = 'adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/customchannels';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1111,7 +1107,7 @@ class CustomchannelsResourceApi {
    *
    * Completes with a [CustomChannels].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1122,7 +1118,7 @@ class CustomchannelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (adClientId == null) {
@@ -1136,7 +1132,7 @@ class CustomchannelsResourceApi {
     }
 
 
-    _url = 'adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/customchannels';
+    _url = 'adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/customchannels';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1162,7 +1158,7 @@ class CustomchannelsResourceApi {
    *
    * Completes with a [CustomChannel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1173,7 +1169,7 @@ class CustomchannelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1188,7 +1184,7 @@ class CustomchannelsResourceApi {
     _queryParams["customChannelId"] = [customChannelId];
 
 
-    _url = 'adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/customchannels';
+    _url = 'adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/customchannels';
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1211,7 +1207,7 @@ class CustomchannelsResourceApi {
    *
    * Completes with a [CustomChannel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1222,7 +1218,7 @@ class CustomchannelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1233,7 +1229,7 @@ class CustomchannelsResourceApi {
     }
 
 
-    _url = 'adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/customchannels';
+    _url = 'adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/customchannels';
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1248,11 +1244,10 @@ class CustomchannelsResourceApi {
 }
 
 
-/** Not documented yet. */
 class ReportsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ReportsResourceApi(common_internal.ApiRequester client) : 
+  ReportsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1298,7 +1293,7 @@ class ReportsResourceApi {
    *
    * Completes with a [Report].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1309,7 +1304,7 @@ class ReportsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (startDate == null) {
@@ -1358,11 +1353,10 @@ class ReportsResourceApi {
 }
 
 
-/** Not documented yet. */
 class UrlchannelsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  UrlchannelsResourceApi(common_internal.ApiRequester client) : 
+  UrlchannelsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -1376,7 +1370,7 @@ class UrlchannelsResourceApi {
    *
    * Completes with a [UrlChannel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1387,7 +1381,7 @@ class UrlchannelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (adClientId == null) {
@@ -1398,7 +1392,7 @@ class UrlchannelsResourceApi {
     }
 
 
-    _url = 'adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/urlchannels/' + common_internal.Escaper.ecapeVariable('$urlChannelId');
+    _url = 'adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/urlchannels/' + commons.Escaper.ecapeVariable('$urlChannelId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -1421,7 +1415,7 @@ class UrlchannelsResourceApi {
    *
    * Completes with a [UrlChannel].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1432,7 +1426,7 @@ class UrlchannelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1443,7 +1437,7 @@ class UrlchannelsResourceApi {
     }
 
 
-    _url = 'adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/urlchannels';
+    _url = 'adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/urlchannels';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1472,7 +1466,7 @@ class UrlchannelsResourceApi {
    *
    * Completes with a [UrlChannels].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1483,7 +1477,7 @@ class UrlchannelsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (adClientId == null) {
@@ -1497,7 +1491,7 @@ class UrlchannelsResourceApi {
     }
 
 
-    _url = 'adclients/' + common_internal.Escaper.ecapeVariable('$adClientId') + '/urlchannels';
+    _url = 'adclients/' + commons.Escaper.ecapeVariable('$adClientId') + '/urlchannels';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1513,7 +1507,6 @@ class UrlchannelsResourceApi {
 
 
 
-/** Not documented yet. */
 class Account {
   /** Unique identifier of this account. */
   core.String id;
@@ -1564,7 +1557,6 @@ class Account {
 }
 
 
-/** Not documented yet. */
 class Accounts {
   /** ETag of this response for caching purposes. */
   core.String etag;
@@ -1606,7 +1598,6 @@ class Accounts {
 }
 
 
-/** Not documented yet. */
 class AdClient {
   /** Whether this ad client is opted in to ARC. */
   core.bool arcOptIn;
@@ -1669,7 +1660,6 @@ class AdClient {
 }
 
 
-/** Not documented yet. */
 class AdClients {
   /** ETag of this response for caching purposes. */
   core.String etag;
@@ -1723,7 +1713,6 @@ class AdClients {
 }
 
 
-/** Not documented yet. */
 class AdCode {
   /** The ad code snippet. */
   core.String adCode;
@@ -1858,7 +1847,6 @@ class AdStyleFont {
 }
 
 
-/** Not documented yet. */
 class AdStyle {
   /**
    * The colors included in the style. These are represented as six hexadecimal
@@ -2060,7 +2048,6 @@ class AdUnitMobileContentAdsSettings {
 }
 
 
-/** Not documented yet. */
 class AdUnit {
   /**
    * Identity code of this ad unit, not necessarily unique across ad clients.
@@ -2165,7 +2152,6 @@ class AdUnit {
 }
 
 
-/** Not documented yet. */
 class AdUnits {
   /** ETag of this response for caching purposes. */
   core.String etag;
@@ -2219,7 +2205,6 @@ class AdUnits {
 }
 
 
-/** Not documented yet. */
 class AssociationSession {
   /**
    * Hosted account id of the associated publisher after association. Present if
@@ -2327,7 +2312,6 @@ class AssociationSession {
 }
 
 
-/** Not documented yet. */
 class CustomChannel {
   /** Code of this custom channel, not necessarily unique across ad clients. */
   core.String code;
@@ -2382,7 +2366,6 @@ class CustomChannel {
 }
 
 
-/** Not documented yet. */
 class CustomChannels {
   /** ETag of this response for caching purposes. */
   core.String etag;
@@ -2436,7 +2419,6 @@ class CustomChannels {
 }
 
 
-/** Not documented yet. */
 class ReportHeaders {
   /**
    * The currency of this column. Only present if the header type is
@@ -2484,7 +2466,6 @@ class ReportHeaders {
 }
 
 
-/** Not documented yet. */
 class Report {
   /**
    * The averages of the report. This is the same length as any other row in the
@@ -2580,7 +2561,6 @@ class Report {
 }
 
 
-/** Not documented yet. */
 class UrlChannel {
   /**
    * Unique identifier of this URL channel. This should be considered an opaque
@@ -2628,7 +2608,6 @@ class UrlChannel {
 }
 
 
-/** Not documented yet. */
 class UrlChannels {
   /** ETag of this response for caching purposes. */
   core.String etag;
@@ -2680,5 +2659,3 @@ class UrlChannels {
     return _json;
   }
 }
-
-

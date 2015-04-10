@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis_beta/common/common.dart' as common;
-import 'package:googleapis_beta/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis_beta/autoscaler/v1beta2.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterAutoscaler = 0;
 buildAutoscaler() {
@@ -49,14 +84,14 @@ checkAutoscaler(api.Autoscaler o) {
   buildCounterAutoscaler--;
 }
 
-buildUnnamed1687() {
+buildUnnamed1467() {
   var o = new core.List<api.Autoscaler>();
   o.add(buildAutoscaler());
   o.add(buildAutoscaler());
   return o;
 }
 
-checkUnnamed1687(core.List<api.Autoscaler> o) {
+checkUnnamed1467(core.List<api.Autoscaler> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAutoscaler(o[0]);
   checkAutoscaler(o[1]);
@@ -67,7 +102,7 @@ buildAutoscalerListResponse() {
   var o = new api.AutoscalerListResponse();
   buildCounterAutoscalerListResponse++;
   if (buildCounterAutoscalerListResponse < 3) {
-    o.items = buildUnnamed1687();
+    o.items = buildUnnamed1467();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -78,21 +113,21 @@ buildAutoscalerListResponse() {
 checkAutoscalerListResponse(api.AutoscalerListResponse o) {
   buildCounterAutoscalerListResponse++;
   if (buildCounterAutoscalerListResponse < 3) {
-    checkUnnamed1687(o.items);
+    checkUnnamed1467(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterAutoscalerListResponse--;
 }
 
-buildUnnamed1688() {
+buildUnnamed1468() {
   var o = new core.List<api.AutoscalingPolicyCustomMetricUtilization>();
   o.add(buildAutoscalingPolicyCustomMetricUtilization());
   o.add(buildAutoscalingPolicyCustomMetricUtilization());
   return o;
 }
 
-checkUnnamed1688(core.List<api.AutoscalingPolicyCustomMetricUtilization> o) {
+checkUnnamed1468(core.List<api.AutoscalingPolicyCustomMetricUtilization> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAutoscalingPolicyCustomMetricUtilization(o[0]);
   checkAutoscalingPolicyCustomMetricUtilization(o[1]);
@@ -105,7 +140,7 @@ buildAutoscalingPolicy() {
   if (buildCounterAutoscalingPolicy < 3) {
     o.coolDownPeriodSec = 42;
     o.cpuUtilization = buildAutoscalingPolicyCpuUtilization();
-    o.customMetricUtilizations = buildUnnamed1688();
+    o.customMetricUtilizations = buildUnnamed1468();
     o.loadBalancingUtilization = buildAutoscalingPolicyLoadBalancingUtilization();
     o.maxNumReplicas = 42;
     o.minNumReplicas = 42;
@@ -119,7 +154,7 @@ checkAutoscalingPolicy(api.AutoscalingPolicy o) {
   if (buildCounterAutoscalingPolicy < 3) {
     unittest.expect(o.coolDownPeriodSec, unittest.equals(42));
     checkAutoscalingPolicyCpuUtilization(o.cpuUtilization);
-    checkUnnamed1688(o.customMetricUtilizations);
+    checkUnnamed1468(o.customMetricUtilizations);
     checkAutoscalingPolicyLoadBalancingUtilization(o.loadBalancingUtilization);
     unittest.expect(o.maxNumReplicas, unittest.equals(42));
     unittest.expect(o.minNumReplicas, unittest.equals(42));
@@ -238,14 +273,14 @@ checkOperationErrorErrors(api.OperationErrorErrors o) {
   buildCounterOperationErrorErrors--;
 }
 
-buildUnnamed1689() {
+buildUnnamed1469() {
   var o = new core.List<api.OperationErrorErrors>();
   o.add(buildOperationErrorErrors());
   o.add(buildOperationErrorErrors());
   return o;
 }
 
-checkUnnamed1689(core.List<api.OperationErrorErrors> o) {
+checkUnnamed1469(core.List<api.OperationErrorErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationErrorErrors(o[0]);
   checkOperationErrorErrors(o[1]);
@@ -256,7 +291,7 @@ buildOperationError() {
   var o = new api.OperationError();
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    o.errors = buildUnnamed1689();
+    o.errors = buildUnnamed1469();
   }
   buildCounterOperationError--;
   return o;
@@ -265,7 +300,7 @@ buildOperationError() {
 checkOperationError(api.OperationError o) {
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    checkUnnamed1689(o.errors);
+    checkUnnamed1469(o.errors);
   }
   buildCounterOperationError--;
 }
@@ -291,14 +326,14 @@ checkOperationWarningsData(api.OperationWarningsData o) {
   buildCounterOperationWarningsData--;
 }
 
-buildUnnamed1690() {
+buildUnnamed1470() {
   var o = new core.List<api.OperationWarningsData>();
   o.add(buildOperationWarningsData());
   o.add(buildOperationWarningsData());
   return o;
 }
 
-checkUnnamed1690(core.List<api.OperationWarningsData> o) {
+checkUnnamed1470(core.List<api.OperationWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationWarningsData(o[0]);
   checkOperationWarningsData(o[1]);
@@ -310,7 +345,7 @@ buildOperationWarnings() {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
     o.code = "foo";
-    o.data = buildUnnamed1690();
+    o.data = buildUnnamed1470();
     o.message = "foo";
   }
   buildCounterOperationWarnings--;
@@ -321,20 +356,20 @@ checkOperationWarnings(api.OperationWarnings o) {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
-    checkUnnamed1690(o.data);
+    checkUnnamed1470(o.data);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterOperationWarnings--;
 }
 
-buildUnnamed1691() {
+buildUnnamed1471() {
   var o = new core.List<api.OperationWarnings>();
   o.add(buildOperationWarnings());
   o.add(buildOperationWarnings());
   return o;
 }
 
-checkUnnamed1691(core.List<api.OperationWarnings> o) {
+checkUnnamed1471(core.List<api.OperationWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationWarnings(o[0]);
   checkOperationWarnings(o[1]);
@@ -365,7 +400,7 @@ buildOperation() {
     o.targetId = "foo";
     o.targetLink = "foo";
     o.user = "foo";
-    o.warnings = buildUnnamed1691();
+    o.warnings = buildUnnamed1471();
     o.zone = "foo";
   }
   buildCounterOperation--;
@@ -395,20 +430,20 @@ checkOperation(api.Operation o) {
     unittest.expect(o.targetId, unittest.equals('foo'));
     unittest.expect(o.targetLink, unittest.equals('foo'));
     unittest.expect(o.user, unittest.equals('foo'));
-    checkUnnamed1691(o.warnings);
+    checkUnnamed1471(o.warnings);
     unittest.expect(o.zone, unittest.equals('foo'));
   }
   buildCounterOperation--;
 }
 
-buildUnnamed1692() {
+buildUnnamed1472() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1692(core.List<api.Operation> o) {
+checkUnnamed1472(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -420,7 +455,7 @@ buildOperationList() {
   buildCounterOperationList++;
   if (buildCounterOperationList < 3) {
     o.id = "foo";
-    o.items = buildUnnamed1692();
+    o.items = buildUnnamed1472();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -433,7 +468,7 @@ checkOperationList(api.OperationList o) {
   buildCounterOperationList++;
   if (buildCounterOperationList < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed1692(o.items);
+    checkUnnamed1472(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -466,14 +501,14 @@ checkZoneMaintenanceWindows(api.ZoneMaintenanceWindows o) {
   buildCounterZoneMaintenanceWindows--;
 }
 
-buildUnnamed1693() {
+buildUnnamed1473() {
   var o = new core.List<api.ZoneMaintenanceWindows>();
   o.add(buildZoneMaintenanceWindows());
   o.add(buildZoneMaintenanceWindows());
   return o;
 }
 
-checkUnnamed1693(core.List<api.ZoneMaintenanceWindows> o) {
+checkUnnamed1473(core.List<api.ZoneMaintenanceWindows> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkZoneMaintenanceWindows(o[0]);
   checkZoneMaintenanceWindows(o[1]);
@@ -489,7 +524,7 @@ buildZone() {
     o.description = "foo";
     o.id = "foo";
     o.kind = "foo";
-    o.maintenanceWindows = buildUnnamed1693();
+    o.maintenanceWindows = buildUnnamed1473();
     o.name = "foo";
     o.region = "foo";
     o.selfLink = "foo";
@@ -507,7 +542,7 @@ checkZone(api.Zone o) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1693(o.maintenanceWindows);
+    checkUnnamed1473(o.maintenanceWindows);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.region, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -516,14 +551,14 @@ checkZone(api.Zone o) {
   buildCounterZone--;
 }
 
-buildUnnamed1694() {
+buildUnnamed1474() {
   var o = new core.List<api.Zone>();
   o.add(buildZone());
   o.add(buildZone());
   return o;
 }
 
-checkUnnamed1694(core.List<api.Zone> o) {
+checkUnnamed1474(core.List<api.Zone> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkZone(o[0]);
   checkZone(o[1]);
@@ -535,7 +570,7 @@ buildZoneList() {
   buildCounterZoneList++;
   if (buildCounterZoneList < 3) {
     o.id = "foo";
-    o.items = buildUnnamed1694();
+    o.items = buildUnnamed1474();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -548,7 +583,7 @@ checkZoneList(api.ZoneList o) {
   buildCounterZoneList++;
   if (buildCounterZoneList < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed1694(o.items);
+    checkUnnamed1474(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -705,7 +740,7 @@ main() {
   unittest.group("resource-AutoscalersResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AutoscalersResourceApi res = new api.AutoscalerApi(mock).autoscalers;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -761,7 +796,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_project, arg_zone, arg_autoscaler).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -770,7 +805,7 @@ main() {
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AutoscalersResourceApi res = new api.AutoscalerApi(mock).autoscalers;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -826,7 +861,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAutoscaler());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_project, arg_zone, arg_autoscaler).then(unittest.expectAsync(((api.Autoscaler response) {
         checkAutoscaler(response);
@@ -835,7 +870,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AutoscalersResourceApi res = new api.AutoscalerApi(mock).autoscalers;
       var arg_request = buildAutoscaler();
       var arg_project = "foo";
@@ -891,7 +926,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_project, arg_zone).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -900,7 +935,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AutoscalersResourceApi res = new api.AutoscalerApi(mock).autoscalers;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -958,7 +993,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAutoscalerListResponse());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_project, arg_zone, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.AutoscalerListResponse response) {
         checkAutoscalerListResponse(response);
@@ -967,7 +1002,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AutoscalersResourceApi res = new api.AutoscalerApi(mock).autoscalers;
       var arg_request = buildAutoscaler();
       var arg_project = "foo";
@@ -1027,7 +1062,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_project, arg_zone, arg_autoscaler).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -1036,7 +1071,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.AutoscalersResourceApi res = new api.AutoscalerApi(mock).autoscalers;
       var arg_request = buildAutoscaler();
       var arg_project = "foo";
@@ -1096,7 +1131,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_project, arg_zone, arg_autoscaler).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -1109,7 +1144,7 @@ main() {
   unittest.group("resource-ZoneOperationsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ZoneOperationsResourceApi res = new api.AutoscalerApi(mock).zoneOperations;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -1144,14 +1179,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_project, arg_zone, arg_operation).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ZoneOperationsResourceApi res = new api.AutoscalerApi(mock).zoneOperations;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -1186,7 +1221,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_project, arg_zone, arg_operation).then(unittest.expectAsync(((api.Operation response) {
         checkOperation(response);
@@ -1195,7 +1230,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ZoneOperationsResourceApi res = new api.AutoscalerApi(mock).zoneOperations;
       var arg_project = "foo";
       var arg_zone = "foo";
@@ -1235,7 +1270,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperationList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_project, arg_zone, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.OperationList response) {
         checkOperationList(response);
@@ -1248,7 +1283,7 @@ main() {
   unittest.group("resource-ZonesResourceApi", () {
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.ZonesResourceApi res = new api.AutoscalerApi(mock).zones;
       var arg_project = "foo";
       var arg_filter = "foo";
@@ -1287,7 +1322,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildZoneList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_project, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ZoneList response) {
         checkZoneList(response);

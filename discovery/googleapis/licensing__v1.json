@@ -1,11 +1,20 @@
 {
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/apps.licensing": {
+                    "description": "View and manage Google Apps licenses for your domain"
+                }
+            }
+        }
+    },
     "basePath": "/apps/licensing/v1/product/",
     "baseUrl": "https://www.googleapis.com/apps/licensing/v1/product/",
     "batchPath": "batch",
     "description": "Licensing API to view and manage license for your domain.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/licensing/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/5nv4m0pBrnwpGqw9jwk2yynQNrg\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/chZbfEJA0-TN8tTaZIdtXJErZX4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -93,7 +102,10 @@
                             "type": "string"
                         }
                     },
-                    "path": "{productId}/sku/{skuId}/user/{userId}"
+                    "path": "{productId}/sku/{skuId}/user/{userId}",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/apps.licensing"
+                    ]
                 },
                 "get": {
                     "description": "Get license assignment of a particular product and sku for a user",
@@ -127,7 +139,10 @@
                     "path": "{productId}/sku/{skuId}/user/{userId}",
                     "response": {
                         "$ref": "LicenseAssignment"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/apps.licensing"
+                    ]
                 },
                 "insert": {
                     "description": "Assign License.",
@@ -157,7 +172,10 @@
                     },
                     "response": {
                         "$ref": "LicenseAssignment"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/apps.licensing"
+                    ]
                 },
                 "listForProduct": {
                     "description": "List license assignments for given product of the customer.",
@@ -199,7 +217,10 @@
                     "path": "{productId}/users",
                     "response": {
                         "$ref": "LicenseAssignmentList"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/apps.licensing"
+                    ]
                 },
                 "listForProductAndSku": {
                     "description": "List license assignments for given product and sku of the customer.",
@@ -248,7 +269,10 @@
                     "path": "{productId}/sku/{skuId}/users",
                     "response": {
                         "$ref": "LicenseAssignmentList"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/apps.licensing"
+                    ]
                 },
                 "patch": {
                     "description": "Assign License. This method supports patch semantics.",
@@ -285,7 +309,10 @@
                     },
                     "response": {
                         "$ref": "LicenseAssignment"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/apps.licensing"
+                    ]
                 },
                 "update": {
                     "description": "Assign License.",
@@ -322,7 +349,10 @@
                     },
                     "response": {
                         "$ref": "LicenseAssignment"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/apps.licensing"
+                    ]
                 }
             }
         }

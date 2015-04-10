@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis_beta.taskqueue.v1beta2;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client taskqueue/v1beta2';
 
 /** Lets you access a Google App Engine Pull Task Queue over REST. */
 class TaskqueueApi {
@@ -22,21 +25,20 @@ class TaskqueueApi {
   static const TaskqueueConsumerScope = "https://www.googleapis.com/auth/taskqueue.consumer";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   TaskqueuesResourceApi get taskqueues => new TaskqueuesResourceApi(_requester);
   TasksResourceApi get tasks => new TasksResourceApi(_requester);
 
   TaskqueueApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "taskqueue/v1beta2/projects/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class TaskqueuesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TaskqueuesResourceApi(common_internal.ApiRequester client) : 
+  TaskqueuesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -52,7 +54,7 @@ class TaskqueuesResourceApi {
    *
    * Completes with a [TaskQueue].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -63,7 +65,7 @@ class TaskqueuesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -77,7 +79,7 @@ class TaskqueuesResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/taskqueues/' + common_internal.Escaper.ecapeVariable('$taskqueue');
+    _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -92,11 +94,10 @@ class TaskqueuesResourceApi {
 }
 
 
-/** Not documented yet. */
 class TasksResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  TasksResourceApi(common_internal.ApiRequester client) : 
+  TasksResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -110,7 +111,7 @@ class TasksResourceApi {
    *
    * [task] - The id of the task to delete.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -121,7 +122,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -136,7 +137,7 @@ class TasksResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/taskqueues/' + common_internal.Escaper.ecapeVariable('$taskqueue') + '/tasks/' + common_internal.Escaper.ecapeVariable('$task');
+    _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -161,7 +162,7 @@ class TasksResourceApi {
    *
    * Completes with a [Task].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -172,7 +173,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -186,7 +187,7 @@ class TasksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/taskqueues/' + common_internal.Escaper.ecapeVariable('$taskqueue') + '/tasks/' + common_internal.Escaper.ecapeVariable('$task');
+    _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -211,7 +212,7 @@ class TasksResourceApi {
    *
    * Completes with a [Task].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -222,7 +223,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -236,7 +237,7 @@ class TasksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/taskqueues/' + common_internal.Escaper.ecapeVariable('$taskqueue') + '/tasks';
+    _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue') + '/tasks';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -270,7 +271,7 @@ class TasksResourceApi {
    *
    * Completes with a [Tasks].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -281,7 +282,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -306,7 +307,7 @@ class TasksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/taskqueues/' + common_internal.Escaper.ecapeVariable('$taskqueue') + '/tasks/lease';
+    _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue') + '/tasks/lease';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -329,7 +330,7 @@ class TasksResourceApi {
    *
    * Completes with a [Tasks2].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -340,7 +341,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (project == null) {
@@ -351,7 +352,7 @@ class TasksResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/taskqueues/' + common_internal.Escaper.ecapeVariable('$taskqueue') + '/tasks';
+    _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue') + '/tasks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -381,7 +382,7 @@ class TasksResourceApi {
    *
    * Completes with a [Task].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -392,7 +393,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -413,7 +414,7 @@ class TasksResourceApi {
     _queryParams["newLeaseSeconds"] = ["${newLeaseSeconds}"];
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/taskqueues/' + common_internal.Escaper.ecapeVariable('$taskqueue') + '/tasks/' + common_internal.Escaper.ecapeVariable('$task');
+    _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -442,7 +443,7 @@ class TasksResourceApi {
    *
    * Completes with a [Task].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -453,7 +454,7 @@ class TasksResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -474,7 +475,7 @@ class TasksResourceApi {
     _queryParams["newLeaseSeconds"] = ["${newLeaseSeconds}"];
 
 
-    _url = common_internal.Escaper.ecapeVariable('$project') + '/taskqueues/' + common_internal.Escaper.ecapeVariable('$taskqueue') + '/tasks/' + common_internal.Escaper.ecapeVariable('$task');
+    _url = commons.Escaper.ecapeVariable('$project') + '/taskqueues/' + commons.Escaper.ecapeVariable('$taskqueue') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -490,7 +491,6 @@ class TasksResourceApi {
 
 
 
-/** Not documented yet. */
 class Task {
   /** Time (in seconds since the epoch) at which the task was enqueued. */
   core.String enqueueTimestamp;
@@ -690,7 +690,6 @@ class TaskQueueStats {
 }
 
 
-/** Not documented yet. */
 class TaskQueue {
   /** ACLs that are applicable to this TaskQueue object. */
   TaskQueueAcl acl;
@@ -753,7 +752,6 @@ class TaskQueue {
 }
 
 
-/** Not documented yet. */
 class Tasks {
   /** The actual list of tasks returned as a result of the lease operation. */
   core.List<Task> items;
@@ -786,7 +784,6 @@ class Tasks {
 }
 
 
-/** Not documented yet. */
 class Tasks2 {
   /** The actual list of tasks currently active in the TaskQueue. */
   core.List<Task> items;
@@ -817,5 +814,3 @@ class Tasks2 {
     return _json;
   }
 }
-
-

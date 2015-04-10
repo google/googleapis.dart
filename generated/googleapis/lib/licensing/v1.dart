@@ -1,35 +1,40 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.licensing.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client licensing/v1';
 
 /** Licensing API to view and manage license for your domain. */
 class LicensingApi {
+  /** View and manage Google Apps licenses for your domain */
+  static const AppsLicensingScope = "https://www.googleapis.com/auth/apps.licensing";
 
-  final common_internal.ApiRequester _requester;
+
+  final commons.ApiRequester _requester;
 
   LicenseAssignmentsResourceApi get licenseAssignments => new LicenseAssignmentsResourceApi(_requester);
 
   LicensingApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "apps/licensing/v1/product/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class LicenseAssignmentsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  LicenseAssignmentsResourceApi(common_internal.ApiRequester client) : 
+  LicenseAssignmentsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -43,7 +48,7 @@ class LicenseAssignmentsResourceApi {
    *
    * [userId] - email id or unique Id of the user
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -54,7 +59,7 @@ class LicenseAssignmentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (productId == null) {
@@ -69,7 +74,7 @@ class LicenseAssignmentsResourceApi {
 
     _downloadOptions = null;
 
-    _url = common_internal.Escaper.ecapeVariable('$productId') + '/sku/' + common_internal.Escaper.ecapeVariable('$skuId') + '/user/' + common_internal.Escaper.ecapeVariable('$userId');
+    _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/user/' + commons.Escaper.ecapeVariable('$userId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -94,7 +99,7 @@ class LicenseAssignmentsResourceApi {
    *
    * Completes with a [LicenseAssignment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -105,7 +110,7 @@ class LicenseAssignmentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (productId == null) {
@@ -119,7 +124,7 @@ class LicenseAssignmentsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$productId') + '/sku/' + common_internal.Escaper.ecapeVariable('$skuId') + '/user/' + common_internal.Escaper.ecapeVariable('$userId');
+    _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/user/' + commons.Escaper.ecapeVariable('$userId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -144,7 +149,7 @@ class LicenseAssignmentsResourceApi {
    *
    * Completes with a [LicenseAssignment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -155,7 +160,7 @@ class LicenseAssignmentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -169,7 +174,7 @@ class LicenseAssignmentsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$productId') + '/sku/' + common_internal.Escaper.ecapeVariable('$skuId') + '/user';
+    _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/user';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -200,7 +205,7 @@ class LicenseAssignmentsResourceApi {
    *
    * Completes with a [LicenseAssignmentList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -211,7 +216,7 @@ class LicenseAssignmentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (productId == null) {
@@ -229,7 +234,7 @@ class LicenseAssignmentsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$productId') + '/users';
+    _url = commons.Escaper.ecapeVariable('$productId') + '/users';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -262,7 +267,7 @@ class LicenseAssignmentsResourceApi {
    *
    * Completes with a [LicenseAssignmentList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -273,7 +278,7 @@ class LicenseAssignmentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (productId == null) {
@@ -294,7 +299,7 @@ class LicenseAssignmentsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$productId') + '/sku/' + common_internal.Escaper.ecapeVariable('$skuId') + '/users';
+    _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/users';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -321,7 +326,7 @@ class LicenseAssignmentsResourceApi {
    *
    * Completes with a [LicenseAssignment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -332,7 +337,7 @@ class LicenseAssignmentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -349,7 +354,7 @@ class LicenseAssignmentsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$productId') + '/sku/' + common_internal.Escaper.ecapeVariable('$skuId') + '/user/' + common_internal.Escaper.ecapeVariable('$userId');
+    _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/user/' + commons.Escaper.ecapeVariable('$userId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -376,7 +381,7 @@ class LicenseAssignmentsResourceApi {
    *
    * Completes with a [LicenseAssignment].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -387,7 +392,7 @@ class LicenseAssignmentsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -404,7 +409,7 @@ class LicenseAssignmentsResourceApi {
     }
 
 
-    _url = common_internal.Escaper.ecapeVariable('$productId') + '/sku/' + common_internal.Escaper.ecapeVariable('$skuId') + '/user/' + common_internal.Escaper.ecapeVariable('$userId');
+    _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/user/' + commons.Escaper.ecapeVariable('$userId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -565,5 +570,3 @@ class LicenseAssignmentList {
     return _json;
   }
 }
-
-

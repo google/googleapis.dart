@@ -1,35 +1,42 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.groupsmigration.v1;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
+    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
+    ByteRange;
+
+const core.String USER_AGENT = 'dart-api-client groupsmigration/v1';
 
 /** Groups Migration Api. */
 class GroupsmigrationApi {
+  /** Manage messages in groups on your domain */
+  static const AppsGroupsMigrationScope = "https://www.googleapis.com/auth/apps.groups.migration";
 
-  final common_internal.ApiRequester _requester;
+
+  final commons.ApiRequester _requester;
 
   ArchiveResourceApi get archive => new ArchiveResourceApi(_requester);
 
   GroupsmigrationApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "groups/v1/groups/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class ArchiveResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  ArchiveResourceApi(common_internal.ApiRequester client) : 
+  ArchiveResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -46,18 +53,18 @@ class ArchiveResourceApi {
    *
    * Completes with a [Groups].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Groups> insert(core.String groupId, {common.UploadOptions uploadOptions : common.UploadOptions.Default, common.Media uploadMedia}) {
+  async.Future<Groups> insert(core.String groupId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (groupId == null) {
@@ -68,11 +75,11 @@ class ArchiveResourceApi {
     _uploadOptions =  uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = common_internal.Escaper.ecapeVariable('$groupId') + '/archive';
-    } else if (_uploadOptions is common.ResumableUploadOptions) {
-      _url = '/resumable/upload/groups/v1/groups/' + common_internal.Escaper.ecapeVariable('$groupId') + '/archive';
+      _url = commons.Escaper.ecapeVariable('$groupId') + '/archive';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/groups/v1/groups/' + commons.Escaper.ecapeVariable('$groupId') + '/archive';
     } else {
-      _url = '/upload/groups/v1/groups/' + common_internal.Escaper.ecapeVariable('$groupId') + '/archive';
+      _url = '/upload/groups/v1/groups/' + commons.Escaper.ecapeVariable('$groupId') + '/archive';
     }
 
 
@@ -121,5 +128,3 @@ class Groups {
     return _json;
   }
 }
-
-

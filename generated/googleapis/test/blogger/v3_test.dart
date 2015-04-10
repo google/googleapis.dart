@@ -8,13 +8,48 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
-import 'package:googleapis/common/common.dart' as common;
-import 'package:googleapis/src/common_internal.dart' as common_internal;
-import '../common/common_internal_test.dart' as common_test;
 
 import 'package:googleapis/blogger/v3.dart' as api;
 
+class HttpServerMock extends http.BaseClient {
+  core.Function _callback;
+  core.bool _expectJson;
 
+  void register(core.Function callback, core.bool expectJson) {
+    _callback = callback;
+    _expectJson = expectJson;
+  }
+
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (_expectJson) {
+      return request.finalize()
+          .transform(convert.UTF8.decoder)
+          .join('')
+          .then((core.String jsonString) {
+        if (jsonString.isEmpty) {
+          return _callback(request, null);
+        } else {
+          return _callback(request, convert.JSON.decode(jsonString));
+        }
+      });
+    } else {
+      var stream = request.finalize();
+      if (stream == null) {
+        return _callback(request, []);
+      } else {
+        return stream.toBytes().then((data) {
+          return _callback(request, data);
+        });
+      }
+    }
+  }
+}
+
+http.StreamedResponse stringResponse(
+    core.int status, core.Map headers, core.String body) {
+  var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
+  return new http.StreamedResponse(stream, status, headers: headers);
+}
 
 core.int buildCounterBlogLocale = 0;
 buildBlogLocale() {
@@ -60,14 +95,14 @@ checkBlogPages(api.BlogPages o) {
   buildCounterBlogPages--;
 }
 
-buildUnnamed1026() {
+buildUnnamed309() {
   var o = new core.List<api.Post>();
   o.add(buildPost());
   o.add(buildPost());
   return o;
 }
 
-checkUnnamed1026(core.List<api.Post> o) {
+checkUnnamed309(core.List<api.Post> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPost(o[0]);
   checkPost(o[1]);
@@ -78,7 +113,7 @@ buildBlogPosts() {
   var o = new api.BlogPosts();
   buildCounterBlogPosts++;
   if (buildCounterBlogPosts < 3) {
-    o.items = buildUnnamed1026();
+    o.items = buildUnnamed309();
     o.selfLink = "foo";
     o.totalItems = 42;
   }
@@ -89,7 +124,7 @@ buildBlogPosts() {
 checkBlogPosts(api.BlogPosts o) {
   buildCounterBlogPosts++;
   if (buildCounterBlogPosts < 3) {
-    checkUnnamed1026(o.items);
+    checkUnnamed309(o.items);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
   }
@@ -139,27 +174,27 @@ checkBlog(api.Blog o) {
   buildCounterBlog--;
 }
 
-buildUnnamed1027() {
+buildUnnamed310() {
   var o = new core.List<api.BlogUserInfo>();
   o.add(buildBlogUserInfo());
   o.add(buildBlogUserInfo());
   return o;
 }
 
-checkUnnamed1027(core.List<api.BlogUserInfo> o) {
+checkUnnamed310(core.List<api.BlogUserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBlogUserInfo(o[0]);
   checkBlogUserInfo(o[1]);
 }
 
-buildUnnamed1028() {
+buildUnnamed311() {
   var o = new core.List<api.Blog>();
   o.add(buildBlog());
   o.add(buildBlog());
   return o;
 }
 
-checkUnnamed1028(core.List<api.Blog> o) {
+checkUnnamed311(core.List<api.Blog> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBlog(o[0]);
   checkBlog(o[1]);
@@ -170,8 +205,8 @@ buildBlogList() {
   var o = new api.BlogList();
   buildCounterBlogList++;
   if (buildCounterBlogList < 3) {
-    o.blogUserInfos = buildUnnamed1027();
-    o.items = buildUnnamed1028();
+    o.blogUserInfos = buildUnnamed310();
+    o.items = buildUnnamed311();
     o.kind = "foo";
   }
   buildCounterBlogList--;
@@ -181,8 +216,8 @@ buildBlogList() {
 checkBlogList(api.BlogList o) {
   buildCounterBlogList++;
   if (buildCounterBlogList < 3) {
-    checkUnnamed1027(o.blogUserInfos);
-    checkUnnamed1028(o.items);
+    checkUnnamed310(o.blogUserInfos);
+    checkUnnamed311(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBlogList--;
@@ -380,14 +415,14 @@ checkComment(api.Comment o) {
   buildCounterComment--;
 }
 
-buildUnnamed1029() {
+buildUnnamed312() {
   var o = new core.List<api.Comment>();
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-checkUnnamed1029(core.List<api.Comment> o) {
+checkUnnamed312(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -398,7 +433,7 @@ buildCommentList() {
   var o = new api.CommentList();
   buildCounterCommentList++;
   if (buildCounterCommentList < 3) {
-    o.items = buildUnnamed1029();
+    o.items = buildUnnamed312();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.prevPageToken = "foo";
@@ -410,7 +445,7 @@ buildCommentList() {
 checkCommentList(api.CommentList o) {
   buildCounterCommentList++;
   if (buildCounterCommentList < 3) {
-    checkUnnamed1029(o.items);
+    checkUnnamed312(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
@@ -522,14 +557,14 @@ checkPage(api.Page o) {
   buildCounterPage--;
 }
 
-buildUnnamed1030() {
+buildUnnamed313() {
   var o = new core.List<api.Page>();
   o.add(buildPage());
   o.add(buildPage());
   return o;
 }
 
-checkUnnamed1030(core.List<api.Page> o) {
+checkUnnamed313(core.List<api.Page> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPage(o[0]);
   checkPage(o[1]);
@@ -540,7 +575,7 @@ buildPageList() {
   var o = new api.PageList();
   buildCounterPageList++;
   if (buildCounterPageList < 3) {
-    o.items = buildUnnamed1030();
+    o.items = buildUnnamed313();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -551,7 +586,7 @@ buildPageList() {
 checkPageList(api.PageList o) {
   buildCounterPageList++;
   if (buildCounterPageList < 3) {
-    checkUnnamed1030(o.items);
+    checkUnnamed313(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -579,14 +614,14 @@ checkPageviewsCounts(api.PageviewsCounts o) {
   buildCounterPageviewsCounts--;
 }
 
-buildUnnamed1031() {
+buildUnnamed314() {
   var o = new core.List<api.PageviewsCounts>();
   o.add(buildPageviewsCounts());
   o.add(buildPageviewsCounts());
   return o;
 }
 
-checkUnnamed1031(core.List<api.PageviewsCounts> o) {
+checkUnnamed314(core.List<api.PageviewsCounts> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPageviewsCounts(o[0]);
   checkPageviewsCounts(o[1]);
@@ -598,7 +633,7 @@ buildPageviews() {
   buildCounterPageviews++;
   if (buildCounterPageviews < 3) {
     o.blogId = "foo";
-    o.counts = buildUnnamed1031();
+    o.counts = buildUnnamed314();
     o.kind = "foo";
   }
   buildCounterPageviews--;
@@ -609,7 +644,7 @@ checkPageviews(api.Pageviews o) {
   buildCounterPageviews++;
   if (buildCounterPageviews < 3) {
     unittest.expect(o.blogId, unittest.equals('foo'));
-    checkUnnamed1031(o.counts);
+    checkUnnamed314(o.counts);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterPageviews--;
@@ -697,27 +732,27 @@ checkPostImages(api.PostImages o) {
   buildCounterPostImages--;
 }
 
-buildUnnamed1032() {
+buildUnnamed315() {
   var o = new core.List<api.PostImages>();
   o.add(buildPostImages());
   o.add(buildPostImages());
   return o;
 }
 
-checkUnnamed1032(core.List<api.PostImages> o) {
+checkUnnamed315(core.List<api.PostImages> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPostImages(o[0]);
   checkPostImages(o[1]);
 }
 
-buildUnnamed1033() {
+buildUnnamed316() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1033(core.List<core.String> o) {
+checkUnnamed316(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -748,14 +783,14 @@ checkPostLocation(api.PostLocation o) {
   buildCounterPostLocation--;
 }
 
-buildUnnamed1034() {
+buildUnnamed317() {
   var o = new core.List<api.Comment>();
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-checkUnnamed1034(core.List<api.Comment> o) {
+checkUnnamed317(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -766,7 +801,7 @@ buildPostReplies() {
   var o = new api.PostReplies();
   buildCounterPostReplies++;
   if (buildCounterPostReplies < 3) {
-    o.items = buildUnnamed1034();
+    o.items = buildUnnamed317();
     o.selfLink = "foo";
     o.totalItems = "foo";
   }
@@ -777,7 +812,7 @@ buildPostReplies() {
 checkPostReplies(api.PostReplies o) {
   buildCounterPostReplies++;
   if (buildCounterPostReplies < 3) {
-    checkUnnamed1034(o.items);
+    checkUnnamed317(o.items);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals('foo'));
   }
@@ -795,9 +830,9 @@ buildPost() {
     o.customMetaData = "foo";
     o.etag = "foo";
     o.id = "foo";
-    o.images = buildUnnamed1032();
+    o.images = buildUnnamed315();
     o.kind = "foo";
-    o.labels = buildUnnamed1033();
+    o.labels = buildUnnamed316();
     o.location = buildPostLocation();
     o.published = core.DateTime.parse("2002-02-27T14:01:02");
     o.readerComments = "foo";
@@ -822,9 +857,9 @@ checkPost(api.Post o) {
     unittest.expect(o.customMetaData, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed1032(o.images);
+    checkUnnamed315(o.images);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1033(o.labels);
+    checkUnnamed316(o.labels);
     checkPostLocation(o.location);
     unittest.expect(o.published, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.readerComments, unittest.equals('foo'));
@@ -839,14 +874,14 @@ checkPost(api.Post o) {
   buildCounterPost--;
 }
 
-buildUnnamed1035() {
+buildUnnamed318() {
   var o = new core.List<api.Post>();
   o.add(buildPost());
   o.add(buildPost());
   return o;
 }
 
-checkUnnamed1035(core.List<api.Post> o) {
+checkUnnamed318(core.List<api.Post> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPost(o[0]);
   checkPost(o[1]);
@@ -857,7 +892,7 @@ buildPostList() {
   var o = new api.PostList();
   buildCounterPostList++;
   if (buildCounterPostList < 3) {
-    o.items = buildUnnamed1035();
+    o.items = buildUnnamed318();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -868,7 +903,7 @@ buildPostList() {
 checkPostList(api.PostList o) {
   buildCounterPostList++;
   if (buildCounterPostList < 3) {
-    checkUnnamed1035(o.items);
+    checkUnnamed318(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -925,14 +960,14 @@ checkPostUserInfo(api.PostUserInfo o) {
   buildCounterPostUserInfo--;
 }
 
-buildUnnamed1036() {
+buildUnnamed319() {
   var o = new core.List<api.PostUserInfo>();
   o.add(buildPostUserInfo());
   o.add(buildPostUserInfo());
   return o;
 }
 
-checkUnnamed1036(core.List<api.PostUserInfo> o) {
+checkUnnamed319(core.List<api.PostUserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPostUserInfo(o[0]);
   checkPostUserInfo(o[1]);
@@ -943,7 +978,7 @@ buildPostUserInfosList() {
   var o = new api.PostUserInfosList();
   buildCounterPostUserInfosList++;
   if (buildCounterPostUserInfosList < 3) {
-    o.items = buildUnnamed1036();
+    o.items = buildUnnamed319();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -954,7 +989,7 @@ buildPostUserInfosList() {
 checkPostUserInfosList(api.PostUserInfosList o) {
   buildCounterPostUserInfosList++;
   if (buildCounterPostUserInfosList < 3) {
-    checkUnnamed1036(o.items);
+    checkUnnamed319(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -1038,105 +1073,105 @@ checkUser(api.User o) {
   buildCounterUser--;
 }
 
-buildUnnamed1037() {
+buildUnnamed320() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1037(core.List<core.String> o) {
+checkUnnamed320(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1038() {
+buildUnnamed321() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1038(core.List<core.String> o) {
+checkUnnamed321(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1039() {
+buildUnnamed322() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1039(core.List<core.String> o) {
+checkUnnamed322(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1040() {
+buildUnnamed323() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1040(core.List<core.String> o) {
+checkUnnamed323(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1041() {
+buildUnnamed324() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1041(core.List<core.String> o) {
+checkUnnamed324(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1042() {
+buildUnnamed325() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1042(core.List<core.String> o) {
+checkUnnamed325(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1043() {
+buildUnnamed326() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1043(core.List<core.String> o) {
+checkUnnamed326(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1044() {
+buildUnnamed327() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1044(core.List<core.String> o) {
+checkUnnamed327(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1462,7 +1497,7 @@ main() {
   unittest.group("resource-BlogUserInfosResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BlogUserInfosResourceApi res = new api.BloggerApi(mock).blogUserInfos;
       var arg_userId = "foo";
       var arg_blogId = "foo";
@@ -1512,7 +1547,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBlogUserInfo());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_userId, arg_blogId, maxPosts: arg_maxPosts).then(unittest.expectAsync(((api.BlogUserInfo response) {
         checkBlogUserInfo(response);
@@ -1525,7 +1560,7 @@ main() {
   unittest.group("resource-BlogsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BlogsResourceApi res = new api.BloggerApi(mock).blogs;
       var arg_blogId = "foo";
       var arg_maxPosts = 42;
@@ -1569,7 +1604,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBlog());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_blogId, maxPosts: arg_maxPosts, view: arg_view).then(unittest.expectAsync(((api.Blog response) {
         checkBlog(response);
@@ -1578,7 +1613,7 @@ main() {
 
     unittest.test("method--getByUrl", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BlogsResourceApi res = new api.BloggerApi(mock).blogs;
       var arg_url = "foo";
       var arg_view = "foo";
@@ -1618,7 +1653,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBlog());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.getByUrl(arg_url, view: arg_view).then(unittest.expectAsync(((api.Blog response) {
         checkBlog(response);
@@ -1627,12 +1662,12 @@ main() {
 
     unittest.test("method--listByUser", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.BlogsResourceApi res = new api.BloggerApi(mock).blogs;
       var arg_userId = "foo";
       var arg_fetchUserInfo = true;
-      var arg_role = buildUnnamed1037();
-      var arg_status = buildUnnamed1038();
+      var arg_role = buildUnnamed320();
+      var arg_status = buildUnnamed321();
       var arg_view = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1679,7 +1714,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBlogList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listByUser(arg_userId, fetchUserInfo: arg_fetchUserInfo, role: arg_role, status: arg_status, view: arg_view).then(unittest.expectAsync(((api.BlogList response) {
         checkBlogList(response);
@@ -1692,7 +1727,7 @@ main() {
   unittest.group("resource-CommentsResourceApi", () {
     unittest.test("method--approve", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.BloggerApi(mock).comments;
       var arg_blogId = "foo";
       var arg_postId = "foo";
@@ -1752,7 +1787,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildComment());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.approve(arg_blogId, arg_postId, arg_commentId).then(unittest.expectAsync(((api.Comment response) {
         checkComment(response);
@@ -1761,7 +1796,7 @@ main() {
 
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.BloggerApi(mock).comments;
       var arg_blogId = "foo";
       var arg_postId = "foo";
@@ -1817,14 +1852,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_blogId, arg_postId, arg_commentId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.BloggerApi(mock).comments;
       var arg_blogId = "foo";
       var arg_postId = "foo";
@@ -1882,7 +1917,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildComment());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_blogId, arg_postId, arg_commentId, view: arg_view).then(unittest.expectAsync(((api.Comment response) {
         checkComment(response);
@@ -1891,7 +1926,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.BloggerApi(mock).comments;
       var arg_blogId = "foo";
       var arg_postId = "foo";
@@ -1900,7 +1935,7 @@ main() {
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
       var arg_startDate = core.DateTime.parse("2002-02-27T14:01:02");
-      var arg_status = buildUnnamed1039();
+      var arg_status = buildUnnamed322();
       var arg_view = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1957,7 +1992,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCommentList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_blogId, arg_postId, endDate: arg_endDate, fetchBodies: arg_fetchBodies, maxResults: arg_maxResults, pageToken: arg_pageToken, startDate: arg_startDate, status: arg_status, view: arg_view).then(unittest.expectAsync(((api.CommentList response) {
         checkCommentList(response);
@@ -1966,7 +2001,7 @@ main() {
 
     unittest.test("method--listByBlog", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.BloggerApi(mock).comments;
       var arg_blogId = "foo";
       var arg_endDate = core.DateTime.parse("2002-02-27T14:01:02");
@@ -1974,7 +2009,7 @@ main() {
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
       var arg_startDate = core.DateTime.parse("2002-02-27T14:01:02");
-      var arg_status = buildUnnamed1040();
+      var arg_status = buildUnnamed323();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2022,7 +2057,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCommentList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.listByBlog(arg_blogId, endDate: arg_endDate, fetchBodies: arg_fetchBodies, maxResults: arg_maxResults, pageToken: arg_pageToken, startDate: arg_startDate, status: arg_status).then(unittest.expectAsync(((api.CommentList response) {
         checkCommentList(response);
@@ -2031,7 +2066,7 @@ main() {
 
     unittest.test("method--markAsSpam", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.BloggerApi(mock).comments;
       var arg_blogId = "foo";
       var arg_postId = "foo";
@@ -2091,7 +2126,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildComment());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.markAsSpam(arg_blogId, arg_postId, arg_commentId).then(unittest.expectAsync(((api.Comment response) {
         checkComment(response);
@@ -2100,7 +2135,7 @@ main() {
 
     unittest.test("method--removeContent", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.BloggerApi(mock).comments;
       var arg_blogId = "foo";
       var arg_postId = "foo";
@@ -2160,7 +2195,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildComment());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.removeContent(arg_blogId, arg_postId, arg_commentId).then(unittest.expectAsync(((api.Comment response) {
         checkComment(response);
@@ -2173,10 +2208,10 @@ main() {
   unittest.group("resource-PageViewsResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PageViewsResourceApi res = new api.BloggerApi(mock).pageViews;
       var arg_blogId = "foo";
-      var arg_range = buildUnnamed1041();
+      var arg_range = buildUnnamed324();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2219,7 +2254,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPageviews());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_blogId, range: arg_range).then(unittest.expectAsync(((api.Pageviews response) {
         checkPageviews(response);
@@ -2232,7 +2267,7 @@ main() {
   unittest.group("resource-PagesResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PagesResourceApi res = new api.BloggerApi(mock).pages;
       var arg_blogId = "foo";
       var arg_pageId = "foo";
@@ -2280,14 +2315,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_blogId, arg_pageId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PagesResourceApi res = new api.BloggerApi(mock).pages;
       var arg_blogId = "foo";
       var arg_pageId = "foo";
@@ -2337,7 +2372,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPage());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_blogId, arg_pageId, view: arg_view).then(unittest.expectAsync(((api.Page response) {
         checkPage(response);
@@ -2346,7 +2381,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PagesResourceApi res = new api.BloggerApi(mock).pages;
       var arg_request = buildPage();
       var arg_blogId = "foo";
@@ -2396,7 +2431,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPage());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_blogId, isDraft: arg_isDraft).then(unittest.expectAsync(((api.Page response) {
         checkPage(response);
@@ -2405,13 +2440,13 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PagesResourceApi res = new api.BloggerApi(mock).pages;
       var arg_blogId = "foo";
       var arg_fetchBodies = true;
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      var arg_status = buildUnnamed1042();
+      var arg_status = buildUnnamed325();
       var arg_view = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2459,7 +2494,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPageList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_blogId, fetchBodies: arg_fetchBodies, maxResults: arg_maxResults, pageToken: arg_pageToken, status: arg_status, view: arg_view).then(unittest.expectAsync(((api.PageList response) {
         checkPageList(response);
@@ -2468,7 +2503,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PagesResourceApi res = new api.BloggerApi(mock).pages;
       var arg_request = buildPage();
       var arg_blogId = "foo";
@@ -2524,7 +2559,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPage());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_blogId, arg_pageId, publish_1: arg_publish_1, revert_1: arg_revert_1).then(unittest.expectAsync(((api.Page response) {
         checkPage(response);
@@ -2533,7 +2568,7 @@ main() {
 
     unittest.test("method--publish", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PagesResourceApi res = new api.BloggerApi(mock).pages;
       var arg_blogId = "foo";
       var arg_pageId = "foo";
@@ -2585,7 +2620,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPage());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.publish(arg_blogId, arg_pageId).then(unittest.expectAsync(((api.Page response) {
         checkPage(response);
@@ -2594,7 +2629,7 @@ main() {
 
     unittest.test("method--revert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PagesResourceApi res = new api.BloggerApi(mock).pages;
       var arg_blogId = "foo";
       var arg_pageId = "foo";
@@ -2646,7 +2681,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPage());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.revert(arg_blogId, arg_pageId).then(unittest.expectAsync(((api.Page response) {
         checkPage(response);
@@ -2655,7 +2690,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PagesResourceApi res = new api.BloggerApi(mock).pages;
       var arg_request = buildPage();
       var arg_blogId = "foo";
@@ -2711,7 +2746,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPage());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_blogId, arg_pageId, publish_1: arg_publish_1, revert_1: arg_revert_1).then(unittest.expectAsync(((api.Page response) {
         checkPage(response);
@@ -2724,7 +2759,7 @@ main() {
   unittest.group("resource-PostUserInfosResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PostUserInfosResourceApi res = new api.BloggerApi(mock).postUserInfos;
       var arg_userId = "foo";
       var arg_blogId = "foo";
@@ -2782,7 +2817,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPostUserInfo());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_userId, arg_blogId, arg_postId, maxComments: arg_maxComments).then(unittest.expectAsync(((api.PostUserInfo response) {
         checkPostUserInfo(response);
@@ -2791,7 +2826,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PostUserInfosResourceApi res = new api.BloggerApi(mock).postUserInfos;
       var arg_userId = "foo";
       var arg_blogId = "foo";
@@ -2802,7 +2837,7 @@ main() {
       var arg_orderBy = "foo";
       var arg_pageToken = "foo";
       var arg_startDate = core.DateTime.parse("2002-02-27T14:01:02");
-      var arg_status = buildUnnamed1043();
+      var arg_status = buildUnnamed326();
       var arg_view = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2861,7 +2896,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPostUserInfosList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_userId, arg_blogId, endDate: arg_endDate, fetchBodies: arg_fetchBodies, labels: arg_labels, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken, startDate: arg_startDate, status: arg_status, view: arg_view).then(unittest.expectAsync(((api.PostUserInfosList response) {
         checkPostUserInfosList(response);
@@ -2874,7 +2909,7 @@ main() {
   unittest.group("resource-PostsResourceApi", () {
     unittest.test("method--delete", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PostsResourceApi res = new api.BloggerApi(mock).posts;
       var arg_blogId = "foo";
       var arg_postId = "foo";
@@ -2922,14 +2957,14 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.delete(arg_blogId, arg_postId).then(unittest.expectAsync((_) {}));
     });
 
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PostsResourceApi res = new api.BloggerApi(mock).posts;
       var arg_blogId = "foo";
       var arg_postId = "foo";
@@ -2985,7 +3020,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPost());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_blogId, arg_postId, fetchBody: arg_fetchBody, fetchImages: arg_fetchImages, maxComments: arg_maxComments, view: arg_view).then(unittest.expectAsync(((api.Post response) {
         checkPost(response);
@@ -2994,7 +3029,7 @@ main() {
 
     unittest.test("method--getByPath", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PostsResourceApi res = new api.BloggerApi(mock).posts;
       var arg_blogId = "foo";
       var arg_path = "foo";
@@ -3044,7 +3079,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPost());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.getByPath(arg_blogId, arg_path, maxComments: arg_maxComments, view: arg_view).then(unittest.expectAsync(((api.Post response) {
         checkPost(response);
@@ -3053,7 +3088,7 @@ main() {
 
     unittest.test("method--insert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PostsResourceApi res = new api.BloggerApi(mock).posts;
       var arg_request = buildPost();
       var arg_blogId = "foo";
@@ -3107,7 +3142,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPost());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.insert(arg_request, arg_blogId, fetchBody: arg_fetchBody, fetchImages: arg_fetchImages, isDraft: arg_isDraft).then(unittest.expectAsync(((api.Post response) {
         checkPost(response);
@@ -3116,7 +3151,7 @@ main() {
 
     unittest.test("method--list", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PostsResourceApi res = new api.BloggerApi(mock).posts;
       var arg_blogId = "foo";
       var arg_endDate = core.DateTime.parse("2002-02-27T14:01:02");
@@ -3127,7 +3162,7 @@ main() {
       var arg_orderBy = "foo";
       var arg_pageToken = "foo";
       var arg_startDate = core.DateTime.parse("2002-02-27T14:01:02");
-      var arg_status = buildUnnamed1044();
+      var arg_status = buildUnnamed327();
       var arg_view = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3180,7 +3215,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPostList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list(arg_blogId, endDate: arg_endDate, fetchBodies: arg_fetchBodies, fetchImages: arg_fetchImages, labels: arg_labels, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken, startDate: arg_startDate, status: arg_status, view: arg_view).then(unittest.expectAsync(((api.PostList response) {
         checkPostList(response);
@@ -3189,7 +3224,7 @@ main() {
 
     unittest.test("method--patch", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PostsResourceApi res = new api.BloggerApi(mock).posts;
       var arg_request = buildPost();
       var arg_blogId = "foo";
@@ -3251,7 +3286,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPost());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.patch(arg_request, arg_blogId, arg_postId, fetchBody: arg_fetchBody, fetchImages: arg_fetchImages, maxComments: arg_maxComments, publish_1: arg_publish_1, revert_1: arg_revert_1).then(unittest.expectAsync(((api.Post response) {
         checkPost(response);
@@ -3260,7 +3295,7 @@ main() {
 
     unittest.test("method--publish", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PostsResourceApi res = new api.BloggerApi(mock).posts;
       var arg_blogId = "foo";
       var arg_postId = "foo";
@@ -3314,7 +3349,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPost());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.publish(arg_blogId, arg_postId, publishDate: arg_publishDate).then(unittest.expectAsync(((api.Post response) {
         checkPost(response);
@@ -3323,7 +3358,7 @@ main() {
 
     unittest.test("method--revert", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PostsResourceApi res = new api.BloggerApi(mock).posts;
       var arg_blogId = "foo";
       var arg_postId = "foo";
@@ -3375,7 +3410,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPost());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.revert(arg_blogId, arg_postId).then(unittest.expectAsync(((api.Post response) {
         checkPost(response);
@@ -3384,7 +3419,7 @@ main() {
 
     unittest.test("method--search", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PostsResourceApi res = new api.BloggerApi(mock).posts;
       var arg_blogId = "foo";
       var arg_q = "foo";
@@ -3434,7 +3469,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPostList());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.search(arg_blogId, arg_q, fetchBodies: arg_fetchBodies, orderBy: arg_orderBy).then(unittest.expectAsync(((api.PostList response) {
         checkPostList(response);
@@ -3443,7 +3478,7 @@ main() {
 
     unittest.test("method--update", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.PostsResourceApi res = new api.BloggerApi(mock).posts;
       var arg_request = buildPost();
       var arg_blogId = "foo";
@@ -3505,7 +3540,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPost());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.update(arg_request, arg_blogId, arg_postId, fetchBody: arg_fetchBody, fetchImages: arg_fetchImages, maxComments: arg_maxComments, publish_1: arg_publish_1, revert_1: arg_revert_1).then(unittest.expectAsync(((api.Post response) {
         checkPost(response);
@@ -3518,7 +3553,7 @@ main() {
   unittest.group("resource-UsersResourceApi", () {
     unittest.test("method--get", () {
 
-      var mock = new common_test.HttpServerMock();
+      var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.BloggerApi(mock).users;
       var arg_userId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -3558,7 +3593,7 @@ main() {
           "content-type" : "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUser());
-        return new async.Future.value(common_test.stringResponse(200, h, resp));
+        return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get(arg_userId).then(unittest.expectAsync(((api.User response) {
         checkUser(response);

@@ -15,7 +15,7 @@
     "description": "Manage product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content/v2/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/BBTSKEMkpDLJMsnU0GdIeG1Mhr8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Jg5IFKTqCcIBJROG8QNmsXQ1iso\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -74,6 +74,18 @@
     "resources": {
         "accounts": {
             "methods": {
+                "authinfo": {
+                    "description": "Returns information about the authenticated user.",
+                    "httpMethod": "GET",
+                    "id": "content.accounts.authinfo",
+                    "path": "accounts/authinfo",
+                    "response": {
+                        "$ref": "AccountsAuthInfoResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
                 "custombatch": {
                     "description": "Retrieves, inserts, updates, and deletes multiple Merchant Center (sub-)accounts in a single request.",
                     "httpMethod": "POST",
@@ -1269,7 +1281,7 @@
             }
         }
     },
-    "revision": "20150225",
+    "revision": "20150317",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1344,6 +1356,22 @@
                 },
                 "status": {
                     "description": "Status of the link between this Merchant Center account and the AdWords account.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountIdentifier": {
+            "id": "AccountIdentifier",
+            "properties": {
+                "aggregatorId": {
+                    "description": "The aggregator ID, set for aggregators and subaccounts (in that case, it represents the aggregator of the subaccount).",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "merchantId": {
+                    "description": "The merchant account ID, set for individual accounts and subaccounts.",
+                    "format": "uint64",
                     "type": "string"
                 }
             },
@@ -1866,6 +1894,24 @@
                 },
                 "emailAddress": {
                     "description": "User's email address.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountsAuthInfoResponse": {
+            "id": "AccountsAuthInfoResponse",
+            "properties": {
+                "accountIdentifiers": {
+                    "description": "The account identifiers corresponding to the authenticated user.\n- For an individual account: only the merchant ID is defined\n- For an aggregator: only the aggregator ID is defined\n- For a subaccount of an MCA: both the merchant ID and the aggregator ID are defined.",
+                    "items": {
+                        "$ref": "AccountIdentifier"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "content#accountsAuthInfoResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"content#accountsAuthInfoResponse\".",
                     "type": "string"
                 }
             },
@@ -2982,6 +3028,13 @@
                     "description": "Target age group of the item.",
                     "type": "string"
                 },
+                "aspects": {
+                    "description": "Specifies the intended aspects for the product.",
+                    "items": {
+                        "$ref": "ProductAspect"
+                    },
+                    "type": "array"
+                },
                 "availability": {
                     "description": "Availability status of the item.",
                     "type": "string"
@@ -3279,6 +3332,24 @@
                         "$ref": "Error"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ProductAspect": {
+            "id": "ProductAspect",
+            "properties": {
+                "aspectName": {
+                    "description": "The name of the aspect.",
+                    "type": "string"
+                },
+                "destinationName": {
+                    "description": "The name of the destination. Leave out to apply to all destinations.",
+                    "type": "string"
+                },
+                "intention": {
+                    "description": "Whether the aspect is required, excluded or should be validated.",
+                    "type": "string"
                 }
             },
             "type": "object"

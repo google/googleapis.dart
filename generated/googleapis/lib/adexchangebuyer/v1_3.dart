@@ -1,17 +1,20 @@
+// This is a generated file (see the discoveryapis_generator project).
+
 library googleapis.adexchangebuyer.v1_3;
 
-import "dart:core" as core;
-import "dart:collection" as collection;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:core' as core;
+import 'dart:collection' as collection;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
 
-import "package:crypto/crypto.dart" as crypto;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import '../src/common_internal.dart' as common_internal;
-import '../common/common.dart' as common;
 
-export '../common/common.dart' show ApiRequestError;
-export '../common/common.dart' show DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client adexchangebuyer/v1.3';
 
 /**
  * Accesses your bidding-account information, submits creatives for validation,
@@ -22,7 +25,7 @@ class AdexchangebuyerApi {
   static const AdexchangeBuyerScope = "https://www.googleapis.com/auth/adexchange.buyer";
 
 
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
   BillingInfoResourceApi get billingInfo => new BillingInfoResourceApi(_requester);
@@ -33,15 +36,14 @@ class AdexchangebuyerApi {
   PretargetingConfigResourceApi get pretargetingConfig => new PretargetingConfigResourceApi(_requester);
 
   AdexchangebuyerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "adexchangebuyer/v1.3/"}) :
-      _requester = new common_internal.ApiRequester(client, rootUrl, servicePath);
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 
-/** Not documented yet. */
 class AccountsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  AccountsResourceApi(common_internal.ApiRequester client) : 
+  AccountsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -53,7 +55,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Account].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -64,7 +66,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -72,7 +74,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -91,7 +93,7 @@ class AccountsResourceApi {
    *
    * Completes with a [AccountsList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -102,7 +104,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -130,7 +132,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Account].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -141,7 +143,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -152,7 +154,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -175,7 +177,7 @@ class AccountsResourceApi {
    *
    * Completes with a [Account].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -186,7 +188,7 @@ class AccountsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -197,7 +199,7 @@ class AccountsResourceApi {
     }
 
 
-    _url = 'accounts/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -212,11 +214,10 @@ class AccountsResourceApi {
 }
 
 
-/** Not documented yet. */
 class BillingInfoResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  BillingInfoResourceApi(common_internal.ApiRequester client) : 
+  BillingInfoResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -228,7 +229,7 @@ class BillingInfoResourceApi {
    *
    * Completes with a [BillingInfo].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -239,7 +240,7 @@ class BillingInfoResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -247,7 +248,7 @@ class BillingInfoResourceApi {
     }
 
 
-    _url = 'billinginfo/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = 'billinginfo/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -267,7 +268,7 @@ class BillingInfoResourceApi {
    *
    * Completes with a [BillingInfoList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -278,7 +279,7 @@ class BillingInfoResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -298,11 +299,10 @@ class BillingInfoResourceApi {
 }
 
 
-/** Not documented yet. */
 class BudgetResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  BudgetResourceApi(common_internal.ApiRequester client) : 
+  BudgetResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -317,7 +317,7 @@ class BudgetResourceApi {
    *
    * Completes with a [Budget].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -328,7 +328,7 @@ class BudgetResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -339,7 +339,7 @@ class BudgetResourceApi {
     }
 
 
-    _url = 'billinginfo/' + common_internal.Escaper.ecapeVariable('$accountId') + '/' + common_internal.Escaper.ecapeVariable('$billingId');
+    _url = 'billinginfo/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$billingId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -366,7 +366,7 @@ class BudgetResourceApi {
    *
    * Completes with a [Budget].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -377,7 +377,7 @@ class BudgetResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -391,7 +391,7 @@ class BudgetResourceApi {
     }
 
 
-    _url = 'billinginfo/' + common_internal.Escaper.ecapeVariable('$accountId') + '/' + common_internal.Escaper.ecapeVariable('$billingId');
+    _url = 'billinginfo/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$billingId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -417,7 +417,7 @@ class BudgetResourceApi {
    *
    * Completes with a [Budget].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -428,7 +428,7 @@ class BudgetResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -442,7 +442,7 @@ class BudgetResourceApi {
     }
 
 
-    _url = 'billinginfo/' + common_internal.Escaper.ecapeVariable('$accountId') + '/' + common_internal.Escaper.ecapeVariable('$billingId');
+    _url = 'billinginfo/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$billingId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -457,11 +457,10 @@ class BudgetResourceApi {
 }
 
 
-/** Not documented yet. */
 class CreativesResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  CreativesResourceApi(common_internal.ApiRequester client) : 
+  CreativesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -476,7 +475,7 @@ class CreativesResourceApi {
    *
    * Completes with a [Creative].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -487,7 +486,7 @@ class CreativesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -498,7 +497,7 @@ class CreativesResourceApi {
     }
 
 
-    _url = 'creatives/' + common_internal.Escaper.ecapeVariable('$accountId') + '/' + common_internal.Escaper.ecapeVariable('$buyerCreativeId');
+    _url = 'creatives/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$buyerCreativeId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -519,7 +518,7 @@ class CreativesResourceApi {
    *
    * Completes with a [Creative].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -530,7 +529,7 @@ class CreativesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -579,7 +578,7 @@ class CreativesResourceApi {
    *
    * Completes with a [CreativesList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -590,7 +589,7 @@ class CreativesResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId != null) {
@@ -625,11 +624,10 @@ class CreativesResourceApi {
 }
 
 
-/** Not documented yet. */
 class DirectDealsResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  DirectDealsResourceApi(common_internal.ApiRequester client) : 
+  DirectDealsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -641,7 +639,7 @@ class DirectDealsResourceApi {
    *
    * Completes with a [DirectDeal].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -652,7 +650,7 @@ class DirectDealsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (id == null) {
@@ -660,7 +658,7 @@ class DirectDealsResourceApi {
     }
 
 
-    _url = 'directdeals/' + common_internal.Escaper.ecapeVariable('$id');
+    _url = 'directdeals/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -679,7 +677,7 @@ class DirectDealsResourceApi {
    *
    * Completes with a [DirectDealsList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -690,7 +688,7 @@ class DirectDealsResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
 
@@ -710,11 +708,10 @@ class DirectDealsResourceApi {
 }
 
 
-/** Not documented yet. */
 class PerformanceReportResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PerformanceReportResourceApi(common_internal.ApiRequester client) : 
+  PerformanceReportResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -740,7 +737,7 @@ class PerformanceReportResourceApi {
    *
    * Completes with a [PerformanceReportList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -751,7 +748,7 @@ class PerformanceReportResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -789,11 +786,10 @@ class PerformanceReportResourceApi {
 }
 
 
-/** Not documented yet. */
 class PretargetingConfigResourceApi {
-  final common_internal.ApiRequester _requester;
+  final commons.ApiRequester _requester;
 
-  PretargetingConfigResourceApi(common_internal.ApiRequester client) : 
+  PretargetingConfigResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -805,7 +801,7 @@ class PretargetingConfigResourceApi {
    *
    * [configId] - The specific id of the configuration to delete.
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -816,7 +812,7 @@ class PretargetingConfigResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -828,7 +824,7 @@ class PretargetingConfigResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'pretargetingconfigs/' + common_internal.Escaper.ecapeVariable('$accountId') + '/' + common_internal.Escaper.ecapeVariable('$configId');
+    _url = 'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$configId');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -851,7 +847,7 @@ class PretargetingConfigResourceApi {
    *
    * Completes with a [PretargetingConfig].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -862,7 +858,7 @@ class PretargetingConfigResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -873,7 +869,7 @@ class PretargetingConfigResourceApi {
     }
 
 
-    _url = 'pretargetingconfigs/' + common_internal.Escaper.ecapeVariable('$accountId') + '/' + common_internal.Escaper.ecapeVariable('$configId');
+    _url = 'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$configId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -896,7 +892,7 @@ class PretargetingConfigResourceApi {
    *
    * Completes with a [PretargetingConfig].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -907,7 +903,7 @@ class PretargetingConfigResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -918,7 +914,7 @@ class PretargetingConfigResourceApi {
     }
 
 
-    _url = 'pretargetingconfigs/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = 'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -939,7 +935,7 @@ class PretargetingConfigResourceApi {
    *
    * Completes with a [PretargetingConfigList].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -950,7 +946,7 @@ class PretargetingConfigResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (accountId == null) {
@@ -958,7 +954,7 @@ class PretargetingConfigResourceApi {
     }
 
 
-    _url = 'pretargetingconfigs/' + common_internal.Escaper.ecapeVariable('$accountId');
+    _url = 'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -984,7 +980,7 @@ class PretargetingConfigResourceApi {
    *
    * Completes with a [PretargetingConfig].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -995,7 +991,7 @@ class PretargetingConfigResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1009,7 +1005,7 @@ class PretargetingConfigResourceApi {
     }
 
 
-    _url = 'pretargetingconfigs/' + common_internal.Escaper.ecapeVariable('$accountId') + '/' + common_internal.Escaper.ecapeVariable('$configId');
+    _url = 'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$configId');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1034,7 +1030,7 @@ class PretargetingConfigResourceApi {
    *
    * Completes with a [PretargetingConfig].
    *
-   * Completes with a [common.ApiRequestError] if the API endpoint returned an
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
@@ -1045,7 +1041,7 @@ class PretargetingConfigResourceApi {
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
-    var _downloadOptions = common.DownloadOptions.Metadata;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
     if (request != null) {
@@ -1059,7 +1055,7 @@ class PretargetingConfigResourceApi {
     }
 
 
-    _url = 'pretargetingconfigs/' + common_internal.Escaper.ecapeVariable('$accountId') + '/' + common_internal.Escaper.ecapeVariable('$configId');
+    _url = 'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$configId');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -1075,7 +1071,6 @@ class PretargetingConfigResourceApi {
 
 
 
-/** Not documented yet. */
 class AccountBidderLocation {
   /** The maximum queries per second the Ad Exchange will send. */
   core.int maximumQps;
@@ -1427,7 +1422,6 @@ class Budget {
 }
 
 
-/** Not documented yet. */
 class CreativeCorrections {
   /** Additional details about the correction. */
   core.List<core.String> details;
@@ -1460,7 +1454,6 @@ class CreativeCorrections {
 }
 
 
-/** Not documented yet. */
 class CreativeDisapprovalReasons {
   /** Additional details about the reason for disapproval. */
   core.List<core.String> details;
@@ -1493,7 +1486,6 @@ class CreativeDisapprovalReasons {
 }
 
 
-/** Not documented yet. */
 class CreativeFilteringReasonsReasons {
   /**
    * The number of times the creative was filtered for the status. The count is
@@ -2255,7 +2247,6 @@ class PerformanceReportList {
 }
 
 
-/** Not documented yet. */
 class PretargetingConfigDimensions {
   /** Height in pixels. */
   core.String height;
@@ -2288,7 +2279,6 @@ class PretargetingConfigDimensions {
 }
 
 
-/** Not documented yet. */
 class PretargetingConfigExcludedPlacements {
   /**
    * The value of the placement. Interpretation depends on the placement type,
@@ -2325,7 +2315,6 @@ class PretargetingConfigExcludedPlacements {
 }
 
 
-/** Not documented yet. */
 class PretargetingConfigPlacements {
   /**
    * The value of the placement. Interpretation depends on the placement type,
@@ -2362,7 +2351,6 @@ class PretargetingConfigPlacements {
 }
 
 
-/** Not documented yet. */
 class PretargetingConfig {
   /**
    * The id for billing purposes, provided for reference. Leave this field blank
@@ -2623,7 +2611,6 @@ class PretargetingConfig {
 }
 
 
-/** Not documented yet. */
 class PretargetingConfigList {
   /** A list of pretargeting configs */
   core.List<PretargetingConfig> items;
@@ -2654,5 +2641,3 @@ class PretargetingConfigList {
     return _json;
   }
 }
-
-
