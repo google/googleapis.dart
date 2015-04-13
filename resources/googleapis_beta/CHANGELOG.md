@@ -1,3 +1,9 @@
+## 0.12.0
+
+* [api] container:v1beta1: new resources
+* [api-breaking] genomics:v1beta2: removed resources
+* [api-breaking] sqladmin:v1beta3: schema changes [wire compatible]
+
 ## 0.11.0
 
 * [apis] container:v1beta1: schema changes

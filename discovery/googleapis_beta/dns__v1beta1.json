@@ -20,7 +20,7 @@
     "description": "The Google Cloud DNS API provides services for configuring and serving authoritative DNS records.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-dns",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/wU8NjG2rANeT6LROBN3mCaSHZ_8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/oh0OKkMoXiShh-fNWjMyGYxRkos\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -428,7 +428,7 @@
             }
         }
     },
-    "revision": "20150114",
+    "revision": "20150218",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Change": {
@@ -463,7 +463,7 @@
                     "type": "string"
                 },
                 "status": {
-                    "description": "Status of the operation. Can be one of the following: \"PENDING\" or \"DONE\" (output only).",
+                    "description": "Status of the operation (output only).",
                     "type": "string"
                 }
             },
@@ -639,7 +639,7 @@
                     "type": "string"
                 },
                 "rrdatas": {
-                    "description": "As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)",
+                    "description": "As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).",
                     "items": {
                         "type": "string"
                     },
@@ -651,7 +651,7 @@
                     "type": "integer"
                 },
                 "type": {
-                    "description": "One of A, AAAA, SOA, MX, NS, TXT",
+                    "description": "The identifier of a supported record type, for example, A, AAAA, MX, TXT, and so on.",
                     "type": "string"
                 }
             },

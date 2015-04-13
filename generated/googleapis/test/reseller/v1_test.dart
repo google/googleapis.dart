@@ -321,14 +321,14 @@ checkSubscription(api.Subscription o) {
   buildCounterSubscription--;
 }
 
-buildUnnamed1326() {
+buildUnnamed1310() {
   var o = new core.List<api.Subscription>();
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-checkUnnamed1326(core.List<api.Subscription> o) {
+checkUnnamed1310(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -341,7 +341,7 @@ buildSubscriptions() {
   if (buildCounterSubscriptions < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.subscriptions = buildUnnamed1326();
+    o.subscriptions = buildUnnamed1310();
   }
   buildCounterSubscriptions--;
   return o;
@@ -352,7 +352,7 @@ checkSubscriptions(api.Subscriptions o) {
   if (buildCounterSubscriptions < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1326(o.subscriptions);
+    checkUnnamed1310(o.subscriptions);
   }
   buildCounterSubscriptions--;
 }

@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/zTbb6II-FHDYAyPsMzEo2tOkubw\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/LngzzVwqv1YJhBSD4vnWK91Oc64\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -699,7 +699,7 @@
             }
         }
     },
-    "revision": "20150323",
+    "revision": "20150326",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -975,7 +975,7 @@
                     "type": "array"
                 },
                 "filteringReasons": {
-                    "description": "The filtering reasons for the creative. If this feature is not enabled, please ask your technical account manager. Read-only. This field should not be set in requests.",
+                    "description": "The filtering reasons for the creative. Read-only. This field should not be set in requests.",
                     "properties": {
                         "date": {
                             "description": "The date in ISO 8601 format for the data. The data is collected from 00:00:00 to 23:59:59 in PST.",

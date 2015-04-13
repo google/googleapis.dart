@@ -119,6 +119,52 @@ class UsersDataSourcesResourceApi {
   }
 
   /**
+   * Delete the data source if there are no datapoints associated with it
+   *
+   * Request parameters:
+   *
+   * [userId] - Retrieve a data source for the person identified. Use me to
+   * indicate the authenticated user. Only me is supported at this time.
+   *
+   * [dataSourceId] - The data stream ID of the data source to delete.
+   *
+   * Completes with a [DataSource].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<DataSource> delete(core.String userId, core.String dataSourceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (dataSourceId == null) {
+      throw new core.ArgumentError("Parameter dataSourceId is required.");
+    }
+
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DataSource.fromJson(data));
+  }
+
+  /**
    * Returns a data source identified by a data stream ID.
    *
    * Request parameters:
@@ -1128,6 +1174,8 @@ class DataTypeField {
    * Possible string values are:
    * - "floatPoint"
    * - "integer"
+   * - "map"
+   * - "string"
    */
   core.String format;
 
@@ -1418,10 +1466,47 @@ class ListSessionsResponse {
 
 
 /**
+ * Holder object for the value of an entry in a map field of a data point.
+ *
+ * A map value supports a subset of the formats that the regular Value supports.
+ */
+class MapValue {
+  /** Floating point value. */
+  core.double fpVal;
+
+
+  MapValue();
+
+  MapValue.fromJson(core.Map _json) {
+    if (_json.containsKey("fpVal")) {
+      fpVal = _json["fpVal"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (fpVal != null) {
+      _json["fpVal"] = fpVal;
+    }
+    return _json;
+  }
+}
+
+
+/**
  * Sessions contain metadata, such as a user-friendly name and time interval
  * information.
  */
 class Session {
+  /**
+   * Session active time. While start_time_millis and end_time_millis define the
+   * full session time, the active time can be shorter and specified by
+   * active_time_millis. If the inactive time during the session is known, it
+   * should also be inserted via a com.google.activity.segment data point with a
+   * STILL activity value
+   */
+  core.String activeTimeMillis;
+
   /** The type of activity this session represents. */
   core.int activityType;
 
@@ -1453,6 +1538,9 @@ class Session {
   Session();
 
   Session.fromJson(core.Map _json) {
+    if (_json.containsKey("activeTimeMillis")) {
+      activeTimeMillis = _json["activeTimeMillis"];
+    }
     if (_json.containsKey("activityType")) {
       activityType = _json["activityType"];
     }
@@ -1481,6 +1569,9 @@ class Session {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (activeTimeMillis != null) {
+      _json["activeTimeMillis"] = activeTimeMillis;
+    }
     if (activityType != null) {
       _json["activityType"] = activityType;
     }
@@ -1517,31 +1608,95 @@ class Session {
  * integer or a floating point value.
  */
 class Value {
+  /** Float list value. When this is set, other values must not be set. */
+  core.List<core.double> floatListVal;
+
   /** Floating point value. When this is set, intVal must not be set. */
   core.double fpVal;
 
+  /** Long list value. When this is set, other values must not be set. */
+  core.List<core.String> int64ListVal;
+
   /** Integer value. When this is set, fpVal must not be set. */
   core.int intVal;
+
+  core.List<ValueMapValEntry> mapVal;
+
+  core.String stringVal;
 
 
   Value();
 
   Value.fromJson(core.Map _json) {
+    if (_json.containsKey("floatListVal")) {
+      floatListVal = _json["floatListVal"];
+    }
     if (_json.containsKey("fpVal")) {
       fpVal = _json["fpVal"];
     }
+    if (_json.containsKey("int64ListVal")) {
+      int64ListVal = _json["int64ListVal"];
+    }
     if (_json.containsKey("intVal")) {
       intVal = _json["intVal"];
+    }
+    if (_json.containsKey("mapVal")) {
+      mapVal = _json["mapVal"].map((value) => new ValueMapValEntry.fromJson(value)).toList();
+    }
+    if (_json.containsKey("stringVal")) {
+      stringVal = _json["stringVal"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (floatListVal != null) {
+      _json["floatListVal"] = floatListVal;
+    }
     if (fpVal != null) {
       _json["fpVal"] = fpVal;
     }
+    if (int64ListVal != null) {
+      _json["int64ListVal"] = int64ListVal;
+    }
     if (intVal != null) {
       _json["intVal"] = intVal;
+    }
+    if (mapVal != null) {
+      _json["mapVal"] = mapVal.map((value) => (value).toJson()).toList();
+    }
+    if (stringVal != null) {
+      _json["stringVal"] = stringVal;
+    }
+    return _json;
+  }
+}
+
+
+class ValueMapValEntry {
+  core.String key;
+
+  MapValue value;
+
+
+  ValueMapValEntry();
+
+  ValueMapValEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = new MapValue.fromJson(_json["value"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = (value).toJson();
     }
     return _json;
   }

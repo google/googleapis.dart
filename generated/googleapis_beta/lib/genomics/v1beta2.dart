@@ -43,7 +43,6 @@ class GenomicsApi {
   ReadsResourceApi get reads => new ReadsResourceApi(_requester);
   ReferencesResourceApi get references => new ReferencesResourceApi(_requester);
   ReferencesetsResourceApi get referencesets => new ReferencesetsResourceApi(_requester);
-  StreamingVariantStoreResourceApi get streamingVariantStore => new StreamingVariantStoreResourceApi(_requester);
   VariantsResourceApi get variants => new VariantsResourceApi(_requester);
   VariantsetsResourceApi get variantsets => new VariantsetsResourceApi(_requester);
 
@@ -2223,56 +2222,6 @@ class ReferencesetsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new SearchReferenceSetsResponse.fromJson(data));
-  }
-
-}
-
-
-class StreamingVariantStoreResourceApi {
-  final commons.ApiRequester _requester;
-
-  StreamingVariantStoreResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Returns a stream of all the variants matching the search request, ordered
-   * by reference name, position, and ID.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [Variant].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
-   */
-  async.Future<Variant> streamvariants(StreamVariantsRequest request) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-
-
-    _url = 'streamingVariantStore/streamvariants';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Variant.fromJson(data));
   }
 
 }
@@ -5138,7 +5087,7 @@ class Read {
   core.String alignedSequence;
 
   /**
-   * The linear alignment for this alignment record. This field will be null if
+   * The linear alignment for this alignment record. This field will be unset if
    * the read is unmapped.
    */
   LinearAlignment alignment;
@@ -5165,8 +5114,10 @@ class Read {
   core.Map<core.String, core.List<core.String>> info;
 
   /**
-   * The mapping of the primary alignment of the (readNumber+1)%numberReads read
-   * in the fragment. It replaces mate position and mate strand in SAM.
+   * The position of the primary alignment of the (readNumber+1)%numberReads
+   * read in the fragment. It replaces mate position and mate strand in SAM.
+   * This field will be unset if that read is unmapped or if the fragment only
+   * has a single read.
    */
   Position nextMatePosition;
 
@@ -6154,7 +6105,10 @@ class SearchCallSetsRequest {
    */
   core.String name;
 
-  /** The maximum number of call sets to return. */
+  /**
+   * The maximum number of call sets to return. If unspecified, defaults to
+   * 1000.
+   */
   core.int pageSize;
 
   /**
@@ -6928,18 +6882,21 @@ class SearchVariantsRequest {
   core.List<core.String> callSetIds;
 
   /**
-   * Required. The end of the window (0-based, exclusive) for which overlapping
-   * variants should be returned.
+   * The end of the window, 0-based exclusive. If unspecified or 0, defaults to
+   * the length of the reference.
    */
   core.String end;
 
   /**
    * The maximum number of calls to return. However, at least one variant will
-   * always be returned, even if it has more calls than this limit.
+   * always be returned, even if it has more calls than this limit. If
+   * unspecified, defaults to 5000.
    */
   core.int maxCalls;
 
-  /** The maximum number of variants to return. */
+  /**
+   * The maximum number of variants to return. If unspecified, defaults to 5000.
+   */
   core.int pageSize;
 
   /**
@@ -6953,8 +6910,8 @@ class SearchVariantsRequest {
   core.String referenceName;
 
   /**
-   * Required. The beginning of the window (0-based, inclusive) for which
-   * overlapping variants should be returned.
+   * The beginning of the window (0-based, inclusive) for which overlapping
+   * variants should be returned. If unspecified, defaults to 0.
    */
   core.String start;
 
@@ -7065,78 +7022,6 @@ class SearchVariantsResponse {
     }
     if (variants != null) {
       _json["variants"] = variants.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-
-/** The stream variants request. */
-class StreamVariantsRequest {
-  /**
-   * Only return variant calls which belong to call sets with these ids. Leaving
-   * this blank returns all variant calls.
-   */
-  core.List<core.String> callSetIds;
-
-  /**
-   * The end of the window (0-based, exclusive) for which overlapping variants
-   * should be returned.
-   */
-  core.String end;
-
-  /** Required. Only return variants in this reference sequence. */
-  core.String referenceName;
-
-  /**
-   * The beginning of the window (0-based, inclusive) for which overlapping
-   * variants should be returned.
-   */
-  core.String start;
-
-  /**
-   * Exactly one variant set ID must be provided. Only variants from this
-   * variant set will be returned.
-   */
-  core.List<core.String> variantSetIds;
-
-
-  StreamVariantsRequest();
-
-  StreamVariantsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("callSetIds")) {
-      callSetIds = _json["callSetIds"];
-    }
-    if (_json.containsKey("end")) {
-      end = _json["end"];
-    }
-    if (_json.containsKey("referenceName")) {
-      referenceName = _json["referenceName"];
-    }
-    if (_json.containsKey("start")) {
-      start = _json["start"];
-    }
-    if (_json.containsKey("variantSetIds")) {
-      variantSetIds = _json["variantSetIds"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (callSetIds != null) {
-      _json["callSetIds"] = callSetIds;
-    }
-    if (end != null) {
-      _json["end"] = end;
-    }
-    if (referenceName != null) {
-      _json["referenceName"] = referenceName;
-    }
-    if (start != null) {
-      _json["start"] = start;
-    }
-    if (variantSetIds != null) {
-      _json["variantSetIds"] = variantSetIds;
     }
     return _json;
   }

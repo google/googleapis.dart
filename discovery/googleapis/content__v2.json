@@ -15,7 +15,7 @@
     "description": "Manage product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content/v2/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Jg5IFKTqCcIBJROG8QNmsXQ1iso\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/pG4DpZOeXXyxWfg7TLJXC3O_GaI\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1281,7 +1281,7 @@
             }
         }
     },
-    "revision": "20150317",
+    "revision": "20150407",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -2506,6 +2506,10 @@
                 "kind": {
                     "default": "content#datafeedStatus",
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#datafeedStatus\".",
+                    "type": "string"
+                },
+                "lastUploadDate": {
+                    "description": "The last date at which the feed was uploaded.",
                     "type": "string"
                 },
                 "processingStatus": {

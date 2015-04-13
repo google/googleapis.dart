@@ -1986,7 +1986,7 @@ class BackupRun {
    * Information about why the backup operation failed. This is only present if
    * the run has the FAILED status.
    */
-  OperationError_1 error;
+  OperationError error;
 
   /**
    * A unique identifier for this backup run. Note that this is unique only
@@ -2029,7 +2029,7 @@ class BackupRun {
       enqueuedTime = core.DateTime.parse(_json["enqueuedTime"]);
     }
     if (_json.containsKey("error")) {
-      error = new OperationError_1.fromJson(_json["error"]);
+      error = new OperationError.fromJson(_json["error"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -3429,33 +3429,6 @@ class OnPremisesConfiguration {
 
 
 /**
- * If errors occurred during processing of this operation, this field will be
- * populated.
- */
-class OperationError {
-  /** The list of errors encountered while processing this operation. */
-  core.List<OperationError_1> errors;
-
-
-  OperationError();
-
-  OperationError.fromJson(core.Map _json) {
-    if (_json.containsKey("errors")) {
-      errors = _json["errors"].map((value) => new OperationError_1.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (errors != null) {
-      _json["errors"] = errors.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-
-/**
  * An Operations resource contains information about database instance
  * operations such as create, delete, and restart. Operations resources are
  * created in response to operations that were initiated; you never create them
@@ -3468,11 +3441,7 @@ class Operation {
    */
   core.DateTime endTime;
 
-  /**
-   * If errors occurred during processing of this operation, this field will be
-   * populated.
-   */
-  OperationError error;
+  OperationErrors error;
 
   /** The context for export operation, if applicable. */
   ExportContext exportContext;
@@ -3538,7 +3507,7 @@ class Operation {
       endTime = core.DateTime.parse(_json["endTime"]);
     }
     if (_json.containsKey("error")) {
-      error = new OperationError.fromJson(_json["error"]);
+      error = new OperationErrors.fromJson(_json["error"]);
     }
     if (_json.containsKey("exportContext")) {
       exportContext = new ExportContext.fromJson(_json["exportContext"]);
@@ -3634,7 +3603,7 @@ class Operation {
 
 
 /** Database instance operation error. */
-class OperationError_1 {
+class OperationError {
   /** Identifies the specific error that occurred. */
   core.String code;
 
@@ -3645,9 +3614,9 @@ class OperationError_1 {
   core.String message;
 
 
-  OperationError_1();
+  OperationError();
 
-  OperationError_1.fromJson(core.Map _json) {
+  OperationError.fromJson(core.Map _json) {
     if (_json.containsKey("code")) {
       code = _json["code"];
     }
@@ -3669,6 +3638,39 @@ class OperationError_1 {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+
+/** Database instance operation errors list wrapper. */
+class OperationErrors {
+  /** The list of errors encountered while processing this operation. */
+  core.List<OperationError> errors;
+
+  /** This is always sql#operationErrors. */
+  core.String kind;
+
+
+  OperationErrors();
+
+  OperationErrors.fromJson(core.Map _json) {
+    if (_json.containsKey("errors")) {
+      errors = _json["errors"].map((value) => new OperationError.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (errors != null) {
+      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }
@@ -3727,7 +3729,11 @@ class ReplicaConfiguration {
 
   /**
    * MySQL specific configuration when replicating from a MySQL on-premises
-   * master.
+   * master. Replication configuration information such as the username,
+   * password, certificates, and keys are not stored in the instance metadata.
+   * The configuration information is used only to set up the replication
+   * connection and is stored by MySQL in a file named master.info in the data
+   * directory.
    */
   MySqlReplicaConfiguration mysqlReplicaConfiguration;
 
@@ -3807,6 +3813,10 @@ class Settings {
   /** The daily backup configuration for the instance. */
   BackupConfiguration backupConfiguration;
 
+  /**
+   * Configuration specific to read replica instances. Indicates whether
+   * database flags for crash-safe replication are enabled.
+   */
   core.bool crashSafeReplicationEnabled;
 
   /** The database flags passed to the instance at startup. */

@@ -576,10 +576,7 @@ class Change {
    */
   core.String startTime;
 
-  /**
-   * Status of the operation. Can be one of the following: "PENDING" or "DONE"
-   * (output only).
-   */
+  /** Status of the operation (output only). */
   core.String status;
 
 
@@ -1013,7 +1010,7 @@ class ResourceRecordSet {
   /** For example, www.example.com. */
   core.String name;
 
-  /** As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) */
+  /** As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1). */
   core.List<core.String> rrdatas;
 
   /**
@@ -1021,7 +1018,10 @@ class ResourceRecordSet {
    */
   core.int ttl;
 
-  /** One of A, AAAA, SOA, MX, NS, TXT */
+  /**
+   * The identifier of a supported record type, for example, A, AAAA, MX, TXT,
+   * and so on.
+   */
   core.String type;
 
 

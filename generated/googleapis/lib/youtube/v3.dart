@@ -49,6 +49,8 @@ class YoutubeApi {
   ChannelBannersResourceApi get channelBanners => new ChannelBannersResourceApi(_requester);
   ChannelSectionsResourceApi get channelSections => new ChannelSectionsResourceApi(_requester);
   ChannelsResourceApi get channels => new ChannelsResourceApi(_requester);
+  CommentThreadsResourceApi get commentThreads => new CommentThreadsResourceApi(_requester);
+  CommentsResourceApi get comments => new CommentsResourceApi(_requester);
   GuideCategoriesResourceApi get guideCategories => new GuideCategoriesResourceApi(_requester);
   I18nLanguagesResourceApi get i18nLanguages => new I18nLanguagesResourceApi(_requester);
   I18nRegionsResourceApi get i18nRegions => new I18nRegionsResourceApi(_requester);
@@ -491,8 +493,9 @@ class CaptionsResourceApi {
    *
    * Request parameters:
    *
-   * [part] - The part parameter specifies the caption resource parts that the
-   * API response will include.
+   * [part] - The part parameter specifies a comma-separated list of one or more
+   * caption resource parts that the API response will include. The part names
+   * that you can include in the parameter value are id and snippet.
    *
    * [videoId] - The videoId parameter specifies the YouTube video ID of the
    * video for which the API should return caption tracks.
@@ -1251,6 +1254,600 @@ class ChannelsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Channel.fromJson(data));
+  }
+
+}
+
+
+class CommentThreadsResourceApi {
+  final commons.ApiRequester _requester;
+
+  CommentThreadsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a new comment thread and top level comment.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter serves two purposes in this operation. It
+   * identifies the properties that the write operation will set as well as the
+   * properties that the API response will include.
+   *
+   * The part names that you can include in the parameter value are id and
+   * snippet. However only snippet contains properties that can be set.
+   *
+   * [shareOnGooglePlus] - The shareOnGooglePlus determines whether this thread
+   * should also be posted on Google+.
+   *
+   * Completes with a [CommentThread].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CommentThread> insert(CommentThread request, core.String part, {core.bool shareOnGooglePlus}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if (shareOnGooglePlus != null) {
+      _queryParams["shareOnGooglePlus"] = ["${shareOnGooglePlus}"];
+    }
+
+
+    _url = 'commentThreads';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CommentThread.fromJson(data));
+  }
+
+  /**
+   * Returns a list of comment threads that match the API request parameters.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter specifies the commentThread resource parts that
+   * the API response will include. Supported values are id, snippet and
+   * replies.
+   *
+   * [allThreadsRelatedToChannelId] - The allThreadsRelatedToChannelId parameter
+   * instructs the API to return the comment threads of all videos of the
+   * channel and the channel comments as well.
+   *
+   * [channelId] - The channelId parameter instructs the API to return the
+   * comment threads for all the channel comments (not including comments left
+   * on videos).
+   *
+   * [id] - The id parameter specifies a comma-separated list of comment thread
+   * IDs for the resources that should be retrieved.
+   *
+   * [maxResults] - The maxResults parameter specifies the maximum number of
+   * items that should be returned in the result set.
+   *
+   * Note: This parameter is not supported for use in conjunction with the id
+   * parameter.
+   * Value must be between "1" and "100".
+   *
+   * [moderationStatus] - Set this parameter to limit the returned comment
+   * threads to a particular moderation state.
+   *
+   * Note: This parameter is not supported for use in conjunction with the id
+   * parameter.
+   * Possible string values are:
+   * - "heldForReview" : Returns only comment threads awaiting review by a
+   * moderator.
+   * - "likelySpam" : Returns only comment threads classified as likely being
+   * spam.
+   * - "published" : Returns only published comment threads.
+   *
+   * [pageToken] - The pageToken parameter identifies a specific page in the
+   * result set that should be returned. In an API response, the nextPageToken
+   * property identifies the next page of the result that can be retrieved.
+   *
+   * Note: This parameter is not supported for use in conjunction with the id
+   * parameter.
+   *
+   * [searchTerms] - The searchTerms parameter instructs the API to limit the
+   * returned comments to those which contain the specified search terms.
+   *
+   * Note: This parameter is not supported for use in conjunction with the id
+   * parameter.
+   *
+   * [textFormat] - Set this parameter's value to html or plainText to instruct
+   * the API to return the comments left by users in html formatted or in plain
+   * text.
+   * Possible string values are:
+   * - "html" : Returns the comments in HTML format.
+   * - "plainText" : Returns the comments in plain text format.
+   *
+   * [videoId] - The videoId parameter instructs the API to return the comment
+   * threads for the video specified by the video id.
+   *
+   * Completes with a [CommentThreadListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CommentThreadListResponse> list(core.String part, {core.String allThreadsRelatedToChannelId, core.String channelId, core.String id, core.int maxResults, core.String moderationStatus, core.String pageToken, core.String searchTerms, core.String textFormat, core.String videoId}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if (allThreadsRelatedToChannelId != null) {
+      _queryParams["allThreadsRelatedToChannelId"] = [allThreadsRelatedToChannelId];
+    }
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
+    }
+    if (id != null) {
+      _queryParams["id"] = [id];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (moderationStatus != null) {
+      _queryParams["moderationStatus"] = [moderationStatus];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchTerms != null) {
+      _queryParams["searchTerms"] = [searchTerms];
+    }
+    if (textFormat != null) {
+      _queryParams["textFormat"] = [textFormat];
+    }
+    if (videoId != null) {
+      _queryParams["videoId"] = [videoId];
+    }
+
+
+    _url = 'commentThreads';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CommentThreadListResponse.fromJson(data));
+  }
+
+  /**
+   * Modifies an existing comment.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter serves two purposes in this operation. It
+   * identifies the properties that the write operation will set as well as the
+   * properties that the API response will include.
+   *
+   * The part names that you can include in the parameter value are id, snippet
+   * and replies. However only snippet contains properties that can be updated.
+   *
+   * Completes with a [CommentThread].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CommentThread> update(CommentThread request, core.String part) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+
+
+    _url = 'commentThreads';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CommentThread.fromJson(data));
+  }
+
+}
+
+
+class CommentsResourceApi {
+  final commons.ApiRequester _requester;
+
+  CommentsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a comment.
+   *
+   * Request parameters:
+   *
+   * [id] - The id parameter specifies the comment ID for the resource that
+   * should be deleted.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future delete(core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+    _downloadOptions = null;
+
+    _url = 'comments';
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Creates a new comment.
+   *
+   * Note: to create a top level comment it is also necessary to create a
+   * comment thread. Both are accomplished through the commentThreads resource.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter serves two purposes in this operation. It
+   * identifies the properties that the write operation will set as well as the
+   * properties that the API response will include.
+   *
+   * The part names that you can include in the parameter value are id and
+   * snippet. However only snippet contains properties that can be set.
+   *
+   * Completes with a [Comment].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Comment> insert(Comment request, core.String part) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+
+
+    _url = 'comments';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Comment.fromJson(data));
+  }
+
+  /**
+   * Returns a list of comments that match the API request parameters.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter specifies the comment resource parts that the
+   * API response will include. Supported values are id and snippet.
+   *
+   * [id] - The id parameter specifies a comma-separated list of comment IDs for
+   * the resources that should be retrieved.
+   *
+   * [maxResults] - The maxResults parameter specifies the maximum number of
+   * items that should be returned in the result set.
+   *
+   * Note: This parameter is not supported for use in conjunction with the id
+   * parameter.
+   * Value must be between "1" and "100".
+   *
+   * [pageToken] - The pageToken parameter identifies a specific page in the
+   * result set that should be returned. In an API response, the nextPageToken
+   * property identifies the next page of the result that can be retrieved.
+   *
+   * Note: This parameter is not supported for use in conjunction with the id
+   * parameter.
+   *
+   * [parentId] - The parentId parameter specifies the ID of the comment for
+   * which replies should be retrieved.
+   *
+   * Note: Currently YouTube features only one level of replies (ie replies to
+   * top level comments). However replies to replies may be supported in the
+   * future.
+   *
+   * [textFormat] - Set this parameter's value to html or plainText to instruct
+   * the API to return the comments left by users formatted as HTML or as plain
+   * text.
+   * Possible string values are:
+   * - "html" : Returns the comments in HTML format.
+   * - "plainText" : Returns the comments in plain text format.
+   *
+   * Completes with a [CommentListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<CommentListResponse> list(core.String part, {core.String id, core.int maxResults, core.String pageToken, core.String parentId, core.String textFormat}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if (id != null) {
+      _queryParams["id"] = [id];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (parentId != null) {
+      _queryParams["parentId"] = [parentId];
+    }
+    if (textFormat != null) {
+      _queryParams["textFormat"] = [textFormat];
+    }
+
+
+    _url = 'comments';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CommentListResponse.fromJson(data));
+  }
+
+  /**
+   * Expresses the caller's opinion that a comment is spam.
+   *
+   * Request parameters:
+   *
+   * [id] - The id parameter specifies a comma-separated list of IDs of comments
+   * which should get flagged as spam.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future markAsSpam(core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+
+    _downloadOptions = null;
+
+    _url = 'comments/markAsSpam';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Sets the moderation status of one or more comments.
+   *
+   * Request parameters:
+   *
+   * [id] - The id parameter specifies a comma-separated list of IDs of comments
+   * whose moderation status should be updated.
+   *
+   * [moderationStatus] - Determines the new moderation status of the specified
+   * comments.
+   * Possible string values are:
+   * - "heldForReview" : Marks a comment as awaiting review by a moderator.
+   * - "published" : Clears a comment for public display.
+   * - "rejected" : Rejects a comment as not fit for display.
+   *
+   * Note: currently there is no way to list or otherwise discover a rejected
+   * comment. However it is possible to change its moderation status as long as
+   * its ID is still known.
+   *
+   * Note: Currently, if you reject a comment you effectively also hide all its
+   * replies as there is no longer any way to discover them. This may change in
+   * the future.
+   *
+   * [banAuthor] - The banAuthor paramter, if set to true, adds the author of
+   * the comment to the ban list. This means all future comments of the author
+   * will autmomatically be rejected.
+   *
+   * Note: This parameter is only valid in combination with moderationStatus
+   * 'rejected'.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future setModerationStatus(core.String id, core.String moderationStatus, {core.bool banAuthor}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+    if (moderationStatus == null) {
+      throw new core.ArgumentError("Parameter moderationStatus is required.");
+    }
+    _queryParams["moderationStatus"] = [moderationStatus];
+    if (banAuthor != null) {
+      _queryParams["banAuthor"] = ["${banAuthor}"];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'comments/setModerationStatus';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Modifies an existing comment.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter serves two purposes in this operation. It
+   * identifies the properties that the write operation will set as well as the
+   * properties that the API response will include.
+   *
+   * The part names that you can include in the parameter value are id and
+   * snippet. However only snippet contains properties that can be updated.
+   *
+   * Completes with a [Comment].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Comment> update(Comment request, core.String part) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+
+
+    _url = 'comments';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Comment.fromJson(data));
   }
 
 }
@@ -6573,6 +7170,28 @@ class ChannelConversionPings {
 }
 
 
+class ChannelId {
+  core.String value;
+
+
+  ChannelId();
+
+  ChannelId.fromJson(core.Map _json) {
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+
 class ChannelListResponse {
   /** Etag of this resource. */
   core.String etag;
@@ -7375,6 +7994,618 @@ class ChannelTopicDetails {
     var _json = new core.Map();
     if (topicIds != null) {
       _json["topicIds"] = topicIds;
+    }
+    return _json;
+  }
+}
+
+
+/** A comment represents a single YouTube comment. */
+class Comment {
+  /** Etag of this resource. */
+  core.String etag;
+
+  /** The ID that YouTube uses to uniquely identify the comment. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#comment".
+   */
+  core.String kind;
+
+  /** The snippet object contains basic details about the comment. */
+  CommentSnippet snippet;
+
+
+  Comment();
+
+  Comment.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new CommentSnippet.fromJson(_json["snippet"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    return _json;
+  }
+}
+
+
+class CommentListResponse {
+  /** Etag of this resource. */
+  core.String etag;
+
+  /** Serialized EventId of the request which produced this response. */
+  core.String eventId;
+
+  /** A list of comments that match the request criteria. */
+  core.List<Comment> items;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#commentListResponse".
+   */
+  core.String kind;
+
+  /**
+   * The token that can be used as the value of the pageToken parameter to
+   * retrieve the next page in the result set.
+   */
+  core.String nextPageToken;
+
+  PageInfo pageInfo;
+
+  TokenPagination tokenPagination;
+
+  /** The visitorId identifies the visitor. */
+  core.String visitorId;
+
+
+  CommentListResponse();
+
+  CommentListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("eventId")) {
+      eventId = _json["eventId"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Comment.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("pageInfo")) {
+      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+    }
+    if (_json.containsKey("tokenPagination")) {
+      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+    }
+    if (_json.containsKey("visitorId")) {
+      visitorId = _json["visitorId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (eventId != null) {
+      _json["eventId"] = eventId;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (pageInfo != null) {
+      _json["pageInfo"] = (pageInfo).toJson();
+    }
+    if (tokenPagination != null) {
+      _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    if (visitorId != null) {
+      _json["visitorId"] = visitorId;
+    }
+    return _json;
+  }
+}
+
+
+/** Basic details about a comment, such as its author and text. */
+class CommentSnippet {
+  /** The id of the author's YouTube channel, if any. */
+  ChannelId authorChannelId;
+
+  /** Link to the author's YouTube channel, if any. */
+  core.String authorChannelUrl;
+
+  /** The name of the user who posted the comment. */
+  core.String authorDisplayName;
+
+  /** Link to the author's Google+ profile, if any. */
+  core.String authorGoogleplusProfileUrl;
+
+  /** The URL for the avatar of the user who posted the comment. */
+  core.String authorProfileImageUrl;
+
+  /** Whether the current viewer can rate this comment. */
+  core.bool canRate;
+
+  /**
+   * The id of the corresponding YouTube channel. In case of a channel comment
+   * this is the channel the comment refers to. In case of a video comment it's
+   * the video's channel.
+   */
+  core.String channelId;
+
+  /** The total number of likes this comment has received. */
+  core.int likeCount;
+
+  /**
+   * The comment's moderation status. Will not be set if the comments were
+   * requested through the id filter.
+   * Possible string values are:
+   * - "heldForReview"
+   * - "likelySpam"
+   * - "published"
+   * - "rejected"
+   */
+  core.String moderationStatus;
+
+  /** The unique id of the parent comment, only set for replies. */
+  core.String parentId;
+
+  /**
+   * The date and time when the comment was orignally published. The value is
+   * specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+   */
+  core.DateTime publishedAt;
+
+  /**
+   * The comment's text. The format is either plain text or HTML dependent on
+   * what has been requested. Even the plain text representation may differ from
+   * the text originally posted in that it may replace video links with video
+   * titles etc.
+   */
+  core.String textDisplay;
+
+  /**
+   * The comment's original raw text as initially posted or last updated. The
+   * original text will only be returned if it is accessible to the viewer,
+   * which is only guaranteed if the viewer is the comment's author.
+   */
+  core.String textOriginal;
+
+  /**
+   * The date and time when was last updated . The value is specified in ISO
+   * 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+   */
+  core.DateTime updatedAt;
+
+  /** The ID of the video the comment refers to, if any. */
+  core.String videoId;
+
+  /**
+   * The rating the viewer has given to this comment. For the time being this
+   * will never return RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE. This
+   * may change in the future.
+   * Possible string values are:
+   * - "dislike"
+   * - "like"
+   * - "none"
+   * - "unspecified"
+   */
+  core.String viewerRating;
+
+
+  CommentSnippet();
+
+  CommentSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("authorChannelId")) {
+      authorChannelId = new ChannelId.fromJson(_json["authorChannelId"]);
+    }
+    if (_json.containsKey("authorChannelUrl")) {
+      authorChannelUrl = _json["authorChannelUrl"];
+    }
+    if (_json.containsKey("authorDisplayName")) {
+      authorDisplayName = _json["authorDisplayName"];
+    }
+    if (_json.containsKey("authorGoogleplusProfileUrl")) {
+      authorGoogleplusProfileUrl = _json["authorGoogleplusProfileUrl"];
+    }
+    if (_json.containsKey("authorProfileImageUrl")) {
+      authorProfileImageUrl = _json["authorProfileImageUrl"];
+    }
+    if (_json.containsKey("canRate")) {
+      canRate = _json["canRate"];
+    }
+    if (_json.containsKey("channelId")) {
+      channelId = _json["channelId"];
+    }
+    if (_json.containsKey("likeCount")) {
+      likeCount = _json["likeCount"];
+    }
+    if (_json.containsKey("moderationStatus")) {
+      moderationStatus = _json["moderationStatus"];
+    }
+    if (_json.containsKey("parentId")) {
+      parentId = _json["parentId"];
+    }
+    if (_json.containsKey("publishedAt")) {
+      publishedAt = core.DateTime.parse(_json["publishedAt"]);
+    }
+    if (_json.containsKey("textDisplay")) {
+      textDisplay = _json["textDisplay"];
+    }
+    if (_json.containsKey("textOriginal")) {
+      textOriginal = _json["textOriginal"];
+    }
+    if (_json.containsKey("updatedAt")) {
+      updatedAt = core.DateTime.parse(_json["updatedAt"]);
+    }
+    if (_json.containsKey("videoId")) {
+      videoId = _json["videoId"];
+    }
+    if (_json.containsKey("viewerRating")) {
+      viewerRating = _json["viewerRating"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (authorChannelId != null) {
+      _json["authorChannelId"] = (authorChannelId).toJson();
+    }
+    if (authorChannelUrl != null) {
+      _json["authorChannelUrl"] = authorChannelUrl;
+    }
+    if (authorDisplayName != null) {
+      _json["authorDisplayName"] = authorDisplayName;
+    }
+    if (authorGoogleplusProfileUrl != null) {
+      _json["authorGoogleplusProfileUrl"] = authorGoogleplusProfileUrl;
+    }
+    if (authorProfileImageUrl != null) {
+      _json["authorProfileImageUrl"] = authorProfileImageUrl;
+    }
+    if (canRate != null) {
+      _json["canRate"] = canRate;
+    }
+    if (channelId != null) {
+      _json["channelId"] = channelId;
+    }
+    if (likeCount != null) {
+      _json["likeCount"] = likeCount;
+    }
+    if (moderationStatus != null) {
+      _json["moderationStatus"] = moderationStatus;
+    }
+    if (parentId != null) {
+      _json["parentId"] = parentId;
+    }
+    if (publishedAt != null) {
+      _json["publishedAt"] = (publishedAt).toIso8601String();
+    }
+    if (textDisplay != null) {
+      _json["textDisplay"] = textDisplay;
+    }
+    if (textOriginal != null) {
+      _json["textOriginal"] = textOriginal;
+    }
+    if (updatedAt != null) {
+      _json["updatedAt"] = (updatedAt).toIso8601String();
+    }
+    if (videoId != null) {
+      _json["videoId"] = videoId;
+    }
+    if (viewerRating != null) {
+      _json["viewerRating"] = viewerRating;
+    }
+    return _json;
+  }
+}
+
+
+/**
+ * A comment thread represents information that applies to a top level comment
+ * and all its replies. It can also include the top level comment itself and
+ * some of the replies.
+ */
+class CommentThread {
+  /** Etag of this resource. */
+  core.String etag;
+
+  /** The ID that YouTube uses to uniquely identify the comment thread. */
+  core.String id;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#commentThread".
+   */
+  core.String kind;
+
+  /**
+   * The replies object contains a limited number of replies (if any) to the top
+   * level comment found in the snippet.
+   */
+  CommentThreadReplies replies;
+
+  /**
+   * The snippet object contains basic details about the comment thread and also
+   * the top level comment.
+   */
+  CommentThreadSnippet snippet;
+
+
+  CommentThread();
+
+  CommentThread.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("replies")) {
+      replies = new CommentThreadReplies.fromJson(_json["replies"]);
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new CommentThreadSnippet.fromJson(_json["snippet"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (replies != null) {
+      _json["replies"] = (replies).toJson();
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    return _json;
+  }
+}
+
+
+class CommentThreadListResponse {
+  /** Etag of this resource. */
+  core.String etag;
+
+  /** Serialized EventId of the request which produced this response. */
+  core.String eventId;
+
+  /** A list of comment threads that match the request criteria. */
+  core.List<CommentThread> items;
+
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#commentThreadListResponse".
+   */
+  core.String kind;
+
+  /**
+   * The token that can be used as the value of the pageToken parameter to
+   * retrieve the next page in the result set.
+   */
+  core.String nextPageToken;
+
+  PageInfo pageInfo;
+
+  TokenPagination tokenPagination;
+
+  /** The visitorId identifies the visitor. */
+  core.String visitorId;
+
+
+  CommentThreadListResponse();
+
+  CommentThreadListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("eventId")) {
+      eventId = _json["eventId"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new CommentThread.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("pageInfo")) {
+      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+    }
+    if (_json.containsKey("tokenPagination")) {
+      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+    }
+    if (_json.containsKey("visitorId")) {
+      visitorId = _json["visitorId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (eventId != null) {
+      _json["eventId"] = eventId;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (pageInfo != null) {
+      _json["pageInfo"] = (pageInfo).toJson();
+    }
+    if (tokenPagination != null) {
+      _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    if (visitorId != null) {
+      _json["visitorId"] = visitorId;
+    }
+    return _json;
+  }
+}
+
+
+/** Comments written in (direct or indirect) reply to the top level comment. */
+class CommentThreadReplies {
+  /**
+   * A limited number of replies. Unless the number of replies returned equals
+   * total_reply_count in the snippet the returned replies are only a subset of
+   * the total number of replies.
+   */
+  core.List<Comment> comments;
+
+
+  CommentThreadReplies();
+
+  CommentThreadReplies.fromJson(core.Map _json) {
+    if (_json.containsKey("comments")) {
+      comments = _json["comments"].map((value) => new Comment.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (comments != null) {
+      _json["comments"] = comments.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+
+/** Basic details about a comment thread. */
+class CommentThreadSnippet {
+  /**
+   * Whether the current viewer of the thread can reply to it. This is viewer
+   * specific - other viewers may see a different value for this field.
+   */
+  core.bool canReply;
+
+  /**
+   * The YouTube channel the comments in the thread refer to or the channel with
+   * the video the comments refer to. If video_id isn't set the comments refer
+   * to the channel itself.
+   */
+  core.String channelId;
+
+  /**
+   * Whether the thread (and therefore all its comments) is visible to all
+   * YouTube users.
+   */
+  core.bool isPublic;
+
+  /** The top level comment of this thread. */
+  Comment topLevelComment;
+
+  /** The total number of replies (not including the top level comment). */
+  core.int totalReplyCount;
+
+  /**
+   * The ID of the video the comments refer to, if any. No video_id implies a
+   * channel discussion comment.
+   */
+  core.String videoId;
+
+
+  CommentThreadSnippet();
+
+  CommentThreadSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("canReply")) {
+      canReply = _json["canReply"];
+    }
+    if (_json.containsKey("channelId")) {
+      channelId = _json["channelId"];
+    }
+    if (_json.containsKey("isPublic")) {
+      isPublic = _json["isPublic"];
+    }
+    if (_json.containsKey("topLevelComment")) {
+      topLevelComment = new Comment.fromJson(_json["topLevelComment"]);
+    }
+    if (_json.containsKey("totalReplyCount")) {
+      totalReplyCount = _json["totalReplyCount"];
+    }
+    if (_json.containsKey("videoId")) {
+      videoId = _json["videoId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (canReply != null) {
+      _json["canReply"] = canReply;
+    }
+    if (channelId != null) {
+      _json["channelId"] = channelId;
+    }
+    if (isPublic != null) {
+      _json["isPublic"] = isPublic;
+    }
+    if (topLevelComment != null) {
+      _json["topLevelComment"] = (topLevelComment).toJson();
+    }
+    if (totalReplyCount != null) {
+      _json["totalReplyCount"] = totalReplyCount;
+    }
+    if (videoId != null) {
+      _json["videoId"] = videoId;
     }
     return _json;
   }

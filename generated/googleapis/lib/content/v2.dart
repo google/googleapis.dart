@@ -4384,6 +4384,9 @@ class DatafeedStatus {
    */
   core.String kind;
 
+  /** The last date at which the feed was uploaded. */
+  core.String lastUploadDate;
+
   /** The processing status of the feed. */
   core.String processingStatus;
 
@@ -4409,6 +4412,9 @@ class DatafeedStatus {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("lastUploadDate")) {
+      lastUploadDate = _json["lastUploadDate"];
+    }
     if (_json.containsKey("processingStatus")) {
       processingStatus = _json["processingStatus"];
     }
@@ -4433,6 +4439,9 @@ class DatafeedStatus {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (lastUploadDate != null) {
+      _json["lastUploadDate"] = lastUploadDate;
     }
     if (processingStatus != null) {
       _json["processingStatus"] = processingStatus;

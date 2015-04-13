@@ -1562,18 +1562,6 @@ class ObjectsResourceApi {
    * - "publicRead" : Object owner gets OWNER access, and allUsers get READER
    * access.
    *
-   * [encryptionAlgorithm] - Specifies the encryption algorithm that was used to
-   * encrypt the object, if any. Only 'AES256' is supported currently.
-   * Algorithm, key, and key hash must be supplied together.
-   *
-   * [encryptionKey] - Provides a base64-encoded 256-bit key that was used to
-   * encrypt the object, if any. Algorithm, key, and key hash must be supplied
-   * together.
-   *
-   * [encryptionKeyHash] - Provides the digest of the key for error-checking
-   * transmission. A digest is in the format of '='. Algorithm, key, and key
-   * hash must be supplied together.
-   *
    * [ifGenerationMatch] - Makes the operation conditional on whether the
    * object's current generation matches the given value.
    *
@@ -1596,7 +1584,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future compose(ComposeRequest request, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String encryptionAlgorithm, core.String encryptionKey, core.String encryptionKeyHash, core.String ifGenerationMatch, core.String ifMetagenerationMatch, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future compose(ComposeRequest request, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String ifGenerationMatch, core.String ifMetagenerationMatch, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1615,15 +1603,6 @@ class ObjectsResourceApi {
     }
     if (destinationPredefinedAcl != null) {
       _queryParams["destinationPredefinedAcl"] = [destinationPredefinedAcl];
-    }
-    if (encryptionAlgorithm != null) {
-      _queryParams["encryptionAlgorithm"] = [encryptionAlgorithm];
-    }
-    if (encryptionKey != null) {
-      _queryParams["encryptionKey"] = [encryptionKey];
-    }
-    if (encryptionKeyHash != null) {
-      _queryParams["encryptionKeyHash"] = [encryptionKeyHash];
     }
     if (ifGenerationMatch != null) {
       _queryParams["ifGenerationMatch"] = [ifGenerationMatch];
@@ -1684,18 +1663,6 @@ class ObjectsResourceApi {
    * - "publicRead" : Object owner gets OWNER access, and allUsers get READER
    * access.
    *
-   * [encryptionAlgorithm] - Specifies the encryption algorithm that was used to
-   * encrypt the object, if any. Only 'AES256' is supported currently.
-   * Algorithm, key, and key hash must be supplied together.
-   *
-   * [encryptionKey] - Provides a base64-encoded 256-bit key that was used to
-   * encrypt the object, if any. Algorithm, key, and key hash must be supplied
-   * together.
-   *
-   * [encryptionKeyHash] - Provides the digest of the key for error-checking
-   * transmission. A digest is in the format of '='. Algorithm, key, and key
-   * hash must be supplied together.
-   *
    * [ifGenerationMatch] - Makes the operation conditional on whether the
    * destination object's current generation matches the given value.
    *
@@ -1746,7 +1713,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future copy(Object request, core.String sourceBucket, core.String sourceObject, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String encryptionAlgorithm, core.String encryptionKey, core.String encryptionKeyHash, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String ifSourceGenerationMatch, core.String ifSourceGenerationNotMatch, core.String ifSourceMetagenerationMatch, core.String ifSourceMetagenerationNotMatch, core.String projection, core.String sourceGeneration, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future copy(Object request, core.String sourceBucket, core.String sourceObject, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String ifSourceGenerationMatch, core.String ifSourceGenerationNotMatch, core.String ifSourceMetagenerationMatch, core.String ifSourceMetagenerationNotMatch, core.String projection, core.String sourceGeneration, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1771,15 +1738,6 @@ class ObjectsResourceApi {
     }
     if (destinationPredefinedAcl != null) {
       _queryParams["destinationPredefinedAcl"] = [destinationPredefinedAcl];
-    }
-    if (encryptionAlgorithm != null) {
-      _queryParams["encryptionAlgorithm"] = [encryptionAlgorithm];
-    }
-    if (encryptionKey != null) {
-      _queryParams["encryptionKey"] = [encryptionKey];
-    }
-    if (encryptionKeyHash != null) {
-      _queryParams["encryptionKeyHash"] = [encryptionKeyHash];
     }
     if (ifGenerationMatch != null) {
       _queryParams["ifGenerationMatch"] = [ifGenerationMatch];
@@ -1915,17 +1873,6 @@ class ObjectsResourceApi {
    *
    * [object] - Name of the object.
    *
-   * [encryptionAlgorithm] - Specifies the encryption algorithm that would be
-   * used to decrypt the object. Only 'AES256' is supported currently.
-   * Algorithm, key, and key hash must be supplied together.
-   *
-   * [encryptionKey] - Provides a base64-encoded 256-bit key to decrypt the
-   * object. Algorithm, key, and key hash must be supplied together.
-   *
-   * [encryptionKeyHash] - Provides the digest of the key for error-checking
-   * transmission. A digest is in the format of '='. Algorithm, key, and key
-   * hash must be supplied together.
-   *
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
    *
@@ -1962,7 +1909,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future get(core.String bucket, core.String object, {core.String encryptionAlgorithm, core.String encryptionKey, core.String encryptionKeyHash, core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String projection, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future get(core.String bucket, core.String object, {core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String projection, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1975,15 +1922,6 @@ class ObjectsResourceApi {
     }
     if (object == null) {
       throw new core.ArgumentError("Parameter object is required.");
-    }
-    if (encryptionAlgorithm != null) {
-      _queryParams["encryptionAlgorithm"] = [encryptionAlgorithm];
-    }
-    if (encryptionKey != null) {
-      _queryParams["encryptionKey"] = [encryptionKey];
-    }
-    if (encryptionKeyHash != null) {
-      _queryParams["encryptionKeyHash"] = [encryptionKeyHash];
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
@@ -2038,17 +1976,6 @@ class ObjectsResourceApi {
    * contentEncoding metadata property. This can be useful when uploading an
    * object with uploadType=media to indicate the encoding of the content being
    * uploaded.
-   *
-   * [encryptionAlgorithm] - Specifies the encryption algorithm that would be
-   * used to encrypt the object. Only 'AES256' is supported currently.
-   * Algorithm, key, and key hash must be supplied together.
-   *
-   * [encryptionKey] - Provides a base64-encoded 256-bit key to encrypt the
-   * object. Algorithm, key, and key hash must be supplied together.
-   *
-   * [encryptionKeyHash] - Provides the digest of the key for error-checking
-   * transmission. A digest is in the format of '='. Algorithm, key, and key
-   * hash must be supplied together.
    *
    * [ifGenerationMatch] - Makes the operation conditional on whether the
    * object's current generation matches the given value.
@@ -2106,7 +2033,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future insert(Object request, core.String bucket, {core.String contentEncoding, core.String encryptionAlgorithm, core.String encryptionKey, core.String encryptionKeyHash, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String name, core.String predefinedAcl, core.String projection, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future insert(Object request, core.String bucket, {core.String contentEncoding, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String name, core.String predefinedAcl, core.String projection, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2122,15 +2049,6 @@ class ObjectsResourceApi {
     }
     if (contentEncoding != null) {
       _queryParams["contentEncoding"] = [contentEncoding];
-    }
-    if (encryptionAlgorithm != null) {
-      _queryParams["encryptionAlgorithm"] = [encryptionAlgorithm];
-    }
-    if (encryptionKey != null) {
-      _queryParams["encryptionKey"] = [encryptionKey];
-    }
-    if (encryptionKeyHash != null) {
-      _queryParams["encryptionKeyHash"] = [encryptionKeyHash];
     }
     if (ifGenerationMatch != null) {
       _queryParams["ifGenerationMatch"] = [ifGenerationMatch];
@@ -2273,19 +2191,6 @@ class ObjectsResourceApi {
    *
    * [object] - Name of the object.
    *
-   * [encryptionAlgorithm] - For downloading encrypted objects, specifies the
-   * encryption algorithm that would be used to decrypt the object. Only
-   * 'AES256' is supported currently. Algorithm, key, and key hash must be
-   * supplied together.
-   *
-   * [encryptionKey] - For downloading encrypted objects, provides a
-   * base64-encoded 256-bit key to decrypt the object. Algorithm, key, and key
-   * hash must be supplied together.
-   *
-   * [encryptionKeyHash] - For downloading encrypted objects, provides the
-   * digest of the key for error-checking transmission. A digest is in the
-   * format of '='. Algorithm, key, and key hash must be supplied together.
-   *
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
    *
@@ -2328,7 +2233,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Object> patch(Object request, core.String bucket, core.String object, {core.String encryptionAlgorithm, core.String encryptionKey, core.String encryptionKeyHash, core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String projection}) {
+  async.Future<Object> patch(Object request, core.String bucket, core.String object, {core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String projection}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2344,15 +2249,6 @@ class ObjectsResourceApi {
     }
     if (object == null) {
       throw new core.ArgumentError("Parameter object is required.");
-    }
-    if (encryptionAlgorithm != null) {
-      _queryParams["encryptionAlgorithm"] = [encryptionAlgorithm];
-    }
-    if (encryptionKey != null) {
-      _queryParams["encryptionKey"] = [encryptionKey];
-    }
-    if (encryptionKeyHash != null) {
-      _queryParams["encryptionKeyHash"] = [encryptionKeyHash];
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
@@ -2399,19 +2295,6 @@ class ObjectsResourceApi {
    * [bucket] - Name of the bucket in which the object resides.
    *
    * [object] - Name of the object.
-   *
-   * [encryptionAlgorithm] - For downloading encrypted objects, specifies the
-   * encryption algorithm that would be used to decrypt the object. Only
-   * 'AES256' is supported currently. Algorithm, key, and key hash must be
-   * supplied together.
-   *
-   * [encryptionKey] - For downloading encrypted objects, provides a
-   * base64-encoded 256-bit key to decrypt the object. Algorithm, key, and key
-   * hash must be supplied together.
-   *
-   * [encryptionKeyHash] - For downloading encrypted objects, provides the
-   * digest of the key for error-checking transmission. A digest is in the
-   * format of '='. Algorithm, key, and key hash must be supplied together.
    *
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
@@ -2463,7 +2346,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future update(Object request, core.String bucket, core.String object, {core.String encryptionAlgorithm, core.String encryptionKey, core.String encryptionKeyHash, core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String projection, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future update(Object request, core.String bucket, core.String object, {core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String projection, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2479,15 +2362,6 @@ class ObjectsResourceApi {
     }
     if (object == null) {
       throw new core.ArgumentError("Parameter object is required.");
-    }
-    if (encryptionAlgorithm != null) {
-      _queryParams["encryptionAlgorithm"] = [encryptionAlgorithm];
-    }
-    if (encryptionKey != null) {
-      _queryParams["encryptionKey"] = [encryptionKey];
-    }
-    if (encryptionKeyHash != null) {
-      _queryParams["encryptionKeyHash"] = [encryptionKeyHash];
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];

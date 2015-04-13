@@ -23,7 +23,7 @@
     "description": "Provides access to Genomics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/genomics/v1beta2/reference",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/zxM6l4gLCm-vFIvi5lr-kFXGmmI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/V_2cw8Jox8McJ3ZeGn5dcgBvvSM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1151,22 +1151,6 @@
                 }
             }
         },
-        "streamingVariantStore": {
-            "methods": {
-                "streamvariants": {
-                    "description": "Returns a stream of all the variants matching the search request, ordered by reference name, position, and ID.",
-                    "httpMethod": "POST",
-                    "id": "genomics.streamingVariantStore.streamvariants",
-                    "path": "streamingVariantStore/streamvariants",
-                    "request": {
-                        "$ref": "StreamVariantsRequest"
-                    },
-                    "response": {
-                        "$ref": "Variant"
-                    }
-                }
-            }
-        },
         "variants": {
             "methods": {
                 "create": {
@@ -1466,7 +1450,7 @@
             }
         }
     },
-    "revision": "20150326",
+    "revision": "20150401",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AlignReadGroupSetsRequest": {
@@ -2579,7 +2563,7 @@
                 },
                 "alignment": {
                     "$ref": "LinearAlignment",
-                    "description": "The linear alignment for this alignment record. This field will be null if the read is unmapped."
+                    "description": "The linear alignment for this alignment record. This field will be unset if the read is unmapped."
                 },
                 "duplicateFragment": {
                     "description": "The fragment is a PCR or optical duplicate (SAM flag 0x400)",
@@ -2615,7 +2599,7 @@
                 },
                 "nextMatePosition": {
                     "$ref": "Position",
-                    "description": "The mapping of the primary alignment of the (readNumber+1)%numberReads read in the fragment. It replaces mate position and mate strand in SAM."
+                    "description": "The position of the primary alignment of the (readNumber+1)%numberReads read in the fragment. It replaces mate position and mate strand in SAM. This field will be unset if that read is unmapped or if the fragment only has a single read."
                 },
                 "numberReads": {
                     "description": "The number of reads in the fragment (extension to SAM flag 0x1).",
@@ -3021,7 +3005,7 @@
                     "type": "string"
                 },
                 "pageSize": {
-                    "description": "The maximum number of call sets to return.",
+                    "description": "The maximum number of call sets to return. If unspecified, defaults to 1000.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -3393,17 +3377,17 @@
                     "type": "array"
                 },
                 "end": {
-                    "description": "Required. The end of the window (0-based, exclusive) for which overlapping variants should be returned.",
+                    "description": "The end of the window, 0-based exclusive. If unspecified or 0, defaults to the length of the reference.",
                     "format": "int64",
                     "type": "string"
                 },
                 "maxCalls": {
-                    "description": "The maximum number of calls to return. However, at least one variant will always be returned, even if it has more calls than this limit.",
+                    "description": "The maximum number of calls to return. However, at least one variant will always be returned, even if it has more calls than this limit. If unspecified, defaults to 5000.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "pageSize": {
-                    "description": "The maximum number of variants to return.",
+                    "description": "The maximum number of variants to return. If unspecified, defaults to 5000.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -3416,7 +3400,7 @@
                     "type": "string"
                 },
                 "start": {
-                    "description": "Required. The beginning of the window (0-based, inclusive) for which overlapping variants should be returned.",
+                    "description": "The beginning of the window (0-based, inclusive) for which overlapping variants should be returned. If unspecified, defaults to 0.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -3446,41 +3430,6 @@
                     "description": "The list of matching Variants.",
                     "items": {
                         "$ref": "Variant"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "StreamVariantsRequest": {
-            "description": "The stream variants request.",
-            "id": "StreamVariantsRequest",
-            "properties": {
-                "callSetIds": {
-                    "description": "Only return variant calls which belong to call sets with these ids. Leaving this blank returns all variant calls.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "end": {
-                    "description": "The end of the window (0-based, exclusive) for which overlapping variants should be returned.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "referenceName": {
-                    "description": "Required. Only return variants in this reference sequence.",
-                    "type": "string"
-                },
-                "start": {
-                    "description": "The beginning of the window (0-based, inclusive) for which overlapping variants should be returned.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "variantSetIds": {
-                    "description": "Exactly one variant set ID must be provided. Only variants from this variant set will be returned.",
-                    "items": {
-                        "type": "string"
                     },
                     "type": "array"
                 }

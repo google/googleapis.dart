@@ -1,3 +1,12 @@
+## 0.8.0
+* [api] admin_directory:v1: schema changes
+* [api] compute:v1: method changes
+* [api] content:v2: schema changes
+* [api] directory:v1: schema changes
+* [api] fitness:v1: schema/method changes
+* [api] youtube:v3: new resources
+* [api-breaking] storage:v1: method changes
+
 ## 0.7.0
 
 * [apis-breaking] analytics:v3 removed dailyUploads API

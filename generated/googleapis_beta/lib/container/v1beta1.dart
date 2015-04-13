@@ -149,6 +149,7 @@ class ProjectsZonesResourceApi {
 
   ProjectsZonesClustersResourceApi get clusters => new ProjectsZonesClustersResourceApi(_requester);
   ProjectsZonesOperationsResourceApi get operations => new ProjectsZonesOperationsResourceApi(_requester);
+  ProjectsZonesTokensResourceApi get tokens => new ProjectsZonesTokensResourceApi(_requester);
 
   ProjectsZonesResourceApi(commons.ApiRequester client) : 
       _requester = client;
@@ -479,6 +480,75 @@ class ProjectsZonesOperationsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListOperationsResponse.fromJson(data));
+  }
+
+}
+
+
+class ProjectsZonesTokensResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsZonesTokensResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets a compute-rw scoped OAuth2 access token for
+   * . Authentication is performed to ensure that the caller is a member of  and
+   * that the request is coming from the expected master VM for the specified
+   * cluster. See go/gke-cross-project-auth for more details.
+   *
+   * Request parameters:
+   *
+   * [masterProjectId] - The hosted master project from which this request is
+   * coming.
+   *
+   * [zoneId] - The zone of the specified cluster.
+   *
+   * [projectNumber] - The project number for which the access token is being
+   * requested.
+   *
+   * [clusterName] - The name of the specified cluster.
+   *
+   * Completes with a [Token].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Token> get(core.String masterProjectId, core.String zoneId, core.String projectNumber, core.String clusterName) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (masterProjectId == null) {
+      throw new core.ArgumentError("Parameter masterProjectId is required.");
+    }
+    if (zoneId == null) {
+      throw new core.ArgumentError("Parameter zoneId is required.");
+    }
+    if (projectNumber == null) {
+      throw new core.ArgumentError("Parameter projectNumber is required.");
+    }
+    if (clusterName == null) {
+      throw new core.ArgumentError("Parameter clusterName is required.");
+    }
+
+
+    _url = commons.Escaper.ecapeVariable('$masterProjectId') + '/zones/' + commons.Escaper.ecapeVariable('$zoneId') + '/tokens/' + commons.Escaper.ecapeVariable('$projectNumber') + '/' + commons.Escaper.ecapeVariable('$clusterName');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Token.fromJson(data));
   }
 
 }
@@ -1057,6 +1127,38 @@ class ServiceAccount {
     }
     if (scopes != null) {
       _json["scopes"] = scopes;
+    }
+    return _json;
+  }
+}
+
+
+class Token {
+  /** The OAuth2 access token */
+  core.String accessToken;
+
+  /** The expiration time of the token in seconds since the unix epoch. */
+  core.String expiryTimeSeconds;
+
+
+  Token();
+
+  Token.fromJson(core.Map _json) {
+    if (_json.containsKey("accessToken")) {
+      accessToken = _json["accessToken"];
+    }
+    if (_json.containsKey("expiryTimeSeconds")) {
+      expiryTimeSeconds = _json["expiryTimeSeconds"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (accessToken != null) {
+      _json["accessToken"] = accessToken;
+    }
+    if (expiryTimeSeconds != null) {
+      _json["expiryTimeSeconds"] = expiryTimeSeconds;
     }
     return _json;
   }

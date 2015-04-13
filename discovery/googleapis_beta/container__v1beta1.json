@@ -14,7 +14,7 @@
     "description": "The Google Container Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/container-engine/docs/v1beta1/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/A-uTeP-eqK6ANjBJOJiUSQV5WY8\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/3wSmOD9x-5Pot1DynjyGTFXruIU\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -340,13 +340,59 @@
                                     ]
                                 }
                             }
+                        },
+                        "tokens": {
+                            "methods": {
+                                "get": {
+                                    "description": "Gets a compute-rw scoped OAuth2 access token for\n. Authentication is performed to ensure that the caller is a member of  and that the request is coming from the expected master VM for the specified cluster. See go/gke-cross-project-auth for more details.",
+                                    "httpMethod": "GET",
+                                    "id": "container.projects.zones.tokens.get",
+                                    "parameterOrder": [
+                                        "masterProjectId",
+                                        "zoneId",
+                                        "projectNumber",
+                                        "clusterName"
+                                    ],
+                                    "parameters": {
+                                        "clusterName": {
+                                            "description": "The name of the specified cluster.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "masterProjectId": {
+                                            "description": "The hosted master project from which this request is coming.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "projectNumber": {
+                                            "description": "The project number for which the access token is being requested.",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "zoneId": {
+                                            "description": "The zone of the specified cluster.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "{masterProjectId}/zones/{zoneId}/tokens/{projectNumber}/{clusterName}",
+                                    "response": {
+                                        "$ref": "Token"
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
         }
     },
-    "revision": "20150318",
+    "revision": "20150401",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Cluster": {
@@ -605,6 +651,21 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Token": {
+            "id": "Token",
+            "properties": {
+                "accessToken": {
+                    "description": "The OAuth2 access token",
+                    "type": "string"
+                },
+                "expiryTimeSeconds": {
+                    "description": "The expiration time of the token in seconds since the unix epoch.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"

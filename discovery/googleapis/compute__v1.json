@@ -29,7 +29,7 @@
     "description": "API for the Google Compute Engine service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/X7hvmvZAuE2GX5lBTJUD_xWfVrI\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/5_F3NUaJGybCPvcgUPfyjslbvzg\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -2823,6 +2823,15 @@
                             "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                             "required": true,
                             "type": "string"
+                        },
+                        "port": {
+                            "default": "1",
+                            "description": "Which COM port to retrieve data from.",
+                            "format": "int32",
+                            "location": "query",
+                            "maximum": "4",
+                            "minimum": "1",
+                            "type": "integer"
                         },
                         "project": {
                             "description": "Project ID for this request.",
@@ -6005,7 +6014,7 @@
             }
         }
     },
-    "revision": "20150326",
+    "revision": "20141112",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {

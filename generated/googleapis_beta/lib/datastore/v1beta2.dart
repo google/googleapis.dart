@@ -1170,7 +1170,10 @@ class Property {
   /** A blob key value. */
   core.String blobKeyValue;
 
-  /** A blob value. May be a maximum of 1,000,000 bytes. */
+  /**
+   * A blob value. May be a maximum of 1,000,000 bytes. When indexed is true,
+   * may have at most 500 bytes.
+   */
   core.String blobValue;
 
   core.List<core.int> get blobValueAsBytes {
@@ -1215,15 +1218,18 @@ class Property {
   Key keyValue;
 
   /**
-   * A list value. Cannot contain another list value. Cannot also have a meaning
-   * and indexing set.
+   * A list value. Cannot contain another list value. A Value instance that sets
+   * field list_value must not set field meaning or field indexed.
    */
   core.List<Value> listValue;
 
   /** The meaning field is reserved and should not be used. */
   core.int meaning;
 
-  /** A UTF-8 encoded string value. */
+  /**
+   * A UTF-8 encoded string value. When indexed is true, may have at most 500
+   * characters.
+   */
   core.String stringValue;
 
 
@@ -1913,7 +1919,10 @@ class Value {
   /** A blob key value. */
   core.String blobKeyValue;
 
-  /** A blob value. May be a maximum of 1,000,000 bytes. */
+  /**
+   * A blob value. May be a maximum of 1,000,000 bytes. When indexed is true,
+   * may have at most 500 bytes.
+   */
   core.String blobValue;
 
   core.List<core.int> get blobValueAsBytes {
@@ -1958,15 +1967,18 @@ class Value {
   Key keyValue;
 
   /**
-   * A list value. Cannot contain another list value. Cannot also have a meaning
-   * and indexing set.
+   * A list value. Cannot contain another list value. A Value instance that sets
+   * field list_value must not set field meaning or field indexed.
    */
   core.List<Value> listValue;
 
   /** The meaning field is reserved and should not be used. */
   core.int meaning;
 
-  /** A UTF-8 encoded string value. */
+  /**
+   * A UTF-8 encoded string value. When indexed is true, may have at most 500
+   * characters.
+   */
   core.String stringValue;
 
 

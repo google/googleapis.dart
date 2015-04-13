@@ -4018,6 +4018,9 @@ class ChromeOsDevice {
   /** List of active time ranges (Read-only) */
   core.List<ChromeOsDeviceActiveTimeRanges> activeTimeRanges;
 
+  /** AssetId specified during enrollment or through later annotation */
+  core.String annotatedAssetId;
+
   /** Address or location of the device as noted by the administrator */
   core.String annotatedLocation;
 
@@ -4103,6 +4106,9 @@ class ChromeOsDevice {
     if (_json.containsKey("activeTimeRanges")) {
       activeTimeRanges = _json["activeTimeRanges"].map((value) => new ChromeOsDeviceActiveTimeRanges.fromJson(value)).toList();
     }
+    if (_json.containsKey("annotatedAssetId")) {
+      annotatedAssetId = _json["annotatedAssetId"];
+    }
     if (_json.containsKey("annotatedLocation")) {
       annotatedLocation = _json["annotatedLocation"];
     }
@@ -4178,6 +4184,9 @@ class ChromeOsDevice {
     var _json = new core.Map();
     if (activeTimeRanges != null) {
       _json["activeTimeRanges"] = activeTimeRanges.map((value) => (value).toJson()).toList();
+    }
+    if (annotatedAssetId != null) {
+      _json["annotatedAssetId"] = annotatedAssetId;
     }
     if (annotatedLocation != null) {
       _json["annotatedLocation"] = annotatedLocation;

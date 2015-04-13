@@ -3928,6 +3928,9 @@ class InstancesResourceApi {
    * [instance] - Name of the instance scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [port] - Which COM port to retrieve data from.
+   * Value must be between "1" and "4".
+   *
    * Completes with a [SerialPortOutput].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3936,7 +3939,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<SerialPortOutput> getSerialPortOutput(core.String project, core.String zone, core.String instance) {
+  async.Future<SerialPortOutput> getSerialPortOutput(core.String project, core.String zone, core.String instance, {core.int port}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3952,6 +3955,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (port != null) {
+      _queryParams["port"] = ["${port}"];
     }
 
 

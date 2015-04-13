@@ -20,7 +20,7 @@
     "description": "API for accessing Google Cloud Datastore.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/datastore/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/flAQ_osq7Vj8ZKDYJi6-tpiBvoo\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/JTCpJ6erGSGSQjeOlJBcixKgvo8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -252,7 +252,7 @@
             }
         }
     },
-    "revision": "20140916",
+    "revision": "20150402",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AllocateIdsRequest": {
@@ -659,7 +659,7 @@
                     "type": "string"
                 },
                 "blobValue": {
-                    "description": "A blob value. May be a maximum of 1,000,000 bytes.",
+                    "description": "A blob value. May be a maximum of 1,000,000 bytes. When indexed is true, may have at most 500 bytes.",
                     "format": "byte",
                     "type": "string"
                 },
@@ -695,7 +695,7 @@
                     "description": "A key value."
                 },
                 "listValue": {
-                    "description": "A list value. Cannot contain another list value. Cannot also have a meaning and indexing set.",
+                    "description": "A list value. Cannot contain another list value. A Value instance that sets field list_value must not set field meaning or field indexed.",
                     "items": {
                         "$ref": "Value"
                     },
@@ -707,7 +707,7 @@
                     "type": "integer"
                 },
                 "stringValue": {
-                    "description": "A UTF-8 encoded string value.",
+                    "description": "A UTF-8 encoded string value. When indexed is true, may have at most 500 characters.",
                     "type": "string"
                 }
             },
@@ -1014,7 +1014,7 @@
                     "type": "string"
                 },
                 "blobValue": {
-                    "description": "A blob value. May be a maximum of 1,000,000 bytes.",
+                    "description": "A blob value. May be a maximum of 1,000,000 bytes. When indexed is true, may have at most 500 bytes.",
                     "format": "byte",
                     "type": "string"
                 },
@@ -1050,7 +1050,7 @@
                     "description": "A key value."
                 },
                 "listValue": {
-                    "description": "A list value. Cannot contain another list value. Cannot also have a meaning and indexing set.",
+                    "description": "A list value. Cannot contain another list value. A Value instance that sets field list_value must not set field meaning or field indexed.",
                     "items": {
                         "$ref": "Value"
                     },
@@ -1062,7 +1062,7 @@
                     "type": "integer"
                 },
                 "stringValue": {
-                    "description": "A UTF-8 encoded string value.",
+                    "description": "A UTF-8 encoded string value. When indexed is true, may have at most 500 characters.",
                     "type": "string"
                 }
             },

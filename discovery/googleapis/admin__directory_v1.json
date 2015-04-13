@@ -69,7 +69,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/FINMPppbAsSW7hhRV2k9bEsVkrk\"",
+    "etag": "\"ye6orv2F-1npMW3u9suM3a7C5Bo/Gkp35yY2tnMjjfSgryNCrENSB-w\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -2511,7 +2511,7 @@
             }
         }
     },
-    "revision": "20150309",
+    "revision": "20150314",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {
@@ -2701,6 +2701,10 @@
                         "type": "object"
                     },
                     "type": "array"
+                },
+                "annotatedAssetId": {
+                    "description": "AssetId specified during enrollment or through later annotation",
+                    "type": "string"
                 },
                 "annotatedLocation": {
                     "description": "Address or location of the device as noted by the administrator",

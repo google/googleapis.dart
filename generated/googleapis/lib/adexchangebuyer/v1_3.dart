@@ -1525,9 +1525,8 @@ class CreativeFilteringReasonsReasons {
 
 
 /**
- * The filtering reasons for the creative. If this feature is not enabled,
- * please ask your technical account manager. Read-only. This field should not
- * be set in requests.
+ * The filtering reasons for the creative. Read-only. This field should not be
+ * set in requests.
  */
 class CreativeFilteringReasons {
   /**
@@ -1612,9 +1611,8 @@ class Creative {
   core.List<CreativeDisapprovalReasons> disapprovalReasons;
 
   /**
-   * The filtering reasons for the creative. If this feature is not enabled,
-   * please ask your technical account manager. Read-only. This field should not
-   * be set in requests.
+   * The filtering reasons for the creative. Read-only. This field should not be
+   * set in requests.
    */
   CreativeFilteringReasons filteringReasons;
 

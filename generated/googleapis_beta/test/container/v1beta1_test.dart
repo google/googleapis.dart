@@ -121,14 +121,14 @@ checkCreateClusterRequest(api.CreateClusterRequest o) {
   buildCounterCreateClusterRequest--;
 }
 
-buildUnnamed1486() {
+buildUnnamed1559() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed1486(core.List<api.Cluster> o) {
+checkUnnamed1559(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
@@ -139,7 +139,7 @@ buildListAggregatedClustersResponse() {
   var o = new api.ListAggregatedClustersResponse();
   buildCounterListAggregatedClustersResponse++;
   if (buildCounterListAggregatedClustersResponse < 3) {
-    o.clusters = buildUnnamed1486();
+    o.clusters = buildUnnamed1559();
   }
   buildCounterListAggregatedClustersResponse--;
   return o;
@@ -148,19 +148,19 @@ buildListAggregatedClustersResponse() {
 checkListAggregatedClustersResponse(api.ListAggregatedClustersResponse o) {
   buildCounterListAggregatedClustersResponse++;
   if (buildCounterListAggregatedClustersResponse < 3) {
-    checkUnnamed1486(o.clusters);
+    checkUnnamed1559(o.clusters);
   }
   buildCounterListAggregatedClustersResponse--;
 }
 
-buildUnnamed1487() {
+buildUnnamed1560() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1487(core.List<api.Operation> o) {
+checkUnnamed1560(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -171,7 +171,7 @@ buildListAggregatedOperationsResponse() {
   var o = new api.ListAggregatedOperationsResponse();
   buildCounterListAggregatedOperationsResponse++;
   if (buildCounterListAggregatedOperationsResponse < 3) {
-    o.operations = buildUnnamed1487();
+    o.operations = buildUnnamed1560();
   }
   buildCounterListAggregatedOperationsResponse--;
   return o;
@@ -180,19 +180,19 @@ buildListAggregatedOperationsResponse() {
 checkListAggregatedOperationsResponse(api.ListAggregatedOperationsResponse o) {
   buildCounterListAggregatedOperationsResponse++;
   if (buildCounterListAggregatedOperationsResponse < 3) {
-    checkUnnamed1487(o.operations);
+    checkUnnamed1560(o.operations);
   }
   buildCounterListAggregatedOperationsResponse--;
 }
 
-buildUnnamed1488() {
+buildUnnamed1561() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed1488(core.List<api.Cluster> o) {
+checkUnnamed1561(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
@@ -203,7 +203,7 @@ buildListClustersResponse() {
   var o = new api.ListClustersResponse();
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    o.clusters = buildUnnamed1488();
+    o.clusters = buildUnnamed1561();
   }
   buildCounterListClustersResponse--;
   return o;
@@ -212,19 +212,19 @@ buildListClustersResponse() {
 checkListClustersResponse(api.ListClustersResponse o) {
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    checkUnnamed1488(o.clusters);
+    checkUnnamed1561(o.clusters);
   }
   buildCounterListClustersResponse--;
 }
 
-buildUnnamed1489() {
+buildUnnamed1562() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1489(core.List<api.Operation> o) {
+checkUnnamed1562(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -235,7 +235,7 @@ buildListOperationsResponse() {
   var o = new api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.operations = buildUnnamed1489();
+    o.operations = buildUnnamed1562();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -244,7 +244,7 @@ buildListOperationsResponse() {
 checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    checkUnnamed1489(o.operations);
+    checkUnnamed1562(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
@@ -270,14 +270,14 @@ checkMasterAuth(api.MasterAuth o) {
   buildCounterMasterAuth--;
 }
 
-buildUnnamed1490() {
+buildUnnamed1563() {
   var o = new core.List<api.ServiceAccount>();
   o.add(buildServiceAccount());
   o.add(buildServiceAccount());
   return o;
 }
 
-checkUnnamed1490(core.List<api.ServiceAccount> o) {
+checkUnnamed1563(core.List<api.ServiceAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceAccount(o[0]);
   checkServiceAccount(o[1]);
@@ -289,7 +289,7 @@ buildNodeConfig() {
   buildCounterNodeConfig++;
   if (buildCounterNodeConfig < 3) {
     o.machineType = "foo";
-    o.serviceAccounts = buildUnnamed1490();
+    o.serviceAccounts = buildUnnamed1563();
     o.sourceImage = "foo";
   }
   buildCounterNodeConfig--;
@@ -300,7 +300,7 @@ checkNodeConfig(api.NodeConfig o) {
   buildCounterNodeConfig++;
   if (buildCounterNodeConfig < 3) {
     unittest.expect(o.machineType, unittest.equals('foo'));
-    checkUnnamed1490(o.serviceAccounts);
+    checkUnnamed1563(o.serviceAccounts);
     unittest.expect(o.sourceImage, unittest.equals('foo'));
   }
   buildCounterNodeConfig--;
@@ -339,14 +339,14 @@ checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-buildUnnamed1491() {
+buildUnnamed1564() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1491(core.List<core.String> o) {
+checkUnnamed1564(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -358,7 +358,7 @@ buildServiceAccount() {
   buildCounterServiceAccount++;
   if (buildCounterServiceAccount < 3) {
     o.email = "foo";
-    o.scopes = buildUnnamed1491();
+    o.scopes = buildUnnamed1564();
   }
   buildCounterServiceAccount--;
   return o;
@@ -368,9 +368,30 @@ checkServiceAccount(api.ServiceAccount o) {
   buildCounterServiceAccount++;
   if (buildCounterServiceAccount < 3) {
     unittest.expect(o.email, unittest.equals('foo'));
-    checkUnnamed1491(o.scopes);
+    checkUnnamed1564(o.scopes);
   }
   buildCounterServiceAccount--;
+}
+
+core.int buildCounterToken = 0;
+buildToken() {
+  var o = new api.Token();
+  buildCounterToken++;
+  if (buildCounterToken < 3) {
+    o.accessToken = "foo";
+    o.expiryTimeSeconds = "foo";
+  }
+  buildCounterToken--;
+  return o;
+}
+
+checkToken(api.Token o) {
+  buildCounterToken++;
+  if (buildCounterToken < 3) {
+    unittest.expect(o.accessToken, unittest.equals('foo'));
+    unittest.expect(o.expiryTimeSeconds, unittest.equals('foo'));
+  }
+  buildCounterToken--;
 }
 
 
@@ -461,6 +482,15 @@ main() {
       var o = buildServiceAccount();
       var od = new api.ServiceAccount.fromJson(o.toJson());
       checkServiceAccount(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-Token", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildToken();
+      var od = new api.Token.fromJson(o.toJson());
+      checkToken(od);
     });
   });
 
@@ -824,6 +854,55 @@ main() {
       }), true);
       res.list(arg_projectId, arg_zoneId).then(unittest.expectAsync(((api.ListOperationsResponse response) {
         checkListOperationsResponse(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-ProjectsZonesTokensResourceApi", () {
+    unittest.test("method--get", () {
+
+      var mock = new HttpServerMock();
+      api.ProjectsZonesTokensResourceApi res = new api.ContainerApi(mock).projects.zones.tokens;
+      var arg_masterProjectId = "foo";
+      var arg_zoneId = "foo";
+      var arg_projectNumber = "foo";
+      var arg_clusterName = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildToken());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.get(arg_masterProjectId, arg_zoneId, arg_projectNumber, arg_clusterName).then(unittest.expectAsync(((api.Token response) {
+        checkToken(response);
       })));
     });
 
