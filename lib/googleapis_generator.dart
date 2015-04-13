@@ -20,8 +20,28 @@ Future<List<DirectoryListItems>> _listAllApis() {
   }).whenComplete(() => client.close());
 }
 
-Future<List<GenerateResult>> downloadDiscoveryDocuments(
+Future<List<RestDescription>> downloadDiscoveryDocuments(
     String outputDir, {List<String> ids}) {
+  return fetchDiscoveryDocuments(ids: ids).then((List<RestDescription> apis) {
+    var directory = new Directory(outputDir);
+    if (directory.existsSync()) {
+      print('Deleting directory $outputDir.');
+      directory.deleteSync(recursive: true);
+    }
+    directory.createSync(recursive: true);
+
+    for (var description in apis) {
+      var name = '$outputDir/${description.name}__${description.version}.json';
+      var file = new File(name);
+      var encoder = new JsonEncoder.withIndent('    ');
+      file.writeAsStringSync(encoder.convert(description.toJson()));
+      print('Written: $name');
+    }
+    return apis;
+  });
+}
+
+Future<List<RestDescription>> fetchDiscoveryDocuments({List<String> ids}) {
   var apiDescriptions = <RestDescription>[];
 
   var client = new http.Client();
@@ -35,44 +55,50 @@ Future<List<GenerateResult>> downloadDiscoveryDocuments(
         }));
       }
     }
-    return Future.wait(futures).whenComplete(() => client.close());
-  }).then((_) {
-    var directory = new Directory(outputDir);
-    if (directory.existsSync()) {
-      print('Deleting directory $outputDir.');
-      directory.deleteSync(recursive: true);
-    }
-    directory.createSync(recursive: true);
-
-    for (var description in apiDescriptions) {
-      var name = '$outputDir/${description.name}__${description.version}.json';
-      var file = new File(name);
-      var encoder = new JsonEncoder.withIndent('    ');
-      file.writeAsStringSync(encoder.convert(description.toJson()));
-      print('Written: $name');
-    }
+    return Future.wait(futures)
+        .whenComplete(() => client.close())
+        .then((_) => apiDescriptions);
   });
 }
 
-Future generateFromConfiguration(String configFile) {
-  return _listAllApis().then((List<DirectoryListItems> items) {
-    var configuration = new DiscoveryPackagesConfiguration(configFile, items);
+List<RestDescription> loadDiscoveryDocuments(String directory) {
+  var apiDescriptions = new Directory(directory).listSync()
+      .where((fse) => fse is File && fse.path.endsWith('.json'))
+      .map((File file) {
+    return new RestDescription.fromJson(JSON.decode(file.readAsStringSync()));
+  }).toList();
+  return apiDescriptions;
+}
 
-    // Print warnings for APIs not mentioned.
-    if (configuration.missingApis.isNotEmpty) {
-      print('WARNING: No configuration for the following APIs:');
-      configuration.missingApis.forEach((id) => print('- $id'));
-    }
-    if (configuration.excessApis.isNotEmpty) {
-      print('WARNING: The following APIs do not exist:');
-      configuration.excessApis.forEach((id) => print('- $id'));
-    }
+Future downloadFromConfiguration(String configFile) {
+  return _listAllApis().then((List<DirectoryListItems> items) {
+    var configuration = new DiscoveryPackagesConfiguration(configFile);
 
     // Generate the packages.
     var configFileUri = new Uri.file(configFile);
-    return configuration.generate(configFileUri.resolve('discovery').path,
-                                  configFileUri.resolve('generated').path);
+    return configuration.download(
+        configFileUri.resolve('discovery').path, items).then((_) {
+      // Print warnings for APIs not mentioned.
+      if (configuration.missingApis.isNotEmpty) {
+        print('WARNING: No configuration for the following APIs:');
+        configuration.missingApis.forEach((id) => print('- $id'));
+      }
+      if (configuration.excessApis.isNotEmpty) {
+        print('WARNING: The following APIs do not exist:');
+        configuration.excessApis.forEach((id) => print('- $id'));
+      }
+    });
   });
+}
+
+void generateFromConfiguration(String configFile) {
+  var configuration =
+      new DiscoveryPackagesConfiguration(configFile);
+
+  // Generate the packages.
+  var configFileUri = new Uri.file(configFile);
+  return configuration.generate(configFileUri.resolve('discovery').path,
+                                configFileUri.resolve('generated').path);
 }
 
 DiscoveryApi _discoveryClient(http.Client client) => new DiscoveryApi(client);

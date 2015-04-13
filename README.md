@@ -9,12 +9,21 @@ Repository for building the [googleapis] and [googleapis_beta] packages.
 
 - Download & generate APIs using the `config.yaml` configuration:
 
-    $ dart bin/generate.dart run_config
+    $ dart bin/generate.dart run_config download
+
+- Possible reset some of the discovery documents downloaded (e.g. drive,
+  prediction)
+
+- Generate APIs
+
+    $ dart bin/generate.dart run_config generate
 
 - Diff with previous APIs and determine whether to do minor or major version
   update. Update CHANGELOG.md files in resources/.
 
 - Update `config.yaml` with new version and generate again.
+
+    $ dart bin/generate.dart run_config generate
 
 - Run tests:
 

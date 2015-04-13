@@ -19,6 +19,8 @@ ArgParser downloadCommandArgParser() {
 
 ArgParser runConfigCommandArgParser() {
   return new ArgParser()
+      ..addCommand('download')
+      ..addCommand('generate')
       ..addOption('config-file',
                   help: 'Configuration file describing package generation.',
                   defaultsTo: 'config.yaml');
@@ -80,8 +82,22 @@ void main(List<String> arguments) {
       downloadDiscoveryDocuments(commandOptions['output-dir']);
       break;
     case 'run_config':
+      if (commandOptions.command == null ||
+          !['download', 'generate'].contains(commandOptions.command.name)) {
+        dieWithUsage('The `run_config` command has only the two subcommands: '
+                     '`download` and `generate`.');
+      }
+
       var configFile = commandOptions['config-file'];
-      generateFromConfiguration(configFile).then((_) => print('Done!'));
+      switch (commandOptions.command.name) {
+        case 'download':
+          downloadFromConfiguration(configFile).then((_) => print('Done!'));
+          break;
+        case 'generate':
+          generateFromConfiguration(configFile);
+          print('Done');
+          break;
+      }
       break;
   }
 }

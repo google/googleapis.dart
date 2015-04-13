@@ -29,6 +29,8 @@ class Package {
  * a Discovery Service.
  */
 class DiscoveryPackagesConfiguration {
+  String configFile;
+  Map yaml;
   Map<String, Package> packages = {};
   Iterable<String> excessApis;
   Iterable<String> missingApis;
@@ -74,15 +76,37 @@ class DiscoveryPackagesConfiguration {
    * The file names for the content of readme and license files are resolved
    * relative to the configuration file.
    */
-  DiscoveryPackagesConfiguration(
-      String configFile, List<DirectoryListItems> allApis) {
-    var configYaml = new File(configFile).readAsStringSync();
-    var yaml = loadYaml(configYaml);
-    packages = _packagesFromYaml(yaml['packages'], configFile, allApis);
-    var knownApis = _calculateKnownApis(packages,
-                                        _listFromYaml(yaml['skipped_apis']));
-    missingApis = _calculateMissingApis(knownApis, allApis);
-    excessApis = _calculateExcessApis(knownApis, allApis);
+  DiscoveryPackagesConfiguration(this.configFile) {
+    yaml = loadYaml(new File(configFile).readAsStringSync());
+  }
+
+  /**
+   * Downloads discovery documents from the configuration.
+   *
+   * [discoveryDocsDir] is the directory where all the downloaded discovery
+   * documents are stored.
+   */
+  Future download(String discoveryDocsDir,
+                  List<DirectoryListItems> items) async {
+    // Delete all downloaded discovery documents.
+    var dir = new Directory(discoveryDocsDir);
+    if (dir.existsSync()) dir.deleteSync(recursive: true);
+
+    // Get all rest discovery documents & initialize this object.
+    List<RestDescription> allApis = await fetchDiscoveryDocuments();
+    _initialize(allApis);
+
+    // Download the discovery documents for the packages to build
+    // (only the APIs we're interested in).
+    var futures = [];
+    packages.forEach((name, package) {
+      futures.add(downloadDiscoveryDocuments('$discoveryDocsDir/$name',
+                                             ids: package.apis));
+    });
+
+    return Future.wait(futures).then((List<List<RestDescription>> results) {
+      _initialize(results.expand((result) => result).toList());
+    });
   }
 
   /**
@@ -94,42 +118,58 @@ class DiscoveryPackagesConfiguration {
    * [generatedApisDir] is the directory where the packages are generated.
    * Each package is generated in a sub-directory.
    */
-  Future generate(String discoveryDocsDir, String generatedApisDir) {
+  void generate(String discoveryDocsDir, String generatedApisDir) {
     // Delete all downloaded discovery documents.
     var dir = new Directory(discoveryDocsDir);
-    if (dir.existsSync()) dir.deleteSync(recursive: true);
+    if (!dir.existsSync()) {
+      throw new Exception(
+          'Error: The given `$discoveryDocsDir` directory does not exist.');
+    }
 
-    // Download the discovery documents for the packages to build.
-    var futures = [];
-    packages.forEach((name, package) {
-      futures.add(downloadDiscoveryDocuments('$discoveryDocsDir/$name',
-                                             ids: package.apis));
-    });
-
-    return Future.wait(futures).then((_) {
-      packages.forEach((name, package) {
-        generateAllLibraries('$discoveryDocsDir/$name',
-                             '$generatedApisDir/$name',
-                             package.pubspec);
-        new File('$generatedApisDir/$name/README.md')
-            .writeAsStringSync(package.readme);
-        if (package.license != null) {
-          new File('$generatedApisDir/$name/LICENSE')
-              .writeAsStringSync(package.license);
-        }
-        if (package.changelog != null) {
-          new File('$generatedApisDir/$name/CHANGELOG.md')
-              .writeAsStringSync(package.changelog);
-        }
+    // Load discovery documents from disc & initialize this object.
+    List<RestDescription> allApis = [];
+    yaml['packages'].forEach((Map package) {
+      package.forEach((String name, _) {
+        allApis.addAll(loadDiscoveryDocuments('$discoveryDocsDir/$name'));
       });
     });
+    _initialize(allApis);
+
+    // Generate packages.
+    packages.forEach((name, package) {
+      generateAllLibraries('$discoveryDocsDir/$name',
+                           '$generatedApisDir/$name',
+                           package.pubspec);
+      new File('$generatedApisDir/$name/README.md')
+          .writeAsStringSync(package.readme);
+      if (package.license != null) {
+        new File('$generatedApisDir/$name/LICENSE')
+            .writeAsStringSync(package.license);
+      }
+      if (package.changelog != null) {
+        new File('$generatedApisDir/$name/CHANGELOG.md')
+            .writeAsStringSync(package.changelog);
+      }
+    });
+  }
+
+  /**
+   * Initializes the missingApis/excessApis/packages properties from a list
+   * of [RestDescription]s.
+   */
+  void _initialize(List<RestDescription> allApis) {
+    packages = _packagesFromYaml(yaml['packages'], configFile, allApis);
+    var knownApis = _calculateKnownApis(packages,
+                                        _listFromYaml(yaml['skipped_apis']));
+    missingApis = _calculateMissingApis(knownApis, allApis);
+    excessApis = _calculateExcessApis(knownApis, allApis);
   }
 
   // Return empty list for YAML null value.
   static List _listFromYaml(value) => value != null ? value : [];
 
   static String _generateReadme(
-      String readmeFile, List<DirectoryListItems> items) {
+      String readmeFile, List<RestDescription> items) {
     var sb = new StringBuffer();
     if (readmeFile != null) {
       sb.write(new File(readmeFile).readAsStringSync());
@@ -141,7 +181,7 @@ class DiscoveryPackagesConfiguration {
 The following is a list of APIs that are currently available inside this
 package.
 ''');
-    for (DirectoryListItems item in items) {
+    for (RestDescription item in items) {
       sb.write("#### ");
       if (item.icons != null && item.icons.x16 != null) {
         sb.write("![Logo](${item.icons.x16}) ");
@@ -162,7 +202,7 @@ package.
   static Map<String, Package> _packagesFromYaml(
       YamlList configPackages,
       String configFile,
-      List<DirectoryListItems>  allApis) {
+      List<RestDescription>  allApis) {
     var packages = {};
     configPackages.forEach((package) {
       package.forEach((name, values) {
@@ -176,7 +216,7 @@ package.
   static Package _packageFromYaml(String name,
                                   YamlMap values,
                                   String configFile,
-                                  List<DirectoryListItems> allApis) {
+                                  List<RestDescription> allApis) {
     var apis = _listFromYaml(values['apis']);
     var version =
         values['version'] != null ? values['version'] : '0.1.0-dev';
@@ -184,6 +224,12 @@ package.
     var homepage = values['homepage'];
 
     var configUri = new Uri.file(configFile);
+
+    allApis.sort((RestDescription a, RestDescription b) {
+      int result = a.name.compareTo(b.name);
+      if (result != 0) return result;
+      return a.version.compareTo(b.version);
+    });
 
     var readmeFile;
     if (values['readme'] != null) {
@@ -204,7 +250,7 @@ package.
         ..write('"Auto-generated client libraries for accessing '
                 'the following APIs:');
     bool first = true;
-    allApis.forEach((DirectoryListItems apiDescription) {
+    allApis.forEach((RestDescription apiDescription) {
       if (apis.contains(apiDescription.id)) {
         if (!first) sb.write(', ');
         sb.write(apiDescription.id);
@@ -242,7 +288,7 @@ package.
   /// The missing APIs are the APIs returned from the Discovery Service
   /// but not mentioned in the configuration.
   static Iterable<String> _calculateMissingApis(
-      Iterable<String> knownApis, List<DirectoryListItems> allApis) {
+      Iterable<String> knownApis, List<RestDescription> allApis) {
     return allApis
         .where((item) => !knownApis.contains(item.id))
         .map((item) => item.id);
@@ -251,7 +297,7 @@ package.
   /// The excess APIs are the APIs mentioned in the configuration but not
   /// returned from the Discovery Service.
   static Iterable<String> _calculateExcessApis(
-      Iterable<String> knownApis, List<DirectoryListItems> allApis) {
+      Iterable<String> knownApis, List<RestDescription> allApis) {
     var excessApis = new Set.from(knownApis);
     allApis.forEach((item) => excessApis.remove(item.id));
     return excessApis;
